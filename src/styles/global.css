@@ -1,0 +1,214 @@
+/* === HRT薬典 Global Styles === */
+/* 米哈游「二相乐園」风格 — Stitch DESIGN.md "The Ethereal Clinic" */
+
+/* ================================
+   CSS Custom Properties
+   ================================ */
+:root {
+  /* 主色 - 绯英绯色系 */
+  --color-primary: #C84B7C;
+  --color-primary-light: #E8A0BE;
+  --color-primary-dark: #8B2D55;
+  --color-primary-container: #E76395;
+
+  /* 副色 - 幻月金系 */
+  --color-accent: #D4A853;
+  --color-accent-light: #F0D68A;
+  --color-accent-dark: #9A7A2E;
+
+  /* 辅助色 - 淡紫 */
+  --color-tertiary: #CBC2DD;
+  --color-tertiary-dim: #958DA5;
+
+  /* 中性色 — "Cosmic" depth layers */
+  --color-bg-primary: #0D0B14;
+  --color-bg-secondary: #14121B;
+  --color-bg-tertiary: #1A1625;
+  --color-bg-container: #211E28;
+  --color-bg-container-high: #2B2933;
+  --color-bg-container-highest: #36333E;
+  --color-text-primary: #E6E0EE;
+  --color-text-secondary: #CBC2DD;
+  --color-text-muted: #A48A90;
+  --color-outline: #564147;
+  --color-outline-20: rgba(86, 65, 71, 0.2);
+
+  /* 语义色 - 证据等级和安全信号 */
+  --color-safe: #4CAF50;
+  --color-caution: #FF9800;
+  --color-danger: #F44336;
+  --color-danger-dark: #D32F2F;
+  --color-info: #7C8CF0;
+
+  /* 玻璃效果 */
+  --glass-bg: rgba(26, 22, 37, 0.6);
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid var(--color-outline-20);
+
+  /* 对角切角 — Penacony Geometric Signature */
+  --clip-corner: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+  --clip-corner-sm: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
+  --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
+
+  /* 字体 */
+  --font-display: "Noto Serif SC", "Noto Serif", serif;
+  --font-body: "Manrope", "Noto Sans SC", sans-serif;
+  --font-mono: "Space Grotesk", "JetBrains Mono", monospace;
+  --font-accent: "ZCOOL XiaoWei", serif;
+
+  /* 间距 */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* 圆角 — DESIGN.md: Roundedness Scale is strictly 0px */
+  --radius-none: 0px;
+  --radius-full: 9999px;
+
+  /* 过渡 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ================================
+   Light Theme
+   ================================ */
+[data-theme="light"] {
+  --color-bg-primary: #FAF7FC;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #F3EEF8;
+  --color-bg-container: #EDE8F2;
+  --color-bg-container-high: #E6E0EE;
+  --color-text-primary: #1A1625;
+  --color-text-secondary: #5A5270;
+  --color-text-muted: #8A82A0;
+  --color-outline-20: rgba(200, 75, 124, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
+/* ================================
+   Base Styles
+   ================================ */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: rgba(200, 75, 124, 0.3);
+}
+
+/* ================================
+   Glass Panel — Stitch 统一毛玻璃
+   ================================ */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}
+
+/* ================================
+   Clipped Cards — Penacony 几何签名
+   ================================ */
+.clipped-card {
+  clip-path: var(--clip-corner);
+}
+
+.clipped-card-sm {
+  clip-path: var(--clip-corner-sm);
+}
+
+.clipped-card-accent {
+  clip-path: var(--clip-corner-accent);
+}
+
+/* ================================
+   Particle Background
+   ================================ */
+.particle-bg {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(200, 75, 124, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(212, 168, 83, 0.05) 0%, transparent 50%);
+}
+
+.particle-dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(200, 75, 124, 0.15) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* ================================
+   Hero Text Glow
+   ================================ */
+.hero-text-glow {
+  text-shadow: 0 0 30px rgba(200, 75, 124, 0.4);
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #C84B7C, #E76395, #D4A853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================
+   Ghost Border — Stitch "shimmer" 边框
+   ================================ */
+.ghost-border {
+  border: 1px solid var(--color-outline-20);
+}
+
+/* ================================
+   Tonal Shift — 用色调替代分割线
+   ================================ */
+.tonal-shift {
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+/* ================================
+   Diamond Decision Node (路径图用)
+   ================================ */
+.diamond-node {
+  transform: rotate(45deg);
+}
+
+.diamond-content {
+  transform: rotate(-45deg);
+}
+
+/* ================================
+   Reduced Motion
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================
+   Evidence Level Colors
+   ================================ */
+.evidence-A { color: var(--color-safe); }
+.evidence-B { color: var(--color-info); }
+.evidence-C { color: var(--color-caution); }
+.evidence-X { color: var(--color-danger); }

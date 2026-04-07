@@ -1,0 +1,150 @@
+---
+title: 比卡鲁胺
+description: 比卡鲁胺在跨性别 HRT 中的超说明书使用、强效 AR 拮抗但不降 T 的机制、肝毒性监测、与 CPA 禁止合用的警告。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Bicalutamide"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="口服给药（Oral）"
+  evidenceLevel="C"
+>
+  比卡鲁胺是一种非甾体类强效雄激素受体（AR）拮抗剂，原用于前列腺癌治疗。在跨性别 HRT 中属于超说明书用药，WPATH SOC 8 和 Endocrine Society 2017 均未将其推荐用于常规 GAHT。
+</DrugInfoBox>
+
+<WarningBox title="超说明书用药 — Off-Label Use">
+比卡鲁胺用于跨性别女性 HRT 属于**超说明书用药**（Off-Label Use）。这意味着<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+- 药品说明书中没有"性别肯定激素治疗"这一适应症
+- 在跨性别人群中的安全性和有效性数据有限
+- 目前主要基于前列腺癌患者的研究数据和少量跨性别人群的观察性研究
+- WPATH SOC 8 和 Endocrine Society 2017 均未将其纳入推荐方案
+</WarningBox>
+
+<DangerBox title="禁止与 CPA 合用">
+比卡鲁胺与 CPA（醋酸环丙孕酮/色谱龙）**禁止同时使用**<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+
+两者均有肝毒性潜力，合用时肝损伤风险显著叠加。严重肝损伤可能是无症状的，等到出现黄疸时可能已经造成严重损害。
+
+**如果你需要从 CPA 切换到比卡鲁胺（或反之），应当在医生指导下先停用前一种药物，间隔至少 2-4 周并确认肝功能正常后，再开始另一种。**
+</DangerBox>
+
+## 药理特点
+
+### 作用机制
+
+比卡鲁胺是目前临床上亲和力最高的非甾体类 AR 拮抗剂之一<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />：
+
+1. **强效 AR 拮抗**（唯一机制）：竞争性阻断雄激素受体，阻止 T 和 DHT 发挥生物学效应
+2. **不降低 T 水平**：由于反馈机制，T 水平可能反而升高
+3. **不影响 GnRH-LH/FSH 轴**：不抑制下丘脑-垂体-性腺轴
+
+### T 水平升高的问题
+
+这是比卡鲁胺用于 GAHT 时的一个特殊问题<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />：
+
+- 比卡鲁胺阻断 AR 后，下丘脑感受不到雄激素负反馈
+- 垂体代偿性增加 LH 分泌，刺激睾丸合成更多 T
+- 血清 T 水平可能升高至用药前的 1.5-2 倍
+- T 的生物学效应虽被阻断，但 T 可通过芳香化酶转化为雌二醇
+- 在前列腺癌患者中，这种 T 升高伴随雌二醇升高，有时导致男性乳房发育
+
+**对跨性别使用者的启示**：虽然 AR 被阻断，但高水平的 T 意味着一旦停药或依从性下降，男性化效应可能迅速恢复<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />。
+
+## 剂量建议
+
+<DoseTable
+  headers={['方案', '剂量', '说明', '来源']}
+  rows={[
+    ['起始/常规', '25 mg/天', '最低有效剂量起始', '临床经验'],
+    ['调整范围', '25-50 mg/天', '根据临床反应调整', 'ES 2017（最大剂量参考）'],
+    ['绝对上限', '50 mg/天', '更高剂量无额外获益但增加肝毒性风险', 'ES 2017'],
+  ]}
+/>
+
+<WarningBox title="不要用 T 水平来判断疗效">
+使用比卡鲁胺时，血清 T 水平**不能**作为疗效指标。T 水平可能正常甚至升高，但只要 AR 被有效阻断，雄激素效应即被抑制<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />。疗效评估应基于临床体征（皮肤油脂减少、体毛生长减缓等）而非单纯的 T 数值。
+</WarningBox>
+
+## 不良反应
+
+### 肝毒性（最重要的风险）
+
+比卡鲁胺的肝毒性是限制其在 GAHT 中使用的主要原因<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />：
+
+- 前列腺癌临床试验中报告了罕见但严重的肝损伤病例（包括肝衰竭致死）
+- 肝毒性可能在使用初期的数月内发生
+- 肝损伤可能无症状，仅通过血检发现
+- 已有肝病者禁用
+
+<DangerBox title="肝损伤症状 — 出现立即停药就医">
+- 皮肤或眼白发黄（黄疸）
+- 深色尿（茶色尿）
+- 持续右上腹疼痛或不适
+- 异常疲劳、食欲下降、恶心呕吐
+- ALT/AST > 3 倍正常上限
+
+**发现上述任何一项，应立即停用比卡鲁胺并就医检查肝功能。**
+</DangerBox>
+
+### 乳房疼痛和发育
+
+- 比卡鲁胺在前列腺癌患者中常导致男性乳房发育（gynecomastia）
+- 在跨性别使用者中，这种效应可能被视为期望效果
+- 乳房胀痛较常见
+
+### 其他不良反应
+
+- 潮热（不如 GnRH 激动剂常见）
+- 胃肠道不适（恶心、腹泻）
+- 皮肤干燥
+
+## 监测要求
+
+<DoseTable
+  headers={['检查项目', '频率', '目标/警戒值', '处理']}
+  rows={[
+    ['肝功能（ALT/AST）', '基线 + 前 6 月每月 → 之后每 3 月', 'ALT/AST ≤ 正常上限', '> 3× 上限：立即停药就医'],
+    ['胆红素', '与肝功能同时', '正常范围', '升高提示肝损伤加重'],
+    ['睾酮（T）', '每 3-6 月', '仅供参考（T 可能升高）', '不作为疗效主要指标'],
+    ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '评估联合方案效果'],
+  ]}
+/>
+
+<WarningBox title="肝功能监测不可省略">
+即使感觉完全正常，使用比卡鲁胺的前 6 个月**每月一次肝功能检查**不可省略。肝损伤可能是无症状的，只有通过血检才能早期发现<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />。
+</WarningBox>
+
+## 适用场景
+
+比卡鲁胺在 GAHT 中的定位非常有限<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />：
+
+**仅在以下条件全部满足时考虑**：
+- CPA 不可用（未上市/不耐受/脑膜瘤风险）
+- 螺内酯不可用（肾功能不全/高钾风险/效果不足）
+- GnRH 激动剂不可用（经济/获取限制）
+- **有医生指导和定期监测**
+
+**禁忌**：
+- 已有肝病或肝功能异常
+- 正在使用 CPA 或其他有肝毒性的药物
+- 无法定期进行肝功能血检
+
+## 中国获取现状
+
+- **上市状态**：比卡鲁胺在中国大陆有上市（用于前列腺癌治疗）
+- **获取途径**：泌尿外科/肿瘤科可开具处方
+- **品牌**：康士得（Casodex）及国产仿制药
+- **价格**：约 100-300 元/月（50 mg 片剂）
+- **注意**：大部分医生不熟悉其在 GAHT 中的应用，获取处方可能需要说明前列腺相关适应症

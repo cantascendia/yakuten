@@ -1,0 +1,156 @@
+---
+title: CPA（醋酸环丙孕酮/色谱龙）
+description: 醋酸环丙孕酮（CPA/色谱龙）的完整药理信息、低剂量方案（5-12.5 mg）、脑膜瘤风险数据、EMA 限制令、肝功能和泌乳素监测要求。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Cyproterone Acetate (CPA)"
+  nameCN="醋酸环丙孕酮（色谱龙）"
+  category="antiandrogen"
+  route="口服给药（Oral）"
+  evidenceLevel="A"
+>
+  醋酸环丙孕酮（CPA，商品名 Androcur/色谱龙）是全球跨性别女性 HRT 中最常用的抗雄激素之一。低剂量（5-12.5 mg/天）下降 T 效果确切，是 Endocrine Society 2017 和 WPATH SOC 8 推荐的抗雄方案。
+</DrugInfoBox>
+
+<DangerBox title="50 mg 是严重过量">
+许多社区流传的方案使用 CPA 50 mg/天——这是**前列腺癌治疗方案**的剂量，**不是 GAHT 方案**。研究表明，5-12.5 mg/天即可有效抑制 T 至女性范围<CitationRef id="meyer-2020" num={1} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。50 mg/天的脑膜瘤、肝毒性和抑郁风险远高于低剂量方案，且不带来更好的降 T 效果。**如果你正在使用 50 mg，请尽快减量。**
+</DangerBox>
+
+## 药理特点
+
+### 作用机制
+
+CPA 通过多重机制发挥抗雄激素作用<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
+
+1. **孕激素效应**（主要机制）：通过负反馈抑制下丘脑 GnRH 分泌，降低垂体 LH/FSH 释放，从而减少睾丸 T 合成
+2. **弱雄激素受体拮抗**：直接竞争性阻断雄激素受体（效力远弱于比卡鲁胺）
+3. **5α-还原酶抑制**：轻度抑制 T 向 DHT 的转化
+
+在 GAHT 中，CPA 主要依靠第一种机制（孕激素负反馈）实现降 T，而非直接的受体拮抗<CitationRef id="meyer-2020" num={1} authors="Meyer et al." year={2020} />。
+
+### 低剂量有效性
+
+多项研究证实，CPA 低剂量方案的降 T 效果与高剂量相当<CitationRef id="meyer-2020" num={1} authors="Meyer et al." year={2020} /><CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+- 10 mg/天可将 T 降至女性范围（< 50 ng/dL）
+- 5 mg/天对大多数与雌二醇联用的使用者已经足够
+- 增加剂量至 25 mg 或 50 mg 并不显著提高降 T 效果，但显著增加不良反应风险
+
+## 剂量建议
+
+<DoseTable
+  headers={['方案', '剂量', '说明', '来源']}
+  rows={[
+    ['推荐起始', '5 mg/天 或 12.5 mg/隔天', '与雌二醇联用时的标准低剂量', 'Meyer 2020; WPATH SOC 8'],
+    ['常用维持', '5-12.5 mg/天', '根据 T 水平调整', 'ES 2017'],
+    ['绝对上限', '12.5 mg/天', '≥25 mg 脑膜瘤风险急剧升高', 'Lee 2022; EMA 2020'],
+  ]}
+/>
+
+<WarningBox title="12.5 mg 如何服用">
+CPA 常见片剂规格为 50 mg。取 1/4 片（12.5 mg）每日服用，或取 1/4 片隔日服用（等效约 6.25 mg/天）。建议使用切药器精确分割。部分来源可获得 10 mg 片剂。
+</WarningBox>
+
+### 减量方案
+
+如果你当前使用剂量 > 12.5 mg/天，建议逐步减量<CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} />：
+
+- **50 mg → 25 mg**：维持 2 周，监测有无不适
+- **25 mg → 12.5 mg**：维持 2 周
+- **12.5 mg → 维持**：长期维持，每 3 个月血检确认 T 抑制
+- 减量期间保持雌二醇剂量不变
+
+## 脑膜瘤风险
+
+<DangerBox title="脑膜瘤 — CPA 最严重的长期风险">
+长期使用 CPA ≥ 25 mg/天与脑膜瘤发生率显著升高相关<CitationRef id="lee-2022" num={4} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />：
+
+- **≥ 25 mg/天使用 ≥ 1 年**：OR = 12.36（95% CI: 5.86-26.07）
+- 2026 年研究进一步确认了该关联<CitationRef id="hudelist-2026" num={5} authors="Hudelist et al." year={2026} title="CPA-associated meningioma in transgender women" />
+- **EMA 2020 年已对 ≥ 25 mg/天发出限制令**<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+
+**症状警示**：持续头痛、视力变化（模糊/复视/视野缺损）、癫痫发作 → **立即停药就医，需进行头颅 MRI 检查**。
+</DangerBox>
+
+脑膜瘤风险与剂量和使用时长密切相关<CitationRef id="lee-2022" num={4} authors="Lee et al." year={2022} />：
+
+<DoseTable
+  headers={['每日剂量', '脑膜瘤风险', '说明']}
+  rows={[
+    ['5-12.5 mg', '风险极低', '推荐的 GAHT 剂量范围'],
+    ['25 mg', '风险显著升高', 'EMA 限制令覆盖范围'],
+    ['50 mg', 'OR ≈ 12（≥1 年使用）', '前列腺癌剂量，非 GAHT'],
+    ['100 mg', '更高风险', '仅用于前列腺癌治疗'],
+  ]}
+/>
+
+## 其他不良反应
+
+### 肝毒性
+
+CPA 具有剂量依赖性的肝毒性<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />：
+
+- 低剂量（5-12.5 mg）下肝损伤罕见，但仍需监测
+- 肝功能指标（ALT/AST）升高 > 3 倍正常上限应停药
+- 已有肝病者禁用
+
+### 泌乳素升高
+
+CPA 通过孕激素效应可能升高泌乳素水平<CitationRef id="meyer-2020" num={1} authors="Meyer et al." year={2020} />：
+
+- 大多数使用者泌乳素轻度升高，无临床意义
+- PRL > 50 ng/mL 应进行评估（排除垂体泌乳素瘤）
+- 低剂量下泌乳素显著升高的概率远低于高剂量
+
+### 情绪影响
+
+CPA 作为强效孕激素，可能影响情绪<CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} />：
+
+- 部分使用者报告抑郁、情绪低落、疲劳
+- 如果开始使用 CPA 后出现显著情绪变化，应与医生讨论是否减量或更换抗雄方案
+- 有抑郁病史者使用时应特别关注情绪变化
+
+### VTE 风险
+
+CPA 具有促凝血作用，可增加静脉血栓栓塞（VTE）风险<CitationRef id="canonico-2018" num={7} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />：
+
+- 与口服雌二醇联用时 VTE 风险叠加
+- 建议 CPA 使用者优先选择经皮雌二醇（贴片或凝胶），减少双重 VTE 风险
+
+## 监测要求
+
+<DoseTable
+  headers={['检查项目', '频率', '目标/警戒值', '处理']}
+  rows={[
+    ['肝功能（ALT/AST）', '前 3 月每月 → 之后每 3-6 月', 'ALT/AST ≤ 正常上限', '> 3× 上限：停药就医'],
+    ['泌乳素（PRL）', '基线 + 每 6 月', 'PRL < 50 ng/mL', '> 50：评估排除垂体瘤'],
+    ['睾酮（T）', '第 4 周 + 每 3-6 月', 'T < 50 ng/dL', '目标范围内可维持低剂量'],
+    ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '评估联合方案效果'],
+  ]}
+/>
+
+<WarningBox title="停药不需要特别警惕反弹">
+CPA 的孕激素效应在停药后数天内消退，T 会逐渐恢复。如果因副作用需要停用 CPA，可以直接停用（无需缓慢减量），但应在停药后 2-4 周复查 T 水平，必要时更换其他抗雄方案或增加雌二醇剂量来维持 T 抑制<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />。
+</WarningBox>
+
+## 中国获取现状
+
+- **上市状态**：CPA 在中国大陆未上市（无国药准字批号）
+- **网售禁令**：2022 年 12 月起，色谱龙等 CPA 制剂被纳入网售禁止清单
+- **现实**：部分使用者通过非正规渠道获取，产品质量无法保证
+- **替代**：如无法安全获取 CPA，建议考虑[螺内酯](/zh/medications/antiandrogens/spironolactone/)（中国大陆合法处方药）或与医生讨论其他方案
+
+<DangerBox title="非正规渠道的风险">
+通过非正规渠道获取的 CPA 可能存在：成分不确定、剂量标注不准确、被掺杂其他物质等问题。如果你使用非正规渠道的 CPA，更应严格执行血检监测（特别是肝功能），并尽量寻求医生指导。
+</DangerBox>

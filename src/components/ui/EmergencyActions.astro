@@ -1,0 +1,148 @@
+---
+/**
+ * EmergencyActions -- 紧急停药就医区块
+ * 红色背景渐变，左侧 8px 红色边框
+ * 编号列表 + 底部 CTA
+ * 从 Stitch desktop_2 设计转写
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['emergency-actions', className]} role="alert" aria-label="必须立即停药就医的症状">
+  <h2 class="emergency-actions__title">
+    <svg class="emergency-actions__icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+    </svg>
+    必须立即停药就医的症状
+  </h2>
+
+  <ul class="emergency-actions__list">
+    <li class="emergency-actions__item">
+      <span class="emergency-actions__number">01</span>
+      <p>单侧小腿肿胀疼痛 — <strong class="emergency-actions__danger">可能是深静脉血栓 (DVT)</strong></p>
+    </li>
+    <li class="emergency-actions__item">
+      <span class="emergency-actions__number">02</span>
+      <p>突发性胸痛或咯血 — <strong class="emergency-actions__danger">可能是肺栓塞</strong></p>
+    </li>
+    <li class="emergency-actions__item">
+      <span class="emergency-actions__number">03</span>
+      <p>单侧肢体无力或面瘫 — <strong class="emergency-actions__danger">可能是中风先兆</strong></p>
+    </li>
+    <li class="emergency-actions__item">
+      <span class="emergency-actions__number">04</span>
+      <p>皮肤或眼白明显发黄 — <strong class="emergency-actions__danger">急性肝损伤体征</strong></p>
+    </li>
+    <li class="emergency-actions__item">
+      <span class="emergency-actions__number">05</span>
+      <p>突发剧烈头痛且伴视力缺失 — <strong class="emergency-actions__danger">颅内压升高/占位</strong></p>
+    </li>
+  </ul>
+
+  <a href="tel:120" class="emergency-actions__cta clipped-card">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/>
+    </svg>
+    去最近的急诊
+  </a>
+</div>
+
+<style>
+  .emergency-actions {
+    position: relative;
+    background: rgba(244, 67, 54, 0.1);
+    border-left: 8px solid var(--color-danger);
+    padding: var(--space-xl);
+    margin: var(--space-2xl) 0;
+    overflow: hidden;
+  }
+
+  /* Title */
+  .emergency-actions__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-danger);
+    margin: 0 0 var(--space-xl) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    line-height: 1.3;
+  }
+
+  .emergency-actions__icon {
+    color: var(--color-danger);
+    flex-shrink: 0;
+  }
+
+  /* List */
+  .emergency-actions__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-xl) 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .emergency-actions__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .emergency-actions__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .emergency-actions__item p {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .emergency-actions__number {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-danger);
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  .emergency-actions__danger {
+    color: var(--color-danger);
+    font-weight: 700;
+  }
+
+  /* CTA Button */
+  .emergency-actions__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
+    color: #ffffff;
+    padding: var(--space-md) var(--space-xl);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform var(--transition-normal);
+    cursor: pointer;
+    border: none;
+  }
+
+  .emergency-actions__cta:hover {
+    transform: scale(1.05);
+  }
+
+  .emergency-actions__cta svg {
+    flex-shrink: 0;
+  }
+</style>

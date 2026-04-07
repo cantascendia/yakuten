@@ -1,0 +1,50 @@
+---
+/**
+ * PhaseBlock -- 阶段色块组件
+ * 毛玻璃卡片 + 对角切角 + 左侧 4px 色彩边框
+ *
+ * @prop phase - 阶段编号 (0-3)
+ * @prop title - 阶段标题
+ * @prop color - 色彩主题 'green' | 'yellow' | 'pink'
+ * @prop week - 时间标签 (e.g. "WEEK 0", "1-6 MONTHS")
+ */
+interface Props {
+  phase: number;
+  title: string;
+  color: 'green' | 'yellow' | 'pink';
+  week?: string;
+}
+
+const { phase, title, color, week } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  green: '\u{2764}\u{FE0F}\u{200D}\u{1FA79}',
+  yellow: '\u{1F4CA}',
+  pink: '\u{1F6E1}\u{FE0F}',
+};
+
+// Phase 0 gets a different icon
+const phaseIcons: Record<number, string> = {
+  0: '\u{1FA7A}',
+  1: '\u{1F489}',
+  2: '\u{1F4CA}',
+  3: '\u{1F6E1}\u{FE0F}',
+};
+
+const icon = phaseIcons[phase] ?? iconMap[color] ?? '\u{2B50}';
+---
+
+<div class={`phase-block phase-block--${color}`}>
+  <div class="phase-block__header">
+    <span class={`phase-block__icon phase-block__icon--${color}`} aria-hidden="true">{icon}</span>
+    <h3 class={`phase-block__title phase-block__title--${color}`}>
+      {`阶段 ${phase}: ${title}`}
+    </h3>
+    {week && (
+      <span class={`phase-block__badge phase-block__badge--${color}`}>
+        {week}
+      </span>
+    )}
+  </div>
+  <slot />
+</div>

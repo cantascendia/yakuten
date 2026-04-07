@@ -1,0 +1,249 @@
+---
+/**
+ * ActionCards — Three entry-point cards with glass morphism,
+ * diagonal clip-path, and colored hover glow.
+ *
+ * Cards:
+ *   1. "I haven't started yet" (green / safe)
+ *   2. "I'm already on HRT" (primary / pink)
+ *   3. "Something feels wrong" (danger / red)
+ */
+
+interface CardData {
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+  color: 'safe' | 'primary' | 'danger';
+  icon: string; // SVG path data or identifier
+}
+
+const cards: CardData[] = [
+  {
+    title: '我还没开始用药',
+    description: '了解基线检查和禁忌症，为您的医疗旅程建立科学的安全起点。',
+    cta: 'Explore Baseline',
+    href: '/zh/before-you-start/',
+    color: 'safe',
+    icon: 'clipboard',
+  },
+  {
+    title: '我已经在用药',
+    description: '查看你的用药路径图，追踪生理变化指标，优化长期健康管理方案。',
+    cta: 'Trace Pathway',
+    href: '/zh/pathway/',
+    color: 'primary',
+    icon: 'pathway',
+  },
+  {
+    title: '我觉得身体出了问题',
+    description: '识别危险信号，掌握紧急自救指南。生命安全永远是首要准则。',
+    cta: 'Emergency Action',
+    href: '/zh/risks/',
+    color: 'danger',
+    icon: 'alert',
+  },
+];
+---
+
+<section class="action-cards" aria-label="快速入口">
+  <div class="action-cards__grid">
+    {cards.map((card) => (
+      <a
+        href={card.href}
+        class:list={[
+          'action-card',
+          'clipped-card',
+          'glass-panel',
+          `action-card--${card.color}`,
+        ]}
+      >
+        <div class="action-card__glow" aria-hidden="true"></div>
+        <div class="action-card__content">
+          <div class:list={['action-card__icon', 'glass-panel', `action-card__icon--${card.color}`]}>
+            {card.icon === 'clipboard' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                <path d="M9 14l2 2 4-4" />
+              </svg>
+            )}
+            {card.icon === 'pathway' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="6" cy="6" r="2" />
+                <circle cx="18" cy="18" r="2" />
+                <path d="M6 8v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8" />
+                <path d="M18 16v-2" />
+              </svg>
+            )}
+            {card.icon === 'alert' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            )}
+          </div>
+          <h3 class="action-card__title">{card.title}</h3>
+          <p class="action-card__desc">{card.description}</p>
+          <span class:list={['action-card__cta', `action-card__cta--${card.color}`]}>
+            {card.cta}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .action-cards {
+    position: relative;
+    z-index: 10;
+    padding: var(--space-2xl) var(--space-lg);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .action-cards__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .action-cards__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* --- Card base --- */
+  .action-card {
+    position: relative;
+    padding: var(--space-xl);
+    transition:
+      transform var(--transition-normal),
+      box-shadow var(--transition-normal);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .action-card:hover {
+    transform: scale(1.02);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .action-card:hover {
+      transform: none;
+    }
+  }
+
+  /* --- Hover glow overlay --- */
+  .action-card__glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .action-card:hover .action-card__glow {
+    opacity: 1;
+  }
+
+  .action-card--safe:hover {
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.15);
+  }
+  .action-card--safe .action-card__glow {
+    background: rgba(76, 175, 80, 0.05);
+  }
+
+  .action-card--primary:hover {
+    box-shadow: 0 0 30px rgba(200, 75, 124, 0.15);
+  }
+  .action-card--primary .action-card__glow {
+    background: rgba(200, 75, 124, 0.05);
+  }
+
+  .action-card--danger:hover {
+    box-shadow: 0 0 30px rgba(244, 67, 54, 0.15);
+  }
+  .action-card--danger .action-card__glow {
+    background: rgba(244, 67, 54, 0.05);
+  }
+
+  /* --- Card content --- */
+  .action-card__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* --- Icon box --- */
+  .action-card__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .action-card__icon--safe {
+    color: var(--color-safe);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+  }
+
+  .action-card__icon--primary {
+    color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(200, 75, 124, 0.3);
+  }
+
+  .action-card__icon--danger {
+    color: var(--color-danger);
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
+  }
+
+  /* --- Title --- */
+  .action-card__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  /* --- Description --- */
+  .action-card__desc {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* --- CTA label --- */
+  .action-card__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .action-card__cta--safe {
+    color: var(--color-safe);
+  }
+
+  .action-card__cta--primary {
+    color: var(--color-primary);
+  }
+
+  .action-card__cta--danger {
+    color: var(--color-danger);
+  }
+</style>

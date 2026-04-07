@@ -1,0 +1,36 @@
+/* === Glass Morphism Styles === */
+/* 米哈游「二相乐園」毛玻璃效果 */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  clip-path: var(--clip-corner);
+  padding: var(--space-lg);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(200, 75, 124, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-card:hover {
+    transform: none;
+  }
+}
+
+/* Small variant */
+.glass-card--sm {
+  clip-path: var(--clip-corner-sm);
+  padding: var(--space-md);
+}
+
+/* No hover variant (for static info cards) */
+.glass-card--static:hover {
+  transform: none;
+  box-shadow: none;
+}

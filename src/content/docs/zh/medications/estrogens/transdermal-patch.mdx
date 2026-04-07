@@ -1,0 +1,139 @@
+---
+title: 经皮雌二醇贴片
+description: 经皮雌二醇贴片（Estradiol Transdermal Patch）的完整药理信息、剂量建议、VTE 风险数据和使用注意事项。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Estradiol Transdermal Patch"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="经皮给药（Transdermal）"
+  evidenceLevel="A"
+>
+  经皮贴片是目前循证证据支持的最安全的雌二醇给药途径。贴片中的雌二醇通过皮肤缓慢吸收进入血液循环，完全绕过肝脏首过效应，VTE 风险与未用药人群无显著差异。
+</DrugInfoBox>
+
+## 药理特点
+
+### 绕过肝脏首过效应
+
+口服雌二醇在进入体循环之前，会先经过肝脏代谢（首过效应, First-Pass Metabolism）。这一过程会：
+
+- 增加肝脏凝血因子的合成，从而升高 VTE 风险
+- 降低雌二醇的生物利用度（口服约 5%）
+- 改变血脂代谢
+
+经皮贴片中的雌二醇通过皮肤直接进入体循环，**完全绕过肝脏首过效应**<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />。这意味着：
+
+- 对肝脏凝血系统的影响最小
+- 生物利用度更高且更稳定
+- 对血脂谱的影响更温和
+
+### VTE 风险数据
+
+经皮贴片的 VTE 风险是所有雌二醇给药途径中最低的<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />：
+
+<DoseTable
+  headers={['途径', '相对风险 (RR)', '95% CI']}
+  rows={[
+    ['经皮贴片', '0.97', '0.79 - 1.19'],
+    ['口服雌二醇', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+**RR ≈ 0.97** 意味着使用经皮贴片的 VTE 风险与完全不使用雌激素的人群相比，没有统计学上的显著差异<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。这使得经皮贴片成为所有有 VTE 风险因素人群的首选途径。
+
+### 血药浓度特征
+
+- 贴敷后约 12-24 小时达到稳态血药浓度
+- 在更换周期内维持相对平稳的 E2 水平
+- 避免了口服和注射途径的峰谷波动
+
+## 剂量建议
+
+以下剂量范围参考 Endocrine Society 2017 指南<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />和 WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+<DoseTable
+  headers={['阶段', '剂量', '目标 E2 (pg/mL)', '时间']}
+  rows={[
+    ['起始低剂量', '50-100 µg/天', '50-100', '第 1-6 个月'],
+    ['中等剂量调整', '100-200 µg/天', '100-200', '第 6-12 个月'],
+    ['维持剂量', '100-200 µg/天', '100-200', '12 个月+'],
+    ['单药治疗（如需）', '200-400 µg/天', '200-300', '仅在无抗雄时'],
+  ]}
+/>
+
+<WarningBox title="通常最大剂量">
+通常最大剂量为 **400 µg/天**，仅适用于单药治疗方案。大多数使用者在 100-200 µg/天即可达到目标血药浓度<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} />。E2 水平超过 200 pg/mL 并不会带来更强的女性化效果，只增加健康风险。
+</WarningBox>
+
+## 使用方法
+
+### 贴敷部位
+
+- 推荐部位：下腹部、臀部、大腿外侧
+- 避免部位：乳房区域（局部 E2 浓度过高）、关节活动区
+- 每次更换时轮换贴敷位置，避免连续贴在同一区域
+
+### 更换频率
+
+<WarningBox title="更换周期提醒">
+大多数经皮贴片的更换周期为 **每 3.5 天（每周两次）**或 **每 7 天（每周一次）**，具体取决于产品规格。务必按照所用产品的说明书严格执行更换周期。错过更换时间可能导致 E2 水平下降，引起情绪波动和潮热。建议在手机设置定时提醒。
+</WarningBox>
+
+### 使用技巧
+
+- 贴敷前确保皮肤清洁、干燥，无乳液或油脂
+- 贴敷后用手掌按压 10 秒确保粘合
+- 洗澡、游泳通常不影响（但避免长时间热水浸泡）
+- 如贴片脱落，尽快重新贴上或更换新贴片
+
+## 适用人群
+
+经皮贴片建议适用于以下人群<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman et al." year={2022} />：
+
+- **所有 HRT 使用者**（经皮途径对所有人都是安全的选择）
+- **有 VTE 风险因素者**（BMI >30、年龄 >40、吸烟、VTE 家族史等） — 应首选经皮途径
+- **合并使用 CPA 者** — CPA 本身有促凝血风险，经皮 E2 可避免叠加
+- **肝功能异常者** — 绕过首过效应，对肝脏负担最小
+
+## 中国获取现状
+
+经皮贴片在中国大陆的获取存在显著困难：
+
+- 目前没有在大陆获批上市的雌二醇经皮贴片产品
+- 2022年12月网售处方药限制令后，通过网络渠道获取的难度进一步增加
+- 部分使用者通过跨境渠道获取（如日本 Estrana Tape、泰国产品等）
+
+<WarningBox title="获取建议">
+如果你能获取经皮贴片，这是最建议的给药途径。如果获取确实困难，口服戊酸雌二醇（补佳乐）是可接受的替代方案——前提是你没有 VTE 风险因素。详见[口服雌二醇页面](/zh/medications/estrogens/oral/)。
+</WarningBox>
+
+## 常见品牌参考
+
+<DoseTable
+  headers={['品牌', '规格', '更换周期', '产地']}
+  rows={[
+    ['Estrana Tape', '0.72 mg (释放 50 µg/天)', '每 2 天', '日本'],
+    ['Climara', '3.8 / 7.6 mg (释放 50 / 100 µg/天)', '每 7 天', '德国/美国'],
+    ['Estradot', '多种规格 (25-100 µg/天)', '每 3.5 天', '瑞士'],
+    ['Vivelle-Dot', '多种规格 (25-100 µg/天)', '每 3.5 天', '美国'],
+  ]}
+/>
+
+## 监测建议
+
+- **采血时机**：更换贴片前 12-24 小时（测量谷值）<CitationRef id="ucsf-2016" num={5} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />
+- **初始阶段**：第 4 周和第 12 周检测激素六项
+- **维持阶段**：每 6 个月检测激素六项
+- **目标**：E2 100-200 pg/mL，T < 50 ng/dL

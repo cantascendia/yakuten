@@ -1,0 +1,61 @@
+---
+/**
+ * EvidenceBadge — 证据等级标签
+ * A = 绿色 (多项RCT/Meta)
+ * B = 蓝色 (单项RCT/队列)
+ * C = 橙色 (病例/专家意见)
+ * X = 红色 (无证据)
+ */
+interface Props {
+  level: 'A' | 'B' | 'C' | 'X';
+  class?: string;
+}
+
+const { level, class: className = '' } = Astro.props;
+
+const labels: Record<string, string> = {
+  A: '强证据',
+  B: '中等证据',
+  C: '弱证据',
+  X: '无证据',
+};
+
+const descriptions: Record<string, string> = {
+  A: '多项 RCT / Meta-analysis / 国际指南明确推荐',
+  B: '单项 RCT / 多项前瞻性队列研究',
+  C: '病例报告 / 回顾性研究 / 专家意见',
+  X: '社区传言 / 个人经验 / 未经验证',
+};
+---
+
+<span
+  class:list={['evidence-badge', `evidence-badge--${level}`, className]}
+  title={descriptions[level]}
+  role="img"
+  aria-label={`证据等级 ${level}: ${labels[level]}`}
+>
+  {level}
+</span>
+
+<style>
+  .evidence-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: #FFFFFF;
+    cursor: help;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .evidence-badge--A { background: var(--color-safe); }
+  .evidence-badge--B { background: var(--color-info); }
+  .evidence-badge--C { background: var(--color-caution); }
+  .evidence-badge--X { background: var(--color-danger); }
+</style>

@@ -1,0 +1,36 @@
+---
+/**
+ * EmergencyBanner — 紧急情况横幅
+ * 红色背景 + 白色文字，不可关闭，固定在页面最顶部。
+ * 显示需要立即就医的紧急症状清单。
+ */
+interface Props {
+  linkHref?: string;
+  linkText?: string;
+  class?: string;
+}
+
+const {
+  linkHref = '/zh/risks/',
+  linkText = '查看详情并立即行动',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class:list={['emergency-banner', className]} role="alert" aria-live="assertive">
+  <strong>如果你正在经历以下任何情况，请立即停药并就医：</strong>
+  <span class="emergency-banner__symptoms">
+    单侧小腿肿胀疼痛 · 突发严重头痛伴视力变化 · 胸痛或呼吸困难 · 皮肤/眼白发黄 · 持续严重情绪崩溃或自杀意念
+  </span>
+  <a href={linkHref}>{linkText}</a>
+</div>
+
+<style>
+  .emergency-banner__symptoms {
+    display: block;
+    font-weight: 400;
+    font-size: 0.875rem;
+    margin: var(--space-sm) 0;
+    opacity: 0.95;
+  }
+</style>

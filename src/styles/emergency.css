@@ -1,0 +1,73 @@
+/* === Emergency & Warning Styles === */
+/* Urgent banners and safety warnings — NOT dismissible */
+
+.emergency-banner {
+  background: linear-gradient(135deg, #F44336, #D32F2F);
+  color: #FFFFFF;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.emergency-banner a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.emergency-banner a:hover {
+  opacity: 0.9;
+}
+
+/* Warning box (yellow) — important but not life-threatening */
+.warning-box {
+  background: rgba(255, 152, 0, 0.1);
+  border-left: 4px solid var(--color-caution);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.warning-box__title {
+  color: var(--color-caution);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Danger box (red) — life-threatening or serious harm */
+.danger-box {
+  background: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.danger-box__title {
+  color: var(--color-danger);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Blood test indicator colors */
+.indicator-green  { border-left: 4px solid var(--color-safe); }
+.indicator-yellow { border-left: 4px solid var(--color-caution); }
+.indicator-red    { border-left: 4px solid var(--color-danger); }

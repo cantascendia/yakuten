@@ -1,0 +1,66 @@
+---
+/**
+ * CitationRef — 文献引用标注
+ * 内联标注 [1] 样式，hover 显示文献详情。
+ * 每条医学声明必须附带此组件 — 无引用 = 不写入。
+ *
+ * @prop id - 引用 ID，对应 references.json 中的 id
+ * @prop num - 显示的编号
+ * @prop authors - 作者（简写），如 "Hembree et al."
+ * @prop year - 年份
+ * @prop title - 文献标题（可选，用于 tooltip）
+ */
+interface Props {
+  id: string;
+  num: number;
+  authors: string;
+  year: number;
+  title?: string;
+  class?: string;
+}
+
+const { id, num, authors, year, title, class: className = '' } = Astro.props;
+
+const tooltipText = title
+  ? `${authors} (${year}). ${title}`
+  : `${authors} (${year})`;
+---
+
+<sup class:list={['citation-ref', className]}>
+  <a
+    href={`#ref-${id}`}
+    id={`cite-${id}`}
+    title={tooltipText}
+    aria-label={`参考文献 ${num}: ${tooltipText}`}
+    class="citation-ref__link"
+  >
+    [{num}]
+  </a>
+</sup>
+
+<style>
+  .citation-ref {
+    font-size: 0.75em;
+    line-height: 1;
+  }
+
+  .citation-ref__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: 0 1px;
+    border-radius: 2px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .citation-ref__link:hover {
+    color: var(--color-accent-light);
+    background-color: rgba(212, 168, 83, 0.15);
+  }
+
+  .citation-ref__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style>

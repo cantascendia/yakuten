@@ -1,0 +1,108 @@
+---
+/**
+ * DrugInfoBox — 药物信息卡片
+ * 毛玻璃卡片中展示药物摘要信息。
+ */
+interface Props {
+  name: string;
+  nameCN: string;
+  category: 'estrogen' | 'antiandrogen' | 'progestogen' | 'banned';
+  route?: string;
+  evidenceLevel?: 'A' | 'B' | 'C' | 'X';
+  class?: string;
+}
+
+const { name, nameCN, category, route, evidenceLevel, class: className = '' } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  estrogen: '雌激素',
+  antiandrogen: '抗雄激素',
+  progestogen: '孕激素',
+  banned: '禁用药物',
+};
+
+const categoryColors: Record<string, string> = {
+  estrogen: 'var(--color-primary)',
+  antiandrogen: 'var(--color-info)',
+  progestogen: 'var(--color-accent)',
+  banned: 'var(--color-danger)',
+};
+---
+
+<div class:list={['drug-info-box glass-card glass-card--sm', className]}>
+  <div class="drug-info-box__header">
+    <span class="drug-info-box__category" style={`color: ${categoryColors[category]}`}>
+      {categoryLabels[category]}
+    </span>
+    {evidenceLevel && (
+      <span class={`evidence-badge evidence-badge--${evidenceLevel}`} aria-label={`证据等级 ${evidenceLevel}`}>
+        {evidenceLevel}
+      </span>
+    )}
+  </div>
+  <h3 class="drug-info-box__name">{nameCN}</h3>
+  <p class="drug-info-box__generic">{name}</p>
+  {route && <p class="drug-info-box__route">{route}</p>}
+  <div class="drug-info-box__content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .drug-info-box__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .drug-info-box__category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .drug-info-box__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 var(--space-xs) 0;
+    color: var(--color-text-primary);
+  }
+
+  .drug-info-box__generic {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .drug-info-box__route {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .drug-info-box__content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .evidence-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: #FFFFFF;
+  }
+
+  .evidence-badge--A { background: var(--color-safe); }
+  .evidence-badge--B { background: var(--color-info); }
+  .evidence-badge--C { background: var(--color-caution); }
+  .evidence-badge--X { background: var(--color-danger); }
+</style>

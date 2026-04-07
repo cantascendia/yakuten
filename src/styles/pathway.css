@@ -1,0 +1,633 @@
+/* === Pathway Timeline Styles === */
+/* 垂直时间线 + 阶段卡片交替布局 */
+
+/* ================================
+   Background Decoration
+   ================================ */
+.pathway-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.pathway-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(200, 75, 124, 0.1);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pathway-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(212, 168, 83, 0.1);
+  filter: blur(100px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ================================
+   Timeline Container
+   ================================ */
+.pathway-timeline {
+  position: relative;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+/* Vertical gradient line */
+.pathway-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-safe),
+    var(--color-accent),
+    var(--color-primary)
+  );
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+/* ================================
+   Phase Row — alternating layout
+   ================================ */
+.phase-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  align-items: center;
+}
+
+/* Week label side */
+.phase-label {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 700;
+  opacity: 0.3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.phase-label--right {
+  text-align: right;
+  padding-right: var(--space-xl);
+}
+
+.phase-label--left {
+  text-align: left;
+  padding-left: var(--space-xl);
+}
+
+/* Timeline marker dot */
+.phase-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  z-index: 10;
+}
+
+.phase-marker--green {
+  background-color: var(--color-safe);
+  box-shadow: 0 0 15px var(--color-safe);
+}
+
+.phase-marker--yellow {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 15px var(--color-accent);
+}
+
+.phase-marker--pink {
+  background-color: var(--color-primary);
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+/* ================================
+   Decision Node Row
+   ================================ */
+.decision-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-3xl);
+  z-index: 20;
+}
+
+/* ================================
+   End Marker
+   ================================ */
+.pathway-end {
+  text-align: center;
+  padding-bottom: var(--space-xl);
+}
+
+.pathway-end-box {
+  display: inline-block;
+  padding: var(--space-md) var(--space-xl);
+  border: 1px solid var(--color-outline-20);
+  background: var(--color-bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.pathway-end-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
+}
+
+.pathway-end-title {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.pathway-end-sub {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* ================================
+   Phase Block Component
+   ================================ */
+.phase-block {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  clip-path: var(--clip-corner);
+  padding: var(--space-lg);
+  border-left: 4px solid transparent;
+  position: relative;
+}
+
+.phase-block--green {
+  border-left-color: var(--color-safe);
+}
+
+.phase-block--yellow {
+  border-left-color: var(--color-accent);
+}
+
+.phase-block--pink {
+  border-left-color: var(--color-primary);
+}
+
+.phase-block__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.phase-block__icon {
+  font-size: 1.5rem;
+}
+
+.phase-block__icon--green { color: var(--color-safe); }
+.phase-block__icon--yellow { color: var(--color-accent); }
+.phase-block__icon--pink { color: var(--color-primary); }
+
+.phase-block__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.phase-block__title--green { color: var(--color-safe); }
+.phase-block__title--yellow { color: var(--color-accent); }
+.phase-block__title--pink { color: var(--color-primary); }
+
+.phase-block__badge {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  letter-spacing: -0.02em;
+}
+
+.phase-block__badge--green {
+  background: rgba(76, 175, 80, 0.2);
+  color: var(--color-safe);
+}
+
+.phase-block__badge--yellow {
+  background: rgba(212, 168, 83, 0.2);
+  color: var(--color-accent);
+}
+
+.phase-block__badge--pink {
+  background: rgba(200, 75, 124, 0.2);
+  color: var(--color-primary);
+}
+
+.phase-block__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.phase-block__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.phase-block__list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+  opacity: 0.7;
+}
+
+.phase-block__list-bullet {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+
+.phase-block__list-bullet--green { background: var(--color-safe); }
+.phase-block__list-bullet--yellow { background: var(--color-accent); }
+.phase-block__list-bullet--pink { background: var(--color-primary); }
+
+/* ================================
+   Target Stats Row
+   ================================ */
+.phase-stats {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.phase-stat {
+  flex: 1;
+  background: var(--color-bg-container-high);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-outline-20);
+}
+
+.phase-stat__label {
+  font-size: 0.625rem;
+  color: var(--color-tertiary);
+  margin-bottom: 2px;
+}
+
+.phase-stat__value {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+}
+
+.phase-stat__value--green { color: var(--color-safe); }
+.phase-stat__value--yellow { color: var(--color-accent); }
+.phase-stat__value--pink { color: var(--color-primary); }
+
+.phase-stat__unit {
+  font-size: 0.625rem;
+  color: var(--color-tertiary);
+}
+
+/* ================================
+   Warning Inline
+   ================================ */
+.phase-warning {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  background: rgba(212, 168, 83, 0.1);
+  margin-top: var(--space-md);
+}
+
+.phase-warning__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.phase-warning__text {
+  font-size: 0.6875rem;
+  color: var(--color-accent);
+  line-height: 1.4;
+}
+
+/* ================================
+   Monitoring Box
+   ================================ */
+.monitor-box {
+  background: var(--color-bg-container-highest);
+  padding: var(--space-md);
+  border: 1px solid rgba(86, 65, 71, 0.3);
+  margin-top: var(--space-md);
+}
+
+.monitor-box__title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.monitor-box__content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.monitor-box__number {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.monitor-box__number--pink { color: var(--color-primary); }
+
+.monitor-box__unit {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.monitor-box__divider {
+  width: 1px;
+  height: 2rem;
+  background: rgba(86, 65, 71, 0.3);
+}
+
+.monitor-box__desc {
+  font-size: 0.75rem;
+  color: var(--color-tertiary);
+  line-height: 1.4;
+}
+
+/* ================================
+   Dose Tags
+   ================================ */
+.dose-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.dose-tag {
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.dose-tag--yellow {
+  background: rgba(212, 168, 83, 0.1);
+  color: var(--color-accent);
+  border-color: rgba(212, 168, 83, 0.2);
+}
+
+/* ================================
+   Decision Node
+   ================================ */
+.decision-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.decision-diamond {
+  width: 64px;
+  height: 64px;
+  transform: rotate(45deg);
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+  flex-shrink: 0;
+}
+
+.decision-diamond__inner {
+  transform: rotate(-45deg);
+  text-align: center;
+}
+
+.decision-diamond__time {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.decision-diamond__label {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* ================================
+   Decision Branches
+   ================================ */
+.decision-branches {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 32rem;
+}
+
+.decision-branch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.decision-branch--green {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: var(--color-safe);
+}
+
+.decision-branch--yellow {
+  background: rgba(212, 168, 83, 0.1);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  color: var(--color-accent);
+}
+
+.decision-branch--red {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: var(--color-danger);
+}
+
+.decision-branch__icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.decision-branch__text {
+  font-family: var(--font-body);
+}
+
+/* ================================
+   Dose Table
+   ================================ */
+.dose-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-md);
+}
+
+.dose-table {
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border-collapse: collapse;
+}
+
+.dose-table thead th {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--color-tertiary-dim);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-outline-20);
+  font-size: 0.75rem;
+}
+
+.dose-table tbody td {
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+  border-bottom: 1px solid rgba(86, 65, 71, 0.1);
+  color: var(--color-text-primary);
+  opacity: 0.8;
+}
+
+.dose-table .dose-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  opacity: 1;
+}
+
+/* ================================
+   Responsive: Mobile
+   ================================ */
+@media (max-width: 768px) {
+  .pathway-timeline::before {
+    left: 20px;
+    transform: none;
+  }
+
+  .phase-row {
+    grid-template-columns: 1fr;
+    padding-left: 48px;
+  }
+
+  .phase-label {
+    font-size: 1.5rem;
+    text-align: left !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .phase-label--right,
+  .phase-label--left {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .phase-marker {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+
+  .decision-row {
+    padding-left: 48px;
+    justify-content: flex-start;
+  }
+
+  .phase-stats {
+    flex-direction: column;
+  }
+}
+
+/* ================================
+   Animations — transform + opacity only
+   ================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phase-block {
+  animation: fadeInUp 0.5s ease both;
+}
+
+.decision-node {
+  animation: fadeInUp 0.5s ease 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase-block,
+  .decision-node {
+    animation: none;
+  }
+}

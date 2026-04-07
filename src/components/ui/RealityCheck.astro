@@ -1,0 +1,99 @@
+---
+/**
+ * RealityCheck -- 心理预期管理区块
+ * 蓝色圆形编号的有序列表，每条一个心理准备要点
+ */
+interface RealityItem {
+  text: string;
+}
+
+interface Props {
+  items: RealityItem[];
+  class?: string;
+}
+
+const { items = [], class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={['reality-check', className]}
+  role="note"
+  aria-label="心理预期管理"
+>
+  <ul class="reality-check__list">
+    {items.map((item, index) => {
+      const num = String(index + 1).padStart(2, '0');
+      return (
+        <li class="reality-check__item">
+          <div class="reality-check__number" aria-hidden="true">
+            <span>{num}</span>
+          </div>
+          <p class="reality-check__text">{item.text}</p>
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+<style>
+  .reality-check {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-2xl);
+  }
+
+  .reality-check__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .reality-check__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .reality-check__number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    background: rgba(124, 140, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .reality-check__number span {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-info);
+    line-height: 1;
+  }
+
+  .reality-check__text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin: 0;
+    padding-top: 0.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .reality-check {
+      padding: var(--space-lg);
+    }
+
+    .reality-check__item {
+      gap: var(--space-sm);
+    }
+  }
+</style>

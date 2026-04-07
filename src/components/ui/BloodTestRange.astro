@@ -1,0 +1,291 @@
+---
+/**
+ * BloodTestRange -- 血检参考值范围条组件
+ * 红绿灯可视化显示血检指标的安全范围。
+ * 水平条形图：绿色=目标、黄色=注意、红色=危险。
+ *
+ * @prop label - 指标名称（如 "E2"）
+ * @prop unit - 单位（如 "pg/mL"）
+ * @prop greenMin - 目标范围下限
+ * @prop greenMax - 目标范围上限
+ * @prop yellowMin - 注意范围下限
+ * @prop yellowMax - 注意范围上限
+ * @prop redThreshold - 危险阈值
+ * @prop redDirection - 危险方向 'above' | 'below'
+ */
+interface Props {
+  label: string;
+  unit: string;
+  greenMin: number;
+  greenMax: number;
+  yellowMin: number;
+  yellowMax: number;
+  redThreshold: number;
+  redDirection: 'above' | 'below';
+  class?: string;
+}
+
+const {
+  label,
+  unit,
+  greenMin,
+  greenMax,
+  yellowMin,
+  yellowMax,
+  redThreshold,
+  redDirection,
+  class: className = '',
+} = Astro.props;
+
+// Calculate the full visual range for the bar
+// We extend the bar slightly beyond the extreme values for visual padding
+const allValues = [greenMin, greenMax, yellowMin, yellowMax, redThreshold];
+const dataMin = Math.min(...allValues);
+const dataMax = Math.max(...allValues);
+const rangePadding = (dataMax - dataMin) * 0.1 || 1;
+const visualMin = Math.max(0, dataMin - rangePadding);
+const visualMax = dataMax + rangePadding;
+const totalRange = visualMax - visualMin;
+
+// Calculate percentage positions for each zone
+function toPercent(value: number): number {
+  return ((value - visualMin) / totalRange) * 100;
+}
+
+// Build segments based on redDirection
+// The bar displays from visualMin to visualMax
+let segments: Array<{ left: number; width: number; color: string; ariaLabel: string }> = [];
+
+if (redDirection === 'above') {
+  // Pattern: [green zone] [yellow zone] [red zone above threshold]
+  // Yellow is between green and red
+  const greenLeft = toPercent(greenMin);
+  const greenWidth = toPercent(greenMax) - greenLeft;
+
+  const yellowLeft = toPercent(yellowMin);
+  const yellowWidth = toPercent(yellowMax) - yellowLeft;
+
+  const redLeft = toPercent(redThreshold);
+  const redWidth = 100 - redLeft;
+
+  segments = [
+    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${greenMin}-${greenMax}` },
+    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${yellowMin}-${yellowMax}` },
+    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 >${redThreshold}` },
+  ];
+} else {
+  // redDirection === 'below'
+  // Pattern: [red zone below threshold] [yellow zone] [green zone]
+  const redLeft = 0;
+  const redWidth = toPercent(redThreshold);
+
+  const yellowLeft = toPercent(yellowMin);
+  const yellowWidth = toPercent(yellowMax) - yellowLeft;
+
+  const greenLeft = toPercent(greenMin);
+  const greenWidth = toPercent(greenMax) - greenLeft;
+
+  segments = [
+    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 <${redThreshold}` },
+    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${yellowMin}-${yellowMax}` },
+    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${greenMin}-${greenMax}` },
+  ];
+}
+
+// Key tick marks for the scale
+const ticks = [...new Set(allValues)].sort((a, b) => a - b);
+
+// Build aria-label for the whole component
+const ariaDescription = redDirection === 'above'
+  ? `${label} (${unit}): 目标 ${greenMin}-${greenMax}, 注意 ${yellowMin}-${yellowMax}, 危险 >${redThreshold}`
+  : `${label} (${unit}): 危险 <${redThreshold}, 注意 ${yellowMin}-${yellowMax}, 目标 ${greenMin}-${greenMax}`;
+---
+
+<div
+  class:list={['blood-range', className]}
+  role="img"
+  aria-label={ariaDescription}
+>
+  <div class="blood-range__header">
+    <span class="blood-range__label">{label}</span>
+    <span class="blood-range__unit">{unit}</span>
+  </div>
+
+  <div class="blood-range__bar-container">
+    {/* Tick labels above the bar */}
+    <div class="blood-range__ticks">
+      {ticks.map((val) => (
+        <span
+          class="blood-range__tick-label"
+          style={`left: ${toPercent(val)}%`}
+        >
+          {val}
+        </span>
+      ))}
+    </div>
+
+    {/* The bar itself */}
+    <div class="blood-range__bar" aria-hidden="true">
+      {segments.map((seg) => (
+        <div
+          class="blood-range__segment"
+          style={`left: ${seg.left}%; width: ${seg.width}%; background-color: ${seg.color};`}
+        />
+      ))}
+
+      {/* Tick marks on the bar */}
+      {ticks.map((val) => (
+        <div
+          class="blood-range__tick-mark"
+          style={`left: ${toPercent(val)}%`}
+        />
+      ))}
+    </div>
+
+    {/* Legend below the bar */}
+    <div class="blood-range__legend">
+      <span class="blood-range__legend-item blood-range__legend-item--safe">
+        目标
+      </span>
+      <span class="blood-range__legend-item blood-range__legend-item--caution">
+        注意
+      </span>
+      <span class="blood-range__legend-item blood-range__legend-item--danger">
+        危险
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .blood-range {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    background: rgba(26, 22, 37, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% 100%,
+      10px 100%,
+      0 calc(100% - 10px)
+    );
+  }
+
+  .blood-range__header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .blood-range__label {
+    font-family: var(--font-display, "Noto Serif SC", serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .blood-range__unit {
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .blood-range__bar-container {
+    position: relative;
+  }
+
+  .blood-range__ticks {
+    position: relative;
+    height: 1.25rem;
+  }
+
+  .blood-range__tick-label {
+    position: absolute;
+    transform: translateX(-50%);
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.6875rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  .blood-range__bar {
+    position: relative;
+    height: 12px;
+    background: rgba(107, 98, 128, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .blood-range__segment {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+
+  .blood-range:hover .blood-range__segment {
+    opacity: 1;
+  }
+
+  .blood-range__tick-mark {
+    position: absolute;
+    top: -2px;
+    width: 1px;
+    height: calc(100% + 4px);
+    background: var(--color-text-muted);
+    opacity: 0.4;
+    transform: translateX(-50%);
+  }
+
+  .blood-range__legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .blood-range__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-text-secondary);
+  }
+
+  .blood-range__legend-item::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  .blood-range__legend-item--safe::before {
+    background-color: var(--color-safe);
+  }
+
+  .blood-range__legend-item--caution::before {
+    background-color: var(--color-caution);
+  }
+
+  .blood-range__legend-item--danger::before {
+    background-color: var(--color-danger);
+  }
+
+  /* Light theme */
+  :global([data-theme="light"]) .blood-range {
+    background: rgba(243, 238, 248, 0.6);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .blood-range__segment {
+      transition: none;
+    }
+  }
+</style>

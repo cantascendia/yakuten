@@ -1,0 +1,128 @@
+---
+title: 羟孕酮 (Hydroxyprogesterone Caproate)
+description: 羟孕酮己酸酯注射液的药理信息、在跨性别 HRT 中的有限使用和中国获取情况。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Hydroxyprogesterone Caproate (OHPC)"
+  nameCN="羟孕酮己酸酯"
+  category="progestogen"
+  route="肌肉注射（IM）"
+  evidenceLevel="C"
+>
+  羟孕酮己酸酯是一种长效注射用孕激素，半衰期较长。在跨性别 HRT 中使用较少，缺乏针对跨性别女性的临床研究数据。证据等级 C 级。
+</DrugInfoBox>
+
+<WarningBox title="证据有限">
+羟孕酮在跨性别女性 HRT 中的使用缺乏高质量临床研究支持。以下内容主要基于妇产科领域的用药经验和药理学推导，证据等级为 C 级。如果考虑使用孕激素，**口服微粒化黄体酮（Utrogestan）通常是更优先的选择**。
+</WarningBox>
+
+---
+
+## 药理特点
+
+羟孕酮己酸酯（Hydroxyprogesterone Caproate, OHPC）是 17α-羟孕酮的己酸酯衍生物，属于半合成孕激素<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />。
+
+关键药理特征：
+
+- **给药途径**：仅限肌肉注射（IM），不可口服
+- **半衰期**：注射后半衰期约 7-8 天，可每周或每两周注射一次
+- **作用机制**：结合孕激素受体（PR），发挥孕激素效应
+- **代谢**：在肝脏中代谢，经肾脏排出
+- **品牌**：国际品牌包括 Makena（已于 2023 年在美国撤市）、Proluton（仙灵；部分地区仍可获取）
+
+### 与天然黄体酮的区别
+
+<DoseTable
+  headers={['特征', '微粒化黄体酮 (Utrogestan)', '羟孕酮己酸酯 (OHPC)']}
+  rows={[
+    ['化学来源', '天然（与人体黄体酮相同）', '半合成（17α-羟孕酮衍生物）'],
+    ['给药途径', '口服', '肌肉注射'],
+    ['给药频率', '每日', '每周至每两周'],
+    ['镇静作用', '有（GABA-A 激动）', '无'],
+    ['GAHT 研究数据', '有限但优于 OHPC', '极少'],
+    ['推荐优先级', '如需使用孕激素，建议首选', '通常不作为首选'],
+  ]}
+/>
+
+---
+
+## 在 GAHT 中的使用
+
+### 使用情况
+
+羟孕酮在跨性别 HRT 中的使用较为少见。Endocrine Society 2017 指南<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />和 WPATH SOC 8<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />均未将羟孕酮列为跨性别 HRT 的推荐或常规用药。
+
+可能使用的场景：
+
+- 使用者无法耐受口服微粒化黄体酮（如严重消化道反应）
+- 使用者偏好注射给药（减少每日口服的负担）
+- 在口服微粒化黄体酮不可获取的地区作为替代
+
+### 潜在的作用
+
+理论上，羟孕酮作为孕激素可能具有与黄体酮类似的潜在效应：
+
+- 可能有助于乳腺腺泡成熟（Tanner IV-V 阶段），但缺乏跨性别女性的研究数据
+- 可能辅助抑制促性腺激素（LH/FSH），从而间接辅助 T 抑制
+- **不具有**微粒化黄体酮特有的镇静/助眠作用
+
+---
+
+## 剂量参考
+
+以下剂量参考妇产科文献，**非针对跨性别 HRT 的推荐剂量**<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} />：
+
+<DoseTable
+  headers={['方案', '剂量', '给药方式', '说明']}
+  rows={[
+    ['参考剂量', '250 mg/周', '肌肉注射', '妇产科剂量，跨性别 HRT 剂量缺乏研究'],
+    ['低剂量探索', '125-250 mg/周或每两周', '肌肉注射', '部分跨性别使用者的经验性剂量'],
+  ]}
+/>
+
+<DangerBox title="缺乏跨性别 HRT 的循证剂量">
+目前没有针对跨性别女性使用羟孕酮的剂量研究。以上剂量仅为参考，如果决定使用，建议在有经验的内分泌科医生指导下进行，并密切监测激素水平和身体反应。
+</DangerBox>
+
+---
+
+## 副作用
+
+已知的副作用包括：
+
+- **注射部位反应**：疼痛、肿胀、硬结（油性注射剂的常见问题）
+- **恶心**
+- **头痛**
+- **情绪变化**：与其他孕激素类似，可能引起情绪波动
+- **过敏反应**：罕见，但注射剂中的油载体（如蓖麻油）可能引起过敏
+
+---
+
+## 中国获取现状
+
+- **仙灵（Proluton）**：含有羟孕酮己酸酯的注射液，部分医院妇产科可能有备药，主要用于先兆流产的治疗
+- **处方获取**：通常需要妇产科处方，以"黄体功能不足"等适应证开具
+- **可及性**：相比口服微粒化黄体酮，羟孕酮注射液在国内的可及性更为有限，并非所有医院都有备药
+- **价格**：因品牌和地区差异较大
+
+<WarningBox title="建议优先考虑口服微粒化黄体酮">
+对于大多数跨性别使用者而言，口服微粒化黄体酮（Utrogestan / 益玛欣）在获取便利性、安全性数据和使用舒适度方面均优于羟孕酮注射。除非有特殊原因无法使用口服制剂，否则不建议将羟孕酮作为首选。详见[微粒化黄体酮页面](/zh/medications/progestogens/progesterone/)。
+</WarningBox>
+
+---
+
+**参考文献**
+
+1. <span id="ref-kuhl-2005">Kuhl H. Pharmacology of estrogens and progestogens: influence of different routes of administration. *Climacteric* 2005;8(Suppl 1):3-63. DOI:10.1080/13697130500148875</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>

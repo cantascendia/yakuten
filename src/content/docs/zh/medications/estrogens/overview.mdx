@@ -1,0 +1,100 @@
+---
+title: 雌二醇总览
+description: 雌二醇各给药途径的 VTE 风险对比、优缺点分析和选择建议。了解经皮、口服、舌下、注射各途径的安全性差异。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+
+雌二醇（Estradiol, E2）是跨性别女性 HRT 的核心药物。选择给药途径时，**安全性（尤其是静脉血栓栓塞风险）应当是首要考量**，而非便利性或价格。
+
+## 给药途径 VTE 风险对比
+
+静脉血栓栓塞（VTE）是雌激素治疗中最需要关注的严重风险之一。不同给药途径的 VTE 风险存在显著差异<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />。
+
+<DoseTable
+  headers={['给药途径', '相对风险 (RR)', '证据等级', '说明']}
+  rows={[
+    ['经皮贴片', 'RR ≈ 0.97', 'A', '与未用药人群无显著差异'],
+    ['经皮凝胶', 'RR ≈ 0.97', 'A', '与贴片类似，绕过肝脏首过效应'],
+    ['口服 (戊酸 E2)', 'RR ≈ 1.48', 'A', '风险增加约 48%'],
+    ['舌下含服', '数据有限', 'C', '部分绕过首过效应，理论上低于口服'],
+    ['注射 (EV/EC)', '数据有限', 'C', '绕过首过效应，但大规模 RCT 数据缺乏'],
+  ]}
+/>
+
+<WarningBox title="关键发现">
+经皮途径（贴片和凝胶）的 VTE 风险与未用药人群没有统计学差异（RR ≈ 0.97），而口服途径的风险增加约 48%（RR ≈ 1.48）。如果你有任何 VTE 风险因素，经皮途径应当是首选<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} />。
+</WarningBox>
+
+## 给药途径选择建议
+
+以下是基于现有临床证据的给药途径选择思路<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+### 情况 1：存在 VTE 风险因素
+
+**风险因素包括**：年龄 >40、BMI >30、吸烟、VTE 家族史、凝血障碍史、偏头痛先兆史
+
+- 首选：**经皮贴片**或**经皮凝胶**
+- 避免：口服雌二醇
+- 同时避免与 CPA（醋酸环丙孕酮）口服联用
+
+### 情况 2：无 VTE 风险因素
+
+根据可获取性和个人偏好选择：
+
+- **口服戊酸 E2**（补佳乐）：中国大陆最容易获取，线下药房有售
+- **经皮贴片**：安全性更优，但大陆获取困难
+- **舌下含服**：使用口服片舌下含服，生物利用度较高但血药浓度波动大
+- **注射 EV**：血药浓度波动明显，但可满足单药治疗需求
+
+### 情况 3：单药治疗需求
+
+如果希望不使用抗雄激素，仅靠雌二醇抑制睾酮：
+
+- 首选：**注射 EV**（可维持较高且稳定的 E2 水平）
+- 次选：高剂量经皮贴片（200-400 µg/天）
+- 参考：Misakian 2025 研究显示注射 EV 单药方案中 82.6% 的使用者无需额外抗雄<CitationRef id="misakian-2025" num={4} authors="Misakian et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />
+
+## 各途径优缺点对比
+
+<DoseTable
+  headers={['途径', '优点', '缺点', '中国获取']}
+  rows={[
+    ['经皮贴片', 'VTE 风险最低；血药浓度稳定；每周更换 1-2 次', '获取困难；皮肤过敏；价格较高', '困难（网售禁令后更难）'],
+    ['经皮凝胶', 'VTE 风险低；每日涂抹可灵活调剂量', '吸收受皮肤状态影响；需等待干燥', '部分医院可开'],
+    ['口服（补佳乐）', '最易获取；线下药房有售；价格低', 'VTE 风险较高；首过效应降低利用度', '容易（线下药房）'],
+    ['舌下含服', '生物利用度高于口服；部分绕过首过效应', '血药浓度波动大；需日含 2-3 次', '使用口服片，同上'],
+    ['注射 EV', '绕过首过效应；可实现单药治疗', '注射操作要求高；血药浓度波动', '未上市，需自行获取'],
+  ]}
+/>
+
+## 剂量总览
+
+各途径的通常剂量范围<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} />：
+
+<DoseTable
+  headers={['途径', '起始剂量', '维持剂量', '通常最大剂量']}
+  rows={[
+    ['经皮贴片', '50-100 µg/天', '100-200 µg/天', '400 µg/天'],
+    ['经皮凝胶', '1.5 mg/天', '3 mg/天', '6 mg/天'],
+    ['口服 E2 / 戊酸 E2', '2 mg/天', '4 mg/天', '8 mg/天'],
+    ['舌下含服', '1-2 mg/天（分 2-3 次）', '2-4 mg/天（分 2-3 次）', '6 mg/天'],
+    ['注射 EV', '1-2 mg/周', '2-4 mg/周', '5 mg/周'],
+  ]}
+/>
+
+## 详细页面
+
+各途径的完整药理信息、使用方法和注意事项，请参阅：
+
+- [经皮贴片](/zh/medications/estrogens/transdermal-patch/) — 最安全的给药途径
+- [口服雌二醇（补佳乐）](/zh/medications/estrogens/oral/) — 最易获取但 VTE 风险稍高
+- [舌下含服](/zh/medications/estrogens/sublingual/) — 折衷方案，利用度高但波动大
+- [经皮凝胶](/zh/medications/estrogens/gel/) — 便利性介于贴片和口服之间
+- [注射雌二醇](/zh/medications/estrogens/injection/) — 可满足单药治疗需求

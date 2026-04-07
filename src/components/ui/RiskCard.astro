@@ -1,0 +1,160 @@
+---
+/**
+ * RiskCard -- 风险卡片组件
+ * 毛玻璃 + 对角切角 + 严重性色彩边框
+ * 从 Stitch desktop_2 设计转写
+ */
+interface Props {
+  title: string;
+  category: string;
+  severity: 'red' | 'orange' | 'yellow';
+  drug: string;
+  probability: string;
+  signs: string;
+  class?: string;
+}
+
+const {
+  title,
+  category,
+  severity,
+  drug,
+  probability,
+  signs,
+  class: className = '',
+} = Astro.props;
+
+const severityMap = {
+  red: 'risk-card--red',
+  orange: 'risk-card--orange',
+  yellow: 'risk-card--yellow',
+};
+---
+
+<article class:list={['risk-card glass-panel clipped-card', severityMap[severity], className]}>
+  <div class="risk-card__category">{category}</div>
+  <h3 class="risk-card__title">{title}</h3>
+  <div class="risk-card__data">
+    <div class="risk-card__row">
+      <span class="risk-card__label">关联药物</span>
+      <span class="risk-card__value">{drug}</span>
+    </div>
+    <div class="risk-card__row">
+      <span class="risk-card__label">发生概率</span>
+      <span class="risk-card__value risk-card__value--highlight">{probability}</span>
+    </div>
+    <div class="risk-card__signs">
+      <span class="risk-card__signs-label">关键体征</span>
+      <p class="risk-card__signs-text">{signs}</p>
+    </div>
+  </div>
+</article>
+
+<style>
+  .risk-card {
+    position: relative;
+    padding: var(--space-lg);
+    overflow: hidden;
+    border-right: 4px solid transparent;
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+  }
+
+  .risk-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Severity border colors */
+  .risk-card--red {
+    border-right-color: var(--color-danger);
+  }
+  .risk-card--orange {
+    border-right-color: var(--color-caution);
+  }
+  .risk-card--yellow {
+    border-right-color: #FFEB3B;
+  }
+
+  /* Category label */
+  .risk-card__category {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+  }
+
+  .risk-card--red .risk-card__category {
+    color: var(--color-danger);
+  }
+  .risk-card--orange .risk-card__category {
+    color: var(--color-caution);
+  }
+  .risk-card--yellow .risk-card__category {
+    color: #FFEB3B;
+  }
+
+  /* Title */
+  .risk-card__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-md) 0;
+    line-height: 1.3;
+  }
+
+  /* Data rows */
+  .risk-card__data {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .risk-card__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--color-outline-20);
+    padding-bottom: var(--space-sm);
+  }
+
+  .risk-card__label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .risk-card__value {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+  }
+
+  .risk-card--red .risk-card__value--highlight {
+    color: var(--color-danger);
+  }
+  .risk-card--orange .risk-card__value--highlight {
+    color: var(--color-caution);
+  }
+  .risk-card--yellow .risk-card__value--highlight {
+    color: #FFEB3B;
+  }
+
+  /* Signs section */
+  .risk-card__signs {
+    padding-top: var(--space-sm);
+  }
+
+  .risk-card__signs-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  .risk-card__signs-text {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>

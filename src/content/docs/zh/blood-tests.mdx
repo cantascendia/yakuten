@@ -1,0 +1,268 @@
+---
+title: 血检指南与自查工具
+description: HRT 期间的血检项目、复查时间表、如何看懂报告、互动式自查工具。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+血检是 HRT 安全管理的基石。没有血检数据，你无法知道药物是否在起效、剂量是否安全、身体是否在承受不必要的风险。本页帮助你了解何时检查、检查什么、以及如何看懂报告<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+<WarningBox title="在中国做血检并不难">
+你不需要告诉医生你是跨性别。去任何三甲医院挂内分泌科或体检中心，说"我想检查激素水平和肝功能"即可。总费用约 300-600 元。拿到结果后对照本页红绿灯表自查。
+</WarningBox>
+
+## 6.1 什么时候查、查什么
+
+血检时间表分三个阶段，与[用药路径图](/zh/pathway/)对齐<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+### 阶段 1：起始期（第 1-6 个月）
+
+这是调整最密集的时期，需要较频繁地监测以确认药物起效和排除早期副作用。
+
+**第 4 周复查：**
+
+<DoseTable
+  headers={['检查项目', '目的', '针对用药']}
+  rows={[
+    ['激素六项（E2、T、LH、FSH、PRL、P4）', '确认 E2 开始上升、T 开始下降', '所有用药者'],
+    ['肝功能（ALT、AST）', '排除早期肝毒性', 'CPA / 比卡鲁胺 用户'],
+    ['电解质（K⁺、Na⁺）', '排除高钾血症风险', '螺内酯用户'],
+  ]}
+/>
+
+**第 12 周复查：**
+
+<DoseTable
+  headers={['检查项目', '目的', '针对用药']}
+  rows={[
+    ['激素六项', '评估是否达到阶段目标（E2 50-100 pg/mL）', '所有用药者'],
+    ['肝功能（ALT、AST）', '持续监测肝脏安全', 'CPA / 比卡鲁胺 用户'],
+    ['血脂四项（TC、TG、LDL、HDL）', '评估代谢影响', '所有用药者'],
+    ['电解质（K⁺）', '持续监测血钾', '螺内酯用户'],
+  ]}
+/>
+
+<WarningBox title="阶段 1 目标">
+E2 达到 50-100 pg/mL，T 呈下降趋势。如果 E2 低于 30 pg/mL，可能需要调整给药方式或剂量（参见[用药路径图](/zh/pathway/)）<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。**此阶段不要仅凭"没感觉"就自行加量。**
+</WarningBox>
+
+### 阶段 2：调整期（第 6-12 个月）
+
+每 3 个月复查一次<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+<DoseTable
+  headers={['检查项目', '频率', '目标']}
+  rows={[
+    ['激素六项（E2、T、PRL）', '每 3 个月', 'E2 100-200 pg/mL, T &lt;50 ng/dL'],
+    ['肝功能（ALT、AST）', '每 3 个月（CPA/比卡用户）', 'ALT/AST ≤ 正常上限'],
+    ['泌乳素（PRL）', '每 6 个月', 'PRL &lt;50 ng/mL'],
+    ['电解质（K⁺）', '每 3 个月（螺内酯用户）', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### 阶段 3：维持期（12 个月以上）
+
+激素水平稳定后，检查频率可适当降低<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+**每 6 个月常规检查：**
+
+<DoseTable
+  headers={['检查项目', '说明']}
+  rows={[
+    ['激素六项（E2、T、PRL）', '确认维持在目标范围'],
+    ['肝功能（ALT、AST）', '持续监测（CPA/比卡用户每 3-6 个月）'],
+    ['电解质', '螺内酯用户持续监测'],
+  ]}
+/>
+
+**每年全面检查：**
+
+<DoseTable
+  headers={['检查项目', '说明']}
+  rows={[
+    ['血脂四项', '评估长期代谢影响'],
+    ['空腹血糖', '排除胰岛素抵抗'],
+    ['血常规（含 Hb）', '监测贫血趋势'],
+    ['凝血功能 + D-二聚体', '评估 VTE 风险（口服 E2 用户尤其重要）'],
+    ['骨密度（DXA）', '建议考虑，特别是已停用或未使用雌激素的时期较长者'],
+  ]}
+/>
+
+---
+
+## 6.2 如何看懂报告（红绿灯表）
+
+以下用红绿灯可视化展示 HRT 相关的 7 个核心血检指标。**绿色**=目标范围，**黄色**=需注意，**红色**=危险，需要采取行动<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。
+
+<WarningBox title="采血时机至关重要">
+采血时机直接影响结果的可解读性。请按以下规则采血（测量**谷值**）：
+
+- **经皮贴片**：换贴前 12-24 小时
+- **口服/舌下含服**：下次服药前
+- **注射**：下次注射前当天早晨
+
+如果不在谷值时采血，E2 读数可能偏高，导致误判剂量是否合适。
+</WarningBox>
+
+### 雌二醇（E2）
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 100-200 pg/mL 是国际指南推荐的维持期目标范围<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。超过 200 pg/mL 并不会带来更强的女性化效果，反而增加血栓和乳芽过早融合风险。用药后 E2 仍低于 20 pg/mL 提示给药方式可能存在问题（如贴片脱落、口服吸收不佳）。
+
+<DangerBox title="E2 > 500 pg/mL">
+如果谷值 E2 超过 500 pg/mL，需要立即减量并就医评估。这一水平显著增加静脉血栓栓塞（VTE）风险<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />。
+</DangerBox>
+
+### 睾酮（T）
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+T 抑制至 &lt;50 ng/dL（女性范围）是 HRT 的核心目标之一<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。如果用药 6 个月后 T 仍高于 100 ng/dL，通常需要调整抗雄方案——而不是单纯增加 E2 剂量<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。
+
+### 泌乳素（PRL）
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+雌激素和 CPA 均可升高泌乳素<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。轻度升高（25-50 ng/mL）通常无临床意义，但需要随访。PRL 超过 50 ng/mL 应进行评估，排除垂体泌乳素瘤（可能需要头颅 MRI）。CPA 使用者尤其需要关注此项。
+
+### 肝功能（ALT/AST）
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA 和比卡鲁胺均有肝毒性报告<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。ALT/AST 正常上限通常为 40 U/L。升高至 1-3 倍上限时需要密切监测并考虑减量；超过 3 倍上限（>120 U/L）应立即停用 CPA 或比卡鲁胺并就医<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。
+
+<DangerBox title="肝损伤警示症状">
+如果出现皮肤或眼白发黄、深色尿、持续恶心或右上腹疼痛，无论 ALT/AST 数值如何，都应立即停药就医。这些是肝损伤的临床表现，需要紧急处理。
+</DangerBox>
+
+### 血钾（K⁺）
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+螺内酯是保钾利尿剂，可导致高钾血症<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。K⁺ 超过 5.5 mmol/L 时应停用螺内酯并就医。使用螺内酯期间建议减少高钾食物摄入（香蕉、橙汁、椰子水等），避免使用含钾盐替代品。
+
+<DangerBox title="高钾血症症状">
+肌肉无力、手脚麻木刺痛、心悸或心律不齐——如果你正在使用螺内酯并出现以上症状，请立即就医检查血钾<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。
+</DangerBox>
+
+### 血红蛋白（Hb）
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+雌激素治疗后 Hb 通常会下降至女性范围，这是正常的生理变化<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。但 Hb 低于 110 g/L 提示贫血，可能由营养不良、铁缺乏或其他疾病导致，需要就医进一步检查原因。
+
+### D-二聚体
+
+<BloodTestRange
+  label="D-二聚体"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+D-二聚体是纤维蛋白降解产物，升高提示体内可能存在凝血-纤溶激活<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。轻度升高（0.5-1.0 mg/L）需结合临床症状判断。超过 1.0 mg/L 时，特别是同时出现单侧小腿肿痛、突发胸痛或呼吸困难，应紧急排除深静脉血栓（DVT）或肺栓塞（PE）<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />。
+
+<DangerBox title="D-二聚体升高 + 症状 = 立即就医">
+D-二聚体升高本身不等于血栓，但如果同时出现以下任一症状，应视为急症并立即前往急诊：单侧小腿肿胀/疼痛/发红发热、突发胸痛或呼吸困难、咯血。口服雌二醇使用者的 VTE 风险高于经皮途径<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />。
+</DangerBox>
+
+### 综合参考表
+
+<DoseTable
+  headers={['指标', '目标（绿色）', '注意（黄色）', '危险（红色）']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '&lt;50 或 200-300', '>500 或 &lt;20（用药后）'],
+    ['T (ng/dL)', '&lt;50', '50-100', '>100（用药 6 月后仍高）'],
+    ['PRL (ng/mL)', '&lt;25', '25-50', '>50（需排除垂体瘤）'],
+    ['ALT/AST (U/L)', '≤40（正常上限）', '40-120（1-3 倍上限）', '>120（停 CPA/比卡）'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5（停螺内酯）'],
+    ['Hb (g/L)', '>120', '110-120', '&lt;110（贫血）'],
+    ['D-二聚体 (mg/L)', '&lt;0.5', '0.5-1.0', '>1.0（排除血栓）'],
+  ]}
+/>
+
+---
+
+## 6.3 互动式自查工具
+
+<WarningBox title="即将上线">
+**血检自查工具（BloodTestChecker）** 将作为 React 交互组件在后续版本加入。该工具允许你输入血检数值，即时获得红绿灯判读和个性化建议。
+
+核心特点：
+- **纯前端运算**——你的血检数据不会被发送到任何服务器，所有计算在浏览器本地完成
+- 输入 E2、T、PRL、ALT/AST、K⁺、Hb、D-二聚体的实测值
+- 自动判定每项指标的红绿灯状态
+- 根据你使用的药物组合（CPA / 螺内酯 / 比卡鲁胺）给出针对性的监测提醒
+- 生成可保存的自查报告（仅保存在你的设备上）
+
+在工具上线前，请对照上方的红绿灯表手动核对你的血检结果。如有任何指标进入红色区间，建议尽快就医咨询。
+</WarningBox>

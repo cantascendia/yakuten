@@ -1,0 +1,166 @@
+---
+title: GnRH 激动剂
+description: GnRH 激动剂（亮丙瑞林、戈舍瑞林等）在跨性别 HRT 中的使用，包括最强效的降 T 机制、骨密度风险、注射给药方式和中国获取与费用。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="GnRH Agonists (Leuprorelin, Goserelin, etc.)"
+  nameCN="GnRH 激动剂（亮丙瑞林/戈舍瑞林等）"
+  category="antiandrogen"
+  route="皮下/肌肉注射（Injection）"
+  evidenceLevel="A"
+>
+  GnRH 激动剂是目前最有效的抗雄方案，通过抑制下丘脑-垂体-性腺轴直接将 T 降至去势水平（< 50 ng/dL）。Endocrine Society 2017 和 WPATH SOC 8 均推荐使用。在有条件获取的情况下，GnRH 激动剂是理想的抗雄选择。
+</DrugInfoBox>
+
+## 药理特点
+
+### 作用机制
+
+GnRH 激动剂的作用机制不同于其他抗雄药物——它直接作用于内分泌轴的上游<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
+
+1. **初始刺激期（Flare-up）**：用药后最初 1-2 周，GnRH 激动剂刺激垂体释放 LH/FSH，T 短暂升高
+2. **受体下调**：持续给药使垂体 GnRH 受体脱敏和下调
+3. **稳定抑制**：2-4 周后，LH/FSH 被有效抑制，T 降至去势水平（< 50 ng/dL）
+
+这种机制使 GnRH 激动剂能够**直接、可靠地降低 T 至女性范围**，不依赖于受体拮抗或间接抑制<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+<WarningBox title="初始 Flare-up 现象">
+GnRH 激动剂首次注射后 1-2 周内，T 水平可能短暂升高（称为"flare-up"）<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。这是正常的药理反应，不需要恐慌。Flare-up 期间可能出现暂时的雄激素症状加重（如痤疮、情绪波动）。如果已在使用雌二醇，flare-up 的临床影响通常较轻。
+</WarningBox>
+
+### 降 T 效果
+
+GnRH 激动剂是降 T 效果最强的抗雄方案<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+- 可将 T 降至 < 50 ng/dL（去势水平）
+- 降 T 效果与手术去势相当
+- 效果可靠，绝大多数使用者可达目标
+- 使用 GnRH 激动剂后通常不需要额外的抗雄药物
+
+## 常用药物
+
+<DoseTable
+  headers={['药物', '商品名（中国）', '规格', '给药间隔', '给药途径']}
+  rows={[
+    ['亮丙瑞林', '抑那通/贝依', '3.75 mg / 11.25 mg', '每月 / 每 3 月', '皮下注射'],
+    ['戈舍瑞林', '诺雷得', '3.6 mg / 10.8 mg', '每月 / 每 3 月', '皮下注射（腹壁）'],
+    ['曲普瑞林', '达菲林', '3.75 mg / 11.25 mg', '每月 / 每 3 月', '肌肉注射'],
+  ]}
+/>
+
+### 注射方式
+
+- GnRH 激动剂需要注射给药（皮下或肌肉注射）<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+- 月剂型每 28 天注射一次，季度剂型每 3 个月注射一次
+- 通常需要在医疗机构由医护人员完成注射
+- 部分剂型（如戈舍瑞林预填充注射器）可在护士指导下自行注射
+
+## 不良反应
+
+### 骨密度下降
+
+长期使用 GnRH 激动剂（特别是在雌二醇补充不足的情况下）可能导致骨密度下降<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+- T 和 E2 均是维持骨密度的重要激素
+- GnRH 激动剂抑制 T 后，如果外源性 E2 补充不足，可能导致骨质疏松
+- **关键**：只要同时使用足量雌二醇（E2 100-200 pg/mL），骨密度下降的风险大大降低
+- 长期使用者（> 2 年）建议进行骨密度检测（DEXA 扫描）
+
+<WarningBox title="必须与雌二醇联合使用">
+GnRH 激动剂将 T 和内源性 E2 均降至极低水平。**必须**同时补充雌二醇，否则将处于"性激素缺乏"状态，可能导致严重的骨质疏松、潮热、情绪障碍等<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。GnRH 激动剂不应单独使用。
+</WarningBox>
+
+### 初始 Flare-up
+
+- 首次注射后 T 短暂升高（1-2 周）
+- 可能出现痤疮、情绪波动、性欲变化
+- 通常为自限性，2-4 周后 T 进入稳定抑制
+
+### 注射部位反应
+
+- 注射部位疼痛、红肿、硬结（较常见）
+- 通常轻微，数天内自行消退
+- 交替注射部位可减少局部反应
+
+### 潮热和出汗
+
+- 类似更年期潮热，由性激素快速下降引起<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />
+- 同时使用雌二醇可显著缓解
+- 通常在 E2 水平稳定后改善
+
+### 情绪变化
+
+- 部分使用者报告情绪波动，特别是在治疗初期
+- 一般在激素水平稳定后改善
+- 比 CPA 的情绪影响通常更轻
+
+## 监测要求
+
+<DoseTable
+  headers={['检查项目', '频率', '目标/警戒值', '处理']}
+  rows={[
+    ['睾酮（T）', '首次注射后 4 周 + 每 3-6 月', 'T < 50 ng/dL', '未达标：评估注射间隔和依从性'],
+    ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '确保 E2 充足以保护骨骼'],
+    ['骨密度（DEXA）', '基线 + 使用 > 2 年后每 1-2 年', 'T-score > -1.0', 'T-score < -2.5：骨质疏松，需干预'],
+    ['LH/FSH', '可选，前 3 月', 'LH/FSH 明显降低', '确认垂体抑制有效'],
+  ]}
+/>
+
+## 优势与限制
+
+### 优势
+
+- **降 T 效果最强最可靠**：可稳定降至去势水平<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+- **安全性良好**：无肝毒性，无高钾血症风险，无脑膜瘤风险
+- **无需每日服药**：月剂型或季度剂型，依从性好
+- **可逆性**：停药后 HPG 轴可恢复（数周至数月）
+- **指南推荐**：ES 2017 和 WPATH SOC 8 均明确推荐<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />
+
+### 限制
+
+- **价格极高**：中国大陆约 1000-2000 元/月，或 2500-5000 元/3 个月
+- **需要注射**：不能口服，通常需要医疗机构操作
+- **获取门槛**：需要处方，适应症说明可能需要技巧
+- **初始 Flare-up**：首次使用时 T 短暂升高
+- **骨密度风险**：长期使用需要监测骨密度
+
+## 中国获取现状
+
+GnRH 激动剂在中国大陆属于合法处方药，但获取存在实际困难：
+
+- **上市状态**：亮丙瑞林（抑那通/贝依）、戈舍瑞林（诺雷得）、曲普瑞林（达菲林）均有国药准字批号
+- **适应症**：批准用于前列腺癌、子宫内膜异位症、中枢性性早熟等，非 GAHT 适应症
+- **获取途径**：内分泌科、泌尿科、妇科可开具处方
+- **费用**：月剂型约 1000-2000 元/支，季度剂型约 2500-5000 元/支
+- **医保**：部分地区可能纳入医保（按原适应症），但 GAHT 用途通常不报销
+
+<WarningBox title="费用是主要障碍">
+GnRH 激动剂是目前最理想的抗雄方案，但在中国大陆的费用对多数使用者来说是沉重负担（年费用约 12000-24000 元）。如果经济条件不允许长期使用，CPA 低剂量方案（5-12.5 mg/天）或螺内酯是更现实的替代选择<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。
+</WarningBox>
+
+## 适用场景
+
+GnRH 激动剂在以下情况下是理想选择<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+**建议优先考虑**：
+- 经济条件允许长期使用
+- 对 CPA 不耐受（肝功能异常、脑膜瘤风险、严重情绪影响）
+- 对螺内酯不耐受（高钾血症风险、肾功能不全）
+- 希望获得最可靠的 T 抑制效果
+- 青少年跨性别者的青春期阻断（在专科医生指导下）
+
+**可能不适合的情况**：
+- 经济条件无法负担
+- 无法定期前往医疗机构接受注射
+- 严重骨质疏松（需先评估骨密度）

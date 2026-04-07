@@ -1,0 +1,160 @@
+---
+title: 舌下含服雌二醇
+description: 舌下含服雌二醇的药理特点、生物利用度、血药浓度波动性、剂量建议和注意事项。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Estradiol Sublingual"
+  nameCN="舌下含服雌二醇"
+  category="estrogen"
+  route="舌下含服（Sublingual）"
+  evidenceLevel="B"
+>
+  舌下含服是使用口服雌二醇片剂的替代给药方式。通过舌下黏膜直接吸收，可部分绕过肝脏首过效应，提高生物利用度，但血药浓度波动显著，需要一日多次给药。
+</DrugInfoBox>
+
+## 药理特点
+
+### 吸收机制
+
+舌下含服时，雌二醇通过舌下黏膜丰富的毛细血管网直接进入体循环<CitationRef id="price-1997" num={1} authors="Price et al." year={1997} title="Sublingual estradiol pharmacokinetics" />：
+
+- **部分绕过首过效应**：与口服相比，减少了肝脏首过代谢的比例
+- **生物利用度更高**：舌下含服的生物利用度约为口服的 2-5 倍<CitationRef id="kuhl-2005" num={2} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />
+- **起效更快**：约 15-25 分钟可检测到血药浓度升高
+- **但并非完全绕过**：含服过程中不可避免有部分药物被唾液携带吞咽，仍经口服途径吸收
+
+### 血药浓度特征
+
+舌下含服的血药动力学与口服有显著区别<CitationRef id="price-1997" num={1} authors="Price et al." year={1997} />：
+
+<DoseTable
+  headers={['参数', '舌下含服', '口服']}
+  rows={[
+    ['达峰时间 (Tmax)', '约 0.5-1 小时', '约 3-6 小时'],
+    ['峰值浓度 (Cmax)', '较高（约为口服 2-5 倍）', '较低'],
+    ['浓度维持时间', '较短（约 4-6 小时）', '较长（约 8-12 小时）'],
+    ['日内波动', '大（峰谷比高）', '较小'],
+    ['E1/E2 比值', '较低（更有利）', '较高'],
+  ]}
+/>
+
+<WarningBox title="血药浓度波动性警告">
+舌下含服的最大问题是**血药浓度波动显著**。含服后 E2 水平快速升高至峰值，随后在数小时内快速下降。这意味着：
+
+- 单次采血无法反映全天的平均 E2 水平
+- 在峰值时 E2 可能远高于目标范围，而谷值时又可能低于有效浓度
+- 这种波动可能导致情绪不稳定、潮热和其他不适
+- **如果你对稳定的血药浓度有较高要求，建议选择经皮贴片**
+
+采血应在**下一次含服前**进行（测谷值），并意识到实际平均浓度高于谷值测量结果。
+</WarningBox>
+
+### E1/E2 比值优势
+
+舌下含服的一个理论优势是 **E1（雌酮）与 E2（雌二醇）的比值更低**<CitationRef id="kuhl-2005" num={2} authors="Kuhl" year={2005} />：
+
+- 口服时，首过效应将大量 E2 转化为 E1（活性较弱），E1/E2 比值约 5:1 或更高
+- 舌下含服时，E1/E2 比值更接近 1:1
+- E2 是主要的生物活性雌激素，较低的 E1/E2 比值在理论上更有利
+- 但目前尚无足够临床证据证明 E1/E2 比值差异对跨性别 HRT 的最终效果有实质性影响
+
+## 剂量建议
+
+由于生物利用度更高，舌下含服的有效剂量通常低于口服<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
+
+### 与口服的剂量换算关系
+
+由于舌下含服的生物利用度约为口服的 2-5 倍，换算时可参考以下近似关系：
+
+> **舌下含服 1 mg ≈ 口服 2-3 mg（效果近似）**
+
+但个体差异较大，具体剂量应根据血液检查结果调整。
+
+### 推荐剂量
+
+<DoseTable
+  headers={['阶段', '舌下含服剂量', '给药频率', '目标 E2 谷值 (pg/mL)', '时间']}
+  rows={[
+    ['起始低剂量', '0.5-1 mg/次', '每日 2 次', '50-100', '第 1-6 个月'],
+    ['中等剂量调整', '1-2 mg/次', '每日 2-3 次', '100-200', '第 6-12 个月'],
+    ['维持剂量', '1-2 mg/次', '每日 2-3 次', '100-200', '12 个月+'],
+    ['通常最大剂量', '2 mg/次', '每日 3 次（共 6 mg）', '不建议 >200', '仅特殊情况'],
+  ]}
+/>
+
+<WarningBox title="一日多次含服的依从性挑战">
+舌下含服需要一天含服 **2-3 次**，每次间隔约 8-12 小时（2 次/天）或 6-8 小时（3 次/天）。遗忘或不规律给药会导致血药浓度出现更大的波动。如果你难以坚持多次给药的规律，建议选择口服（每日 1-2 次）或经皮贴片（每 3.5-7 天更换一次）。
+</WarningBox>
+
+## 使用方法
+
+### 含服技巧
+
+1. 将药片放在**舌下**（舌头下方靠近牙龈的位置）
+2. 闭口，尽量**不要吞咽唾液**
+3. 让药片自然溶解，通常需要 **5-15 分钟**
+4. 溶解期间避免说话、饮水或进食
+5. 完全溶解后等待 1-2 分钟再吞咽剩余唾液
+
+### 常见问题
+
+- **药片不容易碎？** 部分品牌的糖衣片确实不太适合舌下含服。微粒化雌二醇片（如 Estrofem）通常更容易在舌下溶解
+- **忘了含服直接吞了？** 那就等同于口服了一次剂量，不需要补服，下次注意即可
+- **含服时产生大量唾液？** 这是正常的。尽量减少吞咽，但不必过于焦虑——即使部分被吞咽，舌下黏膜已吸收了一部分
+
+## 适用人群
+
+舌下含服可能适合以下情况：
+
+- 希望获得比口服更高的生物利用度，但无法获取经皮贴片
+- 希望降低 E1/E2 比值
+- 能够坚持一日多次给药的规律
+- 手头只有口服片剂，但希望优化给药方式
+
+**不太适合**的情况：
+
+- 难以坚持每日 2-3 次的给药规律
+- 对血药浓度稳定性要求高
+- 有条件获取经皮贴片或凝胶
+
+## VTE 风险
+
+关于舌下含服的 VTE 风险，目前缺乏大规模临床研究数据<CitationRef id="canonico-2018" num={4} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />：
+
+- **理论上**：由于部分绕过首过效应，对肝脏凝血因子的影响可能小于完全口服
+- **实际上**：无法完全避免首过效应（仍有部分药物被吞咽），因此 VTE 风险可能介于口服和经皮之间
+- **临床建议**：如果你有 VTE 风险因素，不应依赖舌下含服来降低风险——应选择经皮贴片<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} />
+
+## 监测建议
+
+- **采血时机**：下一次含服前采血（谷值测量）<CitationRef id="ucsf-2016" num={5} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />
+- **注意**：谷值测量反映的是全天的最低浓度。实际平均 E2 水平高于此值，峰值可能是谷值的 3-8 倍
+- **初始阶段**：第 4 周和第 12 周检测激素六项
+- **维持阶段**：每 6 个月检测激素六项
+- **目标谷值**：E2 50-150 pg/mL（谷值偏低是正常的，不要因为谷值偏低就盲目加量）
+- **如果谷值 E2 > 200 pg/mL**：说明峰值可能极高，应考虑减量
+
+## 与其他途径的比较
+
+<DoseTable
+  headers={['维度', '舌下含服', '口服', '经皮贴片']}
+  rows={[
+    ['生物利用度', '中-高', '低（约 5%）', '高'],
+    ['血药稳定性', '差（波动大）', '中等', '好（最稳定）'],
+    ['VTE 风险', '可能介于二者之间', 'RR ≈ 1.48', 'RR ≈ 0.97'],
+    ['给药频率', '2-3 次/天', '1-2 次/天', '每 3.5-7 天'],
+    ['便利性', '较低', '高', '高'],
+    ['中国获取', '使用口服片', '容易（补佳乐）', '困难'],
+  ]}
+/>

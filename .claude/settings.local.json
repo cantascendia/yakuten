@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls C:/projects/yakuten/stitch*)",
+      "Bash(find C:/projects/yakuten -maxdepth 2 -name *.zip -o -name *.html -o -name *.png -o -name *.jpg)",
+      "Bash(mkdir -p C:/projects/yakuten/stitch-exports)",
+      "Bash(unzip -o \"stitch \\(8\\).zip\" -d stitch-exports/)",
+      "Bash(npm run:*)",
+      "Bash(npx astro:*)",
+      "Bash(npm i:*)",
+      "Bash(xxd -l 200 -s 1050 C:/projects/yakuten/src/content/docs/zh/dose-limits.mdx)",
+      "Bash(node -e \":*)"
+    ]
+  }
+}

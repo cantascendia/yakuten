@@ -1,0 +1,181 @@
+---
+/**
+ * SiteFooter — Four-column footer with disclaimer, privacy, sources, dev docs.
+ * Matches the Stitch design: mono font labels, muted text, gold headings.
+ */
+
+interface FooterColumn {
+  title: string;
+  text: string;
+}
+
+const columns: FooterColumn[] = [
+  {
+    title: '免责声明',
+    text: '本站内容仅供参考，不构成医疗建议。在开始任何激素治疗前，请务必咨询专业医疗人员。',
+  },
+  {
+    title: '隐私权协议',
+    text: '我们重视您的隐私，采用去中心化存储技术，确保您的浏览记录不被非法追踪。',
+  },
+  {
+    title: '药理来源',
+    text: '所有数据均来自 WPATH SOC8 指南及经过同行评审的最新内分泌学研究论文。',
+  },
+  {
+    title: '开发者文档',
+    text: '项目基于开源精神构建，欢迎所有愿意为跨性别社群贡献的技术力量加入我们。',
+  },
+];
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      {columns.map((col) => (
+        <div class="site-footer__column">
+          <p class="site-footer__column-title">{col.title}</p>
+          <p class="site-footer__column-text">{col.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="site-footer__brand">HRT薬典</div>
+      <p class="site-footer__statement">
+        本站不提供处方、不销售药物、不收集个人信息。
+      </p>
+      <nav class="site-footer__links" aria-label="底部链接">
+        <a href="/zh/about/">PRIVACY POLICY</a>
+        <a href="/zh/about/">MEDICAL DISCLAIMER</a>
+        <a href="https://github.com" rel="noopener noreferrer" target="_blank">GITHUB PROJECT</a>
+      </nav>
+      <p class="site-footer__copy">
+        THE CELESTIAL PHARMACOPEIA.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    background: var(--color-bg-primary);
+    border-top: 1px solid rgba(86, 65, 71, 0.2);
+  }
+
+  .site-footer__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  /* --- Four-column grid --- */
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    text-align: left;
+  }
+
+  @media (min-width: 640px) {
+    .site-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .site-footer__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .site-footer__column-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .site-footer__column-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(203, 194, 221, 0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* --- Bottom section --- */
+  .site-footer__bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(86, 65, 71, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .site-footer__brand {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+
+  .site-footer__statement {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .site-footer__links {
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .site-footer__links a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: -0.02em;
+    color: rgba(203, 194, 221, 0.3);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-accent);
+  }
+
+  .site-footer__copy {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: rgba(203, 194, 221, 0.3);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,168 @@
+---
+/**
+ * BaselineChecklist -- 基线检查清单组件
+ * 毛玻璃 + 对角切角样式，检查项列表带中英名称和标签
+ * 底部费用估算
+ */
+interface CheckItem {
+  name: string;
+  nameEn: string;
+  tag: 'required' | 'recommended';
+}
+
+interface Props {
+  items: CheckItem[];
+  costRange?: string;
+  class?: string;
+}
+
+const {
+  items = [],
+  costRange = '300 - 600 CNY',
+  class: className = '',
+} = Astro.props;
+---
+
+<aside class:list={['baseline-checklist', className]} role="note" aria-label="基线检查清单">
+  <ul class="baseline-checklist__list">
+    {items.map((item) => (
+      <li class="baseline-checklist__item">
+        <span class="baseline-checklist__name">
+          {item.name} <span class="baseline-checklist__name-en">({item.nameEn})</span>
+        </span>
+        <span
+          class:list={[
+            'baseline-checklist__tag',
+            item.tag === 'required'
+              ? 'baseline-checklist__tag--required'
+              : 'baseline-checklist__tag--recommended',
+          ]}
+        >
+          {item.tag === 'required' ? '必查项' : '建议项'}
+        </span>
+      </li>
+    ))}
+  </ul>
+  <div class="baseline-checklist__footer">
+    <span class="baseline-checklist__footer-label">预估总费用:</span>
+    <span class="baseline-checklist__footer-cost">{costRange}</span>
+  </div>
+  {Astro.slots.has('default') && (
+    <div class="baseline-checklist__extra">
+      <slot />
+    </div>
+  )}
+</aside>
+
+<style>
+  .baseline-checklist {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    position: relative;
+    transition: border-color var(--transition-slow);
+  }
+
+  .baseline-checklist:hover {
+    border-color: rgba(200, 75, 124, 0.4);
+  }
+
+  .baseline-checklist__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .baseline-checklist__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-outline-20);
+  }
+
+  .baseline-checklist__item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .baseline-checklist__name {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+  }
+
+  .baseline-checklist__name-en {
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+  }
+
+  .baseline-checklist__tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .baseline-checklist__tag--required {
+    background: rgba(212, 168, 83, 0.1);
+    color: var(--color-accent);
+  }
+
+  .baseline-checklist__tag--recommended {
+    background: rgba(203, 194, 221, 0.1);
+    color: var(--color-tertiary);
+  }
+
+  .baseline-checklist__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(212, 168, 83, 0.4);
+  }
+
+  .baseline-checklist__footer-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .baseline-checklist__footer-cost {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+  }
+
+  .baseline-checklist__extra {
+    margin-top: var(--space-lg);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .baseline-checklist {
+      padding: var(--space-md);
+    }
+
+    .baseline-checklist__item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+
+    .baseline-checklist__footer-cost {
+      font-size: 1.25rem;
+    }
+  }
+</style>

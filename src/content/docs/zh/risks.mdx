@@ -1,0 +1,101 @@
+---
+title: 风险与急症识别
+description: HRT 的已知风险、必须立即停药就医的症状清单、心理危机求助信息。
+lastReviewed: 2026-04-07
+---
+
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import EmergencyActions from '../../../components/ui/EmergencyActions.astro';
+import CrisisHotline from '../../../components/ui/CrisisHotline.astro';
+
+<EmergencyBanner />
+
+HRT 治疗具有极高的安全性，但识别罕见的严重风险是每位使用者的必修课。以下数据基于临床观察与药理分析。
+
+## 7.1 HRT 的已知风险
+
+<div class="risk-grid">
+  <RiskCard
+    title="深静脉血栓 (DVT)"
+    category="Emergency Risk"
+    severity="red"
+    drug="口服雌二醇 (E2)"
+    probability="< 0.5% (年度)"
+    signs="单侧下腿红肿、发热、剧痛。"
+  />
+
+  <RiskCard
+    title="肝功能损伤"
+    category="Hepatic Risk"
+    severity="red"
+    drug="色普龙 / 口服类"
+    probability="罕见 (监测指标)"
+    signs="巩膜黄染、尿液呈茶色、极度疲劳。"
+  />
+
+  <RiskCard
+    title="心血管并发症"
+    category="Cardiac Risk"
+    severity="orange"
+    drug="所有 E2 制剂"
+    probability="高龄 / 长期吸烟"
+    signs="心悸、不明原因的胸部压迫感。"
+  />
+
+  <RiskCard
+    title="脑膜瘤"
+    category="Neural Risk"
+    severity="red"
+    drug="高剂量色普龙"
+    probability="累积剂量 > 10g"
+    signs="视力改变、听力丧失、异常头痛。"
+  />
+
+  <RiskCard
+    title="情绪波动与抑郁"
+    category="Psych Risk"
+    severity="yellow"
+    drug="色普龙 / E2 过低"
+    probability="较常见 (5-15%)"
+    signs="自杀意念、无端哭泣、动力丧失。"
+  />
+
+  <RiskCard
+    title="泌乳素升高"
+    category="Endo Risk"
+    severity="yellow"
+    drug="雌二醇 / 色普龙"
+    probability="需定期生化监控"
+    signs="乳头分泌液、长期剧烈头痛。"
+  />
+</div>
+
+## 7.2 必须立即停药就医的症状
+
+<EmergencyActions />
+
+## 7.3 情绪危机与求助热线
+
+<CrisisHotline />
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+`}</style>

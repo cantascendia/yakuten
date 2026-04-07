@@ -1,0 +1,27 @@
+---
+/**
+ * DecisionNode -- 决策节点（菱形）
+ * 金色边框菱形，居中在时间线上
+ *
+ * @prop title - 决策标题 (e.g. "DECISION")
+ * @prop timepoint - 时间点标签 (e.g. "3 MONTH")
+ */
+interface Props {
+  title: string;
+  timepoint: string;
+}
+
+const { title, timepoint } = Astro.props;
+---
+
+<div class="decision-node">
+  <div class="decision-diamond">
+    <div class="decision-diamond__inner">
+      <p class="decision-diamond__time">{timepoint}</p>
+      <p class="decision-diamond__label">{title}</p>
+    </div>
+  </div>
+  <div class="decision-branches">
+    <slot />
+  </div>
+</div>

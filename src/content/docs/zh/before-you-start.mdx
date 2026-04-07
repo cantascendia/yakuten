@@ -1,0 +1,69 @@
+---
+title: 用药前：你准备好了吗？
+description: 在开始 HRT 之前，你需要完成的安全检查清单、了解的禁忌症和心理准备。
+lastReviewed: 2026-04-07
+---
+
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+不是劝退，而是安全检查。跳过这一步开始用药，等于蒙着眼睛过马路。
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> 基准检查清单 (Baseline Tests)
+
+以下检查在中国任何三甲医院的内分泌科或体检中心可做：
+
+<BaselineChecklist
+  items={[
+    { name: '激素六项', nameEn: 'Sex Hormones', tag: 'required' },
+    { name: '肝功能', nameEn: 'Liver Function', tag: 'required' },
+    { name: '肾功能', nameEn: 'Kidney Function', tag: 'required' },
+    { name: '血常规', nameEn: 'Full Blood Count', tag: 'required' },
+    { name: '凝血功能', nameEn: 'Coagulation', tag: 'required' },
+    { name: '血糖', nameEn: 'Blood Glucose', tag: 'recommended' },
+    { name: '催乳素', nameEn: 'Prolactin', tag: 'recommended' },
+  ]}
+  costRange="300 - 600 CNY"
+/>
+
+<WarningBox title="还没做检查就开始用药了？">
+如果你连这些检查都没做就开始用药了——现在去做也不晚。尽快补上。
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> 绝对禁忌症 (Absolute)
+
+<ContraindicationBox type="absolute" title="绝对禁忌症" sectionNum="">
+
+- 现患血栓栓塞性疾病（如深静脉血栓、肺栓塞）
+- 确诊或疑似激素依赖性肿瘤（如乳腺癌、前列腺癌）
+- 严重肝肾功能不全或处于急性期
+- 不明原因的阴道出血（针对跨性别男性）
+- 已知对药物成分严重过敏
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> 相对禁忌症 (Relative)
+
+<ContraindicationBox type="relative" title="相对禁忌症" sectionNum="">
+
+- 未控制的高血压或心血管疾病
+- 控制不佳的糖尿病
+- 吸烟（尤其是35岁以上，显著增加血栓风险）
+- 胆囊疾病史
+- 偏头痛（先兆型偏头痛需谨慎评估）
+- 严重肥胖 (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> 心理预期管理 (Reality Check)
+
+<RealityCheck
+  items={[
+    { text: '激素不是魔法，变化以月和年为单位，不要期待"一夜变身"。' },
+    { text: '部分变化（如嗓音变粗、阴蒂肥大或乳腺发育）具有不可逆性。' },
+    { text: '用药可能导致生育能力下降甚至永久丧失，请提前考虑冻卵/冻精。' },
+    { text: '情绪波动是正常的副作用，确保你有一个稳定的社交支持系统。' },
+  ]}
+/>

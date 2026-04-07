@@ -1,0 +1,59 @@
+{
+  "drug": "Progynon Depot (戊酸雌二醇注射液)",
+  "concentration": "10mg/mL",
+  "route": "肌肉注射 (IM) 或皮下注射 (SC)",
+  "frequency": "每5-7天",
+  "notes": "剂量换算基于 10mg/mL 浓度。实际血药浓度因个体代谢差异可能不同，需以血检结果调整。皮下注射与肌肉注射生物利用度相当。",
+  "references": ["hembree-2017", "coleman-2022", "rothman-2024", "misakian-2025", "herndon-2023"],
+  "doses": [
+    {
+      "targetMg": 1,
+      "volumeMl": 0.10,
+      "applicableTo": "青少年阶段1（Tanner 2起始）",
+      "expectedE2Range": "30-60 pg/mL",
+      "warning": null
+    },
+    {
+      "targetMg": 2,
+      "volumeMl": 0.20,
+      "applicableTo": "青少年阶段2 / 成人起始",
+      "expectedE2Range": "40-80 pg/mL",
+      "warning": null
+    },
+    {
+      "targetMg": 3,
+      "volumeMl": 0.30,
+      "applicableTo": "成人起始 / 维持",
+      "expectedE2Range": "60-120 pg/mL",
+      "warning": null
+    },
+    {
+      "targetMg": 4,
+      "volumeMl": 0.40,
+      "applicableTo": "成人维持",
+      "expectedE2Range": "80-160 pg/mL",
+      "warning": null
+    },
+    {
+      "targetMg": 5,
+      "volumeMl": 0.50,
+      "applicableTo": "成人维持上限",
+      "expectedE2Range": "100-200 pg/mL",
+      "warning": "接近推荐剂量上限，需密切监测E2谷值"
+    },
+    {
+      "targetMg": 7,
+      "volumeMl": 0.70,
+      "applicableTo": null,
+      "expectedE2Range": null,
+      "warning": "不建议：超出指南推荐范围，VTE风险显著增加"
+    },
+    {
+      "targetMg": 10,
+      "volumeMl": 1.00,
+      "applicableTo": null,
+      "expectedE2Range": null,
+      "warning": "禁止：严重超量，E2峰值可能>1000 pg/mL，血栓和心血管风险极高"
+    }
+  ]
+}

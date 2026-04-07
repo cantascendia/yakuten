@@ -1,0 +1,153 @@
+---
+title: 微粒化黄体酮 (Utrogestan)
+description: 天然微粒化黄体酮的药理特点、剂量建议、副作用、引入时机和中国获取情况。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Micronized Progesterone (Utrogestan)"
+  nameCN="微粒化黄体酮（Utrogestan / 益玛欣）"
+  category="progestogen"
+  route="口服给药（Oral）"
+  evidenceLevel="C"
+>
+  天然微粒化黄体酮是目前唯一建议用于跨性别 HRT 的孕激素类型。其化学结构与人体自身分泌的黄体酮完全相同，VTE 风险初步证据提示低于合成孕激素。在 HRT 中属于可选而非必需成分。
+</DrugInfoBox>
+
+<DangerBox title="不要在 HRT 前 12 个月引入">
+乳腺发育早期（Tanner I-III）主要依赖雌激素驱动导管分支。过早引入孕激素可能干扰正常导管发育<CitationRef id="patel-2021" num={1} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />。建议至少在 HRT **满 12 个月且乳房发育达到 Tanner III 阶段后**，再考虑引入黄体酮。
+</DangerBox>
+
+---
+
+## 药理特点
+
+### 天然黄体酮
+
+微粒化黄体酮（Micronized Progesterone）是将天然黄体酮研磨成微粒后装入胶囊，以提高口服生物利用度<CitationRef id="kuhl-2005" num={2} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />。常见品牌包括 Utrogestan（优思明/益玛欣）和 Prometrium。
+
+关键药理特征：
+
+- **化学结构**：与人体卵巢分泌的黄体酮（P4）完全相同
+- **代谢产物**：在体内代谢为 5α-孕烷醇酮（allopregnanolone），具有 GABA-A 受体激动作用，产生镇静和抗焦虑效应<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} title="Progesterone is important for transgender women's therapy" />
+- **半衰期**：口服后约 16-18 小时，建议每日一次给药
+- **口服生物利用度**：微粒化制剂约 10%（低于大多数合成孕激素）
+
+### VTE 风险
+
+初步证据提示天然微粒化黄体酮的 VTE 风险显著低于合成孕激素（如 MPA）<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />。这是天然黄体酮优于合成孕激素的关键优势之一。但需注意：
+
+- 目前缺乏针对跨性别女性使用天然黄体酮的大规模 VTE 风险研究
+- 现有数据主要来自顺性别绝经女性的激素替代治疗研究
+- 天然黄体酮并非"零 VTE 风险"，尤其是与口服雌二醇联用时仍需谨慎
+
+---
+
+## 剂量建议
+
+以下剂量参考临床文献和专家建议<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} /><CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
+
+<DoseTable
+  headers={['方案', '剂量', '服用方式', '说明']}
+  rows={[
+    ['起始', '100 mg/天', '睡前口服', '观察 4-8 周后评估'],
+    ['常用维持', '100-200 mg/天', '睡前口服', '大多数使用者在此范围内'],
+    ['周期方案（可选）', '200 mg/天，每月服用 10-14 天', '睡前口服', '模拟生理周期'],
+  ]}
+/>
+
+### 服用方法
+
+- **睡前口服**：利用其镇静副作用改善睡眠，同时减少白天嗜睡的影响
+- 建议用水整粒吞服，不要咀嚼或压碎胶囊
+- 空腹服用时吸收较差，建议随**少量食物**或**花生油等脂肪类食物**服用（可提高吸收率）
+- 如果漏服一次，下次按原计划服用即可，不要加倍
+
+<WarningBox title="关于「周期方案」">
+部分使用者选择周期性服用黄体酮（每月连续 10-14 天，而非每日），以模拟正常月经周期的黄体酮波动。目前没有高质量研究证实周期方案优于连续每日方案，选择哪种方式可根据个人偏好决定。
+</WarningBox>
+
+---
+
+## 可能的作用
+
+### 乳房发育
+
+Prior 2019 提出黄体酮可能有助于乳房小叶-腺泡的成熟（Tanner IV-V 阶段），改善乳房的"圆润度"和"饱满感"<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} />。但需要注意：
+
+- 该研究主要基于理论推导和使用者自我报告
+- **没有进行客观的乳房体积测量或影像学评估**
+- 证据等级为 C 级（专家意见/病例报告）
+- 并非所有使用者都报告了改善
+
+**建议在 Tanner III+ 阶段引入**：此时导管分支已基本完成，引入黄体酮理论上可促进腺泡成熟，而不会干扰早期导管发育<CitationRef id="patel-2021" num={1} authors="Patel et al." year={2021} />。
+
+### 睡眠改善
+
+微粒化黄体酮的代谢产物 5α-孕烷醇酮是天然的 GABA-A 受体正向变构调节剂，具有类似苯二氮卓类药物的镇静作用<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} />：
+
+- 可能改善入睡困难
+- 可能增加深睡眠时间
+- 这一副作用可以被有利利用——对于有睡眠问题的使用者尤其有吸引力
+- 镇静效果在服药后约 30-90 分钟达到峰值
+
+### 情绪
+
+部分使用者报告引入黄体酮后情绪更加稳定，但也有使用者报告情绪变差（尤其是周期方案中停药阶段）。这一效应因人而异，缺乏跨性别女性的对照研究数据。
+
+---
+
+## 副作用
+
+常见副作用：
+
+- **嗜睡/镇静**：这是最常见的副作用，也是建议睡前服用的原因。如果白天服用可能影响驾驶和工作
+- **头晕**：通常在服药初期出现，多数使用者会逐渐适应
+- **情绪变化**：部分使用者可能出现情绪低落、易怒或焦虑
+- **腹胀/恶心**：口服时可能出现消化道不适，随食物服用可减轻
+- **乳房胀痛**：引入黄体酮后可能出现短暂的乳房胀痛
+
+<WarningBox title="注意驾驶安全">
+微粒化黄体酮的镇静作用可能影响反应能力。服药后 2-4 小时内不建议驾驶或操作重型机械。如果你需要在白天服用，请评估自身的嗜睡程度是否影响日常活动。
+</WarningBox>
+
+---
+
+## 监测建议
+
+- 引入黄体酮后 **4-8 周**复查激素水平（包括 P4 水平）
+- 关注乳房变化：理想情况下应记录引入前后的变化
+- 如果出现明显的情绪恶化或其他不适，考虑减量或停用
+- 长期使用者建议每 6 个月随雌激素监测一起复查
+
+---
+
+## 中国获取现状
+
+- **益玛欣（黄体酮胶囊）**：国产微粒化黄体酮制剂，部分医院妇产科/内分泌科可开具处方
+- **Utrogestan**：进口品牌，部分城市可获取
+- **处方要求**：黄体酮是处方药，通常需要妇产科或内分泌科处方
+- **价格**：国产益玛欣价格较经济（约 20-40 元/盒）
+- **获取提示**：可以"月经不调"或"黄体功能不足"为由在妇产科获取处方，不一定需要说明跨性别身份
+
+<WarningBox title="确认产品成分">
+购买时请确认产品为**微粒化黄体酮**（成分标注为"黄体酮"或"Progesterone"）。不要与**地屈孕酮**（Dydrogesterone, 达芙通）或其他合成孕激素混淆。地屈孕酮虽然也是处方药，但其代谢途径与天然黄体酮不同，不具有相同的镇静作用，且安全性数据在跨性别 HRT 中更加有限。
+</WarningBox>
+
+---
+
+**参考文献**
+
+1. <span id="ref-patel-2021">Patel et al. Breast Development in Transgender Women on Hormone Therapy. 2021. PMC8664122</span>
+2. <span id="ref-kuhl-2005">Kuhl H. Pharmacology of estrogens and progestogens: influence of different routes of administration. *Climacteric* 2005;8(Suppl 1):3-63. DOI:10.1080/13697130500148875</span>
+3. <span id="ref-prior-2019">Prior JC. Progesterone is important for transgender women's therapy — applying evidence for the benefits of progesterone in ciswomen. *J Clin Endocrinol Metab* 2019;104(4):1181-1186. DOI:10.1210/jc.2018-01777</span>
+4. <span id="ref-canonico-2018">Canonico M et al. Hormone therapy and venous thromboembolism: an updated overview. *Climacteric* 2018.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>

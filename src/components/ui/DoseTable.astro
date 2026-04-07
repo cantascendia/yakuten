@@ -1,0 +1,38 @@
+---
+/**
+ * DoseTable -- 剂量表格组件
+ * 简洁表格，mono 字体显示剂量数字
+ *
+ * @prop headers - 表头列 (string[])
+ * @prop rows - 数据行 (string[][])
+ */
+interface Props {
+  headers: string[];
+  rows: string[][];
+}
+
+const { headers, rows } = Astro.props;
+---
+
+<div class="dose-table-wrapper">
+  <table class="dose-table">
+    <thead>
+      <tr>
+        {headers.map((h) => (
+          <th>{h}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {row.map((cell, i) => (
+            <td class={i === 1 ? 'dose-value' : ''}>
+              {cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,84 @@
+/* === Starlight Theme Overrides === */
+/* Override Starlight defaults to match 米哈游「二相乐園」style */
+
+/* Color overrides */
+:root {
+  --sl-color-accent-low: #1A1625;
+  --sl-color-accent: #C84B7C;
+  --sl-color-accent-high: #E8A0BE;
+  --sl-color-white: #F0EBF5;
+  --sl-color-gray-1: #F0EBF5;
+  --sl-color-gray-2: #A49CB5;
+  --sl-color-gray-3: #6B6280;
+  --sl-color-gray-4: #3D3555;
+  --sl-color-gray-5: #241F33;
+  --sl-color-gray-6: #1A1625;
+  --sl-color-black: #0D0B14;
+
+  /* Font overrides */
+  --sl-font: "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --sl-font-system-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+[data-theme="light"] {
+  --sl-color-accent-low: #F3EEF8;
+  --sl-color-accent: #C84B7C;
+  --sl-color-accent-high: #8B2D55;
+  --sl-color-white: #1A1625;
+  --sl-color-gray-1: #1A1625;
+  --sl-color-gray-2: #5A5270;
+  --sl-color-gray-3: #8A82A0;
+  --sl-color-gray-4: #C0B8D0;
+  --sl-color-gray-5: #F3EEF8;
+  --sl-color-gray-6: #FAF7FC;
+  --sl-color-black: #FFFFFF;
+}
+
+/* Sidebar active item — 绯色竖线 */
+nav.sidebar-content a[aria-current="page"] {
+  border-inline-start: 3px solid var(--color-primary);
+  padding-inline-start: var(--space-md);
+  color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+/* Content area */
+.content-panel {
+  background: var(--color-bg-primary);
+}
+
+/* Links */
+.sl-markdown-content a {
+  color: var(--color-primary-light);
+  text-decoration-color: rgba(200, 75, 124, 0.3);
+  transition: color var(--transition-fast);
+}
+
+.sl-markdown-content a:hover {
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
+}
+
+/* Headings */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  font-family: var(--font-display);
+}
+
+/* Code blocks */
+.sl-markdown-content pre {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* Tables */
+.sl-markdown-content table {
+  border: 1px solid var(--color-border);
+}
+
+.sl-markdown-content th {
+  background: var(--color-bg-tertiary);
+  color: var(--color-primary-light);
+  font-weight: 600;
+}

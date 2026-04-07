@@ -1,0 +1,80 @@
+---
+title: 抗雄激素概述
+description: CPA（醋酸环丙孕酮）、螺内酯、比卡鲁胺、GnRH 激动剂四种抗雄方案的对比，包括机制、有效性、安全性和中国获取难度。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+## 为什么需要抗雄激素
+
+对于大多数跨性别女性，仅靠雌二醇可能不足以将睾酮（T）抑制至女性范围（< 50 ng/dL）<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。抗雄激素与雌二醇联合使用，可以更有效地降低雄激素水平或阻断其作用，从而改善女性化效果<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+但需要注意：**并非所有人都需要抗雄**。如果单用足量雌二醇（特别是注射途径）已经将 T 抑制到目标范围，可以不使用抗雄激素<CitationRef id="ucsf-2016" num={3} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />。
+
+## 四种抗雄方案对比
+
+<DoseTable
+  headers={['项目', 'CPA（色谱龙）', '螺内酯', '比卡鲁胺', 'GnRH 激动剂']}
+  rows={[
+    ['通用名', '醋酸环丙孕酮', '螺内酯', '比卡鲁胺', '亮丙瑞林/戈舍瑞林等'],
+    ['作用机制', '孕激素+弱抗雄效应\n抑制促性腺激素', '雄激素受体拮抗\n不降低 T', '强效 AR 拮抗\n不降低 T', '抑制 GnRH → 抑制 LH/FSH\n直接降低 T'],
+    ['降 T 效果', '强（可降至女性范围）', '弱（不直接降 T）', '不降 T（T 可能升高）', '最强（降至去势水平）'],
+    ['常用剂量', '5-12.5 mg/天', '50-200 mg/天', '25-50 mg/天', '按制剂规格注射'],
+    ['给药途径', '口服', '口服', '口服', '皮下/肌肉注射'],
+    ['主要风险', '脑膜瘤（≥25mg）\n肝毒性/抑郁', '高钾血症\n低血压/多尿', '肝毒性\n不降 T', '骨密度下降\n注射部位反应'],
+    ['指南推荐', 'ES 2017 推荐\nWPATH SOC 8 推荐', 'ES 2017 推荐\nWPATH SOC 8 推荐', '均未推荐常规使用', 'ES 2017 推荐\nWPATH SOC 8 推荐'],
+    ['中国获取', '未上市/网售禁止', '处方药/可获取', '处方药/可获取', '处方药/价格极高'],
+    ['月费用估算', '因渠道而异', '约 30-80 元', '约 100-300 元', '约 1000-2000 元'],
+  ]}
+/>
+
+<WarningBox title="证据等级说明">
+CPA、螺内酯和 GnRH 激动剂在 Endocrine Society 2017 和 WPATH SOC 8 两大国际指南中均被推荐<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。比卡鲁胺虽然是强效抗雄激素受体拮抗剂，但由于缺乏在跨性别人群中的充分研究，目前**未被上述指南推荐用于常规 GAHT**。
+</WarningBox>
+
+## 选择建议
+
+抗雄方案的选择应基于个人健康状况、获取条件和经济能力<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />：
+
+### 优先选择：CPA 低剂量（5-12.5 mg/天）
+
+- **适用**：大多数使用者的首选抗雄方案
+- **优势**：降 T 效果确切，低剂量下安全性可接受
+- **前提**：剂量严格控制在 12.5 mg/天以下，定期监测肝功能和泌乳素
+- **限制**：中国大陆未上市，2022 年 12 月起网售渠道被禁止
+
+### 替代选择：螺内酯（50-200 mg/天）
+
+- **适用**：无法获得 CPA 或 GnRH 激动剂时的替代方案
+- **优势**：中国大陆合法处方药，获取相对容易
+- **限制**：不直接降低 T，抗雄效果弱于 CPA
+- **注意**：必须监测血钾，避免含钾食品和补剂过量摄入
+
+### 理想选择（有条件时）：GnRH 激动剂
+
+- **适用**：有条件获取且经济允许的使用者
+- **优势**：降 T 效果最强，安全性良好
+- **限制**：价格极高（约 1000-2000 元/月），需要注射给药
+
+### 不推荐常规使用：比卡鲁胺
+
+- **仅考虑**：当 CPA、螺内酯、GnRH 均不可用，**且有医生指导**时
+- **原因**：缺乏跨性别人群中的充分研究数据，肝毒性风险，不降低 T 水平
+
+<DangerBox title="危险组合 — CPA + 比卡鲁胺">
+CPA 与比卡鲁胺**禁止合用**。两者均有肝毒性，合用时肝损伤风险显著叠加<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。如果你正在使用其中一种，切换时应当在医生指导下停用前一种后再开始另一种。
+</DangerBox>
+
+## 详细页面
+
+- [CPA（醋酸环丙孕酮/色谱龙）](/zh/medications/antiandrogens/cpa/) — 最常用的抗雄方案，包括剂量、脑膜瘤风险和监测要求
+- [螺内酯](/zh/medications/antiandrogens/spironolactone/) — CPA 不可用时的替代方案，包括高钾血症风险管理
+- [比卡鲁胺](/zh/medications/antiandrogens/bicalutamide/) — 非常规选择，超说明书用药的完整风险评估
+- [GnRH 激动剂](/zh/medications/antiandrogens/gnrh-agonists/) — 最有效的抗雄方案，适用条件和费用分析

@@ -1,0 +1,185 @@
+---
+/**
+ * ContraindicationBox -- 禁忌症框组件
+ * absolute: 红色系 (绝对禁忌) -- role="alert"
+ * relative: 橙色系 (相对禁忌) -- role="note"
+ */
+interface Props {
+  type: 'absolute' | 'relative';
+  title: string;
+  sectionNum?: string;
+  class?: string;
+}
+
+const { type, title, sectionNum, class: className = '' } = Astro.props;
+
+const isAbsolute = type === 'absolute';
+const ariaRole = isAbsolute ? 'alert' : 'note';
+const badgeText = isAbsolute ? 'Crucial Red Line' : 'Medical Caution';
+---
+
+<section
+  class:list={[
+    'contraindication-box',
+    isAbsolute ? 'contraindication-box--absolute' : 'contraindication-box--relative',
+    className,
+  ]}
+  role={ariaRole}
+  aria-label={title}
+>
+  <div class="contraindication-box__header">
+    {sectionNum && (
+      <span class="contraindication-box__section-num">{sectionNum}</span>
+    )}
+    <h3 class="contraindication-box__title">{title}</h3>
+  </div>
+  <div class="contraindication-box__body">
+    <div class="contraindication-box__badge">
+      <span class="contraindication-box__icon" aria-hidden="true">
+        {isAbsolute ? (
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 6l6 6M12 6l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 5v5M9 12.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        )}
+      </span>
+      <span class="contraindication-box__badge-text">{badgeText}</span>
+    </div>
+    <div class="contraindication-box__content">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .contraindication-box {
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    transition: border-color var(--transition-slow);
+  }
+
+  /* Absolute -- red */
+  .contraindication-box--absolute {
+    background: rgba(244, 67, 54, 0.08);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+  }
+
+  .contraindication-box--absolute .contraindication-box__section-num,
+  .contraindication-box--absolute .contraindication-box__icon,
+  .contraindication-box--absolute .contraindication-box__badge-text {
+    color: var(--color-danger);
+  }
+
+  /* Relative -- orange */
+  .contraindication-box--relative {
+    background: rgba(255, 152, 0, 0.08);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+  }
+
+  .contraindication-box--relative .contraindication-box__section-num,
+  .contraindication-box--relative .contraindication-box__icon,
+  .contraindication-box--relative .contraindication-box__badge-text {
+    color: var(--color-caution);
+  }
+
+  .contraindication-box__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .contraindication-box__section-num {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+  }
+
+  .contraindication-box__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .contraindication-box__body {
+    /* inner container */
+  }
+
+  .contraindication-box__badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .contraindication-box__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contraindication-box__badge-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .contraindication-box__content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+  }
+
+  /* List items inside the content slot */
+  .contraindication-box__content :global(ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .contraindication-box__content :global(li) {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    color: var(--color-text-primary);
+    opacity: 0.9;
+  }
+
+  .contraindication-box__content :global(li::before) {
+    flex-shrink: 0;
+    display: inline-block;
+    margin-top: 0.2em;
+    font-size: 0.75rem;
+  }
+
+  .contraindication-box--absolute .contraindication-box__content :global(li::before) {
+    content: "\2715";
+    color: var(--color-danger);
+  }
+
+  .contraindication-box--relative .contraindication-box__content :global(li::before) {
+    content: "\0021";
+    color: var(--color-caution);
+    font-weight: 700;
+  }
+
+  @media (max-width: 640px) {
+    .contraindication-box {
+      padding: var(--space-md);
+    }
+
+    .contraindication-box__title {
+      font-size: 1.25rem;
+    }
+  }
+</style>

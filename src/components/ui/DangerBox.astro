@@ -1,0 +1,38 @@
+---
+/**
+ * DangerBox — 红色危险警告框
+ * 用于可能导致严重伤害或危及生命的信息。
+ * 例如：禁忌症、过量风险、需要立即就医的情况。
+ */
+interface Props {
+  title?: string;
+  class?: string;
+}
+
+const { title = '危险', class: className = '' } = Astro.props;
+---
+
+<aside class:list={['danger-box', className]} role="alert" aria-label={title}>
+  <div class="danger-box__title">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    {title}
+  </div>
+  <div class="danger-box__content">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .danger-box__content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+  }
+
+  .danger-box__content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

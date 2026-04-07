@@ -1,0 +1,91 @@
+---
+title: 经皮雌二醇凝胶
+description: 经皮雌二醇凝胶的使用方法、剂量、吸收影响因素和安全性。
+sidebar:
+  order: 4
+lastReviewed: 2026-04-07
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Gel"
+  nameCN="经皮雌二醇凝胶"
+  category="estrogen"
+  route="经皮给药"
+  evidenceLevel="A"
+>
+经皮凝胶通过皮肤吸收雌二醇，绕过肝脏首过效应，VTE 风险与经皮贴片类似<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />。便利性介于贴片和口服之间，适合希望获得经皮给药优势同时希望更灵活调节剂量的使用者。
+</DrugInfoBox>
+
+## 安全性优势
+
+经皮凝胶与经皮贴片一样，药物经皮肤直接进入血液循环，绑定不经过肝脏首过代谢。这意味着：
+
+- **VTE 风险低**：经皮途径的 VTE 相对风险接近未用药人群（RR ≈ 0.97）<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />，显著低于口服途径（RR ≈ 1.48）
+- **肝脏负担小**：不经首过效应，对肝功能影响较口服途径轻<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **适合有 VTE 风险因素者**：包括 BMI 偏高、年龄较大、有凝血相关家族史的使用者<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
+
+## 剂量
+
+<DoseTable
+  headers={['阶段', '剂量', '说明']}
+  rows={[
+    ['起始剂量', '1.5 mg/天', '对应低剂量起步期（前 1-6 个月）'],
+    ['维持剂量', '3 mg/天', '大多数使用者的常用维持剂量'],
+    ['最大剂量', '6 mg/天', '吸收因人而异，仅在血检确认不达标时考虑'],
+  ]}
+/>
+
+剂量范围参考 Endocrine Society 2017 指南<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />和 WPATH SOC 8<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。实际吸收量因个体皮肤状态差异较大，建议以血检结果为准进行调整。
+
+## 涂抹方法
+
+1. **清洁皮肤**：涂抹前确保皮肤干燥、清洁，无伤口或皮疹
+2. **涂抹部位**：建议涂于上臂内侧、大腿内侧或腹部。避免涂于乳房区域
+3. **涂抹方式**：将凝胶薄薄地均匀涂抹在较大面积的皮肤上（约 1-2 个手掌大小的区域），轻柔推开
+4. **等待干燥**：涂抹后等待 3-5 分钟让凝胶完全干燥后再穿衣
+5. **避免接触**：涂抹部位干燥前避免与他人皮肤接触，防止药物转移
+6. **洗手**：涂抹完毕后彻底洗手
+
+### 涂抹注意事项
+
+- **每天同一时间涂抹**，保持血药浓度稳定
+- **轮换涂抹部位**，减少局部皮肤刺激
+- 涂抹后 1 小时内**避免游泳、洗澡或剧烈出汗**
+- **不要**在涂抹部位同时使用其他乳液、防晒霜或护肤品，可能影响吸收
+- 如果当天漏涂，想起时尽快补涂；如果接近下次涂抹时间，跳过漏涂的剂量，**不要加倍**
+
+## 血检采样时机
+
+凝胶使用者的血检采样建议在**涂抹后 4-6 小时**进行，此时接近稳态血药浓度。也可选择在**下次涂抹前**采血（谷值），与口服E2的谷值采血方式一致<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+
+无论选择哪个时机，**每次复查保持同一采样时间点**，以便纵向对比。
+
+<WarningBox title="吸收受多种因素影响">
+凝胶的实际吸收量受以下因素影响，可能导致相同剂量下不同使用者的血药浓度差异较大：
+
+- **皮肤状态**：干燥、角化严重的皮肤吸收较差；薄嫩部位吸收较好
+- **涂抹部位**：不同部位的吸收率不同，内侧皮肤通常优于外侧
+- **涂抹面积**：面积过小可能导致吸收不均匀
+- **环境温度和湿度**：高温高湿环境下出汗可能冲刷未干凝胶
+- **同时使用的护肤品**：部分乳液和防晒霜可能形成屏障层
+
+因此，使用凝胶的用户更需要依靠定期血检来确认实际吸收效果，而不是仅凭剂量数字判断。如果血检显示 E2 持续偏低（使用 3 mg/天仍 &lt;50 pg/mL），建议考虑更换给药途径。
+</WarningBox>
+
+## 中国获取情况
+
+经皮雌二醇凝胶在中国部分医院可以开具处方获得。与贴片相比，凝胶在国内的可及性稍好，但仍不如口服补佳乐方便<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+---
+
+**参考文献**
+
+1. <span id="ref-canonico-2018">Canonico M et al. Hormone therapy and venous thromboembolism: an updated overview. *Climacteric* 2018.</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>

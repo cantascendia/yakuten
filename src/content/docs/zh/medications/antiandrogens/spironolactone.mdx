@@ -1,0 +1,161 @@
+---
+title: 螺内酯
+description: 螺内酯（安体舒通）的抗雄机制、剂量建议、高钾血症风险管理、血钾和肾功能监测要求、中国获取现状。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Spironolactone"
+  nameCN="螺内酯（安体舒通）"
+  category="antiandrogen"
+  route="口服给药（Oral）"
+  evidenceLevel="B"
+>
+  螺内酯是一种保钾利尿剂，同时具有弱雄激素受体拮抗作用。在 GAHT 中作为抗雄激素使用，主要适用于无法获得 CPA 或 GnRH 激动剂的情况。Endocrine Society 2017 和 WPATH SOC 8 均将其列为可选抗雄方案。
+</DrugInfoBox>
+
+<DangerBox title="高钾血症 — 可致心律失常和猝死">
+螺内酯是保钾利尿剂，会减少肾脏排钾，导致血钾升高<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。高钾血症（K⁺ > 5.5 mmol/L）可引起致命性心律失常。
+
+**使用螺内酯期间必须**：
+- 定期监测血钾（前 3 个月每月一次，之后每 3-6 个月一次）
+- **禁止**大量摄入高钾食物（如：香蕉、椰子水、橙汁、土豆等）
+- **禁止**同时服用含钾补剂或其他保钾药物
+- **禁止**与 ACE 抑制剂或 ARB 类降压药同服（除非医生监测下）
+
+**出现以下症状立即就医**：肌肉无力、心悸、胸闷、手脚发麻、心跳不规律。
+</DangerBox>
+
+## 药理特点
+
+### 作用机制
+
+螺内酯的抗雄作用机制与 CPA 和 GnRH 激动剂有本质区别<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />：
+
+1. **雄激素受体拮抗**（主要机制）：竞争性阻断 AR，阻止 T 和 DHT 与受体结合发挥作用
+2. **轻度抑制 T 合成**：抑制 17α-羟化酶，轻度减少睾丸 T 合成
+3. **不直接降低血清 T 水平**：血检中 T 数值可能不明显下降
+
+**关键理解**：螺内酯不像 CPA 或 GnRH 激动剂那样直接降低 T 浓度。使用螺内酯时，血检 T 值可能仍在男性范围内，但 T 的生物学效应被受体水平的拮抗所减弱<CitationRef id="ucsf-2016" num={2} authors="Deutsch" year={2016} />。因此，**不能仅凭 T 数值来判断螺内酯是否有效**。
+
+### 抗雄效力比较
+
+螺内酯的抗雄效力弱于 CPA 和 GnRH 激动剂<CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+- 对 AR 的亲和力远低于比卡鲁胺
+- 降 T 效果不如 CPA 和 GnRH 激动剂直接
+- 部分使用者在最大剂量下仍不能达到满意的抗雄效果
+- 与足量雌二醇联用时效果改善
+
+## 剂量建议
+
+<DoseTable
+  headers={['阶段', '剂量', '说明', '来源']}
+  rows={[
+    ['起始', '50 mg/天', '评估耐受性和血钾水平', 'ES 2017'],
+    ['常规调整', '100 mg/天', '大多数使用者的有效剂量', 'UCSF 2016'],
+    ['最大剂量', '200 mg/天', '更高剂量不增加效果但增加高钾风险', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### 服用方法
+
+- 建议分两次服用（早 + 晚），减少血钾波动<CitationRef id="ucsf-2016" num={2} authors="Deutsch" year={2016} />
+- 随餐服用可提高吸收率
+- 螺内酯有利尿作用，晚间服用可能影响睡眠（夜间频繁排尿）
+- 开始使用时可能出现头晕（低血压反应），建议缓慢起身
+
+<WarningBox title="关于「更高剂量更有效」">
+超过 200 mg/天并不会提供更强的抗雄效果，但高钾血症和低血压的风险会继续增加<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。如果 200 mg/天仍不能达到满意的效果，应考虑更换其他抗雄方案或增加雌二醇剂量，而不是继续加量螺内酯。
+</WarningBox>
+
+## 不良反应
+
+### 高钾血症（最重要的风险）
+
+高钾血症是螺内酯最危险的不良反应<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />：
+
+<DoseTable
+  headers={['血钾水平 (mmol/L)', '状态', '处理']}
+  rows={[
+    ['3.5 - 5.0', '正常', '继续用药，定期监测'],
+    ['5.0 - 5.5', '轻度升高', '减少高钾食物摄入，增加监测频率，考虑减量'],
+    ['> 5.5', '危险', '立即停药就医'],
+  ]}
+/>
+
+**高危人群**（使用螺内酯前应评估）<CitationRef id="ucsf-2016" num={2} authors="Deutsch" year={2016} />：
+- 肾功能不全（eGFR < 60 mL/min）
+- 同时使用 ACE 抑制剂、ARB、含钾补剂
+- 糖尿病（可能影响钾代谢）
+- 老年人群（肾功能自然下降）
+
+### 低血压和头晕
+
+螺内酯是利尿剂，可降低血压<CitationRef id="ucsf-2016" num={2} authors="Deutsch" year={2016} />：
+
+- 体位性低血压（起身时头晕/眼前发黑）较常见
+- 建议充足饮水，缓慢改变体位
+- 原本血压偏低者应谨慎使用
+
+### 多尿和口渴
+
+- 利尿作用可导致尿量增多，特别是使用初期
+- 充足饮水但避免过量含钾饮品
+
+### 情绪影响
+
+- 部分使用者报告轻度情绪变化
+- 一般程度轻于 CPA 的情绪影响
+
+## 监测要求
+
+<DoseTable
+  headers={['检查项目', '频率', '目标/警戒值', '处理']}
+  rows={[
+    ['血钾（K⁺）', '基线 + 前 3 月每月 → 每 3-6 月', 'K⁺ 3.5-5.0 mmol/L', '> 5.5：停药就医'],
+    ['肾功能（肌酐/eGFR）', '基线 + 每 6 月', 'eGFR > 60 mL/min', '下降明显：考虑减量或停药'],
+    ['血压', '每次复诊', '无症状性低血压', '明显低血压：减量'],
+    ['睾酮（T）', '每 3-6 月', '参考值（T 可能不明显下降）', '评估综合抗雄效果'],
+    ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '评估联合方案效果'],
+  ]}
+/>
+
+## 适用场景
+
+螺内酯在 GAHT 中的定位是**替代方案**，而非首选<CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} />：
+
+**建议考虑螺内酯的情况**：
+- 所在地区无法获得 CPA（如中国大陆 CPA 未上市且网售禁止）
+- 经济条件无法承担 GnRH 激动剂
+- 对 CPA 不耐受（肝功能异常、严重情绪影响）
+- 有脑膜瘤病史或家族史（禁用 CPA）
+
+**螺内酯可能不适合的情况**：
+- 肾功能不全
+- 基线血钾偏高
+- 需要同时使用保钾类药物
+- 低血压倾向严重
+
+## 中国获取现状
+
+螺内酯是中国大陆获取最方便的抗雄激素之一：
+
+- **上市状态**：国药准字批号，合法上市处方药
+- **获取途径**：泌尿科、内分泌科可开具处方
+- **品牌**：安体舒通等多个国产品牌
+- **价格**：相对经济（约 30-80 元/月）
+- **就诊理由**：可以"检查激素水平"或"痤疮治疗"为由获取处方（螺内酯也用于治疗女性痤疮和多毛症）
+
+<WarningBox title="即使容易获取也需要监测">
+螺内酯虽然在中国容易获取，但高钾血症是真实的致命风险。**不要因为容易买到就忽略血检监测**。即使感觉良好，也应按计划检查血钾和肾功能<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+</WarningBox>

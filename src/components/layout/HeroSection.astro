@@ -1,0 +1,99 @@
+---
+/**
+ * HeroSection — Landing page hero with gradient title, slogan, and gold divider.
+ * Designed for the splash template on the zh/index.mdx page.
+ *
+ * @prop subtitle - English subtitle displayed above the main title
+ * @prop title - Main title text (default: "HRT薬典")
+ * @prop slogan - Slogan text in gold
+ */
+interface Props {
+  subtitle?: string;
+  title?: string;
+  slogan?: string;
+}
+
+const {
+  subtitle = 'THE CELESTIAL PHARMACOPEIA',
+  title = 'HRT薬典',
+  slogan = '愿此行，抵达真实的自己',
+} = Astro.props;
+---
+
+<section class="hero-section" aria-label="Hero">
+  <div class="hero-section__inner">
+    <span class="hero-section__subtitle glass-panel">{subtitle}</span>
+    <h1 class="hero-section__title hero-text-glow">
+      <span class="hero-gradient-text">{title}</span>
+    </h1>
+    <p class="hero-section__slogan">{slogan}</p>
+    <div class="hero-section__divider-wrapper" aria-hidden="true">
+      <div class="hero-section__divider"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    z-index: 10;
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+    padding-inline: var(--space-lg);
+    overflow: hidden;
+  }
+
+  .hero-section__inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .hero-section__subtitle {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .hero-section__title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .hero-section__slogan {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    color: var(--color-accent);
+    letter-spacing: 0.2em;
+    margin: 0;
+  }
+
+  .hero-section__divider-wrapper {
+    padding-top: var(--space-2xl);
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-section__divider {
+    width: 1px;
+    height: 6rem;
+    background: linear-gradient(
+      to bottom,
+      var(--color-accent),
+      transparent
+    );
+    opacity: 0.5;
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+/**
+ * GlassCard — 毛玻璃卡片组件
+ * 米哈游「二相乐園」风格：半透明毛玻璃 + 对角切角
+ *
+ * @prop variant - 'default' | 'sm' | 'static'
+ * @prop class - additional CSS classes
+ */
+interface Props {
+  variant?: 'default' | 'sm' | 'static';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+
+const variantClass = {
+  default: '',
+  sm: 'glass-card--sm',
+  static: 'glass-card--static',
+}[variant];
+---
+
+<div class:list={['glass-card', variantClass, className]}>
+  <slot />
+</div>

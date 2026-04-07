@@ -1,0 +1,93 @@
+---
+title: 孕激素概述
+description: 孕激素在跨性别 HRT 中的争议地位、天然与合成孕激素对比、使用时机建议。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 1
+---
+
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+
+孕激素（Progestogens）在跨性别女性 HRT 中的作用一直存在争议。与雌激素和抗雄激素不同，孕激素**不是 HRT 的必需组成部分**，国际主要指南对其使用态度谨慎<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+<DangerBox title="不要在 HRT 前 12 个月引入孕激素">
+乳腺发育的早期阶段（Tanner I-III）主要依赖雌激素驱动导管分支。过早引入孕激素可能激活终末分化信号，干扰导管正常分支发育<CitationRef id="patel-2021" num={3} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />。建议至少在 HRT **满 12 个月且达到 Tanner III 阶段后**，再考虑是否引入孕激素。
+</DangerBox>
+
+<DangerBox title="不要使用 MPA（甲羟孕酮/醋酸甲羟孕酮）">
+甲羟孕酮（Medroxyprogesterone Acetate, MPA）是合成孕激素，WHI 研究显示其显著增加乳腺癌和心血管事件风险<CitationRef id="vinogradova-2019" num={4} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" />。如果决定使用孕激素，应选择**天然微粒化黄体酮**（如 Utrogestan），而非任何合成孕激素。
+</DangerBox>
+
+---
+
+## 争议与现有证据
+
+### 支持使用的论点
+
+- **乳房发育**：Prior 2019 的研究提示，在 HRT 后期引入黄体酮可能改善乳房发育的主观满意度<CitationRef id="prior-2019" num={5} authors="Prior JC" year={2019} title="Progesterone is important for transgender women's therapy" />。但需注意，该研究基于使用者的自我报告，**未进行客观的乳房体积测量**，证据等级为 C 级
+- **睡眠改善**：微粒化黄体酮具有镇静作用，可能改善部分使用者的睡眠质量<CitationRef id="prior-2019" num={5} authors="Prior JC" year={2019} />
+- **情绪稳定**：部分使用者报告黄体酮有助于情绪稳定，但缺乏针对跨性别女性的对照研究
+
+### 反对或谨慎的论点
+
+- Endocrine Society 2017 指南指出，缺乏充分证据支持在跨性别 HRT 中常规使用孕激素<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+- WPATH SOC 8 对孕激素的立场同样谨慎，未将其列为标准方案的一部分<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+- 合成孕激素（如 MPA、CPA 的孕激素效应）与乳腺癌风险增加相关<CitationRef id="vinogradova-2019" num={4} authors="Vinogradova Y et al." year={2019} />
+- 目前没有高质量的 RCT 研究证实孕激素对跨性别女性乳房发育的客观改善效果
+
+---
+
+## 天然孕激素 vs 合成孕激素
+
+<DoseTable
+  headers={['特征', '天然微粒化黄体酮', '合成孕激素（MPA 等）']}
+  rows={[
+    ['代表药物', 'Utrogestan / Prometrium', 'MPA (Provera), NETA, 左炔诺孕酮'],
+    ['化学结构', '与人体黄体酮相同', '化学修饰，代谢途径不同'],
+    ['VTE 风险', '初步证据提示低于合成孕激素', '显著增加 VTE 风险'],
+    ['乳腺癌风险', '短期数据提示风险较低', 'WHI 研究显示风险增加'],
+    ['镇静作用', '有（可用于助眠）', '无或作用不同'],
+    ['推荐状态', '如需使用孕激素，建议选择', '不建议用于 HRT'],
+  ]}
+/>
+
+天然微粒化黄体酮的 VTE 风险初步证据提示低于合成孕激素<CitationRef id="canonico-2018" num={6} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />，但需注意，针对跨性别女性的长期安全性数据仍然有限。
+
+---
+
+## 使用时机建议
+
+如果在充分了解争议和风险后，你仍然决定尝试孕激素，建议遵循以下原则：
+
+1. **至少等待 HRT 满 12 个月**，且乳房发育已进入 Tanner III 或以上阶段<CitationRef id="patel-2021" num={3} authors="Patel et al." year={2021} />
+2. **选择天然微粒化黄体酮**（Utrogestan），不要使用 MPA 或其他合成孕激素
+3. **从低剂量开始**（100 mg/天，睡前口服），观察反应后再考虑是否调整
+4. **定期监测**：引入孕激素后应在 4-8 周后复查激素水平
+5. **如果未见明确改善**，不要一味加量——孕激素不是"越多越好"
+
+<WarningBox title="孕激素不是 HRT 的「升级」">
+社区中有一种误解，认为在 HRT 方案中加入孕激素是"进阶"或"升级"。事实上，许多跨性别女性在不使用任何孕激素的情况下，通过合适的雌激素 + 抗雄方案即可获得满意的效果。是否使用孕激素应当基于个人评估，而非跟风。
+</WarningBox>
+
+---
+
+## 可选药物
+
+| 药物 | 页面 | 证据等级 | 说明 |
+|------|------|---------|------|
+| 微粒化黄体酮 (Utrogestan) | [详情](/zh/medications/progestogens/progesterone/) | C | 如需使用，建议首选 |
+| 羟孕酮 (Hydroxyprogesterone) | [详情](/zh/medications/progestogens/hydroxyprogesterone/) | C | 注射给药，较少使用 |
+
+---
+
+**参考文献**
+
+1. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+2. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+3. <span id="ref-patel-2021">Patel et al. Breast Development in Transgender Women on Hormone Therapy. 2021. PMC8664122</span>
+4. <span id="ref-vinogradova-2019">Vinogradova Y et al. Use of hormone replacement therapy and risk of venous thromboembolism. *BMJ* 2019.</span>
+5. <span id="ref-prior-2019">Prior JC. Progesterone is important for transgender women's therapy — applying evidence for the benefits of progesterone in ciswomen. *J Clin Endocrinol Metab* 2019;104(4):1181-1186. DOI:10.1210/jc.2018-01777</span>
+6. <span id="ref-canonico-2018">Canonico M et al. Hormone therapy and venous thromboembolism: an updated overview. *Climacteric* 2018.</span>

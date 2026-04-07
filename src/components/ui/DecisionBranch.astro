@@ -1,0 +1,28 @@
+---
+/**
+ * DecisionBranch -- 决策分支
+ * 三色结果指示：绿色继续、黄色调整、红色停药就医
+ *
+ * @prop outcome - 'green' | 'yellow' | 'red'
+ * @prop text - 分支描述文本
+ */
+interface Props {
+  outcome: 'green' | 'yellow' | 'red';
+  text: string;
+}
+
+const { outcome, text } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  green: '\u2705',
+  yellow: '\uD83D\uDFE1',
+  red: '\uD83D\uDD34',
+};
+
+const icon = iconMap[outcome];
+---
+
+<div class={`decision-branch decision-branch--${outcome}`}>
+  <span class="decision-branch__icon" aria-hidden="true">{icon}</span>
+  <span class="decision-branch__text">{text}</span>
+</div>

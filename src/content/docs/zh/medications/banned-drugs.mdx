@@ -1,0 +1,260 @@
+---
+title: 绝对禁用药物
+description: 炔雌醇、结合雌激素、甲羟孕酮、兽用激素、自制药物——为什么它们不能用于 HRT，以及如果你正在使用该怎么办。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 20
+---
+
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+
+以下药物或来源**绝对不应用于**跨性别 HRT。它们的风险远远超过可能的收益。即使在正规药物难以获取的情况下，使用这些替代品也可能造成严重甚至致命的伤害。
+
+<DoseTable
+  headers={['禁用药物', '核心风险', '危险等级']}
+  rows={[
+    ['炔雌醇 (EE)', 'VTE 风险约为天然 E2 的 6-20 倍', '绝对禁止'],
+    ['结合雌激素（倍美力）', 'VTE 风险远高于天然 E2', '绝对禁止'],
+    ['甲羟孕酮 (MPA)', '乳腺癌和心血管事件风险增加', '绝对禁止'],
+    ['兽用激素', '成分不明、剂量不可控、无菌不达标', '绝对禁止'],
+    ['自制药物', '无菌和浓度不可控，可能致死', '绝对禁止'],
+  ]}
+/>
+
+---
+
+## 炔雌醇 (Ethinylestradiol, EE)
+
+<DangerBox title="炔雌醇 — VTE 风险约为天然 E2 的 6-20 倍">
+
+**炔雌醇**是合成雌激素，常见于复方口服避孕药（如达英-35 / Diane-35）。它与天然雌二醇（E2）在化学结构和代谢途径上有根本区别。
+
+**为什么危险**：
+
+- 炔雌醇对肝脏凝血因子的影响远强于天然 E2，VTE（静脉血栓栓塞）风险约为口服天然 E2 的 **6-20 倍**<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" /><CitationRef id="vinogradova-2019" num={2} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" />
+- 早期跨性别 HRT 方案使用炔雌醇导致了显著升高的血栓和心血管事件发生率<CitationRef id="deblok-2021" num={3} authors="de Blok CJM et al." year={2021} title="Amsterdam cohort 50-year follow-up" />
+- Endocrine Society 2017 和 WPATH SOC 8 均**明确建议不在跨性别 HRT 中使用**炔雌醇<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
+
+</DangerBox>
+
+### 达英-35 不是 HRT
+
+达英-35（Diane-35）含有 35 μg 炔雌醇 + 2 mg 醋酸环丙孕酮，是一种**口服避孕药**。在中国跨性别社区中，部分使用者因其含有 CPA（抗雄成分）而将其作为 HRT 使用，这是**极其危险的误用**：
+
+- 35 μg 炔雌醇的血栓风险远超任何合理的 HRT 方案
+- CPA 本身也增加 VTE 风险，叠加炔雌醇后风险进一步放大
+- 达英-35 的雌激素效力不足以提供 HRT 所需的女性化效果，却承受了远超必要的血栓风险
+
+### 为什么社区仍有人在使用
+
+- **容易获取**：达英-35 作为避孕药在中国大部分药房有售，获取门槛远低于正规 HRT 药物
+- **误解**："有 CPA 成分 = 有抗雄效果 = 可以当 HRT 用"——这一逻辑忽略了炔雌醇带来的致命风险
+- **信息滞后**：部分社区经验帖仍在推荐达英-35 作为"入门方案"
+- **经济因素**：达英-35 价格相对较低，且无需特殊处方
+
+### 如果你正在使用达英-35
+
+<WarningBox title="转换方案建议">
+
+1. **不要突然停药**——可以在获取到正规雌二醇制剂后进行转换
+2. **替换方案**：口服补佳乐（戊酸雌二醇）2-4 mg/天 + 低剂量 CPA 5-12.5 mg/天（单独购买）
+3. 如果无法获取单独的 CPA，可以先单用口服雌二醇，部分使用者在足够剂量的雌二醇下不需要额外的抗雄药物<CitationRef id="misakian-2025" num={6} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />
+4. 转换后 **4 周内**建议进行激素六项 + 肝功能检测
+5. 如果有条件，建议同时检测 D-二聚体以评估凝血状态
+
+</WarningBox>
+
+---
+
+## 结合雌激素（倍美力 / Premarin）
+
+<DangerBox title="结合雌激素 — VTE 风险远高于天然 E2">
+
+**结合雌激素**（Conjugated Equine Estrogens, CEE），最常见的品牌名为倍美力（Premarin），是从孕马尿液中提取的雌激素混合物，包含多种马源性雌激素成分。
+
+**为什么危险**：
+
+- WHI（Women's Health Initiative）研究明确显示：口服结合雌激素组的血栓和心血管事件风险显著升高<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 结合雌激素的 VTE 风险显著高于天然 E2<CitationRef id="vinogradova-2019" num={2} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" />
+- 结合雌激素中的马源性成分（如马烯雌酮）在人体中的代谢途径与天然 E2 不同，对凝血系统的影响更不可预测
+- Endocrine Society 2017 指南建议使用 **17β-雌二醇**（天然 E2）而非结合雌激素<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} />
+
+</DangerBox>
+
+### WHI 研究数据
+
+WHI 是迄今为止规模最大的激素治疗随机对照试验（N >16,000），使用的正是结合雌激素（倍美力）+ MPA 的方案。该研究在 2002 年因发现联合用药组的心血管事件、乳腺癌等风险显著增加而被提前终止<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} />。虽然 WHI 的受试者是绝经后顺性别女性，但其结果是国际指南建议跨性别 HRT 使用天然 E2 而非结合雌激素的重要依据。
+
+### 为什么有些人可能会用到
+
+倍美力在中国部分医院的更年期门诊有处方。跨性别使用者如果未告知医生真实用药目的，可能被按更年期方案开具倍美力。这不是适合跨性别 HRT 的选择。
+
+### 如果你正在使用倍美力
+
+<WarningBox title="转换方案建议">
+
+1. 与医生沟通换用天然雌二醇制剂（如补佳乐、凝胶或注射用戊酸雌二醇）
+2. 如果是在更年期门诊获取的处方，可以向医生说明你希望使用天然 E2 制剂（17β-雌二醇）——许多医生对此持开放态度
+3. 转换后建议在 4 周内复查激素水平以确认新方案的效果
+
+</WarningBox>
+
+---
+
+## 甲羟孕酮 (MPA / Medroxyprogesterone Acetate)
+
+<DangerBox title="甲羟孕酮 — 不要用于跨性别 HRT">
+
+**甲羟孕酮**（MPA）是一种合成孕激素，常见品牌为安宫黄体酮（Provera）。它在 WHI 研究中与结合雌激素联用导致了乳腺癌和心血管事件风险显著增加。
+
+**为什么危险**：
+
+- WHI 研究中，结合雌激素 + MPA 联用组的乳腺癌风险比单用雌激素组显著增加<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} />
+- MPA 的 VTE 风险高于天然微粒化黄体酮<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} /><CitationRef id="vinogradova-2019" num={2} authors="Vinogradova Y et al." year={2019} />
+- MPA 与天然黄体酮的代谢途径和受体亲和力不同，其代谢产物不具有天然黄体酮代谢产物（5α-孕烷醇酮）的 GABA-A 镇静作用
+- MPA 具有一定的糖皮质激素活性，长期使用可能影响代谢
+
+</DangerBox>
+
+### 与天然黄体酮的区别
+
+许多使用者混淆 MPA（甲羟孕酮）和天然黄体酮（Progesterone），认为"都是孕激素所以一样"。事实上，两者在风险特征上有重要差异：
+
+<DoseTable
+  headers={['特征', '天然微粒化黄体酮', '甲羟孕酮 (MPA)']}
+  rows={[
+    ['VTE 风险', '初步证据提示较低', '较高'],
+    ['乳腺癌风险', '短期数据提示较低', 'WHI 显示增加'],
+    ['镇静/助眠', '有', '无'],
+    ['GAHT 推荐', '如需孕激素可考虑', '不建议使用'],
+  ]}
+/>
+
+### 如果你正在使用甲羟孕酮
+
+<WarningBox title="转换方案建议">
+
+1. 建议转换为天然微粒化黄体酮（Utrogestan / 益玛欣），100-200 mg/天睡前口服
+2. 如果你使用孕激素的目的仅是抗雄（利用其抑制 LH 的作用），可以考虑评估是否真正需要孕激素——许多使用者通过足够剂量的雌激素即可达到充分的 T 抑制
+3. 详见[微粒化黄体酮页面](/zh/medications/progestogens/progesterone/)
+
+</WarningBox>
+
+---
+
+## 兽用激素
+
+<DangerBox title="兽用激素 — 成分不明，剂量不可控">
+
+在 2022 年底中国网售禁令之后，部分跨性别使用者因正规药物获取困难，转向兽用激素制品（如用于畜牧业的雌激素注射液）。这种做法**极其危险**。
+
+**为什么危险**：
+
+- **成分不确定**：兽用制品可能含有非天然雌二醇的激素成分（如己烯雌酚、苯甲酸雌二醇），不同成分的风险特征完全不同
+- **剂量不可控**：兽用制品的浓度设计针对体重远超人类的动物，微量误差即可导致严重过量
+- **纯度无保障**：兽用药品的生产标准低于人用药品，可能含有对人体有害的杂质或赋形剂
+- **无菌标准不同**：兽用注射液的无菌要求低于人用注射液，注射使用可能导致感染
+- 无法进行有效的剂量监测——即使做了血检，也难以判断体内实际活性成分和浓度
+
+**没有任何临床证据支持兽用激素在人体中的安全性和有效性。**
+
+</DangerBox>
+
+### 具体风险说明
+
+兽用激素制品常见的问题：
+
+- **己烯雌酚（DES）**：部分兽用雌激素含有己烯雌酚，该药已因致癌性被多国禁止在人类使用
+- **苯甲酸雌二醇**：虽然活性成分为雌二醇，但兽用制品的油载体、防腐剂可能不适用于人体
+- **浓度偏差**：兽用制品的质控标准远低于人用注射剂，批次间浓度差异可能达到数倍
+- **注射体积问题**：兽用制品可能需要极小体积（0.01-0.05 mL）才能达到人用剂量，普通注射器无法准确量取
+
+### 如果你正在使用兽用激素
+
+<WarningBox title="紧急转换建议">
+
+1. **请尽快停止使用**并转为正规人用雌二醇制剂
+2. 即使需要较长时间才能获得正规药物，**短暂的停药也远好于继续使用成分不明的兽用制品**
+3. 最容易获取的正规替代：口服补佳乐（戊酸雌二醇），大部分城市线下药房有售
+4. 如果停药后出现不适，请就医并如实告知使用兽用激素的历史——这对医生评估你的健康状况非常重要
+5. 建议做一次全面血检，包括激素六项、肝功能、肾功能、血常规
+
+</WarningBox>
+
+---
+
+## 自制药物
+
+<DangerBox title="自制药物 — 无菌和浓度不可控，可能直接致死">
+
+部分使用者因药物获取困难，尝试从原料粉末自行配制雌二醇注射液或口服制剂。这种做法**危及生命**。
+
+**为什么危险**：
+
+- **无菌问题**：注射用药品需要在严格的无菌环境（如洁净室/层流台）中配制。家庭环境无法达到这一标准，注射受污染的溶液可能导致：
+  - 注射部位脓肿
+  - 全身性感染（败血症）
+  - 致命的血液感染
+- **浓度不可控**：没有专业设备（如分析天平、HPLC），无法确保原料粉末的准确称量和均匀溶解。实际浓度可能偏高或偏低数倍
+- **原料来源不明**：网购的"雌二醇原料粉末"纯度无保障，可能含有有害杂质
+- **赋形剂选择不当**：注射用油载体的选择、过滤、灭菌都需要药学专业知识。不当的油载体可能导致严重过敏反应或栓塞
+- **热源控制**：家庭配制无法进行热源检测（LAL 试验），注射含热源的溶液可能导致严重发热反应
+
+**自制药物的风险不仅是"效果不好"，而是可能直接致死。**
+
+</DangerBox>
+
+### 具体风险场景
+
+- **脓肿**：自制注射液中的细菌在注射部位繁殖，形成需要外科切开引流的脓肿
+- **败血症**：细菌进入血液循环，引起全身性炎症反应，不及时治疗死亡率极高
+- **栓塞**：不当的油载体或未过滤的颗粒注入血管，可能引起肺栓塞
+- **过敏性休克**：未经皮试的油载体（如蓖麻油、芝麻油）可能引起严重过敏反应
+- **雌二醇过量**：浓度不准确导致单次注入过量雌二醇，E2 峰值可能达到数千 pg/mL
+
+### 如果你正在使用自制药物
+
+<WarningBox title="紧急转换建议">
+
+1. **请立即停止使用**并就医检查
+2. 无论获取正规药物多么困难，**自制注射液的感染风险都是不可接受的**
+3. 可以先转为相对更容易获取的口服补佳乐（不需要注射，感染风险归零）
+4. 如果近期注射了自制药物且出现以下任何症状，请**立即急诊**：
+   - 注射部位持续红肿、化脓、发热
+   - 寒战、高热（体温 > 38.5°C）
+   - 胸痛、呼吸困难
+   - 全身皮疹或面部肿胀
+5. 就医时如实告知使用自制注射液的历史，这对诊断至关重要
+
+</WarningBox>
+
+---
+
+## 如果正规药物确实难以获得
+
+理解在中国获取正规 HRT 药物的困难——2022 年网售禁令后这一问题更加严重。但以上列出的替代品不是解决方案，它们可能造成比不用药更严重的伤害。
+
+可以考虑的方向：
+
+- **口服补佳乐**（戊酸雌二醇 1 mg）：目前仍可在线下药房凭处方购买，是最容易获取的正规雌激素制剂。详见[口服雌二醇页面](/zh/medications/estrogens/oral/)
+- **友好医疗资源**：参见[中国现实](/zh/china-reality/)页面中的友好医院列表
+- **不需告知跨性别身份的检查**：任何三甲医院的内分泌科都可以开具激素六项检查——只需说"我想检查激素水平"
+- **社区互助**：部分跨性别社区组织提供用药安全咨询和友好医疗资源对接
+
+<WarningBox title="安全底线">
+如果你目前使用的药物来源不明或不在本站推荐范围内，至少做到以下两点：**定期血检**（每 3 个月一次激素六项 + 肝功能）+ **了解急症症状**（参见[风险与急症识别](/zh/risks/)页面）。这不能消除危险药物的风险，但可以帮助你更早发现问题。
+</WarningBox>
+
+---
+
+**参考文献**
+
+1. <span id="ref-canonico-2018">Canonico M et al. Hormone therapy and venous thromboembolism: an updated overview. *Climacteric* 2018.</span>
+2. <span id="ref-vinogradova-2019">Vinogradova Y et al. Use of hormone replacement therapy and risk of venous thromboembolism. *BMJ* 2019.</span>
+3. <span id="ref-deblok-2021">de Blok CJM et al. Amsterdam cohort 50-year follow-up. *Lancet Diabetes Endocrinol* 2021.</span>
+4. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+5. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+6. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>

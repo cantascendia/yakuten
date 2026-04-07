@@ -1,0 +1,207 @@
+---
+title: 注射雌二醇（戊酸雌二醇注射液）
+description: 注射雌二醇完整指南——药代动力学、剂量、SC vs IM 对比、单药治疗证据、注射操作规范和安全红线。
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Valerate Injection"
+  nameCN="戊酸雌二醇注射液"
+  category="estrogen"
+  route="肌肉注射 (IM) / 皮下注射 (SC)"
+  evidenceLevel="A"
+>
+注射雌二醇是跨性别女性 HRT 中常见的给药途径之一。绕过肝脏首过效应，血药浓度可预测性较好，且近年证据表明皮下注射与肌肉注射效果无显著差异<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />。注射用户中约 82.6% 可实现单药治疗而不需要额外抗雄<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。
+</DrugInfoBox>
+
+## 药代动力学
+
+戊酸雌二醇（EV）注射后的药代动力学特征<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />：
+
+- **半衰期**：约 4-5 天
+- **峰值时间**：注射后 2-3 天达到血药浓度峰值
+- **谷值时间**：通常在下次注射前 1-2 天
+- **稳态**：规律注射约 4-5 个周期后达到稳态
+
+由于半衰期约 4-5 天，每周（7 天）注射一次的方案在谷值时 E2 会有一定程度下降。部分使用者选择每 5 天注射一次以获得更平稳的血药浓度曲线，但需要相应调整单次剂量。
+
+## 剂量
+
+### 成人剂量
+
+<DoseTable
+  headers={['阶段', '剂量', '说明']}
+  rows={[
+    ['起始剂量', '1-2 mg/周', '低剂量起步期（前 1-6 个月），保护乳腺发育'],
+    ['维持剂量', '2-4 mg/周', '根据血检 E2 谷值调整，目标 E2 100-200 pg/mL'],
+    ['最大剂量', '5 mg/周', 'Rothman 2024 建议的安全上限，不建议超过'],
+  ]}
+/>
+
+剂量参考 Endocrine Society 2017<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />、WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />以及 Rothman 2024 针对注射途径的专项建议<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />。
+
+<WarningBox title="关于「前 6 个月低剂量」的重要性">
+前 6 个月控制在 1-2 mg/周不是"保守"，而是保护乳腺正常发育的关键。高剂量过早启动可能导致乳芽过早融合，这是**不可逆的**。详见[乳房发育专题](/zh/breast-development/)。
+</WarningBox>
+
+### 血检采样时机
+
+注射用户应在**下次注射前当天早晨**采血，测量谷值浓度。
+
+- 谷值 E2 目标：100-200 pg/mL<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 如果谷值 E2 >200 pg/mL，不意味着"效果更好"，只意味着风险在增加
+- 如果谷值 E2 &lt;50 pg/mL，可考虑缩短注射间隔或适当增加剂量（不超过 5 mg/周）
+
+## SC vs IM 对比
+
+近年多项研究表明，皮下注射（SC）与肌肉注射（IM）在雌二醇吸收和效果方面无显著差异<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />：
+
+<DoseTable
+  headers={['对比项', '皮下注射 (SC)', '肌肉注射 (IM)']}
+  rows={[
+    ['E2 血药浓度', '与 IM 无显著差异', '传统标准途径'],
+    ['T 抑制效果', '与 IM 无显著差异', '传统标准途径'],
+    ['疼痛感', '通常较轻', '肌肉深部注射，疼痛较明显'],
+    ['注射部位', '腹部、大腿外侧脂肪层', '臀部外上象限、大腿外侧肌肉'],
+    ['针头规格', '较细（25-27G）', '较粗（21-23G）'],
+    ['操作难度', '较易自行操作', '臀部注射可能需要他人协助'],
+    ['并发症风险', '局部硬结可能性较低', '少数情况可能伤及坐骨神经'],
+  ]}
+/>
+
+**结论**：对于自行注射的使用者，SC 是更安全和更便利的选择。如果已在使用 IM 且效果稳定、无不适，也无需强制更换<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />。
+
+## 单药治疗证据
+
+Misakian 2025 的研究表明，使用注射雌二醇的跨性别女性中，约 **82.6%** 可以在不使用额外抗雄激素药物的情况下达到目标 T 水平（T &lt;50 ng/dL）<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。
+
+这意味着注射途径在单药治疗（monotherapy）方面有独特优势：
+
+- 维持剂量阶段，注射 E2 通常可以提供足够的 T 抑制
+- 减少了抗雄激素药物的副作用（CPA 的脑膜瘤风险、螺内酯的高钾风险等）
+- 但**并非所有人**都能实现单药治疗——约 17% 仍需要额外抗雄支持
+
+<WarningBox title="不要为了「单药」而盲目加大注射剂量">
+单药治疗的前提是在合理剂量范围内（≤5 mg/周）谷值 T 能降至 &lt;50 ng/dL。如果 5 mg/周仍无法充分抑制 T，正确做法是加用低剂量抗雄，而**不是**继续增加注射剂量。
+</WarningBox>
+
+## 注射操作规范
+
+### 注射器和针头选择
+
+| 注射途径 | 注射器 | 抽药针头 | 注射针头 |
+|----------|--------|---------|---------|
+| 皮下 (SC) | 1 mL Luer-Lock | 18-20G（抽药用） | 25-27G × 1/2"-5/8" |
+| 肌肉 (IM) | 1 mL Luer-Lock | 18-20G（抽药用） | 21-23G × 1"-1.5" |
+
+建议使用两根针头：一根粗针用于从安瓿/药瓶中抽药（抽药后更换），一根细针用于注射。这样做可以减少注射时的疼痛并避免粗针抽药后针尖变钝。
+
+### 注射部位选择
+
+**皮下注射 (SC)**：
+- 腹部（避开肚脐周围 5 cm）
+- 大腿前外侧上 1/3
+
+**肌肉注射 (IM)**：
+- **臀部外上象限**（背臀肌）：将臀部分为四个象限，注射于外上象限，远离坐骨神经
+- **大腿外侧中段**（股外侧肌）：膝上约 10 cm 至大转子下约 10 cm 之间的外侧区域
+- 每次轮换部位，避免反复在同一位置注射
+
+### 注射操作步骤
+
+1. **洗手**：使用肥皂和水彻底清洗双手
+2. **准备用品**：注射器、抽药针头、注射针头、酒精棉片、锐器收集盒
+3. **消毒**：用酒精棉片消毒药瓶橡胶塞或安瓿颈部，以及注射部位皮肤（以注射点为中心向外画圈，直径约 5 cm），等待酒精自然干燥
+4. **抽药**：使用粗针头抽取所需剂量，排净气泡
+5. **换针**：将抽药针头更换为注射针头
+6. **注射**：
+   - SC：捏起皮肤，以 45° 角进针
+   - IM：绷紧皮肤，以 90° 角快速进针
+7. **回抽**：轻轻回拉注射器活塞，确认无血液回流（如有血液回流，拔出重新选择注射点）
+8. **推注**：缓慢匀速推注药液（约 10 秒）
+9. **拔针**：快速拔出针头，用酒精棉片轻压注射点，不要揉搓
+10. **废弃处理**：将使用过的针头立即放入锐器收集盒，不要回套针帽
+
+## 剂量-体积换算表
+
+以 **Progynon Depot 10 mg/mL**（每毫升含戊酸雌二醇 10 mg）为例<CitationRef id="fuji-2023" num={9} authors="富士製薬" year={2023} title="プロギノン・デポー添付文書" />：
+
+<DoseTable
+  headers={['目标剂量', '抽取体积', '注射频率', '等效周剂量']}
+  rows={[
+    ['1 mg', '0.1 mL', '每 7 天', '1 mg/周'],
+    ['2 mg', '0.2 mL', '每 7 天', '2 mg/周'],
+    ['3 mg', '0.3 mL', '每 7 天', '3 mg/周'],
+    ['4 mg', '0.4 mL', '每 7 天', '4 mg/周'],
+    ['5 mg', '0.5 mL', '每 7 天', '5 mg/周（最大建议剂量）'],
+    ['2.5 mg', '0.25 mL', '每 5 天', '≈3.5 mg/周'],
+    ['3.5 mg', '0.35 mL', '每 5 天', '≈4.9 mg/周'],
+  ]}
+/>
+
+不同品牌的浓度可能不同，使用前**务必确认药瓶标签上的浓度**，按照实际浓度换算体积。
+
+## 安瓿分装注意事项
+
+部分注射用戊酸雌二醇以安瓿（ampoule）形式供应，开启后无法密封保存。如需分装多次使用：
+
+<WarningBox title="安瓿分装风险提示">
+- **无菌操作**：分装必须在清洁环境中进行，使用无菌注射器和针头
+- **不要使用开启超过 24 小时的安瓿**：安瓿无防腐剂，开启后细菌污染风险随时间急剧增加
+- **分装后的注射器**：存放于冰箱（2-8°C），避光保存，建议在 **7 天内**使用完毕
+- **使用前检查**：如果溶液变色、混浊或有可见颗粒，**丢弃不用**
+- **标记日期**：在每支分装注射器上标注分装日期
+- 有条件的情况下，建议使用**多剂量药瓶**（含防腐剂苯甲醇）代替安瓿分装
+</WarningBox>
+
+<DangerBox title="注射剂量安全红线">
+
+以下情况可能导致严重的健康风险，**绝对不可以**：
+
+- **单次注射剂量 ≥ 10 mg**：可能造成 E2 峰值 >1000 pg/mL，显著增加血栓风险<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />
+- **注射间隔 &lt;5 天且单次 >5 mg**：累积效应可能导致持续超生理水平的 E2 浓度<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />
+
+如果当前方案不足以达到目标血药水平，正确做法是**就医调整方案**（更换药物、调整抗雄），而不是单方面加大注射剂量。
+
+E2 >200 pg/mL 不会带来更强的女性化效果，只增加血栓等风险<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+</DangerBox>
+
+## 常见问题
+
+### 注射后出现硬结或淤青怎么办？
+
+小面积淤青和注射部位轻微硬结通常是正常现象，数天内可自行消退。如果硬结持续增大、发红发热、或伴有发烧，建议就医排除感染。
+
+### 注射时很痛怎么办？
+
+- 确认使用了正确规格的注射针头（不要用抽药的粗针注射）
+- 注射前让药液恢复室温（从冰箱取出后静置 15-30 分钟）
+- 推注速度要慢
+- 考虑从 IM 转为 SC（疼痛通常更轻）
+
+### 忘记注射了怎么办？
+
+如果延迟不超过 1-2 天，想起时尽快注射原定剂量。如果延迟超过 3 天，注射原定剂量并恢复正常时间表。**不要加倍剂量补打**。
+
+---
+
+**参考文献**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-fuji-2023">富士製薬. プロギノン・デポー添付文書. 2023.</span>
+10. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>

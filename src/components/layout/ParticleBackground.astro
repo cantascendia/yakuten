@@ -1,0 +1,93 @@
+---
+/**
+ * ParticleBackground — CSS-only particle/glow background overlay
+ * Uses radial-gradient for ambient light orbs + dot grid pattern.
+ * No Canvas, no JS. Pure CSS.
+ */
+---
+
+<div class="particle-background" aria-hidden="true">
+  <div class="particle-background__dots"></div>
+  <div class="particle-background__orb particle-background__orb--primary"></div>
+  <div class="particle-background__orb particle-background__orb--accent"></div>
+</div>
+
+<style>
+  .particle-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .particle-background__dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      rgba(200, 75, 124, 0.15) 1px,
+      transparent 0
+    );
+    background-size: 40px 40px;
+    opacity: 0.4;
+  }
+
+  .particle-background__orb {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .particle-background__orb--primary {
+    top: 20%;
+    right: 20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(200, 75, 124, 0.1) 0%,
+      transparent 70%
+    );
+    filter: blur(120px);
+    animation: orb-drift-primary 20s ease-in-out infinite alternate;
+  }
+
+  .particle-background__orb--accent {
+    bottom: 20%;
+    left: 20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(212, 168, 83, 0.05) 0%,
+      transparent 70%
+    );
+    filter: blur(100px);
+    animation: orb-drift-accent 25s ease-in-out infinite alternate;
+  }
+
+  @keyframes orb-drift-primary {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-40px, 30px);
+    }
+  }
+
+  @keyframes orb-drift-accent {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(30px, -20px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .particle-background__orb--primary,
+    .particle-background__orb--accent {
+      animation: none;
+    }
+  }
+</style>

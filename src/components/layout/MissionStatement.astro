@@ -1,0 +1,128 @@
+---
+/**
+ * MissionStatement — "The Critical Reality" statistics section.
+ * Displays the 84% statistic and safety baseline message.
+ * Glass panel with clipped corners and gold accent bar.
+ */
+---
+
+<section class="mission" aria-label="使命声明">
+  <div class="mission__card clipped-card glass-panel">
+    <div class="mission__accent-bar" aria-hidden="true"></div>
+    <div class="mission__content">
+      <div class="mission__stat-block">
+        <p class="mission__label">The Critical Reality</p>
+        <h2 class="mission__headline">
+          在中国，超过
+          <span class="mission__stat">84%</span>
+          的跨性别激素使用者没有任何医疗指导。
+        </h2>
+      </div>
+      <div class="mission__rule" aria-hidden="true"></div>
+      <p class="mission__body">
+        本站的建立，是为了在你找到愿意接诊的医生之前，<br class="mission__br" />给你一条<span class="mission__highlight">安全的底线</span>。
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mission {
+    position: relative;
+    z-index: 10;
+    padding: 8rem var(--space-lg);
+  }
+
+  .mission__card {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .mission__card {
+      padding: 5rem;
+    }
+  }
+
+  .mission__accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--color-accent);
+  }
+
+  .mission__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .mission__stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .mission__label {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .mission__headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .mission__stat {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--color-accent);
+    padding: 0 0.25em;
+  }
+
+  .mission__rule {
+    width: 8rem;
+    height: 1px;
+    background: rgba(86, 65, 71, 0.3);
+    margin: 0 auto;
+  }
+
+  .mission__body {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: var(--color-text-primary);
+    line-height: 2;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .mission__br {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .mission__br {
+      display: block;
+    }
+  }
+
+  .mission__highlight {
+    color: var(--color-primary);
+    font-weight: 700;
+    border-bottom: 2px solid rgba(200, 75, 124, 0.4);
+    padding-bottom: 2px;
+  }
+</style>

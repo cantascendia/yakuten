@@ -1,0 +1,130 @@
+---
+title: 口服雌二醇（补佳乐）
+description: 口服戊酸雌二醇（补佳乐）的完整药理信息、剂量建议、VTE 风险数据、适用人群和危险组合警告。
+lastReviewed: 2026-04-07
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+<DrugInfoBox
+  name="Estradiol Valerate (Progynova)"
+  nameCN="戊酸雌二醇（补佳乐）"
+  category="estrogen"
+  route="口服给药（Oral）"
+  evidenceLevel="A"
+>
+  口服戊酸雌二醇（补佳乐/Progynova）是中国大陆最容易获取的雌二醇制剂。VTE 风险高于经皮途径，但对于无风险因素的年轻使用者而言，仍然是可接受的选择。
+</DrugInfoBox>
+
+## 药理特点
+
+### 肝脏首过效应
+
+口服戊酸雌二醇经胃肠道吸收后，首先经过肝脏代谢（首过效应, First-Pass Metabolism）<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />：
+
+- 戊酸雌二醇在肝脏中水解为雌二醇（E2）
+- 首过效应导致口服生物利用度约 3-5%
+- 肝脏中高浓度的 E2 会刺激凝血因子合成，增加 VTE 风险
+- 同时影响 SHBG（性激素结合球蛋白）和甘油三酯水平
+
+### 剂量换算
+
+戊酸雌二醇与雌二醇的换算关系<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} />：
+
+> **2 mg 戊酸雌二醇 ≈ 1.5 mg 雌二醇**
+
+补佳乐每片含 1 mg 戊酸雌二醇（≈ 0.75 mg E2）。这一换算关系在调整剂量和对比不同途径时很重要。
+
+### VTE 风险数据
+
+<DoseTable
+  headers={['途径', '相对风险 (RR)', '95% CI', '说明']}
+  rows={[
+    ['口服雌二醇', '1.48', '1.27 - 1.72', 'VTE 风险增加约 48%'],
+    ['经皮贴片（对比）', '0.97', '0.79 - 1.19', '与未用药无差异'],
+  ]}
+/>
+
+口服雌二醇的 VTE 风险相较未用药人群增加约 48%（RR ≈ 1.48）<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />。虽然相对风险升高，但基线绝对风险较低（年轻健康人群 VTE 年发生率约 1-2/10000），因此对于无风险因素的年轻使用者，口服途径的绝对风险仍然在可接受范围内。
+
+<DangerBox title="禁止与 CPA 同时口服">
+口服雌二醇 + 口服 CPA（醋酸环丙孕酮/色谱龙）= **双重 VTE 风险叠加**。CPA 本身具有促凝血作用<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />，与口服雌二醇联用时，两者的 VTE 风险效应叠加。如果必须使用 CPA 作为抗雄药物，**雌二醇应优先选择经皮途径**（贴片或凝胶）。详见[剂量红线与混用禁忌](/zh/dose-limits/)。
+</DangerBox>
+
+## 剂量建议
+
+以下剂量范围参考 Endocrine Society 2017 指南<CitationRef id="hembree-2017" num={4} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />和 WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+
+<DoseTable
+  headers={['阶段', '剂量（戊酸 E2）', '≈ E2 当量', '目标 E2 (pg/mL)', '时间']}
+  rows={[
+    ['起始低剂量', '2 mg/天', '≈ 1.5 mg', '50-100', '第 1-6 个月'],
+    ['中等剂量调整', '4 mg/天', '≈ 3 mg', '100-200', '第 6-12 个月'],
+    ['维持剂量', '4 mg/天', '≈ 3 mg', '100-200', '12 个月+'],
+    ['最大剂量', '8 mg/天', '≈ 6 mg', '不建议 >200', '仅特殊情况'],
+  ]}
+/>
+
+<WarningBox title="不要跳过低剂量起始期">
+即使你觉得低剂量"没效果"，前 6 个月的低剂量起始期对乳腺导管正常分支发育至关重要。高剂量过早起始可能导致乳芽过早融合，造成不可逆的发育受限<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />。详见[乳房发育专题](/zh/breast-development/)。
+</WarningBox>
+
+### 服用方法
+
+- 建议每日固定时间服用（早晨或晚间均可，保持规律）
+- 4 mg/天可考虑分两次服用（早 2 mg + 晚 2 mg），以减少血药浓度波动
+- 餐后服用可能略提高吸收率，但差异不大
+- 如果漏服一次，在下一次按原计划服用即可，不要加倍补服
+
+## 适用人群
+
+口服雌二醇适用于以下人群<CitationRef id="hembree-2017" num={4} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />：
+
+**建议适用**：
+- 无 VTE 风险因素
+- 年龄 < 40 岁
+- BMI < 30（体重正常范围）
+- 不吸烟
+- 无 VTE 个人或家族史
+- 无凝血障碍
+
+**不建议使用口服途径**（应选择经皮途径）：
+- 年龄 ≥ 40 岁
+- BMI ≥ 30
+- 当前吸烟或近期戒烟
+- VTE 个人史或强家族史
+- 已知凝血因子异常（如 Factor V Leiden）
+- 合并使用 CPA
+- 偏头痛先兆史
+
+## 中国获取现状
+
+补佳乐（Progynova）是目前中国大陆最容易获取的雌二醇制剂：
+
+- **线下药房**：大部分城市的连锁药房有售
+- **处方要求**：理论上需要处方，但部分药房执行不严
+- **价格**：相对经济（约 30-50 元/盒，每盒 21 片 x 1 mg）
+- **替代品牌**：部分医院可开具其他戊酸雌二醇制剂
+
+<WarningBox title="关于「补佳乐」">
+补佳乐每片 **1 mg 戊酸雌二醇**。起始剂量 2 mg/天 = 2 片/天。请确认你手中的产品规格，不同地区可能有不同包装（1 mg 或 2 mg 片剂）。
+</WarningBox>
+
+## 监测建议
+
+- **采血时机**：下一次服药前采血（谷值测量）<CitationRef id="ucsf-2016" num={7} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />
+- **初始阶段**：第 4 周检测激素六项 + 肝功能；第 12 周激素六项 + 肝功能 + 血脂
+- **维持阶段**：每 6 个月检测激素六项 + 肝功能
+- **目标**：E2 100-200 pg/mL，T < 50 ng/dL
+- **警戒**：如 E2 > 200 pg/mL，应考虑减量或换用经皮途径
+
+## 与舌下含服的关系
+
+口服补佳乐片剂也可以通过舌下含服（Sublingual）方式使用。舌下含服可部分绕过首过效应，提高生物利用度，但血药浓度波动更大且需更频繁给药。如果你对舌下含服感兴趣，请参阅[舌下含服页面](/zh/medications/estrogens/sublingual/)。

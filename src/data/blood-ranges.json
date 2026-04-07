@@ -1,0 +1,262 @@
+[
+  {
+    "id": "e2",
+    "name": {
+      "zh": "雌二醇 (E2)",
+      "en": "Estradiol (E2)",
+      "ja": "エストラジオール (E2)"
+    },
+    "unit": "pg/mL",
+    "ranges": {
+      "green": {
+        "min": 100,
+        "max": 200,
+        "label": "目标范围"
+      },
+      "yellow": [
+        {
+          "min": 0,
+          "max": 50,
+          "label": "偏低，可能剂量不足"
+        },
+        {
+          "min": 200,
+          "max": 300,
+          "label": "偏高，需评估是否降量"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 500,
+          "direction": "above",
+          "label": "严重超标，立即就医"
+        },
+        {
+          "threshold": 20,
+          "direction": "below",
+          "label": "用药后仍极低，检查用药方式"
+        }
+      ]
+    },
+    "timing": "注射: 下次注射前当天早晨（谷值）；贴片: 换贴前12-24小时；口服: 下次服药前",
+    "frequency": "起始期每3个月，稳定后每6个月",
+    "notes": "E2 >200 pg/mL 不会带来更强的女性化，只增加风险（Endocrine Society 2017, Rec 2.2）。谷值测量更有临床意义。",
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "t",
+    "name": {
+      "zh": "睾酮 (T)",
+      "en": "Testosterone (T)",
+      "ja": "テストステロン (T)"
+    },
+    "unit": "ng/dL",
+    "ranges": {
+      "green": {
+        "min": 0,
+        "max": 50,
+        "label": "女性范围"
+      },
+      "yellow": [
+        {
+          "min": 50,
+          "max": 100,
+          "label": "抑制不完全，可能需调整方案"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 100,
+          "direction": "above",
+          "label": "用药6个月后仍高，需评估抗雄方案"
+        }
+      ]
+    },
+    "timing": "注射: 下次注射前当天早晨（谷值）；贴片: 换贴前12-24小时；口服: 下次服药前",
+    "frequency": "起始期每3个月，稳定后每6个月",
+    "notes": "单药雌激素（注射或贴片足量）通常可将T抑制至女性范围。用药6个月后T仍>100 ng/dL需考虑加用抗雄。",
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "prl",
+    "name": {
+      "zh": "泌乳素 (PRL)",
+      "en": "Prolactin (PRL)",
+      "ja": "プロラクチン (PRL)"
+    },
+    "unit": "ng/mL",
+    "ranges": {
+      "green": {
+        "min": 0,
+        "max": 25,
+        "label": "正常范围"
+      },
+      "yellow": [
+        {
+          "min": 25,
+          "max": 50,
+          "label": "轻度升高，需随访"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 50,
+          "direction": "above",
+          "label": "明显升高，需排除垂体瘤（行MRI）"
+        }
+      ]
+    },
+    "timing": "空腹采血，避免运动和压力后采血",
+    "frequency": "起始期每6个月，稳定后每年",
+    "notes": "雌激素和CPA均可升高PRL。CPA用户尤需关注，因CPA高剂量与脑膜瘤/垂体瘤风险增加相关。",
+    "drugSpecific": {
+      "drug": "CPA（醋酸环丙孕酮）",
+      "reason": "CPA可显著升高泌乳素水平，高剂量（>10mg/天）与垂体瘤风险增加相关"
+    },
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "alt",
+    "name": {
+      "zh": "肝功能 (ALT/AST)",
+      "en": "Liver Function (ALT/AST)",
+      "ja": "肝機能 (ALT/AST)"
+    },
+    "unit": "U/L",
+    "ranges": {
+      "green": {
+        "min": 0,
+        "max": 40,
+        "label": "正常范围（≤正常上限）"
+      },
+      "yellow": [
+        {
+          "min": 40,
+          "max": 120,
+          "label": "1-3倍正常上限，需密切监测"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 120,
+          "direction": "above",
+          "label": ">3倍上限，停用CPA/比卡鲁胺并就医"
+        }
+      ]
+    },
+    "timing": "空腹采血",
+    "frequency": "起始期每3个月，稳定后每6个月",
+    "notes": "CPA和比卡鲁胺均有肝毒性风险。口服E2首过效应也增加肝脏负担。经皮给药肝脏影响最小。出现黄疸（皮肤/眼白发黄）或深色尿需立即停药就医。",
+    "drugSpecific": {
+      "drug": "CPA/比卡鲁胺",
+      "reason": "CPA和比卡鲁胺均有肝毒性报告，需定期监测肝功能"
+    },
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "k",
+    "name": {
+      "zh": "血钾 (K⁺)",
+      "en": "Potassium (K⁺)",
+      "ja": "カリウム (K⁺)"
+    },
+    "unit": "mmol/L",
+    "ranges": {
+      "green": {
+        "min": 3.5,
+        "max": 5.0,
+        "label": "正常范围"
+      },
+      "yellow": [
+        {
+          "min": 5.0,
+          "max": 5.5,
+          "label": "偏高，减少高钾食物摄入并复查"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 5.5,
+          "direction": "above",
+          "label": "高钾血症风险，停螺内酯并就医"
+        }
+      ]
+    },
+    "timing": "空腹采血，避免握拳",
+    "frequency": "起始期每3个月，稳定后每6个月",
+    "notes": "螺内酯为保钾利尿剂，可导致高钾血症。症状包括肌肉无力、心悸。避免同时大量摄入高钾食物（香蕉、橙汁等）或使用含钾盐。",
+    "drugSpecific": {
+      "drug": "螺内酯",
+      "reason": "螺内酯是保钾利尿剂，可引起高钾血症，需定期监测血钾"
+    },
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "hb",
+    "name": {
+      "zh": "血红蛋白 (Hb)",
+      "en": "Hemoglobin (Hb)",
+      "ja": "ヘモグロビン (Hb)"
+    },
+    "unit": "g/L",
+    "ranges": {
+      "green": {
+        "min": 120,
+        "max": 999,
+        "label": "正常"
+      },
+      "yellow": [
+        {
+          "min": 110,
+          "max": 120,
+          "label": "轻度偏低，注意饮食补铁"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 110,
+          "direction": "below",
+          "label": "贫血，需就医查因"
+        }
+      ]
+    },
+    "timing": "无特殊要求，建议空腹",
+    "frequency": "每6-12个月",
+    "notes": "雌激素治疗后Hb通常会下降至女性范围（这是正常的）。但过低则为贫血，需排查原因（营养不良、其他疾病）。",
+    "references": ["hembree-2017", "coleman-2022"]
+  },
+  {
+    "id": "ddimer",
+    "name": {
+      "zh": "D-二聚体",
+      "en": "D-dimer",
+      "ja": "Dダイマー"
+    },
+    "unit": "mg/L",
+    "ranges": {
+      "green": {
+        "min": 0,
+        "max": 0.5,
+        "label": "正常"
+      },
+      "yellow": [
+        {
+          "min": 0.5,
+          "max": 1.0,
+          "label": "轻度升高，需结合临床判断"
+        }
+      ],
+      "red": [
+        {
+          "threshold": 1.0,
+          "direction": "above",
+          "label": "明显升高，需排除深静脉血栓 (DVT) / 肺栓塞 (PE)"
+        }
+      ]
+    },
+    "timing": "空腹采血",
+    "frequency": "有VTE风险因素者每6个月，常规每年",
+    "notes": "D-二聚体升高不等于血栓，但需结合临床症状（单侧小腿肿痛、突发胸痛/呼吸困难）排除VTE。口服雌激素VTE风险高于经皮途径。",
+    "references": ["hembree-2017", "coleman-2022"]
+  }
+]

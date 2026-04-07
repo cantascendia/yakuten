@@ -1,0 +1,144 @@
+---
+/**
+ * CrisisHotline -- 心理危机热线区块
+ * 三列布局（桌面）,毛玻璃 + 对角切角
+ * 电话号码大号 mono 字体，红色
+ * 从 Stitch desktop_2 设计转写
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['crisis-hotline glass-panel clipped-card', className]} role="complementary" aria-label="心理危机热线">
+  <div class="crisis-hotline__intro">
+    <h2 class="crisis-hotline__heading">需要帮助？</h2>
+    <p class="crisis-hotline__desc">如果您感到极度的心理压力或有自伤念头，请立即联系以下专业支持机构。我们关心你的安全。</p>
+  </div>
+
+  <div class="crisis-hotline__grid">
+    <a href="tel:400-161-9995" class="crisis-hotline__card ghost-border">
+      <span class="crisis-hotline__label">24h Crisis Support</span>
+      <span class="crisis-hotline__number">400-161-9995</span>
+      <span class="crisis-hotline__name">希望 24 热线</span>
+    </a>
+
+    <a href="tel:010-8484-8888" class="crisis-hotline__card ghost-border">
+      <span class="crisis-hotline__label">LGBTQ+ Specific</span>
+      <span class="crisis-hotline__number">010-8484-8888</span>
+      <span class="crisis-hotline__name">同志热线</span>
+    </a>
+
+    <a href="tel:120" class="crisis-hotline__card ghost-border">
+      <span class="crisis-hotline__label">General Emergency</span>
+      <span class="crisis-hotline__number">120</span>
+      <span class="crisis-hotline__name">医疗救护中心</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .crisis-hotline {
+    padding: var(--space-xl);
+    margin: var(--space-2xl) 0;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .crisis-hotline {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* Intro section */
+  .crisis-hotline__intro {
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .crisis-hotline__intro {
+      width: 33%;
+    }
+  }
+
+  .crisis-hotline__heading {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-md) 0;
+    line-height: 1.3;
+  }
+
+  .crisis-hotline__desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Three-column grid */
+  .crisis-hotline__grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .crisis-hotline__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Individual hotline card */
+  .crisis-hotline__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-md);
+    text-decoration: none;
+    transition: background-color var(--transition-normal);
+    cursor: pointer;
+  }
+
+  .crisis-hotline__card:hover {
+    background-color: rgba(244, 67, 54, 0.05);
+  }
+
+  .crisis-hotline__label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .crisis-hotline__number {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-danger);
+    transition: transform var(--transition-normal);
+  }
+
+  .crisis-hotline__card:hover .crisis-hotline__number {
+    transform: scale(1.1);
+  }
+
+  .crisis-hotline__name {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+  }
+</style>
