@@ -1,0 +1,9 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<script>
+	import { inject } from '@vercel/analytics';
+	inject();
+</script>
