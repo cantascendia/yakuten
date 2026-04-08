@@ -1,8 +1,8 @@
 ---
 title: 中国现实
-description: 中国跨性别 HRT 现状数据、友好医疗资源、合法获取药物途径、以及在无法就医时的安全底线。
+description: 中国跨性别 HRT 现状数据、友好医疗资源、合法获取药物途径，以及在无法就医时的安全底线。
 evidenceLevel: X
-lastReviewed: 2026-04-07
+lastReviewed: 2026-04-08
 references: [coleman-2022, hembree-2017, ucsf-2016]
 ---
 
@@ -11,6 +11,10 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import GlassCard from '../../../components/ui/GlassCard.astro';
+import hospitalsRaw from '../../../data/hospitals.json';
+
+export const hospitalCount = hospitalsRaw.length;
+export const hospitalCityCount = new Set(hospitalsRaw.map((hospital) => hospital.city)).size;
 
 这一页是本站最重要的页面之一。如果你生活在中国大陆，你面对的困难不只是"选哪种药"，而是"能不能拿到药"、"有没有医生愿意帮我"。本页试图给你最实际的信息。
 
@@ -61,13 +65,13 @@ import GlassCard from '../../../components/ui/GlassCard.astro';
 
 ## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 8.2</span> 友好医疗资源
 
-我们已为友好医疗资源建立了独立的结构化数据库，覆盖北京、上海、广州、成都等 8 个城市的医院信息，包含科室、挂号方式、费用及社区反馈。
+我们已为友好医疗资源建立了独立的结构化数据库，目前覆盖 {hospitalCityCount} 个城市的医院信息，包含科室、挂号方式、费用及社区反馈。
 
 <GlassCard>
 
 **→ [查看完整友好医疗资源数据库](/zh/tools/hospital-finder/)**
 
-收录 8 家医院 · 社区验证 · 按城市分组 · 持续更新
+收录 {hospitalCount} 家医院 · 社区验证 · 按城市分组 · 持续更新
 
 </GlassCard>
 

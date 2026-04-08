@@ -14,50 +14,30 @@ import GlassCard from '../../../../components/ui/GlassCard.astro';
 import hospitalsRaw from '../../../../data/hospitals.json';
 
 export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '长沙', '广州', '无锡', '成都', '深圳', '杭州', '南京', '武汉', '重庆', '西安', '沈阳'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
 
 <WarningBox title="信息时效性提示">
 以下医疗资源信息基于社区成员的就诊反馈和公开渠道核实，**可能随时发生变化**（医生调动、科室调整、政策变化等）。**就诊前请通过医院官方渠道确认出诊信息和挂号方式。**
 </WarningBox>
 
-本页收录中国大陆跨性别友好医疗资源。数据来源于跨性别社区的真实反馈，标注「社区核实」的条目经多位成员确认，标注「待核实」的条目需进一步验证。
+本页当前收录 {hospitals.length} 家中国大陆跨性别友好医疗资源，覆盖 {cityCount} 个城市。数据来源于跨性别社区的真实反馈，标注「社区核实」的条目经多位成员确认，标注「待核实」的条目需进一步验证。
 
 ---
 
-## 北京
-
-<HospitalCard hospital={hospitals[0]} />
-<HospitalCard hospital={hospitals[4]} />
-
----
-
-## 上海
-
-<HospitalCard hospital={hospitals[2]} />
-<HospitalCard hospital={hospitals[3]} />
-
----
-
-## 湖南
-
-<HospitalCard hospital={hospitals[1]} />
-
----
-
-## 广东
-
-<HospitalCard hospital={hospitals[5]} />
-
----
-
-## 江苏
-
-<HospitalCard hospital={hospitals[6]} />
-
----
-
-## 四川
-
-<HospitalCard hospital={hospitals[7]} />
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
 
 ---
 
