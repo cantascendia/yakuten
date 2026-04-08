@@ -20,7 +20,7 @@ interface CardData {
 }
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
-const prefix = locale === 'en' ? '/en' : '/zh';
+const prefix = `/${locale}`;
 
 const cards: CardData[] = [
   {

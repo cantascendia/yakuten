@@ -12,12 +12,12 @@ interface NavItem {
 }
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
-const prefix = locale === 'en' ? '/en' : '/zh';
+const prefix = `/${locale}`;
 
 const navItems: NavItem[] = [
   { label: t(locale, 'nav.before'), href: `${prefix}/before-you-start/` },
   { label: t(locale, 'nav.pathway'), href: `${prefix}/pathway/` },
-  { label: t(locale, 'nav.medications'), href: `${prefix}/medications/estrogens/estradiol-valerate/` },
+  { label: t(locale, 'nav.medications'), href: `${prefix}/medications/estrogens/overview/` },
   { label: t(locale, 'nav.doseLimits'), href: `${prefix}/dose-limits/` },
   { label: t(locale, 'nav.bloodTests'), href: `${prefix}/blood-tests/` },
   { label: t(locale, 'nav.risks'), href: `${prefix}/risks/` },
