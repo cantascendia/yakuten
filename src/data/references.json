@@ -3,132 +3,198 @@
     "id": "aly-2021",
     "authors": "Aly",
     "year": 2021,
-    "title": "Injectable Estradiol Meta-Analysis"
+    "title": "Injectable Estradiol Meta-Analysis",
+    "journal": "Transfeminine Science",
+    "doi": null,
+    "url": "https://transfemscience.org/articles/injectable-e2-meta-analysis/"
   },
   {
     "id": "canonico-2018",
     "authors": "Canonico M et al.",
     "year": 2018,
-    "title": "Hormone therapy and venous thromboembolism: an updated overview"
+    "title": "Hormone therapy and venous thromboembolism: an updated overview",
+    "journal": "Maturitas",
+    "doi": "10.1016/j.maturitas.2015.06.040",
+    "url": "https://doi.org/10.1016/j.maturitas.2015.06.040"
   },
   {
     "id": "coleman-2022",
     "authors": "Coleman E et al.",
     "year": 2022,
-    "title": "Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+    "title": "Standards of Care for the Health of Transgender and Gender Diverse People, Version 8",
+    "journal": "International Journal of Transgender Health",
+    "doi": "10.1080/26895269.2022.2100644",
+    "url": "https://doi.org/10.1080/26895269.2022.2100644"
   },
   {
     "id": "deblok-2021",
     "authors": "de Blok CJM et al.",
     "year": 2021,
-    "title": "Amsterdam cohort 50-year follow-up"
+    "title": "Amsterdam cohort 50-year follow-up",
+    "journal": "The Lancet Diabetes & Endocrinology",
+    "doi": "10.1016/S2213-8587(21)00185-6",
+    "url": "https://doi.org/10.1016/S2213-8587(21)00185-6"
   },
   {
     "id": "ema-2020",
     "authors": "EMA",
     "year": 2020,
-    "title": "Restrictions on use of cyproterone due to meningioma risk"
+    "title": "Restrictions on use of cyproterone due to meningioma risk",
+    "journal": "European Medicines Agency",
+    "doi": null,
+    "url": "https://www.ema.europa.eu/en/news/restrictions-use-cyproterone-due-meningioma-risk"
   },
   {
     "id": "fuji-2023",
     "authors": "富士製薬",
     "year": 2023,
-    "title": "プロギノン・デポー添付文書"
+    "title": "プロギノン・デポー添付文書",
+    "journal": "PMDA",
+    "doi": null,
+    "url": "https://www.pmda.go.jp/PmdaSearch/rdSearch/02/2473402A2059"
   },
   {
     "id": "hembree-2017",
     "authors": "Hembree WC et al.",
     "year": 2017,
-    "title": "Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons"
+    "title": "Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons",
+    "journal": "The Journal of Clinical Endocrinology & Metabolism",
+    "doi": "10.1210/jc.2017-01658",
+    "url": "https://doi.org/10.1210/jc.2017-01658"
   },
   {
     "id": "herndon-2023",
     "authors": "Herndon JS et al.",
     "year": 2023,
-    "title": "Subcutaneous vs Intramuscular Estradiol Valerate"
+    "title": "Subcutaneous vs Intramuscular Estradiol Valerate",
+    "journal": "Endocrine Practice",
+    "doi": "10.1016/j.eprac.2023.02.006",
+    "url": "https://doi.org/10.1016/j.eprac.2023.02.006"
   },
   {
     "id": "hudelist-2026",
     "authors": "Hudelist et al.",
     "year": 2026,
-    "title": "CPA-associated meningioma in transgender women"
+    "title": "CPA-associated meningioma in transgender women",
+    "journal": "eClinicalMedicine",
+    "doi": "10.1016/j.eclinm.2026.103791",
+    "url": "https://doi.org/10.1016/j.eclinm.2026.103791"
   },
   {
     "id": "kanin-2025",
     "authors": "Kanin M et al.",
     "year": 2025,
-    "title": "Injectable Estradiol Dosing Regimens"
+    "title": "Injectable Estradiol Dosing Regimens",
+    "journal": "Journal of the Endocrine Society",
+    "doi": "10.1210/jendso/bvaf004",
+    "url": "https://doi.org/10.1210/jendso/bvaf004"
   },
   {
     "id": "kuhl-2005",
     "authors": "Kuhl",
     "year": 2005,
-    "title": "Pharmacology of estrogens and progestogens: influence of different routes of administration"
+    "title": "Pharmacology of estrogens and progestogens: influence of different routes of administration",
+    "journal": "Climacteric",
+    "doi": "10.1080/13697130500148875",
+    "url": "https://doi.org/10.1080/13697130500148875"
   },
   {
     "id": "lee-2022",
     "authors": "Lee et al.",
     "year": 2022,
-    "title": "Cyproterone acetate and meningioma risk"
+    "title": "Cyproterone acetate and meningioma risk",
+    "journal": "Scientific Reports",
+    "doi": "10.1038/s41598-022-05773-z",
+    "url": "https://doi.org/10.1038/s41598-022-05773-z"
   },
   {
     "id": "meyer-2020",
     "authors": "Meyer et al.",
     "year": 2020,
-    "title": "Safety and rapid efficacy of guideline-based gender-affirming hormone therapy"
+    "title": "Safety and rapid efficacy of guideline-based gender-affirming hormone therapy",
+    "journal": "European Journal of Endocrinology",
+    "doi": "10.1530/EJE-19-0463",
+    "url": "https://doi.org/10.1530/EJE-19-0463"
   },
   {
     "id": "misakian-2025",
     "authors": "Misakian AL et al.",
     "year": 2025,
-    "title": "Injectable Estradiol Monotherapy in Transgender Individuals"
+    "title": "Injectable Estradiol Monotherapy in Transgender Individuals",
+    "journal": "Endocrine Practice",
+    "doi": "10.1016/j.eprac.2025.07.002",
+    "url": "https://doi.org/10.1016/j.eprac.2025.07.002"
   },
   {
     "id": "oriowo-1980",
     "authors": "Oriowo MA et al.",
     "year": 1980,
-    "title": "Pharmacokinetics of Estradiol Esters"
+    "title": "Pharmacokinetics of Estradiol Esters",
+    "journal": "Contraception",
+    "doi": "10.1016/S0010-7824(80)80018-7",
+    "url": "https://doi.org/10.1016/S0010-7824(80)80018-7"
   },
   {
     "id": "patel-2021",
     "authors": "Patel et al.",
     "year": 2021,
-    "title": "Breast development in transgender women on hormone therapy"
+    "title": "Breast development in transgender women on hormone therapy",
+    "journal": "Transgender Health",
+    "doi": "10.1089/trgh.2020.0057",
+    "url": "https://doi.org/10.1089/trgh.2020.0057"
   },
   {
     "id": "poage-2026",
     "authors": "Poage AC et al.",
     "year": 2026,
-    "title": "Subcutaneous vs Intramuscular Estradiol Valerate Injection"
+    "title": "Subcutaneous vs Intramuscular Estradiol Valerate Injection",
+    "journal": "Pharmacy",
+    "doi": "10.3390/pharmacy14010013",
+    "url": "https://doi.org/10.3390/pharmacy14010013"
   },
   {
     "id": "price-1997",
     "authors": "Price et al.",
     "year": 1997,
-    "title": "Sublingual estradiol pharmacokinetics"
+    "title": "Sublingual estradiol pharmacokinetics",
+    "journal": "Obstetrics & Gynecology",
+    "doi": "10.1016/S0029-7844(96)00513-3",
+    "url": "https://doi.org/10.1016/S0029-7844(96)00513-3"
   },
   {
     "id": "prior-2019",
     "authors": "Prior JC",
     "year": 2019,
-    "title": "Progesterone is important for transgender women's therapy"
+    "title": "Progesterone is important for transgender women's therapy",
+    "journal": "The Journal of Clinical Endocrinology & Metabolism",
+    "doi": "10.1210/jc.2018-01777",
+    "url": "https://doi.org/10.1210/jc.2018-01777"
   },
   {
     "id": "rothman-2024",
     "authors": "Rothman MS et al.",
     "year": 2024,
-    "title": "Injectable Estradiol Dosing in Transgender Individuals"
+    "title": "Injectable Estradiol Dosing in Transgender Individuals",
+    "journal": "Transgender Health",
+    "doi": "10.1089/trgh.2023.0209",
+    "url": "https://doi.org/10.1089/trgh.2023.0209"
   },
   {
     "id": "ucsf-2016",
     "authors": "Deutsch",
     "year": 2016,
-    "title": "Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People"
+    "title": "Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People",
+    "journal": "UCSF Gender Affirming Health Program",
+    "doi": null,
+    "url": "https://transcare.ucsf.edu/guidelines"
   },
   {
     "id": "vinogradova-2019",
     "authors": "Vinogradova Y et al.",
     "year": 2019,
-    "title": "Use of hormone replacement therapy and risk of venous thromboembolism"
+    "title": "Use of hormone replacement therapy and risk of venous thromboembolism",
+    "journal": "BMJ",
+    "doi": "10.1136/bmj.k4810",
+    "url": "https://doi.org/10.1136/bmj.k4810"
   }
 ]

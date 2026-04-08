@@ -2,6 +2,7 @@
 /**
  * CitationRef — 文献引用标注
  * 内联标注 [1] 样式，hover 显示文献详情。
+ * 点击可跳转至 DOI 原文（新窗口），无 DOI 则跳转备用 URL。
  * 每条医学声明必须附带此组件 — 无引用 = 不写入。
  *
  * @prop id - 引用 ID，对应 references.json 中的 id
@@ -10,6 +11,8 @@
  * @prop year - 年份
  * @prop title - 文献标题（可选，用于 tooltip）
  */
+import refs from '../../data/references.json';
+
 interface Props {
   id: string;
   num: number;
@@ -21,18 +24,34 @@ interface Props {
 
 const { id, num, authors, year, title, class: className = '' } = Astro.props;
 
+type RefEntry = {
+  id: string;
+  doi: string | null;
+  url: string;
+  journal: string;
+};
+
+const ref = (refs as RefEntry[]).find((r) => r.id === id);
+const href = ref?.doi
+  ? `https://doi.org/${ref.doi}`
+  : ref?.url ?? `#ref-${id}`;
+const isExternal = href.startsWith('http');
+
 const tooltipText = title
   ? `${authors} (${year}). ${title}`
   : `${authors} (${year})`;
+const fullTooltip = ref?.journal
+  ? `${tooltipText} — ${ref.journal}`
+  : tooltipText;
 ---
 
 <sup class:list={['citation-ref', className]}>
   <a
-    href={`#ref-${id}`}
-    id={`cite-${id}`}
-    title={tooltipText}
-    aria-label={`参考文献 ${num}: ${tooltipText}`}
+    href={href}
+    title={fullTooltip}
+    aria-label={`参考文献 ${num}: ${fullTooltip}`}
     class="citation-ref__link"
+    {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
   >
     [{num}]
   </a>
