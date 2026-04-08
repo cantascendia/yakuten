@@ -1,4 +1,4 @@
-# YAKUTEN — HRT薬典 内容規範 (CONTENT.md)
+# YAKUTEN — HRT药典 内容規範 (CONTENT.md)
 
 > **Version**: 2.0 Final
 > **Updated**: 2026-04-07

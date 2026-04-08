@@ -1,4 +1,4 @@
-/* === HRT薬典 Global Styles === */
+/* === HRT药典 Global Styles === */
 /* 米哈游「二相乐園」风格 — Stitch DESIGN.md "The Ethereal Clinic" */
 
 /* ================================
@@ -50,11 +50,10 @@
   --clip-corner-sm: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
   --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
 
-  /* 字体 */
+  /* 字体 — Google Fonts API 加载，CJK 自动 unicode-range 分片 */
   --font-display: "Noto Serif SC", "Noto Serif", serif;
-  --font-body: "Manrope", "Noto Sans SC", sans-serif;
-  --font-mono: "Space Grotesk", "JetBrains Mono", monospace;
-  --font-accent: "ZCOOL XiaoWei", serif;
+  --font-body: "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
   /* 间距 */
   --space-xs: 4px;

@@ -1,4 +1,4 @@
-# YAKUTEN — HRT薬典 技術仕様書 (SPEC.md)
+# YAKUTEN — HRT药典 技術仕様書 (SPEC.md)
 
 > **Version**: 2.0 Final
 > **Updated**: 2026-04-07
@@ -15,7 +15,7 @@
 | 項目 | 内容 |
 |------|------|
 | プロジェクト名 | yakuten |
-| サイト名称 | HRT薬典 / HRT Yakuten |
+| サイト名称 | HRT药典 / HRT Yakuten |
 | ドメイン | hrtyaku.com（第一候補）/ hrtyakuten.com（第二候補） |
 | Slogan | 「愿此行，抵达真实的自己」 |
 | 定位声明 | 「循証 · 减害 · 引导就医」— 不是百科，不是论坛，不教"怎么自己用药"。为已经在用药或即将用药的跨性别女性提供基于国际临床指南和同行评审文献的安全底线信息 |
@@ -153,7 +153,7 @@
 
 ### 2.5 Logo
 
-- 主体：「薬」字简化几何形态
+- 主体：「药」字简化几何形态
 - 彩蛋：字形中暗藏狐耳轮廓（绯英元素）
 - 配色：绯色 → 金色渐变
 - 格式：SVG 矢量，16px favicon 到 512px
@@ -552,7 +552,7 @@ interface Reference {
 // api/ai-chat.ts
 export const config = { runtime: 'edge' };
 
-const SYSTEM_PROMPT = `你是 HRT薬典 的 AI 助手。
+const SYSTEM_PROMPT = `你是 HRT药典 的 AI 助手。
 规则：
 1. 只能基于已收录的医学文献回答
 2. 每个回答引用具体文献（作者+年份+期刊）
@@ -640,7 +640,7 @@ const SYSTEM_PROMPT = `你是 HRT薬典 的 AI 助手。
 ### 7.1 技术 SEO
 
 每页自动生成:
-- `<title>`: "{页面名} - HRT薬典 | 循証HRT用药安全指南"
+- `<title>`: "{页面名} - HRT药典 | 循証HRT用药安全指南"
 - `<meta description>`: 150字以内摘要
 - `<link rel="canonical">`: 规范 URL
 - `<link rel="alternate" hreflang="xx">`: 多语言替代

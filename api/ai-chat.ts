@@ -47,7 +47,7 @@ function cleanupRateLimit() {
    System Prompt
    ================================ */
 
-const SYSTEM_PROMPT = `你是 HRT薬典 的 AI 助手——一个面向中文圈跨性别女性的 HRT 安全底线信息站的问答机器人。
+const SYSTEM_PROMPT = `你是 HRT药典 的 AI 助手——一个面向中文圈跨性别女性的 HRT 安全底线信息站的问答机器人。
 
 ## 核心规则（必须严格遵守）
 

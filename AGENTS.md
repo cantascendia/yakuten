@@ -1,10 +1,10 @@
-# AGENTS.md — yakuten (HRT薬典)
+# AGENTS.md — yakuten (HRT药典)
 
 > AI Agent 在操作本项目时必须遵守以下规则。详细规范见 SPEC.md（技术）和 CONTENT.md（内容）。
 
 ## 项目概要
 
-- **名称**: HRT薬典 / HRT Yakuten
+- **名称**: HRT药典 / HRT Yakuten
 - **定位**: 循証·减害·引导就医 — 面向跨性别女性的 HRT 安全底线信息站
 - **技术栈**: Astro 5 + Starlight + React Islands + MDX + Vercel
 - **主语言**: 中文（支持 en/ja/ko）

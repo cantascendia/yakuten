@@ -7,7 +7,7 @@
 export const ui = {
   zh: {
     // HeroSection
-    'hero.title': 'HRT薬典',
+    'hero.title': 'HRT药典',
     'hero.slogan': '愿此行，抵达真实的自己',
 
     // SplashNav
@@ -52,7 +52,7 @@ export const ui = {
     'footer.sources.text': '所有数据均来自 WPATH SOC8 指南及经过同行评审的最新内分泌学研究论文。',
     'footer.dev.title': '开发者文档',
     'footer.dev.text': '项目基于开源精神构建，欢迎所有愿意为跨性别社群贡献的技术力量加入我们。',
-    'footer.brand': 'HRT薬典',
+    'footer.brand': 'HRT药典',
     'footer.notice': '本站不提供处方、不销售药物、不收集个人信息。',
     'footer.navLabel': '底部链接',
   },
@@ -111,7 +111,7 @@ export const ui = {
 
   ja: {
     // HeroSection
-    'hero.title': 'HRT薬典',
+    'hero.title': 'HRT药典',
     'hero.slogan': 'この旅が、本当の自分に届きますように',
 
     // SplashNav
@@ -156,7 +156,7 @@ export const ui = {
     'footer.sources.text': 'すべてのデータはWPATH SOC 8、内分泌学会ガイドライン、査読済み研究論文に基づいています。',
     'footer.dev.title': 'オープンソース',
     'footer.dev.text': 'このプロジェクトはオープンソースで構築されています。開発者・医療者・コミュニティからの貢献を歓迎します。',
-    'footer.brand': 'HRT薬典',
+    'footer.brand': 'HRT药典',
     'footer.notice': '本サイトは処方箋の発行、薬物の販売、個人情報の収集を一切行いません。',
     'footer.navLabel': 'フッターリンク',
   },

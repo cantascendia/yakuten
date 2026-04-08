@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://hrtyaku.com',
   integrations: [
     starlight({
-      title: 'HRT薬典',
+      title: 'HRT药典',
       description: '循証 · 减害 · 引导就医 — 面向跨性别女性的 HRT 安全底线信息站',
       defaultLocale: 'zh',
       locales: {
@@ -130,14 +130,22 @@ export default defineConfig({
           tag: 'meta',
           attrs: { name: 'twitter:image', content: 'https://hrtyaku.com/og-image.svg' },
         },
-        // DNS prefetch for fonts
+        // Google Fonts — preconnect + stylesheet
+        // CJK fonts auto-subset via unicode-range (~80-150KB per page instead of 6MB)
         {
           tag: 'link',
-          attrs: { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
+          attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         },
         {
           tag: 'link',
           attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;600&family=Noto+Serif+SC:wght@400;700&display=swap',
+          },
         },
         // Dark theme default
         {

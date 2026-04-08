@@ -1,6 +1,6 @@
 {
   "name": "yakuten",
-  "description": "HRT薬典 — 循証 · 减害 · 引导就医",
+  "description": "HRT药典 — 循証 · 减害 · 引导就医",
   "type": "module",
   "version": "0.1.0",
   "scripts": {

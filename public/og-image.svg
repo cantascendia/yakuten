@@ -11,7 +11,7 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="610" width="1200" height="20" fill="url(#accent)"/>
-  <text x="600" y="260" text-anchor="middle" font-family="serif" font-size="72" font-weight="bold" fill="#FFFFFF">HRT薬典</text>
+  <text x="600" y="260" text-anchor="middle" font-family="serif" font-size="72" font-weight="bold" fill="#FFFFFF">HRT药典</text>
   <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#D4A853">Evidence-Based HRT Safety Baseline</text>
   <text x="600" y="400" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,0.6)">循証 · 减害 · 引导就医</text>
   <text x="600" y="520" text-anchor="middle" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.35)">hrtyaku.com</text>
