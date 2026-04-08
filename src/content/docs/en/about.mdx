@@ -1,0 +1,103 @@
+---
+title: About This Site
+description: The mission, content sources, review process, privacy practices, and disclaimers of HRT Yakuten.
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Mission
+
+**Evidence-Based · Harm Reduction · Guiding You to Care**
+
+HRT Yakuten is a safety-baseline information site for transgender women in the Chinese-speaking community who use HRT. Our goal is not to replace doctors, but to help those who are already taking — or about to start — hormone therapy:
+
+- **Understand your blood test results** and know which abnormal values warrant a medical visit
+- **Learn the real risks of medications**, rather than relying on community hearsay and unverified anecdotes
+- **Recognize emergency warning signs** (DVT, liver damage, meningioma) and make the right call at critical moments
+- **Find trans-friendly medical resources** and transition from DIY to supervised medical care
+
+### What this site is NOT
+
+- ❌ Not an encyclopedia or medical textbook
+- ❌ Not a forum, community, or social platform
+- ❌ Not a drug purchasing channel or pharmacy recommendation site
+- ❌ Does not provide personalized dosing advice ("you should take X mg")
+
+## Content Sources
+
+All medical content on this site is based on the following international clinical guidelines and peer-reviewed literature:
+
+| Source | Description |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — Clinical Practice Guideline |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, Version 8 |
+| **UCSF Transgender Care** | University of California, San Francisco — Transgender Care Guidelines |
+| **EMA (2020)** | European Medicines Agency restrictions and safety assessment on CPA |
+| **PubMed / PMC** | Peer-reviewed original research papers (each citation includes a DOI) |
+
+The superscript numbers next to each medical recommendation (e.g. <sup>[1]</sup>) link to the specific reference. **No citation = no content** — this is an ironclad rule of this site.
+
+## Content Review Process
+
+| Step | Standard |
+|------|----------|
+| **Citation requirement** | Every clinical recommendation must trace back to at least one peer-reviewed paper or international guideline |
+| **Cross-validation** | Drug dosage ranges must be cross-validated against ≥2 independent sources (e.g. WPATH + Endocrine Society + UCSF) |
+| **Evidence grading** | Each page is labeled with an evidence level: A (multiple RCTs/Meta-analyses), B (single RCT/cohort), C (case reports/expert opinion), X (no evidence) |
+| **Review date** | Each page displays its last reviewed date at the bottom |
+| **Update cycle** | Content is reviewed quarterly for currency and updated based on newly published literature |
+
+<WarningBox title="Content Limitations">
+This site is currently maintained by an individual and has not undergone formal peer review by a professional medical editor. We make every effort to ensure accuracy, but errors and omissions are possible. If you find any inaccuracies, please submit an Issue on GitHub.
+</WarningBox>
+
+## Technical Implementation
+
+| Technology | Purpose |
+|------------|---------|
+| **Astro + Starlight** | Static site generation — zero JS by default, extremely fast loading |
+| **React Islands** | Client-side JS only for interactive tools (blood test checker, dose simulator, etc.) |
+| **Pagefind** | Static search index with Chinese/English/Japanese support |
+| **Vercel** | Static hosting + Edge Functions (AI Q&A) |
+| **Open Source** | Full source code available on [GitHub](https://github.com/Loveil381/yakuten) |
+
+## Privacy
+
+**This site does not collect or store any personal data.**
+
+| Category | Measure |
+|----------|---------|
+| **Blood test tool** | Pure front-end JavaScript calculation — your input data never leaves your browser and is never sent to any server |
+| **AI Q&A** | Conversations are processed in real time via Edge Functions — nothing is stored, logged, or used for training |
+| **Analytics** | Self-hosted Umami analytics — only page view counts, no IP addresses or personal identifiers collected |
+| **Tracking** | Zero third-party tracking scripts — no Google Analytics, no embedded social media trackers |
+| **Cookies** | Used only for theme preference (dark/light mode), not for tracking |
+| **Ads** | None, and there never will be |
+
+## Disclaimer
+
+The content on this site is **for educational and informational purposes only** and does not constitute medical advice.
+
+- This site cannot replace a face-to-face diagnosis and treatment by a qualified physician
+- The use, adjustment, and discontinuation of medications should be carried out under the guidance of a qualified healthcare professional
+- If you experience any emergency symptoms (unilateral leg swelling/pain, sudden chest pain, jaundice, etc.), stop medication immediately and go to the nearest emergency room
+- This site assumes no responsibility for any medical consequences resulting from the use of its content
+
+**Self-medication (DIY) carries real risks.** This site aims to help you use medications more safely, but the safest approach is always to undergo HRT under the supervision of a doctor.
+
+## Contact & Contributions
+
+- **GitHub**: [github.com/Loveil381/yakuten](https://github.com/Loveil381/yakuten) — Submit an Issue or Pull Request
+- **Content corrections**: Found a medical error? Please submit a GitHub Issue with the reference you believe is correct
+- **Brand gallery**: If you have photos of actual medications you'd like to contribute, please contact us via GitHub (CC-BY-SA license required)
+
+## License
+
+The content of this site is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). You are free to share and adapt it, provided you give appropriate credit, do not use it for commercial purposes, and distribute derivative works under the same license.
+
+The source code is licensed under the MIT License.
