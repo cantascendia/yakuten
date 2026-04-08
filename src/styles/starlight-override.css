@@ -1,6 +1,20 @@
 /* === Starlight Theme Overrides === */
 /* Override Starlight defaults to match 米哈游「二相乐園」style */
 
+/* --- Splash page: hide Starlight's default hero, reduce whitespace --- */
+[data-has-hero] .hero {
+  display: none;
+}
+
+[data-has-hero] .content-panel {
+  padding-top: 0;
+}
+
+[data-has-hero] .sl-markdown-content {
+  margin-top: 0;
+}
+
+
 /* Color overrides */
 :root {
   --sl-color-accent-low: #1A1625;

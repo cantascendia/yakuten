@@ -25,80 +25,72 @@ import '../../../styles/pathway.css';
 {/* ======== PHASE 0: Baseline ======== */}
 
 <div class="phase-row">
-  <div class="phase-label phase-label--right" style="color: var(--color-safe);">
-    WEEK 0
-  </div>
-  <div style="position: relative;">
-    <div class="phase-marker phase-marker--green" />
-    <PhaseBlock phase={0} title="基线检查" color="green">
-      <p class="phase-block__desc">
-        在开始任何药物之前，必须完成全套基线指标评估，以排除潜在禁忌症并建立个人数据锚点。
-      </p>
-      <ul class="phase-block__list">
-        <li class="phase-block__list-item">
-          <span class="phase-block__list-bullet phase-block__list-bullet--green" />
-          性激素全项 (E2, T, SHBG, LH/FSH)
-        </li>
-        <li class="phase-block__list-item">
-          <span class="phase-block__list-bullet phase-block__list-bullet--green" />
-          肝肾功能及血脂监测
-        </li>
-        <li class="phase-block__list-item">
-          <span class="phase-block__list-bullet phase-block__list-bullet--green" />
-          凝血功能与 D-二聚体检查
-        </li>
-        <li class="phase-block__list-item">
-          <span class="phase-block__list-bullet phase-block__list-bullet--green" />
-          空腹血糖 + 血常规
-        </li>
-      </ul>
-    </PhaseBlock>
-  </div>
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">WEEK 0</div>
+  <PhaseBlock phase={0} title="基线检查" color="green">
+    <p class="phase-block__desc">
+      在开始任何药物之前，必须完成全套基线指标评估，以排除潜在禁忌症并建立个人数据锚点。
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        性激素全项 (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        肝肾功能及血脂监测
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        凝血功能与 D-二聚体检查
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        空腹血糖 + 血常规
+      </li>
+    </ul>
+  </PhaseBlock>
 </div>
 
 {/* ======== PHASE 1: Low Dose ======== */}
 
 <div class="phase-row">
-  <div style="position: relative; order: 2;">
-    <div class="phase-marker phase-marker--green" />
-    <PhaseBlock phase={1} title="低剂量起步" color="green" week="1-6 MONTHS">
-      <DoseTable
-        headers={['给药方式', '推荐起始剂量', '来源']}
-        rows={[
-          ['口服雌二醇 (E2)', '2.0 mg / 日', 'Endocrine Society 2017'],
-          ['经皮贴片', '50-100 \u00b5g / 24h', 'Endocrine Society 2017'],
-          ['凝胶涂抹', '1.5 mg / 日', 'Endocrine Society 2017'],
-          ['注射 EV', '1-2 mg / 周', 'Rothman 2024'],
-        ]}
-      />
-      <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-        抗雄（如需）: CPA 5-12.5 mg/天 或 螺内酯 50-100 mg/天
-      </p>
-      <div class="phase-stats">
-        <div class="phase-stat">
-          <p class="phase-stat__label">目标 E2 指标</p>
-          <p class="phase-stat__value phase-stat__value--green">
-            50-100 <span class="phase-stat__unit">pg/mL</span>
-          </p>
-        </div>
-        <div class="phase-stat">
-          <p class="phase-stat__label">目标 T 趋势</p>
-          <p class="phase-stat__value phase-stat__value--green">
-            &#x2193; 下降
-          </p>
-        </div>
-      </div>
-      <div class="phase-warning">
-        <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
-        <p class="phase-warning__text">
-          安全警告：身体在此阶段需适应受体改变，严禁在未监测血值前自行加量，防止血栓风险。此阶段不要加量，即使你觉得「没效果」。乳腺发育信号通常在 3-6 个月出现。
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">INITIATION · 1-6 MONTHS</div>
+  <PhaseBlock phase={1} title="低剂量起步" color="green" week="1-6 MONTHS">
+    <DoseTable
+      headers={['给药方式', '推荐起始剂量', '来源']}
+      rows={[
+        ['口服雌二醇 (E2)', '2.0 mg / 日', 'Endocrine Society 2017'],
+        ['经皮贴片', '50-100 µg / 24h', 'Endocrine Society 2017'],
+        ['凝胶涂抹', '1.5 mg / 日', 'Endocrine Society 2017'],
+        ['注射 EV', '1-2 mg / 周', 'Rothman 2024'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      抗雄（如需）: CPA 5-12.5 mg/天 或 螺内酯 50-100 mg/天
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">目标 E2 指标</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
         </p>
       </div>
-    </PhaseBlock>
-  </div>
-  <div class="phase-label phase-label--left" style="color: var(--color-safe); order: 1;">
-    INITIATION
-  </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">目标 T 趋势</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; 下降
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        安全警告：身体在此阶段需适应受体改变，严禁在未监测血值前自行加量，防止血栓风险。此阶段不要加量，即使你觉得「没效果」。乳腺发育信号通常在 3-6 个月出现。
+      </p>
+    </div>
+  </PhaseBlock>
 </div>
 
 {/* ======== DECISION NODE 1: 3 Month ======== */}
@@ -107,15 +99,15 @@ import '../../../styles/pathway.css';
   <DecisionNode title="DECISION" timepoint="3 MONTH">
     <DecisionBranch
       outcome="green"
-      text="E2 30-100 pg/mL 且 T 下降 \u2192 继续当前方案至 6 个月"
+      text="E2 30-100 pg/mL 且 T 下降 → 继续当前方案至 6 个月"
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <30 pg/mL \u2192 考虑升至阶段 2 剂量"
+      text="E2 <30 pg/mL → 考虑升至阶段 2 剂量"
     />
     <DecisionBranch
       outcome="red"
-      text="肝功能异常 / PRL >30 / 严重情绪恶化 \u2192 停药就医"
+      text="肝功能异常 / PRL >30 / 严重情绪恶化 → 停药就医"
     />
   </DecisionNode>
 </div>
@@ -123,52 +115,48 @@ import '../../../styles/pathway.css';
 {/* ======== PHASE 2: Moderate Dose ======== */}
 
 <div class="phase-row">
-  <div class="phase-label phase-label--right" style="color: var(--color-accent);">
-    TITRATION
-  </div>
-  <div style="position: relative;">
-    <div class="phase-marker phase-marker--yellow" />
-    <PhaseBlock phase={2} title="剂量滴定" color="yellow" week="6-12 MONTHS">
-      <p class="phase-block__desc">
-        根据 3 个月血值反馈进行调整。目标是平稳进入跨性别女性的常规生理区间。
-      </p>
-      <DoseTable
-        headers={['给药方式', '调整后剂量']}
-        rows={[
-          ['经皮贴片', '100-200 \u00b5g / 天'],
-          ['口服 E2', '4 mg / 天'],
-          ['凝胶', '3 mg / 天'],
-          ['注射 EV', '2-4 mg / 周'],
-        ]}
-      />
-      <div class="phase-stats">
-        <div class="phase-stat">
-          <p class="phase-stat__label">推荐 E2 目标</p>
-          <p class="phase-stat__value phase-stat__value--yellow">
-            100-200 <span class="phase-stat__unit">pg/mL</span>
-          </p>
-        </div>
-        <div class="phase-stat">
-          <p class="phase-stat__label">目标 T</p>
-          <p class="phase-stat__value phase-stat__value--yellow">
-            &lt;50 <span class="phase-stat__unit">ng/dL</span>
-          </p>
-        </div>
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 MONTHS</div>
+  <PhaseBlock phase={2} title="剂量滴定" color="yellow" week="6-12 MONTHS">
+    <p class="phase-block__desc">
+      根据 3 个月血值反馈进行调整。目标是平稳进入跨性别女性的常规生理区间。
+    </p>
+    <DoseTable
+      headers={['给药方式', '调整后剂量']}
+      rows={[
+        ['经皮贴片', '100-200 µg / 天'],
+        ['口服 E2', '4 mg / 天'],
+        ['凝胶', '3 mg / 天'],
+        ['注射 EV', '2-4 mg / 周'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">推荐 E2 目标</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
       </div>
-      <div class="phase-stats" style="margin-top: var(--space-sm);">
-        <div class="phase-stat">
-          <p class="phase-stat__label">孕酮辅助 (可选)</p>
-          <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
-            根据乳房发育情况评估 (Tanner 3+)
-          </p>
-        </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">目标 T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
       </div>
-      <div class="dose-tags">
-        <span class="dose-tag dose-tag--yellow">肌肉注射 E2V 每周 2-4mg</span>
-        <span class="dose-tag dose-tag--yellow">经皮凝胶每日 3.0-4.5mg</span>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">孕酮辅助 (可选)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          根据乳房发育情况评估 (Tanner 3+)
+        </p>
       </div>
-    </PhaseBlock>
-  </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">肌肉注射 E2V 每周 2-4mg</span>
+      <span class="dose-tag dose-tag--yellow">经皮凝胶每日 3.0-4.5mg</span>
+    </div>
+  </PhaseBlock>
 </div>
 
 {/* ======== DECISION NODE 2: 6 Month ======== */}
@@ -177,15 +165,15 @@ import '../../../styles/pathway.css';
   <DecisionNode title="STABILITY" timepoint="6 MONTH">
     <DecisionBranch
       outcome="green"
-      text="E2 100-200 pg/mL 且 T <50 ng/dL \u2192 进入维持期"
+      text="E2 100-200 pg/mL 且 T <50 ng/dL → 进入维持期"
     />
     <DecisionBranch
       outcome="yellow"
-      text="T >50 但 E2 已达标 \u2192 调整抗雄方案（不要靠增加 E2 来压 T）"
+      text="T >50 但 E2 已达标 → 调整抗雄方案（不要靠增加 E2 来压 T）"
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <100 pg/mL \u2192 可继续增至中高剂量，但不超过红线"
+      text="E2 <100 pg/mL → 可继续增至中高剂量，但不超过红线"
     />
   </DecisionNode>
 </div>
@@ -193,36 +181,32 @@ import '../../../styles/pathway.css';
 {/* ======== PHASE 3: Maintenance ======== */}
 
 <div class="phase-row">
-  <div style="position: relative; order: 2;">
-    <div class="phase-marker phase-marker--pink" />
-    <PhaseBlock phase={3} title="长期维持" color="pink" week="12 MONTHS+">
-      <p class="phase-block__desc">
-        当血值与身体变化趋于稳定，转入低频监测模式。保持 E2 100-200 pg/mL, T &lt;50 ng/dL 的最低有效剂量。
-      </p>
-      <div class="monitor-box">
-        <p class="monitor-box__title">监测频率</p>
-        <div class="monitor-box__content">
-          <div>
-            <p class="monitor-box__number monitor-box__number--pink">6</p>
-            <p class="monitor-box__unit">Months</p>
-          </div>
-          <div class="monitor-box__divider" />
-          <p class="monitor-box__desc">
-            每半年检查一次激素全项及血栓风险因子。每年检查血脂与空腹血糖。考虑骨密度检查。
-          </p>
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 MONTHS+</div>
+  <PhaseBlock phase={3} title="长期维持" color="pink" week="12 MONTHS+">
+    <p class="phase-block__desc">
+      当血值与身体变化趋于稳定，转入低频监测模式。保持 E2 100-200 pg/mL, T &lt;50 ng/dL 的最低有效剂量。
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">监测频率</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Months</p>
         </div>
-      </div>
-      <div class="phase-warning" style="margin-top: var(--space-md);">
-        <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
-        <p class="phase-warning__text">
-          E2 &gt;200 pg/mL 不会带来更强的女性化，只增加风险 (Endocrine Society 2017, Rec 2.2)
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          每半年检查一次激素全项及血栓风险因子。每年检查血脂与空腹血糖。考虑骨密度检查。
         </p>
       </div>
-    </PhaseBlock>
-  </div>
-  <div class="phase-label phase-label--left" style="color: var(--color-primary); order: 1;">
-    STEADY STATE
-  </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL 不会带来更强的女性化，只增加风险 (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
 </div>
 
 {/* ======== End Marker ======== */}

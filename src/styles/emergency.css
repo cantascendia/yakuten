@@ -5,17 +5,14 @@
   background: linear-gradient(135deg, #F44336, #D32F2F);
   color: #FFFFFF;
   padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-sm);
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   text-align: center;
 }
 
-.emergency-banner a {
+.emergency-banner a,
+.sl-markdown-content .emergency-banner a {
   color: #FFFFFF;
   text-decoration: underline;
   font-weight: 700;
