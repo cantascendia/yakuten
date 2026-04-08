@@ -1,9 +1,39 @@
 ---
 title: AI 问答助手
-description: 基于医学文献的 AI 问答工具，不提供个人化用药建议。
+description: 基于医学文献的 AI 问答工具，不提供个人化用药建议。对话不被存储。
 evidenceLevel: X
 lastReviewed: 2026-04-07
 references: []
 ---
 
-*AI 问答助手将在 Phase 3 作为 React Island 加入*
+import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
+
+## 循证 AI 问答
+
+向 AI 助手提问关于 HRT 的安全问题。所有回答均基于国际临床指南和同行评审文献。
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ 使用须知</div>
+
+- **不是医生**：AI 助手只能引用文献中的信息，不能替代医疗专业人员的判断
+- **不做个人化建议**：不会针对你的具体情况推荐剂量或方案
+- **不存储对话**：关闭页面后对话记录消失，我们不收集任何数据
+- **紧急情况**：如果你正在经历紧急症状，请立即拨打 **120** 或前往最近的急诊室
+</div>
+
+<AIAssistant client:load />
+
+## AI 能回答什么？
+
+- 各类 HRT 药物的药理作用、副作用、对比
+- 血检指标的含义和参考范围
+- 指南推荐的剂量范围（非个人化建议）
+- 药物相互作用和禁忌症
+- HRT 相关风险的循证数据
+
+## AI 不能做什么？
+
+- ❌ 告诉你"你应该吃多少"
+- ❌ 替代医生诊断
+- ❌ 提供购药渠道
+- ❌ 访问你的个人健康数据
