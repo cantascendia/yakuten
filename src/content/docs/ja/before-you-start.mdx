@@ -1,0 +1,71 @@
+---
+title: '服薬前の準備：あなたは準備できていますか？'
+description: HRTを始める前に必要な安全チェックリスト、禁忌事項、そして現実的な期待値について。
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+---
+
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+これはゲートキーピングではありません。安全確認です。ベースラインの血液検査なしにHRTを開始するのは、目隠しをして車を運転するようなものです。
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> ベースライン血液検査
+
+以下の検査はHRT開始前に実施する必要があります。内分泌科、ジェンダークリニック、または一般的なクリニックで検査を受けることができます。日本では、GID（性同一性障害）学会認定医療機関やジェンダー外来を設置する大学病院で対応可能です。
+
+<BaselineChecklist
+  items={[
+    { name: '性ホルモン', nameEn: 'エストラジオール (E2)、テストステロン (T)、LH、FSH', tag: 'required' },
+    { name: '肝機能', nameEn: 'ALT、AST、ビリルビン', tag: 'required' },
+    { name: '腎機能', nameEn: 'クレアチニン、BUN、eGFR', tag: 'required' },
+    { name: '全血球計算', nameEn: 'CBC（血球分画付き）', tag: 'required' },
+    { name: '凝固検査', nameEn: 'PT、aPTT、INR', tag: 'required' },
+    { name: '代謝パネル', nameEn: '空腹時血糖、脂質プロファイル', tag: 'recommended' },
+    { name: 'プロラクチン', nameEn: 'ベースラインPRL値', tag: 'recommended' },
+  ]}
+  costRange="保険適用外の場合 ¥10,000〜30,000程度（医療機関や検査内容により異なります）"
+/>
+
+<WarningBox title="すでに検査なしでHRTを開始してしまった方へ">
+ベースラインの血液検査を受けずにHRTを始めてしまった場合でも、手遅れではありません。できるだけ早く検査を受けてください。
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> 絶対的禁忌
+
+<ContraindicationBox type="absolute" title="絶対的禁忌" sectionNum="">
+
+- 活動性の血栓塞栓症（例：深部静脈血栓症、肺塞栓症）
+- ホルモン感受性悪性腫瘍の確定診断または疑い（例：乳がん、前立腺がん）
+- 急性期の重度肝障害または腎障害
+- 原因不明の性器出血（トランスマスキュリンの方の場合）
+- 薬剤成分に対する重篤なアレルギーの既往
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> 相対的禁忌
+
+<ContraindicationBox type="relative" title="相対的禁忌" sectionNum="">
+
+- コントロール不良の高血圧または心血管疾患
+- コントロール不良の糖尿病
+- 喫煙（特に35歳以上。VTEリスクが著しく増加します）
+- 胆嚢疾患の既往
+- 前兆を伴う片頭痛（慎重なリスク評価が必要）
+- 重度肥満（BMI &gt; 30）
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> 現実的な期待を持つ
+
+<RealityCheck
+  items={[
+    { text: 'HRTは魔法ではありません。変化は数か月から数年かけて起こります。一晩で劇的な変化を期待しないでください。' },
+    { text: '一部の変化は不可逆的です（例：乳房の発達、声の低音化、陰核の成長）。何が起こるのかを十分に理解した上で始めてください。' },
+    { text: 'HRTにより生殖能力が低下、または永久に失われる可能性があります。開始前に配偶子保存（精子凍結・卵子凍結）を検討してください。' },
+    { text: '気分の変動は正常な副作用です。安定したサポート体制を確保してから開始してください。' },
+  ]}
+/>

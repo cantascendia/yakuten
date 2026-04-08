@@ -1,0 +1,226 @@
+---
+title: HRT経路マップ
+description: ベースライン検査から維持期まで、各段階の目標値、判断ポイント、モニタリングスケジュールを含む包括的なHRT経路。
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+---
+
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  本経路はWPATH SOC 8およびEndocrine Society臨床実践ガイドラインに基づき、トランスフェミニンHRTの開始から維持までの標準的な枠組みを提供します。
+</p>
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: ベースライン ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">WEEK 0</div>
+  <PhaseBlock phase={0} title="ベースライン評価" color="green">
+    <p class="phase-block__desc">
+      投薬開始前に、禁忌の除外と個人の基準値確立のため、包括的なベースライン検査を実施してください。
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        性ホルモン（E2、T、SHBG、LH/FSH）
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        肝機能・腎機能・脂質パネル
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        凝固検査・Dダイマー
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        空腹時血糖・全血球計算（CBC）
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: 低用量開始 ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">開始期 · 1〜6ヶ月</div>
+  <PhaseBlock phase={1} title="低用量での開始" color="green" week="1〜6ヶ月">
+    <DoseTable
+      headers={['投与経路', '開始用量', '出典']}
+      rows={[
+        ['経口エストラジオール', '2.0 mg / 日', 'Endocrine Society 2017'],
+        ['経皮パッチ', '50-100 µg / 24時間', 'Endocrine Society 2017'],
+        ['経皮ジェル', '1.5 mg / 日', 'Endocrine Society 2017'],
+        ['筋注バレレート酸エストラジオール (EV)', '1-2 mg / 週', 'Rothman 2024'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      抗アンドロゲン薬（必要な場合）：酢酸シプロテロン（CPA） 5〜12.5 mg/日 またはスピロノラクトン 50〜100 mg/日
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">目標 E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">目標 T 推移</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; 低下傾向
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        安全上の注意：身体がレセプターの変化に適応するには時間が必要です。血液検査なしで用量を増やさないでください。「何も起きていない」と感じても増量しないでください。乳腺の兆候は通常3〜6ヶ月で現れます。
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3ヶ月目 ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="判断ポイント" timepoint="3ヶ月目">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL かつ T低下傾向 → 現在のレジメンを6ヶ月まで継続"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → フェーズ2の用量へ増量を検討"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="肝機能異常 / PRL >30 / 重度の気分悪化 → 中止し医療機関を受診"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: 用量漸増 ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">漸増期 · 6〜12ヶ月</div>
+  <PhaseBlock phase={2} title="用量漸増" color="yellow" week="6〜12ヶ月">
+    <p class="phase-block__desc">
+      3ヶ月目の検査結果に基づいて調整します。トランスフェミニンの方の標準的な生理的範囲に到達することが目標です。
+    </p>
+    <DoseTable
+      headers={['投与経路', '調整後用量']}
+      rows={[
+        ['経皮パッチ', '100-200 µg / 日'],
+        ['経口エストラジオール', '4 mg / 日'],
+        ['経皮ジェル', '3 mg / 日'],
+        ['筋注バレレート酸エストラジオール (EV)', '2-4 mg / 週'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">目標 E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">目標 T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">プロゲステロン（任意）</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          乳房の発達段階に応じて検討（Tanner 3以上）
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">筋注 E2V 2-4 mg/週</span>
+      <span class="dose-tag dose-tag--yellow">経皮ジェル 3.0-4.5 mg/日</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6ヶ月目 ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="安定性評価" timepoint="6ヶ月目">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL かつ T <50 ng/dL → 維持期へ移行"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 だが E2 は目標範囲内 → 抗アンドロゲン薬を調整（Tを抑制するためにE2を増量しないこと）"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → 安全な範囲内で増量を継続"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: 維持期 ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">定常状態 · 12ヶ月以降</div>
+  <PhaseBlock phase={3} title="長期維持" color="pink" week="12ヶ月以降">
+    <p class="phase-block__desc">
+      ホルモン値と身体的変化が安定したら、低頻度のモニタリングに移行します。E2 100-200 pg/mL、T &lt;50 ng/dLを維持するための最小有効用量を継続してください。
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">モニタリング頻度</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">ヶ月</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          6ヶ月ごとにホルモンパネルおよびVTEリスク因子の評価。年1回の脂質・空腹時血糖検査。骨密度検査も検討してください。
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mLでは女性化がさらに促進されることはありません。リスクが増加するだけです（Endocrine Society 2017, Rec 2.2）
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">初期フェーズ終了</p>
+    <p class="pathway-end-sub">システム稼働中 | モニタリング継続</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+---
+
+**出典**: Hembree et al. 2017 (Endocrine Society); Coleman et al. 2022 (WPATH SOC 8); UCSF Transgender Care Guidelines; Rothman 2024.

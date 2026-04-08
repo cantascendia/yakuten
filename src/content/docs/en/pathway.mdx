@@ -1,0 +1,226 @@
+---
+title: HRT Clinical Pathway
+description: Complete HRT pathway from baseline labs to maintenance, including stage goals, decision nodes, and monitoring schedules.
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+---
+
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  This pathway is based on WPATH SOC 8 and Endocrine Society Clinical Practice Guidelines, providing a standardized framework for transfeminine HRT initiation and maintenance.
+</p>
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">WEEK 0</div>
+  <PhaseBlock phase={0} title="Baseline Assessment" color="green">
+    <p class="phase-block__desc">
+      Before starting any medication, complete a full baseline panel to rule out contraindications and establish your personal reference values.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Sex hormones (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Hepatic & renal function, lipid panel
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Coagulation panel & D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Fasting glucose + CBC
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">INITIATION · 1-6 MONTHS</div>
+  <PhaseBlock phase={1} title="Low-Dose Initiation" color="green" week="1-6 MONTHS">
+    <DoseTable
+      headers={['Route', 'Starting Dose', 'Source']}
+      rows={[
+        ['Oral estradiol', '2.0 mg / day', 'Endocrine Society 2017'],
+        ['Transdermal patch', '50-100 µg / 24h', 'Endocrine Society 2017'],
+        ['Topical gel', '1.5 mg / day', 'Endocrine Society 2017'],
+        ['IM estradiol valerate', '1-2 mg / week', 'Rothman 2024'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Anti-androgen (if needed): CPA 5-12.5 mg/day or spironolactone 50-100 mg/day
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target T Trend</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Declining
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Safety warning: Your body needs time to adapt to receptor changes. Never increase dose without blood work. Do not escalate even if you feel "nothing is happening." Breast bud signals typically appear at 3-6 months.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="DECISION" timepoint="3 MONTH">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL and T declining → Continue current regimen to 6 months"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Consider escalating to Phase 2 dosing"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Abnormal LFTs / PRL >30 / severe mood deterioration → Stop and seek medical care"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 MONTHS</div>
+  <PhaseBlock phase={2} title="Dose Titration" color="yellow" week="6-12 MONTHS">
+    <p class="phase-block__desc">
+      Adjust based on 3-month lab results. The goal is to reach the standard physiologic range for transfeminine individuals.
+    </p>
+    <DoseTable
+      headers={['Route', 'Adjusted Dose']}
+      rows={[
+        ['Transdermal patch', '100-200 µg / day'],
+        ['Oral estradiol', '4 mg / day'],
+        ['Topical gel', '3 mg / day'],
+        ['IM estradiol valerate', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesterone (optional)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Consider based on breast development (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">Topical gel 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="STABILITY" timepoint="6 MONTH">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL and T <50 ng/dL → Enter maintenance phase"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 but E2 on target → Adjust anti-androgen (do not increase E2 to suppress T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Continue escalation within safe limits"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 MONTHS+</div>
+  <PhaseBlock phase={3} title="Long-Term Maintenance" color="pink" week="12 MONTHS+">
+    <p class="phase-block__desc">
+      Once levels and physical changes stabilize, transition to low-frequency monitoring. Maintain the minimum effective dose to keep E2 100-200 pg/mL, T &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Monitoring Frequency</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Months</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Full hormone panel and VTE risk factors every 6 months. Annual lipids and fasting glucose. Consider bone density screening.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL does not produce more feminization — it only increases risk (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">END OF INITIAL PHASE</p>
+    <p class="pathway-end-sub">System Active | Monitoring Continued</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+---
+
+**Sources**: Hembree et al. 2017 (Endocrine Society); Coleman et al. 2022 (WPATH SOC 8); UCSF Transgender Care Guidelines; Rothman 2024.

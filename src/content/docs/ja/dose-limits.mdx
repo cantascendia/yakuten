@@ -1,0 +1,195 @@
+---
+title: 用量レッドラインと併用禁忌
+description: 各HRT薬剤の最大用量、危険な薬物の組み合わせ、およびよく見られる安全でないレジメン。レッドラインを超えても女性化は早まりません。リスクが増加するだけです。
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
+---
+
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<WarningBox title="このページの要点">
+これらの用量を超えても、女性化は早まりません。エビデンスによると、E2値100-200 pg/mLで十分な女性化が達成されます<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。200 pg/mLを超えても追加の利益はなく、VTE、肝障害などのリスクのみが増加します。
+</WarningBox>
+
+## 4.1 最大用量一覧
+
+以下の最大用量は、国際ガイドラインおよび査読付き文献に基づいています。これらの上限を超えた場合、リスクとベネフィットの比率は一般的に不利になります。
+
+### エストロゲン製剤
+
+<DoseTable
+  headers={['薬剤名', '最大日用量/週用量', '備考', '出典']}
+  rows={[
+    ['経皮パッチ', '400 \u00b5g/日', '単独療法のみ。通常200 \u00b5g/日で十分', 'ES 2017'],
+    ['経口エストラジオール (E2)', '8 mg/日', '多くの患者は4 mg/日で目標値に到達', 'WPATH SOC 8'],
+    ['経口バレレート酸エストラジオール', '10 mg/日', '\u2248 エストラジオール7.5 mg相当', 'WPATH SOC 8'],
+    ['経皮ジェル', '6 mg/日', '吸収率に個人差が大きい。血中濃度で用量調整', 'ES 2017'],
+    ['筋注バレレート酸エストラジオール (EV)', '5 mg/週', '推奨上限。1回の注射で10 mg以上は禁忌', 'Rothman 2024'],
+  ]}
+/>
+
+<WarningBox title={'「最大用量」について'}>
+「最大用量」は「推奨用量」ではありません。多くの患者は最大用量をはるかに下回る用量で目標E2値100-200 pg/mLに到達します<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。用量調整は常に検査結果に基づいて行うべきであり、自己判断で上限まで増量すべきではありません。
+</WarningBox>
+
+### 抗アンドロゲン薬
+
+<DoseTable
+  headers={['薬剤名', '最大日用量', '備考', '出典']}
+  rows={[
+    ['酢酸シプロテロン (CPA)', '12.5 mg/日', '25 mg以上で髄膜腫リスクが急激に上昇。EMA 2020で制限', 'Lee 2022; EMA 2020'],
+    ['スピロノラクトン', '200 mg/日', '高用量でも抗アンドロゲン効果の追加はわずかだが、高カリウム血症リスクが著しく増加', 'ES 2017; UCSF'],
+    ['ビカルタミド', '50 mg/日', '適応外使用。ルーチンのGAHTには推奨されない', 'ES 2017'],
+  ]}
+/>
+
+各薬剤の詳細な薬理学については、個別の薬剤ページを参照してください。
+
+### 用量とリスクの関係
+
+基本原則：**用量が増加するにつれ、ベネフィットは頭打ちになる一方、リスクは不均衡に上昇します**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+
+- **エストラジオール**：E2を100から200 pg/mLに上げても女性化の効果はわずかですが、200から400 pg/mLではほぼ追加の利益がなく、VTEリスクのみが著しく上昇します<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
+- **CPA**：5 mgと50 mgでT抑制効果はほぼ同等ですが、50 mgでは髄膜腫リスクが10倍以上に増加します<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
+- **スピロノラクトン**：100から200 mgへの増量では抗アンドロゲン効果の追加は限定的ですが、高カリウム血症リスクは著しく増加します<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+
+---
+
+## 4.2 危険な薬物の組み合わせ
+
+### 禁忌の組み合わせ
+
+<DangerBox title="CPA + ビカルタミド → 絶対禁忌">
+CPAとビカルタミドはいずれも肝毒性を有します<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。併用は肝障害リスクを相乗的に増大させ、重篤な肝不全を引き起こす可能性があります。両者の抗アンドロゲン作用機序は異なり（CPAはプロゲスターゲン性負のフィードバック、ビカルタミドはアンドロゲン受容体拮抗）、併用による相乗効果はありません。
+
+**両方を服用している場合は、いずれか一方に切り替えるよう主治医に相談してください。**
+</DangerBox>
+
+<DangerBox title="エチニルエストラジオール (EE) + いかなるHRTレジメン → 絶対禁忌">
+エチニルエストラジオールは多くの配合経口避妊薬に含まれる合成エストロゲンです。そのVTEリスクは生体同一性エストラジオールの約**20倍**です<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。EEはトランスフェミニンHRTのいかなる段階、いかなる形態、いかなる用量でも使用してはなりません。
+
+配合経口避妊薬（例：EE + CPAを含むもの。日本ではダイアン-35がよく知られています）は**HRTではありません**。含有されるCPAの用量はTを効果的に抑制するには不十分であり、EE成分は許容できないVTEリスクを伴います。下記の「よく見られる安全でないレジメン」を参照してください。
+</DangerBox>
+
+<DangerBox title="いかなるエストロゲン + 喫煙 → 禁忌">
+エストロゲンと喫煙の併用はVTEリスクを相乗的に増大させます<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。35歳以上の喫煙者にとって、経口エストロゲンは**絶対禁忌**です<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+
+- 禁煙が困難な場合は、**経皮投与**（パッチまたはジェル）を選択してください。経皮投与は経口投与に比べてVTEリスクがはるかに低くなります<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- 経皮投与であっても喫煙は心血管リスクを増加させます。禁煙が最も重要なハームリダクション対策です
+</DangerBox>
+
+### 注意が必要な組み合わせ
+
+<WarningBox title="CPA + 経口エストラジオール → 注意が必要。経皮投与が望ましい">
+CPAには凝固促進作用があり、経口エストラジオールの肝初回通過代謝もVTEリスクを増加させます<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。併用するとVTEリスクが相乗的に増加します。
+
+**推奨事項**：CPAを抗アンドロゲン薬として使用する場合、VTEリスクの蓄積を避けるため経皮エストラジオール投与（パッチまたはジェル）を選択してください<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。経口エストラジオールしか入手できない場合は、CPAを最小有効用量（5 mg/日以下）に抑え、DVT症状を注意深く観察してください。
+</WarningBox>
+
+<DangerBox title="スピロノラクトン + カリウムサプリメントまたは高カリウム食品 → 高カリウム血症リスク">
+スピロノラクトンはカリウム保持性利尿薬であり、血清カリウム値を上昇させます<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。カリウムサプリメントや過剰な高カリウム食品との併用は**高カリウム血症**（K&#x207a; > 5.5 mmol/L）を引き起こし、致死的な不整脈につながる可能性があります。
+
+**スピロノラクトン服用中の注意事項：**
+- カリウムサプリメントを避けてください（一部の減塩調味料にも含まれます）
+- 高カリウム食品の摂取を控えめにしてください（バナナ、ココナッツウォーター、トマト製品など）
+- **定期的に血清カリウムを検査してください**（最初の3ヶ月は毎月、その後は3〜6ヶ月ごと）
+- K&#x207a; > 5.5 mmol/Lの場合：スピロノラクトンを中止し、医療機関を受診してください
+
+**警告サイン**：筋力低下、動悸、手足のしびれ → 高カリウム血症の可能性があります。緊急に電解質検査を受けてください。
+</DangerBox>
+
+### クイックリファレンス表
+
+<DoseTable
+  headers={['組み合わせ', 'リスクレベル', '主な危険性']}
+  rows={[
+    ['CPA + ビカルタミド', '\ud83d\udd34 禁忌', '肝毒性の相乗作用'],
+    ['エチニルエストラジオール (EE) + いかなるレジメン', '\ud83d\udd34 禁忌', 'VTEリスク ≒ 生体同一性E2の20倍'],
+    ['いかなるエストロゲン + 喫煙', '\ud83d\udd34 禁忌', 'VTEリスクの相乗的増大'],
+    ['スピロノラクトン + K\u207aサプリメント', '\ud83d\udd34 危険', '高カリウム血症 → 不整脈 → 突然死'],
+    ['CPA + 経口エストラジオール', '\ud83d\udfe1 注意', 'VTEリスクの相乗作用。経皮E2が望ましい'],
+  ]}
+/>
+
+---
+
+## 4.3 よく見られる安全でないレジメン
+
+以下は、オンラインのトランスジェンダーコミュニティで広く共有されているものの、臨床ガイドラインから著しく逸脱しているレジメンです。
+
+### 配合経口避妊薬のHRTとしての使用
+
+<DangerBox title="配合経口避妊薬はHRTではありません">
+エチニルエストラジオール (EE) と低用量CPAまたはその他のプロゲスチンを含む配合経口避妊薬がHRTとして誤用されることがあります。日本では特にダイアン-35（酢酸シプロテロン2 mg + エチニルエストラジオール35 µg）が知られていますが、**これは有効な女性化レジメンではありません**<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
+
+**なぜ誤りなのか：**
+
+- **エチニルエストラジオールのVTEリスクは生体同一性エストラジオールの約20倍**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- 経口避妊薬に含まれるCPA用量（約2 mg）は成人のテストステロン値を効果的に抑制するには不十分
+- EEはE2血液検査の精度に干渉します（検査は生体同一性E2を測定するため、EEの活性を反映しません）
+- Endocrine Society 2017およびWPATH SOC 8はいずれも、GAHTにエチニルエストラジオールを使用**しないよう**明示的に勧告しています<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />
+
+**代わりに行うべきこと**：生体同一性17β-エストラジオールを経口、経皮（パッチ/ジェル）、または注射で使用してください。現在、配合経口避妊薬をHRTとして使用している場合は、できるだけ早く標準的なレジメンに移行してください。
+</DangerBox>
+
+### CPA 50 mg/日の使用
+
+<DangerBox title="CPA 50 mgはGAHTにおいて重大な過量投与です">
+コミュニティで広く共有されるレジメンの多くがCPAを50 mg/日で使用していますが、これは**前立腺がん治療用の用量**であり、GAHT用の用量ではありません<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />。
+
+**なぜ誤りなのか：**
+
+- 研究では5〜12.5 mg/日で女性の範囲までTが効果的に抑制されることが示されています<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />
+- 50 mgと12.5 mgのT抑制効果の差はわずかですが、**50 mgでの髄膜腫リスクは10倍以上**に増加します<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} />
+- EMA（欧州医薬品庁）は2020年にCPA 25 mg/日以上の使用に制限を設けました<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+- 高用量は肝毒性、うつ症状、プロラクチン上昇のリスクも増加させます
+
+**対処法**：CPAは5〜12.5 mg/日で使用してください（50 mg錠を4分割）。現在50 mgを服用している場合は、エストラジオールの用量を維持しながら段階的に減量してください（50→25→12.5、各段階2週間）<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
+</DangerBox>
+
+### 最大用量からの開始
+
+<WarningBox title={'低用量からの開始は「時間の無駄」ではありません'}>
+コミュニティの一部では、「低用量は意味がない」として最初から最大用量で開始することを勧める意見がありますが、これは誤りです<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+
+**なぜ誤りなのか：**
+
+- 低用量期を省略すると**乳腺の早期癒合**を引き起こす可能性があります。高いE2値は終末分化を早期に促進し、乳管分岐を停止させ、乳房の発達がTanner III-IVで**不可逆的に**停滞する原因となります<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
+- 低用量での開始により、初期反応の観察や、肝機能異常・気分変動の早期発見が可能になります
+- シスジェンダー女性の思春期も非常に低いE2値から始まり、数年かけて徐々に上昇します
+- Endocrine Society 2017は低用量から開始し、検査結果に基づいて3〜6ヶ月ごとに漸増することを推奨しています<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+
+**対処法**：経口エストラジオール2 mg/日、または筋注EV 1-2 mg/週から開始してください。3〜6ヶ月後に検査結果に基づいて調整します。最初の6ヶ月はE2目標値を50-100 pg/mLに維持してください。「何も起きていない」と感じても増量しないでください。乳腺の発達は通常3〜6ヶ月後に始まります。
+</WarningBox>
+
+### 「E2が高い方が結果が良い」という誤解
+
+<WarningBox title="E2値が高いほど女性化が促進されるわけではありません">
+血清E2値が高いほど女性化の結果が良くなるという考えは、臨床的エビデンスに裏付けられていません<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+
+**なぜ誤りなのか：**
+
+- Endocrine Society 2017はE2を100-200 pg/mLに維持することを推奨しています<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。これはシスジェンダー女性の生理的範囲に基づいています
+- E2を200から400 pg/mLに上げても有意な追加の女性化効果はありませんが、VTEリスクは著しく増加します<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- 慢性的な超生理学的E2値は心血管イベント、片頭痛、気分の不安定化のリスクも増加させる可能性があります
+- 注射剤使用者の場合、ピークE2値は200 pg/mLを超えることがあります。用量決定には**トラフ値**（次の注射前の最低値）を使用してください
+
+**対処法**：トラフE2値100-200 pg/mL、T < 50 ng/dLを目標にしてください<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。トラフ値が範囲内でTが抑制されていれば、増量しないでください。より高い数値を追い求めても、利益なくリスクだけが増加します。
+</WarningBox>
+
+---
+
+## まとめ
+
+<WarningBox title="3つの安全原則">
+1. **最大用量のレッドラインを超えないでください** — 用量を上げても効果は改善せず、リスクだけが増加します
+2. **禁忌の薬物併用を避けてください** — 特に肝毒性とVTEリスクの相乗作用に注意してください
+3. **用量調整は検査結果に基づいて行ってください** — 感覚で判断せず、他者のレジメンと比較せず、より高い数値を追い求めないでください
+
+現在のレジメンにこれらの問題がある場合、慌てる必要はありませんが、できるだけ早く調整してください。標準的な段階的アプローチについては[HRT経路マップ](/ja/pathway/)を参照するか、ジェンダークリニック・内分泌科の専門医に相談してください。
+</WarningBox>

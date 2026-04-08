@@ -1,0 +1,190 @@
+---
+title: リスクと緊急時の対応
+description: HRTの既知のリスク、直ちに医療機関の受診が必要な症状、および危機支援リソース。
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+---
+
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+HRTの安全性プロファイルは全体として良好ですが、稀に起こりうる重篤な合併症を認識することは、ホルモン療法を受けるすべての方にとって不可欠です。以下のデータは臨床観察と薬理学的分析に基づいています。
+
+## 7.1 HRTの既知のリスク
+
+<div class="risk-grid">
+  <RiskCard
+    title="深部静脈血栓症 (DVT)"
+    category="緊急リスク"
+    severity="red"
+    drug="経口エストラジオール (E2)"
+    probability="年間 < 0.5%"
+    signs="片側の下腿の発赤、腫脹、熱感、激痛。"
+  />
+
+  <RiskCard
+    title="肝障害"
+    category="肝臓リスク"
+    severity="red"
+    drug="CPA / 経口薬"
+    probability="まれ（肝機能検査でモニタリング）"
+    signs="眼球・皮膚の黄変、暗色尿、極度の疲労感。"
+  />
+
+  <RiskCard
+    title="心血管系合併症"
+    category="心臓リスク"
+    severity="orange"
+    drug="全てのE2製剤"
+    probability="加齢・喫煙で上昇"
+    signs="動悸、原因不明の胸部圧迫感。"
+  />
+
+  <RiskCard
+    title="髄膜腫"
+    category="神経リスク"
+    severity="red"
+    drug="高用量CPA"
+    probability="累積投与量 > 10g"
+    signs="視力の変化、聴力低下、通常と異なる頭痛。"
+  />
+
+  <RiskCard
+    title="気分変動・抑うつ"
+    category="精神リスク"
+    severity="yellow"
+    drug="CPA / 低E2値"
+    probability="比較的多い (5-15%)"
+    signs="希死念慮、原因不明の涙、意欲の喪失。"
+  />
+
+  <RiskCard
+    title="プロラクチン上昇"
+    category="内分泌リスク"
+    severity="yellow"
+    drug="エストラジオール / CPA"
+    probability="定期的なモニタリングが必要"
+    signs="乳頭分泌物、持続する激しい頭痛。"
+  />
+</div>
+
+## 7.2 直ちに医療機関の受診が必要な症状
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="直ちに医療機関の受診が必要な症状">
+
+**以下のいずれかの症状が現れた場合は、HRTを中止し、最寄りの救急外来を受診してください：**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">片側のふくらはぎの腫脹または疼痛</strong> — 深部静脈血栓症（DVT）の可能性があります
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">突然の胸痛または喀血</strong> — 肺塞栓症の可能性があります
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">片側の脱力感または顔面の垂れ下がり</strong> — 脳卒中の警告サインの可能性があります
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">皮膚や白目の黄変</strong> — 急性肝障害の可能性があります
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">突然の激しい頭痛と視力低下</strong> — 頭蓋内圧亢進の可能性があります
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 危機支援・相談窓口
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="危機支援ホットライン">
+
+### 助けが必要ですか？
+
+深刻な精神的苦痛や自傷行為の衝動を感じている場合は、すぐに以下の相談窓口に連絡してください。あなたは一人ではありません。
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">よりそいホットライン</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:0120-279-338" style="color: var(--color-primary); text-decoration: none;">0120-279-338</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">24時間対応・無料 / セクシュアルマイノリティ専用は#4</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">いのちの電話</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:0120-783-556" style="color: var(--color-primary); text-decoration: none;">0120-783-556</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">毎日16時〜21時・毎月10日は8時〜翌8時</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">救急</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:119" style="color: var(--color-danger); text-decoration: none;">119</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">救急車・消防（日本全国共通）</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**海外の相談窓口：**
+- **US**: Trans Lifeline — 877-565-8860（トランスジェンダー当事者による運営）
+- **US**: 988 Suicide & Crisis Lifeline — 988（24時間対応）
+- **Canada**: Trans Lifeline — 877-330-6366
+- **UK**: Samaritans — 116 123（無料、24時間対応）
+- **Australia**: Lifeline — 13 11 14
+- **国際**: [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+`}</style>
