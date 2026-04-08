@@ -26,7 +26,7 @@ const cards: CardData[] = [
   {
     title: t(locale, 'action.notStarted.title'),
     description: t(locale, 'action.notStarted.desc'),
-    cta: 'Explore Baseline',
+    cta: t(locale, 'action.notStarted.cta'),
     href: `${prefix}/before-you-start/`,
     color: 'safe',
     icon: 'clipboard',
@@ -34,7 +34,7 @@ const cards: CardData[] = [
   {
     title: t(locale, 'action.onHRT.title'),
     description: t(locale, 'action.onHRT.desc'),
-    cta: 'Trace Pathway',
+    cta: t(locale, 'action.onHRT.cta'),
     href: `${prefix}/pathway/`,
     color: 'primary',
     icon: 'pathway',
@@ -42,7 +42,7 @@ const cards: CardData[] = [
   {
     title: t(locale, 'action.problem.title'),
     description: t(locale, 'action.problem.desc'),
-    cta: 'Emergency Action',
+    cta: t(locale, 'action.problem.cta'),
     href: `${prefix}/risks/`,
     color: 'danger',
     icon: 'alert',

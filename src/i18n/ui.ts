@@ -27,9 +27,16 @@ export const ui = {
     'action.onHRT.desc': '查看你的用药路径图，追踪生理变化指标，优化长期健康管理方案。',
     'action.problem.title': '我觉得身体出了问题',
     'action.problem.desc': '识别危险信号，掌握紧急自救指南。生命安全永远是首要准则。',
+    'action.notStarted.cta': '查看基线检查',
+    'action.onHRT.cta': '进入路径图',
+    'action.problem.cta': '紧急行动指南',
     'action.ariaLabel': '快速入口',
 
+    // HeroSection
+    'hero.subtitle': '循証 · 减害 · 引导就医',
+
     // MissionStatement
+    'mission.label': '严峻现实',
     'mission.ariaLabel': '使命声明',
     'mission.stat.before': '在中国，超过',
     'mission.stat.number': '84%',
@@ -47,7 +54,7 @@ export const ui = {
     'footer.disclaimer.title': '免责声明',
     'footer.disclaimer.text': '本站内容仅供参考，不构成医疗建议。在开始任何激素治疗前，请务必咨询专业医疗人员。',
     'footer.privacy.title': '隐私权协议',
-    'footer.privacy.text': '我们重视您的隐私，采用去中心化存储技术，确保您的浏览记录不被非法追踪。',
+    'footer.privacy.text': '我们重视您的隐私，不收集、不存储任何个人数据。所有工具均在浏览器本地运行，浏览记录不被追踪。',
     'footer.sources.title': '药理来源',
     'footer.sources.text': '所有数据均来自 WPATH SOC8 指南及经过同行评审的最新内分泌学研究论文。',
     'footer.dev.title': '开发者文档',
@@ -55,6 +62,10 @@ export const ui = {
     'footer.brand': 'HRT药典',
     'footer.notice': '本站不提供处方、不销售药物、不收集个人信息。',
     'footer.navLabel': '底部链接',
+    'footer.link.privacy': '隐私政策',
+    'footer.link.disclaimer': '免责声明',
+    'footer.link.github': '开源项目',
+    'footer.copy': 'HRT药典 · 循証 · 减害 · 引导就医',
   },
 
   en: {
@@ -79,9 +90,16 @@ export const ui = {
     'action.onHRT.desc': 'Follow the clinical pathway, track your levels, and optimize your regimen for long-term health.',
     'action.problem.title': 'Something feels wrong',
     'action.problem.desc': 'Recognize danger signs and know when to seek emergency care. Your safety always comes first.',
+    'action.notStarted.cta': 'Explore Baseline',
+    'action.onHRT.cta': 'Trace Pathway',
+    'action.problem.cta': 'Emergency Action',
     'action.ariaLabel': 'Quick start',
 
+    // HeroSection
+    'hero.subtitle': 'Evidence-Based · Harm Reduction · Guided Care',
+
     // MissionStatement
+    'mission.label': 'The Critical Reality',
     'mission.ariaLabel': 'Mission statement',
     'mission.stat.before': 'Worldwide, countless transgender people on HRT lack access to',
     'mission.stat.number': 'any',
@@ -107,6 +125,10 @@ export const ui = {
     'footer.brand': 'HRT Yakuten',
     'footer.notice': 'This site does not prescribe medications, sell drugs, or collect personal information.',
     'footer.navLabel': 'Footer links',
+    'footer.link.privacy': 'Privacy Policy',
+    'footer.link.disclaimer': 'Medical Disclaimer',
+    'footer.link.github': 'GitHub Project',
+    'footer.copy': 'HRT Yakuten · Evidence-Based · Harm Reduction',
   },
 
   ja: {
@@ -131,9 +153,16 @@ export const ui = {
     'action.onHRT.desc': '経路マップを確認し、血液検査の数値を追跡し、長期的な健康管理を最適化しましょう。',
     'action.problem.title': '体に異変を感じている',
     'action.problem.desc': '危険な兆候を見分け、緊急時の対応を把握しましょう。安全が最優先です。',
+    'action.notStarted.cta': 'ベースラインを確認',
+    'action.onHRT.cta': '経路マップへ',
+    'action.problem.cta': '緊急対応ガイド',
     'action.ariaLabel': 'クイックスタート',
 
+    // HeroSection
+    'hero.subtitle': 'エビデンス · 害軽減 · 医療ガイド',
+
     // MissionStatement
+    'mission.label': '深刻な現実',
     'mission.ariaLabel': 'ミッションステートメント',
     'mission.stat.before': '世界中で、HRTを使用するトランスジェンダーの多くが',
     'mission.stat.number': '適切な',
@@ -159,6 +188,10 @@ export const ui = {
     'footer.brand': 'HRT药典',
     'footer.notice': '本サイトは処方箋の発行、薬物の販売、個人情報の収集を一切行いません。',
     'footer.navLabel': 'フッターリンク',
+    'footer.link.privacy': 'プライバシーポリシー',
+    'footer.link.disclaimer': '免責事項',
+    'footer.link.github': 'オープンソース',
+    'footer.copy': 'HRT药典 · エビデンス · 害軽減 · 医療ガイド',
   },
 } as const;
 

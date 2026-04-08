@@ -49,12 +49,12 @@ const columns: FooterColumn[] = [
         {t(locale, 'footer.notice')}
       </p>
       <nav class="site-footer__links" aria-label={t(locale, 'footer.navLabel')}>
-        <a href="/zh/about/">PRIVACY POLICY</a>
-        <a href="/zh/about/">MEDICAL DISCLAIMER</a>
-        <a href="https://github.com" rel="noopener noreferrer" target="_blank">GITHUB PROJECT</a>
+        <a href={`/${locale}/about/`}>{t(locale, 'footer.link.privacy')}</a>
+        <a href={`/${locale}/about/`}>{t(locale, 'footer.link.disclaimer')}</a>
+        <a href="https://github.com/Loveil381/yakuten" rel="noopener noreferrer" target="_blank">{t(locale, 'footer.link.github')}</a>
       </nav>
       <p class="site-footer__copy">
-        THE CELESTIAL PHARMACOPEIA.
+        {t(locale, 'footer.copy')}
       </p>
     </div>
   </div>

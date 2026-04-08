@@ -14,7 +14,7 @@ const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
     <div class="mission__accent-bar" aria-hidden="true"></div>
     <div class="mission__content">
       <div class="mission__stat-block">
-        <p class="mission__label">The Critical Reality</p>
+        <p class="mission__label">{t(locale, 'mission.label')}</p>
         <h2 class="mission__headline">
           {t(locale, 'mission.stat.before')}
           <span class="mission__stat">{t(locale, 'mission.stat.number')}</span>

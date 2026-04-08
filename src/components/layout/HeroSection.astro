@@ -18,7 +18,7 @@ interface Props {
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
 const {
-  subtitle = 'THE CELESTIAL PHARMACOPEIA',
+  subtitle = t(locale, 'hero.subtitle'),
   title = t(locale, 'hero.title'),
   slogan = t(locale, 'hero.slogan'),
 } = Astro.props;
