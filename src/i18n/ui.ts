@@ -33,7 +33,7 @@ export const ui = {
     'action.ariaLabel': '快速入口',
 
     // HeroSection
-    'hero.subtitle': '循証 · 减害 · 引导就医',
+    'hero.subtitle': '循证 · 减害 · 引导就医',
 
     // MissionStatement
     'mission.label': '严峻现实',
@@ -65,7 +65,7 @@ export const ui = {
     'footer.link.privacy': '隐私政策',
     'footer.link.disclaimer': '免责声明',
     'footer.link.github': '开源项目',
-    'footer.copy': 'HRT药典 · 循証 · 减害 · 引导就医',
+    'footer.copy': 'HRT药典 · 循证 · 减害 · 引导就医',
   },
 
   en: {
