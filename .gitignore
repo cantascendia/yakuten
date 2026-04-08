@@ -32,3 +32,4 @@ stitch-prompts.md
 *.zip
 
 .vercel
+.env*.local

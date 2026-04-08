@@ -13,11 +13,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.59",
     "@astrojs/check": "^0.9.8",
     "@astrojs/react": "^5.0.3",
     "@astrojs/starlight": "^0.38.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "ai": "^6.0.149",
     "astro": "^6.0.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

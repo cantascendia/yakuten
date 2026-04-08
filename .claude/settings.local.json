@@ -10,7 +10,14 @@
       "Bash(npx astro:*)",
       "Bash(npm i:*)",
       "Bash(xxd -l 200 -s 1050 C:/projects/yakuten/src/content/docs/zh/dose-limits.mdx)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(npx vercel:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/zh/tools/hospital-finder/)",
+      "Bash(git -C /c/projects/yakuten log --oneline -15)",
+      "Bash(git -C /c/projects/yakuten diff --stat HEAD)",
+      "Bash(git -C /c/projects/yakuten status --short)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
     ]
   }
 }
