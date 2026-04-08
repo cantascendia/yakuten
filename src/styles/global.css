@@ -66,7 +66,18 @@
 
   /* 圆角 — DESIGN.md: Roundedness Scale is strictly 0px */
   --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
   --radius-full: 9999px;
+
+  /* 边框色 */
+  --color-border: var(--color-outline-20);
+
+  /* 白色文字 (用于深色背景上的文字) */
+  --color-text-on-dark: #FFFFFF;
+
+  /* 低风险黄色 */
+  --color-warning-low: #FFEB3B;
 
   /* 过渡 */
   --transition-fast: 0.15s ease;
@@ -159,7 +170,7 @@ code, pre {
 }
 
 .hero-gradient-text {
-  background: linear-gradient(135deg, #C84B7C, #E76395, #D4A853);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
