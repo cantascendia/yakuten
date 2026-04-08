@@ -101,9 +101,7 @@ function computeConcentrationCurve(
   doseMg: number,
   intervalDays: number,
   totalDays: number,
-  pointsPerDay: number = 24,
 ): { time: number; conc: number }[] {
-  const dt = 1 / pointsPerDay; // hours = 1/24 day
   const totalHours = totalDays * 24;
   const intervalHours = intervalDays * 24;
   const ke = 0.693 / drug.halfLifeHours;

@@ -9,6 +9,8 @@ interface Props {
   class?: string;
 }
 
+import hotlines from '../../data/hotlines.json';
+
 const { class: className = '' } = Astro.props;
 ---
 
@@ -19,23 +21,20 @@ const { class: className = '' } = Astro.props;
   </div>
 
   <div class="crisis-hotline__grid">
-    <a href="tel:400-161-9995" class="crisis-hotline__card ghost-border">
-      <span class="crisis-hotline__label">24h Crisis Support</span>
-      <span class="crisis-hotline__number">400-161-9995</span>
-      <span class="crisis-hotline__name">希望 24 热线</span>
-    </a>
-
-    <a href="tel:010-8484-8888" class="crisis-hotline__card ghost-border">
-      <span class="crisis-hotline__label">LGBTQ+ Specific</span>
-      <span class="crisis-hotline__number">010-8484-8888</span>
-      <span class="crisis-hotline__name">同志热线</span>
-    </a>
-
-    <a href="tel:120" class="crisis-hotline__card ghost-border">
-      <span class="crisis-hotline__label">General Emergency</span>
-      <span class="crisis-hotline__number">120</span>
-      <span class="crisis-hotline__name">医疗救护中心</span>
-    </a>
+    {hotlines.map((hotline) => (
+      <a
+        href={hotline.href}
+        class="crisis-hotline__card ghost-border"
+        data-verification-level={hotline.verificationLevel}
+        data-last-verified={hotline.lastVerified}
+        data-scope={hotline.scope}
+        title={`${hotline.name} · ${hotline.scope} · ${hotline.hours}`}
+      >
+        <span class="crisis-hotline__label">{hotline.label}</span>
+        <span class="crisis-hotline__number">{hotline.number}</span>
+        <span class="crisis-hotline__name">{hotline.name}</span>
+      </a>
+    ))}
   </div>
 </div>
 

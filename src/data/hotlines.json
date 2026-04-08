@@ -1,0 +1,41 @@
+[
+  {
+    "id": "national-mental-health-12356",
+    "label": "National Mental Health",
+    "name": "全国统一心理援助热线",
+    "number": "12356",
+    "href": "tel:12356",
+    "scope": "全国",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-04-08",
+    "sourceTitle": "首都之窗：12356！“没事儿”热线如何解“心事”？",
+    "sourceUrl": "https://www.beijing.gov.cn/fuwu/bmfw/jhsyfwzdzx/2025gjjtr/xgxx/202505/t20250508_4084704.html"
+  },
+  {
+    "id": "hope24-4001619995",
+    "label": "24h Crisis Support",
+    "name": "希望24热线",
+    "number": "400-161-9995",
+    "href": "tel:400-161-9995",
+    "scope": "全国",
+    "hours": "24h",
+    "verificationLevel": "government-source",
+    "lastVerified": "2026-04-08",
+    "sourceTitle": "内蒙古“希望24热线”开通：24小时全天候守护生命希望",
+    "sourceUrl": "https://ljt.als.gov.cn/art/2019/10/18/art_1723_222879.html"
+  },
+  {
+    "id": "medical-emergency-120",
+    "label": "General Emergency",
+    "name": "医疗急救电话",
+    "number": "120",
+    "href": "tel:120",
+    "scope": "全国",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-04-08",
+    "sourceTitle": "国家卫生健康委员会：院前医疗急救管理办法",
+    "sourceUrl": "https://www.nhc.gov.cn/wjw/c100221/202201/26ea3c97e82d466f9aa2b4a9901ae187/files/%E9%99%A2%E5%89%8D%E5%8C%BB%E7%96%97%E6%80%A5%E6%95%91%E7%AE%A1%E7%90%86%E5%8A%9E%E6%B3%95.pdf"
+  }
+]

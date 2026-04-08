@@ -22,65 +22,77 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 ## 7.1 HRT 的已知风险
 
 <div class="risk-grid">
-  <RiskCard
-    title="深静脉血栓 (DVT)"
-    category="Emergency Risk"
-    severity="red"
-    drug="口服雌二醇 (E2)"
-    probability="< 0.5% (年度)"
-    signs="单侧下腿红肿、发热、剧痛。"
-  />
-  <p class="risk-citation">口服雌二醇的 VTE 风险显著高于经皮途径<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} title="Hormone therapy and venous thromboembolism" />。年发生率约 0.2-0.5%，吸烟和高龄进一步增加风险。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="深静脉血栓 (DVT)"
+      category="Emergency Risk"
+      severity="red"
+      drug="口服雌二醇 (E2)"
+      probability="< 0.5% (年度)"
+      signs="单侧下腿红肿、发热、剧痛。"
+    />
+    <p class="risk-citation">口服雌二醇的 VTE 风险显著高于经皮途径<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} title="Hormone therapy and venous thromboembolism" />。年发生率约 0.2-0.5%，吸烟和高龄进一步增加风险。</p>
+  </div>
 
-  <RiskCard
-    title="肝功能损伤"
-    category="Hepatic Risk"
-    severity="red"
-    drug="色普龙 / 口服类"
-    probability="罕见 (监测指标)"
-    signs="巩膜黄染、尿液呈茶色、极度疲劳。"
-  />
-  <p class="risk-citation">CPA 和比卡鲁胺均有肝毒性病例报告，EMA 已对 CPA 肝损伤风险发出警告<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={5} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />。需定期监测肝功能（ALT/AST）。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="肝功能损伤"
+      category="Hepatic Risk"
+      severity="red"
+      drug="色普龙 / 口服类"
+      probability="罕见 (监测指标)"
+      signs="巩膜黄染、尿液呈茶色、极度疲劳。"
+    />
+    <p class="risk-citation">CPA 和比卡鲁胺均有肝毒性病例报告，EMA 已对 CPA 肝损伤风险发出警告<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={5} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />。需定期监测肝功能（ALT/AST）。</p>
+  </div>
 
-  <RiskCard
-    title="心血管并发症"
-    category="Cardiac Risk"
-    severity="orange"
-    drug="所有 E2 制剂"
-    probability="高龄 / 长期吸烟"
-    signs="心悸、不明原因的胸部压迫感。"
-  />
-  <p class="risk-citation">口服路线因肝脏首过效应对凝血因子的影响，心血管风险高于经皮途径<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />。高龄（>45 岁）和长期吸烟为独立风险因素。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="心血管并发症"
+      category="Cardiac Risk"
+      severity="orange"
+      drug="所有 E2 制剂"
+      probability="高龄 / 长期吸烟"
+      signs="心悸、不明原因的胸部压迫感。"
+    />
+    <p class="risk-citation">口服路线因肝脏首过效应对凝血因子的影响，心血管风险高于经皮途径<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />。高龄（>45 岁）和长期吸烟为独立风险因素。</p>
+  </div>
 
-  <RiskCard
-    title="脑膜瘤"
-    category="Neural Risk"
-    severity="red"
-    drug="高剂量色普龙"
-    probability="累积剂量 > 10g"
-    signs="视力改变、听力丧失、异常头痛。"
-  />
-  <p class="risk-citation">CPA 日剂量 ≥25 mg 时脑膜瘤风险 OR=12.36<CitationRef id="lee-2022" num={5} authors="Lee et al." year={2022} />，后续研究进一步确认了这一关联<CitationRef id="hudelist-2026" num={6} authors="Hudelist et al." year={2026} title="CPA-associated meningioma in transgender women" />。EMA 已对 ≥25 mg/天发出限制令<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} />。推荐使用 5-12.5 mg 低剂量方案。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="脑膜瘤"
+      category="Neural Risk"
+      severity="red"
+      drug="高剂量色普龙"
+      probability="累积剂量 > 10g"
+      signs="视力改变、听力丧失、异常头痛。"
+    />
+    <p class="risk-citation">CPA 日剂量 ≥25 mg 时脑膜瘤风险 OR=12.36<CitationRef id="lee-2022" num={5} authors="Lee et al." year={2022} />，后续研究进一步确认了这一关联<CitationRef id="hudelist-2026" num={6} authors="Hudelist et al." year={2026} title="CPA-associated meningioma in transgender women" />。EMA 已对 ≥25 mg/天发出限制令<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} />。推荐使用 5-12.5 mg 低剂量方案。</p>
+  </div>
 
-  <RiskCard
-    title="情绪波动与抑郁"
-    category="Psych Risk"
-    severity="yellow"
-    drug="色普龙 / E2 过低"
-    probability="较常见 (5-15%)"
-    signs="自杀意念、无端哭泣、动力丧失。"
-  />
-  <p class="risk-citation">CPA 的孕激素活性可导致情绪波动和抑郁，发生率约 5-15%<CitationRef id="meyer-2020" num={7} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。WPATH SOC 8 建议对使用 CPA 者进行常规心理状态评估<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="情绪波动与抑郁"
+      category="Psych Risk"
+      severity="yellow"
+      drug="色普龙 / E2 过低"
+      probability="较常见 (5-15%)"
+      signs="自杀意念、无端哭泣、动力丧失。"
+    />
+    <p class="risk-citation">CPA 的孕激素活性可导致情绪波动和抑郁，发生率约 5-15%<CitationRef id="meyer-2020" num={7} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。WPATH SOC 8 建议对使用 CPA 者进行常规心理状态评估<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />。</p>
+  </div>
 
-  <RiskCard
-    title="泌乳素升高"
-    category="Endo Risk"
-    severity="yellow"
-    drug="雌二醇 / 色普龙"
-    probability="需定期生化监控"
-    signs="乳头分泌液、长期剧烈头痛。"
-  />
-  <p class="risk-citation">雌激素和 CPA 均可升高泌乳素水平。PRL >50 ng/mL 时应排除垂体泌乳素瘤<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。建议每 6-12 个月监测一次。</p>
+  <div class="risk-item">
+    <RiskCard
+      title="泌乳素升高"
+      category="Endo Risk"
+      severity="yellow"
+      drug="雌二醇 / 色普龙"
+      probability="需定期生化监控"
+      signs="乳头分泌液、长期剧烈头痛。"
+    />
+    <p class="risk-citation">雌激素和 CPA 均可升高泌乳素水平。PRL >50 ng/mL 时应排除垂体泌乳素瘤<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。建议每 6-12 个月监测一次。</p>
+  </div>
 </div>
 
 ## 7.2 必须立即停药就医的症状
@@ -111,11 +123,16 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
     }
   }
 
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+  }
+
   .risk-citation {
     font-size: 0.8125rem;
     color: var(--color-text-muted);
     line-height: 1.6;
-    margin: calc(-1 * var(--space-md)) 0 var(--space-md);
+    margin: var(--space-sm) 0 0;
     padding: var(--space-sm) var(--space-md);
     border-left: 2px solid rgba(200, 75, 124, 0.2);
   }
