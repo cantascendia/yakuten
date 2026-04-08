@@ -1,0 +1,96 @@
+---
+title: 友好医疗资源
+description: 中国大陆跨性别友好医院数据库，包含科室、挂号方式、费用及社区反馈。
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+
+<WarningBox title="信息时效性提示">
+以下医疗资源信息基于社区成员的就诊反馈和公开渠道核实，**可能随时发生变化**（医生调动、科室调整、政策变化等）。**就诊前请通过医院官方渠道确认出诊信息和挂号方式。**
+</WarningBox>
+
+本页收录中国大陆跨性别友好医疗资源。数据来源于跨性别社区的真实反馈，标注「社区核实」的条目经多位成员确认，标注「待核实」的条目需进一步验证。
+
+---
+
+## 北京
+
+<HospitalCard hospital={hospitals[0]} />
+<HospitalCard hospital={hospitals[4]} />
+
+---
+
+## 上海
+
+<HospitalCard hospital={hospitals[2]} />
+<HospitalCard hospital={hospitals[3]} />
+
+---
+
+## 湖南
+
+<HospitalCard hospital={hospitals[1]} />
+
+---
+
+## 广东
+
+<HospitalCard hospital={hospitals[5]} />
+
+---
+
+## 江苏
+
+<HospitalCard hospital={hospitals[6]} />
+
+---
+
+## 四川
+
+<HospitalCard hospital={hospitals[7]} />
+
+---
+
+## 找不到本地资源？
+
+<GlassCard>
+
+**三个替代方案：**
+
+1. **任何三甲医院内分泌科**
+   你不必挂专门的跨性别门诊。内分泌科医生可以评估激素水平、排查基础疾病。就诊时说"内分泌有点不稳定，想检查激素水平"即可，无需透露跨性别身份。→ [详细说明](/zh/china-reality/#-84-不用告诉医生你是跨性别也能做检查)
+
+2. **跨性别社区本地群组**
+   各地社群通常维护有更新的本地医疗资源列表。可以通过 TRANS.CN、跨儿心理、彩虹暴风雪等组织的社交媒体寻找本地群组。
+
+3. **互联网医院 + 血检结合**
+   部分互联网医院平台（如平安健康、微医）有接受跨性别患者的医生，结合本站[血检工具](/zh/tools/blood-checker/)进行自我监测。
+
+</GlassCard>
+
+---
+
+## 关于数据更新
+
+医疗资源信息会随时间变化。如果你有新信息、发现数据已过时，或希望推荐其他友好医生/科室，欢迎通过以下方式反馈：
+
+- GitHub Issues（如果你熟悉 GitHub）
+- 本站联系邮件（见页脚）
+
+我们计划每季度审核并更新一次数据。
+
+---
+
+<DangerBox title="关于网络购药">
+本页仅提供**正规医疗资源**信息。本站不提供任何购药渠道、药品代购或非正规获取途径的信息。如果你面临无法就医的困境，请参阅[中国现实·安全底线](/zh/china-reality/#-85-安全底线给暂时无法就医者的建议)页面。
+</DangerBox>

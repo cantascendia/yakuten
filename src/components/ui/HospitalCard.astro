@@ -1,0 +1,303 @@
+---
+/**
+ * HospitalCard — 友好医院信息卡片
+ * 米哈游毛玻璃风格 + 左侧色条
+ */
+
+interface Hospital {
+  id: string;
+  name: string;
+  city: string;
+  province: string;
+  tier: string;
+  department: string;
+  address?: string;
+  services: string[];
+  registrationMethod: string;
+  estimatedCost: string;
+  communityFeedback: string;
+  notes?: string;
+  verificationLevel: 'community-verified' | 'community-reported';
+  lastVerified: string;
+}
+
+interface Props {
+  hospital: Hospital;
+}
+
+const { hospital } = Astro.props;
+
+const tierLabel: Record<string, string> = {
+  tertiary: '三甲医院',
+  secondary: '二甲医院',
+  primary: '基层医院',
+};
+
+const verifiedLabel = hospital.verificationLevel === 'community-verified'
+  ? { text: '社区核实', color: 'var(--color-safe)' }
+  : { text: '待核实', color: 'var(--color-accent)' };
+---
+
+<div class="hospital-card">
+  <div class="hospital-card__stripe" />
+  <div class="hospital-card__body">
+
+    <div class="hospital-card__header">
+      <div class="hospital-card__title-group">
+        <h3 class="hospital-card__name">{hospital.name}</h3>
+        <div class="hospital-card__meta">
+          <span class="hospital-card__city">{hospital.city} · {hospital.province}</span>
+          <span class="hospital-card__tier">{tierLabel[hospital.tier] ?? hospital.tier}</span>
+        </div>
+      </div>
+      <span class="hospital-card__verified" style={`color: ${verifiedLabel.color}; border-color: ${verifiedLabel.color};`}>
+        {verifiedLabel.text}
+      </span>
+    </div>
+
+    <div class="hospital-card__department">
+      <span class="hospital-card__label">科室</span>
+      <span class="hospital-card__value">{hospital.department}</span>
+    </div>
+
+    {hospital.address && (
+      <div class="hospital-card__row">
+        <span class="hospital-card__label">地址</span>
+        <span class="hospital-card__value hospital-card__value--muted">{hospital.address}</span>
+      </div>
+    )}
+
+    <div class="hospital-card__services">
+      {hospital.services.map((s) => (
+        <span class="hospital-card__service-tag">{s}</span>
+      ))}
+    </div>
+
+    <div class="hospital-card__info-grid">
+      <div class="hospital-card__info-item">
+        <p class="hospital-card__info-label">挂号方式</p>
+        <p class="hospital-card__info-text">{hospital.registrationMethod}</p>
+      </div>
+      <div class="hospital-card__info-item">
+        <p class="hospital-card__info-label">大致费用</p>
+        <p class="hospital-card__info-text">{hospital.estimatedCost}</p>
+      </div>
+    </div>
+
+    <div class="hospital-card__feedback">
+      <p class="hospital-card__info-label">社区反馈</p>
+      <p class="hospital-card__feedback-text">{hospital.communityFeedback}</p>
+    </div>
+
+    {hospital.notes && (
+      <p class="hospital-card__notes">{hospital.notes}</p>
+    )}
+
+    <p class="hospital-card__updated">最后核实：{hospital.lastVerified}</p>
+
+  </div>
+</div>
+
+<style>
+  .hospital-card {
+    position: relative;
+    display: flex;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hospital-card__stripe {
+    width: 3px;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, var(--color-safe), var(--color-accent));
+  }
+
+  .hospital-card__body {
+    flex: 1;
+    padding: var(--space-lg);
+    min-width: 0;
+  }
+
+  .hospital-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .hospital-card__title-group {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hospital-card__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-xs) 0;
+  }
+
+  .hospital-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .hospital-card__city {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .hospital-card__tier {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    color: var(--color-accent);
+    background: rgba(212, 168, 83, 0.1);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    padding: 1px 6px;
+  }
+
+  .hospital-card__verified {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .hospital-card__department {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hospital-card__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hospital-card__label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--color-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+
+  .hospital-card__value {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .hospital-card__value--muted {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-size: 0.8125rem;
+  }
+
+  .hospital-card__services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .hospital-card__service-tag {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    background: rgba(200, 75, 124, 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(200, 75, 124, 0.2);
+  }
+
+  .hospital-card__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hospital-card__info-item {
+    background: var(--color-bg-container-high);
+    border: 1px solid var(--color-outline-20);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .hospital-card__info-label {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    color: var(--color-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .hospital-card__info-text {
+    font-size: 0.75rem;
+    color: var(--color-text-primary);
+    line-height: 1.5;
+  }
+
+  .hospital-card__feedback {
+    background: var(--color-bg-container);
+    border: 1px solid var(--color-outline-20);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hospital-card__feedback-text {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .hospital-card__notes {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--color-info);
+    opacity: 0.7;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hospital-card__updated {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    text-align: right;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hospital-card__info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hospital-card__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
