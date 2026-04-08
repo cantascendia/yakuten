@@ -1,0 +1,67 @@
+---
+/**
+ * JSON-LD Structured Data for SEO
+ * Injects Organization + WebSite schemas on every page.
+ */
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hrtyaku.com/#organization",
+      "name": "HRT薬典",
+      "alternateName": "HRT Yakuten",
+      "url": "https://hrtyaku.com",
+      "description": "Evidence-based harm reduction HRT safety information for transgender women.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hrtyaku.com/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hrtyaku.com/#website",
+      "url": "https://hrtyaku.com",
+      "name": "HRT薬典",
+      "alternateName": "HRT Yakuten",
+      "description": "循証 · 减害 · 引导就医 — Evidence-based HRT safety baseline for transgender women",
+      "publisher": { "@id": "https://hrtyaku.com/#organization" },
+      "inLanguage": ["zh-CN", "en", "ja"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://hrtyaku.com/zh/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://hrtyaku.com/#medicalwebpage",
+      "url": "https://hrtyaku.com",
+      "name": "HRT薬典 — HRT Safety Baseline",
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "Gender Dysphoria",
+        "code": {
+          "@type": "MedicalCode",
+          "code": "F64.0",
+          "codingSystem": "ICD-10"
+        }
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient"
+      },
+      "lastReviewed": "2026-04-07",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "HRT薬典 Editorial Team"
+      },
+      "isPartOf": { "@id": "https://hrtyaku.com/#website" }
+    }
+  ]
+})} />
