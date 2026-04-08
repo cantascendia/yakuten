@@ -13,6 +13,7 @@ import DoseTable from '../../../components/ui/DoseTable.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
 import CitationRef from '../../../components/ui/CitationRef.astro';
 import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import InlineValue from '../../../components/ui/InlineValue.astro';
 
 import '../../../styles/pathway.css';
 
@@ -65,20 +66,20 @@ import '../../../styles/pathway.css';
     <DoseTable
       headers={['给药方式', '推荐起始剂量', '来源']}
       rows={[
-        ['口服雌二醇 (E2)', '2.0 mg / 日', 'Hembree 2017 [2]'],
-        ['经皮贴片', '50-100 µg / 24h', 'Hembree 2017 [2]'],
-        ['凝胶涂抹', '1.5 mg / 日', 'Hembree 2017 [2]'],
-        ['注射 EV', '1-2 mg / 周', 'Rothman 2024 [3]'],
+        ['口服雌二醇 (E2)', '2.0 mg/日', 'Hembree 2017 [2]'],
+        ['经皮贴片', '50–100 µg/24 h', 'Hembree 2017 [2]'],
+        ['凝胶涂抹', '1.5 mg/日', 'Hembree 2017 [2]'],
+        ['注射 EV', '1–2 mg/周', 'Rothman 2024 [3]'],
       ]}
     />
     <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-      抗雄（如需）: CPA 5-12.5 mg/天 或 螺内酯 50-100 mg/天<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />
+      抗雄（如需）：CPA <InlineValue value="5–12.5" unit="mg/天" /> 或 螺内酯 <InlineValue value="50–100" unit="mg/天" /><CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />
     </p>
     <div class="phase-stats">
       <div class="phase-stat">
         <p class="phase-stat__label">目标 E2 指标</p>
         <p class="phase-stat__value phase-stat__value--green">
-          50–100 <span class="phase-stat__unit">pg/mL</span>
+          <InlineValue value="50–100" unit="pg/mL" />
         </p>
       </div>
       <div class="phase-stat">
@@ -91,7 +92,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        安全警告：身体在此阶段需适应受体改变，严禁在未监测血值前自行加量，防止血栓风险。此阶段不要加量，即使你觉得「没效果」。乳腺发育信号通常在 3-6 个月出现。
+        安全警告：身体在此阶段需适应受体改变，严禁在未监测血值前自行加量，防止血栓风险。此阶段不要加量，即使你觉得「没效果」。乳腺发育信号通常在 3–6 个月出现。
       </p>
     </div>
   </PhaseBlock>
@@ -103,11 +104,11 @@ import '../../../styles/pathway.css';
   <DecisionNode title="DECISION" timepoint="3 MONTH">
     <DecisionBranch
       outcome="green"
-      text="E2 30-100 pg/mL 且 T 下降 → 继续当前方案至 6 个月"
+      text={'E2 30–100\u00A0pg/mL 且 T 下降 → 继续当前方案至 6 个月'}
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <30 pg/mL → 考虑升至阶段 2 剂量"
+      text={'E2 <30\u00A0pg/mL → 考虑升至阶段 2 剂量'}
     />
     <DecisionBranch
       outcome="red"
@@ -128,23 +129,23 @@ import '../../../styles/pathway.css';
     <DoseTable
       headers={['给药方式', '调整后剂量']}
       rows={[
-        ['经皮贴片', '100-200 µg / 天'],
-        ['口服 E2', '4 mg / 天'],
-        ['凝胶', '3 mg / 天'],
-        ['注射 EV', '2-4 mg / 周'],
+        ['经皮贴片', '100–200 µg/天'],
+        ['口服 E2', '4 mg/天'],
+        ['凝胶', '3 mg/天'],
+        ['注射 EV', '2–4 mg/周'],
       ]}
     />
     <div class="phase-stats">
       <div class="phase-stat">
         <p class="phase-stat__label">推荐 E2 目标</p>
         <p class="phase-stat__value phase-stat__value--yellow">
-          100-200 <span class="phase-stat__unit">pg/mL</span>
+          <InlineValue value="100–200" unit="pg/mL" />
         </p>
       </div>
       <div class="phase-stat">
         <p class="phase-stat__label">目标 T</p>
         <p class="phase-stat__value phase-stat__value--yellow">
-          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+          <InlineValue value="<50" unit="ng/dL" />
         </p>
       </div>
     </div>
@@ -157,8 +158,8 @@ import '../../../styles/pathway.css';
       </div>
     </div>
     <div class="dose-tags">
-      <span class="dose-tag dose-tag--yellow">肌肉注射 E2V 每周 2-4mg</span>
-      <span class="dose-tag dose-tag--yellow">经皮凝胶每日 3.0-4.5mg</span>
+      <span class="dose-tag dose-tag--yellow">肌肉注射 E2V 每周 2–4 mg</span>
+      <span class="dose-tag dose-tag--yellow">经皮凝胶每日 3.0–4.5 mg</span>
     </div>
   </PhaseBlock>
 </div>
@@ -169,7 +170,7 @@ import '../../../styles/pathway.css';
   <DecisionNode title="STABILITY" timepoint="6 MONTH">
     <DecisionBranch
       outcome="green"
-      text="E2 100-200 pg/mL 且 T <50 ng/dL → 进入维持期"
+      text={'E2 100–200\u00A0pg/mL 且 T <50\u00A0ng/dL → 进入维持期'}
     />
     <DecisionBranch
       outcome="yellow"
@@ -177,7 +178,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <100 pg/mL → 可继续增至中高剂量，但不超过红线"
+      text={'E2 <100\u00A0pg/mL → 可继续增至中高剂量，但不超过红线'}
     />
   </DecisionNode>
 </div>
@@ -189,7 +190,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 MONTHS+</div>
   <PhaseBlock phase={3} title="长期维持" color="pink" week="12 MONTHS+">
     <p class="phase-block__desc">
-      当血值与身体变化趋于稳定，转入低频监测模式。保持 E2 100-200 pg/mL, T &lt;50 ng/dL 的最低有效剂量。
+      当血值与身体变化趋于稳定，转入低频监测模式。保持 E2 <InlineValue value="100–200" unit="pg/mL" />、T <InlineValue value="<50" unit="ng/dL" /> 的最低有效剂量。
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">监测频率</p>
@@ -207,7 +208,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL 不会带来更强的女性化，只增加风险<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} /> (Rec 2.2)
+        E2 &gt;<InlineValue value="200" unit="pg/mL" /> 不会带来更强的女性化，只增加风险<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} /> (Rec 2.2)
       </p>
     </div>
   </PhaseBlock>

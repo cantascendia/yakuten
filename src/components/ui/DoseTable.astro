@@ -36,3 +36,22 @@ const { headers, rows } = Astro.props;
     </tbody>
   </table>
 </div>
+
+<style>
+  .dose-table .dose-value {
+    white-space: nowrap;
+    font-family: var(--font-ui-accent);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .dose-table td,
+  .dose-table th {
+    vertical-align: top;
+  }
+  
+  @media (max-width: 640px) {
+    .dose-table .dose-value {
+      font-size: 0.9375rem;
+    }
+  }
+</style>

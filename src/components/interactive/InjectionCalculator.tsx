@@ -1,5 +1,10 @@
 import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
+import {
+  formatMedicalNumber,
+  formatRangeWithUnit,
+  formatValueWithUnit,
+} from '../../utils/medicalFormat';
 
 /* ================================
    Data & Logic
@@ -19,17 +24,17 @@ interface DoseInfo {
 }
 
 const DRUG_SPECS: DrugSpec[] = [
-  { name: 'Progynon Depot (戊酸雌二醇) 10mg/mL', concentration: 10, unit: 'mg/mL' },
-  { name: 'Progynon Depot 40mg/mL', concentration: 40, unit: 'mg/mL' },
-  { name: '环戊丙酸雌二醇 5mg/mL', concentration: 5, unit: 'mg/mL' },
+  { name: `Progynon Depot (戊酸雌二醇) ${formatValueWithUnit(10, 'mg/mL')}`, concentration: 10, unit: 'mg/mL' },
+  { name: `Progynon Depot ${formatValueWithUnit(40, 'mg/mL')}`, concentration: 40, unit: 'mg/mL' },
+  { name: `环戊丙酸雌二醇 ${formatValueWithUnit(5, 'mg/mL')}`, concentration: 5, unit: 'mg/mL' },
 ];
 
 const DOSE_TABLE: DoseInfo[] = [
-  { mg: 1, applicable: '青少年阶段1', e2Range: '30\u201360 pg/mL' },
-  { mg: 2, applicable: '青少年阶段2 / 成人起始', e2Range: '40\u201380 pg/mL' },
-  { mg: 3, applicable: '成人起始 / 维持', e2Range: '60\u2013120 pg/mL' },
-  { mg: 4, applicable: '成人维持', e2Range: '80\u2013160 pg/mL' },
-  { mg: 5, applicable: '成人维持上限', e2Range: '100\u2013200 pg/mL', warning: '接近上限' },
+  { mg: 1, applicable: '青少年阶段 1', e2Range: formatRangeWithUnit(30, 60, 'pg/mL') },
+  { mg: 2, applicable: '青少年阶段 2 / 成人起始', e2Range: formatRangeWithUnit(40, 80, 'pg/mL') },
+  { mg: 3, applicable: '成人起始 / 维持', e2Range: formatRangeWithUnit(60, 120, 'pg/mL') },
+  { mg: 4, applicable: '成人维持', e2Range: formatRangeWithUnit(80, 160, 'pg/mL') },
+  { mg: 5, applicable: '成人维持上限', e2Range: formatRangeWithUnit(100, 200, 'pg/mL'), warning: '接近上限' },
 ];
 
 function getSyringe(volumeMl: number): string {
@@ -142,6 +147,7 @@ const styles: Record<string, CSSProperties> = {
     fontSize: '0.875rem',
     color: 'var(--color-text-muted)',
     fontFamily: 'var(--font-body)',
+    whiteSpace: 'nowrap' as const,
   },
   resultGrid: {
     display: 'grid',
@@ -176,6 +182,7 @@ const styles: Record<string, CSSProperties> = {
     color: 'var(--color-text-secondary)',
     marginTop: 'var(--space-xs)',
     fontFamily: 'var(--font-body)',
+    whiteSpace: 'nowrap' as const,
   },
   badge: {
     display: 'inline-block',
@@ -381,7 +388,7 @@ export default function InjectionCalculator() {
             }}
             aria-describedby="dose-warning"
           />
-          <span style={styles.doseUnit}>mg / 周</span>
+          <span style={styles.doseUnit}>mg/周</span>
           <input
             type="range"
             min={0.5}
@@ -399,17 +406,17 @@ export default function InjectionCalculator() {
       <div id="dose-warning" aria-live="polite">
         {warningLevel === 'caution' && (
           <div style={styles.warningCaution} role="alert">
-            <strong>&#9888; 接近剂量上限</strong> &mdash; 超过 5mg/周需医疗监督
+            <strong>&#9888; 接近剂量上限</strong> &mdash; 超过 {formatValueWithUnit(5, 'mg/周')} 需医疗监督
           </div>
         )}
         {warningLevel === 'danger' && (
           <div style={styles.warningDanger} role="alert">
-            <strong>&#9888; 不建议此剂量</strong> &mdash; 超过 7mg/周显著增加血栓风险
+            <strong>&#9888; 不建议此剂量</strong> &mdash; 超过 {formatValueWithUnit(7, 'mg/周')} 显著增加血栓风险
           </div>
         )}
         {warningLevel === 'forbidden' && (
           <div style={styles.warningForbidden} role="alert">
-            <strong>&#9888; 禁止！</strong>单次 &ge;10mg 有严重健康风险，包括血栓、肝损伤。请立即咨询医生。
+            <strong>&#9888; 禁止！</strong>单次剂量 &ge;{formatValueWithUnit(10, 'mg')} 有严重健康风险，包括血栓、肝损伤。请立即咨询医生。
           </div>
         )}
       </div>
@@ -421,7 +428,7 @@ export default function InjectionCalculator() {
           <div style={styles.resultCard}>
             <div style={styles.resultLabel}>抽取体积</div>
             <div style={{ ...styles.resultValue, color: volumeColor }}>
-              {volumeMl.toFixed(2)}
+              {formatMedicalNumber(volumeMl, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
             <div style={styles.resultSub}>mL</div>
           </div>
@@ -505,8 +512,8 @@ export default function InjectionCalculator() {
                 const isActive = Math.abs(doseMg - row.mg) < 0.25;
                 return (
                   <tr key={row.mg} style={isActive ? styles.activeRow : undefined}>
-                    <td style={styles.tdMono}>{row.mg} mg</td>
-                    <td style={styles.tdMono}>{vol.toFixed(2)} mL</td>
+                    <td style={styles.tdMono}>{formatValueWithUnit(row.mg, 'mg')}</td>
+                    <td style={styles.tdMono}>{formatValueWithUnit(vol, 'mL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                     <td style={styles.td}>{getSyringe(vol)}</td>
                     <td style={styles.td}>{row.e2Range}</td>
                     <td style={styles.td}>

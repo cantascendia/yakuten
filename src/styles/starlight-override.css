@@ -30,8 +30,8 @@
   --sl-color-black: #0D0B14;
 
   /* Font overrides */
-  --sl-font: "Noto Sans SC", "Noto Sans JP", sans-serif;
-  --sl-font-system-mono: "JetBrains Mono", "Fira Code", monospace;
+  --sl-font: var(--font-body);
+  --sl-font-system-mono: var(--font-code);
 }
 
 [data-theme="light"] {

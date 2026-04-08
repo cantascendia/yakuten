@@ -1,4 +1,5 @@
 import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
+import { formatValueWithUnit } from '../../utils/medicalFormat';
 
 /* ================================================================
    Blood Test Self-Check Tool  —  BloodTestChecker React Island
@@ -184,6 +185,7 @@ const s: Record<string, CSSProperties> = {
     color: 'var(--color-text-muted)',
     minWidth: 60,
     textAlign: 'right' as const,
+    whiteSpace: 'nowrap' as const,
   },
   /* Results column */
   resultsSection: {
@@ -424,6 +426,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
         <span
           style={{
             fontFamily: 'var(--font-mono)',
+            whiteSpace: 'nowrap',
             color:
               level === 'green'
                 ? 'var(--color-safe)'
@@ -434,7 +437,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
                     : 'var(--color-text-muted)',
           }}
         >
-          {value} {spec.unit}
+          {formatValueWithUnit(value, spec.unit)}
         </span>
       </div>
 

@@ -1,5 +1,11 @@
 import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
+import {
+  formatEveryDays,
+  formatMedicalNumber,
+  formatPercent,
+  formatValueWithUnit,
+} from '../../utils/medicalFormat';
 
 /* ================================
    Pharmacokinetic Data
@@ -68,7 +74,7 @@ const DRUGS: DrugPK[] = [
     bioavailability: 0.10,
     typicalDoseMg: 3,
     maxDoseMg: 6,
-    unit: 'mg (1-2泵)',
+    unit: 'mg（1–2 泵）',
     frequencyDays: 1,
     color: '#7C8CF0',
   },
@@ -259,7 +265,7 @@ function ConcentrationChart({
           fontSize={10}
           fontFamily="var(--font-mono)"
         >
-          {d}天
+          {formatMedicalNumber(d)} 天
         </text>
       ))}
 
@@ -366,6 +372,7 @@ const s: Record<string, CSSProperties> = {
     fontSize: '0.875rem',
     color: 'var(--color-text-muted)',
     fontFamily: 'var(--font-body)',
+    whiteSpace: 'nowrap' as const,
   },
   chartBox: {
     background: 'var(--color-bg-container)',
@@ -504,7 +511,7 @@ export default function DoseSimulator() {
 
   const trough = useMemo(() => findSteadyStateTrough(curve, intervalDays), [curve, intervalDays]);
   const peak = useMemo(() => findSteadyStatePeak(curve, intervalDays), [curve, intervalDays]);
-  const fluctuation = peak > 0 ? ((peak - trough) / peak * 100).toFixed(0) : '—';
+  const fluctuation = peak > 0 ? ((peak - trough) / peak * 100) : null;
 
   // Warning logic
   const isHighDose = doseMg > drug.typicalDoseMg * 1.5;
@@ -623,28 +630,28 @@ export default function DoseSimulator() {
         <div style={s.statCard}>
           <div style={s.statLabel}>稳态峰值</div>
           <div style={{ ...s.statValue, color: drug.color }}>
-            {peak.toFixed(1)}
+            {formatMedicalNumber(peak, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
           </div>
           <div style={s.statSub}>相对浓度</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statLabel}>稳态谷值</div>
           <div style={{ ...s.statValue, color: 'var(--color-accent)' }}>
-            {trough.toFixed(1)}
+            {formatMedicalNumber(trough, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
           </div>
           <div style={s.statSub}>相对浓度</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statLabel}>波动幅度</div>
-          <div style={{ ...s.statValue, color: Number(fluctuation) > 80 ? 'var(--color-caution)' : 'var(--color-safe)' }}>
-            {fluctuation}%
+          <div style={{ ...s.statValue, color: (fluctuation ?? 0) > 80 ? 'var(--color-caution)' : 'var(--color-safe)' }}>
+            {fluctuation === null ? '—' : formatPercent(fluctuation, { maximumFractionDigits: 0 })}
           </div>
-          <div style={s.statSub}>{Number(fluctuation) > 80 ? '波动较大' : '波动可控'}</div>
+          <div style={s.statSub}>{(fluctuation ?? 0) > 80 ? '波动较大' : '波动可控'}</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statLabel}>消除半衰期</div>
           <div style={{ ...s.statValue, color: 'var(--color-info)' }}>
-            {drug.halfLifeHours}h
+            {formatValueWithUnit(drug.halfLifeHours, 'h')}
           </div>
           <div style={s.statSub}>{drug.route}</div>
         </div>
@@ -673,10 +680,10 @@ export default function DoseSimulator() {
                 <tr key={d.id} style={d.id === drugId ? { background: 'rgba(200,75,124,0.08)' } : undefined}>
                   <td style={s.td}>{d.name}</td>
                   <td style={s.td}>{d.route}</td>
-                  <td style={s.tdMono}>{d.halfLifeHours}h</td>
-                  <td style={s.tdMono}>{d.peakHours}h</td>
-                  <td style={s.tdMono}>{(d.bioavailability * 100).toFixed(0)}%</td>
-                  <td style={s.td}>每{d.frequencyDays}天</td>
+                  <td style={s.tdMono}>{formatValueWithUnit(d.halfLifeHours, 'h')}</td>
+                  <td style={s.tdMono}>{formatValueWithUnit(d.peakHours, 'h')}</td>
+                  <td style={s.tdMono}>{formatPercent(d.bioavailability * 100, { maximumFractionDigits: 0 })}</td>
+                  <td style={s.td}>{formatEveryDays(d.frequencyDays)}</td>
                 </tr>
               ))}
             </tbody>

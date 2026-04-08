@@ -1,0 +1,26 @@
+---
+interface Props {
+  value: string | number;
+  unit?: string;
+}
+
+const { value, unit } = Astro.props;
+---
+
+<span class="inline-value">
+  <span class="inline-value__value">{value}</span>
+  {unit && <span class="inline-value__unit">&nbsp;{unit}</span>}
+</span>
+
+<style>
+  .inline-value {
+    display: inline-block;
+    white-space: nowrap;
+    font-family: var(--font-ui-accent);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .inline-value__unit {
+    font-size: 0.95em;
+  }
+</style>

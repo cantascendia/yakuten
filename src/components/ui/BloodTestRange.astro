@@ -36,6 +36,10 @@ const {
   redDirection,
   class: className = '',
 } = Astro.props;
+import {
+  formatMedicalNumber,
+  formatRange,
+} from '../../utils/medicalFormat';
 
 // Calculate the full visual range for the bar
 // We extend the bar slightly beyond the extreme values for visual padding
@@ -69,9 +73,9 @@ if (redDirection === 'above') {
   const redWidth = 100 - redLeft;
 
   segments = [
-    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${greenMin}-${greenMax}` },
-    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${yellowMin}-${yellowMax}` },
-    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 >${redThreshold}` },
+    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${formatRange(greenMin, greenMax)}` },
+    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${formatRange(yellowMin, yellowMax)}` },
+    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 >${formatMedicalNumber(redThreshold)}` },
   ];
 } else {
   // redDirection === 'below'
@@ -86,9 +90,9 @@ if (redDirection === 'above') {
   const greenWidth = toPercent(greenMax) - greenLeft;
 
   segments = [
-    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 <${redThreshold}` },
-    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${yellowMin}-${yellowMax}` },
-    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${greenMin}-${greenMax}` },
+    { left: redLeft, width: redWidth, color: 'var(--color-danger)', ariaLabel: `危险范围 <${formatMedicalNumber(redThreshold)}` },
+    { left: yellowLeft, width: yellowWidth, color: 'var(--color-caution)', ariaLabel: `注意范围 ${formatRange(yellowMin, yellowMax)}` },
+    { left: greenLeft, width: greenWidth, color: 'var(--color-safe)', ariaLabel: `目标范围 ${formatRange(greenMin, greenMax)}` },
   ];
 }
 
@@ -97,8 +101,8 @@ const ticks = [...new Set(allValues)].sort((a, b) => a - b);
 
 // Build aria-label for the whole component
 const ariaDescription = redDirection === 'above'
-  ? `${label} (${unit}): 目标 ${greenMin}-${greenMax}, 注意 ${yellowMin}-${yellowMax}, 危险 >${redThreshold}`
-  : `${label} (${unit}): 危险 <${redThreshold}, 注意 ${yellowMin}-${yellowMax}, 目标 ${greenMin}-${greenMax}`;
+  ? `${label} (${unit}): 目标 ${formatRange(greenMin, greenMax)}, 注意 ${formatRange(yellowMin, yellowMax)}, 危险 >${formatMedicalNumber(redThreshold)}`
+  : `${label} (${unit}): 危险 <${formatMedicalNumber(redThreshold)}, 注意 ${formatRange(yellowMin, yellowMax)}, 目标 ${formatRange(greenMin, greenMax)}`;
 ---
 
 <div
@@ -119,7 +123,7 @@ const ariaDescription = redDirection === 'above'
           class="blood-range__tick-label"
           style={`left: ${toPercent(val)}%`}
         >
-          {val}
+          {formatMedicalNumber(val)}
         </span>
       ))}
     </div>
@@ -193,6 +197,7 @@ const ariaDescription = redDirection === 'above'
     font-family: var(--font-mono, "JetBrains Mono", monospace);
     font-size: 0.8125rem;
     color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
   .blood-range__bar-container {

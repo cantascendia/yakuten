@@ -50,10 +50,12 @@
   --clip-corner-sm: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
   --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
 
-  /* 字体 — Google Fonts API 加载，CJK 自动 unicode-range 分片 */
-  --font-display: "Noto Serif SC", "Noto Serif", serif;
-  --font-body: "Noto Sans SC", "Noto Sans JP", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  /* 字体 — 将代码字体与中文数字/标签字体分离，避免 UI 中出现 dotted zero */
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-ui-accent: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-mono: var(--font-ui-accent);
+  --font-code: "JetBrains Mono", "Fira Code", "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
 
   /* 间距 */
   --space-xs: 4px;
@@ -85,6 +87,25 @@
   --transition-slow: 0.5s ease;
 }
 
+:root:lang(zh),
+:root:lang(zh-CN) {
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-ui-accent: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
+
+:root:lang(ja) {
+  --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-ui-accent: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+:root:lang(en) {
+  --font-display: "Noto Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  --font-ui-accent: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+
 /* ================================
    Light Theme
    ================================ */
@@ -109,6 +130,10 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: lining-nums proportional-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -116,7 +141,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code, pre {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+table,
+input,
+textarea,
+select,
+button {
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 ::selection {
