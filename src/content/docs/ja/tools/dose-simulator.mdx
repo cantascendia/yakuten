@@ -1,0 +1,22 @@
+---
+title: 用量シミュレーター
+description: 用量変化の相対的な傾向を可視化するための参考ツールです。処方の代わりにはなりません。
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import DoseSimulator from '../../../../components/interactive/DoseSimulator.tsx';
+
+このシミュレーターは、用量変化の相対的な傾向を視覚的に理解するための参考ツールです。個別の治療計画を決めるためのものではありません。
+
+:::caution[重要]
+このシミュレーターを個人向け処方計算機として使わないでください。結果は必ず血液検査、症状、医師の助言と合わせて解釈してください。
+:::
+
+:::note[ローカライズ状況]
+現在、インタラクティブ部分はローカライズ中です。ラベルや補足文の一部はまだ中国語のまま残る場合があります。
+:::
+
+<DoseSimulator client:visible />

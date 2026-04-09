@@ -1,5 +1,70 @@
-import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
+﻿import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
 import { formatValueWithUnit } from '../../utils/medicalFormat';
+
+type Locale = 'zh' | 'en' | 'ja';
+
+function getLocale(): Locale {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
+  return 'zh';
+}
+
+const SECTION_COPY = {
+  zh: {
+    inputTitle: '输入血检数值',
+    resultTitle: '评估结果',
+    emptyHint: '在左侧输入你的血检数值，结果将实时显示在这里。',
+    disclaimer1: '此工具仅供参考，不能替代医生的判读。如果你有任何疑虑，请直接就医。',
+    disclaimer2: '所有计算都在你的浏览器本地完成，不会传输或存储任何数据。',
+    viewEmergency: '查看急症指南',
+  },
+  en: {
+    inputTitle: 'Enter lab values',
+    resultTitle: 'Assessment',
+    emptyHint: 'Enter your blood test values on the left. Results will appear here in real time.',
+    disclaimer1: 'This tool is for reference only and cannot replace clinician interpretation. If you are concerned, seek medical care directly.',
+    disclaimer2: 'All calculations run locally in your browser. No data is transmitted or stored.',
+    viewEmergency: 'View emergency guide',
+  },
+  ja: {
+    inputTitle: '検査値を入力',
+    resultTitle: '評価結果',
+    emptyHint: '左側に血液検査の数値を入力すると、結果がここに表示されます。',
+    disclaimer1: 'このツールは参考用であり、医師の判断の代わりにはなりません。不安がある場合は直接受診してください。',
+    disclaimer2: 'すべての計算はブラウザ内で完結し、データは送信・保存されません。',
+    viewEmergency: '緊急ガイドを見る',
+  },
+} as const;
+
+const RANGE_LABELS = {
+  zh: {
+    e2: 'E2 (雌二醇)',
+    t: 'T (睾酮)',
+    prl: 'PRL (泌乳素)',
+    alt: 'ALT/AST (肝功能)',
+    k: 'K+ (血钾)',
+    hb: 'Hb (血红蛋白)',
+    ddimer: 'D-二聚体',
+  },
+  en: {
+    e2: 'E2 (Estradiol)',
+    t: 'T (Testosterone)',
+    prl: 'PRL (Prolactin)',
+    alt: 'ALT/AST (Liver function)',
+    k: 'K+ (Serum potassium)',
+    hb: 'Hb (Hemoglobin)',
+    ddimer: 'D-dimer',
+  },
+  ja: {
+    e2: 'E2 (エストラジオール)',
+    t: 'T (テストステロン)',
+    prl: 'PRL (プロラクチン)',
+    alt: 'ALT/AST (肝機能)',
+    k: 'K+ (血清カリウム)',
+    hb: 'Hb (ヘモグロビン)',
+    ddimer: 'D-ダイマー',
+  },
+} as const;
 
 /* ================================================================
    Blood Test Self-Check Tool  —  BloodTestChecker React Island
@@ -308,6 +373,8 @@ const RESPONSIVE_CSS = `
 
 export default function BloodTestChecker() {
   const [values, setValues] = useState<Record<string, string>>({});
+  const locale = getLocale();
+  const copy = SECTION_COPY[locale];
 
   const handleChange = useCallback((id: string, raw: string) => {
     setValues((prev) => ({ ...prev, [id]: raw }));
@@ -324,11 +391,12 @@ export default function BloodTestChecker() {
         <div className="btc-grid">
           {/* -------- Left: Input Form -------- */}
           <div style={s.formSection}>
-            <div style={s.sectionTitle}>输入血检数值</div>
+            <div style={s.sectionTitle}>{copy.inputTitle}</div>
             {BLOOD_RANGES.map((spec) => (
               <InputField
                 key={spec.id}
                 spec={spec}
+                locale={locale}
                 value={values[spec.id] ?? ''}
                 onChange={handleChange}
               />
@@ -337,7 +405,7 @@ export default function BloodTestChecker() {
 
           {/* -------- Right: Results Dashboard -------- */}
           <div style={s.resultsSection}>
-            <div style={s.sectionTitle}>评估结果</div>
+            <div style={s.sectionTitle}>{copy.resultTitle}</div>
             {hasAnyValue ? (
               BLOOD_RANGES.map((spec) => {
                 const raw = values[spec.id] ?? '';
@@ -348,7 +416,7 @@ export default function BloodTestChecker() {
               })
             ) : (
               <div style={s.emptyHint}>
-                在左侧输入你的血检数值，<br />结果将实时显示在这里。
+                {copy.emptyHint}
               </div>
             )}
           </div>
@@ -356,9 +424,9 @@ export default function BloodTestChecker() {
 
         {/* -------- Disclaimer -------- */}
         <div style={s.disclaimer}>
-          此工具仅供参考，不能替代医生的判读。如果你有任何疑虑，请直接就医。
+          {copy.disclaimer1}
           <br />
-          所有计算在你的浏览器本地完成，不会传输或存储任何数据。
+          {copy.disclaimer2}
         </div>
       </div>
     </div>
@@ -369,10 +437,12 @@ export default function BloodTestChecker() {
 
 function InputField({
   spec,
+  locale,
   value,
   onChange,
 }: {
   spec: RangeSpec;
+  locale: Locale;
   value: string;
   onChange: (id: string, raw: string) => void;
 }) {
@@ -383,7 +453,7 @@ function InputField({
   return (
     <div style={s.inputGroup}>
       <label style={s.label} htmlFor={`btc-${spec.id}`}>
-        {spec.label}
+        {RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label}
       </label>
       <div style={s.inputRow}>
         <input
@@ -397,7 +467,7 @@ function InputField({
           style={s.input}
           value={value}
           onChange={handleInput}
-          aria-label={`${spec.label} 数值输入`}
+          aria-label={`${RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label} value input`}
         />
         <span style={s.inputUnit}>{spec.unit}</span>
       </div>
@@ -408,6 +478,13 @@ function InputField({
 function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
   const level = evaluate(spec, value);
   const [lo, hi] = barBounds(spec);
+  const locale =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/en')
+      ? 'en'
+      : typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')
+        ? 'ja'
+        : 'zh';
+  const risksHref = `/${locale}/risks/`;
 
   // Colour stops for the bar
   const greenLeft = pct(spec.green[0], lo, hi);
@@ -422,7 +499,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
   return (
     <div style={s.resultRow} className={isRed ? 'btc-red-row' : ''}>
       <div style={s.resultLabel}>
-        <span>{spec.label}</span>
+        <span>{RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label}</span>
         <span
           style={{
             fontFamily: 'var(--font-mono)',
@@ -442,7 +519,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
       </div>
 
       {/* Stacked bar */}
-      <div style={s.barOuter} role="meter" aria-label={spec.label} aria-valuenow={value} aria-valuemin={lo} aria-valuemax={hi}>
+      <div style={s.barOuter} role="meter" aria-label={RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label} aria-valuenow={value} aria-valuemin={lo} aria-valuemax={hi}>
         {/* Red background spans full width */}
         <div
           style={{
@@ -478,11 +555,12 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
       {isRed && (
         <div style={s.warningBox}>
           <span>{spec.redWarning}</span>
-          <a href="/zh/risks/" style={s.warningLink}>
-            查看急症指南
+          <a href={risksHref} style={s.warningLink}>
+            {SECTION_COPY[locale].viewEmergency}
           </a>
         </div>
       )}
     </div>
   );
 }
+

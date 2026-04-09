@@ -13,7 +13,7 @@ interface Props {
 }
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
-const defaultLinkHref = locale === 'en' ? '/en/risks/' : '/zh/risks/';
+const defaultLinkHref = `/${locale}/risks/`;
 
 const {
   linkHref = defaultLinkHref,

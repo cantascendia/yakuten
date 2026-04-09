@@ -213,5 +213,6 @@ export function t(locale: string, key: UIKey): string {
 export function getLocale(astroLocale?: string, pathname?: string): Locale {
   if (astroLocale && astroLocale in ui) return astroLocale as Locale;
   if (pathname?.startsWith('/en')) return 'en';
+  if (pathname?.startsWith('/ja')) return 'ja';
   return 'zh';
 }

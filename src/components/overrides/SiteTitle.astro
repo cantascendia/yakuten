@@ -1,0 +1,33 @@
+---
+import { getLocale } from '../../i18n/ui';
+
+const { siteTitleHref } = Astro.locals.starlightRoute;
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+const localizedTitle =
+  locale === 'en' ? 'HRT Yakuten' :
+  locale === 'ja' ? 'HRT薬典' :
+  'HRT药典';
+---
+
+<a href={siteTitleHref} class="site-title sl-flex">
+  <span translate="no">{localizedTitle}</span>
+</a>
+
+<style>
+  @layer starlight.core {
+    .site-title {
+      align-items: center;
+      gap: var(--sl-nav-gap);
+      font-size: var(--sl-text-h4);
+      font-weight: 600;
+      color: var(--sl-color-text-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    span {
+      overflow: hidden;
+    }
+  }
+</style>

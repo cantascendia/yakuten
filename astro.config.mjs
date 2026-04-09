@@ -18,6 +18,7 @@ export default defineConfig({
       components: {
         Head: './src/components/overrides/Head.astro',
         Footer: './src/components/overrides/Footer.astro',
+        SiteTitle: './src/components/overrides/SiteTitle.astro',
       },
       customCss: [
         './src/styles/global.css',
@@ -153,16 +154,6 @@ export default defineConfig({
         {
           tag: 'noscript',
           content: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" />',
-        },
-        // Dark theme default
-        {
-          tag: 'script',
-          content: `
-            if (!localStorage.getItem('starlight-theme')) {
-              document.documentElement.dataset.theme = 'dark';
-              localStorage.setItem('starlight-theme', 'dark');
-            }
-          `,
         },
       ],
     }),

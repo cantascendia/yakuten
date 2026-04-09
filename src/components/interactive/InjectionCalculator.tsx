@@ -1,10 +1,96 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import {
   formatMedicalNumber,
   formatRangeWithUnit,
   formatValueWithUnit,
 } from '../../utils/medicalFormat';
+
+type Locale = 'zh' | 'en' | 'ja';
+
+function getLocale(): Locale {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
+  return 'zh';
+}
+
+const UI_COPY = {
+  zh: {
+    regionLabel: '注射剂量换算器',
+    drugLabel: '药物规格',
+    targetDoseLabel: '目标周剂量',
+    weeklyUnit: 'mg/周',
+    doseSlider: '剂量滑块',
+    volumeLabel: '抽取体积',
+    syringeLabel: '建议注射器',
+    e2RangeLabel: '预期 E2 范围',
+    troughEstimate: '（谷值估算）',
+    applicableLabel: '适用人群',
+    referenceTitle: '参考换算表',
+    thDose: '剂量',
+    thVolume: '体积',
+    thSyringe: '注射器',
+    thExpectedE2: '预期 E2',
+    thApplicable: '适用人群',
+    cautionTitle: '接近剂量上限',
+    cautionBody: `超过 ${formatValueWithUnit(5, 'mg/周')} 需医疗监督`,
+    dangerTitle: '不建议此剂量',
+    dangerBody: `超过 ${formatValueWithUnit(7, 'mg/周')} 显著增加血栓风险`,
+    forbiddenTitle: '禁止！',
+    forbiddenBody: `单次剂量 ≥${formatValueWithUnit(10, 'mg')} 有严重健康风险，包括血栓、肝损伤。请立即咨询医生。`,
+    disclaimer: '预期 E2 范围为近似谷值估算，实际血药浓度因个体代谢、注射部位、体脂比例等因素有显著差异。请定期进行血检监测，并在医疗专业人员指导下调整剂量。本工具不构成医疗建议。',
+  },
+  en: {
+    regionLabel: 'Injection dose calculator',
+    drugLabel: 'Formulation',
+    targetDoseLabel: 'Target weekly dose',
+    weeklyUnit: 'mg/week',
+    doseSlider: 'Dose slider',
+    volumeLabel: 'Draw volume',
+    syringeLabel: 'Suggested syringe',
+    e2RangeLabel: 'Expected E2 range',
+    troughEstimate: '(approximate trough)',
+    applicableLabel: 'Applicable group',
+    referenceTitle: 'Reference table',
+    thDose: 'Dose',
+    thVolume: 'Volume',
+    thSyringe: 'Syringe',
+    thExpectedE2: 'Expected E2',
+    thApplicable: 'Applicable group',
+    cautionTitle: 'Near upper dose limit',
+    cautionBody: `More than ${formatValueWithUnit(5, 'mg/week')} should be medically supervised`,
+    dangerTitle: 'Dose not recommended',
+    dangerBody: `More than ${formatValueWithUnit(7, 'mg/week')} substantially increases clot risk`,
+    forbiddenTitle: 'Do not use',
+    forbiddenBody: `A single dose ≥${formatValueWithUnit(10, 'mg')} carries serious health risks, including thrombosis and liver injury. Consult a clinician immediately.`,
+    disclaimer: 'The expected E2 range is only an approximate trough estimate. Actual levels vary with metabolism, injection site, and body composition. Monitor with regular blood tests and adjust only with qualified medical guidance.',
+  },
+  ja: {
+    regionLabel: '注射用量換算ツール',
+    drugLabel: '製剤',
+    targetDoseLabel: '目標週用量',
+    weeklyUnit: 'mg/週',
+    doseSlider: '用量スライダー',
+    volumeLabel: '吸引量',
+    syringeLabel: '推奨シリンジ',
+    e2RangeLabel: '予想 E2 範囲',
+    troughEstimate: '（トラフ推定）',
+    applicableLabel: '適用対象',
+    referenceTitle: '参考換算表',
+    thDose: '用量',
+    thVolume: '容量',
+    thSyringe: 'シリンジ',
+    thExpectedE2: '予想 E2',
+    thApplicable: '適用対象',
+    cautionTitle: '上限に近い用量',
+    cautionBody: `${formatValueWithUnit(5, 'mg/週')} を超える場合は医療管理が必要です`,
+    dangerTitle: '推奨できない用量',
+    dangerBody: `${formatValueWithUnit(7, 'mg/週')} を超えると血栓リスクが大きく上がります`,
+    forbiddenTitle: '使用禁止',
+    forbiddenBody: `単回用量が ${formatValueWithUnit(10, 'mg')} 以上では、血栓や肝障害を含む重大な健康リスクがあります。直ちに医師へ相談してください。`,
+    disclaimer: '予想 E2 範囲は概算の谷値推定にすぎません。実際の血中濃度は代謝、注射部位、体組成などで大きく変動します。定期的な採血を行い、調整は必ず医療専門職の指導のもとで行ってください。',
+  },
+} as const;
 
 /* ================================
    Data & Logic
@@ -306,6 +392,8 @@ function SyringeIcon({ size = 20 }: { size?: number }) {
    ================================ */
 
 export default function InjectionCalculator() {
+  const locale = getLocale();
+  const ui = UI_COPY[locale];
   const [drugIndex, setDrugIndex] = useState(0);
   const [doseMg, setDoseMg] = useState(2);
 
@@ -332,11 +420,11 @@ export default function InjectionCalculator() {
         : 'var(--color-danger)';
 
   return (
-    <div style={styles.container} role="region" aria-label="注射剂量换算器">
+    <div style={styles.container} role="region" aria-label={ui.regionLabel}>
       {/* --- Drug Selection --- */}
       <div style={styles.section}>
         <label htmlFor="drug-select" style={styles.label}>
-          药物规格
+          {ui.drugLabel}
         </label>
         <select
           id="drug-select"
@@ -361,7 +449,7 @@ export default function InjectionCalculator() {
       {/* --- Dose Input --- */}
       <div style={styles.section}>
         <label htmlFor="dose-input" style={styles.label}>
-          目标周剂量
+          {ui.targetDoseLabel}
         </label>
         <div style={styles.inputRow}>
           <input
@@ -388,7 +476,7 @@ export default function InjectionCalculator() {
             }}
             aria-describedby="dose-warning"
           />
-          <span style={styles.doseUnit}>mg/周</span>
+          <span style={styles.doseUnit}>{ui.weeklyUnit}</span>
           <input
             type="range"
             min={0.5}
@@ -397,7 +485,7 @@ export default function InjectionCalculator() {
             value={doseMg}
             onChange={(e) => handleDoseChange(Number(e.target.value))}
             style={styles.slider}
-            aria-label="剂量滑块"
+            aria-label={ui.doseSlider}
           />
         </div>
       </div>
@@ -406,17 +494,17 @@ export default function InjectionCalculator() {
       <div id="dose-warning" aria-live="polite">
         {warningLevel === 'caution' && (
           <div style={styles.warningCaution} role="alert">
-            <strong>&#9888; 接近剂量上限</strong> &mdash; 超过 {formatValueWithUnit(5, 'mg/周')} 需医疗监督
+            <strong>&#9888; {ui.cautionTitle}</strong> &mdash; {ui.cautionBody}
           </div>
         )}
         {warningLevel === 'danger' && (
           <div style={styles.warningDanger} role="alert">
-            <strong>&#9888; 不建议此剂量</strong> &mdash; 超过 {formatValueWithUnit(7, 'mg/周')} 显著增加血栓风险
+            <strong>&#9888; {ui.dangerTitle}</strong> &mdash; {ui.dangerBody}
           </div>
         )}
         {warningLevel === 'forbidden' && (
           <div style={styles.warningForbidden} role="alert">
-            <strong>&#9888; 禁止！</strong>单次剂量 &ge;{formatValueWithUnit(10, 'mg')} 有严重健康风险，包括血栓、肝损伤。请立即咨询医生。
+            <strong>&#9888; {ui.forbiddenTitle}</strong> {ui.forbiddenBody}
           </div>
         )}
       </div>
@@ -426,7 +514,7 @@ export default function InjectionCalculator() {
         <div style={styles.resultGrid}>
           {/* Volume */}
           <div style={styles.resultCard}>
-            <div style={styles.resultLabel}>抽取体积</div>
+            <div style={styles.resultLabel}>{ui.volumeLabel}</div>
             <div style={{ ...styles.resultValue, color: volumeColor }}>
               {formatMedicalNumber(volumeMl, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
@@ -435,7 +523,7 @@ export default function InjectionCalculator() {
 
           {/* Syringe */}
           <div style={styles.resultCard}>
-            <div style={styles.resultLabel}>建议注射器</div>
+            <div style={styles.resultLabel}>{ui.syringeLabel}</div>
             <div
               style={{
                 color: 'var(--color-primary-light)',
@@ -452,7 +540,7 @@ export default function InjectionCalculator() {
 
           {/* E2 Range */}
           <div style={styles.resultCard}>
-            <div style={styles.resultLabel}>预期 E2 范围</div>
+            <div style={styles.resultLabel}>{ui.e2RangeLabel}</div>
             <div
               style={{
                 fontFamily: 'var(--font-mono)',
@@ -464,12 +552,12 @@ export default function InjectionCalculator() {
             >
               {doseInfo?.e2Range ?? '--'}
             </div>
-            <div style={styles.resultSub}>（谷值估算）</div>
+            <div style={styles.resultSub}>{ui.troughEstimate}</div>
           </div>
 
           {/* Applicable Group */}
           <div style={styles.resultCard}>
-            <div style={styles.resultLabel}>适用人群</div>
+            <div style={styles.resultLabel}>{ui.applicableLabel}</div>
             <div style={{ marginTop: 'var(--space-sm)' }}>
               <span style={styles.badge}>{doseInfo?.applicable ?? '--'}</span>
             </div>
@@ -493,17 +581,17 @@ export default function InjectionCalculator() {
       <hr style={styles.sectionDivider} />
       <div style={styles.section}>
         <div style={{ ...styles.label, marginBottom: 'var(--space-md)' }}>
-          参考换算表 &mdash; {drug.name}
+          {ui.referenceTitle} &mdash; {drug.name}
         </div>
         <div style={{ overflowX: 'auto' }}>
           <table style={styles.table}>
             <thead>
               <tr>
-                <th style={styles.th}>剂量</th>
-                <th style={styles.th}>体积</th>
-                <th style={styles.th}>注射器</th>
-                <th style={styles.th}>预期 E2</th>
-                <th style={styles.th}>适用人群</th>
+                <th style={styles.th}>{ui.thDose}</th>
+                <th style={styles.th}>{ui.thVolume}</th>
+                <th style={styles.th}>{ui.thSyringe}</th>
+                <th style={styles.th}>{ui.thExpectedE2}</th>
+                <th style={styles.th}>{ui.thApplicable}</th>
               </tr>
             </thead>
             <tbody>
@@ -540,9 +628,9 @@ export default function InjectionCalculator() {
 
       {/* --- Disclaimer --- */}
       <div style={styles.disclaimer}>
-        * 预期 E2 范围为近似谷值估算，实际血药浓度因个体代谢、注射部位、体脂比例等因素有显著差异。
-        请定期进行血检监测，并在医疗专业人员指导下调整剂量。本工具不构成医疗建议。
+        {ui.disclaimer}
       </div>
     </div>
   );
 }
+

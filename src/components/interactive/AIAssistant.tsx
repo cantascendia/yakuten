@@ -1,5 +1,88 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+﻿import { useState, useRef, useEffect, useCallback } from 'react';
 import type { CSSProperties } from 'react';
+
+type Locale = 'zh' | 'en' | 'ja';
+
+function getLocale(): Locale {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
+  return 'zh';
+}
+
+const UI_COPY = {
+  zh: {
+    title: 'AI 问答助手',
+    close: '关闭',
+    disclaimer: '仅供信息导航，不提供个体化用药建议；如遇紧急情况请立即拨打 120。',
+    emptyTitle: '这是一个用于 HRT 信息导航的 AI 助手。',
+    emptySubtitle: '你可以先询问基础概念、风险识别、血检说明或页面导览。',
+    thinking: '正在思考...',
+    errorPrefix: '出错了：',
+    inputPlaceholder: '输入你的问题...',
+    inputLabel: '输入问题',
+    send: '发送',
+    sendLabel: '发送消息',
+    loading: '发送中...',
+    rateLimitError: '请求过于频繁，请稍后再试',
+    serviceUnavailable: '服务暂时不可用',
+    emptyResponse: '抱歉，暂时无法获取回复。请稍后重试。',
+    unknownError: '未知错误',
+    suggestions: [
+      '雌二醇的常见目标范围是什么？',
+      '出现哪些情况需要立即停药？',
+      '血检结果偏高应该怎么看？',
+      'HRT 开始前应该准备什么？',
+    ],
+  },
+  en: {
+    title: 'AI Assistant',
+    close: 'Close',
+    disclaimer: 'For information navigation only. No individualized dosing advice. In emergencies, seek urgent local care immediately.',
+    emptyTitle: 'This AI assistant is for HRT information navigation.',
+    emptySubtitle: 'You can ask about basics, risk recognition, blood test interpretation, or where to start reading.',
+    thinking: 'Thinking...',
+    errorPrefix: 'Error: ',
+    inputPlaceholder: 'Ask a question...',
+    inputLabel: 'Ask a question',
+    send: 'Send',
+    sendLabel: 'Send message',
+    loading: 'Sending...',
+    rateLimitError: 'Too many requests. Please try again later.',
+    serviceUnavailable: 'Service temporarily unavailable',
+    emptyResponse: 'Sorry, no reply was returned. Please try again later.',
+    unknownError: 'Unknown error',
+    suggestions: [
+      'What is a common estradiol target range?',
+      'Which symptoms mean I should stop medication immediately?',
+      'How should I interpret high lab values?',
+      'What should I prepare before starting HRT?',
+    ],
+  },
+  ja: {
+    title: 'AIアシスタント',
+    close: '閉じる',
+    disclaimer: '情報案内専用です。個別の用量提案は行いません。緊急時は直ちに地域の救急を利用してください。',
+    emptyTitle: 'このAIアシスタントは HRT 情報の案内用です。',
+    emptySubtitle: '基礎知識、リスクの見分け方、血液検査の見方、読み始めるページなどを質問できます。',
+    thinking: '考えています...',
+    errorPrefix: 'エラー: ',
+    inputPlaceholder: '質問を入力...',
+    inputLabel: '質問を入力',
+    send: '送信',
+    sendLabel: 'メッセージを送信',
+    loading: '送信中...',
+    rateLimitError: 'リクエストが多すぎます。しばらくしてから再試行してください。',
+    serviceUnavailable: 'サービスは一時的に利用できません',
+    emptyResponse: '返信を取得できませんでした。しばらくしてから再試行してください。',
+    unknownError: '不明なエラー',
+    suggestions: [
+      'エストラジオールの一般的な目標範囲は？',
+      'どんな症状ならすぐ中止すべきですか？',
+      '検査値が高いときはどう見ればいいですか？',
+      'HRT 開始前に何を準備すべきですか？',
+    ],
+  },
+} as const;
 
 /* ================================
    Simple Markdown Renderer
@@ -241,18 +324,13 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
   };
 }
 
-const SUGGESTIONS = [
-  '雌二醇口服和舌下含服有什么区别？',
-  '螺内酯的常见副作用有哪些？',
-  '血检应该什么时候抽血？',
-  'HRT 前需要做哪些检查？',
-];
-
 /* ================================
    Component
    ================================ */
 
 export default function AIAssistant({ compact = false, onClose }: AIAssistantProps) {
+  const locale = getLocale();
+  const ui = UI_COPY[locale];
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -299,9 +377,9 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       if (!res.ok) {
         if (res.status === 429) {
           const data = await res.json().catch(() => ({}));
-          throw new Error(data.error || '请求过于频繁，请稍后再试');
+          throw new Error(data.error || ui.rateLimitError);
         }
-        throw new Error(`服务暂时不可用 (${res.status})`);
+        throw new Error(`${ui.serviceUnavailable} (${res.status})`);
       }
 
       if (!res.body) {
@@ -330,13 +408,13 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: 'assistant',
-            content: '抱歉，无法获取回复。请稍后重试。',
+            content: ui.emptyResponse,
           };
           return updated;
         });
       }
     } catch (err: unknown) {
-      const errMsg = err instanceof Error ? err.message : '未知错误';
+      const errMsg = err instanceof Error ? err.message : ui.unknownError;
       setError(errMsg);
       // Remove the empty assistant placeholder on error
       setMessages(prev => {
@@ -359,7 +437,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   }
 
   return (
-    <div style={s.container} role="region" aria-label="AI 问答助手">
+    <div style={s.container} role="region" aria-label={ui.title}>
       {/* Inline keyframes */}
       <style>{`
         @keyframes ai-dot-bounce {
@@ -375,12 +453,12 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
         </span>
-        <span style={s.headerTitle}>AI 问答助手</span>
+        <span style={s.headerTitle}>{ui.title}</span>
         <span style={s.headerBadge}>BETA</span>
         {onClose && (
           <button
             onClick={onClose}
-            aria-label="关闭"
+            aria-label={ui.close}
             style={{
               background: 'none',
               border: 'none',
@@ -406,7 +484,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
       {/* Disclaimer */}
       <div style={s.disclaimer}>
-        ⚠ 仅基于医学文献，不构成个人化医疗建议。对话不存储。紧急情况请拨 120。
+        {ui.disclaimer}
       </div>
 
       {/* Messages */}
@@ -415,11 +493,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           <div style={s.emptyState}>
             <div style={s.emptyIcon} aria-hidden="true">💊</div>
             <div style={s.emptyText}>
-              基于循证医学文献的 AI 问答<br />
-              你可以问任何关于 HRT 的安全问题
+              {ui.emptyTitle}<br />
+              {ui.emptySubtitle}
             </div>
             <div style={s.suggestionsGrid}>
-              {SUGGESTIONS.map((q, i) => (
+              {ui.suggestions.map((q, i) => (
                 <button
                   key={i}
                   style={s.suggestionBtn}
@@ -464,7 +542,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                       <span style={{ ...s.dot, animation: 'ai-dot-bounce 1s ease 0.15s infinite' }} />
                       <span style={{ ...s.dot, animation: 'ai-dot-bounce 1s ease 0.3s infinite' }} />
                     </span>
-                    正在思考...
+                      {ui.thinking}
                   </div>
                 )
               )}
@@ -474,7 +552,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
         {error && (
           <div style={s.errorBox}>
-            连接失败：{error}
+            {ui.errorPrefix}{error}
           </div>
         )}
       </div>
@@ -487,12 +565,12 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="输入你的问题..."
+          placeholder={ui.inputPlaceholder}
           style={s.textInput}
           disabled={isLoading}
           onFocus={e => { e.currentTarget.style.borderBottomColor = 'var(--color-primary)'; }}
           onBlur={e => { e.currentTarget.style.borderBottomColor = 'var(--color-outline)'; }}
-          aria-label="输入问题"
+          aria-label={ui.inputLabel}
         />
         <button
           onClick={() => sendMessage()}
@@ -501,11 +579,12 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             ...s.sendBtn,
             ...(isLoading || !input.trim() ? s.sendBtnDisabled : {}),
           }}
-          aria-label="发送"
+          aria-label={ui.sendLabel}
         >
-          {isLoading ? '思考中...' : '发送'}
+          {isLoading ? ui.loading : ui.send}
         </button>
       </div>
     </div>
   );
 }
+

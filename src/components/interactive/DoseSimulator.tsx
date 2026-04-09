@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import {
   formatEveryDays,
@@ -6,6 +6,98 @@ import {
   formatPercent,
   formatValueWithUnit,
 } from '../../utils/medicalFormat';
+
+type Locale = 'zh' | 'en' | 'ja';
+
+function getLocale(): Locale {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
+  return 'zh';
+}
+
+const UI_COPY = {
+  zh: {
+    regionLabel: '剂量模拟器',
+    title: '剂量模拟器',
+    drugLabel: '药物选择',
+    doseLabel: '单次剂量',
+    doseSlider: '剂量滑块',
+    intervalLabel: '给药间隔',
+    intervalUnit: '天',
+    intervalSlider: '间隔滑块',
+    peakLabel: '稳态峰值',
+    troughLabel: '稳态谷值',
+    relativeConcentration: '相对浓度',
+    fluctuationLabel: '波动幅度',
+    fluctuationHigh: '波动较大',
+    fluctuationOkay: '波动可控',
+    halfLifeLabel: '消除半衰期',
+    pkTableTitle: '药代动力学参数参考',
+    thDrug: '药物',
+    thRoute: '途径',
+    thHalfLife: '半衰期',
+    thPeakTime: '达峰时间',
+    thBioavailability: '生物利用度',
+    thInterval: '常用间隔',
+    highDoseWarning: '当前剂量高于常规推荐，波动幅度增大，建议咨询医生。',
+    dangerousDoseWarning: '当前剂量已达上限或超出安全范围，请勿自行使用此剂量。',
+    disclaimer: '本工具不提供任何剂量推荐，仅供理解药物动力学特性参考。请以实际血检结果为准。',
+  },
+  en: {
+    regionLabel: 'Dose simulator',
+    title: 'Dose Simulator',
+    drugLabel: 'Medication',
+    doseLabel: 'Dose per administration',
+    doseSlider: 'Dose slider',
+    intervalLabel: 'Dosing interval',
+    intervalUnit: 'days',
+    intervalSlider: 'Interval slider',
+    peakLabel: 'Steady-state peak',
+    troughLabel: 'Steady-state trough',
+    relativeConcentration: 'Relative concentration',
+    fluctuationLabel: 'Fluctuation',
+    fluctuationHigh: 'Higher fluctuation',
+    fluctuationOkay: 'Controlled fluctuation',
+    halfLifeLabel: 'Elimination half-life',
+    pkTableTitle: 'Pharmacokinetic reference',
+    thDrug: 'Drug',
+    thRoute: 'Route',
+    thHalfLife: 'Half-life',
+    thPeakTime: 'Time to peak',
+    thBioavailability: 'Bioavailability',
+    thInterval: 'Typical interval',
+    highDoseWarning: 'The current dose is above the usual range and may increase fluctuation. Consider discussing it with a clinician.',
+    dangerousDoseWarning: 'The current dose is at or above the upper safety limit. Do not use this dose on your own.',
+    disclaimer: 'This tool does not provide dosing recommendations. It is only for understanding pharmacokinetic behavior. Always rely on actual bloodwork.',
+  },
+  ja: {
+    regionLabel: '用量シミュレーター',
+    title: '用量シミュレーター',
+    drugLabel: '薬剤',
+    doseLabel: '1回量',
+    doseSlider: '用量スライダー',
+    intervalLabel: '投与間隔',
+    intervalUnit: '日',
+    intervalSlider: '間隔スライダー',
+    peakLabel: '定常状態ピーク',
+    troughLabel: '定常状態トラフ',
+    relativeConcentration: '相対濃度',
+    fluctuationLabel: '変動幅',
+    fluctuationHigh: '変動が大きい',
+    fluctuationOkay: '変動は管理可能',
+    halfLifeLabel: '消失半減期',
+    pkTableTitle: '薬物動態パラメータ参考',
+    thDrug: '薬剤',
+    thRoute: '経路',
+    thHalfLife: '半減期',
+    thPeakTime: 'ピーク到達',
+    thBioavailability: '生物学的利用率',
+    thInterval: '一般的な間隔',
+    highDoseWarning: '現在の用量は一般的な範囲より高く、変動幅が大きくなる可能性があります。医師への相談を検討してください。',
+    dangerousDoseWarning: '現在の用量は上限に達しているか安全域を超えています。この用量を自己判断で使用しないでください。',
+    disclaimer: 'このツールは用量推奨を行いません。薬物動態の傾向を理解するための参考用です。実際の血液検査結果を優先してください。',
+  },
+} as const;
 
 /* ================================
    Pharmacokinetic Data
@@ -482,6 +574,8 @@ const s: Record<string, CSSProperties> = {
    ================================ */
 
 export default function DoseSimulator() {
+  const locale = getLocale();
+  const ui = UI_COPY[locale];
   const [drugId, setDrugId] = useState('ev-injection');
   const [doseMg, setDoseMg] = useState(4);
   const [intervalDays, setIntervalDays] = useState(5);
@@ -522,19 +616,19 @@ export default function DoseSimulator() {
   const doseMin = drug.id === 'e2-patch' ? 0.025 : 0.5;
 
   return (
-    <div style={s.container} role="region" aria-label="剂量模拟器">
+    <div style={s.container} role="region" aria-label={ui.regionLabel}>
       <div style={s.title}>
         <span style={s.iconBadge}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
           </svg>
         </span>
-        剂量模拟器
+        {ui.title}
       </div>
 
       {/* Drug Selection */}
       <div style={s.section}>
-        <label htmlFor="sim-drug" style={s.label}>药物选择</label>
+        <label htmlFor="sim-drug" style={s.label}>{ui.drugLabel}</label>
         <select
           id="sim-drug"
           value={drugId}
@@ -551,7 +645,7 @@ export default function DoseSimulator() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-lg)' }}>
         <div style={s.section}>
           <label htmlFor="sim-dose" style={s.label}>
-            单次剂量
+            {ui.doseLabel}
           </label>
           <div style={s.inputRow}>
             <input
@@ -574,13 +668,13 @@ export default function DoseSimulator() {
             value={doseMg}
             onChange={e => setDoseMg(Number(e.target.value))}
             style={{ ...s.slider, marginTop: 'var(--space-sm)', width: '100%' }}
-            aria-label="剂量滑块"
+            aria-label={ui.doseSlider}
           />
         </div>
 
         <div style={s.section}>
           <label htmlFor="sim-interval" style={s.label}>
-            给药间隔
+            {ui.intervalLabel}
           </label>
           <div style={s.inputRow}>
             <input
@@ -593,7 +687,7 @@ export default function DoseSimulator() {
               onChange={e => setIntervalDays(Math.max(0.5, Math.min(14, Number(e.target.value))))}
               style={s.numberInput}
             />
-            <span style={s.unit}>天</span>
+            <span style={s.unit}>{ui.intervalUnit}</span>
           </div>
           <input
             type="range"
@@ -603,22 +697,22 @@ export default function DoseSimulator() {
             value={intervalDays}
             onChange={e => setIntervalDays(Number(e.target.value))}
             style={{ ...s.slider, marginTop: 'var(--space-sm)', width: '100%' }}
-            aria-label="间隔滑块"
+            aria-label={ui.intervalSlider}
           />
         </div>
       </div>
 
       {/* Warnings */}
-      {isHighDose && !isDangerous && (
-        <div style={s.warningBox} role="alert">
-          ⚠ 当前剂量高于常规推荐，波动幅度增大，建议咨询医生
-        </div>
-      )}
-      {isDangerous && (
-        <div style={s.dangerBox} role="alert">
-          ⚠ 当前剂量已达上限或超出安全范围，请勿自行使用此剂量
-        </div>
-      )}
+        {isHighDose && !isDangerous && (
+          <div style={s.warningBox} role="alert">
+            {ui.highDoseWarning}
+          </div>
+        )}
+        {isDangerous && (
+          <div style={s.dangerBox} role="alert">
+            {ui.dangerousDoseWarning}
+          </div>
+        )}
 
       {/* Chart */}
       <div style={s.chartBox}>
@@ -628,28 +722,28 @@ export default function DoseSimulator() {
       {/* Stats */}
       <div style={s.statsGrid}>
         <div style={s.statCard}>
-          <div style={s.statLabel}>稳态峰值</div>
+          <div style={s.statLabel}>{ui.peakLabel}</div>
           <div style={{ ...s.statValue, color: drug.color }}>
             {formatMedicalNumber(peak, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
           </div>
-          <div style={s.statSub}>相对浓度</div>
+          <div style={s.statSub}>{ui.relativeConcentration}</div>
         </div>
         <div style={s.statCard}>
-          <div style={s.statLabel}>稳态谷值</div>
+          <div style={s.statLabel}>{ui.troughLabel}</div>
           <div style={{ ...s.statValue, color: 'var(--color-accent)' }}>
             {formatMedicalNumber(trough, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
           </div>
-          <div style={s.statSub}>相对浓度</div>
+          <div style={s.statSub}>{ui.relativeConcentration}</div>
         </div>
         <div style={s.statCard}>
-          <div style={s.statLabel}>波动幅度</div>
+          <div style={s.statLabel}>{ui.fluctuationLabel}</div>
           <div style={{ ...s.statValue, color: (fluctuation ?? 0) > 80 ? 'var(--color-caution)' : 'var(--color-safe)' }}>
             {fluctuation === null ? '—' : formatPercent(fluctuation, { maximumFractionDigits: 0 })}
           </div>
-          <div style={s.statSub}>{(fluctuation ?? 0) > 80 ? '波动较大' : '波动可控'}</div>
+          <div style={s.statSub}>{(fluctuation ?? 0) > 80 ? ui.fluctuationHigh : ui.fluctuationOkay}</div>
         </div>
         <div style={s.statCard}>
-          <div style={s.statLabel}>消除半衰期</div>
+          <div style={s.statLabel}>{ui.halfLifeLabel}</div>
           <div style={{ ...s.statValue, color: 'var(--color-info)' }}>
             {formatValueWithUnit(drug.halfLifeHours, 'h')}
           </div>
@@ -661,18 +755,18 @@ export default function DoseSimulator() {
       <hr style={s.divider} />
       <div style={s.section}>
         <div style={{ ...s.label, marginBottom: 'var(--space-md)' }}>
-          药代动力学参数参考
+          {ui.pkTableTitle}
         </div>
         <div style={{ overflowX: 'auto' }}>
           <table style={s.pkTable}>
             <thead>
               <tr>
-                <th style={s.th}>药物</th>
-                <th style={s.th}>途径</th>
-                <th style={s.th}>半衰期</th>
-                <th style={s.th}>达峰时间</th>
-                <th style={s.th}>生物利用度</th>
-                <th style={s.th}>常用间隔</th>
+                <th style={s.th}>{ui.thDrug}</th>
+                <th style={s.th}>{ui.thRoute}</th>
+                <th style={s.th}>{ui.thHalfLife}</th>
+                <th style={s.th}>{ui.thPeakTime}</th>
+                <th style={s.th}>{ui.thBioavailability}</th>
+                <th style={s.th}>{ui.thInterval}</th>
               </tr>
             </thead>
             <tbody>
@@ -693,11 +787,9 @@ export default function DoseSimulator() {
 
       {/* Disclaimer */}
       <div style={s.disclaimer}>
-        * 本模拟器基于单室药代动力学模型（Bateman 函数），使用群体药代动力学参数估算。
-        <strong>曲线仅展示相对浓度变化趋势，不代表实际血药浓度值。</strong>
-        实际血药浓度因个体代谢、体重、注射部位等因素存在显著差异。
-        本工具不提供任何剂量推荐，仅供理解药物动力学特性参考。请以实际血检结果为准。
+        {ui.disclaimer}
       </div>
     </div>
   );
 }
+

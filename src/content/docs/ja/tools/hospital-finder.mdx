@@ -1,0 +1,57 @@
+---
+title: 医療リソース一覧
+description: コミュニティ報告をもとにした受診先リソース一覧です。来院前に必ず直接確認してください。
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="来院前に要確認">
+この一覧はコミュニティ報告を整理した受診先メモであり、公式保証ではありません。診療方針、担当医、受付条件は変わることがあるため、必ずご自身で直接確認してください。
+</WarningBox>
+
+この一覧には現在 {hospitals.length} 件のコミュニティ報告があり、{cityCount} 都市をカバーしています。現時点では元データが主に中国語のため、病院名や備考は中国語のまま表示される場合があります。
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**このページの使い方**
+
+1. あくまで受診先探索の出発点として使ってください。
+2. 診療科、担当医、受付条件は必ず医療機関へ直接確認してください。
+3. 受診先探しと並行して、ベースライン検査と緊急時対応も準備してください。
+
+</GlassCard>
+
+<DangerBox title="緊急時の注意">
+この一覧は緊急紹介サービスではありません。強い症状や緊急性がある場合は、一覧検索より先に救急受診を優先してください。
+</DangerBox>
