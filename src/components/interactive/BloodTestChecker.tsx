@@ -526,7 +526,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: 0,
             width: '100%',
-            background: 'rgba(244,67,54,0.25)',
+            background: 'rgba(244,67,54,0.5)',
           }}
         />
         {/* Yellow zone */}
@@ -535,7 +535,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: `${yellowLeft}%`,
             width: `${yellowRight - yellowLeft}%`,
-            background: 'rgba(255,152,0,0.45)',
+            background: 'rgba(255,152,0,0.75)',
           }}
         />
         {/* Green zone */}
@@ -544,7 +544,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: `${greenLeft}%`,
             width: `${greenRight - greenLeft}%`,
-            background: 'rgba(76,175,80,0.55)',
+            background: 'rgba(76,175,80,0.8)',
           }}
         />
         {/* Value marker */}
