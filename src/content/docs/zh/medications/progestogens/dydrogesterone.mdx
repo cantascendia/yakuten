@@ -1,0 +1,78 @@
+---
+title: 地屈孕酮
+description: 地屈孕酮在跨性别女性 HRT 中的使用——逆行孕激素的机制、剂量、与天然黄体酮的对比及安全考量。
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesterone"
+  nameCN="地屈孕酮"
+  category="progestogen"
+  route="口服"
+  evidenceLevel="C"
+>
+地屈孕酮（Dydrogesterone）是黄体酮的逆行异构体（retro-isomer），口服生物利用度显著高于微粒化黄体酮。在跨性别女性 HRT 中作为孕激素的替代选项，但相关临床证据有限<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+</DrugInfoBox>
+
+## 作用机制
+
+地屈孕酮是天然黄体酮的结构类似物，具有高度选择性的孕激素受体活性：
+
+- **高口服生物利用度**：约 28%（微粒化黄体酮仅约 10%）
+- **无抗雄活性**：不像 CPA 或螺内酯，不直接影响雄激素
+- **无糖皮质激素或盐皮质激素活性**
+- **半衰期**：约 14-17 小时
+
+### 与微粒化黄体酮的对比
+
+| 特性 | 地屈孕酮 | [微粒化黄体酮](/zh/medications/progestogens/progesterone/) |
+|------|----------|----------|
+| 类型 | 逆行异构体（合成） | 天然/生物同质 |
+| 口服生物利用度 | ~28% | ~10% |
+| 镇静作用 | 极少 | 显著（因此建议睡前服用） |
+| 给药途径 | 仅口服 | 口服/直肠/阴道 |
+| VTE 风险 | 数据不充分 | 中性或极低 |
+| 证据等级 | C | C |
+
+## 剂量
+
+<DoseTable
+  headers={['适应症', '剂量', '说明']}
+  rows={[
+    ['HRT 孕激素补充', '10-20 mg/天', '通常每日 1-2 次'],
+    ['周期性方案', '10 mg/天 × 14 天/月', '模拟月经周期后半段'],
+  ]}
+/>
+
+<WarningBox title="孕激素在 HRT 中的争议">
+WPATH SOC 8 指出，孕激素在跨性别女性 HRT 中的获益"尚未被充分证实"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。部分使用者报告孕激素有助于乳房发育和改善情绪，但这些证据主要来自个案报告和社区经验。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 规格 | 地区 |
+|--------|------|------|
+| **达芙通 (Duphaston)** | 10 mg | 全球广泛（含中国大陆） |
+| 仿制药 | 10 mg | 部分地区 |
+
+地屈孕酮在中国大陆以达芙通品牌广泛供应，处方可及性较好。
+
+## 监测要求
+
+- **PRL（泌乳素）**：每 6 个月。孕激素可能轻微升高泌乳素水平
+- 无需额外的肝功能监测（地屈孕酮肝毒性极低）
+
+## 禁忌症
+
+- 对地屈孕酮过敏
+- 不明原因的阴道出血（顺性别女性适应症——在跨性别背景下不常适用）
+- 急性血卟啉症

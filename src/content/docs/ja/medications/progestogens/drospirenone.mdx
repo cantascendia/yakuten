@@ -1,0 +1,73 @@
+---
+title: ドロスピレノン
+description: トランスジェンダー女性HRTにおけるドロスピレノン——抗アンドロゲンおよび抗鉱質コルチコイド活性を持つプロゲストーゲン。
+evidenceLevel: C
+sidebar:
+  order: 4
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Drospirenone"
+  nameCN="ドロスピレノン"
+  category="progestogen"
+  route="経口"
+  evidenceLevel="C"
+>
+ドロスピレノン（Drospirenone）はスピロノラクトンから構造的に派生した合成プロゲストーゲンで、**抗アンドロゲン**および**抗鉱質コルチコイド**（スピロノラクトン様）活性を同時に持ちます。トランスジェンダー女性のHRTでは主流ではありませんが、そのユニークな薬理学的特性により特定の場面で価値がある可能性があります<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+</DrugInfoBox>
+
+## 作用機序
+
+ドロスピレノンは複数の薬理活性を持ちます：
+
+- **プロゲステロン活性**：プロゲステロン受容体に結合
+- **抗アンドロゲン活性**：アンドロゲン受容体への競合的結合（スピロノラクトンと類似の機序）
+- **抗鉱質コルチコイド活性**：スピロノラクトン様の利尿効果
+- **エストロゲンまたは糖質コルチコイド活性はなし**
+
+### ユニークな位置づけ
+
+ドロスピレノンは**抗アンドロゲンと抗鉱質コルチコイド活性を同時に持つ唯一のプロゲストーゲン**です。
+
+## 投与量
+
+<DoseTable
+  headers={['由来', '投与量', '説明']}
+  rows={[
+    ['経口避妊薬中', '3-4 mg/日', 'エチニルエストラジオールとの併用（HRTでは非推奨）'],
+    ['単剤製剤', '4 mg/日', 'Slynd（ドロスピレノン単剤ピル）'],
+    ['HRT補助（探索的）', '3-4 mg/日', '大規模HRT臨床試験データなし'],
+  ]}
+/>
+
+<WarningBox title="使用上の注意">
+ドロスピレノン含有製品の大半は、**エチニルエストラジオール（EE）**を含む経口避妊薬（Yaz、Yasminなど）です。本サイトではHRTにおけるエチニルエストラジオールの使用を[明確に禁止](/ja/medications/banned-drugs/)しています。ドロスピレノンを選択する場合は、**ドロスピレノン単剤製剤**（Slynd 4 mgなど）を使用し、EE含有の配合剤を使用しないでください。
+</WarningBox>
+
+## ブランドと入手可能性
+
+| ブランド名 | 剤型 | 説明 |
+|-----------|------|------|
+| **Slynd** | 4 mg ドロスピレノン単剤 | EEフリー、HRT使用可能 |
+| **ヤーズ / ヤスミン** | 3 mg ドロスピレノン + EE | エチニルエストラジオール含有、**HRT禁止** |
+
+## モニタリング
+
+- **K+（カリウム）**：ドロスピレノンはスピロノラクトン様のカリウム保持作用あり
+- **PRL**：6ヶ月ごと
+- スピロノラクトンとの併用で高カリウム血症リスクが著しく増加
+
+<DangerBox title="安全限界">
+- **スピロノラクトンとの併用禁止**：両剤ともカリウム保持作用があり、併用は危険な高カリウム血症を引き起こす可能性あり<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **EE含有配合剤の使用禁止**（ヤーズ/ヤスミンなど）
+- 腎機能障害者は慎重に使用
+- トランスジェンダーHRTにおけるドロスピレノンの大規模安全性データは存在しない
+</DangerBox>

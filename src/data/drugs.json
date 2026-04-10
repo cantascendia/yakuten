@@ -5,60 +5,131 @@
       "generic": "Estradiol Valerate (Oral)",
       "zh": "口服雌二醇/戊酸雌二醇",
       "ja": "エストラジオール吉草酸エステル（経口）",
-      "slang": ["补佳乐", "口E", "口服E2"],
-      "brands": ["Progynova", "补佳乐"]
+      "slang": [
+        "补佳乐",
+        "口E",
+        "口服E2"
+      ],
+      "brands": [
+        "Progynova",
+        "补佳乐"
+      ]
     },
     "category": "estrogen",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 2, "max": 2, "unit": "mg/天" },
-          "maintenance": { "min": 2, "max": 4, "unit": "mg/天" },
-          "maximum": { "value": 10, "unit": "mg/天" }
+          "start": {
+            "min": 2,
+            "max": 2,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 2,
+            "max": 4,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 10,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1-2次",
         "bioavailability": "~5%（首过效应显著）",
         "halfLife": "12-20小时",
         "peakTime": "3-6小时",
-        "vteRisk": { "rr": 1.48, "source": "Canonico 2018" },
+        "vteRisk": {
+          "rr": 1.48,
+          "source": "Canonico 2018"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "50-100 pg/mL", "duration": "1-6个月" },
-      "phase2": { "e2Target": "100-200 pg/mL", "duration": "6-12个月" },
-      "phase3": { "e2Target": "100-200 pg/mL", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "50-100 pg/mL",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "E2",
-        "targetRange": { "min": 100, "max": 200, "unit": "pg/mL" },
-        "cautionRange": { "min": 200, "max": 300 },
+        "targetRange": {
+          "min": 100,
+          "max": 200,
+          "unit": "pg/mL"
+        },
+        "cautionRange": {
+          "min": 200,
+          "max": 300
+        },
         "dangerThreshold": 500,
         "frequency": "每3个月"
       },
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       },
       {
         "test": "ALT/AST",
-        "targetRange": { "min": 0, "max": 40, "unit": "U/L" },
-        "cautionRange": { "min": 40, "max": 120 },
+        "targetRange": {
+          "min": 0,
+          "max": 40,
+          "unit": "U/L"
+        },
+        "cautionRange": {
+          "min": 40,
+          "max": 120
+        },
         "dangerThreshold": 120,
         "frequency": "每6个月"
       }
     ],
     "sideEffects": [
-      { "effect": "恶心", "frequency": "common", "severity": "mild" },
-      { "effect": "乳房胀痛", "frequency": "common", "severity": "mild" },
-      { "effect": "头痛", "frequency": "common", "severity": "mild" },
-      { "effect": "情绪波动", "frequency": "common", "severity": "mild" },
-      { "effect": "VTE（深静脉血栓/肺栓塞）", "frequency": "rare", "severity": "severe" }
+      {
+        "effect": "恶心",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "头痛",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "情绪波动",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "VTE（深静脉血栓/肺栓塞）",
+        "frequency": "rare",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -107,52 +178,110 @@
       "generic": "Estradiol (Sublingual)",
       "zh": "舌下含服雌二醇",
       "ja": "エストラジオール（舌下）",
-      "slang": ["舌下E2", "含服E2"],
-      "brands": ["Progynova (off-label sublingual)"]
+      "slang": [
+        "舌下E2",
+        "含服E2"
+      ],
+      "brands": [
+        "Progynova (off-label sublingual)"
+      ]
     },
     "category": "estrogen",
     "routes": [
       {
         "route": "sublingual",
         "doseRange": {
-          "start": { "min": 1, "max": 2, "unit": "mg/天" },
-          "maintenance": { "min": 2, "max": 4, "unit": "mg/天" },
-          "maximum": { "value": 8, "unit": "mg/天" }
+          "start": {
+            "min": 1,
+            "max": 2,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 2,
+            "max": 4,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 8,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日2-4次（分次含服）",
         "bioavailability": "~10-25%（绕过部分首过效应）",
         "halfLife": "6-8小时",
         "peakTime": "0.5-2小时",
-        "vteRisk": { "rr": 1.48, "source": "Canonico 2018（与口服类似，缺乏独立数据）" },
+        "vteRisk": {
+          "rr": 1.48,
+          "source": "Canonico 2018（与口服类似，缺乏独立数据）"
+        },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "50-100 pg/mL", "duration": "1-6个月" },
-      "phase2": { "e2Target": "100-200 pg/mL", "duration": "6-12个月" },
-      "phase3": { "e2Target": "100-200 pg/mL", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "50-100 pg/mL",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "E2",
-        "targetRange": { "min": 100, "max": 200, "unit": "pg/mL" },
-        "cautionRange": { "min": 200, "max": 300 },
+        "targetRange": {
+          "min": 100,
+          "max": 200,
+          "unit": "pg/mL"
+        },
+        "cautionRange": {
+          "min": 200,
+          "max": 300
+        },
         "dangerThreshold": 500,
         "frequency": "每3个月"
       },
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       }
     ],
     "sideEffects": [
-      { "effect": "血药浓度波动大（峰谷明显）", "frequency": "common", "severity": "mild" },
-      { "effect": "乳房胀痛", "frequency": "common", "severity": "mild" },
-      { "effect": "头痛", "frequency": "common", "severity": "mild" },
-      { "effect": "VTE（深静脉血栓/肺栓塞）", "frequency": "rare", "severity": "severe" }
+      {
+        "effect": "血药浓度波动大（峰谷明显）",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "头痛",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "VTE（深静脉血栓/肺栓塞）",
+        "frequency": "rare",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -193,51 +322,107 @@
       "generic": "Estradiol Transdermal Patch",
       "zh": "经皮雌二醇贴片",
       "ja": "エストラジオール経皮パッチ",
-      "slang": ["贴片", "E2贴"],
-      "brands": ["Estraderm", "Climara", "Estradot"]
+      "slang": [
+        "贴片",
+        "E2贴"
+      ],
+      "brands": [
+        "Estraderm",
+        "Climara",
+        "Estradot"
+      ]
     },
     "category": "estrogen",
     "routes": [
       {
         "route": "transdermal_patch",
         "doseRange": {
-          "start": { "min": 50, "max": 100, "unit": "µg/天" },
-          "maintenance": { "min": 100, "max": 200, "unit": "µg/天" },
-          "maximum": { "value": 400, "unit": "µg/天" }
+          "start": {
+            "min": 50,
+            "max": 100,
+            "unit": "µg/天"
+          },
+          "maintenance": {
+            "min": 100,
+            "max": 200,
+            "unit": "µg/天"
+          },
+          "maximum": {
+            "value": 400,
+            "unit": "µg/天"
+          }
         },
         "frequency": "每3.5-7天更换（视品牌）",
         "bioavailability": "~100%（绕过肝脏首过效应）",
         "halfLife": "取决于贴片释放速率，移除后~1小时",
         "peakTime": "贴后12-24小时达稳态",
-        "vteRisk": { "rr": 0.97, "source": "Canonico 2018" },
+        "vteRisk": {
+          "rr": 0.97,
+          "source": "Canonico 2018"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "50-100 pg/mL", "duration": "1-6个月" },
-      "phase2": { "e2Target": "100-200 pg/mL", "duration": "6-12个月" },
-      "phase3": { "e2Target": "100-200 pg/mL", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "50-100 pg/mL",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "E2",
-        "targetRange": { "min": 100, "max": 200, "unit": "pg/mL" },
-        "cautionRange": { "min": 200, "max": 300 },
+        "targetRange": {
+          "min": 100,
+          "max": 200,
+          "unit": "pg/mL"
+        },
+        "cautionRange": {
+          "min": 200,
+          "max": 300
+        },
         "dangerThreshold": 500,
         "frequency": "每3个月（换贴前12-24小时采血）"
       },
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       }
     ],
     "sideEffects": [
-      { "effect": "贴敷部位皮肤刺激/红疹", "frequency": "common", "severity": "mild" },
-      { "effect": "贴片脱落", "frequency": "common", "severity": "mild" },
-      { "effect": "乳房胀痛", "frequency": "common", "severity": "mild" }
+      {
+        "effect": "贴敷部位皮肤刺激/红疹",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "贴片脱落",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "common",
+        "severity": "mild"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -278,51 +463,108 @@
       "generic": "Estradiol Transdermal Gel",
       "zh": "经皮雌二醇凝胶",
       "ja": "エストラジオール経皮ジェル",
-      "slang": ["凝胶", "E2凝胶", "雌二醇凝胶"],
-      "brands": ["Oestrogel", "EstroGel", "Sandrena"]
+      "slang": [
+        "凝胶",
+        "E2凝胶",
+        "雌二醇凝胶"
+      ],
+      "brands": [
+        "Oestrogel",
+        "EstroGel",
+        "Sandrena"
+      ]
     },
     "category": "estrogen",
     "routes": [
       {
         "route": "transdermal_gel",
         "doseRange": {
-          "start": { "min": 1.5, "max": 1.5, "unit": "mg/天" },
-          "maintenance": { "min": 1.5, "max": 3, "unit": "mg/天" },
-          "maximum": { "value": 6, "unit": "mg/天" }
+          "start": {
+            "min": 1.5,
+            "max": 1.5,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 1.5,
+            "max": 3,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 6,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1次",
         "bioavailability": "~10%（经皮吸收，绕过首过效应）",
         "halfLife": "与贴片类似，移除后较快下降",
         "peakTime": "涂抹后2-6小时",
-        "vteRisk": { "rr": 0.97, "source": "Canonico 2018（与贴片类似）" },
+        "vteRisk": {
+          "rr": 0.97,
+          "source": "Canonico 2018（与贴片类似）"
+        },
         "evidenceLevel": "B"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "50-100 pg/mL", "duration": "1-6个月" },
-      "phase2": { "e2Target": "100-200 pg/mL", "duration": "6-12个月" },
-      "phase3": { "e2Target": "100-200 pg/mL", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "50-100 pg/mL",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "E2",
-        "targetRange": { "min": 100, "max": 200, "unit": "pg/mL" },
-        "cautionRange": { "min": 200, "max": 300 },
+        "targetRange": {
+          "min": 100,
+          "max": 200,
+          "unit": "pg/mL"
+        },
+        "cautionRange": {
+          "min": 200,
+          "max": 300
+        },
         "dangerThreshold": 500,
         "frequency": "每3个月"
       },
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       }
     ],
     "sideEffects": [
-      { "effect": "涂抹部位皮肤刺激", "frequency": "uncommon", "severity": "mild" },
-      { "effect": "吸收受皮肤状态影响（个体差异大）", "frequency": "common", "severity": "mild" },
-      { "effect": "乳房胀痛", "frequency": "common", "severity": "mild" }
+      {
+        "effect": "涂抹部位皮肤刺激",
+        "frequency": "uncommon",
+        "severity": "mild"
+      },
+      {
+        "effect": "吸收受皮肤状态影响（个体差异大）",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "common",
+        "severity": "mild"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -363,66 +605,140 @@
       "generic": "Estradiol Valerate Injection",
       "zh": "戊酸雌二醇注射液",
       "ja": "プロギノン・デポー",
-      "slang": ["日雌", "EV注射", "针剂E2"],
-      "brands": ["Progynon Depot", "Estraval Depot"]
+      "slang": [
+        "日雌",
+        "EV注射",
+        "针剂E2"
+      ],
+      "brands": [
+        "Progynon Depot",
+        "Estraval Depot"
+      ]
     },
     "category": "estrogen",
     "routes": [
       {
         "route": "injection_im",
         "doseRange": {
-          "start": { "min": 1, "max": 2, "unit": "mg/周" },
-          "maintenance": { "min": 2, "max": 4, "unit": "mg/周" },
-          "maximum": { "value": 5, "unit": "mg/周" }
+          "start": {
+            "min": 1,
+            "max": 2,
+            "unit": "mg/周"
+          },
+          "maintenance": {
+            "min": 2,
+            "max": 4,
+            "unit": "mg/周"
+          },
+          "maximum": {
+            "value": 5,
+            "unit": "mg/周"
+          }
         },
         "frequency": "每5-7天",
         "bioavailability": "~100%",
         "halfLife": "4-5天",
         "peakTime": "2-3天",
-        "vteRisk": { "rr": 1.0, "source": "缺乏专门注射途径VTE数据，理论上低于口服" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "缺乏专门注射途径VTE数据，理论上低于口服"
+        },
         "evidenceLevel": "B"
       },
       {
         "route": "injection_sc",
         "doseRange": {
-          "start": { "min": 1, "max": 2, "unit": "mg/周" },
-          "maintenance": { "min": 2, "max": 4, "unit": "mg/周" },
-          "maximum": { "value": 5, "unit": "mg/周" }
+          "start": {
+            "min": 1,
+            "max": 2,
+            "unit": "mg/周"
+          },
+          "maintenance": {
+            "min": 2,
+            "max": 4,
+            "unit": "mg/周"
+          },
+          "maximum": {
+            "value": 5,
+            "unit": "mg/周"
+          }
         },
         "frequency": "每5-7天",
         "bioavailability": "~100%",
         "halfLife": "4-5天",
         "peakTime": "2-3天",
-        "vteRisk": { "rr": 1.0, "source": "缺乏专门注射途径VTE数据，理论上低于口服" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "缺乏专门注射途径VTE数据，理论上低于口服"
+        },
         "evidenceLevel": "B"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "50-100 pg/mL", "duration": "1-6个月" },
-      "phase2": { "e2Target": "100-200 pg/mL", "duration": "6-12个月" },
-      "phase3": { "e2Target": "100-200 pg/mL", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "50-100 pg/mL",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "100-200 pg/mL",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "E2",
-        "targetRange": { "min": 100, "max": 200, "unit": "pg/mL" },
-        "cautionRange": { "min": 200, "max": 300 },
+        "targetRange": {
+          "min": 100,
+          "max": 200,
+          "unit": "pg/mL"
+        },
+        "cautionRange": {
+          "min": 200,
+          "max": 300
+        },
         "dangerThreshold": 500,
         "frequency": "每3个月（下次注射前当天采血=谷值）"
       },
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       }
     ],
     "sideEffects": [
-      { "effect": "注射部位疼痛/硬结", "frequency": "common", "severity": "mild" },
-      { "effect": "乳房胀痛", "frequency": "common", "severity": "mild" },
-      { "effect": "情绪波动（与峰谷波动相关）", "frequency": "common", "severity": "mild" },
-      { "effect": "VTE（深静脉血栓/肺栓塞）", "frequency": "rare", "severity": "severe" }
+      {
+        "effect": "注射部位疼痛/硬结",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "情绪波动（与峰谷波动相关）",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "VTE（深静脉血栓/肺栓塞）",
+        "frequency": "rare",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -465,67 +781,329 @@
     ]
   },
   {
+    "id": "estradiol-cypionate",
+    "names": {
+      "generic": "Estradiol Cypionate (EC)",
+      "zh": "环戊丙酸雌二醇注射液",
+      "ja": "エストラジオールシピオネート注射液",
+      "slang": [
+        "EC"
+      ],
+      "brands": [
+        "Depo-Estradiol"
+      ]
+    },
+    "category": "estrogen",
+    "routes": [
+      {
+        "route": "injection",
+        "doseRange": {
+          "start": {
+            "min": 2,
+            "max": 3,
+            "unit": "mg/周"
+          },
+          "maintenance": {
+            "min": 3,
+            "max": 5,
+            "unit": "mg/周"
+          },
+          "maximum": {
+            "value": 7,
+            "unit": "mg/10-14天"
+          }
+        },
+        "frequency": "每7-14天",
+        "bioavailability": "~100%",
+        "halfLife": "8-10天",
+        "peakTime": "2-4天",
+        "vteRisk": {
+          "rr": 1,
+          "source": "Oriowo 1980"
+        },
+        "evidenceLevel": "B"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "unavailable",
+      "notes": "美洲地区使用",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Oriowo 1980"
+    ]
+  },
+  {
+    "id": "estradiol-enanthate",
+    "names": {
+      "generic": "Estradiol Enanthate (EEn)",
+      "zh": "庚酸雌二醇注射液",
+      "ja": "エストラジオールエナント酸エステル注射液",
+      "slang": [
+        "EEn"
+      ],
+      "brands": [
+        "Perlutal"
+      ]
+    },
+    "category": "estrogen",
+    "routes": [
+      {
+        "route": "injection",
+        "doseRange": {
+          "start": {
+            "min": 2,
+            "max": 4,
+            "unit": "mg/周"
+          },
+          "maintenance": {
+            "min": 4,
+            "max": 6,
+            "unit": "mg/周"
+          },
+          "maximum": {
+            "value": 10,
+            "unit": "mg/10天"
+          }
+        },
+        "frequency": "每7-10天",
+        "bioavailability": "~100%",
+        "halfLife": "5-7天",
+        "peakTime": "3-5天",
+        "vteRisk": {
+          "rr": 1,
+          "source": "Oriowo 1980"
+        },
+        "evidenceLevel": "B"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "unavailable",
+      "notes": "拉丁美洲使用",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Oriowo 1980"
+    ]
+  },
+  {
+    "id": "estradiol-undecylate",
+    "names": {
+      "generic": "Estradiol Undecylate (EU)",
+      "zh": "十一酸雌二醇注射液",
+      "ja": "ウンデシル酸エストラジオール注射液",
+      "slang": [
+        "EU"
+      ],
+      "brands": [
+        "Progynon Depot 100"
+      ]
+    },
+    "category": "estrogen",
+    "routes": [
+      {
+        "route": "injection",
+        "doseRange": {
+          "start": {
+            "min": 20,
+            "max": 40,
+            "unit": "mg/月"
+          },
+          "maintenance": {
+            "min": 40,
+            "max": 100,
+            "unit": "mg/月"
+          },
+          "maximum": {
+            "value": 100,
+            "unit": "mg/月"
+          }
+        },
+        "frequency": "每21-30天",
+        "bioavailability": "~100%",
+        "halfLife": "20-30天",
+        "peakTime": "3-7天",
+        "vteRisk": {
+          "rr": 1,
+          "source": "Kuhl 2005"
+        },
+        "evidenceLevel": "C"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "unavailable",
+      "notes": "全球已停产",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Kuhl 2005"
+    ]
+  },
+  {
     "id": "cyproterone-acetate",
     "names": {
       "generic": "Cyproterone Acetate",
       "zh": "醋酸环丙孕酮",
       "ja": "酢酸シプロテロン",
-      "slang": ["CPA", "色谱龙", "色普龙"],
-      "brands": ["Androcur", "Siterone"]
+      "slang": [
+        "CPA",
+        "色谱龙",
+        "色普龙"
+      ],
+      "brands": [
+        "Androcur",
+        "Siterone"
+      ]
     },
     "category": "antiandrogen",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 5, "max": 12.5, "unit": "mg/天" },
-          "maintenance": { "min": 5, "max": 12.5, "unit": "mg/天" },
-          "maximum": { "value": 12.5, "unit": "mg/天" }
+          "start": {
+            "min": 5,
+            "max": 12.5,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 5,
+            "max": 12.5,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 12.5,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1次",
         "bioavailability": "~100%",
         "halfLife": "1.5-4天",
         "peakTime": "3-4小时",
-        "vteRisk": { "rr": 2.0, "source": "叠加雌激素VTE风险，精确RR因合用方案而异" },
+        "vteRisk": {
+          "rr": 2,
+          "source": "叠加雌激素VTE风险，精确RR因合用方案而异"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "配合E2使用", "duration": "1-6个月" },
-      "phase2": { "e2Target": "配合E2使用", "duration": "6-12个月" },
-      "phase3": { "e2Target": "如E2单药可压T<50则考虑停用", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "配合E2使用",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "配合E2使用",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "如E2单药可压T<50则考虑停用",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       },
       {
         "test": "ALT/AST",
-        "targetRange": { "min": 0, "max": 40, "unit": "U/L" },
-        "cautionRange": { "min": 40, "max": 120 },
+        "targetRange": {
+          "min": 0,
+          "max": 40,
+          "unit": "U/L"
+        },
+        "cautionRange": {
+          "min": 40,
+          "max": 120
+        },
         "dangerThreshold": 120,
         "frequency": "每3个月（CPA有肝毒性）"
       },
       {
         "test": "PRL",
-        "targetRange": { "min": 0, "max": 25, "unit": "ng/mL" },
-        "cautionRange": { "min": 25, "max": 50 },
+        "targetRange": {
+          "min": 0,
+          "max": 25,
+          "unit": "ng/mL"
+        },
+        "cautionRange": {
+          "min": 25,
+          "max": 50
+        },
         "dangerThreshold": 50,
         "frequency": "每6个月（CPA可致高泌乳素血症）"
       }
     ],
     "sideEffects": [
-      { "effect": "疲劳/嗜睡", "frequency": "common", "severity": "mild" },
-      { "effect": "体重增加", "frequency": "common", "severity": "mild" },
-      { "effect": "情绪低落/抑郁", "frequency": "common", "severity": "moderate" },
-      { "effect": "肝功能异常", "frequency": "uncommon", "severity": "moderate" },
-      { "effect": "高泌乳素血症", "frequency": "uncommon", "severity": "moderate" },
-      { "effect": "脑膜瘤（>=25mg/天 OR=12.36）", "frequency": "rare", "severity": "severe" },
-      { "effect": "VTE（与雌激素叠加）", "frequency": "rare", "severity": "severe" }
+      {
+        "effect": "疲劳/嗜睡",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "体重增加",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "情绪低落/抑郁",
+        "frequency": "common",
+        "severity": "moderate"
+      },
+      {
+        "effect": "肝功能异常",
+        "frequency": "uncommon",
+        "severity": "moderate"
+      },
+      {
+        "effect": "高泌乳素血症",
+        "frequency": "uncommon",
+        "severity": "moderate"
+      },
+      {
+        "effect": "脑膜瘤（>=25mg/天 OR=12.36）",
+        "frequency": "rare",
+        "severity": "severe"
+      },
+      {
+        "effect": "VTE（与雌激素叠加）",
+        "frequency": "rare",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -574,59 +1152,125 @@
       "generic": "Spironolactone",
       "zh": "螺内酯",
       "ja": "スピロノラクトン",
-      "slang": ["螺", "安体舒通"],
-      "brands": ["Aldactone", "安体舒通"]
+      "slang": [
+        "螺",
+        "安体舒通"
+      ],
+      "brands": [
+        "Aldactone",
+        "安体舒通"
+      ]
     },
     "category": "antiandrogen",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 50, "max": 100, "unit": "mg/天" },
-          "maintenance": { "min": 100, "max": 200, "unit": "mg/天" },
-          "maximum": { "value": 200, "unit": "mg/天" }
+          "start": {
+            "min": 50,
+            "max": 100,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 100,
+            "max": 200,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 200,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1-2次",
         "bioavailability": "~60-90%",
         "halfLife": "1.4小时（活性代谢物canrenone 10-23小时）",
         "peakTime": "1-2小时",
-        "vteRisk": { "rr": 1.0, "source": "螺内酯本身无显著VTE风险" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "螺内酯本身无显著VTE风险"
+        },
         "evidenceLevel": "B"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "配合E2使用", "duration": "1-6个月" },
-      "phase2": { "e2Target": "配合E2使用", "duration": "6-12个月" },
-      "phase3": { "e2Target": "配合E2使用", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "配合E2使用",
+        "duration": "1-6个月"
+      },
+      "phase2": {
+        "e2Target": "配合E2使用",
+        "duration": "6-12个月"
+      },
+      "phase3": {
+        "e2Target": "配合E2使用",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       },
       {
         "test": "K+",
-        "targetRange": { "min": 3.5, "max": 5.0, "unit": "mmol/L" },
-        "cautionRange": { "min": 5.0, "max": 5.5 },
+        "targetRange": {
+          "min": 3.5,
+          "max": 5,
+          "unit": "mmol/L"
+        },
+        "cautionRange": {
+          "min": 5,
+          "max": 5.5
+        },
         "dangerThreshold": 5.5,
         "frequency": "每3个月（螺内酯为保钾利尿剂）"
       },
       {
         "test": "肌酐/肾功能",
-        "targetRange": { "min": 0, "max": 110, "unit": "µmol/L" },
-        "cautionRange": { "min": 110, "max": 150 },
+        "targetRange": {
+          "min": 0,
+          "max": 110,
+          "unit": "µmol/L"
+        },
+        "cautionRange": {
+          "min": 110,
+          "max": 150
+        },
         "dangerThreshold": 150,
         "frequency": "每6个月（螺内酯经肾排泄）"
       }
     ],
     "sideEffects": [
-      { "effect": "尿频", "frequency": "common", "severity": "mild" },
-      { "effect": "头晕/低血压", "frequency": "common", "severity": "mild" },
-      { "effect": "高钾血症", "frequency": "uncommon", "severity": "severe" },
-      { "effect": "恶心", "frequency": "common", "severity": "mild" }
+      {
+        "effect": "尿频",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "头晕/低血压",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "高钾血症",
+        "frequency": "uncommon",
+        "severity": "severe"
+      },
+      {
+        "effect": "恶心",
+        "frequency": "common",
+        "severity": "mild"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -672,52 +1316,111 @@
       "generic": "Bicalutamide",
       "zh": "比卡鲁胺",
       "ja": "ビカルタミド",
-      "slang": ["比卡", "Bica"],
-      "brands": ["Casodex", "康士得"]
+      "slang": [
+        "比卡",
+        "Bica"
+      ],
+      "brands": [
+        "Casodex",
+        "康士得"
+      ]
     },
     "category": "antiandrogen",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 25, "max": 50, "unit": "mg/天" },
-          "maintenance": { "min": 25, "max": 50, "unit": "mg/天" },
-          "maximum": { "value": 50, "unit": "mg/天" }
+          "start": {
+            "min": 25,
+            "max": 50,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 25,
+            "max": 50,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 50,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1次",
         "bioavailability": "~90%",
         "halfLife": "5-6天（稳态）",
         "peakTime": "31小时",
-        "vteRisk": { "rr": 1.0, "source": "比卡鲁胺本身无显著VTE风险数据" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "比卡鲁胺本身无显著VTE风险数据"
+        },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "配合E2使用（不推荐常规使用）", "duration": "仅在CPA+螺内酯均不可用时" },
-      "phase2": { "e2Target": "配合E2使用", "duration": "需持续肝功能监测" },
-      "phase3": { "e2Target": "配合E2使用", "duration": "考虑替换为其他抗雄方案" }
+      "phase1": {
+        "e2Target": "配合E2使用（不推荐常规使用）",
+        "duration": "仅在CPA+螺内酯均不可用时"
+      },
+      "phase2": {
+        "e2Target": "配合E2使用",
+        "duration": "需持续肝功能监测"
+      },
+      "phase3": {
+        "e2Target": "配合E2使用",
+        "duration": "考虑替换为其他抗雄方案"
+      }
     },
     "monitoring": [
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月（注意：比卡鲁胺不降T，T可能升高）"
       },
       {
         "test": "ALT/AST",
-        "targetRange": { "min": 0, "max": 40, "unit": "U/L" },
-        "cautionRange": { "min": 40, "max": 120 },
+        "targetRange": {
+          "min": 0,
+          "max": 40,
+          "unit": "U/L"
+        },
+        "cautionRange": {
+          "min": 40,
+          "max": 120
+        },
         "dangerThreshold": 120,
         "frequency": "每3个月（肝毒性需定期监测）"
       }
     ],
     "sideEffects": [
-      { "effect": "肝功能异常", "frequency": "uncommon", "severity": "severe" },
-      { "effect": "乳房胀痛/乳腺增生", "frequency": "common", "severity": "mild" },
-      { "effect": "T不降反升", "frequency": "common", "severity": "mild" },
-      { "effect": "暴发性肝衰竭（极罕见但致命）", "frequency": "rare", "severity": "severe" }
+      {
+        "effect": "肝功能异常",
+        "frequency": "uncommon",
+        "severity": "severe"
+      },
+      {
+        "effect": "乳房胀痛/乳腺增生",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "T不降反升",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "暴发性肝衰竭（极罕见但致命）",
+        "frequency": "rare",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -754,59 +1457,128 @@
       "generic": "GnRH Agonist",
       "zh": "GnRH激动剂",
       "ja": "GnRHアゴニスト",
-      "slang": ["青春期阻断剂", "GnRHa", "抑那通"],
-      "brands": ["Lupron", "Eligard", "亮丙瑞林", "曲普瑞林"]
+      "slang": [
+        "青春期阻断剂",
+        "GnRHa",
+        "抑那通"
+      ],
+      "brands": [
+        "Lupron",
+        "Eligard",
+        "亮丙瑞林",
+        "曲普瑞林"
+      ]
     },
     "category": "antiandrogen",
     "routes": [
       {
         "route": "injection_im",
         "doseRange": {
-          "start": { "min": 3.75, "max": 3.75, "unit": "mg/月" },
-          "maintenance": { "min": 3.75, "max": 11.25, "unit": "mg/1-3月" },
-          "maximum": { "value": 11.25, "unit": "mg/3月" }
+          "start": {
+            "min": 3.75,
+            "max": 3.75,
+            "unit": "mg/月"
+          },
+          "maintenance": {
+            "min": 3.75,
+            "max": 11.25,
+            "unit": "mg/1-3月"
+          },
+          "maximum": {
+            "value": 11.25,
+            "unit": "mg/3月"
+          }
         },
         "frequency": "每1-3个月（视制剂）",
         "bioavailability": "~90%",
         "halfLife": "3小时（但缓释制剂持续1-3个月）",
         "peakTime": "4小时（初始释放）",
-        "vteRisk": { "rr": 1.0, "source": "GnRH激动剂本身无显著VTE风险" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "GnRH激动剂本身无显著VTE风险"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "配合低剂量E2使用", "duration": "持续使用" },
-      "phase2": { "e2Target": "配合E2使用", "duration": "持续使用" },
-      "phase3": { "e2Target": "可考虑术后停用", "duration": "持续使用至性腺切除" }
+      "phase1": {
+        "e2Target": "配合低剂量E2使用",
+        "duration": "持续使用"
+      },
+      "phase2": {
+        "e2Target": "配合E2使用",
+        "duration": "持续使用"
+      },
+      "phase3": {
+        "e2Target": "可考虑术后停用",
+        "duration": "持续使用至性腺切除"
+      }
     },
     "monitoring": [
       {
         "test": "T",
-        "targetRange": { "min": 0, "max": 50, "unit": "ng/dL" },
-        "cautionRange": { "min": 50, "max": 100 },
+        "targetRange": {
+          "min": 0,
+          "max": 50,
+          "unit": "ng/dL"
+        },
+        "cautionRange": {
+          "min": 50,
+          "max": 100
+        },
         "dangerThreshold": 100,
         "frequency": "每3个月"
       },
       {
         "test": "LH",
-        "targetRange": { "min": 0, "max": 1, "unit": "IU/L" },
-        "cautionRange": { "min": 1, "max": 5 },
+        "targetRange": {
+          "min": 0,
+          "max": 1,
+          "unit": "IU/L"
+        },
+        "cautionRange": {
+          "min": 1,
+          "max": 5
+        },
         "dangerThreshold": 5,
         "frequency": "每3-6个月"
       },
       {
         "test": "骨密度",
-        "targetRange": { "min": -1, "max": 0, "unit": "T-score" },
-        "cautionRange": { "min": -2.5, "max": -1 },
+        "targetRange": {
+          "min": -1,
+          "max": 0,
+          "unit": "T-score"
+        },
+        "cautionRange": {
+          "min": -2.5,
+          "max": -1
+        },
         "dangerThreshold": -2.5,
         "frequency": "每年（长期低E2需注意）"
       }
     ],
     "sideEffects": [
-      { "effect": "注射部位反应", "frequency": "common", "severity": "mild" },
-      { "effect": "初期T短暂升高（flare现象，1-2周）", "frequency": "common", "severity": "moderate" },
-      { "effect": "潮热", "frequency": "common", "severity": "mild" },
-      { "effect": "骨密度下降（长期低E2时）", "frequency": "uncommon", "severity": "moderate" }
+      {
+        "effect": "注射部位反应",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "初期T短暂升高（flare现象，1-2周）",
+        "frequency": "common",
+        "severity": "moderate"
+      },
+      {
+        "effect": "潮热",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "骨密度下降（长期低E2时）",
+        "frequency": "uncommon",
+        "severity": "moderate"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -831,49 +1603,227 @@
     ]
   },
   {
+    "id": "finasteride",
+    "names": {
+      "generic": "Finasteride",
+      "zh": "非那雄胺",
+      "ja": "フィナステリド",
+      "slang": [
+        "fin"
+      ],
+      "brands": [
+        "Propecia",
+        "Proscar"
+      ]
+    },
+    "category": "5ari",
+    "routes": [
+      {
+        "route": "oral",
+        "doseRange": {
+          "start": {
+            "min": 1,
+            "max": 1,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 1,
+            "max": 5,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 5,
+            "unit": "mg/天"
+          }
+        },
+        "frequency": "每日1次",
+        "bioavailability": "~80%",
+        "halfLife": "6-8小时",
+        "peakTime": "1-2小时",
+        "vteRisk": {
+          "rr": 1,
+          "source": "N/A"
+        },
+        "evidenceLevel": "B"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [
+        "药物过敏"
+      ],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "pharmacy",
+      "notes": "仿制药广泛",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Hembree 2017"
+    ]
+  },
+  {
+    "id": "dutasteride",
+    "names": {
+      "generic": "Dutasteride",
+      "zh": "度他雄胺",
+      "ja": "デュタステリド",
+      "slang": [
+        "度他"
+      ],
+      "brands": [
+        "Avodart"
+      ]
+    },
+    "category": "5ari",
+    "routes": [
+      {
+        "route": "oral",
+        "doseRange": {
+          "start": {
+            "min": 0.5,
+            "max": 0.5,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 0.5,
+            "max": 0.5,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 0.5,
+            "unit": "mg/天"
+          }
+        },
+        "frequency": "每日1次",
+        "bioavailability": "~60%",
+        "halfLife": "4-5周",
+        "peakTime": "1-3小时",
+        "vteRisk": {
+          "rr": 1,
+          "source": "N/A"
+        },
+        "evidenceLevel": "C"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [
+        "药物过敏",
+        "严重肝功能不全"
+      ],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "pharmacy",
+      "notes": "处方药",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Hembree 2017"
+    ]
+  },
+  {
     "id": "progesterone",
     "names": {
       "generic": "Micronized Progesterone",
       "zh": "微粒化黄体酮",
       "ja": "プロゲステロン（微粒化）",
-      "slang": ["黄体酮", "天然孕激素", "P4"],
-      "brands": ["Utrogestan", "安琪坦", "Prometrium"]
+      "slang": [
+        "黄体酮",
+        "天然孕激素",
+        "P4"
+      ],
+      "brands": [
+        "Utrogestan",
+        "安琪坦",
+        "Prometrium"
+      ]
     },
     "category": "progestogen",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 100, "max": 100, "unit": "mg/天" },
-          "maintenance": { "min": 100, "max": 200, "unit": "mg/天" },
-          "maximum": { "value": 200, "unit": "mg/天" }
+          "start": {
+            "min": 100,
+            "max": 100,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 100,
+            "max": 200,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 200,
+            "unit": "mg/天"
+          }
         },
         "frequency": "每日1次（睡前服用）",
         "bioavailability": "~10%（口服首过效应显著）",
         "halfLife": "16-18小时",
         "peakTime": "1-3小时",
-        "vteRisk": { "rr": 1.0, "source": "天然微粒化黄体酮VTE风险远低于合成孕激素" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "天然微粒化黄体酮VTE风险远低于合成孕激素"
+        },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "不要在此阶段使用", "duration": "禁用" },
-      "phase2": { "e2Target": "不要在此阶段使用", "duration": "禁用" },
-      "phase3": { "e2Target": "HRT>=12个月后才考虑引入", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "不要在此阶段使用",
+        "duration": "禁用"
+      },
+      "phase2": {
+        "e2Target": "不要在此阶段使用",
+        "duration": "禁用"
+      },
+      "phase3": {
+        "e2Target": "HRT>=12个月后才考虑引入",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "P4",
-        "targetRange": { "min": 2, "max": 20, "unit": "ng/mL" },
-        "cautionRange": { "min": 0, "max": 2 },
+        "targetRange": {
+          "min": 2,
+          "max": 20,
+          "unit": "ng/mL"
+        },
+        "cautionRange": {
+          "min": 0,
+          "max": 2
+        },
         "dangerThreshold": 0,
         "frequency": "按需（口服P4的血清水平通常很低）"
       }
     ],
     "sideEffects": [
-      { "effect": "嗜睡/镇静", "frequency": "common", "severity": "mild" },
-      { "effect": "头晕", "frequency": "common", "severity": "mild" },
-      { "effect": "情绪变化", "frequency": "uncommon", "severity": "moderate" }
+      {
+        "effect": "嗜睡/镇静",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "头晕",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "情绪变化",
+        "frequency": "uncommon",
+        "severity": "moderate"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -905,51 +1855,105 @@
       "generic": "Hydroxyprogesterone Caproate",
       "zh": "己酸羟孕酮",
       "ja": "ヒドロキシプロゲステロンカプロン酸エステル",
-      "slang": ["羟孕酮注射"],
-      "brands": ["Makena", "Proluton Depot"]
+      "slang": [
+        "羟孕酮注射"
+      ],
+      "brands": [
+        "Makena",
+        "Proluton Depot"
+      ]
     },
     "category": "progestogen",
     "routes": [
       {
         "route": "injection_im",
         "doseRange": {
-          "start": { "min": 250, "max": 250, "unit": "mg/周" },
-          "maintenance": { "min": 250, "max": 250, "unit": "mg/周" },
-          "maximum": { "value": 250, "unit": "mg/周" }
+          "start": {
+            "min": 250,
+            "max": 250,
+            "unit": "mg/周"
+          },
+          "maintenance": {
+            "min": 250,
+            "max": 250,
+            "unit": "mg/周"
+          },
+          "maximum": {
+            "value": 250,
+            "unit": "mg/周"
+          }
         },
         "frequency": "每周1次",
         "bioavailability": "~100%（注射）",
         "halfLife": "7-8天",
         "peakTime": "3-7天",
-        "vteRisk": { "rr": 1.0, "source": "缺乏在GAHT中的VTE数据" },
+        "vteRisk": {
+          "rr": 1,
+          "source": "缺乏在GAHT中的VTE数据"
+        },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "不要在此阶段使用", "duration": "禁用" },
-      "phase2": { "e2Target": "不要在此阶段使用", "duration": "禁用" },
-      "phase3": { "e2Target": "HRT>=12个月后才考虑", "duration": "12个月+" }
+      "phase1": {
+        "e2Target": "不要在此阶段使用",
+        "duration": "禁用"
+      },
+      "phase2": {
+        "e2Target": "不要在此阶段使用",
+        "duration": "禁用"
+      },
+      "phase3": {
+        "e2Target": "HRT>=12个月后才考虑",
+        "duration": "12个月+"
+      }
     },
     "monitoring": [
       {
         "test": "P4",
-        "targetRange": { "min": 2, "max": 20, "unit": "ng/mL" },
-        "cautionRange": { "min": 0, "max": 2 },
+        "targetRange": {
+          "min": 2,
+          "max": 20,
+          "unit": "ng/mL"
+        },
+        "cautionRange": {
+          "min": 0,
+          "max": 2
+        },
         "dangerThreshold": 0,
         "frequency": "按需"
       },
       {
         "test": "ALT/AST",
-        "targetRange": { "min": 0, "max": 40, "unit": "U/L" },
-        "cautionRange": { "min": 40, "max": 120 },
+        "targetRange": {
+          "min": 0,
+          "max": 40,
+          "unit": "U/L"
+        },
+        "cautionRange": {
+          "min": 40,
+          "max": 120
+        },
         "dangerThreshold": 120,
         "frequency": "每6个月"
       }
     ],
     "sideEffects": [
-      { "effect": "注射部位疼痛/硬结", "frequency": "common", "severity": "mild" },
-      { "effect": "情绪变化", "frequency": "uncommon", "severity": "moderate" },
-      { "effect": "乳房胀痛", "frequency": "uncommon", "severity": "mild" }
+      {
+        "effect": "注射部位疼痛/硬结",
+        "frequency": "common",
+        "severity": "mild"
+      },
+      {
+        "effect": "情绪变化",
+        "frequency": "uncommon",
+        "severity": "moderate"
+      },
+      {
+        "effect": "乳房胀痛",
+        "frequency": "uncommon",
+        "severity": "mild"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -974,41 +1978,219 @@
     ]
   },
   {
+    "id": "dydrogesterone",
+    "names": {
+      "generic": "Dydrogesterone",
+      "zh": "地屈孕酮",
+      "ja": "ジドロゲステロン",
+      "slang": [
+        "达芙通"
+      ],
+      "brands": [
+        "Duphaston"
+      ]
+    },
+    "category": "progestogen",
+    "routes": [
+      {
+        "route": "oral",
+        "doseRange": {
+          "start": {
+            "min": 10,
+            "max": 10,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 10,
+            "max": 20,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 20,
+            "unit": "mg/天"
+          }
+        },
+        "frequency": "每日1-2次",
+        "bioavailability": "~28%",
+        "halfLife": "14-17小时",
+        "peakTime": "0.5-2.5小时",
+        "vteRisk": {
+          "rr": 1,
+          "source": "Limited"
+        },
+        "evidenceLevel": "C"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [
+        "药物过敏"
+      ],
+      "relative": []
+    },
+    "interactions": [],
+    "chinaAccess": {
+      "availability": "pharmacy",
+      "notes": "达芙通品牌广泛供应",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Coleman 2022"
+    ]
+  },
+  {
+    "id": "drospirenone",
+    "names": {
+      "generic": "Drospirenone",
+      "zh": "屈螺酮",
+      "ja": "ドロスピレノン",
+      "slang": [
+        "DRSP"
+      ],
+      "brands": [
+        "Slynd"
+      ]
+    },
+    "category": "progestogen",
+    "routes": [
+      {
+        "route": "oral",
+        "doseRange": {
+          "start": {
+            "min": 3,
+            "max": 4,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 3,
+            "max": 4,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 4,
+            "unit": "mg/天"
+          }
+        },
+        "frequency": "每日1次",
+        "bioavailability": "~76%",
+        "halfLife": "25-33小时",
+        "peakTime": "1-2小时",
+        "vteRisk": {
+          "rr": 1,
+          "source": "Limited"
+        },
+        "evidenceLevel": "C"
+      }
+    ],
+    "phases": {},
+    "monitoring": [],
+    "sideEffects": [],
+    "contraindications": {
+      "absolute": [
+        "螺内酯联用",
+        "高钾血症"
+      ],
+      "relative": [
+        "肾功能减退"
+      ]
+    },
+    "interactions": [
+      {
+        "drug": "螺内酯",
+        "severity": "contraindicated",
+        "description": "双重保钾高钾血症风险",
+        "source": "Drug label"
+      }
+    ],
+    "chinaAccess": {
+      "availability": "limited",
+      "notes": "Slynd单成分制剂不常见",
+      "affectedByBan2022": false
+    },
+    "references": [
+      "Coleman 2022"
+    ]
+  },
+  {
     "id": "ethinylestradiol",
     "names": {
       "generic": "Ethinylestradiol",
       "zh": "炔雌醇",
       "ja": "エチニルエストラジオール",
-      "slang": ["EE", "达英-35中的雌激素"],
-      "brands": ["Diane-35 (达英-35)", "优思明 (含EE)", "妈富隆 (含EE)"]
+      "slang": [
+        "EE",
+        "达英-35中的雌激素"
+      ],
+      "brands": [
+        "Diane-35 (达英-35)",
+        "优思明 (含EE)",
+        "妈富隆 (含EE)"
+      ]
     },
     "category": "banned",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 0, "max": 0, "unit": "mg/天" },
-          "maintenance": { "min": 0, "max": 0, "unit": "mg/天" },
-          "maximum": { "value": 0, "unit": "mg/天" }
+          "start": {
+            "min": 0,
+            "max": 0,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 0,
+            "max": 0,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 0,
+            "unit": "mg/天"
+          }
         },
         "frequency": "禁止用于HRT",
         "bioavailability": "~45%",
         "halfLife": "36小时",
         "peakTime": "1-2小时",
-        "vteRisk": { "rr": 20.0, "source": "VTE风险约为天然E2的20倍" },
+        "vteRisk": {
+          "rr": 20,
+          "source": "VTE风险约为天然E2的20倍"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "禁用", "duration": "禁用" },
-      "phase2": { "e2Target": "禁用", "duration": "禁用" },
-      "phase3": { "e2Target": "禁用", "duration": "禁用" }
+      "phase1": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      },
+      "phase2": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      },
+      "phase3": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      }
     },
     "monitoring": [],
     "sideEffects": [
-      { "effect": "VTE风险极高（约天然E2的20倍）", "frequency": "common", "severity": "severe" },
-      { "effect": "肝脏代谢负担显著", "frequency": "common", "severity": "severe" },
-      { "effect": "心血管事件风险显著升高", "frequency": "uncommon", "severity": "severe" }
+      {
+        "effect": "VTE风险极高（约天然E2的20倍）",
+        "frequency": "common",
+        "severity": "severe"
+      },
+      {
+        "effect": "肝脏代谢负担显著",
+        "frequency": "common",
+        "severity": "severe"
+      },
+      {
+        "effect": "心血管事件风险显著升高",
+        "frequency": "uncommon",
+        "severity": "severe"
+      }
     ],
     "contraindications": {
       "absolute": [
@@ -1042,36 +2224,78 @@
       "generic": "Conjugated Estrogens",
       "zh": "结合雌激素",
       "ja": "結合型エストロゲン",
-      "slang": ["倍美力", "CEE", "马尿雌激素"],
-      "brands": ["Premarin", "倍美力"]
+      "slang": [
+        "倍美力",
+        "CEE",
+        "马尿雌激素"
+      ],
+      "brands": [
+        "Premarin",
+        "倍美力"
+      ]
     },
     "category": "banned",
     "routes": [
       {
         "route": "oral",
         "doseRange": {
-          "start": { "min": 0, "max": 0, "unit": "mg/天" },
-          "maintenance": { "min": 0, "max": 0, "unit": "mg/天" },
-          "maximum": { "value": 0, "unit": "mg/天" }
+          "start": {
+            "min": 0,
+            "max": 0,
+            "unit": "mg/天"
+          },
+          "maintenance": {
+            "min": 0,
+            "max": 0,
+            "unit": "mg/天"
+          },
+          "maximum": {
+            "value": 0,
+            "unit": "mg/天"
+          }
         },
         "frequency": "禁止用于HRT",
         "bioavailability": "~100%（口服）",
         "halfLife": "可变（含多种雌激素成分）",
         "peakTime": "6-8小时",
-        "vteRisk": { "rr": 4.0, "source": "VTE风险远高于天然E2。WHI研究数据" },
+        "vteRisk": {
+          "rr": 4,
+          "source": "VTE风险远高于天然E2。WHI研究数据"
+        },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
-      "phase1": { "e2Target": "禁用", "duration": "禁用" },
-      "phase2": { "e2Target": "禁用", "duration": "禁用" },
-      "phase3": { "e2Target": "禁用", "duration": "禁用" }
+      "phase1": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      },
+      "phase2": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      },
+      "phase3": {
+        "e2Target": "禁用",
+        "duration": "禁用"
+      }
     },
     "monitoring": [],
     "sideEffects": [
-      { "effect": "VTE风险远高于天然E2", "frequency": "common", "severity": "severe" },
-      { "effect": "心血管事件风险升高", "frequency": "uncommon", "severity": "severe" },
-      { "effect": "无法通过标准血检监测E2水平（含非E2成分）", "frequency": "common", "severity": "moderate" }
+      {
+        "effect": "VTE风险远高于天然E2",
+        "frequency": "common",
+        "severity": "severe"
+      },
+      {
+        "effect": "心血管事件风险升高",
+        "frequency": "uncommon",
+        "severity": "severe"
+      },
+      {
+        "effect": "无法通过标准血检监测E2水平（含非E2成分）",
+        "frequency": "common",
+        "severity": "moderate"
+      }
     ],
     "contraindications": {
       "absolute": [

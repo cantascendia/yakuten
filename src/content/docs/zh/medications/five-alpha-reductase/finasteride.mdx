@@ -1,0 +1,86 @@
+---
+title: 非那雄胺
+description: 非那雄胺在跨性别女性 HRT 中的使用——DHT 抑制机制、剂量、监测要求及安全考量。
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasteride"
+  nameCN="非那雄胺"
+  category="5α-reductase inhibitor"
+  route="口服"
+  evidenceLevel="B"
+>
+非那雄胺（Finasteride）是一种选择性 II 型 5α-还原酶抑制剂，通过阻断睾酮到双氢睾酮（DHT）的转化来减少 DHT 水平约 65-70%。在跨性别女性 HRT 中作为辅助用药，主要用于对抗脱发和过多体毛。
+</DrugInfoBox>
+
+## 作用机制
+
+非那雄胺选择性抑制 **II 型** 5α-还原酶（主要存在于毛囊和前列腺），使血清 DHT 降低约 65-70%，同时对睾酮水平几乎无影响。
+
+与[度他雄胺](/zh/medications/five-alpha-reductase/dutasteride/)相比，非那雄胺仅抑制一种亚型，DHT 降低幅度更小，但副作用风险也相对更低。
+
+## 剂量
+
+<DoseTable
+  headers={['适应症', '剂量', '说明']}
+  rows={[
+    ['脱发（辅助 HRT）', '1 mg/天', '与 HRT 方案联合使用'],
+    ['替代剂量', '5 mg/天', '部分医生使用较高剂量，但额外获益不明确'],
+  ]}
+/>
+
+- 推荐从 1 mg/天开始，这是脱发治疗的标准剂量
+- 5 mg 片剂（Proscar）价格通常更低，可以四分之一切割使用
+- 起效通常需要 **3-6 个月**
+
+<WarningBox title="非那雄胺不替代抗雄激素">
+非那雄胺仅降低 DHT，不降低睾酮。它不能替代 CPA、螺内酯或 GnRH 激动剂等抗雄激素药物。如果你的 T 水平仍高于目标范围，需要调整的是主要抗雄方案，而非增加 5αRI<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 规格 | 说明 |
+|--------|------|------|
+| **Propecia** | 1 mg | 脱发适应症 |
+| **Proscar** | 5 mg | 前列腺增生适应症，可切割分服 |
+| 仿制药 | 1 mg / 5 mg | 全球广泛可获取 |
+
+非那雄胺在全球范围内容易获取，仿制药价格较低。
+
+## 监测要求
+
+- **T**：继续按 HRT 常规每 3 个月检测
+- **DHT**（可选）：如果需要确认 5αRI 的效果，可检测 DHT 水平
+- **肝功能**：非那雄胺极少引起肝损伤，通常无需额外监测
+- **PSA**：非那雄胺会降低 PSA 水平约 50%，如检测 PSA 需告知医生正在服用此药
+
+## 副作用
+
+大多数副作用在跨性别女性 HRT 背景下不太相关（因为 T 和 DHT 已经处于低水平）：
+
+- 性功能变化（在已使用 HRT 的跨性别女性中通常不显著）
+- 情绪变化（少见）
+- 乳房触痛（在已使用雌激素的情况下难以区分）
+
+## 禁忌症
+
+- 对非那雄胺过敏
+- 严重肝功能不全（极少见情况下非那雄胺经肝脏代谢）
+- 计划怀孕的伴侣接触破碎/粉碎片剂（5αRI 对胎儿有致畸风险——但在跨性别女性 HRT 背景下通常不适用）
+
+<DangerBox title="注意事项">
+- **停药后效果消退**：停用非那雄胺后，DHT 将在数周内恢复至治疗前水平
+- 不要因为脱发改善而停止 HRT 中的其他药物
+- 如果使用 6 个月后脱发无改善，非那雄胺可能对你无效——可与医生讨论是否换用[度他雄胺](/zh/medications/five-alpha-reductase/dutasteride/)
+</DangerBox>

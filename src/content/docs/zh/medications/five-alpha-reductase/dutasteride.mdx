@@ -1,0 +1,91 @@
+---
+title: 度他雄胺
+description: 度他雄胺在跨性别女性 HRT 中的使用——双重 5α-还原酶抑制、与非那雄胺的对比、剂量及安全考量。
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasteride"
+  nameCN="度他雄胺"
+  category="5α-reductase inhibitor"
+  route="口服"
+  evidenceLevel="C"
+>
+度他雄胺（Dutasteride）是一种双重 I 型 + II 型 5α-还原酶抑制剂，可将血清 DHT 降低约 90-95%，效力强于非那雄胺<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。在跨性别女性 HRT 中作为辅助用药，用于非那雄胺效果不佳时的升级方案。
+</DrugInfoBox>
+
+## 作用机制
+
+度他雄胺同时抑制 **I 型和 II 型** 5α-还原酶：
+
+- **I 型**：主要存在于皮肤（皮脂腺）和肝脏
+- **II 型**：主要存在于毛囊和前列腺
+
+这种双重抑制使 DHT 降低幅度达到 **90-95%**，而[非那雄胺](/zh/medications/five-alpha-reductase/finasteride/)仅抑制 II 型，DHT 降低约 65-70%。
+
+## 与非那雄胺的对比
+
+| 特性 | 度他雄胺 | 非那雄胺 |
+|------|----------|----------|
+| 靶点 | I 型 + II 型 | 仅 II 型 |
+| DHT 降低 | ~90-95% | ~65-70% |
+| 半衰期 | ~4-5 周 | ~6-8 小时 |
+| 起效时间 | 3-6 个月 | 3-6 个月 |
+| 停药后恢复 | 数月（半衰期极长） | 数周 |
+| 仿制药可及性 | 较少 | 广泛 |
+| 证据等级 | C | B |
+
+## 剂量
+
+<DoseTable
+  headers={['适应症', '剂量', '说明']}
+  rows={[
+    ['辅助 HRT', '0.5 mg/天', '标准剂量，不建议超过'],
+  ]}
+/>
+
+- 0.5 mg/天是唯一推荐剂量
+- 由于半衰期极长（约 4-5 周），**漏服一天无需补服**
+- 胶囊不可打开或咀嚼
+
+<WarningBox title="度他雄胺通常是二线选择">
+如果尚未尝试过非那雄胺，通常建议先试用非那雄胺 6 个月。度他雄胺的证据等级更低（C），价格更高，且极长的半衰期意味着一旦出现副作用，药物将在体内存留数月。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 规格 | 说明 |
+|--------|------|------|
+| **Avodart** | 0.5 mg 胶囊 | 原研药 |
+| 仿制药 | 0.5 mg 胶囊 | 部分地区可获取 |
+
+度他雄胺的仿制药可及性不如非那雄胺广泛，价格通常更高。
+
+## 监测要求
+
+- **T**：继续 HRT 常规每 3 个月检测
+- **DHT**（可选）：可用于确认 5αRI 效果
+- **PSA**：度他雄胺会降低 PSA 水平，检测时需告知医生
+
+## 禁忌症
+
+- 对度他雄胺过敏
+- 严重肝功能不全（度他雄胺主要经 CYP3A4 代谢）
+- 正在使用强效 CYP3A4 抑制剂（如酮康唑）——可能导致度他雄胺蓄积
+
+<DangerBox title="注意事项">
+- **半衰期极长**（4-5 周）：停药后 DHT 抑制效果将持续数月才完全消退
+- 度他雄胺胶囊内容物具有致畸性，怀孕女性不可接触泄漏的胶囊内容物
+- 不要因为脱发改善而停止 HRT 中的其他药物
+- 如果非那雄胺已有效，无需升级到度他雄胺
+</DangerBox>

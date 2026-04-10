@@ -1,0 +1,89 @@
+---
+title: デュタステリド
+description: トランスジェンダー女性HRTにおけるデュタステリド——二重5α還元酵素阻害、フィナステリドとの比較、投与量、安全性。
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasteride"
+  nameCN="デュタステリド"
+  category="5α-reductase inhibitor"
+  route="経口"
+  evidenceLevel="C"
+>
+デュタステリドはI型およびII型5α還元酵素を同時に阻害する薬剤で、血清DHTを約90-95%低下させます<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。フィナステリドより強力です。トランスジェンダー女性のHRTでは、フィナステリドが不十分な場合の二次選択として使用されます。
+</DrugInfoBox>
+
+## 作用機序
+
+デュタステリドは**I型とII型の両方**の5α還元酵素を同時に阻害します：
+
+- **I型**：主に皮膚（皮脂腺）と肝臓に存在
+- **II型**：主に毛包と前立腺に存在
+
+この二重阻害により**90-95%**のDHT低下を達成します。[フィナステリド](/ja/medications/five-alpha-reductase/finasteride/)は約65-70%の低下にとどまります。
+
+## フィナステリドとの比較
+
+| 特性 | デュタステリド | フィナステリド |
+|------|-------------|-------------|
+| 標的 | I型 + II型 | II型のみ |
+| DHT低下 | 約90-95% | 約65-70% |
+| 半減期 | 約4-5週間 | 約6-8時間 |
+| 効果発現 | 3-6ヶ月 | 3-6ヶ月 |
+| 中止後の回復 | 数ヶ月（半減期が極めて長い） | 数週間 |
+| ジェネリック入手性 | 限定的 | 広範 |
+| エビデンスレベル | C | B |
+
+## 投与量
+
+<DoseTable
+  headers={['適応', '投与量', '説明']}
+  rows={[
+    ['HRT補助', '0.5 mg/日', '標準用量、これを超えないこと'],
+  ]}
+/>
+
+- 0.5 mg/日が唯一の推奨用量
+- 半減期が極めて長い（約4-5週間）ため、**1日飲み忘れても補服不要**
+- カプセルを開けたり噛んだりしないこと
+
+<WarningBox title="デュタステリドは通常二次選択">
+フィナステリドを試していない場合は、まずフィナステリドを6ヶ月間試すことが一般的に推奨されます。デュタステリドはエビデンスレベルが低く（C）、費用が高く、極めて長い半減期のため副作用が発生した場合は数ヶ月間持続します。
+</WarningBox>
+
+## ブランドと入手可能性
+
+| ブランド名 | 規格 | 説明 |
+|-----------|------|------|
+| **アボルブ** | 0.5 mgカプセル | 原薬 |
+| ジェネリック | 0.5 mgカプセル | 一部地域で入手可能 |
+
+## モニタリング
+
+- **T**：HRTルーチンとして3ヶ月ごとに継続検査
+- **DHT**（任意）：5αRI効果の確認に使用可能
+- **PSA**：デュタステリドはPSAを低下させる。検査時は医師に伝えること
+
+## 禁忌
+
+- デュタステリドアレルギー
+- 重度肝機能障害（CYP3A4で代謝）
+- 強力なCYP3A4阻害薬（ケトコナゾールなど）との併用——蓄積のリスク
+
+<DangerBox title="注意事項">
+- **半減期が極めて長い**（4-5週間）：中止後も数ヶ月間DHT抑制効果が持続します
+- カプセル内容物は催奇形性があり、妊娠中の方は漏れたカプセルに触れてはなりません
+- 脱毛が改善したからといって、HRTの他の薬剤を中止しないでください
+- フィナステリドが既に効果的であれば、デュタステリドへの変更は不要です
+</DangerBox>

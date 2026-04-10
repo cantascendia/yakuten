@@ -1,0 +1,74 @@
+---
+title: 屈螺酮
+description: 屈螺酮在跨性别女性 HRT 中的使用——兼具抗雄和抗盐皮质激素活性的孕激素选项。
+evidenceLevel: C
+sidebar:
+  order: 4
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Drospirenone"
+  nameCN="屈螺酮"
+  category="progestogen"
+  route="口服"
+  evidenceLevel="C"
+>
+屈螺酮（Drospirenone）是一种合成孕激素，结构源自螺内酯，因此同时具有**抗雄激素**和**抗盐皮质激素**（类似螺内酯）活性。在跨性别女性 HRT 中属于非主流选择，但其独特的药理特性使其在某些场景下可能有价值<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+</DrugInfoBox>
+
+## 作用机制
+
+屈螺酮具有多重药理活性：
+
+- **孕激素活性**：与孕激素受体结合
+- **抗雄激素活性**：与雄激素受体竞争性结合（与螺内酯机制类似）
+- **抗盐皮质激素活性**：类似螺内酯的利尿效应
+- **无雌激素、糖皮质激素活性**
+
+### 独特定位
+
+屈螺酮的独特之处在于它是**唯一同时具有抗雄和抗盐皮质激素活性的孕激素**。对于希望同时获得孕激素效果和轻度抗雄效果的使用者，屈螺酮可能减少对独立抗雄药物的需求。
+
+## 剂量
+
+<DoseTable
+  headers={['来源', '剂量', '说明']}
+  rows={[
+    ['口服避孕药中', '3-4 mg/天', '与炔雌醇联合（HRT 中不推荐此组合）'],
+    ['单成分制剂', '4 mg/天', 'Slynd（纯屈螺酮避孕药）'],
+    ['HRT 辅助（探索性）', '3-4 mg/天', '无大规模 HRT 临床试验数据'],
+  ]}
+/>
+
+<WarningBox title="使用注意">
+大多数含屈螺酮的产品是联合口服避孕药（如 Yaz、Yasmin），其中含有**炔雌醇 (EE)**。本站[明确禁止](/zh/medications/banned-drugs/)在 HRT 中使用炔雌醇。如果选择屈螺酮，必须使用**纯屈螺酮制剂**（如 Slynd 4 mg），而非含 EE 的联合制剂。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 剂型 | 说明 |
+|--------|------|------|
+| **Slynd** | 4 mg 纯屈螺酮 | 不含 EE，可用于 HRT |
+| **Yaz / Yasmin** | 3 mg 屈螺酮 + EE | ⚠ 含炔雌醇，**HRT 禁用** |
+| 仿制药 | 各种 | 确认是否含 EE |
+
+## 监测要求
+
+- **K+（血钾）**：屈螺酮具有类似螺内酯的保钾作用，需监测血钾
+- **PRL**：每 6 个月
+- 如果同时使用螺内酯，高钾血症风险显著增加
+
+<DangerBox title="安全红线">
+- **不得与螺内酯联用**：两者均有保钾作用，联用可导致危险的高钾血症<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **不得使用含炔雌醇的组合制剂**（Yaz/Yasmin 等）
+- 肾功能不全者慎用
+- 目前没有屈螺酮在跨性别 HRT 中的大规模安全性数据
+</DangerBox>

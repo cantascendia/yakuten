@@ -1,0 +1,93 @@
+---
+title: エストラジオールエナント酸エステル注射 (EEn)
+description: エストラジオールエナント酸エステル完全ガイド——薬物動態、他のエステルとの比較、投与量、安全限界。
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="エストラジオールエナント酸エステル注射液"
+  category="estrogen"
+  route="筋肉注射 (IM) / 皮下注射 (SC)"
+  evidenceLevel="B"
+>
+エストラジオールエナント酸エステル（EEn）は、中長時間作用型のエストラジオール注射製剤です。半減期は吉草酸エストラジオール（EV）とシピオネート（EC）の間で、約5-7日です<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />。主にラテンアメリカで複合注射避妊薬（Perlutal）の成分として使用されていますが、HRT単独使用も可能です。
+</DrugInfoBox>
+
+## 薬物動態
+
+エストラジオールエナント酸エステルの薬物動態特性<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
+
+- **半減期**：約5-7日
+- **ピーク時間**：注射後3-5日
+- **トラフ時間**：注射後7-10日
+- **定常状態**：定期注射約3-4サイクル後に到達
+
+### 注射用エストラジオールエステル PK比較
+
+<DoseTable
+  headers={['パラメータ', 'EV（吉草酸）', 'EEn（エナント酸）', 'EC（シピオネート）']}
+  rows={[
+    ['半減期', '約4-5日', '約5-7日', '約8-10日'],
+    ['ピーク時間', '2-3日', '3-5日', '2-4日'],
+    ['推奨注射間隔', '5-7日', '7-10日', '7-14日'],
+    ['血中濃度変動', '大きい', '中程度', '小さい'],
+    ['入手可能性', '世界全域', '限定地域', 'アメリカ大陸'],
+  ]}
+/>
+
+EEnの薬物動態はEVとECの中間に位置し、週1回注射でより安定した曲線を求めるユーザーに選択肢を提供します<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />。
+
+## 投与量
+
+### 成人投与量
+
+<DoseTable
+  headers={['段階', '投与量', '説明']}
+  rows={[
+    ['開始用量', '2-4 mg/週', '低用量開始、乳腺発育を保護'],
+    ['維持用量', '4-6 mg/週', 'トラフE2で調整、目標100-200 pg/mL'],
+    ['最大用量', '10 mg/10日', 'これを超えないこと'],
+  ]}
+/>
+
+用量参考：Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />、WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+<WarningBox title="入手可能性について">
+エストラジオールエナント酸エステルは多くの地域で入手が困難です。主にラテンアメリカ（Perlutalの成分として）で使用されています。日本国内では[吉草酸エストラジオール注射液](/ja/medications/estrogens/injection/)が標準的な選択肢です。
+</WarningBox>
+
+## ブランドと入手可能性
+
+| ブランド名 | 剤型 | 地域 |
+|-----------|------|------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg（複合避妊薬） | ラテンアメリカ |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | 一部の国 |
+| 単剤製剤 | 各種濃度 | 薬局調剤 |
+
+## モニタリング
+
+- **E2**：3ヶ月ごと、トラフ採血（注射前当日朝）。目標100-200 pg/mL
+- **T**：3ヶ月ごと。目標 &lt;50 ng/dL
+- **肝機能 (ALT/AST)**：ベースライン + 6ヶ月ごと
+
+## 注射手順
+
+注射手順は[吉草酸エストラジオール注射液](/ja/medications/estrogens/injection/)と同一です。
+
+<DangerBox title="安全限界">
+- 他の注射用エストラジオールエステルと同じ安全制限が適用されます
+- 1回の注射量は10 mgを超えてはならない
+- E2 >200 pg/mLは女性化を増強せず、リスクのみ増加します<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 複合製剤（Perlutal等）を使用する場合、プロゲストーゲン成分による追加リスクがあるため医師にご相談ください
+</DangerBox>

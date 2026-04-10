@@ -1,0 +1,91 @@
+---
+title: 十一酸雌二醇注射液 (EU)
+description: 十一酸雌二醇完整指南——超长效注射酯类的药代动力学、剂量、适用人群及安全考量。
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Undecylate (EU)"
+  nameCN="十一酸雌二醇注射液"
+  category="estrogen"
+  route="肌肉注射 (IM)"
+  evidenceLevel="C"
+>
+十一酸雌二醇（Estradiol Undecylate, EU）是半衰期最长的注射用雌二醇酯之一，约 20-30 天，允许每月或更长的注射间隔<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />。曾以 Progynon Depot 100 等品牌销售，目前全球可及性有限。证据等级为 C，因为缺乏大规模 HRT 临床试验数据。
+</DrugInfoBox>
+
+## 药代动力学
+
+十一酸雌二醇的药代动力学特征<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />：
+
+- **半衰期**：约 20-30 天（所有注射酯类中最长）
+- **峰值时间**：注射后约 3-7 天
+- **作用持续时间**：单次注射可维持有效 E2 水平约 30-40 天
+- **稳态**：由于半衰期极长，需要约 2-3 个月才能达到稳态
+
+### 与其他注射酯类的对比
+
+<DoseTable
+  headers={['参数', 'EV（戊酸）', 'EC（环戊丙酸）', 'EU（十一酸）']}
+  rows={[
+    ['半衰期', '~4-5 天', '~8-10 天', '~20-30 天'],
+    ['注射间隔', '5-7 天', '7-14 天', '21-30 天'],
+    ['剂量调整灵活性', '高', '中等', '低'],
+    ['血药浓度波动', '较大', '中等', '较小'],
+    ['全球可及性', '广泛', '美洲', '极有限'],
+    ['证据等级', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="证据等级 C">
+十一酸雌二醇在跨性别 HRT 领域的临床数据非常有限。大部分药代动力学数据来自 1970-1980 年代的小样本研究。如果有其他注射酯类可用（EV 或 EC），通常建议优先选择证据更充分的选项。
+</WarningBox>
+
+## 剂量
+
+### 成人剂量（参考性）
+
+<DoseTable
+  headers={['阶段', '剂量', '说明']}
+  rows={[
+    ['起始剂量', '20-40 mg/月', '保守起步'],
+    ['维持剂量', '40-100 mg/月', '根据谷值 E2 调整'],
+    ['最大剂量', '100 mg/月', '不建议超过'],
+  ]}
+/>
+
+由于半衰期极长，EU 的剂量调整**响应慢**。如果需要快速调整血药水平，短效酯类（EV）更合适<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+
+## 品牌与可及性
+
+| 品牌名 | 浓度 | 地区 | 状态 |
+|--------|------|------|------|
+| **Progynon Depot 100** | 100 mg/mL | 曾在欧洲/亚洲 | 已停产 |
+| 药房调剂 | 各种 | 极少数地区 | 有限 |
+
+EU 的全球可及性**极为有限**。大多数使用者应选择 EV 或 EC 作为注射雌二醇的首选。
+
+## 监测要求
+
+- **E2**：每 3 个月，注射前 1-2 天采谷值血。目标 100-200 pg/mL
+- **T**：每 3 个月。目标 &lt;50 ng/dL
+- **肝功能 (ALT/AST)**：基线 + 每 6 个月
+
+由于半衰期极长，初期需要更频繁的血检监测以确认药物蓄积水平。
+
+<DangerBox title="安全红线">
+- EU 的超长半衰期意味着药物蓄积风险更高——如果出现副作用，停药后药物仍将在体内持续数周
+- 不适合需要快速剂量调整的场景
+- E2 >200 pg/mL 不会带来更强的女性化效果<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 由于全球供应极不稳定，不建议将 EU 作为主要 HRT 方案
+</DangerBox>

@@ -1,0 +1,91 @@
+---
+title: ウンデシル酸エストラジオール注射 (EU)
+description: ウンデシル酸エストラジオール完全ガイド——超長時間作用型注射エステルの薬物動態、投与量、安全性。
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Undecylate (EU)"
+  nameCN="ウンデシル酸エストラジオール注射液"
+  category="estrogen"
+  route="筋肉注射 (IM)"
+  evidenceLevel="C"
+>
+ウンデシル酸エストラジオール（EU）は、最も長い半減期を持つ注射用エストラジオールエステルの一つで、約20-30日の半減期により月1回以上の注射間隔が可能です<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />。以前はProgynon Depot 100等のブランドで販売されていましたが、現在は世界的に入手が非常に限られています。大規模なHRT臨床試験データが不足しているため、エビデンスレベルはCです。
+</DrugInfoBox>
+
+## 薬物動態
+
+ウンデシル酸エストラジオールの薬物動態特性<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />：
+
+- **半減期**：約20-30日（全注射エステル中最長）
+- **ピーク時間**：注射後約3-7日
+- **作用持続時間**：単回注射で約30-40日間有効なE2レベルを維持
+- **定常状態**：非常に長い半減期のため、約2-3ヶ月で到達
+
+### 他の注射エステルとの比較
+
+<DoseTable
+  headers={['パラメータ', 'EV（吉草酸）', 'EC（シピオネート）', 'EU（ウンデシル酸）']}
+  rows={[
+    ['半減期', '約4-5日', '約8-10日', '約20-30日'],
+    ['注射間隔', '5-7日', '7-14日', '21-30日'],
+    ['用量調整の柔軟性', '高い', '中程度', '低い'],
+    ['血中濃度変動', '大きい', '中程度', '小さい'],
+    ['世界的入手可能性', '広く入手可能', 'アメリカ大陸', '非常に限定的'],
+    ['エビデンスレベル', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="エビデンスレベル C">
+トランスジェンダーHRTにおけるウンデシル酸エストラジオールの臨床データは非常に限られています。薬物動態データの大部分は1970-1980年代の小規模研究に由来します。他の注射エステル（EVまたはEC）が入手可能な場合は、より強固なエビデンスを持つ選択肢を優先することが一般的に推奨されます。
+</WarningBox>
+
+## 投与量
+
+### 成人投与量（参考値）
+
+<DoseTable
+  headers={['段階', '投与量', '説明']}
+  rows={[
+    ['開始用量', '20-40 mg/月', '保守的な開始'],
+    ['維持用量', '40-100 mg/月', 'トラフE2に基づいて調整'],
+    ['最大用量', '100 mg/月', 'これを超えないこと'],
+  ]}
+/>
+
+非常に長い半減期のため、EUの用量調整は**効果が現れるまで時間がかかります**。迅速な血中レベル調整が必要な場合は、短時間作用型エステル（EV）がより適切です<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+
+## ブランドと入手可能性
+
+| ブランド名 | 濃度 | 地域 | 状態 |
+|-----------|------|------|------|
+| **Progynon Depot 100** | 100 mg/mL | 旧ヨーロッパ/アジア | 販売中止 |
+| 薬局調剤 | 各種 | ごく少数の地域 | 限定的 |
+
+EUの世界的入手可能性は**極めて限定的**です。ほとんどのユーザーはEVまたはECを注射用エストラジオールの第一選択とすべきです。
+
+## モニタリング
+
+- **E2**：3ヶ月ごと、注射1-2日前にトラフ採血。目標100-200 pg/mL
+- **T**：3ヶ月ごと。目標 &lt;50 ng/dL
+- **肝機能 (ALT/AST)**：ベースライン + 6ヶ月ごと
+
+非常に長い半減期のため、使用初期はより頻繁な血液検査モニタリングが必要です。
+
+<DangerBox title="安全限界">
+- EUの超長半減期は蓄積リスクが高いことを意味します——副作用が発生した場合、中止後も数週間体内に薬物が残留します
+- 迅速な用量調整が必要な状況には不適切です
+- E2 >200 pg/mLはより強い女性化をもたらしません<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 世界的な供給が極めて不安定なため、EUを主要なHRTレジメンとすることは推奨されません
+</DangerBox>

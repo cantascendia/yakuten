@@ -1,0 +1,76 @@
+---
+title: フィナステリド
+description: トランスジェンダー女性HRTにおけるフィナステリド——DHT阻害機序、投与量、モニタリング、安全性。
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasteride"
+  nameCN="フィナステリド"
+  category="5α-reductase inhibitor"
+  route="経口"
+  evidenceLevel="B"
+>
+フィナステリドは選択的II型5α還元酵素阻害薬で、テストステロンからジヒドロテストステロン（DHT）への変換を阻害し、DHT値を約65-70%低下させます。トランスジェンダー女性のHRTでは補助療法として、主に脱毛や過度の体毛に対して使用されます。
+</DrugInfoBox>
+
+## 作用機序
+
+フィナステリドは**II型**5α還元酵素（主に毛包と前立腺に存在）を選択的に阻害し、血清DHTを約65-70%低下させます。テストステロン値への影響はほとんどありません。
+
+[デュタステリド](/ja/medications/five-alpha-reductase/dutasteride/)と比較して、フィナステリドは1つのアイソフォームのみを阻害するため、DHT低下は小さいですが、副作用リスクも相対的に低い可能性があります。
+
+## 投与量
+
+<DoseTable
+  headers={['適応', '投与量', '説明']}
+  rows={[
+    ['脱毛（HRT補助）', '1 mg/日', 'HRTレジメンと併用'],
+    ['代替用量', '5 mg/日', '一部の医師は高用量を使用するが、追加効果は不明確'],
+  ]}
+/>
+
+- 1 mg/日から開始（脱毛治療の標準用量）
+- 5 mg錠（プロスカー）は通常より安価で、4分割して使用可能
+- 効果発現には通常**3-6ヶ月**必要
+
+<WarningBox title="フィナステリドは抗アンドロゲン薬の代替にならない">
+フィナステリドはDHTのみを低下させ、テストステロンは低下させません。CPA、スピロノラクトン、GnRHアゴニストなどの抗アンドロゲン薬の代替にはなりません。T値が目標範囲を超えている場合は、5αRIの追加ではなく、主要な抗アンドロゲンレジメンの調整が必要です<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+</WarningBox>
+
+## ブランドと入手可能性
+
+| ブランド名 | 規格 | 説明 |
+|-----------|------|------|
+| **プロペシア** | 1 mg | 脱毛症適応 |
+| **プロスカー** | 5 mg | 前立腺肥大症適応、分割可能 |
+| ジェネリック | 1 mg / 5 mg | 世界的に広く入手可能 |
+
+## モニタリング
+
+- **T**：HRTルーチンとして3ヶ月ごとに継続検査
+- **DHT**（任意）：5αRI効果の確認に使用可能
+- **肝機能**：フィナステリドが肝障害を引き起こすことはまれ
+- **PSA**：フィナステリドはPSAを約50%低下させる。PSA検査時は服用中であることを医師に伝えること
+
+## 禁忌
+
+- フィナステリドアレルギー
+- 重度肝機能障害
+- 妊娠中のパートナーが破砕錠に接触すること（男性胎児への催奇形性あり）
+
+<DangerBox title="注意事項">
+- **中止後に効果は消失**：フィナステリド中止後、DHTは数週間で治療前レベルに戻ります
+- 脱毛が改善したからといって、HRTの他の薬剤を中止しないでください
+- 6ヶ月使用しても脱毛が改善しない場合、フィナステリドが効果的でない可能性があります——[デュタステリド](/ja/medications/five-alpha-reductase/dutasteride/)への変更を医師と相談してください
+</DangerBox>

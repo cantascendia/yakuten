@@ -1,0 +1,98 @@
+---
+title: エストラジオールシピオネート注射 (EC)
+description: エストラジオールシピオネート完全ガイド——薬物動態、吉草酸エストラジオールとの比較、投与量、安全限界。
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="エストラジオールシピオネート注射液"
+  category="estrogen"
+  route="筋肉注射 (IM) / 皮下注射 (SC)"
+  evidenceLevel="B"
+>
+エストラジオールシピオネート（EC）は、主にアメリカ大陸で使用される長時間作用型のエストラジオール注射製剤です。吉草酸エストラジオール（EV）と比較して、半減期が長く（約8-10日 vs 4-5日）、より長い注射間隔が可能です<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />。商品名：Depo-Estradiol。
+</DrugInfoBox>
+
+## 薬物動態
+
+エストラジオールシピオネートの薬物動態特性<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
+
+- **半減期**：約8-10日（EVは約4-5日）
+- **ピーク時間**：注射後2-4日
+- **トラフ時間**：注射後7-10日
+- **定常状態**：定期注射約3-4サイクル後に到達
+
+### 吉草酸エストラジオール (EV) との比較
+
+<DoseTable
+  headers={['パラメータ', 'シピオネート (EC)', '吉草酸 (EV)']}
+  rows={[
+    ['半減期', '約8-10日', '約4-5日'],
+    ['ピーク時間', '2-4日', '2-3日'],
+    ['推奨注射間隔', '7-14日', '5-7日'],
+    ['血中濃度変動', '小さい', '大きい'],
+    ['主な使用地域', 'アメリカ大陸', '世界全域'],
+    ['VTEリスク (RR)', '約1.0（初回通過回避）', '約1.0'],
+    ['エビデンスレベル', 'B', 'A'],
+  ]}
+/>
+
+ECの長い半減期により、トラフ時のE2低下が小さく、より安定した血中濃度曲線が得られます<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />。
+
+## 投与量
+
+### 成人投与量
+
+<DoseTable
+  headers={['段階', '投与量', '説明']}
+  rows={[
+    ['開始用量', '2-3 mg/週', '低用量開始期（最初の1-6ヶ月）、乳腺発育を保護'],
+    ['維持用量', '3-5 mg/週', '血液検査E2トラフ値で調整、目標E2 100-200 pg/mL'],
+    ['最大用量', '7 mg/10-14日', 'これを超えないこと'],
+  ]}
+/>
+
+用量参考：Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />、WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。ECの半減期が長いため、10-14日間隔の注射を選択するユーザーもいます。
+
+<WarningBox title="注射間隔と採血タイミング">
+EC使用者は**次回注射前の当日朝**に採血してトラフ値を測定してください。10日間隔の場合、トラフは10日目の朝です。目標トラフE2：100-200 pg/mL。
+</WarningBox>
+
+## ブランドと入手可能性
+
+| ブランド名 | 濃度 | 地域 |
+|-----------|------|------|
+| **Depo-Estradiol** | 5 mg/mL | アメリカ合衆国 |
+| 薬局調剤 | 各種 | 一部地域 |
+
+ECは主にアメリカとラテンアメリカで入手可能です。日本国内では入手困難であり、[吉草酸エストラジオール注射液](/ja/medications/estrogens/injection/)が標準的な選択肢です。
+
+## モニタリング
+
+他の注射用エストラジオールエステルと同様：
+
+- **E2**：3ヶ月ごと、トラフ採血（注射前当日朝）。目標100-200 pg/mL
+- **T**：3ヶ月ごと。目標 &lt;50 ng/dL
+- **肝機能 (ALT/AST)**：ベースライン + 6ヶ月ごと
+
+## 注射手順
+
+注射手順は[吉草酸エストラジオール注射液](/ja/medications/estrogens/injection/)と同一です。SCおよびIM両方で使用可能です。
+
+<DangerBox title="安全限界">
+- **1回の注射量は10 mgを超えてはならない**
+- 目標は安定した生理的範囲のE2レベルを維持すること
+- E2 >200 pg/mLはより強い女性化をもたらさず、血栓リスクのみ増加します<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- お住まいの地域でECが入手できない場合、非正規ルートでの購入は推奨しません
+</DangerBox>

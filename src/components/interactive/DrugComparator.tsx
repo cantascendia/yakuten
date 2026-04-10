@@ -36,6 +36,7 @@ const UI_COPY = {
     riskModerate: '中等',
     riskHigh: '高',
     riskVeryHigh: '极高',
+    cat5ari: '5α-还原酶抑制剂',
     disclaimer: '本工具仅供比较药物特性参考，不构成用药建议。请结合个人情况咨询医疗专业人员。',
   },
   en: {
@@ -64,6 +65,7 @@ const UI_COPY = {
     riskModerate: 'Moderate',
     riskHigh: 'High',
     riskVeryHigh: 'Very high',
+    cat5ari: '5\u03b1-Reductase Inhibitor',
     disclaimer: 'This tool is for comparing drug characteristics only and does not constitute medical advice. Consult a healthcare professional for personalized guidance.',
   },
   ja: {
@@ -92,6 +94,7 @@ const UI_COPY = {
     riskModerate: '中等',
     riskHigh: '高',
     riskVeryHigh: '極めて高い',
+    cat5ari: '5α還元酵素阻害薬',
     disclaimer: 'このツールは薬物特性の比較のみを目的としており、医学的助言を構成するものではありません。個別の指導については医療専門家にご相談ください。',
   },
 } as const;
@@ -103,7 +106,7 @@ const UI_COPY = {
 interface DrugCompare {
   id: string;
   names: { zh: string; en: string; ja: string };
-  category: 'estrogen' | 'antiandrogen' | 'progestogen';
+  category: 'estrogen' | 'antiandrogen' | 'progestogen' | '5ari';
   route: { zh: string; en: string; ja: string };
   doseStart: string;
   doseMaintenance: string;
@@ -338,6 +341,146 @@ const DRUGS: DrugCompare[] = [
       ja: ['注射部位感染', '重度肝疾患'],
     },
   },
+  {
+    id: 'estradiol-cypionate',
+    names: { zh: '环戊丙酸雌二醇注射', en: 'Estradiol Cypionate (IM/SC)', ja: 'エストラジオールシピオネート注射' },
+    category: 'estrogen',
+    route: { zh: '肌注/皮下', en: 'IM / SC injection', ja: '筋注/皮下注射' },
+    doseStart: '2-3 mg/周',
+    doseMaintenance: '3-5 mg/周',
+    doseMax: '7 mg/10-14天',
+    frequency: { zh: '每7-14天', en: 'Every 7-14 days', ja: '7-14日ごと' },
+    halfLife: '8-10 天',
+    bioavailability: '~100%',
+    vteRR: 1.0,
+    evidenceLevel: 'B',
+    monitoring: ['E2', 'T'],
+    contraindications: {
+      zh: ['活动性DVT/PE', '雌激素依赖性肿瘤'],
+      en: ['Active DVT/PE', 'Estrogen-dependent tumor'],
+      ja: ['活動性DVT/PE', 'エストロゲン依存性腫瘍'],
+    },
+  },
+  {
+    id: 'estradiol-enanthate',
+    names: { zh: '庚酸雌二醇注射', en: 'Estradiol Enanthate (IM/SC)', ja: 'エストラジオールエナント酸エステル注射' },
+    category: 'estrogen',
+    route: { zh: '肌注/皮下', en: 'IM / SC injection', ja: '筋注/皮下注射' },
+    doseStart: '2-4 mg/周',
+    doseMaintenance: '4-6 mg/周',
+    doseMax: '10 mg/10天',
+    frequency: { zh: '每7-10天', en: 'Every 7-10 days', ja: '7-10日ごと' },
+    halfLife: '5-7 天',
+    bioavailability: '~100%',
+    vteRR: 1.0,
+    evidenceLevel: 'B',
+    monitoring: ['E2', 'T'],
+    contraindications: {
+      zh: ['活动性DVT/PE', '雌激素依赖性肿瘤'],
+      en: ['Active DVT/PE', 'Estrogen-dependent tumor'],
+      ja: ['活動性DVT/PE', 'エストロゲン依存性腫瘍'],
+    },
+  },
+  {
+    id: 'estradiol-undecylate',
+    names: { zh: '十一酸雌二醇注射', en: 'Estradiol Undecylate (IM)', ja: 'ウンデシル酸エストラジオール注射' },
+    category: 'estrogen',
+    route: { zh: '肌注', en: 'IM injection', ja: '筋注' },
+    doseStart: '20-40 mg/月',
+    doseMaintenance: '40-100 mg/月',
+    doseMax: '100 mg/月',
+    frequency: { zh: '每21-30天', en: 'Every 21-30 days', ja: '21-30日ごと' },
+    halfLife: '20-30 天',
+    bioavailability: '~100%',
+    vteRR: 1.0,
+    evidenceLevel: 'C',
+    monitoring: ['E2'],
+    contraindications: {
+      zh: ['雌激素依赖性肿瘤'],
+      en: ['Estrogen-dependent tumor'],
+      ja: ['エストロゲン依存性腫瘍'],
+    },
+  },
+  {
+    id: 'finasteride',
+    names: { zh: '非那雄胺', en: 'Finasteride', ja: 'フィナステリド' },
+    category: '5ari',
+    route: { zh: '口服', en: 'Oral', ja: '経口' },
+    doseStart: '1 mg/天',
+    doseMaintenance: '1-5 mg/天',
+    doseMax: '5 mg/天',
+    frequency: { zh: '每日1次', en: 'Once daily', ja: '1日1回' },
+    halfLife: '6-8h',
+    bioavailability: '~80%',
+    vteRR: 1.0,
+    evidenceLevel: 'B',
+    monitoring: ['T'],
+    contraindications: {
+      zh: ['药物过敏', '严重肝功能不全'],
+      en: ['Drug allergy', 'Severe hepatic impairment'],
+      ja: ['薬物アレルギー', '重度肝機能障害'],
+    },
+  },
+  {
+    id: 'dutasteride',
+    names: { zh: '度他雄胺', en: 'Dutasteride', ja: 'デュタステリド' },
+    category: '5ari',
+    route: { zh: '口服', en: 'Oral', ja: '経口' },
+    doseStart: '0.5 mg/天',
+    doseMaintenance: '0.5 mg/天',
+    doseMax: '0.5 mg/天',
+    frequency: { zh: '每日1次', en: 'Once daily', ja: '1日1回' },
+    halfLife: '4-5 周',
+    bioavailability: '~60%',
+    vteRR: 1.0,
+    evidenceLevel: 'C',
+    monitoring: ['T'],
+    contraindications: {
+      zh: ['药物过敏', '严重肝功能不全', '强效CYP3A4抑制剂联用'],
+      en: ['Drug allergy', 'Severe hepatic impairment', 'Strong CYP3A4 inhibitors'],
+      ja: ['薬物アレルギー', '重度肝機能障害', '強力なCYP3A4阻害薬との併用'],
+    },
+  },
+  {
+    id: 'dydrogesterone',
+    names: { zh: '地屈孕酮', en: 'Dydrogesterone', ja: 'ジドロゲステロン' },
+    category: 'progestogen',
+    route: { zh: '口服', en: 'Oral', ja: '経口' },
+    doseStart: '10 mg/天',
+    doseMaintenance: '10-20 mg/天',
+    doseMax: '20 mg/天',
+    frequency: { zh: '每日1-2次', en: '1-2x daily', ja: '1日1-2回' },
+    halfLife: '14-17h',
+    bioavailability: '~28%',
+    vteRR: 1.0,
+    evidenceLevel: 'C',
+    monitoring: ['PRL'],
+    contraindications: {
+      zh: ['药物过敏', '急性肝性卟啉症'],
+      en: ['Drug allergy', 'Acute hepatic porphyria'],
+      ja: ['薬物アレルギー', '急性肝性ポルフィリン症'],
+    },
+  },
+  {
+    id: 'drospirenone',
+    names: { zh: '屈螺酮', en: 'Drospirenone', ja: 'ドロスピレノン' },
+    category: 'progestogen',
+    route: { zh: '口服', en: 'Oral', ja: '経口' },
+    doseStart: '3-4 mg/天',
+    doseMaintenance: '3-4 mg/天',
+    doseMax: '4 mg/天',
+    frequency: { zh: '每日1次', en: 'Once daily', ja: '1日1回' },
+    halfLife: '25-33h',
+    bioavailability: '~76%',
+    vteRR: 1.0,
+    evidenceLevel: 'C',
+    monitoring: ['K+', 'PRL'],
+    contraindications: {
+      zh: ['螺内酯联用', '高钾血症', '严重肾功能不全'],
+      en: ['Spironolactone co-use', 'Hyperkalemia', 'Severe renal impairment'],
+      ja: ['スピロノラクトン併用', '高カリウム血症', '重度腎不全'],
+    },
+  },
 ];
 
 /* ================================
@@ -360,12 +503,14 @@ function getVteLabel(rr: number, ui: (typeof UI_COPY)[Locale]): string {
 function getCategoryLabel(cat: string, ui: (typeof UI_COPY)[Locale]): string {
   if (cat === 'estrogen') return ui.catEstrogen;
   if (cat === 'antiandrogen') return ui.catAntiandrogen;
+  if (cat === '5ari') return ui.cat5ari;
   return ui.catProgestogen;
 }
 
 function getCategoryColor(cat: string): string {
   if (cat === 'estrogen') return 'var(--color-primary)';
   if (cat === 'antiandrogen') return 'var(--color-info)';
+  if (cat === '5ari') return 'var(--color-safe)';
   return 'var(--color-accent)';
 }
 

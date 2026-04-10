@@ -1,0 +1,76 @@
+---
+title: Dydrogesterone
+description: Dydrogesterone in transfeminine HRT — retro-isomer progestogen mechanism, dosing, comparison with micronized progesterone, and safety.
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesterone"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dydrogesterone is a retro-isomer of progesterone with significantly higher oral bioavailability than micronized progesterone. Used as an alternative progestogen option in transfeminine HRT, though clinical evidence specific to transgender care remains limited<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mechanism
+
+Dydrogesterone is a structural analog of natural progesterone with highly selective progestogenic receptor activity:
+
+- **High oral bioavailability**: ~28% (vs ~10% for micronized progesterone)
+- **No anti-androgenic activity**: Unlike CPA or spironolactone, does not directly affect androgens
+- **No glucocorticoid or mineralocorticoid activity**
+- **Half-life**: ~14-17 hours
+
+### Comparison with Micronized Progesterone
+
+| Feature | Dydrogesterone | [Micronized Progesterone](/en/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Type | Retro-isomer (synthetic) | Natural/bioidentical |
+| Oral bioavailability | ~28% | ~10% |
+| Sedative effect | Minimal | Significant (hence bedtime dosing) |
+| Routes | Oral only | Oral/rectal/vaginal |
+| VTE risk | Insufficient data | Neutral or very low |
+| Evidence level | C | C |
+
+## Dosing
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Notes']}
+  rows={[
+    ['HRT progestogen supplementation', '10-20 mg/day', 'Usually 1-2 times daily'],
+    ['Cyclic regimen', '10 mg/day x 14 days/month', 'Mimics luteal phase of menstrual cycle'],
+  ]}
+/>
+
+<WarningBox title="Progestogens in HRT: The Controversy">
+WPATH SOC 8 notes that the benefits of progestogens in transfeminine HRT "have not been sufficiently demonstrated"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Some users report progestogens help with breast development and mood, but evidence is primarily anecdotal and community-based.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Strength | Region |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Widely available globally (including mainland China) |
+| Generics | 10 mg | Select regions |
+
+## Monitoring
+
+- **PRL (prolactin)**: Every 6 months. Progestogens may mildly elevate prolactin
+- No additional liver monitoring needed (dydrogesterone has very low hepatotoxicity)
+
+## Contraindications
+
+- Dydrogesterone allergy
+- Unexplained vaginal bleeding (cisgender indication — rarely applicable in trans context)
+- Acute hepatic porphyria

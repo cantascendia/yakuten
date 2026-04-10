@@ -1,0 +1,89 @@
+---
+title: Dutasteride
+description: Dutasteride in transfeminine HRT — dual 5α-reductase inhibition, comparison with finasteride, dosing, and safety.
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasteride"
+  nameCN="Dutasteride"
+  category="5α-reductase inhibitor"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dutasteride is a dual type I + type II 5α-reductase inhibitor that reduces serum DHT by approximately 90-95%, more potently than finasteride<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Used as adjunctive therapy in transfeminine HRT when finasteride proves insufficient.
+</DrugInfoBox>
+
+## Mechanism
+
+Dutasteride simultaneously inhibits **both type I and type II** 5α-reductase:
+
+- **Type I**: Primarily found in skin (sebaceous glands) and liver
+- **Type II**: Primarily found in hair follicles and prostate
+
+This dual inhibition achieves **90-95%** DHT reduction, compared to ~65-70% with [finasteride](/en/medications/five-alpha-reductase/finasteride/).
+
+## Comparison with Finasteride
+
+| Feature | Dutasteride | Finasteride |
+|---------|-------------|-------------|
+| Target | Type I + II | Type II only |
+| DHT reduction | ~90-95% | ~65-70% |
+| Half-life | ~4-5 weeks | ~6-8 hours |
+| Onset | 3-6 months | 3-6 months |
+| Washout after stopping | Months (very long half-life) | Weeks |
+| Generic availability | Limited | Widespread |
+| Evidence level | C | B |
+
+## Dosing
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Notes']}
+  rows={[
+    ['Adjunct to HRT', '0.5 mg/day', 'Standard dose; do not exceed'],
+  ]}
+/>
+
+- 0.5 mg/day is the only recommended dose
+- Due to the very long half-life (~4-5 weeks), **missing one day does not require make-up dosing**
+- Capsules must not be opened or chewed
+
+<WarningBox title="Dutasteride Is Typically Second-Line">
+If finasteride has not been tried, it is generally recommended to trial finasteride for 6 months first. Dutasteride has lower evidence (C), higher cost, and its extremely long half-life means side effects persist for months after discontinuation.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Strength | Notes |
+|-------|----------|-------|
+| **Avodart** | 0.5 mg capsule | Original brand |
+| Generics | 0.5 mg capsule | Available in some regions |
+
+## Monitoring
+
+- **T**: Continue routine HRT monitoring every 3 months
+- **DHT** (optional): Can confirm 5αRI effect
+- **PSA**: Dutasteride lowers PSA; inform your doctor if being tested
+
+## Contraindications
+
+- Dutasteride allergy
+- Severe hepatic impairment (dutasteride is metabolized via CYP3A4)
+- Concomitant strong CYP3A4 inhibitors (e.g. ketoconazole) — may cause dutasteride accumulation
+
+<DangerBox title="Important Notes">
+- **Very long half-life** (4-5 weeks): DHT suppression persists for months after stopping
+- Capsule contents are teratogenic; pregnant individuals must not handle leaking capsules
+- Do not stop other HRT medications because hair loss improves
+- If finasteride is already effective, there is no need to escalate to dutasteride
+</DangerBox>

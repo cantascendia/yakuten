@@ -1,0 +1,93 @@
+---
+title: 庚酸雌二醇注射液 (EEn)
+description: 庚酸雌二醇完整指南——药代动力学、与其他酯类的对比、剂量方案及安全红线。
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="庚酸雌二醇注射液"
+  category="estrogen"
+  route="肌肉注射 (IM) / 皮下注射 (SC)"
+  evidenceLevel="B"
+>
+庚酸雌二醇（Estradiol Enanthate, EEn）是一种中长效注射用雌二醇酯，半衰期介于戊酸雌二醇（EV）和环戊丙酸雌二醇（EC）之间，约 5-7 天<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />。常见于联合注射避孕药（Perlutal）的成分中，也可单独用于 HRT。
+</DrugInfoBox>
+
+## 药代动力学
+
+庚酸雌二醇注射后的药代动力学特征<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
+
+- **半衰期**：约 5-7 天
+- **峰值时间**：注射后 3-5 天
+- **谷值时间**：注射后 7-10 天
+- **稳态**：规律注射约 3-4 个周期后达到稳态
+
+### 注射雌二醇酯类 PK 对比
+
+<DoseTable
+  headers={['参数', 'EV（戊酸）', 'EEn（庚酸）', 'EC（环戊丙酸）']}
+  rows={[
+    ['半衰期', '~4-5 天', '~5-7 天', '~8-10 天'],
+    ['峰值时间', '2-3 天', '3-5 天', '2-4 天'],
+    ['推荐注射间隔', '5-7 天', '7-10 天', '7-14 天'],
+    ['血药浓度波动', '较大', '中等', '较小'],
+    ['可及性', '全球', '部分地区', '美洲'],
+  ]}
+/>
+
+EEn 的药代动力学特性介于 EV 和 EC 之间，为需要每周注射但希望曲线更平稳的使用者提供了一个选项<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />。
+
+## 剂量
+
+### 成人剂量
+
+<DoseTable
+  headers={['阶段', '剂量', '说明']}
+  rows={[
+    ['起始剂量', '2-4 mg/周', '低剂量起步，保护乳腺发育'],
+    ['维持剂量', '4-6 mg/周', '根据谷值 E2 调整，目标 100-200 pg/mL'],
+    ['最大剂量', '10 mg/10 天', '不建议超过'],
+  ]}
+/>
+
+剂量参考 Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> 和 WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+
+<WarningBox title="可及性提示">
+庚酸雌二醇在中国大陆、日本均不常见。主要在拉丁美洲（作为 Perlutal 联合注射剂的成分）和部分欧洲国家使用。如果需要注射雌二醇，[戊酸雌二醇](/zh/medications/estrogens/injection/)在大多数地区更容易获取。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 含量/剂型 | 地区 |
+|--------|----------|------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg（联合避孕剂） | 拉丁美洲 |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | 部分国家 |
+| 单成分制剂 | 各种浓度 | 药房调剂 |
+
+## 监测要求
+
+- **E2**：每 3 个月，注射前当天采谷值血。目标 100-200 pg/mL
+- **T**：每 3 个月。目标 &lt;50 ng/dL
+- **肝功能 (ALT/AST)**：基线 + 每 6 个月
+
+## 注射操作
+
+注射操作与[戊酸雌二醇注射液](/zh/medications/estrogens/injection/#注射操作规范)完全相同。
+
+<DangerBox title="安全红线">
+- 适用与其他注射雌二醇酯类相同的安全限制
+- 单次注射不得超过 10 mg
+- E2 >200 pg/mL 不会增强女性化效果，只增加风险<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 如果使用联合制剂（如 Perlutal），其中的孕激素成分可能带来额外风险，请咨询医生
+</DangerBox>

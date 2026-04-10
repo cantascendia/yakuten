@@ -1,0 +1,91 @@
+---
+title: Estradiol Undecylate (EU)
+description: Complete guide to estradiol undecylate — ultra-long-acting injectable ester pharmacokinetics, dosing, and safety considerations.
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Undecylate (EU)"
+  nameCN="Estradiol Undecylate Injection"
+  category="estrogen"
+  route="Intramuscular (IM)"
+  evidenceLevel="C"
+>
+Estradiol undecylate (EU) is one of the longest-acting injectable estradiol esters, with a half-life of approximately 20-30 days, allowing for monthly or longer injection intervals<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Formerly sold as Progynon Depot 100 and other brands, global availability is now very limited. Evidence level is C due to the lack of large-scale HRT clinical trial data.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Pharmacokinetic profile of estradiol undecylate<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
+
+- **Half-life**: ~20-30 days (longest of all injectable esters)
+- **Peak time**: ~3-7 days post-injection
+- **Duration of action**: A single injection maintains effective E2 levels for ~30-40 days
+- **Steady state**: Due to the very long half-life, requires ~2-3 months to reach steady state
+
+### Comparison with Other Injectable Esters
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerate)', 'EC (Cypionate)', 'EU (Undecylate)']}
+  rows={[
+    ['Half-life', '~4-5 days', '~8-10 days', '~20-30 days'],
+    ['Injection interval', '5-7 days', '7-14 days', '21-30 days'],
+    ['Dose adjustment flexibility', 'High', 'Moderate', 'Low'],
+    ['Serum level fluctuation', 'Larger', 'Moderate', 'Smaller'],
+    ['Global availability', 'Widely available', 'Americas', 'Very limited'],
+    ['Evidence level', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="Evidence Level C">
+Clinical data on estradiol undecylate in transgender HRT is very limited. Most pharmacokinetic data comes from small studies conducted in the 1970s-1980s. When other injectable esters (EV or EC) are available, they are generally recommended as first-line options with stronger evidence.
+</WarningBox>
+
+## Dosing
+
+### Adult Dosing (Reference Only)
+
+<DoseTable
+  headers={['Phase', 'Dose', 'Notes']}
+  rows={[
+    ['Starting dose', '20-40 mg/month', 'Conservative start'],
+    ['Maintenance dose', '40-100 mg/month', 'Adjust based on trough E2'],
+    ['Maximum dose', '100 mg/month', 'Do not exceed'],
+  ]}
+/>
+
+Due to its very long half-life, EU dose adjustments are **slow to take effect**. For situations requiring rapid level adjustment, shorter-acting esters (EV) are more appropriate<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+## Brands & Availability
+
+| Brand | Concentration | Region | Status |
+|-------|---------------|--------|--------|
+| **Progynon Depot 100** | 100 mg/mL | Formerly Europe/Asia | Discontinued |
+| Compounding pharmacies | Various | Very few regions | Limited |
+
+EU has **extremely limited** global availability. Most users should choose EV or EC as their preferred injectable estradiol.
+
+## Monitoring
+
+- **E2**: Every 3 months, trough draw 1-2 days before injection. Target 100-200 pg/mL
+- **T**: Every 3 months. Target &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + every 6 months
+
+Due to the very long half-life, more frequent blood monitoring is needed during initial use to confirm accumulation levels.
+
+<DangerBox title="Safety Limits">
+- EU's ultra-long half-life means higher accumulation risk — if side effects occur, the drug will remain in the body for weeks after discontinuation
+- Not suitable for situations requiring rapid dose adjustment
+- E2 >200 pg/mL does not produce stronger feminization<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Due to extremely unstable global supply, EU is not recommended as a primary HRT regimen
+</DangerBox>

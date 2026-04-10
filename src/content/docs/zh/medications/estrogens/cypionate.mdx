@@ -1,0 +1,98 @@
+---
+title: 环戊丙酸雌二醇注射液 (EC)
+description: 环戊丙酸雌二醇完整指南——药代动力学与戊酸雌二醇的对比、剂量、注射方案及安全红线。
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="环戊丙酸雌二醇注射液"
+  category="estrogen"
+  route="肌肉注射 (IM) / 皮下注射 (SC)"
+  evidenceLevel="B"
+>
+环戊丙酸雌二醇（Estradiol Cypionate, EC）是雌二醇的长效注射酯类制剂，主要在美洲地区使用。与戊酸雌二醇（EV）相比，EC 的半衰期更长（约 8-10 天 vs 4-5 天），允许更长的注射间隔<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />。商品名 Depo-Estradiol。
+</DrugInfoBox>
+
+## 药代动力学
+
+环戊丙酸雌二醇注射后的药代动力学特征<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
+
+- **半衰期**：约 8-10 天（EV 约 4-5 天）
+- **峰值时间**：注射后 2-4 天
+- **谷值时间**：注射后 7-10 天
+- **稳态**：规律注射约 3-4 个周期后达到稳态
+
+### 与戊酸雌二醇 (EV) 的对比
+
+<DoseTable
+  headers={['参数', '环戊丙酸雌二醇 (EC)', '戊酸雌二醇 (EV)']}
+  rows={[
+    ['半衰期', '~8-10 天', '~4-5 天'],
+    ['峰值时间', '2-4 天', '2-3 天'],
+    ['推荐注射间隔', '7-14 天', '5-7 天'],
+    ['血药浓度波动', '较小', '较大'],
+    ['主要使用地区', '美洲', '全球'],
+    ['VTE 风险 (RR)', '~1.0（绕过肝脏首过效应）', '~1.0'],
+    ['证据等级', 'B', 'A'],
+  ]}
+/>
+
+EC 的更长半衰期意味着谷值时 E2 下降幅度更小，血药浓度曲线更为平稳<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />。
+
+## 剂量
+
+### 成人剂量
+
+<DoseTable
+  headers={['阶段', '剂量', '说明']}
+  rows={[
+    ['起始剂量', '2-3 mg/周', '低剂量起步（前 1-6 个月），保护乳腺发育'],
+    ['维持剂量', '3-5 mg/周', '根据血检 E2 谷值调整，目标 E2 100-200 pg/mL'],
+    ['最大剂量', '7 mg/每 10-14 天', '不建议超过此剂量'],
+  ]}
+/>
+
+剂量参考 Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> 和 WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。由于 EC 半衰期较长，部分使用者选择每 10-14 天注射一次而非每周。
+
+<WarningBox title="注射间隔与血检时机">
+使用 EC 的用户应在**下次注射前当天**采血测量谷值。如果采用每 10 天注射方案，谷值时间在第 10 天清晨。目标谷值 E2 100-200 pg/mL。
+</WarningBox>
+
+## 品牌与可及性
+
+| 品牌名 | 浓度 | 地区 |
+|--------|------|------|
+| **Depo-Estradiol** | 5 mg/mL | 美国 |
+| 院内制剂 / 药房自制 | 各种 | 部分地区 |
+
+EC 在中国大陆和日本**不常见**，主要在美国和拉丁美洲使用。如果你在中国大陆，[戊酸雌二醇注射液](/zh/medications/estrogens/injection/)是更容易获取的选择。
+
+## 监测要求
+
+与其他注射雌二醇酯类相同：
+
+- **E2**：每 3 个月，采谷值血（注射前当天）。目标 100-200 pg/mL
+- **T**：每 3 个月。目标 &lt;50 ng/dL
+- **肝功能 (ALT/AST)**：基线 + 每 6 个月
+
+## 注射操作
+
+注射操作与[戊酸雌二醇注射液](/zh/medications/estrogens/injection/#注射操作规范)完全相同。SC 和 IM 均可使用。
+
+<DangerBox title="安全红线">
+- **单次注射剂量不得超过 10 mg**
+- 目标是维持稳定的生理范围 E2 水平，而非追求高峰值
+- E2 >200 pg/mL 不会带来更强的女性化效果，只增加血栓等风险<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- 如果 EC 在你所在地区不可获取，不建议通过非正规渠道购买
+</DangerBox>

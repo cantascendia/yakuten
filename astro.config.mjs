@@ -58,6 +58,11 @@ export default defineConfig({
               autogenerate: { directory: 'medications/progestogens' },
             },
             {
+              label: '5α-还原酶抑制剂',
+              translations: { en: '5α-Reductase Inhibitors', ja: '5α還元酵素阻害薬' },
+              autogenerate: { directory: 'medications/five-alpha-reductase' },
+            },
+            {
               label: '绝对禁用药物',
               translations: { en: 'Banned Drugs', ja: '使用禁止薬物' },
               slug: 'medications/banned-drugs',
