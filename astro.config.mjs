@@ -158,6 +158,7 @@ export default defineConfig({
             {
               label: '孕激素',
               translations: { en: 'Progestogens', ja: 'プロゲストーゲン' },
+              collapsed: true,
               items: [
                 {
                   label: '概述',
@@ -211,6 +212,7 @@ export default defineConfig({
             {
               label: '5α-还原酶抑制剂',
               translations: { en: '5α-Reductase Inhibitors', ja: '5α還元酵素阻害薬' },
+              collapsed: true,
               autogenerate: { directory: 'medications/five-alpha-reductase' },
             },
             // ── 绝对禁用药物 ──
