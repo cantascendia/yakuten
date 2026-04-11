@@ -42,30 +42,183 @@ export default defineConfig({
           label: '药物详解',
           translations: { en: 'Medications', ja: '薬物ガイド' },
           items: [
+            // ── 雌二醇：按给药途径分组 ──
             {
               label: '雌二醇',
               translations: { en: 'Estrogens', ja: 'エストロゲン' },
-              autogenerate: { directory: 'medications/estrogens' },
+              items: [
+                {
+                  label: '总览与选择指南',
+                  translations: { en: 'Overview & Selection', ja: '概要と選び方' },
+                  slug: 'medications/estrogens/overview',
+                },
+                {
+                  label: '口服途径',
+                  translations: { en: 'Oral Route', ja: '経口投与' },
+                  items: [
+                    {
+                      label: '口服（补佳乐）',
+                      translations: { en: 'Oral (Pills)', ja: '経口（飲み薬）' },
+                      slug: 'medications/estrogens/oral',
+                    },
+                    {
+                      label: '舌下含服',
+                      translations: { en: 'Sublingual', ja: '舌下投与' },
+                      slug: 'medications/estrogens/sublingual',
+                    },
+                  ],
+                },
+                {
+                  label: '透皮途径',
+                  translations: { en: 'Transdermal Route', ja: '経皮投与' },
+                  items: [
+                    {
+                      label: '凝胶',
+                      translations: { en: 'Gel', ja: 'ゲル' },
+                      slug: 'medications/estrogens/gel',
+                    },
+                    {
+                      label: '贴片',
+                      translations: { en: 'Patches', ja: 'パッチ' },
+                      slug: 'medications/estrogens/transdermal-patch',
+                    },
+                  ],
+                },
+                {
+                  label: '注射途径',
+                  translations: { en: 'Injectable Route', ja: '注射投与' },
+                  collapsed: true,
+                  items: [
+                    {
+                      label: '戊酸雌二醇 (EV)',
+                      translations: { en: 'Estradiol Valerate (EV)', ja: '吉草酸エストラジオール (EV)' },
+                      slug: 'medications/estrogens/injection',
+                      badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本' }, variant: 'tip' },
+                    },
+                    {
+                      label: '环戊丙酸酯 (EC)',
+                      translations: { en: 'Estradiol Cypionate (EC)', ja: 'シピオネート (EC)' },
+                      slug: 'medications/estrogens/cypionate',
+                    },
+                    {
+                      label: '庚酸酯 (EEn)',
+                      translations: { en: 'Estradiol Enanthate (EEn)', ja: 'エナント酸 (EEn)' },
+                      slug: 'medications/estrogens/enanthate',
+                    },
+                    {
+                      label: '十一酸酯 (EU)',
+                      translations: { en: 'Estradiol Undecylate (EU)', ja: 'ウンデシル酸 (EU)' },
+                      slug: 'medications/estrogens/undecylate',
+                    },
+                  ],
+                },
+                {
+                  label: '禁用雌激素',
+                  translations: { en: 'Banned Estrogens', ja: '禁止エストロゲン' },
+                  slug: 'medications/estrogens/banned-estrogens',
+                  badge: { text: '⚠', variant: 'danger' },
+                },
+              ],
             },
+            // ── 抗雄激素：平铺 + badge 标注 ──
             {
               label: '抗雄激素',
               translations: { en: 'Anti-Androgens', ja: '抗アンドロゲン' },
-              autogenerate: { directory: 'medications/antiandrogens' },
+              items: [
+                {
+                  label: '概述',
+                  translations: { en: 'Overview', ja: '概要' },
+                  slug: 'medications/antiandrogens/overview',
+                },
+                {
+                  label: 'CPA（色谱龙）',
+                  translations: { en: 'CPA (Cyproterone)', ja: 'CPA（酢酸シプロテロン）' },
+                  slug: 'medications/antiandrogens/cpa',
+                  badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本' }, variant: 'tip' },
+                },
+                {
+                  label: '螺内酯',
+                  translations: { en: 'Spironolactone', ja: 'スピロノラクトン' },
+                  slug: 'medications/antiandrogens/spironolactone',
+                },
+                {
+                  label: 'GnRH 激动剂',
+                  translations: { en: 'GnRH Agonists', ja: 'GnRHアゴニスト' },
+                  slug: 'medications/antiandrogens/gnrh-agonists',
+                },
+                {
+                  label: '比卡鲁胺',
+                  translations: { en: 'Bicalutamide', ja: 'ビカルタミド' },
+                  slug: 'medications/antiandrogens/bicalutamide',
+                  badge: { text: { 'zh-CN': '慎用', en: 'Caution', ja: '要注意' }, variant: 'caution' },
+                },
+              ],
             },
+            // ── 孕激素：推荐 vs 替代分组 ──
             {
               label: '孕激素',
               translations: { en: 'Progestogens', ja: 'プロゲストーゲン' },
-              autogenerate: { directory: 'medications/progestogens' },
+              items: [
+                {
+                  label: '概述',
+                  translations: { en: 'Overview', ja: '概要' },
+                  slug: 'medications/progestogens/overview',
+                  badge: { text: { 'zh-CN': '非必需', en: 'Optional', ja: '任意' }, variant: 'note' },
+                },
+                {
+                  label: '推荐选项',
+                  translations: { en: 'Recommended', ja: '推奨' },
+                  items: [
+                    {
+                      label: '微粒化黄体酮',
+                      translations: { en: 'Micronized Progesterone', ja: '微粉化プロゲステロン' },
+                      slug: 'medications/progestogens/progesterone',
+                      badge: { text: { 'zh-CN': '首选', en: 'Preferred', ja: '推奨' }, variant: 'tip' },
+                    },
+                    {
+                      label: '羟孕酮注射',
+                      translations: { en: 'Hydroxyprogesterone', ja: 'ヒドロキシプロゲステロン' },
+                      slug: 'medications/progestogens/hydroxyprogesterone',
+                    },
+                  ],
+                },
+                {
+                  label: '替代选项',
+                  translations: { en: 'Alternatives', ja: '代替選択肢' },
+                  collapsed: true,
+                  items: [
+                    {
+                      label: '地屈孕酮',
+                      translations: { en: 'Dydrogesterone', ja: 'ジドロゲステロン' },
+                      slug: 'medications/progestogens/dydrogesterone',
+                    },
+                    {
+                      label: '屈螺酮',
+                      translations: { en: 'Drospirenone', ja: 'ドロスピレノン' },
+                      slug: 'medications/progestogens/drospirenone',
+                    },
+                  ],
+                },
+                {
+                  label: '不推荐孕激素 (MPA)',
+                  translations: { en: 'Not Recommended (MPA)', ja: '非推奨 (MPA)' },
+                  slug: 'medications/progestogens/cautioned-progestins',
+                  badge: { text: '⚠', variant: 'danger' },
+                },
+              ],
             },
+            // ── 5α-还原酶抑制剂：仅 3 项，保持 autogenerate ──
             {
               label: '5α-还原酶抑制剂',
               translations: { en: '5α-Reductase Inhibitors', ja: '5α還元酵素阻害薬' },
               autogenerate: { directory: 'medications/five-alpha-reductase' },
             },
+            // ── 绝对禁用药物 ──
             {
               label: '绝对禁用药物',
               translations: { en: 'Banned Drugs', ja: '使用禁止薬物' },
               slug: 'medications/banned-drugs',
+              badge: { text: '⚠', variant: 'danger' },
             },
           ],
         },
