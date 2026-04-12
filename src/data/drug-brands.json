@@ -10,7 +10,8 @@
       "notes": "原研药，欧洲/国际版包装",
       "activeIngredient": "戊酸雌二醇",
       "status": "approved",
-      "url": "https://www.bayer.com"
+      "url": "https://www.bayer.com",
+      "image": "/brands/progynova-cn.webp"
     },
     {
       "name": "补佳乐 Progynova",
@@ -21,7 +22,8 @@
       "appearance": "白色小圆糖衣片",
       "notes": "中国大陆最常见制剂，线下药房可购，需处方",
       "activeIngredient": "戊酸雌二醇",
-      "status": "prescription"
+      "status": "prescription",
+      "image": "/brands/progynova-cn.webp"
     },
     {
       "name": "Progynova",
@@ -54,7 +56,8 @@
       "appearance": "蓝色三角形薄膜衣片",
       "notes": "微粉化雌二醇（非戊酸酯），适合舌下含服，泰国代购常见",
       "activeIngredient": "微粉化雌二醇",
-      "status": "approved"
+      "status": "approved",
+      "image": "/brands/estrofem.webp"
     }
   ],
   "estradiol-sublingual": [
@@ -67,7 +70,8 @@
       "appearance": "蓝色三角形薄膜衣片",
       "notes": "最常用于舌下含服的制剂，微粉化雌二醇",
       "activeIngredient": "微粉化雌二醇",
-      "status": "approved"
+      "status": "approved",
+      "image": "/brands/estrofem.webp"
     },
     {
       "name": "补佳乐 Progynova",
@@ -130,7 +134,8 @@
       "notes": "法国原研，每泵 1.5mg E2，最常见的凝胶制剂",
       "activeIngredient": "雌二醇",
       "status": "approved",
-      "url": "https://www.besins-healthcare.com"
+      "url": "https://www.besins-healthcare.com",
+      "image": "/brands/oestrogel.webp"
     },
     {
       "name": "Oestrogel",
@@ -265,7 +270,8 @@
       "notes": "原研 CPA，十字刻痕方便切为 12.5mg 使用",
       "activeIngredient": "醋酸环丙孕酮",
       "status": "approved",
-      "url": "https://www.bayer.com"
+      "url": "https://www.bayer.com",
+      "image": "/brands/androcur.webp"
     },
     {
       "name": "色谱龙 Androcur",
