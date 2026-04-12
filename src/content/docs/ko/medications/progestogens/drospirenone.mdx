@@ -1,0 +1,74 @@
+---
+title: "드로스피레논"
+description: "트랜스여성 HRT에서의 드로스피레논 — 항안드로겐 및 항미네랄코르티코이드 특성을 가진 프로게스토겐."
+evidenceLevel: C
+sidebar:
+  order: 4
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Drospirenone"
+  nameCN="Drospirenone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Drospirenone is a synthetic progestogen structurally derived from spironolactone, possessing simultaneous **anti-androgenic** and **anti-mineralocorticoid** (spironolactone-like) activity. A non-mainstream option in transfeminine HRT, its unique pharmacological profile may be valuable in select scenarios<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mechanism
+
+Drospirenone has multiple pharmacological activities:
+
+- **Progestogenic activity**: Binds progesterone receptors
+- **Anti-androgenic activity**: Competitive androgen receptor binding (similar mechanism to spironolactone)
+- **Anti-mineralocorticoid activity**: Spironolactone-like diuretic effect
+- **No estrogenic or glucocorticoid activity**
+
+### Unique Positioning
+
+Drospirenone is the **only progestogen that combines anti-androgenic and anti-mineralocorticoid activity**. For users seeking both progestogenic effects and mild anti-androgenic coverage, drospirenone may reduce the need for a separate anti-androgen.
+
+## Dosing
+
+<DoseTable
+  headers={['Source', 'Dose', 'Notes']}
+  rows={[
+    ['In oral contraceptives', '3-4 mg/day', 'Combined with ethinylestradiol (NOT recommended for HRT)'],
+    ['Single-agent', '4 mg/day', 'Slynd (drospirenone-only pill)'],
+    ['HRT adjunct (exploratory)', '3-4 mg/day', 'No large-scale HRT clinical trial data'],
+  ]}
+/>
+
+<WarningBox title="Usage Caution">
+Most drospirenone-containing products are combined oral contraceptives (e.g. Yaz, Yasmin) that contain **ethinylestradiol (EE)**. This site [explicitly prohibits](/en/medications/banned-drugs/) ethinylestradiol in HRT. If choosing drospirenone, you must use a **drospirenone-only formulation** (e.g. Slynd 4 mg), not a combined EE product.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Formulation | Notes |
+|-------|-------------|-------|
+| **Slynd** | 4 mg drospirenone only | EE-free, suitable for HRT |
+| **Yaz / Yasmin** | 3 mg drospirenone + EE | Contains ethinylestradiol, **PROHIBITED for HRT** |
+| Generics | Various | Confirm EE-free |
+
+## Monitoring
+
+- **K+ (potassium)**: Drospirenone has spironolactone-like potassium-sparing effects; monitor potassium
+- **PRL**: Every 6 months
+- If co-administered with spironolactone, hyperkalemia risk increases significantly
+
+<DangerBox title="Safety Limits">
+- **Must not be combined with spironolactone**: Both have potassium-sparing effects; combination may cause dangerous hyperkalemia<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **Must not use EE-containing formulations** (Yaz/Yasmin etc.)
+- Use with caution in renal impairment
+- No large-scale safety data for drospirenone in transgender HRT exists
+</DangerBox>

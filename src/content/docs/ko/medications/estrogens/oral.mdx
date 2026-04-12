@@ -1,0 +1,130 @@
+---
+title: "경구 에스트라디올 (알약)"
+description: "경구 에스트라디올의 완전한 약리학적 프로파일, 용량 권장사항, VTE 위험 데이터 및 위험한 병용 경고."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+  Oral estradiol (swallowing pills) is the most globally accessible formulation of estrogen. While VTE (blood clot) risks are slightly higher than transdermal administration, it remains a highly acceptable and standard choice for young users without preexisting risk factors.
+</DrugInfoBox>
+
+## Pharmacology
+
+### First-Pass Metabolism (The Liver)
+
+When oral estradiol is swallowed and absorbed through the gastrointestinal tract, it must first pass through the liver before hitting your general bloodstream. This is known as "First-Pass Metabolism"<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />:
+
+- The massive concentration of E2 hitting the liver directly stimulates the synthesis of clotting factors, which is what elevates VTE risk.
+- It also impacts SHBG (Sex Hormone-Binding Globulin) and triglyceride levels.
+- This first-pass effect destroys the vast majority of the drug, resulting in an oral bioavailability of merely 3-5%.
+- Forms like Estradiol Valerate (Progynova) are simply cleaved into raw estradiol within the liver.
+
+### Dosage Conversions
+
+Different formulations of oral pills contain different amounts of actual estradiol base<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} />:
+
+> **2 mg Estradiol Valerate (e.g., Progynova) ≈ 1.5 mg Estradiol (e.g., Estrace)**
+
+Keep this conversion in mind when reading online dosage discussions, as American forums often default to Estrace (pure Estradiol/Estradiol Hemihydrate), while European and Asian forums frequently default to Progynova (Estradiol Valerate).
+
+### VTE (Blood Clot) Risk Data
+
+<DoseTable
+  headers={['Route', 'Relative Risk (RR)', '95% CI', 'Note']}
+  rows={[
+    ['Oral Estradiol', '1.48', '1.27 - 1.72', 'VTE risk increased by roughly 48%'],
+    ['Transdermal Patch (Baseline)', '0.97', '0.79 - 1.19', 'No statistical difference from non-users'],
+  ]}
+/>
+
+Oral estradiol increases VTE risk by roughly 48% (RR ≈ 1.48) compared to the non-medicated population<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. While the *relative* risk is elevated, the *absolute* baseline risk for young, healthy populations is incredibly low (around 1-2 per 10,000 annually). Consequently, oral administration remains well within an acceptable safety margin for young individuals without preexisting risk factors.
+
+<DangerBox title="Fatal Combo: Oral Estradiol + Oral CPA">
+Taking oral estradiol alongside oral Cyproterone Acetate (CPA) guarantees a **stacked, double-compound VTE risk**. CPA is inherently pro-coagulant<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />. When combined with the first-pass liver effects of oral estrogen, the blood-clotting threat multiplies. If you must use CPA as your anti-androgen, you should absolutely transition to a transdermal estrogen (patches or gel). See our [Dose Limits & Contraindications](/en/dose-limits/) page.
+</DangerBox>
+
+## Dosage Recommendations
+
+The following ranges integrate data from the Endocrine Society 2017 Guidelines<CitationRef id="hembree-2017" num={4} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> and WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Stage', 'Dose (Estradiol Base)', 'Target E2 (pg/mL)', 'Timeline']}
+  rows={[
+    ['Low Dose Start', '2 mg/day', '50-100', 'Months 1-6'],
+    ['Moderate Titration', '4 mg/day', '100-200', 'Months 6-12'],
+    ['Maintenance Phase', '4-6 mg/day', '100-200', '12 Months+'],
+    ['Maximum Dose', '8 mg/day', 'Not to exceed 200', 'Special circumstances only'],
+  ]}
+/>
+
+<WarningBox title="Do Not Skip The Low Dose Phase">
+Even if you feel like the low dose is "doing nothing," the first 6 months of a slow titration approach are fiercely critical for establishing healthy breast ductal branching. Starting at 6mg or 8mg to "speedrun" puberty frequently forces premature breast bud fusion, permanently crippling your final breast volume<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. See our [Breast Development](/en/breast-development/) deep dive.
+</WarningBox>
+
+### Administration Methods
+
+- Take your pills at roughly the same time every day to establish a routine.
+- If taking 4 mg/day, splitting it (2 mg morning + 2 mg night) significantly smooths out blood concentration fluctuations.
+- Taking pills with meals provides a marginal boost to absorption, but keeping a consistent schedule matters more.
+- If you miss a dose, just wait and take your next dose as scheduled. Do not double up to compensate.
+
+## Target Audience & Contraindications
+
+Oral estradiol is suitable for the following profiles<CitationRef id="hembree-2017" num={4} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />:
+
+**Highly Recommended When:**
+- No VTE/clotting risk factors
+- Age < 40
+- BMI < 30
+- Non-smoker
+- No personal or family history of deep vein thrombosis
+- No blood clotting disorders
+
+**Do Not Use Oral Administration (Switch to Transdermal):**
+- Age ≥ 40
+- BMI ≥ 30
+- Currently smoking or recently quit
+- Personal or strong family history of VTE
+- Known clotting factor abnormalities (e.g., Factor V Leiden)
+- Currently combining HRT with CPA (Cyproterone Acetate)
+- History of migraines with aura
+
+## Global Access
+
+Pills remain the default standard for a vast majority of the globe:
+
+- **US/Canada**: Often prescribed as generic Estradiol (Estrace) under informed-consent frameworks. Extremely cheap on insurance or GoodRx.
+- **UK/EU/Australia**: Prescribed via official pathways (NHS, GICs) or private providers. Both Progynova (Valerate) and Estrofem (Hemihydrate) are standard.
+- **Global DIY Market**: Pills are heavily trafficked across decentralized markets due to being easy to ship and difficult to break. Always verify the source.
+
+## Monitoring Advice
+
+- **When to draw blood**: Always test **immediately prior** to taking your next dose. This is called measuring your "trough" levels<CitationRef id="ucsf-2016" num={7} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Initial Phase**: Test Sex Hormones + Liver Panel at Month 1. Check Hormones + Liver + Lipid panels at Month 3.
+- **Maintenance Phase**: Get tested every 6 months.
+- **Clinical Target**: Trough E2 between 100-200 pg/mL, T < 50 ng/dL.
+- **Safety Margin**: If your trough E2 exceeds 200 pg/mL, seriously consider stepping down your pill count or moving to transdermal options.
+
+## Relationship to Sublingual Estrogen
+
+Standard estradiol pills can also be dissolved under the tongue (Sublingual). This bypasses massive amounts of the liver first-pass metabolism, surging your bioavailability drastically. However, it requires dosing multiple times a day and creates wild rollercoaster-style spikes in your blood levels. If you wish to learn about taking your pills this way, see our [Sublingual Administration](/en/medications/estrogens/sublingual/) page.
+
+<DrugBrandGallery drugId="estradiol-oral" />

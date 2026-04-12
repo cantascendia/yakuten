@@ -1,0 +1,102 @@
+---
+title: "에스트로겐 개요 및 선택 가이드"
+description: "경피, 경구, 설하, 주사 등 에스트라디올 투여 경로별 VTE 위험도, 장점 및 단점 비교."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+
+Estradiol (E2) is the core medication in transgender women's HRT. When selecting a route of administration, **safety (specifically the risk of Venous Thromboembolism, or VTE) should be your primary consideration**, rather than just convenience or cost.
+
+## VTE Risks by Administration Route
+
+Venous Thromboembolism (blood clots) is one of the most severe risks associated with estrogen therapy. The risk varies dramatically depending on how the estrogen enters your body<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Route', 'Relative Risk (RR)', 'Evidence Level', 'Note']}
+  rows={[
+    ['Transdermal Patch', 'RR ≈ 0.97', 'A', 'No significant risk increase vs. non-users'],
+    ['Transdermal Gel', 'RR ≈ 0.97', 'A', 'Similar to patches, bypasses liver first-pass'],
+    ['Oral (Estradiol Valerate/Hemihydrate)', 'RR ≈ 1.48', 'A', 'Risk increased by ~48%'],
+    ['Sublingual', 'Limited Data', 'C', 'Partially bypasses first-pass, theoretically lower than oral'],
+    ['Injectable (EV/EC/EEn)', 'Limited Data', 'C', 'Bypasses first-pass, but lacks large RCT data on clot risks'],
+  ]}
+/>
+
+<WarningBox title="Key Takeaway">
+Transdermal routes (patches and gel) carry a VTE risk that is statistically identical to people not taking HRT (RR ≈ 0.97). Conversely, oral administration increases the risk by roughly 48% (RR ≈ 1.48). If you possess any prior VTE risk factors, a transdermal route should be your absolute first choice<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} />.
+</WarningBox>
+
+## Route Selection Guide
+
+The following framework is built upon current clinical evidence<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Scenario 1: Existing VTE Risk Factors
+
+**Risk Factors include:** Age >40, BMI >30, smoking, family history of VTE, history of clotting disorders, or migraines with aura.
+
+- **Preferred:** Transdermal Patch or Transdermal Gel
+- **Avoid:** Oral Estradiol
+- **Also Avoid:** Combining oral estrogen with Cyproterone Acetate (CPA)
+
+### Scenario 2: No VTE Risk Factors
+
+Choose based on accessibility, budget, and personal preference:
+
+- **Oral Estradiol (Estrace, Progynova):** Generally the most affordable and widely accessible route globally.
+- **Transdermal Patch (Climara, Estradot):** Superior safety profile, but can be expensive or suffer from global supply chain shortages.
+- **Sublingual:** Uses oral pills dissolved under the tongue. Higher bioavailability but creates massive spikes/drops in blood levels.
+- **Injectables:** Causes significant peak/trough fluctuations but is highly effective for monotherapy.
+
+### Scenario 3: Monotherapy (Estrogen Without Anti-Androgens)
+
+If you wish to suppress testosterone using solely estradiol without taking a dedicated anti-androgen blocker:
+
+- **Preferred:** Injectable Estradiol (EV, EC, EEn) – reliably maintains the consistently high E2 levels required.
+- **Alternative:** High-dose transdermal patches (200-400 µg/day) or transdermal gel.
+- **Reference:** A 2025 study by Misakian demonstrated that 82.6% of users on an injectable EV monotherapy regimen achieved T suppression without needing an anti-androgen<CitationRef id="misakian-2025" num={4} authors="Misakian et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Pros & Cons Quick Reference
+
+<DoseTable
+  headers={['Route', 'Pros', 'Cons', 'Typical Accessibility']}
+  rows={[
+    ['Transdermal Patch', 'Lowest VTE risk; stable blood levels; change 1-2 times weekly', 'Skin irritation; can be expensive or frequently out of stock globally', 'Moderate'],
+    ['Transdermal Gel', 'Low VTE risk; flexible daily dosing', 'Absorption varies wildly by skin type; requires drying time', 'Moderate'],
+    ['Oral (Pills)', 'Easiest to access; very cheap; simple to take', 'Higher VTE risk; liver first-pass metabolism wastes a lot of the drug', 'Very High'],
+    ['Sublingual', 'Higher bioavailability than oral; partially bypasses liver', 'Massive spikes and dips in blood levels; requires dosing 2-3 times daily', 'Very High (Uses oral pills)'],
+    ['Injectable (EV/EEn)', 'Bypasses liver; highly effective for monotherapy', 'Requires needles/injection anxiety; intense blood level peaks and troughs', 'Varies by country (often DIY)'],
+  ]}
+/>
+
+## Dosage Overview
+
+Standard dosage ranges across different routes<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman et al." year={2022} />:
+
+<DoseTable
+  headers={['Route', 'Starting Dose', 'Maintenance Dose', 'Typical Max Dose']}
+  rows={[
+    ['Transdermal Patch', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Transdermal Gel', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Oral Estradiol', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublingual', '1-2 mg/day (split 2-3x)', '2-4 mg/day (split 2-3x)', '6 mg/day'],
+    ['Injectable EV', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Detailed Pages
+
+For deep dives into the pharmacology, usage methods, and specific warnings for each route, click below:
+
+- [Transdermal Patches](/en/medications/estrogens/transdermal-patch/) — The safest administration route
+- [Oral Estradiol](/en/medications/estrogens/oral/) — Highly accessible but carries slightly elevated VTE risks
+- [Sublingual](/en/medications/estrogens/sublingual/) — A compromise offering higher absorption but dramatic fluctuations
+- [Transdermal Gel](/en/medications/estrogens/gel/) — Flexible safety that sits between patches and oral
+- [Injectable Estradiol](/en/medications/estrogens/injection/) — The gold standard for monotherapy

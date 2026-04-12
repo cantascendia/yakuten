@@ -1,0 +1,76 @@
+---
+title: "피나스테리드"
+description: "트랜스여성 HRT에서의 피나스테리드 — DHT 억제 기전, 용량, 모니터링 및 안전성 고려 사항."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasteride"
+  nameCN="Finasteride"
+  category="5α-reductase inhibitor"
+  route="Oral"
+  evidenceLevel="B"
+>
+Finasteride is a selective type II 5α-reductase inhibitor that reduces DHT levels by approximately 65-70% by blocking the conversion of testosterone to dihydrotestosterone. Used as adjunctive therapy in transfeminine HRT, primarily for hair loss and excessive body hair.
+</DrugInfoBox>
+
+## Mechanism
+
+Finasteride selectively inhibits **type II** 5α-reductase (primarily found in hair follicles and prostate), reducing serum DHT by ~65-70% while having virtually no effect on testosterone levels.
+
+Compared to [dutasteride](/en/medications/five-alpha-reductase/dutasteride/), finasteride inhibits only one isoform, resulting in less DHT reduction but also potentially fewer side effects.
+
+## Dosing
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Notes']}
+  rows={[
+    ['Hair loss (adjunct to HRT)', '1 mg/day', 'Combined with HRT regimen'],
+    ['Alternative dose', '5 mg/day', 'Some clinicians use higher doses, but additional benefit is unclear'],
+  ]}
+/>
+
+- Start at 1 mg/day, the standard hair loss dose
+- 5 mg tablets (Proscar) are often cheaper and can be quarter-split
+- Onset typically requires **3-6 months**
+
+<WarningBox title="Finasteride Does Not Replace Anti-Androgens">
+Finasteride only lowers DHT, not testosterone. It cannot replace CPA, spironolactone, or GnRH agonists. If your T levels remain above target, adjust your primary anti-androgen regimen rather than adding a 5αRI<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Strength | Notes |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Hair loss indication |
+| **Proscar** | 5 mg | BPH indication, can be split |
+| Generics | 1 mg / 5 mg | Widely available globally |
+
+## Monitoring
+
+- **T**: Continue routine HRT monitoring every 3 months
+- **DHT** (optional): Can confirm 5αRI effect
+- **Liver function**: Finasteride rarely causes hepatic injury; no additional monitoring usually needed
+- **PSA**: Finasteride reduces PSA by ~50%; inform your doctor if PSA is being tested
+
+## Contraindications
+
+- Finasteride allergy
+- Severe hepatic impairment
+- Pregnant partners must not handle crushed/broken tablets (teratogenic to male fetuses — typically not relevant in trans HRT context)
+
+<DangerBox title="Important Notes">
+- **Effects reverse on discontinuation**: DHT returns to pre-treatment levels within weeks after stopping
+- Do not stop other HRT medications because hair loss improves
+- If no improvement after 6 months, finasteride may not be effective for you — discuss switching to [dutasteride](/en/medications/five-alpha-reductase/dutasteride/) with your provider
+</DangerBox>

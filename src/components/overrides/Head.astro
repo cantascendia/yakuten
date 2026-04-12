@@ -18,6 +18,7 @@ const localeMap = [
   { code: 'zh-CN', prefix: '/zh/' },
   { code: 'en', prefix: '/en/' },
   { code: 'ja', prefix: '/ja/' },
+  { code: 'ko', prefix: '/ko/' },
 ] as const;
 
 // Extract the locale-independent path segment
@@ -39,7 +40,7 @@ const alternates = localeMap.map(({ code, prefix }) => ({
 const xDefault = `${site}/zh/${pagePath}`;
 
 // Detect current locale for og:locale
-const ogLocaleMap: Record<string, string> = { '/zh/': 'zh_CN', '/en/': 'en_US', '/ja/': 'ja_JP' };
+const ogLocaleMap: Record<string, string> = { '/zh/': 'zh_CN', '/en/': 'en_US', '/ja/': 'ja_JP', '/ko/': 'ko_KR' };
 const currentOgLocale = Object.entries(ogLocaleMap).find(([p]) => pathname.startsWith(p))?.[1] ?? 'zh_CN';
 const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== currentOgLocale);
 ---

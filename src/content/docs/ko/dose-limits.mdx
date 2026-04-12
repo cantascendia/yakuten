@@ -1,0 +1,195 @@
+---
+title: 용량 한계 및 금기 사항
+description: 각 HRT 약물의 최대 용량, 위험한 약물 조합, 흔히 발견되는 안전하지 않은 처방 사례를 정리했습니다. 상한선을 넘어도 여성화가 빨라지지 않으며, 위험만 증가합니다.
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
+---
+
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<WarningBox title="Key message of this page">
+Going above these doses will not feminize you faster. Evidence shows E2 levels of 100-200 pg/mL achieve full feminization<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Levels above 200 pg/mL provide no additional benefit — only increased risk of VTE, hepatic injury, and other complications.
+</WarningBox>
+
+## 4.1 Maximum Dose Table
+
+The following maximum doses are derived from international guidelines and peer-reviewed literature. The risk-benefit ratio beyond these limits is generally unfavorable.
+
+### Estrogens
+
+<DoseTable
+  headers={['Medication', 'Maximum Daily/Weekly Dose', 'Notes', 'Source']}
+  rows={[
+    ['Transdermal patch', '400 \u00b5g/day', 'Only for monotherapy; 200 \u00b5g/day usually sufficient', 'ES 2017'],
+    ['Oral estradiol (E2)', '8 mg/day', 'Most patients reach target at 4 mg/day', 'WPATH SOC 8'],
+    ['Oral estradiol valerate', '10 mg/day', '\u2248 7.5 mg estradiol equivalent', 'WPATH SOC 8'],
+    ['Topical gel', '6 mg/day', 'Absorption varies significantly; dose by blood levels', 'ES 2017'],
+    ['IM estradiol valerate (EV)', '5 mg/week', 'Recommended ceiling; single injection \u2265 10 mg is prohibited', 'Rothman 2024'],
+  ]}
+/>
+
+<WarningBox title={'About "maximum dose"'}>
+"Maximum dose" does not mean "recommended dose." Most patients achieve target E2 of 100-200 pg/mL well below the maximum<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Dose adjustments should always be guided by lab results, not self-titration to the ceiling.
+</WarningBox>
+
+### Anti-Androgens
+
+<DoseTable
+  headers={['Medication', 'Maximum Daily Dose', 'Notes', 'Source']}
+  rows={[
+    ['CPA (cyproterone acetate)', '12.5 mg/day', '\u2265 25 mg: meningioma risk rises sharply; EMA 2020 restricted', 'Lee 2022; EMA 2020'],
+    ['Spironolactone', '200 mg/day', 'Higher doses add no anti-androgenic benefit but significantly increase hyperkalemia risk', 'ES 2017; UCSF'],
+    ['Bicalutamide', '50 mg/day', 'Off-label use; not recommended for routine GAHT', 'ES 2017'],
+  ]}
+/>
+
+See the individual medication pages for detailed pharmacology.
+
+### Dose-Risk Relationship
+
+A core principle: **as dose increases, risk rises disproportionately while benefit plateaus**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />.
+
+- **Estradiol**: Going from 100 to 200 pg/mL yields marginal feminization gains, but 200 to 400 pg/mL provides virtually no additional benefit while VTE risk rises significantly<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
+- **CPA**: 5 mg and 50 mg suppress T similarly, but 50 mg carries over ten times the meningioma risk<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
+- **Spironolactone**: 100 to 200 mg adds limited anti-androgen effect but significantly increases hyperkalemia risk<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+
+---
+
+## 4.2 Dangerous Drug Combinations
+
+### Prohibited Combinations
+
+<DangerBox title="CPA + Bicalutamide \u2192 Absolutely prohibited">
+Both CPA and bicalutamide are hepatotoxic<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Combined use compounds liver damage risk and may cause severe hepatic failure. Their anti-androgen mechanisms differ (CPA acts via progestogenic negative feedback; bicalutamide is an androgen receptor antagonist), so combining them provides no synergistic benefit.
+
+**If you are taking both, consult your provider to switch to one or the other.**
+</DangerBox>
+
+<DangerBox title="Ethinyl Estradiol (EE) + Any HRT regimen \u2192 Absolutely prohibited">
+Ethinyl estradiol is a synthetic estrogen found in many combined oral contraceptives. Its VTE risk is approximately **20 times** that of bioidentical estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />. EE should never be used at any stage of transfeminine HRT, in any form, at any dose.
+
+Combined oral contraceptives (e.g., those containing EE + CPA) **are not HRT**. The CPA dose is too low to suppress T effectively, and the EE component carries unacceptable VTE risk. See common unsafe regimens below.
+</DangerBox>
+
+<DangerBox title="Any estrogen + Smoking \u2192 Prohibited">
+Estrogen and tobacco use together multiply VTE risk<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />. For smokers over 35, oral estrogen is an **absolute contraindication**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />.
+
+- If you cannot quit smoking, **choose transdermal delivery** (patches or gel) — transdermal routes carry far lower VTE risk than oral<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- Even with transdermal delivery, smoking still increases cardiovascular risk — cessation is always the most important harm reduction measure
+</DangerBox>
+
+### Use With Caution
+
+<WarningBox title="CPA + Oral estradiol \u2192 Use with caution; prefer transdermal">
+CPA has pro-coagulant effects, and oral estradiol's hepatic first-pass metabolism also increases VTE risk<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />. Together, VTE risk compounds.
+
+**Recommendation**: If using CPA as your anti-androgen, choose transdermal estradiol delivery (patch or gel) to avoid compounding VTE risk<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. If only oral estradiol is accessible, keep CPA at the minimum effective dose (5 mg/day or lower) and monitor closely for DVT symptoms.
+</WarningBox>
+
+<DangerBox title="Spironolactone + Potassium supplements or high-K foods \u2192 Hyperkalemia risk">
+Spironolactone is a potassium-sparing diuretic that raises serum potassium<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Combined with potassium supplements or excessive high-potassium foods, it can cause **hyperkalemia** (K\u207a > 5.5 mmol/L), potentially leading to fatal cardiac arrhythmia.
+
+**While on spironolactone:**
+- Avoid potassium supplements (including some salt substitutes)
+- Moderate intake of high-potassium foods (bananas, coconut water, tomato products)
+- **Test serum potassium regularly** (monthly for first 3 months, then every 3-6 months)
+- K\u207a > 5.5 mmol/L: stop spironolactone and seek medical care
+
+**Warning signs**: Muscle weakness, palpitations, tingling in hands or feet \u2192 possible hyperkalemia; get electrolytes tested urgently.
+</DangerBox>
+
+### Quick Reference Table
+
+<DoseTable
+  headers={['Combination', 'Risk Level', 'Primary Danger']}
+  rows={[
+    ['CPA + Bicalutamide', '\ud83d\udd34 Prohibited', 'Compounded hepatotoxicity'],
+    ['Ethinyl estradiol (EE) + Any regimen', '\ud83d\udd34 Prohibited', 'VTE risk \u2248 20\u00d7 bioidentical E2'],
+    ['Any estrogen + Smoking', '\ud83d\udd34 Prohibited', 'Multiplicative VTE risk increase'],
+    ['Spironolactone + K\u207a supplements', '\ud83d\udd34 Dangerous', 'Hyperkalemia \u2192 arrhythmia \u2192 sudden death'],
+    ['CPA + Oral estradiol', '\ud83d\udfe1 Caution', 'Compounded VTE risk; prefer transdermal E2'],
+  ]}
+/>
+
+---
+
+## 4.3 Common Unsafe Regimens
+
+The following are regimens commonly shared in online trans communities that deviate significantly from clinical guidelines.
+
+### Using combined oral contraceptives as HRT
+
+<DangerBox title="Combined OCs are not HRT">
+Combined oral contraceptives containing ethinyl estradiol (EE) + low-dose CPA or other progestins are sometimes misused as HRT. **This is not a valid feminizing regimen**<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />.
+
+**Why this is wrong:**
+
+- **Ethinyl estradiol carries \u224820\u00d7 the VTE risk of bioidentical estradiol**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- The CPA dose in OCs (~2 mg) is too low to effectively suppress adult testosterone levels
+- EE interferes with E2 blood test accuracy (assays measure bioidentical E2, not EE activity)
+- Both Endocrine Society 2017 and WPATH SOC 8 explicitly advise **against using ethinyl estradiol** for GAHT<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />
+
+**What to do instead**: Use bioidentical 17\u03b2-estradiol via oral, transdermal (patch/gel), or injectable routes. If you are currently using a combined OC as HRT, transition to a standard regimen as soon as possible.
+</DangerBox>
+
+### CPA at 50 mg/day
+
+<DangerBox title="CPA 50 mg is a serious overdose for GAHT">
+Many community-shared regimens use CPA at 50 mg/day — this is a **prostate cancer treatment dose**, not a GAHT dose<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />.
+
+**Why this is wrong:**
+
+- Studies show 5-12.5 mg/day effectively suppresses T into the female range<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />
+- The difference in T suppression between 50 mg and 12.5 mg is minimal, but **meningioma risk at 50 mg is over ten times higher**<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} />
+- EMA (European Medicines Agency) issued restrictions on CPA \u2265 25 mg/day in 2020<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+- Higher doses also increase hepatotoxicity, depression, and prolactin elevation
+
+**What to do**: Use CPA at 5-12.5 mg/day (quarter a 50 mg tablet). If you are currently on 50 mg, taper gradually (50\u219225\u219212.5, 2 weeks per step) while maintaining estradiol dose<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />.
+</DangerBox>
+
+### Starting at maximum dose
+
+<WarningBox title={'Starting low is not "wasting time"'}>
+Some community members advise newcomers to start at the highest dose immediately, claiming low doses are "pointless." This is wrong<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />.
+
+**Why this is wrong:**
+
+- Skipping the low-dose phase can cause **premature breast bud fusion** — high E2 prematurely triggers terminal differentiation, halting ductal branching and stalling breast development at Tanner III-IV, **irreversibly**<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
+- A low-dose start lets you observe initial responses and catch liver function issues or mood changes early
+- Cisgender female puberty also begins with very low E2 levels, rising gradually over years
+- Endocrine Society 2017 recommends starting low and titrating every 3-6 months based on labs<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+
+**What to do**: Start oral estradiol at 2 mg/day, or IM EV at 1-2 mg/week. After 3-6 months, adjust based on labs. Keep E2 target at 50-100 pg/mL for the first 6 months. Do not increase because "nothing is happening" — breast bud development typically begins after 3-6 months.
+</WarningBox>
+
+### "Higher E2 = better results"
+
+<WarningBox title="Higher E2 levels do not mean better feminization">
+The belief that higher serum E2 produces better feminization outcomes is not supported by clinical evidence<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />.
+
+**Why this is wrong:**
+
+- Endocrine Society 2017 recommends maintaining E2 at 100-200 pg/mL<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /> — based on cisgender female physiologic range
+- Going from 200 to 400 pg/mL produces no meaningful additional feminization but significantly increases VTE risk<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
+- Chronically supraphysiologic E2 may also increase cardiovascular events, migraines, and mood instability
+- For injectable users, peak E2 may exceed 200 pg/mL — use **trough levels** (lowest point before next injection) for dosing decisions
+
+**What to do**: Target trough E2 of 100-200 pg/mL, T < 50 ng/dL<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />. If trough is in range and T is suppressed, do not increase. Chasing higher numbers only adds risk with no benefit.
+</WarningBox>
+
+---
+
+## Summary
+
+<WarningBox title="Three safety principles">
+1. **Stay under maximum dose red lines** — going higher doesn't work better, it only increases risk
+2. **Never combine prohibited drugs** — watch especially for compounded hepatotoxicity and VTE risk
+3. **Let lab results guide dose adjustments** — don't go by feeling, don't compare with others' regimens, don't chase higher numbers
+
+If your current regimen has any of these issues, don't panic — but adjust as soon as possible. See the [HRT Pathway](/en/pathway/) for the standard stepped approach, or consult a knowledgeable provider through informed consent clinics, Planned Parenthood, or telehealth services like FOLX Health or Plume.
+</WarningBox>

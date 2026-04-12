@@ -1,0 +1,74 @@
+---
+title: "시작 전: 준비되셨나요?"
+description: HRT 시작 전 필수 체크리스트 - 기초 혈액 검사, 절대적/상대적 금기 사항, 사전 동의 요건, 그리고 치료 여정에 대한 현실적인 기대치를 안내합니다.
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+This isn't gatekeeping — it's a safety check. Starting HRT without baseline labs is like driving blindfolded.
+
+The following baseline tests are recommended by international guidelines<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Baseline Lab Work
+
+The following tests should be completed before starting HRT. Most can be ordered through your primary care provider, an informed consent clinic, or services like Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Sex Hormones', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Liver Function', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Kidney Function', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Full Blood Count', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Coagulation Panel', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Metabolic Panel', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolactin', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (varies by insurance & location)"
+/>
+
+<WarningBox title="Already started without labs?">
+If you began HRT without getting baseline labs — it's not too late. Get them done as soon as possible.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Absolute Contraindications
+
+<ContraindicationBox type="absolute" title="Absolute Contraindications" sectionNum="">
+
+- Active thromboembolic disease (e.g., deep vein thrombosis, pulmonary embolism)
+- Confirmed or suspected hormone-sensitive malignancy (e.g., breast cancer, prostate cancer)
+- Severe hepatic or renal impairment in acute phase
+- Unexplained vaginal bleeding (for transmasculine individuals)
+- Known severe allergy to drug components
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Relative Contraindications
+
+<ContraindicationBox type="relative" title="Relative Contraindications" sectionNum="">
+
+- Uncontrolled hypertension or cardiovascular disease
+- Poorly controlled diabetes mellitus
+- Tobacco use (especially age 35+, significantly increases VTE risk)
+- History of gallbladder disease
+- Migraine with aura (requires careful risk assessment)
+- Severe obesity (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Setting Realistic Expectations
+
+<RealityCheck
+  items={[
+    { text: 'HRT is not magic. Changes happen over months and years — don\'t expect overnight transformation.' },
+    { text: 'Some changes are irreversible (e.g., breast growth, voice deepening, clitoral growth). Understand what you\'re signing up for.' },
+    { text: 'HRT may reduce or permanently eliminate fertility. Consider gamete preservation (egg/sperm freezing) before starting.' },
+    { text: 'Mood fluctuations are a normal side effect. Make sure you have a stable support system in place.' },
+  ]}
+/>

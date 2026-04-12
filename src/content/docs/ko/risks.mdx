@@ -1,0 +1,206 @@
+---
+title: 위험 및 응급 상황 인식
+description: HRT 위험성 종합 안내 - 정맥 혈전색전증(VTE), 간 기능 이상, 뇌수막종 위험 요인, 즉각적인 응급 처치가 필요한 증상, 그리고 정신 건강 위기 상담 자원을 다룹니다.
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+<EvidenceBadge level="B" />
+
+HRT has an excellent safety profile overall, but recognizing rare serious complications is essential for every person on hormone therapy. The following data is based on clinical observation and pharmacological analysis.
+
+The risk profiles below are derived from the Endocrine Society 2017 guidelines<CitationRef id="hembree-2017" num={6} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> and WPATH SOC 8<CitationRef id="coleman-2022" num={7} authors="Coleman et al." year={2022} title="Standards of Care v8" />.
+
+## 7.1 Known Risks of HRT
+
+<div class="risk-grid">
+  <RiskCard
+    title="Deep Vein Thrombosis (DVT)"
+    category="Emergency Risk"
+    severity="red"
+    drug="Oral estradiol (E2)"
+    probability="< 0.5% (annual)"
+    signs="Unilateral lower leg redness, swelling, warmth, severe pain."
+  />
+
+  <p class="risk-citation">Oral estradiol VTE risk is significantly higher than transdermal routes<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Annual incidence approximately 0.2-0.5%; smoking and age further increase risk.</p>
+
+  <RiskCard
+    title="Hepatic Injury"
+    category="Hepatic Risk"
+    severity="red"
+    drug="CPA / oral medications"
+    probability="Rare (monitor LFTs)"
+    signs="Yellowing of eyes/skin, dark urine, extreme fatigue."
+  />
+
+  <p class="risk-citation">Both CPA and bicalutamide have hepatotoxicity case reports. EMA has issued warnings regarding CPA liver injury risk<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+
+  <RiskCard
+    title="Cardiovascular Complications"
+    category="Cardiac Risk"
+    severity="orange"
+    drug="All E2 formulations"
+    probability="Higher with age / smoking"
+    signs="Palpitations, unexplained chest pressure."
+  />
+
+  <p class="risk-citation">Oral route carries higher cardiovascular risk than transdermal due to hepatic first-pass effect on coagulation factors<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} />.</p>
+
+  <RiskCard
+    title="Meningioma"
+    category="Neural Risk"
+    severity="red"
+    drug="High-dose CPA"
+    probability="Cumulative dose > 10g"
+    signs="Vision changes, hearing loss, unusual headaches."
+  />
+
+  <p class="risk-citation">CPA daily dose ≥25 mg: meningioma risk OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist et al." year={2026} title="CPA-associated meningioma in transgender women" />. EMA restricts doses ≥25 mg/day<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+
+  <RiskCard
+    title="Mood Changes & Depression"
+    category="Psych Risk"
+    severity="yellow"
+    drug="CPA / low E2 levels"
+    probability="Common (5-15%)"
+    signs="Suicidal ideation, unexplained crying, loss of motivation."
+  />
+
+  <p class="risk-citation">CPA progestogenic activity can cause mood changes and depression, incidence approximately 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+
+  <RiskCard
+    title="Prolactin Elevation"
+    category="Endo Risk"
+    severity="yellow"
+    drug="Estradiol / CPA"
+    probability="Requires periodic monitoring"
+    signs="Nipple discharge, persistent severe headache."
+  />
+
+  <p class="risk-citation">Both estradiol and CPA can elevate prolactin. PRL >50 ng/mL requires pituitary prolactinoma workup<CitationRef id="hembree-2017" num={6} authors="Hembree et al." year={2017} />.</p>
+</div>
+
+## 7.2 Symptoms Requiring Immediate Medical Attention
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="Symptoms requiring immediate medical attention">
+
+**Stop HRT and go to your nearest emergency department if you experience any of the following:**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Unilateral calf swelling or pain</strong> — may indicate deep vein thrombosis (DVT)
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Sudden chest pain or coughing blood</strong> — may indicate pulmonary embolism
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Unilateral weakness or facial drooping</strong> — possible stroke warning sign
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Yellowing of skin or whites of eyes</strong> — acute hepatic injury
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Sudden severe headache with vision loss</strong> — possible elevated intracranial pressure
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 Crisis Support & Hotlines
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="Crisis hotlines">
+
+### Need help?
+
+If you are experiencing severe psychological distress or thoughts of self-harm, please reach out to one of these support services immediately. You are not alone.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Trans Lifeline</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:+18775658860" style="color: var(--color-primary); text-decoration: none;">877-565-8860</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — by and for trans people</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">988 Suicide & Crisis</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:988" style="color: var(--color-primary); text-decoration: none;">988</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — call or text 24/7</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Emergency</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:911" style="color: var(--color-danger); text-decoration: none;">911</a> / <a href="tel:112" style="color: var(--color-danger); text-decoration: none;">112</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US: 911 · EU: 112 · UK: 999</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**International resources:**
+- **UK**: Samaritans — 116 123 (free, 24/7)
+- **Canada**: Trans Lifeline — 877-330-6366
+- **Australia**: Lifeline — 13 11 14
+- **International**: [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+`}</style>

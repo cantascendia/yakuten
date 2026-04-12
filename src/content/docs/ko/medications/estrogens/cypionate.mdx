@@ -1,0 +1,98 @@
+---
+title: "에스트라디올 시피오네이트 (EC)"
+description: "에스트라디올 시피오네이트의 완전 가이드 — 에스트라디올 발레레이트와의 약동학 비교, 용량, 주사 프로토콜 및 안전 한계."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="B"
+>
+Estradiol cypionate (EC) is a long-acting injectable estradiol ester, primarily used in the Americas. Compared to estradiol valerate (EV), EC has a longer half-life (~8-10 days vs 4-5 days), allowing for extended injection intervals<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Brand name: Depo-Estradiol.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Pharmacokinetic profile of estradiol cypionate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Half-life**: ~8-10 days (vs ~4-5 days for EV)
+- **Peak time**: 2-4 days post-injection
+- **Trough time**: 7-10 days post-injection
+- **Steady state**: Reached after ~3-4 regular cycles
+
+### Comparison with Estradiol Valerate (EV)
+
+<DoseTable
+  headers={['Parameter', 'Estradiol Cypionate (EC)', 'Estradiol Valerate (EV)']}
+  rows={[
+    ['Half-life', '~8-10 days', '~4-5 days'],
+    ['Peak time', '2-4 days', '2-3 days'],
+    ['Recommended interval', '7-14 days', '5-7 days'],
+    ['Serum level fluctuation', 'Smaller', 'Larger'],
+    ['Primary region', 'Americas', 'Global'],
+    ['VTE risk (RR)', '~1.0 (bypasses first-pass)', '~1.0'],
+    ['Evidence level', 'B', 'A'],
+  ]}
+/>
+
+The longer half-life of EC results in less E2 decline at trough, producing a smoother concentration curve<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosing
+
+### Adult Dosing
+
+<DoseTable
+  headers={['Phase', 'Dose', 'Notes']}
+  rows={[
+    ['Starting dose', '2-3 mg/week', 'Low-dose start (first 1-6 months) to protect breast development'],
+    ['Maintenance dose', '3-5 mg/week', 'Adjust based on trough E2; target 100-200 pg/mL'],
+    ['Maximum dose', '7 mg/10-14 days', 'Do not exceed'],
+  ]}
+/>
+
+Dosing references: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> and WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Due to EC's longer half-life, some users opt for 10-14 day injection intervals.
+
+<WarningBox title="Injection Interval & Blood Draw Timing">
+EC users should have blood drawn on the **morning before the next injection** to measure trough levels. If using a 10-day schedule, trough is on the morning of day 10. Target trough E2: 100-200 pg/mL.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Concentration | Region |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | United States |
+| Compounding pharmacies | Various | Select regions |
+
+EC is primarily available in the US and Latin America. In regions where it is unavailable, [estradiol valerate injection](/en/medications/estrogens/injection/) is the standard alternative.
+
+## Monitoring
+
+Same as other injectable estradiol esters:
+
+- **E2**: Every 3 months, trough draw (morning before injection). Target 100-200 pg/mL
+- **T**: Every 3 months. Target &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + every 6 months
+
+## Injection Technique
+
+Injection procedure is identical to [estradiol valerate injection](/en/medications/estrogens/injection/#injection-technique). Both SC and IM routes are suitable.
+
+<DangerBox title="Safety Limits">
+- **Single injection dose must not exceed 10 mg**
+- The goal is to maintain stable physiological E2 levels, not to chase high peaks
+- E2 >200 pg/mL does not produce stronger feminization, only increased clot risk<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- If EC is not available in your region, do not purchase through unverified channels
+</DangerBox>

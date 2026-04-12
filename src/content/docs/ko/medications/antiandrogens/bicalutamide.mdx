@@ -1,0 +1,130 @@
+---
+title: "비칼루타미드"
+description: "트랜스 HRT에서 비칼루타미드의 오프라벨 사용. 테스토스테론을 낮추지 않고 수용체를 차단하는 방식, 간 독성 위험 관리, CPA와의 병용 금기."
+evidenceLevel: C
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamide (Casodex)"
+  nameCN="Bicalutamide (比卡鲁胺)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Bicalutamide is an intensely powerful, non-steroidal androgen receptor (AR) antagonist originally designed to fight prostate cancer. Its use within transgender HRT is strictly "Off-Label" and it is notably absent from the recommended regimens of both WPATH SOC 8 and the Endocrine Society 2017 Guidelines. Nonetheless, it remains highly popular in the global DIY community.
+</DrugInfoBox>
+
+<WarningBox title="Off-Label Medical Use">
+Operating Bicalutamide as part of gender-affirming hormone therapy is entirely "off-label"<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. This implies:
+- The manufacturer never tested or approved it for this purpose.
+- Clinical safety data tracking long-term outcomes in trans women is exceptionally sparse.
+- Neither major governing medical body (WPATH / Endocrine Society) recommends utilizing it as a standard anti-androgen.
+</WarningBox>
+
+<DangerBox title="Fatal Combo: Bicalutamide + CPA">
+You must **NEVER** take Bicalutamide and Cyproterone Acetate (CPA) at the same time<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+Both of these medications possess heavy hepatotoxic (liver-damaging) potential. Stacking them functionally guarantees catastrophic liver strain. Severe liver damage is often fundamentally asymptomatic until jaundice sets in, at which point the damage is critical.
+
+**If you are swapping between CPA and Bicalutamide, you must hard-stop the first drug, wait at least 2 to 4 weeks, verify via a blood test that your liver enzymes are normal, and ONLY THEN start the second drug.**
+</DangerBox>
+
+## Pharmacology
+
+### How It Works
+
+Bicalutamide possesses one of the highest binding affinities to the androgen receptor of any drug in existence<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />:
+
+1. **Pure Receptor Blockade:** It aggressively binds to the androgen cellular receptors, physically blocking Testosterone (T) and DHT from bonding to the cell.
+2. **ZERO Testosterone Reduction:** It does not halt the production of testosterone.
+3. **No HPG Axis Interference:** It does not signal the hypothalamus or pituitary gland to stop creating sex hormones.
+
+### The Problem: Spiking Testosterone Levels
+
+This is the most confusing element of Bicalutamide for average users<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
+
+- Because Bica blocks the receptors, the hypothalamus panics, sensing that no testosterone is "working."
+- The brain commands the testicles to produce *even more* testosterone to fix the perceived shortage.
+- As a result, **your blood testosterone levels will actually double or spike massively** while taking Bicalutamide.
+- While the massive amount of T in your blood cannot do anything (because the receptors are blocked by Bica), some of that excess T will aromotize (convert) into estradiol. This frequently triggers breast growth even without external estrogen.
+
+**The Danger:** If you ever miss your doses or stop taking Bicalutamide cold turkey, the massive stockpile of testosterone floating in your blood will immediately plunge into your unblocked receptors, causing a violent, rapid re-masculinization event<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. 
+
+## Dosage Recommendations
+
+<DoseTable
+  headers={['Protocol', 'Dose', 'Notes', 'Sourcing']}
+  rows={[
+    ['Starting Dose', '25 mg/day', 'Evaluates liver tolerability.', 'Clinical Consensus'],
+    ['Standard Range', '25-50 mg/day', 'Adjusted based on physical feminization markers.', 'ES 2017 (Ceiling reference)'],
+    ['Maximum Limit', '50 mg/day', 'Going beyond 50mg invites severe liver toxicity without added GAHT benefits.', 'ES 2017'],
+  ]}
+/>
+
+<WarningBox title="Blood Tests Are Useless Here">
+Because Bicalutamide causes your testosterone levels to spike wildly, **you cannot use a standard Testosterone blood test to verify if the drug is working**<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. Your T will look male on paper. You must judge the drug's efficacy purely on physical markers (reduction in skin oil, body hair thinning, lack of morning wood). This makes Bicalutamide incredibly stressful for users who rely on data-driven reassurance.
+</WarningBox>
+
+## Quality of Life Drawbacks
+
+### Hepatic Failure (Liver Toxicity)
+
+The threat of sudden liver failure is the primary reason Bicalutamide is not globally recommended<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />:
+
+- Clinical trials for prostate cancer recorded incredibly rare but highly fatal instances of catastrophic liver failure.
+- Toxic reactions almost always hit within the first few months of use.
+- It is strictly contraindicated for anyone with preexisting liver disease or heavy alcohol consumption.
+
+<DangerBox title="Symptoms of Liver Failure - Go to the ER immediately">
+- Jaundice (Yellowing of the skin or the whites of the eyes)
+- Urine turning dark brown/tea-colored
+- Relentless pain in the upper right quadrant of your abdomen
+- Severe, unexplained fatigue and vomiting
+- Lab results showing ALT/AST > 3x the normal maximum limit.
+
+**Stop taking Bica the second you suspect liver issues.**
+</DangerBox>
+
+## Mandatory Monitoring Protocol
+
+<DoseTable
+  headers={['Test Panel', 'Frequency', 'Target Range / Warning', 'Action Needed']}
+  rows={[
+    ['Liver Enzymes (ALT/AST)', 'Baseline + Every 30 days for the first 6 months → Then every 3 mos', 'Keep within standard lab ranges', 'If > 3x the max limit: Stop drug.'],
+    ['Bilirubin', 'Alongside liver enzymes', 'Normal range', 'If spiking: immediate liver distress indicator.'],
+    ['Testosterone (T)', 'Every 3-6 months', 'Irrelevant (Will be highly masculine)', 'Do NOT adjust doses based on this number.'],
+  ]}
+/>
+
+<WarningBox title="Do Not Skip Liver Screens">
+Even if you feel literally perfect, you **must pull a metabolic liver panel every 30 days for the first 6 months** of taking Bicalutamide. Chemical liver damage is totally silent until your organs begin actively shutting down<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. 
+</WarningBox>
+
+## Target Audience
+
+Bicalutamide occupies a very niche space in GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
+
+**It should only be considered when:**
+- CPA is banned in your country (like the US) or you cannot tolerate it (meningioma risks).
+- Spironolactone causes intolerable blood pressure crashes, hyperkalemia, or doesn't work for you.
+- GnRH Agonists are financially impossible to access.
+- **You are operating under the direct supervision of an endocrinologist.**
+
+## Global Access
+
+- **In the US:** Sometimes prescribed by aggressive or highly specialized endocrinologists who hate Spironolactone, but rarely handled by standard Planned Parenthood clinics. 
+- **Global DIY:** It is heavily sought out on gray markets by DIY users terrified of CPA's brain tumor risks. If you elect to DIY Bicalutamide, you assume the total responsibility of funding your own monthly liver enzyme blood tests.
+
+<DrugBrandGallery drugId="bicalutamide" />

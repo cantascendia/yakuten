@@ -6,6 +6,7 @@ type Locale = 'zh' | 'en' | 'ja';
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
   return 'zh';
 }
 

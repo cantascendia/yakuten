@@ -1,0 +1,80 @@
+---
+title: "항안드로겐 개요"
+description: "CPA, 스피로노락톤, 비칼루타미드, GnRH 작용제의 비교 가이드 — 작용 기전, 효능, 안전성 프로파일 및 비용을 포괄합니다."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+## Why Do You Need an Anti-Androgen?
+
+For most transgender women, estradiol alone (especially at typical pill dosages) is insufficient to suppress testosterone (T) down into the target female range (< 50 ng/dL)<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Anti-androgens (T-blockers) are used in tandem with estradiol to either halt the production of testosterone or block it from bonding to your cellular receptors, thereby clearing the way for feminization<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+However, a critical caveat: **Not everyone requires an anti-androgen**. If you are utilizing a high-dose estradiol regimen (particularly injections) that successfully suppresses your T into the target range on its own, adding a T-blocker is biologically redundant and exposes you to unnecessary side effects<CitationRef id="ucsf-2016" num={3} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />. This is known as "Monotherapy."
+
+## The 4 Primary Anti-Androgens Compared
+
+<DoseTable
+  headers={['Medication', 'CPA (Androcur)', 'Spironolactone', 'Bicalutamide', 'GnRH Agonists']}
+  rows={[
+    ['Generic Name', 'Cyproterone Acetate', 'Spironolactone', 'Bicalutamide', 'Leuprorelin / Goserelin'],
+    ['Mechanism', 'Progestin negative feedback loop\n(Halts T production)', 'Mild AR antagonist\n(Does not halt T production)', 'Potent AR antagonist\n(Does not halt T production)', 'Shuts down the HPG axis completely\n(Directly drops T to castrate levels)'],
+    ['Efficacy', 'Strong (Drops T to female range)', 'Weak (Blocks receptors, T stays high)', 'Does not drop T (T may even spike)', 'Absolute Strongest (Chemical castration)'],
+    ['Typical Dose', '5-12.5 mg/day', '50-200 mg/day', '25-50 mg/day', 'Varies strictly by injection type'],
+    ['Administration', 'Oral', 'Oral', 'Oral', 'Subcutaneous / IM Injection'],
+    ['Primary Risks', 'Meningioma tumors (≥25mg)\nLiver toxicity / Depression', 'Hyperkalemia (Fatal Potassium Spikes)\nLow blood pressure', 'Liver toxicity\nMakes blood tests hard to read', 'Decreased bone density\nInjection site reactions'],
+    ['Guideline Status', 'Recommended by ES 2017 & WPATH SOC 8', 'Recommended by ES 2017 & WPATH SOC 8', 'NOT recommended for standard use', 'Strongly Recommended by guidelines'],
+    ['Global Access', 'Banned in the US.\nCommon in EU/UK/Asia.', 'Standard in the US.\nAvailable globally.', 'Prescription required globally.', 'Extremely restricted due to price.'],
+  ]}
+/>
+
+<WarningBox title="A Note on Guideline Evidence">
+CPA, Spironolactone, and GnRH Agonists are formally recommended by the two towering international authorities: Endocrine Society 2017 and WPATH SOC 8<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />. While Bicalutamide is heavily utilized in the DIY community due to its potency, it possesses a troubling lack of long-term data specifically studying transgender cohorts and is **not recommended** by these major guidelines for standard GAHT.
+</WarningBox>
+
+## How to Choose
+
+Your anti-androgen selection should be driven by your health baseline, regional availability, and budget<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />:
+
+### The Ideal Choice: GnRH Agonists (Puberty Blockers)
+
+- **Audience:** Users with robust insurance coverage or access to national healthcare systems like the NHS.
+- **Advantage:** Unbeatable efficacy. Flawlessly shuts down testosterone production with virtually zero organ toxicity.
+- **Drawback:** Astoundingly expensive (often $500-$2000 USD out of pocket per dose) and requires injections.
+
+### The Reliable Standard (Outside the US): Low-Dose CPA
+
+- **Audience:** The standard first-line choice across Europe, the UK, and Asia.
+- **Advantage:** Extremely potent. Flattens testosterone dependably and cheaply.
+- **Drawback:** Banned by the FDA in the United States over liver concerns. Doses above 12.5mg risk brain tumors (meningiomas).
+
+### The US Standard: Spironolactone
+
+- **Audience:** The absolute default anti-androgen in the United States under informed consent clinics.
+- **Advantage:** Readily legally available and incredibly cheap.
+- **Drawback:** It is a diuretic (makes you pee constantly) and carries the lethal risk of Hyperkalemia (fatal potassium buildup). It also blocks receptors rather than halting T production, making blood tests tricky to interpret.
+
+### The Unorthodox Option: Bicalutamide
+
+- **Audience:** Users who cannot tolerate Spiro or CPA, working strictly alongside an endocrinologist.
+- **Advantage:** Incredibly powerful at blocking the androgen receptor. Preserves sexual function better than CPA.
+- **Drawback:** Outright liver toxicity risks. Because it purely blocks receptors without lowering T production, your blood testosterone levels will actually skyrocket (even though the T can't do anything). This makes it almost impossible to dose via standard blood work.
+
+<DangerBox title="The Lethal Combo: CPA + Bicalutamide">
+You must **never** take CPA and Bicalutamide simultaneously. Both drugs inherently stress the hepatic system; combining them heavily magnifies your risk of chemically-induced liver failure<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. If you are switching from one to the other, stop the first drug completely before initiating the second.
+</DangerBox>
+
+## Detailed Pages
+
+- [CPA (Cyproterone Acetate)](/en/medications/antiandrogens/cpa/) — The most common blocker globally; dosing limits and brain tumor risks.
+- [Spironolactone](/en/medications/antiandrogens/spironolactone/) — The US standard; managing the deadly hyperkalemia risk.
+- [Bicalutamide](/en/medications/antiandrogens/bicalutamide/) — The rebel alternative; navigating the liver risks and blood test confusion.
+- [GnRH Agonists](/en/medications/antiandrogens/gnrh-agonists/) — The gold standard shut-down; price tags and bone density management.

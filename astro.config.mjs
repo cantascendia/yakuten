@@ -14,6 +14,7 @@ export default defineConfig({
         zh: { label: '中文', lang: 'zh-CN' },
         en: { label: 'English', lang: 'en' },
         ja: { label: '日本語', lang: 'ja' },
+        ko: { label: '한국어', lang: 'ko' },
       },
       components: {
         Head: './src/components/overrides/Head.astro',

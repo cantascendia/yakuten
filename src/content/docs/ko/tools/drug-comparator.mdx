@@ -1,0 +1,34 @@
+---
+title: "약물 비교기"
+description: "다양한 HRT 약물의 주요 파라미터를 나란히 비교합니다. 순수 프론트엔드 도구 — 데이터가 전송되지 않습니다."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## Medication Comparison
+
+Select 2-3 medications to quickly compare their key parameters.
+
+**This tool helps you understand:**
+
+- VTE risk differences between estrogen routes (oral vs transdermal vs injection)
+- Monitoring requirements and contraindications for anti-androgens
+- Evidence levels and dosage ranges for each medication
+
+<DrugComparator client:visible />
+
+## How to Interpret Results
+
+- **VTE Risk (RR)**: Relative risk value. RR=1.0 is baseline; >1.5 indicates significant increase
+- **Evidence Level**: A = RCT/Meta-analysis, B = Single RCT/Cohort study, C = Case report/Expert opinion
+- **Monitoring**: Lab tests required during use of the medication
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ For Reference Only</div>
+
+This tool does not constitute medical advice. Medication selection must consider personal medical history, risk factors, availability, and cost. **Please make decisions under the guidance of a healthcare professional.**
+</div>

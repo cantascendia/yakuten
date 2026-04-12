@@ -1,0 +1,57 @@
+---
+title: "의료 자원 디렉토리"
+description: "커뮤니티에서 보고한 의료 접근 자원의 구조화된 디렉토리입니다. 방문 전 직접 확인하세요."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Verify before you go">
+These listings are community-maintained access notes, not official institutional guarantees. Policies, departments, and physician availability can change quickly, so direct confirmation is always necessary.
+</WarningBox>
+
+This directory currently includes {hospitals.length} community-reported entries across {cityCount} cities. The underlying source data remains primarily in Chinese at this stage, so hospital names and local notes may still appear in Chinese.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**How to use this page**
+
+1. Use it as a starting point for your own verification.
+2. Confirm department, physician availability, and registration rules directly with the institution.
+3. Pair provider access with baseline lab planning and emergency awareness.
+
+</GlassCard>
+
+<DangerBox title="Emergency note">
+This directory is not an emergency referral service. If you have urgent symptoms, go to emergency care first instead of relying on directory browsing.
+</DangerBox>

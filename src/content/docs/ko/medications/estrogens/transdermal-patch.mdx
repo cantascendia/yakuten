@@ -1,0 +1,136 @@
+---
+title: "경피 에스트라디올 패치"
+description: "에스트라디올 경피 패치의 완전한 약리학, 용량 권장사항, VTE 위험 데이터 및 실용적인 사용 팁."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Estradiol Transdermal Patch"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdermal"
+  evidenceLevel="A"
+>
+  Transdermal patches are universally recognized by clinical evidence as the safest method of estradiol administration. Because the estradiol absorbs through the skin directly into the bloodstream, it entirely bypasses liver first-pass metabolism, meaning its VTE (blood clot) risk profile is statistically identical to that of non-users.
+</DrugInfoBox>
+
+## Pharmacology
+
+### Bypassing First-Pass Metabolism
+
+When you swallow oral estradiol, it hits your gastrointestinal tract and then travels directly to your liver (First-Pass Metabolism). This process:
+- Forces the liver to ramp up synthesis of coagulation (clotting) factors, driving up VTE risk.
+- Destroys ~95% of the drug, plummeting bioavailability.
+- Alters lipid/cholesterol metabolism.
+
+Patches deliver estradiol through the skin straight into the systemic circulation, **completely circumventing liver first-pass metabolism**<CitationRef id="kuhl-2005" num={1} authors="Kuhl" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. This means:
+- Negligible impact on liver coagulation factors.
+- Highly stable and superior bioavailability.
+- Gentle on the liver and lipid profile.
+
+### VTE (Blood Clot) Risk Data
+
+Transdermal patches boast the lowest VTE risk of any estradiol administration method<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Route', 'Relative Risk (RR)', '95% CI']}
+  rows={[
+    ['Transdermal Patch', '0.97', '0.79 - 1.19'],
+    ['Oral Estradiol', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+An **RR ≈ 0.97** functionally means that utilizing transdermal patches carries no statistically significant increase in VTE risk compared to individuals not taking estrogen therapy at all<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />. This cements the patch as the mandatory first choice for anyone with preexisting clotting risk factors.
+
+### Blood Concentration Profile
+
+- Reaches steady-state blood concentrations roughly 12-24 hours after application.
+- Maintains incredibly flat, stable E2 levels for the duration of the patch's lifecycle.
+- Utterly avoids the aggressive peak-and-trough rollercoasters associated with oral, sublingual, or injectable routes.
+
+## Dosage Recommendations
+
+These dosage ranges align with Endocrine Society 2017 Guidelines<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> and WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Stage', 'Dose', 'Target E2 (pg/mL)', 'Timeline']}
+  rows={[
+    ['Low Dose Start', '50-100 µg/day', '50-100', 'Months 1-6'],
+    ['Moderate Titration', '100-200 µg/day', '100-200', 'Months 6-12'],
+    ['Maintenance Phase', '100-200 µg/day', '100-200', '12 Months+'],
+    ['Monotherapy (If no blockers)', '200-400 µg/day', '200-300', 'Only if bypassing T-blockers'],
+  ]}
+/>
+
+<WarningBox title="The Typical Maximum">
+The standard maximum dose is **400 µg/day**, historically utilized only if attempting monotherapy (suppressing T without anti-androgens). The vast majority of users hit their target clinical E2 range (100-200 pg/mL) at 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} />. Pushing E2 past 200 pg/mL will not feminize you faster; it only amplifies health risks.
+</WarningBox>
+
+## How to Use Them
+
+### Application Sites
+
+- **Recommended:** Lower abdomen, upper buttocks, outer thighs.
+- **Avoid:** The breast area (prolonged localized E2 concentration is a severe breast cancer risk), joints, or areas where tight waistbands rub.
+- **Rotate:** Never apply a new patch to the exact same spot as the old one to prevent contact dermatitis.
+
+### Replacement Frequency
+
+<WarningBox title="Track Your Wear Time">
+Most patches are designed to be changed either **every 3.5 days (twice a week)** or **every 7 days (once a week)**, depending on the specific brand. Follow the manufacturer's timetable ruthlessly. Missing a replacement will cause your E2 to crash, triggering hot flashes and mood swings. Set phone alarms.
+</WarningBox>
+
+### Practical Tips
+
+- Apply only to clean, bone-dry skin. Do not construct your patches over lotions, oils, or freshly shaved wet skin.
+- Press the patch firmly with the palm of your hand for 10 full seconds to heat-activate the adhesive.
+- Normal showering and swimming are fine, but long, scalding hot baths may loosen the adhesive and dump the medication into your system prematurely.
+- If a patch falls off, try to stick it back on; if it won't hold, apply a new one immediately.
+
+## Target Audience
+
+Transdermal Patches are heavily recommended for<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman et al." year={2022} />:
+
+- **Everyone** (Patches are the gold standard for safety across the board).
+- **Users with VTE Risk Factors** (BMI >30, Age >40, smokers, VTE family history) — Patches are non-negotiable here.
+- **Users taking CPA** — CPA is inherently pro-coagulant; using patches prevents stacking clot risks.
+- **Users with Liver Abnormalities** — Bypassing the liver drastically reduces metabolic burden.
+
+## Global Supply Realities
+
+While medically superior, patches suffer from global logistical challenges:
+
+- **Cost:** Without robust insurance or national healthcare, patches are astronomically more expensive out-of-pocket than oral pills.
+- **Shortages:** Global supply chains for brands like Estradot or Climara frequently collapse, resulting in months-long regional shortages in the UK, EU, and Australia.
+- If patches are utterly inaccessible to you, oral administration is a viable fallback—provided you have no preexisting VTE risks.
+
+## Common Brands
+
+<DoseTable
+  headers={['Brand', 'Specification', 'Replacement Cycle', 'Region']}
+  rows={[
+    ['Climara', 'Releases 50 / 100 µg/day', 'Every 7 Days', 'US / EU / Global'],
+    ['Estradot', 'Releases 25-100 µg/day', 'Every 3.5 Days', 'UK / EU / AUS'],
+    ['Vivelle-Dot', 'Releases 25-100 µg/day', 'Every 3.5 Days', 'US'],
+    ['Estrana Tape', 'Releases 50 µg/day', 'Every 2 Days', 'Japan (Common in Asian DIY)'],
+  ]}
+/>
+
+## Monitoring Advice
+
+- **When to draw blood:** 12-24 hours before your next patch change (measuring the trough level)<CitationRef id="ucsf-2016" num={5} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Targets:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

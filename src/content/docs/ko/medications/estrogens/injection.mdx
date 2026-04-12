@@ -1,0 +1,165 @@
+---
+title: "주사용 에스트라디올 (EV)"
+description: "주사용 에스트라디올의 완전 가이드 — 약동학, 용량, 피하 주사 vs 근육 주사 비교, 단독요법 가능성, 주사 프로토콜 및 핵심 안전 기준."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+Injectable estradiol is the undisputed heavy-hitter of transfeminine HRT. It completely bypasses liver first-pass metabolism and delivers highly predictable, dominant estrogen levels. Recent clinical reviews confirm that Subcutaneous (SC) injections are just as effective as Intramuscular (IM) injections<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. Astoundingly, roughly 82.6% of users on injections can achieve full T suppression as a Monotherapy, requiring zero anti-androgen blockers<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+## Pharmacokinetics (The Esters)
+
+Injectable estradiol comes attached to an "ester" (a fatty acid chain) that slows down its release into your blood into a depot effect. The three most common are:
+- **Estradiol Valerate (EV)**: Shortest half-life (~4-5 days). Requires injection every 5 to 7 days. Spikes fast and drops hard.
+- **Estradiol Cypionate (EC)**: Medium half-life (~8-10 days). Flatter, smoother curve. Often injected every 7 to 10 days.
+- **Estradiol Enanthate (EEn)**: Long half-life. Can provide steady, smooth levels injected every 7 to 14 days. Heavily utilized in the grey-market DIY community.
+
+For this guide (and standard Endocrine Society guidelines), we will assume **Estradiol Valerate (EV)** as the baseline, since it is the most standardized commercial formulation heavily manufactured in the US and Japan<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosage for EV
+
+### Adult Ranges
+
+<DoseTable
+  headers={['Phase', 'Dosage', 'Directive']}
+  rows={[
+    ['Starting Dose', '1-2 mg / week', 'Low-dose initiation phase (Months 1-6) to protect ductal branching.'],
+    ['Maintenance', '2-4 mg / week', 'Titrate based on trough bloodwork. Target E2: 100-200 pg/mL.'],
+    ['Hard Maximum', '5 mg / week', 'The absolute safety ceiling suggested by Rothman 2024. Never blindly exceed this.'],
+  ]}
+/>
+
+These numbers align perfectly with WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> and Endocrine Society guidelines<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+<WarningBox title="The Fatal Mistake: Rushing the Process">
+Restricting yourself to 1-2 mg/week for the first 6 months is not "conservative gatekeeping"; it is biological protection. Dumping a massive 5mg EV spike into your bloodstream in month 1 forces premature lobuloalveolar maturation, permanently terminating your breast ductal branching. See the [Breast Development guide](/en/breast-development/).
+</WarningBox>
+
+### Blood Test Timing
+
+You must draw blood on the morning of your injection day, **right before you inject**. This measures your **Trough Level** (your absolute lowest E2 concentration during the cycle).
+- **Target Trough:** 100-200 pg/mL.
+- **Warning:** A trough >200 pg/mL on EV means your day-2 peak was likely thermonuclear (e.g., 500-800 pg/mL). High ranges only increase cardiovascular risks, they do not enhance feminization.
+- If your trough crashes below 50 pg/mL on a 7-day EV cycle, you should shift to a 5-day cycle (using a proportionally lower dose) to flatten the curve, rather than just blasting a higher dose every 7 days.
+
+## Subcutaneous (SC) vs Intramuscular (IM)
+
+For decades, endocrinology forced trans women to use massive needles to drive oil deep into the muscle (IM). Current large-scale data proves Subcutaneous (SC) delivery into the belly/thigh fat is perfectly equivalent<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['Metric', 'Subcutaneous (SC)', 'Intramuscular (IM)']}
+  rows={[
+    ['E2 Lab Levels', 'Identical to IM', 'The historical standard'],
+    ['T Suppression', 'Identical to IM', 'The historical standard'],
+    ['Pain Factor', 'Practically painless', 'Can trigger deep muscle aching and soreness'],
+    ['Needle Gauge', 'Very fine (25-27G)', 'Thicker (21-23G), longer'],
+    ['Ease of Use', 'Very easy to self-administer', 'Glute IM often requires a partner/nurse'],
+  ]}
+/>
+
+**Verdict:** If you are self-injecting, Subcutaneous (SC) is the superior, safer, less traumatizing option.
+
+## The Monotherapy Advantage
+
+Injectable estradiol suppresses testosterone drastically better than oral pills. A 2025 cohort study by Misakian et al. revealed that **82.6%** of users on injectable estradiol achieved full testosterone suppression (T < 50 ng/dL) without any Spironolactone, Bicalutamide, or Cyproterone<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- Eliminates the liver toxicity risks of CPA.
+- Eliminates the diuretic and potassium risks of Spiro.
+
+<WarningBox title="Do Not Chasse Monotherapy Recklessly">
+Roughly 17% of individuals cannot biologically achieve monotherapy. If you are injecting 5 mg/week and your T stays at 300 ng/dL, **do not increase your injection dose to 8mg or 10mg**. You are part of the 17%. Accept reality and introduce a low-dose anti-androgen.
+</WarningBox>
+
+## Injection Protocol
+
+### The Gear
+
+| Route | Syringe | Draw Needle | Injection Needle |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (to pull oil) | 25-27G × 1/2" to 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (to pull oil) | 21-23G × 1" to 1.5" |
+
+Always use two needles. Use a fat needle to pull the thick oil out of the vial, then swap to the thin, sharp needle to inject. Piercing the thick rubber stopper of the vial dulls the needle microscopically; you do not want to force a blunt, dulled needle into your skin.
+
+### The Sites
+
+- **For SC:** The stomach (stay 2 inches away from the belly button) or the upper outer thighs. Pinch the fat.
+- **For IM:** The vastus lateralis (outer middle third of the thigh) or ventrogluteal (hip/glute).
+
+### The Execution
+
+1. **Hygiene:** Scrub your hands with soap. Have an alcohol swab and sharps bin ready.
+2. **Disinfect:** Swab the rubber vial stopper. Swab your skin in a 2-inch outward spiral. Let it air dry completely.
+3. **Draw:** Pull air into the syringe equal to your dose. Push the air into the vial to equalize pressure. Pull the oil down. Tap out bubbles.
+4. **Swap & Stab:** Swap to the tiny injection needle. For SC, pinch the fat pad and dart the needle in at a 45° angle.
+5. **Aspirate (Optional but common for IM):** Pull back slightly on the plunger. If blood flashes into the barrel, you hit a vein. Pull out and start over elsewhere.
+6. **Push:** Inject the thick oil slowly (~10 seconds).
+7. **Withdraw:** Pull out smoothly. Dab with a cotton ball. Dispose of the needle in the sharps container immediately.
+
+## Converting mg to mL (The Math)
+
+If you have a standard commercial American vial of **Estradiol Valerate 20 mg/mL** (this means there are 20mg of EV in every 1 mL of oil):
+
+<DoseTable
+  headers={['Target Dose (mg)', 'Injection Volume (mL)', 'Vial Concentration']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="Verify Your Concentration">
+Global DIY vials are often brewed at crazy densities (40 mg/mL, 50 mg/mL). Japanese ampoules (Progynon Depot) are frequently 10 mg/mL. **Always do the math based on YOUR vial's concentration.**
+Volume (mL) = Target Dose (mg) ÷ Vial Concentration (mg/mL).
+</WarningBox>
+
+## Ampoule Reality Check
+
+In many parts of Asia and Europe, injectable EV is sold in tiny, breakable glass ampoules rather than rubber-stopper vials.
+- Ampoules do NOT contain preservatives (like benzyl alcohol).
+- Once you snap the glass, the fluid is compromised. You cannot leave an open ampoule on your desk for a week to inject the remaining half later.
+- Some guidebooks suggest pre-drawing the remaining dose into a sterile syringe and storing it in a fridge for max 7 days. This carries inherent contamination risks. Use immense caution.
+
+<DangerBox title="The Fatal Red Lines">
+Avoid catastrophic health outcomes. Never do the following:
+
+- **Single Shots ≥ 10 mg:** Blasting colossal doses creates peak levels >1000 pg/mL, inviting critical blood clot / VTE events<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **High Dose + Short Interval (e.g., 5mg every 3 days):** The compounding effect stacks the half-life endlessly upward until you reach toxic physiological overload<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+If 5mg/week doesn't crush your T, accept that monotherapy failed and introduce an anti-androgen. Do not turn yourself into a biohazard.
+</DangerBox>
+
+---
+
+**References**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<DrugBrandGallery drugId="estradiol-injection" />

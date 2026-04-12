@@ -1,0 +1,263 @@
+---
+title: 혈액 검사 및 자가 진단 도구
+description: HRT 중 필요한 혈액 검사 항목, 재검 일정, 검사 결과 해석법, 그리고 대화형 자가 진단 도구를 안내합니다.
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Blood tests are the cornerstone of HRT safety management. Without blood test data, you have no way of knowing whether the medication is working, if your dosage is safe, or if your body is taking on unnecessary risks. This page will guide you through when to get tested, what to test for, and how to understand your results<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Accessing Blood Tests">
+Depending on your location, you may access blood tests through a primary care provider, an informed consent clinic (like Planned Parenthood in the US), specialized gender identity clinics (like the NHS or GenderCare in the UK), or private testing services (like Medichecks). Regardless of your route, getting tested is critical. After receiving your results, compare them against our traffic light system below.
+</WarningBox>
+
+## 6.1 What to Test and When
+
+The blood test schedule is divided into three phases, aligning with our [HRT Pathway](/en/pathway/)<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />:
+
+### Phase 1: Initiation (Months 1-6)
+
+This is the most intensive adjustment period, requiring more frequent monitoring to ensure the medication is working and to rule out early side effects.
+
+**Week 4 Check:**
+
+<DoseTable
+  headers={['Test Item', 'Purpose', 'Targeted Users']}
+  rows={[
+    ['Sex Hormone Panel (E2, T, LH, FSH, PRL, P4)', 'Confirm E2 is rising and T is falling', 'All users'],
+    ['Liver Function (ALT, AST)', 'Rule out early hepatotoxicity', 'CPA / Bicalutamide users'],
+    ['Electrolytes (K⁺, Na⁺)', 'Rule out hyperkalemia risk', 'Spironolactone users'],
+  ]}
+/>
+
+**Week 12 Check:**
+
+<DoseTable
+  headers={['Test Item', 'Purpose', 'Targeted Users']}
+  rows={[
+    ['Sex Hormone Panel', 'Assess if stage goals are met (E2 50-100 pg/mL)', 'All users'],
+    ['Liver Function (ALT, AST)', 'Continuous monitoring of liver safety', 'CPA / Bicalutamide users'],
+    ['Lipid Panel (TC, TG, LDL, HDL)', 'Assess metabolic impact', 'All users'],
+    ['Electrolytes (K⁺)', 'Continuous monitoring of blood potassium', 'Spironolactone users'],
+  ]}
+/>
+
+<WarningBox title="Phase 1 Goals">
+E2 reaching 50-100 pg/mL, T trending downwards. If E2 is below 30 pg/mL, you may need to adjust the administration method or dosage (see our [Pathway](/en/pathway/))<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. **Do not arbitrarily increase the dose during this stage just because you "don't feel anything".**
+</WarningBox>
+
+### Phase 2: Adjustment (Months 6-12)
+
+Check every 3 months<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />:
+
+<DoseTable
+  headers={['Test Item', 'Frequency', 'Target']}
+  rows={[
+    ['Sex Hormones (E2, T, PRL)', 'Every 3 months', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Liver Function (ALT, AST)', 'Every 3 months (CPA/Bica)', 'ALT/AST ≤ Upper normal limit'],
+    ['Prolactin (PRL)', 'Every 6 months', 'PRL <50 ng/mL'],
+    ['Electrolytes (K⁺)', 'Every 3 months (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Phase 3: Maintenance (12 Months+)
+
+Once hormone levels are stable, frequency can be reduced<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />:
+
+**Routine 6-Month Checks:**
+
+<DoseTable
+  headers={['Test Item', 'Description']}
+  rows={[
+    ['Sex Hormones (E2, T, PRL)', 'Confirm you remain in the target range'],
+    ['Liver Function (ALT, AST)', 'Ongoing monitoring (CPA/Bica users every 3-6 months)'],
+    ['Electrolytes', 'Ongoing monitoring for Spironolactone users'],
+  ]}
+/>
+
+**Annual Comprehensive Checks:**
+
+<DoseTable
+  headers={['Test Item', 'Description']}
+  rows={[
+    ['Lipid Panel', 'Assess long-term metabolic impact'],
+    ['Fasting Blood Glucose', 'Rule out progressive insulin resistance'],
+    ['CBC (inc. Hb)', 'Monitor anemia trends'],
+    ['Coagulation + D-Dimer', 'Assess VTE risk (crucial for oral E2 users)'],
+    ['Bone Density (DXA)', 'Consider, especially if estrogen was withheld for a long time'],
+  ]}
+/>
+
+---
+
+## 6.2 Understanding Your Report (Traffic Lights)
+
+The following visually demonstrates 7 core blood test markers related to HRT. **Green** = Target Range, **Yellow** = Caution, **Red** = Danger, requiring action<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />.
+
+<WarningBox title="Timing Is Everything">
+Blood draw timing directly impacts readability<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Please follow these rules (measure **trough levels**):
+
+- **Transdermal Patches**: 12-24 hours before your next patch change
+- **Oral/Sublingual**: Right before your next dose
+- **Injections**: The morning of, right before your next injection
+
+If you do NOT draw blood at trough, E2 readings will be artificially high, leading to misinterpretations about whether the dose is adequate.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 100-200 pg/mL is the international guideline recommendation for maintenance<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Exceeding 200 pg/mL will NOT result in faster feminization; it only increases the risk of blood clots and premature breast bud fusion. E2 levels below 20 pg/mL after treatment suggest an administration issue.
+
+<DangerBox title="E2 > 500 pg/mL">
+If trough E2 exceeds 500 pg/mL, reduce the dosage immediately and seek medical evaluation. This level significantly increases deep vein thrombosis (VTE) risks<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosterone (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+Suppressing T to &lt;50 ng/dL (typical cis female range) is a core HRT goal<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. If T remains >100 ng/dL after 6 months, you usually need to adjust your anti-androgen instead of just brute-forcing a higher E2 dose<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />.
+
+### Prolactin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Both estrogen and CPA can elevate prolactin<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Mild elevations (25-50 ng/mL) are often clinically insignificant but warrant monitoring. PRL above 50 ng/mL should be evaluated to rule out prolactinomas. CPA users must watch this closely.
+
+### Liver Function (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA and bicalutamide carry hepatotoxicity risks<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. The upper normal limit is typically 40 U/L. Elevations to 1-3x the upper limit require close monitoring; exceeding 3x (>120 U/L) means you should stop CPA or bicalutamide immediately and consult a doctor<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />.
+
+<DangerBox title="Warning Signs of Liver Damage">
+If you develop yellowing skin/eyes (jaundice), dark urine, persistent nausea, or upper right abdominal pain, stop the medication immediately regardless of your last ALT/AST numbers<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. These are acute symptoms requiring emergency care.
+</DangerBox>
+
+### Blood Potassium (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Spironolactone is a potassium-sparing diuretic that can cause hyperkalemia<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Suspend spironolactone if K⁺ exceeds 5.5 mmol/L. While using spironolactone, minimize high-potassium foods and do not use salt substitutes.
+
+<DangerBox title="Hyperkalemia Symptoms">
+Muscle weakness, numbness or tingling in the extremities, palpitations, or arrhythmias. If on spironolactone and experiencing these, get your potassium checked immediately<CitationRef id="coleman-2022" num={2} authors="Coleman et al." year={2022} />.
+</DangerBox>
+
+### Hemoglobin (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb predictably drops into the cis female range after initiating estrogen; this is physiological<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. But an Hb below 110 g/L signals anemia requiring diagnosis.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+D-dimer elevations suggest thrombosis/fibrinolysis<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />. Mildly elevated (0.5-1.0) needs clinical context. Over 1.0 mg/L—especially if alongside calf swelling, chest pain, or shortness of breath—constitutes an emergency to rule out DVT or PE<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Symptoms = Emergency">
+Elevated D-dimer alone isn't automatically a clot, but combined with calf swelling/heat, sudden chest pain, or coughing blood, go to the ER immediately. Oral estradiol carries higher VTE risks than transdermal<CitationRef id="canonico-2018" num={3} authors="Canonico et al." year={2018} />.
+</DangerBox>
+
+### Comprehensive Guide
+
+<DoseTable
+  headers={['Marker', 'Target (Green)', 'Caution (Yellow)', 'Danger (Red)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 or 200-300', '>500 or <20 (post-med)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (after 6mos)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (rule out prolactinoma)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3x limit)', '>120 (Stop CPA/Bica)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Stop Spiro)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Anemia)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Rule out clot)'],
+  ]}
+/>
+
+---
+
+## 6.3 Interactive Self-Check Tool
+
+<WarningBox title="Coming Soon">
+The **BloodTestChecker** Interactive React component will be launching soon. It allows you to input your values for instant traffic-light feedback and tailored advice.
+
+All calculations occur in your browser—no data is saved or sent to any servers. 
+</WarningBox>

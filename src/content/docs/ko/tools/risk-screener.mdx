@@ -1,0 +1,33 @@
+---
+title: "위험 자가 평가"
+description: "간단한 질문에 답하여 개인 HRT 위험 프로파일을 파악합니다. 순수 프론트엔드 도구 — 데이터가 전송되지 않습니다."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import RiskScreener from '../../../../components/interactive/RiskScreener.tsx';
+
+## HRT Risk Factor Self-Assessment
+
+Answer 7 short questions to quickly understand your personal risk factors.
+
+**This tool helps you identify:**
+
+- Your personal VTE (deep vein thrombosis / pulmonary embolism) risk level
+- Liver-related medication safety risks
+- Meningioma risk (related to CPA dosage)
+- Comprehensive cardiovascular risk assessment
+
+<RiskScreener client:visible />
+
+## Important Notes
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Not a Medical Diagnosis</div>
+
+This tool **cannot replace** professional medical evaluation. Risk scores are based on known population statistics and cannot reflect your complete personal health status. Please share your assessment results with your healthcare provider as a starting point for discussion.
+
+**High risk does not mean you cannot use HRT** — it means you may need more frequent monitoring, different administration routes, or specific preventive measures.
+</div>

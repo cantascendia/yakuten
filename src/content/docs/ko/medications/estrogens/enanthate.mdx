@@ -1,0 +1,93 @@
+---
+title: "에스트라디올 에난테이트 (EEn)"
+description: "에스트라디올 에난테이트의 완전 가이드 — 약동학, 다른 에스테르와의 비교, 용량 및 안전 한계."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="B"
+>
+Estradiol enanthate (EEn) is a medium-to-long-acting injectable estradiol ester with a half-life between estradiol valerate (EV) and estradiol cypionate (EC), at approximately 5-7 days<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. It is commonly found as a component of combined injectable contraceptives (e.g. Perlutal) and can also be used as a standalone HRT medication.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Pharmacokinetic profile of estradiol enanthate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Half-life**: ~5-7 days
+- **Peak time**: 3-5 days post-injection
+- **Trough time**: 7-10 days post-injection
+- **Steady state**: Reached after ~3-4 regular cycles
+
+### Injectable Estradiol Ester PK Comparison
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerate)', 'EEn (Enanthate)', 'EC (Cypionate)']}
+  rows={[
+    ['Half-life', '~4-5 days', '~5-7 days', '~8-10 days'],
+    ['Peak time', '2-3 days', '3-5 days', '2-4 days'],
+    ['Recommended interval', '5-7 days', '7-10 days', '7-14 days'],
+    ['Serum level fluctuation', 'Larger', 'Moderate', 'Smaller'],
+    ['Availability', 'Global', 'Limited regions', 'Americas'],
+  ]}
+/>
+
+EEn's pharmacokinetic profile sits between EV and EC, offering an option for users who want weekly injections with a smoother curve<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosing
+
+### Adult Dosing
+
+<DoseTable
+  headers={['Phase', 'Dose', 'Notes']}
+  rows={[
+    ['Starting dose', '2-4 mg/week', 'Low-dose start to protect breast development'],
+    ['Maintenance dose', '4-6 mg/week', 'Adjust based on trough E2; target 100-200 pg/mL'],
+    ['Maximum dose', '10 mg/10 days', 'Do not exceed'],
+  ]}
+/>
+
+Dosing references: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> and WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Availability Note">
+Estradiol enanthate is not widely available in many regions. It is primarily found in Latin America (as a component of Perlutal) and select European countries. If you need injectable estradiol, [estradiol valerate](/en/medications/estrogens/injection/) is more accessible in most regions.
+</WarningBox>
+
+## Brands & Availability
+
+| Brand | Formulation | Region |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (combined contraceptive) | Latin America |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Select countries |
+| Single-agent formulations | Various concentrations | Compounding pharmacies |
+
+## Monitoring
+
+- **E2**: Every 3 months, trough draw (morning before injection). Target 100-200 pg/mL
+- **T**: Every 3 months. Target &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + every 6 months
+
+## Injection Technique
+
+Injection procedure is identical to [estradiol valerate injection](/en/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Safety Limits">
+- Same safety limits apply as other injectable estradiol esters
+- Single injection dose must not exceed 10 mg
+- E2 >200 pg/mL does not enhance feminization, only increases risk<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- If using a combined formulation (e.g. Perlutal), the progestogen component may carry additional risks; consult a physician
+</DangerBox>
