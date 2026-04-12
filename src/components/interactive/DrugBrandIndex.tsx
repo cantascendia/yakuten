@@ -245,14 +245,43 @@ const S: Record<string, CSSProperties> = {
   },
   card: {
     display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '0.5rem',
+    flexDirection: 'row' as const,
+    gap: '0.875rem',
     padding: '1rem 1.25rem',
-    borderRadius: '8px',
+    borderRadius: '0',
+    clipPath: 'polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%)',
     background: 'var(--sl-color-bg-nav, rgba(26, 22, 37, 0.6))',
     backdropFilter: 'blur(12px)',
     border: '1px solid var(--sl-color-gray-5, rgba(86, 65, 71, 0.2))',
-    transition: 'border-color 0.15s',
+    transition: 'transform 0.2s, box-shadow 0.2s',
+  },
+  cardInner: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '0.5rem',
+    flex: 1,
+    minWidth: 0,
+  },
+  cardImage: {
+    width: '80px',
+    height: '80px',
+    borderRadius: '6px',
+    objectFit: 'cover' as const,
+    flexShrink: 0,
+    background: 'var(--sl-color-bg-nav, rgba(26, 22, 37, 0.3))',
+    border: '1px solid var(--sl-color-gray-5, rgba(86, 65, 71, 0.15))',
+  },
+  cardIconPlaceholder: {
+    width: '80px',
+    height: '80px',
+    borderRadius: '6px',
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '2rem',
+    background: 'var(--sl-color-bg-nav, rgba(26, 22, 37, 0.3))',
+    border: '1px solid var(--sl-color-gray-5, rgba(86, 65, 71, 0.15))',
   },
   cardBanned: {
     borderColor: 'var(--sl-color-red, rgba(220, 50, 50, 0.4))',
@@ -395,6 +424,14 @@ export default function DrugBrandIndex() {
     { key: 'banned', label: t.categoryBanned },
   ];
 
+  const categoryIcons: Record<string, string> = {
+    estrogen: '💊',
+    antiandrogen: '🛡️',
+    progestogen: '💜',
+    '5ari': '💇',
+    banned: '⛔',
+  };
+
   function statusBadge(status?: string) {
     const map: Record<string, { label: string; style: CSSProperties }> = {
       approved: { label: t.statusApproved, style: S.badgeApproved },
@@ -478,56 +515,70 @@ export default function DrugBrandIndex() {
                 ...(b.status === 'banned' ? S.cardBanned : {}),
               }}
             >
-              {/* Header: flag + country + status badge */}
-              <div style={S.cardHeader}>
-                <div style={S.cardHeaderLeft}>
-                  <span style={S.flagEmoji} aria-hidden="true">
-                    {flag(b.country)}
-                  </span>
-                  <span style={S.countryLabel}>{b.countryName}</span>
+              {/* Product image or icon placeholder */}
+              {b.image ? (
+                <img
+                  src={b.image}
+                  alt={b.name}
+                  style={S.cardImage}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div style={S.cardIconPlaceholder} aria-hidden="true">
+                  {categoryIcons[b.category] ?? '💊'}
                 </div>
-                {statusBadge(b.status)}
-              </div>
+              )}
 
-              {/* Brand name */}
-              <h3 style={S.brandName}>{b.name}</h3>
-
-              {/* Details */}
-              <div>
-                <div style={S.detailRow}>
-                  <span style={S.detailLabel}>{t.manufacturer}</span>
-                  <span style={S.detailValue}>{b.manufacturer}</span>
-                </div>
-                <div style={S.detailRow}>
-                  <span style={S.detailLabel}>{t.spec}</span>
-                  <span style={S.detailValue}>{b.spec}</span>
-                </div>
-                <div style={S.detailRow}>
-                  <span style={S.detailLabel}>{t.appearance}</span>
-                  <span style={S.detailValue}>{b.appearance}</span>
-                </div>
-                {b.activeIngredient && (
-                  <div style={S.detailRow}>
-                    <span style={S.detailLabel}>{t.ingredient}</span>
-                    <span style={S.detailValue}>{b.activeIngredient}</span>
+              {/* Card content */}
+              <div style={S.cardInner}>
+                {/* Header: flag + country + status badge */}
+                <div style={S.cardHeader}>
+                  <div style={S.cardHeaderLeft}>
+                    <span style={S.flagEmoji} aria-hidden="true">
+                      {flag(b.country)}
+                    </span>
+                    <span style={S.countryLabel}>{b.countryName}</span>
                   </div>
+                  {statusBadge(b.status)}
+                </div>
+
+                {/* Brand name */}
+                <h3 style={S.brandName}>{b.name}</h3>
+
+                {/* Details */}
+                <div>
+                  <div style={S.detailRow}>
+                    <span style={S.detailLabel}>{t.manufacturer}</span>
+                    <span style={S.detailValue}>{b.manufacturer}</span>
+                  </div>
+                  <div style={S.detailRow}>
+                    <span style={S.detailLabel}>{t.spec}</span>
+                    <span style={S.detailValue}>{b.spec}</span>
+                  </div>
+                  {b.activeIngredient && (
+                    <div style={S.detailRow}>
+                      <span style={S.detailLabel}>{t.ingredient}</span>
+                      <span style={S.detailValue}>{b.activeIngredient}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Notes */}
+                {b.notes && <p style={S.notes}>{b.notes}</p>}
+
+                {/* Official URL */}
+                {b.url && (
+                  <a
+                    href={b.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={S.urlLink}
+                  >
+                    {t.officialSite} ↗
+                  </a>
                 )}
               </div>
-
-              {/* Notes */}
-              {b.notes && <p style={S.notes}>{b.notes}</p>}
-
-              {/* Official URL */}
-              {b.url && (
-                <a
-                  href={b.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={S.urlLink}
-                >
-                  {t.officialSite} ↗
-                </a>
-              )}
             </div>
           ))}
         </div>

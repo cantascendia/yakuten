@@ -92,7 +92,8 @@
       "notes": "每周更换一次，储库型贴片",
       "activeIngredient": "雌二醇",
       "status": "approved",
-      "url": "https://www.bayer.com"
+      "url": "https://www.bayer.com",
+      "image": "/brands/climara.webp"
     },
     {
       "name": "Estradot",
@@ -344,7 +345,8 @@
       "notes": "原研品牌，美国 HRT 最常用抗雄",
       "activeIngredient": "螺内酯",
       "status": "approved",
-      "url": "https://www.pfizer.com"
+      "url": "https://www.pfizer.com",
+      "image": "/brands/aldactone.webp"
     }
   ],
   "bicalutamide": [
@@ -358,7 +360,8 @@
       "notes": "原研比卡鲁胺，价格较高",
       "activeIngredient": "比卡鲁胺",
       "status": "approved",
-      "url": "https://www.astrazeneca.com"
+      "url": "https://www.astrazeneca.com",
+      "image": "/brands/casodex.webp"
     },
     {
       "name": "Calutide",
@@ -473,7 +476,8 @@
       "appearance": "注射用白色冻干粉末",
       "notes": "中国大陆可获取的亮丙瑞林制剂，有国药准字批号，约 1000-2000 元/支",
       "activeIngredient": "亮丙瑞林",
-      "status": "prescription"
+      "status": "prescription",
+      "image": "/brands/lupron.webp"
     },
     {
       "name": "诺雷得 Zoladex",
@@ -485,7 +489,8 @@
       "notes": "皮下植入型 GnRH 激动剂，针头较粗，需医护操作。中国大陆有进口，有国药准字批号",
       "activeIngredient": "戈舍瑞林",
       "status": "prescription",
-      "url": "https://www.astrazeneca.com"
+      "url": "https://www.astrazeneca.com",
+      "image": "/brands/zoladex.webp"
     },
     {
       "name": "达菲林 Decapeptyl",
@@ -557,7 +562,8 @@
       "notes": "原研度他雄胺，2019 年在中国上市（进口）",
       "activeIngredient": "度他雄胺",
       "status": "prescription",
-      "url": "https://www.gsk.com"
+      "url": "https://www.gsk.com",
+      "image": "/brands/avodart.webp"
     },
     {
       "name": "Dutas",
@@ -582,7 +588,8 @@
       "notes": "原研非那雄胺（脱发适应症），中国有进口",
       "activeIngredient": "非那雄胺",
       "status": "prescription",
-      "url": "https://www.msd.com"
+      "url": "https://www.msd.com",
+      "image": "/brands/propecia.webp"
     },
     {
       "name": "Proscar",
@@ -665,7 +672,8 @@
       "notes": "原研地屈孕酮，中国大陆有售（达芙通）。口服生物利用度优于微粉化黄体酮，无镇静作用",
       "activeIngredient": "地屈孕酮",
       "status": "prescription",
-      "url": "https://www.abbott.com"
+      "url": "https://www.abbott.com",
+      "image": "https://medicines.abbott.com/wp-content/uploads/2026/03/DUPHASTON_10mg_Carton_14Tabs_GLO_result.webp"
     }
   ],
   "ethinylestradiol": [
