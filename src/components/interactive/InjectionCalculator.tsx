@@ -292,7 +292,7 @@ const styles: Record<string, CSSProperties> = {
     fontFamily: 'var(--font-body)',
   },
   warningDanger: {
-    background: 'rgba(244, 67, 54, 0.1)',
+    background: 'var(--sl-color-red-low, rgba(244, 67, 54, 0.1))',
     borderLeft: '4px solid var(--color-danger)',
     padding: 'var(--space-sm) var(--space-md)',
     marginTop: 'var(--space-md)',
@@ -302,8 +302,8 @@ const styles: Record<string, CSSProperties> = {
     fontFamily: 'var(--font-body)',
   },
   warningForbidden: {
-    background: 'linear-gradient(135deg, #F44336, #D32F2F)',
-    color: '#FFFFFF',
+    background: 'linear-gradient(135deg, var(--color-danger, #F44336), var(--color-danger-dark, #D32F2F))',
+    color: 'var(--color-text-on-dark, #FFFFFF)',
     padding: 'var(--space-md) var(--space-lg)',
     marginTop: 'var(--space-md)',
     fontWeight: 700,

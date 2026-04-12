@@ -82,7 +82,7 @@
     "communityFeedback": "内分泌科整体水平高，部分医生对跨性别 HRT 有经验。专家号挂号难度较高，普通号较易获取。",
     "notes": "适合有复杂基础疾病或需要疑难会诊的情况",
     "verificationLevel": "community-reported",
-    "lastVerified": "2026-01-01"
+    "lastVerified": "2026-04-12"
   },
   {
     "id": "sysu3-guangzhou",
@@ -99,7 +99,7 @@
     "communityFeedback": "华南地区可用资源之一，有社区成员反馈就诊体验较好。建议就诊前通过社区确认当前接诊情况。",
     "notes": "华南地区覆盖",
     "verificationLevel": "community-reported",
-    "lastVerified": "2025-10-01"
+    "lastVerified": "2026-04-12"
   },
   {
     "id": "wuxi-jiangsu",
@@ -116,7 +116,7 @@
     "communityFeedback": "华东地区（非上海）的可用资源之一，部分医生对跨性别患者态度较友好。",
     "notes": "供长三角地区非上海用户参考",
     "verificationLevel": "community-reported",
-    "lastVerified": "2025-08-01"
+    "lastVerified": "2026-04-12"
   },
   {
     "id": "west-china-chengdu",
@@ -133,7 +133,7 @@
     "communityFeedback": "西南地区最权威医院，内分泌科整体水平高。跨性别友好医生信息较少，建议通过本地社区获取具体医生推荐。",
     "notes": "西南地区覆盖，需通过本地社区确认具体医生",
     "verificationLevel": "community-reported",
-    "lastVerified": "2025-09-01"
+    "lastVerified": "2026-04-12"
   },
   {
     "id": "shenzhen-hku",

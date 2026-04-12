@@ -129,7 +129,7 @@ const DRUGS: DrugPK[] = [
     maxDoseMg: 8,
     unit: 'mg',
     frequencyDays: 1,
-    color: '#C84B7C',
+    color: 'var(--color-primary, #C84B7C)',
   },
   {
     id: 'ev-sublingual',
@@ -142,7 +142,7 @@ const DRUGS: DrugPK[] = [
     maxDoseMg: 6,
     unit: 'mg',
     frequencyDays: 1,
-    color: '#E76395',
+    color: 'var(--color-primary-light, #E76395)',
   },
   {
     id: 'ev-injection',
@@ -155,7 +155,7 @@ const DRUGS: DrugPK[] = [
     maxDoseMg: 10,
     unit: 'mg',
     frequencyDays: 5,
-    color: '#D4A853',
+    color: 'var(--color-accent, #D4A853)',
   },
   {
     id: 'e2-gel',
@@ -168,7 +168,7 @@ const DRUGS: DrugPK[] = [
     maxDoseMg: 6,
     unit: 'mg（1–2 泵）',
     frequencyDays: 1,
-    color: '#7C8CF0',
+    color: 'var(--color-tertiary, #7C8CF0)',
   },
   {
     id: 'e2-patch',
@@ -181,7 +181,7 @@ const DRUGS: DrugPK[] = [
     maxDoseMg: 0.4,
     unit: 'mg/天',
     frequencyDays: 3.5,
-    color: '#4CAF50',
+    color: 'var(--color-safe, #4CAF50)',
   },
 ];
 

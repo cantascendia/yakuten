@@ -296,7 +296,7 @@ const s: Record<string, CSSProperties> = {
     alignItems: 'center',
     gap: 'var(--space-sm)',
     padding: '6px var(--space-sm)',
-    background: 'rgba(244,67,54,0.12)',
+    background: 'var(--sl-color-red-low, rgba(244,67,54,0.12))',
     border: '1px solid var(--color-danger)',
     fontSize: '0.8rem',
     color: 'var(--color-danger)',
@@ -526,7 +526,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: 0,
             width: '100%',
-            background: 'rgba(244,67,54,0.5)',
+            background: 'var(--sl-color-red, rgba(244,67,54,0.5))',
           }}
         />
         {/* Yellow zone */}
@@ -535,7 +535,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: `${yellowLeft}%`,
             width: `${yellowRight - yellowLeft}%`,
-            background: 'rgba(255,152,0,0.75)',
+            background: 'var(--sl-color-orange, rgba(255,152,0,0.75))',
           }}
         />
         {/* Green zone */}
@@ -544,7 +544,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
             ...s.barSegment,
             left: `${greenLeft}%`,
             width: `${greenRight - greenLeft}%`,
-            background: 'rgba(76,175,80,0.8)',
+            background: 'var(--sl-color-green, rgba(76,175,80,0.8))',
           }}
         />
         {/* Value marker */}

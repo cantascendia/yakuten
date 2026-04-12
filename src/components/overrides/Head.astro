@@ -37,6 +37,11 @@ const alternates = localeMap.map(({ code, prefix }) => ({
 
 // x-default points to the default locale (zh)
 const xDefault = `${site}/zh/${pagePath}`;
+
+// Detect current locale for og:locale
+const ogLocaleMap: Record<string, string> = { '/zh/': 'zh_CN', '/en/': 'en_US', '/ja/': 'ja_JP' };
+const currentOgLocale = Object.entries(ogLocaleMap).find(([p]) => pathname.startsWith(p))?.[1] ?? 'zh_CN';
+const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== currentOgLocale);
 ---
 
 <Default {...Astro.props}><slot /></Default>
@@ -44,5 +49,9 @@ const xDefault = `${site}/zh/${pagePath}`;
   <link rel="alternate" hreflang={hreflang} href={href} />
 ))}
 <link rel="alternate" hreflang="x-default" href={xDefault} />
+<meta property="og:locale" content={currentOgLocale} />
+{alternateOgLocales.map((loc) => (
+  <meta property="og:locale:alternate" content={loc} />
+))}
 <Analytics />
 <SpeedInsights />

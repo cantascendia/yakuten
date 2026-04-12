@@ -2,8 +2,57 @@
 import Default from '@astrojs/starlight/components/Footer.astro';
 import FloatingAIChat from '../interactive/FloatingAIChat.tsx';
 import JsonLd from '../seo/JsonLd.astro';
+import { t, getLocale } from '../../i18n/ui';
+
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 ---
 
 <Default {...Astro.props}><slot /></Default>
+
+<div class="site-legal-footer">
+  <p class="site-legal-footer__notice">{t(locale, 'footer.notice')}</p>
+  <nav class="site-legal-footer__links" aria-label={t(locale, 'footer.navLabel')}>
+    <a href={`/${locale}/about/`}>{t(locale, 'footer.link.disclaimer')}</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/Loveil381/yakuten" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.link.github')}</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://wj.qq.com/s2/16576000/5fe5/" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.link.feedback')}</a>
+  </nav>
+</div>
+
 <FloatingAIChat client:idle />
 <JsonLd />
+
+<style>
+  .site-legal-footer {
+    max-width: 72rem;
+    margin: var(--space-lg) auto 0;
+    padding: var(--space-md) var(--space-lg);
+    border-top: 1px solid var(--sl-color-gray-5, rgba(86, 65, 71, 0.2));
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3, var(--color-text-muted, #888));
+    line-height: 1.6;
+  }
+
+  .site-legal-footer__notice {
+    margin: 0 0 var(--space-xs) 0;
+  }
+
+  .site-legal-footer__links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+
+  .site-legal-footer__links a {
+    color: var(--sl-color-gray-3, var(--color-text-muted, #888));
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .site-legal-footer__links a:hover {
+    color: var(--sl-color-accent, var(--color-accent, #D4A853));
+  }
+</style>
