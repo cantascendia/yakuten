@@ -262,7 +262,8 @@ export default defineConfig({
             { label: '友好医疗资源', translations: { en: 'Medical Directory', ja: '医療施設情報' }, slug: 'tools/hospital-finder' },
             { label: '药物比较器', translations: { en: 'Drug Comparator', ja: '薬物比較ツール' }, slug: 'tools/drug-comparator' },
             { label: '风险自评', translations: { en: 'Risk Screener', ja: 'リスク自己評価' }, slug: 'tools/risk-screener' },
-            { label: '品牌索引', translations: { en: 'Brand Index', ja: 'ブランド索引' }, slug: 'tools/brand-index', badge: { text: { 'zh-CN': '新', en: 'New', ja: '新' }, variant: 'success' } },
+            { label: '品牌索引', translations: { en: 'Brand Index', ja: 'ブランド索引' }, slug: 'tools/brand-index' },
+            { label: '速查卡片', translations: { en: 'Drug Cards', ja: 'クイックカード' }, slug: 'tools/drug-cards', badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새' }, variant: 'success' } },
           ],
         },
         {
