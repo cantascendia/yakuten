@@ -61,13 +61,14 @@ import BloodTestChecker from '../../../components/interactive/BloodTestChecker.t
     text-decoration: none;
     transition: opacity var(--transition-fast);
   }
-  .blood-test-hero__btn:hover {
-    opacity: 0.85;
-  }
   .blood-test-hero__btn--primary {
     background: var(--color-primary);
-    color: var(--color-text-on-dark);
+    color: #fff;
     clip-path: var(--clip-corner-sm);
+  }
+  .blood-test-hero__btn--primary:hover {
+    opacity: 0.85;
+    color: #fff;
   }
   .blood-test-hero__btn--secondary {
     background: transparent;
