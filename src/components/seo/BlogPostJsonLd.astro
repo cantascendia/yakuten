@@ -1,0 +1,65 @@
+---
+/**
+ * JSON-LD for Blog / Article pages.
+ * Emits Article + Organization + WebSite schemas.
+ */
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  url: string;
+  locale: string;
+}
+
+const { title, description, publishDate, updatedDate, tags, url, locale } = Astro.props;
+
+const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
+const inLanguage = langMap[locale] ?? 'zh-CN';
+
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "Organization",
+    "@id": "https://hrtyaku.com/#organization",
+    "name": "HRT药典",
+    "alternateName": "HRT Yakuten",
+    "url": "https://hrtyaku.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hrtyaku.com/og-image.svg",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://hrtyaku.com/#website",
+    "url": "https://hrtyaku.com",
+    "name": "HRT药典",
+    "publisher": { "@id": "https://hrtyaku.com/#organization" }
+  },
+  {
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": publishDate.toISOString(),
+    ...(updatedDate ? { "dateModified": updatedDate.toISOString() } : {}),
+    "author": { "@id": "https://hrtyaku.com/#organization" },
+    "publisher": { "@id": "https://hrtyaku.com/#organization" },
+    "mainEntityOfPage": url,
+    "inLanguage": inLanguage,
+    "keywords": tags,
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Gender Dysphoria"
+    },
+    "isPartOf": { "@id": "https://hrtyaku.com/#website" }
+  }
+];
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": graph
+})} />

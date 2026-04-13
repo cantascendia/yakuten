@@ -1,0 +1,25 @@
+---
+/**
+ * BlogBreadcrumbs — Breadcrumb navigation for blog pages.
+ */
+import { t, getLocale } from '../../i18n/ui';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+---
+
+<nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+  <a href={`/${locale}/`}>{t(locale, 'blog.breadcrumb.home')}</a>
+  <span class="blog-breadcrumbs__sep" aria-hidden="true">/</span>
+  <a href={`/${locale}/blog/`}>{t(locale, 'blog.breadcrumb.blog')}</a>
+  {title && (
+    <>
+      <span class="blog-breadcrumbs__sep" aria-hidden="true">/</span>
+      <span aria-current="page">{title}</span>
+    </>
+  )}
+</nav>

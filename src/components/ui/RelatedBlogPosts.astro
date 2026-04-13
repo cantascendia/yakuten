@@ -1,0 +1,42 @@
+---
+/**
+ * RelatedBlogPosts — Embed in docs MDX pages to link to relevant blog articles.
+ * Queries blog posts whose relatedDocs include the current page slug.
+ */
+import { getCollection } from 'astro:content';
+import { getLocale } from '../../i18n/ui';
+import { getCategoryLabel, getBlogUrl } from '../../utils/blogHelpers';
+
+interface Props {
+  /** The current docs page slug, e.g. "medications/estrogens/oral" */
+  docSlug?: string;
+}
+
+const { docSlug } = Astro.props;
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+
+// Infer slug from URL if not provided
+const inferredSlug = docSlug ?? Astro.url.pathname
+  .replace(new RegExp(`^/${locale}/`), '')
+  .replace(/\/$/, '');
+
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter((p) => !p.data.draft && p.data.locale === locale && p.data.relatedDocs.includes(inferredSlug))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+---
+
+{related.length > 0 && (
+  <aside class="blog-related" style="margin-top: var(--space-xl);">
+    <h3 class="blog-related__title">延伸阅读</h3>
+    <div class="blog-related__list">
+      {related.map((post) => (
+        <a href={getBlogUrl(post)} class="blog-related__link">
+          <span class="blog-related__icon" aria-hidden="true">&#128196;</span>
+          <span>{post.data.title}</span>
+        </a>
+      ))}
+    </div>
+  </aside>
+)}

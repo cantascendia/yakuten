@@ -1,0 +1,17 @@
+---
+/**
+ * BlogHeader — Sticky glass header for blog pages.
+ * Links back to docs and blog index.
+ */
+import { t, getLocale } from '../../i18n/ui';
+
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+---
+
+<header class="blog-header">
+  <a href={`/${locale}/`} class="blog-header__brand">HRT药典</a>
+  <nav class="blog-header__nav" aria-label="Blog navigation">
+    <a href={`/${locale}/blog/`} class="blog-header__link">{t(locale, 'blog.title')}</a>
+    <a href={`/${locale}/`} class="blog-header__link">{t(locale, 'blog.backToDocs')}</a>
+  </nav>
+</header>
