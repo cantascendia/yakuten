@@ -16,7 +16,7 @@ function getLocale(): Locale {
 const UI = {
   zh: {
     title: '药物速查卡片',
-    subtitle: '长按或截图保存，分享到微信群',
+    subtitle: '截图保存，分享到微信群',
     dose: '维持剂量',
     maxDose: '最大剂量',
     frequency: '频率',
@@ -30,7 +30,7 @@ const UI = {
     bannedNote: '此药物已被禁止用于跨性别 HRT',
     categoryLabels: { estrogen: '雌激素', antiandrogen: '抗雄激素', progestogen: '孕激素', '5ari': '5αRI', banned: '禁用' } as Record<string, string>,
     filterAll: '全部',
-    longPressHint: '💡 长按卡片可保存图片，方便分享到群聊',
+    longPressHint: '💡 截图保存卡片，方便分享到群聊',
   },
   en: {
     title: 'Drug Quick Reference Cards',
@@ -48,7 +48,7 @@ const UI = {
     bannedNote: 'This medication is banned for transgender HRT',
     categoryLabels: { estrogen: 'Estrogens', antiandrogen: 'Anti-Androgens', progestogen: 'Progestogens', '5ari': '5αRI', banned: 'Banned' } as Record<string, string>,
     filterAll: 'All',
-    longPressHint: '💡 Long-press a card to save image for sharing',
+    longPressHint: '💡 Screenshot a card to save and share',
   },
   ja: {
     title: '薬物クイックリファレンスカード',
@@ -66,7 +66,7 @@ const UI = {
     bannedNote: 'この薬物はトランスジェンダーHRTに禁止されています',
     categoryLabels: { estrogen: 'エストロゲン', antiandrogen: '抗アンドロゲン', progestogen: 'プロゲストーゲン', '5ari': '5αRI', banned: '禁止' } as Record<string, string>,
     filterAll: 'すべて',
-    longPressHint: '💡 カードを長押しして画像を保存・共有できます',
+    longPressHint: '💡 カードをスクリーンショットして保存・共有できます',
   },
 } as const;
 
@@ -149,11 +149,13 @@ const S: Record<string, CSSProperties> = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
     gap: '1rem',
+    alignItems: 'stretch',
   },
   card: {
     display: 'flex',
     flexDirection: 'column' as const,
     gap: '0.625rem',
+    height: '100%',
     padding: '1.25rem',
     borderRadius: '12px',
     background: 'var(--sl-color-bg-nav, rgba(26, 22, 37, 0.85))',
