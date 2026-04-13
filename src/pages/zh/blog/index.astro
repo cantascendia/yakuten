@@ -1,0 +1,127 @@
+---
+/**
+ * Blog index page — /zh/blog/
+ * Lists all published zh blog posts, sorted by date.
+ */
+import BlogHeader from '../../../components/layout/BlogHeader.astro';
+import BlogBreadcrumbs from '../../../components/ui/BlogBreadcrumbs.astro';
+import { t } from '../../../i18n/ui';
+import { getSortedPosts, getCategoryLabel, getBlogUrl } from '../../../utils/blogHelpers';
+import { getReadingTime } from '../../../utils/readingTime';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+const locale = 'zh';
+const posts = await getSortedPosts(locale);
+
+// Collect unique categories
+const categories = [...new Set(posts.map((p) => p.data.category))];
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{t(locale, 'blog.title')} - HRT药典</title>
+  <meta name="description" content={t(locale, 'blog.subtitle')} />
+  <link rel="canonical" href="https://hrtyaku.com/zh/blog/" />
+  <meta name="theme-color" content="#0D0B14" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="zh-CN" href="https://hrtyaku.com/zh/blog/" />
+  <link rel="alternate" hreflang="x-default" href="https://hrtyaku.com/zh/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={`${t(locale, 'blog.title')} - HRT药典`} />
+  <meta property="og:description" content={t(locale, 'blog.subtitle')} />
+  <meta property="og:url" content="https://hrtyaku.com/zh/blog/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:image" content="https://hrtyaku.com/og-image.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
+  </noscript>
+
+  <style is:global>
+    @import '../../../styles/global.css';
+    @import '../../../styles/glass.css';
+    @import '../../../styles/blog.css';
+  </style>
+
+  <Analytics />
+  <SpeedInsights />
+</head>
+
+<body class="blog-page">
+  <BlogHeader />
+
+  <main class="blog-main">
+    <BlogBreadcrumbs />
+
+    <div class="blog-index__header">
+      <h1 class="blog-index__title">{t(locale, 'blog.title')}</h1>
+      <p class="blog-index__subtitle">{t(locale, 'blog.subtitle')}</p>
+    </div>
+
+    <!-- Category filter (static — all shown, JS-free) -->
+    {categories.length > 1 && (
+      <div class="blog-filter" role="list" aria-label="Category filter">
+        {categories.map((cat) => (
+          <span class="blog-filter__btn" role="listitem">{getCategoryLabel(cat, locale)}</span>
+        ))}
+      </div>
+    )}
+
+    <!-- Post grid -->
+    <div class="blog-grid">
+      {posts.map((post) => {
+        const { title, description, publishDate, category } = post.data;
+        const url = getBlogUrl(post);
+        const readingTime = getReadingTime(description, locale);
+        const dateStr = publishDate.toLocaleDateString('zh-CN', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        });
+        return (
+          <a href={url} class="blog-card">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">{getCategoryLabel(category, locale)}</span>
+              <span>{dateStr}</span>
+            </div>
+            <h2 class="blog-card__title">{title}</h2>
+            <p class="blog-card__desc">{description}</p>
+            <div class="blog-card__footer">
+              <span>{t(locale, 'blog.readingTime').replace('{min}', String(readingTime))}</span>
+              <span class="blog-card__read-more">{t(locale, 'blog.readMore')}</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    {posts.length === 0 && (
+      <p style="text-align: center; color: var(--color-text-muted); padding: var(--space-2xl);">
+        暂无文章，敬请期待。
+      </p>
+    )}
+  </main>
+
+  <footer class="blog-site-footer">
+    <p>HRT药典 &middot; 循证 &middot; 减害 &middot; 引导就医</p>
+    <p>{t(locale, 'footer.notice')}</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,218 @@
+---
+/**
+ * BlogPostLayout — Full standalone layout for blog/article pages.
+ * Independent from Starlight; reuses design tokens from global.css + glass.css.
+ */
+import BlogHeader from '../components/layout/BlogHeader.astro';
+import BlogBreadcrumbs from '../components/ui/BlogBreadcrumbs.astro';
+import BlogPostJsonLd from '../components/seo/BlogPostJsonLd.astro';
+import RelatedDocs from '../components/ui/RelatedDocs.astro';
+import { t, getLocale } from '../i18n/ui';
+import { getRelatedPosts, getCategoryLabel, getBlogUrl, getBlogSlug } from '../utils/blogHelpers';
+import { getReadingTime } from '../utils/readingTime';
+import type { BlogEntry } from '../utils/blogHelpers';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+interface Props {
+  entry: BlogEntry;
+  headings: { depth: number; slug: string; text: string }[];
+  rawContent: string;
+}
+
+const { entry, headings, rawContent } = Astro.props;
+const { title, description, publishDate, updatedDate, tags, category, locale: postLocale, relatedDocs, author } = entry.data;
+const locale = getLocale(undefined, Astro.url.pathname);
+
+const canonicalUrl = `https://hrtyaku.com${getBlogUrl(entry)}`;
+const readingTime = getReadingTime(rawContent, postLocale);
+const relatedPosts = await getRelatedPosts(entry.id, tags, postLocale, 3);
+
+const dateStr = publishDate.toLocaleDateString(postLocale === 'zh' ? 'zh-CN' : postLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const updatedStr = updatedDate
+  ? updatedDate.toLocaleDateString(postLocale === 'zh' ? 'zh-CN' : postLocale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  : null;
+
+const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
+const htmlLang = langMap[postLocale] ?? 'zh-CN';
+
+// hreflang alternates
+const localeMap = [
+  { code: 'zh-CN', prefix: '/zh/' },
+  { code: 'en', prefix: '/en/' },
+  { code: 'ja', prefix: '/ja/' },
+  { code: 'ko', prefix: '/ko/' },
+];
+const slug = getBlogSlug(entry);
+
+// TOC items (h2 and h3 only)
+const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+<!doctype html>
+<html lang={htmlLang} data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} - HRT药典</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="theme-color" content="#0D0B14" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- hreflang -->
+  {localeMap.map(({ code, prefix }) => (
+    <link rel="alternate" hreflang={code} href={`https://hrtyaku.com${prefix}blog/${slug}/`} />
+  ))}
+  <link rel="alternate" hreflang="x-default" href={`https://hrtyaku.com/zh/blog/${slug}/`} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:locale" content={htmlLang.replace('-', '_')} />
+  <meta property="og:site_name" content="HRT药典" />
+  <meta property="og:image" content="https://hrtyaku.com/og-image.svg" />
+  <meta property="article:published_time" content={publishDate.toISOString()} />
+  {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+  {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://hrtyaku.com/og-image.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
+  </noscript>
+
+  <!-- Styles -->
+  <style is:global>
+    @import '../styles/global.css';
+    @import '../styles/glass.css';
+    @import '../styles/blog.css';
+  </style>
+
+  <BlogPostJsonLd
+    title={title}
+    description={description}
+    publishDate={publishDate}
+    updatedDate={updatedDate}
+    tags={tags}
+    url={canonicalUrl}
+    locale={postLocale}
+  />
+  <Analytics />
+  <SpeedInsights />
+</head>
+
+<body class="blog-page">
+  <BlogHeader />
+
+  <main class="blog-main">
+    <article class="blog-article">
+      <div class="blog-article__body">
+        <BlogBreadcrumbs title={title} />
+
+        <div class="blog-article__meta">
+          <span class="blog-article__category">{getCategoryLabel(category, locale)}</span>
+          <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+          <time class="blog-article__date" datetime={publishDate.toISOString()}>
+            {t(locale, 'blog.publishedOn')} {dateStr}
+          </time>
+          {updatedStr && (
+            <>
+              <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+              <time class="blog-article__date" datetime={updatedDate!.toISOString()}>
+                {t(locale, 'blog.updatedOn')} {updatedStr}
+              </time>
+            </>
+          )}
+          <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+          <span class="blog-article__reading-time">
+            {t(locale, 'blog.readingTime').replace('{min}', String(readingTime))}
+          </span>
+        </div>
+
+        <h1 class="blog-article__title">{title}</h1>
+
+        <div class="blog-article__content">
+          <slot />
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="blog-disclaimer">
+          {t(locale, 'blog.disclaimer')}
+        </div>
+
+        <!-- Related docs (hub-and-spoke) -->
+        <RelatedDocs relatedDocs={relatedDocs} />
+
+        <!-- Related blog posts -->
+        {relatedPosts.length > 0 && (
+          <section class="blog-related">
+            <h2 class="blog-related__title">{t(locale, 'blog.relatedArticles')}</h2>
+            <div class="blog-related__list">
+              {relatedPosts.map((post) => (
+                <a href={getBlogUrl(post)} class="blog-related__link">
+                  <span class="blog-related__icon" aria-hidden="true">&#128196;</span>
+                  {post.data.title}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Footer navigation -->
+        <div class="blog-footer-nav">
+          <a href={`/${locale}/blog/`}>{t(locale, 'blog.backToIndex')}</a>
+          <a href={`/${locale}/`}>{t(locale, 'blog.backToDocs')}</a>
+        </div>
+      </div>
+
+      <!-- Table of Contents (desktop sidebar) -->
+      {tocItems.length > 0 && (
+        <nav class="blog-toc" aria-label="Table of contents">
+          <div class="blog-toc__title">Contents</div>
+          <ul class="blog-toc__list">
+            {tocItems.map((item) => (
+              <li class="blog-toc__item">
+                <a
+                  href={`#${item.slug}`}
+                  class:list={['blog-toc__link', { 'blog-toc__link--h3': item.depth === 3 }]}
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </article>
+  </main>
+
+  <footer class="blog-site-footer">
+    <p>HRT药典 &middot; 循证 &middot; 减害 &middot; 引导就医</p>
+    <p>{t(locale, 'footer.notice')}</p>
+  </footer>
+</body>
+</html>

@@ -70,6 +70,22 @@ export const ui = {
 
     // DrugBrandGallery
     'brandGallery.viewAll': '查看全部品牌索引 →',
+
+    // Blog
+    'blog.title': '专题文章',
+    'blog.subtitle': '深入解析 HRT 常见问题',
+    'blog.readMore': '阅读全文',
+    'blog.readingTime': '约 {min} 分钟',
+    'blog.publishedOn': '发布于',
+    'blog.updatedOn': '更新于',
+    'blog.relatedDocs': '相关参考资料',
+    'blog.relatedArticles': '相关文章',
+    'blog.backToIndex': '← 返回文章列表',
+    'blog.backToDocs': '← 返回药典',
+    'blog.allCategories': '全部',
+    'blog.breadcrumb.home': '首页',
+    'blog.breadcrumb.blog': '专题文章',
+    'blog.disclaimer': '本文仅供参考，不构成医疗建议。具体用药方案请咨询专业医疗人员。',
   },
 
   en: {
@@ -137,6 +153,22 @@ export const ui = {
 
     // DrugBrandGallery
     'brandGallery.viewAll': 'View full brand index →',
+
+    // Blog
+    'blog.title': 'Articles',
+    'blog.subtitle': 'In-depth answers to common HRT questions',
+    'blog.readMore': 'Read more',
+    'blog.readingTime': '{min} min read',
+    'blog.publishedOn': 'Published',
+    'blog.updatedOn': 'Updated',
+    'blog.relatedDocs': 'Related Resources',
+    'blog.relatedArticles': 'Related Articles',
+    'blog.backToIndex': '← Back to articles',
+    'blog.backToDocs': '← Back to docs',
+    'blog.allCategories': 'All',
+    'blog.breadcrumb.home': 'Home',
+    'blog.breadcrumb.blog': 'Articles',
+    'blog.disclaimer': 'This article is for informational purposes only and does not constitute medical advice. Consult a qualified healthcare provider for treatment decisions.',
   },
 
   ja: {
@@ -204,6 +236,22 @@ export const ui = {
 
     // DrugBrandGallery
     'brandGallery.viewAll': 'すべてのブランド索引を見る →',
+
+    // Blog
+    'blog.title': '特集記事',
+    'blog.subtitle': 'HRTの疑問を詳しく解説',
+    'blog.readMore': '続きを読む',
+    'blog.readingTime': '約{min}分',
+    'blog.publishedOn': '公開日',
+    'blog.updatedOn': '更新日',
+    'blog.relatedDocs': '関連ドキュメント',
+    'blog.relatedArticles': '関連記事',
+    'blog.backToIndex': '← 記事一覧へ',
+    'blog.backToDocs': '← 薬典へ',
+    'blog.allCategories': 'すべて',
+    'blog.breadcrumb.home': 'ホーム',
+    'blog.breadcrumb.blog': '特集記事',
+    'blog.disclaimer': 'この記事は情報提供のみを目的としており、医療アドバイスではありません。治療の決定は医療専門家にご相談ください。',
   },
 
   ko: {
@@ -271,6 +319,22 @@ export const ui = {
 
     // DrugBrandGallery
     'brandGallery.viewAll': '전체 브랜드 색인 보기 →',
+
+    // Blog
+    'blog.title': '특집 기사',
+    'blog.subtitle': 'HRT 자주 묻는 질문 심층 해설',
+    'blog.readMore': '전체 읽기',
+    'blog.readingTime': '약 {min}분',
+    'blog.publishedOn': '게시일',
+    'blog.updatedOn': '업데이트',
+    'blog.relatedDocs': '관련 문서',
+    'blog.relatedArticles': '관련 기사',
+    'blog.backToIndex': '← 기사 목록으로',
+    'blog.backToDocs': '← 약전으로',
+    'blog.allCategories': '전체',
+    'blog.breadcrumb.home': '홈',
+    'blog.breadcrumb.blog': '특집 기사',
+    'blog.disclaimer': '이 기사는 정보 제공 목적으로만 작성되었으며 의료 조언이 아닙니다. 치료 결정은 의료 전문가와 상담하세요.',
   },
 } as const;
 

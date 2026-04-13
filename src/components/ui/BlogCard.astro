@@ -1,0 +1,38 @@
+---
+/**
+ * BlogCard — Glass morphism card for the blog index grid.
+ */
+import { t, getLocale } from '../../i18n/ui';
+import { getCategoryLabel, getBlogUrl } from '../../utils/blogHelpers';
+import { getReadingTime } from '../../utils/readingTime';
+import type { BlogEntry } from '../../utils/blogHelpers';
+
+interface Props {
+  entry: BlogEntry;
+}
+
+const { entry } = Astro.props;
+const { title, description, publishDate, category, locale: postLocale } = entry.data;
+const locale = getLocale(undefined, Astro.url.pathname);
+const url = getBlogUrl(entry);
+
+const readingTime = getReadingTime(description, postLocale);
+const dateStr = publishDate.toLocaleDateString(postLocale === 'zh' ? 'zh-CN' : postLocale, {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={url} class="blog-card">
+  <div class="blog-card__meta">
+    <span class="blog-card__category">{getCategoryLabel(category, locale)}</span>
+    <span>{dateStr}</span>
+  </div>
+  <h3 class="blog-card__title">{title}</h3>
+  <p class="blog-card__desc">{description}</p>
+  <div class="blog-card__footer">
+    <span>{t(locale, 'blog.readingTime').replace('{min}', String(readingTime))}</span>
+    <span class="blog-card__read-more">{t(locale, 'blog.readMore')}</span>
+  </div>
+</a>

@@ -1,0 +1,37 @@
+---
+/**
+ * RelatedDocs — Links from a blog post back to docs pages (hub-and-spoke).
+ */
+import { t, getLocale } from '../../i18n/ui';
+
+interface Props {
+  relatedDocs: string[];
+}
+
+const { relatedDocs } = Astro.props;
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+
+// Build links from doc slugs
+const links = relatedDocs.map((slug) => ({
+  href: `/${locale}/${slug}/`,
+  label: slug
+    .split('/')
+    .pop()!
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase()),
+}));
+---
+
+{links.length > 0 && (
+  <section class="blog-related">
+    <h2 class="blog-related__title">{t(locale, 'blog.relatedDocs')}</h2>
+    <div class="blog-related__list">
+      {links.map(({ href, label }) => (
+        <a href={href} class="blog-related__link">
+          <span class="blog-related__icon" aria-hidden="true">&#128218;</span>
+          {label}
+        </a>
+      ))}
+    </div>
+  </section>
+)}
