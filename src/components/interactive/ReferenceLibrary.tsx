@@ -272,6 +272,7 @@ export default function ReferenceLibrary() {
 
   return (
     <div style={s.container} role="region" aria-label={ui.regionLabel}>
+      <style>{`.rl-tab-btn:focus, .rl-tab-btn:focus-visible { outline: none !important; box-shadow: none !important; }`}</style>
       <div style={s.title}>
         <span style={s.iconBadge}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -296,6 +297,7 @@ export default function ReferenceLibrary() {
       <div style={s.tabs} role="tablist">
         <button
           type="button"
+          className="rl-tab-btn"
           role="tab"
           aria-selected={category === 'all'}
           style={category === 'all' ? s.tabActive : s.tab}
@@ -310,6 +312,7 @@ export default function ReferenceLibrary() {
             <button
               key={cat}
               type="button"
+              className="rl-tab-btn"
               role="tab"
               aria-selected={category === cat}
               style={category === cat ? s.tabActive : s.tab}

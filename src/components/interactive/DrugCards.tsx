@@ -289,12 +289,14 @@ export default function DrugCards() {
 
   return (
     <div style={S.container}>
+      <style>{`.dc-filter-btn:focus, .dc-filter-btn:focus-visible { outline: none !important; box-shadow: none !important; }`}</style>
       <div style={S.hint}>{t.longPressHint}</div>
 
       <div style={S.filterRow}>
         {categories.map((c) => (
           <button
             key={c.key}
+            className="dc-filter-btn"
             onClick={() => setCategory(c.key)}
             style={{ ...S.filterBtn, ...(category === c.key ? S.filterBtnActive : {}) }}
             aria-pressed={category === c.key}

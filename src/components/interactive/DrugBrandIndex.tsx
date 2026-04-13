@@ -447,6 +447,7 @@ export default function DrugBrandIndex() {
 
   return (
     <div style={S.container}>
+      <style>{`.dbi-filter-btn:focus, .dbi-filter-btn:focus-visible { outline: none !important; box-shadow: none !important; }`}</style>
       {/* Disclaimer banner */}
       <div style={S.disclaimer} role="alert">
         {t.disclaimer}
@@ -469,6 +470,7 @@ export default function DrugBrandIndex() {
         {regions.map((r) => (
           <button
             key={r.key}
+            className="dbi-filter-btn"
             onClick={() => setRegion(r.key)}
             style={{
               ...S.filterBtn,
@@ -486,6 +488,7 @@ export default function DrugBrandIndex() {
         {categories.map((c) => (
           <button
             key={c.key}
+            className="dbi-filter-btn"
             onClick={() => setCategory(c.key)}
             style={{
               ...S.filterBtn,
