@@ -107,6 +107,7 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
   .risk-grid {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: stretch;
     gap: var(--space-lg);
     margin: var(--space-xl) 0 var(--space-2xl);
   }
@@ -128,7 +129,12 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
     flex-direction: column;
   }
 
+  .risk-item > :global(.risk-card) {
+    flex: 1 0 auto;
+  }
+
   .risk-citation {
+    flex-shrink: 0;
     font-size: 0.8125rem;
     color: var(--color-text-muted);
     line-height: 1.6;

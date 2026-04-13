@@ -23,6 +23,7 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
 ## 7.1 Known Risks of HRT
 
 <div class="risk-grid">
+  <div class="risk-item">
   <RiskCard
     title="Deep Vein Thrombosis (DVT)"
     category="Emergency Risk"
@@ -33,6 +34,8 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">Oral estradiol VTE risk is significantly higher than transdermal routes<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Annual incidence approximately 0.2-0.5%; smoking and age further increase risk.</p>
+  </div>
+  <div class="risk-item">
 
   <RiskCard
     title="Hepatic Injury"
@@ -44,6 +47,8 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">Both CPA and bicalutamide have hepatotoxicity case reports. EMA has issued warnings regarding CPA liver injury risk<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  </div>
+  <div class="risk-item">
 
   <RiskCard
     title="Cardiovascular Complications"
@@ -55,6 +60,8 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">Oral route carries higher cardiovascular risk than transdermal due to hepatic first-pass effect on coagulation factors<CitationRef id="canonico-2018" num={1} authors="Canonico et al." year={2018} />.</p>
+  </div>
+  <div class="risk-item">
 
   <RiskCard
     title="Meningioma"
@@ -66,6 +73,8 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">CPA daily dose ≥25 mg: meningioma risk OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist et al." year={2026} title="CPA-associated meningioma in transgender women" />. EMA restricts doses ≥25 mg/day<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+  </div>
+  <div class="risk-item">
 
   <RiskCard
     title="Mood Changes & Depression"
@@ -77,6 +86,8 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">CPA progestogenic activity can cause mood changes and depression, incidence approximately 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  </div>
+  <div class="risk-item">
 
   <RiskCard
     title="Prolactin Elevation"
@@ -88,6 +99,7 @@ The risk profiles below are derived from the Endocrine Society 2017 guidelines<C
   />
 
   <p class="risk-citation">Both estradiol and CPA can elevate prolactin. PRL >50 ng/mL requires pituitary prolactinoma workup<CitationRef id="hembree-2017" num={6} authors="Hembree et al." year={2017} />.</p>
+  </div>
 </div>
 
 ## 7.2 Symptoms Requiring Immediate Medical Attention
@@ -188,6 +200,7 @@ If you are experiencing severe psychological distress or thoughts of self-harm, 
   .risk-grid {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: stretch;
     gap: var(--space-lg);
     margin: var(--space-xl) 0 var(--space-2xl);
   }
@@ -202,5 +215,24 @@ If you are experiencing severe psychological distress or thoughts of self-harm, 
     .risk-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .risk-item > :global(.risk-card) {
+    flex: 1 0 auto;
+  }
+
+  .risk-citation {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid rgba(200, 75, 124, 0.2);
   }
 `}</style>
