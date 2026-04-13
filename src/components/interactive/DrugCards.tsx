@@ -149,7 +149,6 @@ const S: Record<string, CSSProperties> = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
     gap: '1rem',
-    alignItems: 'start',
   },
   card: {
     display: 'flex',
