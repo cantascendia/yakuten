@@ -4,7 +4,7 @@
 
 ### 愿此行，抵达真实的自己
 
-*May this journey bring you closer to your true self*
+*Per iter ad se verum*
 
 **循证 · 减害 · 引导就医**
 
