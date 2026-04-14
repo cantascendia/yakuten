@@ -1,12 +1,12 @@
 ﻿import { useState, useRef, useEffect, useCallback } from 'react';
 import type { CSSProperties } from 'react';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -83,6 +83,30 @@ const UI_COPY = {
       'HRT 開始前に何を準備すべきですか？',
     ],
   },
+  ko: {
+    title: 'AI 어시스턴트',
+    close: '닫기',
+    disclaimer: '정보 안내 전용입니다. 개별 용량 제안은 하지 않습니다. 긴급 시 즉시 지역 응급 서비스를 이용해 주세요.',
+    emptyTitle: '이 AI 어시스턴트는 HRT 정보 안내용입니다.',
+    emptySubtitle: '기초 지식, 위험 인식, 혈액 검사 해석, 읽기 시작할 페이지 등을 질문할 수 있습니다.',
+    thinking: '생각 중...',
+    errorPrefix: '오류: ',
+    inputPlaceholder: '질문을 입력하세요...',
+    inputLabel: '질문 입력',
+    send: '전송',
+    sendLabel: '메시지 전송',
+    loading: '전송 중...',
+    rateLimitError: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.',
+    serviceUnavailable: '서비스가 일시적으로 사용할 수 없습니다',
+    emptyResponse: '죄송합니다, 응답을 받지 못했습니다. 잠시 후 다시 시도해 주세요.',
+    unknownError: '알 수 없는 오류',
+    suggestions: [
+      '에스트라디올의 일반적인 목표 범위는?',
+      '어떤 증상이면 즉시 복용을 중단해야 하나요?',
+      '검사 수치가 높을 때 어떻게 해석하나요?',
+      'HRT 시작 전에 무엇을 준비해야 하나요?',
+    ],
+  },
 } as const;
 
 /* ================================
@@ -100,7 +124,7 @@ function renderMarkdown(text: string): string {
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/^[*\-] (.+)$/gm, '<li style="margin-left:1.2em;list-style:disc">$1</li>')
     .replace(/^\d+\.\s(.+)$/gm, '<li style="margin-left:1.2em;list-style:decimal">$1</li>')
-    .replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.08);padding:0.1em 0.3em;font-size:0.85em;font-family:var(--font-code)">$1</code>')
+    .replace(/`([^`]+)`/g, '<code style="background:var(--color-white-alpha-08);padding:0.1em 0.3em;font-size:0.85em;font-family:var(--font-code)">$1</code>')
     .replace(/\n/g, '<br/>');
 }
 
@@ -164,12 +188,12 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
       fontSize: '0.6875rem',
       fontFamily: 'var(--font-mono)',
       color: 'var(--color-safe)',
-      border: '1px solid rgba(76, 175, 80, 0.3)',
+      border: '1px solid var(--color-safe-alpha-30)',
       letterSpacing: '0.05em',
     },
     disclaimer: {
       padding: '6px 14px',
-      background: 'rgba(255, 152, 0, 0.08)',
+      background: 'var(--color-caution-alpha-08)',
       borderBottom: '1px solid var(--color-outline-20)',
       fontSize: '0.6875rem',
       color: 'var(--color-caution)',
@@ -226,7 +250,7 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
     },
     msgUser: {
       alignSelf: 'flex-end',
-      background: 'rgba(200, 75, 124, 0.15)',
+      background: 'var(--color-primary-alpha-15)',
       borderLeft: '3px solid var(--color-primary)',
       padding: '6px 10px',
       maxWidth: '90%',
@@ -238,7 +262,7 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
     },
     msgAssistant: {
       alignSelf: 'flex-start',
-      background: 'rgba(255,255,255,0.03)',
+      background: 'var(--color-white-alpha-03)',
       borderLeft: '3px solid var(--color-accent)',
       padding: '6px 10px',
       maxWidth: '90%',
@@ -298,7 +322,7 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
       gap: '8px',
       alignSelf: 'flex-start',
       padding: '8px 12px',
-      background: 'rgba(212, 168, 83, 0.08)',
+      background: 'var(--color-accent-alpha-08)',
       borderLeft: '3px solid var(--color-accent)',
       fontSize: '0.75rem',
       color: 'var(--color-accent)',
@@ -315,7 +339,7 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
       background: 'var(--color-accent)',
     },
     errorBox: {
-      background: 'rgba(244, 67, 54, 0.1)',
+      background: 'var(--color-danger-alpha-10)',
       borderLeft: '4px solid var(--color-danger)',
       padding: '6px 10px',
       color: 'var(--color-danger)',

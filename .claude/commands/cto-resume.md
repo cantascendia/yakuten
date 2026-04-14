@@ -4,10 +4,10 @@
 
 ## 执行步骤
 
-1. **读取操作手册**：���取 `playbook/handbook.md` 恢复工作规范
+1. **读取操作手册**：读取 `playbook/handbook.md` 恢复工作规范
 2. **恢复项目理解**：
    - 读取 `docs/ai-cto/` 下所有记忆文件（手册 §17.6 顺序）
-   - PRODUCT-VISION → TECH-VISION → ARCHITECTURE �� STATUS → DECISIONS → REVIEW-BACKLOG → COMPETITOR-ANALYSIS → TECH-STACK
+   - PRODUCT-VISION → TECH-VISION → ARCHITECTURE → STATUS → DECISIONS → REVIEW-BACKLOG → COMPETITOR-ANALYSIS → TECH-STACK
 3. **验证是否过时**：读取最新代码（git log + 关键文件），与记忆文件对比
 4. **输出恢复确认**（手册 §17.6 模板）：
    - 读取了哪些文件

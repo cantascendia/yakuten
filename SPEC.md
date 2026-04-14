@@ -346,7 +346,7 @@ yakuten/
 | 内容格式 | MDX | 写文章的同时可嵌入交互组件 |
 | 搜索 | Pagefind | 纯静态，零后端，支持中文分词 |
 | i18n | Astro 原生 | /zh/ /en/ /ja/ /ko/ 路由 |
-| AI API | Claude Sonnet via Vercel Edge Function | 前端不暴露 API key |
+| AI API | Google Gemini (gemini-3-flash-preview) via Vercel Edge Function | 前端不暴露 API key |
 | 血检工具 | 纯前端 JS | 不传输任何个人健康数据 |
 | 部署 | Vercel | 免费静态托管 + Edge Functions |
 | 字体 | 自托管 Google Fonts | 不依赖外部 CDN，中国可访问 |

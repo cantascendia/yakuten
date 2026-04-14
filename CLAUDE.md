@@ -31,7 +31,7 @@ Primary handbook:
 - **Search**: Pagefind (static, supports Chinese)
 - **i18n**: Astro native routing (/zh/, /en/, /ja/, /ko/)
 - **Deploy**: Vercel (static + Edge Functions)
-- **AI**: Claude Sonnet via Vercel Edge Function
+- **AI**: Google Gemini (gemini-3-flash-preview) via Vercel Edge Function
 - **Analytics**: Umami (self-hosted, privacy-first)
 - **Language**: TypeScript strict mode
 
@@ -99,9 +99,12 @@ npm run astro check  # TypeScript checking
 | CONTENT.md | Content specification (page frameworks, medical content, references) |
 | AGENTS.md | AI Agent operating rules |
 | src/data/drugs.json | Structured drug data |
+| src/data/drug-brands.json | Drug brand information by region |
 | src/data/blood-ranges.json | Blood test reference ranges |
 | src/data/references.json | Citation database |
 | src/data/hospitals.json | Trans-friendly hospitals |
+| src/data/hotlines.json | Crisis hotline numbers |
+| src/data/injection-doses.json | Injection dose conversion table |
 
 ## Default Working Rules
 

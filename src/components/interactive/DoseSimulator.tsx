@@ -508,7 +508,7 @@ const s: Record<string, CSSProperties> = {
     fontFamily: 'var(--font-body)',
   },
   warningBox: {
-    background: 'rgba(255, 152, 0, 0.1)',
+    background: 'var(--color-caution-alpha-08)',
     borderLeft: '4px solid var(--color-caution)',
     padding: 'var(--space-sm) var(--space-md)',
     marginTop: 'var(--space-md)',
@@ -518,7 +518,7 @@ const s: Record<string, CSSProperties> = {
     fontFamily: 'var(--font-body)',
   },
   dangerBox: {
-    background: 'rgba(244, 67, 54, 0.1)',
+    background: 'var(--color-danger-alpha-10)',
     borderLeft: '4px solid var(--color-danger)',
     padding: 'var(--space-sm) var(--space-md)',
     marginTop: 'var(--space-md)',
@@ -772,7 +772,7 @@ export default function DoseSimulator() {
             </thead>
             <tbody>
               {DRUGS.map(d => (
-                <tr key={d.id} style={d.id === drugId ? { background: 'rgba(200,75,124,0.08)' } : undefined}>
+                <tr key={d.id} style={d.id === drugId ? { background: 'var(--color-primary-alpha-15)' } : undefined}>
                   <td style={s.td}>{d.name}</td>
                   <td style={s.td}>{d.route}</td>
                   <td style={s.tdMono}>{formatValueWithUnit(d.halfLifeHours, 'h')}</td>
