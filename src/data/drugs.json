@@ -1397,7 +1397,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每3个月（肝毒性需定期监测）"
+        "frequency": "前6月每月 → 之后每3个月（肝毒性需定期监测）"
       }
     ],
     "sideEffects": [

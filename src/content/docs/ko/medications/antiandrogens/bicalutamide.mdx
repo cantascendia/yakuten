@@ -1,9 +1,9 @@
 ---
-title: "비칼루타미드"
-description: "트랜스 HRT에서 비칼루타미드의 오프라벨 사용. 테스토스테론을 낮추지 않고 수용체를 차단하는 방식, 간 독성 위험 관리, CPA와의 병용 금기."
+title: 비칼루타미드
+description: 트랜스젠더 HRT에서 비칼루타미드의 오프라벨 사용 — 테스토스테론을 낮추지 않고 수용체를 차단하는 기전, 간독성·폐독성 모니터링, CPA와의 병용 금기, 최신 트랜스젠더 인구 연구 데이터.
 evidenceLevel: C
-lastReviewed: 2026-04-07
-references: [coleman-2022, hembree-2017]
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
 sidebar:
   order: 3
 ---
@@ -17,114 +17,165 @@ import DangerBox from '../../../../../components/ui/DangerBox.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
 
 <DrugInfoBox
-  name="Bicalutamide (Casodex)"
-  nameCN="Bicalutamide (比卡鲁胺)"
+  name="Bicalutamide"
+  nameCN="비칼루타미드 (比卡鲁胺)"
   category="antiandrogen"
-  route="Oral"
+  route="경구 투여 (Oral)"
   evidenceLevel="C"
 >
-Bicalutamide is an intensely powerful, non-steroidal androgen receptor (AR) antagonist originally designed to fight prostate cancer. Its use within transgender HRT is strictly "Off-Label" and it is notably absent from the recommended regimens of both WPATH SOC 8 and the Endocrine Society 2017 Guidelines. Nonetheless, it remains highly popular in the global DIY community.
+  비칼루타미드는 원래 전립선암 치료를 위해 개발된 강력한 비스테로이드성 안드로겐 수용체(AR) 길항제입니다. 트랜스젠더 HRT에서는 **최후의 수단으로 사용하는 항안드로겐제**로 — CPA, 스피로노락톤, GnRH 작용제 모두 사용 불가능한 경우에만 고려합니다. WPATH SOC 8은 일상적인 GAHT에 비칼루타미드를 명시적으로 권고하지 않습니다.
 </DrugInfoBox>
 
-<WarningBox title="Off-Label Medical Use">
-Operating Bicalutamide as part of gender-affirming hormone therapy is entirely "off-label"<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. This implies:
-- The manufacturer never tested or approved it for this purpose.
-- Clinical safety data tracking long-term outcomes in trans women is exceptionally sparse.
-- Neither major governing medical body (WPATH / Endocrine Society) recommends utilizing it as a standard anti-androgen.
+<WarningBox title="오프라벨 사용 — Off-Label Use">
+트랜스젠더 여성의 HRT에 비칼루타미드를 사용하는 것은 **오프라벨 사용(Off-Label Use)**에 해당합니다<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- WPATH SOC 8은 비칼루타미드에 드물지만 치명적일 수 있는 간독성이 있으며, 현재 모니터링으로는 완전히 예방할 수 없다고 명시합니다
+- 의약품 설명서에 '성별 확정 호르몬 치료'라는 적응증이 없습니다
+- 2017 Endocrine Society 가이드라인에서 비칼루타미드는 논의되지 않았습니다
+- 현재 트랜스젠더 인구 데이터는 소규모 관찰 연구(총 약 170건)에서 나온 것입니다
 </WarningBox>
 
-<DangerBox title="Fatal Combo: Bicalutamide + CPA">
-You must **NEVER** take Bicalutamide and Cyproterone Acetate (CPA) at the same time<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+<DangerBox title="CPA와 병용 금지">
+비칼루타미드와 CPA(사이프로테론 아세테이트/사이프로테론)는 **절대 동시에 사용해서는 안 됩니다**.
 
-Both of these medications possess heavy hepatotoxic (liver-damaging) potential. Stacking them functionally guarantees catastrophic liver strain. Severe liver damage is often fundamentally asymptomatic until jaundice sets in, at which point the damage is critical.
+두 약물 모두 간독성 가능성이 있으며, 병용 시 간 손상 위험이 중첩될 수 있습니다. 이 금기는 약리학적 안전 원칙에 근거합니다 — 현재까지 두 약물의 병용 안전성을 직접 연구한 데이터는 없지만, 각각의 간독성 특성을 고려할 때 어떠한 책임 있는 임상 실무도 병용을 허용해서는 안 됩니다.
 
-**If you are swapping between CPA and Bicalutamide, you must hard-stop the first drug, wait at least 2 to 4 weeks, verify via a blood test that your liver enzymes are normal, and ONLY THEN start the second drug.**
+**CPA에서 비칼루타미드로 전환하거나 그 반대의 경우, 의사의 지도 하에 먼저 이전 약물을 중단하고, 최소 2~4주의 간격을 두어 간 기능이 정상임을 확인한 후 다른 약물을 시작해야 합니다.**
 </DangerBox>
 
-## Pharmacology
+## 약리학적 특성
 
-### How It Works
+### 작용 기전
 
-Bicalutamide possesses one of the highest binding affinities to the androgen receptor of any drug in existence<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />:
+비칼루타미드는 현재 임상에서 가장 높은 친화도를 가진 비스테로이드성 AR 길항제 중 하나입니다:
 
-1. **Pure Receptor Blockade:** It aggressively binds to the androgen cellular receptors, physically blocking Testosterone (T) and DHT from bonding to the cell.
-2. **ZERO Testosterone Reduction:** It does not halt the production of testosterone.
-3. **No HPG Axis Interference:** It does not signal the hypothalamus or pituitary gland to stop creating sex hormones.
+1. **강력한 AR 차단** (유일한 기전): 안드로겐 수용체에 경쟁적으로 결합하여 T와 DHT가 생물학적 효과를 발휘하지 못하도록 차단합니다
+2. **테스토스테론 수치 감소 없음**: 피드백 기전으로 인해 T 수치가 오히려 상승할 수 있습니다
+3. **GnRH-LH/FSH 축에 영향 없음**: 시상하부-뇌하수체-성선 축을 억제하지 않습니다
 
-### The Problem: Spiking Testosterone Levels
+### 약동학
 
-This is the most confusing element of Bicalutamide for average users<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
+- **경구 생체이용률**: 약 90%
+- **정상 상태 반감기**: 5~6일 — 하루 복용을 놓쳐도 혈중 농도에 미치는 영향은 크지 않지만, 자주 놓쳐서는 안 됩니다
+- **최고 혈중 농도 도달 시간**: 약 31시간
+- **정상 상태 도달 시간**: 약 4주
 
-- Because Bica blocks the receptors, the hypothalamus panics, sensing that no testosterone is "working."
-- The brain commands the testicles to produce *even more* testosterone to fix the perceived shortage.
-- As a result, **your blood testosterone levels will actually double or spike massively** while taking Bicalutamide.
-- While the massive amount of T in your blood cannot do anything (because the receptors are blocked by Bica), some of that excess T will aromotize (convert) into estradiol. This frequently triggers breast growth even without external estrogen.
+### T 수치 상승 문제
 
-**The Danger:** If you ever miss your doses or stop taking Bicalutamide cold turkey, the massive stockpile of testosterone floating in your blood will immediately plunge into your unblocked receptors, causing a violent, rapid re-masculinization event<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. 
+이는 비칼루타미드를 GAHT에 사용할 때 나타나는 특수한 현상입니다<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
 
-## Dosage Recommendations
+- 비칼루타미드가 AR을 차단하면, 시상하부는 안드로겐 음성 피드백을 감지하지 못합니다
+- 뇌하수체는 보상적으로 LH 분비를 증가시켜 고환이 더 많은 T를 합성하도록 자극합니다
+- 혈청 T 수치는 투약 전의 1.5~2배까지 상승할 수 있습니다
+- T의 생물학적 효과는 차단되지만, 높은 수치의 T는 방향화효소를 통해 에스트라디올로 전환될 수 있습니다
+- 전립선암 환자에서 이러한 T 상승이 때때로 남성 유방 발달을 유발합니다
+
+**트랜스젠더 사용자에게 주는 시사점**: AR이 차단되더라도, 높은 T 수치는 복약을 중단하거나 순응도가 낮아질 경우 남성화 효과가 빠르게 회복될 수 있음을 의미합니다.
+
+## 용량 권고
 
 <DoseTable
-  headers={['Protocol', 'Dose', 'Notes', 'Sourcing']}
+  headers={['방법', '용량', '설명', '출처']}
   rows={[
-    ['Starting Dose', '25 mg/day', 'Evaluates liver tolerability.', 'Clinical Consensus'],
-    ['Standard Range', '25-50 mg/day', 'Adjusted based on physical feminization markers.', 'ES 2017 (Ceiling reference)'],
-    ['Maximum Limit', '50 mg/day', 'Going beyond 50mg invites severe liver toxicity without added GAHT benefits.', 'ES 2017'],
+    ['시작/일반', '25 mg/일', '현재 대부분의 트랜스젠더 연구에서 사용되는 저용량', 'Angus 2024; Burgener 2025'],
+    ['조정 범위', '25~50 mg/일', '임상 반응에 따라 조정', 'Neyman 2019 (50mg); Angus 2024 (25mg)'],
+    ['절대 상한선', '50 mg/일', '더 높은 용량은 추가 효과 없이 간독성 위험만 증가', 'FDA 라벨 (전립선암 병용요법 용량)'],
   ]}
 />
 
-<WarningBox title="Blood Tests Are Useless Here">
-Because Bicalutamide causes your testosterone levels to spike wildly, **you cannot use a standard Testosterone blood test to verify if the drug is working**<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. Your T will look male on paper. You must judge the drug's efficacy purely on physical markers (reduction in skin oil, body hair thinning, lack of morning wood). This makes Bicalutamide incredibly stressful for users who rely on data-driven reassurance.
+<WarningBox title="T 수치로 효과를 판단하지 마십시오">
+비칼루타미드 사용 중 혈청 T 수치는 **효과 지표로 사용할 수 없습니다**. T 수치가 정상이거나 오히려 상승하더라도, AR이 효과적으로 차단되어 있으면 안드로겐 효과는 억제됩니다<CitationRef id="neyman-2019" num={2} authors="Neyman, Fuqua, Eugster" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. 효과 평가는 임상적 징후(피부 유분 감소, 체모 성장 둔화 등)를 기반으로 해야 하며, 단순한 T 수치에 의존해서는 안 됩니다.
 </WarningBox>
 
-## Quality of Life Drawbacks
+## 이상 반응
 
-### Hepatic Failure (Liver Toxicity)
+### 간독성 (가장 중요한 위험)
 
-The threat of sudden liver failure is the primary reason Bicalutamide is not globally recommended<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />:
+비칼루타미드의 간독성은 GAHT에서의 사용을 제한하는 주된 이유입니다<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
 
-- Clinical trials for prostate cancer recorded incredibly rare but highly fatal instances of catastrophic liver failure.
-- Toxic reactions almost always hit within the first few months of use.
-- It is strictly contraindicated for anyone with preexisting liver disease or heavy alcohol consumption.
+**FDA 라벨 데이터 (전립선암 임상시험 기반)**:
+- 약 **6%**에서 일과성 무증상 ALT 상승 발생
+- 약 **1%**에서 간염 또는 현저한 간 효소 상승으로 인해 투약 중단
+- 150 mg 단독요법 대규모 시험(EPC, 8,113건): 비정상 LFT **3.4%** (위약군 1.9%)
+- 시판 후 최소 10건의 심각한 간 손상 증례 보고 발표, 그 중 2건 사망
 
-<DangerBox title="Symptoms of Liver Failure - Go to the ER immediately">
-- Jaundice (Yellowing of the skin or the whites of the eyes)
-- Urine turning dark brown/tea-colored
-- Relentless pain in the upper right quadrant of your abdomen
-- Severe, unexplained fatigue and vomiting
-- Lab results showing ALT/AST > 3x the normal maximum limit.
+**트랜스젠더 인구 데이터** (근거는 제한적이나 참고할 만함):
+- Neyman 2019: 청소년 23명, 50 mg/일, 임상적으로 유의한 간독성 없음<CitationRef id="neyman-2019" num={2} authors="Neyman, Fuqua, Eugster" year={2019} />
+- Fuqua 2024: 청소년 40명 추적 관찰, 50 mg/일, 심각한 간 이상 없음<CitationRef id="fuqua-2024" num={3} authors="Fuqua, Shi, Eugster" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 성인 24명, 25 mg/일, 1명에서 경미한 간 효소 상승(가역적)<CitationRef id="angus-2024" num={4} authors="Angus et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 증례 보고 1건, 50 mg/일, 간독성 발생(투약 중단 후 회복)<CitationRef id="wilde-2024" num={5} authors="Wilde et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
 
-**Stop taking Bica the second you suspect liver issues.**
+이러한 데이터의 표본 크기는 여전히 너무 작아(총 약 170건), 드물지만 심각한 간 손상 위험을 배제할 수 없습니다.
+
+<DangerBox title="간 손상 증상 — 즉시 투약 중단 후 의료 기관 방문">
+- 피부 또는 눈 흰자위의 황변(황달)
+- 짙은 소변(갈색 또는 차 색깔의 소변)
+- 지속되는 우상복부 통증 또는 불편감
+- 비정상적인 피로, 식욕 저하, 오심·구토
+- ALT/AST > 정상 상한치의 3배
+
+**위 증상 중 하나라도 발생하면 즉시 비칼루타미드 투약을 중단하고, 의료 기관을 방문하여 간 기능 검사를 받으십시오.**
 </DangerBox>
 
-## Mandatory Monitoring Protocol
+### 폐독성 (간질성 폐질환)
+
+FDA 라벨의 시판 후 경고에는 간질성 폐질환(ILD)이 포함되어 있으며, 간질성 폐렴 및 폐섬유증을 포함하고 일부 증례는 사망에 이르렀습니다.
+
+- **전체 발생률 매우 낮음**: 약 0.01%(1/10,000)로, 동종 약물인 닐루타미드(0.77%)보다 훨씬 낮습니다
+- **일본 약물 감시 데이터**: Matsumoto 2020은 일본 이상 반응 보고 데이터베이스(JADER)를 분석하여 비칼루타미드 ILD 보고 비율비가 9.2(95% CI 7.9~10.6)이며, 중간 발병 시간은 50일이라고 보고했습니다<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="아시아인 폐독성 위험에 대한 설명">
+일본 약물 감시 데이터베이스에 비칼루타미드 관련 ILD 보고가 많지만, 이것이 **아시아인의 유전적 감수성을 의미하지는 않습니다** — 일본은 전반적인 약물성 ILD 보고율이 다른 나라보다 높습니다(보고 관행 및 사용 인구와 관련이 있을 수 있음). 현재 인종 차이를 증명하는 전향적 연구는 없습니다. 다만, 마른기침, 호흡 곤란, 발열 등의 증상이 나타나면 즉시 의료 기관을 방문하여 비칼루타미드를 복용 중임을 의사에게 알리십시오.
+</WarningBox>
+
+### 유방 통증 및 발달
+
+- 비칼루타미드는 전립선암 환자에서 흔히 여성형 유방증(gynecomastia)을 유발합니다
+- 트랜스젠더 사용자에서는 이 효과가 원하는 결과로 인식될 수 있습니다
+- 유방 팽창통은 비교적 흔하게 발생합니다
+
+### 기타 이상 반응
+
+- 홍조 (GnRH 작용제보다 덜 흔함)
+- 위장관 불편감 (오심, 설사)
+- 피부 건조
+
+## 모니터링 요건
 
 <DoseTable
-  headers={['Test Panel', 'Frequency', 'Target Range / Warning', 'Action Needed']}
+  headers={['검사 항목', '빈도', '목표/경고 수치', '처리']}
   rows={[
-    ['Liver Enzymes (ALT/AST)', 'Baseline + Every 30 days for the first 6 months → Then every 3 mos', 'Keep within standard lab ranges', 'If > 3x the max limit: Stop drug.'],
-    ['Bilirubin', 'Alongside liver enzymes', 'Normal range', 'If spiking: immediate liver distress indicator.'],
-    ['Testosterone (T)', 'Every 3-6 months', 'Irrelevant (Will be highly masculine)', 'Do NOT adjust doses based on this number.'],
+    ['간 기능 (ALT/AST)', '기저치 + 첫 6개월간 매월 → 이후 3개월마다', 'ALT/AST ≤ 정상 상한치', '> 3× 상한치: 즉시 투약 중단 후 의료 기관 방문'],
+    ['빌리루빈', '간 기능 검사와 동시', '정상 범위', '상승 시 간 손상 악화 시사'],
+    ['테스토스테론 (T)', '3~6개월마다', '참고용에 불과 (T 수치 상승 가능)', '효과의 주요 지표로 사용하지 않음'],
+    ['에스트라디올 (E2)', 'T와 동시 측정', '100~200 pg/mL', '병용 방법 효과 평가'],
   ]}
 />
 
-<WarningBox title="Do Not Skip Liver Screens">
-Even if you feel literally perfect, you **must pull a metabolic liver panel every 30 days for the first 6 months** of taking Bicalutamide. Chemical liver damage is totally silent until your organs begin actively shutting down<CitationRef id="hembree-2017" num={2} authors="Hembree et al." year={2017} />. 
+<WarningBox title="간 기능 모니터링은 생략할 수 없습니다">
+완전히 정상이라고 느끼더라도, 비칼루타미드 복용 첫 6개월 동안 **매월 간 기능 검사**는 생략할 수 없습니다. 간 손상은 무증상일 수 있으며, 혈액 검사를 통해서만 조기 발견이 가능합니다. 매월 간 기능 모니터링이 불가능하다면, 비칼루타미드를 사용해서는 안 됩니다.
 </WarningBox>
 
-## Target Audience
+## 적용 시나리오
 
-Bicalutamide occupies a very niche space in GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
+비칼루타미드는 GAHT에서 매우 제한적인 위치를 차지합니다<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} />:
 
-**It should only be considered when:**
-- CPA is banned in your country (like the US) or you cannot tolerate it (meningioma risks).
-- Spironolactone causes intolerable blood pressure crashes, hyperkalemia, or doesn't work for you.
-- GnRH Agonists are financially impossible to access.
-- **You are operating under the direct supervision of an endocrinologist.**
+**다음 조건이 모두 충족될 때만 고려합니다**:
+- CPA를 사용할 수 없는 경우 (미판매/내약성 없음/수막종 위험)
+- 스피로노락톤을 사용할 수 없는 경우 (신기능 저하/고칼륨혈증 위험/효과 불충분)
+- GnRH 작용제를 사용할 수 없는 경우 (경제적/접근성 제한)
+- **의사의 지도 및 정기적인 모니터링이 이루어지는 경우**
 
-## Global Access
+**금기사항**:
+- 기존 간질환 또는 간 기능 이상
+- CPA 또는 기타 간독성 약물 복용 중
+- 정기적인 간 기능 혈액 검사가 불가능한 경우
 
-- **In the US:** Sometimes prescribed by aggressive or highly specialized endocrinologists who hate Spironolactone, but rarely handled by standard Planned Parenthood clinics. 
-- **Global DIY:** It is heavily sought out on gray markets by DIY users terrified of CPA's brain tumor risks. If you elect to DIY Bicalutamide, you assume the total responsibility of funding your own monthly liver enzyme blood tests.
+## 한국 내 접근 현황
+
+- **시판 상태**: 비칼루타미드는 한국에서 시판 중 (전립선암 치료 적응증)
+- **처방 경로**: 비뇨기과 또는 종양내과에서 처방 가능
+- **브랜드**: 카소덱스(Casodex, 오리지널)와 국내 제네릭(예: 비카록, 비카루탄 등)
+- **주의**: 대부분의 의사들은 GAHT에서의 사용에 익숙하지 않으며, 처방을 받기 위해 전립선 관련 적응증을 언급해야 할 수도 있습니다
 
 <DrugBrandGallery drugId="bicalutamide" />
