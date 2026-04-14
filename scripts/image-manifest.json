@@ -316,6 +316,30 @@
     {"id":"cpa-meningioma-risk-ko","type":"diagrams-i18n","subdir":"ko","filename":"cpa-meningioma-risk.webp","width":800,"height":450,
       "refFile":"cpa-meningioma-risk.webp",
       "prompt":"Recreate this exact meningioma risk bar chart faithfully with the same layout, bars, colors, and dashed line. Replace ALL English text with Korean: 'Very Low Risk'→'위험 매우 낮음', 'Significantly Elevated'→'유의하게 상승', 'Highest Risk'→'최고 위험', 'EMA restriction threshold'→'EMA 제한 기준', 'Meningioma Risk (Odds Ratio)'→'수막종 위험(오즈비)', 'Daily CPA Dose'→'CPA 일일 용량'. Keep dose numbers and OR values in original form. Keep everything else identical.",
-      "alt":"CPA 용량별 수막종 위험도: 25mg 이상에서 위험이 급격히 상승"}
+      "alt":"CPA 용량별 수막종 위험도: 25mg 이상에서 위험이 급격히 상승"},
+
+    {
+      "id": "pathway-timeline",
+      "type": "diagrams",
+      "filename": "pathway-timeline.webp",
+      "width": 900,
+      "height": 300,
+      "prompt": "Clean medical timeline diagram showing 4 phases of HRT treatment on a horizontal line from left to right. Phase markers at: Month 0 labeled 'Baseline', Month 1-6 labeled 'Low Dose', Month 6-12 labeled 'Titration', Month 12+ labeled 'Maintenance'. Use colored circles at each node: green for baseline, green for low dose, yellow/gold for titration, pink for maintenance. Connect with arrows. Below each node show key targets: 'Blood tests' for baseline, 'E2 50-100 pg/mL' for low dose, 'E2 100-200 pg/mL' for titration, 'Steady state monitoring' for maintenance. Simple clean horizontal flow chart, white background.",
+      "alt": "HRT pathway timeline: Baseline → Low Dose (1-6mo) → Titration (6-12mo) → Maintenance (12mo+)",
+      "page": "/zh/pathway"
+    },
+
+    {"id":"pathway-timeline-zh","type":"diagrams-i18n","subdir":"zh","filename":"pathway-timeline.webp","width":900,"height":300,
+      "refFile":"pathway-timeline.webp",
+      "prompt":"Recreate this exact HRT timeline diagram faithfully with the same layout, nodes, arrows, and colors. Replace ALL English text with Chinese: 'Baseline'→'基线检查', 'Low Dose'→'低剂量起步', 'Titration'→'剂量滴定', 'Maintenance'→'长期维持', 'Month'→'月', 'Blood tests'→'血液检查', 'Steady state monitoring'→'稳态监测'. Keep E2 values and month numbers in original form. Keep everything else identical.",
+      "alt":"HRT 路径时间轴：基线检查 → 低剂量起步(1-6月) → 剂量滴定(6-12月) → 长期维持(12月+)"},
+    {"id":"pathway-timeline-ja","type":"diagrams-i18n","subdir":"ja","filename":"pathway-timeline.webp","width":900,"height":300,
+      "refFile":"pathway-timeline.webp",
+      "prompt":"Recreate this exact HRT timeline diagram faithfully with the same layout, nodes, arrows, and colors. Replace ALL English text with Japanese: 'Baseline'→'ベースライン', 'Low Dose'→'低用量開始', 'Titration'→'用量調整', 'Maintenance'→'維持期', 'Month'→'ヶ月', 'Blood tests'→'血液検査', 'Steady state monitoring'→'定常状態モニタリング'. Keep E2 values and month numbers in original form. Keep everything else identical.",
+      "alt":"HRT経路タイムライン：ベースライン→低用量(1-6ヶ月)→用量調整(6-12ヶ月)→維持期(12ヶ月+)"},
+    {"id":"pathway-timeline-ko","type":"diagrams-i18n","subdir":"ko","filename":"pathway-timeline.webp","width":900,"height":300,
+      "refFile":"pathway-timeline.webp",
+      "prompt":"Recreate this exact HRT timeline diagram faithfully with the same layout, nodes, arrows, and colors. Replace ALL English text with Korean: 'Baseline'→'기준선 검사', 'Low Dose'→'저용량 시작', 'Titration'→'용량 조절', 'Maintenance'→'장기 유지', 'Month'→'개월', 'Blood tests'→'혈액 검사', 'Steady state monitoring'→'안정 상태 모니터링'. Keep E2 values and month numbers in original form. Keep everything else identical.",
+      "alt":"HRT 경로 타임라인: 기준선→저용량(1-6개월)→용량조절(6-12개월)→장기유지(12개월+)"}
   ]
 }
