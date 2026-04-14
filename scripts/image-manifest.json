@@ -244,6 +244,30 @@
     {"id":"sublingual-placement-ko","type":"diagrams-i18n","subdir":"ko","filename":"sublingual-placement.webp","width":800,"height":450,
       "refFile":"sublingual-placement.webp",
       "prompt":"Recreate this exact sublingual placement diagram faithfully with the same layout, mouth cross-section, and tablet position. Replace ALL English text with Korean: 'Tongue'→'혀', 'Tablet'→'정제', 'Sublingual area'→'설하 부위', 'Blood vessels'→'혈관', 'Absorption'→'흡수', 'Gum'→'잇몸'. Keep everything else identical.",
-      "alt":"설하 투여 위치도: 정제를 혀 아래 잇몸 근처에 놓고 설하 점막 혈관으로 흡수"}
+      "alt":"설하 투여 위치도: 정제를 혀 아래 잇몸 근처에 놓고 설하 점막 혈관으로 흡수"},
+
+    {
+      "id": "gel-application",
+      "type": "diagrams",
+      "filename": "gel-application.webp",
+      "width": 800,
+      "height": 500,
+      "prompt": "Clean medical diagram showing recommended body areas for applying estradiol gel. Show a simple front-facing human body outline silhouette. Highlight three recommended application areas with colored shading and labels: 1) inner upper arms, 2) inner thighs, 3) lower abdomen. Also show the chest/breast area marked with an X and labeled 'Avoid' to indicate it should not be used. Include a small inset showing the gel being spread thinly over a palm-sized area of skin. Simple line art, educational medical illustration.",
+      "alt": "Gel application areas: inner upper arms, inner thighs, abdomen. Avoid breast area.",
+      "page": "/zh/medications/estrogens/gel"
+    },
+
+    {"id":"gel-application-zh","type":"diagrams-i18n","subdir":"zh","filename":"gel-application.webp","width":800,"height":500,
+      "refFile":"gel-application.webp",
+      "prompt":"Recreate this exact gel application diagram faithfully with the same body outline, highlighted areas, and layout. Replace ALL English text with Chinese: 'Inner upper arms'→'上臂内侧', 'Inner thighs'→'大腿内侧', 'Abdomen'→'腹部', 'Avoid'→'避免涂抹', 'Recommended'→'推荐部位', 'Apply thinly'→'薄涂均匀'. Keep everything else identical.",
+      "alt":"凝胶涂抹部位示意图：推荐上臂内侧、大腿内侧、腹部，避免涂抹乳房区域"},
+    {"id":"gel-application-ja","type":"diagrams-i18n","subdir":"ja","filename":"gel-application.webp","width":800,"height":500,
+      "refFile":"gel-application.webp",
+      "prompt":"Recreate this exact gel application diagram faithfully with the same body outline, highlighted areas, and layout. Replace ALL English text with Japanese: 'Inner upper arms'→'上腕内側', 'Inner thighs'→'大腿内側', 'Abdomen'→'腹部', 'Avoid'→'塗布禁止', 'Recommended'→'推奨部位', 'Apply thinly'→'薄く均一に塗布'. Keep everything else identical.",
+      "alt":"ジェル塗布部位図：上腕内側、大腿内側、腹部を推奨、胸部は避ける"},
+    {"id":"gel-application-ko","type":"diagrams-i18n","subdir":"ko","filename":"gel-application.webp","width":800,"height":500,
+      "refFile":"gel-application.webp",
+      "prompt":"Recreate this exact gel application diagram faithfully with the same body outline, highlighted areas, and layout. Replace ALL English text with Korean: 'Inner upper arms'→'상완 안쪽', 'Inner thighs'→'허벅지 안쪽', 'Abdomen'→'복부', 'Avoid'→'도포 금지', 'Recommended'→'권장 부위', 'Apply thinly'→'얇게 균일하게 도포'. Keep everything else identical.",
+      "alt":"젤 도포 부위도: 상완 안쪽, 허벅지 안쪽, 복부 권장, 가슴 부위 금지"}
   ]
 }
