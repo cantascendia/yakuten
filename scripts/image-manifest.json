@@ -343,27 +343,51 @@
       "alt":"HRT 경로 타임라인: 기준선→저용량(1-6개월)→용량조절(6-12개월)→장기유지(12개월+)"},
 
     {
-      "id": "breast-myths",
+      "id": "duct-branching",
       "type": "diagrams",
-      "filename": "breast-myths.webp",
+      "filename": "duct-branching.webp",
       "width": 800,
       "height": 500,
-      "prompt": "Clean medical infographic comparing 3 common myths vs facts about breast development. Layout: three rows, each with a red X on the left side next to a myth, and a green checkmark on the right side next to the truth. Row 1: Myth 'Higher dose = faster growth' vs Fact 'High dose causes premature duct closure = smaller breasts'. Row 2: Myth 'Swelling after injection = development' vs Fact 'Swelling is fluid retention, not glandular growth'. Row 3: Myth 'More E2 = bigger breasts' vs Fact 'Final size depends on genetics, not dose'. Simple clean layout, white background, educational medical style, use red for myths and green for facts.",
-      "alt": "Breast development myths vs facts: higher dose does not mean faster growth",
+      "prompt": "Clean medical comparison diagram showing breast duct development under two scenarios side by side. LEFT side labeled 'Low Dose' with a green checkmark: show a tree-like branching duct system growing extensively with many branches spreading outward, then small alveoli (round clusters) forming at the tips of the fully developed branches, resulting in a full rounded breast silhouette outline below. RIGHT side labeled 'High Dose' with a red X: show a stunted tree-like duct system with only a few short branches that stopped growing early, with premature alveoli forming on the sparse branches, resulting in a small conical breast silhouette outline below. Use tree/branch visual metaphor. The duct systems should look like botanical branching diagrams. Simple line art, educational medical illustration, white background.",
+      "alt": "Duct branching comparison: low dose allows full branching and round breast, high dose causes premature closure and conical breast",
       "page": "/zh/breast-development"
     },
 
-    {"id":"breast-myths-zh","type":"diagrams-i18n","subdir":"zh","filename":"breast-myths.webp","width":800,"height":500,
-      "refFile":"breast-myths.webp",
-      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Chinese: 'Higher dose = faster growth'→'剂量越高长得越快', 'High dose causes premature duct closure = smaller breasts'→'高剂量导致导管过早闭合 = 乳房更小', 'Swelling after injection = development'→'打针后胀了 = 在发育', 'Swelling is fluid retention, not glandular growth'→'那是水肿，不是腺体发育', 'More E2 = bigger breasts'→'雌二醇越多 = 胸越大', 'Final size depends on genetics, not dose'→'最终大小取决于遗传，不是剂量', 'MYTH'→'谣言', 'FACT'→'事实'. Keep everything else identical.",
-      "alt":"乳房发育谣言 vs 事实：剂量越高不等于长得越快"},
-    {"id":"breast-myths-ja","type":"diagrams-i18n","subdir":"ja","filename":"breast-myths.webp","width":800,"height":500,
-      "refFile":"breast-myths.webp",
-      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Japanese: 'Higher dose = faster growth'→'高用量 = 早く成長', 'High dose causes premature duct closure = smaller breasts'→'高用量は乳管の早期閉鎖を引き起こし、乳房は小さくなる', 'Swelling after injection = development'→'注射後の腫れ = 発育中', 'Swelling is fluid retention, not glandular growth'→'腫れはむくみであり、腺の成長ではない', 'More E2 = bigger breasts'→'E2が多い = 胸が大きい', 'Final size depends on genetics, not dose'→'最終的なサイズは遺伝で決まり、用量ではない', 'MYTH'→'誤解', 'FACT'→'事実'. Keep everything else identical.",
-      "alt":"乳房発育の誤解 vs 事実：高用量は成長を早めない"},
-    {"id":"breast-myths-ko","type":"diagrams-i18n","subdir":"ko","filename":"breast-myths.webp","width":800,"height":500,
-      "refFile":"breast-myths.webp",
-      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Korean: 'Higher dose = faster growth'→'고용량 = 빠른 성장', 'High dose causes premature duct closure = smaller breasts'→'고용량은 유관 조기 폐쇄를 유발 = 더 작은 유방', 'Swelling after injection = development'→'주사 후 부기 = 발달 중', 'Swelling is fluid retention, not glandular growth'→'부기는 부종이며 선 조직 성장이 아님', 'More E2 = bigger breasts'→'E2가 많을수록 = 가슴이 크다', 'Final size depends on genetics, not dose'→'최종 크기는 유전에 따르며 용량이 아님', 'MYTH'→'오해', 'FACT'→'사실'. Keep everything else identical.",
-      "alt":"유방 발달 오해 vs 사실: 고용량이 성장을 빠르게 하지 않는다"}
+    {"id":"duct-branching-zh","type":"diagrams-i18n","subdir":"zh","filename":"duct-branching.webp","width":800,"height":500,
+      "refFile":"duct-branching.webp",
+      "prompt":"Recreate this exact duct branching comparison diagram faithfully with the same layout, tree-like ducts, breast silhouettes, and checkmark/X marks. Replace ALL English text with Chinese: 'Low Dose'→'低剂量', 'High Dose'→'高剂量', 'Full branching'→'充分分支', 'Premature closure'→'过早闭合', 'Alveoli'→'腺泡', 'Ducts'→'导管', 'Round breast'→'圆润饱满', 'Conical breast'→'锥形致密'. Keep everything else identical.",
+      "alt":"导管分支对比：低剂量充分分支→圆润乳房 vs 高剂量过早闭合→锥形乳房"},
+    {"id":"duct-branching-ja","type":"diagrams-i18n","subdir":"ja","filename":"duct-branching.webp","width":800,"height":500,
+      "refFile":"duct-branching.webp",
+      "prompt":"Recreate this exact duct branching comparison diagram faithfully with the same layout, tree-like ducts, breast silhouettes, and checkmark/X marks. Replace ALL English text with Japanese: 'Low Dose'→'低用量', 'High Dose'→'高用量', 'Full branching'→'十分な分岐', 'Premature closure'→'早期閉鎖', 'Alveoli'→'腺房', 'Ducts'→'乳管', 'Round breast'→'丸みのある乳房', 'Conical breast'→'円錐形の乳房'. Keep everything else identical.",
+      "alt":"乳管分岐の比較：低用量は十分な分岐→丸い乳房、高用量は早期閉鎖→円錐形"},
+    {"id":"duct-branching-ko","type":"diagrams-i18n","subdir":"ko","filename":"duct-branching.webp","width":800,"height":500,
+      "refFile":"duct-branching.webp",
+      "prompt":"Recreate this exact duct branching comparison diagram faithfully with the same layout, tree-like ducts, breast silhouettes, and checkmark/X marks. Replace ALL English text with Korean: 'Low Dose'→'저용량', 'High Dose'→'고용량', 'Full branching'→'충분한 분지', 'Premature closure'→'조기 폐쇄', 'Alveoli'→'선포', 'Ducts'→'유관', 'Round breast'→'둥근 유방', 'Conical breast'→'원추형 유방'. Keep everything else identical.",
+      "alt":"유관 분지 비교: 저용량은 충분한 분지→둥근 유방, 고용량은 조기 폐쇄→원추형"},
+
+    {
+      "id": "e2-staircase",
+      "type": "diagrams",
+      "filename": "e2-staircase.webp",
+      "width": 800,
+      "height": 450,
+      "prompt": "Clean medical diagram showing two E2 level curves over time (0-18 months). X-axis: time in months (0, 3, 6, 9, 12, 15, 18). Y-axis: E2 level in pg/mL (0 to 500). GREEN curve labeled 'Correct approach': starts at ~50 pg/mL, stays at 50-100 for months 0-6, gently rises to 100-150 for months 6-12, then plateaus at 100-200 from month 12 onward, like ascending stairs. A green shaded 'optimal zone' band between 100-200. RED curve labeled 'Dangerous approach': immediately jumps to 300-500 pg/mL at month 0, stays high, then has a red dashed vertical line at month 3-4 labeled 'Development window closes' showing the duct branching stops. The area above 200 is lightly shaded red as a danger zone. Simple clean chart, white background, medical illustration style.",
+      "alt": "E2 level comparison: correct staircase approach vs dangerous high-dose approach that closes the development window",
+      "page": "/zh/breast-development"
+    },
+
+    {"id":"e2-staircase-zh","type":"diagrams-i18n","subdir":"zh","filename":"e2-staircase.webp","width":800,"height":450,
+      "refFile":"e2-staircase.webp",
+      "prompt":"Recreate this exact E2 staircase chart faithfully with the same layout, curves, shaded zones, and axes. Replace ALL English text with Chinese: 'Correct approach'→'正确方案', 'Dangerous approach'→'危险方案', 'Development window closes'→'发育窗口关闭', 'Optimal zone'→'最佳区间', 'Danger zone'→'危险区间', 'Months'→'月', 'E2 Level'→'E2 水平'. Keep pg/mL values in original form. Keep everything else identical.",
+      "alt":"E2 水平对比：正确的阶梯式方案 vs 危险的高剂量方案导致发育窗口关闭"},
+    {"id":"e2-staircase-ja","type":"diagrams-i18n","subdir":"ja","filename":"e2-staircase.webp","width":800,"height":450,
+      "refFile":"e2-staircase.webp",
+      "prompt":"Recreate this exact E2 staircase chart faithfully with the same layout, curves, shaded zones, and axes. Replace ALL English text with Japanese: 'Correct approach'→'正しいアプローチ', 'Dangerous approach'→'危険なアプローチ', 'Development window closes'→'発育ウィンドウ閉鎖', 'Optimal zone'→'最適ゾーン', 'Danger zone'→'危険ゾーン', 'Months'→'ヶ月', 'E2 Level'→'E2レベル'. Keep pg/mL values in original form. Keep everything else identical.",
+      "alt":"E2レベル比較：正しい段階的アプローチ vs 発育ウィンドウを閉じる危険な高用量"},
+    {"id":"e2-staircase-ko","type":"diagrams-i18n","subdir":"ko","filename":"e2-staircase.webp","width":800,"height":450,
+      "refFile":"e2-staircase.webp",
+      "prompt":"Recreate this exact E2 staircase chart faithfully with the same layout, curves, shaded zones, and axes. Replace ALL English text with Korean: 'Correct approach'→'올바른 접근', 'Dangerous approach'→'위험한 접근', 'Development window closes'→'발달 창 폐쇄', 'Optimal zone'→'최적 구간', 'Danger zone'→'위험 구간', 'Months'→'개월', 'E2 Level'→'E2 수치'. Keep pg/mL values in original form. Keep everything else identical.",
+      "alt":"E2 수치 비교: 올바른 단계적 접근 vs 발달 창을 닫는 위험한 고용량"}
   ]
 }
