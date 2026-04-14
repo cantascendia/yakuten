@@ -184,6 +184,42 @@
     {"id":"emergency-signs-ko","type":"diagrams-i18n","subdir":"ko","filename":"emergency-signs.webp","width":800,"height":400,
       "refFile":"emergency-signs.webp",
       "prompt":"Recreate this exact emergency warning signs diagram faithfully with the same layout, body silhouettes, and warning indicators. Replace ALL English text with Korean: 'EMERGENCY CARE WARNING SIGNS'→'응급 경고 신호', 'RECOGNIZE THE SIGNS FOR URGENT ATTENTION'→'긴급 주의가 필요한 징후', 'CHEST PAIN'→'흉통', 'SWOLLEN CALF'→'종아리 부종', 'VISION PROBLEMS'→'시력 이상'. Keep everything else identical.",
-      "alt":"긴급 진료가 필요한 3가지 경고 신호: 흉통, 종아리 부종, 시력 이상"}
+      "alt":"긴급 진료가 필요한 3가지 경고 신호: 흉통, 종아리 부종, 시력 이상"},
+
+    {
+      "id": "lupride-depot",
+      "type": "drugs",
+      "filename": "lupride-depot-studio.webp",
+      "width": 800,
+      "height": 600,
+      "prompt": "Faithfully recreate this exact Lupride Depot 3.75mg injection kit as shown in the reference image. It is an Indian pharmaceutical product by Sun Pharma. Show the product box and the lyophilized powder vial clearly. Make it cleaner, sharper, and higher quality like a professional studio product photo on a clean white surface. Same product, better quality.",
+      "refUrl": "https://5.imimg.com/data5/ANDROID/Default/2021/12/ZI/NW/PB/63230056/product-jpeg-1000x1000.jpg",
+      "alt": "Lupride Depot 3.75mg 亮丙瑞林冻干粉注射剂的产品照片",
+      "page": "/zh/medications/antiandrogens/gnrh-agonists"
+    },
+
+    {
+      "id": "gnrh-reconstitution",
+      "type": "diagrams",
+      "filename": "gnrh-reconstitution.webp",
+      "width": 900,
+      "height": 500,
+      "prompt": "Step-by-step medical instruction diagram showing how to reconstitute a lyophilized powder injection. Show 5 clear numbered steps in a horizontal flow with arrows between them: Step 1: Two vials side by side - left vial labeled 'Diluent' with clear liquid, right vial labeled 'Powder' with white powder. Step 2: A syringe drawing liquid from the diluent vial. Step 3: The syringe injecting the liquid into the powder vial. Step 4: Gentle swirling motion arrows around the powder vial showing dissolution, liquid now clear. Step 5: The syringe drawing the reconstituted clear solution from the vial, ready for injection. Clean simple line art, numbered 1-2-3-4-5, educational medical illustration style.",
+      "alt": "GnRH reconstitution steps: draw diluent, inject into powder vial, swirl to dissolve, draw solution, ready to inject",
+      "page": "/zh/medications/antiandrogens/gnrh-agonists"
+    },
+
+    {"id":"gnrh-reconstitution-zh","type":"diagrams-i18n","subdir":"zh","filename":"gnrh-reconstitution.webp","width":900,"height":500,
+      "refFile":"gnrh-reconstitution.webp",
+      "prompt":"Recreate this exact reconstitution step diagram faithfully with the same layout, vials, syringes, and arrows. Replace ALL English text with Chinese: 'Diluent'→'溶媒', 'Powder'→'冻干粉', 'Step'→'步骤', 'Draw diluent'→'抽取溶媒', 'Inject into powder vial'→'注入粉瓶', 'Swirl gently'→'轻轻旋转', 'Draw solution'→'抽取药液', 'Ready'→'完成'. Keep everything else identical.",
+      "alt":"GnRH 配药步骤图：抽取溶媒、注入粉瓶、轻旋溶解、抽取药液、准备注射"},
+    {"id":"gnrh-reconstitution-ja","type":"diagrams-i18n","subdir":"ja","filename":"gnrh-reconstitution.webp","width":900,"height":500,
+      "refFile":"gnrh-reconstitution.webp",
+      "prompt":"Recreate this exact reconstitution step diagram faithfully with the same layout, vials, syringes, and arrows. Replace ALL English text with Japanese: 'Diluent'→'溶解液', 'Powder'→'凍結乾燥粉末', 'Step'→'ステップ', 'Draw diluent'→'溶解液を吸引', 'Inject into powder vial'→'粉末バイアルに注入', 'Swirl gently'→'静かに回す', 'Draw solution'→'薬液を吸引', 'Ready'→'準備完了'. Keep everything else identical.",
+      "alt":"GnRH 調製手順図：溶解液吸引、粉末バイアルに注入、溶解、薬液吸引、注射準備完了"},
+    {"id":"gnrh-reconstitution-ko","type":"diagrams-i18n","subdir":"ko","filename":"gnrh-reconstitution.webp","width":900,"height":500,
+      "refFile":"gnrh-reconstitution.webp",
+      "prompt":"Recreate this exact reconstitution step diagram faithfully with the same layout, vials, syringes, and arrows. Replace ALL English text with Korean: 'Diluent'→'용매', 'Powder'→'동결건조분말', 'Step'→'단계', 'Draw diluent'→'용매 흡입', 'Inject into powder vial'→'분말 바이알에 주입', 'Swirl gently'→'부드럽게 회전', 'Draw solution'→'약액 흡입', 'Ready'→'준비 완료'. Keep everything else identical.",
+      "alt":"GnRH 조제 단계도: 용매 흡입, 분말 바이알에 주입, 용해, 약액 흡입, 주사 준비 완료"}
   ]
 }
