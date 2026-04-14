@@ -340,6 +340,30 @@
     {"id":"pathway-timeline-ko","type":"diagrams-i18n","subdir":"ko","filename":"pathway-timeline.webp","width":900,"height":300,
       "refFile":"pathway-timeline.webp",
       "prompt":"Recreate this exact HRT timeline diagram faithfully with the same layout, nodes, arrows, and colors. Replace ALL English text with Korean: 'Baseline'→'기준선 검사', 'Low Dose'→'저용량 시작', 'Titration'→'용량 조절', 'Maintenance'→'장기 유지', 'Month'→'개월', 'Blood tests'→'혈액 검사', 'Steady state monitoring'→'안정 상태 모니터링'. Keep E2 values and month numbers in original form. Keep everything else identical.",
-      "alt":"HRT 경로 타임라인: 기준선→저용량(1-6개월)→용량조절(6-12개월)→장기유지(12개월+)"}
+      "alt":"HRT 경로 타임라인: 기준선→저용량(1-6개월)→용량조절(6-12개월)→장기유지(12개월+)"},
+
+    {
+      "id": "breast-myths",
+      "type": "diagrams",
+      "filename": "breast-myths.webp",
+      "width": 800,
+      "height": 500,
+      "prompt": "Clean medical infographic comparing 3 common myths vs facts about breast development. Layout: three rows, each with a red X on the left side next to a myth, and a green checkmark on the right side next to the truth. Row 1: Myth 'Higher dose = faster growth' vs Fact 'High dose causes premature duct closure = smaller breasts'. Row 2: Myth 'Swelling after injection = development' vs Fact 'Swelling is fluid retention, not glandular growth'. Row 3: Myth 'More E2 = bigger breasts' vs Fact 'Final size depends on genetics, not dose'. Simple clean layout, white background, educational medical style, use red for myths and green for facts.",
+      "alt": "Breast development myths vs facts: higher dose does not mean faster growth",
+      "page": "/zh/breast-development"
+    },
+
+    {"id":"breast-myths-zh","type":"diagrams-i18n","subdir":"zh","filename":"breast-myths.webp","width":800,"height":500,
+      "refFile":"breast-myths.webp",
+      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Chinese: 'Higher dose = faster growth'→'剂量越高长得越快', 'High dose causes premature duct closure = smaller breasts'→'高剂量导致导管过早闭合 = 乳房更小', 'Swelling after injection = development'→'打针后胀了 = 在发育', 'Swelling is fluid retention, not glandular growth'→'那是水肿，不是腺体发育', 'More E2 = bigger breasts'→'雌二醇越多 = 胸越大', 'Final size depends on genetics, not dose'→'最终大小取决于遗传，不是剂量', 'MYTH'→'谣言', 'FACT'→'事实'. Keep everything else identical.",
+      "alt":"乳房发育谣言 vs 事实：剂量越高不等于长得越快"},
+    {"id":"breast-myths-ja","type":"diagrams-i18n","subdir":"ja","filename":"breast-myths.webp","width":800,"height":500,
+      "refFile":"breast-myths.webp",
+      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Japanese: 'Higher dose = faster growth'→'高用量 = 早く成長', 'High dose causes premature duct closure = smaller breasts'→'高用量は乳管の早期閉鎖を引き起こし、乳房は小さくなる', 'Swelling after injection = development'→'注射後の腫れ = 発育中', 'Swelling is fluid retention, not glandular growth'→'腫れはむくみであり、腺の成長ではない', 'More E2 = bigger breasts'→'E2が多い = 胸が大きい', 'Final size depends on genetics, not dose'→'最終的なサイズは遺伝で決まり、用量ではない', 'MYTH'→'誤解', 'FACT'→'事実'. Keep everything else identical.",
+      "alt":"乳房発育の誤解 vs 事実：高用量は成長を早めない"},
+    {"id":"breast-myths-ko","type":"diagrams-i18n","subdir":"ko","filename":"breast-myths.webp","width":800,"height":500,
+      "refFile":"breast-myths.webp",
+      "prompt":"Recreate this exact myths vs facts infographic faithfully with the same layout, red X marks, green checkmarks, and row structure. Replace ALL English text with Korean: 'Higher dose = faster growth'→'고용량 = 빠른 성장', 'High dose causes premature duct closure = smaller breasts'→'고용량은 유관 조기 폐쇄를 유발 = 더 작은 유방', 'Swelling after injection = development'→'주사 후 부기 = 발달 중', 'Swelling is fluid retention, not glandular growth'→'부기는 부종이며 선 조직 성장이 아님', 'More E2 = bigger breasts'→'E2가 많을수록 = 가슴이 크다', 'Final size depends on genetics, not dose'→'최종 크기는 유전에 따르며 용량이 아님', 'MYTH'→'오해', 'FACT'→'사실'. Keep everything else identical.",
+      "alt":"유방 발달 오해 vs 사실: 고용량이 성장을 빠르게 하지 않는다"}
   ]
 }
