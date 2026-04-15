@@ -368,11 +368,49 @@ const RESPONSIVE_CSS = `
   grid-template-columns: 1fr 1fr;
   gap: var(--space-xl);
 }
+/* Mobile tabs — hidden on desktop */
+.btc-mobile-tabs {
+  display: none;
+}
 @media (max-width: 640px) {
   .btc-grid {
     grid-template-columns: 1fr;
   }
+  .btc-mobile-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-outline-20);
+  }
+  .btc-tab {
+    flex: 1;
+    padding: var(--space-md) var(--space-sm);
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .btc-tab--active {
+    color: var(--color-primary-light);
+    border-bottom-color: var(--color-primary);
+  }
+  .btc-desktop-title {
+    display: none;
+  }
+  .btc-grid[data-mobile-tab="input"] .btc-panel-result {
+    display: none;
+  }
+  .btc-grid[data-mobile-tab="result"] .btc-panel-input {
+    display: none;
+  }
 }
+
 .btc-input:focus {
   border-bottom-color: var(--color-primary) !important;
 }
@@ -404,6 +442,7 @@ const PERSISTENCE_COPY = {
 export default function BloodTestChecker() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [restored, setRestored] = useState(false);
+  const [mobileTab, setMobileTab] = useState<'input' | 'result'>('input');
   const locale = getLocale();
   const copy = SECTION_COPY[locale];
   const persistCopy = PERSISTENCE_COPY[locale];
@@ -449,10 +488,26 @@ export default function BloodTestChecker() {
       <style>{RESPONSIVE_CSS}</style>
 
       <div style={s.container}>
-        <div className="btc-grid">
+        {/* -------- Mobile Tab Switcher -------- */}
+        <div className="btc-mobile-tabs">
+          <button
+            className={`btc-tab ${mobileTab === 'input' ? 'btc-tab--active' : ''}`}
+            onClick={() => setMobileTab('input')}
+          >
+            {copy.inputTitle}
+          </button>
+          <button
+            className={`btc-tab ${mobileTab === 'result' ? 'btc-tab--active' : ''}`}
+            onClick={() => setMobileTab('result')}
+          >
+            {copy.resultTitle}{hasAnyValue ? ` (${Object.values(values).filter(v => v.trim() !== '').length})` : ''}
+          </button>
+        </div>
+
+        <div className="btc-grid" data-mobile-tab={mobileTab}>
           {/* -------- Left: Input Form -------- */}
-          <div style={s.formSection}>
-            <div style={s.sectionTitle}>{copy.inputTitle}</div>
+          <div style={s.formSection} className="btc-panel-input">
+            <div style={s.sectionTitle} className="btc-desktop-title">{copy.inputTitle}</div>
             {BLOOD_RANGES.map((spec) => (
               <InputField
                 key={spec.id}
@@ -465,8 +520,8 @@ export default function BloodTestChecker() {
           </div>
 
           {/* -------- Right: Results Dashboard -------- */}
-          <div style={s.resultsSection}>
-            <div style={s.sectionTitle}>{copy.resultTitle}</div>
+          <div style={s.resultsSection} className="btc-panel-result">
+            <div style={s.sectionTitle} className="btc-desktop-title">{copy.resultTitle}</div>
             {hasAnyValue ? (
               BLOOD_RANGES.map((spec) => {
                 const raw = values[spec.id] ?? '';
@@ -586,6 +641,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
                     : 'var(--color-text-muted)',
           }}
         >
+          <span aria-hidden="true">{level === 'green' ? '✓ ' : level === 'yellow' ? '⚠ ' : level === 'red' ? '✗ ' : ''}</span>
           {formatValueWithUnit(value, spec.unit)}
         </span>
       </div>
