@@ -642,8 +642,14 @@ export default function DoseSimulator() {
         </select>
       </div>
 
+      {/* Responsive CSS for dose controls */}
+      <style>{`
+        .sim-controls { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+        @media (max-width: 540px) { .sim-controls { grid-template-columns: 1fr; } }
+      `}</style>
+
       {/* Dose + Interval */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-lg)' }}>
+      <div className="sim-controls">
         <div style={s.section}>
           <label htmlFor="sim-dose" style={s.label}>
             {ui.doseLabel}
