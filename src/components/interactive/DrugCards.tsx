@@ -129,11 +129,11 @@ const S: Record<string, CSSProperties> = {
     outline: 'none',
   },
   filterBtnActive: {
-    background: 'var(--sl-color-accent-low, var(--color-primary-alpha-25))',
+    background: 'linear-gradient(135deg, var(--color-primary), #E76395)',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--sl-color-accent, var(--color-primary-alpha-60))',
-    color: 'var(--sl-color-text, #fff)',
+    color: '#fff',
   },
   grid: {
     display: 'grid',
@@ -150,6 +150,7 @@ const S: Record<string, CSSProperties> = {
     clipPath: 'var(--clip-corner)',
     background: 'var(--sl-color-bg-nav, var(--glass-bg-85))',
     border: '1px solid var(--sl-color-gray-5, var(--color-outline-25))',
+    borderLeft: '3px solid var(--color-primary)',
     position: 'relative' as const,
     overflow: 'hidden' as const,
   },
@@ -157,22 +158,15 @@ const S: Record<string, CSSProperties> = {
     borderColor: 'var(--sl-color-red, var(--color-danger-alpha-50))',
     background: 'var(--sl-color-red-low, var(--color-danger-bg-alpha-50))',
   },
-  cardAccent: {
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '3px',
-    background: 'linear-gradient(90deg, var(--color-primary, #C84B7C), var(--color-accent, #D4A853))',
-  },
   cardAccentBanned: {
-    background: 'linear-gradient(90deg, #dc2626, #991b1b)',
+    borderLeft: '3px solid var(--color-danger)',
   },
   cardHeader: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: '0.5rem',
+    paddingRight: '50px',
   },
   drugName: {
     fontFamily: 'var(--font-display, serif)',
@@ -242,20 +236,27 @@ const S: Record<string, CSSProperties> = {
     letterSpacing: '0.05em',
   },
   evidenceBadge: {
-    padding: '0.0625rem 0.375rem',
-    fontSize: '0.625rem',
+    position: 'absolute' as const,
+    top: 'var(--space-lg)',
+    right: 'var(--space-lg)',
+    width: '24px',
+    height: '24px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     fontWeight: 700,
-    background: 'var(--sl-color-green-low, var(--color-green-alpha-15))',
-    color: 'var(--sl-color-green-high, #5cb85c)',
-    fontFamily: 'var(--font-mono, monospace)',
+    fontSize: '0.75rem',
   },
   detailLink: {
+    border: '1px solid var(--color-accent)',
+    color: 'var(--color-accent)',
+    clipPath: 'var(--clip-corner-sm)',
+    padding: 'var(--space-xs) var(--space-md)',
+    marginTop: 'auto',
+    display: 'inline-block',
+    textDecoration: 'none',
     fontFamily: 'var(--font-body, sans-serif)',
     fontSize: '0.75rem',
-    color: 'var(--color-primary-light, #e07aa0)',
-    textDecoration: 'none',
-    display: 'inline-block',
-    marginTop: '0.25rem',
     transition: 'color 0.15s',
   },
 };
@@ -322,10 +323,12 @@ export default function DrugCards() {
           return (
             <div
               key={drug.id}
-              style={{ ...S.card, ...(isBanned ? S.cardBanned : {}) }}
+              style={{
+                ...S.card,
+                ...(isBanned ? { ...S.cardBanned, ...S.cardAccentBanned } : {}),
+                ...(drug.displayCategory === 'antiandrogen' ? { borderLeft: '3px solid var(--color-accent)' } : {}),
+              }}
             >
-              {/* Accent bar */}
-              <div style={{ ...S.cardAccent, ...(isBanned ? S.cardAccentBanned : {}) }} />
 
               {/* Header */}
               <div style={S.cardHeader}>

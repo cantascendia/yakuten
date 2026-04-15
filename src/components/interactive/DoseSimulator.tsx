@@ -118,6 +118,14 @@ interface DrugPK {
   color: string;                // chart color
 }
 
+const ROUTE_ICONS: Record<string, string> = {
+  'ev-oral': '💊 ',
+  'ev-sublingual': '👅 ',
+  'ev-injection': '💉 ',
+  'e2-gel': '🧴 ',
+  'e2-patch': '🩹 ',
+};
+
 const DRUGS: DrugPK[] = [
   {
     id: 'ev-oral',
@@ -637,7 +645,7 @@ export default function DoseSimulator() {
           style={s.select}
         >
           {DRUGS.map(d => (
-            <option key={d.id} value={d.id}>{d.name} ({d.route})</option>
+            <option key={d.id} value={d.id}>{ROUTE_ICONS[d.id] ?? ''}{d.name} ({d.route})</option>
           ))}
         </select>
       </div>

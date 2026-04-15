@@ -232,11 +232,11 @@ const S: Record<string, CSSProperties> = {
     outline: 'none',
   },
   filterBtnActive: {
-    background: 'var(--sl-color-accent-low, var(--color-primary-alpha-25))',
+    background: 'linear-gradient(135deg, var(--color-primary), #E76395)',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--sl-color-accent, var(--color-primary-alpha-60))',
-    color: 'var(--sl-color-text, #fff)',
+    color: '#fff',
   },
   stats: {
     fontSize: '0.75rem',
@@ -317,10 +317,10 @@ const S: Record<string, CSSProperties> = {
     letterSpacing: '0.05em',
     textTransform: 'uppercase' as const,
   },
-  badgeApproved: { background: 'var(--sl-color-green-low, var(--color-safe-badge-bg))', color: 'var(--sl-color-green-high, #2d8a4e)' },
-  badgePrescription: { background: 'var(--sl-color-blue-low, var(--color-info-badge-bg))', color: 'var(--sl-color-blue-high, #2563eb)' },
-  badgeGrey: { background: 'var(--sl-color-orange-low, var(--color-caution-badge-bg))', color: 'var(--sl-color-orange-high, #b45309)' },
-  badgeBanned: { background: 'var(--sl-color-red-low, var(--color-danger-badge-bg))', color: 'var(--sl-color-red-high, #dc2626)' },
+  badgeApproved: { background: 'rgba(76, 175, 80, 0.15)', color: 'var(--sl-color-green-high, #2d8a4e)', padding: '2px var(--space-sm)' },
+  badgePrescription: { background: 'rgba(124, 140, 240, 0.15)', color: 'var(--sl-color-blue-high, #2563eb)', padding: '2px var(--space-sm)' },
+  badgeGrey: { background: 'rgba(200, 175, 190, 0.15)', color: 'var(--sl-color-orange-high, #b45309)', padding: '2px var(--space-sm)' },
+  badgeBanned: { background: 'rgba(244, 67, 54, 0.15)', color: 'var(--sl-color-red-high, #dc2626)', padding: '2px var(--space-sm)', textDecoration: 'line-through' },
   brandName: {
     fontFamily: 'var(--font-display, serif)',
     fontSize: '1.0625rem',
