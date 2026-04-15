@@ -483,10 +483,13 @@ export default function BloodTestChecker() {
           </div>
         </div>
 
-        {/* -------- Persistence notice -------- */}
-        {restored && hasAnyValue && (
+        {/* -------- Actions bar -------- */}
+        {hasAnyValue && (
           <div style={s.persistNotice}>
-            <span>{persistCopy.restored}</span>
+            {restored && <span>{persistCopy.restored}</span>}
+            <button onClick={() => window.print()} style={s.clearBtn}>
+              {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : 'Print results'}
+            </button>
             <button onClick={clearSaved} style={s.clearBtn}>{persistCopy.clear}</button>
           </div>
         )}

@@ -57,3 +57,8 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 ))}
 <Analytics />
 <SpeedInsights />
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+</script>

@@ -681,9 +681,14 @@ export default function RiskScreener() {
           ))}
         </div>
 
-        <button type="button" style={s.retakeBtn} onClick={() => { setStep(-1); setAnswers({}); }}>
-          {ui.retake}
-        </button>
+        <div style={{ display: 'flex', gap: 'var(--space-md)', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
+          <button type="button" style={s.retakeBtn} onClick={() => window.print()}>
+            {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : 'Print results'}
+          </button>
+          <button type="button" style={s.retakeBtn} onClick={() => { setStep(-1); setAnswers({}); }}>
+            {ui.retake}
+          </button>
+        </div>
       </div>
     );
   }
