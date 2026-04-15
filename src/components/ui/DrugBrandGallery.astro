@@ -113,11 +113,12 @@ function flag(code: string): string {
     }
   }
 
-  /* --- Grid item wrapper (no clip-path, allows grid stretch) --- */
+  /* --- Grid item wrapper --- */
   .brand-gallery__item {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* Override Starlight .sl-markdown-content > * + * { margin-top } prose style */
+    margin-top: 0 !important;
   }
 
   /* --- Brand card --- */
