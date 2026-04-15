@@ -5,6 +5,15 @@ import JsonLd from '../seo/JsonLd.astro';
 import { t, getLocale } from '../../i18n/ui';
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+
+// Extract lastReviewed from page frontmatter via Starlight route
+const route = Astro.locals.starlightRoute;
+const entry = route?.entry;
+const lastReviewed = entry?.data?.lastReviewed
+  ? new Date(entry.data.lastReviewed).toISOString().split('T')[0]
+  : null;
+
+const reviewLabel = locale === 'zh' ? '最后审核' : locale === 'ja' ? '最終審査' : locale === 'ko' ? '마지막 검토' : 'Last reviewed';
 ---
 
 <Default {...Astro.props}><slot /></Default>
@@ -18,6 +27,11 @@ const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
     <span aria-hidden="true">·</span>
     <a href="https://wj.qq.com/s2/16576000/5fe5/" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.link.feedback')}</a>
   </nav>
+  {lastReviewed && (
+    <p class="site-legal-footer__reviewed">
+      {reviewLabel}: {lastReviewed}
+    </p>
+  )}
 </div>
 
 <FloatingAIChat client:idle />
@@ -54,5 +68,13 @@ const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
   .site-legal-footer__links a:hover {
     color: var(--sl-color-accent, var(--color-accent, #D4A853));
+  }
+
+  .site-legal-footer__reviewed {
+    margin: var(--space-xs) 0 0 0;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    color: var(--sl-color-gray-4, var(--color-text-muted, #666));
+    letter-spacing: 0.03em;
   }
 </style>
