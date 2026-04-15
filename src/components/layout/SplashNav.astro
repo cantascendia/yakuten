@@ -84,34 +84,17 @@ const navItems: NavItem[] = [
   }
 
   @media (max-width: 768px) {
-    .splash-nav {
-      padding: 0;
-    }
-
     .splash-nav__inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-xs);
       overflow-x: visible;
-      padding: 0;
+      padding: var(--space-xs) 0;
     }
 
     .splash-nav__link {
-      font-size: 0.75rem;
-      padding: var(--space-sm) var(--space-xs);
-      text-align: center;
-      border-bottom: none;
-      border-right: 1px solid var(--color-outline-20);
-    }
-
-    .splash-nav__link:nth-child(4n),
-    .splash-nav__link:last-child {
-      border-right: none;
-    }
-
-    /* 第二行 3 个居中：第 5-7 项各占 4/3 列宽 */
-    .splash-nav__link:nth-child(n+5) {
-      border-top: 1px solid var(--color-outline-20);
+      font-size: 0.8125rem;
+      padding: var(--space-xs) var(--space-sm);
     }
   }
 </style>
