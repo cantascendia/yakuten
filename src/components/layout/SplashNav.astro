@@ -85,7 +85,10 @@ const navItems: NavItem[] = [
 
   @media (max-width: 768px) {
     .splash-nav__inner {
-      justify-content: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-xs);
+      overflow-x: visible;
       padding: var(--space-xs) 0;
     }
 
