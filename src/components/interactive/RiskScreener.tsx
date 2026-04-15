@@ -461,7 +461,7 @@ const s: Record<string, CSSProperties> = {
   },
   optionLabel: {
     display: 'block',
-    padding: 'var(--space-sm) var(--space-md)',
+    padding: 'var(--space-md)',
     marginBottom: 'var(--space-sm)',
     background: 'var(--color-bg-container)',
     border: '1px solid var(--color-outline-20)',
