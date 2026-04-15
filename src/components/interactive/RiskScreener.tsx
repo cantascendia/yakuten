@@ -633,7 +633,13 @@ export default function RiskScreener() {
         </div>
         <div style={s.disclaimerBar} role="alert">{ui.disclaimerBanner}</div>
         <div style={s.startBox}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--color-accent)', marginBottom: 'var(--space-md)' }}>
+            {locale === 'zh' ? '7 个问题 · 约 2 分钟' : locale === 'ja' ? '7問 · 約2分' : '7 questions · ~2 minutes'}
+          </div>
           <div style={s.startDesc}>{ui.startDesc}</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: 'var(--space-sm) var(--space-md)', borderLeft: '2px solid var(--color-accent)', marginTop: 'var(--space-md)', marginBottom: 'var(--space-xl)', textAlign: 'left', maxWidth: '500px', marginInline: 'auto' }}>
+            {locale === 'zh' ? '高风险不代表不能使用 HRT，只意味着需要更密切的监测。' : locale === 'ja' ? '高リスク ≠ HRT不可。より注意深いモニタリングが必要という意味です。' : 'High risk ≠ no HRT. It means closer monitoring is needed.'}
+          </div>
           <button type="button" style={s.startBtn} onClick={() => setStep(0)}>
             {ui.start}
           </button>
@@ -710,8 +716,11 @@ export default function RiskScreener() {
       <div style={s.disclaimerBar} role="alert">{ui.disclaimerBanner}</div>
 
       {/* Progress */}
-      <div style={s.progressBar} role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={QUESTIONS.length} aria-label={ui.progress}>
-        <div style={{ ...s.progressFill, width: `${((step + 1) / QUESTIONS.length) * 100}%` }} />
+      <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-accent)', marginBottom: 'var(--space-xs)' }}>
+        Q{step + 1}/{QUESTIONS.length}
+      </div>
+      <div style={{ height: '3px', background: 'var(--color-outline-20)', marginBottom: 'var(--space-xl)', overflow: 'hidden' }} role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={QUESTIONS.length} aria-label={ui.progress}>
+        <div style={{ height: '100%', background: 'var(--color-primary)', transition: 'width 0.3s ease', width: `${((step + 1) / QUESTIONS.length) * 100}%` }} />
       </div>
 
       {/* Question */}

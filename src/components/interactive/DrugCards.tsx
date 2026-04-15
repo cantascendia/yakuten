@@ -102,7 +102,6 @@ const S: Record<string, CSSProperties> = {
     fontSize: '0.8125rem',
     color: 'var(--sl-color-text-accent, var(--color-accent, #D4A853))',
     background: 'var(--sl-color-accent-low, var(--color-accent-alpha-10))',
-    borderRadius: '8px',
     border: '1px solid var(--sl-color-accent, var(--color-accent-alpha-30))',
   },
   filterRow: {
@@ -118,7 +117,6 @@ const S: Record<string, CSSProperties> = {
     MozAppearance: 'none' as const,
     WebkitTapHighlightColor: 'transparent',
     padding: '0.375rem 0.75rem',
-    borderRadius: '6px',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--sl-color-gray-5, var(--color-border-subtle))',
@@ -149,7 +147,7 @@ const S: Record<string, CSSProperties> = {
     gap: '0.625rem',
     height: '100%',
     padding: '1.25rem',
-    borderRadius: '12px',
+    clipPath: 'var(--clip-corner)',
     background: 'var(--sl-color-bg-nav, var(--glass-bg-85))',
     border: '1px solid var(--sl-color-gray-5, var(--color-outline-25))',
     position: 'relative' as const,
@@ -192,7 +190,6 @@ const S: Record<string, CSSProperties> = {
   },
   badge: {
     padding: '0.125rem 0.5rem',
-    borderRadius: '4px',
     fontSize: '0.625rem',
     fontWeight: 600,
     letterSpacing: '0.05em',
@@ -246,7 +243,6 @@ const S: Record<string, CSSProperties> = {
   },
   evidenceBadge: {
     padding: '0.0625rem 0.375rem',
-    borderRadius: '3px',
     fontSize: '0.625rem',
     fontWeight: 700,
     background: 'var(--sl-color-green-low, var(--color-green-alpha-15))',

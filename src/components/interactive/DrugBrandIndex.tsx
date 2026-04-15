@@ -186,7 +186,6 @@ const S: Record<string, CSSProperties> = {
   disclaimer: {
     background: 'var(--sl-color-accent-low, var(--color-primary-alpha-15))',
     border: '1px solid var(--sl-color-accent, var(--color-primary-alpha-40))',
-    borderRadius: '8px',
     padding: '0.875rem 1.25rem',
     marginBottom: '1.5rem',
     fontSize: '0.8125rem',
@@ -202,7 +201,6 @@ const S: Record<string, CSSProperties> = {
   searchInput: {
     flex: '1 1 280px',
     padding: '0.625rem 1rem',
-    borderRadius: '8px',
     border: '1px solid var(--sl-color-gray-5, var(--color-border-subtle))',
     background: 'var(--sl-color-bg-nav, var(--glass-bg))',
     color: 'var(--sl-color-text, #fff)',
@@ -222,7 +220,6 @@ const S: Record<string, CSSProperties> = {
     MozAppearance: 'none' as const,
     WebkitTapHighlightColor: 'transparent',
     padding: '0.375rem 0.75rem',
-    borderRadius: '6px',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--sl-color-gray-5, var(--color-border-subtle))',
@@ -258,8 +255,7 @@ const S: Record<string, CSSProperties> = {
     flexDirection: 'row' as const,
     gap: '0.875rem',
     padding: '1rem 1.25rem',
-    borderRadius: '0',
-    clipPath: 'polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%)',
+    clipPath: 'var(--clip-corner-sm)',
     background: 'var(--sl-color-bg-nav, var(--glass-bg))',
     backdropFilter: 'blur(12px)',
     border: '1px solid var(--sl-color-gray-5, var(--color-outline-20))',
@@ -275,7 +271,6 @@ const S: Record<string, CSSProperties> = {
   cardImage: {
     width: '80px',
     height: '80px',
-    borderRadius: '6px',
     objectFit: 'cover' as const,
     flexShrink: 0,
     background: 'var(--sl-color-bg-nav, var(--glass-bg-30))',
@@ -284,7 +279,6 @@ const S: Record<string, CSSProperties> = {
   cardIconPlaceholder: {
     width: '80px',
     height: '80px',
-    borderRadius: '6px',
     flexShrink: 0,
     display: 'flex',
     alignItems: 'center',
@@ -318,7 +312,6 @@ const S: Record<string, CSSProperties> = {
   },
   badge: {
     padding: '0.125rem 0.5rem',
-    borderRadius: '4px',
     fontSize: '0.625rem',
     fontWeight: 600,
     letterSpacing: '0.05em',

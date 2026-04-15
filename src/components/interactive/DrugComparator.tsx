@@ -680,6 +680,34 @@ const s: Record<string, CSSProperties> = {
     color: 'var(--color-primary-light)',
     textDecoration: 'none',
   },
+  presetSection: {
+    marginBottom: 'var(--space-md)',
+  },
+  presetLabel: {
+    display: 'block',
+    fontSize: '0.6875rem',
+    color: 'var(--color-text-muted)',
+    fontFamily: 'var(--font-body)',
+    marginBottom: 'var(--space-xs)',
+    letterSpacing: '0.04em',
+  },
+  presetRow: {
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    gap: 'var(--space-xs)',
+  },
+  presetChip: {
+    background: 'var(--color-bg-container)',
+    border: '1px solid var(--color-outline-20)',
+    clipPath: 'var(--clip-corner-sm)',
+    fontFamily: 'var(--font-body)',
+    fontSize: '0.75rem',
+    color: 'var(--color-text-secondary)',
+    padding: 'var(--space-xs) var(--space-md)',
+    cursor: 'pointer',
+    transition: 'border-color 0.15s ease',
+    lineHeight: 1.4,
+  },
 };
 
 const RESPONSIVE_CSS = `
@@ -695,7 +723,21 @@ const RESPONSIVE_CSS = `
 .dc-drug-link:hover {
   text-decoration: underline;
 }
+.dc-preset-chip:hover {
+  border-color: var(--color-primary) !important;
+}
 `;
+
+/* ================================
+   Preset comparisons
+   ================================ */
+
+const PRESETS = [
+  { a: 'cpa', b: 'spironolactone', label: { zh: 'CPA vs 螺内酯', en: 'CPA vs Spiro', ja: 'CPA vs スピロ' } },
+  { a: 'estradiol-oral', b: 'estradiol-injection', label: { zh: '口服 vs 注射', en: 'Oral vs Injection', ja: '経口 vs 注射' } },
+  { a: 'estradiol-patch', b: 'estradiol-gel', label: { zh: '贴片 vs 凝胶', en: 'Patch vs Gel', ja: 'パッチ vs ゲル' } },
+  { a: 'progesterone', b: 'dydrogesterone', label: { zh: '黄体酮 vs 地屈孕酮', en: 'Progesterone vs Dydro', ja: 'プロゲステロン vs ジドロ' } },
+] as const;
 
 /* ================================
    Component
@@ -755,6 +797,26 @@ export default function DrugComparator() {
           </svg>
         </span>
         {ui.title}
+      </div>
+
+      {/* Popular comparison presets */}
+      <div style={s.presetSection}>
+        <span style={s.presetLabel}>
+          {locale === 'zh' ? '热门对比' : locale === 'ja' ? '人気の比較' : 'Popular comparisons'}
+        </span>
+        <div style={s.presetRow}>
+          {PRESETS.map(preset => (
+            <button
+              key={`${preset.a}-${preset.b}`}
+              type="button"
+              className="dc-preset-chip"
+              style={s.presetChip}
+              onClick={() => { setDrugA(preset.a); setDrugB(preset.b); }}
+            >
+              {preset.label[locale]}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Drug Selectors */}
