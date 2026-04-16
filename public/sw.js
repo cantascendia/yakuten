@@ -1,19 +1,20 @@
-// HRT药典 Service Worker — offline cache for critical pages
-const CACHE_NAME = 'yakuten-v1';
+// HRT药典 Service Worker — offline cache for critical safety pages only
+const CACHE_NAME = 'yakuten-v2';
 const CRITICAL_PAGES = [
   '/zh/',
   '/zh/risks/',
   '/zh/blood-tests/',
   '/zh/pathway/',
   '/zh/china-reality/',
+  '/en/risks/',
+  '/ja/risks/',
+  '/ko/risks/',
 ];
 
 // Install: pre-cache critical pages
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(CRITICAL_PAGES);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CRITICAL_PAGES))
   );
   self.skipWaiting();
 });
@@ -28,23 +29,27 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch: network-first, fallback to cache
+// Fetch: only serve from cache for critical pages, everything else goes to network
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Cache successful responses for offline use
-        if (response.ok && event.request.url.startsWith(self.location.origin)) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-        }
-        return response;
-      })
-      .catch(() => {
-        // Network failed — try cache
-        return caches.match(event.request);
-      })
-  );
+  const url = new URL(event.request.url);
+
+  // Only use cache for critical pages
+  if (CRITICAL_PAGES.includes(url.pathname)) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // All other requests: network only, no caching
 });

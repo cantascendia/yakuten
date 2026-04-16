@@ -9,26 +9,30 @@ import { t, getLocale } from '../../i18n/ui';
 interface NavItem {
   label: string;
   href: string;
+  mobileHide?: boolean;  // hidden on mobile (covered by other homepage sections)
 }
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 const prefix = `/${locale}`;
 
 const navItems: NavItem[] = [
-  { label: t(locale, 'nav.before'), href: `${prefix}/before-you-start/` },
+  { label: t(locale, 'nav.before'), href: `${prefix}/before-you-start/`, mobileHide: true },
   { label: t(locale, 'nav.pathway'), href: `${prefix}/pathway/` },
   { label: t(locale, 'nav.medications'), href: `${prefix}/medications/estrogens/overview/` },
-  { label: t(locale, 'nav.doseLimits'), href: `${prefix}/dose-limits/` },
+  { label: t(locale, 'nav.doseLimits'), href: `${prefix}/dose-limits/`, mobileHide: true },
   { label: t(locale, 'nav.bloodTests'), href: `${prefix}/blood-tests/` },
   { label: t(locale, 'nav.risks'), href: `${prefix}/risks/` },
-  { label: t(locale, 'nav.tools'), href: `${prefix}/tools/blood-checker/` },
+  { label: t(locale, 'nav.tools'), href: `${prefix}/tools/blood-checker/`, mobileHide: true },
 ];
 ---
 
 <nav class="splash-nav glass-panel" aria-label={t(locale, 'nav.ariaLabel')}>
   <div class="splash-nav__inner">
     {navItems.map((item) => (
-      <a href={item.href} class="splash-nav__link">
+      <a
+        href={item.href}
+        class:list={['splash-nav__link', { 'splash-nav__link--mobile-hide': item.mobileHide }]}
+      >
         {item.label}
       </a>
     ))}
@@ -96,10 +100,7 @@ const navItems: NavItem[] = [
       padding: 0;
     }
 
-    /* 隐藏手机端冗余项：用药前准备(1)、剂量红线(4)、工具(7) */
-    .splash-nav__link:nth-child(1),
-    .splash-nav__link:nth-child(4),
-    .splash-nav__link:nth-child(7) {
+    .splash-nav__link--mobile-hide {
       display: none;
     }
 
@@ -110,10 +111,8 @@ const navItems: NavItem[] = [
       border-bottom: none;
     }
 
-    /* 竖分隔线（跳过被 display:none 的项） */
-    .splash-nav__link:nth-child(3),
-    .splash-nav__link:nth-child(5),
-    .splash-nav__link:nth-child(6) {
+    /* 竖分隔线：可见的非首个项 */
+    .splash-nav__link:not(.splash-nav__link--mobile-hide) ~ .splash-nav__link:not(.splash-nav__link--mobile-hide) {
       border-left: 1px solid var(--color-outline-20);
     }
   }

@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback, type CSSProperties, type ChangeEvent } from 'react';
+﻿import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
 import { formatValueWithUnit } from '../../utils/medicalFormat';
 
 type Locale = 'zh' | 'en' | 'ja';
@@ -16,7 +16,7 @@ const SECTION_COPY = {
     resultTitle: '评估结果',
     emptyHint: '在左侧输入你的血检数值，结果将实时显示在这里。',
     disclaimer1: '此工具仅供参考，不能替代医生的判读。如果你有任何疑虑，请直接就医。',
-    disclaimer2: '所有计算和数据保存都在你的浏览器本地完成，不会传输至任何服务器。',
+    disclaimer2: '所有计算都在你的浏览器本地完成，不会传输或存储任何数据。',
     viewEmergency: '查看急症指南',
   },
   en: {
@@ -24,7 +24,7 @@ const SECTION_COPY = {
     resultTitle: 'Assessment',
     emptyHint: 'Enter your blood test values on the left. Results will appear here in real time.',
     disclaimer1: 'This tool is for reference only and cannot replace clinician interpretation. If you are concerned, seek medical care directly.',
-    disclaimer2: 'All calculations and saved data remain in your browser. Nothing is transmitted to any server.',
+    disclaimer2: 'All calculations run locally in your browser. No data is transmitted or stored.',
     viewEmergency: 'View emergency guide',
   },
   ja: {
@@ -32,7 +32,7 @@ const SECTION_COPY = {
     resultTitle: '評価結果',
     emptyHint: '左側に血液検査の数値を入力すると、結果がここに表示されます。',
     disclaimer1: 'このツールは参考用であり、医師の判断の代わりにはなりません。不安がある場合は直接受診してください。',
-    disclaimer2: 'すべての計算と保存データはブラウザ内で完結し、サーバーには送信されません。',
+    disclaimer2: 'すべての計算はブラウザ内で完結し、データは送信・保存されません。',
     viewEmergency: '緊急ガイドを見る',
   },
 } as const;
@@ -437,50 +437,11 @@ const RESPONSIVE_CSS = `
 
 // --------------- Component ---------------
 
-const BTC_STORAGE_KEY = 'btc-values';
-
-const PERSISTENCE_COPY = {
-  zh: { restored: '已恢复上次的数据', clear: '清除记录' },
-  en: { restored: 'Previous data restored', clear: 'Clear saved' },
-  ja: { restored: '前回のデータを復元しました', clear: '記録を消去' },
-} as const;
-
 export default function BloodTestChecker() {
   const [values, setValues] = useState<Record<string, string>>({});
-  const [restored, setRestored] = useState(false);
   const [mobileTab, setMobileTab] = useState<'input' | 'result'>('input');
   const locale = getLocale();
   const copy = SECTION_COPY[locale];
-  const persistCopy = PERSISTENCE_COPY[locale];
-
-  // Load saved values on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(BTC_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === 'object') {
-          setValues(parsed);
-          setRestored(true);
-        }
-      }
-    } catch { /* localStorage unavailable or corrupt */ }
-  }, []);
-
-  // Save values on change
-  useEffect(() => {
-    try {
-      if (Object.keys(values).length > 0) {
-        localStorage.setItem(BTC_STORAGE_KEY, JSON.stringify(values));
-      }
-    } catch { /* localStorage unavailable */ }
-  }, [values]);
-
-  const clearSaved = useCallback(() => {
-    setValues({});
-    setRestored(false);
-    try { localStorage.removeItem(BTC_STORAGE_KEY); } catch {}
-  }, []);
 
   const handleChange = useCallback((id: string, raw: string) => {
     setValues((prev) => ({ ...prev, [id]: raw }));
@@ -547,11 +508,9 @@ export default function BloodTestChecker() {
         {/* -------- Actions bar -------- */}
         {hasAnyValue && (
           <div style={s.persistNotice}>
-            {restored && <span>{persistCopy.restored}</span>}
             <button onClick={() => window.print()} style={s.clearBtn}>
               {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : 'Print results'}
             </button>
-            <button onClick={clearSaved} style={s.clearBtn}>{persistCopy.clear}</button>
           </div>
         )}
 
