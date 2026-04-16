@@ -708,18 +708,69 @@ const s: Record<string, CSSProperties> = {
     transition: 'border-color 0.15s ease',
     lineHeight: 1.4,
   },
+  // Card-based comparison layout (replaces table)
+  compareGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: 'var(--space-lg)',
+    marginTop: 'var(--space-lg)',
+  } as CSSProperties,
+  compareCard: {
+    background: 'var(--glass-bg)',
+    backdropFilter: 'var(--glass-blur)',
+    WebkitBackdropFilter: 'var(--glass-blur)',
+    border: 'var(--glass-border)',
+    clipPath: 'var(--clip-corner)',
+    padding: 'var(--space-xl)',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: 'var(--space-md)',
+  } as CSSProperties,
+  compareCardTitle: {
+    fontFamily: 'var(--font-display)',
+    fontSize: '1.375rem',
+    fontWeight: 700,
+    color: 'var(--color-text-primary)',
+  } as CSSProperties,
+  compareRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--space-sm)',
+    fontSize: '0.8125rem',
+    flexWrap: 'wrap' as const,
+  } as CSSProperties,
+  compareRowLabel: {
+    color: 'var(--color-text-muted)',
+    fontFamily: 'var(--font-body)',
+    fontSize: '0.75rem',
+    flexShrink: 0,
+  } as CSSProperties,
+  compareRowMono: {
+    fontFamily: 'var(--font-mono)',
+    fontSize: '0.875rem',
+    color: 'var(--color-text-primary)',
+  } as CSSProperties,
+  vteBadge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '0.75rem',
+    fontWeight: 700,
+    color: '#0D0B14',
+    flexShrink: 0,
+  } as CSSProperties,
+  compareDanger: {
+    borderLeft: '2px solid var(--color-accent)',
+    paddingLeft: 'var(--space-md)',
+    marginTop: 'var(--space-sm)',
+  } as CSSProperties,
 };
 
 const RESPONSIVE_CSS = `
-.dc-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-@media (max-width: 640px) {
-  .dc-table-wrap table {
-    min-width: 500px;
-  }
-}
 .dc-drug-link:hover {
   text-decoration: underline;
 }
@@ -848,70 +899,76 @@ export default function DrugComparator() {
         )}
       </div>
 
-      {/* Comparison Table */}
-      <div className="dc-table-wrap">
-        <table style={s.table}>
-          <thead>
-            <tr>
-              <th style={s.th}></th>
-              {selectedDrugs.map(d => {
-                const url = getDrugPageUrl(d.id, linkLocale);
-                return (
-                  <th key={d.id} style={s.thDrug}>
-                    {url ? (
-                      <a href={url} style={s.drugLink} className="dc-drug-link">
-                        {getName(d)}
-                      </a>
-                    ) : getName(d)}
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {renderRow(ui.category, selectedDrugs.map(d => (
-              <span key={d.id} style={{ ...s.badge, color: getCategoryColor(d.category), border: `1px solid ${getCategoryColor(d.category)}` }}>
+      {/* Comparison Cards */}
+      <div style={s.compareGrid}>
+        {selectedDrugs.map(d => {
+          const url = getDrugPageUrl(d.id, linkLocale);
+          const catColor = getCategoryColor(d.category);
+          return (
+            <div key={d.id} style={{ ...s.compareCard, borderLeft: `3px solid ${catColor}` }}>
+              {/* Drug name */}
+              <div style={s.compareCardTitle}>
+                {url ? (
+                  <a href={url} style={s.drugLink} className="dc-drug-link">{getName(d)}</a>
+                ) : getName(d)}
+              </div>
+
+              {/* Category badge */}
+              <span style={{ ...s.badge, color: catColor, border: `1px solid ${catColor}` }}>
                 {getCategoryLabel(d.category, ui)}
               </span>
-            )))}
-            {renderRow(ui.route, selectedDrugs.map(d => getRoute(d)))}
-            {renderMonoRow(ui.doseStart, selectedDrugs.map(d => d.doseStart))}
-            {renderMonoRow(ui.doseMaintenance, selectedDrugs.map(d => d.doseMaintenance))}
-            {renderMonoRow(ui.doseMax, selectedDrugs.map(d => d.doseMax))}
-            {renderRow(ui.frequency, selectedDrugs.map(d => getFreq(d)))}
-            {renderMonoRow(ui.halfLife, selectedDrugs.map(d => d.halfLife))}
-            {renderMonoRow(ui.bioavailability, selectedDrugs.map(d => d.bioavailability))}
-            {renderRow(ui.vteRR, selectedDrugs.map(d => (
-              <span key={d.id}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: getVteColor(d.vteRR) }}>
+
+              {/* Dose */}
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>💊 {ui.doseMaintenance}</span>
+                <span style={s.compareRowMono}>{d.doseMaintenance}</span>
+              </div>
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>📏 {ui.doseMax}</span>
+                <span style={s.compareRowMono}>{d.doseMax}</span>
+              </div>
+
+              {/* VTE Risk */}
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>{ui.vteRR}</span>
+                <span style={{ ...s.vteBadge, background: getVteColor(d.vteRR) }}>
                   {d.vteRR.toFixed(2)}
                 </span>
-                <span style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-sm)' }}>
+                <span style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)' }}>
                   {getVteLabel(d.vteRR, ui)}
                 </span>
-              </span>
-            )))}
-            {renderRow(ui.evidenceLevel, selectedDrugs.map(d => (
-              <span key={d.id} style={{
-                ...s.badge,
-                color: d.evidenceLevel === 'A' ? 'var(--color-safe)' : d.evidenceLevel === 'B' ? 'var(--color-caution)' : 'var(--color-text-muted)',
-                border: `1px solid ${d.evidenceLevel === 'A' ? 'var(--color-safe)' : d.evidenceLevel === 'B' ? 'var(--color-caution)' : 'var(--color-text-muted)'}`,
-              }}>
-                {d.evidenceLevel}
-              </span>
-            )))}
-            {renderRow(ui.monitoringTests, selectedDrugs.map(d => (
-              <span key={d.id} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-accent)' }}>
-                {d.monitoring.join(', ')}
-              </span>
-            )))}
-            {renderRow(ui.contraindications, selectedDrugs.map(d => (
-              <ul key={d.id} style={s.listInCell}>
-                {getContra(d).map((c, i) => <li key={i}>{c}</li>)}
-              </ul>
-            )))}
-          </tbody>
-        </table>
+              </div>
+
+              {/* Half-life & frequency */}
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>⏱ {ui.halfLife}</span>
+                <span style={s.compareRowMono}>{d.halfLife}</span>
+              </div>
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>🔄 {ui.frequency}</span>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem' }}>{getFreq(d)}</span>
+              </div>
+
+              {/* Monitoring */}
+              <div style={s.compareRow}>
+                <span style={s.compareRowLabel}>🩺 {ui.monitoringTests}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-accent)' }}>
+                  {d.monitoring.join(', ')}
+                </span>
+              </div>
+
+              {/* Contraindications */}
+              <div style={s.compareDanger}>
+                <div style={{ fontSize: '0.75rem', fontFamily: 'var(--font-display)', color: 'var(--color-danger)', marginBottom: 'var(--space-xs)' }}>
+                  ⚠ {ui.contraindications}
+                </div>
+                <ul style={s.listInCell}>
+                  {getContra(d).map((c, i) => <li key={i}>{c}</li>)}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Disclaimer */}
