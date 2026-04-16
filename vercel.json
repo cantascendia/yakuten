@@ -1,9 +1,15 @@
 {
   "redirects": [
     {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "www.hrtyaku.com" }],
+      "destination": "https://hrtyaku.com/:path",
+      "permanent": true
+    },
+    {
       "source": "/",
       "destination": "/zh/",
-      "permanent": false
+      "permanent": true
     }
   ]
 }

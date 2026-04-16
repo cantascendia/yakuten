@@ -2,10 +2,8 @@
 /**
  * JSON-LD Structured Data for SEO & AEO
  * Injects Organization + WebSite + MedicalWebPage schemas on every page.
- * Adds per-page Drug schema on medication pages.
  * Adds citation ScholarlyArticle schema when references are present.
  */
-import drugData from '../../data/drugs.json';
 import refData from '../../data/references.json';
 
 const route = Astro.locals.starlightRoute;
@@ -22,45 +20,6 @@ const lastReviewed = entry?.data?.lastReviewed
   ? new Date(entry.data.lastReviewed).toISOString().split('T')[0]
   : '2026-04-12';
 const referenceIds: string[] = entry?.data?.references ?? [];
-
-// Detect if this is a medication page
-const isMedPage = pathname.includes('/medications/') && !pathname.includes('overview') && !pathname.includes('banned');
-
-// Try to find matching drug data for medication pages
-type DrugEntry = { id: string; names?: { generic?: string; zh?: string }; category?: string; routes?: { route?: string }[] };
-let drugInfo: DrugEntry | null = null;
-if (isMedPage) {
-  const drugs = drugData as DrugEntry[];
-  // Extract drug slug from URL (e.g., /zh/medications/estrogens/oral → estradiol-oral)
-  const pathParts = pathname.split('/').filter(Boolean);
-  const drugSlug = pathParts[pathParts.length - 1]; // e.g., "oral", "cpa", "progesterone"
-
-  // Map common slugs to drug IDs
-  const slugMap: Record<string, string> = {
-    'oral': 'estradiol-oral',
-    'sublingual': 'estradiol-sublingual',
-    'gel': 'estradiol-gel',
-    'transdermal-patch': 'estradiol-patch',
-    'injection': 'estradiol-injection',
-    'cypionate': 'estradiol-cypionate',
-    'enanthate': 'estradiol-enanthate',
-    'undecylate': 'estradiol-undecylate',
-    'cpa': 'cyproterone-acetate',
-    'spironolactone': 'spironolactone',
-    'bicalutamide': 'bicalutamide',
-    'gnrh-agonists': 'gnrh-agonist',
-    'progesterone': 'progesterone',
-    'hydroxyprogesterone': 'hydroxyprogesterone',
-    'dydrogesterone': 'dydrogesterone',
-    'drospirenone': 'drospirenone',
-    'finasteride': 'finasteride',
-    'dutasteride': 'dutasteride',
-  };
-  const drugId = slugMap[drugSlug];
-  if (drugId) {
-    drugInfo = drugs.find((d: DrugEntry) => d.id === drugId) ?? null;
-  }
-}
 
 // Build reference citations for ScholarlyArticle schema
 type RefEntry = { id: string; authors: string; year: number; title: string; journal: string; doi: string | null; url: string | null };
@@ -133,18 +92,9 @@ const graph: Record<string, unknown>[] = [
   }
 ];
 
-// 4. Drug schema (medication pages only)
-if (drugInfo) {
-  const route0 = drugInfo.routes?.[0];
-  graph.push({
-    "@type": "Drug",
-    "name": drugInfo.names?.generic ?? title,
-    "nonProprietaryName": drugInfo.names?.zh ?? drugInfo.names?.generic,
-    "url": pageUrl,
-    "administrationRoute": route0?.route ?? undefined,
-    "isPartOf": { "@id": "https://hrtyaku.com/#website" }
-  });
-}
+// 4. Drug schema removed — Google requires offers/review/aggregateRating
+// for Drug type, which doesn't apply to informational pages.
+// MedicalWebPage above already provides medical semantic context.
 
 // 5. Citation schemas (pages with references)
 if (citedRefs.length > 0) {

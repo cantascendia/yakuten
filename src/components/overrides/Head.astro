@@ -47,9 +47,6 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 
 <Default {...Astro.props}><slot /></Default>
 <link rel="manifest" href="/manifest.json" />
-{alternates.map(({ hreflang, href }) => (
-  <link rel="alternate" hreflang={hreflang} href={href} />
-))}
 <link rel="alternate" hreflang="x-default" href={xDefault} />
 <meta property="og:locale" content={currentOgLocale} />
 {alternateOgLocales.map((loc) => (

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /*?q=
 
 Sitemap: https://hrtyaku.com/sitemap-index.xml
