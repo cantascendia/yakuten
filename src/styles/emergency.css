@@ -4,11 +4,18 @@
 .emergency-banner {
   background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
   color: var(--color-text-on-dark);
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-sm) var(--space-lg);
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
+}
+
+/* When embedded inside Starlight prose (e.g. /zh/risks/),
+   override the lobotomized-owl sibling margin with explicit, predictable spacing.
+   Scoped so the homepage top-of-page banner is unaffected. */
+.sl-markdown-content .emergency-banner {
+  margin: var(--space-lg) 0 var(--space-xl);
 }
 
 .emergency-banner a,
