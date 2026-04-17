@@ -35,6 +35,8 @@ export const ui = {
     // HeroSection
     'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': '循证 · 减害 · 引导就医',
+    'hero.ctaPrimary': '问 AI 助手',
+    'hero.ctaPathway': '开始我的路径',
 
     // MissionStatement
     'mission.label': '严峻现实',
@@ -131,6 +133,8 @@ export const ui = {
     // HeroSection
     'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': 'Evidence-Based · Harm Reduction · Guided Care',
+    'hero.ctaPrimary': 'Ask AI Assistant',
+    'hero.ctaPathway': 'Start My Pathway',
 
     // MissionStatement
     'mission.label': 'The Critical Reality',
@@ -227,6 +231,8 @@ export const ui = {
     // HeroSection
     'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': 'エビデンス · 害軽減 · 医療ガイド',
+    'hero.ctaPrimary': 'AIアシスタントに質問',
+    'hero.ctaPathway': 'あなたの道を始める',
 
     // MissionStatement
     'mission.label': '深刻な現実',
@@ -323,6 +329,8 @@ export const ui = {
     // HeroSection
     'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': '근거 기반 · 위해 감소 · 의료 안내',
+    'hero.ctaPrimary': 'AI 어시스턴트에게 질문',
+    'hero.ctaPathway': '나의 경로 시작하기',
 
     // MissionStatement
     'mission.label': '심각한 현실',

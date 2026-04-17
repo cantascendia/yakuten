@@ -27,6 +27,9 @@ const {
 
 const searchPlaceholder = t(locale, 'hero.searchPlaceholder');
 const searchLabel = t(locale, 'hero.searchLabel');
+const ctaPrimary = t(locale, 'hero.ctaPrimary');
+const ctaPathway = t(locale, 'hero.ctaPathway');
+const prefix = `/${locale}`;
 ---
 
 <section class="hero-section" aria-label="Hero">
@@ -50,6 +53,22 @@ const searchLabel = t(locale, 'hero.searchLabel');
       <span class="hero-search__text">{searchPlaceholder}</span>
       <kbd class="hero-search__kbd" aria-hidden="true">Ctrl K</kbd>
     </button>
+
+    <div class="hero-section__ctas">
+      <a href={`${prefix}/tools/ai-assistant/`} class="btn-primary">
+        {ctaPrimary}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      </a>
+      <a href={`${prefix}/pathway/`} class="btn-ghost">
+        {ctaPathway}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+    </div>
 
     <div class="hero-section__divider-wrapper" aria-hidden="true">
       <div class="hero-section__divider"></div>
@@ -126,8 +145,21 @@ const searchLabel = t(locale, 'hero.searchLabel');
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 3vw, 1.875rem);
     color: var(--color-accent);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     margin: 0;
+  }
+
+  .hero-section__ctas {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Strip Starlight prose underline from hero CTA anchors */
+  :global(.sl-markdown-content) .hero-section__ctas a,
+  :global(.sl-markdown-content) .hero-section__ctas a:hover {
+    text-decoration: none;
   }
 
   .hero-section__divider-wrapper {

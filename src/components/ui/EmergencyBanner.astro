@@ -108,4 +108,10 @@ const {
     border-color: rgba(255, 255, 255, 0.4);
     opacity: 1 !important;
   }
+
+  /* White focus ring overrides the global gold one — gold vs red bg is ~1.8:1, WCAG fail */
+  .emergency-banner__cta:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
 </style>
