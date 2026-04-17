@@ -1,0 +1,241 @@
+---
+title: 切换 E2 给药途径完整指南
+description: 口服 / 舌下 / 贴片 / 凝胶 / 注射之间切换的分步协议——何时该换、剂量等效换算、过渡期 E2 波动预期、切换期血检、与医生沟通要点。
+evidenceLevel: A
+sidebar:
+  hidden: true
+lastReviewed: 2026-04-17
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, misakian-2025]
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<EvidenceBadge level="A" />
+
+本指南面向**已经在用某种 E2 方案**、想切换给药途径的使用者。核心内容：**换不换的决策** → **剂量等效换算** → **常见切换路径的协议**（洗脱期、起始剂量、首次复查时间）→ **过渡期 E2 波动和症状预期** → **与医生沟通要点**。
+
+还没开始用药？先看 [雌二醇给药途径总览](/zh/medications/estrogens/overview/)。
+第一次打针？看 [首次注射完整指南](/zh/guides/first-injection/)。
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 0</span> 什么时候该考虑换 E2 途径
+
+### 你在**口服 E2**，考虑切换到**经皮**（降 VTE 风险）
+
+- **VTE 风险因素出现或升级**：年龄 >40、BMI 上升至 >30、开始吸烟、发现凝血异常、新出现偏头痛先兆
+- **凝血或肝功能指标异常**：D-二聚体持续升高、ALT >正常上限 2 倍
+- **家族 VTE 史被确认**（既往不知情，血亲确诊 DVT/PE）
+
+经皮途径 VTE 风险与未用药人群无显著差异（RR ≈ 0.97），而口服约增加 48%（RR ≈ 1.48）<CitationRef id="canonico-2018" num={1} authors="Canonico P et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />。**任何 VTE 风险升级都应当考虑转经皮**。
+
+### 你在**口服 / 舌下**，考虑切换到**注射**
+
+- **想实现单药治疗**，不再用抗雄（注射使用者约 82.6% 可免抗雄<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy" />）
+- **舌下多次含服无法维持**规律生活
+- **足量（8 mg/日）口服 6+ 个月 E2 谷值仍 < 50 pg/mL**
+
+### 你在**注射**，考虑切换到**口服 / 贴片 / 凝胶**
+
+- **打针困难**：针头恐惧、无法稳定操作、供药不稳定
+- **E2 波动太大**：注射谷值-峰值差异导致情绪 / 躯体感受显著波动，影响生活
+- **VTE 风险升级**：需要降到"绕肝"的经皮途径（贴片/凝胶）
+- **成本压力**：长期注射的药物+针具+血检成本累积
+
+### 你在**贴片 / 凝胶**，考虑切换到**口服 / 注射**
+
+- **皮肤反应**：贴片持续过敏、凝胶吸收部位刺激
+- **依从性问题**：每天涂抹或每周换贴忘记
+- **想提升 E2 水平**：高剂量贴片 / 凝胶仍无法达到目标（可能需要切注射）
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1</span> 剂量等效换算参考
+
+下表基于 Endocrine Society 2017 和 WPATH SOC 8 推荐的**维持剂量**范围<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care v8" />和 Kuhl 2005 的性激素药代动力学 review<CitationRef id="kuhl-2005" num={5} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />。
+
+<DoseTable
+  headers={['途径', '维持剂量（目标 E2 100-200 pg/mL）', '常用起始剂量', '给药节奏']}
+  rows={[
+    ['口服 戊酸 E2', '2-4 mg/天', '1-2 mg/天', '每日 1 次'],
+    ['舌下 E2', '2-4 mg/天（分 2-3 次）', '1-2 mg/天（分 2 次）', '每日 2-3 次'],
+    ['经皮贴片', '100-200 µg/天', '50-100 µg/天', '每 3-4 天更换'],
+    ['经皮凝胶', '3 mg/天', '1.5 mg/天', '每日涂抹 1 次'],
+    ['注射 EV', '2-4 mg/周', '1-2 mg/周', '每 5-7 天注射'],
+  ]}
+/>
+
+**这不是严格的 1:1 换算**。由于每种途径的生物利用度、吸收速率和血药曲线特征差异很大，切换后必须在 4-6 周复查 E2 并按谷值调整剂量。
+
+<WarningBox title="起始剂量选「下限」">
+切换方案时，起始剂量应选**新途径维持剂量的下限**，而非与旧途径「等效」的剂量。宁可剂量偏低，后续根据血检微调。**不要因为「原来的剂量高」而直接用新途径的最大剂量**——这是过量事故的常见路径。
+</WarningBox>
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 2</span> 切换协议矩阵
+
+每一节按"你现在在用什么"分组。
+
+### 2.1 从**注射 EV**切换到其他
+
+注射 EV 半衰期约 4-5 天，最后一针后 **5 天左右**血药浓度显著下降，**约 15-20 天**完全清除。
+
+<DoseTable
+  headers={['目标', '停针节奏', '新药起始', '首次复查', '过渡期 E2 预期']}
+  rows={[
+    ['→ 口服', '最后一针后 5 天开始口服', '2 mg/天', '4 周后 E2', '第 7-10 天可能有 E2 "低谷" → 症状波动'],
+    ['→ 舌下', '最后一针后 5 天', '2 mg/天 分 2 次', '4 周后 E2', '同上'],
+    ['→ 贴片', '最后一针后 5-7 天揭开首片', '50-100 µg/天', '4 周后 E2', '第 10-14 天贴片血药稳定前可能低谷'],
+    ['→ 凝胶', '最后一针后 5-7 天涂首剂', '1.5 mg/天', '4 周后 E2', '同上'],
+  ]}
+/>
+
+### 2.2 从**口服 E2**切换到其他
+
+口服 E2 半衰期约 13-20 小时，停药 **2-3 天**后血药基本清除。
+
+<DoseTable
+  headers={['目标', '停口服节奏', '新药起始', '首次复查', '过渡期 E2 预期']}
+  rows={[
+    ['→ 舌下', '同一天切换（口服剂停用，改舌下含服）', '2 mg/天 分 2 次', '4 周后 E2', '舌下峰值高于口服，注意 1-2 周适应'],
+    ['→ 贴片', '口服当天停，当天揭贴片', '50-100 µg/天', '4 周后 E2', '贴片血药稳定需 3-7 天'],
+    ['→ 凝胶', '口服当天停，当天涂凝胶', '1.5 mg/天', '4 周后 E2', '涂抹吸收稳定需 3-5 天'],
+    ['→ 注射 EV', '口服停后 1-2 天内打首针', '1-2 mg/周', '注射第 4-6 周 E2 谷值', '注射峰值远高于口服，留意首 2 周情绪'],
+  ]}
+/>
+
+### 2.3 从**舌下含服**切换到其他
+
+舌下含服血药波动大（峰值高，谷值低），切换到更稳定的途径时**主观感受通常改善**。
+
+<DoseTable
+  headers={['目标', '停舌下节奏', '新药起始', '首次复查', '过渡期 E2 预期']}
+  rows={[
+    ['→ 口服', '同一天切换', '2 mg/天', '4 周', '峰值下降，可能感觉"药效变弱"，实为血药更稳定'],
+    ['→ 贴片', '舌下当天停', '50-100 µg/天', '4 周', '血药稳定需 3-7 天'],
+    ['→ 凝胶', '舌下当天停', '1.5 mg/天', '4 周', '同上'],
+    ['→ 注射 EV', '舌下停后当天或次日打首针', '1-2 mg/周', '4-6 周', '注射峰值显著'],
+  ]}
+/>
+
+### 2.4 从**贴片 / 凝胶**切换到其他
+
+经皮途径（贴片 / 凝胶）之间切换视为"同类调整"——基本无洗脱期。与口服 / 注射之间切换需要考虑 E2 洗脱。
+
+<DoseTable
+  headers={['目标', '停经皮节奏', '新药起始', '首次复查', '过渡期 E2 预期']}
+  rows={[
+    ['贴片 → 凝胶 / 凝胶 → 贴片', '当天切换', '新途径起始剂量', '2-4 周', '基本无波动'],
+    ['→ 口服', '贴片揭下 / 凝胶最后涂抹后，当天起口服', '2 mg/天', '4 周', '经皮→口服会升 VTE 风险，应有医学理由'],
+    ['→ 舌下', '同上', '2 mg/天 分 2 次', '4 周', '同上'],
+    ['→ 注射 EV', '揭片/停涂 2-3 天后打首针', '1-2 mg/周', '4-6 周', '经皮→注射 VTE 风险数据有限，但比口服更稳'],
+  ]}
+/>
+
+<DangerBox title="从经皮切到口服 · VTE 风险升级">
+这是**风险方向的切换**——从 VTE 相对风险 ~0.97 升到 ~1.48。**除非有明确的医学理由**（如皮肤持续过敏且无替代）**或不得已的可及性问题**，不应主动做这个方向的切换。切换前务必评估：
+- 年龄 / BMI / 吸烟史 / 偏头痛 / VTE 家族史
+- 基线 D-二聚体和凝血功能
+- 是否同时在用会叠加 VTE 风险的口服 CPA
+</DangerBox>
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 3</span> 过渡期该监测什么
+
+### 共用基础项（任何切换都做）
+- **E2（雌二醇）** · **T（总睾酮）** · **肝功能（ALT、AST）**
+- 血压（家测即可，口服 / 高剂量可能影响）
+
+### 按路径加查
+- **切到注射**：首次复查务必测**谷值 E2**（下次注射前当天早晨采血）
+- **切到经皮**：换贴片后 3-7 天血药才稳定，**不要在前 3 天复查 E2**（会偏低）
+- **切到口服 / 舌下**：E2 每日波动大，**采血时间应与服药时间固定**（例如每次都在服药后 4 小时）
+
+### 切换期血检时机
+- **最早**：新途径起始后 **4 周**
+- **常规**：8 周再查一次确认稳定
+- **长期**：3 个月后一次，之后每 6 个月一次
+
+详见 [血检指南](/zh/blood-tests/)。
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 4</span> 过渡期可能出现的反应
+
+### 正常（记录即可）
+
+- **1-2 周情绪波动**：E2 血药曲线形状改变引起
+- **乳房短暂胀痛 / 敏感加剧**：尤其从低剂量切到维持量时
+- **皮肤油脂 / 体毛轻微变化**：T 相对稳定但 E2 波动期的自然反应
+
+### 需要留意
+
+- 切换 **4-6 周后** E2 仍低于切换前（剂量不足，需调整）
+- 切换 **3 个月后**客观指标无改善（复查找原因）
+- 持续数周的任何**新躯体症状**（头痛、心悸、下肢不对称肿胀）
+
+### 立即停药并就医
+
+<DangerBox title="切换期任何时候出现以下情况，立即停药并急诊">
+
+- 单侧小腿肿胀 + 压痛（VTE）
+- 胸痛 / 呼吸困难 / 咯血（肺栓塞）
+- 突发严重头痛 + 视力异常（卒中 / 静脉窦血栓 / 脑膜瘤）
+- 皮肤 / 眼白发黄 + 尿色加深（急性肝毒性）
+- 严重过敏反应
+
+完整清单见 [风险与急症识别](/zh/risks/)。
+
+</DangerBox>
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 5</span> 与医生沟通 · 讨论要点
+
+E2 途径切换的关键沟通点：
+
+- **明确切换理由**：出示具体数据（"我在口服 4 mg/日，D-二聚体 800 ng/mL，希望切经皮降低 VTE 风险"）
+- **说明你的方案意向**：剂量、起始节奏、预计目标（引用 §1 等效表）
+- **询问起始剂量是否合适**：切换时通常取**新途径维持剂量的下限**
+- **确认复查时间表**：4 周、8 周、3 个月分别查什么
+- **讨论过渡期症状预期**：如果出现情绪波动、胀痛等，是正常过渡还是需要调整
+- **如果医生对 HRT 不熟悉**：提供以下参考：
+  - [WPATH SOC 8 (Coleman et al. 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [Canonico 2018 · VTE by route meta-analysis](https://doi.org/10.1056/NEJMra1513441)
+  - [参考文献库](/zh/appendix-references/)
+
+<WarningBox title="本站不能替代医生">
+E2 途径切换涉及个人 VTE 风险谱、基线血检、伴随用药，**必须由合格的医疗人员判断**。本站提供的是国际临床指南的信息底线，帮助你在与医生沟通时准备得更充分。如果你所在地难以找到友好的医生，参考 [中国 HRT 现实路径图](/zh/china-reality/) 和 [友好医疗资源](/zh/tools/hospital-finder/)。
+</WarningBox>
+
+---
+
+## 相关资源
+
+- [雌二醇给药途径总览](/zh/medications/estrogens/overview/) — 五种途径的完整对比和选择逻辑
+- [经皮贴片](/zh/medications/estrogens/transdermal-patch/) — VTE 风险最低
+- [口服雌二醇（补佳乐）](/zh/medications/estrogens/oral/) — 最易获取
+- [舌下含服](/zh/medications/estrogens/sublingual/) — 折衷方案
+- [经皮凝胶](/zh/medications/estrogens/gel/) — 每日涂抹，剂量灵活
+- [戊酸雌二醇注射液](/zh/medications/estrogens/injection/) — 单药治疗能力
+- [血检指南](/zh/blood-tests/) · [风险与急症识别](/zh/risks/)
+- [注射剂量换算器](/zh/tools/injection-calculator/) · [剂量模拟器](/zh/tools/dose-simulator/)
+- [找医生](/zh/china-reality/) · [友好医疗资源](/zh/tools/hospital-finder/)
+
+---
+
+**参考文献**
+
+1. <span id="ref-canonico-2018">Canonico P et al. Postmenopausal hormone therapy and risk of venous thromboembolism. *Thromb Res* 2018;170:13-19.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+4. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+5. <span id="ref-kuhl-2005">Kuhl H. Pharmacology of estrogens and progestogens: influence of different routes of administration. *Climacteric* 2005;8(Suppl 1):3-63.</span>

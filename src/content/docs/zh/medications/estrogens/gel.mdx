@@ -14,6 +14,7 @@ import WarningBox from '../../../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../../../components/ui/DangerBox.astro';
 import CitationRef from '../../../../../components/ui/CitationRef.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 <DrugInfoBox
   name="Estradiol Gel"
@@ -24,6 +25,15 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 >
 经皮凝胶通过皮肤吸收雌二醇，绕过肝脏首过效应，VTE 风险与经皮贴片类似<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />。便利性介于贴片和口服之间，适合希望获得经皮给药优势同时希望更灵活调节剂量的使用者。
 </DrugInfoBox>
+
+<GuideCTA
+  eyebrow="切换方案"
+  title="想从凝胶转到其他途径？"
+  description="查看凝胶 → 贴片 / 口服 / 注射的切换协议。注意：凝胶 → 口服会升高 VTE 风险，应有医学理由。"
+  ctaText="打开 E2 途径切换指南"
+  ctaHref="/zh/guides/switch-e2-route/"
+  variant="accent"
+/>
 
 <img src="/images/drugs/oestrogel-studio.webp" alt="爱斯妥（Oestrogel）雌二醇凝胶泵瓶的产品照片" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
