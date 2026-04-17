@@ -15,6 +15,7 @@ import CitationRef from '../../../../../components/ui/CitationRef.astro';
 import WarningBox from '../../../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../../../components/ui/DangerBox.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 <DrugInfoBox
   name="Bicalutamide"
@@ -25,6 +26,15 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 >
   比卡鲁胺是一种非甾体类强效雄激素受体（AR）拮抗剂，原用于前列腺癌治疗。在跨性别 HRT 中属于**最后手段的抗雄药物**——仅当 CPA、螺内酯和 GnRH 激动剂均不可用时才考虑。WPATH SOC 8 明确不推荐其用于常规 GAHT。
 </DrugInfoBox>
+
+<GuideCTA
+  eyebrow="切换方案"
+  title="想换其他抗雄？"
+  description="查看比卡 → CPA / 螺内酯 / GnRH 的切换协议：洗脱期（比卡半衰期 6 天）、肝功能监测、与医生沟通要点。"
+  ctaText="打开抗雄切换完整指南"
+  ctaHref="/zh/guides/switch-antiandrogen/"
+  variant="accent"
+/>
 
 <WarningBox title="超说明书用药 — Off-Label Use">
 比卡鲁胺用于跨性别女性 HRT 属于**超说明书用药**（Off-Label Use）<CitationRef id="coleman-2022" num={1} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：

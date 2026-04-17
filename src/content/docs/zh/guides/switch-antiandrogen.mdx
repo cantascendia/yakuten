@@ -1,0 +1,233 @@
+---
+title: 抗雄切换完整指南
+description: 从 CPA / 螺内酯 / 比卡 / GnRH 之间切换的分步协议——何时该换、停哪个、起哪个、洗脱期、剂量起始、切换期血检、与医生沟通要点。
+evidenceLevel: B
+sidebar:
+  hidden: true
+lastReviewed: 2026-04-17
+references: [coleman-2022, hembree-2017, ucsf-2016, neyman-2019, fuqua-2024, kuhl-2005]
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<EvidenceBadge level="B" />
+
+本指南面向**已经在用某种抗雄**、想要换另一种的使用者。核心内容：**换不换的决策** → **常见切换路径的具体协议**（洗脱期、起始剂量、首次复查时间）→ **切换期该监测什么** → **与医生沟通要点**。
+
+还不确定该不该开始用抗雄？先看 [抗雄激素概述](/zh/medications/antiandrogens/overview/)。**完全不用抗雄**（靠 4-5 mg/周注射 E2 实现单药）也是合法路径，约 82.6% 注射使用者可行<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" />。
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 0</span> 什么时候该考虑换抗雄
+
+**下列信号中出现一项及以上**，就值得和医生讨论切换方案：
+
+### CPA（醋酸环丙孕酮 · 色谱龙）使用者
+
+- **ALT / AST > 正常上限 2-3 倍**（肝毒性，CPA 经肝代谢）
+- **泌乳素 PRL 显著升高**（尤其 >100 mIU/L 或 >35 ng/mL，提示垂体泌乳素瘤风险）
+- 持续**情绪低落 / 性欲完全消失**（高剂量 CPA 的已知副作用）
+- 累计使用 **CPA ≥ 25 mg/日 且 > 5 年**（脑膜瘤风险随累计剂量线性上升，EMA 2020 因此限制 ≥10 mg/日 剂量<CitationRef id="coleman-2022" num={1} />）
+- **买不到 / 买不起 / 货源不稳定**（国内 2022 年 12 月起网售被禁）
+
+### 螺内酯使用者
+
+- **血钾 K⁺ > 5.5 mmol/L**（高钾血症，肾排钾受阻）
+- **收缩压 < 90 mmHg** 伴头晕乏力（螺内酯的利尿+降压效应叠加）
+- **多尿 / 夜尿干扰睡眠**难以耐受
+- 足量（150-200 mg/日）使用 6+ 个月 **T 仍 > 100 ng/dL**（螺内酯抗雄效果不理想）
+- 肌酐上升或 eGFR 下降（肾功能受影响）
+
+### 比卡鲁胺使用者
+
+- **ALT > 正常上限 2 倍**（已有 FDA 警告，约 1% 使用者因此停药<CitationRef id="neyman-2019" num={2} authors="Neyman A et al." year={2019} title="Bicalutamide in Transfeminine Youth" />）
+- 任何**呼吸系统症状**：气促、慢性咳嗽（比卡已有肺毒性 / 间质性肺病报告，JADER 数据<CitationRef id="fuqua-2024" num={3} authors="Fuqua SAW et al." year={2024} title="Bicalutamide Pulmonary Adverse Events" />）
+- **T 反而升高**（比卡阻断 AR 但不降 T，长期游离 T 升高可能引起其他问题）
+
+### GnRH 激动剂使用者
+
+- **成本压力**（约 1000-2000 元/月）
+- 骨密度下降（尤其长期使用 > 2 年，雌激素未充分补足时）
+- 注射部位反应难以耐受
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1</span> 切换协议矩阵
+
+每一行给出 **从左切到右** 的核心参数。详细机制和单药说明书见各自药物页。
+
+### 1.1 CPA → 其他
+
+<DoseTable
+  headers={['目标', '停 CPA 节奏', '新药起始', '首次复查', '主要风险']}
+  rows={[
+    ['→ 螺内酯', '立即停（CPA 半衰期 ~40h，无需洗脱）', '50 mg/天 分 2 次，2 周后按耐受升至 100 mg/天', '2-4 周：T、K⁺、肌酐', '高钾血症 · 低血压'],
+    ['→ GnRH 激动剂', '立即停；同日注射首剂 GnRH', '按制剂说明书（1.88/3.75 mg/月 或 3-6 月长效）', '2-3 个月：T、E2、骨代谢指标', 'T 短暂升高 "flare"（首月）· 骨密度'],
+    ['→ 比卡鲁胺', '**不推荐**（见下方 §1.5）', '—', '—', '肝毒性叠加 / 肺毒性'],
+    ['→ 单药 E2（注射）', '立即停 CPA；E2 剂量逐步升到 3-5 mg/周', '依赖现有 E2 方案', '4-6 周：T 谷值', 'T 反弹超过目标范围 → 需重新加抗雄'],
+  ]}
+/>
+
+<WarningBox title="CPA 停药后的反跳效应">
+CPA 除抗雄外还有孕激素活性，**突然停用可能导致情绪波动或短暂性欲反弹**。如果你长期使用 CPA ≥ 10 mg/天 且 ≥ 6 个月，考虑在 1-2 周内逐步减量至停（例如 10 → 6.25 → 0），而非直接断药。
+</WarningBox>
+
+### 1.2 螺内酯 → 其他
+
+<DoseTable
+  headers={['目标', '停螺节奏', '新药起始', '首次复查', '主要风险']}
+  rows={[
+    ['→ CPA', '停螺内酯 3-5 天后再起 CPA', 'CPA 6.25 mg/天 起步', '4-6 周：T、ALT、PRL', 'CPA 脑膜瘤风险（务必 ≤ 12.5 mg/天）'],
+    ['→ GnRH 激动剂', '停螺 1-2 天后注射首剂', '按制剂说明书', '2-3 个月：T、E2、骨代谢', '骨密度下降 · flare 反应'],
+    ['→ 比卡鲁胺', '**不推荐**（见 §1.5）', '—', '—', '肝毒性'],
+    ['→ 单药 E2（注射）', '立即停；E2 剂量升到 4-5 mg/周', '依赖现有 E2 方案', '4-6 周：T 谷值', 'T 反弹'],
+  ]}
+/>
+
+<WarningBox title="螺内酯停药监测">
+螺内酯会升高血钾；**停药后 1-2 周内**钾水平会回归正常。如果你停药前血钾偏高（5.0-5.4 mmol/L），停药后不需要额外处理，常规 2-4 周后复查即可。
+</WarningBox>
+
+### 1.3 GnRH 激动剂 → 其他
+
+GnRH 注射制剂有**长效残留**：1 个月制剂（亮丙瑞林 1.88 mg 等）效应约持续 4-6 周；3 个月制剂效应约持续 3-4 个月；6 个月制剂约 6-8 个月。停用后 T 恢复很慢。
+
+<DoseTable
+  headers={['目标', '停 GnRH 节奏', '新药起始', '首次复查', '主要风险']}
+  rows={[
+    ['→ CPA', '不再续注射；从最后一次注射起 4-8 周开始 CPA', 'CPA 6.25 mg/天', '6-8 周：T、ALT、PRL', '换期 T 可能先低后高'],
+    ['→ 螺内酯', '不再续注射；从最后一次注射起 4-8 周开始螺', '50 mg/天 → 100 mg/天', '6-8 周：T、K⁺', '高钾'],
+    ['→ 单药 E2（注射）', '不再续 GnRH；加大 E2 到 4-5 mg/周', '依赖现有 E2 方案', '6-8 周：T 谷值', 'T 反弹速度取决于 GnRH 残留'],
+  ]}
+/>
+
+### 1.4 比卡鲁胺 → 其他
+
+比卡鲁胺半衰期 ~6 天，完全清除约需 2-3 周。
+
+<DoseTable
+  headers={['目标', '停比卡节奏', '新药起始', '首次复查', '主要风险']}
+  rows={[
+    ['→ CPA', '停比卡 **2 周**后再起 CPA（避免肝毒性叠加）', 'CPA 6.25 mg/天', '4-6 周：T、ALT（肝）、PRL', '**ALT 必须复查**'],
+    ['→ 螺内酯', '停比卡 3-5 天后起螺', '50 mg/天 → 100 mg/天', '2-4 周：T、K⁺', '高钾 · 肝功能恢复监测'],
+    ['→ GnRH 激动剂', '停比卡 1 周后注射首剂', '按制剂', '2-3 个月：T', '骨密度'],
+  ]}
+/>
+
+### 1.5 为什么「→ 比卡鲁胺」不推荐作为主动选择
+
+比卡鲁胺在跨性别人群中**证据薄弱**，已有 FDA 肝毒性警告和 JADER 肺毒性信号<CitationRef id="neyman-2019" num={2} /><CitationRef id="fuqua-2024" num={3} />；Endocrine Society 2017 和 WPATH SOC 8 **均未推荐**常规使用<CitationRef id="coleman-2022" num={1} /><CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。**仅在 CPA / 螺内酯 / GnRH 全部不可用或禁忌、且有医生持续肝肺监测的前提下**才考虑。
+
+<DangerBox title="禁止组合 — CPA + 比卡鲁胺">
+两者均有肝毒性，合用时 ALT 升高风险显著叠加<CitationRef id="hembree-2017" num={4} />。如果你正在使用其一，切换到另一种应严格按 **§1.4 的 2 周洗脱期**执行。
+</DangerBox>
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 2</span> 切换期该监测什么
+
+除了「首次复查」栏列出的基础项，以下是**按症状监测**的参考：
+
+### 共用基础项（任何切换都做）
+- T（总睾酮） · E2（雌二醇） · 肝功能（ALT、AST）
+- 如果仍在低剂量 E2 起始期（≤ 6 个月），加做完整 [基线血检](/zh/blood-tests/) 项目
+
+### 针对药物加查
+- **转 CPA 后**：PRL（泌乳素）、完整肝功能、情绪量表（自评）
+- **转螺内酯后**：K⁺（血钾）、Na⁺（钠）、肌酐（Cr）、血压（家测）
+- **转比卡鲁胺后**：ALT/AST（**前 3 个月每月一次**）、呼吸系统症状记录
+- **转 GnRH 后**：雌激素补足充分性（E2 ≥ 100 pg/mL）、2 年后做一次骨密度 DEXA
+
+### 切换期的血检时机
+**最早**：新药起始后 **4 周**（T 和 E2 需时间稳定）。
+**常规**：8-12 周一次，直到稳定 2 轮。
+**再稳定**：恢复到 3-6 个月一次。
+
+详见 [血检指南](/zh/blood-tests/)。
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 3</span> 切换期可能出现的反应
+
+### 正常（无需处理，记录即可）
+
+- **1-2 周内情绪波动**：任何抗雄激素调整都可能引起 1-2 周的情绪起伏
+- **短暂性欲变化**：CPA 停药后可能先升后降
+- **皮肤油脂 / 体毛轻微变化**：T 水平波动期的表现
+
+### 需要留意（和医生讨论）
+
+- 切换 4-6 周后 **T 仍高于切换前水平**（新方案无效或剂量不够）
+- 切换 3 个月后无任何客观改变（复查基线项目找原因）
+- 持续数周的**任何新躯体症状**（皮疹、心悸、呼吸急促）
+
+### 立即停药并就医
+
+<DangerBox title="切换期任何时候出现以下情况，立即停药并急诊">
+
+- 单侧小腿肿胀 + 压痛（VTE）
+- 胸痛 / 呼吸困难 / 咯血（肺栓塞）
+- 突发严重头痛 + 视力异常（卒中 / 静脉窦血栓 / 脑膜瘤）
+- 皮肤 / 眼白发黄 + 尿色加深（急性肝毒性）
+- 严重过敏反应
+
+完整清单见 [风险与急症识别](/zh/risks/)。
+
+</DangerBox>
+
+---
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 4</span> 与医生沟通 · 讨论要点
+
+切换抗雄方案通常比起始 HRT 更需要医生参与 —— 因为涉及**两种药物的时序管理**和**切换期血检调整**。准备以下要点到诊室：
+
+- **明确切换理由**：出示触发你要换的具体数据（如"ALT 85，上限 40"或"PRL 80 mIU/L，参考 &lt; 25"）
+- **说明你的方案意向**：例如"想从 CPA 12.5 mg/日 换到螺内酯 100 mg/日，因为肝酶持续偏高"
+- **询问洗脱期和剂量起始**：请医生按你的具体情况确认 §1 表格中的参数
+- **确认切换期血检时间表**：4 周、8 周、12 周分别查什么
+- **询问紧急联系方式**：切换期出现 §3 立即就医情况时能找到谁
+- **如果医生不熟悉 HRT**：提供以下参考：
+  - [WPATH SOC 8 (Coleman et al. 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [UCSF Transgender Care Guidelines 2016](https://transcare.ucsf.edu/guidelines)
+  - [参考文献库](/zh/appendix-references/)
+
+<WarningBox title="本站不能替代医生">
+切换期的时序决策涉及个人病史、基线血检、伴随用药等因素，**必须由合格的医疗人员判断**。本站提供的是国际临床指南的信息底线，帮助你在与医生沟通时准备得更充分。如果你所在地难以找到友好的医生，参考 [中国 HRT 现实路径图](/zh/china-reality/) 和 [友好医疗资源](/zh/tools/hospital-finder/)。
+</WarningBox>
+
+---
+
+## 相关资源
+
+<GuideCTA
+  eyebrow="对比工具"
+  title="并排对比 4 种抗雄"
+  description="把 CPA / 螺内酯 / 比卡 / GnRH 放在一个页面直接对比机制、有效性、风险、禁忌。"
+  ctaText="打开药物比较器"
+  ctaHref="/zh/tools/drug-comparator/"
+  variant="accent"
+/>
+
+- [抗雄激素概述](/zh/medications/antiandrogens/overview/) — 四种方案的完整对比和选择逻辑
+- [CPA（色谱龙）](/zh/medications/antiandrogens/cpa/) — 脑膜瘤风险、肝功能监测
+- [螺内酯](/zh/medications/antiandrogens/spironolactone/) — 高钾血症管理、剂量梯度
+- [比卡鲁胺](/zh/medications/antiandrogens/bicalutamide/) — 超说明书用药风险评估
+- [GnRH 激动剂](/zh/medications/antiandrogens/gnrh-agonists/) — 剂型选择、骨密度保护
+- [血检指南](/zh/blood-tests/) — 切换期的完整复查项目
+- [风险与急症识别](/zh/risks/) — 立即就医的信号清单
+- [找医生](/zh/china-reality/) · [友好医疗资源](/zh/tools/hospital-finder/)
+
+---
+
+**参考文献**
+
+1. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+2. <span id="ref-neyman-2019">Neyman A et al. Bicalutamide as an Androgen Blocker in Transfeminine Adolescents. *J Adolesc Health* 2019;64(4):544-546.</span>
+3. <span id="ref-fuqua-2024">Fuqua SAW et al. Bicalutamide-Associated Pulmonary Adverse Events. 2024.</span>
+4. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>

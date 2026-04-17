@@ -15,6 +15,7 @@ import CitationRef from '../../../../../components/ui/CitationRef.astro';
 import WarningBox from '../../../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../../../components/ui/DangerBox.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 <DrugInfoBox
   name="Spironolactone"
@@ -25,6 +26,15 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 >
   螺内酯是一种保钾利尿剂，同时具有弱雄激素受体拮抗作用。在 GAHT 中作为抗雄激素使用，主要适用于无法获得 CPA 或 GnRH 激动剂的情况。Endocrine Society 2017 和 WPATH SOC 8 均将其列为可选抗雄方案。
 </DrugInfoBox>
+
+<GuideCTA
+  eyebrow="切换方案"
+  title="想换其他抗雄？"
+  description="查看螺内酯 → CPA / GnRH / 单药 E2 的切换协议：洗脱期、起始剂量、血钾复查时机、与医生沟通要点。"
+  ctaText="打开抗雄切换完整指南"
+  ctaHref="/zh/guides/switch-antiandrogen/"
+  variant="accent"
+/>
 
 <DangerBox title="高钾血症 — 可致心律失常和猝死">
 螺内酯是保钾利尿剂，会减少肾脏排钾，导致血钾升高<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。高钾血症（K⁺ > 5.5 mmol/L）可引起致命性心律失常。
