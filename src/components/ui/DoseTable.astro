@@ -38,9 +38,13 @@ const { headers, rows } = Astro.props;
 </div>
 
 <style>
+  /* Use body stack (Noto Sans SC first) so CJK + Latin + digits render in
+     one unified typeface. Previously Space Grotesk rendered the Latin run
+     (e.g. "1 mL Luer-Lock") in a sharply different tone from the adjacent
+     Chinese text. Tabular-nums keeps digits aligned without needing mono. */
   .dose-table .dose-value {
     white-space: nowrap;
-    font-family: var(--font-ui-accent);
+    font-family: var(--font-body);
     font-variant-numeric: lining-nums tabular-nums;
   }
 
