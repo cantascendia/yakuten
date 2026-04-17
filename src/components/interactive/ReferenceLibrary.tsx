@@ -280,7 +280,10 @@ export default function ReferenceLibrary() {
 
   return (
     <div style={s.container} role="region" aria-label={ui.regionLabel}>
-      <style>{`.rl-tab-btn:focus, .rl-tab-btn:focus-visible { outline: none !important; box-shadow: none !important; }`}</style>
+      <style>{`
+        .rl-tab-btn:focus { outline: none; }
+        .rl-tab-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+      `}</style>
       <div style={s.title}>
         <span style={s.iconBadge}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

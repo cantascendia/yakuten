@@ -465,10 +465,13 @@ export default function DrugBrandIndex() {
       <style>{`
         .dbi-filter-btn,
         .dbi-filter-btn:focus,
-        .dbi-filter-btn:focus-visible,
         .dbi-filter-btn:active {
-          outline: none !important;
-          box-shadow: none !important;
+          outline: none;
+          box-shadow: none;
+        }
+        .dbi-filter-btn:focus-visible {
+          outline: 2px solid var(--color-accent);
+          outline-offset: 2px;
         }
 
         .dbi-filter-btn::-moz-focus-inner {

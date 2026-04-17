@@ -297,7 +297,10 @@ export default function DrugCards() {
 
   return (
     <div style={S.container}>
-      <style>{`.dc-filter-btn:focus, .dc-filter-btn:focus-visible { outline: none !important; box-shadow: none !important; }`}</style>
+      <style>{`
+        .dc-filter-btn:focus { outline: none; box-shadow: none; }
+        .dc-filter-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+      `}</style>
       <div style={S.hint}>{t.longPressHint}</div>
 
       <div style={S.filterRow}>

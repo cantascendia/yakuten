@@ -84,8 +84,12 @@ const colorMap = {
     ))}
   </div>
   <div class="drug-nav__footer">
-    <a href={`${prefix}/medications/estrogens/overview/`} class="drug-nav__view-all">
+    <a href={`${prefix}/medications/estrogens/overview/`} class="btn-ghost drug-nav__view-all">
       {t(locale, 'drugNav.viewAll')}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
     </a>
   </div>
 </section>
@@ -192,19 +196,9 @@ const colorMap = {
     margin-top: var(--space-lg);
   }
 
-  .drug-nav__view-all,
-  :global(.sl-markdown-content) .drug-nav__view-all {
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    color: var(--color-accent);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: color var(--transition-fast);
-  }
-
-  .drug-nav__view-all:hover,
+  /* .btn-ghost handles all button styling; keep only Starlight prose override */
+  :global(.sl-markdown-content) .drug-nav__view-all,
   :global(.sl-markdown-content) .drug-nav__view-all:hover {
-    color: var(--color-accent-light);
     text-decoration: none;
   }
 </style>
