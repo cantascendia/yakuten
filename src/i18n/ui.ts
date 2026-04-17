@@ -33,7 +33,6 @@ export const ui = {
     'action.ariaLabel': '快速入口',
 
     // HeroSection
-    'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': '循证 · 减害 · 引导就医',
     'hero.ctaPrimary': '问 AI 助手',
     'hero.ctaPathway': '开始我的路径',
@@ -131,7 +130,6 @@ export const ui = {
     'action.ariaLabel': 'Quick start',
 
     // HeroSection
-    'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': 'Evidence-Based · Harm Reduction · Guided Care',
     'hero.ctaPrimary': 'Ask AI Assistant',
     'hero.ctaPathway': 'Start My Pathway',
@@ -229,7 +227,6 @@ export const ui = {
     'action.ariaLabel': 'クイックスタート',
 
     // HeroSection
-    'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': 'エビデンス · 害軽減 · 医療ガイド',
     'hero.ctaPrimary': 'AIアシスタントに質問',
     'hero.ctaPathway': 'あなたの道を始める',
@@ -327,7 +324,6 @@ export const ui = {
     'action.ariaLabel': '빠른 시작',
 
     // HeroSection
-    'hero.brandTag': 'THE CELESTIAL PHARMACOPEIA',
     'hero.subtitle': '근거 기반 · 위해 감소 · 의료 안내',
     'hero.ctaPrimary': 'AI 어시스턴트에게 질문',
     'hero.ctaPathway': '나의 경로 시작하기',
