@@ -23,19 +23,89 @@ const {
 ---
 
 <div class:list={['emergency-banner', className]} role="alert" aria-live="assertive">
-  <strong>{t(locale, 'emergency.text')}</strong>
-  <span class="emergency-banner__symptoms">
-    {t(locale, 'emergency.symptoms')}
-  </span>
-  <a href={linkHref}>{linkText}</a>
+  <div class="emergency-banner__inner">
+    <div class="emergency-banner__heading">
+      <svg class="emergency-banner__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+        <line x1="12" y1="9" x2="12" y2="13" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
+      </svg>
+      <strong>{t(locale, 'emergency.text')}</strong>
+    </div>
+    <span class="emergency-banner__symptoms">
+      {t(locale, 'emergency.symptoms')}
+    </span>
+    <a href={linkHref} class="emergency-banner__cta">{linkText}</a>
+  </div>
 </div>
 
 <style>
+  .emergency-banner__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
+    .emergency-banner__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+  }
+
+  .emergency-banner__heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .emergency-banner__icon {
+    color: #fff;
+    flex-shrink: 0;
+    animation: emergency-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes emergency-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .emergency-banner__icon {
+      animation: none;
+    }
+  }
+
   .emergency-banner__symptoms {
-    display: block;
     font-weight: 400;
-    font-size: 0.875rem;
-    margin: var(--space-sm) 0;
-    opacity: 0.95;
+    font-size: 0.8125rem;
+    opacity: 0.92;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .emergency-banner__cta {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    clip-path: var(--clip-corner-sm);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .emergency-banner__cta:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.4);
+    opacity: 1 !important;
   }
 </style>

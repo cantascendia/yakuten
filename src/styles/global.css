@@ -50,10 +50,11 @@
   --clip-corner-sm: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
   --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
 
-  /* 字体 — 将代码字体与中文数字/标签字体分离，避免 UI 中出现 dotted zero */
+  /* 字体 — 按 DESIGN.md §3: Noto Serif SC (display) / Manrope (body) / Space Grotesk (data)
+     中文字符会继承到 CJK 栈，拉丁字符由 Manrope / Space Grotesk 渲染 */
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --font-ui-accent: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-body: "Manrope", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-mono: var(--font-ui-accent);
   --font-code: "JetBrains Mono", "Fira Code", "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
 
@@ -130,26 +131,26 @@
 :root:lang(zh),
 :root:lang(zh-CN) {
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --font-ui-accent: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-body: "Manrope", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
 }
 
 :root:lang(ja) {
   --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  --font-ui-accent: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-body: "Manrope", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-ui-accent: "Space Grotesk", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
 }
 
 :root:lang(en) {
   --font-display: "Noto Serif", Georgia, "Times New Roman", serif;
-  --font-body: "Noto Sans", "Segoe UI", system-ui, sans-serif;
-  --font-ui-accent: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Manrope", "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  --font-ui-accent: "Space Grotesk", "Noto Sans", "Segoe UI", system-ui, sans-serif;
 }
 
 :root:lang(ko) {
   --font-display: "Noto Serif KR", "Batang", serif;
-  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-  --font-ui-accent: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Manrope", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --font-ui-accent: "Space Grotesk", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
 }
 
 /* ================================
