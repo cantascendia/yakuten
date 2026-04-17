@@ -245,7 +245,7 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
       fontFamily: 'var(--font-body)',
       cursor: 'pointer',
       textAlign: 'left' as const,
-      transition: 'border-color 0.15s, color 0.15s',
+      transition: 'border-color var(--transition-fast), color var(--transition-fast)',
       borderRadius: 0,
     },
     msgUser: {
@@ -297,18 +297,18 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
       fontSize: compact ? '0.8125rem' : '0.875rem',
       outline: 'none',
       borderRadius: 0,
-      transition: 'border-color 0.15s',
+      transition: 'border-color var(--transition-fast)',
     },
     sendBtn: {
       padding: '6px 14px',
       background: 'var(--color-primary)',
-      color: '#FFFFFF',
+      color: 'var(--color-text-on-dark)',
       border: 'none',
       fontFamily: 'var(--font-body)',
       fontSize: compact ? '0.8125rem' : '0.875rem',
       fontWeight: 600,
       cursor: 'pointer',
-      transition: 'opacity 0.15s',
+      transition: 'opacity var(--transition-fast)',
       borderRadius: 0,
       whiteSpace: 'nowrap' as const,
     },
@@ -494,7 +494,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
               alignItems: 'center',
               justifyContent: 'center',
               marginLeft: '4px',
-              transition: 'color 0.15s',
+              transition: 'color var(--transition-fast)',
             }}
             onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-primary)'; }}
             onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-text-muted)'; }}

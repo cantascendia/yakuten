@@ -43,6 +43,9 @@
   /* 玻璃效果 */
   --glass-bg: rgba(26, 22, 37, 0.6);
   --glass-blur: blur(12px);
+  --glass-blur-soft: blur(4px);    /* 遮罩层/极轻玻璃 */
+  --glass-blur-medium: blur(8px);  /* 次级小卡 */
+  --glass-blur-strong: blur(20px); /* 模态/浮层 */
   --glass-border: 1px solid var(--color-outline-20);
 
   /* 对角切角 — Penacony Geometric Signature
@@ -103,6 +106,8 @@
   --color-outline-15: rgba(86, 65, 71, 0.15);
   --glass-bg-30: rgba(26, 22, 37, 0.3);
   --glass-bg-40: rgba(26, 22, 37, 0.4);
+  --glass-bg-80: rgba(26, 22, 37, 0.8);
+  --glass-bg-92: rgba(13, 11, 20, 0.92);  /* 搜索模态等浮层底色 */
   --color-border-subtle: rgba(200, 175, 190, 0.2);
   --color-danger-border: rgba(220, 50, 50, 0.4);
   --color-danger-bg-low: rgba(60, 20, 20, 0.4);

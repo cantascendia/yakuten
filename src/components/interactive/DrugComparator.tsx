@@ -705,7 +705,7 @@ const s: Record<string, CSSProperties> = {
     color: 'var(--color-text-secondary)',
     padding: 'var(--space-xs) var(--space-md)',
     cursor: 'pointer',
-    transition: 'border-color 0.15s ease',
+    transition: 'border-color var(--transition-fast)',
     lineHeight: 1.4,
   },
   // Card-based comparison layout (replaces table)

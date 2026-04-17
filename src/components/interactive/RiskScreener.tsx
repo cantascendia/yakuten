@@ -441,7 +441,7 @@ const s: Record<string, CSSProperties> = {
   progressFill: {
     height: '100%',
     background: 'var(--color-primary)',
-    transition: 'width 0.3s ease',
+    transition: 'width var(--transition-normal)',
   },
   questionCard: {
     minHeight: '280px',
@@ -744,7 +744,7 @@ export default function RiskScreener() {
         Q{step + 1}/{QUESTIONS.length}
       </div>
       <div style={{ height: '3px', background: 'var(--color-outline-20)', marginBottom: 'var(--space-xl)', overflow: 'hidden' }} role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={QUESTIONS.length} aria-label={ui.progress}>
-        <div style={{ height: '100%', background: 'var(--color-primary)', transition: 'width 0.3s ease', width: `${((step + 1) / QUESTIONS.length) * 100}%` }} />
+        <div style={{ height: '100%', background: 'var(--color-primary)', transition: 'width var(--transition-normal)', width: `${((step + 1) / QUESTIONS.length) * 100}%` }} />
       </div>
 
       {/* Question */}

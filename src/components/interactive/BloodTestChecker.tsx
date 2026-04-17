@@ -342,7 +342,7 @@ const s: Record<string, CSSProperties> = {
     padding: 'var(--space-xs) var(--space-md)',
     cursor: 'pointer',
     fontFamily: 'var(--font-body)',
-    transition: 'color 0.15s, border-color 0.15s',
+    transition: 'color var(--transition-fast), border-color var(--transition-fast)',
   } as CSSProperties,
   disclaimer: {
     marginTop: 'var(--space-lg)',

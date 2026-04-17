@@ -25,7 +25,7 @@ const styles: Record<string, CSSProperties> = {
     alignItems: 'center',
     justifyContent: 'center',
     boxShadow: '0 4px 20px var(--color-primary-alpha-40)',
-    transition: 'transform 0.2s, box-shadow 0.2s',
+    transition: 'transform var(--transition-fast), box-shadow var(--transition-fast)',
     zIndex: 99999,
   },
   panel: {

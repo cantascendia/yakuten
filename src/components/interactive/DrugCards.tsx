@@ -124,7 +124,7 @@ const S: Record<string, CSSProperties> = {
     color: 'var(--sl-color-text-accent, #aaa)',
     fontSize: '0.75rem',
     cursor: 'pointer',
-    transition: 'all 0.15s',
+    transition: 'all var(--transition-fast)',
     fontFamily: 'var(--font-body, sans-serif)',
     outline: 'none',
   },
@@ -257,7 +257,7 @@ const S: Record<string, CSSProperties> = {
     textDecoration: 'none',
     fontFamily: 'var(--font-body, sans-serif)',
     fontSize: '0.75rem',
-    transition: 'color 0.15s',
+    transition: 'color var(--transition-fast)',
   },
 };
 
