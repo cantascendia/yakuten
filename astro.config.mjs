@@ -29,16 +29,52 @@ export default defineConfig({
         './src/styles/starlight-override.css',
       ],
       sidebar: [
+        // ── 开始 ──
         {
-          label: '用药前：你准备好了吗？',
-          translations: { en: 'Before You Start', ja: '服薬前の準備', ko: '복용 전 준비' },
-          slug: 'before-you-start',
+          label: '开始',
+          translations: { en: 'Getting Started', ja: 'はじめに', ko: '시작하기' },
+          items: [
+            {
+              label: '用药前准备',
+              translations: { en: 'Before You Start', ja: '服薬前の準備', ko: '복용 전 준비' },
+              slug: 'before-you-start',
+            },
+            {
+              label: '中国 HRT 现实路径图',
+              translations: { en: 'China HRT Guide', ja: '中国HRTガイド', ko: '중국 HRT 가이드' },
+              slug: 'china-reality',
+            },
+            {
+              label: '用药路径图',
+              translations: { en: 'HRT Pathway', ja: 'HRT経路マップ', ko: 'HRT 경로 맵' },
+              slug: 'pathway',
+            },
+          ],
         },
+        // ── 安全底线 ──
         {
-          label: '用药路径图',
-          translations: { en: 'HRT Pathway', ja: 'HRT経路マップ', ko: 'HRT 경로 맵' },
-          slug: 'pathway',
+          label: '安全底线',
+          translations: { en: 'Safety Baseline', ja: '安全基準', ko: '안전 기준' },
+          items: [
+            {
+              label: '风险与急症识别',
+              translations: { en: 'Risks & Emergencies', ja: 'リスクと緊急対応', ko: '위험 및 응급 상황' },
+              slug: 'risks',
+              badge: { text: { 'zh-CN': '必读', en: 'Must Read', ja: '必読', ko: '필독' }, variant: 'danger' },
+            },
+            {
+              label: '剂量红线与混用禁忌',
+              translations: { en: 'Dose Limits & Contraindications', ja: '用量レッドライン', ko: '용량 한계 및 금기' },
+              slug: 'dose-limits',
+            },
+            {
+              label: '血检指南与自查工具',
+              translations: { en: 'Blood Tests & Self-Check', ja: '血液検査ガイド', ko: '혈액 검사 가이드' },
+              slug: 'blood-tests',
+            },
+          ],
         },
+        // ── 实操指南 ──
         {
           label: '实操指南',
           translations: { en: 'Task Guides', ja: '実用ガイド', ko: '실용 가이드' },
@@ -49,11 +85,12 @@ export default defineConfig({
             { label: '切换 E2 途径', translations: { en: 'Switch E2 Route', ja: 'E2 投与経路の切り替え', ko: 'E2 투여 경로 전환' }, slug: 'guides/switch-e2-route' },
           ],
         },
+        // ── 药物详解 ──
         {
           label: '药物详解',
           translations: { en: 'Medications', ja: '薬物ガイド', ko: '약물 가이드' },
           items: [
-            // ── 雌二醇：按给药途径分组 ──
+            // ── 雌二醇：去掉途径中间层，直接列药物 ──
             {
               label: '雌二醇',
               translations: { en: 'Estrogens', ja: 'エストロゲン', ko: '에스트로겐' },
@@ -64,48 +101,37 @@ export default defineConfig({
                   slug: 'medications/estrogens/overview',
                 },
                 {
-                  label: '口服途径',
-                  translations: { en: 'Oral Route', ja: '経口投与', ko: '경구 투여' },
-                  items: [
-                    {
-                      label: '口服（补佳乐）',
-                      translations: { en: 'Oral (Pills)', ja: '経口（飲み薬）', ko: '경구 (알약)' },
-                      slug: 'medications/estrogens/oral',
-                    },
-                    {
-                      label: '舌下含服',
-                      translations: { en: 'Sublingual', ja: '舌下投与', ko: '설하 투여' },
-                      slug: 'medications/estrogens/sublingual',
-                    },
-                  ],
+                  label: '口服（补佳乐）',
+                  translations: { en: 'Oral (Pills)', ja: '経口（飲み薬）', ko: '경구 (알약)' },
+                  slug: 'medications/estrogens/oral',
+                  badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本', ko: '일반' }, variant: 'tip' },
                 },
                 {
-                  label: '透皮途径',
-                  translations: { en: 'Transdermal Route', ja: '経皮投与', ko: '경피 투여' },
-                  items: [
-                    {
-                      label: '凝胶',
-                      translations: { en: 'Gel', ja: 'ゲル', ko: '겔' },
-                      slug: 'medications/estrogens/gel',
-                    },
-                    {
-                      label: '贴片',
-                      translations: { en: 'Patches', ja: 'パッチ', ko: '패치' },
-                      slug: 'medications/estrogens/transdermal-patch',
-                    },
-                  ],
+                  label: '舌下含服',
+                  translations: { en: 'Sublingual', ja: '舌下投与', ko: '설하 투여' },
+                  slug: 'medications/estrogens/sublingual',
                 },
                 {
-                  label: '注射途径',
-                  translations: { en: 'Injectable Route', ja: '注射投与', ko: '주사 투여' },
+                  label: '凝胶',
+                  translations: { en: 'Gel', ja: 'ゲル', ko: '겔' },
+                  slug: 'medications/estrogens/gel',
+                },
+                {
+                  label: '贴片',
+                  translations: { en: 'Patches', ja: 'パッチ', ko: '패치' },
+                  slug: 'medications/estrogens/transdermal-patch',
+                },
+                {
+                  label: '戊酸雌二醇注射 (EV)',
+                  translations: { en: 'Estradiol Valerate (EV)', ja: '吉草酸エストラジオール (EV)', ko: '에스트라디올 발레레이트 (EV)' },
+                  slug: 'medications/estrogens/injection',
+                  badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本', ko: '일반' }, variant: 'tip' },
+                },
+                {
+                  label: '其他注射酯类',
+                  translations: { en: 'Other Injectable Esters', ja: 'その他の注射エステル', ko: '기타 주사 에스테르' },
                   collapsed: true,
                   items: [
-                    {
-                      label: '戊酸雌二醇 (EV)',
-                      translations: { en: 'Estradiol Valerate (EV)', ja: '吉草酸エストラジオール (EV)', ko: '에스트라디올 발레레이트 (EV)' },
-                      slug: 'medications/estrogens/injection',
-                      badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本', ko: '일반' }, variant: 'tip' },
-                    },
                     {
                       label: '环戊丙酸酯 (EC)',
                       translations: { en: 'Estradiol Cypionate (EC)', ja: 'シピオネート (EC)', ko: '시피오네이트 (EC)' },
@@ -131,7 +157,7 @@ export default defineConfig({
                 },
               ],
             },
-            // ── 抗雄激素：平铺 + badge 标注 ──
+            // ── 抗雄激素 ──
             {
               label: '抗雄激素',
               translations: { en: 'Anti-Androgens', ja: '抗アンドロゲン', ko: '항안드로겐' },
@@ -165,7 +191,7 @@ export default defineConfig({
                 },
               ],
             },
-            // ── 孕激素：推荐 vs 替代分组 ──
+            // ── 孕激素：扁平化，去掉推荐/替代中间层 ──
             {
               label: '孕激素',
               translations: { en: 'Progestogens', ja: 'プロゲストーゲン', ko: '프로게스토겐' },
@@ -178,38 +204,25 @@ export default defineConfig({
                   badge: { text: { 'zh-CN': '非必需', en: 'Optional', ja: '任意', ko: '선택' }, variant: 'note' },
                 },
                 {
-                  label: '推荐选项',
-                  translations: { en: 'Recommended', ja: '推奨', ko: '권장' },
-                  items: [
-                    {
-                      label: '微粒化黄体酮',
-                      translations: { en: 'Micronized Progesterone', ja: '微粉化プロゲステロン', ko: '미분화 프로게스테론' },
-                      slug: 'medications/progestogens/progesterone',
-                      badge: { text: { 'zh-CN': '首选', en: 'Preferred', ja: '推奨', ko: '권장' }, variant: 'tip' },
-                    },
-                    {
-                      label: '羟孕酮注射',
-                      translations: { en: 'Hydroxyprogesterone', ja: 'ヒドロキシプロゲステロン', ko: '하이드록시프로게스테론' },
-                      slug: 'medications/progestogens/hydroxyprogesterone',
-                    },
-                  ],
+                  label: '微粒化黄体酮',
+                  translations: { en: 'Micronized Progesterone', ja: '微粉化プロゲステロン', ko: '미분화 프로게스테론' },
+                  slug: 'medications/progestogens/progesterone',
+                  badge: { text: { 'zh-CN': '首选', en: 'Preferred', ja: '推奨', ko: '권장' }, variant: 'tip' },
                 },
                 {
-                  label: '替代选项',
-                  translations: { en: 'Alternatives', ja: '代替選択肢', ko: '대안' },
-                  collapsed: true,
-                  items: [
-                    {
-                      label: '地屈孕酮',
-                      translations: { en: 'Dydrogesterone', ja: 'ジドロゲステロン', ko: '디드로게스테론' },
-                      slug: 'medications/progestogens/dydrogesterone',
-                    },
-                    {
-                      label: '屈螺酮',
-                      translations: { en: 'Drospirenone', ja: 'ドロスピレノン', ko: '드로스피레논' },
-                      slug: 'medications/progestogens/drospirenone',
-                    },
-                  ],
+                  label: '羟孕酮注射',
+                  translations: { en: 'Hydroxyprogesterone', ja: 'ヒドロキシプロゲステロン', ko: '하이드록시프로게스테론' },
+                  slug: 'medications/progestogens/hydroxyprogesterone',
+                },
+                {
+                  label: '地屈孕酮',
+                  translations: { en: 'Dydrogesterone', ja: 'ジドロゲステロン', ko: '디드로게스테론' },
+                  slug: 'medications/progestogens/dydrogesterone',
+                },
+                {
+                  label: '屈螺酮',
+                  translations: { en: 'Drospirenone', ja: 'ドロスピレノン', ko: '드로스피레논' },
+                  slug: 'medications/progestogens/drospirenone',
                 },
                 {
                   label: '不推荐孕激素 (MPA)',
@@ -219,7 +232,7 @@ export default defineConfig({
                 },
               ],
             },
-            // ── 5α-还原酶抑制剂：仅 3 项，保持 autogenerate ──
+            // ── 5α-还原酶抑制剂 ──
             {
               label: '5α-还原酶抑制剂',
               translations: { en: '5α-Reductase Inhibitors', ja: '5α還元酵素阻害薬', ko: '5α-환원효소 억제제' },
@@ -235,38 +248,28 @@ export default defineConfig({
             },
           ],
         },
+        // ── 专题与工具 ──
         {
-          label: '剂量红线与混用禁忌',
-          translations: { en: 'Dose Limits & Contraindications', ja: '用量レッドライン', ko: '용량 한계 및 금기' },
-          slug: 'dose-limits',
-        },
-        {
-          label: '乳房发育专题',
-          translations: { en: 'Breast Development', ja: '乳房発育ガイド', ko: '유방 발달 가이드' },
-          slug: 'breast-development',
-        },
-        {
-          label: '血检指南与自查工具',
-          translations: { en: 'Blood Tests & Self-Check', ja: '血液検査ガイド', ko: '혈액 검사 가이드' },
-          slug: 'blood-tests',
-        },
-        {
-          label: '风险与急症识别',
-          translations: { en: 'Risks & Emergencies', ja: 'リスクと緊急対応', ko: '위험 및 응급 상황' },
-          slug: 'risks',
-        },
-        {
-          label: '中国 HRT 现实路径图',
-          translations: { en: 'China HRT Guide', ja: '中国HRTガイド', ko: '중국 HRT 가이드' },
-          slug: 'china-reality',
-        },
-        {
-          label: '工具',
-          translations: { en: 'Tools', ja: 'ツール', ko: '도구' },
-          collapsed: true,
+          label: '专题与工具',
+          translations: { en: 'Topics & Tools', ja: '特集とツール', ko: '특집 및 도구' },
           items: [
-            { label: '血检自查工具', translations: { en: 'Blood Test Checker', ja: '血液検査チェッカー', ko: '혈액 검사 체커' }, slug: 'tools/blood-checker' },
-            { label: '注射剂量换算', translations: { en: 'Injection Calculator', ja: '注射量計算機', ko: '주사 용량 계산기' }, slug: 'tools/injection-calculator' },
+            {
+              label: '乳房发育专题',
+              translations: { en: 'Breast Development', ja: '乳房発育ガイド', ko: '유방 발달 가이드' },
+              slug: 'breast-development',
+            },
+            {
+              label: '血检自查工具',
+              translations: { en: 'Blood Test Checker', ja: '血液検査チェッカー', ko: '혈액 검사 체커' },
+              slug: 'tools/blood-checker',
+              badge: { text: { 'zh-CN': '常用', en: 'Popular', ja: '人気', ko: '인기' }, variant: 'success' },
+            },
+            {
+              label: '注射剂量换算',
+              translations: { en: 'Injection Calculator', ja: '注射量計算機', ko: '주사 용량 계산기' },
+              slug: 'tools/injection-calculator',
+              badge: { text: { 'zh-CN': '常用', en: 'Popular', ja: '人気', ko: '인기' }, variant: 'success' },
+            },
             { label: '剂量模拟器', translations: { en: 'Dose Simulator', ja: '用量シミュレーター', ko: '용량 시뮬레이터' }, slug: 'tools/dose-simulator' },
             { label: 'AI 问答助手', translations: { en: 'AI Assistant', ja: 'AIアシスタント', ko: 'AI 어시스턴트' }, slug: 'tools/ai-assistant' },
             { label: '友好医疗资源', translations: { en: 'Medical Directory', ja: '医療施設情報', ko: '의료 시설 정보' }, slug: 'tools/hospital-finder' },
@@ -276,6 +279,7 @@ export default defineConfig({
             { label: '速查卡片', translations: { en: 'Drug Cards', ja: 'クイックカード', ko: '퀵 카드' }, slug: 'tools/drug-cards', badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새' }, variant: 'success' } },
           ],
         },
+        // ── 附录 ──
         {
           label: '附录',
           translations: { en: 'Appendix', ja: '付録', ko: '부록' },

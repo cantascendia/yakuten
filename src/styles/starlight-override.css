@@ -75,6 +75,19 @@ nav.sidebar-content a[aria-current="page"] {
   font-weight: 600;
 }
 
+/* Sidebar top-level group headers — 视觉区分 */
+nav.sidebar-content > ul > li > details > summary {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted, var(--sl-color-gray-3));
+  border-bottom: 1px solid var(--color-border, var(--sl-color-gray-5));
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 /* Content area */
 .content-panel {
   background: var(--color-bg-primary);
