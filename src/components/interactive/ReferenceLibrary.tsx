@@ -178,8 +178,8 @@ const s: Record<string, CSSProperties> = {
   tabActive: {
     minHeight: '44px',
     padding: 'var(--space-xs) var(--space-md)',
-    background: 'var(--color-primary-alpha-15)',
-    color: 'var(--color-primary)',
+    background: 'linear-gradient(135deg, var(--color-primary-alpha-15), var(--color-primary-alpha-25))',
+    color: 'var(--color-primary-light)',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--color-primary)',

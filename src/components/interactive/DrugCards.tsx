@@ -129,7 +129,7 @@ const S: Record<string, CSSProperties> = {
     outline: 'none',
   },
   filterBtnActive: {
-    background: 'linear-gradient(135deg, var(--color-primary), #E76395)',
+    background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-container))',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--sl-color-accent, var(--color-primary-alpha-60))',

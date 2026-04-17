@@ -420,7 +420,8 @@ const RESPONSIVE_CSS = `
 }
 
 .btc-input:focus {
-  border-bottom-color: var(--color-primary) !important;
+  border-bottom: 2px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--color-primary), var(--color-primary-container)) 1;
 }
 @keyframes btc-pulse-red {
   0%, 100% { box-shadow: 0 0 0 0 rgba(244,67,54,0.3); }

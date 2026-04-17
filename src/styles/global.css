@@ -92,7 +92,9 @@
   --color-primary-alpha-60: rgba(200, 75, 124, 0.6);
   --color-accent-alpha-08: rgba(212, 168, 83, 0.08);
   --color-caution-alpha-08: rgba(255, 152, 0, 0.08);
+  --color-caution-alpha-15: rgba(255, 152, 0, 0.15);
   --color-danger-alpha-10: rgba(244, 67, 54, 0.1);
+  --color-safe-alpha-15: rgba(76, 175, 80, 0.15);
   --color-safe-alpha-30: rgba(76, 175, 80, 0.3);
   --color-white-alpha-03: rgba(255, 255, 255, 0.03);
   --color-white-alpha-08: rgba(255, 255, 255, 0.08);
