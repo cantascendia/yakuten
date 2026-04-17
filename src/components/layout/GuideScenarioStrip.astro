@@ -1,0 +1,209 @@
+---
+/**
+ * GuideScenarioStrip — 首页「常见决策」场景导引条
+ * 位于 ActionCards 与 DrugQuickNav 之间，直接链到 /zh/guides/xxx/ 任务页。
+ *
+ * Batch A 只上线 first-injection；其他条目以 planned 标记留位。
+ */
+import { getLocale } from '../../i18n/ui';
+
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+// 目前只在 zh 启用（计划中的指南尚未全部翻译）
+const isZh = locale === 'zh';
+
+interface Scenario {
+  eyebrow: string;
+  title: string;
+  href?: string;
+  status: 'live' | 'planned';
+}
+
+const scenarios: Scenario[] = [
+  {
+    eyebrow: '刚入坑',
+    title: '第一次打针：从决策到首周监测',
+    href: '/zh/guides/first-injection/',
+    status: 'live',
+  },
+  {
+    eyebrow: '在吃抗雄',
+    title: '切换抗雄药：CPA / 螺内酯 / 比卡 / GnRH',
+    status: 'planned',
+  },
+  {
+    eyebrow: '在打注射',
+    title: '切换 E2 途径：注射 ↔ 口服 / 贴片',
+    status: 'planned',
+  },
+];
+---
+
+{isZh && (
+<section class="guide-strip" aria-label="常见决策指南">
+  <div class="guide-strip__inner">
+    <h2 class="guide-strip__title">
+      <span class="guide-strip__title-eyebrow">GUIDES</span>
+      <span>我该怎么办？</span>
+    </h2>
+    <div class="guide-strip__grid">
+      {scenarios.map((s) => {
+        const isLive = s.status === 'live';
+        const Tag = isLive ? 'a' : 'div';
+        const props = isLive ? { href: s.href } : { 'aria-disabled': 'true' };
+        return (
+          <Tag
+            class:list={['guide-strip__card', 'glass-panel', 'clipped-card', !isLive && 'guide-strip__card--planned']}
+            {...props}
+          >
+            <span class="guide-strip__eyebrow">{s.eyebrow}</span>
+            <h3 class="guide-strip__card-title">{s.title}</h3>
+            {isLive ? (
+              <span class="guide-strip__cta">
+                查看指南
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            ) : (
+              <span class="guide-strip__planned-tag">即将上线</span>
+            )}
+          </Tag>
+        );
+      })}
+    </div>
+  </div>
+</section>
+)}
+
+<style>
+  .guide-strip {
+    position: relative;
+    z-index: 10;
+    padding: 0 var(--space-lg) var(--space-xl);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .guide-strip__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .guide-strip__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: center;
+    letter-spacing: 0.05em;
+  }
+
+  .guide-strip__title-eyebrow {
+    font-family: var(--font-ui-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--color-accent);
+  }
+
+  .guide-strip__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 900px) {
+    .guide-strip__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .guide-strip__card {
+    position: relative;
+    padding: var(--space-lg);
+    padding-left: calc(var(--space-lg) + 3px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), box-shadow var(--transition-normal);
+  }
+
+  .guide-strip__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    pointer-events: none;
+  }
+
+  .guide-strip__card--planned::before {
+    background: var(--color-outline);
+    opacity: 0.5;
+  }
+
+  .guide-strip__card:not(.guide-strip__card--planned):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px var(--color-primary-alpha-15);
+  }
+
+  .guide-strip__card--planned {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .guide-strip__eyebrow {
+    font-family: var(--font-ui-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+  }
+
+  .guide-strip__card--planned .guide-strip__eyebrow {
+    color: var(--color-text-muted);
+  }
+
+  .guide-strip__card-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  .guide-strip__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+    font-family: var(--font-ui-accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+  }
+
+  .guide-strip__planned-tag {
+    display: inline-block;
+    margin-top: var(--space-xs);
+    font-family: var(--font-ui-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+</style>

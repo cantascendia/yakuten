@@ -16,6 +16,7 @@ import CitationRef from '../../../../../components/ui/CitationRef.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
 import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 <DrugInfoBox
   name="Estradiol Valerate Injection"
@@ -26,6 +27,15 @@ import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astr
 >
 注射雌二醇是跨性别女性 HRT 中常见的给药途径之一。绕过肝脏首过效应，血药浓度可预测性较好，且近年证据表明皮下注射与肌肉注射效果无显著差异<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />。注射用户中约 82.6% 可实现单药治疗而不需要额外抗雄<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。
 </DrugInfoBox>
+
+<GuideCTA
+  eyebrow="实操指南"
+  title="第一次打针？"
+  description="从「要不要打」到「打完第一针后观察什么」的分步引导：前置血检、针具采购、操作要点、首周监测红线、与医生沟通要点。"
+  ctaText="打开首次注射完整指南"
+  ctaHref="/zh/guides/first-injection/"
+  variant="primary"
+/>
 
 <img src="/images/drugs/progynon-depot-studio.webp" alt="Progynon Depot 10mg 戊酸雌二醇注射液的产品照片，展示玻璃安瓿和包装盒" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
