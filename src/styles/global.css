@@ -53,10 +53,12 @@
   --clip-corner-sm: var(--clip-corner);
   --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
 
-  /* 字体 — 按 DESIGN.md §3: Noto Serif SC (display) / Manrope (body) / Space Grotesk (data)
-     中文字符会继承到 CJK 栈，拉丁字符由 Manrope / Space Grotesk 渲染 */
+  /* 字体 — 按 DESIGN.md §3
+     中文/日文/韩文 body 要让 CJK 字体统一处理文字+数字，避免 Manrope 渲染数字
+     与 Noto Sans 渲染中文的 x-height/字重不一致导致的混排断裂。
+     Manrope 仅在 :lang(en) 及 ui-accent 中使用。*/
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Manrope", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-mono: var(--font-ui-accent);
   --font-code: "JetBrains Mono", "Fira Code", "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
@@ -136,13 +138,13 @@
 :root:lang(zh),
 :root:lang(zh-CN) {
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Manrope", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
 }
 
 :root:lang(ja) {
   --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Manrope", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
   --font-ui-accent: "Space Grotesk", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
 }
 
@@ -154,7 +156,7 @@
 
 :root:lang(ko) {
   --font-display: "Noto Serif KR", "Batang", serif;
-  --font-body: "Manrope", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
   --font-ui-accent: "Space Grotesk", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
 }
 

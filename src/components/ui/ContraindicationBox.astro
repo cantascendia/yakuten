@@ -57,16 +57,33 @@ const badgeText = isAbsolute ? 'Crucial Red Line' : 'Medical Caution';
 </section>
 
 <style>
+  /* Avoid: border + clip-path — the clipped corners cut the border,
+     creating visible "seams". Use a stronger tinted bg + ::before
+     color stripe (which gets swept along the diagonal by clip-path). */
   .contraindication-box {
+    position: relative;
     clip-path: var(--clip-corner);
     padding: var(--space-xl);
-    transition: border-color var(--transition-slow);
+    padding-left: calc(var(--space-xl) + 2px);
+    transition: background var(--transition-slow);
+  }
+
+  .contraindication-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    pointer-events: none;
   }
 
   /* Absolute -- red */
   .contraindication-box--absolute {
     background: rgba(244, 67, 54, 0.08);
-    border: 1px solid rgba(244, 67, 54, 0.3);
+  }
+  .contraindication-box--absolute::before {
+    background: var(--color-danger);
   }
 
   .contraindication-box--absolute .contraindication-box__section-num,
@@ -78,7 +95,9 @@ const badgeText = isAbsolute ? 'Crucial Red Line' : 'Medical Caution';
   /* Relative -- orange */
   .contraindication-box--relative {
     background: rgba(255, 152, 0, 0.08);
-    border: 1px solid rgba(255, 152, 0, 0.3);
+  }
+  .contraindication-box--relative::before {
+    background: var(--color-caution);
   }
 
   .contraindication-box--relative .contraindication-box__section-num,

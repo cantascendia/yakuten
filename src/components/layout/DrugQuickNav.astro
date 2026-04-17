@@ -138,15 +138,29 @@ const colorMap = {
     flex-direction: column;
   }
 
-  /* --- Category card --- */
+  /* --- Category card ---
+     注意：不要用 border-left 画彩色条 —— clip-path 会在切角处截断 border 产生视觉裂缝。
+     改用 ::before 绝对定位的彩色条，父 clip-path 会自然把它切成贴合斜角的形状。 */
   .drug-nav__category {
+    position: relative;
     padding: var(--space-lg);
-    border-left: 3px solid var(--cat-color);
+    padding-left: calc(var(--space-lg) + 3px);
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
     transition: box-shadow var(--transition-normal);
     flex: 1;
+  }
+
+  .drug-nav__category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--cat-color);
+    pointer-events: none;
   }
 
   .drug-nav__category:hover {
