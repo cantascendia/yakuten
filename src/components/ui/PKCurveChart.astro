@@ -289,9 +289,12 @@ const L = i18n[locale] ?? i18n.en;
 
   .pk-chart__caption {
     margin-top: var(--space-xs);
-    font-family: var(--font-mono, monospace);
-    font-size: 0.6875rem;
-    color: var(--sl-color-gray-3, var(--color-text-muted, #888));
+    /* Caption is prose, not a data label — use body stack so CJK + Latin
+       render in a unified sans feel instead of the mono Space Grotesk look. */
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3, var(--color-text-muted));
     text-align: center;
+    line-height: 1.5;
   }
 </style>
