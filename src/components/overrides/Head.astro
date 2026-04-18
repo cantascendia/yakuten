@@ -8,6 +8,7 @@
 import Default from '@astrojs/starlight/components/Head.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import ThemeToggle from '../ThemeToggle.astro';
 
 const pathname = Astro.url.pathname;
 const site = 'https://hrtyaku.com';
@@ -52,6 +53,7 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 {alternateOgLocales.map((loc) => (
   <meta property="og:locale:alternate" content={loc} />
 ))}
+<ThemeToggle />
 <Analytics />
 <SpeedInsights />
 <script>

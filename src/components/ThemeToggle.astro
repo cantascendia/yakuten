@@ -1,0 +1,117 @@
+---
+/**
+ * ThemeToggle — 右上角浮动按钮，切换深色原版 ↔ 樱粉手账风
+ * 通过 <html data-theme="sakura"> 切换，状态持久化到 localStorage
+ */
+---
+
+<button
+  id="sakura-toggle"
+  type="button"
+  aria-label="切换樱粉手账主题"
+  title="切换樱粉手账主题"
+>
+  <span class="sakura-toggle__icon" aria-hidden="true">🌸</span>
+  <span class="sakura-toggle__label">樱粉</span>
+</button>
+
+<style>
+  #sakura-toggle {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    background: var(--glass-bg, rgba(26, 22, 37, 0.6));
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-outline-20, rgba(86, 65, 71, 0.2));
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #sakura-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  #sakura-toggle:active {
+    transform: translateY(0);
+  }
+
+  .sakura-toggle__icon {
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+
+  #sakura-toggle:hover .sakura-toggle__icon {
+    transform: rotate(20deg) scale(1.1);
+  }
+
+  /* 激活态 */
+  :global([data-theme="sakura"]) #sakura-toggle {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: var(--sakura-pink-deep, #E5578B);
+    color: var(--ink, #4A2838);
+    box-shadow: 0 2px 10px rgba(229, 87, 139, 0.3);
+  }
+
+  :global([data-theme="sakura"]) .sakura-toggle__label::after {
+    content: " ✓";
+    color: var(--sakura-pink-deep, #E5578B);
+  }
+
+  @media (max-width: 640px) {
+    #sakura-toggle {
+      top: 8px;
+      right: 8px;
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sakura-toggle,
+    .sakura-toggle__icon {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const KEY = "sakura-theme";
+    const root = document.documentElement;
+
+    // 初始化：从 localStorage 恢复
+    try {
+      if (localStorage.getItem(KEY) === "on") {
+        root.setAttribute("data-theme", "sakura");
+      }
+    } catch (e) {}
+
+    const btn = document.getElementById("sakura-toggle");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      const isOn = root.getAttribute("data-theme") === "sakura";
+      if (isOn) {
+        root.removeAttribute("data-theme");
+        try { localStorage.setItem(KEY, "off"); } catch (e) {}
+      } else {
+        root.setAttribute("data-theme", "sakura");
+        try { localStorage.setItem(KEY, "on"); } catch (e) {}
+      }
+    });
+  })();
+</script>

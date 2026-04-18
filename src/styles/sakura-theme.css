@@ -1,0 +1,191 @@
+/* ================================
+   🌸 Sakura Theme — Claude Design 新方案
+   HRT Yakuten — 崩坏星穹铁道 4.0「二相乐园」· 绯英（八重樱同位体）
+   Visual DNA: 手账 collage · 樱粉·蜜桃·薄荷·奶油 · 兔耳·贴纸·胶带
+   Mood: 柔软 · 手作 · 校园 · 漫画网点点缀
+   ================================ */
+
+[data-theme="sakura"] {
+  /* ===== 樱英粉彩系 ===== */
+  --sakura-pink: #FFA8C5;
+  --sakura-pink-hot: #FF7FA8;
+  --sakura-pink-deep: #E5578B;
+  --sakura-blush: #FFD4E0;
+
+  --coral: #FF8E7F;
+  --coral-deep: #E65D4A;
+
+  /* ===== 奶油 / 象牙 ===== */
+  --cream: #FFF5E0;
+  --cream-warm: #FFE8C2;
+  --ivory: #FFFAF0;
+
+  /* ===== 薄荷 / 青柠 ===== */
+  --mint: #A8E6C9;
+  --mint-deep: #5AC89D;
+  --pistachio: #D4E896;
+
+  /* ===== 奶黄 / 金 ===== */
+  --butter: #FFE89C;
+  --butter-deep: #F5C842;
+  --honey: #F5B347;
+
+  /* ===== 薰衣草 / 紫 ===== */
+  --lavender: #D4C5F5;
+  --lavender-deep: #9B7DD4;
+  --grape: #7A5FB5;
+
+  /* ===== 天蓝 ===== */
+  --sky: #A8D5F5;
+  --sky-deep: #5BA8E0;
+
+  /* ===== INK & OUTLINES — 暖棕梅子墨 ===== */
+  --ink: #4A2838;
+  --ink-soft: #7A5568;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+
+  /* ===== BACKGROUND — 手账纸面 ===== */
+  --bg-1: #FFF5E0;
+  --bg-2: #FFFAF0;
+  --bg-3: #FFFFFF;
+  --bg-4: #FFF0E5;
+  --bg-5: #FFE4EC;
+  --bg-6: #FFDCE5;
+
+  /* ===== FOREGROUND ===== */
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #B08D9E;
+
+  /* ===== 映射到项目现有变量名 ===== */
+  /* 主色 */
+  --color-primary: var(--sakura-pink);
+  --color-primary-light: var(--sakura-blush);
+  --color-primary-dark: var(--sakura-pink-deep);
+  --color-primary-container: var(--coral);
+
+  /* 副色 → 奶黄金 */
+  --color-accent: var(--butter-deep);
+  --color-accent-light: var(--butter);
+  --color-accent-dark: var(--honey);
+
+  /* 辅助色 → 薰衣草 */
+  --color-tertiary: var(--lavender);
+  --color-tertiary-dim: var(--lavender-deep);
+
+  /* 背景层 —— 切换为浅色手账纸 */
+  --color-bg-primary: var(--cream);
+  --color-bg-secondary: var(--ivory);
+  --color-bg-tertiary: #FFF0E5;
+  --color-bg-container: #FFFFFF;
+  --color-bg-container-high: #FFE4EC;
+  --color-bg-container-highest: #FFDCE5;
+
+  /* 文字 —— 梅子墨 */
+  --color-text-primary: var(--ink);
+  --color-text-secondary: var(--ink-soft);
+  --color-text-muted: var(--fg-3);
+  --color-text-on-dark: #FFFFFF;
+
+  /* 描边 —— 漫画暖棕 */
+  --color-outline: var(--ink);
+  --color-outline-15: rgba(74, 40, 56, 0.15);
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+  --color-outline-25: rgba(74, 40, 56, 0.25);
+  --color-border: var(--color-outline-20);
+  --color-border-subtle: var(--color-outline-15);
+
+  /* 语义色 */
+  --color-safe: var(--mint-deep);
+  --color-caution: var(--butter-deep);
+  --color-danger: #E85A7A;
+  --color-danger-dark: #C23D5C;
+  --color-info: var(--sky-deep);
+  --color-warning-low: var(--butter);
+
+  /* 玻璃效果 —— 浅色奶油感 */
+  --glass-bg: rgba(255, 245, 224, 0.7);
+  --glass-bg-30: rgba(255, 245, 224, 0.3);
+  --glass-bg-40: rgba(255, 245, 224, 0.4);
+  --glass-bg-85: rgba(255, 245, 224, 0.85);
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid var(--color-outline-20);
+
+  /* 透明度变体 —— 用新主色 */
+  --color-primary-alpha-08: rgba(255, 168, 197, 0.08);
+  --color-primary-alpha-10: rgba(255, 168, 197, 0.12);
+  --color-primary-alpha-15: rgba(255, 168, 197, 0.18);
+  --color-primary-alpha-20: rgba(255, 168, 197, 0.25);
+  --color-primary-alpha-25: rgba(255, 168, 197, 0.3);
+  --color-primary-alpha-40: rgba(255, 168, 197, 0.45);
+  --color-primary-alpha-60: rgba(255, 168, 197, 0.65);
+
+  --color-accent-alpha-08: rgba(245, 200, 66, 0.12);
+  --color-accent-alpha-10: rgba(245, 200, 66, 0.14);
+  --color-accent-alpha-30: rgba(245, 200, 66, 0.35);
+
+  --color-caution-alpha-08: rgba(245, 200, 66, 0.12);
+  --color-caution-alpha-10: rgba(245, 200, 66, 0.15);
+  --color-caution-alpha-75: rgba(245, 200, 66, 0.75);
+
+  --color-danger-alpha-10: rgba(232, 90, 122, 0.15);
+  --color-danger-alpha-50: rgba(232, 90, 122, 0.5);
+  --color-danger-bg-low: rgba(255, 228, 236, 0.5);
+  --color-danger-bg-alpha-50: rgba(255, 228, 236, 0.6);
+  --color-danger-border: rgba(232, 90, 122, 0.4);
+
+  --color-safe-alpha-30: rgba(90, 200, 157, 0.3);
+  --color-safe-alpha-80: rgba(90, 200, 157, 0.8);
+  --color-safe-badge-bg: rgba(168, 230, 201, 0.5);
+  --color-info-badge-bg: rgba(168, 213, 245, 0.5);
+  --color-caution-badge-bg: rgba(255, 232, 156, 0.6);
+  --color-danger-badge-bg: rgba(255, 212, 224, 0.7);
+
+  --color-green-alpha-15: rgba(168, 230, 201, 0.4);
+  --color-amber-alpha-15: rgba(255, 232, 156, 0.4);
+
+  --color-white-alpha-03: rgba(74, 40, 56, 0.03);
+  --color-white-alpha-06: rgba(74, 40, 56, 0.06);
+  --color-white-alpha-08: rgba(74, 40, 56, 0.08);
+  --color-text-alpha-60: rgba(74, 40, 56, 0.6);
+  --color-black-alpha-40: rgba(74, 40, 56, 0.4);
+  --color-black-alpha-50: rgba(74, 40, 56, 0.5);
+
+  /* 圆角 —— 手账风允许少量圆角 */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}
+
+/* ===== 手账风装饰覆盖 ===== */
+
+/* 选中态 */
+[data-theme="sakura"] ::selection {
+  background: rgba(255, 168, 197, 0.45);
+  color: var(--ink);
+}
+
+/* 粒子背景柔化 */
+[data-theme="sakura"] .particle-bg {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 168, 197, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(245, 200, 66, 0.10) 0%, transparent 50%);
+}
+
+[data-theme="sakura"] .particle-dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.18) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* Hero 渐变文字 —— 樱粉→珊瑚→奶黄 */
+[data-theme="sakura"] .hero-gradient-text {
+  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral), var(--butter-deep));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="sakura"] .hero-text-glow {
+  text-shadow: 0 0 20px rgba(255, 168, 197, 0.6);
+}
+</content>
+</invoke>
