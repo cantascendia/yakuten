@@ -31,5 +31,8 @@ stitch-exports/
 stitch-prompts.md
 *.zip
 
+# Claude Design extracted artifacts
+.design-unzip/
+
 .vercel
 .env*.local
