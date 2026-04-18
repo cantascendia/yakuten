@@ -17,24 +17,24 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 9px 16px;
     font-family: var(--font-body, system-ui, sans-serif);
     font-size: 13px;
-    font-weight: 600;
-    color: var(--sl-color-text, #e6e0ee);
-    background: rgba(26, 22, 37, 0.7);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(200, 175, 190, 0.3);
+    font-weight: 700;
+    /* 纯白文字，在所有深色/粉色背景上都够对比度 */
+    color: #FFFFFF;
+    /* 实心樱粉渐变，不再透明毛玻璃 */
+    background: linear-gradient(135deg, #C84B7C 0%, #E5578B 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
     cursor: pointer;
-    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 12px rgba(200, 75, 124, 0.45);
   }
   #sakura-toggle:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    background: rgba(229, 87, 139, 0.22);
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 6px 18px rgba(200, 75, 124, 0.6);
   }
   #sakura-toggle:active { transform: translateY(0); }
 

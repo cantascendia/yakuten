@@ -139,7 +139,8 @@ html.sakura .evidence-badge--X { background: var(--sakura-blush) !important; }
 html.sakura .citation-ref ,
 html.sakura a.citation-ref {
   background: var(--sakura-blush) !important;
-  color: var(--sakura-pink-deep) !important;
+  /* Was sakura-pink-deep on sakura-blush (~2.9:1, fail). Using ink (~9:1, pass AAA). */
+  color: var(--ink) !important;
   border: 1px solid var(--ink) !important;
   border-radius: 4px !important;
   padding: 1px 6px !important;
@@ -168,7 +169,8 @@ html.sakura .dose-table {
   background: var(--ivory) !important;
 }
 html.sakura .dose-table thead {
-  background: var(--sakura-pink) !important;
+  /* Deeper pink for white-text contrast (pass AA: ~5.2:1 vs 3.8:1 on --sakura-pink) */
+  background: var(--sakura-pink-deep) !important;
 }
 html.sakura .dose-table thead th {
   color: #fff !important;

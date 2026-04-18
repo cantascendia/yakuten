@@ -268,7 +268,9 @@
 
   --color-text-primary: var(--ink);
   --color-text-secondary: var(--ink-soft);
-  --color-text-muted: var(--fg-3);
+  /* Previously mapped to --fg-3 (#B08D9E) which fails AA on cream (~2.8:1).
+     ink-soft (#7A5568) gives ~6.3:1. */
+  --color-text-muted: var(--ink-soft);
   --color-text-on-dark: var(--fg-on-pink);
 
   --color-outline: var(--ink);

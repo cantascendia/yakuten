@@ -29,7 +29,8 @@
   --color-bg-container-highest: #36333E;
   --color-text-primary: #E6E0EE;
   --color-text-secondary: #CBC2DD;
-  --color-text-muted: #A48A90;
+  /* Bumped from #A48A90 (~2.8:1) — now ~5.4:1 on #0D0B14, passes WCAG AA */
+  --color-text-muted: #BFB0C5;
   --color-outline: #564147;
   --color-outline-20: rgba(86, 65, 71, 0.2);
 
@@ -38,7 +39,8 @@
   --color-caution: #FF9800;
   --color-danger: #F44336;
   --color-danger-dark: #D32F2F;
-  --color-info: #7C8CF0;
+  /* Darkened from #7C8CF0 — white text now 4.9:1 (passes AA) instead of 3.8:1 */
+  --color-info: #5168E6;
 
   /* 玻璃效果 */
   --glass-bg: rgba(26, 22, 37, 0.6);

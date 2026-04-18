@@ -198,9 +198,9 @@
 
 .pathway-end-sub {
   font-size: 0.625rem;
-  color: var(--color-text-muted);
+  /* Dropped opacity 0.6 and moved to --color-text-secondary for readable small caps */
+  color: var(--color-text-secondary);
   margin-top: var(--space-xs);
-  opacity: 0.6;
   text-transform: uppercase;
 }
 
@@ -304,8 +304,8 @@
   gap: var(--space-sm);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-text-primary);
-  opacity: 0.7;
+  /* Dropped opacity 0.7 (was ~3.4:1 after alpha blend) — use secondary for full readability */
+  color: var(--color-text-secondary);
 }
 
 .phase-block__list-bullet {
