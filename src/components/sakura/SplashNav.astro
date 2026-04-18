@@ -1,0 +1,195 @@
+---
+/**
+ * SplashNav — 对应设计包 Shell.jsx 的顶栏
+ * 左侧 HibiscusMark + 站名，中间导航，右侧语言切换
+ */
+import HibiscusMark from './HibiscusMark.astro';
+
+interface Props {
+  locale?: string;
+  currentPath?: string;
+}
+const { locale = 'zh', currentPath = '' } = Astro.props;
+
+const labels: Record<string, { tagline: string; links: Array<[string, string]> }> = {
+  zh: {
+    tagline: 'YAKUTEN · 绯英同行',
+    links: [
+      ['/sakura/zh/', '首页'],
+      ['/sakura/zh/pathway/', '路径图'],
+      ['/sakura/zh/medications/estrogens/oral/', '药物图鉴'],
+      ['/sakura/zh/blood-tests/', '血检指南'],
+    ],
+  },
+  en: {
+    tagline: 'YAKUTEN · with Hong Ying',
+    links: [
+      ['/sakura/en/', 'Home'],
+      ['/sakura/en/pathway/', 'Pathway'],
+      ['/sakura/en/medications/estrogens/oral/', 'Drugs'],
+      ['/sakura/en/blood-tests/', 'Blood Tests'],
+    ],
+  },
+  ja: {
+    tagline: 'YAKUTEN · 绯英とともに',
+    links: [
+      ['/sakura/ja/', 'ホーム'],
+      ['/sakura/ja/pathway/', '経路'],
+      ['/sakura/ja/medications/estrogens/oral/', '薬物図鑑'],
+      ['/sakura/ja/blood-tests/', '血液検査'],
+    ],
+  },
+  ko: {
+    tagline: 'YAKUTEN · 绯英과 함께',
+    links: [
+      ['/sakura/ko/', '홈'],
+      ['/sakura/ko/pathway/', '경로'],
+      ['/sakura/ko/medications/estrogens/oral/', '약물 도감'],
+      ['/sakura/ko/blood-tests/', '혈액 검사'],
+    ],
+  },
+};
+const cfg = labels[locale] ?? labels.zh;
+
+const allLocales: Array<[string, string]> = [
+  ['zh', '中文'],
+  ['en', 'EN'],
+  ['ja', '日本'],
+  ['ko', '한국'],
+];
+---
+
+<nav class="sakura-nav">
+  <a href={`/sakura/${locale}/`} class="sakura-nav__brand">
+    <HibiscusMark size={44} />
+    <div class="sakura-nav__title">
+      <div class="sakura-nav__name">HRT<span class="gradient-flame">药典</span></div>
+      <div class="sakura-nav__tagline">{cfg.tagline}</div>
+    </div>
+  </a>
+
+  <div class="sakura-nav__links">
+    {cfg.links.map(([href, label]) => {
+      const active = currentPath === href || (href !== `/sakura/${locale}/` && currentPath.startsWith(href));
+      return (
+        <a
+          href={href}
+          class:list={['sakura-nav__link', active && 'sakura-nav__link--active']}
+        >
+          {label}
+        </a>
+      );
+    })}
+  </div>
+
+  <div class="sakura-nav__locales">
+    {allLocales.map(([code, label]) => (
+      <a
+        href={`/sakura/${code}/`}
+        class:list={['sakura-nav__locale', code === locale && 'sakura-nav__locale--active']}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .sakura-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #FFF5E0;
+    border-bottom: 2px solid #4A2838;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 3px 0 #FFD4E0;
+    flex-wrap: wrap;
+  }
+  .sakura-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .sakura-nav__title {
+    line-height: 1;
+  }
+  .sakura-nav__name {
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-size: 22px;
+    color: #4A2838;
+  }
+  .gradient-flame {
+    background: linear-gradient(135deg, #E5578B, #FF8E7F 50%, #F5C842);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sakura-nav__tagline {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 10px;
+    color: #E5578B;
+    letter-spacing: 0.2em;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .sakura-nav__links {
+    display: flex;
+    gap: 6px;
+    margin-left: 20px;
+    flex: 1;
+  }
+  .sakura-nav__link {
+    padding: 8px 16px;
+    background: transparent;
+    color: #4A2838;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .sakura-nav__link:hover {
+    background: #FFD4E0;
+  }
+  .sakura-nav__link--active {
+    background: #FFA8C5;
+    color: #fff;
+    border-color: #4A2838;
+    box-shadow: 3px 3px 0 #4A2838;
+    transform: translate(-1px, -1px);
+  }
+  .sakura-nav__locales {
+    display: flex;
+    gap: 4px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .sakura-nav__locale {
+    padding: 4px 8px;
+    color: #7A5568;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .sakura-nav__locale--active {
+    color: #E5578B;
+    background: #FFD4E0;
+  }
+
+  @media (max-width: 720px) {
+    .sakura-nav__links {
+      order: 3;
+      width: 100%;
+      margin-left: 0;
+      flex-wrap: wrap;
+    }
+  }
+</style>

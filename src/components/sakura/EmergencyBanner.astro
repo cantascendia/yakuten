@@ -1,0 +1,64 @@
+---
+/**
+ * EmergencyBanner — 顶部紧急警示条（斜条纹粉红）
+ * 按设计要求：不可关闭
+ */
+interface Props {
+  locale?: string;
+}
+const { locale = 'zh' } = Astro.props;
+
+const messages: Record<string, { text: string; cta: string; href: string }> = {
+  zh: {
+    text: '⚠ 单侧小腿肿胀 · 突发胸痛 · 视力变化 · 严重头痛',
+    cta: '立即就医',
+    href: '/zh/risks/',
+  },
+  en: {
+    text: '⚠ One-sided leg swelling · Sudden chest pain · Vision change · Severe headache',
+    cta: 'Seek care now',
+    href: '/en/risks/',
+  },
+  ja: {
+    text: '⚠ 片側の脚のむくみ · 急な胸痛 · 視覚異常 · 激しい頭痛',
+    cta: 'すぐ受診',
+    href: '/ja/risks/',
+  },
+  ko: {
+    text: '⚠ 한쪽 다리 부종 · 급성 흉통 · 시각 이상 · 심한 두통',
+    cta: '즉시 병원',
+    href: '/ko/risks/',
+  },
+};
+const msg = messages[locale] ?? messages.zh;
+---
+
+<div class="sakura-emergency">
+  <span>{msg.text} ───</span>
+  <a href={msg.href}>{msg.cta}</a>
+</div>
+
+<style>
+  .sakura-emergency {
+    background: repeating-linear-gradient(
+      45deg,
+      #E5578B 0 16px,
+      #E65D4A 16px 32px
+    );
+    color: #fff;
+    padding: 10px 24px;
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    border-bottom: 2px solid #4A2838;
+    text-shadow: 1.5px 1.5px 0 #4A2838;
+    font-weight: 700;
+  }
+  .sakura-emergency a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 700;
+    margin-left: 4px;
+  }
+</style>

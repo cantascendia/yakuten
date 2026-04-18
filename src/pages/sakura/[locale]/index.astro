@@ -1,0 +1,202 @@
+---
+/**
+ * 新版首页 —— /sakura/{zh,en,ja,ko}/
+ * 用 Claude Design 的视觉，内容从 content collection 读取
+ */
+import { getEntry } from 'astro:content';
+import SakuraLayout from '../../../layouts/SakuraLayout.astro';
+import InkCard from '../../../components/sakura/InkCard.astro';
+import HibiscusMark from '../../../components/sakura/HibiscusMark.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: 'zh' } },
+    { params: { locale: 'en' } },
+    { params: { locale: 'ja' } },
+    { params: { locale: 'ko' } },
+  ];
+}
+
+const { locale } = Astro.params;
+
+// 从 content collection 读 index entry
+const indexEntry = await getEntry('docs', `${locale}/index`);
+const title = indexEntry?.data?.title ?? 'HRT药典';
+const description = indexEntry?.data?.description ?? '';
+
+// 主要入口卡片（从 content collection 的真实数据读取）
+const heroCards: Record<string, Array<{ slug: string; variant: string; icon: string }>> = {
+  zh: [
+    { slug: 'before-you-start', variant: 'flame',    icon: '🌸' },
+    { slug: 'pathway',          variant: 'gold',     icon: '✿' },
+    { slug: 'risks',            variant: 'pink',     icon: '⚠' },
+    { slug: 'dose-limits',      variant: 'mint',     icon: '◆' },
+    { slug: 'blood-tests',      variant: 'sky',      icon: '♡' },
+    { slug: 'china-reality',    variant: 'lavender', icon: '★' },
+  ],
+  en: [
+    { slug: 'before-you-start', variant: 'flame',    icon: '🌸' },
+    { slug: 'pathway',          variant: 'gold',     icon: '✿' },
+    { slug: 'risks',            variant: 'pink',     icon: '⚠' },
+    { slug: 'dose-limits',      variant: 'mint',     icon: '◆' },
+    { slug: 'blood-tests',      variant: 'sky',      icon: '♡' },
+    { slug: 'china-reality',    variant: 'lavender', icon: '★' },
+  ],
+  ja: [
+    { slug: 'before-you-start', variant: 'flame',    icon: '🌸' },
+    { slug: 'pathway',          variant: 'gold',     icon: '✿' },
+    { slug: 'risks',            variant: 'pink',     icon: '⚠' },
+    { slug: 'dose-limits',      variant: 'mint',     icon: '◆' },
+    { slug: 'blood-tests',      variant: 'sky',      icon: '♡' },
+    { slug: 'china-reality',    variant: 'lavender', icon: '★' },
+  ],
+  ko: [
+    { slug: 'before-you-start', variant: 'flame',    icon: '🌸' },
+    { slug: 'pathway',          variant: 'gold',     icon: '✿' },
+    { slug: 'risks',            variant: 'pink',     icon: '⚠' },
+    { slug: 'dose-limits',      variant: 'mint',     icon: '◆' },
+    { slug: 'blood-tests',      variant: 'sky',      icon: '♡' },
+    { slug: 'china-reality',    variant: 'lavender', icon: '★' },
+  ],
+};
+
+const cards = heroCards[locale!] ?? heroCards.zh;
+
+// 每张卡从真实 content collection 读标题和描述
+const cardsWithMeta = await Promise.all(cards.map(async (c) => {
+  const entry = await getEntry('docs', `${locale}/${c.slug}`);
+  return {
+    ...c,
+    title: entry?.data?.title ?? c.slug,
+    description: entry?.data?.description ?? '',
+    href: `/sakura/${locale}/${c.slug}/`,
+  };
+}));
+---
+
+<SakuraLayout title={title} description={description} locale={locale!}>
+  <section class="sakura-hero">
+    <div class="sakura-hero__mark">
+      <HibiscusMark size={96} />
+    </div>
+    <h1 class="sakura-hero__title">
+      HRT<span class="gradient-flame">药典</span>
+    </h1>
+    <p class="sakura-hero__tagline">
+      {description || '循证 · 减害 · 引导就医 —— 面向跨性别女性的 HRT 安全底线信息站'}
+    </p>
+    <div class="sakura-hero__badges">
+      <span class="sakura-hero__badge sakura-hero__badge--ink">循证 · WPATH SOC 8</span>
+      <span class="sakura-hero__badge sakura-hero__badge--pink">手账 · 绯英</span>
+      <span class="sakura-hero__badge sakura-hero__badge--gold">不处方 · 不销售</span>
+    </div>
+  </section>
+
+  <section class="sakura-grid">
+    {cardsWithMeta.map((c) => (
+      <InkCard variant={c.variant as any} href={c.href} class="sakura-card">
+        <div class="sakura-card__icon">{c.icon}</div>
+        <h3 class="sakura-card__title">{c.title}</h3>
+        <p class="sakura-card__desc">{c.description}</p>
+      </InkCard>
+    ))}
+  </section>
+</SakuraLayout>
+
+<style>
+  .sakura-hero {
+    text-align: center;
+    padding: 40px 0 48px;
+  }
+  .sakura-hero__mark {
+    display: inline-flex;
+    margin-bottom: 8px;
+  }
+  .sakura-hero__title {
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 1;
+    margin: 0;
+    color: #4A2838;
+    font-weight: 400;
+  }
+  .sakura-hero__title::after { display: none; } /* 覆盖 layout 里 h1 的下划线 */
+  .gradient-flame {
+    background: linear-gradient(135deg, #E5578B, #FF8E7F 50%, #F5C842);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sakura-hero__tagline {
+    font-family: "Ma Shan Zheng", "Klee One", cursive;
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: #7A5568;
+    max-width: 620px;
+    margin: 16px auto 24px;
+  }
+  .sakura-hero__badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .sakura-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border: 2px solid #4A2838;
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 #4A2838;
+  }
+  .sakura-hero__badge--ink {
+    background: #FFFAF0;
+    color: #4A2838;
+  }
+  .sakura-hero__badge--pink {
+    background: #FFA8C5;
+    color: #fff;
+  }
+  .sakura-hero__badge--gold {
+    background: linear-gradient(135deg, #FFE89C, #F5C842);
+    color: #4A2838;
+  }
+
+  .sakura-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .sakura-card {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sakura-card__icon {
+    font-family: "Fraunces", serif;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sakura-card__title {
+    font-family: "Noto Serif SC", "Klee One", serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .sakura-card__title::after { display: none; }
+  .sakura-card__desc {
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    margin: 0;
+    opacity: 0.88;
+  }
+</style>

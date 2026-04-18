@@ -1,0 +1,123 @@
+---
+/**
+ * 内容页模板 —— /sakura/{zh,en,ja,ko}/{...slug}/
+ *
+ * 关键：读取 Starlight 用的同一份 content collection，
+ * 保证文案唯一源（旧版改 MDX，新版自动跟）。
+ *
+ * 目前先展示 title + description + MDX <Content />，
+ * Phase 2 再把 callout/aside 替换成设计包的 InkCard / DangerBox。
+ */
+import { getCollection, getEntry, render } from 'astro:content';
+import SakuraLayout from '../../../layouts/SakuraLayout.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('docs');
+  return all
+    // 跳过根 index（已由单独 index.astro 处理）
+    .filter((e) => e.id && !e.id.match(/^[a-z]{2}\/?index$/))
+    .map((entry) => {
+      // entry.id 形如 "zh/risks" 或 "zh/medications/estrogens/oral"
+      const parts = entry.id.split('/');
+      const locale = parts[0];
+      const slug = parts.slice(1).join('/');
+      if (!locale || !slug) return null;
+      return {
+        params: { locale, slug },
+        props: { entryId: entry.id },
+      };
+    })
+    .filter((x): x is { params: { locale: string; slug: string }; props: { entryId: string } } => x !== null);
+}
+
+const { entryId } = Astro.props;
+const entry = await getEntry('docs', entryId);
+
+if (!entry) {
+  return Astro.redirect(`/sakura/${Astro.params.locale}/`);
+}
+
+const { Content } = await render(entry);
+const title = entry.data.title ?? '';
+const description = entry.data.description ?? '';
+const locale = Astro.params.locale!;
+const evidence = (entry.data as any).evidenceLevel ?? 'X';
+const lastReviewed = (entry.data as any).lastReviewed;
+
+const evidenceColors: Record<string, { bg: string; label: string }> = {
+  A: { bg: '#A8E6C9', label: 'SSR · 循证 A' },
+  B: { bg: '#A8D5F5', label: 'SR · 循证 B' },
+  C: { bg: '#FFE89C', label: 'R · 循证 C' },
+  X: { bg: '#FFD4E0', label: '— · 无评级' },
+};
+const evCol = evidenceColors[evidence] ?? evidenceColors.X;
+---
+
+<SakuraLayout title={title} description={description} locale={locale}>
+  <article class="sakura-article">
+    <header class="sakura-article__header">
+      <div class="sakura-article__meta">
+        <span class="sakura-article__evidence" style={`background: ${evCol.bg}`}>
+          {evCol.label}
+        </span>
+        {lastReviewed && (
+          <span class="sakura-article__date">
+            最后审核 · {new Date(lastReviewed).toISOString().slice(0, 10)}
+          </span>
+        )}
+      </div>
+      <h1>{title}</h1>
+      {description && <p class="sakura-article__desc">{description}</p>}
+    </header>
+
+    <div class="sakura-article__body">
+      <Content />
+    </div>
+  </article>
+</SakuraLayout>
+
+<style>
+  .sakura-article {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .sakura-article__header {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed rgba(74, 40, 56, 0.25);
+  }
+  .sakura-article__meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .sakura-article__evidence {
+    display: inline-flex;
+    padding: 4px 12px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #4A2838;
+    border: 2px solid #4A2838;
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 #4A2838;
+  }
+  .sakura-article__date {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #B08D9E;
+    letter-spacing: 0.05em;
+  }
+  .sakura-article__desc {
+    font-family: "Ma Shan Zheng", "Klee One", cursive;
+    font-size: 1.15rem;
+    color: #7A5568;
+    margin-top: 8px;
+  }
+  .sakura-article__body {
+    /* 继承 SakuraLayout 的全局正文样式 */
+  }
+</style>

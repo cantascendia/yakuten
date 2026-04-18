@@ -1,0 +1,218 @@
+---
+/**
+ * SiteFooter — 对应设计包 Shell.jsx 的底栏
+ */
+import HibiscusMark from './HibiscusMark.astro';
+
+interface Props {
+  locale?: string;
+}
+const { locale = 'zh' } = Astro.props;
+
+type FooterCfg = {
+  motto: string;
+  columns: Array<[string, Array<[string, string]>]>;
+  copyright: string;
+  blessing: string;
+};
+
+const cfgs: Record<string, FooterCfg> = {
+  zh: {
+    motto: '「愿此行，抵达真实的自己」· Per iter ad se verum · 基于循证，不予处方。仅供参考，不能替代医生的判读。',
+    columns: [
+      ['开始', [
+        ['/sakura/zh/before-you-start/', '新手上路'],
+        ['/sakura/zh/china-reality/', '中国现实'],
+        ['/sakura/zh/pathway/', '用药路径'],
+      ]],
+      ['药典', [
+        ['/sakura/zh/medications/estrogens/oral/', '雌激素'],
+        ['/sakura/zh/medications/antiandrogens/cpa/', '抗雄'],
+        ['/sakura/zh/medications/progestogens/progesterone/', '孕激素'],
+      ]],
+      ['应急', [
+        ['/sakura/zh/risks/', 'VTE 识别'],
+        ['/sakura/zh/dose-limits/', '剂量红线'],
+        ['/sakura/zh/blood-tests/', '血检指南'],
+      ]],
+    ],
+    copyright: '© 2026 · 致敬 花导 · 绯英 · 二相乐园 幻造民',
+    blessing: '愿阿哈庇佑 · 愿此行终抵群星',
+  },
+  en: {
+    motto: '"Per iter ad se verum" · Evidence-based, non-prescriptive. Reference only; not a substitute for clinical judgment.',
+    columns: [
+      ['Start', [
+        ['/sakura/en/before-you-start/', 'Getting Started'],
+        ['/sakura/en/china-reality/', 'China Reality'],
+        ['/sakura/en/pathway/', 'HRT Pathway'],
+      ]],
+      ['Drugs', [
+        ['/sakura/en/medications/estrogens/oral/', 'Estrogens'],
+        ['/sakura/en/medications/antiandrogens/cpa/', 'Antiandrogens'],
+        ['/sakura/en/medications/progestogens/progesterone/', 'Progestogens'],
+      ]],
+      ['Safety', [
+        ['/sakura/en/risks/', 'VTE Signals'],
+        ['/sakura/en/dose-limits/', 'Dose Limits'],
+        ['/sakura/en/blood-tests/', 'Blood Tests'],
+      ]],
+    ],
+    copyright: '© 2026 · Hong Ying · Penacony Dreamers',
+    blessing: 'May Aha bless us · May this journey reach the stars',
+  },
+  ja: {
+    motto: '「真の自分へ至る旅」· エビデンスに基づき、処方はしません。参考情報で、医師判断の代替になりません。',
+    columns: [
+      ['始める', [
+        ['/sakura/ja/before-you-start/', '服薬前の準備'],
+        ['/sakura/ja/china-reality/', '中国の現実'],
+        ['/sakura/ja/pathway/', 'HRT経路'],
+      ]],
+      ['薬物', [
+        ['/sakura/ja/medications/estrogens/oral/', 'エストロゲン'],
+        ['/sakura/ja/medications/antiandrogens/cpa/', '抗アンドロゲン'],
+        ['/sakura/ja/medications/progestogens/progesterone/', 'プロゲストゲン'],
+      ]],
+      ['緊急', [
+        ['/sakura/ja/risks/', 'VTEサイン'],
+        ['/sakura/ja/dose-limits/', '用量レッドライン'],
+        ['/sakura/ja/blood-tests/', '血液検査'],
+      ]],
+    ],
+    copyright: '© 2026 · 绯英 · 二相楽園',
+    blessing: 'アハの祝福とともに',
+  },
+  ko: {
+    motto: '"진정한 자신에게 닿는 여정" · 근거 기반, 처방 아님. 의사의 판단을 대체할 수 없음.',
+    columns: [
+      ['시작', [
+        ['/sakura/ko/before-you-start/', '복용 전 준비'],
+        ['/sakura/ko/china-reality/', '중국 현실'],
+        ['/sakura/ko/pathway/', 'HRT 경로'],
+      ]],
+      ['약물', [
+        ['/sakura/ko/medications/estrogens/oral/', '에스트로겐'],
+        ['/sakura/ko/medications/antiandrogens/cpa/', '항안드로겐'],
+        ['/sakura/ko/medications/progestogens/progesterone/', '프로게스토겐'],
+      ]],
+      ['응급', [
+        ['/sakura/ko/risks/', 'VTE 신호'],
+        ['/sakura/ko/dose-limits/', '용량 한계'],
+        ['/sakura/ko/blood-tests/', '혈액 검사'],
+      ]],
+    ],
+    copyright: '© 2026 · 绯英 · Penacony',
+    blessing: '아하의 축복이 함께',
+  },
+};
+const cfg = cfgs[locale] ?? cfgs.zh;
+---
+
+<footer class="sakura-footer">
+  <div class="sakura-footer__inner">
+    <div class="sakura-footer__brand">
+      <div class="sakura-footer__brand-row">
+        <HibiscusMark size={36} />
+        <div class="sakura-footer__brand-name">HRT药典 · Yakuten</div>
+      </div>
+      <p class="sakura-footer__motto">{cfg.motto}</p>
+    </div>
+    {cfg.columns.map(([heading, links]) => (
+      <div class="sakura-footer__col">
+        <div class="sakura-footer__col-title">{heading}</div>
+        {links.map(([href, label]) => (
+          <a href={href} class="sakura-footer__col-link">{label}</a>
+        ))}
+      </div>
+    ))}
+  </div>
+  <div class="sakura-footer__bottom">
+    <div>{cfg.copyright}</div>
+    <div class="sakura-footer__blessing">{cfg.blessing}</div>
+  </div>
+</footer>
+
+<style>
+  .sakura-footer {
+    margin-top: 64px;
+    padding: 40px 48px 32px;
+    background: #FFD4E0;
+    border-top: 2px solid #4A2838;
+    position: relative;
+    z-index: 1;
+  }
+  .sakura-footer__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .sakura-footer__brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .sakura-footer__brand-name {
+    background: linear-gradient(135deg, #E5578B, #FF8E7F 50%, #F5C842);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-size: 22px;
+  }
+  .sakura-footer__motto {
+    font-size: 13px;
+    color: #7A5568;
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 0;
+  }
+  .sakura-footer__col-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    color: #E5578B;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .sakura-footer__col-link {
+    display: block;
+    font-size: 13px;
+    color: #4A2838;
+    padding: 3px 0;
+    text-decoration: none;
+  }
+  .sakura-footer__col-link:hover {
+    color: #E5578B;
+  }
+  .sakura-footer__bottom {
+    max-width: 1280px;
+    margin: 24px auto 0;
+    padding-top: 16px;
+    border-top: 2px dashed rgba(74, 40, 56, 0.25);
+    display: flex;
+    justify-content: space-between;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    color: #B08D9E;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sakura-footer__blessing {
+    color: #E5578B;
+  }
+
+  @media (max-width: 720px) {
+    .sakura-footer__inner {
+      grid-template-columns: 1fr;
+    }
+    .sakura-footer {
+      padding: 32px 20px 24px;
+    }
+  }
+</style>

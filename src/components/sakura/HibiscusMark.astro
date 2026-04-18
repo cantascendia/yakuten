@@ -1,0 +1,17 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 48 } = Astro.props;
+---
+
+<svg width={size} height={size} viewBox="0 0 64 64" aria-label="bloom">
+  <g transform="translate(32 32)">
+    <circle cx="0" cy="-18" r="11" fill="#FFA8C5"/>
+    <circle cx="0" cy="-18" r="11" fill="#FFA8C5" transform="rotate(72)"/>
+    <circle cx="0" cy="-18" r="11" fill="#FFA8C5" transform="rotate(144)"/>
+    <circle cx="0" cy="-18" r="11" fill="#FFA8C5" transform="rotate(216)"/>
+    <circle cx="0" cy="-18" r="11" fill="#FFA8C5" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="8" fill="#F5C842"/>
+  </g>
+</svg>

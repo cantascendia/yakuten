@@ -81,12 +81,14 @@
       if (document.getElementById("sakura-toggle")) return;
       var link = document.createElement("a");
       link.id = "sakura-toggle";
-      link.href = "/sakura-preview.html";
-      link.setAttribute("aria-label", "预览新版设计（Claude Design）");
-      link.setAttribute("title", "预览新版设计（测试中）");
+      // 根据当前 locale 跳转到对应的新版
+      var loc = (location.pathname.match(/^\/(zh|en|ja|ko)(\/|$)/) || [, "zh"])[1];
+      link.href = "/sakura/" + loc + "/";
+      link.setAttribute("aria-label", "切换到新版（测试中）");
+      link.setAttribute("title", "切换到新版（Claude Design 视觉 · 同步正式文案）");
       link.innerHTML =
         '<span class="sakura-toggle__icon" aria-hidden="true">\uD83C\uDF38</span>' +
-        '<span class="sakura-toggle__label">新版预览</span>';
+        '<span class="sakura-toggle__label">新版</span>';
       document.body.appendChild(link);
     }
 

@@ -1,0 +1,52 @@
+---
+/**
+ * InkCard — 核心卡片基元
+ * 2px 墨线 + 4px 硬投影 + 12px 圆角，hover 上浮
+ */
+interface Props {
+  variant?: 'default' | 'cream' | 'pink' | 'flame' | 'gold' | 'mint' | 'sky' | 'lavender' | 'paper';
+  href?: string;
+  as?: 'div' | 'a' | 'article';
+  class?: string;
+}
+const { variant = 'default', href, as: Tag = href ? 'a' : 'div', class: className } = Astro.props;
+---
+
+<Tag
+  href={href}
+  class:list={['sakura-ink-card', `sakura-ink-card--${variant}`, className]}
+>
+  <slot />
+</Tag>
+
+<style>
+  .sakura-ink-card {
+    display: block;
+    border: 2px solid #4A2838;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 4px 4px 0 #4A2838;
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s;
+    color: #4A2838;
+    text-decoration: none;
+  }
+  .sakura-ink-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #4A2838;
+  }
+  .sakura-ink-card--default { background: #FFFFFF; }
+  .sakura-ink-card--cream   { background: #FFF5E0; }
+  .sakura-ink-card--paper   { background: #FFFAF0; }
+  .sakura-ink-card--pink    { background: #FFD4E0; }
+  .sakura-ink-card--flame   { background: linear-gradient(135deg, #FFA8C5, #FF8E7F); color: #fff; }
+  .sakura-ink-card--gold    { background: linear-gradient(135deg, #FFE89C, #F5C842); }
+  .sakura-ink-card--mint    { background: #A8E6C9; }
+  .sakura-ink-card--sky     { background: #A8D5F5; }
+  .sakura-ink-card--lavender{ background: #D4C5F5; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sakura-ink-card {
+      transition: none;
+    }
+  }
+</style>

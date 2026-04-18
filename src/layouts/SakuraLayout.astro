@@ -1,0 +1,275 @@
+---
+/**
+ * SakuraLayout — 新版（Claude Design）页面的外壳
+ * EmergencyBanner + SplashNav + {children} + SiteFooter + CarnivalBg
+ *
+ * 内容从主站的 content collection 读取，这里只提供"壳"。
+ * 旧版（Starlight）完全不受影响，两套路由各自独立。
+ */
+import CarnivalBg from '../components/sakura/CarnivalBg.astro';
+import EmergencyBanner from '../components/sakura/EmergencyBanner.astro';
+import SplashNav from '../components/sakura/SplashNav.astro';
+import SiteFooter from '../components/sakura/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  locale?: string;
+}
+const { title, description = '', locale = 'zh' } = Astro.props;
+const currentPath = Astro.url.pathname;
+const siteTitle = `${title} | HRT药典 · Yakuten`;
+---
+
+<!doctype html>
+<html lang={locale === 'zh' ? 'zh-CN' : locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{siteTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Claude Design 完整字体栈 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=Kosugi+Maru&family=Yuji+Syuku&family=DotGothic16&family=JetBrains+Mono:wght@500;700&display=swap"
+    />
+  </head>
+  <body>
+    <CarnivalBg />
+    <EmergencyBanner locale={locale} />
+    <SplashNav locale={locale} currentPath={currentPath} />
+
+    <main class="sakura-main">
+      <slot />
+    </main>
+
+    <SiteFooter locale={locale} />
+
+    <!-- 返回正式站按钮 -->
+    <a id="sakura-back-btn" href={`/${locale}/`} title="返回正式站（旧版）">
+      <span aria-hidden="true">←</span>
+      <span>返回正式站</span>
+      <span class="back-badge">预览中</span>
+    </a>
+  </body>
+</html>
+
+<style is:global>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: #4A2838;
+    font-family: "Noto Sans SC", "Zen Maru Gothic", "PingFang SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .sakura-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 32px 64px;
+  }
+
+  /* ===== 内容渲染样式（MDX 输出） ===== */
+  .sakura-main h1 {
+    font-family: "Fraunces", "Noto Serif SC", serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #4A2838;
+    font-weight: 600;
+    margin: 0 0 8px;
+    line-height: 1.15;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  .sakura-main h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72px;
+    height: 6px;
+    background: #FFA8C5;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 #4A2838;
+  }
+
+  .sakura-main h2 {
+    font-family: "Noto Serif SC", "Klee One", serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #4A2838;
+    font-weight: 700;
+    margin: 40px 0 16px;
+    padding: 6px 16px;
+    display: inline-block;
+    background: #FFE89C;
+    border: 2px solid #4A2838;
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 #4A2838;
+  }
+
+  .sakura-main h3 {
+    font-family: "Klee One", "Noto Serif SC", serif;
+    font-size: 1.4rem;
+    color: #E5578B;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    border-left: 6px solid #FFA8C5;
+    padding-left: 12px;
+  }
+
+  .sakura-main h4 {
+    font-family: "Klee One", "Noto Serif SC", serif;
+    font-size: 1.15rem;
+    color: #4A2838;
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+
+  .sakura-main p {
+    margin: 12px 0;
+    color: #4A2838;
+    font-family: "Noto Sans SC", sans-serif;
+  }
+
+  .sakura-main a {
+    color: #E5578B;
+    text-decoration: none;
+    background-image: linear-gradient(transparent 60%, #FFD4E0 60%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 0 2px;
+    font-weight: 600;
+    transition: background-size 0.2s ease;
+  }
+  .sakura-main a:hover {
+    background-image: linear-gradient(transparent 0%, #FFA8C5 100%);
+    color: #4A2838;
+  }
+
+  .sakura-main :not(pre) > code {
+    background: #FFE4EC;
+    color: #E5578B;
+    border: 1.5px solid #4A2838;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 500;
+    box-shadow: 1px 1px 0 #4A2838;
+    font-size: 0.9em;
+  }
+
+  .sakura-main pre {
+    border: 2px solid #4A2838;
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 #4A2838;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    overflow: auto;
+  }
+  .sakura-main pre code {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    color: #4A2838;
+  }
+
+  .sakura-main blockquote {
+    background: #FFE4EC;
+    border-left: 6px solid #E5578B;
+    border-radius: 0 12px 12px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
+    color: #7A5568;
+    font-style: italic;
+    box-shadow: 3px 3px 0 rgba(74, 40, 56, 0.1);
+  }
+
+  .sakura-main ul, .sakura-main ol {
+    padding-left: 1.4em;
+  }
+  .sakura-main ul > li::marker,
+  .sakura-main ol > li::marker {
+    color: #E5578B;
+    font-weight: 700;
+  }
+
+  .sakura-main hr {
+    border: none;
+    height: 4px;
+    background-image: radial-gradient(circle, #E5578B 2px, transparent 2.5px);
+    background-size: 16px 4px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    margin: 32px 0;
+  }
+
+  .sakura-main table {
+    width: 100%;
+    border: 2px solid #4A2838;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 3px 3px 0 #4A2838;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+  }
+  .sakura-main thead {
+    background: #FFA8C5;
+  }
+  .sakura-main thead th {
+    color: #fff;
+    font-family: "Klee One", serif;
+    padding: 10px 14px;
+    text-align: left;
+    border: none;
+  }
+  .sakura-main tbody tr:nth-child(even) { background: #FFF0E5; }
+  .sakura-main tbody tr:nth-child(odd)  { background: #FFFAF0; }
+  .sakura-main tbody td {
+    padding: 10px 14px;
+    border-top: 1px solid rgba(74, 40, 56, 0.15);
+  }
+
+  /* ===== 返回按钮 ===== */
+  #sakura-back-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 99999;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #4A2838;
+    background: rgba(255, 250, 240, 0.95);
+    border: 2px solid #4A2838;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 #4A2838;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  #sakura-back-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #4A2838;
+  }
+  #sakura-back-btn .back-badge {
+    background: #E5578B;
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+</style>
