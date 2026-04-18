@@ -1,12 +1,22 @@
-/* ================================
-   🌸 Sakura Theme — Claude Design 新方案
-   HRT Yakuten — 崩坏星穹铁道 4.0「二相乐园」· 绯英（八重樱同位体）
-   Visual DNA: 手账 collage · 樱粉·蜜桃·薄荷·奶油 · 兔耳·贴纸·胶带
-   Mood: 柔软 · 手作 · 校园 · 漫画网点点缀
-   ================================ */
+/* =========================================================================
+   HRT Yakuten — Sakura Theme (Claude Design 原版合并)
+   Design language: 崩坏星穹铁道 4.0「二相乐园」· 绯英 (八重樱同位体)
+   Visual DNA: 手账 collage · 文具少女 · 樱粉·蜜桃·薄荷·奶油 · 兔耳·贴纸·胶带
+   Mood: 柔软 · 手作 · 校园 · 漫画网点点缀 · 不是战斗不是霓虹
 
+   全部规则加 `html.sakura` / `:root.sakura` 前缀，
+   用户不点 🌸 按钮时完全不影响原深色主题。
+   ========================================================================= */
+
+/* 字体 @import 必须在文件最顶部，无法做条件作用域。
+   仅在用户切换到 sakura 主题后才通过 CSS 变量引用这些字体。 */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=Kosugi+Maru&family=Yuji+Syuku&family=DotGothic16&family=JetBrains+Mono:wght@500;700&display=swap");
+
+/* =========================================================================
+   :root.sakura — 所有 Design Token
+   ========================================================================= */
 :root.sakura {
-  /* ===== 樱英粉彩系 ===== */
+  /* ===== PRIMARY — 绯英粉彩系 ===== */
   --sakura-pink: #FFA8C5;
   --sakura-pink-hot: #FF7FA8;
   --sakura-pink-deep: #E5578B;
@@ -52,98 +62,256 @@
   --bg-5: #FFE4EC;
   --bg-6: #FFDCE5;
 
+  /* 夜间模式的"梦境紫" */
+  --night-1: #2E1F42;
+  --night-2: #3D2A55;
+  --night-3: #5A3F7A;
+
   /* ===== FOREGROUND ===== */
   --fg-1: #4A2838;
   --fg-2: #7A5568;
   --fg-3: #B08D9E;
+  --fg-invert: #FFF5E0;
+  --fg-on-pink: #FFFFFF;
+  --fg-on-cream: #4A2838;
 
-  /* ===== 映射到项目现有变量名 ===== */
-  /* 主色 */
+  /* ===== SEMANTIC ===== */
+  --safe: var(--mint-deep);
+  --info: var(--sky-deep);
+  --caution: var(--butter-deep);
+  --danger: #E85A7A;
+  --danger-deep: #C23D5C;
+  --warning-hot: var(--coral-deep);
+
+  /* ===== LEGACY COMPAT — 保留旧变量名 ===== */
+  --fei-primary: var(--sakura-pink);
+  --fei-primary-light: var(--sakura-blush);
+  --fei-primary-dark: var(--sakura-pink-deep);
+  --fei-primary-container: var(--coral);
+  --fei-accent: var(--butter-deep);
+  --fei-accent-light: var(--butter);
+  --fei-accent-dark: var(--honey);
+  --fei-tertiary: var(--lavender);
+  --fei-tertiary-dim: var(--lavender-deep);
+  --fg-on-dark: var(--fg-on-pink);
+  --fg-on-fire: var(--fg-on-pink);
+  --fg-ink: var(--fg-1);
+  --ink-border: var(--ink);
+  --ink-border-thin: var(--ink-faint);
+  --outline: var(--ink);
+  --outline-20: rgba(74, 40, 56, 0.2);
+  --outline-15: rgba(74, 40, 56, 0.15);
+  --border: var(--outline-20);
+  --border-subtle: var(--outline-15);
+  --jester-ink: var(--night-1);
+  --paper: var(--cream);
+
+  --hibiscus-flame: var(--sakura-pink-deep);
+  --hibiscus-flame-hot: var(--sakura-pink-hot);
+  --hibiscus-flame-deep: var(--sakura-pink-deep);
+  --hibiscus-glow: var(--sakura-pink);
+  --molten-gold: var(--butter-deep);
+  --molten-gold-bright: var(--butter);
+  --molten-gold-deep: var(--honey);
+  --sakura: var(--sakura-pink);
+  --sakura-soft: var(--sakura-blush);
+  --sakura-deep: var(--sakura-pink-deep);
+  --neon-cyan: var(--sky-deep);
+  --neon-cyan-bright: var(--sky);
+  --neon-cyan-deep: var(--sky-deep);
+  --phantom-violet: var(--lavender-deep);
+  --phantom-violet-bright: var(--lavender);
+  --phantom-violet-deep: var(--grape);
+  --joy-mint: var(--mint);
+  --joy-mint-deep: var(--mint-deep);
+
+  /* Alphas */
+  --primary-a10: rgba(255, 168, 197, 0.12);
+  --primary-a15: rgba(255, 168, 197, 0.2);
+  --primary-a25: rgba(255, 168, 197, 0.35);
+  --primary-a40: rgba(255, 168, 197, 0.5);
+  --primary-a60: rgba(255, 168, 197, 0.7);
+  --accent-a08: rgba(245, 200, 66, 0.12);
+  --accent-a15: rgba(245, 200, 66, 0.2);
+  --accent-a30: rgba(245, 200, 66, 0.35);
+  --cyan-a20: rgba(91, 168, 224, 0.25);
+  --violet-a20: rgba(155, 125, 212, 0.25);
+  --safe-a15: rgba(90, 200, 157, 0.2);
+  --caution-a15: rgba(245, 200, 66, 0.2);
+  --danger-a10: rgba(232, 90, 122, 0.15);
+  --danger-a25: rgba(232, 90, 122, 0.3);
+
+  /* ===== GEOMETRY ===== */
+  --clip-corner: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
+  --clip-panel: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
+  --clip-ticket: polygon(
+    0 0, 100% 0, 100% 20%, 95% 25%, 100% 30%, 100% 70%, 95% 75%, 100% 80%,
+    100% 100%, 0 100%, 0 80%, 5% 75%, 0 70%, 0 30%, 5% 25%, 0 20%);
+  --clip-sign: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+  --clip-bubble: polygon(0 0, 100% 0, 100% 80%, 85% 80%, 80% 100%, 75% 80%, 0 80%);
+  --clip-mask-half: polygon(0 20%, 50% 0, 100% 20%, 100% 55%, 50% 70%, 0 55%);
+
+  /* ===== RADII — 圆润手账 ===== */
+  --radius-none: 0px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --radius-token: 40px 8px 40px 8px;
+
+  /* ===== SPACING ===== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ===== SHADOW — 柔软落影 ===== */
+  --shadow-soft: 0 4px 12px rgba(74, 40, 56, 0.08);
+  --shadow-card: 0 8px 24px rgba(74, 40, 56, 0.12);
+  --shadow-lift: 0 12px 32px rgba(74, 40, 56, 0.16);
+  --shadow-hard-sm: 3px 3px 0 var(--ink);
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-lg: 6px 6px 0 var(--ink);
+  --shadow-hard-flame: 4px 4px 0 var(--sakura-pink-deep);
+  --shadow-hard-gold: 4px 4px 0 var(--honey);
+
+  --glow-flame: 0 0 24px rgba(229, 87, 139, 0.3);
+  --glow-gold: 0 0 24px rgba(245, 200, 66, 0.3);
+  --glow-cyan: 0 0 24px rgba(91, 168, 224, 0.3);
+  --glow-violet: 0 0 24px rgba(155, 125, 212, 0.3);
+
+  /* ===== GLASS — 轻纱 ===== */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-30: rgba(255, 255, 255, 0.35);
+  --glass-bg-40: rgba(255, 255, 255, 0.45);
+  --glass-bg-80: rgba(255, 255, 255, 0.85);
+  --glass-bg-85: rgba(255, 245, 224, 0.85);
+  --glass-bg-92: rgba(255, 245, 224, 0.92);
+  --glass-blur: blur(10px);
+  --glass-blur-soft: blur(4px);
+  --glass-blur-medium: blur(8px);
+  --glass-blur-strong: blur(16px);
+  --glass-border: 2px solid var(--ink);
+
+  /* ===== MOTION ===== */
+  --transition-fast: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-normal: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ===== FONTS =====
+     display    · Yuji Syuku (书法笔意) —— 标题汉字
+     heading    · Klee One (手写圆润)
+     body       · Zen Maru Gothic (圆润 CJK) / Noto Sans SC
+     accent     · Kosugi Maru (像卡套印刷)
+     pixel/hud  · DotGothic16
+     mono       · JetBrains Mono
+  */
+  --font-display: "Fraunces", "Noto Serif SC", "Yuji Syuku", serif;
+  --font-display-zh: "Noto Serif SC", "Yuji Syuku", "Klee One", serif;
+  --font-heading: "Noto Serif SC", "Klee One", "Zen Maru Gothic", "Noto Sans SC", sans-serif;
+  --font-body: "Noto Sans SC", "Zen Maru Gothic", "PingFang SC", sans-serif;
+  --font-hand: "Ma Shan Zheng", "Klee One", cursive;
+  --font-ui-accent: "Plus Jakarta Sans", "Klee One", "Zen Maru Gothic", sans-serif;
+  --font-hud: "JetBrains Mono", "DotGothic16", monospace;
+  --font-accent: "Kosugi Maru", "Zen Maru Gothic", sans-serif;
+  --font-pixel: "DotGothic16", "Courier New", monospace;
+  --font-mono: var(--font-hud);
+  --font-code: var(--font-hud);
+  --font-arcade: "Plus Jakarta Sans", "Klee One", sans-serif;
+
+  /* ===== TYPE SIZES ===== */
+  --fs-display: clamp(4rem, 10vw, 8rem);
+  --fs-h1: clamp(2.5rem, 5vw, 4rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-micro: 0.75rem;
+  --fs-slogan: clamp(1.25rem, 2.5vw, 1.75rem);
+
+  --lh-tight: 1.15;
+  --lh-body: 1.8;
+  --lh-loose: 1.95;
+
+  --ls-display: -0.01em;
+  --ls-slogan: 0.2em;
+  --ls-micro-caps: 0.15em;
+  --ls-label: 0.1em;
+
+  /* =====================================================================
+     映射到项目现有 --color-* 变量
+     （这样整站已有 CSS 不改任何一行就能跟着换肤）
+     ===================================================================== */
   --color-primary: var(--sakura-pink);
   --color-primary-light: var(--sakura-blush);
   --color-primary-dark: var(--sakura-pink-deep);
   --color-primary-container: var(--coral);
 
-  /* 副色 → 奶黄金 */
   --color-accent: var(--butter-deep);
   --color-accent-light: var(--butter);
   --color-accent-dark: var(--honey);
 
-  /* 辅助色 → 薰衣草 */
   --color-tertiary: var(--lavender);
   --color-tertiary-dim: var(--lavender-deep);
 
-  /* 背景层 —— 切换为浅色手账纸 */
   --color-bg-primary: var(--cream);
   --color-bg-secondary: var(--ivory);
-  --color-bg-tertiary: #FFF0E5;
-  --color-bg-container: #FFFFFF;
-  --color-bg-container-high: #FFE4EC;
-  --color-bg-container-highest: #FFDCE5;
+  --color-bg-tertiary: var(--bg-4);
+  --color-bg-container: var(--bg-3);
+  --color-bg-container-high: var(--bg-5);
+  --color-bg-container-highest: var(--bg-6);
 
-  /* 文字 —— 梅子墨 */
   --color-text-primary: var(--ink);
   --color-text-secondary: var(--ink-soft);
   --color-text-muted: var(--fg-3);
-  --color-text-on-dark: #FFFFFF;
+  --color-text-on-dark: var(--fg-on-pink);
 
-  /* 描边 —— 漫画暖棕 */
   --color-outline: var(--ink);
   --color-outline-15: rgba(74, 40, 56, 0.15);
   --color-outline-20: rgba(74, 40, 56, 0.2);
   --color-outline-25: rgba(74, 40, 56, 0.25);
-  --color-border: var(--color-outline-20);
-  --color-border-subtle: var(--color-outline-15);
+  --color-border: var(--outline-20);
+  --color-border-subtle: var(--outline-15);
 
-  /* 语义色 */
   --color-safe: var(--mint-deep);
   --color-caution: var(--butter-deep);
-  --color-danger: #E85A7A;
-  --color-danger-dark: #C23D5C;
+  --color-danger: var(--danger);
+  --color-danger-dark: var(--danger-deep);
   --color-info: var(--sky-deep);
   --color-warning-low: var(--butter);
 
-  /* 玻璃效果 —— 浅色奶油感 */
-  --glass-bg: rgba(255, 245, 224, 0.7);
-  --glass-bg-30: rgba(255, 245, 224, 0.3);
-  --glass-bg-40: rgba(255, 245, 224, 0.4);
-  --glass-bg-85: rgba(255, 245, 224, 0.85);
-  --glass-blur: blur(12px);
-  --glass-border: 1px solid var(--color-outline-20);
-
-  /* 透明度变体 —— 用新主色 */
-  --color-primary-alpha-08: rgba(255, 168, 197, 0.08);
-  --color-primary-alpha-10: rgba(255, 168, 197, 0.12);
-  --color-primary-alpha-15: rgba(255, 168, 197, 0.18);
+  /* 项目的透明度变体 */
+  --color-primary-alpha-08: rgba(255, 168, 197, 0.1);
+  --color-primary-alpha-10: var(--primary-a10);
+  --color-primary-alpha-15: var(--primary-a15);
   --color-primary-alpha-20: rgba(255, 168, 197, 0.25);
-  --color-primary-alpha-25: rgba(255, 168, 197, 0.3);
-  --color-primary-alpha-40: rgba(255, 168, 197, 0.45);
-  --color-primary-alpha-60: rgba(255, 168, 197, 0.65);
-
-  --color-accent-alpha-08: rgba(245, 200, 66, 0.12);
+  --color-primary-alpha-25: var(--primary-a25);
+  --color-primary-alpha-40: var(--primary-a40);
+  --color-primary-alpha-60: var(--primary-a60);
+  --color-accent-alpha-08: var(--accent-a08);
   --color-accent-alpha-10: rgba(245, 200, 66, 0.14);
-  --color-accent-alpha-30: rgba(245, 200, 66, 0.35);
-
-  --color-caution-alpha-08: rgba(245, 200, 66, 0.12);
+  --color-accent-alpha-30: var(--accent-a30);
+  --color-caution-alpha-08: var(--accent-a08);
   --color-caution-alpha-10: rgba(245, 200, 66, 0.15);
   --color-caution-alpha-75: rgba(245, 200, 66, 0.75);
-
-  --color-danger-alpha-10: rgba(232, 90, 122, 0.15);
+  --color-danger-alpha-10: var(--danger-a10);
   --color-danger-alpha-50: rgba(232, 90, 122, 0.5);
   --color-danger-bg-low: rgba(255, 228, 236, 0.5);
   --color-danger-bg-alpha-50: rgba(255, 228, 236, 0.6);
   --color-danger-border: rgba(232, 90, 122, 0.4);
-
   --color-safe-alpha-30: rgba(90, 200, 157, 0.3);
   --color-safe-alpha-80: rgba(90, 200, 157, 0.8);
   --color-safe-badge-bg: rgba(168, 230, 201, 0.5);
   --color-info-badge-bg: rgba(168, 213, 245, 0.5);
   --color-caution-badge-bg: rgba(255, 232, 156, 0.6);
   --color-danger-badge-bg: rgba(255, 212, 224, 0.7);
-
-  --color-green-alpha-15: rgba(168, 230, 201, 0.4);
-  --color-amber-alpha-15: rgba(255, 232, 156, 0.4);
-
+  --color-green-alpha-15: var(--safe-a15);
+  --color-amber-alpha-15: var(--caution-a15);
   --color-white-alpha-03: rgba(74, 40, 56, 0.03);
   --color-white-alpha-06: rgba(74, 40, 56, 0.06);
   --color-white-alpha-08: rgba(74, 40, 56, 0.08);
@@ -151,12 +319,9 @@
   --color-black-alpha-40: rgba(74, 40, 56, 0.4);
   --color-black-alpha-50: rgba(74, 40, 56, 0.5);
 
-  /* 圆角 —— 手账风允许少量圆角 */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-
-  /* ===== Starlight 内部变量覆盖 ===== */
-  /* 背景层 */
+  /* =====================================================================
+     Starlight 内部变量覆盖
+     ===================================================================== */
   --sl-color-bg: var(--cream);
   --sl-color-bg-nav: var(--ivory);
   --sl-color-bg-sidebar: var(--ivory);
@@ -165,12 +330,10 @@
   --sl-color-black: var(--cream);
   --sl-color-white: var(--ink);
 
-  /* 文字 */
   --sl-color-text: var(--ink);
   --sl-color-text-accent: var(--sakura-pink-deep);
   --sl-color-text-invert: var(--ivory);
 
-  /* 灰度阶梯（Starlight 用 gray-1 最深，gray-7 最浅；浅色主题反过来） */
   --sl-color-gray-1: var(--ink);
   --sl-color-gray-2: var(--ink-soft);
   --sl-color-gray-3: var(--fg-3);
@@ -179,54 +342,319 @@
   --sl-color-gray-6: var(--bg-5);
   --sl-color-gray-7: var(--bg-4);
 
-  /* 边框与分隔 */
-  --sl-color-hairline: var(--color-outline-15);
-  --sl-color-hairline-light: var(--color-outline-15);
-  --sl-color-hairline-shade: var(--color-outline-20);
+  --sl-color-hairline: rgba(74, 40, 56, 0.15);
+  --sl-color-hairline-light: rgba(74, 40, 56, 0.12);
+  --sl-color-hairline-shade: rgba(74, 40, 56, 0.2);
 
-  /* 强调色（链接等） */
   --sl-color-accent: var(--sakura-pink-deep);
   --sl-color-accent-low: var(--sakura-blush);
   --sl-color-accent-high: var(--ink);
 
-  /* 代码块 */
   --sl-color-bg-code-block: var(--bg-5);
   --sl-color-text-code: var(--ink);
 
-  /* 侧边栏 hover 态 */
   --sl-color-bg-sidebar-item-hover: var(--bg-4);
 }
 
-/* ===== 手账风装饰覆盖 ===== */
-
-/* 选中态 */
-:root.sakura ::selection {
-  background: rgba(255, 168, 197, 0.45);
-  color: var(--ink);
+/* ===== 语言字体覆盖（仅在 sakura 开启时生效） ===== */
+:root.sakura:lang(ja) {
+  --font-body: "Zen Maru Gothic", "Hiragino Sans", sans-serif;
+  --font-heading: "Klee One", "Hiragino Sans", sans-serif;
+  --font-display: "Yuji Syuku", "Klee One", serif;
+}
+:root.sakura:lang(en) {
+  --font-body: "Plus Jakarta Sans", "Noto Sans SC", system-ui, sans-serif;
+  --font-heading: "Fraunces", "Noto Serif SC", serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
 }
 
-/* 粒子背景柔化 */
-:root.sakura .particle-bg {
+/* 注意：原 CSS 里的 [data-theme="dark"] 段已删除，
+   避免和 Starlight 自己的 data-theme 机制冲突。 */
+
+/* =========================================================================
+   SEMANTIC TYPOGRAPHY — 全部加 html.sakura 前缀
+   ========================================================================= */
+html.sakura body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-variant-numeric: lining-nums proportional-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.sakura h1,
+html.sakura h2,
+html.sakura h3,
+html.sakura h4,
+html.sakura h5,
+html.sakura h6 {
+  font-family: var(--font-heading);
+  color: var(--fg-1);
+  line-height: var(--lh-tight);
+  margin: 0;
+  font-weight: 700;
+}
+html.sakura h1 {
+  font-size: var(--fs-h1);
+  font-family: var(--font-display);
+  letter-spacing: var(--ls-display);
+  font-weight: 400;
+}
+html.sakura h2 { font-size: var(--fs-h2); }
+html.sakura h3 { font-size: var(--fs-h3); }
+html.sakura h4 { font-size: var(--fs-h4); font-weight: 700; }
+
+html.sakura p { margin: 0; color: var(--fg-1); }
+html.sakura small,
+html.sakura .text-micro { font-size: var(--fs-micro); color: var(--fg-3); }
+html.sakura .text-secondary { color: var(--fg-2); }
+html.sakura .text-muted { color: var(--fg-3); }
+
+html.sakura code,
+html.sakura pre,
+html.sakura .text-code,
+html.sakura .text-hud {
+  font-family: var(--font-hud);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+html.sakura .text-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-weight: 400;
+}
+html.sakura .text-gradient-flame,
+html.sakura .text-gradient-sakura,
+html.sakura .hero-gradient-text {
+  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral) 50%, var(--honey));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.sakura .text-gradient-moon {
+  background: linear-gradient(135deg, var(--sky-deep), var(--lavender-deep), var(--sakura-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.sakura .text-glow-flame,
+html.sakura .hero-text-glow { text-shadow: 0 0 24px rgba(229, 87, 139, 0.4); }
+html.sakura .text-glow-cyan { text-shadow: 0 0 24px rgba(91, 168, 224, 0.4); }
+
+html.sakura .text-slogan {
+  font-family: var(--font-display);
+  font-size: var(--fs-slogan);
+  color: var(--sakura-pink-deep);
+  letter-spacing: var(--ls-slogan);
+}
+
+html.sakura .text-label {
+  font-family: var(--font-ui-accent);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-micro-caps);
+}
+
+html.sakura .text-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.05em;
+}
+
+html.sakura .evidence-A { color: var(--safe); }
+html.sakura .evidence-B { color: var(--info); }
+html.sakura .evidence-C { color: var(--caution); }
+html.sakura .evidence-X { color: var(--danger); }
+
+html.sakura ::selection { background: var(--primary-a40); color: var(--fg-1); }
+
+/* =========================================================================
+   CORE UTILITY CLASSES
+   ========================================================================= */
+html.sakura .ink-card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+}
+
+html.sakura .panel-flame {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--fg-on-pink);
+}
+
+html.sakura .panel-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--fg-1);
+}
+
+html.sakura .glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+html.sakura .clipped-card { clip-path: var(--clip-corner); }
+
+/* =========================================================================
+   BUTTONS — 糖果按钮
+   ========================================================================= */
+html.sakura .btn-flame,
+html.sakura .btn-gold,
+html.sakura .btn-ghost,
+html.sakura .btn-arcade,
+html.sakura .btn-mint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  padding: 12px 28px;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-hard);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+html.sakura .btn-flame {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  color: var(--fg-on-pink);
+}
+html.sakura .btn-flame:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+html.sakura .btn-flame:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+html.sakura .btn-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  color: var(--fg-1);
+}
+html.sakura .btn-gold:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+html.sakura .btn-ghost {
+  background: var(--ivory);
+  color: var(--fg-1);
+}
+html.sakura .btn-ghost:hover {
+  background: var(--bg-5);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+html.sakura .btn-arcade,
+html.sakura .btn-mint {
+  background: var(--mint);
+  color: var(--fg-1);
+  border-radius: var(--radius-md);
+}
+html.sakura .btn-arcade:hover,
+html.sakura .btn-mint:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* =========================================================================
+   FOCUS RING
+   ========================================================================= */
+html.sakura :where(button, a, [role="tab"], [role="button"], summary,
+       input, select, textarea):focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   BACKGROUND PATTERNS
+   ========================================================================= */
+html.sakura .bg-halftone {
+  background-image: radial-gradient(circle at 2px 2px, var(--ink-faint) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+html.sakura .bg-halftone-pink {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.3) 1.2px, transparent 0);
+  background-size: 8px 8px;
+}
+html.sakura .bg-speedlines {
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg, transparent 3deg,
+    rgba(255, 255, 255, 0.08) 3deg, rgba(255, 255, 255, 0.08) 4deg
+  );
+}
+html.sakura .bg-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--sakura-pink) 0 20px,
+    var(--sakura-blush) 20px 40px
+  );
+}
+html.sakura .bg-grid-paper {
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(255, 168, 197, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(245, 200, 66, 0.10) 0%, transparent 50%);
+    linear-gradient(rgba(74, 40, 56, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 40, 56, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
-
-:root.sakura .particle-dots {
-  background-image: radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.18) 1px, transparent 0);
+html.sakura .bg-dots-paper {
+  background-image: radial-gradient(circle, rgba(74, 40, 56, 0.15) 1.2px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+html.sakura .bg-pixel-grid {
+  background-image:
+    linear-gradient(rgba(155, 125, 212, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 125, 212, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+html.sakura .bg-sakura-pattern {
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--sakura-blush) 8px, transparent 9px),
+    radial-gradient(circle at 70% 70%, var(--butter) 6px, transparent 7px),
+    radial-gradient(circle at 40% 80%, var(--mint) 5px, transparent 6px);
+  background-size: 120px 120px;
+}
+html.sakura .particle-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 168, 197, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(168, 230, 201, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 232, 156, 0.1) 0%, transparent 50%);
+}
+html.sakura .particle-dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.15) 1px, transparent 0);
   background-size: 40px 40px;
 }
 
-/* Hero 渐变文字 —— 樱粉→珊瑚→奶黄 */
-:root.sakura .hero-gradient-text {
-  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral), var(--butter-deep));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* =========================================================================
+   REDUCED MOTION — 全局，不限主题
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura *,
+  html.sakura *::before,
+  html.sakura *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-:root.sakura .hero-text-glow {
-  text-shadow: 0 0 20px rgba(255, 168, 197, 0.6);
-}
-</content>
-</invoke>
