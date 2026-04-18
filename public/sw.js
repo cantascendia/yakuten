@@ -1,5 +1,5 @@
 // HRT药典 Service Worker — offline cache for critical safety pages only
-const CACHE_NAME = 'yakuten-v2';
+const CACHE_NAME = 'yakuten-v3-sakura';
 const CRITICAL_PAGES = [
   '/zh/',
   '/zh/risks/',
