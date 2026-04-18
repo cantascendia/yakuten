@@ -27,8 +27,9 @@ export default defineConfig({
         './src/styles/emergency.css',
         './src/styles/pathway.css',
         './src/styles/starlight-override.css',
-        './src/styles/sakura-theme.css',
-        './src/styles/sakura-skin.css',
+        // sakura-theme.css / sakura-skin.css intentionally NOT loaded:
+        // the new-version preview is physically isolated at /sakura-preview.html
+        // so the docs site stays byte-for-byte identical to before.
       ],
       sidebar: [
         // ── 开始 ──

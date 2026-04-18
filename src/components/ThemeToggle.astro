@@ -1,11 +1,15 @@
 ---
 /**
- * ThemeToggle — 右上角浮动按钮，切换原版深色 ↔ 樱粉手账风
+ * ThemeToggle — 左下角浮动按钮，跳转到新版设计预览
  *
- * 实现：
- * - 通过 <html class="sakura"> 切换（不使用 data-theme 避免和 Starlight 内置主题冲突）
- * - 用脚本把 <button> 注入到 <body>（直接写在 <head> 里是非法 HTML）
- * - 状态持久化到 localStorage
+ * 策略：物理隔离而非 CSS 换肤
+ * - 点击按钮 → 跳转到 /sakura-preview.html（Claude Design 原版）
+ * - 原网站一行代码都不动
+ * - 新版页面有「返回」按钮跳回 /zh/
+ *
+ * 旧的 html.sakura class 机制保留，但这里不用了；
+ * sakura-theme.css / sakura-skin.css 里的规则由于选择器不匹配，
+ * 不会产生任何视觉影响。
  */
 ---
 
@@ -18,7 +22,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 12px;
+    padding: 8px 14px;
     font-family: var(--font-body, system-ui, sans-serif);
     font-size: 13px;
     font-weight: 500;
@@ -29,6 +33,7 @@
     border: 1px solid rgba(200, 175, 190, 0.25);
     border-radius: 999px;
     cursor: pointer;
+    text-decoration: none;
     transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.2s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
@@ -36,6 +41,7 @@
   #sakura-toggle:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    background: rgba(229, 87, 139, 0.2);
   }
 
   #sakura-toggle:active {
@@ -52,24 +58,11 @@
     transform: rotate(20deg) scale(1.1);
   }
 
-  /* 激活态 */
-  html.sakura #sakura-toggle {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: #E5578B;
-    color: #4A2838;
-    box-shadow: 0 2px 10px rgba(229, 87, 139, 0.3);
-  }
-
-  html.sakura #sakura-toggle .sakura-toggle__label::after {
-    content: " ✓";
-    color: #E5578B;
-  }
-
   @media (max-width: 640px) {
     #sakura-toggle {
       bottom: 16px;
       left: 16px;
-      padding: 5px 10px;
+      padding: 6px 12px;
       font-size: 12px;
     }
   }
@@ -84,37 +77,17 @@
 
 <script is:inline>
   (function () {
-    var KEY = "sakura-theme";
-    var root = document.documentElement;
-
-    // 初始化：从 localStorage 恢复
-    try {
-      if (localStorage.getItem(KEY) === "on") {
-        root.classList.add("sakura");
-      }
-    } catch (e) {}
-
     function mount() {
       if (document.getElementById("sakura-toggle")) return;
-      var btn = document.createElement("button");
-      btn.id = "sakura-toggle";
-      btn.type = "button";
-      btn.setAttribute("aria-label", "切换樱粉手账主题");
-      btn.setAttribute("title", "切换樱粉手账主题");
-      btn.innerHTML =
+      var link = document.createElement("a");
+      link.id = "sakura-toggle";
+      link.href = "/sakura-preview.html";
+      link.setAttribute("aria-label", "预览新版设计（Claude Design）");
+      link.setAttribute("title", "预览新版设计（测试中）");
+      link.innerHTML =
         '<span class="sakura-toggle__icon" aria-hidden="true">\uD83C\uDF38</span>' +
-        '<span class="sakura-toggle__label">樱粉</span>';
-      btn.addEventListener("click", function () {
-        var isOn = root.classList.contains("sakura");
-        if (isOn) {
-          root.classList.remove("sakura");
-          try { localStorage.setItem(KEY, "off"); } catch (e) {}
-        } else {
-          root.classList.add("sakura");
-          try { localStorage.setItem(KEY, "on"); } catch (e) {}
-        }
-      });
-      document.body.appendChild(btn);
+        '<span class="sakura-toggle__label">新版预览</span>';
+      document.body.appendChild(link);
     }
 
     if (document.body) {
