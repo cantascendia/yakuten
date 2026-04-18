@@ -1,0 +1,442 @@
+/* =========================================================================
+   🌸 Sakura Skin — 针对 Starlight 实际 DOM 的手账风改造
+   只在 html.sakura 激活时生效。目标：
+   · 纸底网点背景
+   · 卡片 2px 墨线边 + 4px 硬阴影（贴纸感）
+   · 标题手写字 + 樱粉下划线
+   · 代码块做成便签
+   · 链接改糖果 pill
+   · 去掉 Starlight 默认的"扁平灰底"
+   ========================================================================= */
+
+/* 纸底 —— 整个 body 加网点纸 */
+html.sakura body {
+  background-color: var(--cream) !important;
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.08) 1px, transparent 0);
+  background-size: 22px 22px;
+  background-attachment: fixed;
+}
+
+/* 主容器半透明，让纸底透出来 */
+html.sakura .main-frame,
+html.sakura .page,
+html.sakura main {
+  background: transparent !important;
+}
+
+/* =========================================================================
+   顶栏 —— 改成米白纸条
+   ========================================================================= */
+html.sakura header.header,
+html.sakura .header {
+  background: var(--ivory) !important;
+  border-bottom: 2px solid var(--ink) !important;
+  box-shadow: 0 2px 0 rgba(74, 40, 56, 0.08);
+}
+
+/* 顶栏站点标题 */
+html.sakura .site-title,
+html.sakura .site-title * {
+  color: var(--ink) !important;
+  font-family: var(--font-display, "Fraunces", serif);
+}
+
+/* 顶栏按钮（搜索、主题、语言） */
+html.sakura header.header button,
+html.sakura header.header [role="combobox"],
+html.sakura header.header select {
+  background: var(--bg-3);
+  border: 2px solid var(--ink) !important;
+  border-radius: 999px !important;
+  color: var(--ink) !important;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+html.sakura header.header button:hover,
+html.sakura header.header [role="combobox"]:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* =========================================================================
+   左侧栏 —— 手账本侧脊
+   ========================================================================= */
+html.sakura nav.sidebar,
+html.sakura .sidebar-pane {
+  background: var(--ivory) !important;
+  border-right: 2px solid var(--ink) !important;
+}
+
+html.sakura .sidebar-content {
+  background: transparent;
+}
+
+/* 侧栏分组标题 —— 手写标签样式 */
+html.sakura .sidebar-content details > summary,
+html.sakura .sidebar-content .group-label,
+html.sakura .sidebar-content h2 {
+  font-family: var(--font-heading, "Klee One", serif) !important;
+  font-weight: 700 !important;
+  color: var(--sakura-pink-deep) !important;
+  text-transform: none !important;
+  letter-spacing: 0.05em !important;
+  padding: 8px 12px !important;
+}
+
+/* 侧栏链接 —— hover 糖果 pill */
+html.sakura .sidebar-content a {
+  border-radius: 999px !important;
+  color: var(--ink) !important;
+  font-family: var(--font-body) !important;
+  transition: background 0.15s, transform 0.15s;
+}
+html.sakura .sidebar-content a:hover {
+  background: var(--sakura-blush) !important;
+  color: var(--ink) !important;
+  transform: translateX(2px);
+}
+
+/* 当前页高亮 */
+html.sakura .sidebar-content a[aria-current="page"],
+html.sakura .sidebar-content a.large[aria-current="page"] {
+  background: var(--sakura-pink) !important;
+  color: var(--fg-on-pink) !important;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   内容区标题 —— 手写字 + 樱粉笔画下划线
+   ========================================================================= */
+html.sakura .sl-markdown-content h1,
+html.sakura main h1 {
+  font-family: var(--font-display, "Fraunces", "Noto Serif SC", serif) !important;
+  color: var(--ink) !important;
+  font-weight: 600 !important;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+html.sakura .sl-markdown-content h1::after,
+html.sakura main h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  height: 6px;
+  background: var(--sakura-pink);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+html.sakura .sl-markdown-content h2,
+html.sakura main h2 {
+  font-family: var(--font-heading, "Klee One", "Noto Serif SC", serif) !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  padding: 6px 14px;
+  display: inline-block;
+  background: var(--butter);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 20px !important;
+}
+
+html.sakura .sl-markdown-content h3,
+html.sakura main h3 {
+  font-family: var(--font-heading, "Klee One", serif) !important;
+  color: var(--sakura-pink-deep) !important;
+  font-weight: 700 !important;
+  border-left: 6px solid var(--sakura-pink);
+  padding-left: 12px;
+  margin-left: -4px;
+}
+
+html.sakura .sl-markdown-content h4,
+html.sakura main h4 {
+  font-family: var(--font-heading, "Klee One", serif) !important;
+  color: var(--ink) !important;
+}
+
+/* =========================================================================
+   正文段落
+   ========================================================================= */
+html.sakura .sl-markdown-content p,
+html.sakura main p {
+  color: var(--fg-1) !important;
+  line-height: 1.85;
+  font-family: var(--font-body) !important;
+}
+
+/* 行内代码 —— 小便签 */
+html.sakura .sl-markdown-content :not(pre) > code,
+html.sakura main :not(pre) > code {
+  background: var(--bg-5) !important;
+  color: var(--sakura-pink-deep) !important;
+  border: 1.5px solid var(--ink) !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
+  font-family: var(--font-mono, "JetBrains Mono", monospace) !important;
+  font-weight: 500;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* 行内链接 —— 手写下划线 */
+html.sakura .sl-markdown-content a,
+html.sakura main article a {
+  color: var(--sakura-pink-deep) !important;
+  text-decoration: none;
+  background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0 2px;
+  font-weight: 600;
+  transition: background-size 0.2s ease;
+}
+html.sakura .sl-markdown-content a:hover,
+html.sakura main article a:hover {
+  background-image: linear-gradient(transparent 0%, var(--sakura-pink) 100%);
+  color: var(--ink) !important;
+}
+
+/* =========================================================================
+   卡片 / Aside / Callout —— 贴纸卡
+   ========================================================================= */
+html.sakura .sl-markdown-content .starlight-aside,
+html.sakura main .starlight-aside,
+html.sakura aside.starlight-aside {
+  background: var(--bg-3) !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  padding: 18px !important;
+  margin: 20px 0 !important;
+}
+
+html.sakura .starlight-aside--note {
+  background: var(--ivory) !important;
+}
+html.sakura .starlight-aside--tip {
+  background: rgba(168, 230, 201, 0.35) !important;
+}
+html.sakura .starlight-aside--caution {
+  background: var(--butter) !important;
+}
+html.sakura .starlight-aside--danger {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral)) !important;
+  color: var(--fg-on-pink) !important;
+}
+html.sakura .starlight-aside--danger * {
+  color: var(--fg-on-pink) !important;
+}
+
+html.sakura .starlight-aside__title {
+  font-family: var(--font-heading, "Klee One", serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+/* =========================================================================
+   代码块（expressive-code）—— 便签
+   ========================================================================= */
+html.sakura .expressive-code,
+html.sakura pre {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  overflow: hidden;
+}
+
+html.sakura .expressive-code .frame,
+html.sakura .expressive-code pre,
+html.sakura pre {
+  background: var(--bg-3) !important;
+}
+
+html.sakura .expressive-code .frame .header {
+  background: var(--sakura-blush) !important;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+/* =========================================================================
+   表格 —— 手账方格
+   ========================================================================= */
+html.sakura .sl-markdown-content table,
+html.sakura main table {
+  border: 2px solid var(--ink) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--ink);
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
+html.sakura thead {
+  background: var(--sakura-pink) !important;
+}
+html.sakura thead th {
+  color: var(--fg-on-pink) !important;
+  font-family: var(--font-heading, "Klee One", serif) !important;
+  border: none !important;
+}
+
+html.sakura tbody tr:nth-child(even) {
+  background: var(--bg-4) !important;
+}
+html.sakura tbody tr:nth-child(odd) {
+  background: var(--ivory) !important;
+}
+html.sakura tbody td {
+  border-top: 1px solid rgba(74, 40, 56, 0.15) !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+  color: var(--ink) !important;
+}
+
+/* =========================================================================
+   引用块
+   ========================================================================= */
+html.sakura .sl-markdown-content blockquote,
+html.sakura main blockquote {
+  background: var(--bg-5) !important;
+  border-left: 6px solid var(--sakura-pink-deep) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 14px 18px !important;
+  margin: 20px 0 !important;
+  color: var(--ink-soft) !important;
+  font-style: italic;
+  box-shadow: 3px 3px 0 rgba(74, 40, 56, 0.1);
+}
+
+/* =========================================================================
+   列表 —— 樱花项目符号
+   ========================================================================= */
+html.sakura .sl-markdown-content ul > li::marker,
+html.sakura main ul > li::marker {
+  color: var(--sakura-pink-deep);
+}
+
+html.sakura .sl-markdown-content ol > li::marker,
+html.sakura main ol > li::marker {
+  color: var(--sakura-pink-deep);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   分隔线 —— 波浪线/虚线
+   ========================================================================= */
+html.sakura .sl-markdown-content hr,
+html.sakura main hr {
+  border: none;
+  height: 4px;
+  background-image: radial-gradient(circle, var(--sakura-pink-deep) 2px, transparent 2.5px);
+  background-size: 16px 4px;
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  margin: 32px 0;
+}
+
+/* =========================================================================
+   右侧目录 TOC
+   ========================================================================= */
+html.sakura .right-sidebar,
+html.sakura .page-aside,
+html.sakura starlight-toc {
+  background: transparent !important;
+}
+
+html.sakura starlight-toc nav {
+  background: var(--ivory);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 14px;
+}
+
+html.sakura starlight-toc a {
+  color: var(--ink-soft) !important;
+  border-radius: 6px;
+  padding: 3px 8px;
+  transition: background 0.15s;
+}
+
+html.sakura starlight-toc a:hover,
+html.sakura starlight-toc a[aria-current="true"] {
+  background: var(--sakura-blush) !important;
+  color: var(--sakura-pink-deep) !important;
+}
+
+/* =========================================================================
+   分页按钮（上一页/下一页）
+   ========================================================================= */
+html.sakura .pagination-links a {
+  background: var(--ivory) !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 14px !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+html.sakura .pagination-links a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+  background: var(--sakura-blush) !important;
+}
+
+html.sakura .pagination-links a span {
+  color: var(--ink) !important;
+}
+html.sakura .pagination-links a .link-title {
+  color: var(--sakura-pink-deep) !important;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   底部 Footer
+   ========================================================================= */
+html.sakura .site-legal-footer {
+  background: var(--ivory);
+  border-top: 2px solid var(--ink);
+  margin-top: 48px;
+}
+
+html.sakura .site-legal-footer a {
+  color: var(--sakura-pink-deep) !important;
+}
+
+/* =========================================================================
+   Emergency banner —— 保持危险感但换调色
+   ========================================================================= */
+html.sakura .emergency-banner {
+  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral-deep)) !important;
+  border: 2px solid var(--ink) !important;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+/* =========================================================================
+   Hero 区块（如首页）
+   ========================================================================= */
+html.sakura .hero-section {
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--sakura-blush) 8px, transparent 9px),
+    radial-gradient(circle at 70% 70%, var(--butter) 6px, transparent 7px),
+    radial-gradient(circle at 40% 80%, var(--mint) 5px, transparent 6px);
+  background-size: 180px 180px;
+}
+
+/* =========================================================================
+   Reduced motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

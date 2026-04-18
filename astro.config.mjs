@@ -28,6 +28,7 @@ export default defineConfig({
         './src/styles/pathway.css',
         './src/styles/starlight-override.css',
         './src/styles/sakura-theme.css',
+        './src/styles/sakura-skin.css',
       ],
       sidebar: [
         // ── 开始 ──
