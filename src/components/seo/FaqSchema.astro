@@ -1,0 +1,111 @@
+---
+/**
+ * FaqSchema — dual-purpose FAQ component.
+ *
+ * Renders a visible <section> of Q&A pairs AND an inline JSON-LD
+ * FAQPage schema. Google/Bing require FAQ schema answers to be visible
+ * on the page, so we render both in one component to avoid drift.
+ *
+ * Usage (in MDX):
+ *   <FaqSchema items={[
+ *     { q: "问题文本", a: "答案文本（纯文本，不含 HTML）" },
+ *     ...
+ *   ]} />
+ *
+ * Notes:
+ * - Keep answers concise (1-3 sentences) — concise answers perform
+ *   better in AI citation and SERP rich snippets.
+ * - Do NOT paste existing paragraph content verbatim; write fresh
+ *   short-form answers that summarize key points.
+ */
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+}
+
+const { items, title = '常见问题（FAQ）' } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+
+<section class="faq-section" aria-labelledby="faq-heading">
+  <h2 id="faq-heading" class="faq-section__title">{title}</h2>
+  <dl class="faq-list">
+    {items.map((item) => (
+      <div class="faq-item">
+        <dt class="faq-question">Q：{item.q}</dt>
+        <dd class="faq-answer">{item.a}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .faq-section {
+    margin-top: var(--space-xl, 2.5rem);
+    margin-bottom: var(--space-lg, 1.5rem);
+  }
+
+  .faq-section__title {
+    font-family: var(--font-display, serif);
+    margin-bottom: var(--space-md, 1rem);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md, 1rem);
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-item {
+    padding: var(--space-md, 1rem) var(--space-lg, 1.5rem);
+    background: var(--glass-bg, rgba(26, 22, 37, 0.6));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border, rgba(200, 75, 124, 0.2));
+    clip-path: polygon(
+      0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+
+  .faq-question {
+    font-weight: 600;
+    color: var(--color-primary-light, #E8A0BE);
+    margin-bottom: var(--space-sm, 0.5rem);
+  }
+
+  .faq-answer {
+    margin: 0;
+    color: var(--color-text-primary, #F0EBF5);
+    line-height: 1.75;
+  }
+
+  [data-theme='light'] .faq-question {
+    color: var(--color-primary-dark, #8B2D55);
+  }
+</style>
