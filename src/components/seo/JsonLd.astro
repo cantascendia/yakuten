@@ -21,6 +21,87 @@ const lastReviewed = entry?.data?.lastReviewed
   : '2026-04-12';
 const referenceIds: string[] = entry?.data?.references ?? [];
 
+// ─── Breadcrumb label maps (per locale) ──────────────────────────────
+// Intermediate path segments get localized names; the leaf uses entry.data.title.
+type SegLabels = Record<string, string>;
+const segmentLabelsMap: Record<string, SegLabels> = {
+  'zh-CN': {
+    medications: '药物详解',
+    estrogens: '雌二醇',
+    antiandrogens: '抗雄激素',
+    progestogens: '孕激素',
+    'five-alpha-reductase': '5α-还原酶抑制剂',
+    tools: '工具',
+    guides: '实操指南',
+    blog: '专题文章',
+  },
+  en: {
+    medications: 'Medications',
+    estrogens: 'Estrogens',
+    antiandrogens: 'Anti-Androgens',
+    progestogens: 'Progestogens',
+    'five-alpha-reductase': '5α-Reductase Inhibitors',
+    tools: 'Tools',
+    guides: 'Guides',
+    blog: 'Blog',
+  },
+  ja: {
+    medications: '薬物ガイド',
+    estrogens: 'エストロゲン',
+    antiandrogens: '抗アンドロゲン',
+    progestogens: 'プロゲストーゲン',
+    'five-alpha-reductase': '5α還元酵素阻害薬',
+    tools: 'ツール',
+    guides: 'ガイド',
+    blog: 'ブログ',
+  },
+  ko: {
+    medications: '약물',
+    estrogens: '에스트로겐',
+    antiandrogens: '항안드로겐',
+    progestogens: '프로게스토겐',
+    'five-alpha-reductase': '5α-환원효소 억제제',
+    tools: '도구',
+    guides: '가이드',
+    blog: '블로그',
+  },
+};
+const homeLabelsMap: Record<string, string> = {
+  'zh-CN': '首页',
+  en: 'Home',
+  ja: 'ホーム',
+  ko: '홈',
+};
+const segLabels: SegLabels = segmentLabelsMap[locale] ?? segmentLabelsMap['zh-CN'];
+const homeLabel = homeLabelsMap[locale] ?? '首页';
+
+// ─── Build breadcrumb items from pathname ──────────────────────────────
+// e.g. "/zh/medications/estrogens/oral/" →
+//   [Home, Medications, Estrogens, "口服雌二醇（补佳乐）"]
+const pathSegments = pathname
+  .replace(/^\/+|\/+$/g, '')
+  .split('/')
+  .filter(Boolean);
+const localePrefix = pathSegments[0] ?? 'zh';
+const contentSegments = pathSegments.slice(1);
+
+type BreadcrumbItem = { name: string; url: string };
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: homeLabel, url: `https://hrtyaku.com/${localePrefix}/` },
+];
+let accumulatedPath = `/${localePrefix}`;
+contentSegments.forEach((seg, idx) => {
+  accumulatedPath += `/${seg}`;
+  const isLeaf = idx === contentSegments.length - 1;
+  const name = isLeaf
+    ? title
+    : (segLabels[seg] ?? seg.charAt(0).toUpperCase() + seg.slice(1));
+  breadcrumbs.push({
+    name,
+    url: `https://hrtyaku.com${accumulatedPath}/`,
+  });
+});
+
 // Build reference citations for ScholarlyArticle schema
 type RefEntry = { id: string; authors: string; year: number; title: string; journal: string; doi: string | null; url: string | null };
 const refs = refData as RefEntry[];
@@ -92,7 +173,20 @@ const graph: Record<string, unknown>[] = [
   }
 ];
 
-// 4. Drug schema removed — Google requires offers/review/aggregateRating
+// 4. BreadcrumbList (per-page) — only if there's more than just the home
+if (breadcrumbs.length > 1) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((bc, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": bc.name,
+      "item": bc.url,
+    })),
+  });
+}
+
+// Note: Drug schema intentionally omitted — Google requires offers/review/aggregateRating
 // for Drug type, which doesn't apply to informational pages.
 // MedicalWebPage above already provides medical semantic context.
 
