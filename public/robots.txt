@@ -1,3 +1,27 @@
+# Explicit rules per crawler so intent is unambiguous in each webmaster platform.
+# All bots are allowed site-wide; only search-parameter duplicates are blocked.
+
+User-agent: Googlebot
+Allow: /
+Disallow: /*?q=
+
+User-agent: Bingbot
+Allow: /
+Disallow: /*?q=
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /*?q=
+
+User-agent: 360Spider
+Allow: /
+Disallow: /*?q=
+
+User-agent: Sogou web spider
+Allow: /
+Disallow: /*?q=
+
 User-agent: *
 Allow: /
 Disallow: /*?q=

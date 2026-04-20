@@ -24,7 +24,11 @@ const MANIFEST_PATH = path.join(__dirname, 'image-manifest.json');
 const REFS_DIR = path.join(__dirname, 'refs');
 
 // ─── Config ───
-const API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyBe02s78BS-oNq77S6mAsHUAcpP05-0ZeM';
+const API_KEY = process.env.GEMINI_API_KEY;
+if (!API_KEY) {
+  console.error('错误：请先设置环境变量 GEMINI_API_KEY');
+  process.exit(1);
+}
 const MODEL = 'gemini-3.1-flash-image-preview';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
 const DELAY_MS = 6000;
