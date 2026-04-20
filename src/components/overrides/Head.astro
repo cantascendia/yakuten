@@ -54,6 +54,21 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
   <meta property="og:locale:alternate" content={loc} />
 ))}
 <ThemeToggle />
+<script is:inline>
+  // Dev-mode opt-out for Vercel Analytics & Speed Insights.
+  // Run `localStorage.setItem('yakuten-dev','1')` once in any browser you use
+  // for testing; all subsequent pageviews/vitals from that browser are dropped.
+  // Remove with `localStorage.removeItem('yakuten-dev')`.
+  (function () {
+    try {
+      if (localStorage.getItem('yakuten-dev') === '1') {
+        var drop = function () { return null; };
+        window.webAnalyticsBeforeSend = drop;
+        window.speedInsightsBeforeSend = drop;
+      }
+    } catch (_) { /* private mode etc. */ }
+  })();
+</script>
 <Analytics />
 <SpeedInsights />
 <script>
