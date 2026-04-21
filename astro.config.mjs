@@ -76,6 +76,12 @@ export default defineConfig({
               translations: { en: 'Blood Tests & Self-Check', ja: '血液検査ガイド', ko: '혈액 검사 가이드' },
               slug: 'blood-tests',
             },
+            {
+              label: '乳房发育专题',
+              translations: { en: 'Breast Development', ja: '乳房発育ガイド', ko: '유방 발달 가이드' },
+              slug: 'breast-development',
+              badge: { text: { 'zh-CN': '必读', en: 'Must Read', ja: '必読', ko: '필독' }, variant: 'danger' },
+            },
           ],
         },
         // ── 实操指南 ──
@@ -257,11 +263,6 @@ export default defineConfig({
           label: '专题与工具',
           translations: { en: 'Topics & Tools', ja: '特集とツール', ko: '특집 및 도구' },
           items: [
-            {
-              label: '乳房发育专题',
-              translations: { en: 'Breast Development', ja: '乳房発育ガイド', ko: '유방 발달 가이드' },
-              slug: 'breast-development',
-            },
             {
               label: '血检自查工具',
               translations: { en: 'Blood Test Checker', ja: '血液検査チェッカー', ko: '혈액 검사 체커' },
