@@ -13,6 +13,22 @@ export const collections = {
 					evidenceLevel: z.enum(['A', 'B', 'C', 'X']),
 					lastReviewed: z.coerce.date(),
 					references: z.array(z.string()),
+					// Optional SEO / schema.org Drug enrichment (medication pages).
+					drug: z
+						.object({
+							nonProprietaryName: z.string().optional(),
+							activeIngredient: z.string().optional(),
+							mechanismOfAction: z.string().optional(),
+							atc: z.string().optional(),
+							rxnorm: z.string().optional(),
+						})
+						.optional(),
+					// Optional FAQPage schema content.
+					faqs: z
+						.array(z.object({ q: z.string(), a: z.string() }))
+						.optional(),
+					// Optional per-page reviewer override (default: Editorial Team).
+					medicalReviewer: z.string().optional(),
 				})
 				.superRefine((data, ctx) => {
 					if (data.evidenceLevel !== 'X' && data.references.length === 0) {
@@ -49,6 +65,10 @@ export const collections = {
 			targetKeyword: z.string(),
 			relatedDocs: z.array(z.string()).default([]),
 			draft: z.boolean().default(false),
+			// Optional FAQPage schema content (AEO / featured snippets).
+			faqs: z
+				.array(z.object({ q: z.string(), a: z.string() }))
+				.optional(),
 		}),
 	}),
 };

@@ -21,7 +21,7 @@ interface Props {
 }
 
 const { entry, headings, rawContent } = Astro.props;
-const { title, description, publishDate, updatedDate, tags, category, locale: postLocale, relatedDocs, author } = entry.data;
+const { title, description, publishDate, updatedDate, tags, category, locale: postLocale, relatedDocs, author, faqs } = entry.data;
 const locale = getLocale(undefined, Astro.url.pathname);
 
 const canonicalUrl = `https://hrtyaku.com${getBlogUrl(entry)}`;
@@ -120,6 +120,7 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     tags={tags}
     url={canonicalUrl}
     locale={postLocale}
+    faqs={faqs}
   />
   <Analytics />
   <SpeedInsights />

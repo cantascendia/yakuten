@@ -1,0 +1,97 @@
+---
+title: 编辑政策
+description: HRT药典的编辑原则、错误更正流程、版权与引用规范、投诉与申诉渠道、利益冲突披露。
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="HRT药典编辑部"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="zh"
+/>
+
+## 绝对禁区
+
+HRT药典永不发布以下内容:
+
+<DangerBox>
+- ❌ 个人化处方建议("你应该吃 X mg")
+- ❌ 购药链接、推销代理、返佣二维码
+- ❌ 削弱急症识别的文字(DVT、肝损伤、脑膜瘤等)
+- ❌ 无 DOI / 无引用的医学声明
+- ❌ 第三方跟踪脚本、用户健康数据存储
+- ❌ 绕过 AI 免责声明或安全警告的设定
+</DangerBox>
+
+## 语言与语气
+
+- **去绝对化**:用"建议 / 通常 / 大多数情况"替代"必须 / 一定 / 永远"
+- **以读者为主语**:写"你可以选择 A 或 B",而不是"患者应该选择 A"
+- **明示不确定性**:证据等级 B/C/X 的结论要附上"数据有限"或"专家意见"
+- **去污名**:使用社区自认语汇,避免"变性 / 易性癖"等过时/临床化表述
+
+## 引用与版权
+
+- 所有医学声明通过 `CitationRef` 组件附上来源(ID 对应 `src/data/references.json` 中的条目)
+- 优先引用 DOI,无 DOI 的引用期刊出版信息 + 稳定 URL
+- 图表使用原创或 Creative Commons / 公有领域资源;转载必标注来源
+- 本站原创内容以 CC BY-SA 4.0 开放,代码以仓库 LICENSE 为准
+
+## 错误更正
+
+读者通过 [反馈表单](https://wj.qq.com/s2/16576000/5fe5/) 或 [GitHub Issue](https://github.com/cantascendia/yakuten/issues) 提交:
+
+| 类型 | 响应时限 | 处理方式 |
+|---|---|---|
+| 事实性错误 | 72 小时初步回复 | 页面顶部 **勘误提示** + 版本记录 |
+| 引用偏差 | 72 小时 | 替换引用并公开更正日志 |
+| 过时信息 | 7 天 | 增量更新 + 更新 `lastReviewed` |
+| 危险建议 | 24 小时紧急下线 | 评估后修复或保留下线状态 |
+
+重大更正会同步到:
+
+- 站内 `/zh/appendix-references/` 版本历史
+- RSS / Telegram / 邮件订阅者
+
+## 投诉与申诉
+
+- **内容投诉**:[反馈表单](https://wj.qq.com/s2/16576000/5fe5/)
+- **法律 / 版权问题**:在 GitHub Issue 标注 `legal` 标签,或联系仓库维护者
+- **隐私相关**:本站不收集可识别个人信息;如发现隐私泄露,24 小时内紧急处理
+
+## 利益冲突披露
+
+- **无商业赞助、无药品广告、无购药返佣**
+- 运营成本由志愿者自付 + 开源社区捐赠
+- 编辑和医学顾问签署利益冲突披露:与内容直接相关的处方 / 商业关系须回避该主题
+- 所有外链不含 affiliate 标识;引用的医院 / 热线仅列社区长期验证的资源
+
+## 复查周期
+
+| 页面类型 | 默认复查间隔 |
+|---|---|
+| 急症识别、剂量红线、危险警告 | **6 个月** |
+| 药物详解、指南 | **12 个月** |
+| 工具、政策、方法学 | **12 个月** |
+| 博客文章 | 发布日 + 12 个月校验一次 |
+
+指南发布重大变更(EMA/FDA 警讯、WPATH / Endocrine Society 新版)触发 **48 小时内增量更新**。
+
+<WarningBox>
+本页是编辑自治的公开承诺。**如果你发现我们违反了上述任何一条,请公开点名批评** — 这是对读者负责的唯一方式。
+</WarningBox>
+
+## 相关文档
+
+- [关于本站](/zh/about/)
+- [内容方法学](/zh/methodology/)
+- [医学顾问](/zh/medical-advisors/)

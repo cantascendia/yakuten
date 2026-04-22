@@ -1,0 +1,101 @@
+---
+title: 内容方法学
+description: HRT药典内容从文献检索到发布的完整流程：临床指南对齐、DOI 引用、证据分级 A/B/C/X、双人交叉核对、医学顾问复审、季度滚动复查。
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="HRT药典编辑部"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="zh"
+/>
+
+本页说明 HRT药典每一篇内容的制作、审核和更新流程。这是我们对读者的承诺：**没有经过这套流程的文字不会上线**。
+
+## 一、内容三大原则
+
+1. **无引用不声明**：任何医学声明须至少附一条 DOI 或国际指南编号；无法引证的，明确标注 <EvidenceBadge level="X" /> 或删除。
+2. **剂量数据双源交叉**：处方剂量必须出现在至少两个独立权威来源（WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA 等）中。
+3. **语言去绝对化**：避免"必须/一定/永远"，使用"通常/建议/在绝大多数情况下"。
+
+## 二、完整工作流
+
+### 1. 选题立项
+- 基于搜索需求、读者提问、指南更新、重大药物警讯（EMA/FDA）确定主题
+- 列出本页要回答的 3–7 个具体问题
+- 确定目标受众（患者 / 一级诊疗医护 / 家属）
+
+### 2. 文献检索
+- 主渠道：PubMed、Cochrane、国际指南官网、Transfemscience 综述
+- 排除：匿名论坛帖、商业网站、无同行评审的博客
+- 每个关键主张记录原始引用（DOI 优先，次选期刊出版信息）
+
+### 3. 证据分级
+依据研究设计强度分级：
+
+| 等级 | 含义 | 示例证据 |
+|---|---|---|
+| <EvidenceBadge level="A" /> | 强证据 | 多项 RCT、系统综述/Meta、国际指南明确推荐 |
+| <EvidenceBadge level="B" /> | 中等证据 | 单项 RCT、多项前瞻性队列 |
+| <EvidenceBadge level="C" /> | 弱证据 | 病例报告、回顾性研究、专家意见 |
+| <EvidenceBadge level="X" /> | 无证据 | 社区传言、个人经验、推断 |
+
+### 4. 起草
+- 使用统一组件：`<DrugInfoBox>`、`<DoseTable>`、`<CitationRef>`、`<WarningBox>`、`<EmergencyBanner>` 等
+- frontmatter 记录 `evidenceLevel`、`lastReviewed`、`references`（CI 强制）
+- 剂量表自动校验上限与禁忌混用
+
+### 5. 双人交叉核对
+- 作者完成初稿 → 另一位编辑独立核对每条 `<CitationRef>` 是否与原文献匹配
+- 不匹配 / 过度延伸 → 打回修改
+- 发现原文献撤稿 / 勘误 → 全站检索替换
+
+### 6. 医学顾问复审
+- 内分泌 / 精神科 / 法律顾问按主题分派复审
+- 复审记录存档，含异议与最终决定
+- 无法联系到合格复审人时，主题不上线
+
+### 7. 发布与无障碍验收
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- 颜色对比、键盘可达、屏幕阅读器语义验证
+- 移动端断点、`prefers-reduced-motion` 回退
+
+### 8. 滚动复查
+- 默认 **12 个月** 重审一次,更新 `lastReviewed`
+- 危险信号页（风险、剂量红线、急症）**6 个月** 复审
+- 指南发布重大变更 → 48 小时内增量更新
+
+## 三、错误更正流程
+
+读者发现事实性错误、引用偏差、过时内容：
+
+1. 通过 [反馈表单](https://wj.qq.com/s2/16576000/5fe5/) 或 GitHub Issue 提交
+2. 72 小时内初步回复
+3. 确认为事实性错误后,页面顶部加 **勘误提示**,版本历史记录原始错误与更正日期
+4. 重大更正同步邮件 / RSS / Telegram 通知
+
+## 四、利益冲突声明
+
+- 本站无任何商业赞助、药品广告、购药返佣
+- 运营费用由志愿者个人承担,接受开源社区捐赠
+- 编辑与医学顾问签署利益冲突披露,有处方关系的药物不独立复审
+
+<WarningBox>
+本站内容为循证参考,**不构成诊疗建议**。用药前请咨询合格的医疗专业人士;急症请立即就医。
+</WarningBox>
+
+## 相关文档
+
+- [关于本站](/zh/about/)
+- [医学顾问](/zh/medical-advisors/)
+- [编辑政策](/zh/editorial-policy/)
+- [参考文献库](/zh/appendix-references/)
