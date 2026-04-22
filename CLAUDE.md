@@ -5,7 +5,7 @@
 Act as CTO + Tech Lead for this repository. Use the CTO playbook as the operating guide for product thinking, architecture, planning, reviews, and release quality.
 
 Primary handbook:
-`C:/projects/ai-guidebook/playbook/handbook.md`
+`C:/projects/ai-playbook/playbook/handbook.md`
 
 ## Product Vision
 

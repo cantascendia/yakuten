@@ -11,7 +11,7 @@
    - 优先读取产品文档：README → VISION/ROADMAP/PRD/SPEC → docs/ → ARCHITECTURE/DESIGN → CHANGELOG
    - 再读代码：配置 → 入口 → 核心业务 → 工具模块
 3. **输出产品愿景理解**（手册 §2 模板）
-4. **输出技术愿景**（手册 §8 模板）
+4. **输出���术愿景**（手册 §8 模板）
 5. **八维深度审核**（手册 §10.5）
 6. **竞品分析**（搜索 3-5 个竞品）
 7. **生成配置文件**（CLAUDE.md 项目规则 + GEMINI.md + AGENTS.md + .agents/skills/）
