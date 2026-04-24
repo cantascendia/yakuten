@@ -1,0 +1,228 @@
+/* =============================================================================
+   Blood v3.2 · 乐园手账 tokens (sakura-mode only)
+   Scoped to .b32-root so it does NOT leak into the dark 二相乐园 global theme.
+   Source: design_handoff_blood_checker/tokens.css (Claude Design output, 2026-04-24)
+   ============================================================================= */
+
+.b32-root {
+  /* Canvas — 手账纸面 */
+  --b32-bg: #FFF5E0;
+  --b32-bg-2: #FFFAF0;
+  --b32-paper: #FFFFFF;
+  --b32-paper-warm: #FFF0E5;
+  --b32-surface-dim: #FBEDD4;
+  --b32-surface-2: #FFEFD8;
+  --b32-divider: rgba(74, 40, 56, 0.12);
+  --b32-divider-strong: rgba(74, 40, 56, 0.22);
+
+  /* Ink */
+  --b32-ink: #4A2838;
+  --b32-ink-2: #7A5568;
+  --b32-ink-3: #A68799;
+  --b32-ink-4: #C9B3BE;
+
+  /* Brand pastels */
+  --b32-sakura: #FFA8C5;
+  --b32-sakura-hot: #FF7FA8;
+  --b32-sakura-deep: #E5578B;
+  --b32-sakura-blush: #FFD4E0;
+  --b32-sakura-paper: #FFE4EC;
+  --b32-sakura-soft: rgba(255, 168, 197, 0.22);
+
+  --b32-mint: #A8E6C9;
+  --b32-mint-deep: #5AC89D;
+  --b32-mint-paper: #E3F7EC;
+
+  --b32-butter: #FFE89C;
+  --b32-butter-deep: #F5C842;
+  --b32-honey: #F5B347;
+  --b32-butter-paper: #FFF4C9;
+
+  --b32-sky: #A8D5F5;
+  --b32-sky-deep: #5BA8E0;
+  --b32-sky-paper: #E0F0FB;
+
+  --b32-lavender: #D4C5F5;
+  --b32-lavender-deep: #9B7DD4;
+  --b32-lavender-paper: #EDE5FB;
+
+  --b32-coral: #FF8E7F;
+  --b32-coral-deep: #E65D4A;
+
+  /* Status — aligned to evaluation levels */
+  --b32-target: var(--b32-mint-deep);
+  --b32-target-tint: var(--b32-mint-paper);
+  --b32-target-soft: rgba(90, 200, 157, 0.18);
+
+  --b32-safe: var(--b32-sky-deep);
+  --b32-safe-tint: var(--b32-sky-paper);
+  --b32-safe-soft: rgba(91, 168, 224, 0.18);
+
+  --b32-caution: var(--b32-honey);
+  --b32-caution-tint: var(--b32-butter-paper);
+  --b32-caution-soft: rgba(245, 179, 71, 0.22);
+
+  --b32-danger: #E85A7A;
+  --b32-danger-tint: #FFDCE5;
+  --b32-danger-soft: rgba(232, 90, 122, 0.18);
+
+  /* Radii */
+  --b32-r-xs: 8px;
+  --b32-r-sm: 12px;
+  --b32-r-md: 18px;
+  --b32-r-lg: 24px;
+  --b32-r-xl: 32px;
+  --b32-r-full: 9999px;
+
+  /* Borders & shadows */
+  --b32-border: 1.5px solid rgba(74, 40, 56, 0.22);
+  --b32-border-bold: 2px solid var(--b32-ink);
+  --b32-sh-soft: 0 4px 14px rgba(74, 40, 56, 0.08);
+  --b32-sh-card: 0 8px 24px rgba(74, 40, 56, 0.10);
+  --b32-sh-lift: 0 14px 34px rgba(74, 40, 56, 0.14);
+  --b32-sh-hard: 3px 3px 0 rgba(74, 40, 56, 0.92);
+  --b32-sh-inset: inset 0 0 0 1.5px rgba(74, 40, 56, 0.18);
+  --b32-shadow-soft: var(--b32-sh-soft);
+
+  /* Fonts — SC variants explicit, no proxy */
+  --b32-font-body: "Noto Sans SC", "Noto Sans", "Zen Maru Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  --b32-font-display: "Noto Serif SC", "Noto Serif", "Fraunces", serif;
+  --b32-font-hand: "Ma Shan Zheng", "Klee One", cursive;
+  --b32-font-accent: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+  --b32-font-num: "Plus Jakarta Sans", ui-rounded, -apple-system, system-ui, sans-serif;
+  --b32-font-ui: var(--b32-font-accent);
+
+  /* Motion */
+  --b32-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --b32-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  font-family: var(--b32-font-body);
+  color: var(--b32-ink);
+  background: var(--b32-bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+.b32-root *,
+.b32-root *::before,
+.b32-root *::after { box-sizing: border-box; }
+
+.b32-root button { font-family: inherit; cursor: pointer; }
+
+.b32-tabnum { font-variant-numeric: tabular-nums; }
+
+/* ----- Utility classes ----- */
+.b32-card {
+  background: var(--b32-paper);
+  border: var(--b32-border);
+  border-radius: var(--b32-r-lg);
+  box-shadow: var(--b32-sh-soft);
+}
+.b32-card-bold {
+  background: var(--b32-paper);
+  border: var(--b32-border-bold);
+  border-radius: var(--b32-r-lg);
+  box-shadow: var(--b32-sh-hard);
+}
+.b32-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--b32-r-full);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--b32-font-accent);
+}
+
+/* Inputs */
+.b32-root input.b32-input,
+.b32-root select.b32-input,
+.b32-root textarea.b32-input {
+  width: 100%;
+  background: var(--b32-bg-2);
+  border: 1.5px solid rgba(74, 40, 56, 0.14);
+  border-radius: var(--b32-r-sm);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--b32-ink);
+  outline: none;
+  transition: all .15s;
+  min-height: 44px;  /* WCAG 2.5.5 */
+}
+.b32-root input.b32-input:focus,
+.b32-root select.b32-input:focus,
+.b32-root textarea.b32-input:focus {
+  border-color: var(--b32-sakura-deep);
+  box-shadow: 0 0 0 3px var(--b32-sakura-paper);
+}
+
+/* Buttons */
+.b32-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 18px;
+  border: 1.5px solid transparent;
+  border-radius: var(--b32-r-full);
+  font-family: var(--b32-font-accent);
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+  transition: all .18s var(--b32-ease-spring);
+  letter-spacing: 0.01em;
+  min-height: 44px;  /* WCAG 2.5.5 */
+}
+.b32-btn-primary {
+  background: var(--b32-sakura-deep);
+  color: white;
+  box-shadow: 0 3px 0 #B44068, 0 6px 14px rgba(229, 87, 139, 0.3);
+}
+.b32-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 0 #B44068, 0 8px 18px rgba(229, 87, 139, 0.35); }
+.b32-btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 0 #B44068; }
+.b32-btn-ghost {
+  background: var(--b32-paper);
+  color: var(--b32-ink);
+  border-color: rgba(74, 40, 56, 0.22);
+}
+.b32-btn-ghost:hover { background: var(--b32-bg-2); border-color: var(--b32-ink); }
+.b32-btn-soft {
+  background: var(--b32-sakura-paper);
+  color: var(--b32-sakura-deep);
+}
+.b32-btn-soft:hover { background: var(--b32-sakura-blush); }
+.b32-btn-mint {
+  background: var(--b32-mint-deep);
+  color: white;
+  box-shadow: 0 3px 0 #3FA07D, 0 6px 14px rgba(90, 200, 157, 0.25);
+}
+.b32-btn-mint:hover { transform: translateY(-1px); }
+.b32-btn-danger {
+  background: var(--b32-danger);
+  color: white;
+  box-shadow: 0 3px 0 #B04460, 0 6px 14px rgba(232, 90, 122, 0.3);
+}
+
+/* Animations */
+@keyframes b32-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.b32-fade-in { animation: b32-fade-in .3s var(--b32-ease-out) both; }
+@keyframes b32-slide-up { from { transform: translateY(100%); } to { transform: none; } }
+.b32-slide-up { animation: b32-slide-up .32s var(--b32-ease-out) both; }
+@keyframes b32-pop { 0% { transform: scale(.9); opacity: 0; } 60% { transform: scale(1.04); } 100% { transform: scale(1); opacity: 1; } }
+.b32-pop { animation: b32-pop .4s var(--b32-ease-spring) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .b32-fade-in, .b32-slide-up, .b32-pop { animation: none; }
+  .b32-root * { transition: none !important; }
+}
+
+/* Scoped scrollbar */
+.b32-root ::-webkit-scrollbar { width: 8px; height: 8px; }
+.b32-root ::-webkit-scrollbar-track { background: transparent; }
+.b32-root ::-webkit-scrollbar-thumb { background: var(--b32-ink-4); border-radius: 999px; }
+.b32-root ::-webkit-scrollbar-thumb:hover { background: var(--b32-ink-3); }
+
+/* When sakura mode is active, give the blood-checker page a paper backdrop */
+html.sakura .b32-root {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(74, 40, 56, 0.05) 1px, transparent 1px),
+    var(--b32-bg);
+  background-size: 18px 18px, auto;
+}

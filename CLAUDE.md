@@ -49,7 +49,8 @@ npm run astro check  # TypeScript checking
 
 - Zero JS by default (Astro static), interactive only via React Islands
 - All medical claims must have `<CitationRef>` — no citation = no content
-- Blood test tool is pure frontend JS — zero data transmission
+- **Blood test tool · classic mode**: pure frontend JS, zero storage, zero transmission
+- **Blood test tool · sakura mode (v3.2 血检手账)**: records persist in `localStorage` on the user's device only. Never transmitted to any server. Cleared via the in-app "清空所有记录" action or by clearing site data.
 - AI chat does not store conversations
 - No third-party tracking scripts
 - All colors via CSS variables, never hardcoded
@@ -59,12 +60,21 @@ npm run astro check  # TypeScript checking
 
 ## Visual Design
 
-米哈游「二相乐园」风格:
+**Default (dark) — 米哈游「二相乐园」风格:**
 - Glass morphism: `backdrop-filter: blur(12px)` + `rgba(26,22,37,0.6)`
 - Diagonal clip: `clip-path: polygon(0 0, calc(100%-16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100%-16px))`
 - Primary: #C84B7C (绯色), Accent: #D4A853 (幻月金)
 - Particle background (lightweight Canvas, max 60 particles)
 - Fonts: Noto Serif SC (display), Noto Sans SC (body), JetBrains Mono (code)
+
+**Sakura mode (`html.sakura`) — 乐园手账:**
+- Activated by the floating 🌸 新版 toggle (ThemeToggle.astro); preference persists in `localStorage["sakura-theme"]`.
+- Currently drives: site-wide skin (sakura-theme.css / sakura-components.css / sakura-skin.css) AND the blood-checker component swap to the v3.2 「血检手账」 tracker.
+- Palette: cream paper `#FFF5E0`, sakura-deep `#E5578B`, honey `#F5B347`, mint-deep `#5AC89D`, sky-deep `#5BA8E0`, lavender-deep `#9B7DD4`, ink `#4A2838`.
+- Surfaces: rounded cards (`--b32-r-lg: 24px`), 1.5px ink/.22 borders, soft drop shadows, optional `3px 3px 0` sticker-shadow for emphasis.
+- Washi tape strips as section labels; sticker-style rotated badges.
+- Fonts: Noto Serif SC (display), Noto Sans SC (body), Ma Shan Zheng / Klee One (hand-written accents), Plus Jakarta Sans (UI kickers + numbers).
+- Tokens scoped under `.b32-root`. See `src/styles/blood-b32.css`.
 
 ## Content Rules
 
@@ -77,7 +87,7 @@ npm run astro check  # TypeScript checking
 ## Absolute Prohibitions
 
 - No commercial promotion links or drug purchase channels
-- No user health data storage (blood test tool = pure frontend)
+- **No server-side storage of user health data**. Classic blood-checker mode must stay storage-free; sakura-mode (v3.2 血检手账) may only use `localStorage` on the user's device and must never introduce an upload / sync / account path without explicit user-level consent and a SPEC update.
 - No bypassing AI disclaimer or safety warnings
 - No personalized dosing recommendations ("you should take Xmg")
 - No removing/weakening emergency banners or danger warnings
@@ -114,7 +124,7 @@ npm run astro check  # TypeScript checking
 - Treat code review as a quality gate, not a formality
 - Keep release readiness, i18n, accessibility, and UX quality in scope
 - UI work must use design-system-enforcement + accessibility-checklist + ux-quality-checklist skills
-- All frontend UI must follow 米哈游「二相乐园」visual style defined in SPEC.md section 2
+- All frontend UI must follow 米哈游「二相乐园」visual style defined in SPEC.md section 2, **except** components explicitly swapped under sakura mode (currently: blood-checker v3.2 「血检手账」), which follow the 乐园手账 tokens in `src/styles/blood-b32.css`.
 
 ## Playbook Commands
 

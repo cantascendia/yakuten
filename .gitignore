@@ -33,6 +33,7 @@ stitch-prompts.md
 
 # Claude Design extracted artifacts
 .design-unzip/
+.claude-design-bundle/
 
 .vercel
 .env*.local

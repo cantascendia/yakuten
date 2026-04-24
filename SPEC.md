@@ -524,16 +524,46 @@ interface Reference {
 
 ## 5. 交互组件规范
 
-### 5.1 血检自查工具 (BloodTestChecker.tsx)
+### 5.1 血检自查工具 (BloodTestCheckerRouter.tsx)
 
-**核心原则**: 纯前端计算，不传输任何数据，不存储任何数据
+**双模式**（由左下角 🌸 新版 toggle 切换，`html.sakura` + `localStorage["sakura-theme"]` 控制）:
 
+#### 5.1.a 经典模式（默认，`BloodTestChecker.tsx`）
+**核心原则**: 纯前端计算，不传输任何数据，不存储任何数据。
 ```
 用户输入 → 前端 JS 对比 blood-ranges.json → 即时渲染红绿灯
 ```
-
-**UI**: 表单左侧输入数值，右侧实时显示仪表盘（绿/黄/红色条）
+**UI**: 表单左侧输入数值，右侧实时显示仪表盘（绿/黄/红色条）。
 **底部固定声明**: "此工具仅供参考，不能替代医生的判读。如果你有任何疑虑，请直接就医。"
+
+#### 5.1.b 新版「血检手账」v3.2（`blood-b32/B32App.tsx`）
+Claude Design 2026-04 产出，移植自 `.claude-design-bundle/design_handoff_blood_checker/`。
+
+**核心原则**: 纯前端计算 + `localStorage` 仅本机持久化。**绝不**上传任何服务器。
+
+**数据层**（`src/utils/blood/`）:
+- `metrics.ts`: 7 核心 + 7 扩展指标，多区域单位（CN/US/EU/JP），canonical 存储
+- `storage.ts`: localStorage 键 `yakuten_blood_records_v2` / `yakuten_blood_prefs_v2`，支持 seed / import / export JSON / clear all
+- `scoring.ts`: score 0-100 / 等级 S·A+·A·B+·B·C·D / buckets / highlights / streak / series
+- `i18n.ts`: zh / en / ja 三语 copy
+
+**视觉**: 乐园手账（paper `#FFF5E0` + sakura `#E5578B` + washi tape + 圆角 24），scoped under `.b32-root`，tokens 在 `src/styles/blood-b32.css`。
+
+**功能（iteration 1 已实现）**:
+- 仪表盘：Hero 等级卡（ring gauge + 标题 + bucket pills + streak）+ Highlights strip + Timeline rail + Metric list
+- 新增/编辑记录 sheet（日期 + 阶段 + 备注 + 14 指标 + 区域单位切换）
+- 设置 sheet（区域偏好 + 导入/导出 JSON + 清空所有）
+- 空状态 + 首次自动 seed 3 条示例
+
+**iteration 2 待接入**:
+- 分享卡生成（4 vibes × 4 sizes × 3 privacy levels）
+- 单项详情抽屉（ArcGauge + sparkline + 医生建议）
+- 历次对比表
+- 医生文本生成（一键复制给医生的文本摘要）
+
+**隐私边界**:
+- 分享卡（iter 2）即便 privacy=minimal 仍暴露"用户追踪 HRT"事实，必须显式用户操作触发，且在 UI 内明确提示 outing 风险
+- 清空操作走 `window.confirm`，一键彻底擦除所有记录 + 偏好
 
 ### 5.2 剂量模拟器 (DoseSimulator.tsx)
 

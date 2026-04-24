@@ -7,7 +7,7 @@ references: []
 pagefind: false
 ---
 
-import BloodTestChecker from '../../../../components/interactive/BloodTestChecker.tsx';
+import BloodTestChecker from '../../../../components/interactive/BloodTestCheckerRouter.tsx';
 import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 
 ## 使用说明
@@ -23,9 +23,12 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 :::
 
 :::note[隐私保护]
-所有计算在你的浏览器中本地完成。本工具不会传输、存储或记录你输入的任何数据。
+所有计算在你的浏览器中本地完成，不会传输到任何服务器。
+
+- **经典模式（默认）**：单次查询，不保存任何数据。
+- **新版「血检手账」模式**（点击左下角 🌸 新版 开启）：记录保存在你本机浏览器的 localStorage 里，可追踪历次血检变化。清除浏览器数据或点设置里的「清空所有记录」即可彻底删除。
 :::
 
-<BloodTestChecker client:visible />
+<BloodTestChecker client:load />
 
 <RelatedBlogPosts />
