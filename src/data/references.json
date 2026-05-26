@@ -288,5 +288,25 @@
     "doi": "10.1136/bmj.k4810",
     "url": "https://doi.org/10.1136/bmj.k4810",
     "evidenceLevel": "A"
+  },
+  {
+    "id": "hou-2026",
+    "authors": "Hou J et al.",
+    "year": 2026,
+    "title": "Gender Identity Milestones and Hormone Utilization in Transgender Men and Women in China",
+    "journal": "JAMA Network Open",
+    "doi": "10.1001/jamanetworkopen.2025.52440",
+    "url": "https://doi.org/10.1001/jamanetworkopen.2025.52440",
+    "evidenceLevel": "B"
+  },
+  {
+    "id": "liu-2020",
+    "authors": "Liu Y et al.",
+    "year": 2020,
+    "title": "The desire and status of gender-affirming hormone therapy and surgery in transgender men and women in China: a national population study",
+    "journal": "Journal of Sexual Medicine",
+    "doi": "10.1016/j.jsxm.2020.07.081",
+    "url": "https://doi.org/10.1016/j.jsxm.2020.07.081",
+    "evidenceLevel": "B"
   }
 ]
