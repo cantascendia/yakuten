@@ -1,8 +1,33 @@
 # STATUS
 
-**Last Updated:** 2026-04-23
-**Current Version:** v1.1.x (Phase 11 in flight)
+**Last Updated:** 2026-05-26
+**Current Version:** v1.2.0-pre (Phase 12 — Performance + SEO hardening)
 **Git Tag:** —
+
+---
+
+## 2026-05-26 · 性能 + 技术 SEO 审计收口（PR `claude/perf-seo-audit`）
+
+3 个并行 Explore 子代理（perf / build-asset / SEO-schema）+ 人工代码复核完成审计，识别并修复 8 类问题：
+
+1. vercel.json 无 headers — 加 5 个 source 的 Cache-Control + 全站 HSTS / CSP / X-Frame-Options / X-Content-Type-Options / Referrer-Policy / Permissions-Policy
+2. 20.5 MB 未引用 PNG 源 master 部署到 CDN — 删除 + `.gitignore` 保护
+3. 博客 hreflang 指向不存在的 en/ja/ko 镜像（404 + crawl 浪费）— 改基于 locale allowlist
+4. 医院无 MedicalOrganization schema — HospitalCard.astro 注入 PostalAddress + MedicalProcedure
+5. 工具页缺 SoftwareApplication schema — JsonLd.astro 加 isToolPage 分支
+6. 字体 600/700 权重缺失（Manrope 600, Noto Sans 700, Space Grotesk 700）→ Google Fonts URL 补齐
+7. BloodTestChecker × 5 处 `client:load` → `client:visible`
+8. BlogPostJsonLd Article → BlogPosting + Person author from frontmatter
+9. 新增 `tests/perf-seo.spec.ts` 9 个 SEO/perf 回归测试
+
+新增基础设施：
+- `docs/perf-seo-audit-2026-05-26.md` — 完整审计报告
+- `tests/perf-seo.spec.ts` — perf/SEO 回归测试
+- vercel.json `headers` 数组（249 行规则）
+
+延后到 REVIEW-BACKLOG：Sakura 字体 @import 改造、OG 图 PNG→WebP、Sakura CSS 懒加载、Drug 品牌 Product schema、Compare 页双 Drug 节点、Critical CSS inline、Baidu 特定 meta。
+
+`public/images/diagrams` 体积：25 MB → 4.5 MB（-82%）。
 
 ---
 

@@ -1,6 +1,6 @@
 # REVIEW BACKLOG
 
-**Last Updated:** 2026-04-23
+**Last Updated:** 2026-05-26
 
 累积的技术 / 内容 / i18n / 运营债，按优先级分级。来源：git log（Phase 9-11）+ 现有代码扫描。
 
@@ -33,6 +33,12 @@
 
 | # | 项目 | 来源 | 备注 |
 |---|------|------|------|
+| P2-PERF-1 | **Sakura 字体 @import 改造为 JS 条件注入** | 2026-05-26 perf-seo 审计 | `src/styles/sakura-theme.css:13` 顶部 @import 加载 Fraunces/Plus Jakarta/Ma Shan Zheng/Zen Maru Gothic/Klee One/Kosugi Maru/Yuji Syuku/DotGothic16 等 ~10 个手账字体 family，即使 sakura mode 未激活也强制全站下载。改造方案：移到 sakura-fonts.css 单独文件，在 ThemeToggle.astro 切换时通过 JS 注入 `<link rel="stylesheet">`。风险：FOUC + 切换体验。需独立 PR |
+| P2-PERF-2 | **OG 图像 PNG → WebP** | 同上 | `scripts/generate-og-images.mjs` 当前 sharp 输出 PNG（14 MB / 219 张）。改 WebP 节省 60-70% (4-6 MB)。微小社交平台兼容性 trade-off（旧 Android/iOS 显示 SVG fallback） |
+| P2-PERF-3 | **Sakura CSS 懒加载** | 同上 | 1443 行 sakura CSS（24 KB gzip）全部捆绑到 common chunk，仅 <1% 用户使用。需配合 P2-PERF-1 的字体改造一起做 |
+| P2-SEO-1 | **Drug 品牌 Product schema** | 同上 | DrugBrandIndex.tsx / drug-cards.tsx per-brand 当前只渲染视觉卡片，缺 Product 结构化数据 |
+| P2-SEO-2 | **Medical advisors Person schema** | 同上 | medical-advisors.mdx 列表展示，缺 Person 节点 |
+| P2-SEO-3 | **Compare 页双 Drug 节点** | 同上 | compare/cpa-vs-spironolactone 等当前是通用 MedicalWebPage，可 emit 两个 Drug + ComparisonChart |
 | P2-1 | **API 速率限制持久化** | `api/ai-chat.ts` line ~17-20 | 当前 `rateLimitMap = new Map`，Edge 冷启动后重置；可被并发滥用。建议接 Upstash Redis 或 Vercel KV |
 | P2-2 | **Gemini 模型 ID 漂移监控** | `api/ai-chat.ts` line 153 `gemini-3-flash-preview` | "preview" 标签易过期。建议加 `cto-models` 月度检查 + 改成稳定通道 |
 | P2-3 | **gpt-image-2 流水线的可重复性** | `scripts/gpt-image-2-manifest.json` `_note` | 当前是 ChatGPT 网页人工生成，禁止脚本重生成。如果原图丢失或需要小修，无可重复路径。建议存档原始 PSD/PNG |
