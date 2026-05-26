@@ -1,8 +1,31 @@
 # STATUS
 
-**Last Updated:** 2026-04-23
-**Current Version:** v1.1.x (Phase 11 in flight)
+**Last Updated:** 2026-05-26
+**Current Version:** v1.2.0-pre (Phase 12 — UI / accessibility + content citation)
 **Git Tag:** —
+
+---
+
+## 2026-05-26 · UI / 可访问性审计收口（PR `claude/ui-accessibility-audit`）
+
+3 个并行 Explore 子代理（WCAG 2.2 AA / 设计系统延续 / 移动 + 紧急 UX）+ 1 个 Plan 子代理共同完成审计，识别并修复 9 类问题：
+
+1. WCAG 2.4.7 焦点可见性：4 处 `:focus-visible { outline: none }` 自废武功修复（HeroSection / SplashNav / blood-b32 / starlight-override）
+2. WCAG 2.5.5 触点尺寸：EmergencyBanner CTA 从 ~20px 提升至 ≥44px
+3. WCAG 2.4.1 Bypass Blocks：BlogPostLayout 加 skip-to-main-content（Starlight 页面沿用内置 SkipLink）
+4. WCAG 2.1.2 / 2.3.3 / 2.4.3 / 4.1.2 FloatingAIChat：Escape 关闭、focus return、reduced-motion 退化、`role="dialog" aria-modal`、`aria-haspopup` / `aria-expanded`
+5. WCAG 4.1.2 / 3.3.1 BloodTestChecker：`aria-invalid` + `aria-describedby` + sr-only 状态信息
+6. WCAG 1.4.3 亮色主题 `--color-text-muted` #8A82A0 → #6B6280（3.4:1 → 5.3:1）
+7. 移动端：DrugQuickNav / DoseSimulator 断点 540 → 640；FloatingAIChat FAB 加 `env(safe-area-inset-bottom)`
+8. 设计系统：3 处内联 clip-path 收口到 `var(--clip-corner)`
+9. 测试：新增 `tests/mobile-a11y.spec.ts`，iPhone SE 视口下 9 个 a11y 用例全绿
+
+新增基础设施：
+- `docs/ui-a11y-audit-2026-05-26.md` — 完整审计报告
+- `tests/mobile-a11y.spec.ts` — 移动 + a11y 回归测试
+- `i18n/ui.ts` 4 语 `a11y.skipToMain` 键
+
+延后到 REVIEW-BACKLOG（Plan agent 风险评估剔除）：axe-core CI 集成、`<span lang="en">` 中文页英文药名、多 H1 断言、ReferenceLibrary 重构、FloatingAIChat 横屏键盘碰撞真机验证。
 
 ---
 
