@@ -156,6 +156,12 @@
   border-color: var(--b32-sakura-deep);
   box-shadow: 0 0 0 3px var(--b32-sakura-paper);
 }
+.b32-root input.b32-input:focus-visible,
+.b32-root select.b32-input:focus-visible,
+.b32-root textarea.b32-input:focus-visible {
+  outline: 2px solid var(--b32-sakura-deep);
+  outline-offset: 2px;
+}
 
 /* Buttons */
 .b32-btn {
