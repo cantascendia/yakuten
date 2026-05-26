@@ -2,7 +2,12 @@
   "redirects": [
     {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "www.hrtyaku.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hrtyaku.com"
+        }
+      ],
       "destination": "https://hrtyaku.com/:path",
       "permanent": true
     },
@@ -11,46 +16,247 @@
       "destination": "/zh/",
       "permanent": true
     },
-
-    { "source": "/zh/药物", "destination": "/zh/medications/", "permanent": true },
-    { "source": "/zh/药物/色谱龙", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/色普龙", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/色普隆", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/色谱隆", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/醋酸环丙孕酮", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/环丙孕酮", "destination": "/zh/medications/antiandrogens/cpa/", "permanent": true },
-    { "source": "/zh/药物/螺内酯", "destination": "/zh/medications/antiandrogens/spironolactone/", "permanent": true },
-    { "source": "/zh/药物/安体舒通", "destination": "/zh/medications/antiandrogens/spironolactone/", "permanent": true },
-    { "source": "/zh/药物/比卡鲁胺", "destination": "/zh/medications/antiandrogens/bicalutamide/", "permanent": true },
-    { "source": "/zh/药物/GnRH激动剂", "destination": "/zh/medications/antiandrogens/gnrh-agonists/", "permanent": true },
-    { "source": "/zh/药物/抗雄激素", "destination": "/zh/medications/antiandrogens/overview/", "permanent": true },
-
-    { "source": "/zh/药物/雌二醇", "destination": "/zh/medications/estrogens/overview/", "permanent": true },
-    { "source": "/zh/药物/补佳乐", "destination": "/zh/medications/estrogens/oral/", "permanent": true },
-    { "source": "/zh/药物/口服雌二醇", "destination": "/zh/medications/estrogens/oral/", "permanent": true },
-    { "source": "/zh/药物/舌下雌二醇", "destination": "/zh/medications/estrogens/sublingual/", "permanent": true },
-    { "source": "/zh/药物/雌二醇凝胶", "destination": "/zh/medications/estrogens/gel/", "permanent": true },
-    { "source": "/zh/药物/雌二醇贴片", "destination": "/zh/medications/estrogens/transdermal-patch/", "permanent": true },
-    { "source": "/zh/药物/戊酸雌二醇", "destination": "/zh/medications/estrogens/injection/", "permanent": true },
-    { "source": "/zh/药物/EV", "destination": "/zh/medications/estrogens/injection/", "permanent": true },
-
-    { "source": "/zh/药物/黄体酮", "destination": "/zh/medications/progestogens/progesterone/", "permanent": true },
-    { "source": "/zh/药物/地屈孕酮", "destination": "/zh/medications/progestogens/dydrogesterone/", "permanent": true },
-    { "source": "/zh/药物/屈螺酮", "destination": "/zh/medications/progestogens/drospirenone/", "permanent": true },
-
-    { "source": "/zh/血检", "destination": "/zh/blood-tests/", "permanent": true },
-    { "source": "/zh/剂量红线", "destination": "/zh/dose-limits/", "permanent": true },
-    { "source": "/zh/风险", "destination": "/zh/risks/", "permanent": true },
-    { "source": "/zh/用药前准备", "destination": "/zh/before-you-start/", "permanent": true },
-    { "source": "/zh/中国路径", "destination": "/zh/china-reality/", "permanent": true },
-    { "source": "/zh/乳房发育", "destination": "/zh/breast-development/", "permanent": true },
-
-    { "source": "/zh/指南/首次注射", "destination": "/zh/guides/first-injection/", "permanent": true },
-    { "source": "/zh/指南/抗雄切换", "destination": "/zh/guides/switch-antiandrogen/", "permanent": true },
-    { "source": "/zh/指南/切换E2", "destination": "/zh/guides/switch-e2-route/", "permanent": true },
-
-    { "source": "/zh/工具/血检自查", "destination": "/zh/tools/blood-checker/", "permanent": true },
-    { "source": "/zh/工具/注射换算", "destination": "/zh/tools/injection-calculator/", "permanent": true },
-    { "source": "/zh/工具/药物比较", "destination": "/zh/tools/drug-comparator/", "permanent": true }
+    {
+      "source": "/zh/药物",
+      "destination": "/zh/medications/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/色谱龙",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/色普龙",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/色普隆",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/色谱隆",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/醋酸环丙孕酮",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/环丙孕酮",
+      "destination": "/zh/medications/antiandrogens/cpa/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/螺内酯",
+      "destination": "/zh/medications/antiandrogens/spironolactone/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/安体舒通",
+      "destination": "/zh/medications/antiandrogens/spironolactone/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/比卡鲁胺",
+      "destination": "/zh/medications/antiandrogens/bicalutamide/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/GnRH激动剂",
+      "destination": "/zh/medications/antiandrogens/gnrh-agonists/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/抗雄激素",
+      "destination": "/zh/medications/antiandrogens/overview/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/雌二醇",
+      "destination": "/zh/medications/estrogens/overview/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/补佳乐",
+      "destination": "/zh/medications/estrogens/oral/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/口服雌二醇",
+      "destination": "/zh/medications/estrogens/oral/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/舌下雌二醇",
+      "destination": "/zh/medications/estrogens/sublingual/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/雌二醇凝胶",
+      "destination": "/zh/medications/estrogens/gel/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/雌二醇贴片",
+      "destination": "/zh/medications/estrogens/transdermal-patch/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/戊酸雌二醇",
+      "destination": "/zh/medications/estrogens/injection/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/EV",
+      "destination": "/zh/medications/estrogens/injection/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/黄体酮",
+      "destination": "/zh/medications/progestogens/progesterone/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/地屈孕酮",
+      "destination": "/zh/medications/progestogens/dydrogesterone/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/药物/屈螺酮",
+      "destination": "/zh/medications/progestogens/drospirenone/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/血检",
+      "destination": "/zh/blood-tests/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/剂量红线",
+      "destination": "/zh/dose-limits/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/风险",
+      "destination": "/zh/risks/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/用药前准备",
+      "destination": "/zh/before-you-start/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/中国路径",
+      "destination": "/zh/china-reality/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/乳房发育",
+      "destination": "/zh/breast-development/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/指南/首次注射",
+      "destination": "/zh/guides/first-injection/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/指南/抗雄切换",
+      "destination": "/zh/guides/switch-antiandrogen/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/指南/切换E2",
+      "destination": "/zh/guides/switch-e2-route/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/工具/血检自查",
+      "destination": "/zh/tools/blood-checker/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/工具/注射换算",
+      "destination": "/zh/tools/injection-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/工具/药物比较",
+      "destination": "/zh/tools/drug-comparator/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(images|brands)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/og/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(favicon\\.svg|favicon\\.ico|manifest\\.json|robots\\.txt|llms\\.txt|sitemap.*\\.xml|og-image\\.svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://generativelanguage.googleapis.com https://doi.org https://*.doi.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+        }
+      ]
+    }
   ]
 }
