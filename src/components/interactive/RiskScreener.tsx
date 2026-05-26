@@ -1,12 +1,12 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { CSSProperties } from 'react';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -197,6 +197,68 @@ const UI_COPY = {
     cat_meningioma: '髄膜腫リスク',
     cat_cardiovascular: '心血管リスク',
   },
+  ko: {
+    regionLabel: '위험 자가 평가 도구',
+    title: '위험 자가 평가 도구',
+    disclaimerBanner: '이 도구는 전문 의료 평가를 대체할 수 없습니다. 결과는 참고용일 뿐 진단이나 처방 권고가 아닙니다.',
+    start: '평가 시작',
+    startDesc: '간단한 7개 질문에 답하여 개인 HRT 위험 요인 프로필을 확인하세요. 모든 계산은 브라우저 안에서 수행되며 데이터는 전송되지 않습니다.',
+    next: '다음',
+    prev: '이전',
+    viewResults: '결과 보기',
+    retake: '다시 평가',
+    progress: '진행률',
+    resultTitle: '나의 위험 프로필',
+    resultDesc: '아래는 답변을 바탕으로 한 위험 요인 요약입니다. 의료 제공자와 함께 검토하세요.',
+    learnMore: '자세히 보기',
+    riskLow: '저위험',
+    riskModerate: '주의 필요',
+    riskHigh: '고위험',
+    riskVeryHigh: '매우 높은 위험',
+    q1_title: '연령대',
+    q1_desc: '연령은 심혈관 및 VTE 위험에 영향을 줍니다',
+    q1_a: '25세 미만',
+    q1_b: '25–35세',
+    q1_c: '35–45세',
+    q1_d: '45세 초과',
+    q2_title: '흡연 상태',
+    q2_desc: '흡연은 경구 에스트로겐의 VTE 위험을 크게 높입니다',
+    q2_a: '비흡연',
+    q2_b: '금연함',
+    q2_c: '현재 흡연 중',
+    q3_title: 'BMI 범위',
+    q3_desc: '체질량지수는 VTE 및 심혈관 위험에 영향을 줍니다',
+    q3_a: 'BMI < 25 (정상)',
+    q3_b: 'BMI 25–30 (과체중)',
+    q3_c: 'BMI 30–35 (비만 I도)',
+    q3_d: 'BMI > 35 (비만 II도 이상)',
+    q4_title: '가족력',
+    q4_desc: 'DVT/폐색전증/뇌졸중 가족력',
+    q4_a: '관련 가족력 없음',
+    q4_b: '직계 가족(부모/형제자매) 관련 병력 있음',
+    q5_title: '현재 항안드로겐제',
+    q5_desc: '항안드로겐제에 따라 위험 프로필이 다릅니다',
+    q5_a: '항안드로겐제 미사용',
+    q5_b: '스피로노락톤',
+    q5_c: '비칼루타미드',
+    q5_d: 'CPA ≤ 12.5 mg/일',
+    q5_e: 'CPA > 12.5 mg/일',
+    q5_f: 'GnRH 작용제',
+    q6_title: '간 질환 병력',
+    q6_desc: '일부 약물은 간독성 위험이 있습니다',
+    q6_a: '간 질환 병력 없음',
+    q6_b: '간염 또는 ALT/AST 상승 병력',
+    q6_c: '현재 활동성 간 질환',
+    q7_title: '편두통 유형',
+    q7_desc: '전조 동반 편두통은 경구 에스트로겐의 금기증입니다',
+    q7_a: '편두통 없음',
+    q7_b: '편두통 (전조 없음)',
+    q7_c: '편두통 (전조 동반: 시각 섬광/암점)',
+    cat_vte: 'VTE (혈전) 위험',
+    cat_liver: '간 위험',
+    cat_meningioma: '수막종 위험',
+    cat_cardiovascular: '심혈관 위험',
+  },
 } as const;
 
 /* ================================
@@ -263,6 +325,14 @@ const RISK_ANCHORS: Record<Locale, { vte: string; liver: string; meningioma: str
     liver: '#肝障害',
     meningioma: '#髄膜腫',
     cardiovascular: '#心血管系合併症',
+  },
+  // TODO(i18n-ko): replace with real Korean anchor IDs once /ko/risks/ page is translated.
+  // Falling back to English anchors so the link target still exists.
+  ko: {
+    vte: '#deep-vein-thrombosis-dvt',
+    liver: '#hepatic-injury',
+    meningioma: '#meningioma',
+    cardiovascular: '#cardiovascular-complications',
   },
 };
 

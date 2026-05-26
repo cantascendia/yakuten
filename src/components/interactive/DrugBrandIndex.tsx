@@ -3,12 +3,13 @@ import type { CSSProperties } from 'react';
 import brandData from '../../data/drug-brands.json';
 import { getDrugPageUrl, getLocaleFromPath } from '../../utils/drugLinks';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   const loc = getLocaleFromPath();
-  if (loc === 'en' || loc === 'ko') return 'en';
+  if (loc === 'en') return 'en';
   if (loc === 'ja') return 'ja';
+  if (loc === 'ko') return 'ko';
   return 'zh';
 }
 
@@ -107,6 +108,37 @@ const UI = {
     noResults: '一致するブランドが見つかりません',
     total: '合計',
     entries: 'ブランド',
+  },
+  ko: {
+    title: '약물 브랜드 인덱스',
+    subtitle: '글로벌 HRT 의약품 브랜드 식별 참고',
+    disclaimer: '이 페이지는 브랜드 식별 목적의 참고용입니다. 구매 링크 제공, 판매자 추천, 수입 지원은 하지 않습니다.',
+    searchPlaceholder: '브랜드명, 제조사, 성분 검색…',
+    regionAll: '전체 지역',
+    regionChina: '중국',
+    regionThailand: '태국',
+    regionIndia: '인도',
+    regionJapan: '일본',
+    regionWestern: '서구',
+    regionOther: '기타',
+    categoryAll: '전체 카테고리',
+    categoryEstrogen: '에스트로겐',
+    categoryAntiandrogen: '항안드로겐',
+    categoryProgestogen: '프로게스토겐',
+    category5ari: '5α-환원효소 억제제',
+    categoryBanned: '금지 약물',
+    statusApproved: '승인됨',
+    statusPrescription: '처방약',
+    statusGrey: '회색 시장',
+    statusBanned: '금지',
+    manufacturer: '제조사',
+    spec: '규격',
+    appearance: '외관',
+    ingredient: '성분',
+    officialSite: '공식 사이트',
+    noResults: '일치하는 브랜드를 찾을 수 없습니다',
+    total: '총',
+    entries: '브랜드',
   },
 } as const;
 
