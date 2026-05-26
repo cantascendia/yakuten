@@ -195,15 +195,8 @@ const searchLabel = t(locale, 'nav.search');
     background: var(--color-primary-alpha-08, rgba(200, 75, 124, 0.08));
     border: 1px solid var(--color-outline-20);
     border-radius: 0;
-    /* 对角 clip-path（米哈游风） */
-    clip-path: polygon(
-      0 0,
-      calc(100% - 10px) 0,
-      100% 10px,
-      100% 100%,
-      10px 100%,
-      0 calc(100% - 10px)
-    );
+    /* 对角 clip-path（米哈游风）— DESIGN.md §4 unified signature */
+    clip-path: var(--clip-corner);
     cursor: pointer;
     transition:
       color var(--transition-fast),
