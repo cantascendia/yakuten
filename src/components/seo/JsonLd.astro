@@ -59,6 +59,10 @@ const pathSegmentsForType = pathname.replace(/^\/(zh|en|ja|ko)\//, '').replace(/
 const isDrugPage = pathSegmentsForType[0] === 'medications' && pathSegmentsForType.length >= 2;
 const isGuidePage = pathSegmentsForType[0] === 'guides';
 const isSafetyPage = ['risks', 'dose-limits', 'blood-tests', 'china-reality', 'pathway', 'before-you-start'].includes(pathSegmentsForType[0]);
+// Tool pages — emit SoftwareApplication so interactive tools appear in
+// Google's software / rich results carousels. Skip the hub page itself
+// (`tools/`) which is a generic landing page, only target individual tools.
+const isToolPage = pathSegmentsForType[0] === 'tools' && pathSegmentsForType.length >= 2;
 
 // ─── Breadcrumb label maps (per locale) ──────────────────────────────
 // Intermediate path segments get localized names; the leaf uses entry.data.title.
@@ -297,6 +301,22 @@ if (isDrugPage) {
     ...basePage,
     specialty: 'Endocrinology',
     aspect: pathSegmentsForType[0] === 'risks' ? 'Causes' : 'Treatment',
+  });
+} else if (isToolPage) {
+  // Interactive medical tool (blood-checker, dose-simulator, etc.) —
+  // schema.org/SoftwareApplication for Google's HealthApplication subtype,
+  // plus the surrounding MedicalWebPage so the page still ranks as medical
+  // content.
+  graph.push({
+    '@type': ['SoftwareApplication', 'MedicalWebPage'],
+    ...basePage,
+    applicationCategory: 'HealthApplication',
+    applicationSubCategory: 'MedicalCalculator',
+    operatingSystem: 'Any (web-based)',
+    browserRequirements: 'JavaScript enabled',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    specialty: 'Endocrinology',
   });
 } else {
   graph.push({ '@type': 'MedicalWebPage', ...basePage });
