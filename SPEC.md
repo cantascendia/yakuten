@@ -315,7 +315,7 @@ yakuten/
 │   │   ├── drugs.json               # 药物结构化数据（20 种）
 │   │   ├── drug-brands.json         # 药品品牌信息（按地区）
 │   │   ├── blood-ranges.json        # 血检参考值（7 项）
-│   │   ├── references.json          # 文献引用数据库（27 条）
+│   │   ├── references.json          # 文献引用数据库（31 条，全部带 evidenceLevel A/B/C，schema 见 §4.5）
 │   │   ├── hospitals.json           # 友好医院（25 家/19 省）
 │   │   ├── hotlines.json            # 危机热线
 │   │   ├── injection-doses.json     # 注射剂量换算表
@@ -503,20 +503,14 @@ interface InjectionDose {
 
 ```typescript
 interface Reference {
-  id: string;               // "hembree-2017"
-  authors: string;
+  id: string;                       // "hembree-2017"
+  authors: string;                  // "Hembree WC et al."
   title: string;
   journal: string;
   year: number;
-  volume?: string;
-  pages?: string;
-  doi?: string;
-  pubmedId?: string;
-  pmcId?: string;
-  evidenceLevel: "A" | "B" | "C";
-  category: "guideline" | "rct" | "cohort" | "case-report"
-          | "meta-analysis" | "review" | "expert-opinion";
-  tags: string[];           // ["VTE", "经皮vs口服", "剂量"]
+  doi: string | null;               // "10.1210/jc.2017-01658" or null（如 EMA / PMDA / 灰文献）
+  url: string;                      // doi.org 直链或公开备用 URL
+  evidenceLevel: "A" | "B" | "C" | "X"; // 必填，分级规则见 DECISIONS.md D015
 }
 ```
 
