@@ -169,10 +169,9 @@ function parseCitationIds(content) {
 }
 
 // ── MDX inventory ──
-// Docs ('src/content/docs/**/*.mdx') is governed by hard errors.
-// Blog ('src/content/blog/**/*.mdx') is governed by hard errors for unknown
-// CitationRef ids but warn-only for missing evidenceLevel / references /
-// CitationRef presence — D016 staged rollout while back-fill is in progress.
+// All MDX under src/content/docs/ and src/content/blog/ is now governed by
+// hard errors (D016 promotion complete — blog back-fill landed in the same
+// PR and the staged warn→error gate is closed).
 const docsMdxFiles = await collectFiles(docsDir, (filePath) => filePath.endsWith('.mdx'));
 
 let blogMdxFiles = [];
@@ -182,25 +181,20 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 
-async function validateMdxFile(filePath, { strict }) {
+async function validateMdxFile(filePath) {
   const content = await readFile(filePath, 'utf8');
-  const { evidenceLevel, references: frontmatterReferences } = parseFrontmatterMetadata(filePath, content, {
-    requireFrontmatter: strict,
-    requireReferences: strict,
-    requireEvidenceLevel: strict,
-  });
+  const { evidenceLevel, references: frontmatterReferences } = parseFrontmatterMetadata(filePath, content);
   const frontmatterReferenceSet = new Set(frontmatterReferences);
   const citationIds = parseCitationIds(content);
-  const sink = strict ? errors : warnings;
 
   if (evidenceLevel && evidenceLevel !== 'X' && frontmatterReferences.length === 0) {
-    sink.push(
+    errors.push(
       `${path.relative(rootDir, filePath)} has evidenceLevel "${evidenceLevel}" but does not declare any frontmatter references.`
     );
   }
 
   if (evidenceLevel && evidenceLevel !== 'X' && citationIds.length === 0) {
-    sink.push(
+    errors.push(
       `${path.relative(rootDir, filePath)} has evidenceLevel "${evidenceLevel}" but does not include any CitationRef usage.`
     );
   }
@@ -210,18 +204,15 @@ async function validateMdxFile(filePath, { strict }) {
       errors.push(`${path.relative(rootDir, filePath)} uses unknown CitationRef id "${citationId}".`);
     }
     if (frontmatterReferences.length > 0 && !frontmatterReferenceSet.has(citationId)) {
-      sink.push(
+      errors.push(
         `${path.relative(rootDir, filePath)} uses CitationRef id "${citationId}" but does not list it in frontmatter references.`
       );
     }
   }
 }
 
-for (const filePath of docsMdxFiles) {
-  await validateMdxFile(filePath, { strict: true });
-}
-for (const filePath of blogMdxFiles) {
-  await validateMdxFile(filePath, { strict: false });
+for (const filePath of [...docsMdxFiles, ...blogMdxFiles]) {
+  await validateMdxFile(filePath);
 }
 
 const mdxFiles = [...docsMdxFiles, ...blogMdxFiles];
