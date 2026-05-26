@@ -36,7 +36,38 @@ const tierLabel: Record<string, string> = {
 const verifiedLabel = hospital.verificationLevel === 'community-verified'
   ? { text: '社区核实', color: 'var(--color-safe)' }
   : { text: '待核实', color: 'var(--color-accent)' };
+
+// MedicalOrganization JSON-LD (schema.org) — improves local SEO discoverability.
+// Map our tier vocabulary to schema.org medicalSpecialty / type hints.
+const hospitalLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalOrganization',
+  '@id': `https://hrtyaku.com/zh/tools/hospital-finder/#${hospital.id}`,
+  name: hospital.name,
+  medicalSpecialty: 'Endocrinology',
+  department: {
+    '@type': 'MedicalOrganization',
+    name: hospital.department,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CN',
+    addressRegion: hospital.province,
+    addressLocality: hospital.city,
+    ...(hospital.address ? { streetAddress: hospital.address } : {}),
+  },
+  availableService: hospital.services.map((service) => ({
+    '@type': 'MedicalProcedure',
+    name: service,
+  })),
+  audience: {
+    '@type': 'MedicalAudience',
+    audienceType: 'Patient',
+  },
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(hospitalLd)} />
 
 <div class="hospital-card">
   <div class="hospital-card__stripe" />
