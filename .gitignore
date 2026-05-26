@@ -44,3 +44,7 @@ docs/data/gsc-*.csv
 
 # gpt-image-2 raw downloads (large PNG/JPG source, compressed webp committed separately)
 scripts/gpt-image-2-raw/
+
+# Playwright runtime artifacts
+test-results/
+playwright-report/
