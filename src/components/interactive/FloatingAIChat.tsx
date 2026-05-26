@@ -12,8 +12,10 @@ import AIAssistant from './AIAssistant';
 const styles: Record<string, CSSProperties> = {
   fab: {
     position: 'fixed',
-    bottom: '24px',
-    right: '24px',
+    // Respect iOS safe-area-inset-bottom (home indicator on iPhone X+).
+    // Falls back to 24px on browsers without env() support.
+    bottom: 'max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px))',
+    right: 'max(24px, env(safe-area-inset-right, 24px))',
     width: '52px',
     height: '52px',
     borderRadius: '50%',

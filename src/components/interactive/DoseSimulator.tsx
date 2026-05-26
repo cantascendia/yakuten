@@ -653,7 +653,8 @@ export default function DoseSimulator() {
       {/* Responsive CSS for dose controls */}
       <style>{`
         .sim-controls { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
-        @media (max-width: 540px) { .sim-controls { grid-template-columns: 1fr; } }
+        /* Raised from 540px to 640px so 375-480px phones get single column */
+        @media (max-width: 640px) { .sim-controls { grid-template-columns: 1fr; } }
       `}</style>
 
       {/* Dose + Interval */}
