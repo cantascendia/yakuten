@@ -191,8 +191,11 @@ site-search dialog::backdrop {
 
 #starlight__search .pagefind-ui__search-input:focus {
   border-color: var(--color-primary);
-  outline: none;
   box-shadow: 0 0 0 2px rgba(200, 75, 124, 0.15);
+}
+#starlight__search .pagefind-ui__search-input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* 搜索框内的按钮和文字颜色跟随主题 */

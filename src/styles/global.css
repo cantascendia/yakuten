@@ -178,7 +178,8 @@
   --color-bg-container-high: #E6E0EE;
   --color-text-primary: #1A1625;
   --color-text-secondary: #5A5270;
-  --color-text-muted: #8A82A0;
+  /* Darkened from #8A82A0 (~3.4:1 on #FAF7FC, failed AA) → #6B6280 (~5.3:1, passes 4.5:1) */
+  --color-text-muted: #6B6280;
   --color-outline-20: rgba(200, 75, 124, 0.15);
   --glass-bg: rgba(255, 255, 255, 0.7);
 }

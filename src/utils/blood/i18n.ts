@@ -3,7 +3,7 @@
  * Per user decision: zh/en/ja all filled, review JA before ship.
  */
 
-export type Locale = 'zh' | 'en' | 'ja';
+export type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 export interface B32Copy {
   // header
@@ -407,7 +407,104 @@ const JA: B32Copy = {
   sakuraHint: '「新版」をオフにすると従来の赤黄緑表示に戻ります',
 };
 
-const DICT: Record<Locale, B32Copy> = { zh: ZH, en: EN, ja: JA };
+const KO: B32Copy = {
+  headerKicker: 'BLOOD CHECKER · 혈액 검사 수첩',
+  headerCount: (n) => `${n}건의 기록`,
+  addNew: '+ 새 기록',
+  settings: '설정',
+  close: '닫기',
+
+  emptyHeadline: '아직 비어 있는 페이지',
+  emptyBody: '첫 혈액 검사를 추가하면 다음 검사부터 변화를 비교할 수 있습니다.\n데이터는 브라우저 안에만 저장됩니다.',
+  emptyCta: '+ 첫 혈액 검사 추가',
+
+  heroPowerLabel: 'HRT 파워',
+  heroRecordNth: (n, phase) => `RECORD #${n} · ${phase}`,
+  noPhase: '단계 없음',
+  shareCta: '공유',
+  streakRecordedLabel: '체크인',
+  streakRecordedValue: (n) => `${n}회차`,
+  streakSpanLabel: '기간',
+  streakSpanValue: (days) => `${days}일`,
+  streakFirstLabel: '첫 회',
+
+  sectionHighlights: 'HIGHLIGHTS · 이번 하이라이트',
+  sectionTimeline: 'TIMELINE · 지금까지의 기록',
+  sectionMetrics: 'METRICS · 각 지표',
+  sectionMetricsEmpty: '아직 입력된 지표가 없습니다 · +로 추가',
+
+  tagMilestone: '마일스톤',
+  tagImprovement: '개선',
+  tagWorry: '주의',
+  milestoneFirstTarget: '처음으로 목표 범위에 도달',
+  improvementFirstRecord: '이번이 첫 기록',
+  improvementRange: (from, to, unit) => `${from} → ${to} ${unit}`,
+  worrySuffix: ' — 다음 진료 때 상담하세요',
+
+  timelineAddHint: '+ 기록 추가',
+
+  levelTarget: '목표 달성',
+  levelSafe: '허용',
+  levelCaution: '주의',
+  levelDanger: '재검 필요',
+  levelEmpty: '미입력',
+
+  gradeNeutralTitle: '준비 중',
+  gradeNeutralSubtitle: '수치를 입력하면 기록이 시작됩니다',
+  gradeSTitle: '호르몬의 신탁',
+  gradeSSubtitle: '모든 지표가 목표 범위 안',
+  gradeAPlusTitle: 'HRT 우등생',
+  gradeAPlusSubtitle: '안정적으로 유지 중',
+  gradeATitle: '순조롭습니다',
+  gradeASubtitle: '컨디션 양호 · 미세 조정이면 완벽',
+  gradeBPlusTitle: '용량 조정 중인 여행자',
+  gradeBPlusSubtitle: '서두르지 말고 하나씩',
+  gradeBTitle: '이행기 · 진행 중',
+  gradeBSubtitle: '많은 사람이 이 단계를 거칩니다',
+  gradeCTitle: '수치가 작게 속삭이고 있습니다',
+  gradeCSubtitle: '몇 항목이 벗어났습니다 · 의사와 상담을',
+  gradeDTitle: '상담이 필요합니다',
+  gradeDSubtitle: '적색 경보 · 반드시 의사를 만나세요',
+
+  inputTitleNew: '새 혈액 검사',
+  inputTitleEdit: '기록 편집',
+  inputKickerNew: 'NEW',
+  inputKickerEdit: 'EDIT',
+  inputDate: '날짜',
+  inputPhase: '단계',
+  inputNote: '메모',
+  inputNotePlaceholder: '용법, 체감 등…',
+  inputCore: '핵심 지표',
+  inputExtendedShow: '+ 선택 지표 (FSH / SHBG / 지질)',
+  inputExtendedHide: '선택 지표 숨기기',
+  inputFilled: (filled, total) => `${filled}/${total}개 입력됨`,
+  inputSave: '저장',
+  inputCancel: '취소',
+  phases: ['기준선', '1개월', '3개월 추적', '6개월 추적', '안정기', '연례 검진'],
+
+  shareUpcoming: '공유 카드는 곧 공개 🌸',
+
+  settingsTitle: '설정',
+  settingsRegion: '단위 설정',
+  settingsRegionHint: '기본 표시 단위를 변경합니다',
+  regionCN: '중국 · pmol/L / nmol/L',
+  regionUS: '미국 · pg/mL / ng/dL',
+  regionEU: '유럽 · pmol/L / nmol/L',
+  regionJP: '일본 · pmol/L / nmol/L',
+  settingsExport: 'JSON 내보내기',
+  settingsImport: 'JSON 가져오기',
+  settingsClearAll: '모든 기록 삭제',
+  settingsClearConfirm: '모든 혈액 검사 기록을 삭제하시겠습니까? 되돌릴 수 없습니다.',
+
+  disclaimer: '데이터는 모두 브라우저 안에만 저장되며 서버로 전송되지 않습니다. 이 도구는 수치 이해를 돕는 참고용이며 의사의 진단을 대체하지 않습니다.',
+  disclaimerRed: '빨간색 항목이 보이면 반드시 의사와 상담하세요. 임의로 약을 중단하거나 추가하지 마세요.',
+
+  deleteConfirm: (date) => `${date}의 기록을 삭제하시겠습니까?`,
+
+  sakuraHint: '"신버전"을 끄면 기존 적·황·녹 표시로 돌아갑니다',
+};
+
+const DICT: Record<Locale, B32Copy> = { zh: ZH, en: EN, ja: JA, ko: KO };
 
 export function getB32Copy(locale: Locale): B32Copy {
   return DICT[locale] ?? ZH;
@@ -418,7 +515,7 @@ export function detectLocaleFromPath(): Locale {
   const p = window.location.pathname;
   if (p.startsWith('/en')) return 'en';
   if (p.startsWith('/ja')) return 'ja';
-  if (p.startsWith('/ko')) return 'en';
+  if (p.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
