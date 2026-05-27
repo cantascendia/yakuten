@@ -1,7 +1,7 @@
 ---
 /**
  * JSON-LD for Blog / Article pages.
- * Emits Article + Organization + WebSite schemas.
+ * Emits BlogPosting + Organization + WebSite + optional FAQPage.
  */
 interface Props {
   title: string;
@@ -11,13 +11,25 @@ interface Props {
   tags: string[];
   url: string;
   locale: string;
+  author?: string;
   faqs?: { q: string; a: string }[];
 }
 
-const { title, description, publishDate, updatedDate, tags, url, locale, faqs } = Astro.props;
+const { title, description, publishDate, updatedDate, tags, url, locale, author, faqs } = Astro.props;
 
 const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
 const inLanguage = langMap[locale] ?? 'zh-CN';
+
+// Author resolution — frontmatter `author` overrides the editorial-team default.
+// When the author string matches "HRT药典编辑部" / "HRT Yakuten Editorial" we keep
+// it as the Organization byline (E-E-A-T signal). Other named authors render as
+// a Person entity for proper Knowledge Graph attribution (named bylines surface
+// in SERPs).
+const EDITORIAL_BYLINES = new Set(['HRT药典编辑部', 'HRT Yakuten Editorial', 'HRT药典 编辑部', 'HRT Yakuten 編集部', 'HRT 약전 편집부']);
+const isEditorial = !author || EDITORIAL_BYLINES.has(author);
+const authorNode = isEditorial
+  ? { "@id": "https://hrtyaku.com/#organization" }
+  : { "@type": "Person", "name": author };
 
 const graph: Record<string, unknown>[] = [
   {
@@ -41,12 +53,12 @@ const graph: Record<string, unknown>[] = [
     "publisher": { "@id": "https://hrtyaku.com/#organization" }
   },
   {
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": title,
     "description": description,
     "datePublished": publishDate.toISOString(),
     ...(updatedDate ? { "dateModified": updatedDate.toISOString() } : {}),
-    "author": { "@id": "https://hrtyaku.com/#organization" },
+    "author": authorNode,
     "publisher": { "@id": "https://hrtyaku.com/#organization" },
     "mainEntityOfPage": url,
     "inLanguage": inLanguage,

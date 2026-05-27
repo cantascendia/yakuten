@@ -45,6 +45,11 @@ docs/data/gsc-*.csv
 # gpt-image-2 raw downloads (large PNG/JPG source, compressed webp committed separately)
 scripts/gpt-image-2-raw/
 
+# Diagram source masters (deployed WebP versions live under public/images/diagrams/{locale}/;
+# raw PNG masters are not part of the production CDN — recoverable from git history
+# (commits 1dd0af4 / 624172f / a58dfd5 / a722710 / 9c64618 etc.) if re-processing needed.)
+public/images/diagrams/*/source/
+
 # Playwright runtime artifacts
 test-results/
 playwright-report/

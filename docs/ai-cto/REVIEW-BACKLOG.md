@@ -35,6 +35,12 @@
 
 | # | 项目 | 来源 | 备注 |
 |---|------|------|------|
+| P2-PERF-1 | **Sakura 字体 @import 改造为 JS 条件注入** | 2026-05-26 perf-seo 审计 | `src/styles/sakura-theme.css:13` 顶部 @import 加载 Fraunces/Plus Jakarta/Ma Shan Zheng/Zen Maru Gothic/Klee One/Kosugi Maru/Yuji Syuku/DotGothic16 等 ~10 个手账字体 family，即使 sakura mode 未激活也强制全站下载。改造方案：移到 sakura-fonts.css 单独文件，在 ThemeToggle.astro 切换时通过 JS 注入 `<link rel="stylesheet">`。风险：FOUC + 切换体验。需独立 PR |
+| P2-PERF-2 | **OG 图像 PNG → WebP** | 同上 | `scripts/generate-og-images.mjs` 当前 sharp 输出 PNG（14 MB / 219 张）。改 WebP 节省 60-70% (4-6 MB)。微小社交平台兼容性 trade-off（旧 Android/iOS 显示 SVG fallback） |
+| P2-PERF-3 | **Sakura CSS 懒加载** | 同上 | 1443 行 sakura CSS（24 KB gzip）全部捆绑到 common chunk，仅 <1% 用户使用。需配合 P2-PERF-1 的字体改造一起做 |
+| P2-SEO-1 | **Drug 品牌 Product schema** | 同上 | DrugBrandIndex.tsx / drug-cards.tsx per-brand 当前只渲染视觉卡片，缺 Product 结构化数据 |
+| P2-SEO-2 | **Medical advisors Person schema** | 同上 | medical-advisors.mdx 列表展示，缺 Person 节点 |
+| P2-SEO-3 | **Compare 页双 Drug 节点** | 同上 | compare/cpa-vs-spironolactone 等当前是通用 MedicalWebPage，可 emit 两个 Drug + ComparisonChart |
 | P2-A11Y-1 | **axe-core CI 集成** | 2026-05-26 UI/a11y 审计 | Plan agent 建议每 PR + 月度自动跑 axe-core 扫描 6 张代表性页面（splash / blog / blood-tests / dose-simulator / drug-brand-index / FloatingAIChat 打开态），输出 violations 报告并阻断 P0 |
 | P2-A11Y-2 | **`<span lang="en">` 中文页英文药名标注** | 同上 | 改善屏幕阅读器发音；波及 ~30 处 MDX 行内 "Estradiol" / "Spironolactone" 等英文药名 |
 | P2-A11Y-3 | **多 H1 CI 断言** | 同上 (P2-5 历史) | Starlight + 自定义 hero 在审计时未发现多 H1，但缺 Playwright 断言。建议加 `expect(page.locator('h1')).toHaveCount(1)` 跨核心页 |

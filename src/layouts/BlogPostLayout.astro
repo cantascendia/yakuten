@@ -44,14 +44,14 @@ const updatedStr = updatedDate
 const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
 const htmlLang = langMap[postLocale] ?? 'zh-CN';
 
-// hreflang alternates
-const localeMap = [
-  { code: 'zh-CN', prefix: '/zh/' },
-  { code: 'en', prefix: '/en/' },
-  { code: 'ja', prefix: '/ja/' },
-  { code: 'ko', prefix: '/ko/' },
-];
+// hreflang alternates — only emit for locales where this blog post actually
+// exists. Blogs currently ship zh-only; declaring en/ja/ko alternates would
+// point at 404s and cost crawl budget in GSC (see audit 2026-05-26).
 const slug = getBlogSlug(entry);
+const blogLocaleMap: Record<string, Array<{ code: string; prefix: string }>> = {
+  zh: [{ code: 'zh-CN', prefix: '/zh/' }],
+};
+const hreflangAlternates = blogLocaleMap[postLocale] ?? [{ code: htmlLang, prefix: `/${postLocale}/` }];
 
 // Per-post OG image — generated postbuild by scripts/generate-og-images.mjs
 // into dist/og/blog/<locale>/<slug>.png. Falls back to the global og-image.svg
@@ -73,11 +73,11 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
   <meta name="theme-color" content="#0D0B14" />
   <link rel="manifest" href="/manifest.json" />
 
-  <!-- hreflang -->
-  {localeMap.map(({ code, prefix }) => (
+  <!-- hreflang — only emitted for locales where this post exists -->
+  {hreflangAlternates.map(({ code, prefix }) => (
     <link rel="alternate" hreflang={code} href={`https://hrtyaku.com${prefix}blog/${slug}/`} />
   ))}
-  <link rel="alternate" hreflang="x-default" href={`https://hrtyaku.com/zh/blog/${slug}/`} />
+  <link rel="alternate" hreflang="x-default" href={`https://hrtyaku.com/${postLocale}/blog/${slug}/`} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -107,11 +107,11 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
   <link
     rel="preload"
     as="style"
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
   </noscript>
 
   <!-- Styles -->
@@ -157,6 +157,7 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     tags={tags}
     url={canonicalUrl}
     locale={postLocale}
+    author={author}
     faqs={faqs}
   />
   <Analytics />
