@@ -1,0 +1,42 @@
+# Business path SSOT — codex-bridge 用此判断是否触发 §48 cross-review
+#
+# 格式：每行一个路径片段（行首匹配 grep -E '^片段'）
+#       空行 + # 注释忽略
+#
+# v3.6.1 教训：原 run.sh hardcoded `^(src|app|lib|apps|packages)/`
+#               是 generic 项目假设。aegis-panel 用 dashboard/src/、hardening/、ops/，
+#               全被 silent skip — Stop hook 触发 N 次但 BUSINESS 为空 exit 0，
+#               REVIEW-QUEUE.md 一直空。
+#
+# 改造：每个项目可以自己 customize 这个文件（不入 ai-playbook 中央仓库分发覆盖）。
+#
+# 默认 generic 模式（多数 Node/Python/Java 项目）：
+src/
+app/
+lib/
+apps/
+packages/
+api/
+
+# 常见替代模式（按需取消注释 / 添加）：
+# dashboard/src/    # 嵌套前端工程（如 aegis-panel）
+# hardening/        # 自研安全模块
+# ops/              # 运维自研
+# deploy/           # 部署脚本
+# actions/          # PHP / Rails 风格控制器（如 dian）
+# routes/           # Fastify / Express 路由
+# server/           # 后端入口
+# client/           # 前端入口
+# frontend/         # 前端包
+# backend/          # 后端包
+# admin/            # 管理后台
+# api/              # API 路径
+# components/       # React / Vue 组件根目录
+# pages/            # Next.js / Nuxt pages
+# services/         # 服务层
+# core/             # 核心库
+# tests/            # 测试也算业务（Spec → Test → Code 顺序）
+#
+# 修改本文件后：
+# - run.sh 自动读取，下次 Stop hook 触发立即生效
+# - 验证：bash .agents/skills/codex-bridge/run.sh HEAD（输出/REVIEW-QUEUE 应有新条目）

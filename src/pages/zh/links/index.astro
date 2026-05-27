@@ -1,0 +1,371 @@
+---
+/**
+ * Link-in-Bio landing page — /zh/links/
+ * Mobile-first, single-column, zero JS.
+ * Designed for X/Twitter profile link.
+ */
+import BlogHeader from '../../../components/layout/BlogHeader.astro';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>快速链接 - HRT药典</title>
+  <meta name="description" content="HRT药典快速链接 — 循证用药指南、实用工具、药物对比、社区反馈入口。" />
+  <link rel="canonical" href="https://hrtyaku.com/zh/links/" />
+  <meta name="theme-color" content="#0D0B14" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="zh-CN" href="https://hrtyaku.com/zh/links/" />
+  <link rel="alternate" hreflang="x-default" href="https://hrtyaku.com/zh/links/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="HRT药典 · 快速链接" />
+  <meta property="og:description" content="循证用药指南、实用工具、药物对比、社区反馈入口。" />
+  <meta property="og:url" content="https://hrtyaku.com/zh/links/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:image" content="https://hrtyaku.com/og-image.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@hrtyakuten" />
+  <meta name="twitter:title" content="HRT药典 · 快速链接" />
+  <meta name="twitter:description" content="循证用药指南、实用工具、药物对比、社区反馈入口。" />
+  <meta name="twitter:image" content="https://hrtyaku.com/og-image.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
+  </noscript>
+
+  <style is:global>
+    @import '../../../styles/global.css';
+    @import '../../../styles/glass.css';
+  </style>
+
+  <Analytics />
+  <SpeedInsights />
+</head>
+
+<body class="links-page">
+  <BlogHeader />
+
+  <main class="links-main">
+    <!-- Hero -->
+    <div class="links-hero">
+      <div class="links-hero__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="64" height="64">
+          <path fill-rule="evenodd" d="M81 36 64 0 47 36l-1 2-9-10a6 6 0 0 0-9 9l10 10h-2L0 64l36 17h2L28 91a6 6 0 1 0 9 9l9-10 1 2 17 36 17-36v-2l9 10a6 6 0 1 0 9-9l-9-9 2-1 36-17-36-17-2-1 9-9a6 6 0 1 0-9-9l-9 10v-2Zm-17 2-2 5c-4 8-11 15-19 19l-5 2 5 2c8 4 15 11 19 19l2 5 2-5c4-8 11-15 19-19l5-2-5-2c-8-4-15-11-19-19l-2-5Z" clip-rule="evenodd" fill="var(--color-primary)"/>
+          <path d="M118 19a6 6 0 0 0-9-9l-3 3a6 6 0 1 0 9 9l3-3Zm-96 4c-2 2-6 2-9 0l-3-3a6 6 0 1 1 9-9l3 3c3 2 3 6 0 9Zm0 82c-2-2-6-2-9 0l-3 3a6 6 0 1 0 9 9l3-3c3-2 3-6 0-9Zm96 4a6 6 0 0 1-9 9l-3-3a6 6 0 1 1 9-9l3 3Z" fill="var(--color-primary)"/>
+        </svg>
+      </div>
+      <h1 class="links-hero__title">HRT药典</h1>
+      <p class="links-hero__subtitle">循证 · 减害 · 引导就医</p>
+      <p class="links-hero__slogan">愿此行，抵达真实的自己</p>
+    </div>
+
+    <!-- Core Guides -->
+    <section class="links-section">
+      <h2 class="links-section__label">核心指南</h2>
+      <div class="links-grid">
+        <a href="/zh/before-you-start/" class="links-card">
+          <span class="links-card__icon">📋</span>
+          <span class="links-card__text">用药前准备</span>
+        </a>
+        <a href="/zh/pathway/" class="links-card">
+          <span class="links-card__icon">🗺️</span>
+          <span class="links-card__text">用药路径图</span>
+        </a>
+        <a href="/zh/risks/" class="links-card links-card--danger">
+          <span class="links-card__icon">⚠️</span>
+          <span class="links-card__text">风险与急症识别</span>
+        </a>
+        <a href="/zh/dose-limits/" class="links-card">
+          <span class="links-card__icon">🔴</span>
+          <span class="links-card__text">剂量红线与禁忌</span>
+        </a>
+        <a href="/zh/blood-tests/" class="links-card">
+          <span class="links-card__icon">🩸</span>
+          <span class="links-card__text">血检指南</span>
+        </a>
+        <a href="/zh/breast-development/" class="links-card">
+          <span class="links-card__icon">📖</span>
+          <span class="links-card__text">乳房发育专题</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="links-section">
+      <h2 class="links-section__label">实用工具</h2>
+      <div class="links-grid">
+        <a href="/zh/tools/blood-checker/" class="links-card">
+          <span class="links-card__icon">🔬</span>
+          <span class="links-card__text">血检自查工具</span>
+        </a>
+        <a href="/zh/tools/injection-calculator/" class="links-card">
+          <span class="links-card__icon">💉</span>
+          <span class="links-card__text">注射剂量换算</span>
+        </a>
+        <a href="/zh/tools/dose-simulator/" class="links-card">
+          <span class="links-card__icon">📊</span>
+          <span class="links-card__text">剂量模拟器</span>
+        </a>
+        <a href="/zh/tools/ai-assistant/" class="links-card">
+          <span class="links-card__icon">🤖</span>
+          <span class="links-card__text">AI 问答助手</span>
+        </a>
+        <a href="/zh/tools/risk-screener/" class="links-card">
+          <span class="links-card__icon">🛡️</span>
+          <span class="links-card__text">风险自评</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Comparisons -->
+    <section class="links-section">
+      <h2 class="links-section__label">药物对比</h2>
+      <div class="links-grid">
+        <a href="/zh/compare/cpa-vs-spironolactone/" class="links-card">
+          <span class="links-card__icon">⚖️</span>
+          <span class="links-card__text">CPA vs 螺内酯</span>
+        </a>
+        <a href="/zh/compare/oral-vs-injection/" class="links-card">
+          <span class="links-card__icon">⚖️</span>
+          <span class="links-card__text">口服 vs 注射</span>
+        </a>
+        <a href="/zh/compare/gel-vs-patch/" class="links-card">
+          <span class="links-card__icon">⚖️</span>
+          <span class="links-card__text">凝胶 vs 贴片</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="links-section">
+      <h2 class="links-section__label">社区</h2>
+      <div class="links-grid">
+        <a href="/zh/controversies-faq/" class="links-card links-card--accent">
+          <span class="links-card__icon">❓</span>
+          <span class="links-card__text">常见争议 FAQ</span>
+        </a>
+        <a href="/zh/feedback/" class="links-card">
+          <span class="links-card__icon">💬</span>
+          <span class="links-card__text">反馈与纠错</span>
+        </a>
+        <a href="/zh/blog/" class="links-card">
+          <span class="links-card__icon">📝</span>
+          <span class="links-card__text">专题文章</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="links-section">
+      <h2 class="links-section__label">关于</h2>
+      <div class="links-grid">
+        <a href="/zh/tools/hospital-finder/" class="links-card">
+          <span class="links-card__icon">🏥</span>
+          <span class="links-card__text">友好医疗资源</span>
+        </a>
+        <a href="mailto:hi@hrtyaku.com" class="links-card">
+          <span class="links-card__icon">✉️</span>
+          <span class="links-card__text">hi@hrtyaku.com</span>
+        </a>
+        <a href="https://x.com/hrtyakuten" target="_blank" rel="noopener noreferrer" class="links-card">
+          <span class="links-card__icon">𝕏</span>
+          <span class="links-card__text">X / Twitter</span>
+        </a>
+        <a href="https://github.com/cantascendia/yakuten" target="_blank" rel="noopener noreferrer" class="links-card">
+          <span class="links-card__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </span>
+          <span class="links-card__text">GitHub 源码</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="links-footer">
+    <p>HRT药典 &middot; 循证 &middot; 减害 &middot; 引导就医</p>
+    <p class="links-footer__notice">本站不提供处方、不销售药物、不收集个人信息。</p>
+  </footer>
+</body>
+</html>
+
+<style>
+  .links-page {
+    min-height: 100vh;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .links-main {
+    flex: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md) var(--space-2xl);
+    width: 100%;
+  }
+
+  /* Hero */
+  .links-hero {
+    text-align: center;
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .links-hero__icon {
+    margin-bottom: var(--space-md);
+  }
+
+  .links-hero__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .links-hero__subtitle {
+    font-family: var(--font-ui-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: var(--space-xs) 0 0;
+  }
+
+  .links-hero__slogan {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: var(--space-sm) 0 0;
+    font-style: italic;
+  }
+
+  /* Section */
+  .links-section {
+    margin-bottom: var(--space-lg);
+  }
+
+  .links-section__label {
+    font-family: var(--font-ui-accent);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-sm);
+    padding-left: var(--space-xs);
+  }
+
+  /* Grid */
+  .links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  /* Card */
+  .links-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--glass-bg, rgba(26, 22, 37, 0.6));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border, rgba(86, 65, 71, 0.2));
+    border-radius: 0;
+    clip-path: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    min-height: 52px;
+  }
+
+  .links-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(200, 75, 124, 0.15);
+    background: rgba(26, 22, 37, 0.8);
+  }
+
+  .links-card:active {
+    transform: translateY(0);
+  }
+
+  .links-card--danger {
+    border-color: rgba(244, 67, 54, 0.3);
+  }
+
+  .links-card--accent {
+    border-color: rgba(212, 168, 83, 0.3);
+  }
+
+  .links-card__icon {
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+  }
+
+  .links-card__icon svg {
+    display: block;
+  }
+
+  .links-card__text {
+    flex: 1;
+  }
+
+  /* Footer */
+  .links-footer {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .links-footer p {
+    margin: 0;
+  }
+
+  .links-footer__notice {
+    margin-top: var(--space-xs) !important;
+    font-size: 0.6875rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .links-card {
+      transition: none;
+    }
+  }
+</style>

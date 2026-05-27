@@ -1,0 +1,100 @@
+---
+title: 反馈与纠错
+description: 发现内容错误或有建议？了解如何向 HRT药典 提交反馈。我们重视每一条纠错报告。
+evidenceLevel: X
+lastReviewed: 2026-05-11
+references: []
+faqs:
+  - q: "发现医学内容错误怎么报告？"
+    a: "点击下方的内容纠错链接，填写受影响页面、错误内容、建议修正和参考文献 DOI。"
+  - q: "不会用 GitHub 怎么反馈？"
+    a: "发邮件到 hi@hrtyaku.com、使用 QQ 问卷或在 X 上联系我们，无需技术背景。"
+  - q: "反馈后多久处理？"
+    a: "安全相关纠错 48 小时内审核，一般反馈 1-2 周内回复。"
+sidebar:
+  order: 102
+---
+
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+医学内容的准确性是本站的生命线。如果你发现任何错误、过期信息或改进建议，请通过以下渠道告诉我们。
+
+<WarningBox>
+**安全相关的纠错（剂量错误、禁忌遗漏、危险信息缺失）我们会在 48 小时内审核处理。**
+</WarningBox>
+
+---
+
+## 内容纠错
+
+发现医学内容有误？请通过 GitHub Issue 提交结构化纠错报告。
+
+**需要提供：**
+- 出错的页面 URL
+- 当前错误的具体内容（引用原文）
+- 建议修正为什么
+- 支持修正的参考文献（DOI 或公开链接）
+
+<a href="https://github.com/cantascendia/yakuten/issues/new?template=content_correction.yml" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  提交内容纠错
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+:::note[不会用 GitHub？]
+没关系！你可以通过下方的 QQ 问卷或 X/Twitter 联系我们，用自然语言描述即可。
+:::
+
+---
+
+## 功能建议与 Bug 报告
+
+网站功能有问题（工具报错、页面显示异常、链接失效等）或有新功能建议？
+
+<a href="https://github.com/cantascendia/yakuten/issues/new/choose" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  提交功能建议 / Bug 报告
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+---
+
+## 一般反馈
+
+不属于纠错或 Bug，只是想说点什么？
+
+<a href="https://wj.qq.com/s2/16576000/5fe5/" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  填写反馈问卷（QQ 问卷）
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+---
+
+## 邮件联系
+
+**[hi@hrtyaku.com](mailto:hi@hrtyaku.com)** — 不方便用 GitHub 或问卷时，直接发邮件也可以。
+
+---
+
+## 社交媒体
+
+你也可以在 X/Twitter 上联系我们：
+
+**[@hrtyakuten](https://x.com/hrtyakuten)** — 关注获取更新，提问或反馈均可
+
+---
+
+## 纠错处理流程
+
+1. **收到** — 你提交的纠错进入审核队列
+2. **评估** — 编辑部核实引用文献和建议修正的准确性
+3. **修正** — 更新页面内容并标注更新日期
+4. **回复** — 在 GitHub Issue 或原帖回复确认已修正
+
+| 类型 | 预计响应时间 |
+|------|-------------|
+| 安全相关（剂量/禁忌/急症） | 48 小时内 |
+| 医学数据错误 | 1 周内 |
+| 措辞/翻译问题 | 1-2 周 |
+| 功能建议 | 视排期 |
+
+<FaqSchema items={frontmatter.faqs} title="反馈常见问题" />

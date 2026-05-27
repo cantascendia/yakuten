@@ -1,0 +1,26 @@
+# Forbidden 路径 SSOT（Single Source of Truth）— 手册 §32.1
+#
+# 用途：
+# - .agents/skills/codex-bridge/run.sh 路径过滤
+# - .github/workflows/*.yml CI 检查
+# - hooks（settings.json）匹配
+#
+# 格式：每行一个路径片段（不含 glob，被脚本拼接为 grep -E 正则）
+# 注释行（# 开头）与空行被忽略
+#
+# 修改本文件 = 修改全项目 forbidden 路径定义
+# CI 强制：scripts/check-forbidden-consistency.sh 校验本文件与手册 §32.1 同步
+
+auth/
+crypto/
+payment/
+billing/
+secrets/
+keys/
+migration
+migrations/
+infra/
+terraform/
+ansible/
+.github/workflows/
+api/

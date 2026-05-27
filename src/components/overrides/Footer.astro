@@ -59,7 +59,15 @@ const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
     <span aria-hidden="true">·</span>
     <a href="https://github.com/cantascendia/yakuten" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.link.github')}</a>
     <span aria-hidden="true">·</span>
-    <a href="https://wj.qq.com/s2/16576000/5fe5/" target="_blank" rel="noopener noreferrer">{t(locale, 'footer.link.feedback')}</a>
+    {locale === 'zh' ? (
+      <a href="/zh/feedback/">{t(locale, 'footer.link.feedback')}</a>
+    ) : (
+      <a
+        href="https://github.com/cantascendia/yakuten/issues/new?template=content_correction.yml"
+        target="_blank"
+        rel="noopener noreferrer"
+      >{t(locale, 'footer.link.feedback')}</a>
+    )}
   </nav>
 </div>
 

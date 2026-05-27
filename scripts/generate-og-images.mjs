@@ -435,6 +435,13 @@ async function main() {
   console.log(
     `OG images generated: docs ${docs.ok} ok · ${docs.fail} failed | blog ${blog.ok} ok · ${blog.fail} failed | out=${OUT_DIR}`,
   );
+  const totalFail = docs.fail + blog.fail;
+  if (totalFail > 0) {
+    console.error(
+      `✘ OG generation had ${totalFail} failure(s); failing build (E2 + Phase 12 §1.2).`,
+    );
+    process.exit(1);
+  }
 }
 
 main().catch((e) => {

@@ -1,6 +1,9 @@
 ﻿import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
 import { formatValueWithUnit } from '../../utils/medicalFormat';
+import toolStrings from '../../i18n/tool-strings.json';
 
+// Phase 12 §1.6: 外化字串到 src/i18n/tool-strings.json（铁律 #10）
+// + ko 补真本地化（之前 fallback to en）
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
@@ -10,79 +13,20 @@ function getLocale(): Locale {
   return 'zh';
 }
 
-const SECTION_COPY = {
-  zh: {
-    inputTitle: '输入血检数值',
-    resultTitle: '评估结果',
-    emptyHint: '在左侧输入你的血检数值，结果将实时显示在这里。',
-    disclaimer1: '此工具仅供参考，不能替代医生的判读。如果你有任何疑虑，请直接就医。',
-    disclaimer2: '所有计算都在你的浏览器本地完成，不会传输或存储任何数据。',
-    viewEmergency: '查看急症指南',
-  },
-  en: {
-    inputTitle: 'Enter lab values',
-    resultTitle: 'Assessment',
-    emptyHint: 'Enter your blood test values on the left. Results will appear here in real time.',
-    disclaimer1: 'This tool is for reference only and cannot replace clinician interpretation. If you are concerned, seek medical care directly.',
-    disclaimer2: 'All calculations run locally in your browser. No data is transmitted or stored.',
-    viewEmergency: 'View emergency guide',
-  },
-  ja: {
-    inputTitle: '検査値を入力',
-    resultTitle: '評価結果',
-    emptyHint: '左側に血液検査の数値を入力すると、結果がここに表示されます。',
-    disclaimer1: 'このツールは参考用であり、医師の判断の代わりにはなりません。不安がある場合は直接受診してください。',
-    disclaimer2: 'すべての計算はブラウザ内で完結し、データは送信・保存されません。',
-    viewEmergency: '緊急ガイドを見る',
-  },
-  ko: {
-    inputTitle: '검사 수치 입력',
-    resultTitle: '평가 결과',
-    emptyHint: '왼쪽에 혈액 검사 수치를 입력하면 결과가 실시간으로 여기에 표시됩니다.',
-    disclaimer1: '이 도구는 참고용이며 의사의 판단을 대체할 수 없습니다. 우려되는 점이 있다면 직접 의료기관을 방문하세요.',
-    disclaimer2: '모든 계산은 브라우저 안에서 수행되며 데이터는 전송되거나 저장되지 않습니다.',
-    viewEmergency: '응급 가이드 보기',
-  },
-} as const;
+type BloodCheckerStrings = {
+  sections: {
+    inputTitle: string;
+    resultTitle: string;
+    emptyHint: string;
+    disclaimer1: string;
+    disclaimer2: string;
+    viewEmergency: string;
+  };
+  rangeLabels: Record<string, string>;
+  actions: { printResults: string };
+};
 
-const RANGE_LABELS = {
-  zh: {
-    e2: 'E2 (雌二醇)',
-    t: 'T (睾酮)',
-    prl: 'PRL (泌乳素)',
-    alt: 'ALT/AST (肝功能)',
-    k: 'K+ (血钾)',
-    hb: 'Hb (血红蛋白)',
-    ddimer: 'D-二聚体',
-  },
-  en: {
-    e2: 'E2 (Estradiol)',
-    t: 'T (Testosterone)',
-    prl: 'PRL (Prolactin)',
-    alt: 'ALT/AST (Liver function)',
-    k: 'K+ (Serum potassium)',
-    hb: 'Hb (Hemoglobin)',
-    ddimer: 'D-dimer',
-  },
-  ja: {
-    e2: 'E2 (エストラジオール)',
-    t: 'T (テストステロン)',
-    prl: 'PRL (プロラクチン)',
-    alt: 'ALT/AST (肝機能)',
-    k: 'K+ (血清カリウム)',
-    hb: 'Hb (ヘモグロビン)',
-    ddimer: 'D-ダイマー',
-  },
-  ko: {
-    e2: 'E2 (에스트라디올)',
-    t: 'T (테스토스테론)',
-    prl: 'PRL (프로락틴)',
-    alt: 'ALT/AST (간기능)',
-    k: 'K+ (혈청 칼륨)',
-    hb: 'Hb (헤모글로빈)',
-    ddimer: 'D-이합체',
-  },
-} as const;
+const TOOL_STRINGS = toolStrings.bloodChecker as Record<Locale, BloodCheckerStrings>;
 
 /* ================================================================
    Blood Test Self-Check Tool  —  BloodTestChecker React Island
@@ -508,7 +452,7 @@ export default function BloodTestChecker() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [mobileTab, setMobileTab] = useState<'input' | 'result'>('input');
   const locale = getLocale();
-  const copy = SECTION_COPY[locale];
+  const copy = TOOL_STRINGS[locale].sections;
 
   const handleChange = useCallback((id: string, raw: string) => {
     setValues((prev) => ({ ...prev, [id]: raw }));
@@ -576,7 +520,7 @@ export default function BloodTestChecker() {
         {hasAnyValue && (
           <div style={s.persistNotice}>
             <button onClick={() => window.print()} style={s.clearBtn}>
-              {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : locale === 'ko' ? '결과 인쇄' : 'Print results'}
+              {TOOL_STRINGS[locale].actions.printResults}
             </button>
           </div>
         )}
@@ -613,7 +557,7 @@ function InputField({
   const hasValue = !isNaN(num);
   const level = hasValue ? evaluate(spec, num) : null;
   const isRed = level === 'red';
-  const labelText = RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label;
+  const labelText = TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label;
   const statusText = hasValue
     ? level === 'green'
       ? `${labelText}: 在目标范围内`
@@ -712,7 +656,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
   return (
     <div style={s.resultRow} className={isRed ? 'btc-red-row' : ''}>
       <div style={s.resultLabel}>
-        <span>{RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label}</span>
+        <span>{TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label}</span>
         <span
           style={{
             fontFamily: 'var(--font-mono)',
@@ -733,7 +677,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
       </div>
 
       {/* Stacked bar */}
-      <div style={s.barOuter} role="meter" aria-label={RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label} aria-valuenow={value} aria-valuemin={lo} aria-valuemax={hi}>
+      <div style={s.barOuter} role="meter" aria-label={TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label} aria-valuenow={value} aria-valuemin={lo} aria-valuemax={hi}>
         {/* Red background spans full width */}
         <div
           style={{
@@ -770,7 +714,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
         <div style={s.warningBox}>
           <span>{RED_WARNINGS[locale][spec.id] ?? RED_WARNINGS.zh[spec.id]}</span>
           <a href={risksHref} style={s.warningLink}>
-            {SECTION_COPY[locale].viewEmergency}
+            {TOOL_STRINGS[locale].sections.viewEmergency}
           </a>
         </div>
       )}

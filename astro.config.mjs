@@ -82,6 +82,12 @@ export default defineConfig({
               slug: 'breast-development',
               badge: { text: { 'zh-CN': '必读', en: 'Must Read', ja: '必読', ko: '필독' }, variant: 'danger' },
             },
+            {
+              label: '常见争议 FAQ',
+              translations: { en: 'Controversies FAQ', ja: '議論FAQ', ko: '논쟁 FAQ' },
+              slug: 'controversies-faq',
+              badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새' }, variant: 'success' },
+            },
           ],
         },
         // ── 实操指南 ──
@@ -323,6 +329,7 @@ export default defineConfig({
             { label: '医学顾问', translations: { en: 'Medical Advisors', ja: '医学顧問', ko: '의학 자문' }, slug: 'medical-advisors' },
             { label: '编辑政策', translations: { en: 'Editorial Policy', ja: '編集方針', ko: '편집 정책' }, slug: 'editorial-policy' },
             { label: '参考文献库', translations: { en: 'Reference Library', ja: '参考文献ライブラリ', ko: '참고 문헌 라이브러리' }, slug: 'appendix-references' },
+            { label: '反馈与纠错', translations: { en: 'Feedback', ja: 'フィードバック', ko: '피드백' }, slug: 'feedback' },
           ],
         },
       ],

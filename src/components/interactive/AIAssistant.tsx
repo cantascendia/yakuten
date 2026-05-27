@@ -28,6 +28,9 @@ const UI_COPY = {
     serviceUnavailable: '服务暂时不可用',
     emptyResponse: '抱歉，暂时无法获取回复。请稍后重试。',
     unknownError: '未知错误',
+    retryHint: '已重试 3 次，请稍后再试。',
+    streamInterrupted: '回复中断，请重新提问。',
+    retrying: '重连中…',
     suggestions: [
       '雌二醇的常见目标范围是什么？',
       '出现哪些情况需要立即停药？',
@@ -52,6 +55,9 @@ const UI_COPY = {
     serviceUnavailable: 'Service temporarily unavailable',
     emptyResponse: 'Sorry, no reply was returned. Please try again later.',
     unknownError: 'Unknown error',
+    retryHint: 'Tried 3 times. Please try again later.',
+    streamInterrupted: 'Reply interrupted. Please ask again.',
+    retrying: 'Reconnecting…',
     suggestions: [
       'What is a common estradiol target range?',
       'Which symptoms mean I should stop medication immediately?',
@@ -76,6 +82,9 @@ const UI_COPY = {
     serviceUnavailable: 'サービスは一時的に利用できません',
     emptyResponse: '返信を取得できませんでした。しばらくしてから再試行してください。',
     unknownError: '不明なエラー',
+    retryHint: '3 回再試行しました。しばらくしてから再度お試しください。',
+    streamInterrupted: '返信が中断されました。もう一度質問してください。',
+    retrying: '再接続中…',
     suggestions: [
       'エストラジオールの一般的な目標範囲は？',
       'どんな症状ならすぐ中止すべきですか？',
@@ -100,6 +109,9 @@ const UI_COPY = {
     serviceUnavailable: '서비스가 일시적으로 사용할 수 없습니다',
     emptyResponse: '죄송합니다, 응답을 받지 못했습니다. 잠시 후 다시 시도해 주세요.',
     unknownError: '알 수 없는 오류',
+    retryHint: '3번 재시도했습니다. 잠시 후 다시 시도해 주세요.',
+    streamInterrupted: '응답이 중단되었습니다. 다시 질문해 주세요.',
+    retrying: '재연결 중…',
     suggestions: [
       '에스트라디올의 일반적인 목표 범위는?',
       '어떤 증상이면 즉시 복용을 중단해야 하나요?',
@@ -390,68 +402,118 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     setInput('');
     setIsLoading(true);
 
-    try {
-      const res = await fetch('/api/ai-chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: newMessages.map(m => ({ role: m.role, content: m.content })),
-        }),
-      });
+    // Phase 12 §1.5: 3 次指数退避重试 — 仅对 fetch 网络错误 / 5xx 且尚未收到首 chunk
+    const MAX_ATTEMPTS = 3;
+    const BACKOFFS_MS = [500, 1500, 3000];
+    let firstChunkReceived = false;
+    let lastErr: Error | null = null;
 
-      if (!res.ok) {
-        if (res.status === 429) {
-          const data = await res.json().catch(() => ({}));
-          throw new Error(data.error || ui.rateLimitError);
-        }
-        throw new Error(`${ui.serviceUnavailable} (${res.status})`);
-      }
-
-      if (!res.body) {
-        throw new Error('No response body');
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantContent = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        assistantContent += chunk;
-        setMessages(prev => {
-          const updated = [...prev];
-          updated[updated.length - 1] = { role: 'assistant', content: assistantContent };
-          return updated;
+    for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+      try {
+        const res = await fetch('/api/ai-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+          }),
         });
-      }
 
-      if (!assistantContent) {
-        setMessages(prev => {
-          const updated = [...prev];
-          updated[updated.length - 1] = {
-            role: 'assistant',
-            content: ui.emptyResponse,
-          };
-          return updated;
-        });
-      }
-    } catch (err: unknown) {
-      const errMsg = err instanceof Error ? err.message : ui.unknownError;
-      setError(errMsg);
-      // Remove the empty assistant placeholder on error
-      setMessages(prev => {
-        if (prev[prev.length - 1]?.role === 'assistant' && !prev[prev.length - 1]?.content) {
-          return prev.slice(0, -1);
+        if (!res.ok) {
+          // 429 / 4xx 永不重试（rate limit / 客户端错误）
+          if (res.status === 429) {
+            const data = await res.json().catch(() => ({}));
+            throw new Error(data.error || ui.rateLimitError);
+          }
+          if (res.status >= 400 && res.status < 500) {
+            throw new Error(`${ui.serviceUnavailable} (${res.status})`);
+          }
+          // 5xx 可重试
+          lastErr = new Error(`${ui.serviceUnavailable} (${res.status})`);
+          if (attempt < MAX_ATTEMPTS - 1) {
+            setError(ui.retrying);
+            await new Promise(r => setTimeout(r, BACKOFFS_MS[attempt]));
+            continue;
+          }
+          throw lastErr;
         }
-        return prev;
-      });
-    } finally {
-      setIsLoading(false);
-      inputRef.current?.focus();
+
+        if (!res.body) {
+          lastErr = new Error('No response body');
+          if (attempt < MAX_ATTEMPTS - 1) {
+            setError(ui.retrying);
+            await new Promise(r => setTimeout(r, BACKOFFS_MS[attempt]));
+            continue;
+          }
+          throw lastErr;
+        }
+
+        // 流读取 — 首 chunk 之后任何中断不再重试（无法 resume）
+        setError(null);
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let assistantContent = '';
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            firstChunkReceived = true;
+            const chunk = decoder.decode(value, { stream: true });
+            assistantContent += chunk;
+            setMessages(prev => {
+              const updated = [...prev];
+              updated[updated.length - 1] = { role: 'assistant', content: assistantContent };
+              return updated;
+            });
+          }
+        } catch (streamErr: unknown) {
+          // 流中断 — 已经显示了部分内容，告知用户不再重试
+          const errMsg = streamErr instanceof Error ? streamErr.message : ui.unknownError;
+          setError(`${errMsg}（${ui.streamInterrupted}）`);
+          setIsLoading(false);
+          inputRef.current?.focus();
+          return;
+        }
+
+        if (!assistantContent) {
+          setMessages(prev => {
+            const updated = [...prev];
+            updated[updated.length - 1] = {
+              role: 'assistant',
+              content: ui.emptyResponse,
+            };
+            return updated;
+          });
+        }
+        // 成功路径 — 跳出 attempt 循环
+        setIsLoading(false);
+        inputRef.current?.focus();
+        return;
+      } catch (err: unknown) {
+        lastErr = err instanceof Error ? err : new Error(ui.unknownError);
+        // 收到首 chunk 后不重试（在 streamErr 分支已处理 return）
+        if (firstChunkReceived) break;
+        // 4xx / rate-limit 在 throw 前已 break 不会到这（不会被 retry）
+        const isRetryable = /fetch|network|5\d\d/i.test(lastErr.message);
+        if (isRetryable && attempt < MAX_ATTEMPTS - 1) {
+          setError(ui.retrying);
+          await new Promise(r => setTimeout(r, BACKOFFS_MS[attempt]));
+          continue;
+        }
+        break;
+      }
     }
+
+    // 所有重试都失败 — 友好降级
+    const errMsg = lastErr?.message ?? ui.unknownError;
+    setError(`${errMsg}（${ui.retryHint}）`);
+    setMessages(prev => {
+      if (prev[prev.length - 1]?.role === 'assistant' && !prev[prev.length - 1]?.content) {
+        return prev.slice(0, -1);
+      }
+      return prev;
+    });
+    setIsLoading(false);
+    inputRef.current?.focus();
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
