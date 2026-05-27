@@ -1,6 +1,6 @@
 # REVIEW BACKLOG
 
-**Last Updated:** 2026-04-23
+**Last Updated:** 2026-05-26
 
 累积的技术 / 内容 / i18n / 运营债，按优先级分级。来源：git log（Phase 9-11）+ 现有代码扫描。
 
@@ -20,12 +20,14 @@
 
 | # | 项目 | 来源 | 备注 |
 |---|------|------|------|
-| P1-1 | **Phase 11 zh 增量内容翻译到 en/ja/ko** | git log Phase 11 | 14 篇博客 / 3 篇 compare 决策矩阵 / editorial-policy / methodology / medical-advisors 全部 zh-only。i18n 评分从 10/10 跌至 8.5/10。建议先 compare 决策矩阵 + 治理三页（信任信号），博客分批翻译 |
+| P1-1 | **博客 + guides 的 en/ja/ko 翻译流水线** | 2026-05-26 内容审计 | 14 篇博客 + 4 篇 guides 仅 zh = 54 个翻译缺口；compare 3 篇 + editorial-policy / methodology / medical-advisors 也仍是 zh-only。本次审计未做 AI draft 翻译（医学剂量内容在无人工审阅 SOP 下风险过高）。需先建立翻译 SOP：AI 起草 → 医学顾问签字 → noindex 上线观察 → 解除 noindex。优先级建议先 compare 决策矩阵 + 治理三页 |
 | P1-2 | **SEO 月度 PR 实际进入决策循环** | `.github/workflows/seo-refresh.yml` | 自动 PR 已通，但缺少明确 SOP：谁审、striking-distance 词如何转 issue、是否归档历史快照。建议在 `cto-review` 命令里加 SEO PR 处理项 |
 | P1-3 | **首次注射 10 步图文教程的 i18n 配图** | commit `9fd53f5` + `gpt-image-2-manifest.json` | injection-step-01..08 仅 zh 高质量版本；en/ja/ko 仍是 Gemini 流水线产出，质量分化 |
 | P1-4 | **Sakura 皮肤 zh 之外验证 + 文档** | commits `41a991d`/`54fb28b`/`09b0cea`/`b0e3d0a` | 多次回滚痕迹说明 Sakura 在 Starlight 内陷阱较多。需要在 ARCHITECTURE 之外增加 sakura 维护 SOP，并在 en/ja/ko 路径下抽样验证 |
 | P1-5 | **WPATH SOC 9 草案监控** | references.json 引用基线 | WPATH SOC 9 草案预期 2026 年发布；出版后 30 天内必须更新 references.json，标注与 SOC 8 差异，刷新文献库 UI |
-| P1-6 | **Phase 11 内容深化的医学审阅记录** | commits 一批新增内容（cpa-meningioma-risk / cpa-dose-safe-range / blood-test-timing）| `medical-advisors.mdx` 框架已有，但博客是否经独立医学审阅未在 commit log 体现。需建立审阅签字流程 |
+| P1-6 | ~~Phase 11 内容深化的医学审阅记录~~ → 关闭 | 内容审计 2026-05-26 / DECISIONS.md D015-D017 | 已通过 references.json evidenceLevel 字段 + validator scope 扩展 + DOI 存活 CI 三件套部分收口；剩余审阅签字流程并入 P1-1 SOP |
+| P1-7 | **`ReferenceLibrary.tsx` 改读 references.json** | 内容审计 2026-05-26 | 当前 `ReferenceLibrary.tsx` 在源码中硬编码 references 副本，与 references.json 双轨；本次审计的 evidenceLevel 字段未传导到工具页 UI。需重构为 build-time 注入 json，按 evidenceLevel 提供筛选 |
+| P1-8 | **`verify-citations.yml` 切换到 monthly schedule** | 内容审计 2026-05-26 | 当前 workflow 仅 `workflow_dispatch` + `pull_request` 触发。观察一个月后稳定可改 `schedule: '0 3 1 * *'` 月度自动开 PR |
 
 ---
 
