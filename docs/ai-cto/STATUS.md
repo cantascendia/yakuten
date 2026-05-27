@@ -1,31 +1,32 @@
 # STATUS
 
 **Last Updated:** 2026-05-26
-**Current Version:** v1.2.0-pre (Phase 12 — UI / accessibility + content citation)
+**Current Version:** v1.2.0-pre (Phase 12 — Content citation integrity)
 **Git Tag:** —
 
 ---
 
-## 2026-05-26 · UI / 可访问性审计收口（PR `claude/ui-accessibility-audit`）
+## 2026-05-26 · 内容引用治理收口（PR `claude/website-content-audit-5i4So`）
 
-3 个并行 Explore 子代理（WCAG 2.2 AA / 设计系统延续 / 移动 + 紧急 UX）+ 1 个 Plan 子代理共同完成审计，识别并修复 9 类问题：
+通过 3 个并行 Explore 子代理 + 1 个 Plan 子代理完成全量内容审计，识别并修复 8 类问题：
 
-1. WCAG 2.4.7 焦点可见性：4 处 `:focus-visible { outline: none }` 自废武功修复（HeroSection / SplashNav / blood-b32 / starlight-override）
-2. WCAG 2.5.5 触点尺寸：EmergencyBanner CTA 从 ~20px 提升至 ≥44px
-3. WCAG 2.4.1 Bypass Blocks：BlogPostLayout 加 skip-to-main-content（Starlight 页面沿用内置 SkipLink）
-4. WCAG 2.1.2 / 2.3.3 / 2.4.3 / 4.1.2 FloatingAIChat：Escape 关闭、focus return、reduced-motion 退化、`role="dialog" aria-modal`、`aria-haspopup` / `aria-expanded`
-5. WCAG 4.1.2 / 3.3.1 BloodTestChecker：`aria-invalid` + `aria-describedby` + sr-only 状态信息
-6. WCAG 1.4.3 亮色主题 `--color-text-muted` #8A82A0 → #6B6280（3.4:1 → 5.3:1）
-7. 移动端：DrugQuickNav / DoseSimulator 断点 540 → 640；FloatingAIChat FAB 加 `env(safe-area-inset-bottom)`
-8. 设计系统：3 处内联 clip-path 收口到 `var(--clip-corner)`
-9. 测试：新增 `tests/mobile-a11y.spec.ts`，iPhone SE 视口下 9 个 a11y 用例全绿
+1. references.json schema 缺 `evidenceLevel` 字段 → 29 条全部补，新增 2 条（hou-2026 / liu-2020）覆盖之前未引用的中国调查数据，schema 强制 A/B/C/X
+2. 14 篇 zh 博客累计 ~108 处剂量声明无 `<CitationRef>` → 全部补齐 + frontmatter `evidenceLevel`/`references`/`lastReviewed`
+3. `scripts/validate-content.mjs` 历史只扫 docs → 扩展到 blog + 强制 evidenceLevel + 引用 ID 双向校验
+4. 3 条死引用激活（gerber-2024 / herndon-2023 / howlow-2024）
+5. 1 条死 DOI 修正（matsumoto-2020：从 J Pharm Health Care Sci → SAGE Open Medicine，PubMed PMID 32528682 核对）
+6. 8 处医学非紧急"必须"软化（剂量操作 / 监测节奏）；30 处紧急 / 法律 / 解剖安全场景保留（D016 三档分桶）
+7. before-you-start.mdx + china-reality.mdx 核心页患病率 / 时间线 / 不可逆性声明补 CitationRef；evidenceLevel X → A/B
+8. 2 处确认断链修复（hospital-finder.mdx → china-reality.mdx 重构后的 #step1 / #safety）
 
 新增基础设施：
-- `docs/ui-a11y-audit-2026-05-26.md` — 完整审计报告
-- `tests/mobile-a11y.spec.ts` — 移动 + a11y 回归测试
-- `i18n/ui.ts` 4 语 `a11y.skipToMain` 键
+- `scripts/verify-doi-liveness.mjs` — DOI / URL 月度存活校验
+- `.github/workflows/verify-citations.yml` — PR + workflow_dispatch 触发，稳定后改月度 schedule
+- `docs/content-audit-2026-05-26.md` — 完整审计报告
+- `docs/citations-liveness-2026-05-26.md` — 首跑报告（19 pass / 14 manual / 0 fail）
+- DECISIONS.md D015（evidenceLevel 评定规则）/ D016（绝对语言三档）/ D017（DOI 存活 CI）
 
-延后到 REVIEW-BACKLOG（Plan agent 风险评估剔除）：axe-core CI 集成、`<span lang="en">` 中文页英文药名、多 H1 断言、ReferenceLibrary 重构、FloatingAIChat 横屏键盘碰撞真机验证。
+i18n 全量翻译（14 博客 + 4 guides × 3 locale = 54 文件）显式不列入本 PR，已记入 REVIEW-BACKLOG P1-1，待医学翻译审阅 SOP 就位后单独执行。
 
 ---
 
@@ -84,7 +85,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 | 交互工具（血检自查 / 注射计算器 / 剂量模拟器 / AI 助手 / 风险筛查 / 药物对比 / 文献库 / 药物速查卡 / 品牌索引 / 医院查找） | ✅ |
 | AI 问答（Gemini 3 Flash Preview，Vercel Edge） | ✅ |
 | 友好医疗资源数据库（15 家） | ✅ |
-| 引用系统 + 22 条文献（18 条有 DOI） | ✅ |
+| 引用系统 + 31 条文献（23 条有 DOI，全部带 evidenceLevel A/B/C） | ✅ |
 | SVG 医学可视化（PKCurveChart / InjectionSiteSVG / RouteComparisonSVG） | ✅ |
 | 28 项 Playwright E2E | ✅ |
 | PWA manifest + 内容新鲜度 90 天告警 | ✅ |
@@ -140,7 +141,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 |---------|--------|------|
 | `drugs.json` | 20 种药物 | 全覆盖 |
 | `drug-brands.json` | 58 品牌 | 16 类药物，13 国 |
-| `references.json` | 22 条文献 | 18 条有 DOI |
+| `references.json` | 31 条文献 | 23 条有 DOI；每条均含 evidenceLevel A/B/C |
 | `hospitals.json` | 15 家医院 | 全部验证至 2026-04-12 |
 | `blood-ranges.json` | 7 项指标 | E2/T/PRL/ALT/K+/Hb/D-dimer |
 | `gpt-image-2-manifest.json` | 15 条 prompt | 2026-04-23 一次性产出，禁止脚本重生成 |

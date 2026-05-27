@@ -2,12 +2,15 @@
 title: 色谱龙 CPA 脑膜瘤风险:循证风险评估与降低策略
 description: EMA 2020 限制令背后的证据:Meyer 2020 法国队列、Lee 2022、Hudelist 2026 的脑膜瘤风险剂量-反应数据。包括累积剂量临界点、症状早期识别、筛查时机与低剂量替代方案。
 publishDate: 2026-04-19
+lastReviewed: 2026-05-26
 author: HRT药典编辑部
 locale: zh
 tags: [色谱龙, CPA, 脑膜瘤, EMA, 风险, MRI, 安全]
 category: safety
 targetKeyword: CPA 脑膜瘤
 relatedDocs: [medications/antiandrogens/cpa, risks, compare/cpa-vs-spironolactone, blood-tests]
+evidenceLevel: A
+references: [lee-2022, hudelist-2026, ema-2020, meyer-2020, coleman-2022, hembree-2017, howlow-2024]
 draft: false
 faqs:
   - q: "CPA 脑膜瘤风险有多大?"
@@ -26,13 +29,15 @@ faqs:
     a: "低得多。跨性别 HRT 推荐的低剂量(5-12.5 mg/天)远低于 20 世纪多毛症/前列腺癌治疗的 50-100 mg/天。大规模流行病学数据主要基于高剂量长期人群,按累积剂量换算到低剂量方案,脑膜瘤风险从基线 OR=12 级别降到接近基线水平。"
 ---
 
+import CitationRef from '../../../components/ui/CitationRef.astro';
+
 ## 一句话结论
 
-**CPA 脑膜瘤风险与累积剂量强相关,不是每日剂量**。
+**CPA 脑膜瘤风险与累积剂量强相关,不是每日剂量**<CitationRef id="lee-2022" num={1} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />。
 
-- 低剂量(5-12.5 mg/天):累积 10 克要 2-5 年,风险接近基线
-- 高剂量(≥25 mg/天):1 年累积 9 克,进入 OR=12 区间
-- EMA 2020 限制令要求**最低有效剂量**,**不禁止跨性别使用**
+- 低剂量(5-12.5 mg/天):累积 10 克要 2-5 年,风险接近基线<CitationRef id="howlow-2024" num={2} authors="IJTH" year={2024} title="How low can you go? Lowest effective dose of cyproterone acetate" />
+- 高剂量(≥25 mg/天):1 年累积 9 克,进入 OR=12 区间<CitationRef id="hudelist-2026" num={3} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />
+- EMA 2020 限制令要求**最低有效剂量**,**不禁止跨性别使用**<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
 
 本文整理 Meyer 2020、Lee 2022、Hudelist 2026 的核心证据,给出剂量决策与监测建议。
 
@@ -40,7 +45,7 @@ faqs:
 
 ## 一、核心数据(Lee 2022 国家队列)
 
-**Lee JH 等人 2022 年** 对 2005-2018 年法国国家医保数据中 253,777 名 CPA 使用者进行回顾队列分析:
+**Lee JH 等人 2022 年** 对 2005-2018 年法国国家医保数据中 253,777 名 CPA 使用者进行回顾队列分析<CitationRef id="lee-2022" num={1} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />:
 
 | 累积 CPA 剂量 | 脑膜瘤发生 OR | 95% CI |
 |---|---|---|
@@ -50,15 +55,15 @@ faqs:
 | &gt;150 克 | 21.72 | 10.39-45.42 |
 
 **关键洞察**:
-- 风险**非线性**:累积剂量低时接近基线,超过临界点后陡升
+- 风险**非线性**:累积剂量低时接近基线,超过临界点后陡升<CitationRef id="hudelist-2026" num={3} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />
 - 绝大多数确诊的 CPA 相关脑膜瘤发生在长期高剂量使用者
-- 剂量分层后,低剂量组风险未显著升高于对照
+- 剂量分层后,低剂量组风险未显著升高于对照<CitationRef id="howlow-2024" num={2} authors="IJTH" year={2024} title="How low can you go? Lowest effective dose of cyproterone acetate" />
 
 ---
 
 ## 二、EMA 2020 限制令在说什么
 
-**EMA 2020 年 2 月 14 日**发布 Article 31 审查结论:
+**EMA 2020 年 2 月 14 日**发布 Article 31 审查结论<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />:
 
 - CPA 产品在下列适应症必须"使用最低有效剂量":
   - 多毛症 · 雄激素性脱发 · 严重痤疮 · 女性化
@@ -72,20 +77,20 @@ faqs:
 - 使用最低有效剂量
 - 监测症状 + 必要时 MRI
 
-SOC 8 和 Endocrine Society 2017 把 EMA 建议纳入低剂量指南(5-12.5 mg/天)。
+SOC 8 和 Endocrine Society 2017 把 EMA 建议纳入低剂量指南(5-12.5 mg/天)<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
 ---
 
 ## 三、Meyer 2020:低剂量方案的证据基础
 
-**Meyer G 等人 2020 年**对 82 名 MTF 使用低剂量 CPA(10 mg/天)+ 戊酸雌二醇的前瞻队列:
+**Meyer G 等人 2020 年**对 82 名 MTF 使用低剂量 CPA(10 mg/天)+ 戊酸雌二醇的前瞻队列<CitationRef id="meyer-2020" num={7} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />:
 
 - 6 个月后睾酮中位 32 ng/dL(女性范围)
 - 无严重不良事件(包括 ALT/AST 升高、泌乳素、情绪)
 - 未观察到脑膜瘤相关头痛/视觉症状
 - 随访有限(6 个月),长期风险需进一步队列
 
-这是 SOC 8 推荐 &lt;10 mg/天作为默认方案的关键证据。
+这是 SOC 8 推荐 &lt;10 mg/天作为默认方案的关键证据<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
 
 ---
 
@@ -101,9 +106,9 @@ SOC 8 和 Endocrine Society 2017 把 EMA 建议纳入低剂量指南(5-12.5 mg/�
 | 50 mg | 0.5 年(6 个月) | 3.3 年 |
 
 **实际含义**:
-- 5-12.5 mg/天方案下,即使长期 HRT(10-20 年),累积仍在相对低风险区
-- 50 mg/天方案 1 年就累积 18 克,属于已经进入 EMA 建议重新评估的区间
-- **时长不是直接风险**,剂量 × 时长才是
+- 5-12.5 mg/天方案下,即使长期 HRT(10-20 年),累积仍在相对低风险区<CitationRef id="howlow-2024" num={2} authors="IJTH" year={2024} title="How low can you go? Lowest effective dose of cyproterone acetate" />
+- 50 mg/天方案 1 年就累积 18 克,属于已经进入 EMA 建议重新评估的区间<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+- **时长不是直接风险**,剂量 × 时长才是<CitationRef id="lee-2022" num={1} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />
 
 ---
 
@@ -153,7 +158,7 @@ SOC 8 和 Endocrine Society 2017 把 EMA 建议纳入低剂量指南(5-12.5 mg/�
 
 ## 七、发现脑膜瘤后的处理
 
-多数 CPA 相关脑膜瘤为良性、小型、无症状。**立即停 CPA** 是第一动作(多项研究显示停药后部分脑膜瘤缩小)。
+多数 CPA 相关脑膜瘤为良性、小型、无症状。**立即停 CPA** 是第一动作(多项研究显示停药后部分脑膜瘤缩小)<CitationRef id="hudelist-2026" num={3} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />。
 
 | 情况 | 神经外科建议 |
 |---|---|
