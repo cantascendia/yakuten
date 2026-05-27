@@ -1,5 +1,6 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { streamText } from 'ai';
+import type { ModelMessage } from 'ai';
 
 export const config = { runtime: 'edge' };
 
@@ -93,9 +94,9 @@ function getClientIp(req: Request): string {
 
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_BYTES = 4096;
-const ALLOWED_ROLES = new Set(['user', 'model']);
+const ALLOWED_ROLES = new Set(['user', 'assistant']);
 
-type ChatMessage = { role: string; content: string };
+type ChatMessage = Extract<ModelMessage, { role: 'user' | 'assistant' }>;
 
 function validateMessages(input: unknown): { ok: true; messages: ChatMessage[] } | { ok: false; reason: string } {
   if (!Array.isArray(input) || input.length === 0) {
@@ -121,7 +122,7 @@ function validateMessages(input: unknown): { ok: true; messages: ChatMessage[] }
     if (byteLen > MAX_CONTENT_BYTES) {
       return { ok: false, reason: `messages[${i}].content too large (max ${MAX_CONTENT_BYTES} bytes)` };
     }
-    out.push({ role: m.role, content: m.content });
+    out.push({ role: m.role, content: m.content } as ChatMessage);
   }
   return { ok: true, messages: out };
 }
