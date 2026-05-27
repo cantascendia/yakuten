@@ -29,6 +29,7 @@ type RefEntry = {
   doi: string | null;
   url: string;
   journal: string;
+  evidenceLevel?: 'A' | 'B' | 'C' | 'X';
 };
 
 const ref = (refs as RefEntry[]).find((r) => r.id === id);
@@ -40,9 +41,12 @@ const isExternal = href.startsWith('http');
 const tooltipText = title
   ? `${authors} (${year}). ${title}`
   : `${authors} (${year})`;
-const fullTooltip = ref?.journal
+const withJournal = ref?.journal
   ? `${tooltipText} — ${ref.journal}`
   : tooltipText;
+const fullTooltip = ref?.evidenceLevel
+  ? `${withJournal} · 证据等级 ${ref.evidenceLevel}`
+  : withJournal;
 ---
 
 <sup class:list={['citation-ref', className]}>

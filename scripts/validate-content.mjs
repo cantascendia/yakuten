@@ -3,10 +3,13 @@ import path from 'node:path';
 
 const rootDir = process.cwd();
 const docsDir = path.join(rootDir, 'src', 'content', 'docs');
+const blogDir = path.join(rootDir, 'src', 'content', 'blog');
 const referencesPath = path.join(rootDir, 'src', 'data', 'references.json');
 const hotlinesPath = path.join(rootDir, 'src', 'data', 'hotlines.json');
 
 const errors = [];
+const warnings = [];
+const VALID_EVIDENCE_LEVELS = new Set(['A', 'B', 'C', 'X']);
 
 const references = JSON.parse(await readFile(referencesPath, 'utf8'));
 if (!Array.isArray(references)) {
@@ -45,6 +48,9 @@ for (const reference of references) {
   }
   if (typeof title !== 'string' || title.length === 0) {
     errors.push(`Reference "${id}" is missing a non-empty title field.`);
+  }
+  if (!VALID_EVIDENCE_LEVELS.has(reference.evidenceLevel)) {
+    errors.push(`Reference "${id}" must declare evidenceLevel as one of A | B | C | X (got: ${JSON.stringify(reference.evidenceLevel)}). See docs/ai-cto/DECISIONS.md D015.`);
   }
 }
 
@@ -110,21 +116,24 @@ async function collectFiles(dir, matcher) {
   return files;
 }
 
-function parseFrontmatterMetadata(filePath, content) {
+function parseFrontmatterMetadata(filePath, content, opts = {}) {
+  const { requireFrontmatter = true, requireReferences = true, requireEvidenceLevel = true } = opts;
+  const sinkFor = (required) => (required ? errors : warnings);
+
   const frontmatterMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!frontmatterMatch) {
-    errors.push(`${path.relative(rootDir, filePath)} is missing frontmatter.`);
+    sinkFor(requireFrontmatter).push(`${path.relative(rootDir, filePath)} is missing frontmatter.`);
     return { evidenceLevel: null, references: [] };
   }
 
   const evidenceLevelMatch = frontmatterMatch[1].match(/(?:^|\r?\n)evidenceLevel:\s*([A-Z])\s*(?:\r?\n|$)/);
   if (!evidenceLevelMatch) {
-    errors.push(`${path.relative(rootDir, filePath)} is missing evidenceLevel in frontmatter.`);
+    sinkFor(requireEvidenceLevel).push(`${path.relative(rootDir, filePath)} is missing evidenceLevel in frontmatter.`);
   }
 
   const referencesMatch = frontmatterMatch[1].match(/(?:^|\r?\n)references:\s*\[(.*?)\]\s*(?:\r?\n|$)/);
   if (!referencesMatch) {
-    errors.push(`${path.relative(rootDir, filePath)} is missing a references array in frontmatter.`);
+    sinkFor(requireReferences).push(`${path.relative(rootDir, filePath)} is missing a references array in frontmatter.`);
     return {
       evidenceLevel: evidenceLevelMatch?.[1] ?? null,
       references: [],
@@ -159,8 +168,20 @@ function parseCitationIds(content) {
   return [...new Set(citationIds)];
 }
 
-const mdxFiles = await collectFiles(docsDir, (filePath) => filePath.endsWith('.mdx'));
-for (const filePath of mdxFiles) {
+// ── MDX inventory ──
+// All MDX under src/content/docs/ and src/content/blog/ is now governed by
+// hard errors (D016 promotion complete — blog back-fill landed in the same
+// PR and the staged warn→error gate is closed).
+const docsMdxFiles = await collectFiles(docsDir, (filePath) => filePath.endsWith('.mdx'));
+
+let blogMdxFiles = [];
+try {
+  blogMdxFiles = await collectFiles(blogDir, (filePath) => filePath.endsWith('.mdx'));
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
+
+async function validateMdxFile(filePath) {
   const content = await readFile(filePath, 'utf8');
   const { evidenceLevel, references: frontmatterReferences } = parseFrontmatterMetadata(filePath, content);
   const frontmatterReferenceSet = new Set(frontmatterReferences);
@@ -182,13 +203,19 @@ for (const filePath of mdxFiles) {
     if (!referenceIds.has(citationId)) {
       errors.push(`${path.relative(rootDir, filePath)} uses unknown CitationRef id "${citationId}".`);
     }
-    if (!frontmatterReferenceSet.has(citationId)) {
+    if (frontmatterReferences.length > 0 && !frontmatterReferenceSet.has(citationId)) {
       errors.push(
         `${path.relative(rootDir, filePath)} uses CitationRef id "${citationId}" but does not list it in frontmatter references.`
       );
     }
   }
 }
+
+for (const filePath of [...docsMdxFiles, ...blogMdxFiles]) {
+  await validateMdxFile(filePath);
+}
+
+const mdxFiles = [...docsMdxFiles, ...blogMdxFiles];
 
 // ── Content freshness check (warn, not fail) ──
 const FRESHNESS_DAYS = 90;
@@ -215,6 +242,14 @@ if (stalePages.length > 0) {
   console.warn('');
 }
 
+if (warnings.length > 0) {
+  console.warn(`\nContent validation warnings (non-blocking): ${warnings.length}\n`);
+  for (const warning of warnings) {
+    console.warn(`- ${warning}`);
+  }
+  console.warn('');
+}
+
 if (errors.length > 0) {
   console.error('Content validation failed:\n');
   for (const error of errors) {
@@ -223,4 +258,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log('Content validation passed.');
+console.log(`Content validation passed${warnings.length > 0 ? ` (with ${warnings.length} warnings)` : ''}.`);

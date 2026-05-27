@@ -6,7 +6,8 @@
     "title": "Injectable Estradiol Meta-Analysis",
     "journal": "Transfeminine Science",
     "doi": null,
-    "url": "https://transfemscience.org/articles/injectable-e2-meta-analysis/"
+    "url": "https://transfemscience.org/articles/injectable-e2-meta-analysis/",
+    "evidenceLevel": "C"
   },
   {
     "id": "canonico-2018",
@@ -15,7 +16,8 @@
     "title": "Hormone therapy and venous thromboembolism: an updated overview",
     "journal": "Maturitas",
     "doi": "10.1016/j.maturitas.2015.06.040",
-    "url": "https://doi.org/10.1016/j.maturitas.2015.06.040"
+    "url": "https://doi.org/10.1016/j.maturitas.2015.06.040",
+    "evidenceLevel": "A"
   },
   {
     "id": "coleman-2022",
@@ -24,7 +26,8 @@
     "title": "Standards of Care for the Health of Transgender and Gender Diverse People, Version 8",
     "journal": "International Journal of Transgender Health",
     "doi": "10.1080/26895269.2022.2100644",
-    "url": "https://doi.org/10.1080/26895269.2022.2100644"
+    "url": "https://doi.org/10.1080/26895269.2022.2100644",
+    "evidenceLevel": "A"
   },
   {
     "id": "deblok-2021",
@@ -33,7 +36,8 @@
     "title": "Amsterdam cohort 50-year follow-up",
     "journal": "The Lancet Diabetes & Endocrinology",
     "doi": "10.1016/S2213-8587(21)00185-6",
-    "url": "https://doi.org/10.1016/S2213-8587(21)00185-6"
+    "url": "https://doi.org/10.1016/S2213-8587(21)00185-6",
+    "evidenceLevel": "B"
   },
   {
     "id": "ema-2020",
@@ -42,7 +46,8 @@
     "title": "Restrictions on use of cyproterone due to meningioma risk",
     "journal": "European Medicines Agency",
     "doi": null,
-    "url": "https://www.ema.europa.eu/en/news/restrictions-use-cyproterone-due-meningioma-risk"
+    "url": "https://www.ema.europa.eu/en/news/restrictions-use-cyproterone-due-meningioma-risk",
+    "evidenceLevel": "B"
   },
   {
     "id": "fuji-2023",
@@ -51,7 +56,8 @@
     "title": "プロギノン・デポー添付文書",
     "journal": "PMDA",
     "doi": null,
-    "url": "https://www.pmda.go.jp/PmdaSearch/rdSearch/02/2473402A2059"
+    "url": "https://www.pmda.go.jp/PmdaSearch/rdSearch/02/2473402A2059",
+    "evidenceLevel": "B"
   },
   {
     "id": "hembree-2017",
@@ -60,7 +66,8 @@
     "title": "Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons",
     "journal": "The Journal of Clinical Endocrinology & Metabolism",
     "doi": "10.1210/jc.2017-01658",
-    "url": "https://doi.org/10.1210/jc.2017-01658"
+    "url": "https://doi.org/10.1210/jc.2017-01658",
+    "evidenceLevel": "A"
   },
   {
     "id": "herndon-2023",
@@ -69,7 +76,8 @@
     "title": "Subcutaneous vs Intramuscular Estradiol Valerate",
     "journal": "Endocrine Practice",
     "doi": "10.1016/j.eprac.2023.02.006",
-    "url": "https://doi.org/10.1016/j.eprac.2023.02.006"
+    "url": "https://doi.org/10.1016/j.eprac.2023.02.006",
+    "evidenceLevel": "B"
   },
   {
     "id": "gerber-2024",
@@ -78,7 +86,8 @@
     "title": "Effectiveness of low-dose versus standard-dose cyproterone acetate in transgender women",
     "journal": "Journal of Clinical Endocrinology & Metabolism",
     "doi": null,
-    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11416909/"
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11416909/",
+    "evidenceLevel": "B"
   },
   {
     "id": "howlow-2024",
@@ -87,7 +96,8 @@
     "title": "How low can you go? Lowest effective dose of cyproterone acetate",
     "journal": "International Journal of Transgender Health",
     "doi": "10.1080/26895269.2024.2317395",
-    "url": "https://doi.org/10.1080/26895269.2024.2317395"
+    "url": "https://doi.org/10.1080/26895269.2024.2317395",
+    "evidenceLevel": "C"
   },
   {
     "id": "hudelist-2026",
@@ -96,7 +106,8 @@
     "title": "CPA-associated meningioma in transgender women",
     "journal": "eClinicalMedicine",
     "doi": "10.1016/j.eclinm.2026.103791",
-    "url": "https://doi.org/10.1016/j.eclinm.2026.103791"
+    "url": "https://doi.org/10.1016/j.eclinm.2026.103791",
+    "evidenceLevel": "A"
   },
   {
     "id": "kanin-2025",
@@ -105,7 +116,8 @@
     "title": "Injectable Estradiol Dosing Regimens",
     "journal": "Journal of the Endocrine Society",
     "doi": "10.1210/jendso/bvaf004",
-    "url": "https://doi.org/10.1210/jendso/bvaf004"
+    "url": "https://doi.org/10.1210/jendso/bvaf004",
+    "evidenceLevel": "B"
   },
   {
     "id": "kuhl-2005",
@@ -114,7 +126,8 @@
     "title": "Pharmacology of estrogens and progestogens: influence of different routes of administration",
     "journal": "Climacteric",
     "doi": "10.1080/13697130500148875",
-    "url": "https://doi.org/10.1080/13697130500148875"
+    "url": "https://doi.org/10.1080/13697130500148875",
+    "evidenceLevel": "C"
   },
   {
     "id": "lee-2022",
@@ -123,7 +136,8 @@
     "title": "Cyproterone acetate and meningioma risk",
     "journal": "Scientific Reports",
     "doi": "10.1038/s41598-022-05773-z",
-    "url": "https://doi.org/10.1038/s41598-022-05773-z"
+    "url": "https://doi.org/10.1038/s41598-022-05773-z",
+    "evidenceLevel": "A"
   },
   {
     "id": "meyer-2020",
@@ -132,7 +146,8 @@
     "title": "Safety and rapid efficacy of guideline-based gender-affirming hormone therapy",
     "journal": "European Journal of Endocrinology",
     "doi": "10.1530/EJE-19-0463",
-    "url": "https://doi.org/10.1530/EJE-19-0463"
+    "url": "https://doi.org/10.1530/EJE-19-0463",
+    "evidenceLevel": "B"
   },
   {
     "id": "misakian-2025",
@@ -141,7 +156,8 @@
     "title": "Injectable Estradiol Monotherapy in Transgender Individuals",
     "journal": "Endocrine Practice",
     "doi": "10.1016/j.eprac.2025.07.002",
-    "url": "https://doi.org/10.1016/j.eprac.2025.07.002"
+    "url": "https://doi.org/10.1016/j.eprac.2025.07.002",
+    "evidenceLevel": "B"
   },
   {
     "id": "oriowo-1980",
@@ -150,7 +166,8 @@
     "title": "Pharmacokinetics of Estradiol Esters",
     "journal": "Contraception",
     "doi": "10.1016/S0010-7824(80)80018-7",
-    "url": "https://doi.org/10.1016/S0010-7824(80)80018-7"
+    "url": "https://doi.org/10.1016/S0010-7824(80)80018-7",
+    "evidenceLevel": "C"
   },
   {
     "id": "patel-2021",
@@ -159,7 +176,8 @@
     "title": "Breast development in transgender women on hormone therapy",
     "journal": "Transgender Health",
     "doi": "10.1089/trgh.2020.0057",
-    "url": "https://doi.org/10.1089/trgh.2020.0057"
+    "url": "https://doi.org/10.1089/trgh.2020.0057",
+    "evidenceLevel": "C"
   },
   {
     "id": "poage-2026",
@@ -168,7 +186,8 @@
     "title": "Subcutaneous vs Intramuscular Estradiol Valerate Injection",
     "journal": "Pharmacy",
     "doi": "10.3390/pharmacy14010013",
-    "url": "https://doi.org/10.3390/pharmacy14010013"
+    "url": "https://doi.org/10.3390/pharmacy14010013",
+    "evidenceLevel": "B"
   },
   {
     "id": "price-1997",
@@ -177,7 +196,8 @@
     "title": "Sublingual estradiol pharmacokinetics",
     "journal": "Obstetrics & Gynecology",
     "doi": "10.1016/S0029-7844(96)00513-3",
-    "url": "https://doi.org/10.1016/S0029-7844(96)00513-3"
+    "url": "https://doi.org/10.1016/S0029-7844(96)00513-3",
+    "evidenceLevel": "C"
   },
   {
     "id": "prior-2019",
@@ -186,7 +206,8 @@
     "title": "Progesterone is important for transgender women's therapy",
     "journal": "The Journal of Clinical Endocrinology & Metabolism",
     "doi": "10.1210/jc.2018-01777",
-    "url": "https://doi.org/10.1210/jc.2018-01777"
+    "url": "https://doi.org/10.1210/jc.2018-01777",
+    "evidenceLevel": "C"
   },
   {
     "id": "rothman-2024",
@@ -195,7 +216,8 @@
     "title": "Injectable Estradiol Dosing in Transgender Individuals",
     "journal": "Transgender Health",
     "doi": "10.1089/trgh.2023.0209",
-    "url": "https://doi.org/10.1089/trgh.2023.0209"
+    "url": "https://doi.org/10.1089/trgh.2023.0209",
+    "evidenceLevel": "B"
   },
   {
     "id": "ucsf-2016",
@@ -204,7 +226,8 @@
     "title": "Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People",
     "journal": "UCSF Gender Affirming Health Program",
     "doi": null,
-    "url": "https://transcare.ucsf.edu/guidelines"
+    "url": "https://transcare.ucsf.edu/guidelines",
+    "evidenceLevel": "A"
   },
   {
     "id": "neyman-2019",
@@ -213,7 +236,8 @@
     "title": "Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents",
     "journal": "Journal of Adolescent Health",
     "doi": "10.1016/j.jadohealth.2018.10.296",
-    "url": "https://doi.org/10.1016/j.jadohealth.2018.10.296"
+    "url": "https://doi.org/10.1016/j.jadohealth.2018.10.296",
+    "evidenceLevel": "C"
   },
   {
     "id": "fuqua-2024",
@@ -222,7 +246,8 @@
     "title": "Follow-up of bicalutamide treatment in transgender youth",
     "journal": "Journal of Adolescent Health",
     "doi": "10.1016/j.jadohealth.2024.06.028",
-    "url": "https://doi.org/10.1016/j.jadohealth.2024.06.028"
+    "url": "https://doi.org/10.1016/j.jadohealth.2024.06.028",
+    "evidenceLevel": "C"
   },
   {
     "id": "angus-2024",
@@ -231,7 +256,8 @@
     "title": "Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment",
     "journal": "Journal of the Endocrine Society",
     "doi": null,
-    "url": "https://pubmed.ncbi.nlm.nih.gov/39691186/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39691186/",
+    "evidenceLevel": "C"
   },
   {
     "id": "wilde-2024",
@@ -240,16 +266,18 @@
     "title": "Bicalutamide-induced hepatotoxicity in transgender woman",
     "journal": "Journal of Clinical and Translational Endocrinology: Case Reports",
     "doi": null,
-    "url": "https://pubmed.ncbi.nlm.nih.gov/37791922/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37791922/",
+    "evidenceLevel": "C"
   },
   {
     "id": "matsumoto-2020",
     "authors": "Matsumoto K et al.",
     "year": 2020,
-    "title": "Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis",
-    "journal": "Journal of Pharmaceutical Health Care and Sciences",
-    "doi": "10.1186/s40780-020-00171-7",
-    "url": "https://doi.org/10.1186/s40780-020-00171-7"
+    "title": "Analysis of drug-induced interstitial lung disease using the Japanese Adverse Drug Event Report database",
+    "journal": "SAGE Open Medicine",
+    "doi": "10.1177/2050312120918264",
+    "url": "https://doi.org/10.1177/2050312120918264",
+    "evidenceLevel": "C"
   },
   {
     "id": "vinogradova-2019",
@@ -258,6 +286,27 @@
     "title": "Use of hormone replacement therapy and risk of venous thromboembolism",
     "journal": "BMJ",
     "doi": "10.1136/bmj.k4810",
-    "url": "https://doi.org/10.1136/bmj.k4810"
+    "url": "https://doi.org/10.1136/bmj.k4810",
+    "evidenceLevel": "A"
+  },
+  {
+    "id": "hou-2026",
+    "authors": "Hou J et al.",
+    "year": 2026,
+    "title": "Gender Identity Milestones and Hormone Utilization in Transgender Men and Women in China",
+    "journal": "JAMA Network Open",
+    "doi": "10.1001/jamanetworkopen.2025.52440",
+    "url": "https://doi.org/10.1001/jamanetworkopen.2025.52440",
+    "evidenceLevel": "B"
+  },
+  {
+    "id": "liu-2020",
+    "authors": "Liu Y et al.",
+    "year": 2020,
+    "title": "The desire and status of gender-affirming hormone therapy and surgery in transgender men and women in China: a national population study",
+    "journal": "Journal of Sexual Medicine",
+    "doi": "10.1016/j.jsxm.2020.07.081",
+    "url": "https://doi.org/10.1016/j.jsxm.2020.07.081",
+    "evidenceLevel": "B"
   }
 ]
