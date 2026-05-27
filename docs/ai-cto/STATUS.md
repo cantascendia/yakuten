@@ -1,32 +1,32 @@
 # STATUS
 
 **Last Updated:** 2026-05-26
-**Current Version:** v1.1.x (Phase 11 → Phase 12 transition)
+**Current Version:** v1.2.0-pre (Phase 12 — Content citation integrity)
 **Git Tag:** —
 
 ---
 
-## Changelog
+## 2026-05-26 · 内容引用治理收口（PR `claude/website-content-audit-5i4So`）
 
-- **2026-05-26**: 多 agent 审计校准虚报数字 — `references.json` 22 → **29 条**（实测 `python -c "json.load"`），`src/content/docs/**/*.mdx` 总计 → **205**（实测 `find`），落地 P0 foundation PR (Constitution + agent-logs activation + STATUS calibration)。详见 `docs/ai-cto/AUDIT-2026-05-26-harness.md` 与 `docs/ai-cto/SELF-AUDIT-2026-05-26.md`。
-- **2026-04-23**: Phase 11 阶段性总结，gpt-image-2 配图批次落地。
+通过 3 个并行 Explore 子代理 + 1 个 Plan 子代理完成全量内容审计，识别并修复 8 类问题：
 
----
+1. references.json schema 缺 `evidenceLevel` 字段 → 29 条全部补，新增 2 条（hou-2026 / liu-2020）覆盖之前未引用的中国调查数据，schema 强制 A/B/C/X
+2. 14 篇 zh 博客累计 ~108 处剂量声明无 `<CitationRef>` → 全部补齐 + frontmatter `evidenceLevel`/`references`/`lastReviewed`
+3. `scripts/validate-content.mjs` 历史只扫 docs → 扩展到 blog + 强制 evidenceLevel + 引用 ID 双向校验
+4. 3 条死引用激活（gerber-2024 / herndon-2023 / howlow-2024）
+5. 1 条死 DOI 修正（matsumoto-2020：从 J Pharm Health Care Sci → SAGE Open Medicine，PubMed PMID 32528682 核对）
+6. 8 处医学非紧急"必须"软化（剂量操作 / 监测节奏）；30 处紧急 / 法律 / 解剖安全场景保留（D016 三档分桶）
+7. before-you-start.mdx + china-reality.mdx 核心页患病率 / 时间线 / 不可逆性声明补 CitationRef；evidenceLevel X → A/B
+8. 2 处确认断链修复（hospital-finder.mdx → china-reality.mdx 重构后的 #step1 / #safety）
 
-## v3.9 飞轮状态
+新增基础设施：
+- `scripts/verify-doi-liveness.mjs` — DOI / URL 月度存活校验
+- `.github/workflows/verify-citations.yml` — PR + workflow_dispatch 触发，稳定后改月度 schedule
+- `docs/content-audit-2026-05-26.md` — 完整审计报告
+- `docs/citations-liveness-2026-05-26.md` — 首跑报告（19 pass / 14 manual / 0 fail）
+- DECISIONS.md D015（evidenceLevel 评定规则）/ D016（绝对语言三档）/ D017（DOI 存活 CI）
 
-**🟡 数据通道部分激活中** — 基础设施声称到位但数据通道断裂，2026-05-26 P0 foundation PR 修第一批：
-
-- ✅ **CONSTITUTION.md** — v1.0 已落地（`docs/ai-cto/CONSTITUTION.md`），immutable-guard 不再守 0 字节防御
-- ✅ **trajectory-logger.sh 已修** — 原版 `[ ! -d "$LOG_DIR" ] && exit 0` 改为 `mkdir -p`；`.claude/agent-logs/` 入版本控制（.gitkeep + .gitignore）
-- 🟡 **codex Stop hook 待接通** — REVIEW-QUEUE 当前仅 1 条（sha=e6d76e1），cross-review 飞轮基本静默
-- 🟡 **evals/ 待创建** — `evals/golden-trajectories/` 不存在，eval-gate.sh 软提醒被忽略
-- 🟡 **EVOLUTION-LOG.md / SKILL-CANDIDATES.md / .github/workflows/self-audit-weekly.yml 待创建**（v3.9 飞轮 50% 基建仍缺）
-
-下批 PR 优先级：
-1. codex Stop hook + cross-review 历史 commit baseline
-2. evals/golden-trajectories/ 三条核心 case（AI chat / blood-checker / dose-calc）
-3. EVOLUTION-LOG.md + 周 cron workflow
+i18n 全量翻译（14 博客 + 4 guides × 3 locale = 54 文件）显式不列入本 PR，已记入 REVIEW-BACKLOG P1-1，待医学翻译审阅 SOP 就位后单独执行。
 
 ---
 
@@ -39,9 +39,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 2. **SEO 自动化基础设施** — `scripts/seo/` 三件套（GSC + Trends + keyword-gap 刷新）、月度 GitHub Actions workflow、JsonLd / BlogPostJsonLd / FaqSchema 三个结构化数据组件、自动 sitemap lastmod 注入、自动 OG 图像生成。
 3. **高质量医学配图（gpt-image-2 流水线）** — 2026-04-23 当日单批次产出 15 张人工生成配图（5 张乳房发育主题 + 10 步首次注射图文教程），并补齐 16 张图解（pathway-timeline、routes-vte-comparison、cpa-meningioma-risk、antiandrogens-matrix、dangerous-combinations、china-availability-heatmap、vte-risk-stacking、oral-vs-injection-curves、monitoring-gantt、progestogen-decision-tree、spironolactone-potassium、diane-35-vs-hrt、dose-diminishing-returns、baseline-tests-nav、mood-monitoring、breast-surgery-comparison）。
 
-全站 187 公开 URL（zh 55 + en 44 + ja 44 + ko 44），交互工具 10 个，结构化数据组件 3 个，SEO 自动化脚本 4 条。
-
-> **2026-05-26 实测**：`src/content/docs/**/*.mdx` 总计 **205 个 mdx 文件**（含编辑治理 / 博客 / 工具索引 / 反馈 / 争议 FAQ 等附加页面，但其中部分通过动态路由聚合渲染 — 「公开 URL」≠「mdx 文件数」，二者口径不同）。
+全站 187 页（zh 55 + en 44 + ja 44 + ko 44），交互工具 10 个，结构化数据组件 3 个，SEO 自动化脚本 4 条。
 
 > ⚠ **i18n 平价警告**：blog / compare / editorial-policy / methodology / medical-advisors 当前仅有 zh 版本，en/ja/ko 暂未跟进，是 Phase 11 末期需评估的内容债。
 
@@ -87,7 +85,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 | 交互工具（血检自查 / 注射计算器 / 剂量模拟器 / AI 助手 / 风险筛查 / 药物对比 / 文献库 / 药物速查卡 / 品牌索引 / 医院查找） | ✅ |
 | AI 问答（Gemini 3 Flash Preview，Vercel Edge） | ✅ |
 | 友好医疗资源数据库（15 家） | ✅ |
-| 引用系统 + 29 条文献（18+ 条有 DOI） | ✅ |
+| 引用系统 + 31 条文献（23 条有 DOI，全部带 evidenceLevel A/B/C） | ✅ |
 | SVG 医学可视化（PKCurveChart / InjectionSiteSVG / RouteComparisonSVG） | ✅ |
 | 28 项 Playwright E2E | ✅ |
 | PWA manifest + 内容新鲜度 90 天告警 | ✅ |
@@ -143,7 +141,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 |---------|--------|------|
 | `drugs.json` | 20 种药物 | 全覆盖 |
 | `drug-brands.json` | 58 品牌 | 16 类药物，13 国 |
-| `references.json` | 29 条文献 | 18+ 条有 DOI（2026-05-26 实测 `len(json.load) = 29`） |
+| `references.json` | 31 条文献 | 23 条有 DOI；每条均含 evidenceLevel A/B/C |
 | `hospitals.json` | 15 家医院 | 全部验证至 2026-04-12 |
 | `blood-ranges.json` | 7 项指标 | E2/T/PRL/ALT/K+/Hb/D-dimer |
 | `gpt-image-2-manifest.json` | 15 条 prompt | 2026-04-23 一次性产出，禁止脚本重生成 |

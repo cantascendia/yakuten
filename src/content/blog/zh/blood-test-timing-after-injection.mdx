@@ -2,12 +2,15 @@
 title: 打针后多久查血?戊酸雌二醇注射谷值监测指南
 description: 戊酸雌二醇(EV)注射后何时抽血决定血药浓度读数。抽谷值还是峰值?不同酯的半衰期差异?附 WPATH SOC 8 与 Endocrine Society 2017 推荐的监测时间表。
 publishDate: 2026-04-19
+lastReviewed: 2026-05-26
 author: HRT药典编辑部
 locale: zh
 tags: [戊酸雌二醇, 注射, 血检, 监测, 谷值, 峰值]
 category: blood-test
 targetKeyword: 打针后多久查血
 relatedDocs: [blood-tests, medications/estrogens/injection, compare/oral-vs-injection, guides/first-injection]
+evidenceLevel: B
+references: [coleman-2022, hembree-2017, ucsf-2016, kanin-2025, rothman-2024, aly-2021, oriowo-1980, herndon-2023, poage-2026]
 draft: false
 faqs:
   - q: "戊酸雌二醇打针后多久查血?"
@@ -26,11 +29,13 @@ faqs:
     a: "不需要停注射。按正常方案继续,只是把注射日延后,让最后一次注射到抽血的时间刚好等于'下次注射间隔' — 这样抽到的就是谷值。例如每 7 天一针,第 7 天早上抽血,下午再注射。"
 ---
 
+import CitationRef from '../../../components/ui/CitationRef.astro';
+
 ## 一分钟看懂
 
-**原则:查谷值,不查峰值。**
+**原则:查谷值,不查峰值。** 这是 WPATH SOC 8 与 Endocrine Society 2017 共同采用的注射雌二醇监测基准<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
-谷值 = 下次注射**之前**(即上次注射后 5-10 天,取决于你的方案周期)。
+谷值 = 下次注射**之前**(即上次注射后 5-10 天,取决于你的方案周期)<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />。
 
 | 酯类 | 典型周期 | 建议抽血时机 |
 |---|---|---|
@@ -45,7 +50,7 @@ faqs:
 
 ## 一、为什么谷值才是"真实剂量"?
 
-肌注戊酸雌二醇后的血药曲线:
+肌注戊酸雌二醇后的血药曲线呈现典型的"峰-谷"形态,这与各种雌二醇酯的药代动力学早期就被刻画清楚<CitationRef id="oriowo-1980" num={4} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
 
 ```
 E2 (pg/mL)
@@ -70,9 +75,11 @@ E2 (pg/mL)
 - 注射间隔太长,或
 - 个体代谢较快
 
-这三种情况的应对方式不同,但**谷值读数是唯一的诊断基准**。
+这三种情况的应对方式不同,但**谷值读数是唯一的诊断基准**<CitationRef id="kanin-2025" num={5} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />。
 
-峰值只告诉你"你当天注射吸收了多少",和长期稳态无关。
+峰值只告诉你"你当天注射吸收了多少",和长期稳态无关<CitationRef id="rothman-2024" num={6} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />。
+
+**SC(皮下)与 IM(肌肉)注射的谷值差异**:近年研究显示皮下注射戊酸雌二醇在等剂量下可获得与肌注相当甚至更稳定的谷值水平,峰谷比更平缓,这会影响抽血时间窗的容错度<CitationRef id="herndon-2023" num={7} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />。但无论 SC 还是 IM,**下次注射前抽血**这条规则不变。
 
 ---
 
@@ -87,7 +94,7 @@ E2 (pg/mL)
 | 第 3 针 | 接近稳态 |
 | 第 4 针起 | 稳态 |
 
-**建议**:第 3 次注射前(即开始后约 10-20 天)抽第一次谷值。这个读数决定是否调整剂量。
+**建议**:第 3 次注射前(即开始后约 10-20 天)抽第一次谷值。这个读数决定是否调整剂量<CitationRef id="ucsf-2016" num={9} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />。
 
 过早抽血(第 1-2 次之间)会显示偏低数值,让人误以为剂量不够而加量,结果稳态后反而过高。
 
