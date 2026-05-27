@@ -1,33 +1,32 @@
 # STATUS
 
 **Last Updated:** 2026-05-26
-**Current Version:** v1.2.0-pre (Phase 12 — Performance + SEO hardening)
+**Current Version:** v1.2.0-pre (Phase 12 — Content citation integrity)
 **Git Tag:** —
 
 ---
 
-## 2026-05-26 · 性能 + 技术 SEO 审计收口（PR `claude/perf-seo-audit`）
+## 2026-05-26 · 内容引用治理收口（PR `claude/website-content-audit-5i4So`）
 
-3 个并行 Explore 子代理（perf / build-asset / SEO-schema）+ 人工代码复核完成审计，识别并修复 8 类问题：
+通过 3 个并行 Explore 子代理 + 1 个 Plan 子代理完成全量内容审计，识别并修复 8 类问题：
 
-1. vercel.json 无 headers — 加 5 个 source 的 Cache-Control + 全站 HSTS / CSP / X-Frame-Options / X-Content-Type-Options / Referrer-Policy / Permissions-Policy
-2. 20.5 MB 未引用 PNG 源 master 部署到 CDN — 删除 + `.gitignore` 保护
-3. 博客 hreflang 指向不存在的 en/ja/ko 镜像（404 + crawl 浪费）— 改基于 locale allowlist
-4. 医院无 MedicalOrganization schema — HospitalCard.astro 注入 PostalAddress + MedicalProcedure
-5. 工具页缺 SoftwareApplication schema — JsonLd.astro 加 isToolPage 分支
-6. 字体 600/700 权重缺失（Manrope 600, Noto Sans 700, Space Grotesk 700）→ Google Fonts URL 补齐
-7. BloodTestChecker × 5 处 `client:load` → `client:visible`
-8. BlogPostJsonLd Article → BlogPosting + Person author from frontmatter
-9. 新增 `tests/perf-seo.spec.ts` 9 个 SEO/perf 回归测试
+1. references.json schema 缺 `evidenceLevel` 字段 → 29 条全部补，新增 2 条（hou-2026 / liu-2020）覆盖之前未引用的中国调查数据，schema 强制 A/B/C/X
+2. 14 篇 zh 博客累计 ~108 处剂量声明无 `<CitationRef>` → 全部补齐 + frontmatter `evidenceLevel`/`references`/`lastReviewed`
+3. `scripts/validate-content.mjs` 历史只扫 docs → 扩展到 blog + 强制 evidenceLevel + 引用 ID 双向校验
+4. 3 条死引用激活（gerber-2024 / herndon-2023 / howlow-2024）
+5. 1 条死 DOI 修正（matsumoto-2020：从 J Pharm Health Care Sci → SAGE Open Medicine，PubMed PMID 32528682 核对）
+6. 8 处医学非紧急"必须"软化（剂量操作 / 监测节奏）；30 处紧急 / 法律 / 解剖安全场景保留（D016 三档分桶）
+7. before-you-start.mdx + china-reality.mdx 核心页患病率 / 时间线 / 不可逆性声明补 CitationRef；evidenceLevel X → A/B
+8. 2 处确认断链修复（hospital-finder.mdx → china-reality.mdx 重构后的 #step1 / #safety）
 
 新增基础设施：
-- `docs/perf-seo-audit-2026-05-26.md` — 完整审计报告
-- `tests/perf-seo.spec.ts` — perf/SEO 回归测试
-- vercel.json `headers` 数组（249 行规则）
+- `scripts/verify-doi-liveness.mjs` — DOI / URL 月度存活校验
+- `.github/workflows/verify-citations.yml` — PR + workflow_dispatch 触发，稳定后改月度 schedule
+- `docs/content-audit-2026-05-26.md` — 完整审计报告
+- `docs/citations-liveness-2026-05-26.md` — 首跑报告（19 pass / 14 manual / 0 fail）
+- DECISIONS.md D015（evidenceLevel 评定规则）/ D016（绝对语言三档）/ D017（DOI 存活 CI）
 
-延后到 REVIEW-BACKLOG：Sakura 字体 @import 改造、OG 图 PNG→WebP、Sakura CSS 懒加载、Drug 品牌 Product schema、Compare 页双 Drug 节点、Critical CSS inline、Baidu 特定 meta。
-
-`public/images/diagrams` 体积：25 MB → 4.5 MB（-82%）。
+i18n 全量翻译（14 博客 + 4 guides × 3 locale = 54 文件）显式不列入本 PR，已记入 REVIEW-BACKLOG P1-1，待医学翻译审阅 SOP 就位后单独执行。
 
 ---
 
@@ -86,7 +85,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 | 交互工具（血检自查 / 注射计算器 / 剂量模拟器 / AI 助手 / 风险筛查 / 药物对比 / 文献库 / 药物速查卡 / 品牌索引 / 医院查找） | ✅ |
 | AI 问答（Gemini 3 Flash Preview，Vercel Edge） | ✅ |
 | 友好医疗资源数据库（15 家） | ✅ |
-| 引用系统 + 22 条文献（18 条有 DOI） | ✅ |
+| 引用系统 + 31 条文献（23 条有 DOI，全部带 evidenceLevel A/B/C） | ✅ |
 | SVG 医学可视化（PKCurveChart / InjectionSiteSVG / RouteComparisonSVG） | ✅ |
 | 28 项 Playwright E2E | ✅ |
 | PWA manifest + 内容新鲜度 90 天告警 | ✅ |
@@ -142,7 +141,7 @@ Phase 11 在 Phase 10 基础上推进三条主线：
 |---------|--------|------|
 | `drugs.json` | 20 种药物 | 全覆盖 |
 | `drug-brands.json` | 58 品牌 | 16 类药物，13 国 |
-| `references.json` | 22 条文献 | 18 条有 DOI |
+| `references.json` | 31 条文献 | 23 条有 DOI；每条均含 evidenceLevel A/B/C |
 | `hospitals.json` | 15 家医院 | 全部验证至 2026-04-12 |
 | `blood-ranges.json` | 7 项指标 | E2/T/PRL/ALT/K+/Hb/D-dimer |
 | `gpt-image-2-manifest.json` | 15 条 prompt | 2026-04-23 一次性产出，禁止脚本重生成 |
