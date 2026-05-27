@@ -1,6 +1,6 @@
 ---
 title: 口服雌二醇（补佳乐 Progynova） — 剂量、VTE 风险与危险组合
-description: 口服戊酸雌二醇（补佳乐 Progynova）完整指南：生物利用度 3-5%、起始 2 mg/日 维持 4 mg/日剂量方案、VTE 风险 RR 1.48、肝脏首过效应的代谢影响、适用人群、危险药物组合与最佳服药时机及血检抽血时间。
+description: 口服戊酸雌二醇（补佳乐 Progynova）完整指南：深入解析生物利用度、起始与维持剂量方案、VTE风险（RR 1.48）、肝脏首过效应对代谢的影响、适用人群、高风险药物混用禁忌以及血检采血时机。
 evidenceLevel: A
 lastReviewed: 2026-04-07
 references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
@@ -39,7 +39,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
   route="口服给药（Oral）"
   evidenceLevel="A"
 >
-  口服戊酸雌二醇（补佳乐/Progynova）是中国大陆最容易获取的雌二醇制剂。VTE 风险高于经皮途径，但对于无风险因素的年轻使用者而言，仍然是可接受的选择。
+口服戊酸雌二醇（补佳乐/Progynova）是目前较易获取的雌二醇制剂。虽然其静脉血栓栓塞（VTE）的发生风险高于经皮/透皮途径，但如果你年轻且没有相关的健康风险因素，这依然是一个可以考虑的起步选择。
 </DrugInfoBox>
 
 <GuideCTA
@@ -77,7 +77,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 > **2 mg 戊酸雌二醇 ≈ 1.5 mg 雌二醇**
 
-补佳乐每片含 1 mg 戊酸雌二醇（≈ 0.75 mg E2）。这一换算关系在调整剂量和对比不同途径时很重要。
+补佳乐每片含 1 mg 戊酸雌二醇（≈ 0.75 mg E2）。在调整剂量或在不同给药途径之间进行切换时，了解这一换算关系能帮助你更精准地把握剂量。
 
 ### VTE 风险数据
 
@@ -89,10 +89,10 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
   ]}
 />
 
-口服雌二醇的 VTE 风险相较未用药人群增加约 48%（RR ≈ 1.48）<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />。虽然相对风险升高，但基线绝对风险较低（年轻健康人群 VTE 年发生率约 1-2/10000），因此对于无风险因素的年轻使用者，口服途径的绝对风险仍然在可接受范围内。
+口服雌二醇的 VTE 风险相较未用药人群约增加 48%（RR ≈ 1.48）<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />。虽然相对风险有所升高，但基线绝对风险较低（在年轻健康的跨性别女性人群中，VTE 的年发生率约为 1-2/10000）。因此，如果你年轻且没有相关的血栓倾向，口服途径的风险仍在可接受的范围内。
 
 <DangerBox title="禁止与 CPA 同时口服">
-口服雌二醇 + 口服 CPA（醋酸环丙孕酮/色谱龙）= **双重 VTE 风险叠加**。CPA 本身具有促凝血作用<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />，与口服雌二醇联用时，两者的 VTE 风险效应叠加。如果必须使用 CPA 作为抗雄药物，**雌二醇应优先选择经皮途径**（贴片或凝胶）。详见[剂量红线与混用禁忌](/zh/dose-limits/)。
+口服雌二醇与口服 CPA（醋酸环丙孕酮/色谱龙）联用，可能会导致 **VTE（静脉血栓栓塞症）风险的双重叠加**。由于 CPA 本身具有促凝血倾向<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" />，当与需要经肝代谢的口服雌二醇合用时，两者的血栓风险会产生协同累积效应。如果你选择 CPA 作为抗雄药物，**通常强烈建议雌二醇优先选择经皮/透皮途径**（如贴片或凝胶），以规避不必要的健康风险。详情请参阅[剂量红线与混用禁忌](/zh/dose-limits/)。
 </DangerBox>
 
 ## 剂量建议
@@ -109,22 +109,22 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
   ]}
 />
 
-<WarningBox title="不要跳过低剂量起始期">
-即使你觉得低剂量"没效果"，前 6 个月的低剂量起始期对乳腺导管正常分支发育至关重要。高剂量过早起始可能导致乳芽过早融合，造成不可逆的发育受限<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />。详见[乳房发育专题](/zh/breast-development/)。
+<WarningBox title="建议稳步起步：关于低剂量起始期的重要性">
+即使你在初始阶段觉得低剂量“效果不明显”，前 6 个月的温和剂量过渡期对于乳腺导管的健康分支发育仍然至关重要。过早或盲目地使用高剂量雌激素，可能会导致乳芽提前融合，从而造成不可逆的乳腺发育受限<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />。如果你想了解发育机制，请参阅[乳房发育专题](/zh/breast-development/)。
 </WarningBox>
 
 ### 服用方法
 
-- 建议每日固定时间服用（早晨或晚间均可，保持规律）
-- 4 mg/天可考虑分两次服用（早 2 mg + 晚 2 mg），以减少血药浓度波动
-- 餐后服用可能略提高吸收率，但差异不大
-- 如果漏服一次，在下一次按原计划服用即可，不要加倍补服
+- 建议你在每日的固定时间服药（早晨或晚间均可），以帮助身体维持规律的激素节奏。
+- 如果你每天的剂量为 4 mg，建议考虑分两次服用（例如早晨 2 mg，晚间 2 mg），这样可以有效减少血药浓度的波动。
+- 餐后服用可能略微提高吸收率，但整体差异不大。
+- 如果偶尔漏服了一次，在下一次服药时照常服用即可，请不要通过加倍剂量来“补服”。
 
 ## 适用人群
 
 口服雌二醇适用于以下人群<CitationRef id="hembree-2017" num={4} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />：
 
-**建议适用**：
+**如果符合以下情况，口服途径通常较易耐受**：
 - 无 VTE 风险因素
 - 年龄 < 40 岁
 - BMI < 30（体重正常范围）
@@ -132,7 +132,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 - 无 VTE 个人或家族史
 - 无凝血障碍
 
-**不建议使用口服途径**（应选择经皮途径）：
+**如果你属于以下人群，出于安全考虑，更建议选择经皮/透皮途径**：
 - 年龄 ≥ 40 岁
 - BMI ≥ 30
 - 当前吸烟或近期戒烟
@@ -143,11 +143,11 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 
 ## 中国获取现状
 
-补佳乐（Progynova）是目前中国大陆最容易获取的雌二醇制剂：
+补佳乐（Progynova）是目前中国大陆获取门槛相对较低的雌二醇制剂：
 
 - **线下药房**：大部分城市的连锁药房有售
-- **处方要求**：理论上需要处方，但部分药房执行不严
-- **价格**：相对经济（约 30-50 元/盒，每盒 21 片 x 1 mg）
+- **处方要求**：虽然在政策上属于处方药，但在实际购买中，部分药房的执行力度可能存在差异。
+- **价格**：价格相对适中（约 30-50 元/盒，每盒 21 片 x 1 mg）
 - **替代品牌**：部分医院可开具其他戊酸雌二醇制剂
 
 <WarningBox title="关于「补佳乐」">
@@ -157,8 +157,8 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 ## 监测建议
 
 - **采血时机**：下一次服药前采血（谷值测量）<CitationRef id="ucsf-2016" num={7} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />
-- **初始阶段**：第 4 周检测激素六项 + 肝功能；第 12 周激素六项 + 肝功能 + 血脂
-- **维持阶段**：每 6 个月检测激素六项 + 肝功能
+- **初始阶段**：在初始阶段，建议在第 4 周查激素六项与肝功能，并在第 12 周查激素六项、肝功能与血脂（此方案基于临床指南与专家共识建议）。
+- **维持阶段**：每 6 个月查一次激素六项与肝功能。
 - **目标**：E2 100-200 pg/mL，T < 50 ng/dL
 - **警戒**：如 E2 > 200 pg/mL，应考虑减量或换用经皮途径
 
