@@ -2,20 +2,24 @@
 title: 性激素六项怎么看？HRT 血检结果完全解读
 description: 逐项解读性激素六项（E2、T、LH、FSH、PRL、P4）在跨性别女性 HRT 中的意义、目标范围和异常应对，附抽血时机指南。
 publishDate: 2026-04-13
+lastReviewed: 2026-05-26
 author: HRT药典编辑部
 locale: zh
 tags: [性激素六项, 血检, 雌二醇, 睾酮, FSH, LH, 泌乳素, SHBG, 解读]
 category: blood-test
 targetKeyword: 性激素六项怎么解读
 relatedDocs: [blood-tests, tools/blood-checker, dose-limits]
+evidenceLevel: A
+references: [coleman-2022, hembree-2017, ucsf-2016, kanin-2025, misakian-2025, lee-2022, canonico-2018]
 draft: false
 ---
 
 import FaqSchema from '../../../components/seo/FaqSchema.astro';
+import CitationRef from '../../../components/ui/CitationRef.astro';
 
 ## 核心结论
 
-性激素六项是 HRT 监测的核心检查。但化验单上的"参考范围"是针对顺性别人群的，**不能直接套用**。跨性别女性 HRT 的目标范围不同，需要结合用药阶段来判读。本文逐项教你看懂每个指标。
+性激素六项是 HRT 监测的核心检查。但化验单上的"参考范围"是针对顺性别人群的，**不能直接套用**。跨性别女性 HRT 的目标范围不同，需要结合用药阶段来判读<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。本文逐项教你看懂每个指标。
 
 > 以下为通用参考，具体结果请咨询医生解读。
 
@@ -35,9 +39,11 @@ import FaqSchema from '../../../components/seo/FaqSchema.astro';
 | 调整/维持期（6 月+） | 100-200 |
 | 绝对不要超过 | 200（除非医生指导） |
 
+上述目标范围由 WPATH SOC 8 与 Endocrine Society 2017 联合定义<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+
 **高了怎么办**（> 200 pg/mL）：
 - 减少雌二醇剂量
-- 高 E2 不会带来更好效果，反而增加血栓风险和损害乳房发育
+- 高 E2 不会带来更好效果，反而增加血栓风险和损害乳房发育<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />
 
 **低了怎么办**（< 50 pg/mL 在调整期）：
 - 检查吸收问题（凝胶涂法、舌下是否含够时间）
@@ -49,7 +55,7 @@ import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 **是什么**：主要的雄激素。HRT 的目标是将其抑制到女性范围。
 
-**HRT 目标**：**< 50 ng/dL**（部分指南用 < 55 ng/dL）
+**HRT 目标**：**< 50 ng/dL**（部分指南用 < 55 ng/dL）<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="ucsf-2016" num={4} authors="Deutsch" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />
 
 **降不下来怎么办**：
 - 确认抗雄药物剂量是否足够
@@ -87,7 +93,7 @@ import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 **是什么**：垂体分泌的激素，正常功能与泌乳相关。
 
-**为什么重要**：CPA 会刺激泌乳素分泌，长期升高需要排除垂体瘤。
+**为什么重要**：CPA 会刺激泌乳素分泌，长期升高需要排除垂体瘤<CitationRef id="lee-2022" num={5} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
 | PRL 水平 | 状态 | 行动 |
 |---------|------|------|
@@ -121,6 +127,8 @@ import FaqSchema from '../../../components/seo/FaqSchema.astro';
 | 注射 | 下次注射当天上午（谷值） |
 | 贴片 | 更换贴片前 12-24 小时 |
 | 凝胶 | 涂抹后 4-6 小时，或下次涂抹前 |
+
+注射方案的谷值抽血规则在近期前瞻队列中也被反复确认<CitationRef id="kanin-2025" num={6} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" /><CitationRef id="misakian-2025" num={7} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。
 
 **关键原则**：每次抽血的时机要一致，这样才能对比不同次的结果变化趋势。
 

@@ -218,3 +218,68 @@
 - `.gitignore` 包含 `.gsc-credentials.json`、`.env*`
 
 **审计**：`scripts/audit-seo-meta.mjs` 不涉及凭证，但提醒任何 SEO 脚本扩展不可硬编码。
+
+---
+
+## D015 — 引用库证据等级字段与评定规则
+
+**决策**（2026-05-26 / 内容审计 PR `claude/website-content-audit-5i4So`）：`src/data/references.json` schema 增加 `evidenceLevel: "A"|"B"|"C"|"X"` 必填字段，覆盖全部 29 条历史条目。
+
+**背景**：CONTENT.md §2 与 CLAUDE.md "Evidence levels: A/B/C/X" 长期要求证据等级，但 references.json schema 此前只含 `id/authors/year/title/journal/doi/url`，导致：
+- 内容声明的证据等级与文献元数据不可机器校验
+- ReferenceLibrary 工具页无法按等级筛选
+- 翻译与跨页一致性靠人记忆
+
+**评定规则**（与 CONTENT.md §2 对齐）：
+- **A**：国际指南（WPATH SOC 8、Endocrine Society、UCSF）、Meta-analysis、Cochrane、大型多中心数据库队列（如 BMJ Vinogradova 2019 UK CPRD）
+  - 命中：`coleman-2022` / `hembree-2017` / `ucsf-2016` / `canonico-2018` / `vinogradova-2019` / `lee-2022` / `hudelist-2026`
+- **B**：单项 RCT、单中心前瞻队列、规范性单机构剂量推荐、监管机构限制令
+  - 命中：`deblok-2021` / `meyer-2020` / `kanin-2025` / `misakian-2025` / `herndon-2023` / `poage-2026` / `rothman-2024` / `gerber-2024` / `ema-2020` / `fuji-2023`
+- **C**：病例报告、回顾性研究、专家意见、灰文献（同行教育站点）、小样本药代动力学、未充分外部复制的方案
+  - 命中：`aly-2021` / `kuhl-2005` / `oriowo-1980` / `patel-2021` / `price-1997` / `prior-2019` / `neyman-2019` / `fuqua-2024` / `angus-2024` / `wilde-2024` / `matsumoto-2020` / `howlow-2024`
+- **X**（无证据）：本库不收录；仅在「社区常见说法纠正」段落引用时由内容侧手工标注，不进入 references.json
+
+**强制点**：
+- `scripts/validate-content.mjs` 后续会要求每条 references.json 必填 `evidenceLevel`
+- `CitationRef.astro` tooltip 可附带等级（不强制 UI 变更）
+- `ReferenceLibrary.tsx` 与 `appendix-references.mdx` 可按等级筛选展示
+
+**复评节奏**：与 WPATH SOC 9 草案发布同步重审一次；A 级文献新增国际指南时重排序。
+
+**影响文件**：`src/data/references.json`、`src/components/ui/CitationRef.astro`、`docs/ai-cto/DECISIONS.md`
+
+---
+
+## D016 — 内容引用治理：博客纳入 validator + 紧急表述保留
+
+**决策**（2026-05-26）：
+
+**1) Validator scope 扩展**：`scripts/validate-content.mjs` 同时扫描 `src/content/docs/**/*.mdx` 与 `src/content/blog/**/*.mdx`。两路径下 `evidenceLevel` 非 "X" 的页面均必须有 `<CitationRef>` 与 frontmatter `references[]`。
+
+**背景**：审计发现博客目录此前未纳入 validator 扫描范围，14 篇 zh 博客累计 ~108 处剂量声明零引用，与 docs 路径形成不对称合规。
+
+**2) 绝对语言三档分桶**：CLAUDE.md "no absolute language" 规则不可一刀切。按上下文分类：
+- **保留**：紧急停药指令（"必须立即停药就医"）、CC-BY-SA 等法律表述（"必须注明出处"）、引述指南原文且已用 `<CitationRef>` 归因者
+- **软化**：剂量/操作建议中的"必须"→"建议/通常需要"（如"舌下含服必须分次"→"建议舌下分次含服"）
+- **删除**：纯营销性绝对表述（本站无此类）
+
+**理由**：医学站点的紧急停药指令属临床绝对禁忌，软化反而降低警示强度并增加医疗法律风险；指南引述需保真。
+
+**影响文件**：`scripts/validate-content.mjs`、`src/content/blog/zh/*.mdx`、`src/content/docs/zh/{before-you-start,blood-tests,china-reality}.mdx`
+
+---
+
+## D017 — DOI 存活与引用真实性周期性验证
+
+**决策**（2026-05-26）：新增 `scripts/verify-doi-liveness.mjs` + 月度 GitHub Actions workflow，自动验证 references.json 中 DOI / URL 是否仍可解析。
+
+**实现要点**：
+- 对 22 条有 DOI 的条目发 GET `Range: bytes=0-0` 至 `https://doi.org/{doi}`（HEAD 多被 Crossref / 期刊返回 403）
+- 对 7 条无 DOI 的条目（aly-2021 / ema-2020 / fuji-2023 / ucsf-2016 / gerber-2024 / angus-2024 / wilde-2024）发 GET 至 `url`
+- 状态码处理：200/206/30x = 通过；403/405/429 = 需人工确认（不算失败）；4xx/5xx = 失败
+- 报告写入 `docs/citations-liveness-{date}.md`
+- GitHub Actions 月度跑 + `pull_request` 触发（首月人工审，稳定后改 schedule + 自动开 PR）
+
+**理由**：医学引用一旦 DOI 死链或 URL 重定向到错误内容，站点公信力严重受损；CLAUDE.md "no citation = no content" 隐含"引用必须真实有效"。
+
+**影响文件**：`scripts/verify-doi-liveness.mjs`、`.github/workflows/verify-citations.yml`、`docs/citations-liveness-*.md`

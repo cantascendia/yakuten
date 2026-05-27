@@ -1,0 +1,52 @@
+name: Verify citations
+
+# Monthly liveness check for references.json DOIs and URLs.
+# Per D017: opens a PR with the latest docs/citations-liveness-*.md report so
+# editors can act on dead links. Workflow does NOT block main; manual review
+# is the merge gate during the first month, after which it may be promoted
+# to a hard CI step.
+
+on:
+  # First-month rollout: PR + manual trigger only. Once stable, uncomment the
+  # schedule below to run on the 1st of every month at 03:00 UTC.
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - src/data/references.json
+      - scripts/verify-doi-liveness.mjs
+      - .github/workflows/verify-citations.yml
+  # schedule:
+  #   - cron: '0 3 1 * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run DOI liveness check
+        id: verify
+        run: |
+          node scripts/verify-doi-liveness.mjs | tee verify-output.txt
+          echo "report=$(ls -1t docs/citations-liveness-*.md | head -1)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: citations-liveness-report
+          path: docs/citations-liveness-*.md
+
+      - name: Fail job on hard 4xx / network errors
+        if: failure()
+        run: |
+          echo "Hard failure: see report ${{ steps.verify.outputs.report }}"
+          exit 1
