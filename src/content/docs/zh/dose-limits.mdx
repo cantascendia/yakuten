@@ -1,20 +1,20 @@
 ---
-title: HRT 剂量红线与混用禁忌 — 各药物上限、危险组合与错误方案
-description: 跨性别女性 HRT 各药物最大安全剂量、雌激素与抗雄的危险混用组合、社群流传的高风险错误方案盘点。超过安全红线不会让你"女性化更快"，只会增加 VTE 血栓、肝损伤、脑膜瘤等严重风险，每项附循证依据。
+title: HRT 剂量上限与安全警示：避免高风险药物组合与误区
+description: 提供跨性别女性 HRT 各药物最大建议剂量、高风险混用禁忌及常见用药误区。基于有限的临床数据和专家意见，帮助你避开血栓、肝损伤等健康风险。
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
 faqs:
   - q: "CPA 每天最多吃多少？"
-    a: "WPATH SOC 8 与 EMA 2020 推荐 CPA 上限为 12.5 mg/天，常规剂量 5–12.5 mg/天即可有效抑制睾酮。≥25 mg/天时脑膜瘤风险 OR=12.36（Lee 2022），EMA 已对此发出限制令。社群流传的 50 mg/天属于前列腺癌方案，严重过量。"
+    a: "根据 WPATH SOC 8 与 EMA 2020，建议 CPA 上限为 12.5 mg/天，通常 5–12.5 mg/天即可抑制睾酮。当剂量 ≥25 mg/天时脑膜瘤风险显著上升，EMA 已发出使用限制。社群流传的 50 mg/天主要用于前列腺癌治疗，对 HRT 而言已属于过量。"
   - q: "雌激素剂量越高效果越好吗？"
-    a: "不是。Endocrine Society 2017 推荐 E2 维持在 100–200 pg/mL，从 200 升至 400 pg/mL 时女性化效果几乎无提升，但 VTE 风险显著上升（Canonico 2018）。注射用户峰值可远超 200 pg/mL，应以谷值（下次注射前最低点）作为调整依据。"
+    a: "不是。根据临床指南，E2 维持在 100–200 pg/mL 即可，即使从 200 升至 400 pg/mL，女性化效果也几乎没有额外提升，反而会增加血栓风险。如果使用注射剂，其谷值（下次注射前最低点）可作为剂量调整的重要参考。"
   - q: "螺内酯吃到多少要警惕？"
-    a: "螺内酯上限 200 mg/天。100→200 mg 抗雄增幅有限，但高钾血症风险显著增加。使用期间应避免钾补剂、定期监测血钾（前 3 个月每月一次），K⁺>5.5 mmol/L 应停药就医。出现肌无力、心悸、手脚麻木需立即查电解质。"
+    a: "螺内酯建议上限为 200 mg/天。剂量从 100 mg 增加到 200 mg，抗雄效果提升有限，但高钾血症风险会增加。使用期间建议避免服用钾补充剂，并建议在起始前 3 个月每月查一次血钾。若血钾 K⁺ > 5.5 mmol/L，建议停药并咨询医生。"
   - q: "达英-35 能当 HRT 用吗？"
-    a: "不能。达英-35 含炔雌醇 35 µg + CPA 2 mg，是复方避孕药而非 HRT 方案（Coleman 2022）。炔雌醇 VTE 风险约为天然雌二醇的 20 倍（Canonico 2018），CPA 2 mg 也不足以有效抑制睾酮。WPATH SOC 8 与 ES 2017 均明确不推荐炔雌醇用于 GAHT。"
-  - q: "怎样才算 HRT 过量？"
-    a: "三条红线：单药超出最大剂量表（如 E2 口服 >8 mg/天、注射 EV >5 mg/周、CPA ≥25 mg/天）；混用禁止组合（CPA+比卡鲁胺、炔雌醇+任何方案、雌激素+吸烟）；E2 谷值持续超 200 pg/mL 且 T 已达标仍加量。出现以上任一项均属过量。"
+    a: "不建议使用。达英-35 属于复方避孕药，其中含有的炔雌醇血栓风险约为天然雌二醇的 20 倍，且 CPA 2 mg 难以抑制睾酮。主要国际指南均不推荐将炔雌醇用于性别肯定激素治疗。"
+  - q: "怎样评估 HRT 是否过量？"
+    a: "你可以通过以下三点来评估：一是单药剂量是否超出建议上限（如口服 E2 >8 mg/天、注射 EV >5 mg/周、CPA ≥25 mg/天）；二是是否存在高风险混用（如 CPA 混用比卡鲁胺、使用炔雌醇、或用药期间吸烟）；三是 E2 谷值长期超出 200 pg/mL 且睾酮已达标却仍在加量。"
 ---
 
 import DoseTable from '../../../components/ui/DoseTable.astro';
@@ -24,13 +24,13 @@ import CitationRef from '../../../components/ui/CitationRef.astro';
 import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 import InlineValue from '../../../components/ui/InlineValue.astro';
 
-<WarningBox title="本页核心信息">
-超过以下剂量不会让你"女性化更快"。研究表明，E2 维持在 <InlineValue value="100–200" unit="pg/mL" /> 即可实现充分的女性化效果<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。超过 <InlineValue value="200" unit="pg/mL" /> 不带来更强效果，只增加静脉血栓、肝损伤等风险。
+<WarningBox title="本页核心建议">
+增加药物剂量通常并不会加速你的女性化进程。现有临床数据和专家意见表明，将 E2 维持在 <InlineValue value="100–200" unit="pg/mL" /> 即可达到良好的发育效果<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。若浓度超过 <InlineValue value="200" unit="pg/mL" />，不仅无法带来额外的女性化收益，反而会增加血栓、肝损伤等健康风险。
 </WarningBox>
 
-## 4.1 各药物最大剂量表
+## 4.1 药物建议最大剂量表
 
-以下是国际指南和同行评审文献中建议的各药物最大使用剂量。超过这些剂量的风险-收益比通常不合理。
+以下是主流国际指南中建议的各药物最大剂量。基于当前的临床数据和专家意见，超出此上限的方案可能会让你的健康承担不必要的风险。
 
 ### 雌激素类
 
@@ -38,15 +38,15 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
   headers={['药物', '最大日/周剂量', '说明', '来源']}
   rows={[
     ['经皮贴片', '400 µg/天', '仅单药疗法时可能需要；通常 200 µg/天已足够', 'ES 2017'],
-    ['口服雌二醇 (E2)', '8 mg/天', '大多数使用者 4 mg/天可达标', 'WPATH SOC 8'],
+    ['口服雌二醇 (E2)', '8 mg/天', '大多数情况下，你使用 4 mg/天即可达标', 'WPATH SOC 8'],
     ['口服戊酸雌二醇', '10 mg/天', '≈ 7.5 mg 雌二醇当量', 'WPATH SOC 8'],
-    ['凝胶', '6 mg/天', '经皮吸收率个体差异大，需以血检为准', 'ES 2017'],
-    ['注射戊酸雌二醇 (EV)', '5 mg/周', '建议上限；单次 ≥ 10 mg 禁止', 'Rothman 2024'],
+    ['凝胶', '6 mg/天', '个体的经皮吸收率差异较大，建议以血检结果为参考', 'ES 2017'],
+    ['注射戊酸雌二醇 (EV)', '5 mg/周', '建议上限；通常不建议单次剂量达到或超过 10 mg', 'Rothman 2024'],
   ]}
 />
 
-<WarningBox title={'关于"最大剂量"'}>
-"最大剂量"并非"推荐剂量"。大多数使用者在远低于最大剂量时即可达到 E2 <InlineValue value="100–200" unit="pg/mL" /> 的目标范围<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。调整剂量应以血检结果为依据，而非自行加量至上限。
+<WarningBox title={'关于"最大剂量"的建议'}>
+这里列出的"最大剂量"并不等同于"推荐剂量"。大多数情况下，你在远低于最大剂量时即可达到 E2 <InlineValue value="100–200" unit="pg/mL" /> 的目标区间<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。建议你以定期的血检结果为主要依据来微调剂量，而不是盲目加量到上限。
 </WarningBox>
 
 ### 抗雄激素类
@@ -54,13 +54,13 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
 <DoseTable
   headers={['药物', '最大日剂量', '说明', '来源']}
   rows={[
-    ['CPA（醋酸环丙孕酮）', '12.5 mg/天', '≥ 25 mg 脑膜瘤风险急剧升高；EMA 2020 已限制', 'Lee 2022; EMA 2020'],
-    ['螺内酯', '200 mg/天', '更高剂量不增加抗雄效果，但显著增加高钾血症风险', 'ES 2017; UCSF'],
-    ['比卡鲁胺', '50 mg/天', '超说明书使用；不推荐常规用于 GAHT', 'ES 2017'],
+    ['CPA（醋酸环丙孕酮）', '12.5 mg/天', '≥ 25 mg 脑膜瘤风险增加；欧洲药品管理局已限制其高剂量使用', 'Lee 2022; EMA 2020'],
+    ['螺内酯', '200 mg/天', '继续增加剂量通常无法进一步降低睾酮，反而会增加高钾血症风险', 'ES 2017; UCSF'],
+    ['比卡鲁胺', '50 mg/天', '属于超说明书用药；基于有限数据和专家意见，不推荐常规作为首选', 'ES 2017'],
   ]}
 />
 
-关于各药物的详细信息，请参阅对应的药物详解页面。
+如果你想了解各药物的详细药理，可以参阅对应的药物详解。
 
 ### 剂量与风险的关系
 
@@ -76,7 +76,7 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
 
 <img
   src="/images/diagrams/zh/cpa-meningioma-risk.webp"
-  alt="色普龙（CPA）脑膜瘤风险与日剂量关系曲线：5 mg/天 OR≈1.0、12.5 mg/天 OR≈3.5、25 mg/天 OR≈12.36、50 mg/天 OR>20，标注 EMA 2020 警告线"
+  alt="色谱龙（CPA）脑膜瘤风险与日剂量关系曲线：5 mg/天 OR≈1.0、12.5 mg/天 OR≈3.5、25 mg/天 OR≈12.36、50 mg/天 OR>20，标注 EMA 2020 警告线"
   width="1536"
   height="1024"
   loading="lazy"
@@ -84,17 +84,17 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
   style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
 />
 
-一个核心原则：**剂量越高，风险不成比例地增加，而收益递减**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+一个重要的减害原则：**当药物剂量超出合理区间后，健康风险往往会明显增加，而女性化发育的获益却会递减**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
-- **雌二醇**：E2 血药浓度从 100 提高到 <InlineValue value="200" unit="pg/mL" /> 的女性化收益很小，但从 200 提高到 <InlineValue value="400" unit="pg/mL" /> 几乎没有额外收益，VTE 风险却显著上升<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
-- **CPA**：5 mg 和 50 mg 的降 T 效果差异不大，但 50 mg 的脑膜瘤风险是低剂量的十余倍<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
-- **螺内酯**：100 mg 到 200 mg 的抗雄效果增幅有限，但高钾血症风险显著增加<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+- **雌二醇**：E2 浓度从 100 提高到 <InlineValue value="200" unit="pg/mL" /> 时，其发育获益十分有限；若从 200 进一步提升至 <InlineValue value="400" unit="pg/mL" />，通常不会带来额外的女性化改变，但血栓风险会随之上升<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} title="Estrogen therapy and venous thromboembolism" />。
+- **CPA**：根据现有的有限数据，5 mg 与 50 mg 在降低睾酮方面的效果差异不大，但高剂量方案下的脑膜瘤发生风险会显著高于低剂量<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。
+- **螺内酯**：将剂量从 100 mg 增加到 200 mg，对阻断雄激素的帮助较为有限，但会明显增加高钾血症的发生率<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
 ---
 
 ## 4.2 危险的药物组合
 
-以下是在跨性别 HRT 中可能出现的危险药物组合。部分组合在社区中仍有使用，但国际指南和临床数据明确提示了相关风险。
+在进行 HRT 时，建议你特别避开以下几组高风险的药物搭配。尽管部分组合仍在社群中流传，但临床数据与主流指南均对此发出了安全警示。
 
 ### 禁止组合
 
@@ -109,64 +109,64 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
 />
 
 <DangerBox title="CPA + 比卡鲁胺 → 绝对禁止合用">
-CPA 和比卡鲁胺均具有肝毒性<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。两者合用时肝损伤风险叠加，可能导致严重肝功能衰竭。此外，这两种药物的抗雄机制不同（CPA 以孕激素负反馈为主，比卡鲁胺为雄激素受体拮抗），合用也不会产生协同效益。
+CPA 和比卡鲁胺均可能带来肝脏负担<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。两者若同时使用，肝损伤的风险会叠加，严重时可能导致肝功能衰竭。此外，两者的抗雄机制不同，合用并不能带来更好的治疗效益。
 
-**如果你正在同时使用这两种药物，应尽快咨询医生调整方案，选择其中一种即可。**
+**如果你正在同时使用这两种药物，建议你尽快在专业指导下调整方案，通常只需保留其中一种。**
 </DangerBox>
 
 <DangerBox title="炔雌醇 (EE) + 任何 HRT 方案 → 绝对禁止">
-炔雌醇（ethinyl estradiol）是合成雌激素，常见于复方避孕药（如达英-35）。其 VTE 风险约为天然雌二醇的 **20 倍**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。炔雌醇不应用于跨性别 HRT 的任何阶段，无论以何种形式、何种剂量使用。
+炔雌醇（ethinyl estradiol）属于合成雌激素，多见于复方避孕药（如达英-35）。其血栓（VTE）风险约为天然雌二醇的 **20 倍**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。基于已有的安全性数据，在 HRT 的 any 阶段均不建议使用炔雌醇。
 
-达英-35（炔雌醇 35 µg + 醋酸环丙孕酮 2 mg）**不是 HRT 方案**。其中的 CPA 2 mg 剂量过低，无法有效抑制 T，而其中的 EE 35 µg 会带来不可接受的 VTE 风险。详见下方 §4.3 常见错误方案。
+达英-35（炔雌醇 35 µg + 醋酸环丙孕酮 2 mg）**并非性别肯定激素治疗的合理方案**。其中的 CPA 剂量过低，难以抑制睾酮，而炔雌醇又会引入难以接受的血栓风险。详情可参考下方 §4.3 常见错误方案。
 </DangerBox>
 
 <DangerBox title="任何雌激素 + 吸烟 → 禁止合用">
-雌激素与吸烟同时存在时，VTE 风险呈乘法级增加<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。对于 35 岁以上吸烟者，口服雌激素是 **绝对禁忌**<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+雌激素与吸烟两项风险因素叠加时，血栓（VTE）发生概率会明显升高<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。对于年龄超过 35 岁且有吸烟习惯的人，通常建议避免使用口服雌二醇<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
-- 如果无法戒烟，应**优先选择经皮给药**（贴片或凝胶），经皮途径的 VTE 风险远低于口服<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
-- 即使使用经皮途径，吸烟仍然增加心血管风险——戒烟始终是最重要的减害措施
+- 如果你目前无法戒烟，**建议优先选择经皮给药**（如凝胶），此途径的血栓风险低于口服<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。
+- 即使采用经皮给药，吸烟依然会增加心血管系统的整体压力，建议你尽早尝试戒烟以保护健康。
 </DangerBox>
 
 ### 需谨慎的组合
 
-<WarningBox title="CPA + 口服雌二醇 → 谨慎使用，建议改经皮">
-CPA 本身具有促凝血作用，口服雌二醇经肝脏首过效应也会增加 VTE 风险<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。两者合用时 VTE 风险叠加。
+<WarningBox title="CPA + 口服雌二醇 → 谨慎使用，建议考虑经皮给药">
+CPA 本身具有一定的促凝血活性，而口服雌二醇经过肝脏代谢同样会增加血栓（VTE）的发生率<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />。当两者同时使用时，血栓风险可能会有所上升。
 
-**建议**：如果使用 CPA 作为抗雄，雌二醇给药途径应优先选择经皮（贴片或凝胶），以避免双重 VTE 风险<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。如果只能获取口服雌二醇（如补佳乐），则应将 CPA 控制在最低有效剂量（<InlineValue value="5" unit="mg/天" /> 或更低），并密切关注 DVT 症状。
+**建议**：为了降低血栓发生概率，如果你正在使用 CPA 作为抗雄方案，建议雌二醇优先选择经皮给药（如凝胶）<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。若是受条件限制只能使用口服雌二醇（如戊酸雌二醇），建议尽量将 CPA 的剂量降到最低有效范围（通常为 <InlineValue value="5" unit="mg/天" /> 或更低），并多加留意下肢小腿的变化。
 </WarningBox>
 
-<DangerBox title="螺内酯 + 高钾食品或钾补剂 → 高钾血症风险">
-螺内酯是保钾利尿剂，其保钾作用可导致血钾升高<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。如果同时大量摄入高钾食品或使用钾补剂，可能引发**高钾血症**（K⁺ > 5.5 mmol/L），严重时导致致命性心律失常。
+<DangerBox title="螺内酯 + 高钾食品或钾补剂 → 谨防高钾血症">
+螺内酯属于保钾利尿剂，在阻断雄激素受体的同时会减少体内钾离子的排出<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。如果在此期间额外补充高浓度的钾，可能会引发**高钾血症**（血钾 K⁺ > 5.5 mmol/L），严重时可能会危害心血管安全。
 
-**使用螺内酯期间应注意**：
-- 避免使用含钾补充剂（包括部分代盐产品）
-- 适度食用高钾食品（如香蕉、椰子水、番茄酱等），但不要过量
-- **定期检测血钾**（建议前 3 个月每月一次，之后每 3-6 个月一次）
-- K⁺ > 5.5 mmol/L 时应停药并就医
+**在服用螺内酯期间，你可以通过以下方式保护自己**：
+- 避免使用含钾的膳食补充剂或低钠代盐；
+- 适量享用香蕉、椰子水、番茄酱等富钾食物，注意不要暴饮暴食；
+- **建议定期复查电解质**（推荐用药前 3 个月内每月监测一次，此后每 3-6 个月复查一次）；
+- 如果查出血钾 K⁺ > 5.5 mmol/L，建议尽早咨询医生并考虑暂停用药。
 
-**警示症状**：肌肉无力、心悸、手脚麻木或刺痛 → 可能是高钾，应尽快检测电解质。
+**身体预警**：如果你觉得肌肉无力、心跳异常、或者手脚发麻刺痛，这可能是血钾偏高的迹象，建议尽快就医查一下电解质。
 </DangerBox>
 
-### 危险组合速查表
+### 高风险组合速查表
 
 <DoseTable
-  headers={['药物组合', '危险等级', '主要风险']}
+  headers={['药物组合', '风险建议', '可能存在的风险']}
   rows={[
-    ['CPA + 比卡鲁胺', '🔴 绝对禁止', '肝毒性叠加'],
-    ['炔雌醇 (EE) + 任何方案', '🔴 绝对禁止', 'VTE 风险 ≈ 天然 E2 的 20 倍'],
-    ['任何雌激素 + 吸烟', '🔴 禁止', 'VTE 风险乘法级增加'],
-    ['螺内酯 + 钾补剂/大量高钾食品', '🔴 危险', '高钾血症 → 心律失常 → 猝死'],
-    ['CPA + 口服雌二醇', '🟡 谨慎', '双重 VTE 风险；建议改经皮 E2'],
+    ['CPA + 比卡鲁胺', '🔴 建议避免同时使用', '会使肝脏代谢负担加重'],
+    ['炔雌醇 (EE) + 任何方案', '🔴 建议避免使用', '血栓发生概率约为天然雌二醇的 20 倍'],
+    ['任何雌激素 + 抽烟', '🔴 建议避免同时进行', '会使血栓发生概率明显升高'],
+    ['螺内酯 + 钾补剂/过量高钾食物', '🔴 注意规避', '易诱发高钾血症，影响心脏安全'],
+    ['CPA + 口服雌二醇', '🟡 建议谨慎搭配', '血栓风险有所上升，建议优先选择经皮给药'],
   ]}
 />
 
 ---
 
-## 4.3 常见错误方案批评
+## 4.3 常见用药误区解析
 
-以下是中文跨性别社区中常见的错误用药方案。这些方案广泛传播，但与国际指南和临床证据存在严重偏差。
+在中文跨性别社群里，由于历史原因流传着一些不够科学的用药误区。了解这些方案背后的局限性与风险，有助于你少走弯路，选择更温和的减害方案。
 
-### "达英-35 当 HRT"
+### 误区一：使用达英-35 作为 HRT 方案
 
 <img
   src="/images/diagrams/zh/diane-35-vs-hrt.webp"
@@ -178,74 +178,74 @@ CPA 本身具有促凝血作用，口服雌二醇经肝脏首过效应也会增�
   style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
 />
 
-<DangerBox title="达英-35 不是 HRT 方案">
-**达英-35（Diane-35）** 的成分是炔雌醇（EE）35 µg + 醋酸环丙孕酮（CPA）2 mg。这是一种**复方口服避孕药**，并非跨性别 HRT 方案<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
+<DangerBox title="达英-35 并非专用的 HRT 方案">
+**达英-35（Diane-35）** 的成分包含炔雌醇 35 µg 与醋酸环丙孕酮 2 mg。该药属于复方避孕药，并非适合跨性别女性长期使用的 HRT 方案<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
 
-**为什么是错误方案：**
+**为什么不推荐选择此方案：**
 
-- **炔雌醇的 VTE 风险约为天然雌二醇的 20 倍**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />——这是其最大的危险所在
-- CPA 2 mg 的剂量不足以有效抑制成年人的睾酮水平
-- 炔雌醇会干扰 E2 血检结果的准确性（血检测的是天然 E2，无法反映 EE 的活性水平）
-- Endocrine Society 2017 和 WPATH SOC 8 均明确建议**不使用炔雌醇**进行 GAHT<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />
+- **炔雌醇的血栓风险约为天然雌二醇的 20 倍**<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />，会增加不必要的健康负担；
+- CPA 2 mg 剂量较小，通常难以有效抑制你体内的睾酮水平；
+- 炔雌醇在常规的 E2 血检中无法被准确测出，这会增加通过血检科学调整剂量的难度；
+- 国际内分泌学会与 WPATH 指南均不推荐在性别肯定激素治疗中使用合成的炔雌醇<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
 
-**正确做法**：使用天然雌二醇（17β-estradiol），如口服补佳乐（戊酸雌二醇）、经皮贴片、凝胶或注射剂。如果你正在使用达英-35，应尽快转换为标准 HRT 方案。
+**更温和的方案建议**：建议你选择对身体更友好的天然 17β-雌二醇，如戊酸雌二醇（补佳乐）、透皮凝胶或贴片。如果你目前正在使用达英-35，建议你尽早向 trans-friendly 医生寻求支持，温和且安全地过渡到标准 HRT 方案。
 </DangerBox>
 
-### "CPA 50 mg/天"
+### 误区二：每日服用 CPA 50 mg
 
-<DangerBox title="CPA 50 mg 是严重过量">
-许多社区流传的方案使用 CPA 50 mg/天——这是**前列腺癌治疗方案**的剂量，不是 GAHT 方案<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />。
+<DangerBox title="每日使用 50 mg CPA 属于过量使用">
+在社群早期的部分用药经验贴中，经常能看到每日服用 50 mg CPA 的方案。实际上，这通常是针对前列腺肿瘤等疾病的临床治疗剂量，而非性别肯定激素治疗（GAHT）的合理选择<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />。
 
-**为什么是错误方案：**
+**为什么该方案不利于健康：**
 
-- 研究表明 <InlineValue value="5–12.5" unit="mg/天" /> 即可将 T 有效抑制至女性范围<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />
-- 50 mg 与 12.5 mg 的降 T 效果差异不大，但 **50 mg 的脑膜瘤风险是低剂量的十余倍**<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} />
-- EMA（欧洲药品管理局）2020 年已对 CPA ≥ 25 mg/天的使用发出限制令<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
-- 高剂量还增加肝毒性、抑郁和泌乳素升高的风险
+- 临床数据表明，每日仅需 <InlineValue value="5–12.5" unit="mg/天" /> 即可将睾酮控制在目标范围内，额外增加剂量通常并无更多收益<CitationRef id="meyer-2020" num={4} authors="Meyer et al." year={2020} />；
+- 50 mg 剂量下的降睾酮效果与 12.5 mg 相差无几，但其脑膜瘤发生风险却可能比低剂量高出十余倍<CitationRef id="lee-2022" num={3} authors="Lee et al." year={2022} />；
+- 欧洲药品管理局（EMA）已于 2020 年限制了剂量达到或超过 25 mg/天的 CPA 使用，以减少对患者神经系统的潜在危害<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />；
+- High 剂量用药还会显著增加肝脏负荷，并可能加重抑郁情绪或诱发泌乳素升高。
 
-**正确做法**：CPA 使用 <InlineValue value="5–12.5" unit="mg/天" />（取 50 mg 片剂的 1/4 片）。如果你当前使用 50 mg，建议逐步减量（50 → 25 → 12.5，每步间隔 2 周），并在减量期间保持雌二醇剂量不变<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
+**减害用药建议**：建议将 CPA 剂量调整为 <InlineValue value="5–12.5" unit="mg/天" />（可以将常见的 50 mg 药片均匀切为四分之一服用）。如果你目前正处于 50 mg 的高剂量方案中，建议不要骤然停药，可以采取循序渐进的减量策略（如每 2 周递减一次：50 mg → 25 mg → 12.5 mg），在此期间建议保持雌二醇的用药剂量稳定，以防体内激素水平波动过大<CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。
 </DangerBox>
 
-### "高剂量速推"——一开始就用最大剂量
+### 误区三：“高剂量速推”——在起步阶段直接选择大剂量
 
-<WarningBox title={'从低剂量开始不是"浪费时间"'}>
-社区中常有人建议新手"一上来就用4mg E2 + 12.5mg CPA"，认为低剂量是"浪费时间"。这个观点是错误的<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+<WarningBox title="由低剂量温和起步，对长远的发育更有利">
+部分社区经验贴可能会建议新手在起步时就尝试“4 mg E2 + 12.5 mg CPA”之类的大剂量组合，认为从低剂量开始是在浪费时间。然而，从医学指南和内分泌专家意见来看，这种急于求成的观点是不可取的<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
-**为什么是错误方案：**
+**为什么起始阶段不建议直接使用高剂量：**
 
-- 跳过低剂量期可能导致**乳芽过早融合**——高 E2 过早激活终末分化信号，导管停止分支，乳房发育在 Tanner III-IV 期停滞，且**不可逆**<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
-- 低剂量起步可以观察身体对激素的初始反应，及时发现肝功能异常、情绪变化等副作用
-- 顺性别女性的青春期也是从极低 E2 水平开始，经历数年逐步升高
-- Endocrine Society 2017 推荐从低剂量起步，每 3-6 个月根据血检结果逐步调整<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />
+- **可能造成乳芽过早融合**：有专家意见和部分个案观察表明，如果在一开始就使用过高水平的雌二醇（E2），可能会提前激活腺体的终末分化信号，导致乳腺导管过早停止分支发育，使乳房的后续塑形在较早阶段出现停滞，且这一过程可能难以逆转<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />；
+- **难以评估身体的初始反应**：温和的低剂量起步，可以让你更安全地了解自己的身体对激素改变的耐受度，以便及时发现肝功能异常、明显的情绪波动等潜在副作用；
+- **顺性别女性的第二性征发育同样伴随渐进过程**：顺性别女性的青春期也是由极低的雌二醇水平起步，经历数年的温和过渡，才让身体彻底走向成熟；
+- **临床指南的共识**：国际内分泌学会推荐从温和的低剂量开始，并建议根据每 3-6 个月的血检结果进行阶梯式的平稳调整<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
-**正确做法**：口服雌二醇从 <InlineValue value="2" unit="mg/天" /> 开始，注射 EV 从 <InlineValue value="1–2" unit="mg/周" /> 开始。3–6 个月后根据血检结果逐步调整。前 6 个月 E2 目标维持在 <InlineValue value="50–100" unit="pg/mL" /> 即可。不要因为"没有明显变化"就自行加量——乳腺发育信号通常在 3–6 个月后才开始出现。
+**减害调整建议**：通常建议口服雌二醇从每日 <InlineValue value="2" unit="mg/天" /> 开始，注射 EV 从每周 <InlineValue value="1–2" unit="mg/周" /> 开始。在最初的 3–6 个月里，让 E2 维持在 <InlineValue value="50–100" unit="pg/mL" /> 即可。请给身体受体和腺体组织留出充足的适应时间，发育信号通常在 3 个月后才会渐渐明朗。不要因为短期的“变化不明显”而急于给自己加量。
 </WarningBox>
 
-### "E2 越高越好"
+### 误区四：雌二醇（E2）数值越高，女性化效果越好
 
-<WarningBox title="E2 并非越高越好">
-社区中存在"E2 血药浓度越高、女性化效果越好"的说法。临床证据并不支持这一观点<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
+<WarningBox title="雌二醇并非越高越好，适度温和才是良策">
+在社群的讨论中，偶尔能看到“E2 浓度越高，身材曲线发育得就越饱满、效果越好”的误解。其实，现有的内分泌临床指南与循证证据并不支持这一推论<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。
 
-**为什么是错误观点：**
+**为什么你不需要刻意追求偏高的 E2 数值：**
 
-- Endocrine Society 2017 推荐维持 E2 在 <InlineValue value="100–200" unit="pg/mL" /><CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />——这是基于顺性别女性正常生理范围设定的目标
-- E2 从 200 升至 <InlineValue value="400" unit="pg/mL" /> 时，女性化效果没有有意义的提升，但 VTE 风险显著增加<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />
-- 长期超生理水平的 E2 还可能增加心血管事件、偏头痛、情绪波动的风险
-- 注射用户的峰值 E2 可能远超 <InlineValue value="200" unit="pg/mL" />——应以**谷值**（下次注射前的最低点）作为调整依据
+- **国际指南设定的生理目标已足够**：主流内分泌学会建议将 E2 控制在 <InlineValue value="100–200" unit="pg/mL" /> 的范围内<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} />。这已能满足跨性别女性绝大多数发育受体的需求；
+- **过度增加剂量可能伴随健康隐患**：当 E2 水平从 200 升高至 <InlineValue value="400" unit="pg/mL" /> 时，发育的收益几乎没有额外提升，但血栓（VTE）的发生风险却会明显上升<CitationRef id="canonico-2018" num={2} authors="Canonico et al." year={2018} />；
+- **可能会带来其他躯体不适**：让体内的激素长期超生理负荷运转，可能会加重偏头痛、增加情绪起伏的频率，并增加心血管方面的压力；
+- **注射给药需注意“谷值”参考**：如果是注射戊酸雌二醇等制剂，用药后血浓度会产生峰值。建议你每次在**下一次注射前的一到数小时内（即谷值点）**前往医院抽血，以此作为调整剂量的关键依据。
 
-**正确做法**：以血检谷值为准，目标 E2 <InlineValue value="100–200" unit="pg/mL" />、T <InlineValue value="<50" unit="ng/dL" /><CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。如果 E2 谷值已在目标范围内且 T 已达标，不要再加量。追求更高的 E2 数值只增加风险，不增加收益。
+**减害调整建议**：建议以血检的谷值为准，让 E2 保持在 <InlineValue value="100–200" unit="pg/mL" />，同时将睾酮 T 维持在 <InlineValue value="<50" unit="ng/dL" /> 的稳定生理范围内<CitationRef id="hembree-2017" num={1} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman et al." year={2022} />。如果你的数据已经在这个范围内并且身体感觉良好，建议维持现状即可。追求更高的数值不仅无法带来更有意义的女性化收益，反而会让身体承担多余的健康包袱。
 </WarningBox>
 
 ---
 
 ## 总结
 
-<WarningBox title="安全用药的三条底线">
-1. **不超过最大剂量红线**——超过不增效，只增险
-2. **不混用禁止组合**——尤其注意肝毒性叠加和 VTE 风险叠加
-3. **以血检结果指导剂量调整**——不凭感觉、不比较他人方案、不追求"越高越好"
+<WarningBox title="关于安全用药的三项减害底线">
+1. **建议不超过合理的剂量建议上限**：增加剂量通常无法进一步提高效果，反而会给身体带来健康隐患；
+2. **建议避开高风险药物搭配**：尤其要提防几种可能增加肝脏负担与血栓风险的组合；
+3. **建议以规律的血检数据来作为科学调整的参考**：不凭主观直觉、不过度与他人的药单进行攀比，切忌盲目追求高水平的数值指标。
 
-如果你当前的用药方案存在以上问题，不要恐慌，但请尽快调整。参阅[用药路径图](/zh/pathway/)了解标准的阶梯式用药方案，或咨询[友好医疗资源](/zh/china-reality/)中的医生。
+如果你在评估自己当下的方案后发现有些地方不够科学，请不必过于恐慌。你可以参考[用药路径图](/zh/pathway/)来了解更为阶梯式的温和方案，也可以浏览[中国友好医疗资源](/zh/china-reality/)以寻求专业 trans-friendly 医生的面诊与个性化调整建议。
 </WarningBox>
 
 import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
