@@ -609,17 +609,47 @@ function InputField({
     onChange(spec.id, e.target.value);
   };
 
+  const num = value && value.trim() !== '' ? parseFloat(value) : NaN;
+  const hasValue = !isNaN(num);
+  const level = hasValue ? evaluate(spec, num) : null;
+  const isRed = level === 'red';
+  const labelText = RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label;
+  const statusText = hasValue
+    ? level === 'green'
+      ? `${labelText}: 在目标范围内`
+      : level === 'yellow'
+        ? `${labelText}: 需注意`
+        : level === 'red'
+          ? `${labelText}: 超出安全范围，需就医评估`
+          : ''
+    : '';
+  const statusId = `btc-status-${spec.id}`;
+
   return (
     <div style={s.inputGroup}>
       <label style={s.label} htmlFor={`btc-${spec.id}`}>
-        {RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label}
-        {value && value.trim() !== '' && (() => {
-          const num = parseFloat(value);
-          if (isNaN(num)) return null;
-          const level = evaluate(spec, num);
-          const dotColor = level === 'green' ? 'var(--color-safe)' : level === 'yellow' ? 'var(--color-caution)' : level === 'red' ? 'var(--color-danger)' : 'transparent';
-          return <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: dotColor, marginLeft: '6px', flexShrink: 0 }} />;
-        })()}
+        {labelText}
+        {hasValue && (
+          <span
+            aria-hidden="true"
+            style={{
+              display: 'inline-block',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background:
+                level === 'green'
+                  ? 'var(--color-safe)'
+                  : level === 'yellow'
+                    ? 'var(--color-caution)'
+                    : level === 'red'
+                      ? 'var(--color-danger)'
+                      : 'transparent',
+              marginLeft: '6px',
+              flexShrink: 0,
+            }}
+          />
+        )}
       </label>
       <div style={s.inputRow}>
         <input
@@ -633,10 +663,32 @@ function InputField({
           style={s.input}
           value={value}
           onChange={handleInput}
-          aria-label={`${RANGE_LABELS[locale][spec.id as keyof typeof RANGE_LABELS.zh] ?? spec.label} value input`}
+          aria-label={`${labelText} value input`}
+          aria-invalid={isRed || undefined}
+          aria-describedby={statusText ? statusId : undefined}
         />
         <span style={s.inputUnit}>{spec.unit}</span>
       </div>
+      {statusText && (
+        <span
+          id={statusId}
+          role="status"
+          aria-live="polite"
+          style={{
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            padding: 0,
+            margin: '-1px',
+            overflow: 'hidden',
+            clip: 'rect(0 0 0 0)',
+            whiteSpace: 'nowrap',
+            border: 0,
+          }}
+        >
+          {statusText}
+        </span>
+      )}
     </div>
   );
 }

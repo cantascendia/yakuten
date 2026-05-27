@@ -126,7 +126,9 @@ const colorMap = {
     }
   }
 
-  @media (max-width: 540px) {
+  /* Raised from 540px to 640px so 375-480px phones (iPhone SE / 12 mini)
+     get a clean single column instead of cramped 2-column with wrapped labels. */
+  @media (max-width: 640px) {
     .drug-nav__grid {
       grid-template-columns: 1fr;
     }
