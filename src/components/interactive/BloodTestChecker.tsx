@@ -1,12 +1,12 @@
 ﻿import { useState, useCallback, type CSSProperties, type ChangeEvent } from 'react';
 import { formatValueWithUnit } from '../../utils/medicalFormat';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -34,6 +34,14 @@ const SECTION_COPY = {
     disclaimer1: 'このツールは参考用であり、医師の判断の代わりにはなりません。不安がある場合は直接受診してください。',
     disclaimer2: 'すべての計算はブラウザ内で完結し、データは送信・保存されません。',
     viewEmergency: '緊急ガイドを見る',
+  },
+  ko: {
+    inputTitle: '검사 수치 입력',
+    resultTitle: '평가 결과',
+    emptyHint: '왼쪽에 혈액 검사 수치를 입력하면 결과가 실시간으로 여기에 표시됩니다.',
+    disclaimer1: '이 도구는 참고용이며 의사의 판단을 대체할 수 없습니다. 우려되는 점이 있다면 직접 의료기관을 방문하세요.',
+    disclaimer2: '모든 계산은 브라우저 안에서 수행되며 데이터는 전송되거나 저장되지 않습니다.',
+    viewEmergency: '응급 가이드 보기',
   },
 } as const;
 
@@ -65,6 +73,15 @@ const RANGE_LABELS = {
     hb: 'Hb (ヘモグロビン)',
     ddimer: 'D-ダイマー',
   },
+  ko: {
+    e2: 'E2 (에스트라디올)',
+    t: 'T (테스토스테론)',
+    prl: 'PRL (프로락틴)',
+    alt: 'ALT/AST (간기능)',
+    k: 'K+ (혈청 칼륨)',
+    hb: 'Hb (헤모글로빈)',
+    ddimer: 'D-이합체',
+  },
 } as const;
 
 /* ================================================================
@@ -82,8 +99,6 @@ interface RangeSpec {
   yellow: [number, number];
   redAbove?: number;
   redBelow?: number;
-  /** Warning copy shown when the value lands in red */
-  redWarning: string;
 }
 
 const BLOOD_RANGES: RangeSpec[] = [
@@ -95,7 +110,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     yellow: [200, 300],
     redAbove: 500,
     redBelow: 20,
-    redWarning: '雌二醇水平异常，请尽快就医复查。',
   },
   {
     id: 't',
@@ -104,7 +118,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 50],
     yellow: [50, 100],
     redAbove: 100,
-    redWarning: '睾酮偏高，抗雄药物可能需要调整，请咨询医生。',
   },
   {
     id: 'prl',
@@ -113,7 +126,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 25],
     yellow: [25, 50],
     redAbove: 50,
-    redWarning: '泌乳素明显升高，需排除垂体微腺瘤，请尽快就医。',
   },
   {
     id: 'alt',
@@ -122,7 +134,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 40],
     yellow: [40, 120],
     redAbove: 120,
-    redWarning: '肝功能指标异常，建议立即停药并就医。',
   },
   {
     id: 'k',
@@ -131,7 +142,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [3.5, 5.0],
     yellow: [5.0, 5.5],
     redAbove: 5.5,
-    redWarning: '高钾血症风险，可能危及生命，请立即就医！',
   },
   {
     id: 'hb',
@@ -140,7 +150,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [120, 160],
     yellow: [110, 120],
     redBelow: 110,
-    redWarning: '血红蛋白偏低，可能存在贫血，请就医检查。',
   },
   {
     id: 'ddimer',
@@ -149,9 +158,64 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 0.5],
     yellow: [0.5, 1.0],
     redAbove: 1.0,
-    redWarning: 'D-二聚体升高，有血栓风险，请立即就医！',
   },
 ];
+
+/**
+ * EMERGENCY MEDICAL WARNINGS shown when a value lands in the red zone.
+ * Externalized for i18n compliance (per audit AUDIT-2026-05-26-i18n-content.md).
+ *
+ * WARNING: These are life-safety warnings (hyperkalemia, thrombosis, liver
+ * failure, etc.). All four locales (zh/en/ja/ko) must be filled with
+ * medically-accurate translations. DO NOT leave any locale empty or fall
+ * back to a language the user does not read — that is a P0 safety bug.
+ *
+ * Korean translations: AI-generated draft. PRs touching these MUST be
+ * tagged `needs-medical-review` and approved by a Korean-speaking
+ * clinician before release.
+ */
+const RED_WARNINGS: Record<Locale, Record<string, string>> = {
+  zh: {
+    e2: '雌二醇水平异常，请尽快就医复查。',
+    t: '睾酮偏高，抗雄药物可能需要调整，请咨询医生。',
+    prl: '泌乳素明显升高，需排除垂体微腺瘤，请尽快就医。',
+    alt: '肝功能指标异常，建议立即停药并就医。',
+    k: '高钾血症风险，可能危及生命，请立即就医！',
+    hb: '血红蛋白偏低，可能存在贫血，请就医检查。',
+    ddimer: 'D-二聚体升高，有血栓风险，请立即就医！',
+  },
+  en: {
+    e2: 'Estradiol level is abnormal. Please seek medical follow-up as soon as possible.',
+    t: 'Testosterone is elevated. Anti-androgen therapy may need adjustment — consult your clinician.',
+    prl: 'Prolactin is significantly elevated. A pituitary microadenoma must be ruled out — seek medical care promptly.',
+    alt: 'Liver enzymes are abnormal. Stop medication immediately and seek medical care.',
+    k: 'Risk of hyperkalemia. This can be life-threatening — seek medical care immediately!',
+    hb: 'Hemoglobin is low. Anemia is possible — seek medical evaluation.',
+    ddimer: 'D-dimer is elevated. Risk of thrombosis — seek medical care immediately!',
+  },
+  ja: {
+    e2: 'エストラジオール値が異常です。できるだけ早く医療機関を受診してください。',
+    t: 'テストステロンが高めです。抗アンドロゲン療法の調整が必要な可能性があります。医師に相談してください。',
+    prl: 'プロラクチンが著しく上昇しています。下垂体微小腺腫の鑑別が必要です。早急に受診してください。',
+    alt: '肝機能の数値が異常です。直ちに服薬を中止し、医療機関を受診してください。',
+    k: '高カリウム血症のリスクがあります。生命に関わる可能性があるため、直ちに受診してください！',
+    hb: 'ヘモグロビンが低めです。貧血の可能性があるため、医療機関で検査を受けてください。',
+    ddimer: 'D-ダイマーが上昇しています。血栓のリスクがあるため、直ちに受診してください！',
+  },
+  // TODO(medical-review-ko): Korean translations below are an AI-generated
+  // first pass following the audit. A Korean-speaking clinician MUST verify
+  // medical terminology (especially "고칼륨혈증", "에스트라디올",
+  // "D-이합체") before this ships to production.
+  ko: {
+    e2: '에스트라디올 수치 이상입니다. 가능한 빨리 의료기관에 방문하세요.',
+    t: '테스토스테론이 높습니다. 항안드로겐제 조정이 필요할 수 있으니 의사와 상담하세요.',
+    prl: '프로락틴이 현저히 상승했습니다. 뇌하수체 미세선종을 배제해야 하므로 즉시 의료기관을 방문하세요.',
+    alt: '간기능 수치 이상입니다. 즉시 복용을 중단하고 의료기관에 방문하세요.',
+    k: '고칼륨혈증 위험이 있습니다. 생명을 위협할 수 있으니 즉시 의료기관에 방문하세요!',
+    hb: '헤모글로빈이 낮습니다. 빈혈 가능성이 있으니 의료기관에서 검사를 받으세요.',
+    ddimer: 'D-이합체가 상승했습니다. 혈전 위험이 있으니 즉시 의료기관에 방문하세요!',
+  },
+};
 
 // --------------- Evaluation helpers ---------------
 
@@ -512,7 +576,7 @@ export default function BloodTestChecker() {
         {hasAnyValue && (
           <div style={s.persistNotice}>
             <button onClick={() => window.print()} style={s.clearBtn}>
-              {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : 'Print results'}
+              {locale === 'zh' ? '打印/保存结果' : locale === 'ja' ? '結果を印刷' : locale === 'ko' ? '결과 인쇄' : 'Print results'}
             </button>
           </div>
         )}
@@ -580,12 +644,7 @@ function InputField({
 function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
   const level = evaluate(spec, value);
   const [lo, hi] = barBounds(spec);
-  const locale =
-    typeof window !== 'undefined' && window.location.pathname.startsWith('/en')
-      ? 'en'
-      : typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')
-        ? 'ja'
-        : 'zh';
+  const locale: Locale = getLocale();
   const risksHref = `/${locale}/risks/`;
 
   // Colour stops for the bar
@@ -657,7 +716,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
       {/* Warning box for red */}
       {isRed && (
         <div style={s.warningBox}>
-          <span>{spec.redWarning}</span>
+          <span>{RED_WARNINGS[locale][spec.id] ?? RED_WARNINGS.zh[spec.id]}</span>
           <a href={risksHref} style={s.warningLink}>
             {SECTION_COPY[locale].viewEmergency}
           </a>
