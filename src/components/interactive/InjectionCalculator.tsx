@@ -6,12 +6,12 @@ import {
   formatValueWithUnit,
 } from '../../utils/medicalFormat';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -90,6 +90,31 @@ const UI_COPY = {
     forbiddenTitle: '使用禁止',
     forbiddenBody: `単回用量が ${formatValueWithUnit(10, 'mg')} 以上では、血栓や肝障害を含む重大な健康リスクがあります。直ちに医師へ相談してください。`,
     disclaimer: '予想 E2 範囲は概算の谷値推定にすぎません。実際の血中濃度は代謝、注射部位、体組成などで大きく変動します。定期的な採血を行い、調整は必ず医療専門職の指導のもとで行ってください。',
+  },
+  ko: {
+    regionLabel: '주사 용량 환산기',
+    drugLabel: '제제',
+    targetDoseLabel: '주간 목표 용량',
+    weeklyUnit: 'mg/주',
+    doseSlider: '용량 슬라이더',
+    volumeLabel: '흡인 용적',
+    syringeLabel: '권장 주사기',
+    e2RangeLabel: '예상 E2 범위',
+    troughEstimate: '(최저치 추정)',
+    applicableLabel: '적용 대상',
+    referenceTitle: '참고 환산표',
+    thDose: '용량',
+    thVolume: '용적',
+    thSyringe: '주사기',
+    thExpectedE2: '예상 E2',
+    thApplicable: '적용 대상',
+    cautionTitle: '상한 용량에 근접',
+    cautionBody: `${formatValueWithUnit(5, 'mg/주')}을 초과하면 의료 감독이 필요합니다`,
+    dangerTitle: '권장하지 않는 용량',
+    dangerBody: `${formatValueWithUnit(7, 'mg/주')}을 초과하면 혈전 위험이 크게 증가합니다`,
+    forbiddenTitle: '사용 금지',
+    forbiddenBody: `1회 용량이 ${formatValueWithUnit(10, 'mg')} 이상이면 혈전, 간 손상 등 심각한 건강 위험이 있습니다. 즉시 의사와 상담하세요.`,
+    disclaimer: '예상 E2 범위는 대략적인 최저치 추정일 뿐입니다. 실제 혈중 농도는 대사, 주사 부위, 체지방 비율 등에 따라 크게 달라집니다. 정기적인 혈액 검사로 모니터링하고, 자격 있는 의료 전문가의 지도 아래 용량을 조정하세요. 이 도구는 의학적 권고가 아닙니다.',
   },
 } as const;
 

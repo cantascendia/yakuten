@@ -35,6 +35,11 @@
 
 | # | 项目 | 来源 | 备注 |
 |---|------|------|------|
+| P2-A11Y-1 | **axe-core CI 集成** | 2026-05-26 UI/a11y 审计 | Plan agent 建议每 PR + 月度自动跑 axe-core 扫描 6 张代表性页面（splash / blog / blood-tests / dose-simulator / drug-brand-index / FloatingAIChat 打开态），输出 violations 报告并阻断 P0 |
+| P2-A11Y-2 | **`<span lang="en">` 中文页英文药名标注** | 同上 | 改善屏幕阅读器发音；波及 ~30 处 MDX 行内 "Estradiol" / "Spironolactone" 等英文药名 |
+| P2-A11Y-3 | **多 H1 CI 断言** | 同上 (P2-5 历史) | Starlight + 自定义 hero 在审计时未发现多 H1，但缺 Playwright 断言。建议加 `expect(page.locator('h1')).toHaveCount(1)` 跨核心页 |
+| P2-A11Y-4 | **FloatingAIChat 横屏键盘碰撞真机验证** | 2026-05-26 mobile UX 审计 | 横屏 iOS 下面板 `height: calc(100vh - 100px)` ≈ 275px，软键盘弹起后实际可见 ~150px。需真机录屏定位是否影响输入体验 |
+| P2-A11Y-5 | **pre-existing 2 个失败 critical-paths 测试** | 同上 | `critical-paths.spec.ts:86` JSON-LD shape 期望 "MedicalWebPage" + "Drug" 字面量；`:118` DrugComparator 期望 `<table>` 但当前渲染卡片。需更新断言或恢复 table 视图 |
 | P2-1 | **API 速率限制持久化** | `api/ai-chat.ts` line ~17-20 | 当前 `rateLimitMap = new Map`，Edge 冷启动后重置；可被并发滥用。建议接 Upstash Redis 或 Vercel KV |
 | P2-2 | **Gemini 模型 ID 漂移监控** | `api/ai-chat.ts` line 153 `gemini-3-flash-preview` | "preview" 标签易过期。建议加 `cto-models` 月度检查 + 改成稳定通道 |
 | P2-3 | **gpt-image-2 流水线的可重复性** | `scripts/gpt-image-2-manifest.json` `_note` | 当前是 ChatGPT 网页人工生成，禁止脚本重生成。如果原图丢失或需要小修，无可重复路径。建议存档原始 PSD/PNG |

@@ -58,6 +58,9 @@ export const ui = {
     'emergency.symptoms': '单侧小腿肿胀疼痛 · 突发严重头痛伴视力变化 · 胸痛或呼吸困难 · 皮肤/眼白发黄 · 持续严重情绪崩溃或自杀意念',
     'emergency.link': '查看详情并立即行动',
 
+    // a11y
+    'a11y.skipToMain': '跳到主要内容',
+
     // SiteFooter
     'footer.disclaimer.title': '免责声明',
     'footer.disclaimer.text': '本站内容仅供参考，不构成医疗建议。在开始任何激素治疗前，请务必咨询专业医疗人员。',
@@ -165,6 +168,9 @@ export const ui = {
     'emergency.text': 'If you are experiencing any of the following, stop HRT and seek emergency care immediately:',
     'emergency.symptoms': 'Unilateral calf swelling or pain \u00b7 Sudden severe headache with vision changes \u00b7 Chest pain or difficulty breathing \u00b7 Yellowing of skin or eyes \u00b7 Persistent severe emotional crisis or suicidal ideation',
     'emergency.link': 'View emergency details',
+
+    // a11y
+    'a11y.skipToMain': 'Skip to main content',
 
     // SiteFooter
     'footer.disclaimer.title': 'Disclaimer',
@@ -274,6 +280,9 @@ export const ui = {
     'emergency.symptoms': '片側のふくらはぎの腫れや痛み · 突然の激しい頭痛と視力変化 · 胸痛または呼吸困難 · 皮膚や白目の黄変 · 持続的な重度の精神的危機や自殺念慮',
     'emergency.link': '緊急時の詳細を確認',
 
+    // a11y
+    'a11y.skipToMain': 'メインコンテンツへスキップ',
+
     // SiteFooter
     'footer.disclaimer.title': '免責事項',
     'footer.disclaimer.text': '本サイトの情報は参考目的であり、医療アドバイスではありません。ホルモン療法を開始する前に、必ず医療専門家にご相談ください。',
@@ -381,6 +390,9 @@ export const ui = {
     'emergency.text': '다음 증상이 있으면 즉시 HRT를 중단하고 응급 진료를 받으세요:',
     'emergency.symptoms': '한쪽 종아리 부종이나 통증 · 갑작스러운 심한 두통과 시력 변화 · 흉통이나 호흡 곤란 · 피부나 눈의 황달 · 지속적인 심각한 감정 위기나 자살 충동',
     'emergency.link': '응급 상세 정보 확인',
+
+    // a11y
+    'a11y.skipToMain': '본문으로 건너뛰기',
 
     // SiteFooter
     'footer.disclaimer.title': '면책 조항',

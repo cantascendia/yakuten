@@ -12,8 +12,10 @@ import AIAssistant from './AIAssistant';
 const styles: Record<string, CSSProperties> = {
   fab: {
     position: 'fixed',
-    bottom: '24px',
-    right: '24px',
+    // Respect iOS safe-area-inset-bottom (home indicator on iPhone X+).
+    // Falls back to 24px on browsers without env() support.
+    bottom: 'max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px))',
+    right: 'max(24px, env(safe-area-inset-right, 24px))',
     width: '52px',
     height: '52px',
     borderRadius: '50%',
@@ -60,6 +62,8 @@ function FloatingAIChatInner() {
   const [isClosing, setIsClosing] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const fabRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640);
@@ -78,8 +82,32 @@ function FloatingAIChatInner() {
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
+      // Return focus to FAB on close (WCAG 2.4.3 Focus Order)
+      fabRef.current?.focus();
     }, 200);
   }
+
+  // Escape key closes the panel (WCAG 2.1.2 No Keyboard Trap)
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        handleClose();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen]);
+
+  // Move focus into panel when it opens (WCAG 2.4.3)
+  useEffect(() => {
+    if (!isOpen || !panelRef.current) return;
+    const first = panelRef.current.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    first?.focus();
+  }, [isOpen]);
 
   // Don't render on the AI assistant dedicated page
   if (typeof window !== 'undefined' && window.location.pathname.includes('/tools/ai-assistant')) {
@@ -97,11 +125,17 @@ function FloatingAIChatInner() {
           from { opacity: 1; transform: translateY(0) scale(1); }
           to { opacity: 0; transform: translateY(12px) scale(0.96); }
         }
+        /* WCAG 2.3.3 — collapse motion to opacity-only for reduced-motion users */
+        @media (prefers-reduced-motion: reduce) {
+          @keyframes ai-panel-in { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes ai-panel-out { from { opacity: 1; } to { opacity: 0; } }
+        }
       `}</style>
 
       {/* Floating Action Button */}
       {!isOpen && (
         <button
+          ref={fabRef}
           onClick={handleOpen}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -110,6 +144,8 @@ function FloatingAIChatInner() {
             ...(isHovering ? { transform: 'scale(1.08)', boxShadow: '0 6px 28px var(--color-primary-alpha-60)' } : {}),
           }}
           aria-label="打开 AI 问答助手"
+          aria-haspopup="dialog"
+          aria-expanded={isOpen}
           title="AI 问答助手"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -124,6 +160,10 @@ function FloatingAIChatInner() {
           {isMobile && <div style={styles.overlay} onClick={handleClose} />}
 
           <div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="AI 问答助手"
             style={{
               ...styles.panel,
               ...(isClosing ? styles.panelClosing : {}),

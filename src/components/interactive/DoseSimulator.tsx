@@ -7,12 +7,12 @@ import {
   formatValueWithUnit,
 } from '../../utils/medicalFormat';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -97,6 +97,33 @@ const UI_COPY = {
     highDoseWarning: '現在の用量は一般的な範囲より高く、変動幅が大きくなる可能性があります。医師への相談を検討してください。',
     dangerousDoseWarning: '現在の用量は上限に達しているか安全域を超えています。この用量を自己判断で使用しないでください。',
     disclaimer: 'このツールは用量推奨を行いません。薬物動態の傾向を理解するための参考用です。実際の血液検査結果を優先してください。',
+  },
+  ko: {
+    regionLabel: '용량 시뮬레이터',
+    title: '용량 시뮬레이터',
+    drugLabel: '약물',
+    doseLabel: '1회 용량',
+    doseSlider: '용량 슬라이더',
+    intervalLabel: '투여 간격',
+    intervalUnit: '일',
+    intervalSlider: '간격 슬라이더',
+    peakLabel: '정상상태 최고치',
+    troughLabel: '정상상태 최저치',
+    relativeConcentration: '상대 농도',
+    fluctuationLabel: '변동 폭',
+    fluctuationHigh: '변동이 큼',
+    fluctuationOkay: '변동 관리 가능',
+    halfLifeLabel: '소실 반감기',
+    pkTableTitle: '약물동태학 파라미터 참고',
+    thDrug: '약물',
+    thRoute: '경로',
+    thHalfLife: '반감기',
+    thPeakTime: '최고치 도달 시간',
+    thBioavailability: '생체이용률',
+    thInterval: '일반적 간격',
+    highDoseWarning: '현재 용량은 일반적인 범위보다 높아 변동 폭이 커질 수 있습니다. 의사와 상담을 고려하세요.',
+    dangerousDoseWarning: '현재 용량은 상한에 도달했거나 안전 범위를 벗어났습니다. 이 용량을 임의로 사용하지 마세요.',
+    disclaimer: '이 도구는 용량 권고를 제공하지 않습니다. 약물동태학적 특성을 이해하기 위한 참고용일 뿐입니다. 실제 혈액 검사 결과를 우선하세요.',
   },
 } as const;
 
@@ -653,7 +680,8 @@ export default function DoseSimulator() {
       {/* Responsive CSS for dose controls */}
       <style>{`
         .sim-controls { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
-        @media (max-width: 540px) { .sim-controls { grid-template-columns: 1fr; } }
+        /* Raised from 540px to 640px so 375-480px phones get single column */
+        @media (max-width: 640px) { .sim-controls { grid-template-columns: 1fr; } }
       `}</style>
 
       {/* Dose + Interval */}

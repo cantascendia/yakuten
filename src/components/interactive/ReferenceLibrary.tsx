@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 
-type Locale = 'zh' | 'en' | 'ja';
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
 function getLocale(): Locale {
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'en';
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
   return 'zh';
 }
 
@@ -58,6 +58,22 @@ const UI_COPY = {
     noResults: '一致する文献が見つかりません',
     total: '合計',
     entries: '件',
+  },
+  ko: {
+    regionLabel: '참고 문헌 라이브러리',
+    title: '참고 문헌 라이브러리',
+    searchPlaceholder: '저자, 제목, 학술지 검색…',
+    all: '전체',
+    guideline: '임상 지침',
+    safety: '안전성 연구',
+    pk: '약물동태학',
+    cpa: 'CPA/수막종',
+    breast: '유방 발달',
+    injectable: '주사 연구',
+    community: '커뮤니티',
+    noResults: '일치하는 문헌이 없습니다',
+    total: '총',
+    entries: '건',
   },
 } as const;
 

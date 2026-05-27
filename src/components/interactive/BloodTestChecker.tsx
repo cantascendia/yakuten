@@ -43,8 +43,6 @@ interface RangeSpec {
   yellow: [number, number];
   redAbove?: number;
   redBelow?: number;
-  /** Warning copy shown when the value lands in red */
-  redWarning: string;
 }
 
 const BLOOD_RANGES: RangeSpec[] = [
@@ -56,7 +54,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     yellow: [200, 300],
     redAbove: 500,
     redBelow: 20,
-    redWarning: '雌二醇水平异常，请尽快就医复查。',
   },
   {
     id: 't',
@@ -65,7 +62,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 50],
     yellow: [50, 100],
     redAbove: 100,
-    redWarning: '睾酮偏高，抗雄药物可能需要调整，请咨询医生。',
   },
   {
     id: 'prl',
@@ -74,7 +70,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 25],
     yellow: [25, 50],
     redAbove: 50,
-    redWarning: '泌乳素明显升高，需排除垂体微腺瘤，请尽快就医。',
   },
   {
     id: 'alt',
@@ -83,7 +78,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 40],
     yellow: [40, 120],
     redAbove: 120,
-    redWarning: '肝功能指标异常，建议立即停药并就医。',
   },
   {
     id: 'k',
@@ -92,7 +86,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [3.5, 5.0],
     yellow: [5.0, 5.5],
     redAbove: 5.5,
-    redWarning: '高钾血症风险，可能危及生命，请立即就医！',
   },
   {
     id: 'hb',
@@ -101,7 +94,6 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [120, 160],
     yellow: [110, 120],
     redBelow: 110,
-    redWarning: '血红蛋白偏低，可能存在贫血，请就医检查。',
   },
   {
     id: 'ddimer',
@@ -110,9 +102,64 @@ const BLOOD_RANGES: RangeSpec[] = [
     green: [0, 0.5],
     yellow: [0.5, 1.0],
     redAbove: 1.0,
-    redWarning: 'D-二聚体升高，有血栓风险，请立即就医！',
   },
 ];
+
+/**
+ * EMERGENCY MEDICAL WARNINGS shown when a value lands in the red zone.
+ * Externalized for i18n compliance (per audit AUDIT-2026-05-26-i18n-content.md).
+ *
+ * WARNING: These are life-safety warnings (hyperkalemia, thrombosis, liver
+ * failure, etc.). All four locales (zh/en/ja/ko) must be filled with
+ * medically-accurate translations. DO NOT leave any locale empty or fall
+ * back to a language the user does not read — that is a P0 safety bug.
+ *
+ * Korean translations: AI-generated draft. PRs touching these MUST be
+ * tagged `needs-medical-review` and approved by a Korean-speaking
+ * clinician before release.
+ */
+const RED_WARNINGS: Record<Locale, Record<string, string>> = {
+  zh: {
+    e2: '雌二醇水平异常，请尽快就医复查。',
+    t: '睾酮偏高，抗雄药物可能需要调整，请咨询医生。',
+    prl: '泌乳素明显升高，需排除垂体微腺瘤，请尽快就医。',
+    alt: '肝功能指标异常，建议立即停药并就医。',
+    k: '高钾血症风险，可能危及生命，请立即就医！',
+    hb: '血红蛋白偏低，可能存在贫血，请就医检查。',
+    ddimer: 'D-二聚体升高，有血栓风险，请立即就医！',
+  },
+  en: {
+    e2: 'Estradiol level is abnormal. Please seek medical follow-up as soon as possible.',
+    t: 'Testosterone is elevated. Anti-androgen therapy may need adjustment — consult your clinician.',
+    prl: 'Prolactin is significantly elevated. A pituitary microadenoma must be ruled out — seek medical care promptly.',
+    alt: 'Liver enzymes are abnormal. Stop medication immediately and seek medical care.',
+    k: 'Risk of hyperkalemia. This can be life-threatening — seek medical care immediately!',
+    hb: 'Hemoglobin is low. Anemia is possible — seek medical evaluation.',
+    ddimer: 'D-dimer is elevated. Risk of thrombosis — seek medical care immediately!',
+  },
+  ja: {
+    e2: 'エストラジオール値が異常です。できるだけ早く医療機関を受診してください。',
+    t: 'テストステロンが高めです。抗アンドロゲン療法の調整が必要な可能性があります。医師に相談してください。',
+    prl: 'プロラクチンが著しく上昇しています。下垂体微小腺腫の鑑別が必要です。早急に受診してください。',
+    alt: '肝機能の数値が異常です。直ちに服薬を中止し、医療機関を受診してください。',
+    k: '高カリウム血症のリスクがあります。生命に関わる可能性があるため、直ちに受診してください！',
+    hb: 'ヘモグロビンが低めです。貧血の可能性があるため、医療機関で検査を受けてください。',
+    ddimer: 'D-ダイマーが上昇しています。血栓のリスクがあるため、直ちに受診してください！',
+  },
+  // TODO(medical-review-ko): Korean translations below are an AI-generated
+  // first pass following the audit. A Korean-speaking clinician MUST verify
+  // medical terminology (especially "고칼륨혈증", "에스트라디올",
+  // "D-이합체") before this ships to production.
+  ko: {
+    e2: '에스트라디올 수치 이상입니다. 가능한 빨리 의료기관에 방문하세요.',
+    t: '테스토스테론이 높습니다. 항안드로겐제 조정이 필요할 수 있으니 의사와 상담하세요.',
+    prl: '프로락틴이 현저히 상승했습니다. 뇌하수체 미세선종을 배제해야 하므로 즉시 의료기관을 방문하세요.',
+    alt: '간기능 수치 이상입니다. 즉시 복용을 중단하고 의료기관에 방문하세요.',
+    k: '고칼륨혈증 위험이 있습니다. 생명을 위협할 수 있으니 즉시 의료기관에 방문하세요!',
+    hb: '헤모글로빈이 낮습니다. 빈혈 가능성이 있으니 의료기관에서 검사를 받으세요.',
+    ddimer: 'D-이합체가 상승했습니다. 혈전 위험이 있으니 즉시 의료기관에 방문하세요!',
+  },
+};
 
 // --------------- Evaluation helpers ---------------
 
@@ -506,17 +553,47 @@ function InputField({
     onChange(spec.id, e.target.value);
   };
 
+  const num = value && value.trim() !== '' ? parseFloat(value) : NaN;
+  const hasValue = !isNaN(num);
+  const level = hasValue ? evaluate(spec, num) : null;
+  const isRed = level === 'red';
+  const labelText = TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label;
+  const statusText = hasValue
+    ? level === 'green'
+      ? `${labelText}: 在目标范围内`
+      : level === 'yellow'
+        ? `${labelText}: 需注意`
+        : level === 'red'
+          ? `${labelText}: 超出安全范围，需就医评估`
+          : ''
+    : '';
+  const statusId = `btc-status-${spec.id}`;
+
   return (
     <div style={s.inputGroup}>
       <label style={s.label} htmlFor={`btc-${spec.id}`}>
-        {TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label}
-        {value && value.trim() !== '' && (() => {
-          const num = parseFloat(value);
-          if (isNaN(num)) return null;
-          const level = evaluate(spec, num);
-          const dotColor = level === 'green' ? 'var(--color-safe)' : level === 'yellow' ? 'var(--color-caution)' : level === 'red' ? 'var(--color-danger)' : 'transparent';
-          return <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: dotColor, marginLeft: '6px', flexShrink: 0 }} />;
-        })()}
+        {labelText}
+        {hasValue && (
+          <span
+            aria-hidden="true"
+            style={{
+              display: 'inline-block',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background:
+                level === 'green'
+                  ? 'var(--color-safe)'
+                  : level === 'yellow'
+                    ? 'var(--color-caution)'
+                    : level === 'red'
+                      ? 'var(--color-danger)'
+                      : 'transparent',
+              marginLeft: '6px',
+              flexShrink: 0,
+            }}
+          />
+        )}
       </label>
       <div style={s.inputRow}>
         <input
@@ -530,10 +607,32 @@ function InputField({
           style={s.input}
           value={value}
           onChange={handleInput}
-          aria-label={`${TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label} value input`}
+          aria-label={`${labelText} value input`}
+          aria-invalid={isRed || undefined}
+          aria-describedby={statusText ? statusId : undefined}
         />
         <span style={s.inputUnit}>{spec.unit}</span>
       </div>
+      {statusText && (
+        <span
+          id={statusId}
+          role="status"
+          aria-live="polite"
+          style={{
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            padding: 0,
+            margin: '-1px',
+            overflow: 'hidden',
+            clip: 'rect(0 0 0 0)',
+            whiteSpace: 'nowrap',
+            border: 0,
+          }}
+        >
+          {statusText}
+        </span>
+      )}
     </div>
   );
 }
@@ -541,7 +640,7 @@ function InputField({
 function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
   const level = evaluate(spec, value);
   const [lo, hi] = barBounds(spec);
-  const locale = getLocale();
+  const locale: Locale = getLocale();
   const risksHref = `/${locale}/risks/`;
 
   // Colour stops for the bar
@@ -613,7 +712,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
       {/* Warning box for red */}
       {isRed && (
         <div style={s.warningBox}>
-          <span>{spec.redWarning}</span>
+          <span>{RED_WARNINGS[locale][spec.id] ?? RED_WARNINGS.zh[spec.id]}</span>
           <a href={risksHref} style={s.warningLink}>
             {TOOL_STRINGS[locale].sections.viewEmergency}
           </a>

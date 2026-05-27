@@ -5,15 +5,32 @@
 #
 # 隐私：默认脱敏 — 不写 file content / bash command 详细参数（仅前 200 字符）
 # 完整模式：CTO_TRAJECTORY_FULL=1（含 input/output 详情，仅本地审计）
+#
+# 2026-05-26 修复：原版 `[ ! -d "$LOG_DIR" ] && exit 0` 在目录不存在时
+# silently no-op → SELF-AUDIT 看到 trajectory entries: 0 → pattern-detector
+# 无数据可分析。改为 mkdir -p（创建失败才退出）。配套 .claude/agent-logs/
+# 已入版本控制（.gitkeep + .gitignore 不污染 history）。
 set -uo pipefail
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/lib/common.sh"
+# lib/common.sh 不存在时 graceful fallback，避免日志阻止 agent 启动
+if [ -f "$SCRIPT_DIR/lib/common.sh" ]; then
+  source "$SCRIPT_DIR/lib/common.sh"
+else
+  # 最小 stub：让本脚本独立可运行
+  read_hook_input() {
+    HOOK_INPUT="${HOOK_INPUT:-}"
+    if [ -t 0 ]; then return 0; fi
+    HOOK_INPUT="$(cat)"
+  }
+fi
 
 read_hook_input
 
 CWD="${HOOK_CWD:-.}"
 LOG_DIR="${CWD}/.claude/agent-logs"
-[ ! -d "$LOG_DIR" ] && exit 0  # 目录不存在则跳过
+# 修复 silent no-op：默认创建目录，仅创建失败才退出
+mkdir -p "$LOG_DIR" 2>/dev/null || exit 0
 
 DAY=$(date +%Y-%m-%d 2>/dev/null || echo unknown)
 TS=$(date -Iseconds 2>/dev/null || date +%s)
