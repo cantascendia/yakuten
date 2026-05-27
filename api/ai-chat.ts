@@ -1,5 +1,6 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { streamText } from 'ai';
+import type { ModelMessage } from 'ai';
 
 export const config = { runtime: 'edge' };
 
@@ -41,6 +42,89 @@ function cleanupRateLimit() {
       rateLimitMap.delete(ip);
     }
   }
+}
+
+/* ================================
+   Security: Origin allowlist + IP extraction
+   Per SPEC-2026-05-26-security-hardening.md §2.1
+   ================================ */
+
+const DEFAULT_ALLOWED_ORIGINS = [
+  'https://yakuten.app',
+  'https://www.yakuten.app',
+  'http://localhost:4321',
+  'http://localhost:3000',
+];
+
+function getAllowedOrigins(): Set<string> {
+  const fromEnv = process.env.ALLOWED_ORIGINS;
+  const list = fromEnv
+    ? fromEnv.split(',').map((s) => s.trim()).filter(Boolean)
+    : DEFAULT_ALLOWED_ORIGINS;
+  return new Set(list);
+}
+
+function isOriginAllowed(origin: string | null): boolean {
+  if (!origin) return false; // Browsers always send Origin on cross-origin POST
+  return getAllowedOrigins().has(origin);
+}
+
+// Prefer Vercel-set XFF (rightmost = closest to edge, hardest to spoof end-to-end),
+// then x-real-ip, then the rightmost token of standard x-forwarded-for as last resort.
+function getClientIp(req: Request): string {
+  const vercelXff = req.headers.get('x-vercel-forwarded-for');
+  if (vercelXff) {
+    const tokens = vercelXff.split(',').map((s) => s.trim()).filter(Boolean);
+    if (tokens.length > 0) return tokens[tokens.length - 1];
+  }
+  const realIp = req.headers.get('x-real-ip');
+  if (realIp) return realIp.trim();
+  const xff = req.headers.get('x-forwarded-for');
+  if (xff) {
+    const tokens = xff.split(',').map((s) => s.trim()).filter(Boolean);
+    if (tokens.length > 0) return tokens[tokens.length - 1];
+  }
+  return 'unknown';
+}
+
+/* ================================
+   Security: messages payload validation
+   Per SPEC-2026-05-26-security-hardening.md §2.1
+   ================================ */
+
+const MAX_MESSAGES = 20;
+const MAX_CONTENT_BYTES = 4096;
+const ALLOWED_ROLES = new Set(['user', 'assistant']);
+
+type ChatMessage = Extract<ModelMessage, { role: 'user' | 'assistant' }>;
+
+function validateMessages(input: unknown): { ok: true; messages: ChatMessage[] } | { ok: false; reason: string } {
+  if (!Array.isArray(input) || input.length === 0) {
+    return { ok: false, reason: 'messages must be a non-empty array' };
+  }
+  if (input.length > MAX_MESSAGES) {
+    return { ok: false, reason: `messages array too long (max ${MAX_MESSAGES})` };
+  }
+  const encoder = new TextEncoder();
+  const out: ChatMessage[] = [];
+  for (let i = 0; i < input.length; i++) {
+    const m = input[i] as { role?: unknown; content?: unknown } | null;
+    if (!m || typeof m !== 'object') {
+      return { ok: false, reason: `messages[${i}] is not an object` };
+    }
+    if (typeof m.role !== 'string' || !ALLOWED_ROLES.has(m.role)) {
+      return { ok: false, reason: `messages[${i}].role must be one of: ${[...ALLOWED_ROLES].join(', ')}` };
+    }
+    if (typeof m.content !== 'string') {
+      return { ok: false, reason: `messages[${i}].content must be a string` };
+    }
+    const byteLen = encoder.encode(m.content).length;
+    if (byteLen > MAX_CONTENT_BYTES) {
+      return { ok: false, reason: `messages[${i}].content too large (max ${MAX_CONTENT_BYTES} bytes)` };
+    }
+    out.push({ role: m.role, content: m.content } as ChatMessage);
+  }
+  return { ok: true, messages: out };
 }
 
 /* ================================
@@ -107,10 +191,19 @@ export default async function handler(req: Request) {
     });
   }
 
-  // Rate limiting
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
-    ?? req.headers.get('x-real-ip')
-    ?? 'unknown';
+  // Origin / CSRF check (Per SPEC-2026-05-26-security-hardening.md §2.1)
+  const origin = req.headers.get('origin');
+  if (!isOriginAllowed(origin)) {
+    // Log server-side for ops, do not echo origin back to client
+    console.warn('AI Chat: rejected origin', { origin });
+    return new Response(JSON.stringify({ error: 'Forbidden' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // Rate limiting (Per SPEC-2026-05-26-security-hardening.md §2.1)
+  const ip = getClientIp(req);
 
   cleanupRateLimit();
 
@@ -137,14 +230,18 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const { messages } = await req.json();
+    const body = await req.json().catch(() => null);
+    const rawMessages = body && typeof body === 'object' ? (body as { messages?: unknown }).messages : undefined;
 
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
-      return new Response(JSON.stringify({ error: 'Messages required' }), {
+    // Validate messages payload (Per SPEC-2026-05-26-security-hardening.md §2.1)
+    const validation = validateMessages(rawMessages);
+    if (!validation.ok) {
+      return new Response(JSON.stringify({ error: validation.reason }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
+    const { messages } = validation;
 
     // Limit conversation length to prevent token overflow
     const recentMessages = messages.slice(-10);
