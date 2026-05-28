@@ -18,139 +18,131 @@ import CitationRef from '../../../components/ui/CitationRef.astro';
 
 ## 核心结论
 
-色谱龙（CPA）和螺内酯是中文圈最常用的两种抗雄药物<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。CPA 抗雄效果更强但有脑膜瘤风险<CitationRef id="lee-2022" num={2} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />，螺内酯更安全但不直接降低睾酮<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。**没有绝对的"更好"，选择取决于你的风险因素、获取条件和耐受性。**
+色谱龙（CPA）和螺内酯（Spiro）是目前中文社群跨性别女性在性别肯定激素治疗（HRT）中最常用的两种抗雄激素药物<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。色谱龙的抗雄效果通常较强，但在长期高剂量使用下伴随一定的脑膜瘤潜在风险<CitationRef id="lee-2022" num={2} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />；螺内酯在安全性上证据更为充分，但它通常不直接降低血液中的睾酮数值，而是通过阻断受体发挥作用<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。**在药物选择上并没有绝对的“更好”，最适合你的方案取决于你个人的生理指征、健康风险因素、耐受性以及药物获取的便利程度。**
 
-> 以下为通用对比参考。具体用药方案请咨询医生。
+> 提示：以下内容旨在提供通用的健康与减害参考。具体的用药方案调整建议在专业医师指导下进行。
 
 ---
 
 ## 核心对比一览
 
-| 维度 | 色谱龙 (CPA) | 螺内酯 |
+| 维度 | 色谱龙 (CPA) | 螺内酯 (Spiro) |
 |------|-------------|--------|
-| **作用机制** | 孕激素抑制 + 弱 AR 阻断<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /> | AR 阻断 + 弱 T 合成抑制 |
-| **是否降低血清 T** | 是（通过抑制 LH/FSH） | 通常不明显降低 |
-| **HRT 推荐剂量** | 5-12.5 mg/日<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> | 100-200 mg/日<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> |
-| **抗雄效力** | 强 | 中等 |
-| **最严重风险** | 脑膜瘤（剂量依赖） | 高钾血症（可致命） |
-| **肝毒性** | 有风险 | 极低 |
-| **情绪影响** | 较大（5-15% 报告抑郁） | 较小 |
-| **中国获取难度** | 需处方或海外购买 | 药房可购买 |
-| **费用** | 较低（少量即可） | 中等（每日 100-200 mg） |
+| **作用机制** | 强效孕激素负反馈 + 弱 AR 阻断<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /> | 雄激素受体（AR）阻断 + 弱睾酮合成抑制 |
+| **是否直接降低血清睾酮** | 是（主要通过抑制 LH/FSH 浓度） | 通常不会显著降低血液中的睾酮数值 |
+| **HRT 推荐剂量** | 每日 5-12.5 mg<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> | 每日 100-200 mg<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> |
+| **抗雄效力表现** | 强效且迅速 | 温和且需剂量累积 |
+| **需要警惕的严重风险** | 脑膜瘤（呈现强剂量依赖性） | 高钾血症（若严重可能危及生命） |
+| **肝毒性风险** | 存在潜在的剂量依赖性肝毒性 | 极低 |
+| **情绪影响** | 较明显（部分使用者报告抑郁倾向） | 较轻微 |
+| **药物获取便利度** | 处方药，部分地区可能需要通过特定渠道获取 | 药房较为常见，获取难度低 |
+| **治疗费用开支** | 较低（由于低剂量即可起效） | 中等（每日需服用 100-200 mg） |
 
 ---
 
 ## 机制差异详解
 
-### 色谱龙：从源头切断
+### 色谱龙：从源头上减少生成
 
-CPA 主要通过**孕激素效应**起效<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
-1. 抑制垂体分泌 LH 和 FSH
-2. LH/FSH 降低 → 睾丸减少 T 的合成
-3. 同时有弱的雄激素受体（AR）阻断作用
+色谱龙主要是通过其强效的**孕激素效应**发挥负反馈调节作用<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />：
+1. 负反馈抑制脑垂体分泌 LH（黄体生成素）和 FSH（卵泡刺激素）；
+2. 促性腺激素水平下降，从而有效促使睾丸减少睾酮的合成与分泌；
+3. 同时在终端也具备一定的雄激素受体（AR）弱阻断作用。
 
-**结果**：血清 T 实际被降低到女性范围。5 mg/日配合雌二醇通常就够<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。
+**临床效果**：血清睾酮能被显著降低至女性目标推荐范围。多项研究表明，每日 5 mg 的低剂量配合雌二醇治疗通常已足够<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。
 
-### 螺内酯：在终端阻断
+### 螺内酯：在终端阻断作用
 
-螺内酯主要通过**阻断雄激素受体**起效<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
-1. 占据 AR，阻止 T 和 DHT 发挥作用
-2. 轻度抑制 T 的合成（通过 17α-羟化酶）
-3. 同时有利尿和降压作用
+螺内酯则是主要在**受体水平阻断雄激素发挥作用**<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />：
+1. 竞争性结合雄激素受体（AR），从而阻止睾酮和双氢睾酮（DHT）与受体结合发挥女性化限制作用；
+2. 在高剂量下，对睾酮的合成也有一定的轻度抑制作用；
+3. 由于其本身的利尿剂属性，还具有一定的利尿和降血压作用。
 
-**结果**：血清 T 数值可能仍在男性范围，但 T 在受体水平被阻断。看血检结果时不要因为 T "没降到位"就恐慌<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+**临床效果**：在检测中，你的血清睾酮数值可能依然显示在男性范围或偏高，但由于受体已被阻断，这些雄激素已无法发挥实际生理作用。因此，在评估螺内酯的方案时，建议结合自身的身体变化和皮脂情况进行综合评估，避免仅因数值未显著下降而感到过度焦虑<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
 
 ---
 
-## 副作用谱对比
+## 主要风险与副作用对比
 
-### 色谱龙的主要风险
+### 色谱龙（CPA）的主要风险
 
-- **脑膜瘤**：≥25 mg/日 × ≥1 年，OR = 12.36<CitationRef id="lee-2022" num={2} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />。低剂量（5-12.5 mg）风险极低<CitationRef id="hudelist-2026" num={6} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />。EMA 2020 限制令要求最低有效剂量<CitationRef id="ema-2020" num={7} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />。
-- **肝毒性**：需要定期监测 ALT/AST<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
-- **抑郁/情绪低落**：5-15% 发生率<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />
-- **泌乳素升高**：需要监测 PRL<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
-- **疲劳嗜睡**：建议晚间服药
+- **脑膜瘤风险**：临床数据提示长期大剂量（如每日 ≥25 mg 并使用 1 年以上）使用与脑膜瘤发生率升高相关<CitationRef id="lee-2022" num={2} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />。而在每日 5-12.5 mg 的低剂量方案下，该风险是极其罕见的<CitationRef id="hudelist-2026" num={6} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />。EMA 已下达安全指引，要求遵循最低有效剂量原则<CitationRef id="ema-2020" num={7} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />。
+- **肝毒性**：用药期间建议定期监测转氨酶（ALT/AST）水平<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+- **抑郁与情绪低落**：约有 5-15% 的使用者报告在用药后情绪动力减弱<CitationRef id="kuhl-2005" num={4} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />。
+- **泌乳素升高**：可能会刺激垂体释放过多泌乳素，建议定期进行 PRL 监测<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />。
+- **疲劳与嗜睡**：建议选择在晚间临睡前服用。
 
-详见[色谱龙副作用指南](/zh/blog/cpa-side-effects-guide/)。
+详细内容可以阅读[色谱龙副作用指南](/zh/blog/cpa-side-effects-guide/)。
 
-### 螺内酯的主要风险
+### 螺内酯（Spiro）的主要风险
 
-- **高钾血症**：**K⁺ > 5.5 mmol/L 可致命性心律失常**。这是最大风险。
-- **低血压**：利尿+降压双重作用
-- **尿频**：利尿效应
-- **脱水风险**：需要充足饮水
+- **高钾血症**：若血钾浓度（K⁺）超过 5.5 mmol/L，可能会诱发严重的心律失常。这是螺内酯使用中最需关注的电解质风险。
+- **低血压**：其降压作用可能导致部分人在起床或站立时出现体位性低血压。
+- **尿频与脱水**：由于其利尿作用，用药期间建议保证充足的水分摄入。
 
-| K⁺ (mmol/L) | 状态 | 行动 |
+**血钾监测及应对原则**：
+
+| 血钾浓度（K⁺） | 状态评估 | 建议行动 |
 |-------------|------|------|
-| 3.5-5.0 | 正常 | 继续使用 |
-| 5.0-5.5 | 轻度升高 | 减少高钾食物，考虑减量 |
-| > 5.5 | 危险 | **立即停药就医** |
+| 3.5 - 5.0 mmol/L | 正常 | 建议继续常规用药与定期复查 |
+| 5.0 - 5.5 mmol/L | 轻度偏高 | 建议适当减少膳食中高钾食物肉入，并在医生指导下考虑减少剂量 |
+| &gt; 5.5 mmol/L | 危险 | **建议立即停药，并及时前往医院就诊评估** |
 
 ---
 
-## 监测要求对比
+## 建议的监测项目对比
 
-| 检查项目 | 色谱龙 | 螺内酯 |
+| 监测项目 | 色谱龙 (CPA) | 螺内酯 (Spiro) |
 |---------|--------|--------|
-| 激素六项 | 每 3-6 月 | 每 3-6 月 |
-| 肝功能 | **必查**（每 3-6 月） | 非必需 |
-| 血钾 | 非必需 | **必查**（前 3 月每月，之后 3-6 月） |
-| 泌乳素 | **必查**（每 6-12 月） | 非必需 |
-| 肾功能 | 非必需 | **建议**（eGFR） |
-| 血压 | 建议 | **建议** |
-| 脑部 MRI | 建议基线 | 无需 |
+| 性激素六项 | 建议每 3-6 个月复查 | 建议每 3-6 个月复查 |
+| 肝功能 | **必查**（每 3-6 个月） | 临床非必需（除非基础肝功异常） |
+| 电解质（血钾） | 临床非必需 | **必查**（用药前 3 个月建议每月，此后每 3-6 个月） |
+| 泌乳素（PRL） | **必查**（每 6-12 个月） | 临床非必需 |
+| 肾功能（eGFR） | 临床非必需 | **建议定期评估** |
+| 血压监测 | 建议常规监测 | **建议常规监测** |
+| 脑部 MRI | 建议长期使用前安排一次基线筛查 | 无需 |
 
 ---
 
-## 什么人更适合哪个？
+## 哪款药物更适合你？
 
-### 优先选色谱龙的情况
+### 建议优先考虑色谱龙，如果：
+- 你希望在血检中能够明确且迅速地看到血清睾酮数值下降；
+- 你无脑膜瘤或乳腺占位相关的个人及家族病史；
+- 你的基础肝功能指征完全正常；
+- 你能够坚持定期进行肝功能和泌乳素的血检追踪。
 
-- 需要确实降低血清 T 水平<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
-- 无脑膜瘤家族史<CitationRef id="ema-2020" num={7} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
-- 肝功能正常
-- 能接受定期监测
-- 日常可获取（处方或海外来源）
+### 建议优先考虑螺内酯，如果：
+- 你对色谱龙的脑膜瘤潜在风险非常顾虑或无法容忍；
+- 你本身存在较为明显的抑郁倾向，担心 CPA 加重情绪波动；
+- 你的基础肝功能不佳，或不希望增加肝脏的代谢负担；
+- 你的肾功能良好，且在日常生活中能够比较方便地购买到该药物。
 
-### 优先选螺内酯的情况
+### 若两者均不适用时的替代方案<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
+- **比卡鲁胺**：强效阻断雄激素受体，但同样存在潜在的肝毒性，在性别肯定治疗中的长期数据相对有限。
+- **GnRH 激动剂**：最为彻底且安全的抑制方案，但整体费用较高，且部分地区药物获取门槛较高。
+- **雌二醇单药疗法（单用高剂量 E2）**：通过维持较高且平稳的雌二醇水平（通常采用注射或透皮方式，使谷值在 200 pg/mL 以上），单纯依靠雌二醇自身便能实现对睾酮的充分抑制，从而无需使用任何抗雄药物。
 
-- 对脑膜瘤风险零容忍<CitationRef id="lee-2022" num={2} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />
-- 有抑郁倾向（CPA 可能加重）
-- 肝功能不好
-- 肾功能正常且无高钾风险
-- 在中国国内，药房可直接购买（获取更容易）
-
-### 都不适合时的替代<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
-
-- **比卡鲁胺**：强效 AR 阻断，但肝毒性需监测，证据不如 CPA/螺内酯充分
-- **GnRH 激动剂**：最彻底的抑制方案，但成本高、获取难
-- **单用高剂量 E2**：E2 本身在足够高的水平可以抑制 T，无需额外抗雄
-
-详见[抗雄激素总览](/zh/medications/antiandrogens/overview/)。
+详细介绍可以参考[抗雄激素总览](/zh/medications/antiandrogens/overview/)。
 
 ---
 
-## 常见问题
+## 常见疑问解答
 
-**"可以两个一起用吗？"**
-不建议。CPA + 螺内酯没有协同效果，反而增加副作用负担。选一个足矣。
+**“色谱龙和螺内酯可以同时联用吗？”**
 
-**"可以从一个换到另一个吗？"**
-可以。通常直接停旧开新，无需洗脱期。但换药后需要更密集地监测（1-3 个月内每月查激素）。
+临床上通常不建议这样做。两者联合使用并不会产生降睾酮的协同增效效果，反而会使你的肝脏负担与电解质异常的副作用风险成倍增加。建议在医生指导下选择其中一种抗雄药物即可。
 
-**"我在用 50 mg CPA，想换螺内酯"**
-先按减量方案将 CPA 从 50 mg 逐步降到 12.5 mg，再进一步减到停药，同时引入螺内酯 50 mg → 100 mg<CitationRef id="howlow-2024" num={8} authors="IJTH" year={2024} title="How low can you go? Lowest effective dose of cyproterone acetate" />。不要突然停 CPA。
+**“这两种药物之间可以互相切换吗？”**
+
+可以。通常在评估耐受性或安全性后，可以在医生指导下直接停用旧药并开始使用新药。不过，在切换药物后的 1 至 3 个月内，建议适当增加血检频率以密切观察激素水平的变化。
+
+**“我目前每日服用 50 mg CPA，可以直接换成螺内酯吗？”**
+
+不建议直接停用大剂量色谱龙。由于可能会诱发较明显的睾酮反弹或情绪波动，建议先在医生指导下，分阶段在 4 周内将色谱龙剂量平稳降至每日 12.5 mg，然后再逐步停用，并在此期间开始引入螺内酯（通常从每日 50 mg 逐步调整至 100 mg）<CitationRef id="howlow-2024" num={8} authors="IJTH" year={2024} title="How low can you go? Lowest effective dose of cyproterone acetate" />。
 
 ---
 
 ## 小结
 
-| | 色谱龙 | 螺内酯 |
-|---|--------|--------|
-| 一句话 | 效果强，监测多 | 更安全，效果温和 |
-| 最大优势 | 直接降低 T | 无脑膜瘤/肝毒性风险 |
-| 最大风险 | 脑膜瘤（高剂量） | 高钾血症 |
-| 获取 | 较难 | 较易 |
-
-无论选择哪个，都需要配合定期[血检监测](/zh/blood-tests/)。如有疑问，咨询[友好医疗资源](/zh/tools/hospital-finder/)中的医生。
+无论你选择哪种抗雄药物，都建议建立在定期进行[血检监测](/zh/blood-tests/)的基础之上。如果在用药方案或副作用方面有所疑虑，建议通过[友好医疗资源](/zh/tools/hospital-finder/)寻找具有性别肯定医疗经验的专业医生开展针对性咨询。

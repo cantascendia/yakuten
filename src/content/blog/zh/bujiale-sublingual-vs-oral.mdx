@@ -18,21 +18,21 @@ import CitationRef from '../../../components/ui/CitationRef.astro';
 
 ## 核心结论
 
-对于大多数使用补佳乐（戊酸雌二醇片）的跨性别女性来说，**舌下含服通常被认为优于口服**，主要原因是更高的生物利用度<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" />和更低的肝脏首过效应<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />。但两种方式各有优缺点，选择取决于你的具体情况。
+对于多数使用补佳乐（戊酸雌二醇片）进行性别肯定激素治疗（HRT）的跨性别女性而言，**在合理安排的前提下，舌下含服通常被认为优于口服**。这主要是因为舌下含服能带来更高的生物利用度<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" />，并且对肝脏的首过效应影响较小<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />。不过这两种方式各有利弊，建议你根据自身的生理状况与生活规律来选择。
 
-> 以下信息基于公开发表的临床文献，仅供安全参考。具体用药方案请咨询具有跨性别医疗经验的医生。
+> 提示：本文内容基于已公开发表的临床文献，旨在提供健康与减害参考。具体的治疗方案调整建议在具有跨性别医疗经验的专业医师指导下进行。
 
 ---
 
 ## 什么是「首过效应」？
 
-口服药物经胃肠道吸收后，首先通过门静脉进入肝脏代谢，这个过程叫做**肝脏首过效应**（first-pass metabolism）。对于雌二醇来说，口服时大量雌二醇在肝脏被转化为雌酮（E1）<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />，导致：
+当口服药物经过胃肠道吸收后，会首先通过门静脉进入肝脏进行代谢，这一生理过程被称为**肝脏首过效应**（first-pass metabolism）。对于雌二醇而言，口服会使得大量的雌二醇在肝脏中被转化为活性较低的雌酮（E1）<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />，这可能会导致：
 
-- **E2/E1 比值偏低**（理想比值应接近或大于 1）<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="A comparison of the pharmacokinetic properties of three estradiol esters" />
-- **肝脏合成更多凝血因子**，增加静脉血栓（VTE）风险<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism among postmenopausal women" />
-- **需要更高剂量**才能达到目标血药浓度
+- **E2/E1 比值偏低**（理想状态下该比值建议接近或高于 1）<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="A comparison of the pharmacokinetic properties of three estradiol esters" />
+- **肝脏合成更多的凝血因子**，从而可能增加静脉血栓（VTE）的发生风险<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism among postmenopausal women" />
+- **需要更高的剂量**才能帮助体内雌二醇达到推荐的目标血药浓度
 
-舌下含服通过口腔黏膜直接吸收入血，**部分绕过肝脏首过效应**，因此同等剂量下能获得更高的雌二醇峰值<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" />。
+相比指下，舌下含服使药物通过口腔黏膜直接吸收入血，**从而在一定程度上绕过了肝脏首过效应**。在相同剂量下，这能够获得更高的雌二醇峰值水平<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" />。
 
 ---
 
@@ -40,53 +40,53 @@ import CitationRef from '../../../components/ui/CitationRef.astro';
 
 | 维度 | 口服 | 舌下含服 |
 |------|------|----------|
-| 生物利用度 | 约 3-5% | 约 10-25%（更高）<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" /> |
-| E2 峰值 | 较低且平稳 | 较高但下降快 |
-| E2/E1 比值 | 偏低（< 1） | 较好（接近或 > 1）<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" /> |
-| VTE 风险 | 较高（肝脏首过） | 较低<CitationRef id="vinogradova-2019" num={5} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism: nested case-control studies" /> |
-| 血药浓度稳定性 | 较稳定 | 波动较大（需分次给药） |
-| 操作便利性 | 简单，随餐吞服 | 需含 5-15 分钟，不能说话吞咽 |
-| 每日给药频率 | 通常 1-2 次 | 通常 2-3 次 |
+| 生物利用度 | 约 3-5% | 约 10-25%（显著提升）<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Single-dose pharmacokinetics of sublingual versus oral administration of micronized 17 beta-estradiol" /> |
+| E2 峰值 | 较低但浓度相对平稳 | 较高但随时间衰减较快 |
+| E2/E1 比值 | 偏低（通常低于 1） | 较好（接近或高于 1）<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" /> |
+| VTE（血栓）风险 | 相对较高（受肝脏首过影响） | 理论上较低<CitationRef id="vinogradova-2019" num={5} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism: nested case-control studies" /> |
+| 血药浓度稳定性 | 较为平稳，波动小 | 波动较明显（通常建议分次给药） |
+| 操作便利性 | 简便，随餐或温水吞服 | 需静置 5-15 分钟，期间避免说话与吞咽 |
+| 每日给药频率 | 通常每日 1-2 次 | 通常每日 2-3 次 |
 
 ---
 
-## 舌下含服的注意事项
+## 舌下含服的实操建议
 
-1. **药片需完全溶解**：将补佳乐片放在舌下，保持 5-15 分钟至完全溶解，期间避免吞咽口水
-2. **分次给药**：由于血药浓度下降较快，建议将日剂量分为 2-3 次给药（如 2mg/日 → 1mg 早 + 1mg 晚）
-3. **不是所有片剂都适合舌下**：补佳乐（戊酸雌二醇）片剂设计上是口服的，舌下含服属于超说明书用法
-4. **血检时机**：建议在下一次给药前（谷值）抽血，更能反映实际水平
+1. **确保药片充分溶解**：将补佳乐药片置于舌下，静置约 5-15 分钟使其完全溶解，期间尽量避免吞咽唾液。
+2. **建议分次给药**：由于舌下含服后血药浓度下降较快，通常建议将每日的总剂量分为 2-3 次服用（例如日剂量为 2 mg 时，可分为早上 1 mg 与晚上 1 mg）。
+3. **超说明书用法提示**：补佳乐在产品设计上为口服片剂，舌下含服属于超说明书用法，在临床实践中多作为一种经验性的减害选择。
+4. **科学把握血检时机**：建议在下一次服药前（即谷值期）前往医院抽血，这样能更客观地评估药物在体内的最低维持水平。
 
 ---
 
 ## 哪种方式更适合你？
 
-**建议选择舌下含服的情况**：
-- 你有 VTE 家族史或其他血栓风险因素
-- 你的口服血检结果中 E2/E1 比值偏低
-- 你希望用更低剂量达到目标 E2 水平
-- 你的 BMI 较高（肥胖增加口服 VTE 风险）
+**你可以考虑优先选择舌下含服，如果**：
+- 你存在 VTE 家族史或其他潜在的血栓风险因素；
+- 你在口服吞咽后的血检报告中，E2/E1 比值明显偏低；
+- 你希望通过更低的给药剂量来达到目标 E2 水平；
+- 你的 BMI 较高（肥胖在口服时可能带来额外的血栓风险）。
 
-**口服可能更适合的情况**：
-- 你追求更稳定的血药浓度
-- 你无法保证每天多次含服的操作条件（如工作环境限制）
-- 你的血栓风险较低且口服血检结果理想
+**你可以考虑继续选择口服吞咽，如果**：
+- 你更追求体内血药浓度的平稳；
+- 你的工作或生活环境不方便让你每天多次进行舌下含服操作；
+- 你的血栓发生风险偏低，且口服后的血检结果已经能够达到理想范围。
 
 ---
 
 ## 更安全的替代方案
 
-如果你担心口服/舌下的 VTE 风险，透皮途径（凝胶或贴片）是更安全的选择：
+如果你对口服或舌下含服带来的 VTE 风险有所顾虑，经皮给药（如雌二醇凝胶或透皮贴片）是更为安全且推荐的方案：
 
-- **凝胶**：每日涂抹，血药浓度稳定，几乎无肝脏首过效应
-- **贴片**：每周更换 1-2 次，最稳定的给药方式
+- **雌二醇凝胶**：每日涂抹，血药浓度稳定，由于不经过消化道，能有效规避肝脏首过效应。
+- **透皮贴片**：通常每周更换 1-2 次，能够提供极为平稳持续的给药效果。
 
-详见 [雌二醇总览与选择指南](/zh/medications/estrogens/overview/) 了解所有给药途径的完整对比。
+如需详细对比，可以参考 [雌二醇总览与选择指南](/zh/medications/estrogens/overview/)。
 
 ---
 
 ## 小结
 
-舌下含服在生物利用度和 VTE 风险方面优于口服，但操作更繁琐、血药浓度波动更大。没有绝对的"最好"，只有最适合你当前情况的选择。**定期血检**是判断你当前方案是否有效的唯一可靠手段。
+舌下含服在生物利用度与降低血栓风险方面具有一定优势，但操作相对繁琐，且血药浓度起伏更明显。选择并没有绝对的标准，关键在于寻找最适合你生理状态与生活习惯的方案。**定期进行血检**是评估与调整治疗方案的科学手段。
 
-如果对自己的用药方案有疑问，建议咨询 [友好医疗资源](/zh/tools/hospital-finder/) 中列出的具有跨性别医疗经验的医生。
+如果你对当下的用药方案存在疑问，建议通过 [友好医疗资源](/zh/tools/hospital-finder/) 寻找具有跨性别肯定医疗经验的医生进行专业咨询。
