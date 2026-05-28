@@ -35,8 +35,8 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1-2次",
-        "bioavailability": "~5%（首过效应显著）",
+        "frequency": "每日 1-2 次",
+        "bioavailability": "约 5%（首过效应明显）",
         "halfLife": "12-20小时",
         "peakTime": "3-6小时",
         "vteRisk": {
@@ -73,7 +73,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "T",
@@ -87,7 +87,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "ALT/AST",
@@ -101,7 +101,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每6个月"
+        "frequency": "每 6 个月复查一次"
       }
     ],
     "sideEffects": [
@@ -133,36 +133,36 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性DVT/PE或有此病史且未抗凝",
-        "已知凝血障碍（Factor V Leiden, 蛋白C/S缺乏）",
+        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
+        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝病（ALT/AST >3倍上限）",
-        "已知药物过敏"
+        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
+        "已知对相关药物成分过敏"
       ],
       "relative": [
-        "吸烟（尤其>35岁）",
+        "吸烟（尤其是年龄大于 35 岁者）",
         "BMI >30",
-        "偏头痛（有先兆型）",
-        "VTE家族史"
+        "偏头痛（先兆型）",
+        "VTE 家族史"
       ]
     },
     "interactions": [
       {
         "drug": "吸烟",
         "severity": "contraindicated",
-        "description": "VTE高危组合",
+        "description": "该组合的 VTE 风险通常较高，建议避开",
         "source": "Endocrine Society 2017"
       },
       {
         "drug": "CPA",
         "severity": "moderate",
-        "description": "双重VTE风险，优先选经皮E2",
+        "description": "合用存在双重 VTE 风险，通常建议优先选择透皮 E2 方案",
         "source": "WPATH SOC 8"
       }
     ],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "补佳乐（戊酸E2 1mg）线下药房仍有售，需处方",
+      "notes": "补佳乐（戊酸 E2 1mg）目前在线下药房通常有售，建议你凭处方购买。",
       "affectedByBan2022": false
     },
     "references": [
@@ -206,13 +206,13 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日2-4次（分次含服）",
-        "bioavailability": "~10-25%（绕过部分首过效应）",
+        "frequency": "每日 2-4 次（建议分次含服）",
+        "bioavailability": "约 10-25%（通常可绕过部分肝脏首过效应）",
         "halfLife": "6-8小时",
         "peakTime": "0.5-2小时",
         "vteRisk": {
           "rr": 1.48,
-          "source": "Canonico 2018（与口服类似，缺乏独立数据）"
+          "source": "Canonico 2018（与口服途径类似，目前独立数据有限）"
         },
         "evidenceLevel": "C"
       }
@@ -244,7 +244,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "T",
@@ -258,12 +258,12 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       }
     ],
     "sideEffects": [
       {
-        "effect": "血药浓度波动大（峰谷明显）",
+        "effect": "血药浓度波动较大（峰谷差异明显）",
         "frequency": "common",
         "severity": "mild"
       },
@@ -285,30 +285,30 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性DVT/PE或有此病史且未抗凝",
-        "已知凝血障碍（Factor V Leiden, 蛋白C/S缺乏）",
+        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
+        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝病（ALT/AST >3倍上限）",
-        "已知药物过敏"
+        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
+        "已知对相关药物成分过敏"
       ],
       "relative": [
-        "吸烟（尤其>35岁）",
+        "吸烟（尤其是年龄大于 35 岁者）",
         "BMI >30",
-        "偏头痛（有先兆型）",
-        "VTE家族史"
+        "偏头痛（先兆型）",
+        "VTE 家族史"
       ]
     },
     "interactions": [
       {
         "drug": "吸烟",
         "severity": "contraindicated",
-        "description": "VTE高危组合",
+        "description": "该组合的 VTE 风险通常较高，建议避开",
         "source": "Endocrine Society 2017"
       }
     ],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "使用口服制剂（补佳乐）off-label舌下含服。线下药房有售，需处方",
+      "notes": "通常使用口服制剂（如补佳乐）进行超说明书（off-label）舌下含服。目前线下药房有售，建议你凭处方购买。",
       "affectedByBan2022": false
     },
     "references": [
@@ -352,8 +352,8 @@
             "unit": "µg/天"
           }
         },
-        "frequency": "每3.5-7天更换（视品牌）",
-        "bioavailability": "~100%（绕过肝脏首过效应）",
+        "frequency": "每 3.5-7 天更换一次（具体视不同品牌而定）",
+        "bioavailability": "约 100%（可绕过肝脏首过效应）",
         "halfLife": "取决于贴片释放速率，移除后~1小时",
         "peakTime": "贴后12-24小时达稳态",
         "vteRisk": {
@@ -390,7 +390,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每3个月（换贴前12-24小时采血）"
+        "frequency": "每 3 个月复查一次（建议在换贴前 12-24 小时采血以测定谷值）"
       },
       {
         "test": "T",
@@ -404,17 +404,17 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       }
     ],
     "sideEffects": [
       {
-        "effect": "贴敷部位皮肤刺激/红疹",
+        "effect": "贴敷部位可能会出现皮肤刺激或红疹",
         "frequency": "common",
         "severity": "mild"
       },
       {
-        "effect": "贴片脱落",
+        "effect": "贴片意外脱落",
         "frequency": "common",
         "severity": "mild"
       },
@@ -426,28 +426,28 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性DVT/PE或有此病史且未抗凝",
-        "已知凝血障碍（Factor V Leiden, 蛋白C/S缺乏）",
+        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
+        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝病（ALT/AST >3倍上限）",
-        "已知药物过敏"
+        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
+        "已知对相关药物成分过敏"
       ],
       "relative": [
-        "贴敷部位皮肤病变",
-        "吸烟（尤其>35岁）"
+        "贴敷部位存在皮肤病变",
+        "吸烟（尤其是年龄大于 35 岁者）"
       ]
     },
     "interactions": [
       {
         "drug": "吸烟",
         "severity": "major",
-        "description": "VTE风险升高，但经皮途径风险远低于口服",
+        "description": "可能会升高 VTE 风险，但透皮给药途径的风险通常远低于口服途径",
         "source": "Canonico 2018"
       }
     ],
     "chinaAccess": {
       "availability": "overseas",
-      "notes": "中国大陆获取困难，网售禁令后更难。需海外代购或医院特殊渠道",
+      "notes": "目前在国内获取难度较大，网售限制后渠道更为受限。通常需要通过海外代购或医院特殊渠道获取。",
       "affectedByBan2022": true
     },
     "references": [
@@ -494,8 +494,8 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
-        "bioavailability": "~10%（经皮吸收，绕过首过效应）",
+        "frequency": "每日 1 次",
+        "bioavailability": "约 10%（透皮吸收，通常可绕过肝脏首过效应）",
         "halfLife": "与贴片类似，移除后较快下降",
         "peakTime": "涂抹后2-6小时",
         "vteRisk": {
@@ -532,7 +532,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "T",
@@ -546,17 +546,17 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       }
     ],
     "sideEffects": [
       {
-        "effect": "涂抹部位皮肤刺激",
+        "effect": "涂抹部位可能会出现皮肤刺激",
         "frequency": "uncommon",
         "severity": "mild"
       },
       {
-        "effect": "吸收受皮肤状态影响（个体差异大）",
+        "effect": "药物吸收可能受皮肤状态影响（个体差异明显）",
         "frequency": "common",
         "severity": "mild"
       },
@@ -568,28 +568,28 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性DVT/PE或有此病史且未抗凝",
-        "已知凝血障碍（Factor V Leiden, 蛋白C/S缺乏）",
+        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
+        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝病（ALT/AST >3倍上限）",
-        "已知药物过敏"
+        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
+        "已知对相关药物成分过敏"
       ],
       "relative": [
         "涂抹部位皮肤破损",
-        "吸烟（尤其>35岁）"
+        "吸烟（尤其是年龄大于 35 岁者）"
       ]
     },
     "interactions": [
       {
         "drug": "吸烟",
         "severity": "major",
-        "description": "VTE风险升高，但经皮途径风险远低于口服",
+        "description": "可能会升高 VTE 风险，但透皮给药途径的风险通常远低于口服途径",
         "source": "Canonico 2018"
       }
     ],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "部分医院可开，获取渠道有限",
+      "notes": "目前仅在部分医院有售，获取渠道较为有限。",
       "affectedByBan2022": false
     },
     "references": [
@@ -635,13 +635,13 @@
             "unit": "mg/周"
           }
         },
-        "frequency": "每5-7天",
+        "frequency": "每 5-7 天一次",
         "bioavailability": "~100%",
         "halfLife": "4-5天",
         "peakTime": "2-3天",
         "vteRisk": {
           "rr": 1,
-          "source": "缺乏专门注射途径VTE数据，理论上低于口服"
+          "source": "目前专门针对注射途径的 VTE 数据有限，理论上其风险通常低于口服给药"
         },
         "evidenceLevel": "B"
       },
@@ -663,13 +663,13 @@
             "unit": "mg/周"
           }
         },
-        "frequency": "每5-7天",
+        "frequency": "每 5-7 天一次",
         "bioavailability": "~100%",
         "halfLife": "4-5天",
         "peakTime": "2-3天",
         "vteRisk": {
           "rr": 1,
-          "source": "缺乏专门注射途径VTE数据，理论上低于口服"
+          "source": "目前专门针对注射途径的 VTE 数据有限，理论上其风险通常低于口服给药"
         },
         "evidenceLevel": "B"
       }
@@ -701,7 +701,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每3个月（下次注射前当天采血=谷值）"
+        "frequency": "每 3 个月复查一次（建议在下次注射前当天采血以测量谷值）"
       },
       {
         "test": "T",
@@ -715,12 +715,12 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       }
     ],
     "sideEffects": [
       {
-        "effect": "注射部位疼痛/硬结",
+        "effect": "注射部位可能会出现疼痛或硬结",
         "frequency": "common",
         "severity": "mild"
       },
@@ -730,7 +730,7 @@
         "severity": "mild"
       },
       {
-        "effect": "情绪波动（与峰谷波动相关）",
+        "effect": "情绪出现波动（通常与血药浓度的峰谷波动相关）",
         "frequency": "common",
         "severity": "mild"
       },
@@ -742,31 +742,31 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性DVT/PE或有此病史且未抗凝",
-        "已知凝血障碍（Factor V Leiden, 蛋白C/S缺乏）",
+        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
+        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝病（ALT/AST >3倍上限）",
-        "已知药物过敏",
-        "单次剂量>=10mg（禁止）",
-        "间隔<5天且>5mg（禁止）"
+        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
+        "已知对相关药物成分过敏",
+        "单次剂量 >= 10 mg（禁止）",
+        "间隔 < 5 天且 > 5 mg（禁止）"
       ],
       "relative": [
-        "吸烟（尤其>35岁）",
+        "吸烟（尤其是年龄大于 35 岁者）",
         "BMI >30",
-        "VTE家族史"
+        "VTE 家族史"
       ]
     },
     "interactions": [
       {
         "drug": "吸烟",
         "severity": "contraindicated",
-        "description": "VTE高危组合",
+        "description": "该组合的 VTE 风险通常较高，建议避开",
         "source": "Endocrine Society 2017"
       }
     ],
     "chinaAccess": {
       "availability": "overseas",
-      "notes": "中国大陆无正式上市。主要来源为日本（Progynon Depot 10mg/mL）。网售禁令后获取更困难",
+      "notes": "目前在国内尚未正式上市。常见来源为日本（Progynon Depot 10mg/mL），受网售限制影响，目前获取难度较高。",
       "affectedByBan2022": true
     },
     "references": [
@@ -813,7 +813,7 @@
             "unit": "mg/10-14天"
           }
         },
-        "frequency": "每7-14天",
+        "frequency": "每 7-14 天一次",
         "bioavailability": "~100%",
         "halfLife": "8-10天",
         "peakTime": "2-4天",
@@ -834,7 +834,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "unavailable",
-      "notes": "美洲地区使用",
+      "notes": "主要在美洲地区使用",
       "affectedByBan2022": false
     },
     "references": [
@@ -874,7 +874,7 @@
             "unit": "mg/10天"
           }
         },
-        "frequency": "每7-10天",
+        "frequency": "每 7-10 天一次",
         "bioavailability": "~100%",
         "halfLife": "5-7天",
         "peakTime": "3-5天",
@@ -895,7 +895,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "unavailable",
-      "notes": "拉丁美洲使用",
+      "notes": "主要在拉丁美洲地区使用",
       "affectedByBan2022": false
     },
     "references": [
@@ -935,7 +935,7 @@
             "unit": "mg/月"
           }
         },
-        "frequency": "每21-30天",
+        "frequency": "每 21-30 天一次",
         "bioavailability": "~100%",
         "halfLife": "20-30天",
         "peakTime": "3-7天",
@@ -956,7 +956,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "unavailable",
-      "notes": "全球已停产",
+      "notes": "目前在全球范围内已停产",
       "affectedByBan2022": false
     },
     "references": [
@@ -999,28 +999,28 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
+        "frequency": "每日 1 次",
         "bioavailability": "~100%",
         "halfLife": "1.5-4天",
         "peakTime": "3-4小时",
         "vteRisk": {
           "rr": 2,
-          "source": "叠加雌激素VTE风险，精确RR因合用方案而异"
+          "source": "通常会与雌二醇的 VTE 风险叠加，实际风险因合用方案的差异而异。"
         },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "配合E2使用",
+        "e2Target": "建议配合 E2 使用",
         "duration": "1-6个月"
       },
       "phase2": {
-        "e2Target": "配合E2使用",
+        "e2Target": "建议配合 E2 使用",
         "duration": "6-12个月"
       },
       "phase3": {
-        "e2Target": "如E2单药可压T<50则考虑停用",
+        "e2Target": "如果 E2 单药可将 T 控制在 50 ng/dL 以下，可以考虑停用",
         "duration": "12个月+"
       }
     },
@@ -1037,7 +1037,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "ALT/AST",
@@ -1051,7 +1051,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每3个月（CPA有肝毒性）"
+        "frequency": "每 3 个月复查一次（建议防范 CPA 的潜在肝毒性）"
       },
       {
         "test": "PRL",
@@ -1065,7 +1065,7 @@
           "max": 50
         },
         "dangerThreshold": 50,
-        "frequency": "每6个月（CPA可致高泌乳素血症）"
+        "frequency": "每 6 个月复查一次（建议防范 CPA 引起的常见高泌乳素血症）"
       }
     ],
     "sideEffects": [
@@ -1095,12 +1095,12 @@
         "severity": "moderate"
       },
       {
-        "effect": "脑膜瘤（>=25mg/天 OR=12.36）",
+        "effect": "脑膜瘤（每天剂量大于或等于 25 mg，OR=12.36）",
         "frequency": "rare",
         "severity": "severe"
       },
       {
-        "effect": "VTE（与雌激素叠加）",
+        "effect": "VTE（通常与雌二醇的风险叠加）",
         "frequency": "rare",
         "severity": "severe"
       }
@@ -1115,7 +1115,7 @@
       ],
       "relative": [
         "抑郁症病史",
-        "VTE风险因素",
+        "VTE 风险因素",
         "肝功能边界值异常"
       ]
     },
@@ -1123,19 +1123,19 @@
       {
         "drug": "比卡鲁胺",
         "severity": "contraindicated",
-        "description": "肝毒性叠加，禁止合用",
+        "description": "合用可能会导致肝毒性风险叠加，通常属于禁忌方案",
         "source": "CONTENT.md P4.2"
       },
       {
         "drug": "口服E2",
         "severity": "moderate",
-        "description": "双重VTE风险，优先选经皮E2搭配CPA",
+        "description": "合用存在双重 VTE 风险，通常建议优先选择透皮 E2 搭配 CPA 的方案",
         "source": "WPATH SOC 8"
       }
     ],
     "chinaAccess": {
       "availability": "banned",
-      "notes": "中国未上市。2022年12月起网售禁止。获取极为困难",
+      "notes": "目前在国内尚未正式上市。受网售限制影响，获取渠道较为受限。",
       "affectedByBan2022": true
     },
     "references": [
@@ -1181,28 +1181,28 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1-2次",
+        "frequency": "每日 1-2 次",
         "bioavailability": "~60-90%",
         "halfLife": "1.4小时（活性代谢物canrenone 10-23小时）",
         "peakTime": "1-2小时",
         "vteRisk": {
           "rr": 1,
-          "source": "螺内酯本身无显著VTE风险"
+          "source": "螺内酯本身通常无明显 VTE 风险"
         },
         "evidenceLevel": "B"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "配合E2使用",
+        "e2Target": "建议配合 E2 使用",
         "duration": "1-6个月"
       },
       "phase2": {
-        "e2Target": "配合E2使用",
+        "e2Target": "建议配合 E2 使用",
         "duration": "6-12个月"
       },
       "phase3": {
-        "e2Target": "配合E2使用",
+        "e2Target": "建议配合 E2 使用",
         "duration": "12个月+"
       }
     },
@@ -1219,7 +1219,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "K+",
@@ -1233,7 +1233,7 @@
           "max": 5.5
         },
         "dangerThreshold": 5.5,
-        "frequency": "每3个月（螺内酯为保钾利尿剂）"
+        "frequency": "每 3 个月复查一次（防范高钾血症）"
       },
       {
         "test": "肌酐/肾功能",
@@ -1247,7 +1247,7 @@
           "max": 150
         },
         "dangerThreshold": 150,
-        "frequency": "每6个月（螺内酯经肾排泄）"
+        "frequency": "每 6 个月复查一次（监测肾功能指标）"
       }
     ],
     "sideEffects": [
@@ -1289,19 +1289,19 @@
       {
         "drug": "含钾食品/补剂",
         "severity": "contraindicated",
-        "description": "高钾→心律失常→猝死",
+        "description": "高钾可能会增加心律失常等严重风险，建议你避免合用",
         "source": "CONTENT.md P4.2"
       },
       {
         "drug": "ACE抑制剂/ARB",
         "severity": "major",
-        "description": "进一步升高血钾",
+        "description": "合用可能会进一步升高血钾水平",
         "source": "药品说明书"
       }
     ],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "处方药，泌尿科/内分泌科可开",
+      "notes": "属于处方药，通常可以在医院凭处方开具。",
       "affectedByBan2022": false
     },
     "references": [
@@ -1345,29 +1345,29 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
+        "frequency": "每日 1 次",
         "bioavailability": "~90%",
         "halfLife": "5-6天（稳态）",
         "peakTime": "31小时",
         "vteRisk": {
           "rr": 1,
-          "source": "比卡鲁胺本身无显著VTE风险数据"
+          "source": "比卡鲁胺本身目前无明显 VTE 风险的数据报道"
         },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "配合E2使用（不推荐常规使用）",
-        "duration": "仅在CPA+螺内酯均不可用时"
+        "e2Target": "建议配合 E2 使用（通常不推荐作为常规方案）",
+        "duration": "通常仅在 CPA 与螺内酯均不适用时考虑"
       },
       "phase2": {
-        "e2Target": "配合E2使用",
-        "duration": "需持续肝功能监测"
+        "e2Target": "建议配合 E2 使用",
+        "duration": "需要持续进行肝功能监测"
       },
       "phase3": {
-        "e2Target": "配合E2使用",
-        "duration": "考虑替换为其他抗雄方案"
+        "e2Target": "建议配合 E2 使用",
+        "duration": "通常建议你考虑逐步替换为其他抗雄方案"
       }
     },
     "monitoring": [
@@ -1383,7 +1383,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月（注意：比卡鲁胺不降T，T可能升高）"
+        "frequency": "每 3 个月复查一次（提示：比卡鲁胺通常不直接降低 T 水平，且 T 可能会出现代偿性升高）"
       },
       {
         "test": "ALT/AST",
@@ -1397,7 +1397,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "前6月每月 → 之后每3个月（肝毒性需定期监测）"
+        "frequency": "前 6 个月建议每月复查一次，之后建议每 3 个月复查一次（鉴于肝毒性风险，建议你定期监测肝功能）"
       }
     ],
     "sideEffects": [
@@ -1412,12 +1412,12 @@
         "severity": "mild"
       },
       {
-        "effect": "T不降反升",
+        "effect": "T（睾酮）不降反升",
         "frequency": "common",
         "severity": "mild"
       },
       {
-        "effect": "暴发性肝衰竭（极罕见但致命）",
+        "effect": "暴发性肝衰竭（极罕见但可能危及生命）",
         "frequency": "rare",
         "severity": "severe"
       }
@@ -1425,25 +1425,25 @@
     "contraindications": {
       "absolute": [
         "严重肝功能障碍",
-        "与CPA合用（肝毒性叠加）",
+        "与 CPA 合用（可能会导致肝毒性风险叠加）",
         "已知药物过敏"
       ],
       "relative": [
         "肝功能边界值异常",
-        "无法定期监测肝功能"
+        "无法定期进行肝功能监测者"
       ]
     },
     "interactions": [
       {
         "drug": "CPA",
         "severity": "contraindicated",
-        "description": "肝毒性叠加，禁止合用",
+        "description": "合用可能会导致肝毒性风险叠加，通常属于禁忌方案",
         "source": "CONTENT.md P4.2"
       }
     ],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "原为前列腺癌用药，部分医院肿瘤科/泌尿科可开。WPATH SOC 8和Endocrine Society 2017均未推荐用于常规GAHT",
+      "notes": "原主要用于前列腺癌治疗，部分医院可以开具。值得注意的是，主流指南通常未将其推荐用于常规的性别肯定激素治疗（GAHT）。",
       "affectedByBan2022": false
     },
     "references": [
@@ -1455,7 +1455,7 @@
     "id": "gnrh-agonist",
     "names": {
       "generic": "GnRH Agonist",
-      "zh": "GnRH激动剂",
+      "zh": "GnRH 激动剂",
       "ja": "GnRHアゴニスト",
       "slang": [
         "青春期阻断剂",
@@ -1489,29 +1489,29 @@
             "unit": "mg/3月"
           }
         },
-        "frequency": "每1-3个月（视制剂）",
+        "frequency": "每 1-3 个月一次（具体视不同制剂而定）",
         "bioavailability": "~90%",
         "halfLife": "3小时（但缓释制剂持续1-3个月）",
         "peakTime": "4小时（初始释放）",
         "vteRisk": {
           "rr": 1,
-          "source": "GnRH激动剂本身无显著VTE风险"
+          "source": "GnRH 激动剂本身通常无明显 VTE 风险"
         },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "配合低剂量E2使用",
-        "duration": "持续使用"
+        "e2Target": "建议配合低剂量 E2 使用",
+        "duration": "建议持续使用"
       },
       "phase2": {
-        "e2Target": "配合E2使用",
-        "duration": "持续使用"
+        "e2Target": "建议配合 E2 使用",
+        "duration": "建议持续使用"
       },
       "phase3": {
-        "e2Target": "可考虑术后停用",
-        "duration": "持续使用至性腺切除"
+        "e2Target": "通常可考虑在性腺切除术后停用",
+        "duration": "通常持续使用至性腺切除"
       }
     },
     "monitoring": [
@@ -1527,7 +1527,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每3个月"
+        "frequency": "每 3 个月复查一次"
       },
       {
         "test": "LH",
@@ -1541,7 +1541,7 @@
           "max": 5
         },
         "dangerThreshold": 5,
-        "frequency": "每3-6个月"
+        "frequency": "每 3-6 个月复查一次"
       },
       {
         "test": "骨密度",
@@ -1555,7 +1555,7 @@
           "max": -1
         },
         "dangerThreshold": -2.5,
-        "frequency": "每年（长期低E2需注意）"
+        "frequency": "建议每年复查一次（长期处于低 E2 水平者建议特别关注骨骼健康）"
       }
     ],
     "sideEffects": [
@@ -1565,7 +1565,7 @@
         "severity": "mild"
       },
       {
-        "effect": "初期T短暂升高（flare现象，1-2周）",
+        "effect": "用药初期 T 水平可能会短暂升高（即 flare 现象，通常持续 1-2 周）",
         "frequency": "common",
         "severity": "moderate"
       },
@@ -1575,7 +1575,7 @@
         "severity": "mild"
       },
       {
-        "effect": "骨密度下降（长期低E2时）",
+        "effect": "骨密度下降（多见于长期处于低 E2 水平者）",
         "frequency": "uncommon",
         "severity": "moderate"
       }
@@ -1593,7 +1593,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "作为前列腺癌/性早熟治疗药物在中国有售，但费用昂贵（每月约1000-3000元），需内分泌科/泌尿科处方",
+      "notes": "作为前列腺癌或性早熟治疗药物在国内有售，但治疗费用相对昂贵（每月约 1000-3000 元），通常需要凭处方在医院开具。",
       "affectedByBan2022": false
     },
     "references": [
@@ -1636,7 +1636,7 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
+        "frequency": "每日 1 次",
         "bioavailability": "~80%",
         "halfLife": "6-8小时",
         "peakTime": "1-2小时",
@@ -1659,7 +1659,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "仿制药广泛",
+      "notes": "目前国内仿制药供应较为广泛",
       "affectedByBan2022": false
     },
     "references": [
@@ -1699,7 +1699,7 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
+        "frequency": "每日 1 次",
         "bioavailability": "~60%",
         "halfLife": "4-5周",
         "peakTime": "1-3小时",
@@ -1716,14 +1716,14 @@
     "contraindications": {
       "absolute": [
         "药物过敏",
-        "严重肝功能不全"
+        "严重肝功能障碍"
       ],
       "relative": []
     },
     "interactions": [],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "处方药",
+      "notes": "属于处方药，建议你凭处方购买。",
       "affectedByBan2022": false
     },
     "references": [
@@ -1767,28 +1767,28 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次（睡前服用）",
-        "bioavailability": "~10%（口服首过效应显著）",
+        "frequency": "每日 1 次（建议睡前服用）",
+        "bioavailability": "约 10%（口服首过效应显著）",
         "halfLife": "16-18小时",
         "peakTime": "1-3小时",
         "vteRisk": {
           "rr": 1,
-          "source": "天然微粒化黄体酮VTE风险远低于合成孕激素"
+          "source": "天然微粒化黄体酮的 VTE 风险通常低于合成孕激素"
         },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "不要在此阶段使用",
-        "duration": "禁用"
+        "e2Target": "通常不建议在此阶段使用",
+        "duration": "通常不建议使用"
       },
       "phase2": {
-        "e2Target": "不要在此阶段使用",
-        "duration": "禁用"
+        "e2Target": "通常不建议在此阶段使用",
+        "duration": "通常不建议使用"
       },
       "phase3": {
-        "e2Target": "HRT>=12个月后才考虑引入",
+        "e2Target": "建议在 HRT 治疗满 12 个月后再考虑引入",
         "duration": "12个月+"
       }
     },
@@ -1805,12 +1805,12 @@
           "max": 2
         },
         "dangerThreshold": 0,
-        "frequency": "按需（口服P4的血清水平通常很低）"
+        "frequency": "建议根据需要检测一次（口服 P4 的血清水平通常较低）"
       }
     ],
     "sideEffects": [
       {
-        "effect": "嗜睡/镇静",
+        "effect": "嗜睡或镇静感",
         "frequency": "common",
         "severity": "mild"
       },
@@ -1820,7 +1820,7 @@
         "severity": "mild"
       },
       {
-        "effect": "情绪变化",
+        "effect": "情绪出现波动",
         "frequency": "uncommon",
         "severity": "moderate"
       }
@@ -1830,17 +1830,17 @@
         "已知药物过敏",
         "严重肝功能障碍",
         "不明原因阴道出血",
-        "HRT使用不足12个月"
+        "HRT 治疗时间不足 12 个月"
       ],
       "relative": [
         "抑郁症病史",
-        "乳房发育尚处Tanner I-III期"
+        "乳房发育仍处于 Tanner I-III 期"
       ]
     },
     "interactions": [],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "安琪坦（微粒化黄体酮）在中国有售，妇产科常用药",
+      "notes": "安琪坦（微粒化黄体酮）在国内有售，通常作为常用药物。",
       "affectedByBan2022": false
     },
     "references": [
@@ -1883,28 +1883,28 @@
             "unit": "mg/周"
           }
         },
-        "frequency": "每周1次",
+        "frequency": "每周 1 次",
         "bioavailability": "~100%（注射）",
         "halfLife": "7-8天",
         "peakTime": "3-7天",
         "vteRisk": {
           "rr": 1,
-          "source": "缺乏在GAHT中的VTE数据"
+          "source": "目前在性别肯定激素治疗（GAHT）中的专门 VTE 数据有限"
         },
         "evidenceLevel": "C"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "不要在此阶段使用",
-        "duration": "禁用"
+        "e2Target": "通常不建议在此阶段使用",
+        "duration": "通常不建议使用"
       },
       "phase2": {
-        "e2Target": "不要在此阶段使用",
-        "duration": "禁用"
+        "e2Target": "通常不建议在此阶段使用",
+        "duration": "通常不建议使用"
       },
       "phase3": {
-        "e2Target": "HRT>=12个月后才考虑",
+        "e2Target": "建议在 HRT 治疗满 12 个月后再考虑",
         "duration": "12个月+"
       }
     },
@@ -1921,7 +1921,7 @@
           "max": 2
         },
         "dangerThreshold": 0,
-        "frequency": "按需"
+        "frequency": "建议根据需要检测一次"
       },
       {
         "test": "ALT/AST",
@@ -1935,17 +1935,17 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每6个月"
+        "frequency": "建议每 6 个月复查一次"
       }
     ],
     "sideEffects": [
       {
-        "effect": "注射部位疼痛/硬结",
+        "effect": "注射部位疼痛或出现硬结",
         "frequency": "common",
         "severity": "mild"
       },
       {
-        "effect": "情绪变化",
+        "effect": "情绪出现波动",
         "frequency": "uncommon",
         "severity": "moderate"
       },
@@ -1960,17 +1960,17 @@
         "已知药物过敏",
         "严重肝功能障碍",
         "活动性血栓栓塞疾病",
-        "HRT使用不足12个月"
+        "HRT 治疗时间不足 12 个月"
       ],
       "relative": [
         "抑郁症病史",
-        "VTE风险因素"
+        "VTE 风险因素"
       ]
     },
     "interactions": [],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "己酸羟孕酮注射液在部分医院妇产科可获得，主要用于保胎。在GAHT中证据有限",
+      "notes": "己酸羟孕酮注射液通常可在部分医院凭处方获得。值得注意的是，该药物在性别肯定激素治疗（GAHT）中的临床数据与专家意见较为有限。",
       "affectedByBan2022": false
     },
     "references": [
@@ -2010,7 +2010,7 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1-2次",
+        "frequency": "每日 1-2 次",
         "bioavailability": "~28%",
         "halfLife": "14-17小时",
         "peakTime": "0.5-2.5小时",
@@ -2033,7 +2033,7 @@
     "interactions": [],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "达芙通品牌广泛供应",
+      "notes": "达芙通等品牌在国内供应较为广泛。",
       "affectedByBan2022": false
     },
     "references": [
@@ -2073,7 +2073,7 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日1次",
+        "frequency": "每日 1 次",
         "bioavailability": "~76%",
         "halfLife": "25-33小时",
         "peakTime": "1-2小时",
@@ -2100,13 +2100,13 @@
       {
         "drug": "螺内酯",
         "severity": "contraindicated",
-        "description": "双重保钾高钾血症风险",
+        "description": "可能会增加双重保钾及高钾血症风险，通常不建议合用",
         "source": "Drug label"
       }
     ],
     "chinaAccess": {
       "availability": "limited",
-      "notes": "Slynd单成分制剂不常见",
+      "notes": "目前 Slynd 等单成分制剂在国内较为少见。",
       "affectedByBan2022": false
     },
     "references": [
@@ -2149,67 +2149,67 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "禁止用于HRT",
+        "frequency": "属于禁用成分",
         "bioavailability": "~45%",
         "halfLife": "36小时",
         "peakTime": "1-2小时",
         "vteRisk": {
           "rr": 20,
-          "source": "VTE风险约为天然E2的20倍"
+          "source": "其 VTE 风险通常约为天然 17β-雌二醇的 20 倍"
         },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       },
       "phase2": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       },
       "phase3": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       }
     },
     "monitoring": [],
     "sideEffects": [
       {
-        "effect": "VTE风险极高（约天然E2的20倍）",
+        "effect": "VTE 风险极高（通常约为天然 E2 的 20 倍）",
         "frequency": "common",
         "severity": "severe"
       },
       {
-        "effect": "肝脏代谢负担显著",
+        "effect": "肝脏代谢负担通常明显",
         "frequency": "common",
         "severity": "severe"
       },
       {
-        "effect": "心血管事件风险显著升高",
+        "effect": "心血管事件风险通常明显升高",
         "frequency": "uncommon",
         "severity": "severe"
       }
     ],
     "contraindications": {
       "absolute": [
-        "所有GAHT/HRT用途均为绝对禁忌",
-        "达英-35不是HRT方案"
+        "所有 GAHT/HRT 用途均为绝对禁忌",
+        "达英-35 通常不属于 HRT 推荐方案"
       ],
       "relative": []
     },
     "interactions": [
       {
-        "drug": "任何HRT方案",
+        "drug": "any_hrt",
         "severity": "contraindicated",
-        "description": "EE绝对禁止用于GAHT。达英-35不是HRT",
+        "description": "炔雌醇（EE）在 GAHT 中属于绝对禁忌。达英-35 通常不建议用于常规 HRT 方案",
         "source": "Endocrine Society 2017; WPATH SOC 8"
       }
     ],
     "chinaAccess": {
       "availability": "pharmacy",
-      "notes": "达英-35等含EE的避孕药在中国药房有售，但绝对不可用于HRT/GAHT",
+      "notes": "达英-35 等含有 EE 的口服避孕药目前在国内药房有售，但强烈建议你不要将其用于常规的性别肯定激素治疗（GAHT）。",
       "affectedByBan2022": false
     },
     "references": [
@@ -2254,67 +2254,67 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "禁止用于HRT",
+        "frequency": "属于禁用成分",
         "bioavailability": "~100%（口服）",
         "halfLife": "可变（含多种雌激素成分）",
         "peakTime": "6-8小时",
         "vteRisk": {
           "rr": 4,
-          "source": "VTE风险远高于天然E2。WHI研究数据"
+          "source": "VTE 风险通常高于天然 17β-雌二醇（参考 WHI 研究数据）"
         },
         "evidenceLevel": "A"
       }
     ],
     "phases": {
       "phase1": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       },
       "phase2": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       },
       "phase3": {
-        "e2Target": "禁用",
-        "duration": "禁用"
+        "e2Target": "属于禁用",
+        "duration": "属于禁用"
       }
     },
     "monitoring": [],
     "sideEffects": [
       {
-        "effect": "VTE风险远高于天然E2",
+        "effect": "VTE 风险通常高于天然 E2",
         "frequency": "common",
         "severity": "severe"
       },
       {
-        "effect": "心血管事件风险升高",
+        "effect": "心血管事件风险可能升高",
         "frequency": "uncommon",
         "severity": "severe"
       },
       {
-        "effect": "无法通过标准血检监测E2水平（含非E2成分）",
+        "effect": "通常不能通过标准血检准确监测 E2 水平（因其含有非雌二醇的雌激素成分）",
         "frequency": "common",
         "severity": "moderate"
       }
     ],
     "contraindications": {
       "absolute": [
-        "所有GAHT/HRT用途均为绝对禁忌",
-        "应使用天然17β-雌二醇替代"
+        "所有 GAHT/HRT 用途均为绝对禁忌",
+        "建议选择天然 17β-雌二醇进行替代"
       ],
       "relative": []
     },
     "interactions": [
       {
-        "drug": "任何HRT方案",
+        "drug": "any_hrt",
         "severity": "contraindicated",
-        "description": "结合雌激素不应用于GAHT，应使用天然17β-雌二醇",
+        "description": "结合雌激素（CEE）通常不建议用于 GAHT，推荐你选择天然 17β-雌二醇",
         "source": "Endocrine Society 2017; WPATH SOC 8"
       }
     ],
     "chinaAccess": {
       "availability": "hospital",
-      "notes": "倍美力在部分医院妇产科可开，但绝对不可用于GAHT。应使用天然雌二醇制剂",
+      "notes": "倍美力（结合雌激素）目前在部分医院可凭处方开具，但强烈建议你不要将其用于常规的性别肯定激素治疗（GAHT）。建议你选择天然雌二醇制剂。",
       "affectedByBan2022": false
     },
     "references": [
