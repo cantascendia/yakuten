@@ -1,6 +1,6 @@
 ---
 title: 工具总览
-description: HRT药典提供的 9 款循证工具集合：血检自查、注射剂量换算、剂量模拟、风险自评、AI 问答、医院查找、药物对比、品牌索引与速查卡片。全部纯前端运行，零数据上传。
+description: HRT 药典精选的 9 款循证安全工具，包含血检自查、剂量模拟、AI 问答与医院查找等。所有工具均在前端本地运行，你的隐私数据不会被上传。
 evidenceLevel: X
 lastReviewed: 2026-04-28
 references: []
@@ -8,7 +8,7 @@ references: []
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-下列工具均在浏览器本地运行，**不上传任何健康数据**。点击卡片直接进入。
+为了保障你的隐私，下列工具均在浏览器本地运行，**你的个人健康数据不会上传至服务器**。你可以点击下方卡片直接使用。
 
 ## 安全自查
 
@@ -16,17 +16,17 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
   <LinkCard
     title="血检自查工具"
     href="/zh/tools/blood-checker/"
-    description="逐项录入激素六项 / 肝肾凝血结果，自动比对 WPATH 与 Endocrine Society 参考区间。樱花模式可切换为「血检手账」长期记录。"
+    description="支持逐项录入激素六项、肝肾功能与凝血结果，帮你自动比对 WPATH 与 Endocrine Society 的参考区间。你也可以开启「血检手账」记录长期数据。"
   />
   <LinkCard
     title="风险自评"
     href="/zh/tools/risk-screener/"
-    description="7 个问题，30 秒了解你的 VTE / 肝脏 / 脑膜瘤 / 心血管个人风险概况，作为与医生讨论的起点。"
+    description="只需回答 7 个简单问题，便可在 30 秒内评估你的 VTE、肝脏、脑膜瘤及心血管风险，为你与医生讨论方案提供参考起点。"
   />
   <LinkCard
     title="AI 问答助手"
     href="/zh/tools/ai-assistant/"
-    description="基于循证文献的 Gemini AI 回答 HRT 安全问题。不存对话，不做个人化处方建议，紧急情况引导就医。"
+    description="由 Gemini AI 基于循证文献解答你的 HRT 安全疑问。助手不会存储你的对话，不提供具体处方建议，紧急情况下会引导你及时就医。"
   />
 </CardGrid>
 
@@ -36,17 +36,17 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
   <LinkCard
     title="注射剂量换算"
     href="/zh/tools/injection-calculator/"
-    description="EV / EC / EEn / EU 等酯类的等效剂量与给药间隔换算，附 mL ↔ mg 互算。"
+    description="支持 EV、EC、EEn、EU 等多种雌二醇酯类的等效剂量与给药间隔换算，并提供 mL 与 mg 之间的互算服务。"
   />
   <LinkCard
     title="剂量模拟器"
     href="/zh/tools/dose-simulator/"
-    description="模拟不同给药方案下的血药浓度变化曲线，理解峰谷波动与稳态。"
+    description="你可以模拟不同给药方案下的血药浓度变化曲线，更直观地理解体内血药浓度的峰谷波动与稳态变化。"
   />
   <LinkCard
     title="药物比较器"
     href="/zh/tools/drug-comparator/"
-    description="并排对比多种 HRT 药物的剂量、起效时间、风险与监测要求，辅助方案选择。"
+    description="供你并排对比多种 HRT 药物的剂量、起效时间、风险与监测要求，辅助你更从容地选择方案。"
   />
 </CardGrid>
 
@@ -56,27 +56,27 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
   <LinkCard
     title="友好医疗资源"
     href="/zh/tools/hospital-finder/"
-    description="按城市筛选已知接诊跨性别 HRT 的医院与门诊，含科室、就诊路径与社区反馈。"
+    description="你可以按城市筛选并查找已知接诊跨性别 HRT 的医院与门诊，了解科室、就诊路径及社区反馈。"
   />
   <LinkCard
     title="品牌索引"
     href="/zh/tools/brand-index/"
-    description="国内外常见 HRT 药品品牌、规格、剂型、价格区间一览，便于核对处方与购药记录。"
+    description="为你呈现国内外常见 HRT 药品的品牌、规格、剂型及价格区间，方便你核对处方或购药记录。"
   />
   <LinkCard
     title="速查卡片"
     href="/zh/tools/drug-cards/"
-    description="单页速查：每种药物的剂量上限、监测节点、紧急停药信号，可截图保存随身。"
+    description="提供单页速查：帮你归纳每种药物的剂量上限、监测节点与紧急停药信号，你也可以截图保存以备随时查看。"
   />
 </CardGrid>
 
 ## 隐私承诺
 
-- 所有工具**纯前端运行**，输入数据不会发送到任何服务器
-- AI 问答助手**不存储对话记录**，关闭页面即清除
-- 樱花模式「血检手账」仅写入**你设备的 `localStorage`**，可一键清空
-- 全站**无第三方追踪脚本**，分析用自托管 Umami（不绑定身份）
+- 所有工具**均在前端本地运行**，你的输入数据通常不会发送至任何服务器
+- AI 问答助手**不存储你的对话记录**，关闭页面后通常即刻清除
+- 「血检手账」功能仅将记录写入**你本地设备的 `localStorage`**，你可以随时一键清空
+- 全站**无第三方追踪脚本**，分析采用自托管的 Umami 服务（且不绑定任何身份）
 
 ## 提示
 
-工具不是诊断，**任何异常结果都建议带去医院与医生讨论**。如果你正在经历紧急症状，请立即拨打 **120** 或前往最近的急诊室，并阅读 [风险与急症识别](/zh/risks/)。
+这些工具并不提供诊断。**若遇到任何异常结果，建议你及时带去医院与医生交流**。如果你目前正经历紧急症状，请立即拨打 **120** 或前往最近的急诊室，并仔细阅读 [风险与急症识别](/zh/risks/)。
