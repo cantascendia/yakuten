@@ -73,7 +73,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "T",
@@ -87,7 +87,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "ALT/AST",
@@ -101,7 +101,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每 6 个月复查一次"
+        "frequency": "每 6 个月"
       }
     ],
     "sideEffects": [
@@ -133,14 +133,14 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
-        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
+        "活动性 DVT/PE 或有此病史且未抗凝",
+        "已知凝血障碍（Factor V Leiden, 蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
-        "已知对相关药物成分过敏"
+        "严重活动性肝病（ALT/AST >3 倍上限）",
+        "已知药物过敏"
       ],
       "relative": [
-        "吸烟（尤其是年龄大于 35 岁者）",
+        "吸烟（尤其 >35 岁）",
         "BMI >30",
         "偏头痛（先兆型）",
         "VTE 家族史"
@@ -206,7 +206,7 @@
             "unit": "mg/天"
           }
         },
-        "frequency": "每日 2-4 次（建议分次含服）",
+        "frequency": "每日 2-4 次（分次含服）",
         "bioavailability": "约 10-25%（通常可绕过部分肝脏首过效应）",
         "halfLife": "6-8小时",
         "peakTime": "0.5-2小时",
@@ -244,7 +244,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "T",
@@ -258,7 +258,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       }
     ],
     "sideEffects": [
@@ -285,14 +285,14 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
-        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
+        "活动性 DVT/PE 或有此病史且未抗凝",
+        "已知凝血障碍（Factor V Leiden, 蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
-        "已知对相关药物成分过敏"
+        "严重活动性肝病（ALT/AST >3 倍上限）",
+        "已知药物过敏"
       ],
       "relative": [
-        "吸烟（尤其是年龄大于 35 岁者）",
+        "吸烟（尤其 >35 岁）",
         "BMI >30",
         "偏头痛（先兆型）",
         "VTE 家族史"
@@ -352,7 +352,7 @@
             "unit": "µg/天"
           }
         },
-        "frequency": "每 3.5-7 天更换一次（具体视不同品牌而定）",
+        "frequency": "每 3.5-7 天更换（视品牌）",
         "bioavailability": "约 100%（可绕过肝脏首过效应）",
         "halfLife": "取决于贴片释放速率，移除后~1小时",
         "peakTime": "贴后12-24小时达稳态",
@@ -390,7 +390,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每 3 个月复查一次（建议在换贴前 12-24 小时采血以测定谷值）"
+        "frequency": "每 3 个月（换贴前 12-24 小时采血）"
       },
       {
         "test": "T",
@@ -404,7 +404,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       }
     ],
     "sideEffects": [
@@ -426,15 +426,15 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
-        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
+        "活动性 DVT/PE 或有此病史且未抗凝",
+        "已知凝血障碍（Factor V Leiden, 蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
-        "已知对相关药物成分过敏"
+        "严重活动性肝病（ALT/AST >3 倍上限）",
+        "已知药物过敏"
       ],
       "relative": [
         "贴敷部位存在皮肤病变",
-        "吸烟（尤其是年龄大于 35 岁者）"
+        "吸烟（尤其 >35 岁）"
       ]
     },
     "interactions": [
@@ -532,7 +532,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "T",
@@ -546,7 +546,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       }
     ],
     "sideEffects": [
@@ -568,15 +568,15 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
-        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
+        "活动性 DVT/PE 或有此病史且未抗凝",
+        "已知凝血障碍（Factor V Leiden, 蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
-        "已知对相关药物成分过敏"
+        "严重活动性肝病（ALT/AST >3 倍上限）",
+        "已知药物过敏"
       ],
       "relative": [
         "涂抹部位皮肤破损",
-        "吸烟（尤其是年龄大于 35 岁者）"
+        "吸烟（尤其 >35 岁）"
       ]
     },
     "interactions": [
@@ -701,7 +701,7 @@
           "max": 300
         },
         "dangerThreshold": 500,
-        "frequency": "每 3 个月复查一次（建议在下次注射前当天采血以测量谷值）"
+        "frequency": "每 3 个月（下次注射前当天采血=谷值）"
       },
       {
         "test": "T",
@@ -715,7 +715,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       }
     ],
     "sideEffects": [
@@ -742,16 +742,16 @@
     ],
     "contraindications": {
       "absolute": [
-        "活动性 DVT/PE 或有相关病史且未进行抗凝治疗",
-        "已知凝血功能障碍（如 Factor V Leiden、蛋白 C/S 缺乏）",
+        "活动性 DVT/PE 或有此病史且未抗凝",
+        "已知凝血障碍（Factor V Leiden, 蛋白 C/S 缺乏）",
         "雌激素依赖性恶性肿瘤",
-        "严重活动性肝脏疾病（ALT/AST 超过 3 倍正常上限）",
-        "已知对相关药物成分过敏",
+        "严重活动性肝病（ALT/AST >3 倍上限）",
+        "已知药物过敏",
         "单次剂量 >= 10 mg（禁止）",
         "间隔 < 5 天且 > 5 mg（禁止）"
       ],
       "relative": [
-        "吸烟（尤其是年龄大于 35 岁者）",
+        "吸烟（尤其 >35 岁）",
         "BMI >30",
         "VTE 家族史"
       ]
@@ -1037,7 +1037,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "ALT/AST",
@@ -1051,7 +1051,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "每 3 个月复查一次（建议防范 CPA 的潜在肝毒性）"
+        "frequency": "每 3 个月（CPA 有肝毒性）"
       },
       {
         "test": "PRL",
@@ -1065,7 +1065,7 @@
           "max": 50
         },
         "dangerThreshold": 50,
-        "frequency": "每 6 个月复查一次（建议防范 CPA 引起的常见高泌乳素血症）"
+        "frequency": "每 6 个月（CPA 可致高泌乳素血症）"
       }
     ],
     "sideEffects": [
@@ -1219,7 +1219,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "K+",
@@ -1233,7 +1233,7 @@
           "max": 5.5
         },
         "dangerThreshold": 5.5,
-        "frequency": "每 3 个月复查一次（防范高钾血症）"
+        "frequency": "每 3 个月（螺内酯为保钾利尿剂）"
       },
       {
         "test": "肌酐/肾功能",
@@ -1247,7 +1247,7 @@
           "max": 150
         },
         "dangerThreshold": 150,
-        "frequency": "每 6 个月复查一次（监测肾功能指标）"
+        "frequency": "每 6 个月（螺内酯经肾排泄）"
       }
     ],
     "sideEffects": [
@@ -1383,7 +1383,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次（提示：比卡鲁胺通常不直接降低 T 水平，且 T 可能会出现代偿性升高）"
+        "frequency": "每 3 个月（注意：比卡鲁胺不降 T，T 可能升高）"
       },
       {
         "test": "ALT/AST",
@@ -1397,7 +1397,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "前 6 个月建议每月复查一次，之后建议每 3 个月复查一次（鉴于肝毒性风险，建议你定期监测肝功能）"
+        "frequency": "前 6 月每月 → 之后每 3 个月（肝毒性需定期监测）"
       }
     ],
     "sideEffects": [
@@ -1527,7 +1527,7 @@
           "max": 100
         },
         "dangerThreshold": 100,
-        "frequency": "每 3 个月复查一次"
+        "frequency": "每 3 个月"
       },
       {
         "test": "LH",
@@ -1541,7 +1541,7 @@
           "max": 5
         },
         "dangerThreshold": 5,
-        "frequency": "每 3-6 个月复查一次"
+        "frequency": "每 3-6 个月"
       },
       {
         "test": "骨密度",
@@ -1555,7 +1555,7 @@
           "max": -1
         },
         "dangerThreshold": -2.5,
-        "frequency": "建议每年复查一次（长期处于低 E2 水平者建议特别关注骨骼健康）"
+        "frequency": "每年（长期低 E2 需注意）"
       }
     ],
     "sideEffects": [
@@ -1935,7 +1935,7 @@
           "max": 120
         },
         "dangerThreshold": 120,
-        "frequency": "建议每 6 个月复查一次"
+        "frequency": "每 6 个月"
       }
     ],
     "sideEffects": [
