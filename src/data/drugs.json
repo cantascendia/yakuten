@@ -2195,7 +2195,7 @@
     "contraindications": {
       "absolute": [
         "所有 GAHT/HRT 用途均为绝对禁忌",
-        "达英-35 通常不属于 HRT 推荐方案"
+        "达英-35 不属于 HRT 推荐方案"
       ],
       "relative": []
     },
@@ -2203,7 +2203,7 @@
       {
         "drug": "任何HRT方案",
         "severity": "contraindicated",
-        "description": "炔雌醇（EE）在 GAHT 中属于绝对禁忌。达英-35 通常不建议用于常规 HRT 方案",
+        "description": "炔雌醇（EE）在 GAHT 中属于绝对禁忌。达英-35 含 EE，同属禁用，不可用于常规 HRT 方案",
         "source": "Endocrine Society 2017; WPATH SOC 8"
       }
     ],
