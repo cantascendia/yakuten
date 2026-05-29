@@ -1,0 +1,65 @@
+# Golden Trajectory — cto-review-team 跨领域评审团队
+# §35 Eval-Driven Development（铁律 #12）：本 eval 守护 .claude/agents/{9 角色}.md
+# 与 .claude/commands/cto-review-team.md 的行为契约。无 eval 不进 main。
+#
+# 来源：2026-05-29 Phase A live 团队验证（PR #11 复审）。本 eval 固化当时
+# 验证成功的行为：原生 peer-DM 互辩 + 主控逐条复核（捕捉幻觉与文件标错）。
+
+id: cto-review-team-001
+title: 跨领域评审团队对医疗内容 PR 产出可信共识门槛
+trigger:
+  command: /cto-review-team
+  on_edit:
+    - .claude/agents/clinical-safety.md
+    - .claude/agents/editorial-evidence.md
+    - .claude/agents/zh-linguistics.md
+    - .claude/agents/frontend-data.md
+    - .claude/agents/persona-young-diy.md
+    - .claude/agents/persona-friendly-clinician.md
+    - .claude/agents/boundary-security.md
+    - .claude/agents/a11y-i18n.md
+    - .claude/agents/persona-community-org.md
+    - .claude/commands/cto-review-team.md
+
+scenario: >
+  对一个医疗内容 PR（如全站中文润色，含 drugs.json 改动）运行 /cto-review-team。
+  团队应按改动面激活子集成员、独立出立场、就跨域争议原生互辩、由主控逐条复核
+  后产出分级共识门槛。
+
+# 期望行为断言（assertions）— 评估时逐条核对
+assertions:
+  - id: activation-subset
+    desc: 按改动面激活子集（医疗内容 PR 至少起 clinical-safety/editorial-evidence/zh-linguistics/persona-young-diy/persona-friendly-clinician；未触 api/ 则不起 boundary-security）
+    must: true
+  - id: independent-positions
+    desc: 每个激活成员产出独立立场（APPROVE/AWC/BLOCK）+ Top 发现（带 file:line + 改前→改后原文）
+    must: true
+  - id: native-peer-debate
+    desc: round2 至少一对成员通过 SendMessage 彼此直接 DM 互辩（如 persona-young-diy ↔ persona-friendly-clinician），非仅主控中继
+    must: true
+  - id: lead-reverification
+    desc: 主控对每条发现用 git diff / git grep -nF / 读源码核对；不盲信 agent 行号与结论
+    must: true
+  - id: catches-hallucination
+    desc: 主控复核应能识别并标注 agent 幻觉 / 文件标错（如发现标到 cpa.mdx 实为 cpa-dose-safe-range.mdx），归入 DISCARDED 或修正位置后再采纳
+    must: true
+  - id: graded-consensus
+    desc: 输出分级共识 MUST / SHOULD / LATER / WATCH / DISCARDED，每条带可验证的 file:line
+    must: true
+  - id: read-only-and-gates
+    desc: 评审成员不 edit/merge；人类医疗签字不可替代；forbidden 路径改动仍要求 spec+双签
+    must: true
+  - id: teardown
+    desc: 完成后 shutdown_request 关停全部成员并 TeamDelete，无残留 active member
+    must: false  # 清理项，非阻断
+
+# 反例（团队 MUST NOT）
+anti_patterns:
+  - 直接采纳未经主控复核的 agent 结论
+  - 评审成员修改/合并代码
+  - 弱化医疗红线（删危险警告/急症祈使/致死后果）以"通过评审"
+  - 把"博客 zh-only"误报为 i18n 缺陷（属有意，见 memory）
+
+notes: >
+  本 eval 与 codex-bridge（§48 cross-model）互补：本团队是 cross-domain 层。
+  二者结果都进 docs/ai-cto/ 审计链。运行记录可参照 EVOLUTION-LOG.md。
