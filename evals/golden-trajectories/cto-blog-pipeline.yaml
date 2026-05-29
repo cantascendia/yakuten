@@ -47,6 +47,31 @@ assertions:
   - id: builds-and-publishable
     desc: npm run build 通过、引用 id 全部存在、description ≤160、draft 最终为 false
     must: true
+  - id: citation-refs-match  # 机检
+    desc: "node scripts/check-citation-refs.mjs <blog> 退出 0：CitationRef 的 authors/year 与 references.json 一字一致（防首篇 4 处 authors 不符复发）"
+    must: true
+    machine: true
+  - id: links-resolve  # 机检
+    desc: "node scripts/verify-blog-links.mjs <blog> 退出 0：relatedDocs + 正文 /zh/ 内链全部解析到真实页面"
+    must: true
+    machine: true
+  - id: jsonld-faqpage  # 机检
+    desc: "grep -rl FAQPage dist/zh/blog/<slug>/ 命中：faqs 被渲染为 FAQPage JSON-LD（AEO）"
+    must: false
+    machine: true
+  - id: description-110-160  # 机检
+    desc: frontmatter description 在 110-160 字符（充分利用 snippet，非过短）
+    must: false
+    machine: true
+  - id: anti-ai-pattern
+    desc: 无文章级 AI 模板味——小标题非全对仗、无「首先/其次/值得注意的是」填充、开头有具体场景锚点、与既有博客开头不雷同
+    must: true
+  - id: differentiation-angle
+    desc: 至少一条现有站点/竞品未覆盖的差异化角度或用户真实处境锚点（如首篇的「复方 EEn 避孕针误用」）
+    must: false
+  - id: reverse-internal-link
+    desc: 新博客 relatedDocs 中的 docs 页已（或被列为待办）反向收录本篇 slug，避免主题孤岛
+    must: false
 
 anti_patterns:
   - 写高搜索但 references.json 无支撑的选题（产生无引用裸声明）

@@ -23,7 +23,8 @@ model: sonnet
 ## 输出格式（选题讨论 round1）
 
 1. 候选选题**按综合 SEO 价值排序**（长尾量 × 竞争 × 缺口 × 内链 × 主题簇）。
-2. 最力荐 **1 个** + targetKeyword 建议 + 3-5 个相关长尾词 + 可挂的 relatedDocs。
+2. 最力荐 **1 个** + targetKeyword 建议 + 3-5 个相关长尾词 + 可挂的 relatedDocs + **数据置信度说明**（如「基于中文社区用词频率估算，无 SEO 工具验证」，让主控了解采纳风险）。
+   - 另给 **3-5 条"用户口语 query 原话"**（用户在搜索框真实会打的字，如「针剂打多久见效」），供 medical-blog-writer 作 FAQ 的 `q` 字段草稿——FAQ 问法须镜像真实搜索，而非编辑视角。
 3. 一句**预判与 clinical-safety / editorial-evidence / persona 的分歧**（SEO 最优常 ≠ 医学最该写 ≠ 可循证最强）。
 
 ## 红线
