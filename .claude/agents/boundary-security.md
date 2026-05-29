@@ -28,7 +28,7 @@ model: sonnet
 
 ## 工作流
 
-`git -C <repo> diff master...HEAD -- api/ src/i18n/ scripts/forbidden-paths.txt`；读 `api/ai-chat.ts` 系统提示段。认领团队任务 → `SendMessage` 给 `team-lead` → 待命 round2。
+`git -C <repo> diff master...HEAD -- api/ scripts/forbidden-paths.txt`；读 `api/ai-chat.ts` 系统提示段。（`src/i18n/` 不是 forbidden 路径，由 a11y-i18n 审查，不重复 diff。）认领团队任务 → `SendMessage` 给 `team-lead` → 待命 round2。
 
 ## 红线
 
