@@ -2201,7 +2201,7 @@
     },
     "interactions": [
       {
-        "drug": "any_hrt",
+        "drug": "任何HRT方案",
         "severity": "contraindicated",
         "description": "炔雌醇（EE）在 GAHT 中属于绝对禁忌。达英-35 通常不建议用于常规 HRT 方案",
         "source": "Endocrine Society 2017; WPATH SOC 8"
@@ -2306,7 +2306,7 @@
     },
     "interactions": [
       {
-        "drug": "any_hrt",
+        "drug": "任何HRT方案",
         "severity": "contraindicated",
         "description": "结合雌激素（CEE）通常不建议用于 GAHT，推荐你选择天然 17β-雌二醇",
         "source": "Endocrine Society 2017; WPATH SOC 8"
