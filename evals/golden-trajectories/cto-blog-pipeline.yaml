@@ -1,0 +1,62 @@
+# Golden Trajectory — cto-blog-pipeline SEO 医疗博客生产线
+# §35 Eval-Driven Development（铁律 #12）：守护 .claude/commands/cto-blog-pipeline.md
+# 与 .claude/agents/{seo-content-strategist,medical-blog-writer}.md 的行为契约。
+#
+# 来源：2026-05-29 首次运行（产出 src/content/blog/zh/injectable-estradiol-how-to-choose.mdx
+# 「雌二醇针剂怎么选」）。本 eval 固化当时验证成功的流程与防护。
+
+id: cto-blog-pipeline-001
+title: SEO 医疗博客生产线产出可发布、可循证、SEO 友好的中文博客
+trigger:
+  command: /cto-blog-pipeline
+  on_edit:
+    - .claude/commands/cto-blog-pipeline.md
+    - .claude/agents/seo-content-strategist.md
+    - .claude/agents/medical-blog-writer.md
+    - evals/golden-trajectories/cto-blog-pipeline.yaml
+
+scenario: >
+  运行 /cto-blog-pipeline。多域讨论选题（含可循证性硬门槛）→ 主控决策 →
+  medical-blog-writer 写作 → 多域评审辩论 → 主控逐条复核 → 定稿一篇 zh 博客。
+
+assertions:
+  - id: topic-multi-domain-debate
+    desc: 选题阶段至少 4 域（SEO/用户/临床/循证）独立排序并预判跨域分歧
+    must: true
+  - id: citability-hard-gate
+    desc: 主控决策时，可循证性是硬门槛——references.json 支撑不足的高搜索选题被排除（不写无引用裸声明）
+    must: true
+  - id: numbers-from-repo
+    desc: 博客所有数字（半衰期/剂量/阈值/间隔）取自仓库 src/data + docs，经 git grep/Read 核对，非杜撰
+    must: true
+  - id: every-claim-cited
+    desc: 每条医学声明挂 <CitationRef>；无裸声明；量化结论（OR/RR/数值）如实写出不泛化
+    must: true
+  - id: citation-authors-match-json
+    desc: CitationRef 的 authors/year 与 references.json 一字一致（主控用 node -e 核对）
+    must: true
+  - id: evaluator-separation
+    desc: 写作（generator）与评审（evaluator：clinical/editorial/linguistics/persona）分离，非自评
+    must: true
+  - id: lead-reverification
+    desc: 主控逐条核对评审发现（git grep/Read/node 核对），识别并排除 agent 幻觉/文件标错/authors 误报
+    must: true
+  - id: no-purchase-channel
+    desc: 不含购药渠道/商业链接（项目绝对禁止）；货源现实改链 china-reality；评审若要求加渠道，主控应拒绝并说明
+    must: true
+  - id: builds-and-publishable
+    desc: npm run build 通过、引用 id 全部存在、description ≤160、draft 最终为 false
+    must: true
+
+anti_patterns:
+  - 写高搜索但 references.json 无支撑的选题（产生无引用裸声明）
+  - 杜撰半衰期/剂量数字或使用不存在的引用 id
+  - CitationRef authors 与 references.json 不一致
+  - 加入购药渠道/商业推广以"满足用户货源需求"
+  - 个人化处方语气（"你应该打 X mg"）
+  - 盲信评审 agent 结论而不主控复核
+
+notes: >
+  与 cto-review-team 共用评审 agent（cross-domain 层）。首篇产物
+  injectable-estradiol-how-to-choose.mdx：14 处 CitationRef、四域评审捕捉
+  EEn 间隔/authors 不一致/急症路径等并修复。
