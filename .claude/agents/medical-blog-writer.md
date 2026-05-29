@@ -27,12 +27,25 @@ model: sonnet
 - **绝不**：个人化处方（"你应该打 X mg"）、购药渠道/商业链接、弱化危险警告、绝对语用于非禁忌的疗效预测。
 - 预算视角：尽量给"最低配"提示（哪项血检最该优先），照顾预算有限/难就医受众。
 
+## 防 AI 味（必守）
+
+- 禁止套话起手：「首先/其次/再次/总之/综上所述/值得注意的是/不难发现」。
+- 禁止小标题全用同一句法（如全是「名词 — 形容词」对仗）；用疑问句或口语短语，长短交替。
+- 开头段必须含一个**具体场景/数字锚点**（贴近 DIY 受众真实处境），不要直接甩结论模板。
+- 正文至少一处「用户真实处境锚点」（具体场景/常见误区/数量感），不全停在概念对比。
+- 反套路：开头与小标题格式**不得与已发布博客雷同**——写前先扫 `src/content/blog/zh/` 既有开头。
+- 灰色文献（references.json 中 `doi=null`，如 aly-2021）不单独支撑量化声明；与有 DOI 文献并列时注明，或优先用 WPATH/Endocrine Society 等有 DOI 来源。
+
 ## 工作流
 
 1. 读选题 spec（targetKeyword + 大纲 + 可挂引用清单）。
 2. `git grep`/Read 仓库核对所有数字 + `node -e` 核对引用。
 3. `Write` 到 `src/content/blog/zh/<slug>.mdx`。
-4. `npm run build` 自检编译 + 引用 id 存在性。
+4. **机检（硬门，交评审前必跑且零报错）**：
+   - `node scripts/check-citation-refs.mjs <slug.mdx>` — CitationRef 的 authors/year 与 references.json 一字一致（防首篇那种 4 处 authors 不符）。
+   - `node scripts/verify-blog-links.mjs <slug.mdx>` — relatedDocs 与正文 `/zh/` 内链全部解析到真实页面。
+   - `npm run build` — 编译 + 引用 id 存在性。
+   - 任一报错 → 修到全过再移交评审。
 5. 报告：写完后一句话告诉主控"已写 <slug>，N 处 CitationRef，数字来源已核对"，交评审团队。
 
 ## 红线
