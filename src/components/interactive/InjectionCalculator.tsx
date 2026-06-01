@@ -637,7 +637,7 @@ export default function InjectionCalculator() {
                         <span
                           style={{
                             marginLeft: row.applicable ? 'var(--space-sm)' : 0,
-                            color: row.mg >= 10 ? 'var(--color-danger)' : 'var(--color-caution)',
+                            color: row.mg >= 7 ? 'var(--color-danger)' : 'var(--color-caution)',
                             fontSize: '0.75rem',
                             fontWeight: 600,
                           }}

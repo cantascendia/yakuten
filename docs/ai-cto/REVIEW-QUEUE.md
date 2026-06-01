@@ -24,3 +24,34 @@ bytes: 33800
 - DX 自含性（每 agent prompt 自含，不依赖外部上下文）
 - 功能覆盖（覆盖所有核心质量维度，性能/字体加载为 LATER）
 - 成本分级设计（默认6人核心，条件3人，纯配置可不起团）
+
+## 2026-06-01 — Codex cross-model review: PR #16 fix/imm-round1-safety
+
+**Reviewer**: codex-gpt5.5 | **Mode**: manual-cross-review | **PR**: #16
+
+### Overall Verdict
+**APPROVE with one safety fix** — The patch mostly improves safety and data consistency. One user-safety concern found in the new 7 mg injection dose table rendering.
+
+### 八維評審
+
+1. **アーキテクチャ** ✅ — CitationRef 回退 fallback、SSOT 統合は正しい方向。DrugComparator の完全 SSOT 化は今後の課題として認識済み。
+2. **コード品質** ✅ — DoseInfo インターフェース更新、JSON マッピング、型安全性改善。
+3. **パフォーマンス** ✅ — 軽微改善（JSON import は tree-shaking で問題なし）。
+4. **セキュリティ/プライバシー** ✅ — origin whitelist 修正（hrtyaku.com）、血検データゼロサーバー送信保持確認済み。
+5. **テスト検証可能性** ✅ — build+astro check+citation-refs ゲート全通過。SSR 検証実施済み。
+6. **開発者体験** ✅ — SSOT コメント追加、引用著者正規化で保守性向上。
+7. **機能正確性（医学的安全）** ⚠️ — P2 issue（下記）。医学内容は EMA 原文照合済み、双域複核通過。
+8. **UX/ユーザー安全** ✅ — 急救硬指令追加、K⁺ 語気修正、breast-development 去恐慌。
+
+### MUST-FIX
+なし
+
+### SHOULD-FIX (P2)
+- **[P2] InjectionCalculator.tsx:640 — 7 mg 行の警告色が caution（黄）になっている**
+  `injection-doses.json` 側では「不建议：VTE风险显著増加」と危険分類だが、参照テーブルの行ではcautionカラーを使っている。7 mg 以上は danger（赤）を使うべき。
+  修正: `row.mg >= 7 ? 'var(--color-danger)' : 'var(--color-caution)'`
+
+### LATER
+なし（DrugComparator 完全SSOT化は既知LT項目）
+
+---
