@@ -10,7 +10,7 @@ faqs:
   - q: "HRT 期间乳房能长到多大？"
     a: "根据 de Blok 2018 队列（n=224）的研究数据显示，在接受 HRT 1 年后，约有不到半数的受试者达到 AAA 罩杯，而超过 A 罩杯的比例约在 3.6% 左右；Patel 2021 综述指出，大多数人在用药 2–3 年后其发育通常会逐步进入平台期，且通常未达到 Tanner V 期阶段。在临床评估中，你最终的乳房发育尺寸主要受遗传基因（如家族中母亲与姐妹的乳房形态大小）、启动 HRT 的年龄以及体内体脂分布等多种复杂因素的综合影响，而在大多数情况下与激素的使用剂量高低并无直接关联。"
   - q: "为什么高剂量雌激素反而影响乳房发育？"
-    a: "乳腺发育在生理上可大致分为两个主要阶段：在低至中等水平的雌二醇（E2）作用下，乳腺导管系统得以进行充分的分支和延伸（这就像树木在不断舒展枝干）；随后，在相对较高的 E2 水平刺激下，腺泡成熟并形成小叶组织（如同树木开花结果）。如果在 HRT 的初期就过早地接触高剂量的 E2，可能会过早地激活终末分化（terminal differentiation）信号。这会导致乳腺导管系统提前停止分支，并过早地关闭发育窗口，使乳房可能长期停留在 Tanner III 期那种体积较小且质地致密的锥形状态（Kanin 2025；Misakian 2025）。临床证据提示，这一生理机制对后续发育的影响是不可逆的。"
+    a: "乳腺发育在生理上可大致分为两个主要阶段：在低至中等水平的雌二醇（E2）作用下，乳腺导管系统得以进行充分的分支和延伸（这就像树木在不断舒展枝干）；随后，在相对较高的 E2 水平刺激下，腺泡成熟并形成小叶组织（如同树木开花结果）。如果在 HRT 的初期就过早地接触高剂量的 E2，可能会过早地激活终末分化（terminal differentiation）信号。这会导致乳腺导管系统提前停止分支，并过早地关闭发育窗口，使乳房可能长期停留在 Tanner III 期那种体积较小且质地致密的锥形状态（Kanin 2025；Misakian 2025）。目前证据提示这一机制对后续发育的影响较难完全逆转，但若及时把 E2 调回 100–200 pg/mL 的推荐区间，通常仍有一定恢复空间。"
   - q: "孕激素能加速乳房发育吗？"
     a: "WPATH SOC 8 指南明确指出，目前关于孕激素在跨性别女性 HRT 中促进乳房发育的临床获益数据仍相对有限，尚缺乏充分的实证研究（Coleman 2022）。如果你经过慎重考虑后决定尝试添加孕激素，通常建议至少在 HRT 满 12 个月之后再引入（以确保乳腺导管的分支已相对充分地建立），并在专业医生指导下，优先选择天然微粒化黄体酮（通常建议剂量为 100–200 mg/天，睡前服用）。与过早使用高剂量雌激素类似，过早添加孕激素也可能会干扰导管系统的分支发育。"
   - q: "HRT 后乳房发育停滞怎么办？"
@@ -25,7 +25,7 @@ import DoseTable from '../../../components/ui/DoseTable.astro';
 import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 <DangerBox title="高剂量雌激素可能影响乳房长期发育潜力">
-乳腺导管系统发育的提前终止会对乳房的外观形态带来深远且不可逆的影响。如果导管的分支过程被过早阻断，后续无论如何追加雌激素的剂量、延长用药时长，都无法重新唤醒自然的生长窗口<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} title="Injectable Estradiol Dosing Regimens" /><CitationRef id="misakian-2025" num={2} authors="Misakian et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。在这种情况下，若想获得明显的形态改善，唯一的补救手段是外科隆胸。
+乳腺导管系统若在分支尚未充分展开时就过早进入终末分化，可能对乳房的最终形态留下较难逆转的影响——单纯依靠后续追加雌激素剂量或延长用药时长，往往难以重新唤醒已经放缓的快速生长窗口<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" /><CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。但这并不意味着「没救了」：如果你此前用过偏高剂量，在专业指导下把 E2 调回 100–200 pg/mL 的推荐区间，通常仍有机会让发育得到一定程度的恢复（详见本页末「HRT 后乳房发育停滞怎么办」）。若发育成熟后仍希望进一步改善形态，可理性评估假体隆胸或自体脂肪移植等外科选项。
 
 **如果你刚开启性别肯定激素治疗，建议在了解这些生理机制后再妥善规划起始方案。**
 </DangerBox>
@@ -48,7 +48,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ## 5.1 正常发育生理——Tanner 分期
 
-<EvidenceBadge level="A" /> 乳房的发育历程在生理上遵循国际公认的 **Tanner 分期**（分为 I-V 期）。在顺性别女性的青春期发育中，这一历程通常需要持续 **3-5 年** 的时间<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+<EvidenceBadge level="A" /> 乳房的发育历程在生理上遵循国际公认的 **Tanner 分期**（分为 I-V 期）。在顺性别女性的青春期发育中，这一历程通常需要持续 **3-5 年** 的时间<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
 <DoseTable
   headers={['分期', '特征', '通常持续时间', '对应 E2 水平']}
@@ -63,7 +63,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ### 关键事实
 
-- 顺性别女性的乳房发育在青春期初期是由**极低**的雌二醇浓度开启的——其体内的基线水平通常仅为 20-40 pg/mL 左右<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} />
+- 顺性别女性的乳房发育在青春期初期是由**极低**的雌二醇浓度开启的——其体内的基线水平通常仅为 20-40 pg/mL 左右<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />
 - 雌二醇浓度在发育过程中呈现**缓慢、渐进式上升**的趋势，而非骤然达到成年期的稳定水平
 - 每一个 Tanner 分期的演进与成熟都需要**充裕的时间积累**，在生理规律上，试图通过提升雌激素浓度来催熟往往是不奏效的
 - 这一基本的生物学发育规律，对于顺性别女性与跨性别女性同样适用
@@ -76,13 +76,13 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ## 5.2 跨性别女性的现实数据
 
-<EvidenceBadge level="B" /> 基于目前的临床追踪研究，我们应当理性看待这一现状：多项实证数据提示，跨性别女性的乳房发育程度在许多情况下可能需要较长的时间积累，且最终形态也容易因个体差异而各不相同<CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" /><CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} />。
+<EvidenceBadge level="B" /> 基于目前的临床追踪研究，我们应当理性看待这一现状：多项实证数据提示，跨性别女性的乳房发育程度在许多情况下可能需要较长的时间积累，且最终形态也容易因个体差异而各不相同<CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" /><CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} />。
 
 ### 大型队列研究数据
 
-- **de Blok 2018 队列研究**（共追踪 224 例样本）指出：在开始 HRT 1 年后，部分受试者仅达到较轻微的初级发育状态，超过 A 罩杯比例相对较低<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} />
+- **de Blok 2018 队列研究**（共追踪 224 例样本）指出：在开始 HRT 1 年后，部分受试者仅达到较轻微的初级发育状态，超过 A 罩杯比例相对较低<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} />
 - **Patel 2021 综述分析**发现：许多跨性别女性在经过 2-3 年的治疗后，乳房的发育进程会随之趋于平缓并进入平台期，部分人的最终状态可能并不会完全演进到 Tanner V 期<CitationRef id="patel-2021" num={5} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
-- 临床证据表明，你最终能够达到的乳房尺寸，很大程度上与**开启 HRT 时的生理年龄**、**家族遗传特征**（如母亲或姐妹的胸部丰满度）以及个人的**体脂重塑分布**紧密相连<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
+- 临床证据表明，你最终能够达到的乳房尺寸，很大程度上与**开启 HRT 时的生理年龄**、**家族遗传特征**（如母亲或姐妹的胸部丰满度）以及个人的**体脂重塑分布**紧密相连<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
 
 ### 这意味着什么
 
@@ -106,16 +106,16 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 **第一阶段：导管分支（树长枝干）**
 
-在发育初始阶段，乳腺组织通常需要在相对较低或中等浓度雌二醇（E2）的温和刺激下，逐步展开导管系统的分支与延伸（这好比树木在扎实地生长主干与侧枝）<CitationRef id="misakian-2025" num={2} authors="Misakian et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />。这个阶段在生理上**极其需要温和的激素环境与足够长的时间跨度**。只有乳腺导管的分支系统生长的越紧密、越广泛，未来乳房在塑形时才能拥有更饱满的形态与物理承托。
+在发育初始阶段，乳腺组织通常需要在相对较低或中等浓度雌二醇（E2）的温和刺激下，逐步展开导管系统的分支与延伸（这好比树木在扎实地生长主干与侧枝）<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />。这个阶段在生理上**极其需要温和的激素环境与足够长的时间跨度**。只有乳腺导管的分支系统生长的越紧密、越广泛，未来乳房在塑形时才能拥有更饱满的形态与物理承托。
 
 **第二阶段：腺泡成熟（树结果）**
 
-当乳腺的导管支架系统相对充分地搭建完毕后，在温和上升的 E2 水平或未来可能引入的孕激素调理下，导管末端会逐渐发育成熟并演化为腺泡（乳腺小叶组织，如同枝头上绽放花蕾并凝结出饱满的果实）<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />。这一成熟阶段，才会为乳房注入真正的丰满体积与自然的抛物线圆润感。
+当乳腺的导管支架系统相对充分地搭建完毕后，在温和上升的 E2 水平或未来可能引入的孕激素调理下，导管末端会逐渐发育成熟并演化为腺泡（乳腺小叶组织，如同枝头上绽放花蕾并凝结出饱满的果实）<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />。这一成熟阶段，才会为乳房注入真正的丰满体积与自然的抛物线圆润感。
 
 ### 高剂量如何破坏这个过程
 
 <DangerBox title="高剂量 E2 导致过早活化终末分化 = 潜在的发育损害">
-如果在 HRT 初期机体就长期暴露于过高浓度的雌二醇（E2）环境中，可能会诱发以下生理连锁反应<CitationRef id="misakian-2025" num={2} authors="Misakian et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />：
+如果在 HRT 初期机体就长期暴露于过高浓度的雌二醇（E2）环境中，可能会诱发以下生理连锁反应<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />：
 
 1. **过早激活终末分化信号** —— 高浓度雌二醇会让靶器官接收到提前“收尾”的错误指令。
 2. **分支发育戛然而止** —— 使得乳腺导管在尚未搭建好充足框架前，就被迫中止了横向生长的脚步。
@@ -138,14 +138,14 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 />
 
 <WarningBox title="理性用药，切勿急功近利">
-乳腺组织的成长并非是「剂量越高，见效越快」的线性关系。在发育初期选择超出常规生理所需的偏高剂量，往往并不等同于在“加速发育”，反而可能由于生理融合效应，而提前关闭你的乳腺导管发育窗口。若遭遇严重融合，未来若想再次改善形态，可能需要借助外科手段<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} />。
+乳腺组织的成长并非是「剂量越高，见效越快」的线性关系。在发育初期选择超出常规生理所需的偏高剂量，往往并不等同于在“加速发育”，反而可能由于生理融合效应，而提前关闭你的乳腺导管发育窗口。若遭遇严重融合，未来若想再次改善形态，可能需要借助外科手段<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} />。
 </WarningBox>
 
 ---
 
 ## 5.4 正确的阶梯式方案
 
-<EvidenceBadge level="A" /> 众多主流性别肯定医疗指南通常推荐模拟顺性别青春期的生理步骤：从安全合理的低剂量起步，根据定期的血液指标复查结果，逐步、温和地调升剂量<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />。
+<EvidenceBadge level="A" /> 众多主流性别肯定医疗指南通常推荐模拟顺性别青春期的生理步骤：从安全合理的低剂量起步，根据定期的血液指标复查结果，逐步、温和地调升剂量<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />。
 
 ### E2 目标水平路线图
 
@@ -155,7 +155,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 **E2 目标：50-100 pg/mL**
 
-在此阶段，我们最核心的生理任务是**温和地诱导乳腺导管进行健康的最初分支**。请尽量保持平和的心态，避免因「视觉上没有即刻变化」而盲目加量<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />。
+在此阶段，我们最核心的生理任务是**温和地诱导乳腺导管进行健康的最初分支**。请尽量保持平和的心态，避免因「视觉上没有即刻变化」而盲目加量<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />。
 
 对应参考剂量：
 - 口服雌二醇：2 mg/天
@@ -171,7 +171,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 **E2 目标：100-150 pg/mL**
 
-乳腺导管在此阶段持续舒展发育，通常会逐渐呈现出可感知的局部隆起或胸部弧线<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="rothman-2024" num={8} authors="Rothman et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />。
+乳腺导管在此阶段持续舒展发育，通常会逐渐呈现出可感知的局部隆起或胸部弧线<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="rothman-2024" num={8} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />。
 
 对应参考剂量：
 - 口服雌二醇：2-4 mg/天
@@ -186,25 +186,25 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 **E2 目标：100-200 pg/mL（长期稳定维持）**
 
-此时，导管的分支系统已初步搭建稳固，发育的重点逐渐转向腺泡的重塑与成熟。通常建议在此阶段继续将体内激素稳定在中等合理区间，并可配合专业医生的指引，综合评估是否适宜引入孕激素协助后续调整<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />。
+此时，导管的分支系统已初步搭建稳固，发育的重点逐渐转向腺泡的重塑与成熟。通常建议在此阶段继续将体内激素稳定在中等合理区间，并可配合专业医生的指引，综合评估是否适宜引入孕激素协助后续调整<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />。
 
 对应参考剂量：
 - 口服雌二醇：2-6 mg/天
 - 注射 EV：2-5 mg/周
 - 经皮贴片：100-200 µg/天
 
-**关于孕激素的使用争议**：部分学者或使用者认为，天然微粒化黄体酮有助于提升乳房整体形态的圆润度与个人的主观心理满意度，但目前的共识仍建议**在 HRT 治疗至少满 12 个月之后**再作考虑<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />。过早引入孕激素可能与过早遭遇超量雌激素类似，也会对导管系统最初的扎实分支带来干扰。
+**关于孕激素的使用争议**：部分学者或使用者认为，天然微粒化黄体酮有助于提升乳房整体形态的圆润度与个人的主观心理满意度，但目前的共识仍建议**在 HRT 治疗至少满 12 个月之后**再作考虑<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />。过早引入孕激素可能与过早遭遇超量雌激素类似，也会对导管系统最初的扎实分支带来干扰。
 
 </PhaseBlock>
 
 ### 注射用户的特别提醒
 
 <WarningBox title="注射用药：用药前 6 个月的峰值管理至关重要">
-通过注射方式给药时，体内的雌二醇（E2）浓度波动通常要比口服或透皮 / 经皮贴敷途径剧烈得多。即使你计算出的平均激素水平在合理区间，注射后的 1-2 天内，血液中也容易出现高达 300-500 pg/mL 的极高浓度峰值<CitationRef id="rothman-2024" num={8} authors="Rothman et al." year={2024} /><CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} />。
+通过注射方式给药时，体内的雌二醇（E2）浓度波动通常要比口服或透皮 / 经皮贴敷途径剧烈得多。即使你计算出的平均激素水平在合理区间，注射后的 1-2 天内，血液中也容易出现高达 300-500 pg/mL 的极高浓度峰值<CitationRef id="rothman-2024" num={8} authors="Rothman MS et al." year={2024} /><CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} />。
 
 **安全建议**：
 - 在初始的前 6 个月内，注射剂量通常建议控制在 **1-2 mg/周** 左右。
-- 你可以考虑选用较低的单次注射剂量，并配合较短的用药周期（如每 3-4 天注射 1mg，而非每 7 天一次性注射 2mg），这样有助于平抑体内的浓度波峰<CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />。
+- 你可以考虑选用较低的单次注射剂量，并配合较短的用药周期（如每 3-4 天注射 1mg，而非每 7 天一次性注射 2mg），这样有助于平抑体内的浓度波峰<CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />。
 - 应当以每次注射前的**谷值**（即下一次注射前夕的浓度最低值）来作为剂量调整的判断标准，避免用峰值数据作为参考。
 </WarningBox>
 
@@ -219,7 +219,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
   ]}
 />
 
-**任何用药剂量的科学调整都应立足于定期的血液生化及激素水平复查数据，请尽量避免仅凭个人的主观身体冷热或胀痛感而自行加减药量。**<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />
+**任何用药剂量的科学调整都应立足于定期的血液生化及激素水平复查数据，请尽量避免仅凭个人的主观身体冷热或胀痛感而自行加减药量。**<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />
 
 ---
 
@@ -258,9 +258,9 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 2. **建议在专业医生的指导下，循序渐进地调低剂量**，以使你的雌二醇（E2）水平逐步回归至 100-200 pg/mL 这一公认的安全适宜范围。
 3. **建议安排一次规范的血检**，获取当前的 E2、T 及其他关键生化和电解质指标，为下一步调整提供数字依据。
 4. **尽管已经定型的乳房腺体框架相对固定**，但在将体内的激素浓度调整至温和的生理水平后，乳腺导管系统仍有部分重回良性发育轨道的可能。
-5. **建议积极寻求 trans-friendly（友好医疗）资源**，寻找拥有相关临床照护经验的内分泌科医生，共同规划长期的性别肯定路线。
+5. **建议积极寻求跨性别友好医疗资源**，寻找拥有相关临床照护经验的内分泌科医生，共同规划长期的性别肯定路线。
 
-虽然过早定型的导管支架可能无法完全退回初始状态，但停止超生理剂量的刺激、回归符合科学规律的安全方案，是确保你未来长期健康与乳腺健康最理性的抉择<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />。
+虽然过早定型的导管支架可能无法完全退回初始状态，但停止超生理剂量的刺激、回归符合科学规律的安全方案，是确保你未来长期健康与乳腺健康最理性的抉择<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />。
 </WarningBox>
 
 ---
@@ -295,7 +295,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ## 关于孕激素的引入时机评估
 
-在性别肯定激素治疗中，孕激素（如 [微粒化黄体酮](/zh/medications/progestogens/progesterone/) 或 [地屈孕酮](/zh/medications/progestogens/dydrogesterone/)）在协助乳房塑形中的临床实际功效，目前在学术界仍存在一定的讨论与分歧<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
+在性别肯定激素治疗中，孕激素（如 [微粒化黄体酮](/zh/medications/progestogens/progesterone/) 或 [地屈孕酮](/zh/medications/progestogens/dydrogesterone/)）在协助乳房塑形中的临床实际功效，目前在学术界仍存在一定的讨论与分歧<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。
 
 <img
   src="/images/diagrams/zh/progestogen-decision-tree.webp"
@@ -315,7 +315,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ### 主流医学指南（如 WPATH）的审慎立场
 
-- WPATH SOC 8 指南指出：“**目前尚没有充分的高质量多中心双盲对照临床研究，能直接证实孕激素对跨性别女性乳房发育有普遍的、确切的促进效用**”<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />。
+- WPATH SOC 8 指南指出：“**目前尚没有充分的高质量多中心双盲对照临床研究，能直接证实孕激素对跨性别女性乳房发育有普遍的、确切的促进效用**”<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />。
 - 由于缺乏强有力的实证对比数据，过度夸大孕激素在丰胸上的神奇功效是不妥当的。
 - 若不当或过量使用某些合成孕激素（如醋酸甲羟孕酮等），可能在部分敏感个体中增加抑郁倾向或局部栓塞隐患，且高剂量 CPA 亦有其特定脑膜瘤风险。
 
@@ -358,7 +358,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 何时可以开始评估外科手术路径：
 
-- **HRT 治疗至少已足额稳定地进行了 18 个月以上** —— WPATH SOC 8 指南建议，应至少等待激素重塑自然进入相对稳定的平台期后，再理性探讨外科手术的必要性<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />。
+- **HRT 治疗至少已足额稳定地进行了 18 个月以上** —— WPATH SOC 8 指南建议，应至少等待激素重塑自然进入相对稳定的平台期后，再理性探讨外科手术的必要性<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />。
 - 经过充分的心理调适，确认自己对手术的视觉结局及潜在并发症有着客观、理智的心态。
 
 两种主流手术方案的临床对比：
@@ -388,14 +388,14 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 
 ## 参考文献
 
-1. Kanin M et al. (2025). Injectable Estradiol Dosing Regimens<CitationRef id="kanin-2025" num={1} authors="Kanin et al." year={2025} />
-2. Misakian AL et al. (2025). Injectable Estradiol Monotherapy in Transgender Individuals<CitationRef id="misakian-2025" num={2} authors="Misakian et al." year={2025} />
-3. Hembree WC et al. (2017). Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons<CitationRef id="hembree-2017" num={3} authors="Hembree et al." year={2017} />
+1. Kanin M et al. (2025). Injectable Estradiol Dosing Regimens<CitationRef id="kanin-2025" num={1} authors="Kanin M et al." year={2025} />
+2. Misakian AL et al. (2025). Injectable Estradiol Monotherapy in Transgender Individuals<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} />
+3. Hembree WC et al. (2017). Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />
 4. Aly (2021). Injectable Estradiol Meta-Analysis<CitationRef id="aly-2021" num={4} authors="Aly" year={2021} />
 5. Patel et al. (2021). Breast development in transgender women on hormone therapy<CitationRef id="patel-2021" num={5} authors="Patel et al." year={2021} />
-6. Coleman E et al. (2022). Standards of Care for the Health of Transgender and Gender Diverse People, Version 8<CitationRef id="coleman-2022" num={6} authors="Coleman et al." year={2022} />
-7. Poage AC et al. (2026). Subcutaneous vs Intramuscular Estradiol Valerate Injection<CitationRef id="poage-2026" num={7} authors="Poage et al." year={2026} />
-8. Rothman MS et al. (2024). Injectable Estradiol Dosing in Transgender Individuals<CitationRef id="rothman-2024" num={8} authors="Rothman et al." year={2024} />
+6. Coleman E et al. (2022). Standards of Care for the Health of Transgender and Gender Diverse People, Version 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} />
+7. Poage AC et al. (2026). Subcutaneous vs Intramuscular Estradiol Valerate Injection<CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} />
+8. Rothman MS et al. (2024). Injectable Estradiol Dosing in Transgender Individuals<CitationRef id="rothman-2024" num={8} authors="Rothman MS et al." year={2024} />
 
 import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 

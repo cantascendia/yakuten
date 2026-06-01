@@ -45,6 +45,15 @@ interface RangeSpec {
   redBelow?: number;
 }
 
+/**
+ * BLOOD_RANGES — 经典血检自查工具的【权威阈值来源 / SSOT】。
+ *
+ * 有意内联，请勿迁移到 src/data/blood-ranges.json：后者当前结构仅含 zh 文本、
+ * 且不含本组件红区所需的四语生命安全警告（见下方 RED_WARNINGS）。把安全阈值挪到
+ * 那份 JSON 会丢失 en/ja/ko 的急救提示，属 P0 i18n 安全回归。
+ * 当前 src/data/blood-ranges.json 不被任何运行时代码消费，仅作文档/规格参考；
+ * 调整阈值请改这里，并视需要同步该 JSON 规格以免维护者混淆。
+ */
 const BLOOD_RANGES: RangeSpec[] = [
   {
     id: 'e2',

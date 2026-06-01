@@ -15,9 +15,9 @@ import refs from '../../data/references.json';
 
 interface Props {
   id: string;
-  num: number;
-  authors: string;
-  year: number;
+  num?: number;
+  authors?: string;
+  year?: number;
   title?: string;
   class?: string;
 }
@@ -26,21 +26,35 @@ const { id, num, authors, year, title, class: className = '' } = Astro.props;
 
 type RefEntry = {
   id: string;
+  authors?: string;
+  year?: number;
+  title?: string;
   doi: string | null;
   url: string;
   journal: string;
   evidenceLevel?: 'A' | 'B' | 'C' | 'X';
 };
 
-const ref = (refs as RefEntry[]).find((r) => r.id === id);
+// references.json 是引用 SSOT：未显式传入 num/authors/year/title 时，按 id 从库内回退，
+// 避免裸 <CitationRef id="x" /> 渲染出空 [] 与 "undefined (undefined)" 的 tooltip/aria。
+const allRefs = refs as RefEntry[];
+const refIndex = allRefs.findIndex((r) => r.id === id);
+const ref = refIndex >= 0 ? allRefs[refIndex] : undefined;
+
+const displayNum = num ?? (refIndex >= 0 ? refIndex + 1 : undefined);
+const displayAuthors = authors ?? ref?.authors ?? id;
+const displayYear = year ?? ref?.year;
+const displayTitle = title ?? ref?.title;
+
 const href = ref?.doi
   ? `https://doi.org/${ref.doi}`
   : ref?.url ?? `#ref-${id}`;
 const isExternal = href.startsWith('http');
 
-const tooltipText = title
-  ? `${authors} (${year}). ${title}`
-  : `${authors} (${year})`;
+const yearPart = displayYear ? ` (${displayYear})` : '';
+const tooltipText = displayTitle
+  ? `${displayAuthors}${yearPart}. ${displayTitle}`
+  : `${displayAuthors}${yearPart}`;
 const withJournal = ref?.journal
   ? `${tooltipText} — ${ref.journal}`
   : tooltipText;
@@ -53,11 +67,11 @@ const fullTooltip = ref?.evidenceLevel
   <a
     href={href}
     title={fullTooltip}
-    aria-label={`参考文献 ${num}: ${fullTooltip}`}
+    aria-label={`参考文献 ${displayNum ?? id}: ${fullTooltip}`}
     class="citation-ref__link"
     {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
   >
-    [{num}]
+    [{displayNum ?? '※'}]
   </a>
 </sup>
 
