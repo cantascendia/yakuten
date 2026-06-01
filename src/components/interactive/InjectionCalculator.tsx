@@ -2,9 +2,9 @@
 import type { CSSProperties } from 'react';
 import {
   formatMedicalNumber,
-  formatRangeWithUnit,
   formatValueWithUnit,
 } from '../../utils/medicalFormat';
+import injectionDoses from '../../data/injection-doses.json';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
@@ -130,9 +130,9 @@ interface DrugSpec {
 
 interface DoseInfo {
   mg: number;
-  applicable: string;
-  e2Range: string;
-  warning?: string;
+  applicable: string | null;
+  e2Range: string | null;
+  warning?: string | null;
 }
 
 const DRUG_SPECS: DrugSpec[] = [
@@ -141,13 +141,14 @@ const DRUG_SPECS: DrugSpec[] = [
   { name: `环戊丙酸雌二醇 ${formatValueWithUnit(5, 'mg/mL')}`, concentration: 5, unit: 'mg/mL' },
 ];
 
-const DOSE_TABLE: DoseInfo[] = [
-  { mg: 1, applicable: '青少年阶段 1', e2Range: formatRangeWithUnit(30, 60, 'pg/mL') },
-  { mg: 2, applicable: '青少年阶段 2 / 成人起始', e2Range: formatRangeWithUnit(40, 80, 'pg/mL') },
-  { mg: 3, applicable: '成人起始 / 维持', e2Range: formatRangeWithUnit(60, 120, 'pg/mL') },
-  { mg: 4, applicable: '成人维持', e2Range: formatRangeWithUnit(80, 160, 'pg/mL') },
-  { mg: 5, applicable: '成人维持上限', e2Range: formatRangeWithUnit(100, 200, 'pg/mL'), warning: '接近上限' },
-];
+// SSOT: src/data/injection-doses.json（含 7/10mg 危险档：expectedE2Range=null → 结果卡显示 "--"，
+// 不再回退到邻近 5mg 的"100-200 安全"估算，消除危险剂量与安全数值并存的矛盾）。
+const DOSE_TABLE: DoseInfo[] = injectionDoses.doses.map((d) => ({
+  mg: d.targetMg,
+  applicable: d.applicableTo,
+  e2Range: d.expectedE2Range,
+  warning: d.warning,
+}));
 
 function getSyringe(volumeMl: number): string {
   if (volumeMl <= 0.3) return '1 mL 注射器（胰岛素针）';
@@ -629,18 +630,19 @@ export default function InjectionCalculator() {
                     <td style={styles.tdMono}>{formatValueWithUnit(row.mg, 'mg')}</td>
                     <td style={styles.tdMono}>{formatValueWithUnit(vol, 'mL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                     <td style={styles.td}>{getSyringe(vol)}</td>
-                    <td style={styles.td}>{row.e2Range}</td>
+                    <td style={styles.td}>{row.e2Range ?? '—'}</td>
                     <td style={styles.td}>
-                      {row.applicable}
+                      {row.applicable ?? ''}
                       {row.warning && (
                         <span
                           style={{
-                            marginLeft: 'var(--space-sm)',
-                            color: 'var(--color-caution)',
+                            marginLeft: row.applicable ? 'var(--space-sm)' : 0,
+                            color: row.mg >= 10 ? 'var(--color-danger)' : 'var(--color-caution)',
                             fontSize: '0.75rem',
+                            fontWeight: 600,
                           }}
                         >
-                          ({row.warning})
+                          {row.applicable ? `(${row.warning})` : row.warning}
                         </span>
                       )}
                     </td>
