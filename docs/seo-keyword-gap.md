@@ -210,34 +210,33 @@ AHREFS_API_TOKEN=xxx
 
 <!-- AUTO-SNAPSHOT:BEGIN -->
 
-## AUTO SNAPSHOT — 2026-04-19 15:31 UTC
+## AUTO SNAPSHOT — 2026-06-01 07:28 UTC
 
 > 本节由 `npm run seo:refresh` 自动生成。上方手工表格保留不动。
 
-### Google Trends(geo=CN, range 2025-04-19 → 2026-04-19)
+### Google Trends(geo=CN, range 2025-06-01 → 2026-06-01)
 
 tier 阈值: H ≥ 40 · M ≥ 10 (0-100 相对指数)
 
 | 关键词 | 分类 | avg | peak | recent-4w | slope | tier | target |
 |---|---|---|---|---|---|---|---|
-| 黄体酮 | drug-generic | 13.4 | 100 | 2.3 | — | M | `/zh/medications/progestogens/progesterone/` |
-| 地屈孕酮 | drug-generic | 6.8 | 100 | 0 | — | L | `/zh/medications/progestogens/dydrogesterone/` |
-| 螺内酯 | drug-generic | 3.4 | 100 | 0 | — | L | `/zh/medications/antiandrogens/spironolactone/` |
-| MTF HRT | protocol | 3.3 | 100 | 0 | — | L | `/zh/before-you-start/` |
-| 色谱龙 | drug-brand | 1.9 | 100 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
-| 补佳乐 | drug-brand | 1.9 | 100 | 25 | ↑ | L | `/zh/medications/estrogens/oral/` |
-| 屈螺酮 | drug-generic | 1.9 | 100 | 0 | — | L | `/zh/medications/progestogens/drospirenone/` |
-| estradiol half life | pharm-en | 1.9 | 100 | 25 | ↑ | L | `/en/medications/estrogens/oral/` |
-| 色普龙 | drug-brand-variant | 0 | 0 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
+| 黄体酮 | drug-generic | 17 | 100 | 28 | ↑ | M | `/zh/medications/progestogens/progesterone/` |
+| 螺内酯 | drug-generic | 3.6 | 100 | 3 | — | L | `/zh/medications/antiandrogens/spironolactone/` |
+| 地屈孕酮 | drug-generic | 3.4 | 100 | 0 | — | L | `/zh/medications/progestogens/dydrogesterone/` |
+| 色普龙 | drug-brand-variant | 1.9 | 100 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
+| 戊酸雌二醇 | drug-generic | 1.9 | 100 | 0 | — | L | `/zh/medications/estrogens/injection/` |
+| 爱斯妥 | drug-brand | 1.9 | 100 | 0 | — | L | `/zh/medications/estrogens/gel/` |
+| 跨性别激素 | protocol | 1.9 | 100 | 0 | — | L | `/zh/before-you-start/` |
+| 跨性别 HRT | protocol | 1.9 | 100 | 0 | — | L | `/zh/before-you-start/` |
+| HRT 血检 | monitoring | 1.9 | 100 | 0 | — | L | `/zh/blood-tests/` |
+| 色谱龙 | drug-brand | 0 | 0 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
 | 醋酸环丙孕酮 | drug-chemical | 0 | 0 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
 | 安体舒通 | drug-brand | 0 | 0 | 0 | — | L | `/zh/medications/antiandrogens/spironolactone/` |
-| 戊酸雌二醇 | drug-generic | 0 | 0 | 0 | — | L | `/zh/medications/estrogens/injection/` |
-| 爱斯妥 | drug-brand | 0 | 0 | 0 | — | L | `/zh/medications/estrogens/gel/` |
+| 补佳乐 | drug-brand | 0 | 0 | 0 | — | L | `/zh/medications/estrogens/oral/` |
+| 屈螺酮 | drug-generic | 0 | 0 | 0 | — | L | `/zh/medications/progestogens/drospirenone/` |
 | 比卡鲁胺 | drug-generic | 0 | 0 | 0 | — | L | `/zh/medications/antiandrogens/bicalutamide/` |
-| 跨性别激素 | protocol | 0 | 0 | 0 | — | L | `/zh/before-you-start/` |
-| 跨性别 HRT | protocol | 0 | 0 | 0 | — | L | `/zh/before-you-start/` |
+| MTF HRT | protocol | 0 | 0 | 0 | — | L | `/zh/before-you-start/` |
 | DIY HRT | protocol-sensitive | 0 | 0 | 0 | — | L | `/zh/china-reality/` |
-| HRT 血检 | monitoring | 0 | 0 | 0 | — | L | `/zh/blood-tests/` |
 | HRT 风险 | safety | 0 | 0 | 0 | — | L | `/zh/risks/` |
 | HRT 剂量 | monitoring | 0 | 0 | 0 | — | L | `/zh/dose-limits/` |
 | HRT 乳房发育 | outcomes | 0 | 0 | 0 | — | L | `/zh/breast-development/` |
@@ -248,22 +247,8 @@ tier 阈值: H ≥ 40 · M ≥ 10 (0-100 相对指数)
 | プロギノンデポー | drug-brand-ja | 0 | 0 | 0 | — | L | `/ja/medications/estrogens/injection/` |
 | エストラジオール 個人輸入 | access-ja | 0 | 0 | 0 | — | L | `/ja/china-reality/` |
 | MTF 血液検査 | monitoring-ja | 0 | 0 | 0 | — | L | `/ja/blood-tests/` |
+| estradiol half life | pharm-en | 0 | 0 | 0 | — | L | `/en/medications/estrogens/oral/` |
 | cyproterone acetate dose | drug-en | 0 | 0 | 0 | — | L | `/en/medications/antiandrogens/cpa/` |
 | spironolactone transgender | drug-en | 0 | 0 | 0 | — | L | `/en/medications/antiandrogens/spironolactone/` |
-
-### Google Search Console — top 40 queries (last 28 days)
-
-tier 阈值: H ≥ 2 impressions (top 5%) · M ≥ 1 (top 25%)
-
-| query | impressions | clicks | ctr | avg pos | tier | top landing page |
-|---|---|---|---|---|---|---|
-| プロギノンデポー 個人輸入 | 2 | 0 | 0.00% | 26.50 | H | `/ja/medications/estrogens/injection/` |
-| hrt -site:reddit.com -site:twitter.com -site:x.com -site:wykop.pl -site:tripadvisor.com -site:youtube.com -site:yelp.com -site:booking.com -site:facebook.com -site:instagram.com -site:tiktok.com | 1 | 0 | 0.00% | 10.00 | M | `/en/pathway/` |
-| does hrt blacklist | 1 | 0 | 0.00% | 11.00 | M | `/en/medications/banned-drugs/` |
-| estradiol transdermal | 1 | 0 | 0.00% | 69.00 | M | `/en/medications/estrogens/transdermal-patch/` |
-| estrogen oral | 1 | 0 | 0.00% | 85.00 | M | `/en/medications/estrogens/oral/` |
-| micronized progesterone 中文 | 1 | 0 | 0.00% | 11.00 | M | `/zh/medications/progestogens/progesterone/` |
-| oral estradiol half life | 1 | 0 | 0.00% | 46.00 | M | `/en/medications/estrogens/oral/` |
-| 比卡鲁胺和色普龙 | 1 | 0 | 0.00% | 16.00 | M | `/zh/medications/antiandrogens/overview/` |
 
 <!-- AUTO-SNAPSHOT:END -->
