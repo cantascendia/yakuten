@@ -75,7 +75,13 @@ interface DrugEntry {
     halfLife?: string;
     evidenceLevel?: string;
   }[];
-  monitoring?: { test: string; target?: string; frequency?: string }[];
+  monitoring?: {
+    test: string;
+    targetRange?: { min: number; max: number; unit?: string };
+    cautionRange?: { min: number; max: number };
+    dangerThreshold?: number;
+    frequency?: string;
+  }[];
   sideEffects?: { effect: string; severity?: string }[];
   contraindications?: { absolute?: string[] };
 }
@@ -377,12 +383,21 @@ export default function DrugCards() {
                   <div style={S.divider} />
 
                   {/* Monitoring */}
-                  {drug.monitoring?.slice(0, 2).map((m, i) => (
-                    <div key={i} style={S.row}>
-                      <span style={S.label}>{i === 0 ? t.monitor : ''}</span>
-                      <span style={S.value}>{m.test}: {m.target ?? ''} ({m.frequency ?? ''})</span>
-                    </div>
-                  ))}
+                  {drug.monitoring?.slice(0, 2).map((m, i) => {
+                    const target = m.targetRange
+                      ? `${m.targetRange.min}-${m.targetRange.max}${m.targetRange.unit ? ' ' + m.targetRange.unit : ''}`
+                      : '';
+                    return (
+                      <div key={i} style={S.row}>
+                        <span style={S.label}>{i === 0 ? t.monitor : ''}</span>
+                        <span style={S.value}>
+                          {m.test}
+                          {target ? `: ${target}` : ''}
+                          {m.frequency ? ` (${m.frequency})` : ''}
+                        </span>
+                      </div>
+                    );
+                  })}
 
                   {/* Danger signs */}
                   {drug.contraindications?.absolute && drug.contraindications.absolute.length > 0 && (
