@@ -4,18 +4,39 @@
  * absolute: 红色系 (绝对禁忌) -- role="alert"
  * relative: 橙色系 (相对禁忌) -- role="note"
  */
+type Locale = 'zh' | 'en' | 'ja' | 'ko';
+
 interface Props {
   type: 'absolute' | 'relative';
   title: string;
   sectionNum?: string;
+  /** Optional override; defaults to the page locale inferred from the URL path. */
+  locale?: Locale;
   class?: string;
 }
 
-const { type, title, sectionNum, class: className = '' } = Astro.props;
+// Badge labels are safety-signaling chrome shown to screen readers and sighted
+// users alike — they must be localized, not hard-coded English (i18n 铁律 #10).
+const BADGE_TEXT: Record<Locale, { absolute: string; relative: string }> = {
+  zh: { absolute: '关键红线', relative: '医疗注意' },
+  en: { absolute: 'Crucial Red Line', relative: 'Medical Caution' },
+  ja: { absolute: '重要な禁忌', relative: '医療上の注意' },
+  ko: { absolute: '핵심 금기', relative: '의료 주의' },
+};
 
+function detectLocale(pathname: string): Locale {
+  if (pathname.startsWith('/en')) return 'en';
+  if (pathname.startsWith('/ja')) return 'ja';
+  if (pathname.startsWith('/ko')) return 'ko';
+  return 'zh';
+}
+
+const { type, title, sectionNum, locale: localeProp, class: className = '' } = Astro.props;
+
+const locale: Locale = localeProp ?? detectLocale(Astro.url.pathname);
 const isAbsolute = type === 'absolute';
 const ariaRole = isAbsolute ? 'alert' : 'note';
-const badgeText = isAbsolute ? 'Crucial Red Line' : 'Medical Caution';
+const badgeText = isAbsolute ? BADGE_TEXT[locale].absolute : BADGE_TEXT[locale].relative;
 ---
 
 <section

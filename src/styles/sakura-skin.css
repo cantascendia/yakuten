@@ -177,7 +177,8 @@ html.sakura main p {
 html.sakura .sl-markdown-content :not(pre) > code,
 html.sakura main :not(pre) > code {
   background: var(--bg-5) !important;
-  color: var(--sakura-pink-deep) !important;
+  /* 行内代码（常含药名/剂量）须达 AA：#E5578B 在 bg-5 上仅 2.89:1，#C02868 ≥4.5:1。 */
+  color: #C02868 !important;
   border: 1.5px solid var(--ink) !important;
   border-radius: 6px !important;
   padding: 2px 8px !important;
@@ -415,7 +416,9 @@ html.sakura .site-legal-footer a {
    Emergency banner —— 保持危险感但换调色
    ========================================================================= */
 html.sakura .emergency-banner {
-  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral-deep)) !important;
+  /* 急症 banner 为白字，渐变两端须对白字达 WCAG AA ≥4.5:1。
+     原 #E5578B→#E65D4A 对白字仅 ~3.46:1（FAIL）；改用深红渐变保持危险感且白字达标。 */
+  background: linear-gradient(135deg, #B5304F, #9E1C3A) !important;
   border: 2px solid var(--ink) !important;
   box-shadow: 0 4px 0 var(--ink);
 }

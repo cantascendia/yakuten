@@ -21,6 +21,9 @@ type BloodCheckerStrings = {
     disclaimer1: string;
     disclaimer2: string;
     viewEmergency: string;
+    statusGreen: string;
+    statusYellow: string;
+    statusRed: string;
   };
   rangeLabels: Record<string, string>;
   actions: { printResults: string };
@@ -567,13 +570,14 @@ function InputField({
   const level = hasValue ? evaluate(spec, num) : null;
   const isRed = level === 'red';
   const labelText = TOOL_STRINGS[locale].rangeLabels[spec.id] ?? spec.label;
+  const sectionCopy = TOOL_STRINGS[locale].sections;
   const statusText = hasValue
     ? level === 'green'
-      ? `${labelText}: 在目标范围内`
+      ? `${labelText}: ${sectionCopy.statusGreen}`
       : level === 'yellow'
-        ? `${labelText}: 需注意`
+        ? `${labelText}: ${sectionCopy.statusYellow}`
         : level === 'red'
-          ? `${labelText}: 超出安全范围，需就医评估`
+          ? `${labelText}: ${sectionCopy.statusRed}`
           : ''
     : '';
   const statusId = `btc-status-${spec.id}`;
