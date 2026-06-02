@@ -1,0 +1,225 @@
+---
+title: "HRT क्लिनिकल पाथवे (उपचार मार्ग)"
+description: "बेसलाइन जाँचों से लेकर रखरखाव तक का संपूर्ण HRT मार्ग — जिसमें प्रत्येक चरण के लक्ष्य, निर्णय बिंदु और निगरानी कार्यक्रम शामिल हैं।"
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  यह मार्ग WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> और Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> पर आधारित है, और ट्रांसफेमिनिन HRT की शुरुआत व रखरखाव के लिए एक मानकीकृत ढाँचा प्रदान करता है।
+</p>
+
+<img src="/images/diagrams/hi/pathway-timeline.webp" alt="HRT मार्ग की समयरेखा: बेसलाइन → कम खुराक (1-6 माह) → खुराक समायोजन (6-12 माह) → रखरखाव (12 माह+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">सप्ताह 0</div>
+  <PhaseBlock phase={0} title="बेसलाइन मूल्यांकन" color="green">
+    <p class="phase-block__desc">
+      कोई भी दवा शुरू करने से पहले, contraindications (वर्जनाओं) को बाहर करने और अपने व्यक्तिगत संदर्भ मानों को स्थापित करने के लिए एक पूर्ण बेसलाइन पैनल पूरा करें।
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        सेक्स हार्मोन (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        यकृत व गुर्दा कार्य, लिपिड पैनल
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        स्कंदन (coagulation) पैनल व D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        उपवास रक्त शर्करा (fasting glucose) + CBC
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">शुरुआत · 1-6 माह</div>
+  <PhaseBlock phase={1} title="कम-खुराक से शुरुआत" color="green" week="1-6 माह">
+    <DoseTable
+      headers={['मार्ग', 'प्रारंभिक खुराक', 'स्रोत']}
+      rows={[
+        ['मुख-मार्ग (Oral) एस्ट्राडियोल', '2.0 mg / day', '[2]'],
+        ['ट्रांसडर्मल पैच', '50-100 µg / 24h', '[2]'],
+        ['टॉपिकल जेल', '1.5 mg / day', '[2]'],
+        ['IM एस्ट्राडियोल वैलेरेट', '1-2 mg / week', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      एंटी-एंड्रोजन (यदि आवश्यक हो): CPA 5-12.5 mg/day या स्पाइरोनोलैक्टोन 50-100 mg/day। [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">लक्ष्य E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">लक्ष्य T की प्रवृत्ति</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; घटती हुई
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        सुरक्षा चेतावनी: आपके शरीर को रिसेप्टर में होने वाले बदलावों के अनुकूल होने में समय लगता है। रक्त जाँच के बिना कभी खुराक न बढ़ाएँ। यदि आपको लगे कि "कुछ नहीं हो रहा" तब भी खुराक न बढ़ाएँ। स्तन कलिका (breast bud) के शुरुआती संकेत आमतौर पर 3-6 माह में दिखते हैं।
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="निर्णय" timepoint="3 माह">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL और T घट रहा हो → मौजूदा regimen को 6 माह तक जारी रखें"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Phase 2 की खुराक तक बढ़ाने पर विचार करें"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="असामान्य LFTs / PRL >30 / गंभीर मनोदशा गिरावट → रोकें और चिकित्सकीय सहायता लें"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">खुराक समायोजन · 6-12 माह</div>
+  <PhaseBlock phase={2} title="खुराक का समायोजन" color="yellow" week="6-12 माह">
+    <p class="phase-block__desc">
+      3-माह की लैब रिपोर्ट के आधार पर समायोजन करें। लक्ष्य ट्रांसफेमिनिन व्यक्तियों के लिए मानक शारीरिक (physiologic) सीमा तक पहुँचना है।
+    </p>
+    <DoseTable
+      headers={['मार्ग', 'समायोजित खुराक']}
+      rows={[
+        ['ट्रांसडर्मल पैच', '100-200 µg / day'],
+        ['मुख-मार्ग (Oral) एस्ट्राडियोल', '4 mg / day'],
+        ['टॉपिकल जेल', '3 mg / day'],
+        ['IM एस्ट्राडियोल वैलेरेट', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">लक्ष्य E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">लक्ष्य T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">प्रोजेस्टेरोन (वैकल्पिक)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          स्तन विकास के आधार पर विचार करें (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">टॉपिकल जेल 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="स्थिरता" timepoint="6 माह">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL और T <50 ng/dL → रखरखाव चरण में प्रवेश करें"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 हो पर E2 लक्ष्य पर हो → एंटी-एंड्रोजन समायोजित करें (T को दबाने के लिए E2 न बढ़ाएँ)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → सुरक्षित सीमा के भीतर खुराक बढ़ाना जारी रखें"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">स्थिर अवस्था · 12 माह+</div>
+  <PhaseBlock phase={3} title="दीर्घकालिक रखरखाव" color="pink" week="12 माह+">
+    <p class="phase-block__desc">
+      एक बार स्तर और शारीरिक बदलाव स्थिर हो जाएँ, तो कम-आवृत्ति वाली निगरानी पर आ जाएँ। E2 को 100-200 pg/mL और T को &lt;50 ng/dL बनाए रखने के लिए न्यूनतम प्रभावी खुराक बनाए रखें।
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">निगरानी की आवृत्ति</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">माह</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          हर 6 माह में पूर्ण हार्मोन पैनल और VTE जोखिम कारकों की जाँच। हर साल लिपिड और उपवास रक्त शर्करा। हड्डी घनत्व (bone density) स्क्रीनिंग पर विचार करें।
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL से अधिक स्त्रीकरण (feminization) नहीं होता — यह केवल जोखिम बढ़ाता है (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">प्रारंभिक चरण का अंत</p>
+    <p class="pathway-end-sub">निरंतर निगरानी</p>
+  </div>
+</div>
+
+</div>
+</div>

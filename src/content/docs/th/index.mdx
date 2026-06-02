@@ -1,0 +1,40 @@
+---
+title: "HRT Yakuten"
+description: "แนวทางความปลอดภัยพื้นฐานสำหรับ HRT ในหญิงข้ามเพศที่อิงหลักฐานเชิงประจักษ์ ครอบคลุมเส้นทางการดูแลทางคลินิก คู่มือการตรวจเลือด ขีดจำกัดขนาดยา การประเมินความเสี่ยง และเครื่องมือแบบโต้ตอบ ทั้งหมดอ้างอิงตาม WPATH SOC 8 และวรรณกรรมที่ผ่านการตรวจสอบโดยผู้เชี่ยวชาญ"
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+template: splash
+hero:
+  title: |
+    <span class="sr-only">HRT Yakuten</span>
+  tagline: ""
+---
+
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import SplashNav from '../../../components/layout/SplashNav.astro';
+import ParticleBackground from '../../../components/layout/ParticleBackground.astro';
+import ParticleCanvas from '../../../components/interactive/ParticleCanvas.tsx';
+import HeroSection from '../../../components/layout/HeroSection.astro';
+import ActionCards from '../../../components/layout/ActionCards.astro';
+import DrugQuickNav from '../../../components/layout/DrugQuickNav.astro';
+import MissionStatement from '../../../components/layout/MissionStatement.astro';
+import SiteFooter from '../../../components/layout/SiteFooter.astro';
+
+<SplashNav />
+
+<EmergencyBanner />
+
+<ParticleBackground />
+
+<ParticleCanvas client:idle />
+
+<HeroSection />
+
+<ActionCards />
+
+<DrugQuickNav />
+
+<MissionStatement />
+
+<SiteFooter />

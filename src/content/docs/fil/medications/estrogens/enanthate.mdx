@@ -1,0 +1,93 @@
+---
+title: "Estradiol Enanthate (EEn)"
+description: "Kumpletong gabay sa estradiol enanthate — pharmacokinetics, paghahambing sa ibang ester, dosing, at mga limitasyon sa kaligtasan."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="B"
+>
+Ang estradiol enanthate (EEn) ay isang medium-to-long-acting na iniinjek na estradiol ester na may half-life sa pagitan ng estradiol valerate (EV) at estradiol cypionate (EC), na nasa humigit-kumulang 5-7 days<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Karaniwan itong makikita bilang isang bahagi ng combined injectable contraceptives (hal. Perlutal) at maaari ring gamitin bilang nag-iisang gamot para sa HRT.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Profile ng pharmacokinetics ng estradiol enanthate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Half-life**: ~5-7 days
+- **Oras ng peak**: 3-5 days pagkatapos ng iniksyon
+- **Oras ng trough**: 7-10 days pagkatapos ng iniksyon
+- **Steady state**: Naaabot pagkatapos ng ~3-4 regular na siklo
+
+### Paghahambing ng PK ng mga Iniinjek na Estradiol Ester
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerate)', 'EEn (Enanthate)', 'EC (Cypionate)']}
+  rows={[
+    ['Half-life', '~4-5 days', '~5-7 days', '~8-10 days'],
+    ['Oras ng peak', '2-3 days', '3-5 days', '2-4 days'],
+    ['Inirerekomendang agwat', '5-7 days', '7-10 days', '7-14 days'],
+    ['Pagbabago-bago ng antas sa serum', 'Mas malaki', 'Katamtaman', 'Mas maliit'],
+    ['Availability', 'Pandaigdigan', 'Limitadong rehiyon', 'Amerika'],
+  ]}
+/>
+
+Ang profile ng pharmacokinetics ng EEn ay nasa pagitan ng EV at EC, na nag-aalok ng opsyon para sa mga gumagamit na gustong mag-injek nang lingguhan na may mas pantay na kurba<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosing
+
+### Dosing para sa Adulto
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Mga Tala']}
+  rows={[
+    ['Panimulang dosis', '2-4 mg/week', 'Mababang-dosis na simula upang protektahan ang paglaki ng dibdib'],
+    ['Maintenance na dosis', '4-6 mg/week', 'Iakma batay sa trough E2; target na 100-200 pg/mL'],
+    ['Pinakamataas na dosis', '10 mg/10 days', 'Huwag lalampasan'],
+  ]}
+/>
+
+Mga sanggunian sa dosing: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> at WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Tala sa Availability">
+Ang estradiol enanthate ay hindi malawakang makukuha sa maraming rehiyon. Pangunahin itong makikita sa Latin America (bilang bahagi ng Perlutal) at sa ilang piling bansa sa Europa. Kung kailangan mo ng iniinjek na estradiol, mas madaling makuha ang [estradiol valerate](/fil/medications/estrogens/injection/) sa karamihan ng mga rehiyon.
+</WarningBox>
+
+## Mga Brand at Availability
+
+| Brand | Pormulasyon | Rehiyon |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (combined contraceptive) | Latin America |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Piling bansa |
+| Single-agent na pormulasyon | Iba't ibang konsentrasyon | Compounding pharmacies |
+
+## Monitoring
+
+- **E2**: Tuwing 3 buwan, trough draw (umaga bago mag-injek). Target na 100-200 pg/mL
+- **T**: Tuwing 3 buwan. Target na &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + tuwing 6 na buwan
+
+## Teknik sa Pag-injek
+
+Ang pamamaraan ng pag-injek ay kapareho ng sa [iniksyon ng estradiol valerate](/fil/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Mga Limitasyon sa Kaligtasan">
+- Pareho ang mga limitasyon sa kaligtasan na nalalapat tulad ng ibang iniinjek na estradiol ester
+- Ang dosis ng isang iniksyon ay hindi dapat lumampas sa 10 mg
+- Ang E2 >200 pg/mL ay hindi nagpapahusay ng feminization, nadaragdagan lamang ang panganib<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Kung gumagamit ng combined na pormulasyon (hal. Perlutal), ang bahaging progestogen ay maaaring magdala ng karagdagang panganib; kumonsulta sa isang doktor
+</DangerBox>

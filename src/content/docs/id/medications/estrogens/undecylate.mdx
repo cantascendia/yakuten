@@ -1,0 +1,91 @@
+---
+title: "Estradiol Undecylate (EU)"
+description: "Panduan lengkap estradiol undecylate — farmakokinetik, dosis, dan pertimbangan keamanan ester injeksi kerja sangat panjang."
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Undecylate (EU)"
+  nameCN="Estradiol Undecylate Injection"
+  category="estrogen"
+  route="Intramuscular (IM)"
+  evidenceLevel="C"
+>
+Estradiol undecylate (EU) adalah salah satu ester estradiol injeksi dengan kerja paling panjang, dengan waktu paruh sekitar 20-30 hari, sehingga memungkinkan interval injeksi bulanan atau lebih lama<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Dahulu dipasarkan sebagai Progynon Depot 100 dan merek lainnya, namun ketersediaannya secara global kini sangat terbatas. Tingkat bukti adalah C karena tidak adanya data uji klinis HRT (terapi hormon afirmasi gender) berskala besar.
+</DrugInfoBox>
+
+## Farmakokinetik
+
+Profil farmakokinetik estradiol undecylate<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
+
+- **Waktu paruh**: ~20-30 hari (terpanjang di antara semua ester injeksi)
+- **Waktu puncak**: ~3-7 hari setelah injeksi
+- **Durasi kerja**: Satu kali injeksi mempertahankan kadar E2 efektif selama ~30-40 hari
+- **Kondisi tunak (steady state)**: Karena waktu paruhnya yang sangat panjang, dibutuhkan ~2-3 bulan untuk mencapai kondisi tunak
+
+### Perbandingan dengan Ester Injeksi Lainnya
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerate)', 'EC (Cypionate)', 'EU (Undecylate)']}
+  rows={[
+    ['Waktu paruh', '~4-5 days', '~8-10 days', '~20-30 days'],
+    ['Interval injeksi', '5-7 days', '7-14 days', '21-30 days'],
+    ['Fleksibilitas penyesuaian dosis', 'Tinggi', 'Sedang', 'Rendah'],
+    ['Fluktuasi kadar serum', 'Lebih besar', 'Sedang', 'Lebih kecil'],
+    ['Ketersediaan global', 'Tersedia luas', 'Benua Amerika', 'Sangat terbatas'],
+    ['Tingkat bukti', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="Tingkat Bukti C">
+Data klinis tentang estradiol undecylate dalam HRT transgender sangat terbatas. Sebagian besar data farmakokinetik berasal dari studi kecil yang dilakukan pada tahun 1970-an hingga 1980-an. Ketika ester injeksi lain (EV atau EC) tersedia, keduanya umumnya direkomendasikan sebagai pilihan lini pertama dengan bukti yang lebih kuat.
+</WarningBox>
+
+## Dosis
+
+### Dosis Dewasa (Hanya sebagai Acuan)
+
+<DoseTable
+  headers={['Tahap', 'Dosis', 'Catatan']}
+  rows={[
+    ['Dosis awal', '20-40 mg/month', 'Memulai secara konservatif'],
+    ['Dosis pemeliharaan', '40-100 mg/month', 'Sesuaikan berdasarkan kadar E2 palung (trough)'],
+    ['Dosis maksimum', '100 mg/month', 'Jangan dilampaui'],
+  ]}
+/>
+
+Karena waktu paruhnya yang sangat panjang, penyesuaian dosis EU **lambat memberikan efek**. Untuk situasi yang membutuhkan penyesuaian kadar secara cepat, ester kerja lebih pendek (EV) lebih sesuai<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+## Merek & Ketersediaan
+
+| Merek | Konsentrasi | Wilayah | Status |
+|-------|---------------|--------|--------|
+| **Progynon Depot 100** | 100 mg/mL | Dahulu Eropa/Asia | Sudah tidak diproduksi |
+| Apotek peracikan (compounding) | Beragam | Sangat sedikit wilayah | Terbatas |
+
+EU memiliki ketersediaan global yang **sangat terbatas**. Sebagian besar pengguna sebaiknya memilih EV atau EC sebagai estradiol injeksi pilihan mereka.
+
+## Pemantauan
+
+- **E2**: Setiap 3 bulan, pengambilan sampel palung (trough) 1-2 hari sebelum injeksi. Target 100-200 pg/mL
+- **T**: Setiap 3 bulan. Target &lt;50 ng/dL
+- **Fungsi hati (ALT/AST)**: Awal (baseline) + setiap 6 bulan
+
+Karena waktu paruhnya yang sangat panjang, pemantauan darah yang lebih sering diperlukan selama penggunaan awal untuk memastikan tingkat akumulasi.
+
+<DangerBox title="Batas Keamanan">
+- Waktu paruh EU yang sangat panjang berarti risiko akumulasi lebih tinggi — jika terjadi efek samping, obat akan tetap berada di dalam tubuh selama berminggu-minggu setelah dihentikan
+- Tidak cocok untuk situasi yang membutuhkan penyesuaian dosis secara cepat
+- E2 >200 pg/mL tidak menghasilkan feminisasi yang lebih kuat<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Karena pasokan globalnya yang sangat tidak stabil, EU tidak direkomendasikan sebagai regimen HRT utama
+</DangerBox>

@@ -1,0 +1,135 @@
+---
+title: "Estradiol oral (comprimés)"
+description: "Profil pharmacologique complet, recommandations posologiques, données sur le risque de MTEV et mises en garde sur les associations dangereuses pour l'estradiol oral."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+  L'estradiol oral (comprimés à avaler) est la forme galénique d'œstrogène la plus accessible à l'échelle mondiale. Bien que le risque de MTEV (thrombose veineuse) soit légèrement supérieur à celui de la voie transdermique, il reste un choix tout à fait acceptable et standard pour les utilisatrices jeunes, sans facteur de risque préexistant.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynova-studio.webp" alt="Photo du produit : comprimés de valérate d'estradiol Progynova 2 mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+
+## Pharmacologie
+
+### Effet de premier passage (le foie)
+
+Lorsque l'estradiol oral est avalé et absorbé par le tube digestif, il doit d'abord traverser le foie avant d'atteindre la circulation générale. C'est ce qu'on appelle l'« effet de premier passage »<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" /> :
+
+- La concentration massive d'E2 frappant directement le foie stimule la synthèse des facteurs de coagulation, ce qui élève le risque de MTEV.
+- Cela influe également sur la SHBG (globuline liant les hormones sexuelles) et sur les taux de triglycérides.
+- Cet effet de premier passage détruit la grande majorité du principe actif, aboutissant à une biodisponibilité orale d'à peine 3-5 %.
+- Les formes comme le valérate d'estradiol (Progynova) sont simplement clivées en estradiol brut au sein du foie.
+
+### Conversions de dose
+
+Les différentes formes galéniques de comprimés oraux contiennent des quantités différentes d'estradiol base réel<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} /> :
+
+> **2 mg de valérate d'estradiol (p. ex. Progynova) ≈ 1,5 mg d'estradiol (p. ex. Estrace)**
+
+Gardez cette conversion à l'esprit en lisant les discussions sur les posologies en ligne : les forums américains se réfèrent souvent par défaut à l'Estrace (estradiol pur / hémihydrate d'estradiol), tandis que les forums européens et asiatiques partent fréquemment du Progynova (valérate d'estradiol).
+
+### Données sur le risque de MTEV (thrombose veineuse)
+
+<DoseTable
+  headers={['Voie', 'Risque relatif (RR)', 'IC à 95 %', 'Remarque']}
+  rows={[
+    ['Estradiol oral', '1.48', '1.27 - 1.72', 'Risque de MTEV majoré d\'environ 48 %'],
+    ['Patch transdermique (référence)', '0.97', '0.79 - 1.19', 'Aucune différence statistique avec les non-utilisatrices'],
+  ]}
+/>
+
+L'estradiol oral majore le risque de MTEV d'environ 48 % (RR ≈ 1.48) par rapport à la population non traitée<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. Si le risque *relatif* est élevé, le risque *absolu* de base reste extrêmement faible dans les populations jeunes et en bonne santé (environ 1-2 pour 10 000 par an). Par conséquent, la voie orale demeure largement dans une marge de sécurité acceptable pour les personnes jeunes sans facteur de risque préexistant.
+
+<DangerBox title="Association mortelle : estradiol oral + CPA oral">
+Prendre de l'estradiol oral en même temps que de l'acétate de cyprotérone (CPA) par voie orale garantit un **risque de MTEV cumulé, à double composante**. Le CPA est intrinsèquement procoagulant<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />. Associé à l'effet de premier passage hépatique de l'œstrogène oral, le risque thrombotique se multiplie. Si vous devez utiliser le CPA comme anti-androgène, vous devez absolument passer à un œstrogène transdermique (patchs ou gel). Consultez notre page [Limites de dose et contre-indications](/fr/dose-limits/).
+</DangerBox>
+
+## Recommandations posologiques
+
+Les plages suivantes intègrent les données des recommandations de l'Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> et des WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> :
+
+<DoseTable
+  headers={['Étape', 'Dose (estradiol base)', 'Cible E2 (pg/mL)', 'Échéancier']}
+  rows={[
+    ['Démarrage à faible dose', '2 mg/day', '50-100', 'Mois 1-6'],
+    ['Titration modérée', '4 mg/day', '100-200', 'Mois 6-12'],
+    ['Phase d\'entretien', '4-6 mg/day', '100-200', 'À partir de 12 mois'],
+    ['Dose maximale', '8 mg/day', 'Sans dépasser 200', 'Circonstances exceptionnelles uniquement'],
+  ]}
+/>
+
+<WarningBox title="Ne sautez pas la phase à faible dose">
+Même si vous avez l'impression que la faible dose « ne fait rien », les 6 premiers mois d'une titration lente sont d'une importance capitale pour établir une ramification canalaire mammaire saine. Démarrer à 6 mg ou 8 mg pour « accélérer » la puberté force fréquemment une fusion prématurée des bourgeons mammaires, compromettant définitivement votre volume mammaire final<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. Consultez notre dossier approfondi sur le [développement mammaire](/fr/breast-development/).
+</WarningBox>
+
+### Modalités d'administration
+
+- Prenez vos comprimés à peu près à la même heure chaque jour pour instaurer une routine.
+- En cas de prise de 4 mg/day, fractionner la dose (2 mg le matin + 2 mg le soir) lisse nettement les fluctuations de la concentration sanguine.
+- Prendre les comprimés au cours des repas améliore marginalement l'absorption, mais la régularité des horaires importe davantage.
+- Si vous oubliez une prise, attendez simplement et prenez la dose suivante comme prévu. Ne doublez pas la dose pour compenser.
+
+## Public concerné et contre-indications
+
+L'estradiol oral convient aux profils suivants<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} /> :
+
+**Vivement recommandé lorsque :**
+- Aucun facteur de risque de MTEV / thrombose
+- Âge < 40
+- IMC < 30
+- Non-fumeuse
+- Aucun antécédent personnel ou familial de thrombose veineuse profonde
+- Aucun trouble de la coagulation
+
+**N'utilisez pas la voie orale (passez à la voie transdermique) :**
+- Âge ≥ 40
+- IMC ≥ 30
+- Tabagisme actif ou sevrage récent
+- Antécédents personnels ou familiaux marqués de MTEV
+- Anomalies connues des facteurs de coagulation (p. ex. facteur V Leiden)
+- Association actuelle de l'HTH avec le CPA (acétate de cyprotérone)
+- Antécédents de migraines avec aura
+
+## Accès à l'échelle mondiale
+
+Les comprimés restent le standard par défaut dans la grande majorité du monde :
+
+- **États-Unis / Canada** : souvent prescrits sous forme d'estradiol générique (Estrace) dans le cadre du consentement éclairé. Extrêmement bon marché avec une assurance ou via GoodRx.
+- **Royaume-Uni / UE / Australie** : prescrits par les voies officielles (NHS, GIC) ou par des prestataires privés. Le Progynova (valérate) et l'Estrofem (hémihydrate) sont tous deux courants.
+- **Marché mondial du DIY** : les comprimés circulent abondamment sur les marchés décentralisés, car ils sont faciles à expédier et difficiles à abîmer. Vérifiez toujours la source.
+
+## Conseils de suivi
+
+- **Quand faire le prélèvement** : effectuez toujours le dosage **juste avant** la prise suivante. C'est ce qu'on appelle mesurer le taux « résiduel » (trough)<CitationRef id="ucsf-2016" num={7} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Phase initiale** : dosez les hormones sexuelles + le bilan hépatique au mois 1. Contrôlez hormones + bilan hépatique + bilan lipidique au mois 3.
+- **Phase d'entretien** : faites un dosage tous les 6 mois.
+- **Cible clinique** : E2 résiduel entre 100-200 pg/mL, T < 50 ng/dL.
+- **Marge de sécurité** : si votre E2 résiduel dépasse 200 pg/mL, envisagez sérieusement de réduire le nombre de comprimés ou de passer aux formes transdermiques.
+
+## Lien avec l'estradiol sublingual
+
+Les comprimés d'estradiol standard peuvent aussi être dissous sous la langue (voie sublinguale). Cela contourne une grande partie de l'effet de premier passage hépatique et augmente fortement la biodisponibilité. Toutefois, cela impose des prises plusieurs fois par jour et provoque des pics sanguins très marqués, en montagnes russes. Si vous souhaitez en savoir plus sur cette manière de prendre vos comprimés, consultez notre page [Administration sublinguale](/fr/medications/estrogens/sublingual/).
+
+<DrugBrandGallery drugId="estradiol-oral" />

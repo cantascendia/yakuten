@@ -1,0 +1,247 @@
+---
+title: "Mga Panganib at Pagkilala sa Emergency"
+description: "Komprehensibong gabay sa panganib ng HRT — venous thromboembolism (VTE), mga alalahanin sa paggana ng atay, mga risk factor para sa meningioma, mga sintomas na nangangailangan ng agarang emergency na pangangalaga, at mga mapagkukunan para sa krisis sa kalusugang pangkaisipan."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+<EvidenceBadge level="B" />
+
+Sa pangkalahatan, may napakahusay na profile ng kaligtasan ang HRT, ngunit mahalaga sa bawat taong gumagamit ng hormone therapy na makilala ang mga bihirang ngunit malubhang komplikasyon. Ang sumusunod na datos ay batay sa klinikal na obserbasyon at pagsusuring pharmacological.
+
+<img src="/images/diagrams/fil/emergency-signs.webp" alt="Tatlong palatandaan ng emergency na nangangailangan ng agarang medikal na pangangalaga: pananakit sa dibdib, namamagang binti, mga problema sa paningin" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Ang mga risk profile sa ibaba ay hinango mula sa mga patnubay ng Endocrine Society 2017<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> at WPATH SOC 8<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## 7.1 Mga Kilalang Panganib ng HRT
+
+<div class="risk-grid">
+  <div class="risk-item">
+  <RiskCard
+    title="Deep Vein Thrombosis (DVT)"
+    category="Panganib na Emergency"
+    severity="red"
+    drug="Oral estradiol (E2)"
+    probability="< 0.5% (taun-taon)"
+    signs="Pamumula, pamamaga, init, at matinding sakit sa isang binti lamang."
+  >
+  <p class="risk-citation">Ang panganib ng VTE mula sa oral estradiol ay makabuluhang mas mataas kaysa sa mga transdermal na ruta<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Ang taunang insidente ay humigit-kumulang 0.2-0.5%; ang paninigarilyo at edad ay lalo pang nagpapataas ng panganib.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Pinsala sa Atay"
+    category="Panganib sa Atay"
+    severity="red"
+    drug="CPA / oral na gamot"
+    probability="Bihira (subaybayan ang LFTs)"
+    signs="Paninilaw ng mata/balat, maitim na ihi, sobrang pagkapagod."
+  >
+  <p class="risk-citation">Parehong may mga case report ng hepatotoxicity ang CPA at bicalutamide. Naglabas ang EMA ng babala tungkol sa panganib ng pinsala sa atay dulot ng CPA<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Mga Komplikasyon sa Puso at Daluyan ng Dugo"
+    category="Panganib sa Puso"
+    severity="orange"
+    drug="Lahat ng E2 formulation"
+    probability="Mas mataas sa edad / paninigarilyo"
+    signs="Palpitasyon, hindi maipaliwanag na pananakit sa dibdib."
+  >
+  <p class="risk-citation">Ang oral na ruta ay may mas mataas na panganib sa puso at daluyan ng dugo kaysa sa transdermal dahil sa hepatic first-pass effect sa mga coagulation factor<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Meningioma"
+    category="Panganib sa Nerbiyo"
+    severity="red"
+    drug="High-dose CPA"
+    probability="Pinagsama-samang dosis > 10g"
+    signs="Pagbabago sa paningin, pagkawala ng pandinig, hindi pangkaraniwang pananakit ng ulo."
+  >
+  <p class="risk-citation">Araw-araw na dosis ng CPA na ≥25 mg: panganib ng meningioma OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />. Nililimitahan ng EMA ang mga dosis na ≥25 mg/day<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Pagbabago ng Mood at Depresyon"
+    category="Panganib sa Isip"
+    severity="yellow"
+    drug="CPA / mababang antas ng E2"
+    probability="Karaniwan (5-15%)"
+    signs="Pag-iisip ng pagpapakamatay, hindi maipaliwanag na pag-iyak, pagkawala ng motibasyon."
+  >
+  <p class="risk-citation">Ang progestogenic na aktibidad ng CPA ay maaaring magdulot ng pagbabago ng mood at depresyon, na may insidente na humigit-kumulang 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Pagtaas ng Prolactin"
+    category="Panganib sa Endocrine"
+    severity="yellow"
+    drug="Estradiol / CPA"
+    probability="Nangangailangan ng pana-panahong pagsubaybay"
+    signs="Paglabas ng likido sa utong, paulit-ulit na matinding pananakit ng ulo."
+  >
+  <p class="risk-citation">Parehong maaaring magpataas ng prolactin ang estradiol at CPA. Ang PRL >50 ng/mL ay nangangailangan ng workup para sa pituitary prolactinoma<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />.</p>
+  </RiskCard>
+  </div>
+</div>
+
+## 7.2 Mga Sintomas na Nangangailangan ng Agarang Medikal na Atensiyon
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="Mga sintomas na nangangailangan ng agarang medikal na atensiyon">
+
+**Itigil ang HRT at pumunta sa pinakamalapit na emergency department kung makaranas ka ng alinman sa sumusunod:**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Pamamaga o pananakit sa isang binti lamang</strong> — maaaring tanda ng deep vein thrombosis (DVT)
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Biglaang pananakit sa dibdib o pag-ubo ng dugo</strong> — maaaring tanda ng pulmonary embolism
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Panghihina sa isang bahagi ng katawan o pagbagsak ng mukha</strong> — posibleng tanda ng babala ng stroke
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Paninilaw ng balat o ng puti ng mata</strong> — akutong pinsala sa atay
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Biglaang matinding pananakit ng ulo na may pagkawala ng paningin</strong> — posibleng tumaas na presyon sa loob ng bungo
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 Suporta sa Krisis at mga Hotline
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="Mga hotline sa krisis">
+
+### Kailangan ng tulong?
+
+Kung nakararanas ka ng matinding pagkabalisa sa isip o pag-iisip na saktan ang sarili, mangyaring makipag-ugnayan agad sa isa sa mga serbisyong pansuporta na ito. Hindi ka nag-iisa.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Trans Lifeline</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:+18775658860" style="color: var(--color-primary); text-decoration: none;">877-565-8860</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — para sa at pinapatakbo ng mga trans na tao</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">988 Suicide & Crisis</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:988" style="color: var(--color-primary); text-decoration: none;">988</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — tumawag o mag-text 24/7</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Emergency</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:911" style="color: var(--color-danger); text-decoration: none;">911</a> / <a href="tel:112" style="color: var(--color-danger); text-decoration: none;">112</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US: 911 · EU: 112 · UK: 999</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**Mga internasyonal na mapagkukunan:**
+- **UK**: Samaritans — 116 123 (libre, 24/7)
+- **Canada**: Trans Lifeline — 877-330-6366
+- **Australia**: Lifeline — 13 11 14
+- **Internasyonal**: [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<WarningBox title="Kapag ligtas ka na, mga susunod na hakbang">
+- [Tagasuri ng Resulta ng Blood Test](/fil/blood-tests/#tool) — Tingnan kung nasa ligtas na saklaw ang iyong mga antas
+- [Daan ng HRT](/fil/pathway/) — Bumalik sa iyong kasalukuyang yugto
+- [Gabay sa HRT sa China](/fil/china-reality/) — Maghanap ng mga friendly na doktor at mapagkukunan
+- [Mga Gamot](/fil/medications/estrogens/overview/) — Suriing muli ang iyong plano sa gamot
+</WarningBox>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .risk-grid > .risk-item + .risk-item {
+    margin-top: 0;
+  }
+
+  .risk-item > .risk-card {
+    flex: 1;
+  }
+
+  .risk-citation {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid rgba(200, 75, 124, 0.2);
+  }
+`}</style>

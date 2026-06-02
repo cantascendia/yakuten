@@ -1,0 +1,225 @@
+---
+title: "Vía clínica de la THS"
+description: "Vía completa de la THS, desde los análisis basales hasta el mantenimiento, con objetivos por etapa, puntos de decisión y calendarios de monitoreo."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Esta vía se basa en las WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> y en la Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, y ofrece un marco estandarizado para iniciar y mantener la THS transfeminina.
+</p>
+
+<img src="/images/diagrams/es/pathway-timeline.webp" alt="Cronología de la vía de la THS: Basal → Dosis baja (1-6 meses) → Titulación (6-12 meses) → Mantenimiento (12 meses+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">SEMANA 0</div>
+  <PhaseBlock phase={0} title="Evaluación basal" color="green">
+    <p class="phase-block__desc">
+      Antes de iniciar cualquier medicamento, realiza un panel basal completo para descartar contraindicaciones y establecer tus valores de referencia personales.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Hormonas sexuales (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Función hepática y renal, perfil lipídico
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Panel de coagulación y dímero D
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Glucosa en ayunas + hemograma completo
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">INICIO · 1-6 MESES</div>
+  <PhaseBlock phase={1} title="Inicio con dosis baja" color="green" week="1-6 MESES">
+    <DoseTable
+      headers={['Vía', 'Dosis inicial', 'Fuente']}
+      rows={[
+        ['Estradiol oral', '2.0 mg / día', '[2]'],
+        ['Parche transdérmico', '50-100 µg / 24h', '[2]'],
+        ['Gel tópico', '1.5 mg / día', '[2]'],
+        ['Valerato de estradiol IM', '1-2 mg / semana', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Antiandrógeno (si se requiere): CPA 5-12.5 mg/día o espironolactona 50-100 mg/día. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 objetivo</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Tendencia objetivo de T</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; En descenso
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Advertencia de seguridad: tu cuerpo necesita tiempo para adaptarse a los cambios en los receptores. Nunca aumentes la dosis sin análisis de sangre. No la subas aunque sientas que "no pasa nada". Los primeros brotes mamarios suelen aparecer entre los 3 y 6 meses.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="DECISIÓN" timepoint="MES 3">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL y T en descenso → Mantén el régimen actual hasta los 6 meses"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Considera escalar a la dosis de la Fase 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Pruebas hepáticas alteradas / PRL >30 / deterioro grave del ánimo → Suspende y busca atención médica"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TITULACIÓN · 6-12 MESES</div>
+  <PhaseBlock phase={2} title="Titulación de la dosis" color="yellow" week="6-12 MESES">
+    <p class="phase-block__desc">
+      Ajusta según los resultados de los análisis del mes 3. El objetivo es alcanzar el rango fisiológico estándar para personas transfemininas.
+    </p>
+    <DoseTable
+      headers={['Vía', 'Dosis ajustada']}
+      rows={[
+        ['Parche transdérmico', '100-200 µg / día'],
+        ['Estradiol oral', '4 mg / día'],
+        ['Gel tópico', '3 mg / día'],
+        ['Valerato de estradiol IM', '2-4 mg / semana'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 objetivo</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">T objetivo</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesterona (opcional)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Considérala según el desarrollo mamario (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">EV IM 2-4 mg/semana</span>
+      <span class="dose-tag dose-tag--yellow">Gel tópico 3.0-4.5 mg/día</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="ESTABILIDAD" timepoint="MES 6">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL y T <50 ng/dL → Pasa a la fase de mantenimiento"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 pero E2 en el objetivo → Ajusta el antiandrógeno (no aumentes el E2 para suprimir la T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Continúa escalando dentro de límites seguros"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">ESTADO ESTABLE · 12 MESES+</div>
+  <PhaseBlock phase={3} title="Mantenimiento a largo plazo" color="pink" week="12 MESES+">
+    <p class="phase-block__desc">
+      Una vez que los niveles y los cambios físicos se estabilicen, pasa a un monitoreo de baja frecuencia. Mantén la dosis mínima eficaz para conservar el E2 en 100-200 pg/mL y la T en &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Frecuencia de monitoreo</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Meses</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Panel hormonal completo y factores de riesgo de VTE (tromboembolia venosa) cada 6 meses. Lípidos y glucosa en ayunas una vez al año. Considera una densitometría ósea.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Un E2 &gt;200 pg/mL no produce más feminización: solo aumenta el riesgo (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">FIN DE LA FASE INICIAL</p>
+    <p class="pathway-end-sub">Monitoreo continuo</p>
+  </div>
+</div>
+
+</div>
+</div>

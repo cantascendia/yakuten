@@ -1,0 +1,136 @@
+---
+title: "Adesivos Transdérmicos de Estradiol"
+description: "Farmacologia completa, recomendações de posologia, dados de risco de TEV e dicas práticas de uso para os adesivos transdérmicos de estradiol."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Adesivo Transdérmico de Estradiol"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdérmica"
+  evidenceLevel="A"
+>
+  Os adesivos transdérmicos são reconhecidos de forma unânime pela evidência clínica como o método mais seguro de administração de estradiol. Como o estradiol é absorvido pela pele diretamente para a corrente sanguínea, ele contorna por completo o metabolismo hepático de primeira passagem, o que significa que seu perfil de risco de TEV (trombose, ou coágulo sanguíneo) é estatisticamente idêntico ao de quem não faz uso de estrogênio.
+</DrugInfoBox>
+
+## Farmacologia
+
+### Como contornar o metabolismo de primeira passagem
+
+Quando você ingere estradiol por via oral, ele chega ao trato gastrointestinal e segue diretamente para o fígado (metabolismo de primeira passagem). Esse processo:
+- Obriga o fígado a aumentar a síntese de fatores de coagulação, elevando o risco de TEV.
+- Destrói ~95% do fármaco, fazendo a biodisponibilidade despencar.
+- Altera o metabolismo de lipídios/colesterol.
+
+Os adesivos liberam o estradiol através da pele direto para a circulação sistêmica, **contornando completamente o metabolismo hepático de primeira passagem**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Isso significa:
+- Impacto desprezível sobre os fatores de coagulação hepáticos.
+- Biodisponibilidade altamente estável e superior.
+- Suavidade sobre o fígado e o perfil lipídico.
+
+### Dados de risco de TEV (trombose)
+
+Os adesivos transdérmicos apresentam o menor risco de TEV entre todos os métodos de administração de estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Via', 'Risco Relativo (RR)', 'IC 95%']}
+  rows={[
+    ['Adesivo Transdérmico', '0.97', '0.79 - 1.19'],
+    ['Estradiol Oral', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Um **RR ≈ 0.97** significa, na prática, que o uso de adesivos transdérmicos não acarreta aumento estatisticamente significativo do risco de TEV em comparação com pessoas que não fazem terapia hormonal com estrogênio<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Isso consolida o adesivo como a primeira escolha obrigatória para qualquer pessoa com fatores de risco pré-existentes para trombose.
+
+### Perfil de concentração sanguínea
+
+- Atinge concentrações sanguíneas de estado de equilíbrio aproximadamente 12-24 horas após a aplicação.
+- Mantém níveis de E2 extremamente planos e estáveis durante toda a vida útil do adesivo.
+- Evita por completo a montanha-russa agressiva de picos e vales associada às vias oral, sublingual ou injetável.
+
+## Recomendações de posologia
+
+Estas faixas de dose estão alinhadas às Diretrizes da Endocrine Society 2017 (Sociedade de Endocrinologia)<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> e à WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Etapa', 'Dose', 'E2-alvo (pg/mL)', 'Período']}
+  rows={[
+    ['Início em dose baixa', '50-100 µg/day', '50-100', 'Meses 1-6'],
+    ['Titulação moderada', '100-200 µg/day', '100-200', 'Meses 6-12'],
+    ['Fase de manutenção', '100-200 µg/day', '100-200', 'A partir de 12 meses'],
+    ['Monoterapia (sem bloqueadores)', '200-400 µg/day', '200-300', 'Apenas se dispensar bloqueadores de T'],
+  ]}
+/>
+
+<WarningBox title="O máximo habitual">
+A dose máxima padrão é de **400 µg/day**, historicamente utilizada apenas em tentativas de monoterapia (suprimir a T sem antiandrógenos). A grande maioria das usuárias atinge sua faixa clínica-alvo de E2 (100-200 pg/mL) com 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Empurrar o E2 acima de 200 pg/mL não vai te feminizar mais rápido; só amplifica os riscos à saúde.
+</WarningBox>
+
+## Como usar
+
+### Locais de aplicação
+
+- **Recomendado:** Baixo ventre, parte superior das nádegas, face externa das coxas.
+- **Evite:** A região das mamas (a concentração localizada e prolongada de E2 é um risco grave de câncer de mama), articulações ou áreas onde cós apertados atritam.
+- **Faça rodízio:** Nunca aplique um novo adesivo exatamente no mesmo ponto do anterior, para prevenir dermatite de contato.
+
+### Frequência de troca
+
+<WarningBox title="Controle o tempo de uso">
+A maioria dos adesivos é projetada para ser trocada **a cada 3,5 dias (duas vezes por semana)** ou **a cada 7 dias (uma vez por semana)**, dependendo da marca específica. Siga o cronograma do fabricante de forma rigorosa. Esquecer uma troca fará seu E2 despencar, desencadeando fogachos e oscilações de humor. Programe alarmes no celular.
+</WarningBox>
+
+### Dicas práticas
+
+- Aplique somente sobre pele limpa e completamente seca. Não cole os adesivos sobre loções, óleos ou pele úmida recém-depilada.
+- Pressione o adesivo com firmeza, usando a palma da mão, por 10 segundos completos para ativar o adesivo pelo calor.
+- Tomar banho e nadar normalmente não há problema, mas banhos de imersão longos e muito quentes podem soltar a cola e despejar o medicamento no organismo prematuramente.
+- Se um adesivo se descolar, tente colá-lo de volta; se não grudar, aplique um novo imediatamente.
+
+## Público-alvo
+
+Os adesivos transdérmicos são fortemente recomendados para<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **Todas as pessoas** (os adesivos são o padrão-ouro de segurança em qualquer cenário).
+- **Pessoas com fatores de risco para TEV** (IMC >30, idade >40, fumantes, histórico familiar de TEV) — aqui os adesivos são inegociáveis.
+- **Pessoas em uso de CPA** (acetato de ciproterona) — o CPA é intrinsecamente pró-coagulante; usar adesivos evita somar riscos de trombose.
+- **Pessoas com alterações hepáticas** — contornar o fígado reduz drasticamente a sobrecarga metabólica.
+
+## A realidade do fornecimento global
+
+Embora medicamente superiores, os adesivos enfrentam desafios logísticos globais:
+
+- **Custo:** Sem um bom plano de saúde ou sistema público de saúde, os adesivos saem do bolso muito mais caros do que os comprimidos orais.
+- **Desabastecimento:** As cadeias de fornecimento global de marcas como Estradot ou Climara entram em colapso com frequência, resultando em faltas regionais que duram meses no Reino Unido, na União Europeia e na Austrália.
+- Se os adesivos estiverem totalmente inacessíveis para você, a administração oral é uma alternativa viável — desde que você não tenha riscos pré-existentes de TEV.
+
+## Marcas comuns
+
+<DoseTable
+  headers={['Marca', 'Especificação', 'Ciclo de troca', 'Região']}
+  rows={[
+    ['Climara', 'Libera 50 / 100 µg/day', 'A cada 7 dias', 'EUA / UE / Global'],
+    ['Estradot', 'Libera 25-100 µg/day', 'A cada 3,5 dias', 'Reino Unido / UE / AUS'],
+    ['Vivelle-Dot', 'Libera 25-100 µg/day', 'A cada 3,5 dias', 'EUA'],
+    ['Estrana Tape', 'Libera 50 µg/day', 'A cada 2 dias', 'Japão (comum no DIY asiático)'],
+  ]}
+/>
+
+## Orientações de monitoramento
+
+- **Quando colher sangue:** 12-24 horas antes da próxima troca de adesivo (medindo o nível de vale)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Alvos:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

@@ -1,0 +1,184 @@
+---
+title: "Bikalutamid"
+description: "Transgender HRT'de bikalutamidin endikasyon dışı kullanımı — testosteronu baskılamadan AR blokajı mekanizması, hepatotoksisite ve pulmoner toksisite izlemi, CPA ile birlikte kullanıma kesin yasak ve transgender popülasyon çalışmalarından en güncel veriler."
+evidenceLevel: C
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamide"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  Bikalutamid, başlangıçta prostat kanseri tedavisi için geliştirilmiş, güçlü bir non-steroidal androjen reseptörü (AR) antagonistidir. Transgender HRT'de **son seçenek antiandrojen** olarak değerlendirilir — yalnızca CPA, spironolakton ve GnRH agonistlerinin hepsi mevcut olmadığında düşünülmelidir. WPATH SOC 8, rutin GAHT için bunu açıkça önermemektedir.
+</DrugInfoBox>
+
+<WarningBox title="Endikasyon Dışı Kullanım">
+Bikalutamidin transgender kadınların HRT'sinde kullanımı **endikasyon dışı kullanım** niteliğindedir<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- WPATH SOC 8, bikalutamidin nadir ancak potansiyel olarak ölümcül bir hepatotoksisite taşıdığını ve bunun izlemle tamamen önlenemeyeceğini açıkça belirtmektedir
+- Hiçbir ilaç prospektüsünde cinsiyet onaylayıcı hormon tedavisi onaylı bir endikasyon olarak yer almaz
+- Endocrine Society 2017 kılavuzları bikalutamidi ele almaz
+- Transgender popülasyonlara ilişkin mevcut veriler, küçük gözlemsel çalışmalardan elde edilmiştir (toplamda yaklaşık 170 vaka)
+</WarningBox>
+
+<DangerBox title="CPA ile Birlikte Kullanımı Kontrendikedir">
+Bikalutamid ve CPA (siproteron asetat) **asla aynı anda kullanılmamalıdır**.
+
+Her ikisi de hepatotoksik potansiyel taşır; birlikte kullanımları karaciğer hasarı riskini toplamalı olarak artırabilir. Bu kontrendikasyon, farmakolojik güvenlik ilkelerine dayanmaktadır — hiçbir çalışma birlikte kullanımın güvenliğini doğrudan değerlendirmemiştir; ancak her iki ilacın bireysel hepatotoksisite profili göz önüne alındığında, sorumlu hiçbir klinik uygulama bunların eşzamanlı kullanımına izin vermemelidir.
+
+**CPA'dan bikalutamide (veya tersi) geçilecekse, ilk ilaç tıbbi gözetim altında kesilmeli, en az 2–4 haftalık bir ara bırakılmalı ve ikinci ilaca başlamadan önce karaciğer fonksiyonunun normal olduğu doğrulanmalıdır.**
+</DangerBox>
+
+## Farmakoloji
+
+### Etki Mekanizması
+
+<img src="/images/diagrams/tr/bica-ar-mechanism.webp" alt="Bikalutamid mekanizması: AR'yi bloke eder ancak hipotalamusa olan negatif geri bildirim kaybolduğu için T yükselir" width="800" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Bikalutamid, klinik kullanımdaki bağlanma afinitesi en yüksek non-steroidal AR antagonistlerinden biridir:
+
+1. **Güçlü AR blokajı** (tek mekanizma): Androjen reseptörlerini kompetitif olarak bloke ederek testosteron (T) ve DHT'nin biyolojik etki göstermesini engeller
+2. **Testosteron düzeylerini düşürmez**: Geri bildirim mekanizmaları nedeniyle T düzeyleri aslında yükselebilir
+3. **GnRH–LH/FSH ekseni üzerinde etkisi yoktur**: Hipotalamus–hipofiz–gonad eksenini baskılamaz
+
+### Farmakokinetik
+
+- **Oral biyoyararlanım**: Yaklaşık %90
+- **Kararlı durum yarı ömrü**: 5–6 gün — yani atlanan tek bir dozun plazma konsantrasyonu üzerindeki etkisi minimaldir; yine de sık doz atlamaktan kaçınılmalıdır
+- **Doruk konsantrasyona ulaşma süresi**: Yaklaşık 31 saat
+- **Kararlı duruma ulaşma süresi**: Yaklaşık 4 hafta
+
+### Yükselen Testosteron Düzeyi Sorunu
+
+Bu, bikalutamid GAHT'de kullanıldığında ortaya çıkan kendine özgü bir olgudur<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+- Bikalutamid AR'yi bloke ettiğinde, hipotalamus artık androjen aracılı negatif geri bildirimi algılamaz
+- Hipofiz, LH salgısını artırarak telafi eder ve testisleri daha fazla testosteron üretmeye uyarır
+- Serum testosteron düzeyleri tedavi öncesi değerlerin 1,5–2× katına yükselebilir
+- T'nin biyolojik etkileri bloke edilmiş olsa da, yükselen T aromataz yoluyla östradiole dönüştürülebilir
+- Prostat kanseri hastalarında bu testosteron yükselişi bazen jinekomastiye yol açar
+
+**Transgender kullanıcılar açısından sonuçları**: AR bloke edilmiş olsa da, yüksek testosteron düzeyleri, ilaç kesildiğinde veya uyum düştüğünde maskülinizan etkilerin hızla geri dönebileceği anlamına gelir.
+
+## Doz Önerileri
+
+<DoseTable
+  headers={['Protokol', 'Doz', 'Notlar', 'Kaynak']}
+  rows={[
+    ['Başlangıç / Standart', '25 mg/day', 'Bugüne kadarki transgender çalışmalarının çoğunda kullanılan düşük doz', 'Angus 2024; Burgener 2025'],
+    ['Ayarlama Aralığı', '25–50 mg/day', 'Klinik yanıta göre titre edilir', 'Neyman 2019 (50 mg); Angus 2024 (25 mg)'],
+    ['Kesin Üst Sınır', '50 mg/day', 'Daha yüksek dozlar ek fayda sağlamaz ancak hepatotoksisite riskini artırır', 'FDA label (prostat kanseri kombinasyon tedavisi dozu)'],
+  ]}
+/>
+
+<WarningBox title="Etkinliği Değerlendirmek İçin Testosteron Düzeylerini Kullanmayın">
+Bikalutamid kullanılırken serum testosteronu tedavi yanıtının bir göstergesi olarak **kullanılamaz**. Testosteron düzeyleri normal kalabilir, hatta yükselebilir; AR etkili biçimde bloke edildiği sürece androjenik etkiler baskılanır<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. Etkinlik, tek başına testosteron değerlerine değil, klinik bulgulara (sebum üretiminde azalma, vücut kıllarının daha yavaş uzaması vb.) dayanarak değerlendirilmelidir.
+</WarningBox>
+
+## İstenmeyen Etkiler
+
+### Hepatotoksisite (En Önemli Risk)
+
+Hepatotoksisite, bikalutamidin GAHT'de kullanımını kısıtlayan başlıca nedendir<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**FDA prospektüs verileri (prostat kanseri klinik çalışmalarından)**:
+- Yaklaşık **%6**'sında geçici, asemptomatik ALT yükselmesi görülmüştür
+- Yaklaşık **%1**'i hepatit veya belirgin enzim yükselmesi nedeniyle tedaviyi bırakmıştır
+- Büyük 150 mg monoterapi çalışmasında (EPC, n=8.113): **%3,4** oranında anormal karaciğer fonksiyon testi (KCFT) (plaseboda %1,9'a karşı)
+- Pazarlama sonrası dönemde, 2'si ölümcül olmak üzere en az 10 ciddi karaciğer hasarı vaka raporu yayımlanmıştır
+
+**Transgender popülasyon verileri** (sınırlı ancak bilgilendirici):
+- Neyman 2019: 23 ergen, 50 mg/day, klinik açıdan anlamlı hepatotoksisite görülmedi<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} />
+- Fuqua 2024: 40 ergen izlemde, 50 mg/day, ciddi hepatik olay görülmedi<CitationRef id="fuqua-2024" num={3} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 24 yetişkin, 25 mg/day, 1 olguda hafif enzim yükselmesi (geri dönüşümlü)<CitationRef id="angus-2024" num={4} authors="Angus LM et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 1 vaka raporu, 50 mg/day, hepatotoksisite gelişti (ilaç kesilince geri döndü)<CitationRef id="wilde-2024" num={5} authors="Wilde B et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
+
+Bu veri setleri, nadir ancak ciddi karaciğer hasarını dışlamak için toplamda hâlâ fazla küçüktür (yaklaşık 170 vaka).
+
+<DangerBox title="Karaciğer Hasarı Belirtileri — Derhal Bırakın ve Tıbbi Yardım Alın">
+- Cildin veya göz aklarının sararması (sarılık)
+- Koyu renkli idrar (çay rengi)
+- Sağ üst karın bölgesinde sürekli ağrı veya rahatsızlık
+- Olağandışı yorgunluk, iştahsızlık, bulantı veya kusma
+- ALT/AST &gt; normalin üst sınırının 3× katı
+
+**Yukarıdaki belirtilerden herhangi biri ortaya çıkarsa, bikalutamidi derhal bırakın ve karaciğer fonksiyonunun tıbbi olarak değerlendirilmesi için başvurun.**
+</DangerBox>
+
+### Pulmoner Toksisite (İnterstisyel Akciğer Hastalığı)
+
+FDA prospektüsü, interstisyel pnömoni ve pulmoner fibrozis dahil olmak üzere interstisyel akciğer hastalığı (İAH) için pazarlama sonrası bir uyarı içerir; bunların bir kısmı ölümcül seyretmiştir.
+
+- **Genel insidans son derece düşüktür**: yaklaşık %0,01 (1/10.000), ilişkili ilaç nilutamidden (%0,77) çok daha düşük
+- **Japon farmakovijilans verileri**: Matsumoto 2020, Japonya Advers İlaç Olay Raporlama veritabanını (JADER) analiz etmiş ve bikalutamide bağlı İAH için bildirim olasılık oranını 9,2 (%95 GA 7,9–10,6) ve medyan başlangıç süresini 50 gün olarak bulmuştur<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto K et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="Asya Popülasyonlarında Pulmoner Toksisite Riskine İlişkin Not">
+Japon farmakovijilans veritabanları daha fazla sayıda bikalutamide bağlı İAH bildirimi göstermektedir; ancak bu, **Asyalı bireylerde genetik bir yatkınlığa işaret etmez** — Japonya'nın ilaca bağlı İAH için genel bildirim oranı diğer ülkelerden daha yüksektir (büyük olasılıkla bildirim kültürünü ve reçeteleme alışkanlıklarını yansıtmaktadır). Hiçbir prospektif çalışma riskte ırksal farklılıklar olduğunu göstermemiştir. Yine de kuru öksürük, nefes darlığı veya ateş gelişirse, derhal tıbbi yardıma başvurun ve tedaviyi yürüten hekimi bikalutamid kullandığınız konusunda bilgilendirin.
+</WarningBox>
+
+### Meme Ağrısı ve Jinekomasti
+
+- Bikalutamid prostat kanseri hastalarında yaygın olarak jinekomastiye neden olur
+- Transgender kullanıcılarda bu etki, istenen bir sonuç olarak değerlendirilebilir
+- Memede hassasiyet nispeten yaygındır
+
+### Diğer İstenmeyen Etkiler
+
+- Sıcak basması (GnRH agonistlerine kıyasla daha az sıklıkta)
+- Gastrointestinal rahatsızlık (bulantı, ishal)
+- Ciltte kuruluk
+
+## İzlem Gereksinimleri
+
+<DoseTable
+  headers={['Test', 'Sıklık', 'Hedef / Uyarı Eşiği', 'Eylem']}
+  rows={[
+    ['Karaciğer fonksiyonu (ALT/AST)', 'Başlangıç + ilk 6 ay boyunca aylık → ardından 3 ayda bir', 'ALT/AST ≤ normalin üst sınırı', '>3× ULN: derhal bırakın ve tıbbi değerlendirmeye başvurun'],
+    ['Bilirubin', 'Karaciğer fonksiyon testleriyle eş zamanlı', 'Normal aralık', 'Yükselme, karaciğer hasarının kötüleştiğini gösterir'],
+    ['Testosteron (T)', '3–6 ayda bir', 'Yalnızca referans amaçlı (T yüksek olabilir)', 'Tedavi etkinliğinin birincil göstergesi değildir'],
+    ['Östradiol (E2)', 'Testosteronla eş zamanlı', '100–200 pg/mL', 'Kombine rejimin etkinliğini değerlendirir'],
+  ]}
+/>
+
+<WarningBox title="Karaciğer Fonksiyon İzlemi Pazarlık Konusu Değildir">
+Kendinizi tamamen iyi hissetseniz bile, bikalutamid kullanımının **ilk 6 ayı boyunca aylık karaciğer fonksiyon testi** atlanamaz. Karaciğer hasarı asemptomatik olabilir ve yalnızca kan testiyle erken saptanabilir. Aylık karaciğer fonksiyon izlemini sürdüremeyecekseniz, bikalutamid kullanılmamalıdır.
+</WarningBox>
+
+## Uygun Kullanım Durumları
+
+Bikalutamidin GAHT'deki rolü oldukça sınırlıdır<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Yalnızca aşağıdaki koşulların tümü karşılandığında düşünülmelidir**:
+- CPA mevcut değil (yerel olarak pazarlanmıyor / intolerans / meningiom riski)
+- Spironolakton mevcut değil (böbrek yetmezliği / hiperkalemi riski / yetersiz etki)
+- GnRH agonistleri mevcut değil (maddi / erişim engelleri)
+- **Tıbbi gözetim ve düzenli izlem sağlanmış durumda**
+
+**Kontrendikasyonlar**:
+- Önceden var olan karaciğer hastalığı veya anormal karaciğer fonksiyonu
+- Hâlihazırda CPA veya başka hepatotoksik ilaç kullanımı
+- Düzenli karaciğer fonksiyon kan testi yaptıramama
+
+## Erişilebilirlik
+
+- **Düzenleyici durum**: Bikalutamid Çin anakarasında onaylıdır (prostat kanseri tedavisi için)
+- **Erişim**: Üroloji veya onkoloji bölümleri aracılığıyla reçete edilebilir
+- **Markalar**: Casodex (orijinal) ve yerli jenerikler (ör. Langyi)
+- **Maliyet**: Orijinal ürün yaklaşık 200–400 CNY/ay; jenerikler yaklaşık 50–150 CNY/ay (50 mg tablet)
+- **Not**: Çoğu hekim, GAHT'deki uygulamasına aşina değildir; reçete almak, endikasyonun prostatla ilişkili durumlar çerçevesinde sunulmasını gerektirebilir
+
+<DrugBrandGallery drugId="bicalutamide" />

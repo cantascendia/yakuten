@@ -1,0 +1,81 @@
+---
+title: "Прежде чем начать: готовы ли вы?"
+description: "Необходимый чек-лист перед началом ЗГТ — исходные анализы крови, абсолютные и относительные противопоказания, требования к информированному согласию и реалистичные ожидания от вашего медицинского пути."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Это не препятствие на пути к лечению — это проверка безопасности. Начинать ЗГТ (гормональную заместительную терапию) без исходных анализов — всё равно что вести машину с завязанными глазами.
+
+Перечисленные ниже исходные анализы рекомендованы международными клиническими рекомендациями<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Исходные лабораторные анализы
+
+Перечисленные ниже анализы следует сдать до начала ЗГТ. Большинство из них можно назначить через вашего лечащего врача, клинику информированного согласия или такие службы, как Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Половые гормоны', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Функция печени', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Функция почек', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Общий анализ крови', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Коагулограмма', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Метаболическая панель', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Пролактин', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (зависит от страховки и места проживания)"
+/>
+
+<WarningBox title="Уже начали без анализов?">
+Если вы начали ЗГТ, не сдав исходные анализы, — ещё не поздно. Сдайте их как можно скорее.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Абсолютные противопоказания
+
+<ContraindicationBox type="absolute" title="Абсолютные противопоказания" sectionNum="">
+
+- Активное тромбоэмболическое заболевание (например, тромбоз глубоких вен (DVT), тромбоэмболия лёгочной артерии (PE))
+- Подтверждённое или подозреваемое гормонозависимое злокачественное новообразование (например, рак молочной железы, рак предстательной железы)
+- Тяжёлое нарушение функции печени или почек в острой фазе
+- Кровотечение из влагалища неясного происхождения (для трансмаскулинных людей)
+- Известная тяжёлая аллергия на компоненты препарата
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Относительные противопоказания
+
+<ContraindicationBox type="relative" title="Относительные противопоказания" sectionNum="">
+
+- Неконтролируемая артериальная гипертензия или сердечно-сосудистое заболевание
+- Плохо контролируемый сахарный диабет
+- Курение (особенно в возрасте 35+, существенно повышает риск ВТЭ (VTE — венозная тромбоэмболия))
+- Заболевания желчного пузыря в анамнезе
+- Мигрень с аурой (требует тщательной оценки рисков)
+- Тяжёлое ожирение (ИМТ &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Формирование реалистичных ожиданий
+
+<RealityCheck
+  items={[
+    { text: 'ЗГТ — это не волшебство. Изменения происходят на протяжении месяцев и лет — не ждите преображения за одну ночь.' },
+    { text: 'Некоторые изменения необратимы (например, рост груди, понижение голоса, рост клитора). Понимайте, на что вы соглашаетесь.' },
+    { text: 'ЗГТ может снизить или необратимо устранить фертильность. Рассмотрите возможность сохранения половых клеток (заморозка яйцеклеток/спермы) до начала терапии.' },
+    { text: 'Колебания настроения — нормальный побочный эффект. Убедитесь, что у вас есть устойчивая система поддержки.' },
+  ]}
+/>
+
+<WarningBox title="Что читать дальше">
+- [Маршрут ЗГТ](/ru/pathway/) — Полный путь от исходного состояния до долгосрочного поддержания
+- [Препараты](/ru/medications/estrogens/overview/) — Варианты препаратов, дозирование и риски
+- [Руководство по ЗГТ в Китае](/ru/china-reality/) — Как найти врача, получить препараты и сдать анализы крови
+- [Анализы крови](/ru/blood-tests/) — Что сдавать, куда идти и как читать результаты
+</WarningBox>

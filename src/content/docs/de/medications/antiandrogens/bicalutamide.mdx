@@ -1,0 +1,184 @@
+---
+title: "Bicalutamid"
+description: "Off-Label-Einsatz von Bicalutamid in der Trans-HRT — Mechanismus der AR-Blockade ohne Testosteronsuppression, Überwachung von Leber- und Lungentoxizität, ausdrückliches Verbot der gleichzeitigen Gabe mit CPA sowie die aktuellsten Daten aus Studien an Transgender-Populationen."
+evidenceLevel: C
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamide"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  Bicalutamid ist ein potenter nichtsteroidaler Androgenrezeptor-Antagonist (AR-Antagonist), der ursprünglich zur Behandlung des Prostatakarzinoms entwickelt wurde. In der Trans-HRT gilt es als **Antiandrogen der letzten Wahl** — in Betracht zu ziehen erst dann, wenn CPA, Spironolacton und GnRH-Agonisten allesamt nicht verfügbar sind. Die WPATH SOC 8 empfehlen es ausdrücklich nicht für die routinemäßige GAHT.
+</DrugInfoBox>
+
+<WarningBox title="Off-Label-Einsatz">
+Der Einsatz von Bicalutamid in der HRT von Transfrauen stellt einen **Off-Label-Gebrauch** dar<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Die WPATH SOC 8 weisen ausdrücklich darauf hin, dass Bicalutamid mit einer seltenen, aber potenziell tödlichen Lebertoxizität verbunden ist, die sich auch durch Überwachung nicht vollständig verhindern lässt
+- In keiner Fachinformation ist die geschlechtsangleichende Hormontherapie als zugelassene Indikation aufgeführt
+- Die Leitlinie der Endocrine Society 2017 erörtert Bicalutamid nicht
+- Die derzeitigen Daten aus Transgender-Populationen stammen aus kleinen Beobachtungsstudien (zusammengenommen etwa 170 Fälle)
+</WarningBox>
+
+<DangerBox title="Kontraindiziert in Kombination mit CPA">
+Bicalutamid und CPA (Cyproteronacetat) dürfen **niemals gleichzeitig** angewendet werden.
+
+Beide besitzen lebertoxisches Potenzial; eine kombinierte Anwendung kann zu einem additiven Risiko einer Leberschädigung führen. Diese Kontraindikation gründet sich auf pharmakologische Sicherheitsprinzipien — keine Studie hat die Sicherheit der gleichzeitigen Gabe direkt untersucht, doch angesichts der jeweiligen Lebertoxizitätsprofile beider Wirkstoffe sollte keine verantwortungsvolle klinische Praxis ihre gleichzeitige Anwendung zulassen.
+
+**Beim Wechsel von CPA auf Bicalutamid (oder umgekehrt) muss der erste Wirkstoff unter ärztlicher Aufsicht abgesetzt werden, mit einem Abstand von mindestens 2–4 Wochen und nach bestätigter normaler Leberfunktion, bevor der zweite Wirkstoff begonnen wird.**
+</DangerBox>
+
+## Pharmakologie
+
+### Wirkmechanismus
+
+<img src="/images/diagrams/de/bica-ar-mechanism.webp" alt="Wirkmechanismus von Bicalutamid: blockiert den AR, doch das T steigt durch den Wegfall der negativen Rückkopplung zum Hypothalamus" width="800" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Bicalutamid zählt zu den nichtsteroidalen AR-Antagonisten mit der höchsten Bindungsaffinität, die derzeit klinisch eingesetzt werden:
+
+1. **Potente AR-Blockade** (alleiniger Mechanismus): Blockiert kompetitiv die Androgenrezeptoren und verhindert so, dass Testosteron (T) und DHT ihre biologische Wirkung entfalten
+2. **Senkt den Testosteronspiegel nicht**: Aufgrund von Rückkopplungsmechanismen kann der T-Spiegel sogar ansteigen
+3. **Keine Wirkung auf die GnRH–LH/FSH-Achse**: Unterdrückt die Hypothalamus-Hypophysen-Gonaden-Achse nicht
+
+### Pharmakokinetik
+
+- **Orale Bioverfügbarkeit**: Etwa 90 %
+- **Halbwertszeit im Steady State**: 5–6 Tage — eine ausgelassene Dosis wirkt sich also nur geringfügig auf die Plasmakonzentration aus, häufiges Auslassen sollte dennoch vermieden werden
+- **Zeit bis zur Spitzenkonzentration**: Etwa 31 Stunden
+- **Zeit bis zum Steady State**: Etwa 4 Wochen
+
+### Das Problem des ansteigenden Testosteronspiegels
+
+Dies ist ein charakteristisches Phänomen beim Einsatz von Bicalutamid in der GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+- Sobald Bicalutamid den AR blockiert, registriert der Hypothalamus die androgenvermittelte negative Rückkopplung nicht mehr
+- Die Hypophyse gleicht dies durch eine vermehrte LH-Ausschüttung aus und stimuliert die Hoden zu einer höheren Testosteronproduktion
+- Der Serum-Testosteronspiegel kann auf das 1,5–2-Fache der Werte vor der Behandlung ansteigen
+- Zwar werden die biologischen Wirkungen von T blockiert, doch erhöhtes T kann über die Aromatase zu Estradiol umgewandelt werden
+- Bei Prostatakarzinom-Patienten führt dieser Testosteronanstieg mitunter zu einer Gynäkomastie
+
+**Bedeutung für Transgender-Anwenderinnen**: Obwohl der AR blockiert ist, bedeuten erhöhte Testosteronspiegel, dass beim Absetzen des Medikaments oder bei nachlassender Therapietreue maskulinisierende Effekte rasch wiederkehren können.
+
+## Dosierungsempfehlungen
+
+<DoseTable
+  headers={['Schema', 'Dosis', 'Hinweise', 'Quelle']}
+  rows={[
+    ['Beginn / Standard', '25 mg/day', 'In der Mehrzahl der bisherigen Transgender-Studien verwendete niedrige Dosis', 'Angus 2024; Burgener 2025'],
+    ['Anpassungsbereich', '25–50 mg/day', 'Titration anhand des klinischen Ansprechens', 'Neyman 2019 (50 mg); Angus 2024 (25 mg)'],
+    ['Absolutes Maximum', '50 mg/day', 'Höhere Dosen bringen keinen zusätzlichen Nutzen, erhöhen aber das Risiko einer Lebertoxizität', 'FDA label (prostate cancer combination therapy dose)'],
+  ]}
+/>
+
+<WarningBox title="Testosteronspiegel nicht zur Beurteilung der Wirksamkeit heranziehen">
+Bei der Anwendung von Bicalutamid **kann** das Serum-Testosteron nicht als Marker für das Behandlungsansprechen dienen. Die Testosteronspiegel können normal bleiben oder sogar ansteigen; solange der AR wirksam blockiert ist, werden die androgenen Effekte unterdrückt<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. Die Wirksamkeit sollte anhand klinischer Zeichen (verminderte Talgproduktion, langsameres Körperhaarwachstum usw.) und nicht allein anhand der Testosteronwerte beurteilt werden.
+</WarningBox>
+
+## Unerwünschte Wirkungen
+
+### Lebertoxizität (wichtigstes Risiko)
+
+Die Lebertoxizität ist der Hauptgrund, der den Einsatz von Bicalutamid in der GAHT einschränkt<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Daten der FDA-Fachinformation (aus klinischen Studien zum Prostatakarzinom)**:
+- Bei etwa **6 %** trat eine vorübergehende asymptomatische ALT-Erhöhung auf
+- Etwa **1 %** brachen die Behandlung wegen Hepatitis oder deutlicher Enzymerhöhung ab
+- Große 150-mg-Monotherapie-Studie (EPC, n=8.113): auffällige Leberwerte bei **3,4 %** (gegenüber 1,9 % unter Placebo)
+- Nach der Markteinführung wurden mindestens 10 Fallberichte über schwere Leberschäden veröffentlicht, darunter 2 Todesfälle
+
+**Daten aus Transgender-Populationen** (begrenzt, aber aufschlussreich):
+- Neyman 2019: 23 Jugendliche, 50 mg/day, keine klinisch relevante Lebertoxizität<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} />
+- Fuqua 2024: 40 Jugendliche in der Nachbeobachtung, 50 mg/day, keine schwerwiegenden hepatischen Ereignisse<CitationRef id="fuqua-2024" num={3} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 24 Erwachsene, 25 mg/day, 1 Fall einer leichten (reversiblen) Enzymerhöhung<CitationRef id="angus-2024" num={4} authors="Angus LM et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 1 Fallbericht, 50 mg/day, Auftreten einer Lebertoxizität (reversibel nach Absetzen)<CitationRef id="wilde-2024" num={5} authors="Wilde B et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
+
+Diese Datensätze bleiben zusammengenommen (etwa 170 Fälle) zu klein, um seltene, aber schwere Leberschäden auszuschließen.
+
+<DangerBox title="Anzeichen einer Leberschädigung — sofort absetzen und ärztliche Hilfe aufsuchen">
+- Gelbfärbung der Haut oder der Augäpfel (Gelbsucht)
+- Dunkler Urin (teefarben)
+- Anhaltende Schmerzen oder Beschwerden im rechten Oberbauch
+- Ungewöhnliche Müdigkeit, Appetitlosigkeit, Übelkeit oder Erbrechen
+- ALT/AST &gt; 3× über dem oberen Normwert
+
+**Treten eines oder mehrere der genannten Symptome auf, ist Bicalutamid sofort abzusetzen und eine ärztliche Untersuchung der Leberfunktion zu veranlassen.**
+</DangerBox>
+
+### Lungentoxizität (interstitielle Lungenerkrankung)
+
+Die FDA-Fachinformation enthält eine Warnung aus der Phase nach der Markteinführung vor interstitiellen Lungenerkrankungen (ILD), einschließlich interstitieller Pneumonitis und Lungenfibrose, von denen einige tödlich verliefen.
+
+- **Die Gesamtinzidenz ist äußerst gering**: etwa 0,01 % (1/10.000), weit niedriger als beim verwandten Wirkstoff Nilutamid (0,77 %)
+- **Japanische Pharmakovigilanzdaten**: Matsumoto 2020 analysierte die japanische Datenbank für Berichte über unerwünschte Arzneimittelereignisse (JADER) und ermittelte für die Bicalutamid-assoziierte ILD ein Reporting Odds Ratio von 9,2 (95 % KI 7,9–10,6) bei einer medianen Latenzzeit von 50 Tagen<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto K et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="Hinweis zum Lungentoxizitätsrisiko in asiatischen Populationen">
+Japanische Pharmakovigilanzdatenbanken weisen eine höhere Zahl an Berichten über Bicalutamid-assoziierte ILD aus, doch dies **deutet nicht auf eine genetische Prädisposition asiatischer Personen hin** — Japans allgemeine Meldequote für arzneimittelinduzierte ILD liegt höher als in anderen Ländern (vermutlich Ausdruck der Meldekultur und der Verordnungsmuster). Keine prospektive Studie hat ethnische Unterschiede im Risiko nachgewiesen. Treten dennoch trockener Husten, Atemnot oder Fieber auf, sollte umgehend ärztliche Hilfe aufgesucht und die behandelnde Ärztin bzw. der behandelnde Arzt über die Einnahme von Bicalutamid informiert werden.
+</WarningBox>
+
+### Brustschmerzen und Gynäkomastie
+
+- Bicalutamid verursacht bei Prostatakarzinom-Patienten häufig eine Gynäkomastie
+- Bei Transgender-Anwenderinnen kann dieser Effekt als erwünschtes Ergebnis gelten
+- Spannungsgefühle in der Brust sind relativ häufig
+
+### Weitere unerwünschte Wirkungen
+
+- Hitzewallungen (seltener als unter GnRH-Agonisten)
+- Magen-Darm-Beschwerden (Übelkeit, Durchfall)
+- Trockene Haut
+
+## Überwachungsanforderungen
+
+<DoseTable
+  headers={['Untersuchung', 'Häufigkeit', 'Zielwert / Warnschwelle', 'Maßnahme']}
+  rows={[
+    ['Leberfunktion (ALT/AST)', 'Ausgangswert + in den ersten 6 Monaten monatlich → danach alle 3 Monate', 'ALT/AST ≤ oberer Normwert', '>3× ULN: sofort absetzen und ärztliche Untersuchung veranlassen'],
+    ['Bilirubin', 'Gleichzeitig mit den Leberfunktionstests', 'Normbereich', 'Eine Erhöhung weist auf eine sich verschlechternde Leberschädigung hin'],
+    ['Testosteron (T)', 'Alle 3–6 Monate', 'Nur als Referenz (T kann erhöht sein)', 'Kein primärer Marker für die Behandlungswirksamkeit'],
+    ['Estradiol (E2)', 'Gleichzeitig mit dem Testosteron', '100–200 pg/mL', 'Beurteilung der Wirksamkeit des Kombinationsschemas'],
+  ]}
+/>
+
+<WarningBox title="Die Überwachung der Leberfunktion ist unverzichtbar">
+Selbst wenn Sie sich völlig wohlfühlen, darf in den **ersten 6 Monaten** der Bicalutamid-Anwendung **die monatliche Kontrolle der Leberfunktion** nicht ausgelassen werden. Eine Leberschädigung kann asymptomatisch verlaufen und sich nur durch Blutuntersuchungen frühzeitig erkennen lassen. Wenn Sie eine monatliche Überwachung der Leberfunktion nicht gewährleisten können, sollte Bicalutamid nicht angewendet werden.
+</WarningBox>
+
+## Geeignete Anwendungsfälle
+
+Bicalutamid spielt in der GAHT eine nur sehr begrenzte Rolle<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Nur in Betracht ziehen, wenn alle folgenden Bedingungen erfüllt sind**:
+- CPA ist nicht verfügbar (lokal nicht im Handel / Unverträglichkeit / Meningeom-Risiko)
+- Spironolacton ist nicht verfügbar (Niereninsuffizienz / Hyperkaliämie-Risiko / unzureichende Wirkung)
+- GnRH-Agonisten sind nicht verfügbar (finanzielle Hürden / Zugangsbarrieren)
+- **Ärztliche Aufsicht und regelmäßige Überwachung sind gewährleistet**
+
+**Kontraindikationen**:
+- Vorbestehende Lebererkrankung oder gestörte Leberfunktion
+- Aktuelle Anwendung von CPA oder anderen lebertoxischen Medikamenten
+- Keine Möglichkeit, regelmäßige Blutuntersuchungen der Leberfunktion durchzuführen
+
+## Verfügbarkeit
+
+- **Regulatorischer Status**: Bicalutamid ist in Festlandchina zugelassen (zur Behandlung des Prostatakarzinoms)
+- **Zugang**: Kann über urologische oder onkologische Abteilungen verordnet werden
+- **Marken**: Casodex (Originalpräparat) und inländische Generika (z. B. Langyi)
+- **Kosten**: Originalpräparat etwa CNY 200–400/Monat; Generika etwa CNY 50–150/Monat (50-mg-Tabletten)
+- **Hinweis**: Die meisten Ärztinnen und Ärzte sind mit der Anwendung in der GAHT nicht vertraut; um eine Verordnung zu erhalten, muss die Indikation unter Umständen auf prostatabezogene Erkrankungen bezogen formuliert werden
+
+<DrugBrandGallery drugId="bicalutamide" />

@@ -1,0 +1,34 @@
+---
+title: "Pembanding Obat"
+description: "Bandingkan parameter utama berbagai obat HRT secara berdampingan. Alat berbasis frontend murni — tidak ada data yang dikirimkan."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## Perbandingan Obat
+
+Pilih 2-3 obat untuk membandingkan parameter utamanya dengan cepat.
+
+**Alat ini membantu Anda memahami:**
+
+- Perbedaan risiko VTE (tromboemboli vena) antara berbagai rute pemberian estrogen (oral vs transdermal vs injeksi)
+- Persyaratan pemantauan dan kontraindikasi anti-androgen
+- Tingkat bukti dan rentang dosis untuk setiap obat
+
+<DrugComparator client:visible />
+
+## Cara Menafsirkan Hasil
+
+- **Risiko VTE (RR)**: Nilai risiko relatif. RR=1.0 adalah nilai dasar; >1.5 menunjukkan peningkatan yang bermakna
+- **Tingkat Bukti**: A = RCT/Meta-analisis, B = RCT tunggal/Studi kohort, C = Laporan kasus/Pendapat ahli
+- **Pemantauan**: Pemeriksaan laboratorium yang diperlukan selama penggunaan obat
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Hanya sebagai Referensi</div>
+
+Alat ini bukan merupakan saran medis. Pemilihan obat harus mempertimbangkan riwayat medis pribadi, faktor risiko, ketersediaan, dan biaya. **Mohon ambil keputusan di bawah bimbingan tenaga kesehatan profesional.**
+</div>

@@ -1,0 +1,184 @@
+---
+title: "Bicalutamida"
+description: "Uso off-label da bicalutamida na HRT transgênero — mecanismo de bloqueio do receptor de androgênio (AR) sem supressão da testosterona, monitoramento de hepatotoxicidade e toxicidade pulmonar, proibição explícita de associação com CPA e os dados mais recentes de estudos em populações transgênero."
+evidenceLevel: C
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamida"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  A bicalutamida é um potente antagonista não esteroidal do receptor de androgênio (AR), originalmente desenvolvido para o tratamento do câncer de próstata. Na HRT transgênero, é considerada um **antiandrogênio de último recurso** — a ser cogitado apenas quando CPA, espironolactona e agonistas de GnRH estiverem todos indisponíveis. O WPATH SOC 8 explicitamente não a recomenda para a GAHT (terapia hormonal de afirmação de gênero) de rotina.
+</DrugInfoBox>
+
+<WarningBox title="Uso Off-Label">
+O uso da bicalutamida na HRT de mulheres transgênero constitui **uso off-label**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- O WPATH SOC 8 observa explicitamente que a bicalutamida acarreta hepatotoxicidade rara, porém potencialmente fatal, que não pode ser totalmente prevenida por meio de monitoramento
+- Nenhuma bula lista a terapia hormonal de afirmação de gênero como indicação aprovada
+- As diretrizes da Endocrine Society de 2017 (ES 2017) não abordam a bicalutamida
+- Os dados atuais em populações transgênero provêm de pequenos estudos observacionais (cerca de 170 casos no total)
+</WarningBox>
+
+<DangerBox title="Contraindicado em Associação com CPA">
+A bicalutamida e o CPA (acetato de ciproterona) **nunca devem ser usados simultaneamente**.
+
+Ambos têm potencial hepatotóxico; o uso combinado pode resultar em risco aditivo de lesão hepática. Essa contraindicação fundamenta-se em princípios de segurança farmacológica — nenhum estudo avaliou diretamente a segurança da coadministração, mas, dados os perfis individuais de hepatotoxicidade de cada fármaco, nenhuma prática clínica responsável deveria permitir seu uso concomitante.
+
+**Ao trocar de CPA para bicalutamida (ou vice-versa), o primeiro fármaco deve ser suspenso sob supervisão médica, com um intervalo de pelo menos 2–4 semanas e função hepática comprovadamente normal antes de iniciar o segundo fármaco.**
+</DangerBox>
+
+## Farmacologia
+
+### Mecanismo de Ação
+
+<img src="/images/diagrams/en/bica-ar-mechanism.webp" alt="Mecanismo da bicalutamida: bloqueia o AR, mas a T se eleva devido à perda do feedback negativo sobre o hipotálamo" width="800" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+A bicalutamida está entre os antagonistas não esteroidais do AR com maior afinidade de ligação atualmente em uso clínico:
+
+1. **Bloqueio potente do AR** (mecanismo único): bloqueia competitivamente os receptores de androgênio, impedindo que a testosterona (T) e a DHT exerçam seus efeitos biológicos
+2. **Não reduz os níveis de testosterona**: devido aos mecanismos de feedback, os níveis de T podem, na verdade, aumentar
+3. **Sem efeito sobre o eixo GnRH–LH/FSH**: não suprime o eixo hipotálamo–hipófise–gonadal
+
+### Farmacocinética
+
+- **Biodisponibilidade oral**: aproximadamente 90%
+- **Meia-vida no estado de equilíbrio**: 5–6 dias — o que significa que esquecer uma dose tem impacto mínimo sobre a concentração plasmática, embora doses esquecidas frequentes ainda devam ser evitadas
+- **Tempo até a concentração máxima**: aproximadamente 31 horas
+- **Tempo até o estado de equilíbrio**: aproximadamente 4 semanas
+
+### O Problema da Elevação dos Níveis de Testosterona
+
+Este é um fenômeno característico do uso da bicalutamida na GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+- Uma vez que a bicalutamida bloqueia o AR, o hipotálamo deixa de perceber o feedback negativo mediado por androgênios
+- A hipófise compensa aumentando a secreção de LH, estimulando os testículos a produzir mais testosterona
+- Os níveis séricos de testosterona podem subir para 1,5–2× os valores pré-tratamento
+- Embora os efeitos biológicos da T estejam bloqueados, a T elevada pode ser convertida em estradiol pela aromatase
+- Em pacientes com câncer de próstata, essa elevação da testosterona às vezes leva à ginecomastia
+
+**Implicações para pessoas transgênero usuárias**: embora o AR esteja bloqueado, os níveis elevados de testosterona significam que, se o fármaco for interrompido ou a adesão diminuir, os efeitos masculinizantes podem retornar rapidamente.
+
+## Recomendações de Dose
+
+<DoseTable
+  headers={['Protocolo', 'Dose', 'Observações', 'Fonte']}
+  rows={[
+    ['Inicial / Padrão', '25 mg/day', 'Dose baixa utilizada na maioria dos estudos transgênero até o momento', 'Angus 2024; Burgener 2025'],
+    ['Faixa de Ajuste', '25–50 mg/day', 'Titulada com base na resposta clínica', 'Neyman 2019 (50 mg); Angus 2024 (25 mg)'],
+    ['Máximo Absoluto', '50 mg/day', 'Doses mais altas não trazem benefício adicional, mas aumentam o risco de hepatotoxicidade', 'Bula da FDA (dose da terapia combinada para câncer de próstata)'],
+  ]}
+/>
+
+<WarningBox title="Não Use os Níveis de Testosterona para Avaliar a Eficácia">
+Ao usar bicalutamida, a testosterona sérica **não pode** servir como marcador de resposta ao tratamento. Os níveis de testosterona podem permanecer normais ou até aumentar; desde que o AR esteja efetivamente bloqueado, os efeitos androgênicos ficam suprimidos<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. A eficácia deve ser avaliada por sinais clínicos (redução da produção de sebo, crescimento mais lento de pelos corporais etc.), e não apenas pelos valores de testosterona.
+</WarningBox>
+
+## Efeitos Adversos
+
+### Hepatotoxicidade (Risco Mais Importante)
+
+A hepatotoxicidade é a principal razão que limita o uso da bicalutamida na GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Dados da bula da FDA (de ensaios clínicos em câncer de próstata)**:
+- Aproximadamente **6%** apresentaram elevação transitória e assintomática da ALT
+- Aproximadamente **1%** interromperam por hepatite ou elevação significativa de enzimas
+- Grande ensaio de monoterapia com 150 mg (EPC, n=8.113): provas de função hepática (LFTs) anormais em **3,4%** (vs. 1,9% no placebo)
+- Pelo menos 10 relatos de caso de lesão hepática grave foram publicados após a comercialização, incluindo 2 óbitos
+
+**Dados em populações transgênero** (limitados, mas informativos):
+- Neyman 2019: 23 adolescentes, 50 mg/day, sem hepatotoxicidade clinicamente significativa<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} />
+- Fuqua 2024: 40 adolescentes em seguimento, 50 mg/day, sem eventos hepáticos graves<CitationRef id="fuqua-2024" num={3} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 24 adultos, 25 mg/day, 1 caso de elevação leve de enzimas (reversível)<CitationRef id="angus-2024" num={4} authors="Angus LM et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 1 relato de caso, 50 mg/day, desenvolvimento de hepatotoxicidade (reversível após a suspensão)<CitationRef id="wilde-2024" num={5} authors="Wilde B et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
+
+No conjunto, esses dados permanecem pequenos demais (cerca de 170 casos) para descartar a possibilidade de lesão hepática rara, porém grave.
+
+<DangerBox title="Sintomas de Lesão Hepática — Suspenda Imediatamente e Procure Atendimento Médico">
+- Amarelamento da pele ou da parte branca dos olhos (icterícia)
+- Urina escura (cor de chá)
+- Dor ou desconforto persistente no quadrante superior direito do abdome
+- Cansaço incomum, perda de apetite, náusea ou vômitos
+- ALT/AST &gt; 3× o limite superior da normalidade
+
+**Se qualquer um dos sintomas acima surgir, suspenda a bicalutamida imediatamente e procure avaliação médica da função hepática.**
+</DangerBox>
+
+### Toxicidade Pulmonar (Doença Pulmonar Intersticial)
+
+A bula da FDA inclui um alerta pós-comercialização para doença pulmonar intersticial (ILD), incluindo pneumonite intersticial e fibrose pulmonar, algumas das quais foram fatais.
+
+- **A incidência geral é extremamente baixa**: aproximadamente 0,01% (1/10.000), muito inferior à do fármaco relacionado nilutamida (0,77%)
+- **Dados de farmacovigilância japoneses**: Matsumoto 2020 analisou o banco de dados japonês de notificações de eventos adversos a medicamentos (JADER) e encontrou uma razão de chances de notificação (reporting odds ratio) para ILD associada à bicalutamida de 9,2 (95% CI 7,9–10,6), com tempo mediano de início de 50 dias<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto K et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="Nota sobre o Risco de Toxicidade Pulmonar em Populações Asiáticas">
+Os bancos de dados de farmacovigilância japoneses mostram um número maior de notificações de ILD relacionada à bicalutamida, mas isso **não indica uma predisposição genética em pessoas asiáticas** — a taxa geral de notificação de ILD induzida por medicamentos no Japão é mais alta do que em outros países (provavelmente refletindo a cultura de notificação e os padrões de prescrição). Nenhum estudo prospectivo demonstrou diferenças raciais no risco. Ainda assim, se surgirem tosse seca, dispneia ou febre, procure atendimento médico prontamente e informe ao profissional responsável o uso de bicalutamida.
+</WarningBox>
+
+### Dor Mamária e Ginecomastia
+
+- A bicalutamida costuma causar ginecomastia em pacientes com câncer de próstata
+- Em pessoas transgênero usuárias, esse efeito pode ser considerado um resultado desejado
+- A sensibilidade mamária é relativamente comum
+
+### Outros Efeitos Adversos
+
+- Fogachos (menos frequentes do que com os agonistas de GnRH)
+- Desconforto gastrointestinal (náusea, diarreia)
+- Pele seca
+
+## Requisitos de Monitoramento
+
+<DoseTable
+  headers={['Exame', 'Frequência', 'Meta / Limiar de Alerta', 'Conduta']}
+  rows={[
+    ['Função hepática (ALT/AST)', 'Basal + mensal nos primeiros 6 meses → depois a cada 3 meses', 'ALT/AST ≤ limite superior da normalidade', '>3× o LSN: suspender imediatamente e procurar avaliação médica'],
+    ['Bilirrubina', 'Concomitante com as provas de função hepática', 'Faixa normal', 'A elevação indica agravamento da lesão hepática'],
+    ['Testosterona (T)', 'A cada 3–6 meses', 'Apenas para referência (a T pode estar elevada)', 'Não é um marcador primário de eficácia do tratamento'],
+    ['Estradiol (E2)', 'Concomitante com a testosterona', '100–200 pg/mL', 'Avaliar a eficácia do esquema combinado'],
+  ]}
+/>
+
+<WarningBox title="O Monitoramento da Função Hepática É Inegociável">
+Mesmo que você se sinta completamente bem, **o exame mensal de função hepática nos primeiros 6 meses** de uso de bicalutamida não pode ser omitido. A lesão hepática pode ser assintomática e só pode ser detectada precocemente por meio de exames de sangue. Se você não puder se comprometer com o monitoramento mensal da função hepática, a bicalutamida não deve ser usada.
+</WarningBox>
+
+## Situações de Uso Apropriado
+
+A bicalutamida tem um papel muito limitado na GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Considere apenas quando todas as seguintes condições forem atendidas**:
+- O CPA está indisponível (não comercializado localmente / intolerância / risco de meningioma)
+- A espironolactona está indisponível (insuficiência renal / risco de hipercalemia / efeito insuficiente)
+- Os agonistas de GnRH estão indisponíveis (barreiras financeiras / de acesso)
+- **Há supervisão médica e monitoramento regular**
+
+**Contraindicações**:
+- Doença hepática preexistente ou função hepática alterada
+- Uso atual de CPA ou de outros medicamentos hepatotóxicos
+- Impossibilidade de realizar exames de sangue regulares de função hepática
+
+## Disponibilidade
+
+- **Situação regulatória**: a bicalutamida é aprovada na China continental (para o tratamento do câncer de próstata)
+- **Acesso**: pode ser prescrita pelos serviços de urologia ou oncologia
+- **Marcas**: Casodex (medicamento de referência) e genéricos nacionais (por exemplo, Langyi)
+- **Custo**: referência aproximadamente CNY 200–400/mês; genéricos aproximadamente CNY 50–150/mês (comprimidos de 50 mg)
+- **Observação**: a maioria dos médicos não está familiarizada com sua aplicação na GAHT; obter uma prescrição pode exigir que a indicação seja enquadrada em torno de condições relacionadas à próstata
+
+<DrugBrandGallery drugId="bicalutamide" />

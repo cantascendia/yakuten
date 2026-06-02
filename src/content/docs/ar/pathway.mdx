@@ -1,0 +1,225 @@
+---
+title: "المسار السريري للعلاج الهرموني البديل (HRT)"
+description: "المسار الكامل للعلاج الهرموني البديل من الفحوص المخبرية الأساسية حتى مرحلة المداومة، شاملاً أهداف كل مرحلة، ونقاط القرار، وجداول المتابعة."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  يستند هذا المسار إلى معايير WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ودليل جمعية الغدد الصماء 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />، ويقدّم إطاراً موحّداً لبدء العلاج الهرموني البديل المؤنِّث (transfeminine) والاستمرار عليه.
+</p>
+
+<img src="/images/diagrams/ar/pathway-timeline.webp" alt="الخط الزمني لمسار العلاج الهرموني البديل: الفحص الأساسي ← الجرعة المنخفضة (1-6 أشهر) ← المعايرة (6-12 شهراً) ← المداومة (12 شهراً فأكثر)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">الأسبوع 0</div>
+  <PhaseBlock phase={0} title="التقييم الأساسي" color="green">
+    <p class="phase-block__desc">
+      قبل البدء بأي دواء، أكمِل لوحة فحوص أساسية كاملة لاستبعاد موانع الاستعمال وتثبيت قيمك المرجعية الشخصية.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        الهرمونات الجنسية (E2، T، SHBG، LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        وظائف الكبد والكلى، ولوحة الدهون
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        لوحة التخثّر و D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        سكر الدم الصائم + تعداد الدم الكامل (CBC)
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">البدء · 1-6 أشهر</div>
+  <PhaseBlock phase={1} title="البدء بجرعة منخفضة" color="green" week="1-6 أشهر">
+    <DoseTable
+      headers={['طريق الإعطاء', 'الجرعة الابتدائية', 'المصدر']}
+      rows={[
+        ['إستراديول فموي', '2.0 mg / day', '[2]'],
+        ['لصقة عبر الجلد', '50-100 µg / 24h', '[2]'],
+        ['جل موضعي', '1.5 mg / day', '[2]'],
+        ['إستراديول فاليرات عضلي (IM)', '1-2 mg / week', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      مضاد الأندروجين (عند الحاجة): CPA بجرعة 5-12.5 mg/day أو سبيرونولاكتون بجرعة 50-100 mg/day. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />؛ [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 المستهدَف</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">اتجاه T المستهدَف</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; منخفض
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        تحذير السلامة: يحتاج جسمك إلى وقت ليتكيّف مع التغيّرات في المستقبِلات. لا ترفع الجرعة أبداً دون فحص دم. لا تصعّد الجرعة حتى لو شعرت بأن "لا شيء يحدث". تظهر براعم الثدي عادةً خلال 3-6 أشهر.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="قرار" timepoint="الشهر 3">
+    <DecisionBranch
+      outcome="green"
+      text="E2 بين 30-100 pg/mL و T في انخفاض ← استمر على النظام الحالي حتى الشهر السادس"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 < 30 pg/mL ← فكّر في التصعيد إلى جرعات المرحلة 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="اضطراب في وظائف الكبد (LFTs) / PRL > 30 / تدهور حاد في المزاج ← أوقِف العلاج واطلب الرعاية الطبية"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">المعايرة · 6-12 شهراً</div>
+  <PhaseBlock phase={2} title="معايرة الجرعة" color="yellow" week="6-12 شهراً">
+    <p class="phase-block__desc">
+      اضبط الجرعة بناءً على نتائج فحوص الشهر الثالث. الهدف هو الوصول إلى النطاق الفسيولوجي المعتاد للأشخاص المؤنَّثين هرمونياً.
+    </p>
+    <DoseTable
+      headers={['طريق الإعطاء', 'الجرعة المعدَّلة']}
+      rows={[
+        ['لصقة عبر الجلد', '100-200 µg / day'],
+        ['إستراديول فموي', '4 mg / day'],
+        ['جل موضعي', '3 mg / day'],
+        ['إستراديول فاليرات عضلي (IM)', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 المستهدَف</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">T المستهدَف</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">البروجستيرون (اختياري)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          فكّر فيه بناءً على نمو الثدي (مرحلة تانر Tanner 3 فأعلى)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">جل موضعي 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="الاستقرار" timepoint="الشهر 6">
+    <DecisionBranch
+      outcome="green"
+      text="E2 بين 100-200 pg/mL و T < 50 ng/dL ← ادخل مرحلة المداومة"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T > 50 لكن E2 ضمن الهدف ← اضبط مضاد الأندروجين (لا ترفع E2 لكبح T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 < 100 pg/mL ← واصِل التصعيد ضمن الحدود الآمنة"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">الحالة المستقرة · 12 شهراً فأكثر</div>
+  <PhaseBlock phase={3} title="المداومة طويلة الأمد" color="pink" week="12 شهراً فأكثر">
+    <p class="phase-block__desc">
+      بمجرد استقرار المستويات والتغيّرات الجسدية، انتقِل إلى متابعة منخفضة التكرار. حافظ على أدنى جرعة فعّالة لإبقاء E2 بين 100-200 pg/mL و T &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">وتيرة المتابعة</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">أشهر</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          لوحة هرمونية كاملة وتقييم عوامل خطر الجلطات الوريدية (VTE) كل 6 أشهر. فحص سنوي للدهون وسكر الدم الصائم. فكّر في فحص كثافة العظام.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL لا يزيد من التأنيث — بل يزيد من المخاطر فقط (جمعية الغدد الصماء 2017، التوصية 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">نهاية المرحلة الابتدائية</p>
+    <p class="pathway-end-sub">المتابعة المستمرة</p>
+  </div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,81 @@
+---
+title: "Bevor du beginnst: Bist du bereit?"
+description: "Unverzichtbare Checkliste vor der HRT — Baseline-Blutwerte, absolute und relative Kontraindikationen, Voraussetzungen für die informierte Einwilligung und realistische Erwartungen an deinen medizinischen Weg."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Hier geht es nicht um Gatekeeping — es ist eine Sicherheitskontrolle. Eine HRT ohne Ausgangs-Laborwerte zu beginnen ist, als würde man mit verbundenen Augen Auto fahren.
+
+Die folgenden Baseline-Tests werden von internationalen Leitlinien empfohlen<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Ausgangs-Laborwerte
+
+Die folgenden Untersuchungen sollten vor Beginn der HRT abgeschlossen sein. Die meisten lassen sich über deine hausärztliche Praxis, eine Klinik nach dem Informed-Consent-Modell oder Dienste wie Planned Parenthood veranlassen:
+
+<BaselineChecklist
+  items={[
+    { name: 'Sexualhormone', nameEn: 'Östradiol, Testosteron, LH, FSH', tag: 'required' },
+    { name: 'Leberfunktion', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Nierenfunktion', nameEn: 'Kreatinin, Harnstoff (BUN), eGFR', tag: 'required' },
+    { name: 'Großes Blutbild', nameEn: 'Blutbild mit Differenzialblutbild', tag: 'required' },
+    { name: 'Gerinnungsstatus', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Stoffwechselwerte', nameEn: 'Nüchternblutzucker, Lipide', tag: 'recommended' },
+    { name: 'Prolaktin', nameEn: 'PRL-Ausgangswert', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (je nach Krankenversicherung & Standort)"
+/>
+
+<WarningBox title="Schon ohne Laborwerte begonnen?">
+Falls du die HRT begonnen hast, ohne vorher Ausgangs-Laborwerte zu erheben — es ist nicht zu spät. Lass sie so bald wie möglich nachholen.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Absolute Kontraindikationen
+
+<ContraindicationBox type="absolute" title="Absolute Kontraindikationen" sectionNum="">
+
+- Aktive thromboembolische Erkrankung (z. B. tiefe Beinvenenthrombose, Lungenembolie)
+- Bestätigte oder vermutete hormonsensitive Krebserkrankung (z. B. Brustkrebs, Prostatakrebs)
+- Schwere Leber- oder Nierenfunktionsstörung in der akuten Phase
+- Ungeklärte vaginale Blutung (bei transmaskulinen Personen)
+- Bekannte schwere Allergie gegen Bestandteile des Medikaments
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Relative Kontraindikationen
+
+<ContraindicationBox type="relative" title="Relative Kontraindikationen" sectionNum="">
+
+- Unkontrollierter Bluthochdruck oder Herz-Kreislauf-Erkrankung
+- Schlecht eingestellter Diabetes mellitus
+- Tabakkonsum (besonders ab 35 Jahren, erhöht das VTE-Risiko deutlich)
+- Gallenblasenerkrankung in der Vorgeschichte
+- Migräne mit Aura (erfordert eine sorgfältige Risikoabwägung)
+- Schwere Adipositas (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Realistische Erwartungen setzen
+
+<RealityCheck
+  items={[
+    { text: 'Eine HRT ist keine Zauberei. Veränderungen geschehen über Monate und Jahre — erwarte keine Verwandlung über Nacht.' },
+    { text: 'Manche Veränderungen sind irreversibel (z. B. Brustwachstum, Vertiefung der Stimme, Wachstum der Klitoris). Mach dir klar, worauf du dich einlässt.' },
+    { text: 'Eine HRT kann die Fruchtbarkeit verringern oder dauerhaft aufheben. Erwäge vor Beginn die Konservierung von Keimzellen (Einfrieren von Eizellen/Spermien).' },
+    { text: 'Stimmungsschwankungen sind eine normale Nebenwirkung. Sorge dafür, dass du ein stabiles Unterstützungsnetz hast.' },
+  ]}
+/>
+
+<WarningBox title="Was du als Nächstes lesen solltest">
+- [HRT-Behandlungspfad](/de/pathway/) — Kompletter Ablauf von der Baseline bis zur langfristigen Erhaltung
+- [Medikamente](/de/medications/estrogens/overview/) — Wirkstoffoptionen, Dosierung und Risiken
+- [HRT-Leitfaden für China](/de/china-reality/) — Wie man Ärztinnen und Ärzte findet, Medikamente bekommt und Blutuntersuchungen durchführt
+- [Blutuntersuchungen](/de/blood-tests/) — Was zu testen ist, wohin man geht, wie man die Ergebnisse liest
+</WarningBox>

@@ -1,0 +1,135 @@
+---
+title: "Oral Estradiol (Tabletler)"
+description: "Oral estradiolün eksiksiz farmakolojik profili, doz önerileri, VTE risk verileri ve tehlikeli kombinasyon uyarıları."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+  Oral estradiol (tablet yutmak) östrojenin küresel ölçekte en kolay erişilen formudur. VTE (kan pıhtısı) riski transdermal uygulamaya kıyasla biraz daha yüksek olsa da, önceden mevcut risk faktörü bulunmayan genç kullanıcılar için son derece kabul edilebilir ve standart bir seçenek olmaya devam etmektedir.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynova-studio.webp" alt="Progynova 2mg estradiol valerat tablet ürün fotoğrafı" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+
+## Farmakoloji
+
+### İlk Geçiş Metabolizması (Karaciğer)
+
+Oral estradiol yutulup gastrointestinal sistemden emildiğinde, genel kan dolaşımınıza ulaşmadan önce ilk olarak karaciğerden geçmek zorundadır. Buna "İlk Geçiş Metabolizması" denir<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />:
+
+- Karaciğere doğrudan ulaşan yoğun E2 konsantrasyonu, pıhtılaşma faktörlerinin sentezini uyarır; VTE riskini artıran da budur.
+- Ayrıca SHBG (Seks Hormonu Bağlayıcı Globulin) ve trigliserit düzeylerini etkiler.
+- Bu ilk geçiş etkisi ilacın büyük çoğunluğunu yok eder ve oral biyoyararlanımın yalnızca %3-5 olmasına yol açar.
+- Estradiol Valerat (Progynova) gibi formlar, karaciğer içinde basitçe saf estradiole ayrışır.
+
+### Doz Dönüşümleri
+
+Oral tabletlerin farklı formülasyonları, farklı miktarda gerçek estradiol bazı içerir<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />:
+
+> **2 mg Estradiol Valerat (örn. Progynova) ≈ 1.5 mg Estradiol (örn. Estrace)**
+
+Çevrim içi doz tartışmalarını okurken bu dönüşümü aklınızda tutun; çünkü Amerikan forumları çoğunlukla varsayılan olarak Estrace'i (saf Estradiol/Estradiol Hemihidrat) baz alırken, Avrupa ve Asya forumları sıklıkla Progynova'yı (Estradiol Valerat) baz alır.
+
+### VTE (Kan Pıhtısı) Risk Verileri
+
+<DoseTable
+  headers={['Uygulama Yolu', 'Bağıl Risk (RR)', '%95 GA', 'Not']}
+  rows={[
+    ['Oral Estradiol', '1.48', '1.27 - 1.72', 'VTE riski yaklaşık %48 artar'],
+    ['Transdermal Bant (Başlangıç)', '0.97', '0.79 - 1.19', 'Kullanmayanlarla istatistiksel fark yok'],
+  ]}
+/>
+
+Oral estradiol, ilaç kullanmayan popülasyona kıyasla VTE riskini yaklaşık %48 artırır (RR ≈ 1.48)<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. *Bağıl* risk yükselmiş olsa da, genç ve sağlıklı popülasyonlardaki *mutlak* başlangıç riski son derece düşüktür (yılda yaklaşık 10.000'de 1-2). Dolayısıyla oral uygulama, önceden mevcut risk faktörü bulunmayan genç bireyler için kabul edilebilir güvenlik sınırının rahatça içinde kalır.
+
+<DangerBox title="Ölümcül Kombinasyon: Oral Estradiol + Oral CPA">
+Oral estradiolü oral Siproteron Asetat (CPA) ile birlikte almak, **üst üste binen, çift bileşenli bir VTE riskini** garanti eder. CPA doğası gereği pro-koagülandır (pıhtılaşmayı artırır)<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />. Oral östrojenin ilk geçiş karaciğer etkileriyle birleştiğinde, kan pıhtılaşması tehdidi katlanır. Anti-androjen olarak CPA kullanmak zorundaysanız, kesinlikle transdermal bir östrojene (bant veya jel) geçmelisiniz. [Doz Sınırları ve Kontrendikasyonlar](/tr/dose-limits/) sayfamıza bakın.
+</DangerBox>
+
+## Doz Önerileri
+
+Aşağıdaki aralıklar, Endocrine Society 2017 Kılavuzu<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> ve WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> verilerini bir araya getirir:
+
+<DoseTable
+  headers={['Aşama', 'Doz (Estradiol Bazı)', 'Hedef E2 (pg/mL)', 'Zaman Çizelgesi']}
+  rows={[
+    ['Düşük Dozla Başlangıç', '2 mg/gün', '50-100', 'Ay 1-6'],
+    ['Orta Düzey Titrasyon', '4 mg/gün', '100-200', 'Ay 6-12'],
+    ['İdame Aşaması', '4-6 mg/gün', '100-200', '12 Ay sonrası'],
+    ['Maksimum Doz', '8 mg/gün', '200 değerini aşmamalı', 'Yalnızca özel durumlar'],
+  ]}
+/>
+
+<WarningBox title="Düşük Doz Aşamasını Atlamayın">
+Düşük doz size "hiçbir şey yapmıyormuş" gibi gelse bile, yavaş titrasyon yaklaşımının ilk 6 ayı, sağlıklı meme kanalı dallanmasının oluşması için son derece kritiktir. Ergenliği "hızlı geçmek" için 6 mg veya 8 mg ile başlamak, çoğu zaman erken meme tomurcuğu kapanmasına yol açarak nihai meme hacminizi kalıcı olarak kısıtlar<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. [Meme Gelişimi](/tr/breast-development/) detaylı incelememize bakın.
+</WarningBox>
+
+### Uygulama Yöntemleri
+
+- Bir rutin oluşturmak için tabletlerinizi her gün yaklaşık aynı saatte alın.
+- 4 mg/gün alıyorsanız, bunu bölmek (sabah 2 mg + akşam 2 mg) kandaki konsantrasyon dalgalanmalarını belirgin ölçüde yumuşatır.
+- Tabletleri yemeklerle birlikte almak emilime hafif bir katkı sağlar; ancak tutarlı bir program izlemek daha önemlidir.
+- Bir dozu kaçırırsanız, sadece bekleyin ve bir sonraki dozunuzu planlandığı gibi alın. Telafi için dozu ikiye katlamayın.
+
+## Hedef Kitle ve Kontrendikasyonlar
+
+Oral estradiol aşağıdaki profiller için uygundur<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />:
+
+**Güçlü Şekilde Önerildiği Durumlar:**
+- VTE/pıhtılaşma risk faktörü yok
+- Yaş < 40
+- BMI < 30
+- Sigara kullanmayan
+- Kişisel veya ailesel derin ven trombozu öyküsü yok
+- Kan pıhtılaşma bozukluğu yok
+
+**Oral Uygulamayı Kullanmayın (Transdermal'e Geçin):**
+- Yaş ≥ 40
+- BMI ≥ 30
+- Halen sigara kullanan veya yakın zamanda bırakmış olan
+- Kişisel veya güçlü ailesel VTE öyküsü
+- Bilinen pıhtılaşma faktörü anomalileri (örn. Faktör V Leiden)
+- HRT'yi halen CPA (Siproteron Asetat) ile birlikte kullanan
+- Auralı migren öyküsü
+
+## Küresel Erişim
+
+Tabletler, dünyanın büyük çoğunluğunda varsayılan standart olmaya devam etmektedir:
+
+- **ABD/Kanada**: Genellikle bilgilendirilmiş onam (informed consent) çerçeveleri kapsamında jenerik Estradiol (Estrace) olarak reçete edilir. Sigorta veya GoodRx ile son derece ucuzdur.
+- **Birleşik Krallık/AB/Avustralya**: Resmi yollarla (NHS, GIC'ler) veya özel sağlayıcılar aracılığıyla reçete edilir. Hem Progynova (Valerat) hem de Estrofem (Hemihidrat) standarttır.
+- **Küresel DIY Piyasası**: Tabletler, kolay gönderilebildikleri ve kırılmaları güç olduğu için merkezi olmayan piyasalarda yoğun şekilde dolaşımdadır. Kaynağı her zaman doğrulayın.
+
+## Takip Önerileri
+
+- **Kan ne zaman alınmalı**: Her zaman bir sonraki dozunuzu almadan **hemen önce** test yaptırın. Buna "çukur" (trough) düzeylerinin ölçülmesi denir<CitationRef id="ucsf-2016" num={7} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Başlangıç Aşaması**: 1. ayda Seks Hormonları + Karaciğer Paneli test edin. 3. ayda Hormonlar + Karaciğer + Lipid panellerini kontrol edin.
+- **İdame Aşaması**: Her 6 ayda bir test yaptırın.
+- **Klinik Hedef**: Çukur E2 değeri 100-200 pg/mL arasında, T < 50 ng/dL.
+- **Güvenlik Sınırı**: Çukur E2 değeriniz 200 pg/mL'yi aşıyorsa, tablet sayınızı azaltmayı veya transdermal seçeneklere geçmeyi ciddi şekilde değerlendirin.
+
+## Dilaltı (Sublingual) Östrojenle İlişkisi
+
+Standart estradiol tabletleri dilin altında da (Sublingual) eritilebilir. Bu yöntem, karaciğerdeki ilk geçiş metabolizmasının büyük bir kısmını atlayarak biyoyararlanımınızı çarpıcı biçimde yükseltir. Ancak günde birden fazla doz gerektirir ve kan düzeylerinizde lunaparktreni gibi şiddetli iniş çıkışlar yaratır. Tabletlerinizi bu şekilde almak hakkında bilgi edinmek isterseniz, [Dilaltı Uygulama](/tr/medications/estrogens/sublingual/) sayfamıza bakın.
+
+<DrugBrandGallery drugId="estradiol-oral" />

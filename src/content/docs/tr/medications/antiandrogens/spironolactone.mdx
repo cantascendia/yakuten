@@ -1,0 +1,114 @@
+---
+title: "Spironolakton"
+description: "Spironolaktonun anti-androjenik etki mekanizması, doz önerileri, ölümcül hiperkalemi riskleri, zorunlu böbrek takibi ve ABD standardı olarak küresel konumu."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Spironolakton (Aldactone)"
+  nameCN="Spironolakton (螺内酯/安体舒通)"
+  category="antiandrogen"
+  route="Ağızdan (oral)"
+  evidenceLevel="B"
+>
+Spironolakton (Spiro), yapısal olarak potasyum tutucu bir diüretiktir (tansiyon ilacı) ve yan etki olarak istem dışı, hafif bir anti-androjenik etki gösterir. CPA, FDA tarafından tamamen yasaklandığı için Amerika Birleşik Devletleri'nde spironolakton mutlak ölçüde varsayılan anti-androjen olarak öne çıkar. Testosteron üretimini düşürmekten çok reseptör blokajına dayanır ve ölümcül potasyum birikimine bağlı ciddi riskler taşır.
+</DrugInfoBox>
+
+<DangerBox title="Hiperkalemi — Ölümcül Kalp Riski">
+Spiro bir "potasyum tutucu" diüretik olduğu için böbreklerinizi sodyum ve suyu hızla atmaya zorlarken potasyumu kanınızın içinde biriktirerek hapseder<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Potasyum düzeyiniz toksik seviyeleri aşarsa (Hiperkalemi: K⁺ > 5.5 mmol/L), ani ve ölümcül bir kalp ritim bozukluğu (aritmi) açısından ciddi risk altına girersiniz.
+
+**Spironolakton kullanırken ŞUNLARA UYMALISINIZ:**
+- Sıkı potasyum kan testlerini ihmal etmeyin (başlangıçta aylık, sonra her 3-6 ayda bir).
+- Potasyum yönünden çok yüksek besinleri aşırı miktarda tüketmekten **kaçının** (ör. günde birden fazla muz yemek, hindistan cevizi suyu, yoğun domates salçası).
+- Reçetesiz alınan herhangi bir potasyum takviyesini **asla** kullanmayın.
+- Bir kardiyolog tarafından sıkı şekilde takip edilmediğiniz sürece **asla** ACE inhibitörleri veya ARB'ler (tansiyon ilaçları) ile birlikte almayın.
+
+**ŞU DURUMLARDA HEMEN ACİL SERVİSE GİDİN:** Aniden gelişen kas güçsüzlüğü, çarpıntı, şiddetli nefes darlığı ya da kollarınızda ve bacaklarınızda yukarı doğru ilerleyen uyuşma-karıncalanma hissederseniz.
+</DangerBox>
+
+## Farmakoloji
+
+### Etki Mekanizması
+
+Spironun testosteronla baş etme yöntemi, CPA veya GnRH agonistlerinden büyük ölçüde farklıdır ve büyük olasılıkla daha zayıftır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
+
+1. **Androjen Reseptör Blokajı** (Birincil etki): Vücudunuzdaki hücre reseptörlerini tıkar; böylece testosteron ve DHT bunlara fiziksel olarak bağlanıp erkeksileşmeyi tetikleyemez.
+2. **Hafif Sentez Baskılaması**: Testislerin testosteron üretmek için kullandığı enzimleri çok zayıf biçimde bozar ve gerçek üretimi yalnızca hafifçe düşürür.
+3. **Doğrudan T Yıkımı Yoktur**: Kan serumunuzdaki testosteron düzeyleri neredeyse hiç düşmeyebilir.
+
+**Kritik Yanlış Anlama**: Spironolakton testosteron miktarınızı kimyasal olarak yok etmez. T hâlâ kanınızda serbestçe dolaşır; yalnızca hücrelere "bağlanamaz"<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Bu nedenle Spiro kullanırken ilerlemenizi yalnızca T düzeyi kan testiyle ölçmek son derece yanıltıcıdır. Spironun etkinliğini tek başına T değerine bakarak değerlendiremezsiniz.
+
+### CPA ile Karşılaştırmalı Etkinlik
+
+Spiro, evrensel olarak daha zayıf anti-androjen seçeneği kabul edilir<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Androjen reseptörüne bağlanma gücü, Bikalutamid gibi çok daha güçlü seçeneklere kıyasla son derece zayıftır.
+- CPA gibi sistemi tamamen kapatamadığı için birçok kullanıcı, maksimum dozlarda dahi yeterince feminize hissetmeden bir duvara tosladığını bildirir.
+- Erkeksileşmeyi başarıyla baskılayabilmek için yanı sıra yüksek düzeyde estradiol kullanımına büyük ölçüde ihtiyaç duyar.
+
+## Doz Önerileri
+
+<DoseTable
+  headers={['Aşama', 'Doz', 'Notlar', 'Kaynak']}
+  rows={[
+    ['Başlangıç Dozu', '50 mg/day', 'Tolere edilebilirliği ve başlangıç potasyum dengesini değerlendirir.', 'ES 2017'],
+    ['Standart Titrasyon', '100 mg/day', 'Çoğu kullanıcı için ortalama etkili temel doz.', 'UCSF 2016'],
+    ['Üst Sınır (Tavan)', '200 mg/day', '200 mg üzerine çıkmak, hiçbir ek anti-androjenik fayda sağlamadan ağır yan etkileri davet eder.', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### Kullanım İpuçları
+
+- Potasyum dalgalanmalarını dengelemek ve ani tansiyon düşüşlerini en aza indirmek için hapları bölün (yarısını sabah, yarısını gece alın)<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />.
+- Yemekle birlikte almak emilim oranını belirgin şekilde artırır.
+- İdrar söktürmek için tasarlanmış bir diüretik olduğundan, tam yatmadan önce alırsanız gece boyu sizi sürekli tuvalete kaldırarak uykunuzu kesinlikle bozar. Akşam dozunuzu gecenin erken saatlerinde alın.
+
+<WarningBox title="Yüksek Dozlar Daha Hızlı Etki Etmez">
+200 mg/day üzerine çıkmak androjen reseptörlerini sihirli biçimde daha güçlü ezmez. Yalnızca tansiyondaki düşüşü şiddetlendirir ve potasyumunuzu olası ölümcül bir uçuruma kadar yükseltir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. 200 mg/day'e ulaştığınızda erkeksileşmeniz durmadıysa, blokeri değiştirmeli ya da T'yi doğal yoldan baskılamak için transdermal/enjekte edilen estradiol dozunuzu belirgin şekilde artırmalısınız.
+</WarningBox>
+
+## Yaşam Kalitesi Açısından Olumsuzluklar
+
+Ciddi kalp ritim bozukluğu riskinin yanı sıra Spiro, yaşam kalitesini ağır şekilde etkileyen birkaç dezavantaj daha getirir:
+
+### Tansiyonun Düşmesi (Ortostatik Hipotansiyon)
+Spironun temel farmasötik amacı yüksek tansiyonu düşürmektir<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Bir sandalyeden çok hızlı kalkarsanız sık sık şiddetli baş dönmesi atakları, hatta göz kararması ve bayılma yaşarsınız.
+- Her gün bol miktarda sade su içerek vücudunuzu yeterince nemli tutmaya ÖZEN GÖSTERMELİSİNİZ.
+- Tuz alımınızı kısıtlamayın (potasyumun aksine sodyuma istek duyacak ve ona ciddi ölçüde ihtiyaç duyacaksınız).
+- HRT öncesi doğal temel tansiyonunuz zaten tehlikeli derecede düşükse, Spiro büyük olasılıkla sizin için uygun bir seçenek değildir.
+
+### Sürekli İdrara Çıkma (Poliüri)
+- İlaç, sıvıyı vücudunuzdan hızla atar. Sürekli idrara çıkar ve kronik olarak susuz kaldığınızı hissedersiniz. Bol bol su için.
+
+## Zorunlu Takip Protokolü
+
+<DoseTable
+  headers={['Test Paneli', 'Sıklık', 'Hedef Aralık / Uyarı', 'Gerekli Eylem']}
+  rows={[
+    ['Potasyum (K⁺)', '1., 2., 3. aylar → Sonra her 6 ayda bir', 'K⁺ 3.5-5.0 mmol/L', '> 5.5 ise: İlacı kesin, acile gidin.'],
+    ['Böbrek Fonksiyonu (Kreatinin / eGFR)', 'Başlangıçta + her 6 ayda bir', 'eGFR > 60 mL/min', 'Düşüyorsa: Böbrek yetmezliği gelişmeden Spiroyu kesin.'],
+    ['Tansiyon', 'Her klinik ziyaretinde', 'Şiddetli baş dönmesi atağı olmaması', 'Sürekli bayılma varsa: Dozu azaltın.'],
+  ]}
+/>
+
+## Küresel Erişim
+
+CPA Amerika'da yasaklı olduğundan, Spiro ABD tedavi yollarının tartışmasız hâkimidir:
+
+- **ABD'de:** Bilgilendirilmiş onam (Informed Consent) kliniklerinde (Planned Parenthood gibi) serbestçe verilir. Son derece erişilebilir, her yerde bulunur ve sigorta/GoodRx ile oldukça ucuzdur.
+- **Avrupa/Asya'da:** Neredeyse yalnızca, karaciğeri CPA'yı kaldıramayan ya da CPA nedeniyle beyin tümörü atlatmış kişiler için yedek (fallback) ilaç olarak kullanılır.
+- **DIY Riski:** Spironun kendisi nadiren taklit edilse de, özel böbrek panelleri için ödeme yapmadan Spiroyu DIY yöntemiyle yönetmeye çalışmak, kalp kriziyle Rus ruleti oynamaktır.
+
+<DrugBrandGallery drugId="spironolactone" />

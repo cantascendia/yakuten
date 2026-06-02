@@ -1,0 +1,57 @@
+---
+title: "Diretório Médico"
+description: "Um diretório estruturado de recursos de acesso a cuidados relatados pela comunidade. Confirme diretamente antes de ir."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Confirme antes de ir">
+Estas listagens são notas de acesso mantidas pela comunidade, não garantias oficiais das instituições. Políticas, departamentos e a disponibilidade de profissionais podem mudar rapidamente, por isso a confirmação direta é sempre necessária.
+</WarningBox>
+
+Este diretório inclui atualmente {hospitals.length} entradas relatadas pela comunidade em {cityCount} cidades. Os dados de origem ainda estão majoritariamente em chinês nesta fase, portanto os nomes dos hospitais e as notas locais podem aparecer em chinês.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**Como usar esta página**
+
+1. Use-a como ponto de partida para sua própria verificação.
+2. Confirme o departamento, a disponibilidade do profissional e as regras de cadastro diretamente com a instituição.
+3. Combine o acesso ao serviço com o planejamento de exames laboratoriais de base e o conhecimento sobre situações de emergência.
+
+</GlassCard>
+
+<DangerBox title="Aviso sobre emergências">
+Este diretório não é um serviço de encaminhamento de emergência. Se você tiver sintomas urgentes, procure atendimento de emergência primeiro, em vez de depender da consulta a este diretório.
+</DangerBox>

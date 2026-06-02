@@ -1,0 +1,134 @@
+---
+title: "CPA (Cyproterone Acetate)"
+description: "Ang kumpletong parmakolohiya ng Cyproterone (Androcur), mabisang low-dose na threshold, panganib ng brain tumor, mga restriksiyon ng EMA, at mahalagang lab monitoring."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Cyproterone Acetate (CPA)"
+  nameCN="Cyproterone Acetate (Androcur)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+Ang Cyproterone Acetate (CPA, na higit na kilala sa brand na Androcur) ay isa talaga sa pinakamalawakang ginagamit na anti-androgen sa mga panggamot na ruta para sa transgender sa buong mundo (sa labas ng US). Sa napakababang dose (5-12.5 mg/day), epektibo nitong sinusupil ang testosterone nang walang depekto at lubos itong inirerekomenda ng mga alituntunin ng Endocrine Society 2017 at WPATH SOC 8. Gayunpaman, kapag mali ang dosing, nagdadala ito ng matinding panganib ng tumor.
+</DrugInfoBox>
+
+<img src="/images/drugs/androcur-studio.webp" alt="Larawan ng produktong Androcur 50mg na tableta ng cyproterone acetate" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<DangerBox title="Ang 50 mg ay Matinding Overdose">
+Madalas na nagrereseta ng CPA sa 50 mg/day o kahit 100 mg/day ang mga lumang regimen ng komunidad at mga doktor na walang sapat na kaalaman. Ang mga sukdulang mega-dose na ito ay idinisenyo para sa **mga lalaking lumalaban sa advanced prostate cancer**, hindi para sa gender-affirming hormone therapy (GAHT). Walang dudang pinatutunayan ng mga pag-aaral na pangklinikal na ang 5-12.5 mg/day lamang ay sapat na para ibaba ang T sa female baseline<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />. Hindi mas mabilis na nasusupil ng 50 mg ang iyong T; pinatataas lamang nito nang husto ang iyong panganib ng brain tumor, liver toxicity, at malubhang clinical depression. **Kung umiinom ka ngayon ng 50 mg, agad mong bawasan ang iyong dose.**
+</DangerBox>
+
+## Parmakolohiya
+
+### Ang Mekanismo
+
+Sinasalanta ng CPA ang testosterone sa pamamagitan ng maraming sabay-sabay na paraan ng pag-atake<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Ang Progestin Feedback Loop** (Pangunahin): Bilang isang napakalakas na progestogen, niloloko ng CPA ang hypothalamus upang ihinto ang paglabas ng GnRH. Pinipigilan nito ang pituitary gland na magpadala ng senyales sa iyong testes, kaya tuluyang natitigil ang synthesis ng testosterone.
+2. **Banayad na Receptor Antagonism**: Banayad nitong hinaharang ang anumang natitirang testosterone mula sa pagdikit sa iyong cell receptor (bagama't mahina ang epektong ito kumpara sa Bicalutamide).
+3. **5α-reductase Sabotage**: Banayad nitong hinahadlangan ang pag-convert ng T patungong DHT.
+
+Sa GAHT, ibinababa ng CPA ang iyong testosterone sa pamamagitan ng tuluyang pagpapatigil ng "pabrika" na gumagawa nito<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />. Sa katunayan, ipapakita ng iyong blood test ang isang bumagsak na T level.
+
+### Bisa sa Mababang Dose
+
+Patunay ng hindi mabilang na cohort na ang low-dose na CPA ay nangunguna nang husto laban sa mito ng high-dose<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Ang 10 mg/day ay karaniwang nagpapababa sa T sa ilalim ng 50 ng/dL na female threshold.
+- Ang 5 mg/day ay madalas nang sapat kapag ginamit kasabay ng tamang dose ng estrogen.
+- Ang pagtaas ng dose hanggang 50 mg/day ay hindi nagbibigay ng karagdagang pagbaba sa T.
+
+## Mga Rekomendasyon sa Dosage
+
+<DoseTable
+  headers={['Protokol', 'Dose', 'Mga Tala', 'Pinagmulan']}
+  rows={[
+    ['Inirerekomendang Pagsisimula', '5 mg/day O 12.5 mg/kada ibang araw', 'Ang karaniwang mababang dose kapag isinama sa E2.', 'Meyer 2020; WPATH SOC 8'],
+    ['Karaniwang Maintenance', '5-12.5 mg/day', 'Iayon batay sa iyong T labs.', 'ES 2017'],
+    ['Ang Sukdulang Hangganan', '12.5 mg/day', 'Anumang dose na umaabot sa ≥25 mg ay nagdudulot ng biglaang pagsabog ng panganib ng tumor.', 'Lee 2022; EMA 2020'],
+  ]}
+/>
+
+<img src="/images/diagrams/fil/cpa-pill-splitting.webp" alt="Diagram ng paghahati ng tableta: 50mg na CPA tablet na may cross-score na hinahati sa apat na 12.5mg na quarter gamit ang pill cutter" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<WarningBox title="Paano Iinom ng 12.5 mg">
+Dahil ginagawa ng Big Pharma ang CPA para sa prostate cancer, ang mga tableta ay halos palaging dumarating sa malalaking 50 mg na tableta. Kailangan mong bumili ng pill cutter at hatiin ang tableta sa apat na bahagi. Ang pag-inom ng isang quarter (12.5 mg) araw-araw, o kahit isang quarter kada ibang araw (na may average na ~6.25 mg/day), ang pinakaligtas at pinakaepektibong paraan.
+</WarningBox>
+
+### Step-Down na Protokol
+
+Kung kasalukuyan kang umiinom ng 50 mg/day at kailangan itong ayusin<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- **Ibaba sa 25 mg:** Manatili rito nang 2 linggo upang makapag-adjust ang iyong katawan nang walang agresibong pagtaas ng T.
+- **Ibaba sa 12.5 mg:** Manatili rito nang 2 linggo.
+- Patunayan sa pamamagitan ng bloodwork sa ika-3 buwan. Huwag babaan ang iyong estrogen habang ibinababa ang CPA.
+
+## Ang Panganib ng Meningioma
+
+<DangerBox title="Meningioma — Ang Pinakanakamamatay na Banta ng CPA">
+Ang matagalang pagkalantad sa CPA sa dose na ≥ 25 mg/day ay walang dudang nauugnay sa pagdudulot ng **Meningioma** (kadalasan ay benign, ngunit lubhang mapanganib na mga tumor na tumutubo sa mga lamad ng iyong utak at spinal cord)<CitationRef id="lee-2022" num={4} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />:
+
+- Ang pag-inom ng ≥ 25 mg/day nang mahigit isang taon ay nagpapataas ng iyong tsansa na magkaroon ng brain tumor nang humigit-kumulang **12 beses na mas mataas** kaysa sa normal.
+- Isang malawakang cohort study noong 2026 ang lubos na nagpatibay sa krisis na ito partikular sa mga transgender na kababaihan<CitationRef id="hudelist-2026" num={5} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />.
+- Dahil dito, **naglabas ng mabigat na legal na restriksiyon ang European Medicines Agency (EMA) noong 2020**, na nag-uutos sa mga doktor na magreseta lamang ng CPA sa mataas na dose kapag wala nang ibang opsiyon<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />.
+
+**Ang mga Babalang Senyales:** Kung nakararanas ka ng walang tigil at lumalalang pananakit ng ulo, malabo/doble ang paningin, o biglaang seizure habang umiinom ng CPA, **agad na ihinto ang gamot** at humiling ng cranial MRI.
+</DangerBox>
+
+<img src="/images/diagrams/fil/cpa-meningioma-risk.webp" alt="Chart ng dose-dependent na panganib ng meningioma sa CPA: tumataas nang husto ang panganib lampas sa 25mg kada araw" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Karagdagang Side Effect
+
+### Liver Toxicity
+Pinapahirapan ng CPA ang atay<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />:
+- Bihira sa 12.5mg, ngunit sapilitan ang monitoring.
+- Kung tumaas ang iyong liver enzymes (ALT/AST) nang > 3x ng upper limit of normal, kailangan mong itigil ang CPA.
+
+### Pagtaas ng Prolactin
+Dahil napakalakas na progestogen ng CPA, maaari nitong sanhiin na bahain ng iyong pituitary gland ang iyong katawan ng prolactin<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />:
+- Normal at hindi nakakapinsala ang banayad na pagtaas.
+- Kung lumampas ang prolactin sa > 50 ng/mL, kailangang i-scan ka ng iyong doktor upang maalis ang posibilidad ng prolactinoma (isang benign na pituitary tumor).
+
+### Clinical Depression
+Bilang isang malakas na progestin, ang CPA ay may dokumentadong sikolohikal na side-effect<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- Malawak na naiulat ang matinding pagkapagod, kawalan ng sigla, at depressive episode.
+- Kung mayroon kang dating manic-depression o malubhang clinical depression, ang CPA ay isang lubhang mapanganib na sugal.
+
+### VTE (Mga Namumuong Dugo)
+Likas na pinatataas ng CPA ang kakayahan ng iyong dugo na mamuo<CitationRef id="canonico-2018" num={7} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />. Ang pagsasama ng oral CPA sa oral Estrogen ay lumilikha ng lubhang mapanganib na pinagsamang epekto. Ang mga gumagamit ng CPA ay dapat husto na lumipat sa Transdermal Estrogen (patches o gel).
+
+## Sapilitang Blood Monitoring
+
+<DoseTable
+  headers={['Test Panel', 'Dalas', 'Target Range / Babala', 'Kinakailangang Aksiyon']}
+  rows={[
+    ['Liver Enzymes (ALT/AST)', 'Buwan 1, 2, 3 → Pagkatapos ay kada 3-6 na buwan', 'Panatilihin sa loob ng standard na lab ranges', 'Kung > 3x ng max limit: Itigil ang gamot.'],
+    ['Prolactin (PRL)', 'Baseline, pagkatapos ay kada 6 na buwan', 'PRL < 50 ng/mL', 'Kung > 50 ng/mL: I-scan ang pituitary.'],
+    ['Testosterone (T)', 'Buwan 1, pagkatapos ay kada 3-6 na buwan', 'T < 50 ng/dL', 'Kung matatag, manatili sa mababang dose.'],
+  ]}
+/>
+
+<WarningBox title="Biglaang Pagtigil (Cold Turkey)">
+Hindi tulad ng estrogen (na dapat mong maingat na unti-unting babaan upang maiwasan ang bone loss/sikolohikal na pinsala), mabilis na nawawala ang progestin half-life ng CPA. Kung nakararanas ka ng matinding sintomas ng atay o tumor, talagang puwede mong itigil ang CPA nang biglaan. Dahan-dahang babalik ang iyong testosterone, kaya kailangan mong magsiguro ng kapalit na blocker nang mabilis<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+</WarningBox>
+
+## Pandaigdigang Access at ang FDA Ban
+
+- **Sa Estados Unidos**: Mahigpit na ipinagbabawal ang CPA ng FDA at talagang hindi maaabot sa pamamagitan ng mga lehitimong parmasya, kaya napipilitang umasa sa Spironolactone ang mga Amerikanong trans women.
+- **Sa Europa/UK/Australia/Asia**: Malawakang nirereseta at lubos na legal, na nagsisilbing pangunahing pundasyon ng pangkalusugang pangangalaga ng trans sa labas ng US.
+- **Ang Grey Market**: Ang mga DIY group sa buong mundo ay nagpupuslit ng CPA sa kabila ng mga hangganan sa nakakagulat na dami. Kung umoorder ka ng CPA mula sa mga hindi regulado at internasyonal na parmasya, may panganib kang makakuha ng pinakialaman o malalim nang expired na gamot. Mag-ingat nang husto.
+
+<DrugBrandGallery drugId="cyproterone-acetate" />

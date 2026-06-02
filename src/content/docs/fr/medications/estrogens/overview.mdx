@@ -1,0 +1,107 @@
+---
+title: "Vue d'ensemble des œstrogènes"
+description: "Comparaison des risques de TEV, des avantages et des inconvénients des différentes voies d'administration de l'estradiol (transdermique, orale, sublinguale, injectable)."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+L'estradiol (E2) est le médicament central du THS chez les femmes transgenres. Au moment de choisir une voie d'administration, **la sécurité (et plus précisément le risque de thromboembolie veineuse, ou TEV) devrait être votre considération première**, plutôt que la simple commodité ou le coût.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/fr/routes-comparison.webp" alt="Comparaison des trois voies d'administration de l'estradiol : voie orale via le foie, absorption transdermique directe, injection dans la circulation sanguine" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## Risque de TEV selon la voie d'administration
+
+La thromboembolie veineuse (caillots sanguins) figure parmi les risques les plus graves associés à l'œstrogénothérapie. Ce risque varie considérablement selon la façon dont l'œstrogène pénètre dans l'organisme<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Voie', 'Risque relatif (RR)', 'Niveau de preuve', 'Remarque']}
+  rows={[
+    ['Patch transdermique', 'RR ≈ 0.97', 'A', 'Pas d\'augmentation significative du risque vs non-utilisateurs'],
+    ['Gel transdermique', 'RR ≈ 0.97', 'A', 'Comparable au patch, contourne le premier passage hépatique'],
+    ['Voie orale (valérate/hémihydrate d\'estradiol)', 'RR ≈ 1.48', 'A', 'Risque accru d\'environ 48 %'],
+    ['Sublinguale', 'Données limitées', 'C', 'Contourne en partie le premier passage, théoriquement plus faible que la voie orale'],
+    ['Injectable (EV/EC/EEn)', 'Données limitées', 'C', 'Contourne le premier passage, mais manque de données d\'ECR de grande ampleur sur le risque de caillots'],
+  ]}
+/>
+
+<WarningBox title="À retenir">
+Les voies transdermiques (patch et gel) présentent un risque de TEV statistiquement identique à celui des personnes ne prenant pas de THS (RR ≈ 0.97). À l'inverse, la voie orale augmente ce risque d'environ 48 % (RR ≈ 1.48). Si vous présentez un quelconque facteur de risque préexistant de TEV, une voie transdermique devrait être votre tout premier choix<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Guide de choix de la voie d'administration
+
+Le cadre ci-dessous s'appuie sur les données cliniques actuelles<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> :
+
+### Cas 1 : facteurs de risque de TEV préexistants
+
+**Les facteurs de risque comprennent :** âge > 40 ans, IMC > 30, tabagisme, antécédents familiaux de TEV, antécédents de troubles de la coagulation, ou migraines avec aura.
+
+- **À privilégier :** patch transdermique ou gel transdermique
+- **À éviter :** estradiol par voie orale
+- **À éviter également :** l'association d'un œstrogène oral avec l'acétate de cyprotérone (CPA)
+
+### Cas 2 : absence de facteurs de risque de TEV
+
+Le choix se fait en fonction de l'accessibilité, du budget et des préférences personnelles :
+
+- **Estradiol oral (Estrace, Progynova) :** généralement la voie la plus abordable et la plus largement accessible dans le monde.
+- **Patch transdermique (Climara, Estradot) :** meilleur profil de sécurité, mais peut être coûteux ou sujet à des pénuries d'approvisionnement à l'échelle mondiale.
+- **Sublinguale :** consiste à laisser fondre les comprimés oraux sous la langue. Biodisponibilité plus élevée, mais provoque d'importants pics et chutes des taux sanguins.
+- **Injectables :** entraînent d'importantes fluctuations entre pics et creux, mais sont très efficaces en monothérapie.
+
+### Cas 3 : monothérapie (œstrogène sans anti-androgène)
+
+Si vous souhaitez supprimer la testostérone à l'aide du seul estradiol, sans prendre de bloqueur anti-androgène dédié :
+
+- **À privilégier :** estradiol injectable (EV, EC, EEn) – maintient de façon fiable les taux d'E2 élevés et constants requis.
+- **Alternative :** patchs transdermiques à dose élevée (200-400 µg/day) ou gel transdermique.
+- **Référence :** une étude de Misakian de 2025 a montré que 82,6 % des personnes sous monothérapie par EV injectable obtenaient une suppression de la T sans recourir à un anti-androgène<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Aperçu rapide des avantages et inconvénients
+
+<DoseTable
+  headers={['Voie', 'Avantages', 'Inconvénients', 'Accessibilité typique']}
+  rows={[
+    ['Patch transdermique', 'Risque de TEV le plus faible ; taux sanguins stables ; à changer 1 à 2 fois par semaine', 'Irritation cutanée ; peut être coûteux ou fréquemment en rupture de stock à l\'échelle mondiale', 'Modérée'],
+    ['Gel transdermique', 'Faible risque de TEV ; dosage quotidien souple', 'Absorption très variable selon le type de peau ; nécessite un temps de séchage', 'Modérée'],
+    ['Voie orale (comprimés)', 'Le plus facile d\'accès ; très peu coûteux ; simple à prendre', 'Risque de TEV plus élevé ; le premier passage hépatique gaspille une grande partie du médicament', 'Très élevée'],
+    ['Sublinguale', 'Biodisponibilité plus élevée que la voie orale ; contourne en partie le foie', 'Pics et chutes importants des taux sanguins ; nécessite 2 à 3 prises par jour', 'Très élevée (utilise des comprimés oraux)'],
+    ['Injectable (EV/EEn)', 'Contourne le foie ; très efficace en monothérapie', 'Nécessite des aiguilles / anxiété liée à l\'injection ; pics et creux marqués des taux sanguins', 'Variable selon le pays (souvent en DIY)'],
+  ]}
+/>
+
+## Aperçu des posologies
+
+Fourchettes posologiques standard selon les différentes voies<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} /> :
+
+<DoseTable
+  headers={['Voie', 'Dose initiale', 'Dose d\'entretien', 'Dose maximale typique']}
+  rows={[
+    ['Patch transdermique', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Gel transdermique', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Estradiol oral', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublinguale', '1-2 mg/day (réparti en 2-3 prises)', '2-4 mg/day (réparti en 2-3 prises)', '6 mg/day'],
+    ['EV injectable', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Pages détaillées
+
+Pour approfondir la pharmacologie, les modes d'emploi et les mises en garde propres à chaque voie, cliquez ci-dessous :
+
+- [Patchs transdermiques](/fr/medications/estrogens/transdermal-patch/) — La voie d'administration la plus sûre
+- [Estradiol oral](/fr/medications/estrogens/oral/) — Très accessible mais comporte un risque de TEV légèrement accru
+- [Sublinguale](/fr/medications/estrogens/sublingual/) — Un compromis offrant une meilleure absorption mais de fortes fluctuations
+- [Gel transdermique](/fr/medications/estrogens/gel/) — Une sécurité souple, à mi-chemin entre le patch et la voie orale
+- [Estradiol injectable](/fr/medications/estrogens/injection/) — La référence absolue pour la monothérapie

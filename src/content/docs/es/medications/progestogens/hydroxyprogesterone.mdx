@@ -1,0 +1,120 @@
+---
+title: "Hidroxiprogesterona"
+description: "La farmacología de la caproato de hidroxiprogesterona (OHPC) inyectable, su extrema falta de datos clínicos en la THR trans y por qué rara vez se prescribe."
+evidenceLevel: C
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, kuhl-2005]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Hydroxyprogesterone Caproate (OHPC)"
+  nameCN="Hydroxyprogesterone Caproate (OHPC)"
+  category="progestogen"
+  route="Inyección intramuscular (IM)"
+  evidenceLevel="C"
+>
+La caproato de hidroxiprogesterona es una progestina inyectable de acción prolongada. Aunque presenta una semivida larga, resulta sumamente infrecuente en los protocolos modernos de THR para personas trans. No existe prácticamente ninguna investigación clínica sobre su seguridad o eficacia en mujeres trans. Si deseas un progestágeno, la progesterona micronizada bioidéntica oral es infinitamente preferible.
+</DrugInfoBox>
+
+<WarningBox title="Evidencia extremadamente limitada">
+El uso de OHPC en la THR feminizante carece de cualquier respaldo clínico de alta calidad. Los datos extrapolados a continuación proceden enteramente de la literatura de obstetricia y ginecología sobre mujeres cisgénero con abortos espontáneos recurrentes<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Tiene un nivel de evidencia C (solo opinión de expertos / estudios de casos).
+</WarningBox>
+
+---
+
+## Farmacología
+
+La caproato de hidroxiprogesterona (OHPC) es un derivado sintético de la 17α-hidroxiprogesterona, lo que la clasifica como una progestina semisintética<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />.
+
+Características principales:
+- **Administración**: Inyección intramuscular (IM) obligatoria. No puede tomarse por vía oral.
+- **Semivida**: Una vez inyectada profundamente en el músculo, crea un efecto depósito que dura aproximadamente de 7 a 8 días.
+- **Mecanismo**: Se une a los receptores de progesterona (PR) del organismo, imitando la actividad progestágena habitual.
+- **Metabolismo**: Se descompone en gran medida en el hígado y se excreta por los riñones.
+- **Marcas globales**: Antes conocida como Makena (retirada del mercado estadounidense en 2023) y Proluton (todavía accesible en mercados grises y en partes de Asia/UE).
+
+### La diferencia con la progesterona bioidéntica
+
+<DoseTable
+  headers={['Característica', 'Progesterona micronizada', 'Hidroxiprogesterona (OHPC)']}
+  rows={[
+    ['Origen químico', 'Bioidéntica a la P4 humana', 'Derivado semisintético'],
+    ['Vía de administración', 'Cápsula blanda oral', 'Inyección intramuscular'],
+    ['Frecuencia', 'Diaria', 'Cada 1 a 2 semanas'],
+    ['Efecto sedante', 'Sí (fuerte interacción con GABA-A)', 'Ninguno'],
+    ['Datos en GAHT', 'Limitados, pero de uso amplio', 'Inexistentes'],
+    ['Tolerabilidad', 'Alta', 'Alta tasa de dolor en el sitio de inyección'],
+  ]}
+/>
+
+---
+
+## La realidad de la OHPC en la GAHT
+
+La OHPC es un fantasma en la medicina trans convencional. Las Guías de la Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> y las WPATH SOC 8<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> ignoran por completo la OHPC en los esquemas de cuidado de afirmación de género.
+
+**¿Por qué alguien la usaría?**
+- Una persona padece una intolerancia gastrointestinal extrema a la progesterona micronizada oral.
+- Una persona prefiere con firmeza una inyección semanal antes que tragar pastillas a diario.
+- Disponibilidad amplia en el mercado gris allí donde la progesterona bioidéntica está bloqueada por región.
+
+### Beneficios teóricos
+Si se utiliza, la OHPC actúa funcionalmente como un progestágeno estándar:
+- *Teóricamente* podría contribuir a la maduración lobuloalveolar de la mama (Tanner IV-V), aunque no existe ni un solo ensayo clínico que lo demuestre en mujeres trans.
+- Contribuye indirectamente a suprimir el eje HPG (reduciendo la LH/FSH), favoreciendo de forma leve la supresión de la testosterona.
+- **No** posee las propiedades ansiolíticas ni sedantes (ayuda para dormir) que hacen tan popular a la progesterona oral.
+
+---
+
+## Marco de dosificación
+
+<DangerBox title="Las dosis son pura conjetura">
+No existen dosis clínicas establecidas para la OHPC en la THR trans. Las cifras siguientes proceden enteramente de datos históricos de obstetricia y ginecología y de los registros anecdóticos de usuarias DIY por su cuenta<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />.
+</DangerBox>
+
+<DoseTable
+  headers={['Protocolo', 'Dosis', 'Administración', 'Notas']}
+  rows={[
+    ['Dosis estándar de obstetricia/ginecología', '250 mg / semana', 'Intramuscular', 'Diseñada para mujeres cis con el fin de prevenir abortos espontáneos.'],
+    ['Dosis experimental DIY', '125-250 mg / cada 1-2 semanas', 'Intramuscular', 'Procedente de autoinformes de la comunidad.'],
+  ]}
+/>
+
+---
+
+## Efectos secundarios
+
+- **Reacciones graves en el sitio de inyección**: La OHPC es tristemente célebre por estar suspendida en aceites vehiculizantes espesos y dolorosos (como el aceite de ricino). Los hematomas, los bultos duros y persistentes (induraciones) y el dolor muscular profundo están casi garantizados.
+- **Náuseas y vértigo**
+- **Volatilidad emocional**: Como todos los progestágenos, puede desencadenar episodios depresivos graves y sin causa aparente o bajones emocionales similares al SPM.
+- **Anafilaxia**: Se han descrito reacciones alérgicas a los aceites vehiculizantes espesos.
+
+---
+
+## Acceso global
+
+- **En EE. UU.:** Funcionalmente extinta. La FDA retiró Makena (la marca principal de OHPC) del mercado en 2023, después de que las investigaciones demostraran que en realidad no ayudaba a prevenir los partos prematuros.
+- **El mercado gris:** Marcas como Proluton siguen siendo objeto de un intenso tráfico por parte de farmacias DIY globales que operan desde regiones con leyes laxas de exportación farmacéutica, lo que las hace accesibles pero difíciles de verificar en cuanto a su pureza.
+
+<WarningBox title="Mejor quédate con la progesterona oral">
+Para el 99 % de las mujeres trans, la progesterona oral bioidéntica (Prometrium / Utrogestan) es más barata, más segura, está ampliamente documentada y es indolora. A menos que tengas una razón médica abrumadora para evitar las pastillas orales, la OHPC es una complicación innecesaria en tu régimen de THR.
+</WarningBox>
+
+---
+
+**Referencias**
+
+1. <span id="ref-kuhl-2005">Kuhl H. Pharmacology of estrogens and progestogens: influence of different routes of administration. *Climacteric* 2005;8(Suppl 1):3-63. DOI:10.1080/13697130500148875</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+
+<DrugBrandGallery drugId="hydroxyprogesterone" />

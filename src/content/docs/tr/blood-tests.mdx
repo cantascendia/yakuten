@@ -1,0 +1,271 @@
+---
+title: "Kan Tahlilleri ve Kendi Kendine Kontrol Araçları"
+description: "HRT sırasında gerekli kan tahlilleri, kontrol takvimleri, raporlarınızı nasıl okuyacağınız ve etkileşimli kendi kendine kontrol araçları."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Kan tahlilleri, HRT güvenliği yönetiminin temel taşıdır. Kan tahlili verisi olmadan ilacın işe yarayıp yaramadığını, dozunuzun güvenli olup olmadığını ya da vücudunuzun gereksiz risk altında olup olmadığını bilmenin bir yolu yoktur. Bu sayfa ne zaman tahlil yaptıracağınız, neye baktıracağınız ve sonuçlarınızı nasıl yorumlayacağınız konusunda size yol gösterecektir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Kan Tahlillerine Erişim">
+Bulunduğunuz yere göre kan tahlillerine bir aile hekimi, bilgilendirilmiş onam temelli bir klinik (ABD'deki Planned Parenthood gibi), uzmanlaşmış cinsiyet kimliği klinikleri (Birleşik Krallık'taki NHS veya GenderCare gibi) ya da özel tahlil hizmetleri (Medichecks gibi) aracılığıyla erişebilirsiniz. Hangi yolu izlerseniz izleyin, tahlil yaptırmak kritik öneme sahiptir. Sonuçlarınızı aldıktan sonra, onları aşağıdaki trafik ışığı sistemiyle karşılaştırın.
+</WarningBox>
+
+## 6.1 Neyi ve Ne Zaman Baktırmalı
+
+Kan tahlili takvimi, [HRT Yol Haritamız](/tr/pathway/) ile uyumlu olacak şekilde üç aşamaya ayrılır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Aşama 1: Başlangıç (1-6. Aylar)
+
+Bu, en yoğun uyum dönemidir; ilacın işe yaradığından emin olmak ve erken yan etkileri dışlamak için daha sık izlem gerektirir.
+
+**4. Hafta Kontrolü:**
+
+<DoseTable
+  headers={['Tahlil Kalemi', 'Amaç', 'Hedef Kullanıcılar']}
+  rows={[
+    ['Cinsiyet Hormon Paneli (E2, T, LH, FSH, PRL, P4)', 'E2 yükseliyor ve T düşüyor mu doğrulamak', 'Tüm kullanıcılar'],
+    ['Karaciğer Fonksiyonu (ALT, AST)', 'Erken karaciğer toksisitesini dışlamak', 'CPA / Bikalutamid kullanıcıları'],
+    ['Elektrolitler (K⁺, Na⁺)', 'Hiperkalemi riskini dışlamak', 'Spironolakton kullanıcıları'],
+  ]}
+/>
+
+**12. Hafta Kontrolü:**
+
+<DoseTable
+  headers={['Tahlil Kalemi', 'Amaç', 'Hedef Kullanıcılar']}
+  rows={[
+    ['Cinsiyet Hormon Paneli', 'Aşama hedeflerine ulaşılıp ulaşılmadığını değerlendirmek (E2 50-100 pg/mL)', 'Tüm kullanıcılar'],
+    ['Karaciğer Fonksiyonu (ALT, AST)', 'Karaciğer güvenliğinin sürekli izlemi', 'CPA / Bikalutamid kullanıcıları'],
+    ['Lipid Paneli (TC, TG, LDL, HDL)', 'Metabolik etkiyi değerlendirmek', 'Tüm kullanıcılar'],
+    ['Elektrolitler (K⁺)', 'Kan potasyumunun sürekli izlemi', 'Spironolakton kullanıcıları'],
+  ]}
+/>
+
+<WarningBox title="Aşama 1 Hedefleri">
+E2'nin 50-100 pg/mL'ye ulaşması, T'nin aşağı yönlü eğilim göstermesi. E2 değeri 30 pg/mL'nin altındaysa uygulama yöntemini veya dozu ayarlamanız gerekebilir (bkz. [Yol Haritamız](/tr/pathway/))<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **Sadece "hiçbir şey hissetmiyorum" diye bu aşamada dozu kendi başınıza artırmayın.**
+</WarningBox>
+
+### Aşama 2: Ayarlama (6-12. Aylar)
+
+Her 3 ayda bir kontrol edin<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Tahlil Kalemi', 'Sıklık', 'Hedef']}
+  rows={[
+    ['Cinsiyet Hormonları (E2, T, PRL)', 'Her 3 ayda bir', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Karaciğer Fonksiyonu (ALT, AST)', 'Her 3 ayda bir (CPA/Bika)', 'ALT/AST ≤ Normalin üst sınırı'],
+    ['Prolaktin (PRL)', 'Her 6 ayda bir', 'PRL <50 ng/mL'],
+    ['Elektrolitler (K⁺)', 'Her 3 ayda bir (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Aşama 3: İdame (12 Ay ve Sonrası)
+
+Hormon düzeyleri stabil hale geldiğinde, sıklık azaltılabilir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**Rutin 6 Aylık Kontroller:**
+
+<DoseTable
+  headers={['Tahlil Kalemi', 'Açıklama']}
+  rows={[
+    ['Cinsiyet Hormonları (E2, T, PRL)', 'Hedef aralıkta kaldığınızı doğrulamak'],
+    ['Karaciğer Fonksiyonu (ALT, AST)', 'Sürekli izlem (CPA/Bika kullanıcıları her 3-6 ayda bir)'],
+    ['Elektrolitler', 'Spironolakton kullanıcıları için sürekli izlem'],
+  ]}
+/>
+
+**Yıllık Kapsamlı Kontroller:**
+
+<DoseTable
+  headers={['Tahlil Kalemi', 'Açıklama']}
+  rows={[
+    ['Lipid Paneli', 'Uzun vadeli metabolik etkiyi değerlendirmek'],
+    ['Açlık Kan Şekeri', 'İlerleyen insülin direncini dışlamak'],
+    ['Tam Kan Sayımı (Hb dahil)', 'Anemi eğilimini izlemek'],
+    ['Pıhtılaşma + D-Dimer', 'VTE riskini değerlendirmek (oral E2 kullanıcıları için çok önemli)'],
+    ['Kemik Yoğunluğu (DXA)', 'Özellikle östrojen uzun süre kesildiyse düşünülmeli'],
+  ]}
+/>
+
+---
+
+## 6.2 Raporunuzu Anlamak (Trafik Işıkları)
+
+Aşağıda HRT ile ilişkili 7 temel kan tahlili belirteci görsel olarak gösterilmektedir. **Yeşil** = Hedef Aralık, **Sarı** = Dikkat, **Kırmızı** = Tehlike, harekete geçmek gerekir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/tr/blood-tubes.webp" alt="Üç kan toplama tüpü: mor (tam kan sayımı), sarı (biyokimya/hormonlar), mavi (pıhtılaşma)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Zamanlama Her Şeydir">
+Kan alma zamanlaması, sonuçların yorumlanabilirliğini doğrudan etkiler<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Lütfen şu kurallara uyun (**çukur düzeyleri** ölçün):
+
+- **Transdermal Yamalar**: Bir sonraki yama değişiminizden 12-24 saat önce
+- **Oral/Dilaltı**: Bir sonraki dozunuzdan hemen önce
+- **Enjeksiyonlar**: Bir sonraki enjeksiyonunuzdan hemen önce, o günün sabahında
+
+Çukur düzeyinde kan ALMAZSANIZ, E2 değerleri yapay olarak yüksek çıkar ve dozun yeterli olup olmadığı konusunda yanlış yorumlara yol açar.
+</WarningBox>
+
+### Östradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 için 100-200 pg/mL, idame dönemine yönelik uluslararası kılavuz önerisidir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. 200 pg/mL'yi aşmak daha hızlı feminizasyon sağlamaz; yalnızca kan pıhtısı riskini ve göğüs tomurcuklarının erken kaynamasını artırır. Tedaviden sonra 20 pg/mL'nin altındaki E2 düzeyleri bir uygulama sorununa işaret eder.
+
+<DangerBox title="E2 > 500 pg/mL">
+Çukur E2 değeri 500 pg/mL'yi aşıyorsa dozu derhal azaltın ve tıbbi değerlendirme alın. Bu düzey, derin ven trombozu (VTE) risklerini belirgin biçimde artırır<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosteron (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+T'yi &lt;50 ng/dL'ye (tipik cis kadın aralığı) baskılamak, temel bir HRT hedefidir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. 6 aydan sonra T hâlâ >100 ng/dL ise, genellikle yalnızca E2 dozunu zorla yükseltmek yerine anti-androjeninizi ayarlamanız gerekir<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolaktin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Hem östrojen hem de CPA prolaktini yükseltebilir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Hafif yükselmeler (25-50 ng/mL) genellikle klinik açıdan önemsizdir ancak izlem gerektirir. 50 ng/mL'nin üzerindeki PRL, prolaktinomayı dışlamak için değerlendirilmelidir. CPA kullanıcıları bunu yakından izlemelidir.
+
+### Karaciğer Fonksiyonu (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA ve bikalutamid karaciğer toksisitesi riski taşır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Normalin üst sınırı tipik olarak 40 U/L'dir. Üst sınırın 1-3 katına yükselmeler yakın izlem gerektirir; 3 katını aşmak (>120 U/L) CPA veya bikalutamidi derhal kesip bir hekime danışmanız gerektiği anlamına gelir<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Karaciğer Hasarının Uyarı Belirtileri">
+Ciltte/gözlerde sararma (sarılık), koyu renkli idrar, sürekli bulantı veya sağ üst karın ağrısı gelişirse, son ALT/AST değerlerinizden bağımsız olarak ilacı derhal kesin<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Bunlar acil bakım gerektiren akut belirtilerdir.
+</DangerBox>
+
+### Kan Potasyumu (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Spironolakton, hiperkalemiye yol açabilen potasyum tutucu bir diüretiktir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. K⁺ değeri 5.5 mmol/L'yi aşarsa spironolaktonu durdurun. Spironolakton kullanırken potasyumdan zengin gıdaları en aza indirin ve tuz yerine geçen ürünler kullanmayın.
+
+<DangerBox title="Hiperkalemi Belirtileri">
+Kas güçsüzlüğü, ellerde/ayaklarda uyuşma veya karıncalanma, çarpıntı ya da aritmiler. Spironolakton kullanıyorsanız ve bunları yaşıyorsanız, potasyumunuzu derhal kontrol ettirin<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Hemoglobin (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb, östrojene başladıktan sonra öngörülebilir biçimde cis kadın aralığına düşer; bu fizyolojiktir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ancak 110 g/L'nin altındaki Hb, tanı gerektiren bir anemiye işaret eder.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+D-dimer yükselmeleri tromboz/fibrinolizi düşündürür<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Hafif yükseklik (0.5-1.0) klinik bağlam gerektirir. 1.0 mg/L'nin üzeri —özellikle baldır şişmesi, göğüs ağrısı veya nefes darlığıyla birlikte ise— DVT veya PE'yi dışlamak için bir acil durumdur<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Belirtiler = Acil Durum">
+Tek başına yüksek D-dimer otomatik olarak pıhtı anlamına gelmez, ancak baldır şişmesi/ısı artışı, ani göğüs ağrısı veya kan tükürme ile birlikteyse, derhal acil servise gidin. Oral östradiol, transdermale göre daha yüksek VTE riski taşır<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Kapsamlı Kılavuz
+
+<DoseTable
+  headers={['Belirteç', 'Hedef (Yeşil)', 'Dikkat (Sarı)', 'Tehlike (Kırmızı)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 veya 200-300', '>500 veya <20 (ilaç sonrası)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (6 aydan sonra)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (prolaktinomayı dışla)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (sınırın 1-3 katı)', '>120 (CPA/Bika kes)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Spiro kes)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Anemi)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Pıhtıyı dışla)'],
+  ]}
+/>
+
+---
+
+## 6.3 Etkileşimli Kendi Kendine Kontrol Aracı
+
+<WarningBox title="Yakında">
+**BloodTestChecker** etkileşimli React bileşeni yakında yayına girecek. Değerlerinizi girerek anında trafik ışığı geri bildirimi ve size özel tavsiyeler almanızı sağlar.
+
+Tüm hesaplamalar tarayıcınızda gerçekleşir—hiçbir veri kaydedilmez veya herhangi bir sunucuya gönderilmez.
+</WarningBox>
+
+<WarningBox title="Sırada ne okumalı">
+- [HRT Yol Haritası](/tr/pathway/) — Sonuçlarınıza göre bir sonraki adımda ne yapmalı
+- [Doz Sınırları](/tr/dose-limits/) — Dozunuzun güvenli aralıkta olduğunu doğrulayın
+- [Riskler ve Acil Durumlar](/tr/risks/) — Ne zaman derhal durdurmalı
+</WarningBox>

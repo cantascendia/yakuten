@@ -1,0 +1,76 @@
+---
+title: "Finasterida"
+description: "Finasterida en la THS transfeminina — mecanismo de inhibición de la DHT, dosificación, monitoreo y consideraciones de seguridad."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasterida"
+  nameCN="Finasterida"
+  category="Inhibidor de la 5α-reductasa"
+  route="Vía oral"
+  evidenceLevel="B"
+>
+La finasterida es un inhibidor selectivo de la 5α-reductasa de tipo II que reduce los niveles de DHT en aproximadamente un 65-70% al bloquear la conversión de testosterona en dihidrotestosterona. Se utiliza como terapia complementaria en la THS transfeminina, principalmente para la caída del cabello y el exceso de vello corporal.
+</DrugInfoBox>
+
+## Mecanismo
+
+La finasterida inhibe de forma selectiva la 5α-reductasa de **tipo II** (presente sobre todo en los folículos pilosos y la próstata), lo que reduce la DHT sérica en un ~65-70% sin prácticamente afectar los niveles de testosterona.
+
+En comparación con la [dutasterida](/es/medications/five-alpha-reductase/dutasteride/), la finasterida inhibe una sola isoforma, lo que produce una menor reducción de la DHT pero también, potencialmente, menos efectos secundarios.
+
+## Dosificación
+
+<DoseTable
+  headers={['Indicación', 'Dosis', 'Notas']}
+  rows={[
+    ['Caída del cabello (complemento de la THS)', '1 mg/day', 'Combinada con el régimen de THS'],
+    ['Dosis alternativa', '5 mg/day', 'Algunos clínicos usan dosis más altas, pero el beneficio adicional no está claro'],
+  ]}
+/>
+
+- Iniciar con 1 mg/day, la dosis estándar para la caída del cabello
+- Los comprimidos de 5 mg (Proscar) suelen ser más baratos y pueden partirse en cuartos
+- El efecto suele requerir **3-6 meses**
+
+<WarningBox title="La finasterida no reemplaza a los antiandrógenos">
+La finasterida solo reduce la DHT, no la testosterona. No puede sustituir al CPA, la espironolactona ni los agonistas de GnRH. Si tus niveles de T se mantienen por encima del objetivo, ajusta tu régimen antiandrogénico principal en lugar de añadir un inhibidor de la 5αR (5αRI)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Marcas y disponibilidad
+
+| Marca | Concentración | Notas |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Indicación para la caída del cabello |
+| **Proscar** | 5 mg | Indicación para la HBP, puede partirse |
+| Genéricos | 1 mg / 5 mg | Ampliamente disponibles en todo el mundo |
+
+## Monitoreo
+
+- **T**: Continúa con el monitoreo de rutina de la THS cada 3 meses
+- **DHT** (opcional): Puede confirmar el efecto del 5αRI
+- **Función hepática**: La finasterida rara vez causa daño hepático; por lo general no se requiere monitoreo adicional
+- **PSA**: La finasterida reduce el PSA en un ~50%; informa a tu médico si te están midiendo el PSA
+
+## Contraindicaciones
+
+- Alergia a la finasterida
+- Insuficiencia hepática grave
+- Las parejas embarazadas no deben manipular comprimidos triturados o partidos (teratogénico para fetos masculinos — por lo general no relevante en el contexto de la THS trans)
+
+<DangerBox title="Notas importantes">
+- **Los efectos se revierten al suspenderla**: la DHT vuelve a los niveles previos al tratamiento en cuestión de semanas tras dejarla
+- No suspendas otros medicamentos de la THS porque mejore la caída del cabello
+- Si no hay mejoría tras 6 meses, es posible que la finasterida no sea eficaz para ti — habla con tu profesional de salud sobre cambiar a la [dutasterida](/es/medications/five-alpha-reductase/dutasteride/)
+</DangerBox>

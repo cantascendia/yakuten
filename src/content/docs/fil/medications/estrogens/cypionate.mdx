@@ -1,0 +1,98 @@
+---
+title: "Estradiol Cypionate (EC)"
+description: "Kumpletong gabay sa estradiol cypionate — paghahambing ng pharmacokinetics sa estradiol valerate, pagdodosis, mga protocol sa iniksiyon, at mga limitasyon sa kaligtasan."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="B"
+>
+Ang estradiol cypionate (EC) ay isang long-acting na iniyeksiyong estradiol ester, pangunahing ginagamit sa mga bansa sa Amerika. Kumpara sa estradiol valerate (EV), mas mahaba ang half-life ng EC (~8-10 araw kumpara sa 4-5 araw), kaya nagbibigay-daan ito sa mas mahabang agwat ng iniksiyon<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Pangalan ng tatak: Depo-Estradiol.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Profile ng pharmacokinetics ng estradiol cypionate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Half-life**: ~8-10 araw (kumpara sa ~4-5 araw para sa EV)
+- **Oras ng peak**: 2-4 araw pagkatapos ng iniksiyon
+- **Oras ng trough**: 7-10 araw pagkatapos ng iniksiyon
+- **Steady state**: Naaabot pagkatapos ng ~3-4 regular na cycle
+
+### Paghahambing sa Estradiol Valerate (EV)
+
+<DoseTable
+  headers={['Parameter', 'Estradiol Cypionate (EC)', 'Estradiol Valerate (EV)']}
+  rows={[
+    ['Half-life', '~8-10 araw', '~4-5 araw'],
+    ['Oras ng peak', '2-4 araw', '2-3 araw'],
+    ['Inirerekomendang agwat', '7-14 araw', '5-7 araw'],
+    ['Pagbabago-bago ng serum level', 'Mas maliit', 'Mas malaki'],
+    ['Pangunahing rehiyon', 'Mga bansa sa Amerika', 'Pandaigdigan'],
+    ['Panganib ng VTE (RR)', '~1.0 (nilalaktawan ang first-pass)', '~1.0'],
+    ['Antas ng ebidensiya', 'B', 'A'],
+  ]}
+/>
+
+Ang mas mahabang half-life ng EC ay nagreresulta sa mas kaunting pagbaba ng E2 sa trough, na lumilikha ng mas pantay na curve ng konsentrasyon<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Pagdodosis
+
+### Pagdodosis para sa Nasa Hustong Gulang
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Mga Tala']}
+  rows={[
+    ['Panimulang dosis', '2-3 mg/week', 'Pagsisimula sa mababang dosis (unang 1-6 na buwan) upang protektahan ang pag-unlad ng dibdib'],
+    ['Dosis para sa pagpapanatili', '3-5 mg/week', 'Iakma batay sa trough E2; target na 100-200 pg/mL'],
+    ['Pinakamataas na dosis', '7 mg/10-14 days', 'Huwag lumampas dito'],
+  ]}
+/>
+
+Mga sanggunian sa pagdodosis: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> at WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Dahil sa mas mahabang half-life ng EC, pinipili ng ilang gumagamit ang agwat ng iniksiyon na 10-14 na araw.
+
+<WarningBox title="Agwat ng Iniksiyon at Timing ng Pagkuha ng Dugo">
+Ang mga gumagamit ng EC ay dapat magpakuha ng dugo sa **umaga bago ang susunod na iniksiyon** upang sukatin ang trough levels. Kung gumagamit ng 10-araw na iskedyul, ang trough ay sa umaga ng ika-10 araw. Target na trough E2: 100-200 pg/mL.
+</WarningBox>
+
+## Mga Tatak at Availability
+
+| Tatak | Konsentrasyon | Rehiyon |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | Estados Unidos |
+| Mga compounding pharmacy | Iba't iba | Piling rehiyon |
+
+Ang EC ay pangunahing makukuha sa US at Latin America. Sa mga rehiyong hindi ito available, ang [iniyeksiyong estradiol valerate](/fil/medications/estrogens/injection/) ang karaniwang alternatibo.
+
+## Monitoring
+
+Pareho sa ibang iniyeksiyong estradiol ester:
+
+- **E2**: Tuwing 3 buwan, pagkuha ng trough (umaga bago ang iniksiyon). Target na 100-200 pg/mL
+- **T**: Tuwing 3 buwan. Target na &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + tuwing 6 na buwan
+
+## Teknik ng Iniksiyon
+
+Ang proseso ng iniksiyon ay kapareho ng sa [iniyeksiyong estradiol valerate](/fil/medications/estrogens/injection/#injection-technique). Parehong angkop ang SC at IM na ruta.
+
+<DangerBox title="Mga Limitasyon sa Kaligtasan">
+- **Ang isang dosis ng iniksiyon ay hindi dapat lumampas sa 10 mg**
+- Ang layunin ay panatilihin ang matatag na pisyolohikal na antas ng E2, hindi ang habulin ang matataas na peak
+- Ang E2 >200 pg/mL ay hindi nagdudulot ng mas malakas na feminization, kundi tumaas na panganib ng pamumuo ng dugo<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Kung hindi available ang EC sa iyong rehiyon, huwag bumili sa pamamagitan ng mga hindi mapagkakatiwalaang channel
+</DangerBox>

@@ -1,0 +1,114 @@
+---
+title: "Spironolactone"
+description: "Mekanismong anti-androgen ng spironolactone, mga rekomendasyon sa dosis, mga panganib ng nakamamatay na hyperkalemia, sapilitang pagmamanman sa bato, at ang pandaigdigang konteksto bilang pamantayan sa US."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Spironolactone (Aldactone)"
+  nameCN="Spironolactone (螺内酯/安体舒通)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="B"
+>
+Ang Spironolactone (Spiro) ay sa istruktura isang potassium-sparing diuretic (gamot sa altapresyon) na may di-sinasadya at banayad na epektong anti-androgen. Dahil ganap na ipinagbabawal ng FDA ang CPA, ang Spironolactone ang naghaharing absolutong default na anti-androgen sa Estados Unidos. Umaasa ito sa pagharang sa receptor sa halip na pagbaba ng produksiyon ng testosterone, at may dalang malulubhang panganib na kaugnay ng nakamamatay na pagsanib ng potasyo.
+</DrugInfoBox>
+
+<DangerBox title="Hyperkalemia — Ang Nakamamatay na Panganib sa Puso">
+Dahil ang Spiro ay "potassium-sparing" na diuretic, pinipilit nito ang iyong mga bato na mabilis na ilabas ang sodium at tubig habang patuloy na itinatago ang potasyo sa loob ng iyong dugo<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Kapag lumampas ang iyong potasyo sa nakalalasong antas (Hyperkalemia: K⁺ > 5.5 mmol/L), nahaharap ka sa mabigat na panganib ng biglaan at nakamamatay na arrhythmia ng puso.
+
+**Habang umiinom ng Spironolactone, KAILANGAN mong:**
+- Sumailalim sa mahigpit na pagsusuri sa potasyo sa dugo (buwanan sa simula, pagkatapos ay tuwing 3-6 na buwan).
+- **Iwasan** ang labis na pagkain ng mga pagkaing mataas sa potasyo (hal. pagkain ng ilang saging araw-araw, buko juice, makapal na tomato paste).
+- **Huwag kailanman** uminom ng anumang ordinaryong dietary potassium supplement.
+- **Huwag kailanman** isama ito sa ACE inhibitors o ARBs (mga gamot sa altapresyon) maliban kung mahigpit na binabantayan ng isang cardiologist.
+
+**PUMUNTA KAAGAD SA ER KUNG:** Bigla kang nakaramdam ng panghihina ng kalamnan, kabog ng puso, matinding paghingal, o pamamanhid at pangangalirang sa iyong mga braso at binti.
+</DangerBox>
+
+## Pharmacology
+
+### Ang Mekanismo
+
+Ang paraan ng pagharap ng Spiro sa testosterone ay malayong-malayo at maaaring mas mahina kaysa sa CPA o GnRH Agonists<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
+
+1. **Pagharang sa Androgen Receptor** (Pangunahin): Binabarahan nito ang mga receptor ng selula ng iyong katawan kaya hindi pisikal na makakabit ang testosterone at DHT sa mga ito upang pasimulan ang masculinization.
+2. **Banayad na Pagkagambala sa Synthesis**: Napakahina nitong nakahahadlang sa mga enzyme na ginagamit ng testes upang gumawa ng testosterone, kaya bahagya lamang ang ibinababa nito sa aktwal na produksiyon.
+3. **Walang Direktang Pagsira sa T**: Maaaring halos hindi bumaba ang antas ng testosterone sa iyong serum ng dugo.
+
+**Ang Mahalagang Hindi Pagkakaunawaan**: Hindi kemikal na pinupuksa ng Spironolactone ang bilang ng iyong testosterone. Patuloy na lumulutang nang labis ang T sa iyong dugo, ngunit hindi lamang ito makaka-"saksak" sa mga selula<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Kaya naman, ang pagsukat ng iyong progreso sa pamamagitan ng T-level na pagsusuri sa dugo habang nasa Spiro ay lubhang mapanlinlang. Hindi mo masusuri ang bisa ng Spiro mula sa numero ng T lamang.
+
+### Bisa Kumpara sa CPA
+
+Pangkalahatang itinuturing ang Spiro bilang mas mahinang pagpipilian sa anti-androgen<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Ang lakas ng pagkakabit nito sa androgen receptor ay kahabag-habag na mahina kumpara sa mas matatapang na alternatibo tulad ng Bicalutamide.
+- Dahil hindi nito kayang patigilin ang sistema tulad ng CPA, marami sa mga gumagamit ang nag-uulat na umaabot sa hangganan kahit sa pinakamataas na dosis nang hindi sapat na nararamdaman ang feminization.
+- Lubhang nangangailangan ito ng napakataas na antas ng estradiol na kasabay nito upang matagumpay na masupil ang masculinization.
+
+## Mga Rekomendasyon sa Dosis
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Mga Tala', 'Pinagmulan']}
+  rows={[
+    ['Panimulang Dosis', '50 mg/day', 'Sinusuri ang pagtanggap ng katawan at inisyal na katatagan ng potasyo.', 'ES 2017'],
+    ['Karaniwang Titration', '100 mg/day', 'Ang karaniwang epektibong baseline para sa karamihan ng gumagamit.', 'UCSF 2016'],
+    ['Ang Pinakamataas na Hangganan', '200 mg/day', 'Ang paglampas sa 200mg ay nag-aanyaya ng nakapanghihinang mga side effect na walang anumang karagdagang benepisyong anti-androgen.', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### Mga Tip sa Pag-inom
+
+- Hatiin ang iyong tableta (kalahati sa umaga, kalahati sa gabi) upang patatagin ang pagbabago-bago ng potasyo at bawasan ang biglaang pagbaba ng presyon ng dugo<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />.
+- Ang pag-inom kasabay ng pagkain ay malaking nakapagpapabilis sa pagsipsip nito.
+- Dahil ito ay literal na isang diuretic na idinisenyo upang ubusin ang laman ng iyong pantog, ang pag-inom nito bago matulog ay tiyak na sisira sa iyong tulog dahil mapipilitan kang umihi buong gabi. Inumin ang iyong dosis sa gabi nang mas maaga.
+
+<WarningBox title="Hindi Mas Mabilis Gumana ang Mas Mataas na Dosis">
+Ang paglampas sa 200 mg/day ay hindi naman parang mahiwagang mas matinding dudurog sa mga androgen receptor. Pinalalala lamang nito ang lumulubog na presyon ng dugo at itinataas ang iyong potasyo patungo sa posibleng nakamamatay na bingit<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Kung umabot ka na sa 200 mg/day at hindi pa rin napipigil ang iyong masculinization, kailangan mong magpalit ng blocker, o makabuluhang dagdagan ang iyong transdermal/injectable na estradiol upang masupil ang T sa natural na paraan.
+</WarningBox>
+
+## Mga Bawas sa Kalidad ng Buhay
+
+Bukod sa malubhang panganib ng arrhythmia ng puso, nagdudulot ang Spiro ng ilang mabibigat na bawas sa kalidad ng buhay:
+
+### Bumabagsak na Presyon ng Dugo (Orthostatic Hypotension)
+Ang pangunahing layuning pharmaceutical ng Spiro ay ang pagpapababa ng altapresyon<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Kung masyado kang mabilis na tumayo mula sa upuan, madalas mong mararanasan ang matinding pagkahilo o maging ang biglaang pagkahimatay.
+- KAILANGAN mong masugid na uminom ng malinaw na tubig araw-araw.
+- Huwag mong limitahan ang iyong pag-inom ng asin (hindi tulad ng potasyo, hahanap-hanapin at lubos mong kakailanganin ang sodium).
+- Kung ang natural mong baseline na presyon ng dugo bago ang HRT ay mababa na sa mapanganib na antas, malamang na hindi angkop na opsiyon para sa iyo ang Spiro.
+
+### Madalas na Pag-ihi (Polyuria)
+- Pinipilit ng gamot na mabilis na ilabas ang likido mula sa iyong katawan. Madalas kang iihi at palagi kang makaramdam ng pagkauhaw. Uminom ng walang tigil na tubig.
+
+## Sapilitang Protocol ng Pagmamanman
+
+<DoseTable
+  headers={['Panel ng Pagsusuri', 'Dalas', 'Target na Saklaw / Babala', 'Aksiyong Kailangan']}
+  rows={[
+    ['Potasyo (K⁺)', 'Buwan 1, 2, 3 → Tapos tuwing 6 na buwan', 'K⁺ 3.5-5.0 mmol/L', 'Kung > 5.5: Itigil ang gamot, pumunta sa ER.'],
+    ['Function ng Bato (Creatinine / eGFR)', 'Sa baseline + tuwing 6 na buwan', 'eGFR > 60 mL/min', 'Kung bumabagsak: Itigil ang Spiro bago bumigay ang bato.'],
+    ['Presyon ng Dugo', 'Sa bawat pagbisita sa klinika', 'Walang matinding pagkahilo', 'Kung palaging nahihimatay: Bawasan ang dosis.'],
+  ]}
+/>
+
+## Pandaigdigang Akses
+
+Dahil ipinagbabawal ang CPA sa Amerika, ang Spiro ang walang-pasubaling hari ng mga landas sa US:
+
+- **Sa US:** Malayang ibinibigay sa mga Informed Consent na klinika (tulad ng Planned Parenthood). Napakadaling makuha, laging may stock, at lubhang mura sa ilalim ng insurance/GoodRx.
+- **Sa Europa/Asya:** Halos eksklusibong ginagamit bilang fallback na gamot para sa mga taong hindi kayang tiisin ng atay ang CPA, o sa mga nakaligtas sa brain tumor dulot ng CPA.
+- **Panganib sa DIY:** Bagaman bihira pekein ang Spiro mismo, ang pagsubok na pamahalaan ang Spiro sa DIY nang hindi nagbabayad para sa pribadong kidney panel ay parang naglalaro ng Russian roulette na may atake sa puso.
+
+<DrugBrandGallery drugId="spironolactone" />

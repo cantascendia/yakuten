@@ -1,0 +1,156 @@
+---
+title: "Dilaltı Estradiol"
+description: "Estradiolün dil altına alınmasına ilişkin farmakolojik özellikler, biyoyararlanım, kan düzeyindeki büyük dalgalanmalar, doz önerileri ve dikkat edilmesi gereken noktalar."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, hembree-2017, kuhl-2005, price-1997, ucsf-2016]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Dilaltı Estradiol"
+  nameCN="舌下含服雌二醇"
+  category="estrogen"
+  route="Dilaltı"
+  evidenceLevel="B"
+>
+  Dilaltı uygulamada, standart oral estradiol tabletleri dilin altında eritilir. Bu sayede ilaç doğrudan mukoza zarından emilir ve karaciğerdeki ilk geçiş metabolizmasını kısmen atlar. Bu yöntem biyoyararlanımı büyük ölçüde artırır; ancak kan düzeylerinde keskin, lunapark treni misali dalgalanmalara yol açtığından, kullanıcıların günde birden çok kez doz alması gerekir.
+</DrugInfoBox>
+
+<img src="/images/drugs/estrofem-studio.webp" alt="Estrofem 2mg estradiol tabletleri ürün fotoğrafı" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Farmakoloji
+
+### Emilim Mekanizması
+
+Dilaltında eritildiğinde estradiol, dilin altındaki yoğun kılcal damar ağı aracılığıyla doğrudan sistemik dolaşıma geçer<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Sublingual estradiol pharmacokinetics" />:
+
+- **İlk geçiş etkisini kısmen atlar**: Tabletleri yutmaya kıyasla, ilacın çok daha büyük bir kısmı karaciğerin doğrudan metabolik yıkımından kurtulur.
+- **Daha Yüksek Biyoyararlanım**: Dilaltı biyoyararlanım, oral yola göre yaklaşık 2 ila 5 kat daha yüksektir<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />.
+- **Hızlı Etki Başlangıcı**: Kan düzeyleri uygulamadan 15 ila 25 dakika sonra hızla yükselmeye başlar.
+- **Tam Bir Atlama Değil**: Bu süreçte tükürük, eriyen ilacın bir kısmını kaçınılmaz olarak boğazınıza taşır; yani dozun belirli bir yüzdesi yine de oral dozla aynı şekilde işlenir.
+
+### Kan Düzeyi Profilleri (Lunapark Treni)
+
+Dilaltı farmakokinetik, standart oral uygulamadan kökten farklıdır<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} />:
+
+<DoseTable
+  headers={['Parametre', 'Dilaltı', 'Oral']}
+  rows={[
+    ['Doruğa Ulaşma Süresi (Tmax)', '~0,5 ila 1 saat', '~3 ila 6 saat'],
+    ['Doruk Konsantrasyon (Cmax)', 'Çok Yüksek (oral düzeyin ~2-5 katı)', 'Görece Düşük'],
+    ['Yüksek Düzeylerin Süresi', 'Kısa (düşmeden önce ~4-6 saat)', 'Daha Uzun (~8-12 saat)'],
+    ['Gün İçi Dalgalanma', 'Çok Büyük (yüksek doruk/dip oranı)', 'Orta'],
+    ['E1/E2 Oranı', 'Daha Düşük (Olumlu)', 'Daha Yüksek'],
+  ]}
+/>
+
+<WarningBox title="Uyarı: Büyük Sıçramalar ve Çöküşler">
+Dilaltı dozlamanın en büyük dezavantajı, **kan düzeylerindeki ciddi kararsızlıktır**. Tablet eridikten sonra E2 düzeyleri patlamalı biçimde yükselir, ancak birkaç saat sonra dibe vurur. Bu durum şu anlama gelir:
+
+- Tek bir kan testi, günlük ortalama E2 düzeyinizi yansıtamaz.
+- Doruk noktasında E2, güvenli hedef aralığının çok üzerine fırlar; dip noktasında (bir sonraki dozunuzdan hemen önce) ise terapötik düzeylerin altına inebilirsiniz.
+- Bu lunapark treni; ruh hali dalgalanmaları, ateş basması, yorgunluk ve diğer menopozal belirtileri tetikleyebilir.
+- **Duygusal ve fiziksel olarak istikrarlı bir temel düzey sizin için önemliyse, transdermal yamaları ya da günlük jeli tercih edin.**
+
+Kan tahlili yaptırırken, DAİMA bir sonraki dozunuzdan **hemen önce** test yaptırın (dip düzeyi) ve günlük ortalamanızın bunun epeyce üzerinde olduğunu unutmayın.
+</WarningBox>
+
+### E1/E2 Oranı Avantajı
+
+Dilaltı uygulamanın kuramsal bir avantajı, E1 (Estron) ile E2 (Estradiol) arasındaki oranı daha düşük tutmasıdır<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} />:
+
+- Tabletler yutulduğunda karaciğer, E2'yi hızla E1'e (zayıf etkili bir östrojen) dönüştürür; bu da 5:1 ya da daha yüksek bir E1/E2 oranına yol açar.
+- Dilaltı uygulama karaciğeri büyük ölçüde atladığından, E1/E2 oranı 1:1'e çok daha yakın kalır.
+- Feminizasyonun büyük kısmını E2 yönlendirdiği için, E2 lehine daha ağır basan bir denge kuramsal olarak üstündür.
+- Bununla birlikte, klinik camiada E1/E2 oranını değiştirmenin daha iyi bir nihai fenotipik sonuç verdiğini doğrulayan sağlam verilerin eksikliği söz konusudur.
+
+## Doz Önerileri
+
+Belirgin şekilde artmış biyoyararlanım nedeniyle, etkili dilaltı doz teknik olarak eşdeğer oral dozdan daha düşüktür<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+### Dönüşüm Tahmini
+
+Dilaltı yol, kan dolaşımına yutulan tabletlerin 2 ila 5 katı güçle ulaştığından, kabaca toplulukta yaygın olarak şu tahmin yapılır:
+
+> **1 mg Dilaltı ≈ 2-3 mg Oral (kaba eşdeğerlik)**
+
+Kişiden kişiye metabolik klirens hızlarının büyük ölçüde değiştiğini unutmayın.
+
+### Önerilen Dozlama
+
+<DoseTable
+  headers={['Aşama', 'Dilaltı Doz', 'Sıklık', 'Hedef Dip E2 (pg/mL)', 'Zaman Çizelgesi']}
+  rows={[
+    ['Düşük Dozla Başlangıç', '0,5-1 mg/doz', 'Günde iki kez', '50-100', '1.-6. aylar'],
+    ['Orta Düzey Titrasyon', '1-2 mg/doz', 'Günde 2 ila 3 kez', '100-200', '6.-12. aylar'],
+    ['İdame Aşaması', '1-2 mg/doz', 'Günde 2 ila 3 kez', '100-200', '12. ay ve sonrası'],
+    ['Tipik Üst Sınır', '2 mg/doz', 'Günde 3 kez (Toplam 6mg)', '200\'ü aşmamalı', 'Özel durumlar'],
+  ]}
+/>
+
+<WarningBox title="Uyum (Adherans) Sorunu">
+Dilaltı dozlama, **günde 2 ila 3 kez** uygulamayı zorunlu kılar ve dozların mantıklı biçimde aralıklı verilmesi gerekir (günde iki kez için her 8-12 saatte bir; günde üç kez için her 6-8 saatte bir). Bir dozu unutmak ya da düzensiz almak, zaten acımasız olan kan düzeyi dalgalanmalarını daha da kötüleştirir. Tablet eritmek için çalar saat kurmak yaşam tarzınızı bozuyorsa, standart oral yola veya transdermal yamalara geçin.
+</WarningBox>
+
+## Nasıl Alınır
+
+### Teknik
+
+<img src="/images/diagrams/tr/sublingual-placement.webp" alt="Dilaltı tabletin dilin altındaki doğru konumunu gösteren yerleştirme şeması" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+1. Tableti tamamen **dilin altına** yerleştirin (diş etlerine/damarlara yakın bir noktaya).
+2. Ağzınızı kapalı tutun ve **tükürüğünüzü yutmaktan etkin biçimde kaçının**.
+3. Doğal yolla erimesine izin verin. Estrofem gibi mikronize tabletlerde bu yaklaşık **5-15 dakika** sürer.
+4. Bu süre boyunca konuşmayın, bir şey içmeyin ve yemeyin.
+5. Tamamen dağıldıktan sonra 1-2 dakika daha bekleyin, ardından geriye kalan tükürüğü doğal şekilde yutun.
+
+### Sık Sorulan Sorular
+
+- **Tablet bir türlü dağılmıyor mu?** Bazı tablet formülasyonlarını (özellikle üreticiye bağlı olarak kalın şeker kaplı Progynova Valerat tabletlerini) dilaltında eritmek zordur. Mikronize Estradiol Hemihidrat (Estrofem gibi) neredeyse anında ezilir ve erir.
+- **Yanlışlıkla erkenden yuttunuz mu?** Bunu yalnızca yutulmuş bir oral doz gibi değerlendirin. "Telafi etmek" için bir tane daha almayın.
+- **Aşırı tükürük mü oluşuyor?** Bu normaldir. Yutmaya etkin biçimde direnin, ancak biraz yutarsanız panik yapmayın; dilaltı mukozanız son derece hızlı emer.
+
+## Kimlere Uygun
+
+Dilaltı dozlama, şu kişiler için güçlü bir seçenektir:
+- Tablet yutmaktan daha yüksek biyoyararlanım isteyen, ancak transdermal seçeneklere hiçbir erişimi olmayanlar.
+- Özellikle yüksek estron (E1) düzeylerini düşürmeye çalışanlar.
+- Günde 3 kez kusursuzca doz alacak katı disipline sahip olanlar.
+
+**Şu durumlardaysanız hiç uygun değildir:**
+- İlaç almaya uyum sağlamakta ya da hatırlamakta zorlanıyorsanız.
+- Yükselen hormonların yol açtığı duygusal kararsızlığı veya enerji çöküşlerini kaldıramıyorsanız.
+- VTE (venöz tromboemboli) öykünüz varsa ve yamalara/jele erişiminiz mevcutsa.
+
+## VTE (Pıhtılaşma) Riski
+
+VTE riskini özellikle dilaltı dozlamayla ilişkilendiren geniş ölçekli klinik veriler can sıkıcı biçimde eksiktir<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+- **Kuramsal olarak**: Karaciğeri atlamak, pıhtılaşma faktörleri üzerindeki etkinin azaldığı anlamına gelir; bu da yöntemi kuramsal olarak oral yola göre daha güvenli kılar.
+- **Gerçekte**: Dozun bir kısmını tükürüğünüzle her zaman yutarsınız; bu da gerçek ve tam bir karaciğer atlamasını engeller. Dolayısıyla gerçek dünyadaki VTE riski büyük olasılıkla transdermal ile oral arasında, rahatsız edici bir noktada yer alır.
+- **Sonuç**: Önceden var olan kan pıhtısı riskleriniz varsa dilaltı yolu bir "açık kapı" olarak kullanmayın. Yüksek risk altındaysanız, transdermal uygulamada ısrar edin<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />.
+
+## Karşılaştırma Hızlı Başvuru
+
+<DoseTable
+  headers={['Ölçüt', 'Dilaltı', 'Oral (Yutularak)', 'Transdermal Yama']}
+  rows={[
+    ['Biyoyararlanım', 'Orta-Yüksek', 'Düşük (~%5)', 'Yüksek'],
+    ['Kan Düzeyi İstikrarı', 'Çok Kötü (Büyük doruklar)', 'Orta', 'Mükemmel (Son derece istikrarlı)'],
+    ['VTE Riski', 'Büyük olasılıkla ortalarda bir yerde', 'RR ≈ 1.48', 'RR ≈ 0.97'],
+    ['Dozlama Sıklığı', 'Günde 2-3 kez', 'Günde 1-2 kez', '3,5-7 günde bir'],
+    ['Kullanım Kolaylığı', 'Düşük', 'Yüksek', 'Yüksek'],
+  ]}
+/>
+
+<DrugBrandGallery drugId="estradiol-sublingual" />

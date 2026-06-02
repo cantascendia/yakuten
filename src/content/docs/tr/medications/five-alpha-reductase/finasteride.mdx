@@ -1,0 +1,76 @@
+---
+title: "Finasterid"
+description: "Transfeminen HRT'de finasterid — DHT inhibisyon mekanizması, dozlama, izlem ve güvenlik değerlendirmeleri."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasterid"
+  nameCN="Finasterid"
+  category="5α-redüktaz inhibitörü"
+  route="Oral"
+  evidenceLevel="B"
+>
+Finasterid, testosteronun dihidrotestosterona dönüşümünü engelleyerek DHT düzeylerini yaklaşık %65-70 oranında düşüren seçici bir tip II 5α-redüktaz inhibitörüdür. Transfeminen HRT'de, başlıca saç dökülmesi ve aşırı vücut kıllanması için ek tedavi olarak kullanılır.
+</DrugInfoBox>
+
+## Mekanizma
+
+Finasterid, seçici olarak **tip II** 5α-redüktazı (başlıca saç foliküllerinde ve prostatta bulunur) inhibe ederek serum DHT'sini ~%65-70 oranında düşürür; testosteron düzeyleri üzerinde ise neredeyse hiç etkisi yoktur.
+
+[Dutasterid](/tr/medications/five-alpha-reductase/dutasteride/) ile karşılaştırıldığında, finasterid yalnızca tek bir izoformu inhibe eder; bu da daha az DHT düşüşüne ama olası olarak daha az yan etkiye yol açar.
+
+## Dozlama
+
+<DoseTable
+  headers={['Endikasyon', 'Doz', 'Notlar']}
+  rows={[
+    ['Saç dökülmesi (HRT\'ye ek)', '1 mg/day', 'HRT rejimiyle birlikte'],
+    ['Alternatif doz', '5 mg/day', 'Bazı klinisyenler daha yüksek doz kullanır, ancak ek yararı belirsizdir'],
+  ]}
+/>
+
+- Standart saç dökülmesi dozu olan 1 mg/day ile başlayın
+- 5 mg'lık tabletler (Proscar) genellikle daha ucuzdur ve dörde bölünebilir
+- Etkinin ortaya çıkması genellikle **3-6 ay** gerektirir
+
+<WarningBox title="Finasterid Anti-Androjenlerin Yerini Tutmaz">
+Finasterid yalnızca DHT'yi düşürür, testosteronu değil. CPA, spironolakton veya GnRH agonistlerinin yerini tutamaz. T düzeyleriniz hedefin üzerinde kalmaya devam ediyorsa, bir 5αRI eklemek yerine birincil anti-androjen rejiminizi ayarlayın<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Markalar ve Bulunabilirlik
+
+| Marka | Doz | Notlar |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Saç dökülmesi endikasyonu |
+| **Proscar** | 5 mg | BPH endikasyonu, bölünebilir |
+| Jenerikler | 1 mg / 5 mg | Dünya genelinde yaygın olarak bulunur |
+
+## İzlem
+
+- **T**: Rutin HRT izlemine her 3 ayda bir devam edin
+- **DHT** (isteğe bağlı): 5αRI etkisini doğrulayabilir
+- **Karaciğer fonksiyonu**: Finasterid nadiren karaciğer hasarına yol açar; genellikle ek izlem gerekmez
+- **PSA**: Finasterid PSA'yı ~%50 oranında düşürür; PSA testi yapılıyorsa hekiminizi bilgilendirin
+
+## Kontrendikasyonlar
+
+- Finasterid alerjisi
+- Ağır karaciğer yetmezliği
+- Hamile partnerler ezilmiş/kırılmış tabletlere dokunmamalıdır (erkek fetüsler için teratojeniktir — trans HRT bağlamında genellikle geçerli değildir)
+
+<DangerBox title="Önemli Notlar">
+- **Etkiler bırakınca geri döner**: İlaç bırakıldıktan birkaç hafta içinde DHT tedavi öncesi düzeylerine geri döner
+- Saç dökülmesi düzeldiği için diğer HRT ilaçlarınızı bırakmayın
+- 6 ay sonra düzelme yoksa, finasterid sizin için etkili olmayabilir — sağlık uzmanınızla [dutasteride](/tr/medications/five-alpha-reductase/dutasteride/) geçiş yapmayı görüşün
+</DangerBox>

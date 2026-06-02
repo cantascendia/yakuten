@@ -1,0 +1,33 @@
+---
+title: "Risiko-Screener"
+description: "Beantworten Sie ein paar kurze Fragen, um Ihr persönliches HRT-Risikoprofil einzuschätzen. Reines Frontend-Tool — es werden keine Daten übertragen."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import RiskScreener from '../../../../components/interactive/RiskScreener.tsx';
+
+## Selbsteinschätzung der HRT-Risikofaktoren
+
+Beantworten Sie 7 kurze Fragen, um sich rasch einen Überblick über Ihre persönlichen Risikofaktoren zu verschaffen.
+
+**Dieses Tool hilft Ihnen dabei, Folgendes zu erkennen:**
+
+- Ihr persönliches VTE-Risiko (tiefe Venenthrombose / Lungenembolie)
+- leberbezogene Sicherheitsrisiken der Medikation
+- das Meningeom-Risiko (in Zusammenhang mit der CPA-Dosierung)
+- eine umfassende Einschätzung des kardiovaskulären Risikos
+
+<RiskScreener client:visible />
+
+## Wichtige Hinweise
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Keine medizinische Diagnose</div>
+
+Dieses Tool **kann** eine professionelle medizinische Beurteilung **nicht ersetzen**. Die Risikowerte beruhen auf bekannten Bevölkerungsstatistiken und können Ihren vollständigen persönlichen Gesundheitszustand nicht abbilden. Besprechen Sie Ihre Ergebnisse mit Ihrer behandelnden Ärztin oder Ihrem behandelnden Arzt — sie sind als Ausgangspunkt für das Gespräch gedacht.
+
+**Ein hohes Risiko bedeutet nicht, dass Sie keine HRT anwenden können** — es bedeutet, dass Sie möglicherweise eine engmaschigere Kontrolle, einen anderen Verabreichungsweg oder gezielte Vorbeugemaßnahmen benötigen.
+</div>

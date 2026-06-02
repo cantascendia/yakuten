@@ -1,0 +1,76 @@
+---
+title: "Finasterida"
+description: "A finasterida na HRT transfeminina — mecanismo de inibição da DHT, posologia, monitoramento e considerações de segurança."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasteride"
+  nameCN="Finasteride"
+  category="5α-reductase inhibitor"
+  route="Oral"
+  evidenceLevel="B"
+>
+A finasterida é um inibidor seletivo da 5α-redutase do tipo II que reduz os níveis de DHT em aproximadamente 65-70% ao bloquear a conversão da testosterona em di-hidrotestosterona. É usada como terapia adjuvante na HRT transfeminina, principalmente para a queda de cabelo e o excesso de pelos corporais.
+</DrugInfoBox>
+
+## Mecanismo
+
+A finasterida inibe seletivamente a 5α-redutase do **tipo II** (encontrada principalmente nos folículos capilares e na próstata), reduzindo a DHT sérica em ~65-70% sem praticamente nenhum efeito sobre os níveis de testosterona.
+
+Em comparação com a [dutasterida](/pt/medications/five-alpha-reductase/dutasteride/), a finasterida inibe apenas uma isoforma, o que resulta em menor redução da DHT, mas também, potencialmente, em menos efeitos colaterais.
+
+## Posologia
+
+<DoseTable
+  headers={['Indicação', 'Dose', 'Observações']}
+  rows={[
+    ['Queda de cabelo (adjuvante à HRT)', '1 mg/day', 'Combinada com o esquema de HRT'],
+    ['Dose alternativa', '5 mg/day', 'Alguns médicos usam doses mais altas, mas o benefício adicional é incerto'],
+  ]}
+/>
+
+- Inicie com 1 mg/day, a dose padrão para queda de cabelo
+- Os comprimidos de 5 mg (Proscar) costumam ser mais baratos e podem ser divididos em quartos
+- O início de ação geralmente leva **3-6 meses**
+
+<WarningBox title="A Finasterida Não Substitui os Antiandrógenos">
+A finasterida apenas reduz a DHT, não a testosterona. Ela não pode substituir a CPA (acetato de ciproterona), a espironolactona ou os agonistas de GnRH. Se os seus níveis de T permanecerem acima da meta, ajuste o seu esquema antiandrogênico principal em vez de adicionar um 5αRI (inibidor da 5α-redutase)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Marcas e Disponibilidade
+
+| Marca | Concentração | Observações |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Indicação para queda de cabelo |
+| **Proscar** | 5 mg | Indicação para HPB, pode ser dividido |
+| Genéricos | 1 mg / 5 mg | Amplamente disponíveis em todo o mundo |
+
+## Monitoramento
+
+- **T**: Mantenha o monitoramento de rotina da HRT a cada 3 meses
+- **DHT** (opcional): Pode confirmar o efeito do 5αRI
+- **Função hepática**: A finasterida raramente causa lesão hepática; em geral, não é necessário monitoramento adicional
+- **PSA**: A finasterida reduz o PSA em ~50%; informe o seu médico caso o PSA esteja sendo avaliado
+
+## Contraindicações
+
+- Alergia à finasterida
+- Insuficiência hepática grave
+- Parceiras grávidas não devem manusear comprimidos triturados ou partidos (teratogênico para fetos do sexo masculino — geralmente não relevante no contexto da HRT trans)
+
+<DangerBox title="Observações Importantes">
+- **Os efeitos revertem com a interrupção**: a DHT retorna aos níveis pré-tratamento em poucas semanas após a suspensão
+- Não interrompa os outros medicamentos da HRT só porque a queda de cabelo melhorou
+- Se não houver melhora após 6 meses, a finasterida pode não ser eficaz para você — converse com seu médico sobre a possibilidade de mudar para a [dutasterida](/pt/medications/five-alpha-reductase/dutasteride/)
+</DangerBox>

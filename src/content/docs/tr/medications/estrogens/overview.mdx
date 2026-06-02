@@ -1,0 +1,107 @@
+---
+title: "Östrojenlere Genel Bakış"
+description: "Farklı östradiol uygulama yolları (transdermal, oral, dilaltı, enjeksiyon) arasında VTE riskleri, avantajlar ve dezavantajların karşılaştırması."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+Östradiol (E2), trans kadınların HRT'sinde temel ilaçtır. Bir uygulama yolu seçerken **birincil önceliğiniz, yalnızca kolaylık ya da maliyet değil, güvenlik (özellikle Venöz Tromboemboli, yani VTE riski) olmalıdır**.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/tr/routes-comparison.webp" alt="Üç östradiol uygulama yolunun karşılaştırması: karaciğer üzerinden oral, doğrudan emilim ile transdermal, kan dolaşımına enjeksiyon" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## Uygulama Yoluna Göre VTE Riskleri
+
+Venöz Tromboemboli (kan pıhtısı), östrojen tedavisiyle ilişkili en ciddi risklerden biridir. Bu risk, östrojenin vücudunuza nasıl girdiğine bağlı olarak büyük ölçüde değişir<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Uygulama Yolu', 'Göreceli Risk (RR)', 'Kanıt Düzeyi', 'Not']}
+  rows={[
+    ['Transdermal Bant', 'RR ≈ 0.97', 'A', 'Kullanmayanlara kıyasla anlamlı bir risk artışı yok'],
+    ['Transdermal Jel', 'RR ≈ 0.97', 'A', 'Bantlara benzer, karaciğer ilk geçişini atlar'],
+    ['Oral (Östradiol Valerat/Hemihidrat)', 'RR ≈ 1.48', 'A', 'Risk yaklaşık %48 artar'],
+    ['Dilaltı', 'Sınırlı Veri', 'C', 'İlk geçişi kısmen atlar, teorik olarak oralden daha düşük'],
+    ['Enjeksiyon (EV/EC/EEn)', 'Sınırlı Veri', 'C', 'İlk geçişi atlar, ancak pıhtı riski konusunda büyük RKÇ verisi yok'],
+  ]}
+/>
+
+<WarningBox title="Temel Çıkarım">
+Transdermal yollar (bantlar ve jel), istatistiksel olarak HRT kullanmayan kişilerle aynı VTE riskini taşır (RR ≈ 0.97). Buna karşın oral uygulama riski yaklaşık %48 artırır (RR ≈ 1.48). Önceden herhangi bir VTE risk faktörünüz varsa, transdermal bir yol kesinlikle ilk tercihiniz olmalıdır<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Uygulama Yolu Seçim Rehberi
+
+Aşağıdaki çerçeve, güncel klinik kanıtlar üzerine kurulmuştur<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Senaryo 1: Mevcut VTE Risk Faktörleri
+
+**Risk Faktörleri şunları içerir:** 40 yaş üstü, BMI >30, sigara kullanımı, ailede VTE öyküsü, pıhtılaşma bozukluğu öyküsü ya da auralı migren.
+
+- **Tercih edilen:** Transdermal Bant veya Transdermal Jel
+- **Kaçınılması gereken:** Oral Östradiol
+- **Ayrıca kaçınılması gereken:** Oral östrojeni Siproteron Asetat (CPA) ile birlikte kullanmak
+
+### Senaryo 2: VTE Risk Faktörü Yok
+
+Erişilebilirliğe, bütçeye ve kişisel tercihe göre seçin:
+
+- **Oral Östradiol (Estrace, Progynova):** Genellikle dünya genelinde en uygun fiyatlı ve en yaygın erişilebilen yoldur.
+- **Transdermal Bant (Climara, Estradot):** Daha üstün bir güvenlik profili sunar, ancak pahalı olabilir ya da küresel tedarik zinciri sıkıntılarından etkilenebilir.
+- **Dilaltı:** Dilin altında eritilen oral hapları kullanır. Biyoyararlanımı daha yüksektir, ancak kan düzeylerinde belirgin ani yükseliş/düşüşler yaratır.
+- **Enjeksiyonlar:** Belirgin tepe/dip dalgalanmalarına neden olur, ancak monoterapi için oldukça etkilidir.
+
+### Senaryo 3: Monoterapi (Anti-Androjen Olmadan Östrojen)
+
+Testosteronu, ayrı bir anti-androjen blokör almadan yalnızca östradiol kullanarak baskılamak isterseniz:
+
+- **Tercih edilen:** Enjeksiyon Östradiol (EV, EC, EEn) – gereken sürekli yüksek E2 düzeylerini güvenilir şekilde korur.
+- **Alternatif:** Yüksek dozlu transdermal bantlar (200-400 µg/day) veya transdermal jel.
+- **Referans:** Misakian'ın 2025 tarihli bir çalışması, enjeksiyon EV monoterapisi uygulayan kullanıcıların %82,6'sının anti-androjene ihtiyaç duymadan T baskılaması elde ettiğini göstermiştir<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Artıları ve Eksileri Hızlı Başvuru
+
+<DoseTable
+  headers={['Uygulama Yolu', 'Artıları', 'Eksileri', 'Tipik Erişilebilirlik']}
+  rows={[
+    ['Transdermal Bant', 'En düşük VTE riski; kararlı kan düzeyleri; haftada 1-2 kez değiştirilir', 'Cilt tahrişi; pahalı olabilir veya dünya genelinde sık sık stokta bulunmayabilir', 'Orta'],
+    ['Transdermal Jel', 'Düşük VTE riski; esnek günlük dozlama', 'Emilim cilt tipine göre büyük farklılık gösterir; kuruma süresi gerektirir', 'Orta'],
+    ['Oral (Haplar)', 'Erişimi en kolay; çok ucuz; alması basit', 'Daha yüksek VTE riski; karaciğer ilk geçiş metabolizması ilacın çoğunu israf eder', 'Çok Yüksek'],
+    ['Dilaltı', 'Oralden daha yüksek biyoyararlanım; karaciğeri kısmen atlar', 'Kan düzeylerinde belirgin yükseliş ve düşüşler; günde 2-3 kez dozlama gerektirir', 'Çok Yüksek (Oral hapları kullanır)'],
+    ['Enjeksiyon (EV/EEn)', 'Karaciğeri atlar; monoterapi için oldukça etkili', 'İğne/enjeksiyon kaygısı gerektirir; yoğun kan düzeyi tepe ve dipleri', 'Ülkeye göre değişir (genellikle DIY)'],
+  ]}
+/>
+
+## Dozaja Genel Bakış
+
+Farklı yollar için standart dozaj aralıkları<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Uygulama Yolu', 'Başlangıç Dozu', 'İdame Dozu', 'Tipik Maksimum Doz']}
+  rows={[
+    ['Transdermal Bant', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Transdermal Jel', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Oral Östradiol', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Dilaltı', '1-2 mg/day (2-3 doza bölünmüş)', '2-4 mg/day (2-3 doza bölünmüş)', '6 mg/day'],
+    ['Enjeksiyon EV', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Ayrıntılı Sayfalar
+
+Her bir yolun farmakolojisi, kullanım yöntemleri ve özel uyarıları hakkında derinlemesine bilgi için aşağıya tıklayın:
+
+- [Transdermal Bantlar](/tr/medications/estrogens/transdermal-patch/) — En güvenli uygulama yolu
+- [Oral Östradiol](/tr/medications/estrogens/oral/) — Erişimi kolay, ancak hafifçe yükselmiş VTE riski taşır
+- [Dilaltı](/tr/medications/estrogens/sublingual/) — Daha yüksek emilim sunan ama belirgin dalgalanmalar yaratan bir uzlaşma
+- [Transdermal Jel](/tr/medications/estrogens/gel/) — Bantlar ile oral arasında konumlanan esnek güvenlik
+- [Enjeksiyon Östradiol](/tr/medications/estrogens/injection/) — Monoterapi için altın standart

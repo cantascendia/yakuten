@@ -1,0 +1,74 @@
+---
+title: "Drospirénone"
+description: "La drospirénone dans le THS transféminin — un progestatif aux propriétés anti-androgéniques et anti-minéralocorticoïdes."
+evidenceLevel: C
+sidebar:
+  order: 4
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Drospirénone"
+  nameCN="Drospirénone"
+  category="progestogen"
+  route="Voie orale"
+  evidenceLevel="C"
+>
+La drospirénone est un progestatif de synthèse dérivé structurellement de la spironolactone, possédant à la fois une activité **anti-androgénique** et **anti-minéralocorticoïde** (de type spironolactone). Option non conventionnelle du THS transféminin, son profil pharmacologique singulier peut s'avérer intéressant dans certaines situations sélectionnées<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mécanisme d'action
+
+La drospirénone exerce plusieurs activités pharmacologiques :
+
+- **Activité progestative** : liaison aux récepteurs de la progestérone
+- **Activité anti-androgénique** : liaison compétitive au récepteur des androgènes (mécanisme proche de celui de la spironolactone)
+- **Activité anti-minéralocorticoïde** : effet diurétique de type spironolactone
+- **Aucune activité œstrogénique ni glucocorticoïde**
+
+### Positionnement particulier
+
+La drospirénone est le **seul progestatif associant une activité anti-androgénique et anti-minéralocorticoïde**. Pour les personnes recherchant à la fois un effet progestatif et une couverture anti-androgénique modérée, la drospirénone peut réduire le recours à un anti-androgène distinct.
+
+## Posologie
+
+<DoseTable
+  headers={['Source', 'Dose', 'Remarques']}
+  rows={[
+    ['Dans les contraceptifs oraux', '3-4 mg/jour', "Associée à l'éthinylestradiol (NON recommandé pour le THS)"],
+    ['En monothérapie', '4 mg/jour', 'Slynd (pilule à base de drospirénone seule)'],
+    ['Adjuvant au THS (exploratoire)', '3-4 mg/jour', 'Aucune donnée issue d\'essais cliniques à grande échelle dans le THS'],
+  ]}
+/>
+
+<WarningBox title="Précaution d'emploi">
+La plupart des produits contenant de la drospirénone sont des contraceptifs oraux combinés (par ex. Yaz, Yasmin) qui contiennent de l'**éthinylestradiol (EE)**. Ce site [interdit explicitement](/fr/medications/banned-drugs/) l'éthinylestradiol dans le THS. Si vous choisissez la drospirénone, vous devez utiliser une **formulation à base de drospirénone seule** (par ex. Slynd 4 mg), et non un produit combiné contenant de l'EE.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Formulation | Remarques |
+|-------|-------------|-------|
+| **Slynd** | drospirénone seule 4 mg | Sans EE, adaptée au THS |
+| **Yaz / Yasmin** | drospirénone 3 mg + EE | Contient de l'éthinylestradiol, **INTERDIT pour le THS** |
+| Génériques | Variables | Vérifier l'absence d'EE |
+
+## Surveillance
+
+- **K⁺ (potassium)** : la drospirénone a un effet épargneur de potassium de type spironolactone ; surveiller la kaliémie
+- **PRL** : tous les 6 mois
+- En cas d'association à la spironolactone, le risque d'hyperkaliémie augmente nettement
+
+<DangerBox title="Limites de sécurité">
+- **Ne doit pas être associée à la spironolactone** : toutes deux ont un effet épargneur de potassium ; l'association peut provoquer une hyperkaliémie dangereuse<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **Ne pas utiliser de formulations contenant de l'EE** (Yaz/Yasmin, etc.)
+- À utiliser avec prudence en cas d'insuffisance rénale
+- Il n'existe aucune donnée de sécurité à grande échelle concernant la drospirénone dans le THS transgenre
+</DangerBox>

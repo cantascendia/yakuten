@@ -1,0 +1,101 @@
+---
+title: "Metodologi"
+description: "Bagaimana konten HRT Pharmacopoeia diproduksi, dari penelusuran literatur hingga publikasi — penyelarasan dengan pedoman klinis, sitasi DOI, penilaian bukti A/B/C/X, pemeriksaan silang dua orang, telaah penasihat medis, dan telaah berkala setiap kuartal."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+Halaman ini menjelaskan bagaimana setiap konten HRT Pharmacopoeia ditulis, ditelaah, dan diperbarui. Inilah komitmen kami kepada pembaca: **teks yang belum melalui proses ini tidak akan diterbitkan**.
+
+## 1. Tiga Prinsip Inti
+
+1. **Tidak ada klaim tanpa sitasi**: setiap klaim medis harus disertai setidaknya satu rujukan DOI atau pedoman internasional; jika sebuah klaim tidak dapat ditelusuri sumbernya, klaim tersebut ditandai sebagai <EvidenceBadge level="X" /> atau dihapus.
+2. **Data dosis dengan sumber silang**: dosis resep harus muncul setidaknya dalam dua sumber otoritatif yang independen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, dan sejenisnya).
+3. **Hindari bahasa absolut**: jangan gunakan "harus / selalu / tidak pernah", melainkan "umumnya / disarankan / pada sebagian besar kasus".
+
+## 2. Alur Kerja Lengkap
+
+### 1. Pemilihan topik
+- Topik dipilih berdasarkan permintaan penelusuran, pertanyaan pembaca, pembaruan pedoman, dan peringatan keamanan penting (EMA/FDA)
+- Setiap halaman mencantumkan 3–7 pertanyaan spesifik yang harus dijawabnya
+- Sasaran pembaca (pasien / klinisi layanan primer / anggota keluarga) ditetapkan sejak awal
+
+### 2. Penelusuran literatur
+- Saluran utama: PubMed, Cochrane, situs pedoman resmi, telaah Transfemscience
+- Dikecualikan: kiriman forum anonim, situs komersial, blog tanpa peer review
+- Setiap klaim kunci mencatat sitasi aslinya (DOI lebih diutamakan; jika tidak ada, informasi publikasi jurnal)
+
+### 3. Penilaian bukti
+Dinilai berdasarkan kekuatan desain penelitian:
+
+| Tingkat | Makna | Contoh bukti |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Kuat | Beberapa RCT, tinjauan sistematis / meta-analisis, rekomendasi pedoman internasional yang eksplisit |
+| <EvidenceBadge level="B" /> | Sedang | RCT tunggal, beberapa kohort prospektif |
+| <EvidenceBadge level="C" /> | Lemah | Laporan kasus, studi retrospektif, opini ahli |
+| <EvidenceBadge level="X" /> | Tidak ada | Cerita komunitas, pengalaman pribadi, inferensi |
+
+### 4. Penyusunan draf
+- Gunakan komponen bersama: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, dan sebagainya
+- Frontmatter mencatat `evidenceLevel`, `lastReviewed`, dan `references` (ditegakkan oleh CI)
+- Tabel dosis secara otomatis memvalidasi batas atas dan kombinasi yang dikontraindikasikan
+
+### 5. Pemeriksaan silang dua orang
+- Penulis menyelesaikan draf → editor kedua secara independen memverifikasi setiap `<CitationRef>` terhadap sumber primer
+- Ketidaksesuaian atau klaim yang berlebihan → dikembalikan untuk revisi
+- Jika sumber asli telah ditarik atau dikoreksi → penelusuran dan penggantian di seluruh situs
+
+### 6. Telaah penasihat medis
+- Penasihat bidang endokrinologi / psikiatri / hukum ditugaskan berdasarkan topik
+- Catatan telaah, termasuk perbedaan pendapat dan keputusan akhir, diarsipkan
+- Jika tidak ada penelaah yang memenuhi syarat dapat dihubungi, topik tersebut tidak diterbitkan
+
+### 7. QA publikasi dan aksesibilitas
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Kontras warna, keterjangkauan keyboard, dan semantik pembaca layar divalidasi
+- Titik henti (breakpoint) seluler dan fallback `prefers-reduced-motion` diverifikasi
+
+### 8. Telaah berkala
+- Secara baku ditelaah ulang setiap **12 bulan**, memperbarui `lastReviewed`
+- Halaman berisiko tinggi (risiko, batas merah dosis, kegawatdaruratan) ditelaah ulang setiap **6 bulan**
+- Perubahan pedoman besar → pembaruan inkremental dalam 48 jam
+
+## 3. Koreksi Kesalahan
+
+Ketika pembaca menemukan kesalahan faktual, pergeseran sitasi, atau konten yang sudah usang:
+
+1. Kirim melalui [formulir umpan balik](https://wj.qq.com/s2/16576000/5fe5/) atau GitHub Issue
+2. Balasan awal dalam 72 jam
+3. Setelah dikonfirmasi sebagai kesalahan faktual, **pemberitahuan ralat (erratum)** ditambahkan di bagian atas halaman, dan riwayat versi mencatat kesalahan asli beserta tanggal koreksinya
+4. Koreksi besar dikirimkan ke pelanggan email / RSS / Telegram
+
+## 4. Pernyataan Konflik Kepentingan
+
+- Situs ini tidak memiliki sponsor komersial, tidak ada iklan obat, dan tidak ada komisi pembelian
+- Biaya operasional ditanggung secara pribadi oleh para relawan; kami menerima donasi dari komunitas sumber terbuka (open-source)
+- Editor dan penasihat medis menandatangani pengungkapan konflik kepentingan; obat yang memiliki hubungan peresepan aktif tidak ditelaah secara independen oleh pihak yang memiliki konflik tersebut
+
+<WarningBox>
+Situs ini menyediakan materi rujukan berbasis bukti dan **bukan merupakan nasihat medis**. Konsultasikan dengan tenaga kesehatan yang berkualifikasi sebelum mengubah pengobatan Anda, dan segera cari pertolongan gawat darurat untuk gejala akut.
+</WarningBox>
+
+## Dokumen Terkait
+
+- [Tentang situs ini](/id/about/)
+- [Penasihat Medis](/id/medical-advisors/)
+- [Kebijakan Editorial](/id/editorial-policy/)
+- [Pustaka Rujukan](/id/appendix-references/)

@@ -1,0 +1,34 @@
+---
+title: "Comparateur de médicaments"
+description: "Comparez côte à côte les paramètres clés des différents traitements hormonaux (THS). Outil entièrement côté client — aucune donnée n'est transmise."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## Comparaison des médicaments
+
+Sélectionnez 2 à 3 médicaments pour comparer rapidement leurs paramètres clés.
+
+**Cet outil vous aide à comprendre :**
+
+- Les différences de risque de TEV (thromboembolie veineuse) selon la voie d'administration des œstrogènes (orale vs transdermique vs injectable)
+- Les exigences de surveillance et les contre-indications des anti-androgènes
+- Les niveaux de preuve et les fourchettes posologiques de chaque médicament
+
+<DrugComparator client:visible />
+
+## Comment interpréter les résultats
+
+- **Risque de TEV (RR)** : valeur de risque relatif. RR=1,0 correspond à la valeur de référence ; > 1,5 indique une augmentation significative
+- **Niveau de preuve** : A = ECR/méta-analyse, B = ECR unique/étude de cohorte, C = série de cas/avis d'expert
+- **Surveillance** : examens biologiques nécessaires pendant l'utilisation du médicament
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ À titre indicatif uniquement</div>
+
+Cet outil ne constitue pas un avis médical. Le choix d'un médicament doit tenir compte des antécédents médicaux personnels, des facteurs de risque, de la disponibilité et du coût. **Veuillez prendre vos décisions sous la supervision d'un professionnel de santé.**
+</div>

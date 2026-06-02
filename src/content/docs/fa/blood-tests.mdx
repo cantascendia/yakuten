@@ -1,0 +1,271 @@
+---
+title: "آزمایش‌های خون و ابزارهای خودبررسی"
+description: "آزمایش‌های خون لازم در طول HRT، برنامه‌های بازبینی، نحوهٔ خواندن گزارش‌ها، و ابزارهای تعاملی خودبررسی."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+آزمایش‌های خون سنگ بنای مدیریت ایمنی HRT هستند. بدون داده‌های آزمایش خون، هیچ راهی برای دانستن اینکه آیا دارو اثر می‌کند، آیا دوز شما ایمن است، یا آیا بدن‌تان خطرات غیرضروری را متحمل می‌شود، ندارید. این صفحه شما را در مورد زمان آزمایش، آنچه باید بررسی شود، و نحوهٔ درک نتایج راهنمایی می‌کند<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="دسترسی به آزمایش‌های خون">
+بسته به محل سکونت‌تان، ممکن است از طریق پزشک مراقبت اولیه، یک درمانگاه مبتنی بر رضایت آگاهانه (مانند Planned Parenthood در آمریکا)، درمانگاه‌های تخصصی هویت جنسیتی (مانند NHS یا GenderCare در بریتانیا)، یا خدمات آزمایشگاهی خصوصی (مانند Medichecks) به آزمایش خون دسترسی پیدا کنید. مسیر شما هر چه باشد، انجام آزمایش حیاتی است. پس از دریافت نتایج، آن‌ها را با سامانهٔ چراغ راهنمایی زیر مقایسه کنید.
+</WarningBox>
+
+## ۶.۱ چه چیزی و چه زمانی باید آزمایش شود
+
+برنامهٔ آزمایش خون به سه مرحله تقسیم می‌شود که با [مسیر بالینی HRT](/fa/pathway/) ما هماهنگ است<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### مرحلهٔ ۱: شروع درمان (ماه‌های ۱ تا ۶)
+
+این فشرده‌ترین دورهٔ تنظیم است و برای اطمینان از اثربخشی دارو و رد کردن عوارض جانبی زودرس به پایش مکررتری نیاز دارد.
+
+**بررسی هفتهٔ ۴:**
+
+<DoseTable
+  headers={['مورد آزمایش', 'هدف', 'کاربران موردنظر']}
+  rows={[
+    ['پنل هورمون‌های جنسی (E2، T، LH، FSH، PRL، P4)', 'تأیید افزایش E2 و کاهش T', 'همهٔ کاربران'],
+    ['عملکرد کبد (ALT، AST)', 'رد کردن سمیت کبدی زودرس', 'کاربران CPA / بیکالوتامید'],
+    ['الکترولیت‌ها (K⁺، Na⁺)', 'رد کردن خطر هیپرکالمی', 'کاربران اسپیرونولاکتون'],
+  ]}
+/>
+
+**بررسی هفتهٔ ۱۲:**
+
+<DoseTable
+  headers={['مورد آزمایش', 'هدف', 'کاربران موردنظر']}
+  rows={[
+    ['پنل هورمون‌های جنسی', 'ارزیابی دستیابی به اهداف مرحله (E2 معادل 50-100 pg/mL)', 'همهٔ کاربران'],
+    ['عملکرد کبد (ALT، AST)', 'پایش مداوم ایمنی کبد', 'کاربران CPA / بیکالوتامید'],
+    ['پنل چربی خون (TC، TG، LDL، HDL)', 'ارزیابی تأثیر متابولیک', 'همهٔ کاربران'],
+    ['الکترولیت‌ها (K⁺)', 'پایش مداوم پتاسیم خون', 'کاربران اسپیرونولاکتون'],
+  ]}
+/>
+
+<WarningBox title="اهداف مرحلهٔ ۱">
+رسیدن E2 به 50-100 pg/mL، و روند نزولی T. اگر E2 زیر 30 pg/mL باشد، ممکن است نیاز به تنظیم روش مصرف یا دوز داشته باشید (به [مسیر بالینی](/fa/pathway/) ما مراجعه کنید)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **در این مرحله صرفاً به این دلیل که «چیزی احساس نمی‌کنید» دوز را خودسرانه افزایش ندهید.**
+</WarningBox>
+
+### مرحلهٔ ۲: تنظیم (ماه‌های ۶ تا ۱۲)
+
+هر ۳ ماه یک‌بار بررسی کنید<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['مورد آزمایش', 'بازهٔ زمانی', 'هدف']}
+  rows={[
+    ['هورمون‌های جنسی (E2، T، PRL)', 'هر ۳ ماه', 'E2 معادل 100-200 pg/mL، T کمتر از 50 ng/dL'],
+    ['عملکرد کبد (ALT، AST)', 'هر ۳ ماه (CPA/بیکا)', 'ALT/AST کمتر یا مساوی حد بالای طبیعی'],
+    ['پرولاکتین (PRL)', 'هر ۶ ماه', 'PRL کمتر از 50 ng/mL'],
+    ['الکترولیت‌ها (K⁺)', 'هر ۳ ماه (اسپیرو)', 'K⁺ معادل 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### مرحلهٔ ۳: نگهدارنده (۱۲ ماه به بعد)
+
+پس از پایدار شدن سطح هورمون‌ها، می‌توان دفعات آزمایش را کاهش داد<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**بررسی‌های روتین هر ۶ ماه:**
+
+<DoseTable
+  headers={['مورد آزمایش', 'توضیح']}
+  rows={[
+    ['هورمون‌های جنسی (E2، T، PRL)', 'تأیید ماندن در محدودهٔ هدف'],
+    ['عملکرد کبد (ALT، AST)', 'پایش مستمر (کاربران CPA/بیکا هر ۳ تا ۶ ماه)'],
+    ['الکترولیت‌ها', 'پایش مستمر برای کاربران اسپیرونولاکتون'],
+  ]}
+/>
+
+**بررسی‌های جامع سالانه:**
+
+<DoseTable
+  headers={['مورد آزمایش', 'توضیح']}
+  rows={[
+    ['پنل چربی خون', 'ارزیابی تأثیر متابولیک بلندمدت'],
+    ['قند خون ناشتا', 'رد کردن مقاومت پیش‌روندهٔ انسولین'],
+    ['شمارش کامل خون (شامل Hb)', 'پایش روند کم‌خونی'],
+    ['انعقاد + D-Dimer', 'ارزیابی خطر VTE (برای کاربران E2 خوراکی حیاتی است)'],
+    ['تراکم استخوان (DXA)', 'در نظر بگیرید، به‌ویژه اگر استروژن برای مدت طولانی قطع شده باشد'],
+  ]}
+/>
+
+---
+
+## ۶.۲ درک گزارش شما (چراغ راهنمایی)
+
+موارد زیر به‌صورت تصویری ۷ نشانگر اصلی آزمایش خون مرتبط با HRT را نشان می‌دهند. **سبز** = محدودهٔ هدف، **زرد** = احتیاط، **قرمز** = خطر، نیازمند اقدام<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/fa/blood-tubes.webp" alt="سه لولهٔ نمونه‌گیری خون: بنفش (شمارش کامل خون)، زرد (بیوشیمی/هورمون‌ها)، آبی (انعقاد)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="زمان‌بندی همه‌چیز است">
+زمان خون‌گیری مستقیماً بر قابلیت تفسیر نتایج اثر می‌گذارد<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. لطفاً این قواعد را رعایت کنید (سطح **trough/پایین‌ترین حد** را اندازه بگیرید):
+
+- **پچ‌های پوستی (Transdermal)**: ۱۲ تا ۲۴ ساعت پیش از تعویض بعدی پچ
+- **خوراکی/زیرزبانی**: درست پیش از دوز بعدی
+- **تزریقی**: صبح روز تزریق، درست پیش از تزریق بعدی
+
+اگر خون‌گیری را در پایین‌ترین حد (trough) انجام ندهید، مقادیر E2 به‌طور کاذب بالا گزارش می‌شوند و این به برداشت نادرست از کافی بودن دوز می‌انجامد.
+</WarningBox>
+
+### استرادیول (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+محدودهٔ E2 معادل 100-200 pg/mL، توصیهٔ راهنماهای بین‌المللی برای فاز نگهدارنده است<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. فراتر رفتن از 200 pg/mL، زنانه‌سازی را سریع‌تر نمی‌کند؛ تنها خطر لخته‌های خونی و جوش‌خوردگی زودهنگام جوانهٔ پستان را افزایش می‌دهد. سطح E2 زیر 20 pg/mL پس از درمان، نشان‌دهندهٔ مشکلی در روش مصرف است.
+
+<DangerBox title="E2 > 500 pg/mL">
+اگر E2 در پایین‌ترین حد (trough) از 500 pg/mL فراتر رود، فوراً دوز را کاهش دهید و ارزیابی پزشکی بگیرید. این سطح، خطر ترومبوز ورید عمقی (VTE) را به‌طور چشمگیری افزایش می‌دهد<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### تستوسترون (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+سرکوب T به کمتر از 50 ng/dL (محدودهٔ معمول زنان سیس‌جندر) یک هدف اصلی HRT است<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. اگر T پس از ۶ ماه همچنان بالای 100 ng/dL بماند، معمولاً باید آنتی‌آندروژن خود را تنظیم کنید نه اینکه صرفاً با زور دوز E2 را بالاتر ببرید<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### پرولاکتین (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+هم استروژن و هم CPA می‌توانند پرولاکتین را افزایش دهند<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. افزایش‌های خفیف (25-50 ng/mL) اغلب از نظر بالینی بی‌اهمیت‌اند اما نیازمند پایش هستند. PRL بالای 50 ng/mL باید برای رد کردن پرولاکتینوما ارزیابی شود. کاربران CPA باید این مورد را با دقت زیر نظر داشته باشند.
+
+### عملکرد کبد (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA و بیکالوتامید خطر سمیت کبدی دارند<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. حد بالای طبیعی معمولاً 40 U/L است. افزایش تا ۱ تا ۳ برابر حد بالا نیازمند پایش دقیق است؛ فراتر رفتن از ۳ برابر (>120 U/L) به این معناست که باید فوراً CPA یا بیکالوتامید را قطع کرده و با پزشک مشورت کنید<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="نشانه‌های هشدار آسیب کبدی">
+اگر دچار زردی پوست/چشم (یرقان)، تیره شدن ادرار، تهوع مداوم، یا درد در ناحیهٔ بالا-راست شکم شدید، صرف‌نظر از آخرین مقادیر ALT/AST، فوراً دارو را قطع کنید<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. این‌ها علائم حاد هستند که نیازمند مراقبت اورژانسی‌اند.
+</DangerBox>
+
+### پتاسیم خون (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+اسپیرونولاکتون یک دیورتیک نگه‌دارندهٔ پتاسیم است که می‌تواند هیپرکالمی ایجاد کند<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. اگر K⁺ از 5.5 mmol/L فراتر رود، اسپیرونولاکتون را موقتاً متوقف کنید. در طول مصرف اسپیرونولاکتون، مصرف غذاهای پُرپتاسیم را به حداقل برسانید و از جایگزین‌های نمک استفاده نکنید.
+
+<DangerBox title="علائم هیپرکالمی">
+ضعف عضلانی، بی‌حسی یا گزگز در اندام‌ها، تپش قلب، یا آریتمی. اگر اسپیرونولاکتون مصرف می‌کنید و این علائم را تجربه می‌کنید، فوراً پتاسیم خود را بررسی کنید<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### هموگلوبین (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb پس از شروع استروژن به‌طور قابل‌انتظاری به محدودهٔ زنان سیس‌جندر افت می‌کند؛ این روند فیزیولوژیک است<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. اما Hb زیر 110 g/L نشانهٔ کم‌خونی است که نیازمند بررسی تشخیصی است.
+
+### دی-دایمر (D-Dimer)
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+افزایش D-Dimer نشان‌دهندهٔ ترومبوز/فیبرینولیز است<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. افزایش خفیف (0.5-1.0) به زمینهٔ بالینی نیاز دارد. مقادیر بالای 1.0 mg/L—به‌ویژه اگر همراه با تورم ساق پا، درد قفسهٔ سینه، یا تنگی نفس باشد—یک وضعیت اورژانسی برای رد کردن DVT یا PE است<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="دی-دایمر + علائم = اورژانس">
+D-Dimer بالا به‌تنهایی به‌طور خودکار به معنای لخته نیست، اما همراه با تورم/گرمی ساق پا، درد ناگهانی قفسهٔ سینه، یا سرفهٔ خونی، فوراً به اورژانس بروید. استرادیول خوراکی خطر VTE بالاتری نسبت به نوع پوستی (transdermal) دارد<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### راهنمای جامع
+
+<DoseTable
+  headers={['نشانگر', 'هدف (سبز)', 'احتیاط (زرد)', 'خطر (قرمز)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 یا 200-300', '>500 یا <20 (پس از دارو)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (پس از ۶ ماه)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (رد کردن پرولاکتینوما)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (۱ تا ۳ برابر حد)', '>120 (قطع CPA/بیکا)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (قطع اسپیرو)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (کم‌خونی)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (رد کردن لخته)'],
+  ]}
+/>
+
+---
+
+## ۶.۳ ابزار تعاملی خودبررسی
+
+<WarningBox title="به‌زودی">
+کامپوننت تعاملی React با نام **BloodTestChecker** به‌زودی راه‌اندازی می‌شود. این ابزار به شما اجازه می‌دهد مقادیر خود را وارد کنید و بازخورد فوری چراغ راهنمایی و توصیه‌های متناسب دریافت کنید.
+
+تمام محاسبات در مرورگر شما انجام می‌شود—هیچ داده‌ای ذخیره یا به هیچ سروری ارسال نمی‌شود.
+</WarningBox>
+
+<WarningBox title="مطالعهٔ بعدی">
+- [مسیر بالینی HRT](/fa/pathway/) — بر اساس نتایج‌تان چه باید بکنید
+- [محدودیت‌های دوز](/fa/dose-limits/) — اطمینان از قرار داشتن دوز شما در محدودهٔ ایمن
+- [خطرات و موارد اورژانسی](/fa/risks/) — چه زمانی باید فوراً متوقف کنید
+</WarningBox>
