@@ -1,0 +1,137 @@
+---
+title: "Transdermal na Estradiol Patch"
+description: "Kumpletong parmakolohiya, rekomendasyon sa dosis, datos ng panganib sa VTE, at praktikal na gabay sa paggamit ng estradiol transdermal patch."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+noindex: true
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Estradiol Transdermal Patch"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdermal"
+  evidenceLevel="A"
+>
+  Kinikilala ng klinikal na ebidensiya ang transdermal patch bilang pinakaligtas na paraan ng pagbibigay ng estradiol. Dahil naabsorb ang estradiol sa balat at diretso papunta sa daluyan ng dugo, ganap nitong nalalampasan ang first-pass metabolism ng atay, kaya ang profile ng panganib nito sa VTE (pamumuo ng dugo) ay halos kapareho sa mga taong hindi gumagamit nito.
+</DrugInfoBox>
+
+## Parmakolohiya
+
+### Paglampas sa First-Pass Metabolism
+
+Kapag ininom mo ang oral estradiol, dumadaan ito sa iyong gastrointestinal tract at pagkatapos ay diretsong pumupunta sa iyong atay (First-Pass Metabolism). Ang prosesong ito ay:
+- Pinipilit ang atay na patindihin ang produksiyon ng mga coagulation (clotting) factor, na nagpapataas ng panganib sa VTE.
+- Sinisira ang ~95% ng gamot, na nagpapababa ng bioavailability nang malaki.
+- Binabago ang metabolismo ng lipid/cholesterol.
+
+Inihahatid ng patch ang estradiol sa pamamagitan ng balat nang diretso sa systemic circulation, **ganap na nilalampasan ang first-pass metabolism ng atay**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Ibig sabihin nito:
+- Bale-walang epekto sa mga coagulation factor ng atay.
+- Napakatatag at mas mahusay na bioavailability.
+- Banayad sa atay at sa lipid profile.
+
+### Datos ng Panganib sa VTE (Pamumuo ng Dugo)
+
+Ang transdermal patch ang may pinakamababang panganib sa VTE sa lahat ng paraan ng pagbibigay ng estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Ruta', 'Relative Risk (RR)', '95% CI']}
+  rows={[
+    ['Transdermal Patch', '0.97', '0.79 - 1.19'],
+    ['Oral Estradiol', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Ang **RR ≈ 0.97** ay nangangahulugang sa praktikal na paraan, ang paggamit ng transdermal patch ay hindi nagdudulot ng anumang istatistikal na makabuluhang pagtaas sa panganib sa VTE kung ihahambing sa mga taong hindi gumagamit ng estrogen therapy<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Pinatutunayan nito na ang patch ang dapat maging unang pagpipilian para sa sinumang may umiiral nang mga panganib na salik sa pamumuo ng dugo.
+
+### Profile ng Konsentrasyon sa Dugo
+
+- Umaabot sa steady-state na konsentrasyon sa dugo mga 12-24 oras pagkatapos ilagay.
+- Pinapanatili ang napakapatag at matatag na antas ng E2 sa buong haba ng paggamit ng patch.
+- Ganap na iniiwasan ang malalakas na pataas-pababa (peak-and-trough) na karaniwan sa oral, sublingual, o injectable na ruta.
+
+## Rekomendasyon sa Dosis
+
+Ang mga saklaw ng dosis na ito ay naaayon sa Endocrine Society 2017 Guidelines<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> at WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Target E2 (pg/mL)', 'Takdang Panahon']}
+  rows={[
+    ['Simula sa Mababang Dosis', '50-100 µg/day', '50-100', 'Buwan 1-6'],
+    ['Katamtamang Titration', '100-200 µg/day', '100-200', 'Buwan 6-12'],
+    ['Yugto ng Pagpapanatili', '100-200 µg/day', '100-200', '12 Buwan pataas'],
+    ['Monotherapy (Kung walang blocker)', '200-400 µg/day', '200-300', 'Tanging kung hindi gumagamit ng T-blocker'],
+  ]}
+/>
+
+<WarningBox title="Ang Karaniwang Pinakamataas">
+Ang karaniwang pinakamataas na dosis ay **400 µg/day**, na dati ay ginagamit lamang kapag sinusubukan ang monotherapy (pagsupil sa T nang walang anti-androgen). Karamihan ng mga gumagamit ay umaabot sa kanilang target na klinikal na saklaw ng E2 (100-200 pg/mL) sa 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Ang pag-akyat ng E2 lampas sa 200 pg/mL ay hindi magpapabilis ng iyong feminisasyon; pinapalakas lamang nito ang mga panganib sa kalusugan.
+</WarningBox>
+
+## Paano Ito Gamitin
+
+### Mga Lugar na Pwedeng Lagyan
+
+- **Inirerekomenda:** Ibabang tiyan, itaas na puwit, panlabas na hita.
+- **Iwasan:** Ang bahagi ng suso (ang matagal na lokal na konsentrasyon ng E2 ay matinding panganib sa breast cancer), mga kasukasuan, o mga bahaging kinukuskos ng masikip na bewang ng damit.
+- **Salitan:** Huwag kailanman ilagay ang bagong patch sa eksaktong lugar ng dati upang maiwasan ang contact dermatitis.
+
+### Dalas ng Pagpapalit
+
+<WarningBox title="Subaybayan ang Tagal ng Pagsuot">
+Karamihan sa mga patch ay idinisenyong palitan **tuwing 3.5 araw (dalawang beses sa isang linggo)** o **tuwing 7 araw (isang beses sa isang linggo)**, depende sa partikular na tatak. Sundin nang mahigpit ang iskedyul ng tagagawa. Ang pagkaligta sa pagpapalit ay magpapababa nang biglaan ng iyong E2, na magdudulot ng hot flashes at pagbabago ng kalooban. Maglagay ng alarm sa telepono.
+</WarningBox>
+
+### Mga Praktikal na Tip
+
+- Ilagay lamang sa malinis at lubos na tuyong balat. Huwag ilagay ang patch sa ibabaw ng lotion, langis, o bagong-ahit na basang balat.
+- Idiin nang mariin ang patch gamit ang palad ng iyong kamay sa loob ng buong 10 segundo upang ma-activate ng init ang pandikit.
+- Ayos lang ang normal na pagligo at paglangoy, ngunit ang mahaba at sobrang init na paliligo ay maaaring magpaluwag sa pandikit at maglabas ng gamot sa iyong katawan nang mas maaga sa nararapat.
+- Kung matanggal ang patch, subukang idikit muli; kung hindi na ito kakapit, maglagay agad ng bago.
+
+## Para Kanino Ito
+
+Higit na inirerekomenda ang transdermal patch para sa<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **Lahat** (Ang patch ang gold standard sa kaligtasan para sa lahat).
+- **Mga gumagamit na may mga panganib na salik sa VTE** (BMI >30, Edad >40, naninigarilyo, may kasaysayan ng VTE sa pamilya) — Hindi maiwasang piliin ang patch dito.
+- **Mga gumagamit ng CPA** — Ang CPA ay likas na pro-coagulant; ang paggamit ng patch ay pumipigil sa pagdadagdag ng panganib sa pamumuo.
+- **Mga gumagamit na may abnormalidad sa atay** — Ang paglampas sa atay ay malaki ang naibababa sa metabolikong pasanin.
+
+## Mga Realidad ng Pandaigdigang Suplay
+
+Bagaman mas mahusay sa medikal na aspeto, dumaranas ang mga patch ng mga pandaigdigang hamon sa lohistika:
+
+- **Gastos:** Kung walang matibay na insurance o pambansang pangangalaga sa kalusugan, ang mga patch ay napakamahal kapag binayaran nang tuwiran (out-of-pocket) kumpara sa mga oral na tableta.
+- **Kakulangan:** Madalas bumagsak ang pandaigdigang supply chain para sa mga tatak tulad ng Estradot o Climara, na nagdudulot ng buwan-buwang kakulangan sa mga rehiyon ng UK, EU, at Australia.
+- Kung lubos na hindi mo maabot ang mga patch, ang oral na pag-inom ay isang katanggap-tanggap na pamalit—basta't wala kang umiiral nang mga panganib sa VTE.
+
+## Mga Karaniwang Tatak
+
+<DoseTable
+  headers={['Tatak', 'Pagtutukoy', 'Siklo ng Pagpapalit', 'Rehiyon']}
+  rows={[
+    ['Climara', 'Naglalabas ng 50 / 100 µg/day', 'Tuwing 7 Araw', 'US / EU / Global'],
+    ['Estradot', 'Naglalabas ng 25-100 µg/day', 'Tuwing 3.5 Araw', 'UK / EU / AUS'],
+    ['Vivelle-Dot', 'Naglalabas ng 25-100 µg/day', 'Tuwing 3.5 Araw', 'US'],
+    ['Estrana Tape', 'Naglalabas ng 50 µg/day', 'Tuwing 2 Araw', 'Japan (Karaniwan sa Asyanong DIY)'],
+  ]}
+/>
+
+## Payo sa Pagmamanman
+
+- **Kailan kukuha ng dugo:** 12-24 oras bago ang iyong susunod na pagpapalit ng patch (pagsukat sa trough level)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Mga target:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

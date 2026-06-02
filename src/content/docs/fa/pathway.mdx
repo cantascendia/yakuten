@@ -1,0 +1,226 @@
+---
+title: "مسیر بالینی هورمون‌درمانی (HRT)"
+description: "مسیر کامل HRT از آزمایش‌های پایه تا فاز نگه‌دارنده، شامل اهداف هر مرحله، نقاط تصمیم‌گیری و برنامه‌های پایش."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  این مسیر بر پایهٔ WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> و Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> استوار است و چارچوبی استاندارد برای شروع و نگه‌داری HRT در زنان ترنس (transfeminine) ارائه می‌دهد.
+</p>
+
+<img src="/images/diagrams/fa/pathway-timeline.webp" alt="خط زمانی مسیر HRT: پایه ← دوز پایین (۱ تا ۶ ماه) ← تنظیم تدریجی دوز (۶ تا ۱۲ ماه) ← نگه‌دارنده (۱۲ ماه به بعد)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">هفتهٔ ۰</div>
+  <PhaseBlock phase={0} title="ارزیابی پایه" color="green">
+    <p class="phase-block__desc">
+      پیش از شروع هر دارویی، یک پنل آزمایش پایهٔ کامل انجام دهید تا موارد منع مصرف کنار گذاشته شوند و مقادیر مرجع شخصی شما مشخص شود.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        هورمون‌های جنسی (E2، T، SHBG، LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        عملکرد کبد و کلیه، پنل چربی خون
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        پنل انعقادی و D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        قند خون ناشتا + CBC
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">شروع · ۱ تا ۶ ماه</div>
+  <PhaseBlock phase={1} title="شروع با دوز پایین" color="green" week="۱ تا ۶ ماه">
+    <DoseTable
+      headers={['مسیر مصرف', 'دوز شروع', 'منبع']}
+      rows={[
+        ['استرادیول خوراکی', '2.0 mg / day', '[2]'],
+        ['پچ پوستی', '50-100 µg / 24h', '[2]'],
+        ['ژل موضعی', '1.5 mg / day', '[2]'],
+        ['استرادیول والرات تزریقی (IM)', '1-2 mg / week', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      آنتی‌آندروژن (در صورت نیاز): CPA با دوز 5-12.5 mg/day یا اسپیرونولاکتون 50-100 mg/day. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />؛ [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 هدف</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">روند T هدف</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; کاهشی
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        هشدار ایمنی: بدن شما به زمان نیاز دارد تا با تغییرات گیرنده‌ها سازگار شود. هرگز بدون آزمایش خون دوز را افزایش ندهید. حتی اگر احساس می‌کنید «هیچ اتفاقی نمی‌افتد»، دوز را بالا نبرید. نشانه‌های جوانهٔ پستان معمولاً در ۳ تا ۶ ماه ظاهر می‌شوند.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="تصمیم" timepoint="ماه ۳">
+    <DecisionBranch
+      outcome="green"
+      text="E2 در محدودهٔ 30-100 pg/mL و T کاهشی ← ادامهٔ رژیم فعلی تا ماه ۶"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 کمتر از 30 pg/mL ← افزایش به دوز فاز ۲ را در نظر بگیرید"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="اختلال آنزیم‌های کبدی (LFT) / PRL >30 / بدتر شدن شدید خلق ← قطع کنید و به پزشک مراجعه نمایید"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">تنظیم تدریجی دوز · ۶ تا ۱۲ ماه</div>
+  <PhaseBlock phase={2} title="تنظیم تدریجی دوز" color="yellow" week="۶ تا ۱۲ ماه">
+    <p class="phase-block__desc">
+      بر اساس نتایج آزمایش ماه ۳ تنظیم کنید. هدف، رسیدن به محدودهٔ فیزیولوژیک استاندارد برای زنان ترنس (transfeminine) است.
+    </p>
+    <DoseTable
+      headers={['مسیر مصرف', 'دوز تنظیم‌شده']}
+      rows={[
+        ['پچ پوستی', '100-200 µg / day'],
+        ['استرادیول خوراکی', '4 mg / day'],
+        ['ژل موضعی', '3 mg / day'],
+        ['استرادیول والرات تزریقی (IM)', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 هدف</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">T هدف</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">پروژسترون (اختیاری)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          بسته به رشد پستان (Tanner 3+) در نظر بگیرید
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">ژل موضعی 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="ثبات" timepoint="ماه ۶">
+    <DecisionBranch
+      outcome="green"
+      text="E2 در محدودهٔ 100-200 pg/mL و T کمتر از 50 ng/dL ← ورود به فاز نگه‌دارنده"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T بالاتر از 50 ولی E2 در محدودهٔ هدف ← آنتی‌آندروژن را تنظیم کنید (برای سرکوب T، دوز E2 را بالا نبرید)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 کمتر از 100 pg/mL ← افزایش تدریجی را در محدودهٔ ایمن ادامه دهید"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">وضعیت پایدار · ۱۲ ماه به بعد</div>
+  <PhaseBlock phase={3} title="نگه‌داری بلندمدت" color="pink" week="۱۲ ماه به بعد">
+    <p class="phase-block__desc">
+      پس از پایدار شدن سطح هورمون‌ها و تغییرات بدنی، به پایش کم‌تکرار تغییر دهید. کمترین دوز مؤثر را برای حفظ E2 در محدودهٔ 100-200 pg/mL و T &lt;50 ng/dL نگه دارید.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">تناوب پایش</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">۶</p>
+          <p class="monitor-box__unit">ماه</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          پنل کامل هورمونی و عوامل خطر VTE هر ۶ ماه یک‌بار. چربی خون و قند ناشتا سالانه. غربالگری تراکم استخوان را در نظر بگیرید.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL زنانه‌شدن بیشتری ایجاد نمی‌کند — فقط خطر را افزایش می‌دهد (Endocrine Society 2017، Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">پایان فاز اولیه</p>
+    <p class="pathway-end-sub">پایش مستمر</p>
+  </div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,77 @@
+---
+title: "Dydrogesterone"
+description: "Dydrogesterone sa transfeminine na HRT — mekanismo ng retro-isomer na progestogen, dosing, paghahambing sa micronized progesterone, at kaligtasan."
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesterone"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Ang dydrogesterone ay isang retro-isomer ng progesterone na may mas mataas na oral bioavailability kaysa sa micronized progesterone. Ginagamit bilang alternatibong opsyon na progestogen sa transfeminine na HRT, bagaman limitado pa rin ang klinikal na ebidensyang tukoy sa pangangalaga ng transgender<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mekanismo
+
+Ang dydrogesterone ay isang structural analog ng natural na progesterone na may napakaselektibong aktibidad sa progestogenic receptor:
+
+- **Mataas na oral bioavailability**: ~28% (kumpara sa ~10% para sa micronized progesterone)
+- **Walang anti-androgenic na aktibidad**: Hindi tulad ng CPA o spironolactone, hindi nito direktang naaapektuhan ang mga androgen
+- **Walang glucocorticoid o mineralocorticoid na aktibidad**
+- **Half-life**: ~14-17 oras
+
+### Paghahambing sa Micronized Progesterone
+
+| Katangian | Dydrogesterone | [Micronized Progesterone](/fil/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Uri | Retro-isomer (sintetiko) | Natural/bioidentical |
+| Oral bioavailability | ~28% | ~10% |
+| Sedative na epekto | Minimal | Malaki (kaya iniinom bago matulog) |
+| Mga ruta | Oral lamang | Oral/rectal/vaginal |
+| Panganib ng VTE | Kulang sa datos | Neutral o napakababa |
+| Antas ng ebidensya | C | C |
+
+## Dosing
+
+<DoseTable
+  headers={['Indikasyon', 'Dosis', 'Mga Tala']}
+  rows={[
+    ['Suplemento ng progestogen sa HRT', '10-20 mg/day', 'Karaniwang 1-2 beses araw-araw'],
+    ['Cyclic na regimen', '10 mg/day x 14 araw/buwan', 'Ginagaya ang luteal phase ng menstrual cycle'],
+  ]}
+/>
+
+<WarningBox title="Mga Progestogen sa HRT: Ang Kontrobersya">
+Binabanggit ng WPATH SOC 8 na ang mga benepisyo ng progestogen sa transfeminine na HRT ay "hindi pa sapat na naipakita"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. May ilang gumagamit na nag-uulat na nakakatulong ang mga progestogen sa pag-develop ng dibdib at sa mood, ngunit ang ebidensya ay pangunahing anecdotal at nakabatay sa komunidad.
+</WarningBox>
+
+## Mga Brand at Availability
+
+| Brand | Lakas | Rehiyon |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Malawak na available sa buong mundo (kabilang ang mainland China) |
+| Generics | 10 mg | Piling rehiyon |
+
+## Monitoring
+
+- **PRL (prolactin)**: Tuwing 6 na buwan. Maaaring bahagyang itaas ng mga progestogen ang prolactin
+- Hindi na kailangan ng karagdagang pag-monitor sa atay (napakababa ng hepatotoxicity ng dydrogesterone)
+
+## Mga Kontraindikasyon
+
+- Allergy sa dydrogesterone
+- Hindi maipaliwanag na pagdurugo sa puki (indikasyon para sa cisgender — bihirang naaangkop sa konteksto ng trans)
+- Acute hepatic porphyria

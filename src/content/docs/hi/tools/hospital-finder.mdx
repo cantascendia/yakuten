@@ -1,0 +1,58 @@
+---
+title: "चिकित्सा निर्देशिका"
+description: "समुदाय द्वारा रिपोर्ट की गई देखभाल-पहुँच संसाधनों की एक संरचित निर्देशिका। जाने से पहले सीधे पुष्टि कर लें।"
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+noindex: true
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="जाने से पहले पुष्टि करें">
+ये सूचियाँ समुदाय द्वारा बनाए रखे गए पहुँच-संबंधी नोट हैं, किसी संस्थान की आधिकारिक गारंटी नहीं। नीतियाँ, विभाग और चिकित्सक की उपलब्धता तेज़ी से बदल सकती है, इसलिए सीधे पुष्टि करना हमेशा ज़रूरी है।
+</WarningBox>
+
+इस निर्देशिका में फ़िलहाल {cityCount} शहरों में फैली {hospitals.length} समुदाय-रिपोर्ट प्रविष्टियाँ शामिल हैं। मूल स्रोत डेटा इस चरण में मुख्यतः चीनी भाषा में ही है, इसलिए अस्पतालों के नाम और स्थानीय नोट अब भी चीनी में दिख सकते हैं।
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**इस पेज का उपयोग कैसे करें**
+
+1. इसे अपनी खुद की पुष्टि के शुरुआती बिंदु के रूप में इस्तेमाल करें।
+2. विभाग, चिकित्सक की उपलब्धता और पंजीकरण नियमों की पुष्टि सीधे संस्थान से करें।
+3. देखभाल तक पहुँच के साथ-साथ आधारभूत लैब-योजना और आपातकालीन जागरूकता को भी जोड़कर रखें।
+
+</GlassCard>
+
+<DangerBox title="आपातकालीन सूचना">
+यह निर्देशिका कोई आपातकालीन रेफ़रल सेवा नहीं है। यदि आपको तत्काल लक्षण हों, तो निर्देशिका खंगालने पर निर्भर रहने के बजाय पहले आपातकालीन देखभाल लें।
+</DangerBox>

@@ -1,0 +1,90 @@
+---
+title: "Dutastéride"
+description: "Le dutastéride dans le THM féminisant — double inhibition de la 5α-réductase, comparaison avec le finastéride, posologie et sécurité."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutastéride"
+  nameCN="Dutasteride"
+  category="Inhibiteur de la 5α-réductase"
+  route="Voie orale"
+  evidenceLevel="C"
+>
+Le dutastéride est un inhibiteur double de la 5α-réductase de type I et de type II qui réduit la DHT sérique d'environ 90-95 %, de façon plus puissante que le finastéride<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Il est utilisé en traitement d'appoint dans le THM féminisant lorsque le finastéride se révèle insuffisant.
+</DrugInfoBox>
+
+## Mécanisme d'action
+
+Le dutastéride inhibe simultanément **les deux isoformes, type I et type II**, de la 5α-réductase :
+
+- **Type I** : présent principalement dans la peau (glandes sébacées) et le foie
+- **Type II** : présent principalement dans les follicules pileux et la prostate
+
+Cette double inhibition permet une réduction de la DHT de **90-95 %**, contre environ 65-70 % avec le [finastéride](/fr/medications/five-alpha-reductase/finasteride/).
+
+## Comparaison avec le finastéride
+
+| Caractéristique | Dutastéride | Finastéride |
+|---------|-------------|-------------|
+| Cible | Type I + II | Type II uniquement |
+| Réduction de la DHT | ~90-95 % | ~65-70 % |
+| Demi-vie | ~4-5 semaines | ~6-8 heures |
+| Délai d'action | 3-6 mois | 3-6 mois |
+| Élimination après arrêt | Plusieurs mois (demi-vie très longue) | Quelques semaines |
+| Disponibilité en générique | Limitée | Largement répandue |
+| Niveau de preuve | C | B |
+
+## Posologie
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Remarques']}
+  rows={[
+    ['Appoint au THM', '0.5 mg/day', 'Dose standard ; ne pas dépasser'],
+  ]}
+/>
+
+- 0.5 mg/day est la seule dose recommandée
+- En raison de la demi-vie très longue (~4-5 semaines), **un oubli d'un jour ne nécessite pas de prise de rattrapage**
+- Les gélules ne doivent être ni ouvertes ni mâchées
+
+<WarningBox title="Le dutastéride est généralement un traitement de deuxième intention">
+Si le finastéride n'a pas encore été essayé, il est en général recommandé de tester d'abord le finastéride pendant 6 mois. Le dutastéride dispose d'un niveau de preuve plus faible (C), d'un coût plus élevé, et sa demi-vie extrêmement longue fait que les effets indésirables persistent pendant des mois après l'arrêt.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Dosage | Remarques |
+|-------|----------|-------|
+| **Avodart** | Gélule de 0.5 mg | Marque d'origine |
+| Génériques | Gélule de 0.5 mg | Disponibles dans certaines régions |
+
+## Surveillance
+
+- **T** : poursuivre la surveillance de routine du THM tous les 3 mois
+- **DHT** (facultatif) : peut confirmer l'effet de l'inhibiteur de la 5αR
+- **PSA** : le dutastéride abaisse le PSA ; informez votre médecin si ce dosage est réalisé
+
+## Contre-indications
+
+- Allergie au dutastéride
+- Insuffisance hépatique sévère (le dutastéride est métabolisé par le CYP3A4)
+- Prise concomitante d'inhibiteurs puissants du CYP3A4 (p. ex. kétoconazole) — risque d'accumulation du dutastéride
+
+<DangerBox title="Points importants">
+- **Demi-vie très longue** (4-5 semaines) : la suppression de la DHT persiste pendant des mois après l'arrêt
+- Le contenu des gélules est tératogène ; les personnes enceintes ne doivent pas manipuler de gélules qui fuient
+- N'arrêtez pas vos autres médicaments du THM parce que la chute de cheveux s'améliore
+- Si le finastéride est déjà efficace, il n'est pas nécessaire de passer au dutastéride
+</DangerBox>

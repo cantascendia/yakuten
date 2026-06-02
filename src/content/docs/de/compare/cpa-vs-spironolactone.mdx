@@ -1,0 +1,210 @@
+---
+title: "CPA vs. Spironolacton: Klinischer Vergleich bei der Wahl des Antiandrogens"
+description: "Ein direkter Vergleich von CPA (Androcur) und Spironolacton (Aldactone) in der MtF-HRT — Wirkmechanismus, Wirksamkeit der T-Suppression, Nebenwirkungen, Monitoring, Kontraindikationen und Verfügbarkeit in Festlandchina. Auf Grundlage von WPATH SOC 8 und Endocrine Society 2017."
+evidenceLevel: A
+lastReviewed: 2026-04-19
+references: [coleman-2022, hembree-2017, meyer-2020, ema-2020, lee-2022, ucsf-2016]
+noindex: true
+faqs:
+  - q: "Was ist besser, CPA oder Spironolacton?"
+    a: "Beide sind von WPATH SOC 8 empfohlene Erstlinienoptionen; es gibt keinen allgemeingültigen Sieger. CPA bewirkt eine zuverlässigere T-Suppression, birgt aber kumulative Risiken für Meningeom und Lebertoxizität; Spironolacton ist leichter erhältlich und ohne Meningeomrisiko, erfordert jedoch engmaschige Kaliumkontrollen. Die Wahl hängt von individuellen Begleiterkrankungen, den Monitoringmöglichkeiten und der Verfügbarkeit ab."
+  - q: "Worauf sollte ich beim Wechsel von CPA auf Spironolacton achten?"
+    a: "Beim Wechsel zunächst Spironolacton über 2-4 Wochen auf die Zieldosis auftitrieren, dann CPA schrittweise ausschleichen, um einen Testosteron-Rebound zu vermeiden. Während des Umstellungsfensters Kalium, Nierenfunktion und Testosteron alle 2-4 Wochen kontrollieren. Detaillierte Schritte siehe unseren Leitfaden zum Antiandrogen-Wechsel."
+  - q: "Können CPA und Spironolacton kombiniert werden?"
+    a: "Eine routinemäßige Kombination wird nicht empfohlen. Die Nebenwirkungen addieren sich (Lebertoxizität + Hyperkaliämie), und es ergibt sich kein zusätzlicher Nutzen bei der T-Suppression. In Sonderfällen (Monotherapie senkt T nicht ausreichend) kann unter ärztlicher Aufsicht und mit intensiviertem Monitoring kurzfristig kombiniert werden."
+  - q: "Wann sollte CPA gemieden werden?"
+    a: "Bei Meningeom in der Vorgeschichte oder auffälligem Ausgangs-MRT, schwerer Leberfunktionsstörung, einer sich 10 g nähernden kumulativen Dosis sowie bei jungen Anwenderinnen mit geplanter Langzeit-HRT (>5 Jahre) sollte vorrangig Spironolacton oder ein GnRH-Agonist erwogen werden."
+  - q: "Wann sollte Spironolacton gemieden werden?"
+    a: "Bei Niereninsuffizienz (eGFR <30), Hyperkaliämie in der Vorgeschichte, schwerer Hypotonie oder gleichzeitiger Einnahme von ACE-Hemmern/ARB ohne Möglichkeit der Kaliumkontrolle. Wenn die Feminisierungsergebnisse unbefriedigend sind und keine CPA-Kontraindikationen vorliegen, kann CPA die bessere Wahl sein."
+sidebar:
+  order: 10
+---
+
+import BylineCard from '../../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  evidenceLevel="A"
+  refCount={6}
+  locale="en"
+/>
+
+CPA (Cyproteronacetat, üblicherweise als Androcur vertrieben) und Spironolacton (Aldactone) sind die beiden in der MtF-HRT im chinesischsprachigen Raum am weitesten verbreiteten Antiandrogene. Diese Seite vergleicht sie entlang klinischer Entscheidungsachsen Dimension für Dimension. **Sie gibt keine allgemeingültige Empfehlung** — die Wahl sollte von einer behandelnden Person anhand individueller Begleiterkrankungen, der Monitoringmöglichkeiten und der Verfügbarkeit getroffen werden.
+
+:::note[Entscheidungsmatrix in 30 Sekunden]
+| Wenn Ihre Situation so ist → | Empfohlene Wahl |
+|---|---|
+| Sie möchten, dass das Serum-T rasch in den weiblichen Bereich fällt | **CPA 5-12,5 mg** · zuverlässigere Suppression über negative Rückkopplung |
+| Bestehende depressive Tendenz / auffällige Leberwerte / geplante Langzeitanwendung (>5 Jahre) | **Spironolacton** · kein kumulatives Meningeomrisiko |
+| Gleichzeitige Einnahme von ACE-Hemmern/ARB oder kaliumreiche Ernährung | **CPA** · die kaliumsparende Wirkung von Spironolacton verstärkt das Hyperkaliämierisiko |
+| Niereninsuffizienz (eGFR &lt;60) | **CPA** (reduzierte Dosis) · Spironolacton kontraindiziert |
+| Leicht erhältlich in Festlandchina / kostenbewusst | **Spironolacton** · weit verbreitete inländische Generika, von der Versicherung übernommen |
+| Meningeom in der Vorgeschichte / auffälliges Ausgangs-MRT | **Spironolacton** · CPA absolut kontraindiziert |
+| Schwangerschaft / Stillzeit / unter 18 Jahren | Keines empfohlen; bitte ärztlichen Rat einholen |
+
+> Unsicher? Lesen Sie den ausführlichen Vergleich weiter unten oder nutzen Sie das [Risiko-Selbstscreening](/de/tools/risk-screener/) als Hilfe.
+:::
+
+## Auf einen Blick
+
+| Dimension | CPA (Androcur) | Spironolacton (Aldactone) |
+|---|---|---|
+| **Wirkmechanismus** | Agonismus am Progesteronrezeptor + schwacher AR-Antagonismus + LH/FSH-Suppression | Aldosteron-Antagonismus (kaliumsparendes Diuretikum) + AR-Antagonismus in hoher Dosis |
+| **Wirksamkeit der T-Suppression** | Zuverlässiger (negative Rückkopplung an der Hypophyse) | Mäßig (überwiegend Rezeptorblockade; Serum-T erreicht ggf. nicht den Kastrationsbereich) |
+| **Standarddosis** | 5-12,5 mg/day | 100-300 mg/day |
+| **Evidenzgrad** | <EvidenceBadge level="A" /> | <EvidenceBadge level="A" /> |
+| **Schwerstes Langzeitrisiko** | Meningeom (dosisabhängig, kumulativ) | Hyperkaliämie (nierenfunktionsabhängig) |
+| **Monitoring-Schwerpunkt** | Leberfunktion · Prolaktin · kumulative Dosis · Kopfschmerz/Sehveränderungen | Kalium · Nierenfunktion · Blutdruck |
+| **Verfügbarkeit in Festlandchina** | Verschreibungspflichtig; erhältlich in psychiatrischen/endokrinologischen Ambulanzen | In Kardiologie/Nephrologie vorrätig; vergleichsweise leicht erhältlich |
+| **Monatliche Kosten** | ~30-80 RMB | ~10-30 RMB |
+
+## Unterschiede im Wirkmechanismus
+
+### CPA: Suppression über mehrere Wege, primär über negative Rückkopplung
+
+CPA verringert die Androgenwirkung über drei Mechanismen<CitationRef id="meyer-2020" />:
+
+1. **Negative Rückkopplung über den Progesteronrezeptor** (primär): hemmt das hypothalamische GnRH → vermindertes hypophysäres LH/FSH → reduzierte Testosteronsynthese
+2. **Schwacher Androgenrezeptor-Antagonismus**: deutlich schwächer als Bicalutamid, klinisch nur begrenzt relevant
+3. **Leichte 5α-Reduktase-Hemmung**: vermindert die Umwandlung von T → DHT
+
+Ergebnis: Das Serum-Testosteron fällt in der Regel in den weiblichen Bereich (&lt;50 ng/dL); in Kombination mit Estrogen ist die Wirkung stabiler.
+
+### Spironolacton: zweigleisig über Aldosteron und Androgen
+
+Spironolacton ist ursprünglich ein kaliumsparendes Diuretikum; seine antiandrogene Wirkung beruht in hoher Dosierung auf einer kompetitiven Blockade des Androgenrezeptors<CitationRef id="hembree-2017" /><CitationRef id="ucsf-2016" />:
+
+1. **Antagonismus am Aldosteronrezeptor** (Hauptmechanismus): kaliumsparende Diurese, senkt den Blutdruck
+2. **Antagonismus am Androgenrezeptor** (in hoher Dosis): tritt ab 100 mg auf
+3. **Leichte Hemmung der Testosteronsynthese**: Mechanismus nicht vollständig geklärt
+
+Ergebnis: Das Serum-Testosteron sinkt möglicherweise nur mäßig oder bleibt im Normbereich, doch die Androgenwirkung auf Gewebeebene wird blockiert, und eine klinische Feminisierung ist dennoch erreichbar.
+
+## Wirksamkeit der T-Suppression
+
+| Parameter | CPA 5-12,5 mg | Spironolacton 100-300 mg |
+|---|---|---|
+| Mediane Senkung des Serum-Testosterons | 80-95% | 30-60% |
+| Anteil im weiblichen Bereich (&lt;50 ng/dL) | Höher | Niedriger; meist zusätzliche E2-Gabe erforderlich |
+| Wirkeintritt | 4-8 Wochen | 6-12 Wochen |
+| Wirkung auf DHT | Mäßig | Indirekt über AR-Blockade vermindert |
+
+**Kernpunkt**: Für Anwenderinnen, die „auf Serumwerte fixiert“ sind (also T-Werte im weiblichen Bereich anstreben), erreicht CPA das Ziel leichter; für „symptomorientierte“ Anwenderinnen (mit Fokus auf Körperbehaarung, Talg, Libido) können beide wirksam sein.
+
+## Nebenwirkungsprofil
+
+### Hauptrisiken von CPA
+
+<DangerBox title="Meningeom — dosisabhängig (kumulativ)">
+Die EMA-2020-Beschränkung<CitationRef id="ema-2020" /> stützt sich auf die französische nationale Kohorte (Meyer 2020)<CitationRef id="meyer-2020" /> und nachfolgende Studien<CitationRef id="lee-2022" />:
+
+- **≥25 mg/day kumulativ über ≥1 Jahr**: OR = 12,4 (95% CI 5,9-26,1)
+- **Kumulative Dosis ≥60 g**: deutlich erhöhtes Risiko
+- Das in der Transgesundheitsversorgung übliche Schema von 5-12,5 mg/day hat eine geringere kumulative Exposition, doch eine Langzeitanwendung erfordert dennoch Monitoring
+
+**Warnsymptome**: anhaltende Kopfschmerzen, Gesichtsfeldausfälle, Krampfanfälle, Persönlichkeitsveränderungen → umgehend ärztliche Hilfe und Schädel-MRT.
+</DangerBox>
+
+Weitere Risiken:
+- **Lebertoxizität**: ALT/AST-Erhöhung, selten akutes Leberversagen; Leberfunktion alle 3-6 Monate kontrollieren
+- **Niedergeschlagene Stimmung / Depression**: gestagene Wirkung, von ~10-20% der Anwenderinnen berichtet
+- **Hyperprolaktinämie**: PRL überwachen; eine anhaltende Erhöhung spricht für eine Dosisreduktion
+- **Verminderte Libido**: erwartete Folge der ausgeprägten T-Suppression; manche Anwenderinnen empfinden dies als belastend
+
+### Hauptrisiken von Spironolacton
+
+<WarningBox title="Hyperkaliämie — Risiko von der Nierenfunktion bestimmt">
+Spironolacton hemmt Aldosteron → renale Kaliumretention → erhöhtes Serum-Kalium. Risikofaktoren:
+
+- Eingeschränkte Nierenfunktion (eGFR &lt;60)
+- Gleichzeitige Einnahme von ACE-Hemmern/ARB, NSAR, Kaliumpräparaten
+- Übermäßige Zufuhr kaliumreicher Lebensmittel (Kokoswasser, Bananen, kaliumhaltiges Ersatzsalz)
+- Dehydratation, nach intensiver körperlicher Belastung
+
+**Monitoring**: Kalium + Kreatinin in Woche 2, 2 Wochen nach jeder Dosisanpassung und nach Stabilisierung alle 3-6 Monate kontrollieren.
+</WarningBox>
+
+Weitere Risiken:
+- **Polyurie / Nykturie**: diuretische Wirkung; die meisten tolerieren sie innerhalb von 4-8 Wochen
+- **Hypotonie / orthostatischer Schwindel**: in der Anfangsphase ausgeprägt
+- **Brustspannen**: häufig, erfordert in der Regel kein Absetzen
+- **Libidoschwankungen**: erhebliche individuelle Unterschiede
+
+## Kontraindikationen
+
+| Kontraindikation | CPA | Spironolacton |
+|---|---|---|
+| Meningeom in der Vorgeschichte | Absolute Kontraindikation | Sicher |
+| Schwere Leberfunktionsstörung | Kontraindiziert | Mit Vorsicht anwenden |
+| Niereninsuffizienz (eGFR &lt;30) | Dosis reduzieren | Kontraindiziert |
+| Bekannte Hyperkaliämie | Sicher | Kontraindiziert |
+| Gleichzeitige ACE-Hemmer/ARB ohne Monitoring | Sicher | Kontraindiziert |
+| Aktive depressive/bipolare Episode | Mit Vorsicht anwenden | Relativ sicher |
+| Schwangerschaft (bei fertilen Anwenderinnen) | Kontraindiziert | Kontraindiziert |
+
+## Monitoring-Zeitplan
+
+| Zeitpunkt | CPA | Spironolacton |
+|---|---|---|
+| Ausgangswert | Leberfunktion · Prolaktin · MRT (optional) | Kalium · Nierenfunktion · Blutdruck |
+| Woche 2 | — | Kalium · Blutdruck |
+| Woche 6-8 | Testosteron · Leberfunktion · Prolaktin | Testosteron · Kalium · Nierenfunktion |
+| Alle 3-6 Monate | Leberfunktion · Prolaktin · Überprüfung der kumulativen Dosis | Kalium · Nierenfunktion |
+| Jährlich | Schädel-MRT (bei Langzeitanwendung) | Brustuntersuchung |
+
+## Verfügbarkeit in Festlandchina
+
+- **CPA**: „Sepukon“ (Androcur) 50 mg ist die wichtigste Packungsform; einige Krankenhäuser führen inländische „Cyproteronacetat-Tabletten“. Psychiatrie, Endokrinologie und Reproduktionsmedizin können es verordnen. ~30-80 RMB pro Packung; Versicherungsabdeckung begrenzt
+- **Spironolacton**: „Aldactone“ 20 mg/40 mg dominieren; vorrätig in Kardiologie, Nephrologie und Dermatologie (Indikation Akne). Günstig, weitgehend von der Versicherung übernommen
+
+**Schwarzmarkt / Versand aus dem Ausland**: nicht empfohlen, wegen Fälschungsrisiko, unkontrollierter Lagertemperaturen und fehlender Rückverfolgbarkeit.
+
+## Wie wählen (klinischer Entscheidungsrahmen)
+
+**CPA bevorzugen, wenn**:
+- Sie T-Werte im weiblichen Bereich anstreben
+- eine Spironolacton-Monotherapie das T nicht ausreichend senkt
+- Sie Nierenprobleme oder eine Neigung zu erhöhtem Kalium haben
+- Sie die diuretischen Wirkungen von Spironolacton nicht tolerieren
+
+**Spironolacton bevorzugen, wenn**:
+- Sie eine junge Anwenderin mit geplanter Langzeit-HRT (>5 Jahre) sind, bei der die kumulative Dosis ins Gewicht fällt
+- bei Ihnen ein Meningeom in der Vorgeschichte oder ein auffälliges Ausgangs-MRT vorliegt
+- Sie zugleich eine Blutdruckkontrolle oder einen kardiovaskulären Schutz benötigen
+- CPA nicht verfügbar oder finanziell belastend ist
+
+**Einen GnRH-Agonisten erwägen, wenn**:
+- sowohl CPA als auch Spironolacton kontraindiziert/nicht tolerierbar sind
+- Sie eine maximale T-Suppression benötigen (Übergangsphase vor der Gonadektomie)
+- die finanzielle Situation es zulässt
+
+**E2-Injektion als Monotherapie / hochdosierte Monotherapie**:
+- Manche Anwenderinnen erreichen unter hochdosierter E2-Injektion eine natürliche T-Suppression und können das Antiandrogen absetzen
+- Muss unter ärztlicher Aufsicht mit kontinuierlichem Blutmonitoring erfolgen
+
+## Ablauf der Umstellung
+
+Siehe den ausführlichen Leitfaden: [Vollständiger Leitfaden zum Antiandrogen-Wechsel](/de/guides/switch-antiandrogen/)
+
+<GuideCTA
+  eyebrow="Praxisleitfaden"
+  title="Wechsel zwischen zwei Antiandrogenen?"
+  description="Schritt-für-Schritt-Protokoll für den Wechsel von CPA auf Spironolacton oder die Eskalation von Spironolacton auf einen GnRH-Agonisten, inklusive Monitoring-Zeitplan und Checkliste vor dem Arztbesuch."
+  ctaText="Leitfaden zum Antiandrogen-Wechsel öffnen"
+  ctaHref="/de/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+## Verwandte Seiten
+
+- [CPA (Androcur) — ausführlicher Eintrag](/de/medications/antiandrogens/cpa/)
+- [Spironolacton — ausführlicher Eintrag](/de/medications/antiandrogens/spironolactone/)
+- [Übersicht der Antiandrogene](/de/medications/antiandrogens/overview/)
+- [Leitfaden zum Bluttest](/de/blood-tests/)

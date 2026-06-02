@@ -1,0 +1,292 @@
+---
+title: "GnRH-Agonisten"
+description: "Vollständiger Leitfaden zu GnRH-Agonisten (Leuprorelin, Goserelin, Triptorelin) für die Trans-HRT — Wirkmechanismus, Vergleich von 6 Wirkstoffen, Injektionstechnik, Umgang mit dem Flare, Knochendichte-Monitoring, Verhalten bei vergessener Dosis und GnRH-Antagonisten als Alternative."
+evidenceLevel: A
+lastReviewed: 2026-04-12
+references: [coleman-2022, hembree-2017]
+noindex: true
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="GnRH-Agonisten (Leuprorelin, Goserelin, Triptorelin usw.)"
+  nameCN="GnRH Agonists (GnRH 激动剂)"
+  category="antiandrogen"
+  route="Subkutane / intramuskuläre Injektion · Nasenspray · Implantat"
+  evidenceLevel="A"
+>
+GnRH-Agonisten sind das wirksamste verfügbare Antiandrogen. Sie unterdrücken Testosteron auf Kastrationsniveau (< 50 ng/dL), indem sie die Hypothalamus-Hypophysen-Gonaden-Achse abschalten. Sowohl die Endocrine Society 2017 als auch die WPATH SOC 8 empfehlen ihren Einsatz. Wo sie verfügbar sind, gelten GnRH-Agonisten als ideale Antiandrogen-Wahl.
+</DrugInfoBox>
+
+## Pharmakologie
+
+### Wie sie wirken
+
+GnRH-Agonisten setzen an einer grundlegend anderen Ebene an als andere Antiandrogene — sie wirken auf die übergeordnete Steuerzentrale der Hormonproduktion<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Flare-Phase:** In den ersten 1–2 Wochen überstimuliert das Medikament die GnRH-Rezeptoren der Hypophyse, was zu einem vorübergehenden Anstieg von LH/FSH und Testosteron führt.
+2. **Rezeptor-Desensibilisierung:** Die kontinuierliche Stimulation bewirkt, dass die GnRH-Rezeptoren der Hypophyse herunterreguliert werden und nicht mehr ansprechen.
+3. **Vollständige Suppression:** Innerhalb von 2–4 Wochen versiegt die LH/FSH-Ausschüttung, und T fällt auf Kastrationsniveau (< 50 ng/dL).
+
+Dieser Mechanismus unterdrückt T direkt und zuverlässig — ohne das Hepatotoxizitätsrisiko von CPA oder das Hyperkaliämierisiko von Spironolacton<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+### T-Suppression im Vergleich zu anderen Antiandrogenen
+
+<DoseTable
+  headers={['Antiandrogen', 'Mechanismus', 'T-Suppression', 'Hauptlimitation']}
+  rows={[
+    ['GnRH-Agonisten', 'Abschaltung der HPG-Achse', '~95 % (< 50 ng/dL)', 'Extrem teuer; Injektion erforderlich'],
+    ['CPA 5-12.5mg', 'AR-Antagonismus + gestagene Rückkopplung', '~90 % (weiblicher Bereich)', 'Meningeomrisiko (≥25mg)'],
+    ['Spironolacton 100-200mg', 'Schwacher AR-Antagonismus', '~30–50 % (oft unzureichend)', 'Hyperkaliämie; unzuverlässige T-Suppression'],
+    ['Bicalutamid 50mg', 'Reiner AR-Antagonismus', 'T kann ansteigen', 'Hepatotoxizität; erfordert Monitoring'],
+  ]}
+/>
+
+## Verfügbare Darreichungsformen
+
+### Injizierbare Formen
+
+<DoseTable
+  headers={['Wirkstoff', 'Markennamen', 'Dosis', 'Intervall', 'Verabreichung', 'Selbstinjektion']}
+  rows={[
+    ['Leuprorelin', 'Lupron / Eligard / Prostap', '3.75mg / 11.25mg / 22.5mg / 45mg', 'Monatlich / 3-Monats / 6-Monats', 'SubQ oder IM', 'Manche SubQ-Formen sind selbst injizierbar'],
+    ['Goserelin', 'Zoladex', '3.6mg / 10.8mg', 'Monatlich / 3-Monats', 'SubQ-Implantat (Bauch)', 'Klinische Verabreichung nötig (16G-Nadel)'],
+    ['Triptorelin', 'Decapeptyl / Trelstar', '3.75mg / 11.25mg / 22.5mg', 'Monatlich / 3-Monats / 6-Monats', 'IM-Injektion', 'Klinische Verabreichung erforderlich'],
+  ]}
+/>
+
+### Nicht injizierbare Formen
+
+<DoseTable
+  headers={['Wirkstoff', 'Marke', 'Form', 'Anwendung', 'Vorteil', 'Limitation']}
+  rows={[
+    ['Buserelin', 'Suprefact', 'Nasenspray', '2–3 Sprühstöße täglich', 'Keine Injektion nötig', 'Hohe Anwendungstreue erforderlich (mehrere Dosen täglich)'],
+    ['Nafarelin', 'Synarel', 'Nasenspray', '2–3 Sprühstöße täglich', 'Nicht invasiv; ~95 % T-Reduktion', 'Weltweit begrenzte Verfügbarkeit'],
+    ['Histrelin', 'Supprelin LA', 'SubQ-Implantatstäbchen', 'Chirurgisches Einsetzen am Oberarm; hält 12 Monate', 'Einmal jährlich; beste Anwendungstreue', 'Sehr teuer; chirurgisches Einsetzen/Entfernen nötig'],
+  ]}
+/>
+
+## Anwendungsleitfaden
+
+### Subkutane Injektion (Leuprorelin usw.)
+
+Die meisten GnRH-Agonisten werden subkutan oder intramuskulär injiziert. Einige Darreichungsformen (z. B. Leuprorelin SubQ) können nach einer Einweisung durch eine Pflegekraft selbst verabreicht werden<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Auswahl der Injektionsstelle:**
+- **Bevorzugt:** Bauch, etwa 5cm seitlich vom Nabel (Bereich von 2cm um den Nabel meiden)
+- **Alternative:** Vorderaußenseite des Oberschenkels, mittlerer Abschnitt
+- **Rotation:** Bei jeder Injektion die Stelle wechseln; mindestens 3cm Abstand zwischen den Einstichpunkten halten; Bereiche mit Knoten oder Blutergüssen meiden
+
+**Schritte der subkutanen Injektion:**
+
+1. **Vorbereiten:** Hände waschen. Gekühltes Medikament auf Raumtemperatur bringen (15–30 Minuten). Verfallsdatum und Aussehen der Lösung prüfen.
+2. **Reinigen:** Injektionsstelle mit einem Alkoholtupfer abwischen. Vollständig an der Luft trocknen lassen.
+3. **Hautfalte bilden:** Mit der nicht dominanten Hand eine 2cm große Hautfalte abheben.
+4. **Einstechen:** Die Nadel in einem Winkel von 45–90° rasch und entschlossen einführen und vollständig versenken (1–2cm tief).
+5. **Injizieren:** Den Kolben über etwa 30 Sekunden langsam herunterdrücken. Nicht übereilen.
+6. **Zurückziehen:** Hautfalte loslassen, dann die Nadel zügig herausziehen. Mit einem trockenen Wattebausch 15 Sekunden auf die Stelle drücken (nicht reiben).
+7. **Entsorgen:** Nadel in einen Abwurfbehälter für scharfe Gegenstände geben. Datum und Injektionsstelle notieren.
+
+<InjectionSiteSVG />
+
+<WarningBox title="Hinweis zu Goserelin (Zoladex)">
+Zoladex verwendet eine dicke, vorgefüllte Spritze (etwa 16G), die ein festes Depot-Pellet unter das Bauchfett einpflanzt. Dies sollte stets von einer medizinischen Fachkraft verabreicht werden.
+</WarningBox>
+
+### Rekonstitution von indischem GnRH-Lyophilisat-Pulver (Lupride Depot usw.)
+
+Lupride Depot (Leuprorelin) aus Indien wird in Trans-Communities häufig bezogen, da es im Vergleich zu inländischen Äquivalenten deutlich günstiger ist. Lupride Depot kommt als **Lyophilisat-Pulver + Lösungsmittel** in einem Zwei-Vials-Set, das vor der Injektion rekonstituiert werden muss.
+
+<img src="/images/drugs/lupride-depot-studio.webp" alt="Produktfoto der Lupride Depot 3,75 mg Leuprorelin-Lyophilisat-Pulverinjektion" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+**Inhalt des Sets**:
+- 1 Vial Lyophilisat-Pulver (weißes Pulver mit Leuprorelin 3.75 mg)
+- 1 Vial Lösungsmittel (steriles Wasser für Injektionszwecke)
+- Spritze und Nadeln (in manchen Packungen enthalten)
+
+<img src="/images/diagrams/de/gnrh-reconstitution.webp" alt="Schritte der GnRH-Rekonstitution: Lösungsmittel aufziehen, in das Pulver-Vial spritzen, zum Auflösen schwenken, Lösung aufziehen, injektionsbereit" width="900" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+**Schritte der Rekonstitution**:
+
+1. **Prüfen**: Sicherstellen, dass beide Vials innerhalb des Verfallsdatums sind; das Pulver sollte weiß bis cremeweiß sein (keine Verfärbung)
+2. **Hände waschen**: Hände gründlich mit Seife und Wasser waschen
+3. **Desinfizieren**: Die Gummistopfen beider Vials mit Alkoholtupfern abwischen und an der Luft trocknen lassen
+4. **Lösungsmittel aufziehen**: Mit einer Spritze und Aufziehnadel (18-20G) das gesamte Lösungsmittel aus dem Lösungsmittel-Vial aufziehen
+5. **In das Pulver-Vial spritzen**: Das Lösungsmittel langsam an der Wand des Pulver-Vials einspritzen — **nicht direkt auf das Pulver sprühen**
+6. **Auflösen**: Das Vial sanft schwenken (**nicht kräftig schütteln**), bis das Pulver vollständig aufgelöst ist. Die Lösung sollte klar oder leicht opaleszent sein
+7. **Lösung aufziehen**: Das Vial umdrehen und die gesamte rekonstituierte Lösung aufziehen, Luftblasen ausstoßen
+8. **Nadel wechseln**: Auf die Injektionsnadel umstecken (SC: 25-27G, IM: 21-23G)
+9. **Injizieren**: Den oben beschriebenen Schritten der subkutanen Injektion folgen
+
+<DangerBox title="Vorsichtsmaßnahmen bei der Rekonstitution">
+
+- **Die rekonstituierte Lösung muss sofort injiziert werden** — nicht aufbewahren. Das rekonstituierte Produkt enthält keine Konservierungsmittel; Verzögerung birgt das Risiko bakterieller Kontamination und verminderter Wirkstärke
+- **Nicht kräftig schütteln**: Dies erzeugt Blasen und kann die Wirkaktivität beeinträchtigen
+- Wenn die Lösung **sichtbar trüb ist, Partikel enthält oder verfärbt ist**, verwerfen
+- Wenn das Lösungsmittel-Vial beschädigt oder der Verschluss kompromittiert ist, **das gesamte Set verwerfen**
+- Erstanwenderinnen sollten sich von einer erfahrenen Person anleiten lassen
+</DangerBox>
+
+### Nasenspray (Buserelin / Nafarelin)
+
+1. Sanft die Nase putzen, um die Nasengänge freizumachen.
+2. Flasche schütteln und Verschlusskappe abnehmen.
+3. Kopf leicht nach vorne neigen; die Düse in ein Nasenloch einführen.
+4. Während des sanften Einatmens auf die Düse drücken.
+5. Bei jeder Anwendung die Nasenlöcher wechseln.
+6. Nach der Anwendung 30 Minuten lang nicht die Nase putzen.
+
+### Implantat (Histrelin)
+
+Das Supprelin-LA-Implantat wird von einer medizinischen Fachkraft chirurgisch unter die Haut an der Innenseite des Oberarms gesetzt. Es gibt über 12 Monate kontinuierlich Wirkstoff ab, danach muss es chirurgisch entfernt und ersetzt werden.
+
+### Lagerungsanforderungen
+
+<DoseTable
+  headers={['Wirkstoff', 'Lagerung', 'Hinweise']}
+  rows={[
+    ['Leuprorelin (Depot)', 'Raumtemperatur (unter 25°C)', 'Vor Licht und Hitze schützen'],
+    ['Goserelin (Zoladex)', 'Raumtemperatur (unter 25°C)', 'Fertigspritze; nicht einfrieren'],
+    ['Triptorelin (Decapeptyl)', 'Kühl lagern (2-8°C)', 'Lyophilisat-Pulver; vor Gebrauch rekonstituieren'],
+    ['Buserelin-Nasenspray', 'Raumtemperatur', 'Innerhalb von 28 Tagen nach Anbruch verbrauchen'],
+  ]}
+/>
+
+## Umgang mit dem Flare
+
+Der anfängliche Testosteronanstieg („Flare") nach der ersten GnRH-Agonisten-Injektion ist eine normale pharmakologische Reaktion<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+### Verlauf des Flare
+
+<DoseTable
+  headers={['Zeit', 'Was geschieht', 'Symptome']}
+  rows={[
+    ['Tag 0', 'GnRH-Agonist injiziert', '—'],
+    ['Tag 2-4', 'T steigt auf ~2× des Ausgangswerts', 'Mögliche Akne, Stimmungsschwankungen, Veränderungen der Libido'],
+    ['Tag 7-8', 'T kehrt zum Ausgangswert zurück', 'Symptome beginnen abzuklingen'],
+    ['Tag 14-28', 'T fällt auf Kastrationsniveau (< 50 ng/dL)', 'Volle antiandrogene Wirkung erreicht'],
+  ]}
+/>
+
+### Wie man den Flare handhabt
+
+<WarningBox title="Antiandrogen-Schutz während des Flare erwägen">
+Um die Flare-Symptome bei der ersten Injektion abzumildern, kann gleichzeitig oder 1 Woche zuvor eine kurze Antiandrogen-Kur begonnen werden<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+- **CPA 12.5mg/Tag** für 2–4 Wochen, dann nach Abklingen des Flare absetzen
+- **Spironolacton 100mg/Tag** für 2–4 Wochen (falls CPA ungeeignet ist)
+- Wenn bereits Estradiol eingenommen wird, ist die klinische Auswirkung des Flare meist gering
+- Folgeinjektionen lösen keinen erneuten Flare aus (nur die erste Injektion)
+</WarningBox>
+
+<DangerBox title="GnRH-Agonisten niemals ohne Estradiol anwenden">
+GnRH-Agonisten unterdrücken sowohl Testosteron ALS AUCH körpereigenes Estradiol auf nahezu null. Estradiol MUSS begleitend verabreicht werden, um schweren Knochenverlust, Hitzewallungen und Stimmungsstörungen zu verhindern<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+</DangerBox>
+
+## Vergessene Dosis
+
+- **Vergessene Injektion:** So bald wie möglich verabreichen (nicht bis zum nächsten geplanten Termin warten).
+- **Zeitplan anpassen:** Die nächste Dosis ab dem tatsächlichen Injektionsdatum berechnen (monatlich: +28 Tage; vierteljährlich: +84 Tage).
+- **Verzögerung um mehr als 1 Woche:** T kann teilweise wieder ansteigen. T-Werte 4 Wochen nach der verspäteten Injektion kontrollieren.
+- **Vergessenes Nasenspray:** Sobald daran gedacht wird anwenden. Die Dosis nicht verdoppeln.
+
+## Nebenwirkungen
+
+### Verlust an Knochendichte
+
+Eine langfristige Anwendung ohne ausreichendes Estradiol kann zu einem Rückgang der Knochendichte führen<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Sowohl T als auch E2 sind für den Knochenerhalt unerlässlich
+- **Entscheidend:** E2 bei 100-200 pg/mL zu halten, mindert dieses Risiko erheblich
+- Ein DEXA-Scan wird für Anwenderinnen empfohlen, die GnRH-Agonisten länger als 2 Jahre nutzen
+
+### Reaktionen an der Injektionsstelle
+
+- Schmerzen, Rötung und Verhärtung an der Injektionsstelle (häufig)
+- Die 16G-Nadel von Goserelin verursacht ausgeprägtere Beschwerden
+- Injektionsstellen rotieren, um Reaktionen zu minimieren
+
+### Hitzewallungen
+
+- Verursacht durch die rasche Suppression der Sexualhormone<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+- Eine ausreichende Estradiol-Dosierung reduziert dies deutlich
+- Klingt in der Regel ab, sobald sich die E2-Werte stabilisieren
+
+### Stimmungsveränderungen
+
+- Manche Anwenderinnen erleben Stimmungsschwankungen, besonders zu Behandlungsbeginn
+- In der Regel milder als die Stimmungseffekte von CPA
+- Bessern sich, sobald sich die Hormonspiegel stabilisieren
+
+## Monitoring
+
+<DoseTable
+  headers={['Test', 'Häufigkeit', 'Zielwert / Alarmwert', 'Maßnahme']}
+  rows={[
+    ['Testosteron (T)', '4 Wochen nach Injektion + alle 3-6 Monate', 'T < 50 ng/dL', 'Bei zu hohem Wert: Injektionsintervall/Anwendungstreue prüfen'],
+    ['Estradiol (E2)', 'Gemeinsam mit T testen', '100-200 pg/mL', 'Ausreichendes E2 für den Knochenschutz sicherstellen'],
+    ['Knochendichte (DEXA)', 'Ausgangswert + alle 1-2 Jahre nach 2+ Jahren', 'T-Score > -1.0', 'T-Score < -2.5: Osteoporose — Intervention nötig'],
+    ['LH/FSH', 'Optional, erste 3 Monate', 'LH < 1, FSH < 4.3', 'Hypophysensuppression bestätigen'],
+  ]}
+/>
+
+**Zeitpunkt der Blutabnahme:** GnRH-Agonisten-Depots halten relativ stabile Wirkstoffspiegel aufrecht. Die Blutabnahme kann zu jedem Zeitpunkt relativ zur Injektion erfolgen — ein bestimmtes Zeitfenster ist nicht erforderlich.
+
+## GnRH-Antagonisten: Aufkommende Alternative
+
+Neben den GnRH-**Agonisten** gibt es GnRH-**Antagonisten** — Wirkstoffe, die die GnRH-Rezeptoren direkt blockieren, **ohne den anfänglichen Flare**.
+
+<DoseTable
+  headers={['Wirkstoff', 'Marke', 'Mechanismus', 'Zeit bis Kastrationsniveau', 'Vorteil', 'Limitation']}
+  rows={[
+    ['Degarelix', 'Firmagon', 'Direkte Blockade des GnRH-Rezeptors', '3-7 Tage', 'Kein Flare; schnellerer Wirkeintritt', 'Monatliche SubQ-Injektion; ausgeprägte Reaktionen an der Injektionsstelle'],
+    ['Relugolix', 'Orgovyx', 'Oraler GnRH-Antagonist', '~2 Wochen', 'Orale Einnahme; kein Flare', 'Tägliche orale Einnahme; sehr teuer; begrenzte Evidenz bei Transgender'],
+  ]}
+/>
+
+<WarningBox title="Begrenzte Evidenz bei Transgender">
+GnRH-Antagonisten sind primär für Prostatakrebs zugelassen. Die Evidenz für die Anwendung in der Trans-HRT ist begrenzt, und sie werden von der WPATH SOC 8 oder der Endocrine Society 2017 noch nicht formell empfohlen. Anwendung unter erfahrener ärztlicher Aufsicht.
+</WarningBox>
+
+## Vorteile & Limitationen
+
+### Vorteile
+
+- **Stärkste, zuverlässigste T-Suppression**: Erreicht konstant Kastrationsniveau<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+- **Hervorragendes Sicherheitsprofil**: Keine Hepatotoxizität, keine Hyperkaliämie, kein Meningeomrisiko
+- **Seltene Verabreichung**: Monatliche oder vierteljährliche Injektionen; ausgezeichnete Anwendungstreue
+- **Reversibel**: Die HPG-Achse erholt sich nach Absetzen (Wochen bis Monate); die Fruchtbarkeit kann zurückkehren
+- **Leitlinienempfohlen**: Befürwortet sowohl von ES 2017 als auch von WPATH SOC 8<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+
+### Limitationen
+
+- **Prohibitiv hohe Kosten**: 1.000–3.000 $ pro Injektion in den USA; in GB/EU ggf. NHS-Erstattung; in China ~¥1.000–2.000/Monat
+- **Injektion erforderlich**: Kann nicht oral eingenommen werden (Nasensprays nur begrenzt verfügbar)
+- **Zugangsbarrieren**: Verschreibungspflichtig; oft off-label bei Geschlechtsdysphorie verordnet
+- **Anfänglicher Flare**: Die erste Injektion verursacht einen vorübergehenden T-Anstieg (mit Antiandrogen-Schutz beherrschbar)
+- **Knochendichte-Monitoring**: Die Langzeitanwendung erfordert DEXA-Scans; Estradiol muss stets begleitend gegeben werden
+
+## Wann GnRH-Agonisten in Betracht kommen
+
+**Empfohlen, wenn**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Die Finanzen eine dauerhafte Anwendung erlauben
+- CPA kontraindiziert ist (Leberprobleme, Meningeomrisiko, schwere Stimmungseffekte)
+- Spironolacton nicht verträglich ist (Hyperkaliämierisiko, Niereninsuffizienz)
+- Maximale Zuverlässigkeit der T-Suppression gewünscht ist
+- Pubertätssuppression bei Jugendlichen (unter fachärztlicher Aufsicht)
+
+**Möglicherweise nicht geeignet, wenn**:
+- Die Kosten prohibitiv sind
+- Regelmäßige Klinikbesuche für Injektionen nicht umsetzbar sind
+- Eine schwere Osteoporose vorliegt (zuerst die Knochendichte beurteilen)
+
+<DrugBrandGallery drugId="gnrh-agonist" />

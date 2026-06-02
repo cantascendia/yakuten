@@ -1,0 +1,135 @@
+---
+title: "CPA (Acetato de Ciproterona)"
+description: "La farmacología completa de la ciproterona (Androcur), los umbrales eficaces a dosis bajas, los riesgos de tumores cerebrales, las restricciones de la EMA y la monitorización analítica imprescindible."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+noindex: true
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Acetato de Ciproterona (CPA)"
+  nameCN="Acetato de Ciproterona (Androcur)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+El acetato de ciproterona (CPA, comercializado mayoritariamente como Androcur) es, sin exagerar, uno de los antiandrógenos más utilizados en las vías de atención médica para personas transgénero a nivel mundial (fuera de EE. UU.). A dosis muy bajas (5-12.5 mg/day) suprime la testosterona de forma impecable y está ampliamente recomendado por las guías de la Endocrine Society 2017 y la WPATH SOC 8. Sin embargo, mal dosificado conlleva riesgos tumorales catastróficos.
+</DrugInfoBox>
+
+<img src="/images/drugs/androcur-studio.webp" alt="Foto de producto de comprimidos de acetato de ciproterona Androcur 50mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<DangerBox title="50 mg es una sobredosis grave">
+Las pautas comunitarias obsoletas y los médicos sin la debida formación recetan con frecuencia CPA a 50 mg/day o incluso 100 mg/day. Estas megadosis absolutas se diseñaron para **hombres que luchan contra un cáncer de próstata avanzado**, no para la terapia hormonal de afirmación de género (GAHT, terapia hormonal de afirmación de género). Los estudios clínicos demuestran de forma irrefutable que apenas 5-12.5 mg/day basta por completo para suprimir la T hasta el nivel basal femenino<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />. Tomar 50 mg no suprime la T más rápido; simplemente dispara el riesgo de tumores cerebrales, toxicidad hepática y depresión clínica grave. **Si estás tomando 50 mg ahora mismo, reduce la dosis de inmediato.**
+</DangerBox>
+
+## Farmacología
+
+### El mecanismo
+
+El CPA destruye la testosterona mediante un ataque por múltiples frentes<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **El bucle de retroalimentación progestágeno** (principal): al ser un progestágeno extraordinariamente potente, el CPA engaña al hipotálamo para que detenga la liberación de GnRH. Esto impide que la hipófisis envíe señales a los testículos, anulando por completo la síntesis de testosterona.
+2. **Antagonismo leve del receptor**: bloquea ligeramente la unión de la testosterona restante a los receptores celulares (aunque este efecto es débil en comparación con la bicalutamida).
+3. **Sabotaje de la 5α-reductasa**: dificulta levemente la conversión de T en DHT.
+
+En la GAHT, el CPA reduce la testosterona apagando por completo la "fábrica" de producción<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />. De hecho, tus análisis de sangre mostrarán un nivel de T desplomado.
+
+### Eficacia a dosis bajas
+
+Incontables cohortes demuestran que el CPA a dosis bajas supera con creces al mito de las dosis altas<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- 10 mg/day baja de forma habitual la T por debajo del umbral femenino de 50 ng/dL.
+- 5 mg/day suele bastar cuando se combina con una dosis adecuada de estrógeno.
+- Subir la dosis hasta 50 mg/day no produce ninguna reducción adicional de la T.
+
+## Recomendaciones de dosificación
+
+<DoseTable
+  headers={['Protocolo', 'Dosis', 'Notas', 'Fuente']}
+  rows={[
+    ['Inicio recomendado', '5 mg/day O 12.5 mg/cada dos días', 'La dosis baja estándar cuando se combina con E2.', 'Meyer 2020; WPATH SOC 8'],
+    ['Mantenimiento habitual', '5-12.5 mg/day', 'Ajustar según tus análisis de T.', 'ES 2017'],
+    ['El techo absoluto', '12.5 mg/day', 'Cualquier dosis que alcance ≥25 mg dispara el riesgo de tumores.', 'Lee 2022; EMA 2020'],
+  ]}
+/>
+
+<img src="/images/diagrams/es/cpa-pill-splitting.webp" alt="Diagrama de partición del comprimido: comprimido de CPA de 50mg con ranura en cruz dividido en cuatro cuartos de 12.5mg con un cortapastillas" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<WarningBox title="Cómo tomar 12.5 mg">
+Como la gran industria farmacéutica fabrica el CPA para el cáncer de próstata, los comprimidos casi siempre vienen en presentaciones enormes de 50 mg. Tienes que comprar un cortapastillas y dividir el comprimido en cuartos. Tomar un cuarto (12.5 mg) al día, o incluso un cuarto en días alternos (un promedio de ~6.25 mg/day), es el método más seguro y eficaz.
+</WarningBox>
+
+### Protocolo de reducción escalonada
+
+Si actualmente tomas 50 mg/day y necesitas corregirlo<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- **Baja a 25 mg:** mantente aquí 2 semanas para que tu cuerpo se adapte sin picos agresivos de T.
+- **Baja a 12.5 mg:** mantente aquí 2 semanas.
+- Verifica con un análisis de sangre a los 3 meses. No reduzcas el estrógeno mientras escalonas la bajada del CPA.
+
+## El riesgo de meningioma
+
+<DangerBox title="Meningioma — la amenaza más letal del CPA">
+La exposición prolongada al CPA a dosis de ≥ 25 mg/day se asocia de forma irrefutable con la aparición de **meningiomas** (tumores en su mayoría benignos, pero muy peligrosos, que crecen sobre las membranas del cerebro y la médula espinal)<CitationRef id="lee-2022" num={4} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />:
+
+- Tomar ≥ 25 mg/day durante más de un año multiplica las probabilidades de desarrollar un tumor cerebral aproximadamente **12 veces** respecto a lo normal.
+- Un amplio estudio de cohorte en 2026 confirmó plenamente esta crisis específicamente en mujeres transgénero<CitationRef id="hudelist-2026" num={5} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />.
+- Por este motivo, la **Agencia Europea de Medicamentos (EMA) emitió fuertes restricciones legales en 2020**, exigiendo a los médicos recetar CPA a dosis altas únicamente cuando, literalmente, no exista ninguna otra opción<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />.
+
+**Las señales de alarma:** si sufres cefaleas implacables que empeoran, visión borrosa o doble, o convulsiones espontáneas mientras tomas CPA, **suspende el fármaco de inmediato** y exige una resonancia magnética craneal.
+</DangerBox>
+
+<img src="/images/diagrams/es/cpa-meningioma-risk.webp" alt="Gráfico del riesgo de meningioma dependiente de la dosis de CPA: el riesgo aumenta drásticamente por encima de 25mg al día" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Efectos secundarios adicionales
+
+### Toxicidad hepática
+El CPA somete al hígado a un esfuerzo importante<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />:
+- Es poco frecuente a 12.5mg, pero la monitorización es obligatoria.
+- Si tus enzimas hepáticas (ALT/AST) se disparan por encima de > 3x el límite superior de la normalidad, debes abandonar el CPA.
+
+### Picos de prolactina
+Como el CPA es intensamente progestágeno, puede hacer que la hipófisis inunde el cuerpo de prolactina<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />:
+- Una elevación leve es normal e inofensiva.
+- Si la prolactina supera > 50 ng/mL, tu médico debe hacerte una prueba de imagen para descartar un prolactinoma (un tumor hipofisario benigno).
+
+### Depresión clínica
+Al ser un progestágeno potente, el CPA tiene efectos secundarios psicológicos documentados<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- Se notifican con frecuencia fatiga intensa, apatía y episodios depresivos.
+- Si tienes un trastorno bipolar previo o una depresión clínica grave, el CPA es una apuesta de alto riesgo.
+
+### VTE (coágulos sanguíneos)
+El CPA aumenta de forma intrínseca la capacidad de coagulación de la sangre<CitationRef id="canonico-2018" num={7} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />. Combinar CPA oral con estrógeno oral crea un efecto acumulativo terriblemente peligroso. Las usuarias de CPA deberían pasarse decididamente al estrógeno transdérmico (parches o gel).
+
+## Monitorización analítica obligatoria
+
+<DoseTable
+  headers={['Panel de análisis', 'Frecuencia', 'Rango objetivo / Alerta', 'Acción necesaria']}
+  rows={[
+    ['Enzimas hepáticas (ALT/AST)', 'Mes 1, 2, 3 → Después cada 3-6 meses', 'Mantener dentro de los rangos de laboratorio estándar', 'Si > 3x el límite máximo: suspender el fármaco.'],
+    ['Prolactina (PRL)', 'Basal, luego cada 6 meses', 'PRL < 50 ng/mL', 'Si > 50 ng/mL: prueba de imagen de hipófisis.'],
+    ['Testosterona (T)', 'Mes 1, luego cada 3-6 meses', 'T < 50 ng/dL', 'Si está estable, mantener la dosis baja.'],
+  ]}
+/>
+
+<WarningBox title="Dejarlo de golpe">
+A diferencia del estrógeno (que debes reducir con cautela para evitar la pérdida ósea y el deterioro psicológico), la semivida del progestágeno del CPA se elimina con rapidez. Si sufres síntomas agudos hepáticos o tumorales, puedes suspender el CPA de golpe sin problema. Tu testosterona se reactivará lentamente, así que debes conseguir rápidamente un bloqueador de reemplazo<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+</WarningBox>
+
+## Acceso global y la prohibición de la FDA
+
+- **En Estados Unidos**: el CPA está fuertemente prohibido por la FDA y resulta totalmente inaccesible a través de farmacias legítimas, lo que obliga a las mujeres trans estadounidenses a depender de la espironolactona.
+- **En Europa/Reino Unido/Australia/Asia**: ampliamente recetado y perfectamente legal, sirve como columna vertebral estructural de la atención sanitaria trans fuera de EE. UU.
+- **El mercado gris**: los grupos de DIY de todo el mundo introducen CPA a través de las fronteras en cantidades asombrosas. Si pides CPA a farmacias internacionales no reguladas, corres el riesgo de recibir medicamentos adulterados o muy caducados. Procede con extrema cautela.
+
+<DrugBrandGallery drugId="cyproterone-acetate" />

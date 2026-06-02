@@ -1,0 +1,94 @@
+---
+title: "Estradiolenantat (EEn)"
+description: "Umfassender Leitfaden zu Estradiolenantat — Pharmakokinetik, Vergleich mit anderen Estern, Dosierung und Sicherheitsgrenzen."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiolenantat (EEn)"
+  nameCN="Estradiolenantat-Injektion"
+  category="estrogen"
+  route="Intramuskulär (IM) / Subkutan (SC)"
+  evidenceLevel="B"
+>
+Estradiolenantat (EEn) ist ein mittel- bis langwirksamer injizierbarer Estradiolester mit einer Halbwertszeit, die zwischen Estradiolvalerat (EV) und Estradiolcypionat (EC) liegt, bei etwa 5-7 Tagen<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Es findet sich häufig als Bestandteil kombinierter injizierbarer Kontrazeptiva (z. B. Perlutal) und kann auch als eigenständiges HRT-Medikament verwendet werden.
+</DrugInfoBox>
+
+## Pharmakokinetik
+
+Pharmakokinetisches Profil von Estradiolenantat<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Halbwertszeit**: ~5-7 Tage
+- **Spitzenzeitpunkt**: 3-5 Tage nach der Injektion
+- **Talzeitpunkt**: 7-10 Tage nach der Injektion
+- **Steady State**: erreicht nach ~3-4 regelmäßigen Zyklen
+
+### PK-Vergleich injizierbarer Estradiolester
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerat)', 'EEn (Enantat)', 'EC (Cypionat)']}
+  rows={[
+    ['Halbwertszeit', '~4-5 Tage', '~5-7 Tage', '~8-10 Tage'],
+    ['Spitzenzeitpunkt', '2-3 Tage', '3-5 Tage', '2-4 Tage'],
+    ['Empfohlenes Intervall', '5-7 Tage', '7-10 Tage', '7-14 Tage'],
+    ['Schwankung des Serumspiegels', 'Größer', 'Mäßig', 'Kleiner'],
+    ['Verfügbarkeit', 'Weltweit', 'Begrenzte Regionen', 'Amerika'],
+  ]}
+/>
+
+Das pharmakokinetische Profil von EEn liegt zwischen EV und EC und bietet eine Option für Personen, die wöchentliche Injektionen mit einer gleichmäßigeren Kurve wünschen<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosierung
+
+### Dosierung bei Erwachsenen
+
+<DoseTable
+  headers={['Phase', 'Dosis', 'Hinweise']}
+  rows={[
+    ['Anfangsdosis', '2-4 mg/Woche', 'Niedrig dosierter Start zum Schutz der Brustentwicklung'],
+    ['Erhaltungsdosis', '4-6 mg/Woche', 'Anpassung anhand des E2-Talwerts; Zielbereich 100-200 pg/mL'],
+    ['Maximaldosis', '10 mg/10 Tage', 'Nicht überschreiten'],
+  ]}
+/>
+
+Dosierungsquellen: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> und WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Hinweis zur Verfügbarkeit">
+Estradiolenantat ist in vielen Regionen nicht breit verfügbar. Es findet sich vorwiegend in Lateinamerika (als Bestandteil von Perlutal) sowie in einzelnen europäischen Ländern. Wenn du injizierbares Estradiol benötigst, ist [Estradiolvalerat](/de/medications/estrogens/injection/) in den meisten Regionen leichter erhältlich.
+</WarningBox>
+
+## Marken & Verfügbarkeit
+
+| Marke | Zusammensetzung | Region |
+|-------|-----------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (Kombinationskontrazeptivum) | Lateinamerika |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Einzelne Länder |
+| Monopräparate | Verschiedene Konzentrationen | Rezepturapotheken |
+
+## Monitoring
+
+- **E2**: alle 3 Monate, Talwert-Abnahme (morgens vor der Injektion). Zielbereich 100-200 pg/mL
+- **T**: alle 3 Monate. Zielwert &lt;50 ng/dL
+- **Leberfunktion (ALT/AST)**: Ausgangswert + alle 6 Monate
+
+## Injektionstechnik
+
+Das Vorgehen bei der Injektion ist identisch mit dem der [Estradiolvalerat-Injektion](/de/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Sicherheitsgrenzen">
+- Es gelten dieselben Sicherheitsgrenzen wie für andere injizierbare Estradiolester
+- Eine einzelne Injektionsdosis darf 10 mg nicht überschreiten
+- E2 >200 pg/mL verstärkt die Feminisierung nicht, sondern erhöht nur das Risiko<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Bei Verwendung eines Kombinationspräparats (z. B. Perlutal) kann der Gestagenanteil zusätzliche Risiken bergen; ärztliche Rücksprache halten
+</DangerBox>

@@ -1,0 +1,77 @@
+---
+title: "Finastéride"
+description: "Le finastéride dans le THS féminisant — mécanisme d'inhibition de la DHT, posologie, surveillance et considérations de sécurité."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finastéride"
+  nameCN="Finastéride"
+  category="Inhibiteur de la 5α-réductase"
+  route="Voie orale"
+  evidenceLevel="B"
+>
+Le finastéride est un inhibiteur sélectif de la 5α-réductase de type II qui réduit les taux de DHT d'environ 65-70 % en bloquant la conversion de la testostérone en dihydrotestostérone. Il est utilisé en traitement d'appoint dans le THS féminisant, principalement pour la perte de cheveux et la pilosité corporelle excessive.
+</DrugInfoBox>
+
+## Mécanisme
+
+Le finastéride inhibe sélectivement la 5α-réductase de **type II** (présente surtout dans les follicules pileux et la prostate), réduisant la DHT sérique d'environ 65-70 % tout en n'ayant pratiquement aucun effet sur les taux de testostérone.
+
+Comparé au [dutastéride](/fr/medications/five-alpha-reductase/dutasteride/), le finastéride n'inhibe qu'une seule isoforme, ce qui entraîne une moindre réduction de la DHT, mais aussi potentiellement moins d'effets indésirables.
+
+## Posologie
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Remarques']}
+  rows={[
+    ['Perte de cheveux (appoint au THS)', '1 mg/day', 'Associé au schéma de THS'],
+    ['Dose alternative', '5 mg/day', "Certains praticiens utilisent des doses plus élevées, mais le bénéfice supplémentaire n'est pas établi"],
+  ]}
+/>
+
+- Débuter à 1 mg/day, la dose standard pour la perte de cheveux
+- Les comprimés de 5 mg (Proscar) sont souvent moins chers et peuvent être coupés en quarts
+- L'effet nécessite généralement **3-6 mois**
+
+<WarningBox title="Le finastéride ne remplace pas les anti-androgènes">
+Le finastéride ne fait baisser que la DHT, pas la testostérone. Il ne peut pas remplacer le CPA, la spironolactone ou les agonistes de la GnRH. Si vos taux de T restent au-dessus de la cible, ajustez votre traitement anti-androgène principal plutôt que d'ajouter un inhibiteur de la 5αR<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Dosage | Remarques |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Indication perte de cheveux |
+| **Proscar** | 5 mg | Indication HBP, peut être coupé |
+| Génériques | 1 mg / 5 mg | Largement disponibles dans le monde |
+
+## Surveillance
+
+- **T** : Poursuivre la surveillance de routine du THS tous les 3 mois
+- **DHT** (facultatif) : Permet de confirmer l'effet de l'inhibiteur de la 5αR
+- **Fonction hépatique** : Le finastéride provoque rarement une atteinte hépatique ; aucune surveillance supplémentaire n'est généralement nécessaire
+- **PSA** : Le finastéride réduit le PSA d'environ 50 % ; informez votre médecin si un dosage du PSA est réalisé
+
+## Contre-indications
+
+- Allergie au finastéride
+- Insuffisance hépatique sévère
+- Les partenaires enceintes ne doivent pas manipuler de comprimés écrasés ou cassés (tératogène pour les fœtus masculins — généralement sans objet dans le contexte du THS trans)
+
+<DangerBox title="Points importants">
+- **Les effets s'inversent à l'arrêt** : la DHT revient à ses taux antérieurs au traitement en quelques semaines après l'arrêt
+- N'arrêtez pas vos autres médicaments du THS parce que la perte de cheveux s'améliore
+- En l'absence d'amélioration après 6 mois, le finastéride n'est peut-être pas efficace pour vous — discutez d'un passage au [dutastéride](/fr/medications/five-alpha-reductase/dutasteride/) avec votre soignant
+</DangerBox>

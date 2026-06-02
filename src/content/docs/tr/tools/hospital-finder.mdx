@@ -1,0 +1,58 @@
+---
+title: "Sağlık Kuruluşu Rehberi"
+description: "Topluluk tarafından bildirilen bakım erişim kaynaklarının yapılandırılmış bir rehberi. Gitmeden önce doğrudan teyit edin."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+noindex: true
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Gitmeden önce teyit edin">
+Bu kayıtlar, topluluk tarafından güncellenen erişim notlarıdır; resmî kurumsal garantiler değildir. Politikalar, bölümler ve hekimlerin müsaitlik durumu hızla değişebilir; bu nedenle doğrudan teyit her zaman gereklidir.
+</WarningBox>
+
+Bu rehber şu anda {cityCount} şehirde toplulukça bildirilen {hospitals.length} kayıt içermektedir. Altyapıdaki kaynak veriler bu aşamada ağırlıklı olarak Çince olduğundan, hastane adları ve yerel notlar hâlâ Çince görünebilir.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**Bu sayfa nasıl kullanılır**
+
+1. Kendi teyidiniz için bir başlangıç noktası olarak kullanın.
+2. Bölümü, hekimin müsaitlik durumunu ve kayıt kurallarını doğrudan kurumla teyit edin.
+3. Sağlık kuruluşu erişimini, başlangıç laboratuvar planlaması ve acil durum farkındalığıyla birlikte ele alın.
+
+</GlassCard>
+
+<DangerBox title="Acil durum notu">
+Bu rehber bir acil sevk hizmeti değildir. Acil belirtileriniz varsa, rehbere göz atmaya güvenmek yerine önce acil servise başvurun.
+</DangerBox>

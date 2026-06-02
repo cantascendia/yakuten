@@ -1,0 +1,82 @@
+---
+title: "قبل أن تبدئي: هل أنتِ مستعدة؟"
+description: "قائمة تحقّق أساسية قبل بدء العلاج الهرموني — تحاليل الدم المرجعية، موانع الاستعمال المطلقة والنسبية، متطلبات الموافقة المستنيرة، وتوقّعات واقعية لمسيرتك الطبية."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+هذا ليس تضييقًا على وصولك إلى العلاج — بل هو فحص للسلامة. بدء العلاج الهرموني (GAHT) دون تحاليل مرجعية أشبه بالقيادة معصوبة العينين.
+
+التحاليل المرجعية التالية موصى بها في الإرشادات السريرية الدولية<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> التحاليل المرجعية
+
+ينبغي إكمال التحاليل التالية قبل بدء العلاج الهرموني. يمكن طلب معظمها عبر طبيب الرعاية الأولية، أو عيادة تعتمد نموذج الموافقة المستنيرة، أو خدمات مثل Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'الهرمونات الجنسية', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'وظائف الكبد', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'وظائف الكلى', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'تعداد الدم الكامل', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'لوحة التخثّر', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'اللوحة الأيضية', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'البرولاكتين', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (يختلف حسب التأمين والموقع)"
+/>
+
+<WarningBox title="هل بدأتِ بالفعل دون تحاليل؟">
+إن كنتِ قد بدأتِ العلاج الهرموني دون إجراء التحاليل المرجعية — فالأمر لم يفُت بعد. أجريها في أقرب وقت ممكن.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> موانع الاستعمال المطلقة
+
+<ContraindicationBox type="absolute" title="موانع الاستعمال المطلقة" sectionNum="">
+
+- داء انصمامي خثاري نشط (مثل الخثار الوريدي العميق DVT، أو الانصمام الرئوي PE)
+- ورم خبيث مؤكَّد أو مُشتبه به حسّاس للهرمونات (مثل سرطان الثدي أو سرطان البروستاتا)
+- قصور كبدي أو كلوي شديد في الطور الحاد
+- نزيف مهبلي غير مُفسَّر (لدى الأشخاص العابرين نحو الذكورة)
+- حساسية شديدة معروفة تجاه مكوّنات الدواء
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> موانع الاستعمال النسبية
+
+<ContraindicationBox type="relative" title="موانع الاستعمال النسبية" sectionNum="">
+
+- ارتفاع ضغط الدم غير المنضبط أو مرض القلب والأوعية الدموية
+- داء السكري ضعيف الضبط
+- تدخين التبغ (خصوصًا في سن 35 فما فوق، يرفع خطر الانصمام الخثاري الوريدي VTE بشكل ملحوظ)
+- تاريخ من أمراض المرارة
+- الصداع النصفي المصحوب بأورة (يتطلّب تقييمًا دقيقًا للمخاطر)
+- السمنة الشديدة (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> ضبط التوقّعات الواقعية
+
+<RealityCheck
+  items={[
+    { text: 'العلاج الهرموني ليس سحرًا. تحدث التغيّرات على مدى أشهر وسنوات — لا تتوقّعي تحوّلًا بين عشية وضحاها.' },
+    { text: 'بعض التغيّرات لا رجعة فيها (مثل نمو الثدي، أو خشونة الصوت، أو نمو البظر). افهمي ما الذي تُقدِمين عليه.' },
+    { text: 'قد يقلّل العلاج الهرموني الخصوبة أو يُلغيها بشكل دائم. فكّري في حفظ الأمشاج (تجميد البويضات أو الحيوانات المنوية) قبل البدء.' },
+    { text: 'تقلّبات المزاج أثر جانبي طبيعي. تأكّدي من وجود نظام دعم مستقر حولك.' },
+  ]}
+/>
+
+<WarningBox title="ماذا تقرئين بعد ذلك">
+- [مسار العلاج الهرموني](/ar/pathway/) — التدفّق الكامل من الحالة المرجعية إلى المتابعة طويلة الأمد
+- [الأدوية](/ar/medications/estrogens/overview/) — خيارات الأدوية والجرعات والمخاطر
+- [دليل العلاج الهرموني في الصين](/ar/china-reality/) — كيف تجدين الأطباء، وتحصلين على الأدوية، وتُجرين تحاليل الدم
+- [تحاليل الدم](/ar/blood-tests/) — ماذا تفحصين، وأين تذهبين، وكيف تقرئين النتائج
+</WarningBox>

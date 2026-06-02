@@ -1,0 +1,77 @@
+---
+title: "Finasteride"
+description: "Ang finasteride sa transfeminine HRT — mekanismo ng pagpigil sa DHT, pagdodosis, pagmamanman, at mga konsiderasyon sa kaligtasan."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Finasteride"
+  nameCN="Finasteride"
+  category="5α-reductase inhibitor"
+  route="Inihahaba sa bibig (oral)"
+  evidenceLevel="B"
+>
+Ang finasteride ay isang selective type II 5α-reductase inhibitor na nagpapababa sa antas ng DHT nang humigit-kumulang 65-70% sa pamamagitan ng pagharang sa pagiging dihydrotestosterone ng testosterone. Ginagamit bilang karagdagang therapy sa transfeminine HRT, pangunahin para sa pagkalaglag ng buhok at sobrang pagtubo ng buhok sa katawan.
+</DrugInfoBox>
+
+## Mekanismo
+
+Pumipigil nang piling-pili ang finasteride sa **type II** 5α-reductase (na pangunahing matatagpuan sa mga hair follicle at prostate), na nagpapababa sa serum DHT nang ~65-70% habang halos walang epekto sa antas ng testosterone.
+
+Kumpara sa [dutasteride](/fil/medications/five-alpha-reductase/dutasteride/), iisang isoform lamang ang pinipigilan ng finasteride, kaya mas mababa ang pagbaba ng DHT ngunit posibleng mas kaunti rin ang mga side effect.
+
+## Pagdodosis
+
+<DoseTable
+  headers={['Indikasyon', 'Dosis', 'Mga Tala']}
+  rows={[
+    ['Pagkalaglag ng buhok (kasama ng HRT)', '1 mg/day', 'Isinasama sa regimen ng HRT'],
+    ['Alternatibong dosis', '5 mg/day', 'May ilang clinician na gumagamit ng mas mataas na dosis, ngunit hindi malinaw ang karagdagang benepisyo'],
+  ]}
+/>
+
+- Magsimula sa 1 mg/day, ang karaniwang dosis para sa pagkalaglag ng buhok
+- Ang 5 mg tablets (Proscar) ay kadalasang mas mura at maaaring hatiin sa apat
+- Kadalasang nangangailangan ng **3-6 na buwan** bago magkabisa
+
+<WarningBox title="Hindi Pamalit ng Anti-Androgen ang Finasteride">
+Pinapababa lamang ng finasteride ang DHT, hindi ang testosterone. Hindi nito mapapalitan ang CPA, spironolactone, o mga GnRH agonist. Kung mananatiling mas mataas sa target ang iyong antas ng T, ayusin ang iyong pangunahing regimen ng anti-androgen sa halip na magdagdag ng 5αRI<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+</WarningBox>
+
+## Mga Brand at Availability
+
+| Brand | Lakas | Mga Tala |
+|-------|----------|-------|
+| **Propecia** | 1 mg | Indikasyon para sa pagkalaglag ng buhok |
+| **Proscar** | 5 mg | Indikasyon para sa BPH, maaaring hatiin |
+| Generics | 1 mg / 5 mg | Laganap na makukuha sa buong mundo |
+
+## Pagmamanman
+
+- **T**: Ipagpatuloy ang regular na pagmamanman ng HRT tuwing 3 buwan
+- **DHT** (opsyonal): Maaaring magpatunay ng epekto ng 5αRI
+- **Liver function**: Bihirang magdulot ng pinsala sa atay ang finasteride; kadalasan ay hindi kailangan ng karagdagang pagmamanman
+- **PSA**: Pinapababa ng finasteride ang PSA nang ~50%; ipaalam sa iyong doktor kung sinusuri ang iyong PSA
+
+## Mga Kontraindikasyon
+
+- Allergy sa finasteride
+- Malubhang sira ng atay (hepatic impairment)
+- Hindi dapat humawak ng dinurog/nabaling tablet ang mga buntis na partner (teratogenic sa mga lalaking fetus — kadalasang hindi may kinalaman sa konteksto ng trans HRT)
+
+<DangerBox title="Mahahalagang Tala">
+- **Bumabalik ang epekto kapag itinigil**: Babalik ang DHT sa antas bago ang paggamot sa loob ng ilang linggo matapos itigil
+- Huwag itigil ang iba mong mga gamot sa HRT dahil lang gumaganda ang pagkalaglag ng buhok
+- Kung walang pagbuti pagkatapos ng 6 na buwan, maaaring hindi epektibo sa iyo ang finasteride — pag-usapan sa iyong provider ang paglipat sa [dutasteride](/fil/medications/five-alpha-reductase/dutasteride/)
+</DangerBox>

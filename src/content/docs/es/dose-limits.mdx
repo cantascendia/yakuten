@@ -1,0 +1,196 @@
+---
+title: "Límites de dosis y combinaciones peligrosas"
+description: "Dosis máximas de cada medicamento de THS, combinaciones farmacológicas peligrosas y pautas inseguras frecuentes. Superar la línea roja no feminiza más rápido: solo aumenta el riesgo."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
+noindex: true
+---
+
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<WarningBox title="Mensaje clave de esta página">
+Superar estas dosis no te feminizará más rápido. La evidencia muestra que niveles de E2 de 100-200 pg/mL logran una feminización completa<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Los niveles por encima de 200 pg/mL no aportan ningún beneficio adicional: solo aumentan el riesgo de VTE (tromboembolismo venoso), daño hepático y otras complicaciones.
+</WarningBox>
+
+## 4.1 Tabla de dosis máximas
+
+Las siguientes dosis máximas se derivan de guías internacionales y de la literatura revisada por pares. Más allá de estos límites, la relación riesgo-beneficio suele ser desfavorable.
+
+### Estrógenos
+
+<DoseTable
+  headers={['Medicamento', 'Dosis máxima diaria/semanal', 'Notas', 'Fuente']}
+  rows={[
+    ['Parche transdérmico', '400 µg/day', 'Solo en monoterapia; 200 µg/day suele ser suficiente', 'ES 2017'],
+    ['Estradiol oral (E2)', '8 mg/day', 'La mayoría de las pacientes alcanza el objetivo con 4 mg/day', 'WPATH SOC 8'],
+    ['Valerato de estradiol oral', '10 mg/day', '≈ 7.5 mg equivalente de estradiol', 'WPATH SOC 8'],
+    ['Gel tópico', '6 mg/day', 'La absorción varía considerablemente; dosificar según niveles en sangre', 'ES 2017'],
+    ['Valerato de estradiol IM (EV)', '5 mg/week', 'Techo recomendado; está prohibida una inyección única ≥ 10 mg', 'Rothman 2024'],
+  ]}
+/>
+
+<WarningBox title={'Sobre la "dosis máxima"'}>
+"Dosis máxima" no significa "dosis recomendada". La mayoría de las pacientes alcanza el objetivo de E2 de 100-200 pg/mL muy por debajo del máximo<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Los ajustes de dosis siempre deben guiarse por los resultados de laboratorio, no por una autotitulación hasta el techo.
+</WarningBox>
+
+### Antiandrógenos
+
+<DoseTable
+  headers={['Medicamento', 'Dosis máxima diaria', 'Notas', 'Fuente']}
+  rows={[
+    ['CPA (acetato de ciproterona)', '12.5 mg/day', '≥ 25 mg: el riesgo de meningioma aumenta de forma marcada; restringido por la EMA en 2020', 'Lee 2022; EMA 2020'],
+    ['Espironolactona', '200 mg/day', 'Dosis mayores no añaden beneficio antiandrogénico pero aumentan significativamente el riesgo de hiperpotasemia', 'ES 2017; UCSF'],
+    ['Bicalutamida', '50 mg/day', 'Uso fuera de indicación (off-label); no se recomienda para la GAHT (terapia hormonal de afirmación de género) de rutina', 'Angus 2024; Neyman 2019'],
+  ]}
+/>
+
+Consulta las páginas de cada medicamento para una farmacología detallada.
+
+### Relación dosis-riesgo
+
+Un principio central: **a medida que aumenta la dosis, el riesgo crece de forma desproporcionada mientras que el beneficio se estanca**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+- **Estradiol**: pasar de 100 a 200 pg/mL aporta una ganancia marginal en feminización, pero de 200 a 400 pg/mL prácticamente no aporta beneficio adicional mientras el riesgo de VTE aumenta significativamente<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
+- **CPA**: 5 mg y 50 mg suprimen la T de forma similar, pero 50 mg conlleva más de diez veces el riesgo de meningioma<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
+- **Espironolactona**: de 100 a 200 mg añade un efecto antiandrogénico limitado pero aumenta significativamente el riesgo de hiperpotasemia<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+
+---
+
+## 4.2 Combinaciones farmacológicas peligrosas
+
+### Combinaciones prohibidas
+
+<DangerBox title="CPA + Bicalutamida → Absolutamente prohibido">
+Tanto el CPA como la bicalutamida son hepatotóxicos<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Su uso combinado multiplica el riesgo de daño hepático y puede provocar insuficiencia hepática grave. Sus mecanismos antiandrogénicos son distintos (el CPA actúa por retroalimentación negativa progestágena; la bicalutamida es un antagonista del receptor de andrógenos), por lo que combinarlos no aporta ningún beneficio sinérgico.
+
+**Si estás tomando ambos, consulta a tu profesional de salud para cambiar a uno u otro.**
+</DangerBox>
+
+<DangerBox title="Etinilestradiol (EE) + Cualquier pauta de THS → Absolutamente prohibido">
+El etinilestradiol es un estrógeno sintético presente en muchos anticonceptivos orales combinados. Su riesgo de VTE es aproximadamente **20 veces** el del estradiol bioidéntico<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. El EE nunca debe usarse en ninguna etapa de la THS transfeminizante, en ninguna forma ni a ninguna dosis.
+
+Los anticonceptivos orales combinados (p. ej., los que contienen EE + CPA) **no son THS**. La dosis de CPA es demasiado baja para suprimir la T de forma eficaz, y el componente de EE conlleva un riesgo de VTE inaceptable. Consulta más abajo las pautas inseguras frecuentes.
+</DangerBox>
+
+<DangerBox title="Cualquier estrógeno + Tabaquismo → Prohibido">
+El estrógeno y el consumo de tabaco juntos multiplican el riesgo de VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. En personas fumadoras mayores de 35 años, el estrógeno oral es una **contraindicación absoluta**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+- Si no puedes dejar de fumar, **opta por la vía transdérmica** (parches o gel): las vías transdérmicas conllevan un riesgo de VTE mucho menor que la oral<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- Incluso con la vía transdérmica, fumar sigue aumentando el riesgo cardiovascular: dejarlo es siempre la medida de reducción de daños más importante
+</DangerBox>
+
+### Usar con precaución
+
+<WarningBox title="CPA + Estradiol oral → Usar con precaución; preferir la vía transdérmica">
+El CPA tiene efectos procoagulantes, y el metabolismo hepático de primer paso del estradiol oral también aumenta el riesgo de VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Juntos, el riesgo de VTE se acumula.
+
+**Recomendación**: si usas CPA como antiandrógeno, opta por la vía transdérmica de estradiol (parche o gel) para evitar acumular el riesgo de VTE<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Si solo tienes acceso al estradiol oral, mantén el CPA en la mínima dosis eficaz (5 mg/day o menos) y vigila de cerca los síntomas de DVT (trombosis venosa profunda).
+</WarningBox>
+
+<DangerBox title="Espironolactona + Suplementos de potasio o alimentos ricos en K → Riesgo de hiperpotasemia">
+La espironolactona es un diurético ahorrador de potasio que eleva el potasio sérico<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Combinada con suplementos de potasio o un consumo excesivo de alimentos ricos en potasio, puede causar **hiperpotasemia** (K⁺ > 5.5 mmol/L), con posible arritmia cardíaca mortal.
+
+**Mientras tomes espironolactona:**
+- Evita los suplementos de potasio (incluidos algunos sustitutos de la sal)
+- Modera el consumo de alimentos ricos en potasio (plátano/banana, agua de coco, productos a base de tomate)
+- **Mide el potasio sérico con regularidad** (mensualmente durante los primeros 3 meses, luego cada 3-6 meses)
+- K⁺ > 5.5 mmol/L: suspende la espironolactona y busca atención médica
+
+**Señales de alarma**: debilidad muscular, palpitaciones, hormigueo en manos o pies → posible hiperpotasemia; mide los electrolitos con urgencia.
+</DangerBox>
+
+### Tabla de referencia rápida
+
+<DoseTable
+  headers={['Combinación', 'Nivel de riesgo', 'Peligro principal']}
+  rows={[
+    ['CPA + Bicalutamida', '🔴 Prohibido', 'Hepatotoxicidad acumulada'],
+    ['Etinilestradiol (EE) + Cualquier pauta', '🔴 Prohibido', 'Riesgo de VTE ≈ 20× el del E2 bioidéntico'],
+    ['Cualquier estrógeno + Tabaquismo', '🔴 Prohibido', 'Aumento multiplicativo del riesgo de VTE'],
+    ['Espironolactona + Suplementos de K⁺', '🔴 Peligroso', 'Hiperpotasemia → arritmia → muerte súbita'],
+    ['CPA + Estradiol oral', '🟡 Precaución', 'Riesgo de VTE acumulado; preferir E2 transdérmico'],
+  ]}
+/>
+
+---
+
+## 4.3 Pautas inseguras frecuentes
+
+Las siguientes son pautas que circulan a menudo en comunidades trans en línea y que se desvían de forma considerable de las guías clínicas.
+
+### Usar anticonceptivos orales combinados como THS
+
+<DangerBox title="Los anticonceptivos combinados no son THS">
+A veces se utilizan de forma indebida como THS los anticonceptivos orales combinados que contienen etinilestradiol (EE) + CPA en dosis baja u otros progestágenos. **Esta no es una pauta feminizante válida**<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />.
+
+**Por qué esto es un error:**
+
+- **El etinilestradiol conlleva ≈20× el riesgo de VTE del estradiol bioidéntico**<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- La dosis de CPA en los anticonceptivos orales (~2 mg) es demasiado baja para suprimir eficazmente los niveles de testosterona del adulto
+- El EE interfiere con la precisión del análisis de E2 en sangre (los ensayos miden el E2 bioidéntico, no la actividad del EE)
+- Tanto la Endocrine Society 2017 como la WPATH SOC 8 desaconsejan explícitamente **el uso de etinilestradiol** para la GAHT<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />
+
+**Qué hacer en su lugar**: usa 17β-estradiol bioidéntico por vía oral, transdérmica (parche/gel) o inyectable. Si actualmente usas un anticonceptivo oral combinado como THS, cámbiate a una pauta estándar lo antes posible.
+</DangerBox>
+
+### CPA a 50 mg/día
+
+<DangerBox title="50 mg de CPA es una sobredosis grave para la GAHT">
+Muchas pautas que circulan en las comunidades usan CPA a 50 mg/day: esta es una **dosis para el tratamiento del cáncer de próstata**, no una dosis de GAHT<CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} />.
+
+**Por qué esto es un error:**
+
+- Los estudios muestran que 5-12.5 mg/day suprime eficazmente la T hasta el rango femenino<CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} />
+- La diferencia en la supresión de T entre 50 mg y 12.5 mg es mínima, pero **el riesgo de meningioma a 50 mg es más de diez veces mayor**<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} />
+- La EMA (Agencia Europea de Medicamentos) emitió restricciones sobre el CPA ≥ 25 mg/day en 2020<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+- Las dosis más altas también aumentan la hepatotoxicidad, la depresión y la elevación de la prolactina
+
+**Qué hacer**: usa CPA a 5-12.5 mg/day (un cuarto de un comprimido de 50 mg). Si actualmente tomas 50 mg, reduce de forma gradual (50→25→12.5, 2 semanas por escalón) manteniendo la dosis de estradiol<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Empezar con la dosis máxima
+
+<WarningBox title={'Empezar con dosis baja no es "perder el tiempo"'}>
+Algunas personas de la comunidad aconsejan a quienes empiezan que comiencen de inmediato con la dosis más alta, alegando que las dosis bajas "no sirven de nada". Esto es un error<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Por qué esto es un error:**
+
+- Saltarse la fase de dosis baja puede causar una **fusión prematura del brote mamario**: un E2 alto desencadena de forma prematura la diferenciación terminal, detiene la ramificación ductal y estanca el desarrollo mamario en Tanner III-IV, de forma **irreversible**<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
+- Empezar con dosis baja te permite observar las respuestas iniciales y detectar a tiempo problemas de función hepática o cambios de ánimo
+- La pubertad de las mujeres cisgénero también comienza con niveles de E2 muy bajos, que aumentan de forma gradual a lo largo de los años
+- La Endocrine Society 2017 recomienda empezar con dosis baja y titular cada 3-6 meses según los análisis<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+
+**Qué hacer**: empieza el estradiol oral a 2 mg/day, o el EV IM a 1-2 mg/week. A los 3-6 meses, ajusta según los análisis. Mantén el objetivo de E2 en 50-100 pg/mL durante los primeros 6 meses. No aumentes porque "no pasa nada": el desarrollo del brote mamario suele comenzar después de 3-6 meses.
+</WarningBox>
+
+### "Más E2 = mejores resultados"
+
+<WarningBox title="Niveles más altos de E2 no significan mejor feminización">
+La creencia de que un E2 sérico más alto produce mejores resultados de feminización no está respaldada por la evidencia clínica<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Por qué esto es un error:**
+
+- La Endocrine Society 2017 recomienda mantener el E2 en 100-200 pg/mL<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />, según el rango fisiológico de las mujeres cisgénero
+- Pasar de 200 a 400 pg/mL no produce ninguna feminización adicional significativa pero aumenta considerablemente el riesgo de VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- Un E2 suprafisiológico de forma crónica también puede aumentar los eventos cardiovasculares, las migrañas y la inestabilidad del ánimo
+- En quienes usan la vía inyectable, el pico de E2 puede superar los 200 pg/mL: usa los **niveles valle** (el punto más bajo antes de la siguiente inyección) para las decisiones de dosificación
+
+**Qué hacer**: apunta a un E2 valle de 100-200 pg/mL, con T < 50 ng/dL<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />. Si el valle está en rango y la T está suprimida, no aumentes. Perseguir cifras más altas solo añade riesgo sin beneficio.
+</WarningBox>
+
+---
+
+## Resumen
+
+<WarningBox title="Tres principios de seguridad">
+1. **Mantente por debajo de las líneas rojas de dosis máxima**: subir más no funciona mejor, solo aumenta el riesgo
+2. **Nunca combines fármacos prohibidos**: presta especial atención a la hepatotoxicidad acumulada y al riesgo de VTE
+3. **Deja que los resultados de laboratorio guíen los ajustes de dosis**: no te guíes por sensaciones, no te compares con las pautas de otras personas, no persigas cifras más altas
+
+Si tu pauta actual presenta alguno de estos problemas, no entres en pánico, pero ajústala lo antes posible. Consulta la [Ruta de la THS](/es/pathway/) para conocer el enfoque escalonado estándar, o acude a un profesional de salud con experiencia a través de clínicas de consentimiento informado, Planned Parenthood o servicios de telemedicina como FOLX Health o Plume.
+</WarningBox>

@@ -1,0 +1,226 @@
+---
+title: "Klinikal na Daloy ng HRT"
+description: "Buong daloy ng HRT mula sa baseline na lab hanggang sa maintenance, kasama ang mga layunin bawat yugto, decision node, at iskedyul ng monitoring."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Ang daloy na ito ay nakabatay sa WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> at Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, na nagbibigay ng pamantayang balangkas para sa pagsisimula at maintenance ng transfeminine na HRT.
+</p>
+
+<img src="/images/diagrams/fil/pathway-timeline.webp" alt="Timeline ng daloy ng HRT: Baseline → Mababang Dosis (1-6 buwan) → Titration (6-12 buwan) → Maintenance (12 buwan+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">LINGGO 0</div>
+  <PhaseBlock phase={0} title="Baseline na Pagsusuri" color="green">
+    <p class="phase-block__desc">
+      Bago magsimula ng anumang gamot, kumpletuhin ang buong baseline na panel upang maalis ang mga kontraindikasyon at maitatag ang iyong personal na reference values.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Mga sex hormone (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Hepatic at renal function, lipid panel
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Coagulation panel at D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Fasting glucose + CBC
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">PAGSISIMULA · 1-6 BUWAN</div>
+  <PhaseBlock phase={1} title="Pagsisimula sa Mababang Dosis" color="green" week="1-6 BUWAN">
+    <DoseTable
+      headers={['Ruta', 'Panimulang Dosis', 'Pinagmulan']}
+      rows={[
+        ['Oral na estradiol', '2.0 mg / araw', '[2]'],
+        ['Transdermal patch', '50-100 µg / 24h', '[2]'],
+        ['Topical na gel', '1.5 mg / araw', '[2]'],
+        ['IM estradiol valerate', '1-2 mg / linggo', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Anti-androgen (kung kinakailangan): CPA 5-12.5 mg/araw o spironolactone 50-100 mg/araw. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target na E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target na Trend ng T</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Bumababa
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Babala sa kaligtasan: Kailangan ng panahon ng iyong katawan upang makaangkop sa mga pagbabago sa receptor. Huwag kailanman dagdagan ang dosis nang walang blood work. Huwag itaas kahit pakiramdam mo ay "walang nangyayari." Karaniwang lumilitaw ang breast bud sa 3-6 na buwan.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="PAGPAPASYA" timepoint="IKA-3 BUWAN">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL at bumababa ang T → Ipagpatuloy ang kasalukuyang regimen hanggang 6 na buwan"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Isaalang-alang ang pagtaas sa dosing ng Phase 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Abnormal na LFTs / PRL >30 / malubhang paglala ng mood → Itigil at humingi ng medikal na atensyon"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 BUWAN</div>
+  <PhaseBlock phase={2} title="Pag-aayos ng Dosis" color="yellow" week="6-12 BUWAN">
+    <p class="phase-block__desc">
+      Iayon batay sa resulta ng lab sa ika-3 buwan. Ang layunin ay maabot ang pamantayang physiologic na range para sa mga transfeminine na indibidwal.
+    </p>
+    <DoseTable
+      headers={['Ruta', 'Inayos na Dosis']}
+      rows={[
+        ['Transdermal patch', '100-200 µg / araw'],
+        ['Oral na estradiol', '4 mg / araw'],
+        ['Topical na gel', '3 mg / araw'],
+        ['IM estradiol valerate', '2-4 mg / linggo'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target na E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Target na T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesterone (opsyonal)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Isaalang-alang batay sa breast development (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/linggo</span>
+      <span class="dose-tag dose-tag--yellow">Topical na gel 3.0-4.5 mg/araw</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="KATATAGAN" timepoint="IKA-6 BUWAN">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL at T <50 ng/dL → Pumasok sa maintenance phase"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 ngunit nasa target ang E2 → Iayon ang anti-androgen (huwag dagdagan ang E2 para supilin ang T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Ipagpatuloy ang pagtaas sa loob ng ligtas na limitasyon"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 BUWAN+</div>
+  <PhaseBlock phase={3} title="Pangmatagalang Maintenance" color="pink" week="12 BUWAN+">
+    <p class="phase-block__desc">
+      Kapag napanatag na ang antas at mga pisikal na pagbabago, lumipat sa mababang-dalas na monitoring. Panatilihin ang pinakamababang epektibong dosis upang manatili ang E2 100-200 pg/mL, T &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Dalas ng Monitoring</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Buwan</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Buong hormone panel at mga risk factor ng VTE kada 6 na buwan. Taunang lipids at fasting glucose. Isaalang-alang ang bone density screening.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Ang E2 &gt;200 pg/mL ay hindi nagdadagdag ng feminization — pinapataas lamang nito ang panganib (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">KATAPUSAN NG UNANG YUGTO</p>
+    <p class="pathway-end-sub">Patuloy na Monitoring</p>
+  </div>
+</div>
+
+</div>
+</div>

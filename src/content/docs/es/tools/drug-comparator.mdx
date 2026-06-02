@@ -1,0 +1,35 @@
+---
+title: "Comparador de medicamentos"
+description: "Compara lado a lado los parámetros clave de distintos medicamentos para THS. Herramienta totalmente del lado del cliente — no se transmite ningún dato."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+noindex: true
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## Comparación de medicamentos
+
+Selecciona 2 o 3 medicamentos para comparar rápidamente sus parámetros clave.
+
+**Esta herramienta te ayuda a entender:**
+
+- Diferencias en el riesgo de VTE (tromboembolismo venoso) entre las distintas vías del estrógeno (oral vs transdérmica vs inyectable)
+- Requisitos de monitoreo y contraindicaciones de los antiandrógenos
+- Niveles de evidencia y rangos de dosis de cada medicamento
+
+<DrugComparator client:visible />
+
+## Cómo interpretar los resultados
+
+- **Riesgo de VTE (RR)**: valor de riesgo relativo. RR=1.0 es el valor de referencia; >1.5 indica un aumento significativo
+- **Nivel de evidencia**: A = ECA/metaanálisis, B = ECA único/estudio de cohorte, C = reporte de caso/opinión de experto
+- **Monitoreo**: pruebas de laboratorio necesarias durante el uso del medicamento
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Solo de referencia</div>
+
+Esta herramienta no constituye consejo médico. La elección del medicamento debe considerar los antecedentes médicos personales, los factores de riesgo, la disponibilidad y el costo. **Toma las decisiones bajo la orientación de un profesional de la salud.**
+</div>

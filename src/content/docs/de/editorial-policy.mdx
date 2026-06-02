@@ -1,0 +1,98 @@
+---
+title: "Redaktionelle Grundsätze"
+description: "Die redaktionellen Prinzipien der HRT-Pharmakopöe, das Verfahren zur Fehlerkorrektur, Urheberrechts- und Zitationsstandards, Beschwerde- und Einspruchswege sowie die Offenlegung von Interessenkonflikten."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="Redaktionsteam der HRT-Pharmakopöe"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="de"
+/>
+
+## Absolute Verbote
+
+Die HRT-Pharmakopöe veröffentlicht unter keinen Umständen Folgendes:
+
+<DangerBox>
+- Personalisierte Verschreibungsempfehlungen („Sie sollten X mg einnehmen")
+- Bezugsquellen für Medikamente, Verkaufsvermittler oder Empfehlungs-/Provisions-QR-Codes
+- Formulierungen, die das Erkennen medizinischer Notfälle (DVT, Lebertoxizität, Meningeom usw.) verharmlosen
+- Medizinische Aussagen ohne DOI oder Quellenangabe
+- Tracking-Skripte von Drittanbietern oder die Speicherung von Gesundheitsdaten der Nutzer
+- Konfigurationen, die AI-Haftungsausschlüsse oder Sicherheitshinweise umgehen
+</DangerBox>
+
+## Sprache und Tonfall
+
+- **Absolute Aussagen vermeiden**: „wir empfehlen / in der Regel / in den meisten Fällen" ist „muss / immer / nie" vorzuziehen
+- **Die Leserin direkt ansprechen**: „Sie können A oder B wählen" statt „Patientinnen sollten A wählen"
+- **Unsicherheit klar benennen**: Schlussfolgerungen der Evidenzstufe B/C/X müssen mit „Datenlage begrenzt" oder „Expertenmeinung" gekennzeichnet werden
+- **Stigmatisierung reduzieren**: community-bejahende Sprache verwenden und veraltete oder übermäßig klinische Begriffe vermeiden
+
+## Quellenangaben und Urheberrecht
+
+- Jede medizinische Aussage ist über die `CitationRef`-Komponente belegt (die IDs verweisen auf Einträge in `src/data/references.json`)
+- DOIs werden bevorzugt; fehlt ein DOI, werden die Veröffentlichungsangaben der Zeitschrift sowie eine stabile URL angegeben
+- Abbildungen und Diagramme sind eigene Werke oder stammen aus Creative-Commons-/gemeinfreien Quellen; Reproduktionen werden mit Quellennachweis versehen
+- Originalinhalte der Website stehen unter CC BY-SA 4.0; für den Code gilt die LICENSE des Repositorys
+
+## Fehlerkorrektur
+
+Leserinnen können Hinweise über das [Feedback-Formular](https://wj.qq.com/s2/16576000/5fe5/) oder über [GitHub Issues](https://github.com/cantascendia/yakuten/issues) einreichen:
+
+| Art | Reaktionszeit | Vorgehen |
+|---|---|---|
+| Sachlicher Fehler | Erste Rückmeldung innerhalb von 72 Stunden | **Berichtigungshinweis** am Seitenanfang + Änderungsprotokoll |
+| Abweichende Quellenangabe | 72 Stunden | Quelle ersetzen und ein öffentliches Korrekturprotokoll veröffentlichen |
+| Veraltete Information | 7 Tage | Schrittweise Aktualisierung + `lastReviewed` neu setzen |
+| Gefährliche Empfehlung | Notfall-Entfernung innerhalb von 24 Stunden | Korrigieren oder bis zur Prüfung offline nehmen |
+
+Wesentliche Korrekturen werden zudem weitergegeben an:
+
+- Versionsverlauf unter `/de/appendix-references/`
+- RSS-/Telegram-/E-Mail-Abonnenten
+
+## Beschwerden und Einsprüche
+
+- **Inhaltliche Beschwerden**: [Feedback-Formular](https://wj.qq.com/s2/16576000/5fe5/)
+- **Rechtliches / Urheberrecht**: ein GitHub Issue mit dem Label `legal` eröffnen oder die Maintainer des Repositorys kontaktieren
+- **Datenschutz**: Diese Website erhebt keine personenbezogenen Daten; jede gemeldete Datenschutzverletzung wird innerhalb von 24 Stunden bearbeitet
+
+## Offenlegung von Interessenkonflikten
+
+- **Kein kommerzielles Sponsoring, keine Medikamentenwerbung, keine Kaufprovisionen**
+- Die Betriebskosten werden durch ehrenamtliche Beiträge und Spenden der Open-Source-Community gedeckt
+- Redakteurinnen und medizinische Beraterinnen unterzeichnen Erklärungen zu Interessenkonflikten; bei Themen mit unmittelbar zusammenhängenden Verschreibungs- oder Geschäftsbeziehungen erfolgt ein Ausschluss
+- Keine externen Links enthalten Affiliate-Kennungen; aufgeführt werden ausschließlich von der Community geprüfte Krankenhäuser und Hotline-Angebote
+
+## Überprüfungszyklus
+
+| Seitentyp | Standardintervall der Überprüfung |
+|---|---|
+| Notfallerkennung, Dosierungs-Grenzwerte, Gefahrenhinweise | **6 Monate** |
+| Arzneimittelmonographien und Leitfäden | **12 Monate** |
+| Tools, Grundsätze, Methodik | **12 Monate** |
+| Blogbeiträge | 12 Monate nach Veröffentlichung einmalig überprüft |
+
+Eine wesentliche Leitlinienänderung (Sicherheitswarnung der EMA/FDA, neue Ausgabe von WPATH / Endocrine Society) löst eine **schrittweise Aktualisierung innerhalb von 48 Stunden** aus.
+
+<WarningBox>
+Diese Seite ist eine öffentliche Selbstverpflichtung zur redaktionellen Selbstkontrolle. **Wenn Sie feststellen, dass wir gegen eine der obigen Klauseln verstoßen, machen Sie es bitte öffentlich** — diese Rechenschaftspflicht ist der einzige Weg, wie wir das Vertrauen unserer Leserinnen wahren.
+</WarningBox>
+
+## Verwandte Dokumente
+
+- [Über diese Website](/de/about/)
+- [Methodik](/de/methodology/)
+- [Medizinische Beraterinnen](/de/medical-advisors/)

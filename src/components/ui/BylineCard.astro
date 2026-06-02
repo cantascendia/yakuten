@@ -25,7 +25,7 @@ interface Props {
   nextReview?: string;
   evidenceLevel?: 'A' | 'B' | 'C' | 'X';
   refCount?: number;
-  locale?: 'zh' | 'en' | 'ja' | 'ko';
+  locale?: string;
 }
 
 const {
@@ -39,12 +39,26 @@ const {
   locale = 'zh',
 } = Astro.props;
 
-const L = {
+const LABELS = {
   zh: { author: '作者', reviewer: '医学复审', lastReviewed: '最后复查', nextReview: '下次复查', evidence: '证据等级', refs: '参考文献', refsSuffix: '篇' },
   en: { author: 'Author', reviewer: 'Medically reviewed', lastReviewed: 'Last reviewed', nextReview: 'Next review', evidence: 'Evidence', refs: 'References', refsSuffix: '' },
   ja: { author: '著者', reviewer: '医学監修', lastReviewed: '最終審査', nextReview: '次回審査', evidence: 'エビデンス', refs: '参考文献', refsSuffix: '件' },
   ko: { author: '저자', reviewer: '의학 검토', lastReviewed: '마지막 검토', nextReview: '다음 검토', evidence: '근거 등급', refs: '참고문헌', refsSuffix: '건' },
-}[locale];
+  pt: { author: 'Autor', reviewer: 'Revisão médica', lastReviewed: 'Última revisão', nextReview: 'Próxima revisão', evidence: 'Nível de evidência', refs: 'Referências', refsSuffix: '' },
+  ru: { author: 'Автор', reviewer: 'Медицинская проверка', lastReviewed: 'Последняя проверка', nextReview: 'Следующая проверка', evidence: 'Уровень доказательности', refs: 'Источники', refsSuffix: '' },
+  es: { author: 'Autor/a', reviewer: 'Revisión médica', lastReviewed: 'Última revisión', nextReview: 'Próxima revisión', evidence: 'Nivel de evidencia', refs: 'Referencias', refsSuffix: '' },
+  id: { author: 'Penulis', reviewer: 'Ditinjau secara medis', lastReviewed: 'Terakhir ditinjau', nextReview: 'Tinjauan berikutnya', evidence: 'Tingkat bukti', refs: 'Referensi', refsSuffix: '' },
+  th: { author: 'ผู้เขียน', reviewer: 'ตรวจทานทางการแพทย์', lastReviewed: 'ตรวจทานล่าสุด', nextReview: 'ตรวจทานครั้งถัดไป', evidence: 'ระดับหลักฐาน', refs: 'เอกสารอ้างอิง', refsSuffix: '' },
+  fil: { author: 'May-akda', reviewer: 'Sinuri sa medikal', lastReviewed: 'Huling pagsusuri', nextReview: 'Susunod na pagsusuri', evidence: 'Antas ng ebidensiya', refs: 'Mga sanggunian', refsSuffix: '' },
+  hi: { author: 'लेखक', reviewer: 'चिकित्सकीय समीक्षा', lastReviewed: 'अंतिम समीक्षा', nextReview: 'अगली समीक्षा', evidence: 'साक्ष्य स्तर', refs: 'संदर्भ', refsSuffix: '' },
+  vi: { author: 'Tác giả', reviewer: 'Đánh giá y khoa', lastReviewed: 'Đánh giá lần cuối', nextReview: 'Đánh giá tiếp theo', evidence: 'Mức bằng chứng', refs: 'Tài liệu tham khảo', refsSuffix: '' },
+  ar: { author: 'المؤلف', reviewer: 'مراجعة طبية', lastReviewed: 'آخر مراجعة', nextReview: 'المراجعة التالية', evidence: 'مستوى الأدلة', refs: 'المراجع', refsSuffix: '' },
+  fa: { author: 'نویسنده', reviewer: 'بازبینی پزشکی', lastReviewed: 'آخرین بازبینی', nextReview: 'بازبینی بعدی', evidence: 'سطح شواهد', refs: 'منابع', refsSuffix: '' },
+  fr: { author: 'Auteur', reviewer: 'Révision médicale', lastReviewed: 'Dernière révision', nextReview: 'Prochaine révision', evidence: 'Niveau de preuve', refs: 'Références', refsSuffix: '' },
+  de: { author: 'Autor', reviewer: 'Medizinisch geprüft', lastReviewed: 'Zuletzt geprüft', nextReview: 'Nächste Prüfung', evidence: 'Evidenzgrad', refs: 'Quellen', refsSuffix: '' },
+  tr: { author: 'Yazar', reviewer: 'Tıbbi inceleme', lastReviewed: 'Son inceleme', nextReview: 'Sonraki inceleme', evidence: 'Kanıt düzeyi', refs: 'Kaynaklar', refsSuffix: '' },
+};
+const L = LABELS[locale] ?? LABELS.en;
 ---
 
 <aside class="byline-card" aria-label={L.reviewer}>

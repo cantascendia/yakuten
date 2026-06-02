@@ -1,0 +1,102 @@
+---
+title: "Phương pháp luận"
+description: "Cách nội dung của Dược điển HRT được xây dựng, từ tìm kiếm y văn đến xuất bản — bám sát hướng dẫn lâm sàng, trích dẫn DOI, phân cấp bằng chứng A/B/C/X, đối chiếu chéo hai người, thẩm định bởi cố vấn y khoa và rà soát định kỳ hằng quý."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="Ban biên tập Dược điển HRT"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="vi"
+/>
+
+Trang này mô tả cách từng phần nội dung của Dược điển HRT được viết, thẩm định và cập nhật. Đây là cam kết của chúng tôi với độc giả: **nội dung chưa trải qua quy trình này sẽ không được đăng tải**.
+
+## 1. Ba nguyên tắc cốt lõi
+
+1. **Không có trích dẫn thì không khẳng định**: mọi khẳng định y khoa đều phải kèm ít nhất một DOI hoặc một hướng dẫn quốc tế làm nguồn; nếu một khẳng định không thể truy nguồn, nó sẽ được gắn nhãn <EvidenceBadge level="X" /> hoặc bị loại bỏ.
+2. **Đối chiếu chéo dữ liệu liều dùng**: liều kê đơn phải xuất hiện trong ít nhất hai nguồn uy tín độc lập (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, và các nguồn tương tự).
+3. **Tránh ngôn ngữ tuyệt đối**: hạn chế dùng "phải / luôn luôn / không bao giờ", thay bằng "thông thường / nên / trong đại đa số trường hợp".
+
+## 2. Quy trình đầy đủ
+
+### 1. Chọn chủ đề
+- Chủ đề được lựa chọn dựa trên nhu cầu tìm kiếm, câu hỏi của độc giả, các bản cập nhật hướng dẫn và những cảnh báo an toàn lớn (EMA/FDA)
+- Mỗi trang liệt kê 3–7 câu hỏi cụ thể mà trang đó phải trả lời
+- Đối tượng độc giả mục tiêu (người bệnh / bác sĩ chăm sóc ban đầu / người thân) được xác định ngay từ đầu
+
+### 2. Tìm kiếm y văn
+- Kênh chính: PubMed, Cochrane, các trang hướng dẫn chính thức, các bài tổng quan của Transfemscience
+- Loại trừ: bài đăng diễn đàn ẩn danh, trang thương mại, blog không qua bình duyệt
+- Mỗi khẳng định then chốt đều ghi lại trích dẫn gốc (ưu tiên DOI; nếu không có thì ghi thông tin xuất bản trên tạp chí)
+
+### 3. Phân cấp bằng chứng
+Phân cấp theo độ mạnh của thiết kế nghiên cứu:
+
+| Cấp | Ý nghĩa | Ví dụ bằng chứng |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Mạnh | Nhiều RCT, tổng quan hệ thống / phân tích gộp (meta-analysis), khuyến nghị rõ ràng trong hướng dẫn quốc tế |
+| <EvidenceBadge level="B" /> | Trung bình | Một RCT đơn lẻ, nhiều nghiên cứu thuần tập tiến cứu |
+| <EvidenceBadge level="C" /> | Yếu | Báo cáo ca bệnh, nghiên cứu hồi cứu, ý kiến chuyên gia |
+| <EvidenceBadge level="X" /> | Không có | Lời truyền miệng trong cộng đồng, kinh nghiệm cá nhân, suy luận |
+
+### 4. Soạn thảo
+- Dùng các thành phần dùng chung: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, v.v.
+- Frontmatter ghi lại `evidenceLevel`, `lastReviewed`, và `references` (được CI bắt buộc kiểm tra)
+- Bảng liều dùng tự động kiểm tra giới hạn trên và các phối hợp chống chỉ định
+
+### 5. Đối chiếu chéo hai người
+- Tác giả hoàn thành bản thảo → một biên tập viên thứ hai độc lập kiểm tra từng `<CitationRef>` so với nguồn gốc
+- Nếu sai khớp hoặc khẳng định vượt quá nguồn → trả lại để chỉnh sửa
+- Nếu nguồn gốc đã bị rút lại hoặc đính chính → tìm kiếm và thay thế trên toàn site
+
+### 6. Thẩm định bởi cố vấn y khoa
+- Cố vấn nội tiết / tâm thần / pháp lý được phân công theo từng chủ đề
+- Hồ sơ thẩm định, bao gồm cả ý kiến bất đồng và quyết định cuối cùng, được lưu trữ
+- Nếu không tiếp cận được chuyên gia thẩm định đủ năng lực, chủ đề đó sẽ không được đăng tải
+
+### 7. Xuất bản và kiểm tra chất lượng khả năng tiếp cận
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Kiểm chứng độ tương phản màu sắc, khả năng thao tác bằng bàn phím, ngữ nghĩa cho trình đọc màn hình
+- Xác minh các điểm ngắt (breakpoint) trên di động và phương án dự phòng `prefers-reduced-motion`
+
+### 8. Rà soát định kỳ
+- Mặc định rà soát lại mỗi **12 tháng**, cập nhật lại `lastReviewed`
+- Các trang nguy cơ cao (rủi ro, ngưỡng liều đỏ, cấp cứu) được rà soát lại mỗi **6 tháng**
+- Khi có thay đổi lớn trong hướng dẫn → cập nhật bổ sung trong vòng 48 giờ
+
+## 3. Đính chính lỗi
+
+Khi độc giả phát hiện lỗi thực tế, trích dẫn lệch nguồn, hoặc nội dung lỗi thời:
+
+1. Gửi qua [biểu mẫu phản hồi](https://wj.qq.com/s2/16576000/5fe5/) hoặc GitHub Issue
+2. Phản hồi ban đầu trong vòng 72 giờ
+3. Sau khi xác nhận đó là lỗi thực tế, một **thông báo đính chính** sẽ được thêm vào đầu trang, và lịch sử phiên bản ghi lại lỗi gốc cùng ngày sửa
+4. Các đính chính lớn được gửi đến người đăng ký qua email / RSS / Telegram
+
+## 4. Tuyên bố xung đột lợi ích
+
+- Site này không có tài trợ thương mại, không quảng cáo thuốc, và không hưởng hoa hồng mua hàng
+- Chi phí vận hành do các tình nguyện viên tự chi trả; chúng tôi nhận quyên góp từ cộng đồng mã nguồn mở
+- Biên tập viên và cố vấn y khoa ký bản công khai xung đột lợi ích; thuốc có quan hệ kê đơn đang diễn ra sẽ không do bên liên quan tự thẩm định độc lập
+
+<WarningBox>
+Site này cung cấp tài liệu tham khảo dựa trên bằng chứng và **không cấu thành lời khuyên y khoa**. Hãy tham vấn nhân viên y tế đủ chuyên môn trước khi thay đổi thuốc, và đi cấp cứu ngay khi có triệu chứng cấp tính.
+</WarningBox>
+
+## Tài liệu liên quan
+
+- [Giới thiệu về site này](/vi/about/)
+- [Cố vấn y khoa](/vi/medical-advisors/)
+- [Chính sách biên tập](/vi/editorial-policy/)
+- [Thư viện tham khảo](/vi/appendix-references/)

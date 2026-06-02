@@ -114,6 +114,270 @@
       "actions": {
         "printResults": "Imprimir resultados"
       }
+    },
+    "ru": {
+      "sections": {
+        "inputTitle": "Введите результаты анализов",
+        "resultTitle": "Оценка",
+        "emptyHint": "Введите значения анализа крови слева. Результаты появятся здесь в реальном времени.",
+        "disclaimer1": "Этот инструмент предназначен только для справки и не может заменить интерпретацию врача. Если вы обеспокоены, обратитесь за медицинской помощью напрямую.",
+        "disclaimer2": "Все расчёты выполняются локально в вашем браузере. Никакие данные не передаются и не сохраняются.",
+        "viewEmergency": "Открыть руководство по неотложной помощи"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Эстрадиол)",
+        "t": "T (Тестостерон)",
+        "prl": "PRL (Пролактин)",
+        "alt": "ALT/AST (Функция печени)",
+        "k": "K+ (Калий сыворотки)",
+        "hb": "Hb (Гемоглобин)",
+        "ddimer": "D-димер"
+      },
+      "actions": {
+        "printResults": "Распечатать результаты"
+      }
+    },
+    "es": {
+      "sections": {
+        "inputTitle": "Introduzca los valores de laboratorio",
+        "resultTitle": "Evaluación",
+        "emptyHint": "Introduzca los valores de su análisis de sangre a la izquierda. Los resultados aparecerán aquí en tiempo real.",
+        "disclaimer1": "Esta herramienta es solo de referencia y no puede sustituir la interpretación de un médico. Si tiene alguna preocupación, busque atención médica directamente.",
+        "disclaimer2": "Todos los cálculos se realizan localmente en su navegador. No se transmite ni almacena ningún dato.",
+        "viewEmergency": "Ver guía de emergencia"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosterona)",
+        "prl": "PRL (Prolactina)",
+        "alt": "ALT/AST (Función hepática)",
+        "k": "K+ (Potasio sérico)",
+        "hb": "Hb (Hemoglobina)",
+        "ddimer": "Dímero D"
+      },
+      "actions": {
+        "printResults": "Imprimir resultados"
+      }
+    },
+    "id": {
+      "sections": {
+        "inputTitle": "Masukkan nilai laboratorium",
+        "resultTitle": "Penilaian",
+        "emptyHint": "Masukkan nilai tes darah Anda di sebelah kiri. Hasil akan muncul di sini secara real-time.",
+        "disclaimer1": "Alat ini hanya untuk referensi dan tidak dapat menggantikan interpretasi dokter. Jika Anda khawatir, segera cari perawatan medis.",
+        "disclaimer2": "Semua perhitungan dilakukan secara lokal di peramban Anda. Tidak ada data yang dikirim atau disimpan.",
+        "viewEmergency": "Lihat panduan darurat"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosteron)",
+        "prl": "PRL (Prolaktin)",
+        "alt": "ALT/AST (Fungsi hati)",
+        "k": "K+ (Kalium serum)",
+        "hb": "Hb (Hemoglobin)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "Cetak hasil"
+      }
+    },
+    "th": {
+      "sections": {
+        "inputTitle": "กรอกค่าผลตรวจ",
+        "resultTitle": "การประเมิน",
+        "emptyHint": "กรอกค่าผลตรวจเลือดของคุณทางด้านซ้าย ผลลัพธ์จะแสดงที่นี่แบบเรียลไทม์",
+        "disclaimer1": "เครื่องมือนี้ใช้เพื่อการอ้างอิงเท่านั้น และไม่สามารถใช้แทนการวินิจฉัยของแพทย์ได้ หากคุณมีข้อกังวล ควรเข้ารับการรักษาโดยตรง",
+        "disclaimer2": "การคำนวณทั้งหมดทำงานในเบราว์เซอร์ของคุณเอง ไม่มีการส่งหรือจัดเก็บข้อมูลใด ๆ",
+        "viewEmergency": "ดูคู่มือฉุกเฉิน"
+      },
+      "rangeLabels": {
+        "e2": "E2 (เอสตราไดออล)",
+        "t": "T (เทสโทสเตอโรน)",
+        "prl": "PRL (โพรแลกติน)",
+        "alt": "ALT/AST (การทำงานของตับ)",
+        "k": "K+ (โพแทสเซียมในเลือด)",
+        "hb": "Hb (ฮีโมโกลบิน)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "พิมพ์ผลลัพธ์"
+      }
+    },
+    "fil": {
+      "sections": {
+        "inputTitle": "Ilagay ang mga halaga ng lab",
+        "resultTitle": "Pagtatasa",
+        "emptyHint": "Ilagay ang mga halaga ng iyong blood test sa kaliwa. Lilitaw dito ang mga resulta nang real-time.",
+        "disclaimer1": "Ang tool na ito ay para sa sanggunian lamang at hindi maaaring pumalit sa interpretasyon ng isang doktor. Kung nag-aalala ka, humingi ng pangangalagang medikal nang direkta.",
+        "disclaimer2": "Lahat ng kalkulasyon ay tumatakbo nang lokal sa iyong browser. Walang datos na ipinapadala o iniimbak.",
+        "viewEmergency": "Tingnan ang gabay sa emergency"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosterone)",
+        "prl": "PRL (Prolactin)",
+        "alt": "ALT/AST (Paggana ng atay)",
+        "k": "K+ (Potasyum sa dugo)",
+        "hb": "Hb (Hemoglobin)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "I-print ang mga resulta"
+      }
+    },
+    "hi": {
+      "sections": {
+        "inputTitle": "लैब मान दर्ज करें",
+        "resultTitle": "मूल्यांकन",
+        "emptyHint": "बाईं ओर अपने रक्त परीक्षण के मान दर्ज करें। परिणाम यहाँ रीयल टाइम में दिखाई देंगे।",
+        "disclaimer1": "यह उपकरण केवल संदर्भ के लिए है और चिकित्सक की व्याख्या का स्थान नहीं ले सकता। यदि आप चिंतित हैं, तो सीधे चिकित्सा सहायता लें।",
+        "disclaimer2": "सभी गणनाएँ आपके ब्राउज़र में स्थानीय रूप से चलती हैं। कोई डेटा प्रेषित या संग्रहीत नहीं किया जाता।",
+        "viewEmergency": "आपातकालीन मार्गदर्शिका देखें"
+      },
+      "rangeLabels": {
+        "e2": "E2 (एस्ट्राडियोल)",
+        "t": "T (टेस्टोस्टेरोन)",
+        "prl": "PRL (प्रोलैक्टिन)",
+        "alt": "ALT/AST (यकृत कार्य)",
+        "k": "K+ (सीरम पोटैशियम)",
+        "hb": "Hb (हीमोग्लोबिन)",
+        "ddimer": "D-डाइमर"
+      },
+      "actions": {
+        "printResults": "परिणाम प्रिंट करें"
+      }
+    },
+    "vi": {
+      "sections": {
+        "inputTitle": "Nhập giá trị xét nghiệm",
+        "resultTitle": "Đánh giá",
+        "emptyHint": "Nhập các giá trị xét nghiệm máu của bạn ở bên trái. Kết quả sẽ hiển thị tại đây theo thời gian thực.",
+        "disclaimer1": "Công cụ này chỉ mang tính tham khảo và không thể thay thế cho chẩn đoán của bác sĩ. Nếu bạn lo lắng, hãy trực tiếp đến cơ sở y tế.",
+        "disclaimer2": "Mọi phép tính được thực hiện cục bộ trong trình duyệt của bạn. Không có dữ liệu nào được truyền đi hay lưu trữ.",
+        "viewEmergency": "Xem hướng dẫn cấp cứu"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosterone)",
+        "prl": "PRL (Prolactin)",
+        "alt": "ALT/AST (Chức năng gan)",
+        "k": "K+ (Kali huyết thanh)",
+        "hb": "Hb (Hemoglobin)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "In kết quả"
+      }
+    },
+    "ar": {
+      "sections": {
+        "inputTitle": "أدخل قيم التحاليل",
+        "resultTitle": "التقييم",
+        "emptyHint": "أدخل قيم فحص الدم على اليسار. ستظهر النتائج هنا في الوقت الفعلي.",
+        "disclaimer1": "هذه الأداة للمرجع فقط ولا يمكن أن تحل محل تفسير الطبيب. إذا كنت قلقًا، فاطلب الرعاية الطبية مباشرة.",
+        "disclaimer2": "تُجرى جميع الحسابات محليًا في متصفحك. لا يتم إرسال أي بيانات أو تخزينها.",
+        "viewEmergency": "عرض دليل الطوارئ"
+      },
+      "rangeLabels": {
+        "e2": "E2 (إستراديول)",
+        "t": "T (تستوستيرون)",
+        "prl": "PRL (برولاكتين)",
+        "alt": "ALT/AST (وظائف الكبد)",
+        "k": "K+ (بوتاسيوم المصل)",
+        "hb": "Hb (هيموغلوبين)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "طباعة النتائج"
+      }
+    },
+    "fa": {
+      "sections": {
+        "inputTitle": "مقادیر آزمایش را وارد کنید",
+        "resultTitle": "ارزیابی",
+        "emptyHint": "مقادیر آزمایش خون خود را در سمت چپ وارد کنید. نتایج به‌صورت لحظه‌ای اینجا نمایش داده می‌شوند.",
+        "disclaimer1": "این ابزار صرفاً جنبه مرجع دارد و نمی‌تواند جایگزین تفسیر پزشک شود. اگر نگران هستید، مستقیماً به پزشک مراجعه کنید.",
+        "disclaimer2": "همه محاسبات به‌صورت محلی در مرورگر شما انجام می‌شود. هیچ داده‌ای ارسال یا ذخیره نمی‌شود.",
+        "viewEmergency": "مشاهده راهنمای اورژانس"
+      },
+      "rangeLabels": {
+        "e2": "E2 (استرادیول)",
+        "t": "T (تستوسترون)",
+        "prl": "PRL (پرولاکتین)",
+        "alt": "ALT/AST (عملکرد کبد)",
+        "k": "K+ (پتاسیم سرم)",
+        "hb": "Hb (هموگلوبین)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "چاپ نتایج"
+      }
+    },
+    "fr": {
+      "sections": {
+        "inputTitle": "Saisissez les valeurs de laboratoire",
+        "resultTitle": "Évaluation",
+        "emptyHint": "Saisissez les valeurs de votre analyse de sang à gauche. Les résultats s'afficheront ici en temps réel.",
+        "disclaimer1": "Cet outil est fourni à titre indicatif uniquement et ne peut remplacer l'interprétation d'un médecin. En cas d'inquiétude, consultez directement un professionnel de santé.",
+        "disclaimer2": "Tous les calculs sont effectués localement dans votre navigateur. Aucune donnée n'est transmise ni stockée.",
+        "viewEmergency": "Voir le guide d'urgence"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testostérone)",
+        "prl": "PRL (Prolactine)",
+        "alt": "ALT/AST (Fonction hépatique)",
+        "k": "K+ (Potassium sérique)",
+        "hb": "Hb (Hémoglobine)",
+        "ddimer": "D-dimères"
+      },
+      "actions": {
+        "printResults": "Imprimer les résultats"
+      }
+    },
+    "de": {
+      "sections": {
+        "inputTitle": "Laborwerte eingeben",
+        "resultTitle": "Bewertung",
+        "emptyHint": "Geben Sie Ihre Blutwerte links ein. Die Ergebnisse werden hier in Echtzeit angezeigt.",
+        "disclaimer1": "Dieses Tool dient nur zur Orientierung und kann die Beurteilung durch einen Arzt nicht ersetzen. Bei Bedenken suchen Sie bitte direkt ärztliche Hilfe auf.",
+        "disclaimer2": "Alle Berechnungen erfolgen lokal in Ihrem Browser. Es werden keine Daten übertragen oder gespeichert.",
+        "viewEmergency": "Notfallleitfaden ansehen"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosteron)",
+        "prl": "PRL (Prolaktin)",
+        "alt": "ALT/AST (Leberfunktion)",
+        "k": "K+ (Serumkalium)",
+        "hb": "Hb (Hämoglobin)",
+        "ddimer": "D-Dimer"
+      },
+      "actions": {
+        "printResults": "Ergebnisse drucken"
+      }
+    },
+    "tr": {
+      "sections": {
+        "inputTitle": "Laboratuvar değerlerini girin",
+        "resultTitle": "Değerlendirme",
+        "emptyHint": "Kan testi değerlerinizi soldan girin. Sonuçlar burada gerçek zamanlı olarak görünecektir.",
+        "disclaimer1": "Bu araç yalnızca referans amaçlıdır ve bir hekimin yorumunun yerini tutamaz. Endişeniz varsa doğrudan tıbbi yardım alın.",
+        "disclaimer2": "Tüm hesaplamalar tarayıcınızda yerel olarak çalışır. Hiçbir veri iletilmez veya saklanmaz.",
+        "viewEmergency": "Acil durum kılavuzunu görüntüle"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Östradiol)",
+        "t": "T (Testosteron)",
+        "prl": "PRL (Prolaktin)",
+        "alt": "ALT/AST (Karaciğer fonksiyonu)",
+        "k": "K+ (Serum potasyumu)",
+        "hb": "Hb (Hemoglobin)",
+        "ddimer": "D-dimer"
+      },
+      "actions": {
+        "printResults": "Sonuçları yazdır"
+      }
     }
   }
 }

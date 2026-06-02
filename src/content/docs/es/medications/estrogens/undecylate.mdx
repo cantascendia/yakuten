@@ -1,0 +1,92 @@
+---
+title: "Undecilato de estradiol (EU)"
+description: "Guía completa del undecilato de estradiol — farmacocinética, dosificación y consideraciones de seguridad de este éster inyectable de acción ultraprolongada."
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Undecilato de estradiol (EU)"
+  nameCN="Inyección de undecilato de estradiol"
+  category="estrogen"
+  route="Intramuscular (IM)"
+  evidenceLevel="C"
+>
+El undecilato de estradiol (EU) es uno de los ésteres inyectables de estradiol de acción más prolongada, con una vida media de aproximadamente 20-30 días, lo que permite intervalos de inyección de un mes o más<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Antes se comercializaba como Progynon Depot 100 y otras marcas, pero su disponibilidad mundial es hoy muy limitada. El nivel de evidencia es C debido a la falta de datos de ensayos clínicos de HRT a gran escala.
+</DrugInfoBox>
+
+## Farmacocinética
+
+Perfil farmacocinético del undecilato de estradiol<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
+
+- **Vida media**: ~20-30 días (la más larga de todos los ésteres inyectables)
+- **Tiempo hasta el pico**: ~3-7 días tras la inyección
+- **Duración de acción**: una sola inyección mantiene niveles eficaces de E2 durante ~30-40 días
+- **Estado estacionario**: debido a la vida media tan prolongada, se requieren ~2-3 meses para alcanzar el estado estacionario
+
+### Comparación con otros ésteres inyectables
+
+<DoseTable
+  headers={['Parámetro', 'EV (Valerato)', 'EC (Cipionato)', 'EU (Undecilato)']}
+  rows={[
+    ['Vida media', '~4-5 días', '~8-10 días', '~20-30 días'],
+    ['Intervalo de inyección', '5-7 días', '7-14 días', '21-30 días'],
+    ['Flexibilidad para ajustar la dosis', 'Alta', 'Moderada', 'Baja'],
+    ['Fluctuación del nivel sérico', 'Mayor', 'Moderada', 'Menor'],
+    ['Disponibilidad mundial', 'Ampliamente disponible', 'América', 'Muy limitada'],
+    ['Nivel de evidencia', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="Nivel de evidencia C">
+Los datos clínicos sobre el undecilato de estradiol en la HRT de personas trans son muy limitados. La mayor parte de los datos farmacocinéticos provienen de estudios pequeños realizados en las décadas de 1970-1980. Cuando se dispone de otros ésteres inyectables (EV o EC), suelen recomendarse como opciones de primera línea por contar con evidencia más sólida.
+</WarningBox>
+
+## Dosificación
+
+### Dosificación en adultos (solo de referencia)
+
+<DoseTable
+  headers={['Fase', 'Dosis', 'Notas']}
+  rows={[
+    ['Dosis inicial', '20-40 mg/month', 'Inicio conservador'],
+    ['Dosis de mantenimiento', '40-100 mg/month', 'Ajustar según el valle de E2'],
+    ['Dosis máxima', '100 mg/month', 'No superar'],
+  ]}
+/>
+
+Debido a su vida media muy prolongada, los ajustes de dosis del EU **tardan en hacer efecto**. Para situaciones que requieren un ajuste rápido de los niveles, los ésteres de acción más corta (EV) son más apropiados<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+## Marcas y disponibilidad
+
+| Marca | Concentración | Región | Estado |
+|-------|---------------|--------|--------|
+| **Progynon Depot 100** | 100 mg/mL | Antes Europa/Asia | Descontinuado |
+| Farmacias de fórmulas magistrales | Variable | Muy pocas regiones | Limitado |
+
+El EU tiene una disponibilidad mundial **extremadamente limitada**. La mayoría de las usuarias deberían elegir EV o EC como su estradiol inyectable preferido.
+
+## Seguimiento
+
+- **E2**: cada 3 meses, con extracción en el valle 1-2 días antes de la inyección. Objetivo 100-200 pg/mL
+- **T**: cada 3 meses. Objetivo &lt;50 ng/dL
+- **Función hepática (ALT/AST)**: basal + cada 6 meses
+
+Debido a la vida media muy prolongada, durante el uso inicial se necesita un control sanguíneo más frecuente para confirmar los niveles de acumulación.
+
+<DangerBox title="Límites de seguridad">
+- La vida media ultraprolongada del EU implica un mayor riesgo de acumulación: si aparecen efectos adversos, el fármaco permanecerá en el cuerpo durante semanas tras suspenderlo
+- No es adecuado para situaciones que requieren un ajuste rápido de la dosis
+- Un E2 >200 pg/mL no produce una feminización más intensa<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Debido a un suministro mundial extremadamente inestable, el EU no se recomienda como régimen primario de HRT
+</DangerBox>

@@ -1,0 +1,137 @@
+---
+title: "Miếng dán estradiol qua da"
+description: "Dược lý đầy đủ, khuyến nghị liều dùng, dữ liệu nguy cơ VTE và mẹo sử dụng thực tế cho miếng dán estradiol qua da."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+noindex: true
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Miếng dán estradiol qua da"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Qua da (transdermal)"
+  evidenceLevel="A"
+>
+  Miếng dán qua da được bằng chứng lâm sàng công nhận rộng rãi là phương thức dùng estradiol an toàn nhất. Vì estradiol hấp thu qua da đi thẳng vào máu nên hoàn toàn tránh được chuyển hóa lần đầu qua gan, nghĩa là hồ sơ nguy cơ VTE (cục máu đông) về mặt thống kê tương đương với người không dùng thuốc.
+</DrugInfoBox>
+
+## Dược lý
+
+### Tránh chuyển hóa lần đầu
+
+Khi bạn uống estradiol đường uống, thuốc đi vào đường tiêu hóa rồi đến thẳng gan (chuyển hóa lần đầu — First-Pass Metabolism). Quá trình này:
+- Buộc gan tăng tổng hợp các yếu tố đông máu, làm tăng nguy cơ VTE.
+- Phá hủy khoảng 95% lượng thuốc, khiến sinh khả dụng tụt mạnh.
+- Làm thay đổi chuyển hóa lipid/cholesterol.
+
+Miếng dán đưa estradiol qua da đi thẳng vào tuần hoàn toàn thân, **hoàn toàn bỏ qua chuyển hóa lần đầu ở gan**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Điều này có nghĩa là:
+- Tác động lên các yếu tố đông máu ở gan không đáng kể.
+- Sinh khả dụng rất ổn định và vượt trội.
+- Nhẹ nhàng với gan và với hồ sơ lipid.
+
+### Dữ liệu nguy cơ VTE (cục máu đông)
+
+Miếng dán qua da có nguy cơ VTE thấp nhất trong mọi phương thức dùng estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Đường dùng', 'Nguy cơ tương đối (RR)', 'KTC 95%']}
+  rows={[
+    ['Miếng dán qua da', '0.97', '0.79 - 1.19'],
+    ['Estradiol đường uống', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Một mức **RR ≈ 0.97** trên thực tế có nghĩa là việc dùng miếng dán qua da không làm tăng nguy cơ VTE một cách có ý nghĩa thống kê so với người hoàn toàn không dùng liệu pháp estrogen<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Điều này củng cố vị thế của miếng dán như lựa chọn ưu tiên bắt buộc cho bất kỳ ai có sẵn yếu tố nguy cơ đông máu.
+
+### Hồ sơ nồng độ trong máu
+
+- Đạt nồng độ trong máu ở trạng thái ổn định khoảng 12-24 giờ sau khi dán.
+- Duy trì mức E2 cực kỳ phẳng và ổn định trong suốt vòng đời của miếng dán.
+- Hoàn toàn tránh được những đợt lên-xuống đột ngột của đỉnh và đáy nồng độ thường gặp với đường uống, ngậm dưới lưỡi hay đường tiêm.
+
+## Khuyến nghị liều dùng
+
+Các khoảng liều này phù hợp với Hướng dẫn của Endocrine Society 2017<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> và WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Giai đoạn', 'Liều', 'E2 mục tiêu (pg/mL)', 'Mốc thời gian']}
+  rows={[
+    ['Khởi đầu liều thấp', '50-100 µg/day', '50-100', 'Tháng 1-6'],
+    ['Tăng liều mức trung bình', '100-200 µg/day', '100-200', 'Tháng 6-12'],
+    ['Giai đoạn duy trì', '100-200 µg/day', '100-200', 'Từ tháng 12 trở đi'],
+    ['Đơn trị liệu (nếu không dùng thuốc chẹn)', '200-400 µg/day', '200-300', 'Chỉ khi bỏ qua thuốc chẹn T'],
+  ]}
+/>
+
+<WarningBox title="Mức tối đa thông thường">
+Liều tối đa chuẩn là **400 µg/day**, trong lịch sử chỉ được dùng khi thử đơn trị liệu (ức chế T mà không dùng kháng androgen). Đại đa số người dùng đạt được khoảng E2 lâm sàng mục tiêu (100-200 pg/mL) ở mức 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Đẩy E2 vượt quá 200 pg/mL sẽ không làm bạn nữ hóa nhanh hơn; nó chỉ khuếch đại các nguy cơ sức khỏe.
+</WarningBox>
+
+## Cách sử dụng
+
+### Vị trí dán
+
+- **Khuyến nghị:** Bụng dưới, phần trên của mông, mặt ngoài đùi.
+- **Tránh:** Vùng ngực (nồng độ E2 tập trung tại chỗ kéo dài là nguy cơ ung thư vú nghiêm trọng), các khớp, hoặc những vùng bị cạp quần chật cọ vào.
+- **Luân phiên:** Đừng bao giờ dán miếng mới vào đúng vị trí của miếng cũ, để tránh viêm da tiếp xúc.
+
+### Tần suất thay miếng
+
+<WarningBox title="Theo dõi thời gian dán">
+Hầu hết miếng dán được thiết kế để thay **mỗi 3.5 ngày (hai lần một tuần)** hoặc **mỗi 7 ngày (một lần một tuần)**, tùy thuộc vào từng nhãn hiệu cụ thể. Hãy tuân thủ lịch của nhà sản xuất một cách nghiêm ngặt. Bỏ lỡ một lần thay sẽ khiến E2 của bạn tụt dốc, gây bốc hỏa và thay đổi tâm trạng. Hãy đặt báo thức trên điện thoại.
+</WarningBox>
+
+### Mẹo thực tế
+
+- Chỉ dán lên vùng da sạch và khô ráo hoàn toàn. Đừng dán đè lên kem dưỡng, dầu, hay vùng da vừa cạo còn ướt.
+- Ấn miếng dán thật chặt bằng lòng bàn tay trong trọn 10 giây để kích hoạt keo dính bằng nhiệt.
+- Tắm vòi sen và bơi lội bình thường thì không sao, nhưng tắm bồn lâu với nước nóng bỏng có thể làm bong keo và đẩy thuốc vào cơ thể sớm hơn dự kiến.
+- Nếu miếng dán bong ra, hãy thử dán lại; nếu không dính được, hãy dán ngay một miếng mới.
+
+## Đối tượng phù hợp
+
+Miếng dán qua da được khuyến nghị mạnh mẽ cho<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **Tất cả mọi người** (Miếng dán là tiêu chuẩn vàng về độ an toàn trên mọi phương diện).
+- **Người có yếu tố nguy cơ VTE** (BMI >30, tuổi >40, người hút thuốc, tiền sử gia đình có VTE) — Với nhóm này, miếng dán là không thể thương lượng.
+- **Người đang dùng CPA** — CPA vốn dĩ thúc đẩy đông máu; dùng miếng dán giúp tránh cộng dồn nguy cơ cục máu đông.
+- **Người có bất thường về gan** — Bỏ qua gan làm giảm đáng kể gánh nặng chuyển hóa.
+
+## Thực tế nguồn cung toàn cầu
+
+Dù ưu việt về mặt y khoa, miếng dán vẫn gặp những thách thức hậu cần trên toàn cầu:
+
+- **Chi phí:** Khi không có bảo hiểm vững chắc hoặc hệ thống y tế quốc gia, chi phí tự chi trả cho miếng dán đắt hơn rất nhiều so với viên uống.
+- **Thiếu hàng:** Chuỗi cung ứng toàn cầu cho các nhãn như Estradot hay Climara thường xuyên sụp đổ, dẫn đến tình trạng thiếu hàng kéo dài nhiều tháng theo khu vực ở Anh, EU và Úc.
+- Nếu bạn hoàn toàn không thể tiếp cận miếng dán, đường uống là phương án thay thế khả thi — với điều kiện bạn không có sẵn nguy cơ VTE.
+
+## Các nhãn hiệu phổ biến
+
+<DoseTable
+  headers={['Nhãn hiệu', 'Thông số', 'Chu kỳ thay', 'Khu vực']}
+  rows={[
+    ['Climara', 'Giải phóng 50 / 100 µg/day', 'Mỗi 7 ngày', 'Mỹ / EU / Toàn cầu'],
+    ['Estradot', 'Giải phóng 25-100 µg/day', 'Mỗi 3.5 ngày', 'Anh / EU / Úc'],
+    ['Vivelle-Dot', 'Giải phóng 25-100 µg/day', 'Mỗi 3.5 ngày', 'Mỹ'],
+    ['Estrana Tape', 'Giải phóng 50 µg/day', 'Mỗi 2 ngày', 'Nhật Bản (phổ biến trong giới DIY châu Á)'],
+  ]}
+/>
+
+## Lời khuyên theo dõi
+
+- **Khi nào lấy máu:** 12-24 giờ trước lần thay miếng dán kế tiếp (đo mức nồng độ đáy)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Mục tiêu:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

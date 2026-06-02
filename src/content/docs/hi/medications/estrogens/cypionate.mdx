@@ -1,0 +1,99 @@
+---
+title: "एस्ट्राडियोल साइपियोनेट (EC)"
+description: "एस्ट्राडियोल साइपियोनेट की पूरी गाइड — एस्ट्राडियोल वेलरेट के साथ फार्माकोकाइनेटिक्स तुलना, खुराक, इंजेक्शन प्रोटोकॉल और सुरक्षा सीमाएँ।"
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="एस्ट्राडियोल साइपियोनेट (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="इंट्रामस्क्युलर (IM) / सबक्यूटेनियस (SC)"
+  evidenceLevel="B"
+>
+एस्ट्राडियोल साइपियोनेट (EC) एक लंबे समय तक असर करने वाला इंजेक्शन योग्य एस्ट्राडियोल एस्टर है, जो मुख्य रूप से अमेरिका महाद्वीपों में इस्तेमाल होता है। एस्ट्राडियोल वेलरेट (EV) की तुलना में EC का अर्ध-आयु (half-life) अधिक लंबा होता है (~8-10 days बनाम 4-5 days), जिससे इंजेक्शन के बीच का अंतराल बढ़ाया जा सकता है<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />। ब्रांड नाम: Depo-Estradiol।
+</DrugInfoBox>
+
+## फार्माकोकाइनेटिक्स
+
+एस्ट्राडियोल साइपियोनेट की फार्माकोकाइनेटिक प्रोफ़ाइल<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **अर्ध-आयु (Half-life)**: ~8-10 days (EV के लिए ~4-5 days की तुलना में)
+- **शिखर समय (Peak time)**: इंजेक्शन के 2-4 days बाद
+- **न्यूनतम समय (Trough time)**: इंजेक्शन के 7-10 days बाद
+- **स्थिर अवस्था (Steady state)**: लगभग ~3-4 नियमित चक्रों के बाद पहुँचती है
+
+### एस्ट्राडियोल वेलरेट (EV) के साथ तुलना
+
+<DoseTable
+  headers={['पैरामीटर', 'एस्ट्राडियोल साइपियोनेट (EC)', 'एस्ट्राडियोल वेलरेट (EV)']}
+  rows={[
+    ['अर्ध-आयु', '~8-10 days', '~4-5 days'],
+    ['शिखर समय', '2-4 days', '2-3 days'],
+    ['अनुशंसित अंतराल', '7-14 days', '5-7 days'],
+    ['सीरम स्तर में उतार-चढ़ाव', 'कम', 'अधिक'],
+    ['मुख्य क्षेत्र', 'अमेरिका महाद्वीप', 'वैश्विक'],
+    ['VTE जोखिम (RR)', '~1.0 (फर्स्ट-पास से बचता है)', '~1.0'],
+    ['प्रमाण स्तर', 'B', 'A'],
+  ]}
+/>
+
+EC की लंबी अर्ध-आयु के कारण न्यूनतम स्तर पर E2 की गिरावट कम होती है, जिससे एक अधिक समतल सांद्रता वक्र (concentration curve) बनता है<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />।
+
+## खुराक
+
+### वयस्क खुराक
+
+<DoseTable
+  headers={['चरण', 'खुराक', 'टिप्पणी']}
+  rows={[
+    ['शुरुआती खुराक', '2-3 mg/week', 'स्तन विकास की रक्षा के लिए कम खुराक से शुरुआत (पहले 1-6 महीने)'],
+    ['रखरखाव खुराक', '3-5 mg/week', 'न्यूनतम E2 के आधार पर समायोजित करें; लक्ष्य 100-200 pg/mL'],
+    ['अधिकतम खुराक', '7 mg/10-14 days', 'इससे अधिक न लें'],
+  ]}
+/>
+
+खुराक संदर्भ: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> और WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />। EC की लंबी अर्ध-आयु के कारण, कुछ उपयोगकर्ता 10-14 दिन के इंजेक्शन अंतराल को चुनते हैं।
+
+<WarningBox title="इंजेक्शन अंतराल और रक्त नमूना लेने का समय">
+EC उपयोगकर्ताओं को न्यूनतम (trough) स्तर मापने के लिए **अगले इंजेक्शन से पहले की सुबह** रक्त नमूना देना चाहिए। यदि 10 दिन का शेड्यूल अपना रहे हैं, तो न्यूनतम स्तर 10वें दिन की सुबह होता है। लक्ष्य न्यूनतम E2: 100-200 pg/mL।
+</WarningBox>
+
+## ब्रांड और उपलब्धता
+
+| ब्रांड | सांद्रता | क्षेत्र |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | संयुक्त राज्य अमेरिका |
+| कंपाउंडिंग फ़ार्मेसी | विभिन्न | चुनिंदा क्षेत्र |
+
+EC मुख्य रूप से अमेरिका और लैटिन अमेरिका में उपलब्ध है। जिन क्षेत्रों में यह उपलब्ध नहीं है, वहाँ [एस्ट्राडियोल वेलरेट इंजेक्शन](/hi/medications/estrogens/injection/) मानक विकल्प है।
+
+## निगरानी
+
+अन्य इंजेक्शन योग्य एस्ट्राडियोल एस्टर के समान:
+
+- **E2**: हर 3 महीने में, न्यूनतम (trough) नमूना (इंजेक्शन से पहले की सुबह)। लक्ष्य 100-200 pg/mL
+- **T**: हर 3 महीने में। लक्ष्य &lt;50 ng/dL
+- **लिवर फ़ंक्शन (ALT/AST)**: बेसलाइन + हर 6 महीने में
+
+## इंजेक्शन तकनीक
+
+इंजेक्शन की प्रक्रिया [एस्ट्राडियोल वेलरेट इंजेक्शन](/hi/medications/estrogens/injection/#injection-technique) के समान ही है। SC और IM दोनों मार्ग उपयुक्त हैं।
+
+<DangerBox title="सुरक्षा सीमाएँ">
+- **एक बार के इंजेक्शन की खुराक 10 mg से अधिक नहीं होनी चाहिए**
+- लक्ष्य स्थिर शारीरिक E2 स्तर बनाए रखना है, न कि उच्च शिखरों का पीछा करना
+- E2 >200 pg/mL से अधिक मजबूत स्त्रैणीकरण (feminization) नहीं होता, केवल थक्का (clot) बनने का जोखिम बढ़ता है<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- यदि आपके क्षेत्र में EC उपलब्ध नहीं है, तो असत्यापित स्रोतों से इसे न खरीदें
+</DangerBox>

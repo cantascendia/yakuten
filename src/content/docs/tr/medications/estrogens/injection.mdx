@@ -1,0 +1,176 @@
+---
+title: "Enjeksiyonluk Estradiol (EV / EC / EEn)"
+description: "Enjeksiyonluk estradiol için eksiksiz rehber—farmakokinetik, doz, SC ile IM karşılaştırması, monoterapi uygulanabilirliği, enjeksiyon protokolleri ve kritik güvenlik kırmızı çizgileri."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Enjeksiyonluk Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Kas içi (IM) / Deri altı (SC)"
+  evidenceLevel="A"
+>
+Enjeksiyonluk estradiol, transfeminen HRT'nin tartışmasız en güçlü seçeneğidir. Karaciğerin ilk geçiş metabolizmasını tamamen atlar ve son derece öngörülebilir, baskın östrojen düzeyleri sağlar. Güncel klinik derlemeler, deri altı (SC) enjeksiyonların kas içi (IM) enjeksiyonlar kadar etkili olduğunu doğrulamaktadır<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. Şaşırtıcı biçimde, enjeksiyon kullananların yaklaşık %82,6'sı, hiçbir anti-androjen blokeri gerektirmeden, monoterapi olarak tam T baskılanmasına ulaşabilmektedir<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="Progynon Depot 10mg estradiol valerat enjeksiyon ampulleri" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Enjeksiyonluk Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## Farmakokinetik (Esterler)
+
+Enjeksiyonluk estradiol, kana salınımını yavaşlatıp bir depo etkisine dönüştüren bir "ester" (yağ asidi zinciri) ile bağlı olarak gelir. En yaygın üç tanesi şunlardır:
+- **Estradiol Valerat (EV)**: En kısa yarı ömür (~4-5 gün). Her 5 ila 7 günde bir enjeksiyon gerektirir. Hızla yükselir ve sert biçimde düşer.
+- **Estradiol Sipiyonat (EC)**: Orta yarı ömür (~8-10 gün). Daha düz, daha yumuşak bir eğri. Genellikle her 7 ila 10 günde bir enjekte edilir.
+- **Estradiol Enantat (EEn)**: Uzun yarı ömür. Her 7 ila 14 günde bir enjekte edildiğinde sabit, yumuşak düzeyler sağlayabilir. Gri piyasa DIY topluluğunda yoğun biçimde kullanılır.
+
+Bu rehber için (ve standart Endocrine Society kılavuzları için), **Estradiol Valerat (EV)**'i temel alacağız; çünkü ABD ve Japonya'da yoğun biçimde üretilen, en standartlaştırılmış ticari formülasyondur<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## EV için Doz
+
+### Yetişkin Aralıkları
+
+<DoseTable
+  headers={['Aşama', 'Doz', 'Yönerge']}
+  rows={[
+    ['Başlangıç Dozu', '1-2 mg / hafta', 'Süt kanalı dallanmasını korumak için düşük doz başlangıç aşaması (Ay 1-6).'],
+    ['İdame', '2-4 mg / hafta', 'Çukur (trough) kan tahlilinize göre titre edin. Hedef E2: 100-200 pg/mL.'],
+    ['Kesin Üst Sınır', '5 mg / hafta', 'Rothman 2024 tarafından önerilen mutlak güvenlik tavanı. Asla körü körüne aşmayın.'],
+  ]}
+/>
+
+Bu rakamlar WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> ve Endocrine Society kılavuzlarıyla<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> tam olarak örtüşmektedir.
+
+<WarningBox title="Ölümcül Hata: Süreci Aceleye Getirmek">
+İlk 6 ay boyunca kendinizi 1-2 mg/hafta ile sınırlamak "muhafazakâr kapı bekçiliği" değildir; biyolojik bir korumadır. 1. ayda kan dolaşımınıza dev bir 5mg EV zirvesi boşaltmak, erken lobuloalveolar olgunlaşmayı tetikleyerek meme süt kanalı dallanmanızı kalıcı olarak sonlandırır. [Göğüs Gelişimi rehberine](/tr/breast-development/) bakın.
+</WarningBox>
+
+### Kan Tahlili Zamanlaması
+
+Kan örneğini, enjeksiyon gününüzün sabahında, **enjekte etmeden hemen önce** vermelisiniz. Bu, **Çukur Düzeyinizi** (döngü boyunca en düşük E2 konsantrasyonunuz) ölçer.
+- **Hedef Çukur Düzeyi:** 100-200 pg/mL.
+- **Uyarı:** EV'de >200 pg/mL bir çukur düzeyi, 2. gün zirvenizin büyük olasılıkla aşırı yüksek olduğu (örn. 500-800 pg/mL) anlamına gelir. Yüksek aralıklar yalnızca kardiyovasküler riskleri artırır; feminizasyonu güçlendirmez.
+- 7 günlük bir EV döngüsünde çukur düzeyiniz 50 pg/mL'nin altına çakılıyorsa, her 7 günde bir daha yüksek bir doz patlatmak yerine, eğriyi düzleştirmek için 5 günlük bir döngüye (orantılı olarak daha düşük bir doz kullanarak) geçmelisiniz.
+
+## Deri Altı (SC) ile Kas İçi (IM)
+
+Endokrinoloji, on yıllar boyunca trans kadınları yağı kasın derinine itmek için kocaman iğneler kullanmaya zorladı (IM). Güncel geniş ölçekli veriler, karın/uyluk yağ dokusuna deri altı (SC) uygulamanın tam anlamıyla eşdeğer olduğunu kanıtlamaktadır<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['Ölçüt', 'Deri Altı (SC)', 'Kas İçi (IM)']}
+  rows={[
+    ['E2 Laboratuvar Düzeyleri', 'IM ile aynı', 'Geleneksel standart'],
+    ['T Baskılanması', 'IM ile aynı', 'Geleneksel standart'],
+    ['Ağrı Faktörü', 'Neredeyse ağrısız', 'Derin kas sızlaması ve ağrısı tetikleyebilir'],
+    ['İğne Kalınlığı', 'Çok ince (25-27G)', 'Daha kalın (21-23G), daha uzun'],
+    ['Kullanım Kolaylığı', 'Kendi kendine uygulaması çok kolay', 'Kalça IM çoğu zaman bir partner/hemşire gerektirir'],
+  ]}
+/>
+
+**Sonuç:** Kendi kendinize enjeksiyon yapıyorsanız, deri altı (SC) daha üstün, daha güvenli ve daha az örseleyici seçenektir.
+
+<img src="/images/diagrams/tr/injection-angles.webp" alt="Deri altı (45°) ile kas içi (90°) enjeksiyon tekniklerinin kesit karşılaştırması" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## Monoterapi Avantajı
+
+Enjeksiyonluk estradiol, testosteronu ağızdan alınan haplara kıyasla çok daha güçlü baskılar. Misakian ve ark. tarafından yapılan 2025 tarihli bir kohort çalışması, enjeksiyonluk estradiol kullananların **%82,6**'sının hiçbir Spironolakton, Bikalutamid veya Siproteron olmadan tam testosteron baskılanmasına (T < 50 ng/dL) ulaştığını ortaya koymuştur<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- CPA'nın karaciğer toksisitesi risklerini ortadan kaldırır.
+- Spiro'nun diüretik ve potasyum risklerini ortadan kaldırır.
+
+<WarningBox title="Monoterapinin Peşinden Pervasızca Koşmayın">
+Bireylerin yaklaşık %17'si biyolojik olarak monoterapiye ulaşamaz. Haftada 5 mg enjekte ediyorsanız ve T'niz 300 ng/dL'de takılı kalıyorsa, **enjeksiyon dozunuzu 8mg veya 10mg'a çıkarmayın**. Siz bu %17'lik kesimdensiniz. Gerçeği kabul edin ve düşük doz bir anti-androjen ekleyin.
+</WarningBox>
+
+## Enjeksiyon Protokolü
+
+### Malzeme
+
+| Yol | Şırınga | Çekme İğnesi | Enjeksiyon İğnesi |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (yağı çekmek için) | 25-27G × 1/2" - 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (yağı çekmek için) | 21-23G × 1" - 1.5" |
+
+Her zaman iki iğne kullanın. Koyu yağı flakondan çekmek için kalın bir iğne kullanın, ardından enjeksiyon için ince, keskin iğneye geçin. Flakonun kalın lastik tıpasını delmek iğneyi mikroskobik düzeyde köreltir; körelmiş, künt bir iğneyi derinize zorla sokmak istemezsiniz.
+
+### Bölgeler
+
+- **SC için:** Karın (göbek deliğinden 2 inç uzakta durun) veya üst dış uyluklar. Yağı çimdikleyin.
+- **IM için:** Vastus lateralis (uyluğun dış orta üçte birlik bölümü) veya ventrogluteal (kalça/popo) bölge.
+
+### Uygulama
+
+1. **Hijyen:** Ellerinizi sabunla ovalayın. Bir alkollü mendil ve kesici-delici atık kutusu hazır bulundurun.
+2. **Dezenfeksiyon:** Lastik flakon tıpasını silin. Cildinizi 2 inçlik dışa doğru bir spiralle silin. Tamamen havayla kurumasını bekleyin.
+3. **Çekin:** Şırıngaya dozunuza eşit miktarda hava çekin. Basıncı eşitlemek için havayı flakona itin. Yağı aşağı çekin. Hava kabarcıklarını fiskeleyerek çıkarın.
+4. **Değiştirin ve Batırın:** Küçük enjeksiyon iğnesine geçin. SC için yağ yastığını çimdikleyin ve iğneyi 45° açıyla daldırın.
+5. **Aspirasyon (İsteğe bağlı ama IM için yaygın):** Pistonu hafifçe geri çekin. Şırıngaya kan dolarsa bir damara girmişsinizdir. İğneyi çıkarın ve başka bir yerde baştan başlayın.
+6. **İtin:** Koyu yağı yavaşça enjekte edin (~10 saniye).
+7. **Çıkarın:** İğneyi pürüzsüzce çıkarın. Bir pamukla bastırın. İğneyi hemen kesici-delici atık kutusuna atın.
+
+## mg'ı mL'ye Çevirme (Hesap)
+
+Elinizde standart bir ticari Amerikan **Estradiol Valerat 20 mg/mL** flakonu varsa (bu, her 1 mL yağda 20mg EV bulunduğu anlamına gelir):
+
+<DoseTable
+  headers={['Hedef Doz (mg)', 'Enjeksiyon Hacmi (mL)', 'Flakon Konsantrasyonu']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="Konsantrasyonunuzu Doğrulayın">
+Küresel DIY flakonları çoğu zaman çılgın yoğunluklarda hazırlanır (40 mg/mL, 50 mg/mL). Japon ampulleri (Progynon Depot) sıklıkla 10 mg/mL'dir. **Hesabı her zaman KENDİ flakonunuzun konsantrasyonuna göre yapın.**
+Hacim (mL) = Hedef Doz (mg) ÷ Flakon Konsantrasyonu (mg/mL).
+</WarningBox>
+
+## Ampul Gerçeği
+
+Asya ve Avrupa'nın birçok yerinde enjeksiyonluk EV, lastik tıpalı flakonlar yerine küçük, kırılabilir cam ampuller içinde satılır.
+- Ampuller koruyucu madde (benzil alkol gibi) İÇERMEZ.
+- Camı kırdığınız anda, sıvının bütünlüğü bozulur. Açık bir ampulü, kalan yarısını daha sonra enjekte etmek için bir hafta boyunca masanızda bırakamazsınız.
+- Bazı rehberler, kalan dozun önceden steril bir şırıngaya çekilip buzdolabında en fazla 7 gün saklanmasını önerir. Bu, doğası gereği kontaminasyon riski taşır. Son derece dikkatli olun.
+
+<DangerBox title="Ölümcül Kırmızı Çizgiler">
+Felaket niteliğindeki sağlık sonuçlarından kaçının. Aşağıdakileri asla yapmayın:
+
+- **Tek Seferde ≥ 10 mg Enjeksiyon:** Dev dozlar patlatmak >1000 pg/mL zirve düzeyleri oluşturur ve kritik kan pıhtısı / VTE olaylarını davet eder<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **Yüksek Doz + Kısa Aralık (örn. her 3 günde bir 5mg):** Birikme etkisi, toksik fizyolojik aşırı yüklenmeye ulaşana dek yarı ömrü sonsuza dek üst üste yığar<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+5mg/hafta T'nizi bastırmıyorsa, monoterapinin başarısız olduğunu kabul edin ve bir anti-androjen ekleyin. Kendinizi bir biyolojik tehlike kaynağına dönüştürmeyin.
+</DangerBox>
+
+---
+
+**Kaynaklar**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

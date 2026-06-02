@@ -1,0 +1,108 @@
+---
+title: "Östrogene im Überblick"
+description: "Ein Vergleich von VTE-Risiken, Vorteilen und Nachteilen der verschiedenen Verabreichungswege von Estradiol (transdermal, oral, sublingual, injizierbar)."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+noindex: true
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+Estradiol (E2) ist das zentrale Medikament der HRT bei trans Frauen. Bei der Wahl des Verabreichungswegs sollte **die Sicherheit (konkret das Risiko einer venösen Thromboembolie, kurz VTE) im Vordergrund stehen** – und nicht allein Bequemlichkeit oder Kosten.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/de/routes-comparison.webp" alt="Vergleich der drei Verabreichungswege von Estradiol: oral über die Leber, transdermal mit direkter Aufnahme, Injektion in die Blutbahn" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## VTE-Risiken nach Verabreichungsweg
+
+Die venöse Thromboembolie (Blutgerinnsel) zählt zu den schwerwiegendsten Risiken einer Östrogentherapie. Das Risiko unterscheidet sich erheblich danach, auf welchem Weg das Östrogen in den Körper gelangt<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Verabreichungsweg', 'Relatives Risiko (RR)', 'Evidenzgrad', 'Anmerkung']}
+  rows={[
+    ['Transdermales Pflaster', 'RR ≈ 0.97', 'A', 'Keine relevante Risikoerhöhung gegenüber Nicht-Anwenderinnen'],
+    ['Transdermales Gel', 'RR ≈ 0.97', 'A', 'Vergleichbar mit Pflastern, umgeht den First-Pass-Effekt der Leber'],
+    ['Oral (Estradiolvalerat/-hemihydrat)', 'RR ≈ 1.48', 'A', 'Risiko um etwa 48 % erhöht'],
+    ['Sublingual', 'Begrenzte Datenlage', 'C', 'Umgeht den First-Pass teilweise, theoretisch geringer als oral'],
+    ['Injizierbar (EV/EC/EEn)', 'Begrenzte Datenlage', 'C', 'Umgeht den First-Pass, aber es fehlen große RCT-Daten zum Thromboserisiko'],
+  ]}
+/>
+
+<WarningBox title="Kernaussage">
+Transdermale Verabreichungswege (Pflaster und Gel) bergen ein VTE-Risiko, das statistisch dem von Personen ohne HRT entspricht (RR ≈ 0.97). Die orale Einnahme erhöht das Risiko hingegen um rund 48 % (RR ≈ 1.48). Wenn bei Ihnen Risikofaktoren für eine VTE vorliegen, sollte ein transdermaler Weg die erste Wahl sein<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Leitfaden zur Wahl des Verabreichungswegs
+
+Das folgende Schema beruht auf der aktuellen klinischen Evidenz<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Szenario 1: Bestehende Risikofaktoren für eine VTE
+
+**Zu den Risikofaktoren zählen:** Alter über 40, BMI über 30, Rauchen, VTE in der Familienanamnese, vorbekannte Gerinnungsstörungen oder Migräne mit Aura.
+
+- **Bevorzugt:** Transdermales Pflaster oder transdermales Gel
+- **Zu meiden:** Orales Estradiol
+- **Ebenfalls zu meiden:** Die Kombination von oralem Östrogen mit Cyproteronacetat (CPA)
+
+### Szenario 2: Keine Risikofaktoren für eine VTE
+
+Wählen Sie nach Verfügbarkeit, Budget und persönlicher Vorliebe:
+
+- **Orales Estradiol (Estrace, Progynova):** Weltweit meist der günstigste und am breitesten verfügbare Weg.
+- **Transdermales Pflaster (Climara, Estradot):** Besseres Sicherheitsprofil, kann aber teuer sein oder von weltweiten Lieferengpässen betroffen sein.
+- **Sublingual:** Orale Tabletten werden unter der Zunge aufgelöst. Höhere Bioverfügbarkeit, führt aber zu starken Spitzen und Einbrüchen im Blutspiegel.
+- **Injektionen:** Verursachen deutliche Spitzen- und Talschwankungen, sind aber für eine Monotherapie hochwirksam.
+
+### Szenario 3: Monotherapie (Östrogen ohne Antiandrogene)
+
+Wenn Sie das Testosteron allein mit Estradiol unterdrücken möchten, ohne einen eigenständigen Antiandrogen-Blocker einzunehmen:
+
+- **Bevorzugt:** Injizierbares Estradiol (EV, EC, EEn) – hält die durchgehend hohen E2-Spiegel zuverlässig aufrecht, die dafür nötig sind.
+- **Alternative:** Hochdosierte transdermale Pflaster (200-400 µg/day) oder transdermales Gel.
+- **Beleg:** Eine Studie von Misakian aus dem Jahr 2025 zeigte, dass 82,6 % der Anwenderinnen unter einer injizierbaren EV-Monotherapie eine Testosteronunterdrückung erreichten, ohne ein Antiandrogen zu benötigen<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Vor- und Nachteile im Schnellüberblick
+
+<DoseTable
+  headers={['Verabreichungsweg', 'Vorteile', 'Nachteile', 'Typische Verfügbarkeit']}
+  rows={[
+    ['Transdermales Pflaster', 'Geringstes VTE-Risiko; stabile Blutspiegel; Wechsel 1-2 Mal pro Woche', 'Hautreizungen; kann teuer oder weltweit häufig nicht lieferbar sein', 'Mittel'],
+    ['Transdermales Gel', 'Geringes VTE-Risiko; flexible tägliche Dosierung', 'Aufnahme schwankt stark je nach Hauttyp; benötigt Trocknungszeit', 'Mittel'],
+    ['Oral (Tabletten)', 'Am leichtesten erhältlich; sehr günstig; einfach einzunehmen', 'Höheres VTE-Risiko; der First-Pass-Stoffwechsel der Leber verbraucht viel Wirkstoff', 'Sehr hoch'],
+    ['Sublingual', 'Höhere Bioverfügbarkeit als oral; umgeht die Leber teilweise', 'Starke Spitzen und Einbrüche im Blutspiegel; erfordert 2-3 Gaben täglich', 'Sehr hoch (nutzt orale Tabletten)'],
+    ['Injizierbar (EV/EEn)', 'Umgeht die Leber; hochwirksam für die Monotherapie', 'Erfordert Nadeln/kann Spritzenangst auslösen; ausgeprägte Spitzen und Täler im Blutspiegel', 'Je nach Land unterschiedlich (oft DIY)'],
+  ]}
+/>
+
+## Dosierung im Überblick
+
+Übliche Dosisbereiche der verschiedenen Verabreichungswege<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Verabreichungsweg', 'Startdosis', 'Erhaltungsdosis', 'Typische Höchstdosis']}
+  rows={[
+    ['Transdermales Pflaster', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Transdermales Gel', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Orales Estradiol', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublingual', '1-2 mg/day (aufgeteilt 2-3x)', '2-4 mg/day (aufgeteilt 2-3x)', '6 mg/day'],
+    ['Injizierbares EV', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Vertiefende Seiten
+
+Für ausführliche Informationen zu Pharmakologie, Anwendung und den jeweiligen Warnhinweisen der einzelnen Verabreichungswege klicken Sie hier:
+
+- [Transdermale Pflaster](/de/medications/estrogens/transdermal-patch/) — Der sicherste Verabreichungsweg
+- [Orales Estradiol](/de/medications/estrogens/oral/) — Sehr gut verfügbar, aber mit leicht erhöhtem VTE-Risiko
+- [Sublingual](/de/medications/estrogens/sublingual/) — Ein Kompromiss mit höherer Aufnahme, aber starken Schwankungen
+- [Transdermales Gel](/de/medications/estrogens/gel/) — Flexible Sicherheit zwischen Pflaster und oraler Einnahme
+- [Injizierbares Estradiol](/de/medications/estrogens/injection/) — Der Goldstandard für die Monotherapie

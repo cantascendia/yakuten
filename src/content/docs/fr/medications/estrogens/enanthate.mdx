@@ -1,0 +1,94 @@
+---
+title: "Énanthate d'estradiol (EEn)"
+description: "Guide complet de l'énanthate d'estradiol — pharmacocinétique, comparaison avec les autres esters, posologie et limites de sécurité."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Énanthate d'estradiol (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramusculaire (IM) / Sous-cutanée (SC)"
+  evidenceLevel="B"
+>
+L'énanthate d'estradiol (EEn) est un ester d'estradiol injectable à action moyenne à longue, dont la demi-vie se situe entre celle du valérate d'estradiol (EV) et celle du cypionate d'estradiol (EC), soit environ 5-7 jours<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. On le trouve couramment comme composant des contraceptifs injectables combinés (par exemple Perlutal) et il peut aussi être utilisé seul comme traitement hormonal de substitution (THS).
+</DrugInfoBox>
+
+## Pharmacocinétique
+
+Profil pharmacocinétique de l'énanthate d'estradiol<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /> :
+
+- **Demi-vie** : ~5-7 jours
+- **Délai du pic** : 3-5 jours après l'injection
+- **Délai du creux** : 7-10 jours après l'injection
+- **État d'équilibre** : atteint après ~3-4 cycles réguliers
+
+### Comparaison pharmacocinétique des esters d'estradiol injectables
+
+<DoseTable
+  headers={['Paramètre', 'EV (valérate)', 'EEn (énanthate)', 'EC (cypionate)']}
+  rows={[
+    ['Demi-vie', '~4-5 jours', '~5-7 jours', '~8-10 jours'],
+    ['Délai du pic', '2-3 jours', '3-5 jours', '2-4 jours'],
+    ['Intervalle recommandé', '5-7 jours', '7-10 jours', '7-14 jours'],
+    ['Fluctuation du taux sérique', 'Plus marquée', 'Modérée', 'Plus faible'],
+    ['Disponibilité', 'Mondiale', 'Régions limitées', 'Amériques'],
+  ]}
+/>
+
+Le profil pharmacocinétique de l'EEn se situe entre celui de l'EV et celui de l'EC, offrant une option aux personnes qui souhaitent des injections hebdomadaires avec une courbe plus régulière<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Posologie
+
+### Posologie chez l'adulte
+
+<DoseTable
+  headers={['Phase', 'Dose', 'Remarques']}
+  rows={[
+    ['Dose de départ', '2-4 mg/semaine', 'Démarrage à faible dose pour préserver le développement mammaire'],
+    ['Dose d\'entretien', '4-6 mg/semaine', 'À ajuster selon l\'E2 au creux ; cible 100-200 pg/mL'],
+    ['Dose maximale', '10 mg/10 jours', 'À ne pas dépasser'],
+  ]}
+/>
+
+Références posologiques : Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> et WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Remarque sur la disponibilité">
+L'énanthate d'estradiol n'est pas largement disponible dans de nombreuses régions. On le trouve principalement en Amérique latine (comme composant du Perlutal) et dans quelques pays européens. Si vous avez besoin d'estradiol injectable, le [valérate d'estradiol](/fr/medications/estrogens/injection/) est plus facilement accessible dans la plupart des régions.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Composition | Région |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (contraceptif combiné) | Amérique latine |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Quelques pays |
+| Préparations à un seul principe actif | Concentrations variables | Pharmacies de préparation magistrale |
+
+## Surveillance
+
+- **E2** : tous les 3 mois, prélèvement au creux (le matin avant l'injection). Cible 100-200 pg/mL
+- **T** : tous les 3 mois. Cible &lt;50 ng/dL
+- **Bilan hépatique (ALT/AST)** : à l'inclusion + tous les 6 mois
+
+## Technique d'injection
+
+La procédure d'injection est identique à celle de l'[injection de valérate d'estradiol](/fr/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Limites de sécurité">
+- Les mêmes limites de sécurité que pour les autres esters d'estradiol injectables s'appliquent
+- Une dose unique injectée ne doit pas dépasser 10 mg
+- Un E2 >200 pg/mL n'accentue pas la féminisation, il ne fait qu'augmenter les risques<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Si vous utilisez une préparation combinée (par exemple Perlutal), le composant progestatif peut comporter des risques supplémentaires ; consultez un médecin
+</DangerBox>

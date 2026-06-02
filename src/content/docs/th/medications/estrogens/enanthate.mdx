@@ -1,0 +1,94 @@
+---
+title: "เอสตราไดออล อีแนนเทต (EEn)"
+description: "คู่มือฉบับสมบูรณ์ว่าด้วยเอสตราไดออล อีแนนเทต — เภสัชจลนศาสตร์ การเปรียบเทียบกับเอสเทอร์ชนิดอื่น ขนาดยา และขีดจำกัดด้านความปลอดภัย"
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="ฉีดเข้ากล้ามเนื้อ (IM) / ฉีดใต้ผิวหนัง (SC)"
+  evidenceLevel="B"
+>
+เอสตราไดออล อีแนนเทต (EEn) เป็นเอสเทอร์ของเอสตราไดออลชนิดฉีดที่ออกฤทธิ์ปานกลางถึงยาว มีค่าครึ่งชีวิตอยู่ระหว่างเอสตราไดออล วาเลอเรต (EV) และเอสตราไดออล ไซพิโอเนต (EC) คือประมาณ 5-7 วัน<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /> โดยทั่วไปพบเป็นส่วนประกอบในยาคุมกำเนิดชนิดฉีดแบบผสม (เช่น Perlutal) และยังสามารถใช้เป็นยาฮอร์โมนบำบัด (HRT) เดี่ยวได้อีกด้วย
+</DrugInfoBox>
+
+## เภสัชจลนศาสตร์
+
+โปรไฟล์ทางเภสัชจลนศาสตร์ของเอสตราไดออล อีแนนเทต<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **ค่าครึ่งชีวิต**: ~5-7 วัน
+- **เวลาถึงระดับสูงสุด**: 3-5 วันหลังฉีด
+- **เวลาถึงระดับต่ำสุด**: 7-10 วันหลังฉีด
+- **ระดับคงที่ (steady state)**: เข้าสู่ระดับคงที่หลังฉีดตามรอบปกติประมาณ 3-4 รอบ
+
+### เปรียบเทียบเภสัชจลนศาสตร์ของเอสเทอร์เอสตราไดออลชนิดฉีด
+
+<DoseTable
+  headers={['พารามิเตอร์', 'EV (Valerate)', 'EEn (Enanthate)', 'EC (Cypionate)']}
+  rows={[
+    ['ค่าครึ่งชีวิต', '~4-5 วัน', '~5-7 วัน', '~8-10 วัน'],
+    ['เวลาถึงระดับสูงสุด', '2-3 วัน', '3-5 วัน', '2-4 วัน'],
+    ['ระยะห่างที่แนะนำ', '5-7 วัน', '7-10 วัน', '7-14 วัน'],
+    ['ความผันผวนของระดับในเลือด', 'มากกว่า', 'ปานกลาง', 'น้อยกว่า'],
+    ['การหาซื้อได้', 'ทั่วโลก', 'จำกัดบางภูมิภาค', 'ทวีปอเมริกา'],
+  ]}
+/>
+
+โปรไฟล์ทางเภสัชจลนศาสตร์ของ EEn อยู่ระหว่าง EV และ EC จึงเป็นทางเลือกสำหรับผู้ที่ต้องการฉีดสัปดาห์ละครั้งโดยได้กราฟระดับฮอร์โมนที่ราบเรียบกว่า<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />
+
+## ขนาดยา
+
+### ขนาดยาสำหรับผู้ใหญ่
+
+<DoseTable
+  headers={['ระยะ', 'ขนาดยา', 'หมายเหตุ']}
+  rows={[
+    ['ขนาดเริ่มต้น', '2-4 mg/week', 'เริ่มด้วยขนาดต่ำเพื่อปกป้องพัฒนาการของเต้านม'],
+    ['ขนาดคงระดับ', '4-6 mg/week', 'ปรับตามค่า E2 ที่ระดับต่ำสุด (trough); เป้าหมาย 100-200 pg/mL'],
+    ['ขนาดสูงสุด', '10 mg/10 days', 'ห้ามใช้เกินขนาดนี้'],
+  ]}
+/>
+
+แหล่งอ้างอิงด้านขนาดยา: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> และ WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
+
+<WarningBox title="หมายเหตุเรื่องการหาซื้อได้">
+เอสตราไดออล อีแนนเทต ไม่ได้มีจำหน่ายอย่างแพร่หลายในหลายภูมิภาค โดยพบมากในลาตินอเมริกา (เป็นส่วนประกอบของ Perlutal) และในบางประเทศของยุโรปเท่านั้น หากคุณต้องการเอสตราไดออลชนิดฉีด [เอสตราไดออล วาเลอเรต (EV)](/th/medications/estrogens/injection/) สามารถหาซื้อได้ง่ายกว่าในเกือบทุกภูมิภาค
+</WarningBox>
+
+## ยี่ห้อและการหาซื้อได้
+
+| ยี่ห้อ | สูตรตำรับ | ภูมิภาค |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (ยาคุมกำเนิดชนิดผสม) | ลาตินอเมริกา |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | บางประเทศ |
+| สูตรตัวยาเดี่ยว | ความเข้มข้นหลากหลาย | ร้านยาที่ปรุงยาเอง (compounding pharmacy) |
+
+## การติดตามผล
+
+- **E2**: ทุก 3 เดือน เจาะที่ระดับต่ำสุด (trough) (ตอนเช้าก่อนฉีด) เป้าหมาย 100-200 pg/mL
+- **T**: ทุก 3 เดือน เป้าหมาย &lt;50 ng/dL
+- **การทำงานของตับ (ALT/AST)**: ตรวจค่าพื้นฐาน + ทุก 6 เดือน
+
+## เทคนิคการฉีด
+
+ขั้นตอนการฉีดเหมือนกับ[การฉีดเอสตราไดออล วาเลอเรต](/th/medications/estrogens/injection/#injection-technique) ทุกประการ
+
+<DangerBox title="ขีดจำกัดด้านความปลอดภัย">
+- ใช้ขีดจำกัดด้านความปลอดภัยเดียวกันกับเอสเทอร์เอสตราไดออลชนิดฉีดอื่น ๆ
+- ขนาดยาต่อการฉีดครั้งเดียวต้องไม่เกิน 10 mg
+- ค่า E2 >200 pg/mL ไม่ได้เพิ่มผลในการสร้างความเป็นหญิง มีแต่จะเพิ่มความเสี่ยง<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- หากใช้สูตรตำรับแบบผสม (เช่น Perlutal) ส่วนประกอบที่เป็นโปรเจสโตเจนอาจก่อให้เกิดความเสี่ยงเพิ่มเติม ควรปรึกษาแพทย์
+</DangerBox>

@@ -1,0 +1,34 @@
+---
+title: "Evaluador de riesgo"
+description: "Responde preguntas breves para conocer tu perfil de riesgo personal de la THS. Herramienta puramente de frontend: no se transmite ningún dato."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+noindex: true
+---
+
+import RiskScreener from '../../../../components/interactive/RiskScreener.tsx';
+
+## Autoevaluación de factores de riesgo de la THS
+
+Responde 7 preguntas breves para conocer rápidamente tus factores de riesgo personales.
+
+**Esta herramienta te ayuda a identificar:**
+
+- Tu nivel de riesgo personal de VTE (trombosis venosa profunda / embolia pulmonar)
+- Riesgos de seguridad de los medicamentos relacionados con el hígado
+- Riesgo de meningioma (relacionado con la dosis de CPA)
+- Una evaluación integral del riesgo cardiovascular
+
+<RiskScreener client:visible />
+
+## Notas importantes
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ No es un diagnóstico médico</div>
+
+Esta herramienta **no puede sustituir** una evaluación médica profesional. Las puntuaciones de riesgo se basan en estadísticas poblacionales conocidas y no pueden reflejar tu estado de salud personal completo. Comparte los resultados de tu evaluación con tu profesional de salud como punto de partida para la conversación.
+
+**Tener un riesgo alto no significa que no puedas usar la THS**: significa que quizá necesites un seguimiento más frecuente, vías de administración distintas o medidas preventivas específicas.
+</div>

@@ -1,0 +1,94 @@
+---
+title: "Estradiol Enantat (EEn)"
+description: "Estradiol enantata kapsamlı rehber — farmakokinetik, diğer esterlerle karşılaştırma, dozlama ve güvenlik sınırları."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enantat (EEn)"
+  nameCN="Estradiol Enantat Enjeksiyonu"
+  category="estrogen"
+  route="Kas içi (IM) / Cilt altı (SC)"
+  evidenceLevel="B"
+>
+Estradiol enantat (EEn), yarılanma ömrü estradiol valerat (EV) ile estradiol sipionat (EC) arasında, yaklaşık 5-7 gün olan orta-uzun etkili enjektabl bir estradiol esteridir<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Yaygın olarak kombine enjektabl doğum kontrol ürünlerinin (örn. Perlutal) bir bileşeni olarak bulunur ve tek başına bir HRT ilacı olarak da kullanılabilir.
+</DrugInfoBox>
+
+## Farmakokinetik
+
+Estradiol enantatın farmakokinetik profili<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Yarılanma ömrü**: ~5-7 gün
+- **Zirve zamanı**: Enjeksiyondan 3-5 gün sonra
+- **Dip zamanı**: Enjeksiyondan 7-10 gün sonra
+- **Kararlı durum**: Yaklaşık 3-4 düzenli döngüden sonra ulaşılır
+
+### Enjektabl Estradiol Esterlerinin Farmakokinetik Karşılaştırması
+
+<DoseTable
+  headers={['Parametre', 'EV (Valerat)', 'EEn (Enantat)', 'EC (Sipionat)']}
+  rows={[
+    ['Yarılanma ömrü', '~4-5 gün', '~5-7 gün', '~8-10 gün'],
+    ['Zirve zamanı', '2-3 gün', '3-5 gün', '2-4 gün'],
+    ['Önerilen aralık', '5-7 gün', '7-10 gün', '7-14 gün'],
+    ['Serum düzeyi dalgalanması', 'Daha büyük', 'Orta', 'Daha küçük'],
+    ['Bulunabilirlik', 'Küresel', 'Sınırlı bölgeler', 'Amerika kıtası'],
+  ]}
+/>
+
+EEn'in farmakokinetik profili EV ile EC arasında yer alır; daha yumuşak bir eğriyle haftalık enjeksiyon yapmak isteyen kullanıcılar için bir seçenek sunar<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dozlama
+
+### Yetişkin Dozu
+
+<DoseTable
+  headers={['Aşama', 'Doz', 'Notlar']}
+  rows={[
+    ['Başlangıç dozu', '2-4 mg/hafta', 'Meme gelişimini korumak için düşük dozla başlama'],
+    ['İdame dozu', '4-6 mg/hafta', 'Dip E2 düzeyine göre ayarlayın; hedef 100-200 pg/mL'],
+    ['Maksimum doz', '10 mg/10 gün', 'Aşmayın'],
+  ]}
+/>
+
+Dozlama kaynakları: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> ve WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Bulunabilirlik Notu">
+Estradiol enantat birçok bölgede yaygın olarak bulunmaz. Esas olarak Latin Amerika'da (Perlutal'in bir bileşeni olarak) ve bazı Avrupa ülkelerinde bulunur. Enjektabl estradiola ihtiyacınız varsa, [estradiol valerat](/tr/medications/estrogens/injection/) çoğu bölgede daha kolay erişilebilirdir.
+</WarningBox>
+
+## Markalar ve Bulunabilirlik
+
+| Marka | Formülasyon | Bölge |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (kombine doğum kontrol ürünü) | Latin Amerika |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Bazı ülkeler |
+| Tek etken maddeli formülasyonlar | Çeşitli konsantrasyonlar | Magistral eczaneler |
+
+## İzlem
+
+- **E2**: Her 3 ayda bir, dip düzeyi ölçümü (enjeksiyondan önce sabah). Hedef 100-200 pg/mL
+- **T**: Her 3 ayda bir. Hedef &lt;50 ng/dL
+- **Karaciğer fonksiyonu (ALT/AST)**: Başlangıçta + her 6 ayda bir
+
+## Enjeksiyon Tekniği
+
+Enjeksiyon prosedürü [estradiol valerat enjeksiyonu](/tr/medications/estrogens/injection/#injection-technique) ile aynıdır.
+
+<DangerBox title="Güvenlik Sınırları">
+- Diğer enjektabl estradiol esterleriyle aynı güvenlik sınırları geçerlidir
+- Tek enjeksiyon dozu 10 mg'ı aşmamalıdır
+- E2 >200 pg/mL feminizasyonu artırmaz, yalnızca riski yükseltir<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Kombine bir formülasyon (örn. Perlutal) kullanıyorsanız, progestojen bileşeni ek riskler taşıyabilir; bir hekime danışın
+</DangerBox>

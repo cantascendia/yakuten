@@ -1,0 +1,82 @@
+---
+title: "ก่อนเริ่ม: คุณพร้อมหรือยัง?"
+description: "เช็กลิสต์สำคัญก่อนเริ่ม HRT — การตรวจเลือดพื้นฐาน ข้อห้ามใช้แบบเด็ดขาดและแบบสัมพัทธ์ ข้อกำหนดเรื่องการยินยอมโดยได้รับข้อมูลครบถ้วน และความคาดหวังตามจริงสำหรับเส้นทางการรักษาของคุณ"
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+นี่ไม่ใช่การตั้งด่านกีดกัน — แต่เป็นการตรวจสอบเพื่อความปลอดภัย การเริ่ม HRT โดยไม่มีผลตรวจเลือดพื้นฐานก็เหมือนการขับรถทั้งที่ปิดตา
+
+การตรวจพื้นฐานต่อไปนี้เป็นไปตามคำแนะนำของแนวทางเวชปฏิบัติระดับสากล<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> การตรวจเลือดพื้นฐาน
+
+ควรตรวจรายการต่อไปนี้ให้ครบก่อนเริ่ม HRT รายการส่วนใหญ่สามารถสั่งตรวจได้ผ่านแพทย์ประจำตัวของคุณ คลินิกแบบยินยอมโดยได้รับข้อมูล (informed consent) หรือบริการต่าง ๆ เช่น Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'ฮอร์โมนเพศ', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'การทำงานของตับ', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'การทำงานของไต', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'การตรวจความสมบูรณ์ของเม็ดเลือด', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'การตรวจการแข็งตัวของเลือด', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'การตรวจทางเมแทบอลิก', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'โพรแลกติน', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (แตกต่างกันตามประกันและสถานที่)"
+/>
+
+<WarningBox title="เริ่มไปแล้วโดยยังไม่ได้ตรวจเลือด?">
+หากคุณเริ่ม HRT ไปแล้วโดยยังไม่ได้ตรวจเลือดพื้นฐาน — ยังไม่สายเกินไป รีบไปตรวจให้เร็วที่สุดเท่าที่จะทำได้
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> ข้อห้ามใช้แบบเด็ดขาด
+
+<ContraindicationBox type="absolute" title="ข้อห้ามใช้แบบเด็ดขาด" sectionNum="">
+
+- โรคลิ่มเลือดอุดตันที่กำลังเป็นอยู่ (เช่น ภาวะลิ่มเลือดอุดตันในหลอดเลือดดำส่วนลึก (DVT), ลิ่มเลือดอุดกั้นในปอด (PE))
+- มะเร็งที่ไวต่อฮอร์โมนซึ่งได้รับการยืนยันหรือสงสัยว่าเป็น (เช่น มะเร็งเต้านม, มะเร็งต่อมลูกหมาก)
+- ภาวะตับหรือไตทำงานบกพร่องรุนแรงในระยะเฉียบพลัน
+- เลือดออกทางช่องคลอดโดยไม่ทราบสาเหตุ (สำหรับบุคคลข้ามเพศชาย)
+- ทราบว่าแพ้ส่วนประกอบของยารุนแรง
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> ข้อห้ามใช้แบบสัมพัทธ์
+
+<ContraindicationBox type="relative" title="ข้อห้ามใช้แบบสัมพัทธ์" sectionNum="">
+
+- ความดันโลหิตสูงที่ควบคุมไม่ได้ หรือโรคหลอดเลือดหัวใจ
+- เบาหวานที่ควบคุมได้ไม่ดี
+- การสูบบุหรี่ (โดยเฉพาะอายุ 35 ปีขึ้นไป เพิ่มความเสี่ยงต่อภาวะลิ่มเลือดอุดตันในหลอดเลือดดำ (VTE) อย่างมีนัยสำคัญ)
+- ประวัติโรคถุงน้ำดี
+- ไมเกรนที่มีออรา (ต้องประเมินความเสี่ยงอย่างรอบคอบ)
+- โรคอ้วนรุนแรง (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> การตั้งความคาดหวังตามจริง
+
+<RealityCheck
+  items={[
+    { text: 'HRT ไม่ใช่เวทมนตร์ การเปลี่ยนแปลงเกิดขึ้นในช่วงเวลาหลายเดือนถึงหลายปี — อย่าคาดหวังการเปลี่ยนแปลงเพียงชั่วข้ามคืน' },
+    { text: 'การเปลี่ยนแปลงบางอย่างไม่สามารถย้อนกลับได้ (เช่น การเจริญของเต้านม เสียงทุ้มลง การโตขึ้นของคลิตอริส) ทำความเข้าใจให้ดีว่าคุณกำลังตัดสินใจรับอะไร' },
+    { text: 'HRT อาจลดหรือทำให้สูญเสียภาวะเจริญพันธุ์อย่างถาวร ควรพิจารณาการเก็บรักษาเซลล์สืบพันธุ์ (แช่แข็งไข่/อสุจิ) ก่อนเริ่ม' },
+    { text: 'อารมณ์แปรปรวนเป็นผลข้างเคียงที่พบได้ตามปกติ ควรแน่ใจว่าคุณมีระบบสนับสนุนที่มั่นคงรองรับอยู่' },
+  ]}
+/>
+
+<WarningBox title="อ่านอะไรต่อ">
+- [เส้นทางการรักษา HRT](/th/pathway/) — ลำดับขั้นตอนทั้งหมดตั้งแต่การตรวจพื้นฐานจนถึงการดูแลรักษาในระยะยาว
+- [ยา](/th/medications/estrogens/overview/) — ตัวเลือกของยา การกำหนดขนาดยา และความเสี่ยง
+- [คู่มือ HRT ในจีน](/th/china-reality/) — วิธีหาแพทย์ การได้รับยา และการตรวจเลือด
+- [การตรวจเลือด](/th/blood-tests/) — ตรวจอะไรบ้าง ไปตรวจที่ไหน และอ่านผลอย่างไร
+</WarningBox>

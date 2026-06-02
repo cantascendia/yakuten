@@ -1,0 +1,226 @@
+---
+title: "แนวทางการดูแลทางคลินิกสำหรับ HRT"
+description: "แนวทาง HRT ฉบับสมบูรณ์ตั้งแต่การตรวจเลือดพื้นฐานไปจนถึงระยะคงระดับ ครอบคลุมเป้าหมายของแต่ละระยะ จุดตัดสินใจ และตารางการติดตามผล"
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  แนวทางนี้อ้างอิงจาก WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> และ Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> โดยวางกรอบมาตรฐานสำหรับการเริ่มและคงระดับ HRT (การบำบัดด้วยฮอร์โมน) สำหรับผู้หญิงข้ามเพศ
+</p>
+
+<img src="/images/diagrams/th/pathway-timeline.webp" alt="เส้นเวลาแนวทาง HRT: ค่าพื้นฐาน → ขนาดยาต่ำ (1-6 เดือน) → ปรับขนาดยา (6-12 เดือน) → คงระดับ (12 เดือนขึ้นไป)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">สัปดาห์ที่ 0</div>
+  <PhaseBlock phase={0} title="การประเมินค่าพื้นฐาน" color="green">
+    <p class="phase-block__desc">
+      ก่อนเริ่มใช้ยาใด ๆ ควรตรวจแผงค่าพื้นฐานให้ครบถ้วน เพื่อแยกข้อห้ามใช้ออกไป และเพื่อกำหนดค่าอ้างอิงเฉพาะตัวของคุณเอง
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        ฮอร์โมนเพศ (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        การทำงานของตับและไต และแผงไขมันในเลือด
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        แผงการแข็งตัวของเลือดและ D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        ระดับน้ำตาลในเลือดขณะอดอาหาร + CBC (ความสมบูรณ์ของเม็ดเลือด)
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">ระยะเริ่มต้น · 1-6 เดือน</div>
+  <PhaseBlock phase={1} title="การเริ่มยาด้วยขนาดต่ำ" color="green" week="1-6 เดือน">
+    <DoseTable
+      headers={['วิธีให้ยา', 'ขนาดยาเริ่มต้น', 'แหล่งอ้างอิง']}
+      rows={[
+        ['เอสตราไดออลชนิดรับประทาน', '2.0 mg / day', '[2]'],
+        ['แผ่นแปะผ่านผิวหนัง', '50-100 µg / 24h', '[2]'],
+        ['เจลทาผิว', '1.5 mg / day', '[2]'],
+        ['เอสตราไดออลวาเลอเรต (EV) ฉีดเข้ากล้าม (IM)', '1-2 mg / week', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      ยาต้านแอนโดรเจน (หากจำเป็น): CPA (ไซโปรเตอโรนอะซิเตท) 5-12.5 mg/day หรือสไปโรโนแลกโตน 50-100 mg/day [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">เป้าหมาย E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">แนวโน้มเป้าหมายของ T</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; ลดลง
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        คำเตือนด้านความปลอดภัย: ร่างกายต้องใช้เวลาในการปรับตัวต่อการเปลี่ยนแปลงของตัวรับฮอร์โมน อย่าเพิ่มขนาดยาโดยไม่ตรวจเลือด อย่าเร่งขนาดยาแม้จะรู้สึกว่า "ไม่มีอะไรเกิดขึ้นเลย" สัญญาณตุ่มเต้านมมักปรากฏในช่วง 3-6 เดือน
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="จุดตัดสินใจ" timepoint="3 เดือน">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL และ T มีแนวโน้มลดลง → ใช้สูตรยาเดิมต่อไปจนครบ 6 เดือน"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → พิจารณาเพิ่มขนาดยาเข้าสู่ระยะที่ 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="ค่าการทำงานของตับ (LFTs) ผิดปกติ / PRL >30 / อารมณ์แย่ลงอย่างรุนแรง → หยุดยาและรีบพบแพทย์"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">การปรับขนาดยา · 6-12 เดือน</div>
+  <PhaseBlock phase={2} title="การปรับขนาดยา" color="yellow" week="6-12 เดือน">
+    <p class="phase-block__desc">
+      ปรับตามผลตรวจเลือดที่ 3 เดือน เป้าหมายคือให้ระดับฮอร์โมนเข้าสู่ช่วงสรีรวิทยามาตรฐานสำหรับผู้หญิงข้ามเพศ
+    </p>
+    <DoseTable
+      headers={['วิธีให้ยา', 'ขนาดยาที่ปรับแล้ว']}
+      rows={[
+        ['แผ่นแปะผ่านผิวหนัง', '100-200 µg / day'],
+        ['เอสตราไดออลชนิดรับประทาน', '4 mg / day'],
+        ['เจลทาผิว', '3 mg / day'],
+        ['เอสตราไดออลวาเลอเรต (EV) ฉีดเข้ากล้าม (IM)', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">เป้าหมาย E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">เป้าหมาย T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">โปรเจสเตอโรน (ทางเลือก)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          พิจารณาตามพัฒนาการของเต้านม (Tanner 3 ขึ้นไป)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">เจลทาผิว 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="ความคงตัว" timepoint="6 เดือน">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL และ T <50 ng/dL → เข้าสู่ระยะคงระดับ"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 แต่ E2 อยู่ในเป้าหมาย → ปรับยาต้านแอนโดรเจน (อย่าเพิ่ม E2 เพื่อกด T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → เพิ่มขนาดยาต่อไปภายในขีดจำกัดที่ปลอดภัย"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">ระยะคงตัว · 12 เดือนขึ้นไป</div>
+  <PhaseBlock phase={3} title="การคงระดับระยะยาว" color="pink" week="12 เดือนขึ้นไป">
+    <p class="phase-block__desc">
+      เมื่อระดับฮอร์โมนและการเปลี่ยนแปลงทางร่างกายคงตัวแล้ว ให้เปลี่ยนมาติดตามผลแบบความถี่ต่ำ คงขนาดยาที่ได้ผลต่ำสุดเพื่อรักษาระดับ E2 100-200 pg/mL และ T &lt;50 ng/dL
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">ความถี่ในการติดตามผล</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">เดือน</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          ตรวจแผงฮอร์โมนเต็มรูปแบบและปัจจัยเสี่ยงต่อ VTE (ภาวะลิ่มเลือดอุดตันในหลอดเลือดดำ) ทุก 6 เดือน ตรวจไขมันในเลือดและน้ำตาลขณะอดอาหารปีละครั้ง พิจารณาตรวจคัดกรองความหนาแน่นของกระดูก
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        ระดับ E2 &gt;200 pg/mL ไม่ได้ทำให้ความเป็นหญิงเพิ่มขึ้น — มีแต่จะเพิ่มความเสี่ยงเท่านั้น (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">สิ้นสุดระยะเริ่มต้น</p>
+    <p class="pathway-end-sub">การติดตามผลอย่างต่อเนื่อง</p>
+  </div>
+</div>
+
+</div>
+</div>

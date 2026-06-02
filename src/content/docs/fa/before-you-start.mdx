@@ -1,0 +1,82 @@
+---
+title: "پیش از شروع: آیا آماده‌اید؟"
+description: "چک‌لیست ضروری پیش از HRT — آزمایش‌های خونی پایه، موارد منع مطلق و نسبی مصرف، الزامات رضایت آگاهانه، و انتظارات واقع‌بینانه از مسیر درمانی شما."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+این کار سختگیری نیست — یک بررسی ایمنی است. شروع HRT بدون آزمایش‌های پایه مثل رانندگی با چشم‌بسته است.
+
+آزمایش‌های پایهٔ زیر را راهنماهای بالینی بین‌المللی توصیه می‌کنند<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> آزمایش‌های خونی پایه
+
+آزمایش‌های زیر باید پیش از شروع HRT انجام شوند. بیشتر آن‌ها را می‌توانید از طریق پزشک مراقبت‌های اولیه، یک کلینیک رضایت آگاهانه، یا خدماتی مانند Planned Parenthood درخواست کنید:
+
+<BaselineChecklist
+  items={[
+    { name: 'هورمون‌های جنسی', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'عملکرد کبد', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'عملکرد کلیه', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'شمارش کامل خون', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'پانل انعقادی', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'پانل متابولیک', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'پرولاکتین', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (بسته به بیمه و محل سکونت متفاوت است)"
+/>
+
+<WarningBox title="پیش از انجام آزمایش‌ها شروع کرده‌اید؟">
+اگر HRT را بدون انجام آزمایش‌های پایه آغاز کرده‌اید — هنوز دیر نشده است. در اولین فرصت ممکن آن‌ها را انجام دهید.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> موارد منع مطلق مصرف
+
+<ContraindicationBox type="absolute" title="موارد منع مطلق مصرف" sectionNum="">
+
+- بیماری ترومبوآمبولیک فعال (مثلاً ترومبوز ورید عمقی، آمبولی ریه)
+- بدخیمی تأییدشده یا مشکوک حساس به هورمون (مثلاً سرطان پستان، سرطان پروستات)
+- نارسایی شدید کبدی یا کلیوی در فاز حاد
+- خونریزی واژینال با علت نامشخص (برای افراد ترنس‌مردانه)
+- آلرژی شدید شناخته‌شده به اجزای دارو
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> موارد منع نسبی مصرف
+
+<ContraindicationBox type="relative" title="موارد منع نسبی مصرف" sectionNum="">
+
+- فشار خون بالای کنترل‌نشده یا بیماری قلبی‌عروقی
+- دیابت شیرین با کنترل ضعیف
+- مصرف دخانیات (به‌ویژه در سن ۳۵ سال به بالا، خطر VTE را به‌طور چشمگیری افزایش می‌دهد)
+- سابقهٔ بیماری کیسهٔ صفرا
+- میگرن همراه با اورا (نیازمند ارزیابی دقیق خطر است)
+- چاقی شدید (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> تنظیم انتظارات واقع‌بینانه
+
+<RealityCheck
+  items={[
+    { text: 'HRT معجزه نیست. تغییرات در طول ماه‌ها و سال‌ها رخ می‌دهند — انتظار دگرگونی یک‌شبه نداشته باشید.' },
+    { text: 'برخی تغییرات برگشت‌ناپذیرند (مثلاً رشد پستان، بم شدن صدا، رشد کلیتوریس). بدانید که برای چه چیزی ثبت‌نام می‌کنید.' },
+    { text: 'HRT ممکن است باروری را کاهش دهد یا برای همیشه از بین ببرد. پیش از شروع، حفظ گامت (انجماد تخمک/اسپرم) را در نظر بگیرید.' },
+    { text: 'نوسانات خلقی یک عارضهٔ جانبی طبیعی هستند. مطمئن شوید که یک سامانهٔ حمایتی پایدار در دسترس دارید.' },
+  ]}
+/>
+
+<WarningBox title="در ادامه چه بخوانید">
+- [مسیر HRT](/fa/pathway/) — جریان کامل از وضعیت پایه تا نگهداری بلندمدت
+- [داروها](/fa/medications/estrogens/overview/) — گزینه‌های دارویی، دوزبندی و خطرات
+- [راهنمای HRT در چین](/fa/china-reality/) — چگونه پزشک پیدا کنید، دارو تهیه کنید و آزمایش خون بدهید
+- [آزمایش‌های خون](/fa/blood-tests/) — چه چیزی را آزمایش کنید، کجا بروید، نتایج را چگونه بخوانید
+</WarningBox>

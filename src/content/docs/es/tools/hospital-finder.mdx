@@ -1,0 +1,58 @@
+---
+title: "Directorio médico"
+description: "Un directorio estructurado de recursos de acceso a atención reportados por la comunidad. Verifica directamente antes de ir."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+noindex: true
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Verifica antes de ir">
+Estos listados son notas de acceso mantenidas por la comunidad, no garantías institucionales oficiales. Las políticas, los departamentos y la disponibilidad de médicos pueden cambiar con rapidez, por lo que confirmar directamente siempre es necesario.
+</WarningBox>
+
+Este directorio incluye actualmente {hospitals.length} entradas reportadas por la comunidad en {cityCount} ciudades. Los datos de origen siguen estando principalmente en chino en esta etapa, por lo que los nombres de los hospitales y las notas locales pueden aparecer aún en chino.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**Cómo usar esta página**
+
+1. Úsala como punto de partida para tu propia verificación.
+2. Confirma directamente con la institución el departamento, la disponibilidad de médicos y las reglas de registro.
+3. Combina el acceso a un proveedor con la planificación de análisis de base y la conciencia ante emergencias.
+
+</GlassCard>
+
+<DangerBox title="Nota sobre emergencias">
+Este directorio no es un servicio de derivación de urgencias. Si presentas síntomas urgentes, acude primero a atención de emergencia en lugar de depender de la consulta del directorio.
+</DangerBox>

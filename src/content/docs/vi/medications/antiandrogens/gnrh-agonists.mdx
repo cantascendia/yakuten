@@ -1,0 +1,292 @@
+---
+title: "Chất chủ vận GnRH"
+description: "Hướng dẫn đầy đủ về chất chủ vận GnRH (Leuprorelin, Goserelin, Triptorelin) trong HRT chuyển giới — cơ chế tác dụng, so sánh 6 loại thuốc, kỹ thuật tiêm, xử trí hiện tượng bùng phát (flare), theo dõi mật độ xương, cách xử lý khi quên liều và các lựa chọn thay thế bằng chất đối kháng GnRH."
+evidenceLevel: A
+lastReviewed: 2026-04-12
+references: [coleman-2022, hembree-2017]
+noindex: true
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="GnRH Agonists (Leuprorelin, Goserelin, Triptorelin, etc.)"
+  nameCN="GnRH Agonists (GnRH 激动剂)"
+  category="antiandrogen"
+  route="Tiêm dưới da / tiêm bắp · Xịt mũi · Que cấy"
+  evidenceLevel="A"
+>
+Chất chủ vận GnRH (GnRH agonists) là thuốc kháng androgen hiệu quả nhất hiện có, ức chế testosterone xuống mức tương đương sau cắt tuyến sinh dục (< 50 ng/dL) bằng cách làm tê liệt trục hạ đồi – tuyến yên – tuyến sinh dục. Cả Endocrine Society 2017 và WPATH SOC 8 đều khuyến nghị sử dụng. Khi có điều kiện tiếp cận, chất chủ vận GnRH là lựa chọn kháng androgen lý tưởng.
+</DrugInfoBox>
+
+## Dược lý
+
+### Cách thức hoạt động
+
+Chất chủ vận GnRH tác động ở một tầng hoàn toàn khác so với các thuốc kháng androgen khác — chúng nhắm vào trung tâm điều khiển thượng nguồn của quá trình sản xuất hormone<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Giai đoạn bùng phát (flare):** Trong 1-2 tuần đầu, thuốc kích thích quá mức các thụ thể GnRH ở tuyến yên, gây tăng vọt thoáng qua LH/FSH và testosterone.
+2. **Giải mẫn cảm thụ thể:** Kích thích liên tục khiến các thụ thể GnRH ở tuyến yên giảm điều hòa (downregulate) và trở nên không đáp ứng.
+3. **Ức chế hoàn toàn:** Trong vòng 2-4 tuần, tuyến yên ngừng tiết LH/FSH, đưa T xuống mức tương đương sau cắt tuyến sinh dục (< 50 ng/dL).
+
+Cơ chế này ức chế T một cách trực tiếp và đáng tin cậy — mà không kèm nguy cơ độc gan như CPA hay nguy cơ tăng kali máu như spironolactone<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+### So sánh khả năng ức chế T với các thuốc kháng androgen khác
+
+<DoseTable
+  headers={['Thuốc kháng androgen', 'Cơ chế', 'Mức ức chế T', 'Hạn chế chính']}
+  rows={[
+    ['Chất chủ vận GnRH', 'Làm tê liệt trục HPG', '~95% (< 50 ng/dL)', 'Cực kỳ đắt; bắt buộc phải tiêm'],
+    ['CPA 5-12.5mg', 'Đối kháng thụ thể androgen + phản hồi kiểu progestogen', '~90% (mức nữ)', 'Nguy cơ u màng não (≥25mg)'],
+    ['Spironolactone 100-200mg', 'Đối kháng yếu thụ thể androgen', '~30-50% (thường không đủ)', 'Tăng kali máu; ức chế T không ổn định'],
+    ['Bicalutamide 50mg', 'Đối kháng thuần túy thụ thể androgen', 'T có thể tăng', 'Độc gan; cần theo dõi'],
+  ]}
+/>
+
+## Các dạng bào chế hiện có
+
+### Dạng tiêm
+
+<DoseTable
+  headers={['Thuốc', 'Tên thương mại', 'Liều', 'Khoảng cách', 'Đường dùng', 'Tự tiêm']}
+  rows={[
+    ['Leuprorelin', 'Lupron / Eligard / Prostap', '3.75mg / 11.25mg / 22.5mg / 45mg', 'Hàng tháng / 3 tháng / 6 tháng', 'Dưới da (SubQ) hoặc tiêm bắp (IM)', 'Một số dạng dưới da có thể tự tiêm'],
+    ['Goserelin', 'Zoladex', '3.6mg / 10.8mg', 'Hàng tháng / 3 tháng', 'Que cấy dưới da (bụng)', 'Cần được nhân viên y tế thực hiện (kim 16G)'],
+    ['Triptorelin', 'Decapeptyl / Trelstar', '3.75mg / 11.25mg / 22.5mg', 'Hàng tháng / 3 tháng / 6 tháng', 'Tiêm bắp (IM)', 'Cần được nhân viên y tế thực hiện'],
+  ]}
+/>
+
+### Dạng không tiêm
+
+<DoseTable
+  headers={['Thuốc', 'Tên thương mại', 'Dạng', 'Cách dùng', 'Ưu điểm', 'Hạn chế']}
+  rows={[
+    ['Buserelin', 'Suprefact', 'Xịt mũi', 'Xịt 2-3 lần mỗi ngày', 'Không cần tiêm', 'Gánh nặng tuân thủ (nhiều liều trong ngày)'],
+    ['Nafarelin', 'Synarel', 'Xịt mũi', 'Xịt 2-3 lần mỗi ngày', 'Không xâm lấn; giảm T ~95%', 'Nguồn cung toàn cầu hạn chế'],
+    ['Histrelin', 'Supprelin LA', 'Que cấy dưới da', 'Đưa vào bằng tiểu phẫu ở cánh tay trên; duy trì 12 tháng', 'Mỗi năm một lần; tuân thủ tốt nhất', 'Rất đắt; cần tiểu phẫu để cấy/tháo'],
+  ]}
+/>
+
+## Hướng dẫn sử dụng
+
+### Tiêm dưới da (Leuprorelin, v.v.)
+
+Hầu hết các chất chủ vận GnRH được dùng qua đường tiêm dưới da hoặc tiêm bắp. Một số dạng bào chế (ví dụ leuprorelin tiêm dưới da) có thể tự tiêm sau khi được điều dưỡng hướng dẫn<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Chọn vị trí tiêm:**
+- **Ưu tiên:** Vùng bụng, cách rốn khoảng 5cm về phía bên (tránh vùng 2cm quanh rốn)
+- **Thay thế:** Mặt trước ngoài đùi, phần giữa
+- **Luân phiên:** Đổi vị trí mỗi lần tiêm; giữ khoảng cách ít nhất 3cm giữa các điểm tiêm; tránh vùng có cục cứng hoặc bầm tím
+
+**Các bước tiêm dưới da:**
+
+1. **Chuẩn bị:** Rửa tay. Để thuốc đã bảo quản lạnh trở về nhiệt độ phòng (15-30 phút). Kiểm tra hạn dùng và hình thức dung dịch.
+2. **Sát khuẩn:** Lau vị trí tiêm bằng gạc tẩm cồn. Để khô hoàn toàn ngoài không khí.
+3. **Véo da:** Dùng tay không thuận véo một nếp da khoảng 2cm.
+4. **Đâm kim:** Đâm kim nhanh và dứt khoát ở góc 45-90°, đưa kim ngập hoàn toàn (sâu 1-2cm).
+5. **Bơm thuốc:** Đẩy pít-tông từ từ trong khoảng ~30 giây. Không vội vàng.
+6. **Rút kim:** Buông nếp da, sau đó rút kim thật nhanh. Ấn bông gòn khô lên vị trí tiêm trong 15 giây (không chà xát).
+7. **Vứt bỏ:** Bỏ kim vào hộp đựng vật sắc nhọn. Ghi lại ngày và vị trí tiêm.
+
+<InjectionSiteSVG />
+
+<WarningBox title="Lưu ý về Goserelin (Zoladex)">
+Zoladex dùng một ống tiêm nạp sẵn cỡ to (khoảng 16G), cấy một viên depot rắn vào dưới lớp mỡ bụng. Việc này luôn phải do nhân viên y tế thực hiện.
+</WarningBox>
+
+### Pha hoàn nguyên bột đông khô GnRH của Ấn Độ (Lupride Depot, v.v.)
+
+Lupride Depot (leuprorelin) từ Ấn Độ thường được cộng đồng chuyển giới tìm mua vì giá rẻ hơn đáng kể so với các sản phẩm tương đương trong nước. Lupride Depot được cung cấp dưới dạng bộ kit hai lọ gồm **bột đông khô + dung môi pha loãng**, cần được pha hoàn nguyên trước khi tiêm.
+
+<img src="/images/drugs/lupride-depot-studio.webp" alt="Ảnh sản phẩm thuốc tiêm bột đông khô leuprorelin Lupride Depot 3.75mg" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+**Thành phần bộ kit**:
+- 1 lọ bột đông khô (bột trắng chứa leuprorelin 3.75 mg)
+- 1 lọ dung môi pha loãng (nước cất pha tiêm vô khuẩn)
+- Ống tiêm và kim (kèm theo trong một số bộ)
+
+<img src="/images/diagrams/vi/gnrh-reconstitution.webp" alt="Các bước pha hoàn nguyên GnRH: rút dung môi, bơm vào lọ bột, xoay lắc cho tan, rút dung dịch, sẵn sàng tiêm" width="900" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+**Các bước pha hoàn nguyên**:
+
+1. **Kiểm tra**: Xác nhận cả hai lọ còn trong hạn dùng; bột phải có màu trắng đến trắng ngà (không đổi màu)
+2. **Rửa tay**: Rửa tay thật kỹ bằng xà phòng và nước
+3. **Sát khuẩn**: Lau nút cao su của cả hai lọ bằng gạc cồn, để khô ngoài không khí
+4. **Rút dung môi**: Dùng ống tiêm có kim rút (18-20G), rút toàn bộ dung môi từ lọ dung môi
+5. **Bơm vào lọ bột**: Bơm dung môi từ từ dọc theo thành lọ bột — **không xịt thẳng vào bột**
+6. **Hòa tan**: Xoay nhẹ lọ (**không lắc mạnh**) cho đến khi bột tan hoàn toàn. Dung dịch phải trong hoặc hơi đục óng ánh
+7. **Rút dung dịch**: Lật ngược lọ và rút toàn bộ dung dịch đã pha, đẩy hết bọt khí
+8. **Đổi kim**: Chuyển sang kim tiêm (dưới da: 25-27G; tiêm bắp: 21-23G)
+9. **Tiêm**: Làm theo các bước tiêm dưới da đã mô tả ở trên
+
+<DangerBox title="Lưu ý khi pha hoàn nguyên">
+
+- **Dung dịch đã pha phải được tiêm ngay** — không được lưu trữ. Sản phẩm sau pha không chứa chất bảo quản; để chậm có nguy cơ nhiễm khuẩn và giảm hiệu lực
+- **Không lắc mạnh**: Việc này tạo bọt và có thể làm hỏng hoạt tính của thuốc
+- Nếu dung dịch **đục rõ, có hạt lơ lửng hoặc đổi màu**, hãy bỏ đi
+- Nếu lọ dung môi bị hỏng hoặc niêm phong không còn nguyên vẹn, **bỏ toàn bộ bộ kit**
+- Người dùng lần đầu nên nhờ người có kinh nghiệm hướng dẫn
+</DangerBox>
+
+### Xịt mũi (Buserelin / Nafarelin)
+
+1. Xì mũi nhẹ để thông đường mũi.
+2. Lắc lọ và tháo nắp.
+3. Hơi cúi đầu về phía trước; đưa đầu xịt vào một bên mũi.
+4. Nhấn đầu xịt trong khi hít vào nhẹ nhàng.
+5. Luân phiên hai bên mũi mỗi lần dùng.
+6. Tránh xì mũi trong vòng 30 phút sau khi xịt.
+
+### Que cấy (Histrelin)
+
+Que cấy Supprelin LA được nhân viên y tế đặt dưới da mặt trong cánh tay trên bằng tiểu phẫu. Que liên tục giải phóng thuốc trong 12 tháng, sau đó phải được tiểu phẫu để tháo ra và thay mới.
+
+### Yêu cầu bảo quản
+
+<DoseTable
+  headers={['Thuốc', 'Bảo quản', 'Ghi chú']}
+  rows={[
+    ['Leuprorelin (depot)', 'Nhiệt độ phòng (dưới 25°C)', 'Tránh ánh sáng và nhiệt'],
+    ['Goserelin (Zoladex)', 'Nhiệt độ phòng (dưới 25°C)', 'Ống tiêm nạp sẵn; không để đông đá'],
+    ['Triptorelin (Decapeptyl)', 'Bảo quản lạnh (2-8°C)', 'Bột đông khô; pha hoàn nguyên trước khi dùng'],
+    ['Buserelin xịt mũi', 'Nhiệt độ phòng', 'Dùng trong vòng 28 ngày sau khi mở'],
+  ]}
+/>
+
+## Xử trí hiện tượng bùng phát (flare)
+
+Đợt tăng vọt testosterone ban đầu ("bùng phát") sau mũi tiêm chất chủ vận GnRH đầu tiên là một đáp ứng dược lý bình thường<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+### Diễn tiến của hiện tượng bùng phát
+
+<DoseTable
+  headers={['Thời điểm', 'Diễn biến', 'Triệu chứng']}
+  rows={[
+    ['Ngày 0', 'Tiêm chất chủ vận GnRH', '—'],
+    ['Ngày 2-4', 'T tăng vọt lên ~2× mức nền', 'Có thể nổi mụn, dao động cảm xúc, thay đổi ham muốn tình dục'],
+    ['Ngày 7-8', 'T trở về mức nền', 'Triệu chứng bắt đầu thuyên giảm'],
+    ['Ngày 14-28', 'T giảm xuống mức tương đương sau cắt tuyến sinh dục (< 50 ng/dL)', 'Tác dụng kháng androgen được thiết lập đầy đủ'],
+  ]}
+/>
+
+### Cách xử trí hiện tượng bùng phát
+
+<WarningBox title="Cân nhắc dùng thuốc kháng androgen che chắn trong đợt bùng phát">
+Để giảm nhẹ triệu chứng bùng phát trong mũi tiêm đầu tiên, bạn có thể bắt đầu một đợt ngắn thuốc kháng androgen đồng thời hoặc trước đó 1 tuần<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+- **CPA 12.5mg/ngày** trong 2-4 tuần, sau đó ngưng khi đợt bùng phát đã hết
+- **Spironolactone 100mg/ngày** trong 2-4 tuần (nếu CPA không phù hợp)
+- Nếu bạn đã đang dùng estradiol, tác động lâm sàng của đợt bùng phát thường nhẹ
+- Các mũi tiêm sau không gây ra đợt bùng phát nữa (chỉ mũi đầu tiên)
+</WarningBox>
+
+<DangerBox title="Tuyệt đối không dùng chất chủ vận GnRH khi không có estradiol">
+Chất chủ vận GnRH ức chế cả testosterone LẪN estradiol nội sinh xuống gần như bằng không. Bạn BẮT BUỘC phải dùng kèm estradiol để phòng ngừa mất xương nặng, bốc hỏa và rối loạn khí sắc<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+</DangerBox>
+
+## Quên liều
+
+- **Quên một mũi tiêm:** Tiêm càng sớm càng tốt (đừng chờ đến ngày tiêm theo lịch tiếp theo).
+- **Điều chỉnh lịch:** Tính liều tiếp theo dựa trên ngày tiêm thực tế (hàng tháng: +28 ngày; mỗi quý: +84 ngày).
+- **Trễ hơn 1 tuần:** T có thể hồi phục một phần. Kiểm tra nồng độ T sau mũi tiêm bị trễ 4 tuần.
+- **Quên xịt mũi:** Dùng ngay khi nhớ ra. Không tăng gấp đôi liều.
+
+## Tác dụng phụ
+
+### Mất mật độ xương
+
+Sử dụng lâu dài mà không có đủ estradiol có thể gây suy giảm mật độ xương<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Cả T và E2 đều thiết yếu cho việc duy trì xương
+- **Mấu chốt:** Duy trì E2 ở mức 100-200 pg/mL làm giảm đáng kể nguy cơ này
+- Khuyến nghị chụp DEXA cho người dùng chất chủ vận GnRH trên 2 năm
+
+### Phản ứng tại vị trí tiêm
+
+- Đau, đỏ và chai cứng tại vị trí tiêm (thường gặp)
+- Kim 16G của Goserelin gây khó chịu rõ rệt hơn
+- Luân phiên vị trí tiêm để giảm thiểu phản ứng
+
+### Bốc hỏa
+
+- Do sự ức chế nhanh hormone sinh dục<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+- Liều estradiol đầy đủ làm giảm đáng kể tình trạng này
+- Thường thuyên giảm khi nồng độ E2 ổn định
+
+### Thay đổi khí sắc
+
+- Một số người dùng trải qua dao động khí sắc, đặc biệt trong giai đoạn đầu điều trị
+- Thường nhẹ hơn so với tác động lên khí sắc của CPA
+- Cải thiện khi nồng độ hormone ổn định
+
+## Theo dõi
+
+<DoseTable
+  headers={['Xét nghiệm', 'Tần suất', 'Mục tiêu / Ngưỡng cảnh báo', 'Hành động']}
+  rows={[
+    ['Testosterone (T)', '4 tuần sau tiêm + mỗi 3-6 tháng', 'T < 50 ng/dL', 'Nếu cao: đánh giá lại khoảng cách tiêm/mức độ tuân thủ'],
+    ['Estradiol (E2)', 'Xét nghiệm cùng với T', '100-200 pg/mL', 'Bảo đảm đủ E2 để bảo vệ xương'],
+    ['Mật độ xương (DEXA)', 'Ban đầu + mỗi 1-2 năm sau khi dùng trên 2 năm', 'T-score > -1.0', 'T-score < -2.5: loãng xương — cần can thiệp'],
+    ['LH/FSH', 'Tùy chọn, trong 3 tháng đầu', 'LH < 1, FSH < 4.3', 'Xác nhận tuyến yên đã bị ức chế'],
+  ]}
+/>
+
+**Thời điểm lấy máu:** Các dạng depot chủ vận GnRH duy trì nồng độ thuốc tương đối ổn định. Có thể lấy máu vào bất kỳ thời điểm nào so với mũi tiêm — không cần khung thời gian cụ thể.
+
+## Chất đối kháng GnRH: Lựa chọn thay thế đang nổi lên
+
+Ngoài chất **chủ vận** GnRH, còn có chất **đối kháng** GnRH — những thuốc chặn trực tiếp thụ thể GnRH **mà không gây đợt bùng phát ban đầu**.
+
+<DoseTable
+  headers={['Thuốc', 'Tên thương mại', 'Cơ chế', 'Thời gian đạt mức cắt tuyến sinh dục', 'Ưu điểm', 'Hạn chế']}
+  rows={[
+    ['Degarelix', 'Firmagon', 'Chặn trực tiếp thụ thể GnRH', '3-7 ngày', 'Không bùng phát; khởi phát nhanh hơn', 'Tiêm dưới da hàng tháng; phản ứng tại vị trí tiêm rõ rệt'],
+    ['Relugolix', 'Orgovyx', 'Chất đối kháng GnRH đường uống', '~2 tuần', 'Dùng đường uống; không bùng phát', 'Uống hàng ngày; rất đắt; bằng chứng ở người chuyển giới còn hạn chế'],
+  ]}
+/>
+
+<WarningBox title="Bằng chứng ở người chuyển giới còn hạn chế">
+Chất đối kháng GnRH chủ yếu được phê duyệt cho ung thư tuyến tiền liệt. Bằng chứng cho việc dùng trong HRT chuyển giới còn hạn chế và chúng chưa được WPATH SOC 8 hay Endocrine Society 2017 chính thức khuyến nghị. Chỉ dùng dưới sự giám sát của bác sĩ có kinh nghiệm.
+</WarningBox>
+
+## Ưu điểm & Hạn chế
+
+### Ưu điểm
+
+- **Ức chế T mạnh nhất, đáng tin cậy nhất**: Luôn đạt được mức tương đương sau cắt tuyến sinh dục<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+- **Hồ sơ an toàn xuất sắc**: Không độc gan, không tăng kali máu, không nguy cơ u màng não
+- **Tần suất dùng thưa**: Tiêm hàng tháng hoặc hàng quý; tuân thủ rất tốt
+- **Có thể đảo ngược**: Trục HPG hồi phục sau khi ngưng thuốc (vài tuần đến vài tháng); khả năng sinh sản có thể trở lại
+- **Được hướng dẫn khuyến nghị**: Được cả ES 2017 và WPATH SOC 8 ủng hộ<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+
+### Hạn chế
+
+- **Chi phí rất cao**: 1.000-3.000 USD/mũi tiêm tại Mỹ; NHS ở Anh/EU có thể chi trả; Trung Quốc khoảng 1.000-2.000 ¥/tháng
+- **Bắt buộc phải tiêm**: Không dùng được đường uống (dạng xịt mũi có tính sẵn có hạn chế)
+- **Rào cản tiếp cận**: Cần đơn thuốc; thường được kê ngoài chỉ định (off-label) cho phiền muộn giới
+- **Đợt bùng phát ban đầu**: Mũi tiêm đầu tiên gây tăng T tạm thời (có thể kiểm soát bằng thuốc kháng androgen che chắn)
+- **Theo dõi mật độ xương**: Dùng lâu dài cần chụp DEXA; luôn phải dùng kèm estradiol
+
+## Khi nào nên cân nhắc dùng chất chủ vận GnRH
+
+**Được khuyến nghị khi**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Tài chính cho phép sử dụng lâu dài
+- CPA bị chống chỉ định (vấn đề gan, nguy cơ u màng não, tác động khí sắc nghiêm trọng)
+- Không dung nạp được spironolactone (nguy cơ tăng kali máu, suy thận)
+- Mong muốn độ tin cậy ức chế T cao nhất
+- Ức chế dậy thì ở thanh thiếu niên (dưới sự giám sát của chuyên gia)
+
+**Có thể không phù hợp khi**:
+- Chi phí quá tầm với
+- Không thể đến phòng khám định kỳ để tiêm
+- Có loãng xương nặng (cần đánh giá mật độ xương trước)
+
+<DrugBrandGallery drugId="gnrh-agonist" />

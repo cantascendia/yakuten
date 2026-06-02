@@ -1,0 +1,98 @@
+---
+title: "Kebijakan Editorial"
+description: "Prinsip editorial HRT Pharmacopoeia, proses koreksi kesalahan, standar hak cipta dan sitasi, saluran keluhan dan banding, serta pengungkapan konflik kepentingan."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+## Larangan Mutlak
+
+HRT Pharmacopoeia tidak akan pernah memublikasikan hal-hal berikut:
+
+<DangerBox>
+- Saran resep yang dipersonalisasi ("Anda sebaiknya minum X mg")
+- Tautan pembelian obat, agen penjualan, atau kode QR rujukan/komisi
+- Kata-kata yang melemahkan pengenalan kondisi darurat medis (DVT, hepatotoksisitas, meningioma, dll.)
+- Klaim medis tanpa DOI atau sitasi
+- Skrip pelacak pihak ketiga atau penyimpanan data kesehatan pengguna
+- Konfigurasi yang melewati penafian (disclaimer) AI atau peringatan keselamatan
+</DangerBox>
+
+## Bahasa dan Nada
+
+- **Hindari kata mutlak**: lebih baik gunakan "kami menyarankan / umumnya / dalam sebagian besar kasus" daripada "harus / selalu / tidak pernah"
+- **Sapa pembaca secara langsung**: tulis "Anda dapat memilih A atau B" alih-alih "pasien sebaiknya memilih A"
+- **Sampaikan ketidakpastian secara terus terang**: kesimpulan pada tingkat bukti B/C/X harus ditandai dengan "data masih terbatas" atau "opini ahli"
+- **Kurangi stigma**: gunakan bahasa yang afirmatif terhadap komunitas dan hindari istilah yang usang atau terlalu klinis
+
+## Sitasi dan Hak Cipta
+
+- Setiap klaim medis bersumber melalui komponen `CitationRef` (ID dipetakan ke entri di `src/data/references.json`)
+- DOI lebih diutamakan; bila tidak ada DOI, sertakan informasi publikasi jurnal beserta URL yang stabil
+- Gambar dan diagram bersifat orisinal atau bersumber dari karya Creative Commons / domain publik; reproduksi dicantumkan kreditnya
+- Konten orisinal situs ini dirilis di bawah lisensi CC BY-SA 4.0; kode diatur oleh LICENSE pada repositori
+
+## Koreksi Kesalahan
+
+Pembaca dapat mengirimkan laporan melalui [formulir umpan balik](https://wj.qq.com/s2/16576000/5fe5/) atau [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+
+| Jenis | Waktu tanggapan | Penanganan |
+|---|---|---|
+| Kesalahan faktual | Balasan awal dalam 72 jam | **Pemberitahuan ralat (erratum)** di bagian atas halaman + log perubahan |
+| Pergeseran sitasi | 72 jam | Ganti sitasi dan terbitkan log koreksi publik |
+| Informasi usang | 7 hari | Pembaruan bertahap + segarkan `lastReviewed` |
+| Saran berbahaya | Penghapusan darurat dalam 24 jam | Diperbaiki atau dialihkan offline sambil menunggu peninjauan |
+
+Koreksi besar juga disebarkan ke:
+
+- Riwayat versi di `/id/appendix-references/`
+- Pelanggan RSS / Telegram / email
+
+## Keluhan dan Banding
+
+- **Keluhan konten**: [formulir umpan balik](https://wj.qq.com/s2/16576000/5fe5/)
+- **Hukum / hak cipta**: buka GitHub Issue dengan label `legal`, atau hubungi pengelola repositori
+- **Privasi**: situs ini tidak mengumpulkan informasi yang dapat mengidentifikasi pribadi; setiap kebocoran privasi yang dilaporkan ditangani dalam 24 jam
+
+## Pengungkapan Konflik Kepentingan
+
+- **Tanpa sponsor komersial, tanpa iklan obat, tanpa komisi pembelian**
+- Biaya operasional ditanggung oleh kontribusi sukarelawan dan donasi komunitas sumber terbuka (open-source)
+- Editor dan penasihat medis menandatangani pengungkapan konflik kepentingan; topik yang memiliki hubungan peresepan atau komersial secara langsung dikecualikan (recusal)
+- Tidak ada tautan eksternal yang membawa pengenal afiliasi; hanya sumber daya rumah sakit dan saluran bantuan (hotline) yang telah diverifikasi komunitas yang dicantumkan
+
+## Siklus Peninjauan
+
+| Jenis halaman | Interval peninjauan baku |
+|---|---|
+| Pengenalan kondisi darurat, batas merah dosis, peringatan bahaya | **6 bulan** |
+| Monografi dan panduan obat | **12 bulan** |
+| Alat, kebijakan, metodologi | **12 bulan** |
+| Tulisan blog | Diverifikasi sekali, 12 bulan setelah publikasi |
+
+Perubahan besar pada pedoman (peringatan keamanan EMA/FDA, edisi baru WPATH / Endocrine Society) memicu **pembaruan bertahap dalam 48 jam**.
+
+<WarningBox>
+Halaman ini adalah komitmen publik kami terhadap tata kelola editorial yang mandiri. **Jika Anda menemukan kami melanggar klausul mana pun di atas, sampaikanlah secara terbuka** — akuntabilitas itulah satu-satunya cara kami menjaga kepercayaan pembaca.
+</WarningBox>
+
+## Dokumen Terkait
+
+- [Tentang situs ini](/id/about/)
+- [Metodologi](/id/methodology/)
+- [Penasihat Medis](/id/medical-advisors/)

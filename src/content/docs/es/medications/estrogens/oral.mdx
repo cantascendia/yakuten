@@ -1,0 +1,136 @@
+---
+title: "Estradiol oral (comprimidos)"
+description: "Perfil farmacológico completo, recomendaciones de dosificación, datos sobre el riesgo de TEV y advertencias sobre combinaciones peligrosas del estradiol oral."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+noindex: true
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+  El estradiol oral (comprimidos que se tragan) es la presentación de estrógeno más accesible a nivel mundial. Aunque el riesgo de TEV (trombosis) es ligeramente mayor que con la vía transdérmica, sigue siendo una opción muy aceptable y estándar para personas jóvenes sin factores de riesgo previos.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynova-studio.webp" alt="Foto del producto: comprimidos de valerato de estradiol Progynova 2mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Estradiol oral (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+
+## Farmacología
+
+### Metabolismo de primer paso (el hígado)
+
+Cuando el estradiol oral se traga y se absorbe a través del tracto gastrointestinal, debe pasar primero por el hígado antes de llegar a la circulación general. Esto se conoce como "metabolismo de primer paso"<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />:
+
+- La enorme concentración de E2 que llega directamente al hígado estimula la síntesis de factores de coagulación, lo que eleva el riesgo de TEV.
+- También afecta a la SHBG (globulina fijadora de hormonas sexuales) y a los niveles de triglicéridos.
+- Este efecto de primer paso destruye la gran mayoría del fármaco, lo que resulta en una biodisponibilidad oral de apenas 3-5%.
+- Formas como el valerato de estradiol (EV) (Progynova) simplemente se escinden en estradiol puro dentro del hígado.
+
+### Conversiones de dosis
+
+Las distintas presentaciones de comprimidos orales contienen diferentes cantidades de estradiol base real<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />:
+
+> **2 mg de valerato de estradiol (p. ej., Progynova) ≈ 1.5 mg de estradiol (p. ej., Estrace)**
+
+Ten presente esta conversión al leer discusiones de dosificación en internet, ya que los foros estadounidenses suelen referirse por defecto a Estrace (estradiol puro / hemihidrato de estradiol), mientras que los foros europeos y asiáticos a menudo asumen por defecto Progynova (valerato de estradiol).
+
+### Datos sobre el riesgo de TEV (trombosis)
+
+<DoseTable
+  headers={['Vía', 'Riesgo relativo (RR)', 'IC 95%', 'Nota']}
+  rows={[
+    ['Estradiol oral', '1.48', '1.27 - 1.72', 'Riesgo de TEV aumentado en torno al 48%'],
+    ['Parche transdérmico (referencia)', '0.97', '0.79 - 1.19', 'Sin diferencia estadística respecto a quienes no usan estrógenos'],
+  ]}
+/>
+
+El estradiol oral aumenta el riesgo de TEV en torno al 48% (RR ≈ 1.48) frente a la población no medicada<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. Aunque el riesgo *relativo* está elevado, el riesgo *absoluto* de base en poblaciones jóvenes y sanas es extremadamente bajo (alrededor de 1-2 por cada 10 000 al año). En consecuencia, la vía oral se mantiene dentro de un margen de seguridad aceptable para personas jóvenes sin factores de riesgo previos.
+
+<DangerBox title="Combinación letal: estradiol oral + CPA oral">
+Tomar estradiol oral junto con acetato de ciproterona (CPA) por vía oral garantiza un **riesgo de TEV acumulado y de doble origen**. El CPA es de por sí procoagulante<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />. Al combinarse con los efectos hepáticos de primer paso del estrógeno oral, la amenaza de coagulación se multiplica. Si necesitas usar CPA como antiandrógeno, deberías sin duda pasar a un estrógeno transdérmico (parches o gel). Consulta nuestra página de [Límites de dosis y contraindicaciones](/es/dose-limits/).
+</DangerBox>
+
+## Recomendaciones de dosificación
+
+Los siguientes rangos integran datos de las Guías de la Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> y de la WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Etapa', 'Dosis (estradiol base)', 'E2 objetivo (pg/mL)', 'Plazo']}
+  rows={[
+    ['Inicio con dosis baja', '2 mg/day', '50-100', 'Meses 1-6'],
+    ['Titulación moderada', '4 mg/day', '100-200', 'Meses 6-12'],
+    ['Fase de mantenimiento', '4-6 mg/day', '100-200', 'A partir de los 12 meses'],
+    ['Dosis máxima', '8 mg/day', 'No superar 200', 'Solo en circunstancias especiales'],
+  ]}
+/>
+
+<WarningBox title="No te saltes la fase de dosis baja">
+Aunque sientas que la dosis baja "no hace nada", los primeros 6 meses de un enfoque de titulación lenta son sumamente críticos para establecer una ramificación ductal saludable de la mama. Empezar con 6mg u 8mg para "acelerar" la pubertad fuerza con frecuencia una fusión prematura de los brotes mamarios, lo que limita de forma permanente tu volumen mamario final<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. Consulta nuestro análisis a fondo sobre el [Desarrollo mamario](/es/breast-development/).
+</WarningBox>
+
+### Métodos de administración
+
+- Toma los comprimidos aproximadamente a la misma hora cada día para establecer una rutina.
+- Si tomas 4 mg/day, dividir la dosis (2 mg por la mañana + 2 mg por la noche) suaviza considerablemente las fluctuaciones de la concentración en sangre.
+- Tomar los comprimidos con las comidas aporta un ligero aumento de la absorción, pero mantener un horario constante importa más.
+- Si olvidas una dosis, simplemente espera y toma la siguiente dosis según lo previsto. No dupliques la dosis para compensar.
+
+## Población destinataria y contraindicaciones
+
+El estradiol oral es adecuado para los siguientes perfiles<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />:
+
+**Muy recomendado cuando:**
+- No hay factores de riesgo de TEV/trombosis
+- Edad < 40
+- IMC < 30
+- No fumadora
+- Sin antecedentes personales ni familiares de trombosis venosa profunda
+- Sin trastornos de la coagulación
+
+**No uses la vía oral (cambia a transdérmica):**
+- Edad ≥ 40
+- IMC ≥ 30
+- Fumadora actual o que dejó de fumar recientemente
+- Antecedentes personales o familiares importantes de TEV
+- Anomalías conocidas de los factores de coagulación (p. ej., factor V de Leiden)
+- Combinación actual de TH con CPA (acetato de ciproterona)
+- Antecedentes de migraña con aura
+
+## Acceso a nivel mundial
+
+Los comprimidos siguen siendo el estándar por defecto en la gran mayoría del mundo:
+
+- **EE. UU./Canadá**: A menudo se prescribe como estradiol genérico (Estrace) bajo marcos de consentimiento informado. Extremadamente barato con seguro o GoodRx.
+- **Reino Unido/UE/Australia**: Se prescribe por vías oficiales (NHS, GIC) o por proveedores privados. Tanto Progynova (valerato) como Estrofem (hemihidrato) son estándar.
+- **Mercado DIY global**: Los comprimidos circulan ampliamente por mercados descentralizados, por ser fáciles de enviar y difíciles de dañar. Verifica siempre la procedencia.
+
+## Consejos de monitoreo
+
+- **Cuándo extraer sangre**: Hazte la prueba siempre **inmediatamente antes** de tomar la siguiente dosis. Esto se llama medir tus niveles "valle" (trough)<CitationRef id="ucsf-2016" num={7} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Fase inicial**: Mide hormonas sexuales + perfil hepático en el mes 1. Verifica hormonas + perfil hepático + perfil lipídico en el mes 3.
+- **Fase de mantenimiento**: Hazte pruebas cada 6 meses.
+- **Objetivo clínico**: E2 valle entre 100-200 pg/mL, T < 50 ng/dL.
+- **Margen de seguridad**: Si tu E2 valle supera los 200 pg/mL, considera seriamente reducir el número de comprimidos o pasar a opciones transdérmicas.
+
+## Relación con el estrógeno sublingual
+
+Los comprimidos estándar de estradiol también pueden disolverse debajo de la lengua (vía sublingual). Esto evita gran parte del metabolismo hepático de primer paso, lo que dispara drásticamente tu biodisponibilidad. Sin embargo, requiere dosificar varias veces al día y genera picos en sangre muy bruscos, como una montaña rusa. Si quieres aprender a tomar tus comprimidos de esta forma, consulta nuestra página de [Administración sublingual](/es/medications/estrogens/sublingual/).
+
+<DrugBrandGallery drugId="estradiol-oral" />

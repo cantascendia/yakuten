@@ -1,0 +1,98 @@
+---
+title: "Politique éditoriale"
+description: "Principes éditoriaux de la Pharmacopée THS, processus de correction des erreurs, normes de droit d'auteur et de citation, voies de réclamation et de recours, et déclaration de conflits d'intérêts."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="Équipe éditoriale de la Pharmacopée THS"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="fr"
+/>
+
+## Interdictions absolues
+
+La Pharmacopée THS ne publiera jamais aucun des éléments suivants :
+
+<DangerBox>
+- Des conseils de prescription personnalisés (« vous devriez prendre X mg »)
+- Des liens d'achat de médicaments, des revendeurs ou des QR codes de parrainage/commission
+- Des formulations qui atténuent la reconnaissance des urgences médicales (DVT [thrombose veineuse profonde], hépatotoxicité, méningiome, etc.)
+- Des affirmations médicales sans DOI ni citation
+- Des scripts de pistage tiers ou le stockage des données de santé des utilisateurs
+- Des configurations qui contournent les avertissements de l'IA ou les mises en garde de sécurité
+</DangerBox>
+
+## Langage et ton
+
+- **Éviter les absolus** : préférer « nous suggérons / généralement / dans la plupart des cas » à « il faut / toujours / jamais »
+- **S'adresser directement au lecteur** : écrire « vous pouvez choisir A ou B » plutôt que « les patient·es devraient choisir A »
+- **Exprimer clairement l'incertitude** : les conclusions de niveau de preuve B/C/X doivent être signalées par la mention « données limitées » ou « avis d'expert »
+- **Réduire la stigmatisation** : employer un langage qui affirme la communauté et éviter les termes désuets ou trop cliniques
+
+## Citations et droit d'auteur
+
+- Chaque affirmation médicale est sourcée via le composant `CitationRef` (les identifiants renvoient aux entrées de `src/data/references.json`)
+- Les DOI sont privilégiés ; à défaut de DOI, on cite les informations de publication de la revue ainsi qu'une URL stable
+- Les figures et schémas sont originaux ou issus d'œuvres en Creative Commons / domaine public ; les reproductions sont créditées
+- Le contenu original du site est publié sous licence CC BY-SA 4.0 ; le code est régi par la LICENSE du dépôt
+
+## Correction des erreurs
+
+Les lecteur·rices peuvent soumettre des signalements via le [formulaire de retour](https://wj.qq.com/s2/16576000/5fe5/) ou les [GitHub Issues](https://github.com/cantascendia/yakuten/issues) :
+
+| Type | Délai de réponse | Traitement |
+|---|---|---|
+| Erreur factuelle | Première réponse sous 72 heures | **Avis d'erratum** en haut de la page + journal des modifications |
+| Dérive de citation | 72 heures | Remplacement de la citation et publication d'un journal de correction public |
+| Information obsolète | 7 jours | Mise à jour incrémentale + actualisation de `lastReviewed` |
+| Conseil dangereux | Retrait d'urgence sous 24 heures | Correction ou maintien hors ligne dans l'attente d'un réexamen |
+
+Les corrections majeures sont également propagées vers :
+
+- L'historique des versions à `/fr/appendix-references/`
+- Les abonné·es RSS / Telegram / e-mail
+
+## Réclamations et recours
+
+- **Réclamations sur le contenu** : [formulaire de retour](https://wj.qq.com/s2/16576000/5fe5/)
+- **Aspects juridiques / droit d'auteur** : ouvrez une GitHub Issue avec l'étiquette `legal`, ou contactez les mainteneur·euses du dépôt
+- **Vie privée** : ce site ne collecte aucune information personnelle identifiable ; toute fuite de données personnelle signalée est traitée sous 24 heures
+
+## Déclaration de conflits d'intérêts
+
+- **Aucun parrainage commercial, aucune publicité pour des médicaments, aucune commission sur les achats**
+- Les coûts d'exploitation sont couverts par des contributions bénévoles et des dons de la communauté open source
+- Les rédacteur·rices et les conseiller·ères médicaux·ales signent des déclarations de conflits d'intérêts ; les sujets présentant une relation directe de prescription ou commerciale font l'objet d'un déport
+- Aucun lien externe ne porte d'identifiant d'affiliation ; seules les ressources hospitalières et les lignes d'écoute validées par la communauté sont répertoriées
+
+## Cycle de réexamen
+
+| Type de page | Intervalle de réexamen par défaut |
+|---|---|
+| Reconnaissance des urgences, lignes rouges de posologie, mises en garde de danger | **6 mois** |
+| Monographies et guides de médicaments | **12 mois** |
+| Outils, politiques, méthodologie | **12 mois** |
+| Articles de blog | Vérification unique 12 mois après la publication |
+
+Un changement majeur dans les recommandations (alerte de sécurité EMA/FDA, nouvelle édition WPATH / Endocrine Society) déclenche une **mise à jour incrémentale sous 48 heures**.
+
+<WarningBox>
+Cette page est un engagement public d'autorégulation éditoriale. **Si vous constatez que nous enfreignons l'une des clauses ci-dessus, dénoncez-le publiquement** — cette redevabilité est le seul moyen pour nous de rester fidèles à nos lecteur·rices.
+</WarningBox>
+
+## Documents connexes
+
+- [À propos de ce site](/fr/about/)
+- [Méthodologie](/fr/methodology/)
+- [Conseiller·ères médicaux·ales](/fr/medical-advisors/)

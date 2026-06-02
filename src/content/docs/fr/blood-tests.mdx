@@ -1,0 +1,272 @@
+---
+title: "Bilans sanguins et outils d'auto-vérification"
+description: "Bilans sanguins indispensables sous THS, calendrier de recontrôle, lecture de vos résultats et outils interactifs d'auto-vérification."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+noindex: true
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Les bilans sanguins sont la pierre angulaire de la gestion de la sécurité sous THS. Sans données biologiques, impossible de savoir si le traitement agit, si votre posologie est sûre, ou si votre organisme s'expose à des risques inutiles. Cette page vous guide sur le moment où vous faire dépister, sur les paramètres à doser et sur la façon d'interpréter vos résultats<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Accéder aux bilans sanguins">
+Selon l'endroit où vous vivez, vous pouvez accéder aux bilans sanguins via un médecin traitant, une consultation sur consentement éclairé (comme Planned Parenthood aux États-Unis), des centres spécialisés en identité de genre (comme le NHS ou GenderCare au Royaume-Uni), ou des services de dosage privés (comme Medichecks). Quel que soit votre parcours, le dépistage reste essentiel. Après réception de vos résultats, comparez-les à notre système de feux tricolores ci-dessous.
+</WarningBox>
+
+## 6.1 Quoi doser et quand
+
+Le calendrier des bilans sanguins se découpe en trois phases, en cohérence avec notre [parcours THS](/fr/pathway/)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} /> :
+
+### Phase 1 : Instauration (mois 1 à 6)
+
+C'est la période d'ajustement la plus intensive ; elle exige une surveillance plus fréquente afin de confirmer l'efficacité du traitement et d'écarter les effets indésirables précoces.
+
+**Contrôle à la semaine 4 :**
+
+<DoseTable
+  headers={['Paramètre dosé', 'Objectif', 'Personnes concernées']}
+  rows={[
+    ['Bilan hormonal sexuel (E2, T, LH, FSH, PRL, P4)', 'Confirmer la hausse de l\'E2 et la baisse de la T', 'Toutes les personnes'],
+    ['Fonction hépatique (ALT, AST)', 'Écarter une hépatotoxicité précoce', 'Personnes sous CPA / bicalutamide'],
+    ['Électrolytes (K⁺, Na⁺)', 'Écarter le risque d\'hyperkaliémie', 'Personnes sous spironolactone'],
+  ]}
+/>
+
+**Contrôle à la semaine 12 :**
+
+<DoseTable
+  headers={['Paramètre dosé', 'Objectif', 'Personnes concernées']}
+  rows={[
+    ['Bilan hormonal sexuel', 'Évaluer l\'atteinte des objectifs d\'étape (E2 50-100 pg/mL)', 'Toutes les personnes'],
+    ['Fonction hépatique (ALT, AST)', 'Surveillance continue de la sécurité hépatique', 'Personnes sous CPA / bicalutamide'],
+    ['Bilan lipidique (CT, TG, LDL, HDL)', 'Évaluer le retentissement métabolique', 'Toutes les personnes'],
+    ['Électrolytes (K⁺)', 'Surveillance continue de la kaliémie', 'Personnes sous spironolactone'],
+  ]}
+/>
+
+<WarningBox title="Objectifs de la phase 1">
+E2 atteignant 50-100 pg/mL, T en baisse. Si l'E2 est inférieur à 30 pg/mL, il peut être nécessaire d'ajuster la voie d'administration ou la posologie (voir notre [parcours](/fr/pathway/))<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **N'augmentez pas la dose de votre propre initiative à ce stade simplement parce que vous « ne ressentez rien ».**
+</WarningBox>
+
+### Phase 2 : Ajustement (mois 6 à 12)
+
+Contrôle tous les 3 mois<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} /> :
+
+<DoseTable
+  headers={['Paramètre dosé', 'Fréquence', 'Cible']}
+  rows={[
+    ['Hormones sexuelles (E2, T, PRL)', 'Tous les 3 mois', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Fonction hépatique (ALT, AST)', 'Tous les 3 mois (CPA/bica)', 'ALT/AST ≤ limite supérieure de la normale'],
+    ['Prolactine (PRL)', 'Tous les 6 mois', 'PRL <50 ng/mL'],
+    ['Électrolytes (K⁺)', 'Tous les 3 mois (spiro)', 'K⁺ 3,5-5,0 mmol/L'],
+  ]}
+/>
+
+### Phase 3 : Entretien (au-delà de 12 mois)
+
+Une fois les taux hormonaux stabilisés, la fréquence peut être réduite<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} /> :
+
+**Contrôles de routine tous les 6 mois :**
+
+<DoseTable
+  headers={['Paramètre dosé', 'Description']}
+  rows={[
+    ['Hormones sexuelles (E2, T, PRL)', 'Confirmer que vous restez dans la fourchette cible'],
+    ['Fonction hépatique (ALT, AST)', 'Surveillance continue (personnes sous CPA/bica tous les 3 à 6 mois)'],
+    ['Électrolytes', 'Surveillance continue pour les personnes sous spironolactone'],
+  ]}
+/>
+
+**Bilans complets annuels :**
+
+<DoseTable
+  headers={['Paramètre dosé', 'Description']}
+  rows={[
+    ['Bilan lipidique', 'Évaluer le retentissement métabolique à long terme'],
+    ['Glycémie à jeun', 'Écarter une insulinorésistance évolutive'],
+    ['NFS (dont Hb)', 'Surveiller l\'évolution vers une anémie'],
+    ['Coagulation + D-dimères', 'Évaluer le risque de MTEV (crucial pour l\'E2 par voie orale)'],
+    ['Densitométrie osseuse (DXA)', 'À envisager, surtout après un arrêt prolongé de l\'estrogène'],
+  ]}
+/>
+
+---
+
+## 6.2 Comprendre votre bilan (feux tricolores)
+
+Ce qui suit illustre visuellement 7 marqueurs sanguins essentiels liés au THS. **Vert** = fourchette cible, **jaune** = prudence, **rouge** = danger, nécessitant une action<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/fr/blood-tubes.webp" alt="Trois tubes de prélèvement sanguin : violet (NFS), jaune (biochimie/hormones), bleu (coagulation)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Le moment du prélèvement est déterminant">
+L'heure de la prise de sang influence directement l'interprétabilité des résultats<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Suivez ces règles (mesurez le **taux résiduel**) :
+
+- **Patchs transdermiques** : 12 à 24 heures avant le prochain changement de patch
+- **Voie orale/sublinguale** : juste avant votre prochaine prise
+- **Injections** : le matin même, juste avant votre prochaine injection
+
+Si vous ne prélevez pas au taux résiduel, l'E2 sera artificiellement élevé, ce qui conduit à mal juger si la dose est suffisante.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+L'E2 entre 100 et 200 pg/mL correspond à la recommandation des recommandations internationales pour l'entretien<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Dépasser 200 pg/mL n'accélérera PAS la féminisation ; cela ne fait qu'augmenter le risque de caillots et de fusion prématurée des bourgeons mammaires. Un taux d'E2 inférieur à 20 pg/mL sous traitement évoque un problème d'administration.
+
+<DangerBox title="E2 > 500 pg/mL">
+Si l'E2 résiduel dépasse 500 pg/mL, réduisez immédiatement la posologie et consultez pour une évaluation médicale. Ce niveau augmente nettement le risque de thrombose veineuse profonde (MTEV)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testostérone (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+Abaisser la T à &lt;50 ng/dL (fourchette féminine cisgenre typique) est un objectif central du THS<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Si la T reste >100 ng/dL après 6 mois, il faut généralement ajuster l'anti-androgène plutôt que de forcer la dose d'E2 à la hausse<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolactine (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+L'estrogène comme l'CPA peuvent élever la prolactine<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Les élévations modérées (25-50 ng/mL) sont souvent sans signification clinique mais justifient une surveillance. Une PRL supérieure à 50 ng/mL doit faire l'objet d'une évaluation afin d'écarter un prolactinome. Les personnes sous CPA doivent surveiller ce paramètre de près.
+
+### Fonction hépatique (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+Le CPA et le bicalutamide comportent un risque d'hépatotoxicité<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. La limite supérieure de la normale est généralement de 40 U/L. Une élévation à 1 à 3 fois la limite supérieure impose une surveillance rapprochée ; un dépassement de 3 fois (>120 U/L) signifie qu'il faut arrêter immédiatement le CPA ou le bicalutamide et consulter un médecin<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Signes d'alerte d'une atteinte hépatique">
+En cas de jaunissement de la peau/des yeux (ictère), d'urines foncées, de nausées persistantes ou de douleurs de l'hypocondre droit, arrêtez immédiatement le traitement, quels que soient vos derniers chiffres d'ALT/AST<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Ce sont des symptômes aigus nécessitant une prise en charge en urgence.
+</DangerBox>
+
+### Kaliémie (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+La spironolactone est un diurétique épargneur de potassium qui peut provoquer une hyperkaliémie<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Suspendez la spironolactone si la K⁺ dépasse 5,5 mmol/L. Pendant la prise de spironolactone, limitez les aliments riches en potassium et n'utilisez pas de substituts de sel.
+
+<DangerBox title="Symptômes d'hyperkaliémie">
+Faiblesse musculaire, engourdissements ou fourmillements des extrémités, palpitations ou troubles du rythme cardiaque. Si vous êtes sous spironolactone et présentez ces signes, faites contrôler votre kaliémie sans délai<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Hémoglobine (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+L'Hb diminue de façon prévisible vers la fourchette féminine cisgenre après l'instauration de l'estrogène ; c'est physiologique<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Mais une Hb inférieure à 110 g/L signale une anémie nécessitant un diagnostic.
+
+### D-dimères
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+Une élévation des D-dimères évoque une thrombose/fibrinolyse<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Une élévation modérée (0,5-1,0) doit être interprétée dans son contexte clinique. Au-delà de 1,0 mg/L — surtout en présence d'un œdème du mollet, d'une douleur thoracique ou d'un essoufflement — il s'agit d'une urgence pour écarter une TVP (DVT) ou une embolie pulmonaire (PE)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-dimères + symptômes = urgence">
+Des D-dimères élevés ne signifient pas automatiquement un caillot, mais associés à un mollet gonflé/chaud, une douleur thoracique soudaine ou une hémoptysie, rendez-vous immédiatement aux urgences. L'estradiol par voie orale comporte un risque de MTEV plus élevé que la voie transdermique<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Guide récapitulatif
+
+<DoseTable
+  headers={['Marqueur', 'Cible (vert)', 'Prudence (jaune)', 'Danger (rouge)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 ou 200-300', '>500 ou <20 (sous traitement)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (après 6 mois)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (écarter un prolactinome)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3× la limite)', '>120 (arrêt CPA/bica)'],
+    ['K⁺ (mmol/L)', '3,5-5,0', '5,0-5,5', '>5,5 (arrêt spiro)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (anémie)'],
+    ['D-dimères (mg/L)', '<0,5', '0,5-1,0', '>1,0 (écarter un caillot)'],
+  ]}
+/>
+
+---
+
+## 6.3 Outil interactif d'auto-vérification
+
+<WarningBox title="Bientôt disponible">
+Le composant React interactif **BloodTestChecker** sera lancé prochainement. Il vous permet de saisir vos valeurs pour obtenir instantanément un retour en feux tricolores et des conseils adaptés.
+
+Tous les calculs s'effectuent dans votre navigateur — aucune donnée n'est enregistrée ni envoyée à un quelconque serveur.
+</WarningBox>
+
+<WarningBox title="À lire ensuite">
+- [Parcours THS](/fr/pathway/) — Que faire ensuite selon vos résultats
+- [Limites de dose](/fr/dose-limits/) — Vérifiez que votre dose est dans la fourchette sûre
+- [Risques et urgences](/fr/risks/) — Quand arrêter immédiatement
+</WarningBox>

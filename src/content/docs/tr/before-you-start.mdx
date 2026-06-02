@@ -1,0 +1,82 @@
+---
+title: "Başlamadan Önce: Hazır mısınız?"
+description: "HRT öncesi temel kontrol listesi — başlangıç kan tahlilleri, kesin ve göreceli kontrendikasyonlar, bilgilendirilmiş onam gereklilikleri ve tıbbi yolculuğunuza dair gerçekçi beklentiler."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Bu bir kapı bekçiliği değil — bir güvenlik kontrolü. HRT'ye başlangıç tahlilleri olmadan başlamak, gözleri bağlı araç kullanmaya benzer.
+
+Aşağıdaki başlangıç tahlilleri uluslararası kılavuzlar tarafından önerilmektedir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Başlangıç Tahlilleri
+
+Aşağıdaki tahliller HRT'ye başlamadan önce tamamlanmalıdır. Çoğu, birinci basamak hekiminiz, bir bilgilendirilmiş onam kliniği ya da Planned Parenthood gibi hizmetler aracılığıyla istenebilir:
+
+<BaselineChecklist
+  items={[
+    { name: 'Cinsiyet Hormonları', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Karaciğer Fonksiyonu', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Böbrek Fonksiyonu', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Tam Kan Sayımı', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Pıhtılaşma Paneli', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Metabolik Panel', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolaktin', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="150 - 400 USD (sigortaya ve bölgeye göre değişir)"
+/>
+
+<WarningBox title="Tahlil yaptırmadan zaten başladınız mı?">
+HRT'ye başlangıç tahlilleri yaptırmadan başladıysanız — geç değil. En kısa sürede yaptırın.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Kesin Kontrendikasyonlar
+
+<ContraindicationBox type="absolute" title="Kesin Kontrendikasyonlar" sectionNum="">
+
+- Aktif tromboembolik hastalık (ör. derin ven trombozu, pulmoner emboli)
+- Doğrulanmış veya şüphelenilen hormona duyarlı malignite (ör. meme kanseri, prostat kanseri)
+- Akut evrede ağır karaciğer veya böbrek yetmezliği
+- Açıklanamayan vajinal kanama (transmaskülen bireyler için)
+- İlaç bileşenlerine bilinen ağır alerji
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Göreceli Kontrendikasyonlar
+
+<ContraindicationBox type="relative" title="Göreceli Kontrendikasyonlar" sectionNum="">
+
+- Kontrol altında olmayan hipertansiyon veya kardiyovasküler hastalık
+- Yeterince kontrol altına alınamayan diyabet
+- Tütün kullanımı (özellikle 35 yaş ve üzeri, VTE riskini belirgin biçimde artırır)
+- Safra kesesi hastalığı öyküsü
+- Auralı migren (dikkatli risk değerlendirmesi gerektirir)
+- Ağır obezite (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Gerçekçi Beklentiler Oluşturmak
+
+<RealityCheck
+  items={[
+    { text: 'HRT sihir değildir. Değişiklikler aylar ve yıllar içinde olur — bir gecede dönüşüm beklemeyin.' },
+    { text: 'Bazı değişiklikler geri döndürülemezdir (ör. meme gelişimi, sesin kalınlaşması, klitoral büyüme). Neyi göze aldığınızı iyi anlayın.' },
+    { text: 'HRT, doğurganlığı azaltabilir veya kalıcı olarak ortadan kaldırabilir. Başlamadan önce gamet saklamayı (yumurta/sperm dondurma) düşünün.' },
+    { text: 'Ruh hâli dalgalanmaları normal bir yan etkidir. Yanınızda istikrarlı bir destek sisteminin olduğundan emin olun.' },
+  ]}
+/>
+
+<WarningBox title="Sırada ne okumalı">
+- [HRT Yol Haritası](/tr/pathway/) — Başlangıçtan uzun vadeli idameye kadar tüm süreç
+- [İlaçlar](/tr/medications/estrogens/overview/) — İlaç seçenekleri, dozlama ve riskler
+- [Çin HRT Rehberi](/tr/china-reality/) — Hekim bulma, ilaç temin etme ve kan tahlili yaptırma
+- [Kan Tahlilleri](/tr/blood-tests/) — Neyin tahlil edileceği, nereye gidileceği, sonuçların nasıl okunacağı
+</WarningBox>

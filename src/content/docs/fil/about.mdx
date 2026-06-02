@@ -1,0 +1,108 @@
+---
+title: "Tungkol sa Site na Ito"
+description: "Ang misyon sa likod ng HRT Yakuten, ang aming mga pinagmumulan ng nakabatay-sa-ebidensiyang nilalaman (WPATH, Endocrine Society), proseso ng peer review, mga pangako sa privacy, at mga medikal na disclaimer."
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+noindex: true
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Misyon
+
+**Nakabatay sa Ebidensiya · Harm Reduction · Gagabayan Ka Patungo sa Pangangalaga**
+
+Ang HRT Yakuten ay isang impormasyong site para sa pangunahing kaligtasan (safety baseline) para sa mga transgender na kababaihan sa komunidad na nagsasalita ng Chinese na gumagamit ng HRT. Ang aming layunin ay hindi palitan ang mga doktor, kundi tulungan ang mga kasalukuyang umiinom — o malapit nang magsimula — ng hormone therapy:
+
+- **Unawain ang resulta ng iyong blood test** at malaman kung aling mga abnormal na halaga ang nangangailangan ng konsulta sa doktor
+- **Alamin ang totoong panganib ng mga gamot**, sa halip na umasa sa tsismis ng komunidad at mga di-napatunayang kuwento
+- **Makilala ang mga babala ng emergency** (DVT, pinsala sa atay, meningioma) at gumawa ng tamang desisyon sa mga kritikal na sandali
+- **Humanap ng mga trans-friendly na medikal na mapagkukunan** at lumipat mula sa DIY patungo sa pangangalagang may superbisyon
+
+### Hindi ito kung ano ang site na ito
+
+- ❌ Hindi isang encyclopedia o medikal na aklat-aralin
+- ❌ Hindi isang forum, komunidad, o social platform
+- ❌ Hindi isang channel para bumili ng gamot o site na nagrerekomenda ng botika
+- ❌ Hindi nagbibigay ng personalisadong payo sa dosis ("dapat kang uminom ng X mg")
+
+## Mga Pinagmumulan ng Nilalaman
+
+Ang lahat ng medikal na nilalaman sa site na ito ay nakabatay sa mga sumusunod na internasyonal na klinikal na gabay (guidelines) at peer-reviewed na literatura:
+
+| Pinagmulan | Paglalarawan |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — Clinical Practice Guideline |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, Version 8 |
+| **UCSF Transgender Care** | University of California, San Francisco — Transgender Care Guidelines |
+| **EMA (2020)** | Mga paghihigpit at pagtatasa sa kaligtasan ng European Medicines Agency hinggil sa CPA |
+| **PubMed / PMC** | Mga peer-reviewed na orihinal na pananaliksik (bawat sanggunian ay may DOI) |
+
+Ang mga superscript na numero sa tabi ng bawat medikal na rekomendasyon (hal. <sup>[1]</sup>) ay nagtuturo sa partikular na sanggunian. **Walang sanggunian = walang nilalaman** — ito ay isang mahigpit na patakaran ng site na ito.
+
+## Proseso ng Pagsusuri ng Nilalaman
+
+| Hakbang | Pamantayan |
+|------|----------|
+| **Pangangailangan ng sanggunian** | Bawat klinikal na rekomendasyon ay dapat masubaybayan pabalik sa hindi bababa sa isang peer-reviewed na papel o internasyonal na gabay |
+| **Cross-validation** | Ang mga saklaw ng dosis ng gamot ay dapat i-cross-validate laban sa ≥2 na malayang pinagmulan (hal. WPATH + Endocrine Society + UCSF) |
+| **Pagtatasa ng ebidensiya** | Bawat pahina ay may tatak ng antas ng ebidensiya: A (maraming RCT/Meta-analysis), B (isang RCT/cohort), C (case report/opinyon ng eksperto), X (walang ebidensiya) |
+| **Petsa ng pagsusuri** | Bawat pahina ay nagpapakita ng petsa ng huling pagsusuri sa ibaba |
+| **Cycle ng pag-update** | Ang nilalaman ay sinusuri kada quarter para sa pagiging napapanahon at ina-update batay sa bagong nailathalang literatura |
+
+<WarningBox title="Mga Limitasyon ng Nilalaman">
+Ang site na ito ay kasalukuyang pinapanatili ng isang indibidwal at hindi pa sumailalim sa pormal na peer review ng isang propesyonal na medikal na editor. Ginagawa namin ang lahat ng pagsisikap upang matiyak ang katumpakan, ngunit posible pa rin ang mga pagkakamali at pagkukulang. Kung may makita kang anumang kamalian, mangyaring magsumite ng Issue sa GitHub.
+</WarningBox>
+
+## Teknikal na Implementasyon
+
+| Teknolohiya | Layunin |
+|------------|---------|
+| **Astro + Starlight** | Static site generation — walang JS bilang default, napakabilis mag-load |
+| **React Islands** | Client-side JS lamang para sa mga interaktibong tool (blood test checker, dose simulator, atbp.) |
+| **Pagefind** | Static search index na may suporta sa Chinese/English/Japanese |
+| **Vercel** | Static hosting + Edge Functions (AI Q&A) |
+| **Open Source** | Kumpletong source code na makukuha sa [GitHub](https://github.com/cantascendia/yakuten) |
+
+## Privacy
+
+**Ang site na ito ay hindi nangongolekta o nag-iimbak ng anumang personal na datos.**
+
+| Kategorya | Hakbang |
+|----------|---------|
+| **Blood test tool** | Purong front-end na kalkulasyon sa JavaScript — ang iyong input na datos ay hindi kailanman umaalis sa iyong browser at hindi kailanman ipinapadala sa anumang server |
+| **AI Q&A** | Ang mga pag-uusap ay pinoproseso nang real time sa pamamagitan ng Edge Functions — walang iniimbak, nila-log, o ginagamit para sa training |
+| **Analytics** | Vercel Web Analytics at Speed Insights — pinagsama-samang page views at performance metrics lamang; walang cookie, walang iniimbak na personal na pagkakakilanlan, walang cross-site tracking |
+| **Tracking** | Walang Google Analytics, walang naka-embed na social media o ad tracker — bukod sa pinagsama-samang Vercel analytics sa itaas |
+| **Cookies** | Ginagamit lamang para sa kagustuhan sa tema (dark/light mode), hindi para sa tracking |
+| **Mga Ad** | Wala, at hindi kailanman magkakaroon |
+
+## Disclaimer
+
+Ang nilalaman sa site na ito ay **para sa layuning pang-edukasyon at pang-impormasyon lamang** at hindi bumubuo ng medikal na payo.
+
+- Ang site na ito ay hindi maaaring pumalit sa harap-harapang diyagnosis at paggamot ng isang kwalipikadong manggagamot
+- Ang paggamit, pag-aayos, at pagtigil ng mga gamot ay dapat isagawa sa ilalim ng gabay ng isang kwalipikadong propesyonal sa pangangalagang pangkalusugan
+- Kung makaranas ka ng anumang sintomas ng emergency (pamamaga/pananakit ng isang binti, biglaang pananakit ng dibdib, paninilaw [jaundice], atbp.), itigil agad ang gamot at pumunta sa pinakamalapit na emergency room
+- Ang site na ito ay walang pananagutan sa anumang medikal na kahihinatnan na dulot ng paggamit ng nilalaman nito
+
+**Ang self-medication (DIY) ay may totoong panganib.** Layunin ng site na ito na tulungan kang gumamit ng mga gamot nang mas ligtas, ngunit ang pinakaligtas na paraan ay palaging ang pagsailalim sa HRT sa ilalim ng superbisyon ng isang doktor.
+
+## Mga Kasamang Tool
+
+- **hananote** — Isang HRT tracking app para sa mga transgender na kababaihan (Flutter), na tumutulong subaybayan ang mga gamot, blood test, at mga pisikal na pagbabago. Kumpletong katuwang ito sa nilalaman ng site na ito sa pamamagitan ng personalisadong pangmatagalang pamamahala ng kalusugan. Proyekto: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+
+## Kontak at Mga Kontribusyon
+
+- **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Magsumite ng Issue o Pull Request
+- **Pagtatama ng nilalaman**: Nakakita ng medikal na kamalian? Mangyaring magsumite ng GitHub Issue kasama ang sanggunian na sa tingin mo ay tama
+- **Brand gallery**: Kung may mga larawan ka ng aktwal na mga gamot na nais mong iambag, mangyaring makipag-ugnayan sa amin sa pamamagitan ng GitHub (kailangan ng CC-BY-SA license)
+
+## Lisensya
+
+Ang nilalaman ng site na ito ay nilisensyahan sa ilalim ng [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Malaya kang ibahagi at iangkop ito, sa kondisyong magbigay ka ng naaangkop na pagkilala, hindi ito gamitin para sa komersyal na layunin, at ipamahagi ang mga derivative na gawa sa ilalim ng parehong lisensya.
+
+Ang source code ay nilisensyahan sa ilalim ng MIT License.

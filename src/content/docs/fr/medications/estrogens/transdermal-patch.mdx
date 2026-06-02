@@ -1,0 +1,137 @@
+---
+title: "Patchs transdermiques d'estradiol"
+description: "Pharmacologie complète, recommandations posologiques, données sur le risque de MTEV et conseils pratiques d'utilisation des patchs transdermiques d'estradiol."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+noindex: true
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Patch transdermique d'estradiol"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdermique"
+  evidenceLevel="A"
+>
+  Les patchs transdermiques sont unanimement reconnus par les données cliniques comme la voie d'administration de l'estradiol la plus sûre. Comme l'estradiol est absorbé à travers la peau directement dans la circulation sanguine, il contourne entièrement le premier passage hépatique : son profil de risque de MTEV (thrombose veineuse) est statistiquement identique à celui des personnes non traitées.
+</DrugInfoBox>
+
+## Pharmacologie
+
+### Contourner le premier passage hépatique
+
+Lorsque vous avalez de l'estradiol par voie orale, il atteint le tractus gastro-intestinal puis transite directement par le foie (premier passage hépatique). Ce processus :
+- Oblige le foie à augmenter la synthèse des facteurs de la coagulation, ce qui accroît le risque de MTEV.
+- Détruit ~95 % du médicament, effondrant sa biodisponibilité.
+- Modifie le métabolisme des lipides et du cholestérol.
+
+Les patchs délivrent l'estradiol à travers la peau directement dans la circulation systémique, **en contournant complètement le premier passage hépatique**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Cela signifie :
+- Un impact négligeable sur les facteurs hépatiques de la coagulation.
+- Une biodisponibilité hautement stable et supérieure.
+- Un profil doux pour le foie et pour le bilan lipidique.
+
+### Données sur le risque de MTEV (thrombose veineuse)
+
+Les patchs transdermiques présentent le risque de MTEV le plus faible de toutes les voies d'administration de l'estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" /> :
+
+<DoseTable
+  headers={['Voie', 'Risque relatif (RR)', 'IC à 95 %']}
+  rows={[
+    ['Patch transdermique', '0.97', '0.79 - 1.19'],
+    ['Estradiol oral', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Un **RR ≈ 0.97** signifie, en pratique, que le recours aux patchs transdermiques ne comporte aucune augmentation statistiquement significative du risque de MTEV par rapport aux personnes ne suivant aucune œstrogénothérapie<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Cela consacre le patch comme le premier choix incontournable pour toute personne présentant des facteurs de risque thrombotique préexistants.
+
+### Profil des concentrations sanguines
+
+- Atteint des concentrations sanguines à l'équilibre environ 12-24 heures après la pose.
+- Maintient des taux d'E2 remarquablement plats et stables pendant toute la durée de port du patch.
+- Évite totalement les pics et creux brutaux (effet « montagnes russes ») associés aux voies orale, sublinguale ou injectable.
+
+## Recommandations posologiques
+
+Ces fourchettes posologiques sont conformes aux recommandations de l'Endocrine Society 2017<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> et aux WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> :
+
+<DoseTable
+  headers={['Phase', 'Dose', 'E2 cible (pg/mL)', 'Calendrier']}
+  rows={[
+    ['Début à faible dose', '50-100 µg/day', '50-100', 'Mois 1-6'],
+    ['Titration modérée', '100-200 µg/day', '100-200', 'Mois 6-12'],
+    ['Phase d\'entretien', '100-200 µg/day', '100-200', 'À partir de 12 mois'],
+    ['Monothérapie (sans anti-androgène)', '200-400 µg/day', '200-300', 'Uniquement sans bloqueur de T'],
+  ]}
+/>
+
+<WarningBox title="Le maximum habituel">
+La dose maximale standard est de **400 µg/day**, historiquement réservée aux tentatives de monothérapie (suppression de la T sans anti-androgène). La grande majorité des personnes atteignent leur fourchette clinique cible d'E2 (100-200 pg/mL) avec 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Dépasser 200 pg/mL d'E2 ne vous féminisera pas plus vite ; cela ne fait qu'amplifier les risques pour la santé.
+</WarningBox>
+
+## Comment les utiliser
+
+### Sites d'application
+
+- **Recommandé :** bas-ventre, haut des fesses, face externe des cuisses.
+- **À éviter :** la zone des seins (une concentration locale prolongée d'E2 constitue un risque sérieux de cancer du sein), les articulations, ou les endroits frottés par une ceinture serrée.
+- **Alternez :** ne posez jamais un nouveau patch exactement au même endroit que le précédent, afin de prévenir la dermatite de contact.
+
+### Fréquence de remplacement
+
+<WarningBox title="Surveillez votre durée de port">
+La plupart des patchs sont conçus pour être changés soit **tous les 3,5 jours (deux fois par semaine)**, soit **tous les 7 jours (une fois par semaine)**, selon la marque précise. Suivez scrupuleusement le calendrier du fabricant. Oublier un remplacement fera chuter votre E2, déclenchant bouffées de chaleur et sautes d'humeur. Programmez des alarmes sur votre téléphone.
+</WarningBox>
+
+### Conseils pratiques
+
+- Appliquez uniquement sur une peau propre et parfaitement sèche. Ne posez pas vos patchs par-dessus des lotions, des huiles ou une peau humide fraîchement rasée.
+- Pressez fermement le patch avec la paume de la main pendant 10 secondes complètes pour activer l'adhésif par la chaleur.
+- Une douche ou une baignade normale ne posent pas de problème, mais les bains chauds prolongés et brûlants peuvent décoller l'adhésif et libérer le médicament dans l'organisme de façon prématurée.
+- Si un patch se décolle, essayez de le recoller ; s'il ne tient pas, posez-en un nouveau immédiatement.
+
+## À qui s'adressent-ils
+
+Les patchs transdermiques sont fortement recommandés pour<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} /> :
+
+- **Tout le monde** (les patchs sont la référence en matière de sécurité, dans tous les cas de figure).
+- **Les personnes présentant des facteurs de risque de MTEV** (IMC >30, âge >40 ans, tabagisme, antécédents familiaux de MTEV) — les patchs y sont non négociables.
+- **Les personnes prenant du CPA** — le CPA est intrinsèquement procoagulant ; recourir aux patchs évite de cumuler les risques thrombotiques.
+- **Les personnes présentant des anomalies hépatiques** — contourner le foie réduit drastiquement la charge métabolique.
+
+## Réalités de l'approvisionnement mondial
+
+Bien que médicalement supérieurs, les patchs se heurtent à des difficultés logistiques mondiales :
+
+- **Coût :** sans assurance solide ni système de santé public, les patchs reviennent astronomiquement plus chers de leur poche que les comprimés oraux.
+- **Pénuries :** les chaînes d'approvisionnement mondiales de marques comme Estradot ou Climara s'effondrent fréquemment, provoquant des pénuries régionales de plusieurs mois au Royaume-Uni, dans l'UE et en Australie.
+- Si les patchs vous sont totalement inaccessibles, la voie orale constitue un repli viable — à condition que vous n'ayez aucun facteur de risque de MTEV préexistant.
+
+## Marques courantes
+
+<DoseTable
+  headers={['Marque', 'Spécification', 'Cycle de remplacement', 'Région']}
+  rows={[
+    ['Climara', 'Libère 50 / 100 µg/day', 'Tous les 7 jours', 'États-Unis / UE / Monde'],
+    ['Estradot', 'Libère 25-100 µg/day', 'Tous les 3,5 jours', 'Royaume-Uni / UE / Australie'],
+    ['Vivelle-Dot', 'Libère 25-100 µg/day', 'Tous les 3,5 jours', 'États-Unis'],
+    ['Estrana Tape', 'Libère 50 µg/day', 'Tous les 2 jours', 'Japon (courant dans le DIY asiatique)'],
+  ]}
+/>
+
+## Conseils de surveillance
+
+- **Quand faire la prise de sang :** 12-24 heures avant votre prochain changement de patch (mesure du taux résiduel)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Cibles :** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

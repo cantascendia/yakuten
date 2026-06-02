@@ -1,0 +1,176 @@
+---
+title: "इंजेक्शन वाला एस्ट्राडायोल (EV / EC / EEn)"
+description: "इंजेक्शन वाले एस्ट्राडायोल की संपूर्ण मार्गदर्शिका—फार्माकोकाइनेटिक्स, खुराक, SC बनाम IM की तुलना, मोनोथेरेपी की व्यवहार्यता, इंजेक्शन प्रोटोकॉल और अहम सुरक्षा सीमाएँ।"
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+इंजेक्शन वाला एस्ट्राडायोल ट्रांसफेमिनिन HRT का सबसे प्रभावशाली विकल्प माना जाता है। यह लिवर के फर्स्ट-पास मेटाबॉलिज़्म को पूरी तरह छोड़ देता है और बेहद अनुमानित, प्रबल एस्ट्रोजन स्तर प्रदान करता है। हाल की नैदानिक समीक्षाओं में पुष्टि हुई है कि सबक्यूटेनियस (SC) इंजेक्शन इंट्रामस्क्युलर (IM) इंजेक्शन जितने ही प्रभावी होते हैं<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />। उल्लेखनीय बात यह है कि इंजेक्शन लेने वाले लगभग 82.6% लोग केवल मोनोथेरेपी (Monotherapy) के रूप में पूर्ण T दमन हासिल कर लेते हैं, बिना किसी एंटी-एंड्रोजन ब्लॉकर के<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />।
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="Progynon Depot 10mg एस्ट्राडायोल वैलरेट इंजेक्शन एम्प्यूल" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## फार्माकोकाइनेटिक्स (एस्टर)
+
+इंजेक्शन वाला एस्ट्राडायोल एक "एस्टर" (फैटी एसिड की शृंखला) से जुड़ा होता है, जो इसे रक्त में धीरे-धीरे छोड़कर डिपो असर पैदा करता है। तीन सबसे आम एस्टर ये हैं:
+- **एस्ट्राडायोल वैलरेट (EV)**: सबसे छोटा अर्ध-आयु (~4-5 days)। हर 5 से 7 दिन में इंजेक्शन की ज़रूरत। तेज़ी से चढ़ता है और तेज़ी से गिरता है।
+- **एस्ट्राडायोल साइपियोनेट (EC)**: मध्यम अर्ध-आयु (~8-10 days)। ज़्यादा समतल, मुलायम वक्र। अक्सर हर 7 से 10 दिन में इंजेक्शन।
+- **एस्ट्राडायोल एनान्थेट (EEn)**: लंबा अर्ध-आयु। हर 7 से 14 दिन में इंजेक्शन लेने पर स्थिर, समतल स्तर दे सकता है। ग्रे-मार्केट DIY समुदाय में इसका भरपूर इस्तेमाल होता है।
+
+इस मार्गदर्शिका (और मानक Endocrine Society दिशानिर्देशों) के लिए हम आधार के रूप में **एस्ट्राडायोल वैलरेट (EV)** मानेंगे, क्योंकि यह सबसे मानकीकृत व्यावसायिक फॉर्मूलेशन है जिसका US और जापान में बड़े पैमाने पर निर्माण होता है<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />।
+
+## EV की खुराक
+
+### वयस्क सीमाएँ
+
+<DoseTable
+  headers={['चरण', 'खुराक', 'निर्देश']}
+  rows={[
+    ['शुरुआती खुराक', '1-2 mg / week', 'डक्टल ब्रांचिंग की रक्षा के लिए कम-खुराक शुरुआती चरण (महीने 1-6)।'],
+    ['रखरखाव', '2-4 mg / week', 'ट्रफ रक्त जाँच के आधार पर खुराक समायोजित करें। लक्ष्य E2: 100-200 pg/mL।'],
+    ['कठोर अधिकतम सीमा', '5 mg / week', 'Rothman 2024 द्वारा सुझाई गई पूर्ण सुरक्षा सीमा। इसे कभी आँख मूँदकर पार न करें।'],
+  ]}
+/>
+
+ये आँकड़े WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> और Endocrine Society दिशानिर्देशों<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> के साथ पूरी तरह मेल खाते हैं।
+
+<WarningBox title="घातक भूल: प्रक्रिया में जल्दबाज़ी">
+पहले 6 महीनों के लिए खुद को 1-2 mg/week तक सीमित रखना "रूढ़िवादी द्वारपालन" नहीं है; यह जैविक सुरक्षा है। पहले ही महीने में 5mg EV का भारी झटका अपने रक्तप्रवाह में डालना समय से पहले लोब्युलोएल्वियोलर परिपक्वता को बाध्य कर देता है, जिससे आपकी स्तन डक्टल ब्रांचिंग स्थायी रूप से रुक जाती है। देखें [स्तन विकास मार्गदर्शिका](/hi/breast-development/)।
+</WarningBox>
+
+### रक्त जाँच का समय
+
+आपको अपने इंजेक्शन वाले दिन की सुबह, **इंजेक्शन लगाने से ठीक पहले** रक्त निकलवाना चाहिए। यह आपके **ट्रफ स्तर** (चक्र के दौरान आपके E2 की सबसे न्यूनतम सांद्रता) को मापता है।
+- **लक्ष्य ट्रफ:** 100-200 pg/mL।
+- **चेतावनी:** EV पर 200 pg/mL से ऊपर का ट्रफ यह संकेत देता है कि दूसरे दिन का शिखर संभवतः बहुत अधिक रहा होगा (उदा. 500-800 pg/mL)। अधिक स्तर केवल हृदय-संवहनी जोखिम बढ़ाते हैं, स्त्रैणीकरण को तेज़ नहीं करते।
+- अगर 7-दिन के EV चक्र पर आपका ट्रफ 50 pg/mL से नीचे गिर जाए, तो आपको वक्र को समतल करने के लिए 5-दिन के चक्र (आनुपातिक रूप से कम खुराक के साथ) पर जाना चाहिए, न कि हर 7 दिन में बस ऊँची खुराक झोंक देना।
+
+## सबक्यूटेनियस (SC) बनाम इंट्रामस्क्युलर (IM)
+
+दशकों तक एंडोक्राइनोलॉजी ट्रांस महिलाओं को बाध्य करती रही कि वे तेल को मांसपेशी में गहराई तक पहुँचाने के लिए बड़ी सुइयों (IM) का इस्तेमाल करें। मौजूदा बड़े पैमाने के आँकड़े साबित करते हैं कि पेट/जाँघ की चर्बी में सबक्यूटेनियस (SC) इंजेक्शन पूरी तरह समतुल्य है<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['मानक', 'सबक्यूटेनियस (SC)', 'इंट्रामस्क्युलर (IM)']}
+  rows={[
+    ['E2 लैब स्तर', 'IM जैसा ही', 'पारंपरिक मानक'],
+    ['T दमन', 'IM जैसा ही', 'पारंपरिक मानक'],
+    ['दर्द का स्तर', 'लगभग दर्दरहित', 'मांसपेशी में गहरा दर्द और जकड़न पैदा कर सकता है'],
+    ['सुई का गेज', 'बहुत बारीक (25-27G)', 'मोटी (21-23G), लंबी'],
+    ['उपयोग में आसानी', 'खुद लगाना बहुत आसान', 'ग्लूट IM के लिए अक्सर साथी/नर्स की ज़रूरत'],
+  ]}
+/>
+
+**निष्कर्ष:** अगर आप खुद इंजेक्शन लगा रहे हैं, तो सबक्यूटेनियस (SC) बेहतर, सुरक्षित और कम तकलीफदेह विकल्प है।
+
+<img src="/images/diagrams/hi/injection-angles.webp" alt="सबक्यूटेनियस (45°) बनाम इंट्रामस्क्युलर (90°) इंजेक्शन तकनीकों की क्रॉस-सेक्शन तुलना" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## मोनोथेरेपी का फायदा
+
+इंजेक्शन वाला एस्ट्राडायोल मौखिक गोलियों की तुलना में टेस्टोस्टेरोन को बहुत बेहतर तरीके से दबाता है। Misakian et al. के 2025 के एक समूह अध्ययन में सामने आया कि इंजेक्शन वाले एस्ट्राडायोल का उपयोग करने वाले **82.6%** लोगों ने बिना किसी Spironolactone, Bicalutamide या Cyproterone के पूर्ण टेस्टोस्टेरोन दमन (T < 50 ng/dL) हासिल किया<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />।
+
+- CPA के लिवर विषाक्तता जोखिमों को समाप्त करता है।
+- Spiro के मूत्रवर्धक और पोटैशियम संबंधी जोखिमों को समाप्त करता है।
+
+<WarningBox title="मोनोथेरेपी के पीछे लापरवाही से न भागें">
+लगभग 17% लोग जैविक रूप से मोनोथेरेपी हासिल नहीं कर पाते। अगर आप 5 mg/week इंजेक्शन ले रहे हैं और आपका T 300 ng/dL पर ही टिका हुआ है, तो **अपनी इंजेक्शन खुराक को 8mg या 10mg तक न बढ़ाएँ**। आप उन 17% में से हैं। हकीकत स्वीकार करें और कम-खुराक का एंटी-एंड्रोजन जोड़ें।
+</WarningBox>
+
+## इंजेक्शन प्रोटोकॉल
+
+### ज़रूरी सामान
+
+| मार्ग | सिरिंज | खींचने वाली सुई | इंजेक्शन वाली सुई |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (तेल खींचने के लिए) | 25-27G × 1/2" to 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (तेल खींचने के लिए) | 21-23G × 1" to 1.5" |
+
+हमेशा दो सुइयों का इस्तेमाल करें। शीशी से गाढ़ा तेल खींचने के लिए मोटी सुई का उपयोग करें, फिर इंजेक्शन लगाने के लिए पतली, तेज़ सुई पर बदल लें। शीशी के मोटे रबर के ढक्कन को छेदने से सुई सूक्ष्म रूप से कुंद हो जाती है; आप किसी कुंद, भोथरी सुई को अपनी त्वचा में नहीं घुसाना चाहेंगे।
+
+### इंजेक्शन के स्थान
+
+- **SC के लिए:** पेट (नाभि से 2 इंच दूर रहें) या ऊपरी बाहरी जाँघें। चर्बी को चुटकी में पकड़ें।
+- **IM के लिए:** वैस्टस लेटरालिस (जाँघ का बाहरी मध्य तिहाई हिस्सा) या वेंट्रोग्लूटियल (कूल्हा/ग्लूट)।
+
+### अमल कैसे करें
+
+1. **स्वच्छता:** अपने हाथ साबुन से अच्छी तरह धोएँ। एक अल्कोहल स्वैब और शार्प्स बिन तैयार रखें।
+2. **विसंक्रमण:** शीशी के रबर ढक्कन को स्वैब करें। अपनी त्वचा को 2 इंच के बाहरी घेरे में स्वैब करें। उसे पूरी तरह हवा में सूखने दें।
+3. **खींचना:** अपनी खुराक के बराबर हवा सिरिंज में खींचें। दबाव बराबर करने के लिए शीशी में हवा धकेलें। तेल को नीचे खींचें। बुलबुले थपथपाकर निकालें।
+4. **बदलें और चुभाएँ:** छोटी इंजेक्शन वाली सुई पर बदल लें। SC के लिए, चर्बी की परत को चुटकी में पकड़ें और सुई को 45° कोण पर तेज़ी से अंदर डालें।
+5. **एस्पिरेट (वैकल्पिक, पर IM के लिए आम):** प्लंजर को थोड़ा पीछे खींचें। अगर बैरल में खून दिखे, तो आपने नस छेद दी है। सुई बाहर निकालें और कहीं और से दोबारा शुरू करें।
+6. **धकेलें:** गाढ़े तेल को धीरे-धीरे इंजेक्ट करें (~10 seconds)।
+7. **निकालें:** सुई को सहजता से बाहर निकालें। रुई से हल्का दबाएँ। सुई को तुरंत शार्प्स कंटेनर में फेंक दें।
+
+## mg को mL में बदलना (गणित)
+
+अगर आपके पास **एस्ट्राडायोल वैलरेट 20 mg/mL** की एक मानक व्यावसायिक अमेरिकी शीशी है (इसका मतलब है कि हर 1 mL तेल में 20mg EV है):
+
+<DoseTable
+  headers={['लक्ष्य खुराक (mg)', 'इंजेक्शन मात्रा (mL)', 'शीशी की सांद्रता']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="अपनी सांद्रता की पुष्टि करें">
+दुनिया भर की DIY शीशियाँ अक्सर बेहद अधिक सांद्रता पर बनाई जाती हैं (40 mg/mL, 50 mg/mL)। जापानी एम्प्यूल (Progynon Depot) अक्सर 10 mg/mL के होते हैं। **हमेशा अपनी शीशी की सांद्रता के आधार पर गणित करें।**
+मात्रा (mL) = लक्ष्य खुराक (mg) ÷ शीशी की सांद्रता (mg/mL)।
+</WarningBox>
+
+## एम्प्यूल की हकीकत
+
+एशिया और यूरोप के कई हिस्सों में, इंजेक्शन वाला EV रबर-ढक्कन वाली शीशियों के बजाय छोटे, तोड़े जा सकने वाले काँच के एम्प्यूल में बिकता है।
+- एम्प्यूल में परिरक्षक (जैसे benzyl alcohol) नहीं होते।
+- एक बार काँच तोड़ने के बाद, तरल दूषित होने योग्य हो जाता है। आप खुले एम्प्यूल को एक हफ्ते तक अपनी मेज़ पर रखकर बचा हुआ आधा हिस्सा बाद में इंजेक्ट नहीं कर सकते।
+- कुछ मार्गदर्शिकाएँ सुझाती हैं कि बची हुई खुराक को पहले से ही किसी स्टेराइल सिरिंज में खींचकर अधिकतम 7 दिन तक फ्रिज में रखा जाए। इसमें संदूषण का अंतर्निहित जोखिम होता है। बहुत अधिक सावधानी बरतें।
+
+<DangerBox title="घातक सुरक्षा सीमाएँ">
+विनाशकारी स्वास्थ्य परिणामों से बचें। निम्नलिखित कभी न करें:
+
+- **एक ही बार में ≥ 10 mg:** भारी खुराक झोंकने से शिखर स्तर 1000 pg/mL से ऊपर पहुँच जाता है, जो गंभीर रक्त के थक्के / VTE घटनाओं को न्योता देता है<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />।
+- **ऊँची खुराक + छोटा अंतराल (उदा. हर 3 दिन में 5mg):** यह संचयी असर अर्ध-आयु को लगातार ऊपर ढेर करता जाता है, जब तक आप विषाक्त शारीरिक अधिभार तक न पहुँच जाएँ<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />।
+
+अगर 5mg/week भी आपके T को नहीं दबा पाता, तो स्वीकार करें कि मोनोथेरेपी विफल हो गई और एक एंटी-एंड्रोजन जोड़ें। खुद को जैव-खतरे में न बदलें।
+</DangerBox>
+
+---
+
+**संदर्भ**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

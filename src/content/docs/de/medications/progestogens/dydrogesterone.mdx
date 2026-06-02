@@ -1,0 +1,77 @@
+---
+title: "Dydrogesteron"
+description: "Dydrogesteron in der transfemininen HRT — Wirkmechanismus eines Retro-Isomer-Gestagens, Dosierung, Vergleich mit mikronisiertem Progesteron und Sicherheit."
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesteron"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dydrogesteron ist ein Retro-Isomer des Progesterons mit deutlich höherer oraler Bioverfügbarkeit als mikronisiertes Progesteron. Es wird als alternative Gestagen-Option in der transfemininen HRT eingesetzt, wobei die spezifisch auf die Transgender-Versorgung bezogene klinische Evidenz weiterhin begrenzt ist<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Wirkmechanismus
+
+Dydrogesteron ist ein Strukturanalogon des natürlichen Progesterons mit hochselektiver Aktivität am Gestagenrezeptor:
+
+- **Hohe orale Bioverfügbarkeit**: ~28 % (vs. ~10 % bei mikronisiertem Progesteron)
+- **Keine antiandrogene Wirkung**: Anders als CPA oder Spironolacton wirkt es nicht direkt auf Androgene
+- **Keine glukokortikoide oder mineralokortikoide Aktivität**
+- **Halbwertszeit**: ~14-17 Stunden
+
+### Vergleich mit mikronisiertem Progesteron
+
+| Merkmal | Dydrogesteron | [Mikronisiertes Progesteron](/de/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Typ | Retro-Isomer (synthetisch) | Natürlich/bioidentisch |
+| Orale Bioverfügbarkeit | ~28 % | ~10 % |
+| Sedierende Wirkung | Minimal | Ausgeprägt (daher Einnahme zur Schlafenszeit) |
+| Verabreichungswege | Nur oral | Oral/rektal/vaginal |
+| VTE-Risiko | Unzureichende Datenlage | Neutral oder sehr gering |
+| Evidenzgrad | C | C |
+
+## Dosierung
+
+<DoseTable
+  headers={['Indikation', 'Dosis', 'Hinweise']}
+  rows={[
+    ['Gestagen-Supplementierung in der HRT', '10-20 mg/day', 'Üblicherweise 1-2 mal täglich'],
+    ['Zyklisches Schema', '10 mg/day x 14 days/month', 'Ahmt die Lutealphase des Menstruationszyklus nach'],
+  ]}
+/>
+
+<WarningBox title="Gestagene in der HRT: die Kontroverse">
+WPATH SOC 8 weist darauf hin, dass der Nutzen von Gestagenen in der transfemininen HRT „nicht ausreichend belegt“ ist<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Einige Anwenderinnen berichten, dass Gestagene die Brustentwicklung und die Stimmung unterstützen, doch die Evidenz beruht überwiegend auf Erfahrungsberichten und Community-Beobachtungen.
+</WarningBox>
+
+## Präparate & Verfügbarkeit
+
+| Präparat | Wirkstärke | Region |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Weltweit breit verfügbar (auch in Festlandchina) |
+| Generika | 10 mg | Ausgewählte Regionen |
+
+## Monitoring
+
+- **PRL (Prolaktin)**: Alle 6 Monate. Gestagene können den Prolaktinspiegel leicht erhöhen
+- Keine zusätzliche Leberkontrolle erforderlich (Dydrogesteron hat eine sehr geringe Lebertoxizität)
+
+## Kontraindikationen
+
+- Dydrogesteron-Allergie
+- Ungeklärte vaginale Blutungen (cisgeschlechtliche Indikation — im Trans-Kontext selten relevant)
+- Akute hepatische Porphyrie

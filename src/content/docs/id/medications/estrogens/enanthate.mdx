@@ -1,0 +1,94 @@
+---
+title: "Estradiol Enantat (EEn)"
+description: "Panduan lengkap estradiol enantat — farmakokinetik, perbandingan dengan ester lain, dosis, dan batas keamanan."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enantat (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramuskular (IM) / Subkutan (SC)"
+  evidenceLevel="B"
+>
+Estradiol enantat (EEn) adalah ester estradiol injeksi kerja sedang-hingga-panjang dengan waktu paruh di antara estradiol valerat (EV) dan estradiol sipionat (EC), yakni sekitar 5-7 hari<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Ester ini umumnya ditemukan sebagai komponen kontrasepsi injeksi kombinasi (mis. Perlutal) dan juga dapat digunakan sebagai obat HRT (terapi hormon) tersendiri.
+</DrugInfoBox>
+
+## Farmakokinetik
+
+Profil farmakokinetik estradiol enantat<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Waktu paruh**: ~5-7 hari
+- **Waktu puncak**: 3-5 hari pasca-injeksi
+- **Waktu palung (trough)**: 7-10 hari pasca-injeksi
+- **Kondisi tunak (steady state)**: Tercapai setelah ~3-4 siklus rutin
+
+### Perbandingan PK Ester Estradiol Injeksi
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerat)', 'EEn (Enantat)', 'EC (Sipionat)']}
+  rows={[
+    ['Waktu paruh', '~4-5 hari', '~5-7 hari', '~8-10 hari'],
+    ['Waktu puncak', '2-3 hari', '3-5 hari', '2-4 hari'],
+    ['Interval yang direkomendasikan', '5-7 hari', '7-10 hari', '7-14 hari'],
+    ['Fluktuasi kadar serum', 'Lebih besar', 'Sedang', 'Lebih kecil'],
+    ['Ketersediaan', 'Global', 'Terbatas pada wilayah tertentu', 'Benua Amerika'],
+  ]}
+/>
+
+Profil farmakokinetik EEn berada di antara EV dan EC, menjadi pilihan bagi pengguna yang menginginkan injeksi mingguan dengan kurva yang lebih halus<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosis
+
+### Dosis Dewasa
+
+<DoseTable
+  headers={['Fase', 'Dosis', 'Catatan']}
+  rows={[
+    ['Dosis awal', '2-4 mg/minggu', 'Mulai dosis rendah untuk melindungi perkembangan payudara'],
+    ['Dosis pemeliharaan', '4-6 mg/minggu', 'Sesuaikan berdasarkan E2 palung; target 100-200 pg/mL'],
+    ['Dosis maksimum', '10 mg/10 hari', 'Jangan melebihi'],
+  ]}
+/>
+
+Rujukan dosis: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> dan WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Catatan Ketersediaan">
+Estradiol enantat tidak banyak tersedia di banyak wilayah. Obat ini terutama ditemukan di Amerika Latin (sebagai komponen Perlutal) dan beberapa negara Eropa tertentu. Jika Anda membutuhkan estradiol injeksi, [estradiol valerat](/id/medications/estrogens/injection/) lebih mudah diperoleh di sebagian besar wilayah.
+</WarningBox>
+
+## Merek & Ketersediaan
+
+| Merek | Formulasi | Wilayah |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (kontrasepsi kombinasi) | Amerika Latin |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Negara tertentu |
+| Formulasi agen tunggal | Berbagai konsentrasi | Apotek peracikan (compounding) |
+
+## Pemantauan
+
+- **E2**: Setiap 3 bulan, pengambilan darah saat palung (pagi sebelum injeksi). Target 100-200 pg/mL
+- **T**: Setiap 3 bulan. Target &lt;50 ng/dL
+- **Fungsi hati (ALT/AST)**: Awal (baseline) + setiap 6 bulan
+
+## Teknik Injeksi
+
+Prosedur injeksi identik dengan [injeksi estradiol valerat](/id/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Batas Keamanan">
+- Batas keamanan yang sama berlaku seperti pada ester estradiol injeksi lainnya
+- Dosis sekali injeksi tidak boleh melebihi 10 mg
+- E2 >200 pg/mL tidak meningkatkan feminisasi, hanya menambah risiko<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Jika menggunakan formulasi kombinasi (mis. Perlutal), komponen progestogen dapat membawa risiko tambahan; konsultasikan dengan dokter
+</DangerBox>

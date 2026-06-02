@@ -1,0 +1,185 @@
+---
+title: "Bikalutamid"
+description: "Penggunaan off-label bikalutamid pada HRT transgender — mekanisme blokade AR tanpa menekan testosteron, pemantauan hepatotoksisitas dan toksisitas paru, larangan tegas penggunaan bersama CPA, serta data terbaru dari studi pada populasi transgender."
+evidenceLevel: C
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
+noindex: true
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamide"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  Bikalutamid adalah antagonis reseptor androgen (AR) non-steroid yang poten, awalnya dikembangkan untuk pengobatan kanker prostat. Dalam HRT transgender, obat ini dianggap sebagai **antiandrogen pilihan terakhir** — hanya dipertimbangkan ketika CPA, spironolakton, dan agonis GnRH semuanya tidak tersedia. WPATH SOC 8 secara tegas tidak merekomendasikannya untuk GAHT rutin.
+</DrugInfoBox>
+
+<WarningBox title="Penggunaan Off-Label">
+Penggunaan bikalutamid dalam HRT perempuan transgender merupakan **penggunaan off-label**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- WPATH SOC 8 secara tegas mencatat bahwa bikalutamid membawa risiko hepatotoksisitas yang langka tetapi berpotensi fatal, yang tidak dapat sepenuhnya dicegah melalui pemantauan
+- Tidak ada label obat yang mencantumkan terapi hormon afirmasi gender sebagai indikasi yang disetujui
+- Pedoman Endocrine Society 2017 tidak membahas bikalutamid
+- Data terkini dari populasi transgender berasal dari studi observasional berskala kecil (sekitar 170 kasus secara keseluruhan)
+</WarningBox>
+
+<DangerBox title="Kontraindikasi bila Dikombinasikan dengan CPA">
+Bikalutamid dan CPA (siproteron asetat) **tidak boleh digunakan secara bersamaan**.
+
+Keduanya berpotensi hepatotoksik; penggunaan bersamaan dapat menimbulkan risiko cedera hati yang bersifat aditif. Kontraindikasi ini didasarkan pada prinsip keamanan farmakologis — belum ada studi yang secara langsung mengevaluasi keamanan penggunaan bersama, tetapi mengingat profil hepatotoksisitas masing-masing obat, tidak ada praktik klinis yang bertanggung jawab yang boleh mengizinkan penggunaannya secara serentak.
+
+**Jika beralih dari CPA ke bikalutamid (atau sebaliknya), obat pertama harus dihentikan di bawah pengawasan medis, dengan jeda setidaknya 2–4 minggu dan fungsi hati yang telah dikonfirmasi normal sebelum memulai obat kedua.**
+</DangerBox>
+
+## Farmakologi
+
+### Mekanisme Kerja
+
+<img src="/images/diagrams/id/bica-ar-mechanism.webp" alt="Mekanisme bikalutamid: memblokade AR namun T meningkat akibat hilangnya umpan balik negatif ke hipotalamus" width="800" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Bikalutamid termasuk antagonis AR non-steroid dengan afinitas pengikatan tertinggi yang saat ini digunakan secara klinis:
+
+1. **Blokade AR yang poten** (satu-satunya mekanisme): Memblokade reseptor androgen secara kompetitif, mencegah testosteron (T) dan DHT memberikan efek biologisnya
+2. **Tidak menurunkan kadar testosteron**: Akibat mekanisme umpan balik, kadar T justru dapat meningkat
+3. **Tidak memengaruhi aksis GnRH–LH/FSH**: Tidak menekan aksis hipotalamus–hipofisis–gonad
+
+### Farmakokinetik
+
+- **Bioavailabilitas oral**: Sekitar 90%
+- **Waktu paruh kondisi tunak (steady-state)**: 5–6 hari — artinya satu dosis yang terlewat berdampak minimal pada konsentrasi plasma, meskipun seringnya dosis terlewat tetap harus dihindari
+- **Waktu mencapai konsentrasi puncak**: Sekitar 31 jam
+- **Waktu mencapai kondisi tunak (steady state)**: Sekitar 4 minggu
+
+### Masalah Naiknya Kadar Testosteron
+
+Ini adalah fenomena khas saat bikalutamid digunakan dalam GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+- Begitu bikalutamid memblokade AR, hipotalamus tidak lagi mendeteksi umpan balik negatif yang dimediasi androgen
+- Hipofisis berkompensasi dengan meningkatkan sekresi LH, merangsang testis untuk memproduksi lebih banyak testosteron
+- Kadar testosteron serum dapat meningkat hingga 1,5–2× nilai sebelum pengobatan
+- Walaupun efek biologis T diblokade, T yang meningkat dapat dikonversi menjadi estradiol melalui aromatase
+- Pada pasien kanker prostat, kenaikan testosteron ini terkadang menyebabkan ginekomastia
+
+**Implikasi bagi pengguna transgender**: Meskipun AR diblokade, kadar testosteron yang tinggi berarti jika obat dihentikan atau kepatuhan menurun, efek maskulinisasi dapat kembali dengan cepat.
+
+## Rekomendasi Dosis
+
+<DoseTable
+  headers={['Protokol', 'Dosis', 'Catatan', 'Sumber']}
+  rows={[
+    ['Awal / Standar', '25 mg/day', 'Dosis rendah yang digunakan pada mayoritas studi transgender sejauh ini', 'Angus 2024; Burgener 2025'],
+    ['Rentang Penyesuaian', '25–50 mg/day', 'Dititrasi berdasarkan respons klinis', 'Neyman 2019 (50 mg); Angus 2024 (25 mg)'],
+    ['Maksimum Absolut', '50 mg/day', 'Dosis lebih tinggi tidak memberikan manfaat tambahan tetapi meningkatkan risiko hepatotoksisitas', 'FDA label (dosis terapi kombinasi kanker prostat)'],
+  ]}
+/>
+
+<WarningBox title="Jangan Gunakan Kadar Testosteron untuk Menilai Efikasi">
+Saat menggunakan bikalutamid, testosteron serum **tidak dapat** dijadikan penanda respons pengobatan. Kadar testosteron mungkin tetap normal atau bahkan meningkat; selama AR diblokade secara efektif, efek androgenik tetap tertekan<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. Efikasi sebaiknya dinilai berdasarkan tanda klinis (berkurangnya produksi sebum, melambatnya pertumbuhan rambut tubuh, dll.) alih-alih hanya dari nilai testosteron.
+</WarningBox>
+
+## Efek Samping
+
+### Hepatotoksisitas (Risiko Paling Penting)
+
+Hepatotoksisitas adalah alasan utama yang membatasi penggunaan bikalutamid dalam GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Data label FDA (dari uji klinis kanker prostat)**:
+- Sekitar **6%** mengalami peningkatan ALT yang transien dan asimtomatik
+- Sekitar **1%** menghentikan pengobatan akibat hepatitis atau peningkatan enzim yang signifikan
+- Uji monoterapi 150 mg berskala besar (EPC, n=8,113): hasil LFT abnormal pada **3,4%** (vs. 1,9% plasebo)
+- Setidaknya 10 laporan kasus cedera hati serius telah dipublikasikan pascapemasaran, termasuk 2 kematian
+
+**Data populasi transgender** (terbatas tetapi informatif):
+- Neyman 2019: 23 remaja, 50 mg/day, tidak ada hepatotoksisitas yang signifikan secara klinis<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} />
+- Fuqua 2024: 40 remaja dalam tindak lanjut, 50 mg/day, tidak ada kejadian hepatik serius<CitationRef id="fuqua-2024" num={3} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 24 dewasa, 25 mg/day, 1 kasus peningkatan enzim ringan (reversibel)<CitationRef id="angus-2024" num={4} authors="Angus LM et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 1 laporan kasus, 50 mg/day, terjadi hepatotoksisitas (reversibel setelah penghentian)<CitationRef id="wilde-2024" num={5} authors="Wilde B et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
+
+Secara agregat, kumpulan data ini tetap terlalu kecil (sekitar 170 kasus) untuk menyingkirkan kemungkinan cedera hati yang langka namun serius.
+
+<DangerBox title="Gejala Cedera Hati — Hentikan Segera dan Cari Pertolongan Medis">
+- Menguningnya kulit atau bagian putih mata (jaundice/ikterus)
+- Urine berwarna gelap (seperti teh)
+- Nyeri atau rasa tidak nyaman yang menetap di perut kanan atas
+- Kelelahan yang tidak biasa, hilang nafsu makan, mual, atau muntah
+- ALT/AST &gt; 3× batas atas normal
+
+**Jika salah satu gejala di atas muncul, hentikan bikalutamid segera dan cari evaluasi medis untuk fungsi hati.**
+</DangerBox>
+
+### Toksisitas Paru (Penyakit Paru Interstisial)
+
+Label FDA mencakup peringatan pascapemasaran untuk penyakit paru interstisial (ILD), termasuk pneumonitis interstisial dan fibrosis paru, yang sebagian di antaranya bersifat fatal.
+
+- **Insidensi keseluruhan sangat rendah**: sekitar 0,01% (1/10.000), jauh lebih rendah daripada obat terkait nilutamid (0,77%)
+- **Data farmakovigilans Jepang**: Matsumoto 2020 menganalisis basis data Japanese Adverse Drug Event Report (JADER) dan menemukan reporting odds ratio untuk ILD terkait bikalutamid sebesar 9,2 (95% CI 7,9–10,6), dengan median waktu awitan 50 hari<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto K et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="Catatan tentang Risiko Toksisitas Paru pada Populasi Asia">
+Basis data farmakovigilans Jepang menunjukkan jumlah laporan ILD terkait bikalutamid yang lebih tinggi, tetapi hal ini **tidak menandakan adanya predisposisi genetik pada individu Asia** — tingkat pelaporan ILD akibat obat di Jepang secara keseluruhan lebih tinggi daripada negara lain (kemungkinan mencerminkan budaya pelaporan dan pola peresepan). Tidak ada studi prospektif yang membuktikan adanya perbedaan risiko menurut ras. Meski demikian, jika timbul batuk kering, sesak napas, atau demam, segera cari pertolongan medis dan beri tahu dokter yang merawat tentang penggunaan bikalutamid.
+</WarningBox>
+
+### Nyeri Payudara dan Ginekomastia
+
+- Bikalutamid umumnya menyebabkan ginekomastia pada pasien kanker prostat
+- Pada pengguna transgender, efek ini dapat dianggap sebagai hasil yang diinginkan
+- Nyeri tekan pada payudara relatif umum terjadi
+
+### Efek Samping Lain
+
+- Hot flash/rasa panas mendadak (lebih jarang dibanding agonis GnRH)
+- Gangguan saluran cerna (mual, diare)
+- Kulit kering
+
+## Kebutuhan Pemantauan
+
+<DoseTable
+  headers={['Pemeriksaan', 'Frekuensi', 'Target / Ambang Peringatan', 'Tindakan']}
+  rows={[
+    ['Fungsi hati (ALT/AST)', 'Awal (baseline) + bulanan selama 6 bulan pertama → kemudian setiap 3 bulan', 'ALT/AST ≤ batas atas normal', '>3× ULN: hentikan segera dan cari evaluasi medis'],
+    ['Bilirubin', 'Bersamaan dengan tes fungsi hati', 'Rentang normal', 'Peningkatan menandakan cedera hati yang memburuk'],
+    ['Testosteron (T)', 'Setiap 3–6 bulan', 'Hanya sebagai rujukan (T dapat meningkat)', 'Bukan penanda utama efikasi pengobatan'],
+    ['Estradiol (E2)', 'Bersamaan dengan testosteron', '100–200 pg/mL', 'Menilai efektivitas regimen kombinasi'],
+  ]}
+/>
+
+<WarningBox title="Pemantauan Fungsi Hati Tidak Dapat Ditawar">
+Bahkan jika Anda merasa benar-benar sehat, **tes fungsi hati bulanan selama 6 bulan pertama** penggunaan bikalutamid tidak boleh dilewatkan. Cedera hati dapat berlangsung tanpa gejala dan hanya dapat dideteksi dini melalui pemeriksaan darah. Jika Anda tidak mampu berkomitmen pada pemantauan fungsi hati bulanan, bikalutamid sebaiknya tidak digunakan.
+</WarningBox>
+
+## Kasus Penggunaan yang Tepat
+
+Bikalutamid memiliki peran yang sangat terbatas dalam GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Pertimbangkan hanya bila semua kondisi berikut terpenuhi**:
+- CPA tidak tersedia (tidak dipasarkan secara lokal / intoleransi / risiko meningioma)
+- Spironolakton tidak tersedia (gangguan ginjal / risiko hiperkalemia / efek tidak memadai)
+- Agonis GnRH tidak tersedia (hambatan biaya / akses)
+- **Pengawasan medis dan pemantauan berkala tersedia**
+
+**Kontraindikasi**:
+- Penyakit hati yang sudah ada sebelumnya atau fungsi hati abnormal
+- Sedang menggunakan CPA atau obat hepatotoksik lainnya
+- Tidak mampu menjalani tes darah fungsi hati secara berkala
+
+## Ketersediaan
+
+- **Status regulasi**: Bikalutamid disetujui di Tiongkok daratan (untuk pengobatan kanker prostat)
+- **Akses**: Dapat diresepkan melalui departemen urologi atau onkologi
+- **Merek**: Casodex (obat asli/originator) dan generik dalam negeri (mis. Langyi)
+- **Biaya**: Originator sekitar CNY 200–400/bulan; generik sekitar CNY 50–150/bulan (tablet 50 mg)
+- **Catatan**: Sebagian besar dokter tidak terbiasa dengan penerapannya dalam GAHT; memperoleh resep mungkin memerlukan pembingkaian indikasi seputar kondisi terkait prostat
+
+<DrugBrandGallery drugId="bicalutamide" />

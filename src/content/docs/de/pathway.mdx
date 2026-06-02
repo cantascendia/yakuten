@@ -1,0 +1,226 @@
+---
+title: "Klinischer HRT-Behandlungspfad"
+description: "Vollständiger HRT-Pfad von der Basisdiagnostik bis zur Erhaltungstherapie — mit Phasenzielen, Entscheidungsknoten und Kontrollintervallen."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Dieser Behandlungspfad basiert auf den WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> und den Leitlinien der Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> und bietet einen standardisierten Rahmen für Beginn und Erhaltung einer transfeminisierenden HRT.
+</p>
+
+<img src="/images/diagrams/de/pathway-timeline.webp" alt="HRT-Behandlungsverlauf: Basisdiagnostik → niedrige Dosis (1–6 Mon.) → Titration (6–12 Mon.) → Erhaltung (ab 12 Mon.)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">WOCHE 0</div>
+  <PhaseBlock phase={0} title="Basisdiagnostik" color="green">
+    <p class="phase-block__desc">
+      Bevor Sie mit einem Medikament beginnen, sollte eine vollständige Ausgangsuntersuchung erfolgen, um Kontraindikationen auszuschließen und Ihre persönlichen Referenzwerte festzuhalten.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Geschlechtshormone (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Leber- und Nierenwerte, Lipidprofil
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Gerinnungsstatus und D-Dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Nüchternglukose + Blutbild
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">EINSTIEG · 1–6 MONATE</div>
+  <PhaseBlock phase={1} title="Einstieg mit niedriger Dosis" color="green" week="1–6 MONATE">
+    <DoseTable
+      headers={['Applikationsweg', 'Startdosis', 'Quelle']}
+      rows={[
+        ['Estradiol oral', '2.0 mg / Tag', '[2]'],
+        ['Transdermales Pflaster', '50-100 µg / 24h', '[2]'],
+        ['Gel zur Hautanwendung', '1.5 mg / Tag', '[2]'],
+        ['Estradiolvalerat i.m.', '1-2 mg / Woche', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Antiandrogen (falls erforderlich): CPA 5-12.5 mg/Tag oder Spironolacton 50-100 mg/Tag. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Ziel-E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Ziel-T-Verlauf</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Fallend
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Sicherheitshinweis: Ihr Körper braucht Zeit, um sich an die Rezeptorveränderungen anzupassen. Erhöhen Sie die Dosis niemals ohne vorherige Blutuntersuchung. Steigern Sie auch dann nicht, wenn Sie das Gefühl haben, „es passiert nichts“. Erste Anzeichen der Brustentwicklung (Brustknospen) zeigen sich typischerweise nach 3-6 Monaten.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="ENTSCHEIDUNG" timepoint="3 MONATE">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL und T fallend → aktuelles Schema bis Monat 6 fortführen"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Höherdosierung gemäß Phase 2 erwägen"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Auffällige Leberwerte / PRL >30 / schwere Stimmungsverschlechterung → absetzen und ärztliche Hilfe aufsuchen"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6–12 MONATE</div>
+  <PhaseBlock phase={2} title="Dosistitration" color="yellow" week="6–12 MONATE">
+    <p class="phase-block__desc">
+      Anpassung auf Grundlage der Laborwerte aus Monat 3. Ziel ist das Erreichen des physiologischen Standardbereichs für transfeminine Personen.
+    </p>
+    <DoseTable
+      headers={['Applikationsweg', 'Angepasste Dosis']}
+      rows={[
+        ['Transdermales Pflaster', '100-200 µg / Tag'],
+        ['Estradiol oral', '4 mg / Tag'],
+        ['Gel zur Hautanwendung', '3 mg / Tag'],
+        ['Estradiolvalerat i.m.', '2-4 mg / Woche'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Ziel-E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Ziel-T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesteron (optional)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Abhängig von der Brustentwicklung erwägen (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">E2V i.m. 2-4 mg/Woche</span>
+      <span class="dose-tag dose-tag--yellow">Gel zur Hautanwendung 3.0-4.5 mg/Tag</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="STABILITÄT" timepoint="6 MONATE">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL und T <50 ng/dL → in die Erhaltungsphase übergehen"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50, E2 jedoch im Zielbereich → Antiandrogen anpassen (E2 nicht erhöhen, um T zu unterdrücken)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Steigerung innerhalb sicherer Grenzen fortsetzen"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">STABILER ZUSTAND · AB 12 MONATEN</div>
+  <PhaseBlock phase={3} title="Langfristige Erhaltung" color="pink" week="AB 12 MONATEN">
+    <p class="phase-block__desc">
+      Sobald sich Werte und körperliche Veränderungen stabilisiert haben, wechseln Sie zu selteneren Kontrollen. Halten Sie die minimale wirksame Dosis, um E2 bei 100-200 pg/mL und T &lt;50 ng/dL zu halten.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Kontrollintervall</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Monate</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Vollständiges Hormonpanel und Erfassung der VTE-Risikofaktoren alle 6 Monate. Lipide und Nüchternglukose jährlich. Eine Knochendichtemessung in Erwägung ziehen.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL führt nicht zu mehr Feminisierung — es erhöht lediglich das Risiko (Endocrine Society 2017, Empf. 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">ENDE DER INITIALPHASE</p>
+    <p class="pathway-end-sub">Fortlaufende Kontrolle</p>
+  </div>
+</div>
+
+</div>
+</div>

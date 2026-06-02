@@ -1,0 +1,90 @@
+---
+title: "Dutasterid"
+description: "Dutasterid in der feminisierenden HRT — duale 5α-Reduktase-Hemmung, Vergleich mit Finasterid, Dosierung und Sicherheit."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasterid"
+  nameCN="Dutasterid"
+  category="5α-Reduktase-Hemmer"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dutasterid ist ein dualer Typ-I- und Typ-II-5α-Reduktase-Hemmer, der das Serum-DHT um etwa 90-95 % senkt – stärker als Finasterid<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. In der feminisierenden HRT wird es als ergänzende Therapie eingesetzt, wenn Finasterid nicht ausreicht.
+</DrugInfoBox>
+
+## Wirkmechanismus
+
+Dutasterid hemmt gleichzeitig **sowohl Typ I als auch Typ II** der 5α-Reduktase:
+
+- **Typ I**: Vorwiegend in der Haut (Talgdrüsen) und in der Leber
+- **Typ II**: Vorwiegend in den Haarfollikeln und in der Prostata
+
+Diese duale Hemmung erreicht eine DHT-Reduktion von **90-95 %**, verglichen mit ~65-70 % bei [Finasterid](/de/medications/five-alpha-reductase/finasteride/).
+
+## Vergleich mit Finasterid
+
+| Merkmal | Dutasterid | Finasterid |
+|---------|-------------|-------------|
+| Zielenzym | Typ I + II | nur Typ II |
+| DHT-Reduktion | ~90-95 % | ~65-70 % |
+| Halbwertszeit | ~4-5 Wochen | ~6-8 Stunden |
+| Wirkeintritt | 3-6 Monate | 3-6 Monate |
+| Auswaschphase nach Absetzen | Monate (sehr lange Halbwertszeit) | Wochen |
+| Verfügbarkeit als Generikum | begrenzt | weit verbreitet |
+| Evidenzgrad | C | B |
+
+## Dosierung
+
+<DoseTable
+  headers={['Indikation', 'Dosis', 'Hinweise']}
+  rows={[
+    ['Ergänzung zur HRT', '0.5 mg/day', 'Standarddosis; nicht überschreiten'],
+  ]}
+/>
+
+- 0.5 mg/day ist die einzige empfohlene Dosis
+- Aufgrund der sehr langen Halbwertszeit (~4-5 Wochen) ist **bei einer ausgelassenen Einnahme kein Nachholen erforderlich**
+- Die Kapseln dürfen nicht geöffnet oder zerkaut werden
+
+<WarningBox title="Dutasterid ist in der Regel Mittel der zweiten Wahl">
+Wenn Finasterid noch nicht versucht wurde, wird grundsätzlich empfohlen, zunächst über 6 Monate einen Therapieversuch mit Finasterid zu unternehmen. Dutasterid hat eine geringere Evidenz (C), höhere Kosten, und seine extrem lange Halbwertszeit bedeutet, dass Nebenwirkungen noch monatelang nach dem Absetzen fortbestehen.
+</WarningBox>
+
+## Präparate & Verfügbarkeit
+
+| Präparat | Stärke | Hinweise |
+|-------|----------|-------|
+| **Avodart** | 0.5 mg Kapsel | Originalpräparat |
+| Generika | 0.5 mg Kapsel | in manchen Regionen erhältlich |
+
+## Verlaufskontrolle
+
+- **T**: Routinemäßige HRT-Kontrollen alle 3 Monate fortsetzen
+- **DHT** (optional): kann die Wirkung des 5αRI bestätigen
+- **PSA**: Dutasterid senkt den PSA-Wert; informieren Sie Ihre Ärztin/Ihren Arzt, falls dieser bestimmt wird
+
+## Kontraindikationen
+
+- Dutasterid-Allergie
+- Schwere Leberfunktionsstörung (Dutasterid wird über CYP3A4 metabolisiert)
+- Gleichzeitige Einnahme starker CYP3A4-Hemmer (z. B. Ketoconazol) — kann zu einer Akkumulation von Dutasterid führen
+
+<DangerBox title="Wichtige Hinweise">
+- **Sehr lange Halbwertszeit** (4-5 Wochen): Die DHT-Suppression hält noch monatelang nach dem Absetzen an
+- Der Kapselinhalt ist teratogen; schwangere Personen dürfen auslaufende Kapseln nicht berühren
+- Setzen Sie andere HRT-Medikamente nicht ab, nur weil sich der Haarausfall bessert
+- Wenn Finasterid bereits wirksam ist, besteht kein Grund, auf Dutasterid zu eskalieren
+</DangerBox>

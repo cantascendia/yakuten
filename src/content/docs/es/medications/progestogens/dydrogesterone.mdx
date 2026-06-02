@@ -1,0 +1,77 @@
+---
+title: "Didrogesterona"
+description: "Didrogesterona en la THS transfeminina — mecanismo del progestágeno retroisómero, dosificación, comparación con la progesterona micronizada y seguridad."
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Didrogesterona"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+La didrogesterona es un retroisómero de la progesterona con una biodisponibilidad oral considerablemente mayor que la de la progesterona micronizada. Se utiliza como una opción alternativa de progestágeno en la THS transfeminina, aunque la evidencia clínica específica para la atención de personas trans sigue siendo limitada<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mecanismo
+
+La didrogesterona es un análogo estructural de la progesterona natural con una actividad sobre el receptor de progestágenos altamente selectiva:
+
+- **Alta biodisponibilidad oral**: ~28 % (frente a ~10 % de la progesterona micronizada)
+- **Sin actividad antiandrogénica**: a diferencia del CPA o la espironolactona, no afecta directamente a los andrógenos
+- **Sin actividad glucocorticoide ni mineralocorticoide**
+- **Semivida**: ~14-17 horas
+
+### Comparación con la progesterona micronizada
+
+| Característica | Didrogesterona | [Progesterona micronizada](/es/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Tipo | Retroisómero (sintético) | Natural/bioidéntica |
+| Biodisponibilidad oral | ~28 % | ~10 % |
+| Efecto sedante | Mínimo | Significativo (de ahí la dosificación nocturna) |
+| Vías | Solo oral | Oral/rectal/vaginal |
+| Riesgo de VTE (tromboembolismo venoso) | Datos insuficientes | Neutro o muy bajo |
+| Nivel de evidencia | C | C |
+
+## Dosificación
+
+<DoseTable
+  headers={['Indicación', 'Dosis', 'Notas']}
+  rows={[
+    ['Suplementación con progestágeno en la THS', '10-20 mg/day', 'Habitualmente 1-2 veces al día'],
+    ['Pauta cíclica', '10 mg/day x 14 days/month', 'Imita la fase lútea del ciclo menstrual'],
+  ]}
+/>
+
+<WarningBox title="Los progestágenos en la THS: la controversia">
+La WPATH SOC 8 señala que los beneficios de los progestágenos en la THS transfeminina "no se han demostrado de forma suficiente"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Algunas usuarias refieren que los progestágenos ayudan con el desarrollo mamario y el estado de ánimo, pero la evidencia es principalmente anecdótica y de base comunitaria.
+</WarningBox>
+
+## Marcas y disponibilidad
+
+| Marca | Concentración | Región |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Ampliamente disponible a nivel mundial (incluida China continental) |
+| Genéricos | 10 mg | Regiones seleccionadas |
+
+## Seguimiento
+
+- **PRL (prolactina)**: cada 6 meses. Los progestágenos pueden elevar levemente la prolactina
+- No se requiere seguimiento hepático adicional (la didrogesterona tiene una hepatotoxicidad muy baja)
+
+## Contraindicaciones
+
+- Alergia a la didrogesterona
+- Sangrado vaginal inexplicado (indicación en personas cisgénero — rara vez aplicable en el contexto trans)
+- Porfiria hepática aguda

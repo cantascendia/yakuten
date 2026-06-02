@@ -1,0 +1,102 @@
+---
+title: "Methodik"
+description: "Wie die Inhalte der HRT-Pharmakopöe entstehen — von der Literaturrecherche bis zur Veröffentlichung. Mit Abgleich an klinischen Leitlinien, DOI-Quellenangaben, Evidenzgraduierung A/B/C/X, Vier-Augen-Prüfung, fachärztlicher Begutachtung und rollierender Quartalsüberprüfung."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="Redaktionsteam der HRT-Pharmakopöe"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="de"
+/>
+
+Diese Seite beschreibt, wie jeder Inhalt der HRT-Pharmakopöe verfasst, geprüft und aktualisiert wird. Es ist unsere Zusage an die Leserinnen und Leser: **Texte, die diesen Prozess nicht durchlaufen haben, werden nicht veröffentlicht.**
+
+## 1. Drei Grundprinzipien
+
+1. **Keine Aussage ohne Quelle**: Jede medizinische Aussage muss mindestens eine DOI oder einen Verweis auf eine internationale Leitlinie tragen; lässt sich eine Aussage nicht belegen, wird sie entweder mit <EvidenceBadge level="X" /> gekennzeichnet oder entfernt.
+2. **Dosierungsdaten mehrfach absichern**: Verordnete Dosierungen müssen in mindestens zwei unabhängigen, maßgeblichen Quellen vorkommen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA und vergleichbare).
+3. **Absolute Formulierungen vermeiden**: Statt „muss / immer / niemals" verwenden wir „in der Regel / empfohlen / in den allermeisten Fällen".
+
+## 2. Vollständiger Arbeitsablauf
+
+### 1. Themenauswahl
+- Themen werden nach Suchnachfrage, Leserfragen, Leitlinienaktualisierungen und wichtigen Sicherheitswarnungen (EMA/FDA) ausgewählt
+- Jede Seite benennt die 3–7 konkreten Fragen, die sie beantworten muss
+- Die Zielgruppe (Patientin / hausärztlich tätige Behandlerin / Angehörige) wird vorab festgelegt
+
+### 2. Literaturrecherche
+- Bevorzugte Quellen: PubMed, Cochrane, offizielle Leitlinien-Websites, Übersichtsarbeiten von Transfemscience
+- Ausgeschlossen: anonyme Forenbeiträge, kommerzielle Websites, Blogs ohne Peer-Review
+- Zu jeder zentralen Aussage wird die ursprüngliche Quelle festgehalten (DOI bevorzugt; andernfalls die Publikationsangaben der Zeitschrift)
+
+### 3. Evidenzgraduierung
+Bewertet nach der Aussagekraft des Studiendesigns:
+
+| Grad | Bedeutung | Beispielhafte Evidenz |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Stark | Mehrere RCTs, systematische Übersichtsarbeiten / Metaanalysen, ausdrückliche Empfehlung einer internationalen Leitlinie |
+| <EvidenceBadge level="B" /> | Mittel | Einzelner RCT, mehrere prospektive Kohorten |
+| <EvidenceBadge level="C" /> | Schwach | Fallberichte, retrospektive Studien, Expertenmeinung |
+| <EvidenceBadge level="X" /> | Keine | Wissen aus der Community, persönliche Erfahrung, Schlussfolgerung |
+
+### 4. Texterstellung
+- Verwendung gemeinsamer Komponenten: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>` usw.
+- Das Frontmatter erfasst `evidenceLevel`, `lastReviewed` und `references` (durch CI erzwungen)
+- Dosistabellen prüfen Obergrenzen und kontraindizierte Kombinationen automatisch
+
+### 5. Vier-Augen-Prüfung
+- Sobald die Autorin einen Entwurf fertigstellt → verifiziert eine zweite Redakteurin jede `<CitationRef>` unabhängig anhand der Primärquelle
+- Bei Abweichungen oder Überinterpretationen → Rückgabe zur Überarbeitung
+- Wurde die ursprüngliche Quelle zurückgezogen oder korrigiert → seitenweite Suche und Ersetzung
+
+### 6. Fachärztliche Begutachtung
+- Beraterinnen aus Endokrinologie / Psychiatrie / Recht werden je nach Thema zugeordnet
+- Die Begutachtungsprotokolle, einschließlich abweichender Meinungen und der endgültigen Entscheidungen, werden archiviert
+- Ist keine qualifizierte Gutachterin erreichbar, wird das Thema nicht veröffentlicht
+
+### 7. Veröffentlichung und Barrierefreiheits-QA
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Farbkontrast, Tastaturerreichbarkeit und Screenreader-Semantik werden überprüft
+- Mobile Breakpoints und der `prefers-reduced-motion`-Fallback werden verifiziert
+
+### 8. Rollierende Überprüfung
+- Standardmäßig erneute Prüfung alle **12 Monate**, wobei `lastReviewed` aktualisiert wird
+- Seiten mit hohem Risiko (Risiken, Dosis-Obergrenzen, Notfälle) werden alle **6 Monate** erneut geprüft
+- Eine wesentliche Leitlinienänderung → inkrementelle Aktualisierung innerhalb von 48 Stunden
+
+## 3. Fehlerkorrektur
+
+Wenn Leserinnen und Leser sachliche Fehler, abweichende Quellenangaben oder veraltete Inhalte finden:
+
+1. Einreichung über das [Feedback-Formular](https://wj.qq.com/s2/16576000/5fe5/) oder ein GitHub-Issue
+2. Erste Rückmeldung innerhalb von 72 Stunden
+3. Sobald ein sachlicher Fehler bestätigt ist, wird oben auf der Seite ein **Berichtigungshinweis** ergänzt, und die Versionshistorie hält den ursprünglichen Fehler sowie das Korrekturdatum fest
+4. Wesentliche Korrekturen werden an Abonnentinnen per E-Mail / RSS / Telegram ausgespielt
+
+## 4. Erklärung zu Interessenkonflikten
+
+- Diese Website hat kein kommerzielles Sponsoring, keine Arzneimittelwerbung und keine Verkaufsprovisionen
+- Die Betriebskosten werden von Freiwilligen aus eigener Tasche getragen; wir nehmen Spenden aus der Open-Source-Community an
+- Redakteurinnen und medizinische Beraterinnen unterzeichnen Offenlegungen zu Interessenkonflikten; Medikamente, zu denen eine aktive Verordnungsbeziehung besteht, werden nicht unabhängig von der betroffenen Person begutachtet
+
+<WarningBox>
+Diese Website bietet evidenzbasiertes Referenzmaterial und **stellt keine medizinische Beratung dar**. Konsultiere vor jeder Änderung deiner Medikation eine qualifizierte medizinische Fachperson und suche bei akuten Symptomen unverzüglich eine Notaufnahme auf.
+</WarningBox>
+
+## Verwandte Dokumente
+
+- [Über diese Website](/de/about/)
+- [Medizinische Beraterinnen](/de/medical-advisors/)
+- [Redaktionsrichtlinie](/de/editorial-policy/)
+- [Quellenverzeichnis](/de/appendix-references/)

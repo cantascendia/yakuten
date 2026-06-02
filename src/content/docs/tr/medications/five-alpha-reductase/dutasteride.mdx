@@ -1,0 +1,90 @@
+---
+title: "Dutasterid"
+description: "Transfeminen HRT'de dutasterid — çift 5α-redüktaz inhibisyonu, finasterid ile karşılaştırma, dozlama ve güvenlik."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasterid"
+  nameCN="Dutasterid"
+  category="5α-redüktaz inhibitörü"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dutasterid, serum DHT'sini yaklaşık %90-95 oranında azaltan, çift tip I + tip II 5α-redüktaz inhibitörüdür; bu etki finasteridden daha güçlüdür<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Finasterid yetersiz kaldığında transfeminen HRT'de yardımcı tedavi olarak kullanılır.
+</DrugInfoBox>
+
+## Etki mekanizması
+
+Dutasterid, **hem tip I hem de tip II** 5α-redüktazı eş zamanlı olarak inhibe eder:
+
+- **Tip I**: Esas olarak deride (yağ bezleri) ve karaciğerde bulunur
+- **Tip II**: Esas olarak kıl foliküllerinde ve prostatta bulunur
+
+Bu çift inhibisyon, [finasterid](/tr/medications/five-alpha-reductase/finasteride/) ile elde edilen ~%65-70'e kıyasla **%90-95** DHT azalması sağlar.
+
+## Finasterid ile karşılaştırma
+
+| Özellik | Dutasterid | Finasterid |
+|---------|------------|------------|
+| Hedef | Tip I + II | Yalnızca tip II |
+| DHT azalması | ~%90-95 | ~%65-70 |
+| Yarılanma ömrü | ~4-5 hafta | ~6-8 saat |
+| Etki başlangıcı | 3-6 ay | 3-6 ay |
+| Bırakma sonrası temizlenme | Aylar (çok uzun yarılanma ömrü) | Haftalar |
+| Jenerik bulunabilirlik | Sınırlı | Yaygın |
+| Kanıt düzeyi | C | B |
+
+## Dozlama
+
+<DoseTable
+  headers={['Endikasyon', 'Doz', 'Notlar']}
+  rows={[
+    ['HRT\'ye yardımcı', '0.5 mg/gün', 'Standart doz; aşmayın'],
+  ]}
+/>
+
+- 0.5 mg/gün önerilen tek dozdur
+- Çok uzun yarılanma ömrü nedeniyle (~4-5 hafta), **bir günün atlanması telafi dozu gerektirmez**
+- Kapsüller açılmamalı veya çiğnenmemelidir
+
+<WarningBox title="Dutasterid Genellikle İkinci Basamak Tedavidir">
+Finasterid denenmediyse, genellikle önce 6 ay süreyle finasteridin denenmesi önerilir. Dutasteridin kanıt düzeyi daha düşüktür (C), maliyeti daha yüksektir ve son derece uzun yarılanma ömrü nedeniyle yan etkiler ilaç kesildikten sonra aylarca devam eder.
+</WarningBox>
+
+## Markalar ve bulunabilirlik
+
+| Marka | Doz gücü | Notlar |
+|-------|----------|--------|
+| **Avodart** | 0.5 mg kapsül | Orijinal marka |
+| Jenerikler | 0.5 mg kapsül | Bazı bölgelerde mevcut |
+
+## İzlem
+
+- **T**: Rutin HRT izlemine her 3 ayda bir devam edin
+- **DHT** (isteğe bağlı): 5αRI etkisini doğrulayabilir
+- **PSA**: Dutasterid PSA'yı düşürür; test yaptırıyorsanız doktorunuzu bilgilendirin
+
+## Kontrendikasyonlar
+
+- Dutasterid alerjisi
+- Ağır karaciğer yetmezliği (dutasterid CYP3A4 üzerinden metabolize edilir)
+- Eş zamanlı güçlü CYP3A4 inhibitörleri (örn. ketokonazol) — dutasterid birikimine yol açabilir
+
+<DangerBox title="Önemli Notlar">
+- **Çok uzun yarılanma ömrü** (4-5 hafta): DHT baskılanması ilaç bırakıldıktan sonra aylarca sürer
+- Kapsül içeriği teratojeniktir; gebe bireyler sızdıran kapsüllere temas etmemelidir
+- Saç dökülmesi düzeldiği için diğer HRT ilaçlarını bırakmayın
+- Finasterid zaten etkiliyse, dutasteride geçmeye gerek yoktur
+</DangerBox>

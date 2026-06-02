@@ -1,0 +1,176 @@
+---
+title: "Iniksyong Estradiol (EV / EC / EEn)"
+description: "Ang kumpletong gabay sa iniksyong estradiol—pharmacokinetics, dosing, paghahambing ng SC kontra IM, posibilidad ng monotherapy, mga protocol sa iniksyon, at mga kritikal na linyang pangkaligtasan."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+Ang iniksyong estradiol ang walang-katumbas na pinakamalakas na sandata ng transfeminine HRT. Buong-buo nitong nilalampasan ang first-pass metabolism sa atay at naghahatid ng lubos na maaasahan at dominanteng antas ng estrogen. Pinatutunayan ng mga kamakailang klinikal na pagsusuri na ang iniksyong Subcutaneous (SC) ay kasinghusay ng iniksyong Intramuscular (IM)<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. Kamangha-mangha, humigit-kumulang 82.6% ng mga gumagamit ng iniksyon ang nakakamit ng ganap na pagsupil sa T bilang Monotherapy, na walang kailangang anumang anti-androgen blocker<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="Mga ampoule ng iniksyong Progynon Depot 10mg estradiol valerate" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## Pharmacokinetics (Ang mga Ester)
+
+Ang iniksyong estradiol ay nakakabit sa isang "ester" (isang kadena ng fatty acid) na nagpapabagal sa pagkakawala nito sa iyong dugo upang lumikha ng depot effect. Ang tatlong pinakakaraniwan ay:
+- **Estradiol Valerate (EV)**: Pinakamaikling half-life (~4-5 araw). Kailangan ng iniksyon kada 5 hanggang 7 araw. Mabilis tumaas at mabilis ding bumaba.
+- **Estradiol Cypionate (EC)**: Katamtamang half-life (~8-10 araw). Mas patag at mas pantay na kurba. Madalas iniksyon kada 7 hanggang 10 araw.
+- **Estradiol Enanthate (EEn)**: Mahabang half-life. Kayang magbigay ng matatag at pantay na antas kung iniksyon kada 7 hanggang 14 araw. Malawakang ginagamit sa grey-market na DIY na komunidad.
+
+Para sa gabay na ito (at sa karaniwang patnubay ng Endocrine Society), gagamitin nating batayan ang **Estradiol Valerate (EV)**, dahil ito ang pinaka-standardized na komersyal na pormulasyon na malawakang ginagawa sa US at Japan<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosis para sa EV
+
+### Mga Saklaw para sa Nasa Hustong Gulang
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Patnubay']}
+  rows={[
+    ['Panimulang Dosis', '1-2 mg / linggo', 'Yugto ng low-dose na pagsisimula (Buwan 1-6) upang protektahan ang ductal branching.'],
+    ['Pagpapanatili', '2-4 mg / linggo', 'I-titrate batay sa trough na resulta ng dugo. Target na E2: 100-200 pg/mL.'],
+    ['Tiyak na Maximum', '5 mg / linggo', 'Ang absolutong kisame ng kaligtasan na iminumungkahi ng Rothman 2024. Huwag itong basta-basta lampasan.'],
+  ]}
+/>
+
+Ang mga numerong ito ay ganap na tumutugma sa WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> at sa patnubay ng Endocrine Society<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+<WarningBox title="Ang Nakamamatay na Pagkakamali: Pagmamadali sa Proseso">
+Ang paglilimita sa sarili sa 1-2 mg/linggo sa unang 6 na buwan ay hindi "konserbatibong gatekeeping"; ito ay biyolohikal na proteksyon. Ang pagbomba ng napakalaking 5mg na EV spike sa iyong dugo sa unang buwan ay pinipilit ang maagang lobuloalveolar maturation, na permanenteng nagtatapos sa pag-usbong ng iyong breast ductal branching. Tingnan ang [gabay sa Pag-unlad ng Dibdib](/fil/breast-development/).
+</WarningBox>
+
+### Timing ng Pagsusuri sa Dugo
+
+Dapat kang kumuha ng dugo sa umaga ng araw ng iyong iniksyon, **bago mismo mag-iniksyon**. Sinusukat nito ang iyong **Trough Level** (ang iyong pinakamababang konsentrasyon ng E2 sa loob ng siklo).
+- **Target na Trough:** 100-200 pg/mL.
+- **Babala:** Ang trough na >200 pg/mL sa EV ay nangangahulugang malamang na napakataas ng iyong day-2 peak (hal., 500-800 pg/mL). Ang mataas na saklaw ay nagpapataas lamang ng panganib sa puso, hindi nito pinapatindi ang feminisasyon.
+- Kung bumagsak ang iyong trough sa ilalim ng 50 pg/mL sa 7-araw na siklo ng EV, dapat kang lumipat sa 5-araw na siklo (gamit ang proporsyonal na mas mababang dosis) upang patagin ang kurba, sa halip na basta-basta magbomba ng mas mataas na dosis kada 7 araw.
+
+## Subcutaneous (SC) kontra Intramuscular (IM)
+
+Sa loob ng mga dekada, pinilit ng endokrinolohiya ang mga trans na babae na gumamit ng malalaking karayom upang itulak ang langis nang malalim sa kalamnan (IM). Pinatutunayan ng kasalukuyang malakihang datos na ang paghahatid nang Subcutaneous (SC) sa taba ng tiyan/hita ay ganap na katumbas<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['Sukatan', 'Subcutaneous (SC)', 'Intramuscular (IM)']}
+  rows={[
+    ['Antas ng E2 sa Lab', 'Magkatulad sa IM', 'Ang makasaysayang pamantayan'],
+    ['Pagsupil sa T', 'Magkatulad sa IM', 'Ang makasaysayang pamantayan'],
+    ['Antas ng Sakit', 'Halos walang sakit', 'Maaaring magdulot ng malalim na pananakit at pamamaga ng kalamnan'],
+    ['Gauge ng Karayom', 'Napakanipis (25-27G)', 'Mas makapal (21-23G), mas mahaba'],
+    ['Dali ng Paggamit', 'Napakadaling gawin sa sarili', 'Ang glute IM ay madalas nangangailangan ng kasama/nars'],
+  ]}
+/>
+
+**Hatol:** Kung ikaw ay nag-iiniksyon sa sarili, ang Subcutaneous (SC) ang mas mahusay, mas ligtas, at hindi gaanong nakaka-trauma na opsyon.
+
+<img src="/images/diagrams/fil/injection-angles.webp" alt="Paghahambing ng cross-section ng subcutaneous (45°) kontra intramuscular (90°) na teknik ng iniksyon" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## Ang Bentahe ng Monotherapy
+
+Mas husay na sinusupil ng iniksyong estradiol ang testosterone kaysa sa oral na tableta. Isang 2025 cohort study nina Misakian et al. ang nagpakita na **82.6%** ng mga gumagamit ng iniksyong estradiol ay nakamit ang ganap na pagsupil sa testosterone (T < 50 ng/dL) nang walang anumang Spironolactone, Bicalutamide, o Cyproterone<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- Inaalis ang panganib ng toxisidad sa atay mula sa CPA.
+- Inaalis ang panganib na diuretic at potassium mula sa Spiro.
+
+<WarningBox title="Huwag Habuling Padalus-dalos ang Monotherapy">
+Humigit-kumulang 17% ng mga indibidwal ang biyolohikal na hindi makakamit ang monotherapy. Kung nag-iiniksyon ka ng 5 mg/linggo at nananatili sa 300 ng/dL ang iyong T, **huwag mong dagdagan ang iyong dosis ng iniksyon sa 8mg o 10mg**. Kabilang ka sa 17%. Tanggapin ang katotohanan at magpasok ng low-dose na anti-androgen.
+</WarningBox>
+
+## Protocol ng Iniksyon
+
+### Ang mga Kagamitan
+
+| Ruta | Hiringgilya | Karayom sa Pagkuha | Karayom sa Iniksyon |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (pang-hila ng langis) | 25-27G × 1/2" hanggang 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (pang-hila ng langis) | 21-23G × 1" hanggang 1.5" |
+
+Laging gumamit ng dalawang karayom. Gamitin ang makapal na karayom upang hilain ang malapot na langis mula sa vial, pagkatapos ay palitan ng manipis at matalim na karayom para sa iniksyon. Ang pagbutas sa makapal na gomang takip ng vial ay nagpapapurol sa karayom nang mikroskopiko; hindi mo nais na ipasok ang mapurol na karayom sa iyong balat.
+
+### Ang mga Lugar
+
+- **Para sa SC:** Ang tiyan (manatiling 2 pulgada ang layo mula sa pusod) o ang itaas na panlabas na bahagi ng hita. Kurutin ang taba.
+- **Para sa IM:** Ang vastus lateralis (panlabas na gitnang ikatlong bahagi ng hita) o ang ventrogluteal (balakang/puwit).
+
+### Ang Pagsasagawa
+
+1. **Kalinisan:** Hugasan nang mabuti ang iyong mga kamay gamit ang sabon. Ihanda ang alcohol swab at sharps bin.
+2. **Disimpektahin:** Punasan ng swab ang gomang takip ng vial. Punasan ang iyong balat sa 2-pulgadang paikot na galaw palabas. Hayaang matuyo nang lubusan sa hangin.
+3. **Kumuha:** Hilain ang hangin sa hiringgilya katumbas ng iyong dosis. Itulak ang hangin papasok sa vial upang i-balanse ang presyon. Hilain ang langis pababa. Tapikin upang maalis ang mga bula.
+4. **Palitan at Itusok:** Palitan ng maliit na karayom pang-iniksyon. Para sa SC, kurutin ang taba at itusok ang karayom sa 45° na anggulo.
+5. **Aspirate (Opsyonal ngunit karaniwan sa IM):** Bahagyang hilain pabalik ang plunger. Kung may dugong sumulpot sa loob ng hiringgilya, tumama ka sa ugat. Bunutin at magsimulang muli sa ibang lugar.
+6. **Itulak:** Iniksyon nang dahan-dahan ang malapot na langis (~10 segundo).
+7. **Bunutin:** Bunutin nang maayos. Punasan ng bulak. Itapon kaagad ang karayom sa sharps container.
+
+## Pag-convert ng mg sa mL (Ang Matematika)
+
+Kung mayroon kang karaniwang komersyal na Amerikanong vial ng **Estradiol Valerate 20 mg/mL** (ibig sabihin, may 20mg ng EV sa bawat 1 mL ng langis):
+
+<DoseTable
+  headers={['Target na Dosis (mg)', 'Dami ng Iniksyon (mL)', 'Konsentrasyon ng Vial']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="Tiyakin ang Iyong Konsentrasyon">
+Ang mga DIY na vial sa buong mundo ay madalas ginagawa sa baliw na konsentrasyon (40 mg/mL, 50 mg/mL). Ang mga ampoule na Hapon (Progynon Depot) ay kadalasang 10 mg/mL. **Laging gawin ang matematika batay sa konsentrasyon ng IYONG vial.**
+Dami (mL) = Target na Dosis (mg) ÷ Konsentrasyon ng Vial (mg/mL).
+</WarningBox>
+
+## Realidad ng Ampoule
+
+Sa maraming bahagi ng Asya at Europa, ang iniksyong EV ay ibinebenta sa maliliit at marupok na ampoule na salamin sa halip na vial na may gomang takip.
+- Ang mga ampoule ay HINDI naglalaman ng preserbatibo (tulad ng benzyl alcohol).
+- Kapag binali mo na ang salamin, kompromisado na ang likido. Hindi mo maaaring iwan ang bukas na ampoule sa iyong mesa nang isang linggo upang i-iniksyon ang natitirang kalahati sa ibang araw.
+- Iminumungkahi ng ilang gabay na hilain nang maaga ang natitirang dosis sa isang steril na hiringgilya at itago ito sa refrigerator nang hanggang 7 araw. May likas na panganib ng kontaminasyon dito. Mag-ingat nang husto.
+
+<DangerBox title="Ang mga Nakamamatay na Linya">
+Iwasan ang mga mapaminsalang resulta sa kalusugan. Huwag kailanman gawin ang sumusunod:
+
+- **Iisang Tusok na ≥ 10 mg:** Ang pagbomba ng napakalaking dosis ay lumilikha ng peak na antas na >1000 pg/mL, na nag-aanyaya ng kritikal na blood clot / VTE na pangyayari<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **Mataas na Dosis + Maikling Pagitan (hal., 5mg kada 3 araw):** Ang epektong nagdaragdag ay walang-tigil na nagtutumpok sa half-life paitaas hanggang maabot mo ang nakakalasong pisyolohikal na overload<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+Kung hindi nadudurog ng 5mg/linggo ang iyong T, tanggapin na nabigo ang monotherapy at magpasok ng anti-androgen. Huwag mong gawing biohazard ang iyong sarili.
+</DangerBox>
+
+---
+
+**Mga Sanggunian**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

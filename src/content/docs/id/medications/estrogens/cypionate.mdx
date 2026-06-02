@@ -1,0 +1,99 @@
+---
+title: "Estradiol Cypionate (EC)"
+description: "Panduan lengkap estradiol cypionate — perbandingan farmakokinetik dengan estradiol valerate, dosis, protokol injeksi, dan batas keamanan."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Intramuskular (IM) / Subkutan (SC)"
+  evidenceLevel="B"
+>
+Estradiol cypionate (EC) adalah ester estradiol injeksi kerja panjang, terutama digunakan di kawasan Amerika. Dibandingkan dengan estradiol valerate (EV), EC memiliki waktu paruh yang lebih panjang (~8-10 hari vs 4-5 hari), sehingga memungkinkan interval injeksi yang lebih lama<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Nama dagang: Depo-Estradiol.
+</DrugInfoBox>
+
+## Farmakokinetik
+
+Profil farmakokinetik estradiol cypionate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Waktu paruh**: ~8-10 hari (vs ~4-5 hari untuk EV)
+- **Waktu puncak**: 2-4 hari pasca-injeksi
+- **Waktu palung (trough)**: 7-10 hari pasca-injeksi
+- **Kondisi tunak (steady state)**: Tercapai setelah ~3-4 siklus rutin
+
+### Perbandingan dengan Estradiol Valerate (EV)
+
+<DoseTable
+  headers={['Parameter', 'Estradiol Cypionate (EC)', 'Estradiol Valerate (EV)']}
+  rows={[
+    ['Waktu paruh', '~8-10 days', '~4-5 days'],
+    ['Waktu puncak', '2-4 days', '2-3 days'],
+    ['Interval yang disarankan', '7-14 days', '5-7 days'],
+    ['Fluktuasi kadar serum', 'Lebih kecil', 'Lebih besar'],
+    ['Kawasan utama', 'Amerika', 'Global'],
+    ['Risiko VTE (RR)', '~1.0 (melewati metabolisme lintas-pertama/first-pass)', '~1.0'],
+    ['Tingkat bukti', 'B', 'A'],
+  ]}
+/>
+
+Waktu paruh EC yang lebih panjang menghasilkan penurunan E2 yang lebih kecil pada titik palung, sehingga menghasilkan kurva konsentrasi yang lebih halus<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosis
+
+### Dosis Dewasa
+
+<DoseTable
+  headers={['Fase', 'Dosis', 'Catatan']}
+  rows={[
+    ['Dosis awal', '2-3 mg/week', 'Mulai dengan dosis rendah (1-6 bulan pertama) untuk melindungi perkembangan payudara'],
+    ['Dosis pemeliharaan', '3-5 mg/week', 'Sesuaikan berdasarkan E2 palung; target 100-200 pg/mL'],
+    ['Dosis maksimum', '7 mg/10-14 days', 'Jangan melampaui'],
+  ]}
+/>
+
+Rujukan dosis: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> dan WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Karena waktu paruh EC yang lebih panjang, sebagian pengguna memilih interval injeksi 10-14 hari.
+
+<WarningBox title="Interval Injeksi & Waktu Pengambilan Darah">
+Pengguna EC sebaiknya mengambil sampel darah pada **pagi hari sebelum injeksi berikutnya** untuk mengukur kadar palung (trough). Jika menggunakan jadwal 10 hari, titik palung berada pada pagi hari ke-10. Target E2 palung: 100-200 pg/mL.
+</WarningBox>
+
+## Merek & Ketersediaan
+
+| Merek | Konsentrasi | Kawasan |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | Amerika Serikat |
+| Apotek peracikan (compounding) | Bervariasi | Kawasan tertentu |
+
+EC terutama tersedia di AS dan Amerika Latin. Di kawasan yang tidak menyediakannya, [injeksi estradiol valerate](/id/medications/estrogens/injection/) adalah alternatif standar.
+
+## Pemantauan
+
+Sama seperti ester estradiol injeksi lainnya:
+
+- **E2**: Setiap 3 bulan, pengambilan saat palung (pagi sebelum injeksi). Target 100-200 pg/mL
+- **T**: Setiap 3 bulan. Target &lt;50 ng/dL
+- **Fungsi hati (ALT/AST)**: Awal (baseline) + setiap 6 bulan
+
+## Teknik Injeksi
+
+Prosedur injeksi identik dengan [injeksi estradiol valerate](/id/medications/estrogens/injection/#injection-technique). Baik rute SC maupun IM keduanya sesuai.
+
+<DangerBox title="Batas Keamanan">
+- **Dosis injeksi tunggal tidak boleh melampaui 10 mg**
+- Tujuannya adalah mempertahankan kadar E2 fisiologis yang stabil, bukan mengejar puncak yang tinggi
+- E2 >200 pg/mL tidak menghasilkan feminisasi yang lebih kuat, hanya meningkatkan risiko pembekuan darah<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Jika EC tidak tersedia di kawasan Anda, jangan membeli melalui jalur yang tidak terverifikasi
+</DangerBox>

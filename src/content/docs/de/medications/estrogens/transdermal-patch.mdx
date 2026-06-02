@@ -1,0 +1,137 @@
+---
+title: "Transdermale Estradiolpflaster"
+description: "Umfassende Pharmakologie, Dosierungsempfehlungen, Daten zum VTE-Risiko und praktische Anwendungshinweise für transdermale Estradiolpflaster."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+noindex: true
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Estradiol Transdermal Patch"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdermal"
+  evidenceLevel="A"
+>
+  Transdermale Pflaster gelten in der klinischen Evidenz allgemein als die sicherste Form der Estradiolzufuhr. Da das Estradiol über die Haut direkt in die Blutbahn aufgenommen wird, umgeht es den First-Pass-Metabolismus der Leber vollständig. Sein VTE-Risikoprofil (Risiko für Blutgerinnsel) ist daher statistisch nicht von dem von Nicht-Anwenderinnen zu unterscheiden.
+</DrugInfoBox>
+
+## Pharmakologie
+
+### Umgehung des First-Pass-Metabolismus
+
+Wenn orales Estradiol geschluckt wird, gelangt es in den Magen-Darm-Trakt und von dort direkt in die Leber (First-Pass-Metabolismus). Dieser Vorgang:
+- zwingt die Leber, vermehrt Gerinnungsfaktoren zu bilden, was das VTE-Risiko erhöht.
+- baut etwa 95 % des Wirkstoffs ab und senkt so die Bioverfügbarkeit drastisch.
+- verändert den Lipid- bzw. Cholesterinstoffwechsel.
+
+Pflaster geben Estradiol über die Haut direkt in den systemischen Kreislauf ab und **umgehen den First-Pass-Metabolismus der Leber damit vollständig**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Das bedeutet:
+- vernachlässigbarer Einfluss auf die Gerinnungsfaktoren der Leber.
+- sehr stabile und überlegene Bioverfügbarkeit.
+- schonend für Leber und Lipidprofil.
+
+### Daten zum VTE-Risiko (Blutgerinnsel)
+
+Transdermale Pflaster weisen das geringste VTE-Risiko aller Verabreichungsformen von Estradiol auf<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Verabreichungsweg', 'Relatives Risiko (RR)', '95 % KI']}
+  rows={[
+    ['Transdermales Pflaster', '0.97', '0.79 - 1.19'],
+    ['Orales Estradiol', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Ein **RR ≈ 0,97** bedeutet praktisch, dass die Anwendung transdermaler Pflaster im Vergleich zu Personen ohne jegliche Östrogentherapie keine statistisch signifikante Erhöhung des VTE-Risikos mit sich bringt<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Damit ist das Pflaster die klare erste Wahl für alle mit vorbestehenden Risikofaktoren für Blutgerinnsel.
+
+### Verlauf der Blutkonzentration
+
+- Erreicht etwa 12-24 Stunden nach dem Aufkleben einen stabilen Blutspiegel (Steady State).
+- Hält über die Tragedauer des Pflasters hinweg ausgesprochen gleichmäßige, stabile E2-Spiegel aufrecht.
+- Vermeidet die ausgeprägten Spitzen-und-Tal-Schwankungen, die mit oraler, sublingualer oder injizierbarer Zufuhr einhergehen, vollständig.
+
+## Dosierungsempfehlungen
+
+Diese Dosierungsbereiche stehen im Einklang mit den Leitlinien der Endocrine Society 2017<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> und den WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Phase', 'Dosis', 'Ziel-E2 (pg/mL)', 'Zeitrahmen']}
+  rows={[
+    ['Niedrigdosierter Beginn', '50-100 µg/day', '50-100', 'Monate 1-6'],
+    ['Moderate Titration', '100-200 µg/day', '100-200', 'Monate 6-12'],
+    ['Erhaltungsphase', '100-200 µg/day', '100-200', 'Ab 12 Monaten'],
+    ['Monotherapie (ohne Blocker)', '200-400 µg/day', '200-300', 'Nur ohne T-Blocker'],
+  ]}
+/>
+
+<WarningBox title="Die übliche Höchstdosis">
+Die übliche Höchstdosis liegt bei **400 µg/day** und wurde historisch nur bei einer Monotherapie eingesetzt (Unterdrückung von Testosteron ohne Antiandrogene). Die allermeisten Anwenderinnen erreichen ihren klinischen Ziel-E2-Bereich (100-200 pg/mL) bereits bei 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. E2 über 200 pg/mL zu treiben, feminisiert nicht schneller, sondern verstärkt nur die gesundheitlichen Risiken.
+</WarningBox>
+
+## Anwendung
+
+### Auftragsstellen
+
+- **Empfohlen:** Unterbauch, oberer Gesäßbereich, Außenseite der Oberschenkel.
+- **Vermeiden:** den Brustbereich (eine dauerhaft hohe lokale E2-Konzentration ist ein ernstes Brustkrebsrisiko), Gelenke sowie Stellen, an denen enge Bünde scheuern.
+- **Wechseln Sie die Stelle:** Kleben Sie ein neues Pflaster nie auf exakt dieselbe Stelle wie das alte, um Kontaktekzeme zu vermeiden.
+
+### Wechselintervall
+
+<WarningBox title="Behalten Sie die Tragedauer im Blick">
+Die meisten Pflaster sind je nach Marke darauf ausgelegt, entweder **alle 3,5 Tage (zweimal pro Woche)** oder **alle 7 Tage (einmal pro Woche)** gewechselt zu werden. Halten Sie sich konsequent an den Zeitplan des Herstellers. Wird ein Wechsel versäumt, fällt der E2-Spiegel ab, was Hitzewallungen und Stimmungsschwankungen auslöst. Stellen Sie sich Handy-Wecker.
+</WarningBox>
+
+### Praktische Tipps
+
+- Nur auf saubere, völlig trockene Haut auftragen. Kleben Sie Pflaster nicht über Lotionen, Öle oder frisch rasierte, feuchte Haut.
+- Drücken Sie das Pflaster volle 10 Sekunden lang mit der Handfläche fest an, um den Klebstoff durch Wärme zu aktivieren.
+- Normales Duschen und Schwimmen sind unbedenklich, doch lange, sehr heiße Bäder können den Klebstoff lösen und den Wirkstoff vorzeitig in den Körper freisetzen.
+- Löst sich ein Pflaster, versuchen Sie es wieder anzukleben; hält es nicht mehr, bringen Sie sofort ein neues an.
+
+## Für wen geeignet
+
+Transdermale Pflaster werden nachdrücklich empfohlen für<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **alle** (Pflaster sind in puncto Sicherheit der Goldstandard schlechthin).
+- **Anwenderinnen mit VTE-Risikofaktoren** (BMI >30, Alter >40, Raucherinnen, VTE in der Familienanamnese) — hier sind Pflaster nicht verhandelbar.
+- **Anwenderinnen unter CPA** — CPA wirkt von Natur aus gerinnungsfördernd; Pflaster verhindern, dass sich die Gerinnungsrisiken summieren.
+- **Anwenderinnen mit Leberauffälligkeiten** — die Umgehung der Leber senkt die Stoffwechselbelastung erheblich.
+
+## Globale Versorgungslage
+
+Medizinisch zwar überlegen, haben Pflaster jedoch mit logistischen Problemen weltweit zu kämpfen:
+
+- **Kosten:** Ohne gute Versicherung oder staatliches Gesundheitssystem sind Pflaster aus eigener Tasche unverhältnismäßig teurer als orale Tabletten.
+- **Lieferengpässe:** Die globalen Lieferketten für Marken wie Estradot oder Climara brechen häufig zusammen, was im Vereinigten Königreich, in der EU und in Australien zu monatelangen regionalen Engpässen führt.
+- Sind Pflaster für Sie schlicht nicht erhältlich, ist die orale Einnahme eine brauchbare Ausweichlösung — vorausgesetzt, es bestehen keine vorbestehenden VTE-Risiken.
+
+## Gängige Marken
+
+<DoseTable
+  headers={['Marke', 'Spezifikation', 'Wechselintervall', 'Region']}
+  rows={[
+    ['Climara', 'Abgabe 50 / 100 µg/day', 'Alle 7 Tage', 'USA / EU / weltweit'],
+    ['Estradot', 'Abgabe 25-100 µg/day', 'Alle 3,5 Tage', 'GB / EU / AUS'],
+    ['Vivelle-Dot', 'Abgabe 25-100 µg/day', 'Alle 3,5 Tage', 'USA'],
+    ['Estrana Tape', 'Abgabe 50 µg/day', 'Alle 2 Tage', 'Japan (verbreitet im asiatischen DIY-Umfeld)'],
+  ]}
+/>
+
+## Hinweise zum Monitoring
+
+- **Wann Blut abnehmen:** 12-24 Stunden vor dem nächsten Pflasterwechsel (Messung des Tiefstwerts/Trough)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Zielwerte:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

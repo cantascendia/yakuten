@@ -1,0 +1,115 @@
+---
+title: "Spironolacton"
+description: "Antiandrogener Wirkmechanismus von Spironolacton, Dosierungsempfehlungen, lebensbedrohliches Hyperkaliämie-Risiko, obligatorische Nierenüberwachung sowie seine globale Rolle als US-amerikanischer Standard."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+noindex: true
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Spironolacton (Aldactone)"
+  nameCN="Spironolacton (螺内酯/安体舒通)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="B"
+>
+Spironolacton (Spiro) ist strukturell ein kaliumsparendes Diuretikum (Blutdruckmedikament), das einen unbeabsichtigten, milden antiandrogenen Nebeneffekt besitzt. Da CPA von der FDA vollständig verboten ist, gilt Spironolacton in den Vereinigten Staaten als das absolute Standard-Antiandrogen. Es wirkt über eine Rezeptorblockade statt über eine Senkung der Testosteronproduktion und birgt schwerwiegende Risiken im Zusammenhang mit einer tödlichen Kaliumanreicherung.
+</DrugInfoBox>
+
+<DangerBox title="Hyperkaliämie — das tödliche Herzrisiko">
+Da Spiro ein „kaliumsparendes“ Diuretikum ist, zwingt es die Nieren, Natrium und Wasser rasch auszuscheiden, während Kalium im Blut zurückgehalten und angereichert wird<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Steigt das Kalium auf toxische Werte (Hyperkaliämie: K⁺ > 5.5 mmol/L), besteht ein hohes Risiko für eine plötzliche, tödliche Herzrhythmusstörung.
+
+**Während der Einnahme von Spironolacton MÜSSEN Sie:**
+- sich strikten Kalium-Blutkontrollen unterziehen (anfangs monatlich, danach alle 3-6 Monate).
+- eine übermäßige Aufnahme kaliumreicher Lebensmittel **vermeiden** (z. B. täglich mehrere Bananen, Kokoswasser, große Mengen Tomatenmark).
+- **niemals** handelsübliche Kalium-Nahrungsergänzungsmittel einnehmen.
+- es **niemals** mit ACE-Hemmern oder ARBs (Blutdruckmedikamenten) kombinieren, außer unter strenger Aufsicht eines Kardiologen.
+
+**SUCHEN SIE SOFORT DIE NOTAUFNAHME AUF, WENN:** Sie plötzliche Muskelschwäche, Herzklopfen, schwere Atemnot oder ein Kribbeln und Taubheitsgefühl in den Gliedmaßen verspüren.
+</DangerBox>
+
+## Pharmakologie
+
+### Der Wirkmechanismus
+
+Spiros Umgang mit Testosteron unterscheidet sich grundlegend und ist wohl schwächer als der von CPA oder GnRH-Agonisten<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
+
+1. **Androgenrezeptor-Blockade** (primär): Es besetzt die Zellrezeptoren des Körpers, sodass Testosteron und DHT physisch nicht mehr daran binden und keine Vermännlichung auslösen können.
+2. **Geringe Hemmung der Synthese**: Es beeinträchtigt nur sehr schwach die Enzyme, die die Hoden zur Herstellung von Testosteron nutzen, und senkt die tatsächliche Produktion nur geringfügig.
+3. **Kein direkter T-Abbau**: Ihr Serum-Testosteronspiegel kann kaum sinken.
+
+**Das entscheidende Missverständnis**: Spironolacton baut Ihr Testosteron nicht chemisch ab. Das T zirkuliert weiterhin ungehindert in Ihrem Blut, es kann sich lediglich nicht mehr in die Zellen „einklinken“<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Daher ist es äußerst trügerisch, Ihren Fortschritt unter Spiro über eine T-Spiegel-Blutmessung zu beurteilen. Die Wirksamkeit von Spiro lässt sich nicht allein am T-Wert ablesen.
+
+### Wirksamkeit im Vergleich zu CPA
+
+Spiro gilt allgemein als die schwächere antiandrogene Option<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Seine Bindungsaffinität zum Androgenrezeptor ist im Vergleich zu starken Alternativen wie Bicalutamid äußerst gering.
+- Da es das System nicht so wie CPA herunterfahren kann, berichten viele Anwenderinnen, dass sie bei Maximaldosen an eine Grenze stoßen, ohne sich ausreichend feminisiert zu fühlen.
+- Es benötigt dringend begleitend sehr hohe Estradiolspiegel, um die Vermännlichung erfolgreich zu unterdrücken.
+
+## Dosierungsempfehlungen
+
+<DoseTable
+  headers={['Phase', 'Dosis', 'Hinweise', 'Quelle']}
+  rows={[
+    ['Anfangsdosis', '50 mg/day', 'Prüft die Verträglichkeit und die anfängliche Kaliumstabilität.', 'ES 2017'],
+    ['Standard-Titration', '100 mg/day', 'Der durchschnittliche wirksame Ausgangswert für die meisten Anwenderinnen.', 'UCSF 2016'],
+    ['Die Höchstgrenze', '200 mg/day', 'Eine Überschreitung von 200mg führt zu gravierenden Nebenwirkungen ohne jeden zusätzlichen antiandrogenen Nutzen.', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### Einnahmehinweise
+
+- Teilen Sie Ihre Tabletten (eine Hälfte morgens, eine Hälfte abends), um Kaliumschwankungen zu stabilisieren und plötzliche Blutdruckabfälle zu minimieren<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />.
+- Die Einnahme zusammen mit Nahrung steigert die Aufnahmerate deutlich.
+- Da es buchstäblich ein Diuretikum ist, das die Blase entleeren soll, ruiniert die Einnahme unmittelbar vor dem Schlafengehen Ihren Schlaf, weil Sie die ganze Nacht zur Toilette müssen. Nehmen Sie Ihre Abenddosis früher am Abend ein.
+
+<WarningBox title="Höhere Dosen wirken nicht schneller">
+Eine Überschreitung von 200 mg/day blockiert die Androgenrezeptoren nicht auf magische Weise stärker. Sie verschärft lediglich den Blutdruckabfall und treibt Ihr Kalium an eine potenziell tödliche Grenze<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Wenn Sie bei 200 mg/day angelangt sind und Ihre Vermännlichung nicht gestoppt ist, müssen Sie den Blocker wechseln oder Ihr transdermales/injizierbares Estradiol deutlich erhöhen, um T auf natürlichem Weg zu unterdrücken.
+</WarningBox>
+
+## Einbußen bei der Lebensqualität
+
+Neben dem schweren Risiko von Herzrhythmusstörungen bringt Spiro mehrere belastende Nachteile für die Lebensqualität mit sich:
+
+### Abfallender Blutdruck (orthostatische Hypotonie)
+Der eigentliche pharmazeutische Zweck von Spiro ist es, Bluthochdruck zu senken<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Wenn Sie zu schnell von einem Stuhl aufstehen, erleben Sie häufig starke Schwindelanfälle oder sogar Ohnmachtsanfälle.
+- Sie MÜSSEN sich jeden Tag konsequent mit reinem Wasser hydrieren.
+- Schränken Sie Ihre Salzaufnahme nicht ein (anders als Kalium werden Sie Natrium spürbar brauchen und sich danach sehnen).
+- Wenn Ihr natürlicher Blutdruck vor der HRT bereits gefährlich niedrig war, ist Spiro für Sie wahrscheinlich keine geeignete Option.
+
+### Ständiger Harndrang (Polyurie)
+- Das Medikament treibt Flüssigkeit rasch aus Ihrem Körper. Sie müssen ständig zur Toilette und fühlen sich chronisch dehydriert. Trinken Sie unermüdlich Wasser.
+
+## Obligatorisches Überwachungsprotokoll
+
+<DoseTable
+  headers={['Untersuchung', 'Häufigkeit', 'Zielbereich / Warnung', 'Erforderliche Maßnahme']}
+  rows={[
+    ['Kalium (K⁺)', 'Monate 1, 2, 3 → danach alle 6 Mon.', 'K⁺ 3.5-5.0 mmol/L', 'Bei > 5.5: Medikament absetzen, in die Notaufnahme.'],
+    ['Nierenfunktion (Kreatinin / eGFR)', 'Zu Beginn + alle 6 Monate', 'eGFR > 60 mL/min', 'Bei Abfall: Spiro absetzen, bevor die Nieren versagen.'],
+    ['Blutdruck', 'Bei jedem Arztbesuch', 'Keine schweren Schwindelanfälle', 'Bei chronischer Ohnmacht: Dosis reduzieren.'],
+  ]}
+/>
+
+## Globale Verfügbarkeit
+
+Da CPA in Amerika verboten ist, ist Spiro der unangefochtene König der US-Versorgungswege:
+
+- **In den USA:** Wird in Informed-Consent-Kliniken (wie Planned Parenthood) problemlos abgegeben. Sehr leicht zugänglich, flächendeckend vorrätig und über Versicherung/GoodRx äußerst günstig.
+- **In Europa/Asien:** Wird fast ausschließlich als Ausweichmedikament für Personen verwendet, deren Leber CPA nicht verträgt, oder für jene, die nach einem durch CPA bedingten Hirntumor weiter behandelt werden.
+- **DIY-Risiko:** Während Spiro selbst nur selten gefälscht wird, gleicht der Versuch, Spiro in Eigenregie ohne bezahlte private Nierenkontrollen zu steuern, einem russischen Roulette mit einem Herzinfarkt.
+
+<DrugBrandGallery drugId="spironolactone" />

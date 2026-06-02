@@ -1,0 +1,272 @@
+---
+title: "Mga Pagsusuri sa Dugo at Mga Tool sa Sariling Pagsusuri"
+description: "Mga kinakailangang pagsusuri sa dugo habang nasa HRT, mga iskedyul ng muling pagsusuri, kung paano basahin ang iyong mga resulta, at mga interactive na tool para sa sariling pagsusuri."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+noindex: true
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Ang mga pagsusuri sa dugo ang pundasyon ng ligtas na pamamahala ng HRT. Kung walang datos mula sa pagsusuri sa dugo, wala kang paraan upang malaman kung gumagana ba ang gamot, kung ligtas ba ang iyong dosis, o kung nagtataglay ba ang iyong katawan ng hindi kailangang panganib. Gagabayan ka ng pahinang ito kung kailan dapat magpasuri, ano ang dapat suriin, at kung paano unawain ang iyong mga resulta<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Pag-access sa mga Pagsusuri sa Dugo">
+Depende sa iyong lokasyon, maaari kang mag-access ng mga pagsusuri sa dugo sa pamamagitan ng isang primary care provider, isang informed consent clinic (tulad ng Planned Parenthood sa US), mga espesyalisadong gender identity clinic (tulad ng NHS o GenderCare sa UK), o mga pribadong serbisyo ng pagsusuri (tulad ng Medichecks). Anuman ang iyong daan, mahalaga ang magpasuri. Pagkatapos matanggap ang iyong mga resulta, ihambing ang mga ito sa aming sistema ng traffic light sa ibaba.
+</WarningBox>
+
+## 6.1 Ano ang Susuriin at Kailan
+
+Ang iskedyul ng pagsusuri sa dugo ay nahahati sa tatlong yugto, na naaayon sa aming [Daan ng HRT](/fil/pathway/)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Yugto 1: Pagsisimula (Buwan 1-6)
+
+Ito ang pinakamatinding panahon ng pag-aakma, na nangangailangan ng mas madalas na pagsubaybay upang matiyak na gumagana ang gamot at maiwasan ang mga maagang side effect.
+
+**Pagsusuri sa Linggo 4:**
+
+<DoseTable
+  headers={['Sinusuri', 'Layunin', 'Mga Target na Gumagamit']}
+  rows={[
+    ['Sex Hormone Panel (E2, T, LH, FSH, PRL, P4)', 'Kumpirmahin na tumataas ang E2 at bumababa ang T', 'Lahat ng gumagamit'],
+    ['Liver Function (ALT, AST)', 'Iwaksi ang maagang hepatotoxicity', 'Gumagamit ng CPA / Bicalutamide'],
+    ['Electrolytes (K⁺, Na⁺)', 'Iwaksi ang panganib ng hyperkalemia', 'Gumagamit ng Spironolactone'],
+  ]}
+/>
+
+**Pagsusuri sa Linggo 12:**
+
+<DoseTable
+  headers={['Sinusuri', 'Layunin', 'Mga Target na Gumagamit']}
+  rows={[
+    ['Sex Hormone Panel', 'Suriin kung naabot ang mga layunin ng yugto (E2 50-100 pg/mL)', 'Lahat ng gumagamit'],
+    ['Liver Function (ALT, AST)', 'Tuluy-tuloy na pagsubaybay sa kaligtasan ng atay', 'Gumagamit ng CPA / Bicalutamide'],
+    ['Lipid Panel (TC, TG, LDL, HDL)', 'Suriin ang epekto sa metabolismo', 'Lahat ng gumagamit'],
+    ['Electrolytes (K⁺)', 'Tuluy-tuloy na pagsubaybay sa potasyum sa dugo', 'Gumagamit ng Spironolactone'],
+  ]}
+/>
+
+<WarningBox title="Mga Layunin ng Yugto 1">
+Ang E2 ay umaabot sa 50-100 pg/mL, at pababa ang takbo ng T. Kung mas mababa sa 30 pg/mL ang E2, maaaring kailanganin mong iakma ang paraan ng paggamit o ang dosis (tingnan ang aming [Daan](/fil/pathway/))<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **Huwag basta-basta dagdagan ang dosis sa yugtong ito dahil lamang sa pakiramdam mong "wala kang nararamdaman".**
+</WarningBox>
+
+### Yugto 2: Pag-aakma (Buwan 6-12)
+
+Magpasuri tuwing 3 buwan<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Sinusuri', 'Dalas', 'Target']}
+  rows={[
+    ['Sex Hormones (E2, T, PRL)', 'Tuwing 3 buwan', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Liver Function (ALT, AST)', 'Tuwing 3 buwan (CPA/Bica)', 'ALT/AST ≤ Itaas na normal na hangganan'],
+    ['Prolactin (PRL)', 'Tuwing 6 na buwan', 'PRL <50 ng/mL'],
+    ['Electrolytes (K⁺)', 'Tuwing 3 buwan (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Yugto 3: Pagpapanatili (12 Buwan Pataas)
+
+Kapag matatag na ang antas ng hormone, maaaring bawasan ang dalas ng pagsusuri<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**Karaniwang Pagsusuri Tuwing 6 na Buwan:**
+
+<DoseTable
+  headers={['Sinusuri', 'Paglalarawan']}
+  rows={[
+    ['Sex Hormones (E2, T, PRL)', 'Kumpirmahin na nananatili ka sa target na hanay'],
+    ['Liver Function (ALT, AST)', 'Patuloy na pagsubaybay (gumagamit ng CPA/Bica tuwing 3-6 na buwan)'],
+    ['Electrolytes', 'Patuloy na pagsubaybay para sa mga gumagamit ng Spironolactone'],
+  ]}
+/>
+
+**Taunang Komprehensibong Pagsusuri:**
+
+<DoseTable
+  headers={['Sinusuri', 'Paglalarawan']}
+  rows={[
+    ['Lipid Panel', 'Suriin ang pangmatagalang epekto sa metabolismo'],
+    ['Fasting Blood Glucose', 'Iwaksi ang umuusbong na insulin resistance'],
+    ['CBC (kasama ang Hb)', 'Subaybayan ang takbo ng anemya'],
+    ['Coagulation + D-Dimer', 'Suriin ang panganib ng VTE (mahalaga para sa mga gumagamit ng oral E2)'],
+    ['Bone Density (DXA)', 'Isaalang-alang, lalo na kung matagal na ipinagkait ang estrogen'],
+  ]}
+/>
+
+---
+
+## 6.2 Pag-unawa sa Iyong Resulta (Traffic Lights)
+
+Ang sumusunod ay biswal na nagpapakita ng 7 pangunahing marka ng pagsusuri sa dugo na may kaugnayan sa HRT. **Berde** = Target na Hanay, **Dilaw** = Pag-iingat, **Pula** = Panganib, na nangangailangan ng aksyon<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/fil/blood-tubes.webp" alt="Tatlong tubo para sa pagkuha ng dugo: lila (CBC), dilaw (biochemistry/hormones), asul (coagulation)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Ang Timing ang Lahat">
+Ang oras ng pagkuha ng dugo ay direktang nakaaapekto sa pagkabasa ng resulta<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Mangyaring sundin ang mga panuntunang ito (sukatin ang **trough levels** o pinakamababang antas):
+
+- **Transdermal Patches**: 12-24 oras bago ang iyong susunod na pagpapalit ng patch
+- **Oral/Sublingual**: Bago mismo ang iyong susunod na dosis
+- **Iniksyon**: Sa umaga, bago mismo ang iyong susunod na iniksyon
+
+Kung HINDI ka kumuha ng dugo sa trough, ang basa ng E2 ay magiging artipisyal na mataas, na hahantong sa maling interpretasyon kung sapat ba ang dosis.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+Ang E2 na 100-200 pg/mL ang inirerekomenda ng mga internasyonal na patnubay para sa pagpapanatili<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ang paglampas sa 200 pg/mL ay HINDI magdudulot ng mas mabilis na feminisasyon; nagpapataas lamang ito ng panganib ng pamumuo ng dugo at maagang pagsasanib ng breast bud. Ang antas ng E2 na mas mababa sa 20 pg/mL pagkatapos ng paggamot ay nagpapahiwatig ng problema sa pagbibigay ng gamot.
+
+<DangerBox title="E2 > 500 pg/mL">
+Kung ang trough E2 ay lumampas sa 500 pg/mL, bawasan agad ang dosis at humingi ng medikal na ebalwasyon. Ang antas na ito ay malaki ang pagtaas sa panganib ng deep vein thrombosis (VTE, pamumuo ng dugo sa malalim na ugat)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosterone (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+Ang pagsupil sa T pababa sa &lt;50 ng/dL (karaniwang hanay ng cis na babae) ay isang pangunahing layunin ng HRT<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Kung ang T ay nananatiling >100 ng/dL pagkatapos ng 6 na buwan, kadalasang kailangan mong iakma ang iyong anti-androgen sa halip na puwersahin lamang ang mas mataas na dosis ng E2<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolactin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Parehong nakapagpapataas ng prolactin ang estrogen at ang CPA<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ang banayad na pagtaas (25-50 ng/mL) ay kadalasang walang malaking kahulugan sa klinikal ngunit nararapat subaybayan. Ang PRL na higit sa 50 ng/mL ay dapat suriin upang maiwaksi ang prolactinoma. Dapat itong bantayang mabuti ng mga gumagamit ng CPA.
+
+### Liver Function (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+Ang CPA at bicalutamide ay may panganib ng hepatotoxicity (pinsala sa atay)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ang itaas na normal na hangganan ay karaniwang 40 U/L. Ang pagtaas sa 1-3x ng itaas na hangganan ay nangangailangan ng malapitang pagsubaybay; ang paglampas sa 3x (>120 U/L) ay nangangahulugang dapat mong itigil agad ang CPA o bicalutamide at kumonsulta sa doktor<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Mga Babala ng Pinsala sa Atay">
+Kung magkaroon ka ng paninilaw ng balat/mata (jaundice), maitim na ihi, tuluy-tuloy na pagduduwal, o pananakit sa kanang itaas na bahagi ng tiyan, itigil agad ang gamot anuman ang iyong huling mga numero ng ALT/AST<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Ang mga ito ay matinding sintomas na nangangailangan ng emerhensyang pangangalaga.
+</DangerBox>
+
+### Potasyum sa Dugo (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Ang spironolactone ay isang potassium-sparing diuretic na maaaring magdulot ng hyperkalemia (sobrang taas ng potasyum)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Itigil ang spironolactone kung ang K⁺ ay lumampas sa 5.5 mmol/L. Habang gumagamit ng spironolactone, bawasan ang mga pagkaing mataas sa potasyum at huwag gumamit ng mga salt substitute.
+
+<DangerBox title="Mga Sintomas ng Hyperkalemia">
+Panghihina ng kalamnan, pamamanhid o pangingilig sa mga paa't kamay, palpitasyon, o arrhythmia. Kung gumagamit ka ng spironolactone at nararanasan mo ang mga ito, ipasuri agad ang iyong potasyum<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Hemoglobin (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Ang Hb ay inaasahang bumababa papunta sa hanay ng cis na babae pagkatapos magsimula ng estrogen; ito ay normal sa pisyolohiya<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ngunit ang Hb na mas mababa sa 110 g/L ay tanda ng anemya na nangangailangan ng pagsusuri.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+Ang pagtaas ng D-dimer ay nagpapahiwatig ng thrombosis/fibrinolysis<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ang banayad na pagtaas (0.5-1.0) ay nangangailangan ng kontekstong klinikal. Ang higit sa 1.0 mg/L—lalo na kung kasabay ng pamamaga ng binti, pananakit ng dibdib, o paghingal—ay isang emerhensya upang maiwaksi ang DVT o PE<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Sintomas = Emerhensya">
+Ang mataas na D-dimer na nag-iisa ay hindi awtomatikong nangangahulugang may namuong dugo, ngunit kung kasabay ng pamamaga/init ng binti, biglaang pananakit ng dibdib, o pag-ubo ng dugo, pumunta agad sa ER. Ang oral na estradiol ay may mas mataas na panganib ng VTE kaysa sa transdermal<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Komprehensibong Gabay
+
+<DoseTable
+  headers={['Marka', 'Target (Berde)', 'Pag-iingat (Dilaw)', 'Panganib (Pula)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 o 200-300', '>500 o <20 (matapos ang gamot)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (matapos ang 6 na buwan)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (iwaksi ang prolactinoma)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3x ng hangganan)', '>120 (Itigil ang CPA/Bica)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Itigil ang Spiro)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Anemya)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Iwaksi ang pamumuo ng dugo)'],
+  ]}
+/>
+
+---
+
+## 6.3 Interactive na Tool para sa Sariling Pagsusuri
+
+<WarningBox title="Malapit Nang Dumating">
+Malapit nang ilunsad ang interactive na React component na **BloodTestChecker**. Nagbibigay-daan ito sa iyo na ilagay ang iyong mga halaga para sa instant na traffic-light na feedback at angkop na payo.
+
+Lahat ng pagkalkula ay nangyayari sa iyong browser—walang datos na nasa-save o ipinapadala sa anumang server.
+</WarningBox>
+
+<WarningBox title="Ano ang susunod na babasahin">
+- [Daan ng HRT](/fil/pathway/) — Ano ang gagawin batay sa iyong mga resulta
+- [Mga Limitasyon ng Dosis](/fil/dose-limits/) — Kumpirmahin na nasa ligtas na hanay ang iyong dosis
+- [Mga Panganib at Emerhensya](/fil/risks/) — Kailan dapat itigil agad
+</WarningBox>

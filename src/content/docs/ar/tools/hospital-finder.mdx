@@ -1,0 +1,58 @@
+---
+title: "دليل الرعاية الطبية"
+description: "دليل منظَّم لموارد الوصول إلى الرعاية المبلَّغ عنها من المجتمع. تحقّق مباشرةً قبل الذهاب."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+noindex: true
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="تحقّق قبل الذهاب">
+هذه القوائم هي ملاحظات وصول يحافظ عليها المجتمع، وليست ضمانات مؤسسية رسمية. يمكن أن تتغيّر السياسات والأقسام وتوافر الأطباء بسرعة، لذا يبقى التأكيد المباشر ضرورياً دائماً.
+</WarningBox>
+
+يضمّ هذا الدليل حالياً {hospitals.length} مدخلاً مبلَّغاً عنه من المجتمع موزّعة على {cityCount} مدينة. لا تزال البيانات المصدرية الأساسية باللغة الصينية في هذه المرحلة، لذا قد تظهر أسماء المستشفيات والملاحظات المحلية بالصينية.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**كيفية استخدام هذه الصفحة**
+
+1. استخدمها كنقطة انطلاق للتحقق الخاص بك.
+2. أكّد القسم وتوافر الطبيب وقواعد التسجيل مباشرةً مع المؤسسة.
+3. اقرن الوصول إلى مقدّم الرعاية بتخطيط الفحوص المخبرية الأساسية والوعي بحالات الطوارئ.
+
+</GlassCard>
+
+<DangerBox title="ملاحظة بشأن الطوارئ">
+هذا الدليل ليس خدمة إحالة طارئة. إذا كانت لديك أعراض عاجلة، فاتجه إلى رعاية الطوارئ أولاً بدلاً من الاعتماد على تصفّح الدليل.
+</DangerBox>

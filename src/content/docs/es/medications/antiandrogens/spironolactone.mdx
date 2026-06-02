@@ -1,0 +1,115 @@
+---
+title: "Espironolactona"
+description: "Mecanismo antiandrogénico de la espironolactona, recomendaciones de dosis, riesgo letal de hiperpotasemia, monitoreo renal obligatorio y su contexto global como estándar en Estados Unidos."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+noindex: true
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Spironolactone (Aldactone)"
+  nameCN="Spironolactone (螺内酯/安体舒通)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="B"
+>
+La espironolactona (Spiro) es, en términos estructurales, un diurético ahorrador de potasio (un medicamento para la presión arterial) que posee un efecto antiandrogénico leve y no buscado. Como el CPA está completamente prohibido por la FDA, la espironolactona reina como el antiandrógeno predeterminado por excelencia en Estados Unidos. Actúa bloqueando el receptor en lugar de reducir la producción de testosterona, y conlleva riesgos graves asociados a la acumulación letal de potasio.
+</DrugInfoBox>
+
+<DangerBox title="Hiperpotasemia — el riesgo cardíaco mortal">
+Como la espironolactona es un diurético "ahorrador de potasio", obliga a tus riñones a expulsar rápidamente el sodio y el agua mientras retiene y acumula el potasio dentro de la sangre<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Si tu potasio supera los niveles tóxicos (hiperpotasemia: K⁺ > 5.5 mmol/L), corres un riesgo serio de sufrir una arritmia cardíaca súbita y mortal.
+
+**Mientras tomas espironolactona DEBES:**
+- Someterte a análisis estrictos de potasio en sangre (mensuales al principio, luego cada 3-6 meses).
+- **Evitar** el consumo masivo de alimentos cargados de potasio (por ejemplo, comer varios plátanos al día, agua de coco o grandes cantidades de pasta de tomate).
+- **Nunca** tomar suplementos genéricos de potasio dietético.
+- **Nunca** combinarla con inhibidores de la ECA o ARA-II (medicamentos para la presión arterial) salvo bajo supervisión estricta de un cardiólogo.
+
+**ACUDE A URGENCIAS DE INMEDIATO SI:** sientes debilidad muscular súbita, palpitaciones, dificultad respiratoria grave, o entumecimiento u hormigueo que asciende por las extremidades.
+</DangerBox>
+
+## Farmacología
+
+### El mecanismo
+
+La forma en que la espironolactona maneja la testosterona es muy distinta y, posiblemente, más débil que la del CPA o los agonistas de la GnRH<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
+
+1. **Bloqueo del receptor de andrógenos** (principal): obstruye los receptores celulares del cuerpo, de modo que la testosterona y la DHT no pueden unirse físicamente a ellos para desencadenar la masculinización.
+2. **Interferencia leve en la síntesis**: altera de forma muy débil las enzimas que los testículos usan para fabricar testosterona, reduciendo solo ligeramente la producción real.
+3. **Sin destrucción directa de la T**: tus niveles de testosterona en suero pueden apenas descender.
+
+**El malentendido clave**: la espironolactona no elimina químicamente tu nivel de testosterona. La T sigue circulando libremente en la sangre; simplemente no puede "conectarse" a las células<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Por eso, evaluar tu progreso mediante un análisis del nivel de T mientras tomas espironolactona es enormemente engañoso. No puedes valorar la eficacia de la espironolactona solo a partir de la cifra de testosterona.
+
+### Eficacia comparada con el CPA
+
+La espironolactona se considera, de forma generalizada, la opción antiandrogénica más débil<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Su afinidad de unión al receptor de andrógenos es muy baja en comparación con alternativas potentes como la bicalutamida.
+- Como no puede apagar el sistema igual que el CPA, muchas usuarias reportan que llegan a un tope con las dosis máximas sin sentirse suficientemente feminizadas.
+- Necesita imprescindiblemente niveles altos de estradiol que la acompañen para lograr suprimir la masculinización.
+
+## Recomendaciones de dosis
+
+<DoseTable
+  headers={['Fase', 'Dosis', 'Notas', 'Fuente']}
+  rows={[
+    ['Dosis inicial', '50 mg/day', 'Evalúa la tolerabilidad y la estabilidad inicial del potasio.', 'ES 2017'],
+    ['Titulación estándar', '100 mg/day', 'El punto de partida efectivo promedio para la mayoría de las usuarias.', 'UCSF 2016'],
+    ['El techo máximo', '200 mg/day', 'Superar los 200 mg invita a efectos secundarios incapacitantes sin ningún beneficio antiandrogénico añadido.', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### Consejos de administración
+
+- Divide las pastillas (toma la mitad por la mañana y la mitad por la noche) para estabilizar las fluctuaciones de potasio y minimizar las caídas bruscas de presión arterial<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />.
+- Tomarla con alimentos aumenta considerablemente su tasa de absorción.
+- Dado que es literalmente un diurético diseñado para vaciar la vejiga, tomarla justo antes de dormir arruinará por completo tu sueño al obligarte a orinar toda la noche. Toma la dosis de la noche más temprano por la tarde.
+
+<WarningBox title="Las dosis más altas no actúan más rápido">
+Pasar de los 200 mg/day no bloquea por arte de magia los receptores de andrógenos con más fuerza. Solo agrava la caída de la presión arterial y eleva tu potasio hasta un nivel potencialmente letal<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Si llegas a 200 mg/day y tu masculinización no se detiene, debes cambiar de bloqueador o aumentar significativamente tu estradiol transdérmico o inyectable para suprimir la T de forma orgánica.
+</WarningBox>
+
+## Inconvenientes para la calidad de vida
+
+Además del riesgo grave de arritmias cardíacas, la espironolactona acarrea varios efectos negativos duros sobre la calidad de vida:
+
+### Caída de la presión arterial (hipotensión ortostática)
+El propósito farmacéutico principal de la espironolactona es reducir la hipertensión<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Si te levantas demasiado rápido de una silla, sufrirás con frecuencia mareos intensos o incluso desmayos.
+- DEBES hidratarte de forma constante con agua simple todos los días.
+- No restrinjas tu consumo de sal (a diferencia del potasio, necesitarás y desearás bastante sodio).
+- Si tu presión arterial basal natural ya era peligrosamente baja antes de la TRH, es probable que la espironolactona no sea una opción viable para ti.
+
+### Micción constante (poliuria)
+- El medicamento expulsa el líquido del cuerpo rápidamente. Orinarás constantemente y te sentirás deshidratada de forma crónica. Bebe agua sin parar.
+
+## Protocolo de monitoreo obligatorio
+
+<DoseTable
+  headers={['Panel de análisis', 'Frecuencia', 'Rango objetivo / Advertencia', 'Acción necesaria']}
+  rows={[
+    ['Potasio (K⁺)', 'Meses 1, 2, 3 → Luego cada 6 meses', 'K⁺ 3.5-5.0 mmol/L', 'Si > 5.5: suspende el fármaco, acude a Urgencias.'],
+    ['Función renal (Creatinina / TFGe)', 'Al inicio + cada 6 meses', 'TFGe > 60 mL/min', 'Si cae: suspende la espironolactona antes de un colapso renal.'],
+    ['Presión arterial', 'En cada visita clínica', 'Sin mareos intensos', 'Si te desmayas de forma crónica: reduce la dosis.'],
+  ]}
+/>
+
+## Acceso global
+
+Como el CPA está prohibido en Estados Unidos, la espironolactona es la reina indiscutible de las vías estadounidenses:
+
+- **En Estados Unidos:** se entrega sin mayores trámites en clínicas de consentimiento informado (como Planned Parenthood). Enormemente accesible, disponible en todas partes y muy barata con seguro médico o GoodRx.
+- **En Europa/Asia:** se usa casi exclusivamente como fármaco de reserva para personas cuyo hígado no tolera el CPA, o para quienes superaron un tumor cerebral asociado al CPA.
+- **Riesgo del DIY:** aunque la espironolactona en sí rara vez se falsifica, intentar gestionarla por cuenta propia (DIY) sin pagar paneles renales privados es jugar a la ruleta rusa con un infarto.
+
+<DrugBrandGallery drugId="spironolactone" />

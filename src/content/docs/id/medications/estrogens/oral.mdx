@@ -1,0 +1,136 @@
+---
+title: "Estradiol Oral (Tablet)"
+description: "Profil farmakologis lengkap, rekomendasi dosis, data risiko VTE, dan peringatan kombinasi berbahaya untuk estradiol oral."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+noindex: true
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+  Estradiol oral (tablet yang ditelan) adalah sediaan estrogen yang paling mudah diakses secara global. Meskipun risiko VTE (bekuan darah) sedikit lebih tinggi dibandingkan pemberian transdermal, sediaan ini tetap menjadi pilihan standar yang sangat dapat diterima bagi pengguna muda tanpa faktor risiko bawaan.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynova-studio.webp" alt="Foto produk tablet estradiol valerat Progynova 2mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+
+## Farmakologi
+
+### Metabolisme Lintas Pertama (Hati)
+
+Ketika estradiol oral ditelan dan diserap melalui saluran pencernaan, ia harus melewati hati terlebih dahulu sebelum mencapai aliran darah umum Anda. Proses ini dikenal sebagai "Metabolisme Lintas Pertama" (First-Pass Metabolism)<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />:
+
+- Konsentrasi E2 yang sangat besar yang langsung mengenai hati merangsang sintesis faktor pembekuan, dan inilah yang meningkatkan risiko VTE.
+- Hal ini juga memengaruhi kadar SHBG (Sex Hormone-Binding Globulin) dan trigliserida.
+- Efek lintas pertama ini menghancurkan sebagian besar obat, sehingga bioavailabilitas oralnya hanya 3-5%.
+- Sediaan seperti Estradiol Valerat (Progynova) hanya dipecah menjadi estradiol murni di dalam hati.
+
+### Konversi Dosis
+
+Sediaan tablet oral yang berbeda mengandung jumlah basa estradiol aktual yang berbeda pula<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />:
+
+> **2 mg Estradiol Valerat (mis. Progynova) ≈ 1.5 mg Estradiol (mis. Estrace)**
+
+Ingatlah konversi ini saat membaca diskusi dosis di internet, karena forum Amerika sering kali secara default mengacu pada Estrace (Estradiol murni/Estradiol Hemihidrat), sementara forum Eropa dan Asia kerap secara default mengacu pada Progynova (Estradiol Valerat).
+
+### Data Risiko VTE (Bekuan Darah)
+
+<DoseTable
+  headers={['Jalur Pemberian', 'Risiko Relatif (RR)', '95% CI', 'Catatan']}
+  rows={[
+    ['Estradiol Oral', '1.48', '1.27 - 1.72', 'Risiko VTE meningkat sekitar 48%'],
+    ['Patch Transdermal (Acuan)', '0.97', '0.79 - 1.19', 'Tidak ada perbedaan statistik dengan non-pengguna'],
+  ]}
+/>
+
+Estradiol oral meningkatkan risiko VTE sekitar 48% (RR ≈ 1.48) dibandingkan populasi yang tidak menggunakan obat<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. Meskipun risiko *relatif* meningkat, risiko dasar *absolut* pada populasi muda yang sehat sangatlah rendah (sekitar 1-2 per 10.000 per tahun). Akibatnya, pemberian oral tetap berada dalam batas keamanan yang dapat diterima bagi individu muda tanpa faktor risiko bawaan.
+
+<DangerBox title="Kombinasi Fatal: Estradiol Oral + CPA Oral">
+Mengonsumsi estradiol oral bersamaan dengan Siproteron Asetat (CPA) oral dipastikan menimbulkan **risiko VTE ganda yang menumpuk**. CPA pada dasarnya bersifat prokoagulan<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />. Ketika dikombinasikan dengan efek lintas pertama hati dari estrogen oral, ancaman pembekuan darah berlipat ganda. Jika Anda harus menggunakan CPA sebagai anti-androgen, Anda sebaiknya mutlak beralih ke estrogen transdermal (patch atau gel). Lihat halaman kami [Batas Dosis & Kontraindikasi](/id/dose-limits/).
+</DangerBox>
+
+## Rekomendasi Dosis
+
+Rentang berikut mengintegrasikan data dari Pedoman Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> dan WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Tahap', 'Dosis (Basa Estradiol)', 'Target E2 (pg/mL)', 'Lini Masa']}
+  rows={[
+    ['Awal Dosis Rendah', '2 mg/day', '50-100', 'Bulan 1-6'],
+    ['Titrasi Sedang', '4 mg/day', '100-200', 'Bulan 6-12'],
+    ['Fase Pemeliharaan', '4-6 mg/day', '100-200', '12 Bulan+'],
+    ['Dosis Maksimum', '8 mg/day', 'Jangan melebihi 200', 'Hanya untuk keadaan khusus'],
+  ]}
+/>
+
+<WarningBox title="Jangan Lewati Fase Dosis Rendah">
+Meskipun Anda merasa dosis rendah "tidak melakukan apa-apa," 6 bulan pertama dengan pendekatan titrasi lambat sangatlah krusial untuk membangun percabangan duktus payudara yang sehat. Memulai dengan 6mg atau 8mg untuk "mempercepat" pubertas kerap memaksa fusi tunas payudara secara prematur, sehingga secara permanen merusak volume payudara akhir Anda<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. Lihat ulasan mendalam kami tentang [Perkembangan Payudara](/id/breast-development/).
+</WarningBox>
+
+### Cara Pemberian
+
+- Minumlah tablet Anda pada waktu yang kurang lebih sama setiap hari untuk membangun rutinitas.
+- Jika menggunakan 4 mg/day, membaginya (2 mg pagi + 2 mg malam) secara signifikan memuluskan fluktuasi konsentrasi darah.
+- Mengonsumsi tablet bersama makanan memberikan sedikit peningkatan penyerapan, tetapi menjaga jadwal yang konsisten lebih penting.
+- Jika Anda terlewat satu dosis, cukup tunggu dan minum dosis berikutnya sesuai jadwal. Jangan menggandakan dosis untuk mengompensasi.
+
+## Sasaran Pengguna & Kontraindikasi
+
+Estradiol oral cocok untuk profil berikut<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />:
+
+**Sangat Direkomendasikan Apabila:**
+- Tidak ada faktor risiko VTE/pembekuan
+- Usia < 40
+- BMI < 30
+- Tidak merokok
+- Tidak ada riwayat pribadi atau keluarga trombosis vena dalam
+- Tidak ada gangguan pembekuan darah
+
+**Jangan Gunakan Pemberian Oral (Beralih ke Transdermal):**
+- Usia ≥ 40
+- BMI ≥ 30
+- Sedang merokok atau baru berhenti merokok
+- Riwayat pribadi atau riwayat keluarga VTE yang kuat
+- Diketahui memiliki kelainan faktor pembekuan (mis. Faktor V Leiden)
+- Sedang mengombinasikan HRT dengan CPA (Siproteron Asetat)
+- Riwayat migrain dengan aura
+
+## Akses Global
+
+Tablet tetap menjadi standar default bagi sebagian besar wilayah dunia:
+
+- **AS/Kanada**: Sering diresepkan sebagai Estradiol generik (Estrace) di bawah kerangka informed consent. Sangat murah dengan asuransi atau GoodRx.
+- **Inggris/UE/Australia**: Diresepkan melalui jalur resmi (NHS, GIC) atau penyedia layanan swasta. Baik Progynova (Valerat) maupun Estrofem (Hemihidrat) merupakan standar.
+- **Pasar DIY Global**: Tablet banyak diperdagangkan di pasar terdesentralisasi karena mudah dikirim dan sulit pecah. Selalu verifikasi sumbernya.
+
+## Saran Pemantauan
+
+- **Kapan mengambil darah**: Selalu lakukan tes **tepat sebelum** mengonsumsi dosis berikutnya. Ini disebut mengukur kadar "trough" (lembah) Anda<CitationRef id="ucsf-2016" num={7} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Fase Awal**: Tes Hormon Seks + Panel Fungsi Hati pada Bulan 1. Periksa panel Hormon + Hati + Lipid pada Bulan 3.
+- **Fase Pemeliharaan**: Lakukan tes setiap 6 bulan.
+- **Target Klinis**: E2 trough antara 100-200 pg/mL, T < 50 ng/dL.
+- **Batas Keamanan**: Jika E2 trough Anda melebihi 200 pg/mL, pertimbangkan secara serius untuk menurunkan jumlah tablet atau beralih ke opsi transdermal.
+
+## Hubungan dengan Estrogen Sublingual
+
+Tablet estradiol standar juga dapat dilarutkan di bawah lidah (Sublingual). Cara ini melewati sebagian besar metabolisme lintas pertama hati, sehingga melonjakkan bioavailabilitas Anda secara drastis. Namun, cara ini memerlukan pemberian dosis beberapa kali sehari dan menciptakan lonjakan kadar darah yang naik-turun liar bak rollercoaster. Jika Anda ingin mempelajari cara mengonsumsi tablet dengan metode ini, lihat halaman kami [Pemberian Sublingual](/id/medications/estrogens/sublingual/).
+
+<DrugBrandGallery drugId="estradiol-oral" />

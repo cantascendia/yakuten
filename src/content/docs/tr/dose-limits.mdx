@@ -1,0 +1,196 @@
+---
+title: "Doz Sınırları ve Tehlikeli İlaç Kombinasyonları"
+description: "Her HRT ilacı için maksimum dozlar, tehlikeli ilaç kombinasyonları ve sık görülen güvensiz rejimler. Kırmızı çizgiyi aşmak feminizasyonu hızlandırmaz — yalnızca riski artırır."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
+noindex: true
+---
+
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<WarningBox title="Bu sayfanın ana mesajı">
+Bu dozları aşmak sizi daha hızlı feminize etmez. Kanıtlar, 100-200 pg/mL düzeyindeki E2'nin tam feminizasyonu sağladığını göstermektedir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. 200 pg/mL üzerindeki düzeyler ek bir yarar sağlamaz — yalnızca VTE (venöz tromboembolizm), karaciğer hasarı ve diğer komplikasyon risklerini artırır.
+</WarningBox>
+
+## 4.1 Maksimum Doz Tablosu
+
+Aşağıdaki maksimum dozlar uluslararası kılavuzlardan ve hakem denetiminden geçmiş literatürden türetilmiştir. Bu sınırların ötesinde fayda-risk dengesi genellikle olumsuzdur.
+
+### Östrojenler
+
+<DoseTable
+  headers={['İlaç', 'Maksimum Günlük/Haftalık Doz', 'Notlar', 'Kaynak']}
+  rows={[
+    ['Transdermal yama', '400 µg/day', 'Yalnızca tek başına kullanım için; 200 µg/day genellikle yeterli', 'ES 2017'],
+    ['Oral östradiol (E2)', '8 mg/day', 'Çoğu hasta hedefe 4 mg/day ile ulaşır', 'WPATH SOC 8'],
+    ['Oral östradiol valerat', '10 mg/day', '≈ 7.5 mg östradiol eşdeğeri', 'WPATH SOC 8'],
+    ['Topikal jel', '6 mg/day', 'Emilim belirgin ölçüde değişkendir; dozu kan düzeylerine göre ayarlayın', 'ES 2017'],
+    ['IM östradiol valerat (EV)', '5 mg/week', 'Önerilen tavan; tek enjeksiyonda ≥ 10 mg yasaktır', 'Rothman 2024'],
+  ]}
+/>
+
+<WarningBox title={'"Maksimum doz" hakkında'}>
+"Maksimum doz", "önerilen doz" anlamına gelmez. Çoğu hasta 100-200 pg/mL hedef E2 düzeyine maksimumun çok altında ulaşır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Doz ayarlamaları her zaman laboratuvar sonuçlarına göre yapılmalı, tavana doğru kendi kendine titrasyonla değil.
+</WarningBox>
+
+### Anti-Androjenler
+
+<DoseTable
+  headers={['İlaç', 'Maksimum Günlük Doz', 'Notlar', 'Kaynak']}
+  rows={[
+    ['CPA (siproteron asetat)', '12.5 mg/day', '≥ 25 mg: meningiom riski belirgin biçimde artar; EMA 2020 kısıtlama getirdi', 'Lee 2022; EMA 2020'],
+    ['Spironolakton', '200 mg/day', 'Daha yüksek dozlar ek anti-androjenik fayda sağlamaz, ancak hiperkalemi riskini belirgin ölçüde artırır', 'ES 2017; UCSF'],
+    ['Bikalutamid', '50 mg/day', 'Endikasyon dışı kullanım; rutin GAHT için önerilmez', 'Angus 2024; Neyman 2019'],
+  ]}
+/>
+
+Ayrıntılı farmakoloji için ilgili ilaç sayfalarına bakın.
+
+### Doz-Risk İlişkisi
+
+Temel bir ilke: **doz arttıkça risk orantısız biçimde yükselirken fayda bir platoya ulaşır**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+- **Östradiol**: 100'den 200 pg/mL'ye çıkmak feminizasyonda marjinal kazanç sağlar, ancak 200'den 400 pg/mL'ye çıkmak neredeyse hiç ek fayda getirmezken VTE riskini belirgin ölçüde artırır<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
+- **CPA**: 5 mg ve 50 mg testosteronu (T) benzer ölçüde baskılar, ancak 50 mg on kattan fazla meningiom riski taşır<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
+- **Spironolakton**: 100'den 200 mg'a çıkmak sınırlı anti-androjen etki katarken hiperkalemi riskini belirgin ölçüde artırır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+
+---
+
+## 4.2 Tehlikeli İlaç Kombinasyonları
+
+### Yasak Kombinasyonlar
+
+<DangerBox title="CPA + Bikalutamid → Kesinlikle yasak">
+Hem CPA hem de bikalutamid hepatotoksiktir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Birlikte kullanımları karaciğer hasarı riskini katlar ve ciddi karaciğer yetmezliğine yol açabilir. Anti-androjen mekanizmaları farklıdır (CPA progestojenik negatif geri bildirim yoluyla etki eder; bikalutamid bir androjen reseptörü antagonistidir), bu nedenle birlikte kullanımları herhangi bir sinerjik fayda sağlamaz.
+
+**Her ikisini birlikte kullanıyorsanız, yalnızca birine geçmek için hekiminize danışın.**
+</DangerBox>
+
+<DangerBox title="Etinil Östradiol (EE) + Herhangi bir HRT rejimi → Kesinlikle yasak">
+Etinil östradiol, birçok kombine oral kontraseptifte bulunan sentetik bir östrojendir. VTE riski biyoözdeş östradiolünkinin yaklaşık **20 katıdır**<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. EE, transfeminen HRT'nin hiçbir aşamasında, hiçbir biçimde, hiçbir dozda kullanılmamalıdır.
+
+Kombine oral kontraseptifler (örneğin EE + CPA içerenler) **HRT değildir**. CPA dozu T'yi etkili biçimde baskılayamayacak kadar düşüktür ve EE bileşeni kabul edilemez bir VTE riski taşır. Aşağıdaki sık görülen güvensiz rejimlere bakın.
+</DangerBox>
+
+<DangerBox title="Herhangi bir östrojen + Sigara → Yasak">
+Östrojen ve tütün kullanımı bir arada VTE riskini katlar<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. 35 yaş üstü sigara içenler için oral östrojen **mutlak kontrendikasyondur**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+- Sigarayı bırakamıyorsanız, **transdermal yolu seçin** (yama veya jel) — transdermal yollar orale kıyasla çok daha düşük VTE riski taşır<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- Transdermal yolla bile sigara kardiyovasküler riski yine de artırır — sigarayı bırakmak her zaman en önemli zarar azaltma önlemidir
+</DangerBox>
+
+### Dikkatle Kullanın
+
+<WarningBox title="CPA + Oral östradiol → Dikkatle kullanın; transdermali tercih edin">
+CPA'nın prokoagülan etkileri vardır ve oral östradiolün karaciğerdeki ilk geçiş metabolizması da VTE riskini artırır<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Birlikte kullanıldıklarında VTE riski katlanır.
+
+**Öneri**: Anti-androjen olarak CPA kullanıyorsanız, VTE riskinin katlanmasını önlemek için transdermal östradiol yolunu (yama veya jel) seçin<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Yalnızca oral östradiole erişiminiz varsa, CPA'yı en düşük etkili dozda (5 mg/day veya daha düşük) tutun ve DVT belirtileri açısından yakından izleyin.
+</WarningBox>
+
+<DangerBox title="Spironolakton + Potasyum takviyeleri veya yüksek K içeren besinler → Hiperkalemi riski">
+Spironolakton, serum potasyumunu yükselten potasyum tutucu bir diüretiktir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Potasyum takviyeleri veya aşırı miktarda yüksek potasyumlu besinlerle birlikte kullanıldığında **hiperkalemiye** (K⁺ > 5.5 mmol/L) yol açabilir ve ölümcül kalp ritim bozukluğuna neden olabilir.
+
+**Spironolakton kullanırken:**
+- Potasyum takviyelerinden kaçının (bazı tuz yerine geçen ürünler dahil)
+- Yüksek potasyumlu besinleri ölçülü tüketin (muz, hindistan cevizi suyu, domates ürünleri)
+- **Serum potasyumunu düzenli olarak test ettirin** (ilk 3 ay aylık, sonra her 3-6 ayda bir)
+- K⁺ > 5.5 mmol/L: spironolaktonu bırakın ve tıbbi yardım alın
+
+**Uyarı belirtileri**: Kas güçsüzlüğü, çarpıntı, ellerde veya ayaklarda karıncalanma → olası hiperkalemi; elektrolitlerinizi acilen test ettirin.
+</DangerBox>
+
+### Hızlı Başvuru Tablosu
+
+<DoseTable
+  headers={['Kombinasyon', 'Risk Düzeyi', 'Başlıca Tehlike']}
+  rows={[
+    ['CPA + Bikalutamid', '🔴 Yasak', 'Katlanan hepatotoksisite'],
+    ['Etinil östradiol (EE) + Herhangi bir rejim', '🔴 Yasak', 'VTE riski ≈ biyoözdeş E2\'nin 20×\'i'],
+    ['Herhangi bir östrojen + Sigara', '🔴 Yasak', 'Çarpan etkisiyle VTE riski artışı'],
+    ['Spironolakton + K⁺ takviyeleri', '🔴 Tehlikeli', 'Hiperkalemi → aritmi → ani ölüm'],
+    ['CPA + Oral östradiol', '🟡 Dikkat', 'Katlanan VTE riski; transdermal E2 tercih edin'],
+  ]}
+/>
+
+---
+
+## 4.3 Sık Görülen Güvensiz Rejimler
+
+Aşağıdakiler, çevrimiçi trans topluluklarında sık paylaşılan ve klinik kılavuzlardan belirgin biçimde sapan rejimlerdir.
+
+### Kombine oral kontraseptifleri HRT olarak kullanmak
+
+<DangerBox title="Kombine OK'ler HRT değildir">
+Etinil östradiol (EE) + düşük doz CPA veya başka progestinler içeren kombine oral kontraseptifler bazen HRT olarak yanlış kullanılır. **Bu, geçerli bir feminize edici rejim değildir**<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />.
+
+**Bu neden yanlıştır:**
+
+- **Etinil östradiol, biyoözdeş östradiolün yaklaşık 20 katı VTE riski taşır**<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- OK'lerdeki CPA dozu (~2 mg), yetişkin testosteron düzeylerini etkili biçimde baskılayamayacak kadar düşüktür
+- EE, E2 kan testinin doğruluğunu bozar (testler biyoözdeş E2'yi ölçer, EE aktivitesini değil)
+- Hem Endocrine Society 2017 hem de WPATH SOC 8, GAHT için **etinil östradiol kullanımına karşı** açıkça uyarır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />
+
+**Bunun yerine ne yapmalı**: Oral, transdermal (yama/jel) veya enjekte edilebilir yollarla biyoözdeş 17β-östradiol kullanın. Şu anda HRT olarak kombine bir OK kullanıyorsanız, en kısa sürede standart bir rejime geçin.
+</DangerBox>
+
+### Günde 50 mg CPA
+
+<DangerBox title="CPA 50 mg, GAHT için ciddi bir aşırı dozdur">
+Toplulukta paylaşılan birçok rejim CPA'yı 50 mg/day dozunda kullanır — bu bir **prostat kanseri tedavi dozudur**, GAHT dozu değil<CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} />.
+
+**Bu neden yanlıştır:**
+
+- Çalışmalar, 5-12.5 mg/day dozunun T'yi kadın aralığına etkili biçimde baskıladığını göstermektedir<CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} />
+- 50 mg ile 12.5 mg arasındaki T baskılama farkı çok küçüktür, ancak **50 mg'da meningiom riski on kattan fazladır**<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} />
+- EMA (Avrupa İlaç Ajansı) 2020'de CPA ≥ 25 mg/day kullanımına kısıtlama getirmiştir<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
+- Daha yüksek dozlar ayrıca hepatotoksisiteyi, depresyonu ve prolaktin yükselmesini artırır
+
+**Ne yapmalı**: CPA'yı 5-12.5 mg/day dozunda kullanın (50 mg'lık tableti dörde bölün). Şu anda 50 mg kullanıyorsanız, östradiol dozunu korurken kademeli olarak azaltın (50→25→12.5, her adım için 2 hafta)<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Maksimum dozla başlamak
+
+<WarningBox title={'Düşük dozla başlamak "zaman kaybetmek" değildir'}>
+Bazı topluluk üyeleri yeni başlayanlara hemen en yüksek dozla başlamalarını tavsiye eder ve düşük dozların "anlamsız" olduğunu iddia eder. Bu yanlıştır<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Bu neden yanlıştır:**
+
+- Düşük doz aşamasını atlamak **göğüs tomurcuğunun erken kapanmasına** neden olabilir — yüksek E2, terminal farklılaşmayı erken tetikleyerek kanal dallanmasını durdurur ve göğüs gelişimini Tanner III-IV evresinde **geri dönüşümsüz biçimde** askıya alır<CitationRef id="patel-2021" num={7} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />
+- Düşük dozla başlamak, ilk yanıtları gözlemlemenize ve karaciğer fonksiyonu sorunlarını ya da ruh hali değişikliklerini erken yakalamanıza olanak tanır
+- Cinsiyeti kadın olan kişilerde ergenlik de çok düşük E2 düzeyleriyle başlar ve yıllar içinde kademeli olarak yükselir
+- Endocrine Society 2017, düşük dozla başlamayı ve laboratuvar sonuçlarına göre her 3-6 ayda bir titrasyon yapmayı önerir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+
+**Ne yapmalı**: Oral östradiole 2 mg/day ile veya IM EV'ye 1-2 mg/week ile başlayın. 3-6 ay sonra laboratuvar sonuçlarına göre ayarlayın. İlk 6 ay E2 hedefini 50-100 pg/mL aralığında tutun. "Hiçbir şey olmuyor" diye dozu artırmayın — göğüs tomurcuğu gelişimi genellikle 3-6 aydan sonra başlar.
+</WarningBox>
+
+### "Daha yüksek E2 = daha iyi sonuç"
+
+<WarningBox title="Daha yüksek E2 düzeyleri daha iyi feminizasyon anlamına gelmez">
+Daha yüksek serum E2'sinin daha iyi feminizasyon sonuçları doğurduğu inancı klinik kanıtlarla desteklenmemektedir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Bu neden yanlıştır:**
+
+- Endocrine Society 2017, E2'nin 100-200 pg/mL aralığında tutulmasını önerir<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /> — cinsiyeti kadın olan kişilerin fizyolojik aralığına dayanır
+- 200'den 400 pg/mL'ye çıkmak anlamlı bir ek feminizasyon sağlamaz, ancak VTE riskini belirgin ölçüde artırır<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
+- Kronik biçimde fizyolojik üstü E2, ayrıca kardiyovasküler olayları, migreni ve ruh hali dengesizliğini artırabilir
+- Enjeksiyon kullananlarda tepe E2, 200 pg/mL'yi aşabilir — dozlama kararları için **dip düzeyleri** (bir sonraki enjeksiyondan önceki en düşük nokta) kullanın
+</WarningBox>
+
+**Ne yapmalı**: Dip E2'yi 100-200 pg/mL, T'yi < 50 ng/dL hedefleyin<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />. Dip düzeyi aralıkta ve T baskılanmışsa, dozu artırmayın. Daha yüksek sayıların peşinden koşmak fayda getirmeden yalnızca risk ekler.
+
+---
+
+## Özet
+
+<WarningBox title="Üç güvenlik ilkesi">
+1. **Maksimum doz kırmızı çizgilerinin altında kalın** — daha yükseğe çıkmak daha iyi sonuç vermez, yalnızca riski artırır
+2. **Yasak ilaçları asla birlikte kullanmayın** — özellikle katlanan hepatotoksisite ve VTE riskine dikkat edin
+3. **Doz ayarlamalarına laboratuvar sonuçları yön versin** — hisle hareket etmeyin, başkalarının rejimleriyle kıyaslamayın, daha yüksek sayıların peşinden koşmayın
+
+Mevcut rejiminizde bu sorunlardan herhangi biri varsa, paniğe kapılmayın — ancak en kısa sürede düzenleyin. Standart kademeli yaklaşım için [HRT Yolculuğu](/tr/pathway/) sayfasına bakın veya bilgilendirilmiş onam klinikleri, Planned Parenthood ya da FOLX Health veya Plume gibi teletıp hizmetleri aracılığıyla konuya hâkim bir hekime danışın.
+</WarningBox>

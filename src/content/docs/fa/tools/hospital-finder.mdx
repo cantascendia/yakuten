@@ -1,0 +1,58 @@
+---
+title: "فهرست مراکز درمانی"
+description: "فهرستی ساختاریافته از منابع دسترسی به مراقبت که جامعه گزارش کرده است. پیش از مراجعه مستقیماً تأیید کنید."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+noindex: true
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="پیش از مراجعه تأیید کنید">
+این فهرست‌ها یادداشت‌های دسترسی است که جامعه نگه‌داری می‌کند، نه تضمین رسمی نهادها. سیاست‌ها، بخش‌ها و در دسترس بودن پزشک ممکن است به‌سرعت تغییر کند، بنابراین تأیید مستقیم همیشه ضروری است.
+</WarningBox>
+
+این فهرست در حال حاضر شامل {hospitals.length} مورد گزارش‌شده توسط جامعه در {cityCount} شهر است. داده‌های منبعِ زیربنایی در این مرحله عمدتاً به زبان چینی است، بنابراین نام بیمارستان‌ها و یادداشت‌های محلی ممکن است همچنان به چینی نمایش داده شوند.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**چگونه از این صفحه استفاده کنیم**
+
+1. از آن به‌عنوان نقطه شروعی برای تأیید شخصی خودتان استفاده کنید.
+2. بخش، در دسترس بودن پزشک و قوانین ثبت‌نام را مستقیماً با خود نهاد تأیید کنید.
+3. دسترسی به ارائه‌دهنده مراقبت را با برنامه‌ریزی آزمایش‌های پایه و آگاهی از شرایط اورژانسی همراه کنید.
+
+</GlassCard>
+
+<DangerBox title="یادداشت اورژانسی">
+این فهرست یک سرویس ارجاع اورژانسی نیست. اگر علائم فوری دارید، به‌جای تکیه بر مرور این فهرست، ابتدا به مراقبت اورژانسی مراجعه کنید.
+</DangerBox>

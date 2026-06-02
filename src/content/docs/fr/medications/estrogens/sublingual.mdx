@@ -1,0 +1,157 @@
+---
+title: "Estradiol sublingual"
+description: "Caractéristiques pharmacologiques, biodisponibilité, fluctuations massives des concentrations sanguines, recommandations posologiques et précautions liées à la prise d'estradiol sous la langue."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, hembree-2017, kuhl-2005, price-1997, ucsf-2016]
+noindex: true
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Estradiol sublingual"
+  nameCN="舌下含服雌二醇"
+  category="estrogen"
+  route="Voie sublinguale"
+  evidenceLevel="B"
+>
+  La voie sublinguale consiste à laisser fondre sous la langue un comprimé d'estradiol oral standard. Le médicament est alors absorbé directement à travers la muqueuse, ce qui contourne en partie l'effet de premier passage hépatique. Cela augmente considérablement la biodisponibilité, mais provoque des fluctuations radicales des taux sanguins, en montagnes russes, obligeant à prendre plusieurs doses par jour.
+</DrugInfoBox>
+
+<img src="/images/drugs/estrofem-studio.webp" alt="Photo du produit : comprimés d'estradiol Estrofem 2mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Pharmacologie
+
+### Le mécanisme d'absorption
+
+Lorsqu'il fond sous la langue, l'estradiol passe directement dans la circulation systémique grâce au dense réseau capillaire situé sous la langue<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} title="Sublingual estradiol pharmacokinetics" /> :
+
+- **Contournement partiel de l'effet de premier passage** : par rapport à l'ingestion des comprimés, une fraction beaucoup plus importante du médicament échappe à la dégradation métabolique directe par le foie.
+- **Biodisponibilité plus élevée** : la biodisponibilité par voie sublinguale est environ 2 à 5 fois supérieure à celle de la voie orale<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />.
+- **Action rapide** : les concentrations sanguines commencent à grimper en flèche en 15 à 25 minutes après la prise.
+- **Pas un contournement total** : la salive entraîne inévitablement une partie du médicament dissous vers la gorge au cours du processus, ce qui signifie qu'un pourcentage de la dose sera tout de même métabolisé exactement comme une dose orale.
+
+### Profils des concentrations sanguines (les montagnes russes)
+
+La pharmacocinétique sublinguale diffère radicalement de celle de la voie orale standard<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} /> :
+
+<DoseTable
+  headers={['Paramètre', 'Voie sublinguale', 'Voie orale']}
+  rows={[
+    ['Délai jusqu\'au pic (Tmax)', '~0,5 à 1 heure', '~3 à 6 heures'],
+    ['Concentration maximale (Cmax)', 'Très élevée (~2-5x les taux oraux)', 'Relativement basse'],
+    ['Durée des taux élevés', 'Courte (~4-6 heures avant la chute)', 'Plus longue (~8-12 heures)'],
+    ['Fluctuation au cours de la journée', 'Massive (rapport pic/creux élevé)', 'Modérée'],
+    ['Rapport E1/E2', 'Plus bas (favorable)', 'Plus élevé'],
+  ]}
+/>
+
+<WarningBox title="Attention : pics et chutes vertigineux">
+Le principal inconvénient de la voie sublinguale est une **instabilité majeure des concentrations sanguines**. Après la dissolution du comprimé, les taux d'E2 montent en flèche, pour s'effondrer quelques heures plus tard. Cela signifie que :
+
+- Un seul dosage sanguin ne peut pas refléter votre taux moyen quotidien d'E2.
+- Au pic, l'E2 dépasse largement la fourchette cible sûre, tandis qu'au creux (juste avant la dose suivante), vous pouvez chuter en dessous des taux thérapeutiques.
+- Ces montagnes russes peuvent provoquer des sautes d'humeur, des bouffées de chaleur, de la fatigue et d'autres symptômes ménopausiques.
+- **Si vous tenez à un équilibre émotionnel et physique stable, optez pour les patchs transdermiques ou le gel quotidien.**
+
+Lors d'un bilan sanguin, effectuez TOUJOURS le prélèvement **juste avant** la dose suivante (taux au creux), en gardant à l'esprit que votre moyenne quotidienne est nettement plus élevée.
+</WarningBox>
+
+### L'avantage du rapport E1/E2
+
+Un avantage théorique de la voie sublinguale est le maintien d'un rapport plus bas entre E1 (estrone) et E2 (estradiol)<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} /> :
+
+- En avalant les comprimés, le foie convertit rapidement l'E2 en E1 (un œstrogène faiblement actif), ce qui aboutit à un rapport E1/E2 de 5:1, voire davantage.
+- Comme la voie sublinguale contourne largement le foie, le rapport E1/E2 reste bien plus proche de 1:1.
+- L'E2 étant à l'origine de la grande majorité de la féminisation, une prédominance plus marquée de l'E2 est théoriquement préférable.
+- Toutefois, la communauté clinique manque de données solides confirmant que manipuler le rapport E1/E2 améliore le résultat phénotypique final.
+
+## Recommandations posologiques
+
+En raison de la biodisponibilité fortement accrue, la dose sublinguale efficace est techniquement inférieure à la dose orale équivalente<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> :
+
+### Estimation de conversion
+
+Comme la voie sublinguale atteint la circulation sanguine à une intensité 2 à 5 fois supérieure à celle des comprimés avalés, le consensus communautaire approximatif estime souvent :
+
+> **1 mg en sublingual ≈ 2-3 mg en oral (équivalence approximative)**
+
+Gardez à l'esprit que les vitesses de clairance métabolique varient énormément d'une personne à l'autre.
+
+### Posologie recommandée
+
+<DoseTable
+  headers={['Phase', 'Dose sublinguale', 'Fréquence', 'E2 cible au creux (pg/mL)', 'Calendrier']}
+  rows={[
+    ['Démarrage à faible dose', '0,5-1 mg/dose', 'Deux fois par jour', '50-100', 'Mois 1-6'],
+    ['Titration modérée', '1-2 mg/dose', '2 à 3 fois par jour', '100-200', 'Mois 6-12'],
+    ['Phase d\'entretien', '1-2 mg/dose', '2 à 3 fois par jour', '100-200', 'À partir de 12 mois'],
+    ['Maximum typique', '2 mg/dose', '3 fois par jour (total 6mg)', 'Ne pas dépasser 200', 'Circonstances particulières'],
+  ]}
+/>
+
+<WarningBox title="Le défi de l'observance">
+La voie sublinguale impose une administration **2 à 3 fois par jour**, répartie de façon logique (toutes les 8-12 heures pour deux prises par jour ; toutes les 6-8 heures pour trois prises par jour). Oublier une dose ou les prendre de manière irrégulière aggrave les fluctuations déjà brutales des taux sanguins. Si régler des réveils pour faire fondre des comprimés perturbe votre mode de vie, passez à la voie orale standard ou aux patchs transdermiques.
+</WarningBox>
+
+## Comment la prendre
+
+### Technique
+
+<img src="/images/diagrams/fr/sublingual-placement.webp" alt="Schéma du placement d'un comprimé sublingual montrant la position correcte sous la langue" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+1. Placez le comprimé entièrement **sous la langue** (au plus près des gencives et des veines).
+2. Gardez la bouche fermée et **évitez activement d'avaler votre salive**.
+3. Laissez-le fondre naturellement. Avec des comprimés micronisés comme l'Estrofem, cela prend environ **5-15 minutes**.
+4. Ne parlez pas, ne buvez pas et ne mangez pas pendant cet intervalle.
+5. Une fois qu'il s'est entièrement désintégré, attendez encore 1-2 minutes, puis avalez naturellement la salive restante.
+
+### FAQ
+
+- **Le comprimé ne se dissout pas ?** Certaines formulations (en particulier les comprimés épais et enrobés de sucre de valérate Progynova, selon le fabricant) sont difficiles à dissoudre par voie sublinguale. L'hémihydrate d'estradiol micronisé (comme l'Estrofem) s'écrase et se dissout presque instantanément.
+- **Avalé par accident trop tôt ?** Considérez-le simplement comme une dose orale avalée. Ne prenez pas un autre comprimé pour « compenser ».
+- **Trop de salive ?** C'est normal. Résistez activement à l'envie d'avaler, mais ne paniquez pas si vous en avalez un peu — votre muqueuse sublinguale absorbe extrêmement vite.
+
+## À qui cela convient
+
+La voie sublinguale convient bien aux personnes qui :
+- souhaitent une biodisponibilité supérieure à celle des comprimés avalés, mais n'ont aucun accès aux options transdermiques ;
+- cherchent spécifiquement à faire baisser des taux élevés d'estrone (E1) ;
+- possèdent la discipline rigoureuse nécessaire pour respecter parfaitement 3 prises par jour.
+
+**Elle convient très mal si vous :**
+- avez du mal avec l'observance ou à vous souvenir de prendre vos médicaments ;
+- ne supportez pas l'instabilité émotionnelle ou les coups de fatigue associés aux pics hormonaux ;
+- avez des antécédents de VTE (thromboembolie veineuse) et avez accès aux patchs ou au gel.
+
+## Risque de VTE (caillots)
+
+On déplore un manque criant de données cliniques à grande échelle reliant spécifiquement le risque de VTE à la voie sublinguale<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" /> :
+
+- **En théorie** : contourner le foie suppose un impact réduit sur les facteurs de coagulation, ce qui la rendrait théoriquement plus sûre que la voie orale.
+- **En réalité** : vous avalez toujours une partie de la dose dans votre salive, ce qui empêche un contournement hépatique véritable et total. Par conséquent, le risque réel de VTE se situe probablement, de façon inconfortable, entre la voie transdermique et la voie orale.
+- **Le verdict** : n'utilisez pas la voie sublinguale comme une « faille » si vous présentez un risque préexistant de caillots sanguins. Si vous êtes à haut risque, exigez la voie transdermique<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />.
+
+## Comparatif rapide
+
+<DoseTable
+  headers={['Critère', 'Voie sublinguale', 'Voie orale (avalée)', 'Patch transdermique']}
+  rows={[
+    ['Biodisponibilité', 'Modérée à élevée', 'Faible (~5%)', 'Élevée'],
+    ['Stabilité des taux sanguins', 'Mauvaise (pics massifs)', 'Modérée', 'Excellente (extrêmement stable)'],
+    ['Risque de VTE', 'Se situe probablement quelque part au milieu', 'RR ≈ 1.48', 'RR ≈ 0.97'],
+    ['Fréquence des prises', '2-3 fois par jour', '1-2 fois par jour', 'Une fois tous les 3,5-7 jours'],
+    ['Praticité', 'Faible', 'Élevée', 'Élevée'],
+  ]}
+/>
+
+<DrugBrandGallery drugId="estradiol-sublingual" />

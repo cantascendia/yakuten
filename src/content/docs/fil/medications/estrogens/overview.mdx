@@ -1,0 +1,108 @@
+---
+title: "Pangkalahatang-tanaw sa mga Estrogen"
+description: "Paghahambing ng mga panganib sa VTE, mga bentahe, at mga kahinaan sa iba't ibang ruta ng pag-inom ng estradiol (transdermal, oral, sublingual, injectable)."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+noindex: true
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+Ang estradiol (E2) ang pangunahing gamot sa HRT ng mga transgender na kababaihan. Kapag pumipili ng ruta ng pag-inom, **ang kaligtasan (partikular ang panganib sa Venous Thromboembolism, o VTE) ang dapat na pangunahin mong isaalang-alang**, hindi lamang ang kaginhawahan o gastos.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/fil/routes-comparison.webp" alt="Paghahambing ng tatlong ruta ng pag-inom ng estradiol: oral na dumadaan sa atay, transdermal na direktang pagsipsip, iniksyon papunta sa daluyan ng dugo" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## Mga Panganib sa VTE Ayon sa Ruta ng Pag-inom
+
+Ang Venous Thromboembolism (pamumuo ng dugo) ay isa sa pinakamalubhang panganib na nauugnay sa estrogen therapy. Malaki ang pagkakaiba-iba ng panganib depende sa kung paano pumapasok ang estrogen sa iyong katawan<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Ruta', 'Kaugnay na Panganib (RR)', 'Antas ng Ebidensiya', 'Tala']}
+  rows={[
+    ['Transdermal Patch', 'RR ≈ 0.97', 'A', 'Walang malaking pagtaas ng panganib kumpara sa mga hindi gumagamit'],
+    ['Transdermal Gel', 'RR ≈ 0.97', 'A', 'Katulad ng patch, nilalampasan ang first-pass sa atay'],
+    ['Oral (Estradiol Valerate/Hemihydrate)', 'RR ≈ 1.48', 'A', 'Tumataas ang panganib ng ~48%'],
+    ['Sublingual', 'Limitadong Datos', 'C', 'Bahagyang nilalampasan ang first-pass, sa teorya ay mas mababa kaysa oral'],
+    ['Injectable (EV/EC/EEn)', 'Limitadong Datos', 'C', 'Nilalampasan ang first-pass, ngunit kulang sa malalaking RCT na datos hinggil sa panganib ng pamumuo'],
+  ]}
+/>
+
+<WarningBox title="Pangunahing Punto">
+Ang mga transdermal na ruta (patch at gel) ay may panganib sa VTE na halos kapareho sa mga taong hindi umiinom ng HRT (RR ≈ 0.97). Sa kabilang banda, ang oral na pag-inom ay nagpapataas ng panganib ng halos 48% (RR ≈ 1.48). Kung mayroon kang anumang naunang risk factor para sa VTE, ang transdermal na ruta ang dapat na iyong unang-unang pagpipilian<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Gabay sa Pagpili ng Ruta
+
+Ang sumusunod na balangkas ay nakabatay sa kasalukuyang klinikal na ebidensiya<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Senaryo 1: May Umiiral na Risk Factor para sa VTE
+
+**Kabilang sa mga risk factor ang:** Edad na higit sa 40, BMI na higit sa 30, paninigarilyo, kasaysayan ng VTE sa pamilya, kasaysayan ng mga sakit sa pamumuo ng dugo, o migraine na may aura.
+
+- **Mas Mainam:** Transdermal Patch o Transdermal Gel
+- **Iwasan:** Oral Estradiol
+- **Iwasan Din:** Ang pagsasama ng oral estrogen sa Cyproterone Acetate (CPA)
+
+### Senaryo 2: Walang Risk Factor para sa VTE
+
+Pumili batay sa accessibility, badyet, at personal na kagustuhan:
+
+- **Oral Estradiol (Estrace, Progynova):** Sa pangkalahatan, ito ang pinakamura at pinakamadaling makuha na ruta sa buong mundo.
+- **Transdermal Patch (Climara, Estradot):** Mas mahusay ang profile sa kaligtasan, ngunit maaaring magmahal o makaranas ng kakulangan sa pandaigdigang supply chain.
+- **Sublingual:** Gumagamit ng mga oral na tableta na tinutunaw sa ilalim ng dila. Mas mataas ang bioavailability ngunit nagdudulot ng malalaking pagtaas/pagbaba ng antas sa dugo.
+- **Injectable:** Nagdudulot ng malalaking pataas-pababa (peak/trough) ngunit napakabisa para sa monotherapy.
+
+### Senaryo 3: Monotherapy (Estrogen na Walang Anti-Androgen)
+
+Kung nais mong pigilin ang testosterone gamit lamang ang estradiol nang hindi umiinom ng nakatalagang anti-androgen blocker:
+
+- **Mas Mainam:** Injectable Estradiol (EV, EC, EEn) – maaasahang nagpapanatili ng tuloy-tuloy na mataas na antas ng E2 na kinakailangan.
+- **Alternatibo:** Mataas na dosis ng transdermal patch (200-400 µg/day) o transdermal gel.
+- **Sanggunian:** Ipinakita ng isang pag-aaral noong 2025 ni Misakian na 82.6% ng mga gumagamit ng injectable EV monotherapy regimen ang nakamit ang T suppression nang hindi nangangailangan ng anti-androgen<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Mabilis na Sanggunian sa Mga Bentahe at Kahinaan
+
+<DoseTable
+  headers={['Ruta', 'Mga Bentahe', 'Mga Kahinaan', 'Karaniwang Accessibility']}
+  rows={[
+    ['Transdermal Patch', 'Pinakamababang panganib sa VTE; matatag na antas sa dugo; palitan 1-2 beses kada linggo', 'Pangangati ng balat; maaaring magmahal o madalas maubos ang stock sa buong mundo', 'Katamtaman'],
+    ['Transdermal Gel', 'Mababang panganib sa VTE; nababagay na pang-araw-araw na dosis', 'Malaki ang pagkakaiba ng pagsipsip ayon sa uri ng balat; kailangan ng oras para matuyo', 'Katamtaman'],
+    ['Oral (Tableta)', 'Pinakamadaling makuha; napakamura; madaling inumin', 'Mas mataas na panganib sa VTE; nasasayang ang malaking bahagi ng gamot dahil sa first-pass na metabolismo sa atay', 'Napakataas'],
+    ['Sublingual', 'Mas mataas na bioavailability kaysa oral; bahagyang nilalampasan ang atay', 'Malalaking pagtaas at pagbaba ng antas sa dugo; kailangang inumin 2-3 beses bawat araw', 'Napakataas (Gumagamit ng oral na tableta)'],
+    ['Injectable (EV/EEn)', 'Nilalampasan ang atay; napakabisa para sa monotherapy', 'Nangangailangan ng karayom/pagkabalisa sa iniksyon; matinding pataas-pababa ng antas sa dugo', 'Nag-iiba ayon sa bansa (kadalasang DIY)'],
+  ]}
+/>
+
+## Pangkalahatang-tanaw sa Dosis
+
+Mga karaniwang saklaw ng dosis sa iba't ibang ruta<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Ruta', 'Panimulang Dosis', 'Dosis na Pampanatili', 'Karaniwang Pinakamataas na Dosis']}
+  rows={[
+    ['Transdermal Patch', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Transdermal Gel', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Oral Estradiol', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublingual', '1-2 mg/day (hatiin 2-3x)', '2-4 mg/day (hatiin 2-3x)', '6 mg/day'],
+    ['Injectable EV', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Mga Detalyadong Pahina
+
+Para sa malalim na pagtalakay sa parmakolohiya, mga paraan ng paggamit, at mga partikular na babala para sa bawat ruta, i-click ang nasa ibaba:
+
+- [Mga Transdermal Patch](/fil/medications/estrogens/transdermal-patch/) — Ang pinakaligtas na ruta ng pag-inom
+- [Oral Estradiol](/fil/medications/estrogens/oral/) — Napakadaling makuha ngunit may bahagyang mas mataas na panganib sa VTE
+- [Sublingual](/fil/medications/estrogens/sublingual/) — Isang kompromiso na nag-aalok ng mas mataas na pagsipsip ngunit malalaking pagbabago-bago
+- [Transdermal Gel](/fil/medications/estrogens/gel/) — Nababagay na kaligtasan na nasa gitna ng patch at oral
+- [Injectable Estradiol](/fil/medications/estrogens/injection/) — Ang gold standard para sa monotherapy

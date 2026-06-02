@@ -1,0 +1,99 @@
+---
+title: "استرادیول سیپیونات (EC)"
+description: "راهنمای کامل استرادیول سیپیونات — مقایسه فارماکوکینتیک با استرادیول والرات، دوزدهی، پروتکل‌های تزریق و مرزهای ایمنی."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="عضلانی (IM) / زیرجلدی (SC)"
+  evidenceLevel="B"
+>
+استرادیول سیپیونات (EC) یک استر تزریقی طولانی‌اثر استرادیول است که عمدتاً در قاره آمریکا به کار می‌رود. در مقایسه با استرادیول والرات (EV)، EC نیمه‌عمر طولانی‌تری دارد (~8-10 days در برابر 4-5 days) که فاصله‌های تزریق طولانی‌تری را ممکن می‌سازد<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. نام تجاری: Depo-Estradiol.
+</DrugInfoBox>
+
+## فارماکوکینتیک
+
+نیم‌رخ فارماکوکینتیک استرادیول سیپیونات<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **نیمه‌عمر**: ~8-10 days (در برابر ~4-5 days برای EV)
+- **زمان اوج**: 2-4 days پس از تزریق
+- **زمان کف (trough)**: 7-10 days پس از تزریق
+- **حالت پایدار**: پس از حدود ~3-4 چرخه منظم به دست می‌آید
+
+### مقایسه با استرادیول والرات (EV)
+
+<DoseTable
+  headers={['پارامتر', 'استرادیول سیپیونات (EC)', 'استرادیول والرات (EV)']}
+  rows={[
+    ['نیمه‌عمر', '~8-10 days', '~4-5 days'],
+    ['زمان اوج', '2-4 days', '2-3 days'],
+    ['فاصله توصیه‌شده', '7-14 days', '5-7 days'],
+    ['نوسان سطح سرمی', 'کمتر', 'بیشتر'],
+    ['منطقه اصلی', 'قاره آمریکا', 'جهانی'],
+    ['خطر VTE (RR)', '~1.0 (عبور اول کبدی را دور می‌زند)', '~1.0'],
+    ['سطح شواهد', 'B', 'A'],
+  ]}
+/>
+
+نیمه‌عمر طولانی‌تر EC منجر به افت کمتر E2 در کف می‌شود و منحنی غلظت یکنواخت‌تری ایجاد می‌کند<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## دوزدهی
+
+### دوزدهی بزرگسالان
+
+<DoseTable
+  headers={['مرحله', 'دوز', 'توضیحات']}
+  rows={[
+    ['دوز شروع', '2-3 mg/week', 'شروع با دوز پایین (1-6 ماه نخست) برای محافظت از رشد سینه'],
+    ['دوز نگهدارنده', '3-5 mg/week', 'بر اساس E2 کف تنظیم شود؛ هدف 100-200 pg/mL'],
+    ['دوز حداکثر', '7 mg/10-14 days', 'فراتر نروید'],
+  ]}
+/>
+
+منابع دوزدهی: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> و WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. به دلیل نیمه‌عمر طولانی‌تر EC، برخی کاربران فاصله‌های تزریق 10-14 day را انتخاب می‌کنند.
+
+<WarningBox title="فاصله تزریق و زمان‌بندی خون‌گیری">
+کاربران EC باید خون‌گیری را **صبح روز پیش از تزریق بعدی** انجام دهند تا سطح کف اندازه‌گیری شود. اگر از برنامه 10 روزه استفاده می‌شود، کف در صبح روز دهم است. هدف E2 کف: 100-200 pg/mL.
+</WarningBox>
+
+## برندها و در دسترس بودن
+
+| برند | غلظت | منطقه |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | ایالات متحده |
+| داروخانه‌های ترکیب‌کننده (compounding) | متنوع | مناطق منتخب |
+
+EC عمدتاً در ایالات متحده و آمریکای لاتین در دسترس است. در مناطقی که در دسترس نیست، [تزریق استرادیول والرات](/fa/medications/estrogens/injection/) جایگزین استاندارد است.
+
+## پایش
+
+مشابه سایر استرهای تزریقی استرادیول:
+
+- **E2**: هر 3 ماه، خون‌گیری در کف (صبح پیش از تزریق). هدف 100-200 pg/mL
+- **T**: هر 3 ماه. هدف &lt;50 ng/dL
+- **عملکرد کبد (ALT/AST)**: پایه + هر 6 ماه
+
+## روش تزریق
+
+روش تزریق با [تزریق استرادیول والرات](/fa/medications/estrogens/injection/#injection-technique) یکسان است. هر دو مسیر SC و IM مناسب هستند.
+
+<DangerBox title="مرزهای ایمنی">
+- **دوز هر تزریق منفرد نباید از 10 mg فراتر رود**
+- هدف، حفظ سطح فیزیولوژیک پایدار E2 است، نه دنبال کردن اوج‌های بالا
+- E2 >200 pg/mL زنانه‌سازی قوی‌تری ایجاد نمی‌کند، تنها خطر لخته را افزایش می‌دهد<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- اگر EC در منطقه شما در دسترس نیست، آن را از کانال‌های تأییدنشده تهیه نکنید
+</DangerBox>

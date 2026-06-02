@@ -1,0 +1,248 @@
+---
+title: "Risques et reconnaissance des urgences"
+description: "Guide complet des risques liés au THS — thromboembolie veineuse (TEV), atteinte hépatique, facteurs de risque de méningiome, symptômes nécessitant des soins d'urgence immédiats et ressources en cas de crise psychologique."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+<EvidenceBadge level="B" />
+
+Globalement, le THS présente un excellent profil de sécurité, mais savoir reconnaître les complications graves, bien que rares, est essentiel pour toute personne sous hormonothérapie. Les données ci-dessous reposent sur l'observation clinique et l'analyse pharmacologique.
+
+<img src="/images/diagrams/fr/emergency-signs.webp" alt="Trois signaux d'alerte nécessitant des soins médicaux immédiats : douleur thoracique, gonflement du mollet, troubles de la vision" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Les profils de risque ci-dessous sont issus des recommandations de l'Endocrine Society 2017<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> et des WPATH SOC 8<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## 7.1 Risques connus du THS
+
+<div class="risk-grid">
+  <div class="risk-item">
+  <RiskCard
+    title="Thrombose veineuse profonde (TVP / DVT)"
+    category="Risque d'urgence"
+    severity="red"
+    drug="Estradiol oral (E2)"
+    probability="< 0,5 % (par an)"
+    signs="Rougeur, gonflement, chaleur et douleur intense unilatéraux au niveau de la jambe."
+  >
+  <p class="risk-citation">Le risque de TEV (VTE) lié à l'estradiol oral est nettement supérieur à celui des voies transdermiques<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Incidence annuelle d'environ 0,2-0,5 % ; le tabagisme et l'âge augmentent encore le risque.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Atteinte hépatique"
+    category="Risque hépatique"
+    severity="red"
+    drug="CPA / médicaments oraux"
+    probability="Rare (surveiller le bilan hépatique)"
+    signs="Jaunissement des yeux/de la peau, urines foncées, fatigue extrême."
+  >
+  <p class="risk-citation">Le CPA et le bicalutamide font tous deux l'objet de cas rapportés d'hépatotoxicité. L'EMA a émis des avertissements concernant le risque d'atteinte hépatique lié au CPA<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Complications cardiovasculaires"
+    category="Risque cardiaque"
+    severity="orange"
+    drug="Toutes les formes d'E2"
+    probability="Plus élevé avec l'âge / le tabac"
+    signs="Palpitations, oppression thoracique inexpliquée."
+  >
+  <p class="risk-citation">La voie orale comporte un risque cardiovasculaire plus élevé que la voie transdermique, en raison de l'effet de premier passage hépatique sur les facteurs de la coagulation<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Méningiome"
+    category="Risque neurologique"
+    severity="red"
+    drug="CPA à forte dose"
+    probability="Dose cumulée > 10g"
+    signs="Troubles de la vision, perte auditive, maux de tête inhabituels."
+  >
+  <p class="risk-citation">CPA à une dose quotidienne ≥25 mg : risque de méningiome OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />. L'EMA restreint les doses ≥25 mg/day<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Troubles de l'humeur et dépression"
+    category="Risque psychique"
+    severity="yellow"
+    drug="CPA / taux d'E2 bas"
+    probability="Fréquent (5-15 %)"
+    signs="Idées suicidaires, pleurs inexpliqués, perte de motivation."
+  >
+  <p class="risk-citation">L'activité progestative du CPA peut entraîner des troubles de l'humeur et une dépression, avec une incidence d'environ 5-15 %<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="Élévation de la prolactine"
+    category="Risque endocrinien"
+    severity="yellow"
+    drug="Estradiol / CPA"
+    probability="Nécessite une surveillance régulière"
+    signs="Écoulement mamelonnaire, maux de tête sévères persistants."
+  >
+  <p class="risk-citation">L'estradiol comme le CPA peuvent élever la prolactine. Une PRL >50 ng/mL impose un bilan à la recherche d'un prolactinome hypophysaire<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />.</p>
+  </RiskCard>
+  </div>
+</div>
+
+## 7.2 Symptômes nécessitant des soins médicaux immédiats
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="Symptômes nécessitant des soins médicaux immédiats">
+
+**Arrêtez le THS et rendez-vous aux urgences les plus proches si vous présentez l'un des symptômes suivants :**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Gonflement ou douleur unilatéral du mollet</strong> — peut évoquer une thrombose veineuse profonde (TVP / DVT)
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Douleur thoracique soudaine ou crachats de sang</strong> — peut évoquer une embolie pulmonaire
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Faiblesse unilatérale ou affaissement du visage</strong> — possible signe d'alerte d'un AVC
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Jaunissement de la peau ou du blanc des yeux</strong> — atteinte hépatique aiguë
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">Maux de tête soudains et intenses avec perte de la vision</strong> — possible hypertension intracrânienne
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 Soutien en cas de crise et lignes d'écoute
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="Lignes d'écoute en cas de crise">
+
+### Besoin d'aide ?
+
+Si vous traversez une détresse psychologique sévère ou si vous avez des pensées d'automutilation, contactez immédiatement l'un de ces services d'aide. Vous n'êtes pas seule.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Trans Lifeline</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:+18775658860" style="color: var(--color-primary); text-decoration: none;">877-565-8860</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">États-Unis — par et pour les personnes trans</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">988 Suicide & Crisis</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:988" style="color: var(--color-primary); text-decoration: none;">988</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">États-Unis — appel ou SMS 24h/24, 7j/7</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Urgences</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:911" style="color: var(--color-danger); text-decoration: none;">911</a> / <a href="tel:112" style="color: var(--color-danger); text-decoration: none;">112</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">États-Unis : 911 · UE : 112 · Royaume-Uni : 999</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**Ressources internationales :**
+- **Royaume-Uni** : Samaritans — 116 123 (gratuit, 24h/24, 7j/7)
+- **Canada** : Trans Lifeline — 877-330-6366
+- **Australie** : Lifeline — 13 11 14
+- **International** : [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<WarningBox title="Une fois en sécurité, les prochaines étapes">
+- [Interpréteur de bilan sanguin](/fr/blood-tests/#tool) — Vérifiez si vos taux sont dans la plage de sécurité
+- [Parcours THS](/fr/pathway/) — Revenez à votre étape actuelle
+- [Guide du THS en Chine](/fr/china-reality/) — Trouvez des médecins et des ressources bienveillants
+- [Médicaments](/fr/medications/estrogens/overview/) — Réévaluez votre plan de traitement
+</WarningBox>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .risk-grid > .risk-item + .risk-item {
+    margin-top: 0;
+  }
+
+  .risk-item > .risk-card {
+    flex: 1;
+  }
+
+  .risk-citation {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid rgba(200, 75, 124, 0.2);
+  }
+`}</style>

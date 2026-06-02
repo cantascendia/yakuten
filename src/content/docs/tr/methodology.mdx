@@ -1,0 +1,102 @@
+---
+title: "Metodoloji"
+description: "HRT Farmakopesi içeriğinin literatür taramasından yayına nasıl üretildiği — klinik kılavuzlarla uyum, DOI atıfları, A/B/C/X kanıt derecelendirmesi, iki kişilik çapraz doğrulama, tıbbi danışman incelemesi ve üç ayda bir yapılan düzenli gözden geçirme."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="HRT Farmakopesi Yayın Ekibi"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="tr"
+/>
+
+Bu sayfa, HRT Farmakopesi'ndeki her içeriğin nasıl yazıldığını, incelendiğini ve güncellendiğini anlatır. Okuyuculara verdiğimiz sözdür: **bu süreçten geçmemiş hiçbir metin yayımlanmaz**.
+
+## 1. Üç Temel İlke
+
+1. **Atıfsız hiçbir iddia olmaz**: her tıbbi iddia en az bir DOI ya da uluslararası kılavuz kaynağı taşımalıdır; kaynak gösterilemeyen bir iddia ya <EvidenceBadge level="X" /> olarak işaretlenir ya da kaldırılır.
+2. **Dozlama verilerinde çapraz kaynak**: reçete dozları en az iki bağımsız ve yetkin kaynakta yer almalıdır (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA ve benzerleri).
+3. **Kesin dilden kaçınmak**: "mutlaka / her zaman / asla" yerine "genellikle / önerilir / vakaların büyük çoğunluğunda" ifadeleri tercih edilir.
+
+## 2. Tam İş Akışı
+
+### 1. Konu seçimi
+- Konular; arama talebine, okuyucu sorularına, kılavuz güncellemelerine ve önemli güvenlik uyarılarına (EMA/FDA) göre belirlenir
+- Her sayfa, yanıtlaması gereken 3–7 somut soruyu listeler
+- Hedef kitle (hasta / birinci basamak hekimi / aile bireyi) baştan tanımlanır
+
+### 2. Literatür taraması
+- Birincil kanallar: PubMed, Cochrane, resmî kılavuz siteleri, Transfemscience derlemeleri
+- Hariç tutulanlar: anonim forum gönderileri, ticari siteler, hakem değerlendirmesinden geçmemiş bloglar
+- Her ana iddianın özgün atıfı kaydedilir (öncelikle DOI; yoksa derginin yayın bilgileri)
+
+### 3. Kanıt derecelendirmesi
+Çalışma tasarımının gücüne göre derecelendirilir:
+
+| Düzey | Anlamı | Örnek kanıt |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Güçlü | Birden çok RCT, sistematik derleme / meta-analiz, açık uluslararası kılavuz önerisi |
+| <EvidenceBadge level="B" /> | Orta | Tek bir RCT, birden çok prospektif kohort |
+| <EvidenceBadge level="C" /> | Zayıf | Olgu bildirimleri, retrospektif çalışmalar, uzman görüşü |
+| <EvidenceBadge level="X" /> | Yok | Topluluk söylentisi, kişisel deneyim, çıkarım |
+
+### 4. Taslak yazımı
+- Ortak bileşenler kullanılır: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>` vb.
+- Frontmatter `evidenceLevel`, `lastReviewed` ve `references` alanlarını kaydeder (CI tarafından zorunlu kılınır)
+- Doz tabloları üst sınırları ve kontrendike kombinasyonları otomatik olarak doğrular
+
+### 5. İki kişilik çapraz doğrulama
+- Yazar taslağı bitirir → ikinci bir editör her `<CitationRef>` öğesini birincil kaynakla bağımsız olarak karşılaştırarak doğrular
+- Uyumsuzluk ya da aşırı yorum → revizyon için geri gönderilir
+- Özgün kaynak geri çekilmiş ya da düzeltilmişse → site genelinde arama ve değiştirme yapılır
+
+### 6. Tıbbi danışman incelemesi
+- Endokrinoloji / psikiyatri / hukuk danışmanları konuya göre görevlendirilir
+- İnceleme kayıtları, karşıt görüşler ve nihai kararlar dahil olmak üzere arşivlenir
+- Nitelikli bir değerlendiriciye ulaşılamazsa konu yayımlanmaz
+
+### 7. Yayın ve erişilebilirlik kalite kontrolü
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Renk kontrastı, klavyeyle erişilebilirlik, ekran okuyucu anlamlandırması doğrulanır
+- Mobil kırılma noktaları ve `prefers-reduced-motion` yedeği doğrulanır
+
+### 8. Düzenli gözden geçirme
+- Varsayılan olarak her **12 ayda** bir yeniden incelenir ve `lastReviewed` güncellenir
+- Yüksek riskli sayfalar (riskler, doz kırmızı çizgileri, acil durumlar) her **6 ayda** bir yeniden incelenir
+- Önemli bir kılavuz değişikliği → 48 saat içinde artımlı güncelleme
+
+## 3. Hata Düzeltme
+
+Okuyucular olgusal hata, atıf kayması ya da güncelliğini yitirmiş içerik bulduğunda:
+
+1. [Geri bildirim formu](https://wj.qq.com/s2/16576000/5fe5/) veya GitHub Issue üzerinden gönderim yapılır
+2. 72 saat içinde ilk yanıt verilir
+3. Olgusal hata olduğu doğrulandığında sayfanın başına bir **düzeltme bildirimi** eklenir; sürüm geçmişi özgün hatayı ve düzeltme tarihini kaydeder
+4. Önemli düzeltmeler e-posta / RSS / Telegram abonelerine iletilir
+
+## 4. Çıkar Çatışması Beyanı
+
+- Bu sitenin ticari sponsorluğu, ilaç reklamı ya da satıştan komisyonu yoktur
+- İşletme maliyetleri gönüllüler tarafından kendi cebinden karşılanır; açık kaynak topluluğundan gelen bağışları kabul ederiz
+- Editörler ve tıbbi danışmanlar çıkar çatışması beyanları imzalar; aktif reçeteleme ilişkisi bulunan ilaçlar, çatışma içindeki kişi tarafından bağımsız olarak incelenmez
+
+<WarningBox>
+Bu site kanıta dayalı başvuru materyali sunar ve **tıbbi tavsiye niteliği taşımaz**. İlacınızda değişiklik yapmadan önce nitelikli bir sağlık profesyoneline danışın; akut belirtilerde gecikmeden acil yardım alın.
+</WarningBox>
+
+## İlgili Belgeler
+
+- [Bu site hakkında](/tr/about/)
+- [Tıbbi Danışmanlar](/tr/medical-advisors/)
+- [Yayın Politikası](/tr/editorial-policy/)
+- [Kaynak Kütüphanesi](/tr/appendix-references/)

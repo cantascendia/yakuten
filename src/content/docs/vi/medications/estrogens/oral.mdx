@@ -1,0 +1,136 @@
+---
+title: "Estradiol đường uống (viên nén)"
+description: "Hồ sơ dược lý đầy đủ, khuyến nghị liều dùng, dữ liệu nguy cơ VTE và cảnh báo về các phối hợp nguy hiểm của estradiol đường uống."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, lee-2022, patel-2021, ucsf-2016]
+noindex: true
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+
+<DrugInfoBox
+  name="Oral Estradiol (Estrace, Progynova)"
+  nameCN="口服雌二醇"
+  category="estrogen"
+  route="Đường uống"
+  evidenceLevel="A"
+>
+  Estradiol đường uống (nuốt viên) là dạng bào chế estrogen dễ tiếp cận nhất trên phạm vi toàn cầu. Tuy nguy cơ VTE (huyết khối) có cao hơn đôi chút so với đường qua da, đây vẫn là lựa chọn chuẩn và rất dễ chấp nhận đối với người dùng trẻ tuổi không có sẵn yếu tố nguy cơ.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynova-studio.webp" alt="Ảnh sản phẩm viên estradiol valerate Progynova 2mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+
+## Dược lý
+
+### Chuyển hóa qua gan lần đầu (First-Pass)
+
+Khi estradiol đường uống được nuốt và hấp thu qua đường tiêu hóa, nó phải đi qua gan trước khi vào tuần hoàn chung. Hiện tượng này được gọi là "chuyển hóa qua gan lần đầu" (First-Pass Metabolism)<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />:
+
+- Nồng độ E2 dồn dập đập trực tiếp vào gan kích thích tổng hợp các yếu tố đông máu, và đó chính là điều làm tăng nguy cơ VTE.
+- Nó cũng ảnh hưởng đến SHBG (Sex Hormone-Binding Globulin, globulin gắn hormone sinh dục) và mức triglyceride.
+- Hiệu ứng qua gan lần đầu này phá hủy phần lớn lượng thuốc, khiến sinh khả dụng đường uống chỉ còn vỏn vẹn 3-5%.
+- Các dạng như Estradiol Valerate (Progynova) đơn giản chỉ được tách thành estradiol thuần ngay trong gan.
+
+### Quy đổi liều
+
+Các dạng viên uống khác nhau chứa lượng estradiol nền (base) thực tế khác nhau<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} />:
+
+> **2 mg Estradiol Valerate (ví dụ Progynova) ≈ 1.5 mg Estradiol (ví dụ Estrace)**
+
+Hãy ghi nhớ phép quy đổi này khi đọc các thảo luận về liều trên mạng, vì các diễn đàn ở Mỹ thường mặc định dùng Estrace (Estradiol thuần / Estradiol Hemihydrate), trong khi diễn đàn ở châu Âu và châu Á lại thường mặc định dùng Progynova (Estradiol Valerate).
+
+### Dữ liệu nguy cơ VTE (huyết khối)
+
+<DoseTable
+  headers={['Đường dùng', 'Nguy cơ tương đối (RR)', '95% CI', 'Ghi chú']}
+  rows={[
+    ['Estradiol đường uống', '1.48', '1.27 - 1.72', 'Nguy cơ VTE tăng khoảng 48%'],
+    ['Miếng dán qua da (mốc nền)', '0.97', '0.79 - 1.19', 'Không khác biệt thống kê so với người không dùng thuốc'],
+  ]}
+/>
+
+Estradiol đường uống làm tăng nguy cơ VTE khoảng 48% (RR ≈ 1.48) so với nhóm dân số không dùng thuốc<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />. Tuy nguy cơ *tương đối* có tăng, nhưng nguy cơ nền *tuyệt đối* ở nhóm dân số trẻ, khỏe mạnh lại cực kỳ thấp (khoảng 1-2 trên 10.000 mỗi năm). Do đó, đường uống vẫn nằm trong biên độ an toàn chấp nhận được đối với người trẻ không có sẵn yếu tố nguy cơ.
+
+<DangerBox title="Phối hợp chết người: Estradiol uống + CPA uống">
+Dùng estradiol đường uống cùng lúc với Cyproterone Acetate (CPA) đường uống chắc chắn tạo ra **nguy cơ VTE chồng chất, cộng dồn gấp đôi**. Bản thân CPA đã có tính tiền đông máu<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />. Khi kết hợp với hiệu ứng qua gan lần đầu của estrogen đường uống, mối đe dọa hình thành cục máu đông tăng lên gấp bội. Nếu bạn buộc phải dùng CPA làm thuốc kháng androgen, bạn tuyệt đối nên chuyển sang estrogen qua da (miếng dán hoặc gel). Xem trang [Giới hạn liều & Chống chỉ định](/vi/dose-limits/) của chúng tôi.
+</DangerBox>
+
+## Khuyến nghị liều dùng
+
+Các khoảng liều dưới đây tổng hợp dữ liệu từ Hướng dẫn của Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> và WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Giai đoạn', 'Liều (Estradiol nền)', 'E2 mục tiêu (pg/mL)', 'Mốc thời gian']}
+  rows={[
+    ['Khởi đầu liều thấp', '2 mg/day', '50-100', 'Tháng 1-6'],
+    ['Tăng liều mức trung bình', '4 mg/day', '100-200', 'Tháng 6-12'],
+    ['Giai đoạn duy trì', '4-6 mg/day', '100-200', 'Từ tháng 12 trở đi'],
+    ['Liều tối đa', '8 mg/day', 'Không vượt quá 200', 'Chỉ trong trường hợp đặc biệt'],
+  ]}
+/>
+
+<WarningBox title="Đừng bỏ qua giai đoạn liều thấp">
+Ngay cả khi bạn cảm thấy liều thấp "chẳng có tác dụng gì", thì 6 tháng đầu của cách tiếp cận tăng liều từ từ lại cực kỳ then chốt để thiết lập sự phân nhánh ống tuyến vú khỏe mạnh. Bắt đầu thẳng ở mức 6mg hay 8mg để "đốt cháy giai đoạn" dậy thì thường ép các nụ vú hợp nhất quá sớm, làm tổn hại vĩnh viễn đến thể tích ngực cuối cùng của bạn<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. Xem bài phân tích chuyên sâu [Phát triển ngực](/vi/breast-development/) của chúng tôi.
+</WarningBox>
+
+### Cách dùng
+
+- Hãy uống viên vào khoảng cùng một thời điểm mỗi ngày để tạo thành thói quen.
+- Nếu dùng 4 mg/day, chia liều (2 mg buổi sáng + 2 mg buổi tối) sẽ làm giảm đáng kể dao động nồng độ trong máu.
+- Uống viên cùng bữa ăn giúp tăng hấp thu một chút, nhưng giữ lịch dùng đều đặn còn quan trọng hơn.
+- Nếu lỡ một liều, hãy cứ đợi và uống liều kế tiếp theo đúng lịch. Đừng uống gấp đôi để bù.
+
+## Đối tượng phù hợp & Chống chỉ định
+
+Estradiol đường uống phù hợp với các nhóm sau<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} />:
+
+**Rất nên dùng khi:**
+- Không có yếu tố nguy cơ VTE/đông máu
+- Tuổi < 40
+- BMI < 30
+- Không hút thuốc
+- Không có tiền sử cá nhân hoặc gia đình bị huyết khối tĩnh mạch sâu
+- Không có rối loạn đông máu
+
+**Không dùng đường uống (chuyển sang đường qua da):**
+- Tuổi ≥ 40
+- BMI ≥ 30
+- Đang hút thuốc hoặc mới bỏ thuốc
+- Tiền sử cá nhân hoặc tiền sử gia đình mạnh về VTE
+- Đã biết có bất thường yếu tố đông máu (ví dụ Factor V Leiden)
+- Đang kết hợp HRT với CPA (Cyproterone Acetate)
+- Tiền sử đau nửa đầu kèm tiền triệu (migraine with aura)
+
+## Khả năng tiếp cận toàn cầu
+
+Viên nén vẫn là chuẩn mặc định ở đại đa số các nơi trên thế giới:
+
+- **Mỹ/Canada**: Thường được kê dưới dạng Estradiol generic (Estrace) theo khung đồng thuận sau tư vấn (informed-consent). Cực kỳ rẻ khi có bảo hiểm hoặc dùng GoodRx.
+- **Anh/EU/Úc**: Được kê qua các kênh chính thức (NHS, GIC) hoặc cơ sở tư nhân. Cả Progynova (Valerate) lẫn Estrofem (Hemihydrate) đều là loại tiêu chuẩn.
+- **Thị trường DIY toàn cầu**: Viên nén được mua bán rộng rãi trên các thị trường phi tập trung do dễ vận chuyển và khó vỡ. Luôn xác minh nguồn gốc.
+
+## Lời khuyên về theo dõi
+
+- **Khi nào lấy máu**: Luôn xét nghiệm **ngay trước** khi uống liều kế tiếp. Đây gọi là đo mức "đáy" (trough)<CitationRef id="ucsf-2016" num={7} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Giai đoạn đầu**: Xét nghiệm Hormone sinh dục + Chức năng gan vào Tháng 1. Kiểm tra Hormone + Gan + Mỡ máu (lipid) vào Tháng 3.
+- **Giai đoạn duy trì**: Xét nghiệm mỗi 6 tháng.
+- **Mục tiêu lâm sàng**: E2 đáy nằm trong khoảng 100-200 pg/mL, T < 50 ng/dL.
+- **Biên độ an toàn**: Nếu E2 đáy của bạn vượt quá 200 pg/mL, hãy nghiêm túc cân nhắc giảm số viên hoặc chuyển sang các lựa chọn qua da.
+
+## Mối liên hệ với Estrogen ngậm dưới lưỡi
+
+Viên estradiol thông thường cũng có thể được ngậm tan dưới lưỡi (Sublingual). Cách này bỏ qua phần lớn quá trình chuyển hóa qua gan lần đầu, làm tăng vọt sinh khả dụng. Tuy nhiên, nó đòi hỏi dùng nhiều lần trong ngày và tạo ra những đợt tăng giảm thất thường, lên xuống như tàu lượn trong nồng độ máu. Nếu bạn muốn tìm hiểu về cách dùng viên theo kiểu này, hãy xem trang [Đường ngậm dưới lưỡi](/vi/medications/estrogens/sublingual/) của chúng tôi.
+
+<DrugBrandGallery drugId="estradiol-oral" />

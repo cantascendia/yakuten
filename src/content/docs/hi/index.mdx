@@ -1,0 +1,41 @@
+---
+title: "HRT Yakuten"
+description: "ट्रांसजेंडर महिलाओं के लिए साक्ष्य-आधारित HRT सुरक्षा आधार। क्लिनिकल मार्ग, रक्त जाँच गाइड, खुराक सीमाएँ, जोखिम पहचान और इंटरैक्टिव टूल — सभी WPATH SOC 8 और सहकर्मी-समीक्षित साहित्य पर आधारित।"
+evidenceLevel: X
+lastReviewed: 2026-04-07
+references: []
+noindex: true
+template: splash
+hero:
+  title: |
+    <span class="sr-only">HRT Yakuten</span>
+  tagline: ""
+---
+
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import SplashNav from '../../../components/layout/SplashNav.astro';
+import ParticleBackground from '../../../components/layout/ParticleBackground.astro';
+import ParticleCanvas from '../../../components/interactive/ParticleCanvas.tsx';
+import HeroSection from '../../../components/layout/HeroSection.astro';
+import ActionCards from '../../../components/layout/ActionCards.astro';
+import DrugQuickNav from '../../../components/layout/DrugQuickNav.astro';
+import MissionStatement from '../../../components/layout/MissionStatement.astro';
+import SiteFooter from '../../../components/layout/SiteFooter.astro';
+
+<SplashNav />
+
+<EmergencyBanner />
+
+<ParticleBackground />
+
+<ParticleCanvas client:idle />
+
+<HeroSection />
+
+<ActionCards />
+
+<DrugQuickNav />
+
+<MissionStatement />
+
+<SiteFooter />

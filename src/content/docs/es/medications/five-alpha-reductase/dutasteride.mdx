@@ -1,0 +1,90 @@
+---
+title: "Dutasterida"
+description: "La dutasterida en la THS transfemenina — inhibición dual de la 5α-reductasa, comparación con la finasterida, posología y seguridad."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasterida"
+  nameCN="Dutasterida"
+  category="Inhibidor de la 5α-reductasa"
+  route="Oral"
+  evidenceLevel="C"
+>
+La dutasterida es un inhibidor dual de la 5α-reductasa de tipo I + tipo II que reduce la DHT sérica en aproximadamente un 90-95 %, de forma más potente que la finasterida<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Se utiliza como tratamiento complementario en la THS transfemenina cuando la finasterida resulta insuficiente.
+</DrugInfoBox>
+
+## Mecanismo
+
+La dutasterida inhibe simultáneamente **tanto la 5α-reductasa de tipo I como la de tipo II**:
+
+- **Tipo I**: se encuentra principalmente en la piel (glándulas sebáceas) y el hígado
+- **Tipo II**: se encuentra principalmente en los folículos pilosos y la próstata
+
+Esta inhibición dual logra una reducción de la DHT del **90-95 %**, frente al ~65-70 % que se consigue con la [finasterida](/es/medications/five-alpha-reductase/finasteride/).
+
+## Comparación con la finasterida
+
+| Característica | Dutasterida | Finasterida |
+|---------|-------------|-------------|
+| Diana | Tipo I + II | Solo tipo II |
+| Reducción de DHT | ~90-95 % | ~65-70 % |
+| Semivida | ~4-5 semanas | ~6-8 horas |
+| Inicio del efecto | 3-6 meses | 3-6 meses |
+| Eliminación tras la suspensión | Meses (semivida muy larga) | Semanas |
+| Disponibilidad de genéricos | Limitada | Amplia |
+| Nivel de evidencia | C | B |
+
+## Posología
+
+<DoseTable
+  headers={['Indicación', 'Dosis', 'Notas']}
+  rows={[
+    ['Complemento de la THS', '0.5 mg/day', 'Dosis estándar; no superarla'],
+  ]}
+/>
+
+- 0.5 mg/day es la única dosis recomendada
+- Debido a la semivida muy larga (~4-5 semanas), **omitir un día no requiere recuperar la dosis**
+- Las cápsulas no deben abrirse ni masticarse
+
+<WarningBox title="La dutasterida suele ser de segunda línea">
+Si no se ha probado la finasterida, por lo general se recomienda hacer una prueba con finasterida durante 6 meses primero. La dutasterida cuenta con menor evidencia (C), un coste más alto, y su semivida extremadamente larga implica que los efectos secundarios persisten durante meses tras suspenderla.
+</WarningBox>
+
+## Marcas y disponibilidad
+
+| Marca | Concentración | Notas |
+|-------|----------|-------|
+| **Avodart** | Cápsula de 0.5 mg | Marca original |
+| Genéricos | Cápsula de 0.5 mg | Disponibles en algunas regiones |
+
+## Seguimiento
+
+- **T**: Continuar con el seguimiento habitual de la THS cada 3 meses
+- **DHT** (opcional): Puede confirmar el efecto del inhibidor de la 5αR
+- **PSA**: La dutasterida reduce el PSA; informa a tu médico si te lo van a analizar
+
+## Contraindicaciones
+
+- Alergia a la dutasterida
+- Insuficiencia hepática grave (la dutasterida se metaboliza por la vía del CYP3A4)
+- Uso concomitante de inhibidores potentes del CYP3A4 (p. ej., ketoconazol) — puede causar acumulación de dutasterida
+
+<DangerBox title="Notas importantes">
+- **Semivida muy larga** (4-5 semanas): la supresión de la DHT persiste durante meses tras la suspensión
+- El contenido de la cápsula es teratógeno; las personas embarazadas no deben manipular cápsulas con fugas
+- No suspendas otros medicamentos de la THS porque mejore la caída del cabello
+- Si la finasterida ya es eficaz, no hay necesidad de escalar a la dutasterida
+</DangerBox>
