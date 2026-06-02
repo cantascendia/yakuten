@@ -6,7 +6,6 @@
 import BlogHeader from '../components/layout/BlogHeader.astro';
 import BlogBreadcrumbs from '../components/ui/BlogBreadcrumbs.astro';
 import BlogPostJsonLd from '../components/seo/BlogPostJsonLd.astro';
-import FaqSchema from '../components/seo/FaqSchema.astro';
 import RelatedDocs from '../components/ui/RelatedDocs.astro';
 import { t, getLocale } from '../i18n/ui';
 import { getRelatedPosts, getCategoryLabel, getBlogUrl, getBlogSlug } from '../utils/blogHelpers';
@@ -200,10 +199,6 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
         <div class="blog-article__content">
           <slot />
         </div>
-
-        {/* Visible FAQ + single FAQPage JSON-LD (frontmatter faqs). Google/Bing
-            require FAQ answers to be visible on the page. */}
-        {faqs && faqs.length > 0 && <FaqSchema items={faqs} />}
 
         <!-- Disclaimer -->
         <div class="blog-disclaimer">
