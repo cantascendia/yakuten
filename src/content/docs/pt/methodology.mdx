@@ -1,0 +1,102 @@
+---
+title: Metodologia
+description: Como o conteúdo da HRT Pharmacopoeia é produzido, da busca na literatura à publicação — alinhamento com diretrizes clínicas, citações com DOI, classificação de evidências A/B/C/X, conferência cruzada por duas pessoas, revisão por consultor médico e revisão trimestral contínua.
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+Esta página descreve como cada peça de conteúdo da HRT Pharmacopoeia é escrita, revisada e atualizada. É o nosso compromisso com quem lê: **texto que não passou por esse processo não é publicado**.
+
+## 1. Três princípios fundamentais
+
+1. **Nenhuma afirmação sem citação**: toda afirmação médica precisa carregar pelo menos uma referência de DOI ou de diretriz internacional; se uma afirmação não puder ser fundamentada, ela é marcada como <EvidenceBadge level="X" /> ou removida.
+2. **Dados de dosagem com fontes cruzadas**: as doses de prescrição precisam aparecer em pelo menos duas fontes independentes e confiáveis (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, entre outras).
+3. **Evitar linguagem absoluta**: em vez de "deve / sempre / nunca", preferimos "geralmente / sugerido / na grande maioria dos casos".
+
+## 2. Fluxo de trabalho completo
+
+### 1. Escolha do tema
+- Os temas são escolhidos com base na demanda de busca, nas perguntas de quem lê, em atualizações de diretrizes e em alertas de segurança importantes (EMA/FDA)
+- Cada página lista as 3 a 7 perguntas específicas que precisa responder
+- O público-alvo (paciente / clínico de atenção primária / familiar) é definido logo no início
+
+### 2. Busca na literatura
+- Canais principais: PubMed, Cochrane, sites oficiais de diretrizes, revisões do Transfemscience
+- Excluídos: postagens anônimas de fóruns, sites comerciais, blogs sem revisão por pares
+- Toda afirmação central registra sua citação original (DOI de preferência; caso contrário, os dados de publicação do periódico)
+
+### 3. Classificação das evidências
+Classificadas pela robustez do desenho do estudo:
+
+| Nível | Significado | Exemplo de evidência |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Forte | Múltiplos ECRs, revisões sistemáticas / metanálises, recomendação explícita de diretriz internacional |
+| <EvidenceBadge level="B" /> | Moderada | ECR único, múltiplas coortes prospectivas |
+| <EvidenceBadge level="C" /> | Fraca | Relatos de caso, estudos retrospectivos, opinião de especialista |
+| <EvidenceBadge level="X" /> | Nenhuma | Saber popular da comunidade, experiência pessoal, inferência |
+
+### 4. Redação
+- Uso de componentes compartilhados: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
+- O frontmatter registra `evidenceLevel`, `lastReviewed` e `references` (exigidos pela CI)
+- As tabelas de dose validam automaticamente os limites superiores e as combinações contraindicadas
+
+### 5. Conferência cruzada por duas pessoas
+- Quem escreve conclui um rascunho → uma segunda pessoa da edição verifica de forma independente cada `<CitationRef>` em relação à fonte primária
+- Divergências ou extrapolações → devolvidas para revisão
+- Se a fonte original tiver sido retratada ou corrigida → busca e substituição em todo o site
+
+### 6. Revisão por consultor médico
+- Consultores de endocrinologia / psiquiatria / jurídico são designados conforme o tema
+- Os registros da revisão, incluindo discordâncias e decisões finais, são arquivados
+- Se nenhum revisor qualificado puder ser contatado, o tema não é publicado
+
+### 7. Controle de qualidade de publicação e acessibilidade
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Contraste de cores, navegabilidade por teclado e semântica para leitores de tela são validados
+- Pontos de quebra em dispositivos móveis e o fallback de `prefers-reduced-motion` são verificados
+
+### 8. Revisão contínua
+- Por padrão, nova revisão a cada **12 meses**, atualizando `lastReviewed`
+- Páginas de alto risco (riscos, limites máximos de dose, emergências) são revisadas a cada **6 meses**
+- Uma mudança importante de diretriz → atualização pontual em até 48 horas
+
+## 3. Correção de erros
+
+Quando quem lê encontra erros factuais, desvios em citações ou conteúdo desatualizado:
+
+1. Envie pelo [formulário de feedback](https://wj.qq.com/s2/16576000/5fe5/) ou por uma Issue no GitHub
+2. Resposta inicial em até 72 horas
+3. Uma vez confirmado o erro factual, um **aviso de errata** é adicionado ao topo da página, e o histórico de versões registra o erro original e a data da correção
+4. Correções importantes são enviadas a quem assina por e-mail / RSS / Telegram
+
+## 4. Declaração de conflito de interesses
+
+- Este site não tem patrocínio comercial, não veicula propaganda de medicamentos e não recebe comissões por compras
+- Os custos de operação são pagos do próprio bolso por pessoas voluntárias; aceitamos doações da comunidade de código aberto
+- Editores e consultores médicos assinam declarações de conflito de interesses; medicamentos com relações de prescrição ativas não são revisados de forma independente pela parte em conflito
+
+<WarningBox>
+Este site oferece material de referência baseado em evidências e **não constitui aconselhamento médico**. Consulte um profissional de saúde qualificado antes de alterar sua medicação e procure atendimento de emergência imediatamente em caso de sintomas agudos.
+</WarningBox>
+
+## Documentos relacionados
+
+- [Sobre este site](/pt/about/)
+- [Consultores médicos](/pt/medical-advisors/)
+- [Política editorial](/pt/editorial-policy/)
+- [Biblioteca de referências](/pt/appendix-references/)

@@ -448,6 +448,117 @@ export const ui = {
     'links.title': '빠른 링크',
     'links.subtitle': '근거 기반 · 위험 감소 · 진료 안내',
   },
+
+  pt: {
+    // HeroSection
+    'hero.title': 'HRT Yakuten',
+    'hero.slogan': 'Que esta jornada leve você ao seu verdadeiro eu',
+
+    // SplashNav
+    'nav.before': 'Antes de Começar',
+    'nav.pathway': 'Trajetória da HRT',
+    'nav.medications': 'Medicamentos',
+    'nav.doseLimits': 'Limites de Dose',
+    'nav.bloodTests': 'Exames de Sangue',
+    'nav.risks': 'Riscos e Emergências',
+    'nav.tools': 'Ferramentas',
+    'nav.guides': 'Guias Práticos',
+    'nav.blog': 'Blog',
+    'nav.search': 'Buscar',
+    'nav.ariaLabel': 'Navegação principal',
+
+    // ActionCards
+    'action.notStarted.title': 'Ainda não comecei a HRT',
+    'action.notStarted.desc': 'Entenda os exames de base, as contraindicações e o consentimento informado — construa uma base segura antes da sua primeira dose.',
+    'action.onHRT.title': 'Já estou fazendo HRT',
+    'action.onHRT.desc': 'Siga a trajetória clínica, acompanhe seus níveis e otimize seu protocolo para a saúde a longo prazo.',
+    'action.problem.title': 'Algo parece errado',
+    'action.problem.desc': 'Reconheça os sinais de perigo e saiba quando procurar atendimento de emergência. Sua segurança vem sempre em primeiro lugar.',
+    'action.notStarted.cta': 'Explorar Exames de Base',
+    'action.onHRT.cta': 'Acompanhar Trajetória',
+    'action.problem.cta': 'Ação de Emergência',
+    'action.askAI.title': 'Tenho uma dúvida médica',
+    'action.askAI.desc': 'Assistente de IA baseado em evidências disponível 24 horas. Sem armazenamento de conversas, sem prescrições personalizadas.',
+    'action.askAI.cta': 'Perguntar ao Assistente de IA',
+    'action.ariaLabel': 'Início rápido',
+
+    // HeroSection
+    'hero.subtitle': 'Baseado em Evidências · Redução de Danos · Cuidado Orientado',
+    'hero.ctaPrimary': 'Perguntar ao Assistente de IA',
+    'hero.ctaPathway': 'Iniciar Minha Trajetória',
+
+    // MissionStatement
+    'mission.label': 'A Realidade Crítica',
+    'mission.ariaLabel': 'Declaração de missão',
+    'mission.stat.before': 'Em todo o mundo, inúmeras pessoas transgênero em HRT não têm acesso a',
+    'mission.stat.number': 'qualquer',
+    'mission.stat.after': 'orientação ou monitoramento médico.',
+    'mission.body.before': 'Este site existe para oferecer a você uma base de segurança baseada em evidências',
+    'mission.body.give': '',
+    'mission.body.baseline': 'base de segurança',
+
+    // EmergencyBanner
+    'emergency.text': 'Se você estiver passando por qualquer uma das situações a seguir, interrompa a HRT e procure atendimento de emergência imediatamente:',
+    'emergency.symptoms': 'Inchaço ou dor unilateral na panturrilha · Dor de cabeça súbita e intensa com alterações na visão · Dor no peito ou dificuldade para respirar · Amarelamento da pele ou dos olhos · Crise emocional grave e persistente ou ideação suicida',
+    'emergency.link': 'Ver detalhes de emergência',
+
+    // a11y
+    'a11y.skipToMain': 'Pular para o conteúdo principal',
+
+    // SiteFooter
+    'footer.disclaimer.title': 'Aviso Legal',
+    'footer.disclaimer.text': 'Este site tem finalidade apenas informativa e não constitui aconselhamento médico. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer terapia hormonal.',
+    'footer.privacy.title': 'Privacidade',
+    'footer.privacy.text': 'Respeitamos sua privacidade. Nenhum dado pessoal é coletado ou armazenado. O histórico de navegação nunca é rastreado.',
+    'footer.sources.title': 'Fontes de Evidência',
+    'footer.sources.text': 'Todos os dados clínicos são provenientes do WPATH SOC 8, das Diretrizes da Endocrine Society, do UCSF Transgender Care e de pesquisas revisadas por pares.',
+    'footer.dev.title': 'Código Aberto',
+    'footer.dev.text': 'Este projeto é desenvolvido de forma aberta. Contribuições de desenvolvedores, profissionais de saúde e membros da comunidade são bem-vindas.',
+    'footer.brand': 'HRT Yakuten',
+    'footer.notice': 'Este site não prescreve medicamentos, não vende remédios e não coleta informações pessoais.',
+    'footer.navLabel': 'Links do rodapé',
+    'footer.link.guides': 'Guias Práticos',
+    'footer.link.privacy': 'Política de Privacidade',
+    'footer.link.disclaimer': 'Aviso Médico',
+    'footer.link.github': 'Projeto no GitHub',
+    'footer.link.feedback': 'Feedback',
+    'footer.copy': 'HRT Yakuten · Baseado em Evidências · Redução de Danos',
+
+    // DrugBrandGallery
+    'brandGallery.viewAll': 'Ver índice completo de marcas →',
+
+    // Blog
+    'blog.title': 'Artigos',
+    'blog.subtitle': 'Respostas detalhadas para dúvidas comuns sobre HRT',
+    'blog.readMore': 'Ler mais',
+    'blog.readingTime': '{min} min de leitura',
+    'blog.publishedOn': 'Publicado',
+    'blog.updatedOn': 'Atualizado',
+    'blog.relatedDocs': 'Recursos Relacionados',
+    'blog.relatedArticles': 'Artigos Relacionados',
+    'blog.backToIndex': '← Voltar aos artigos',
+    'blog.backToDocs': '← Voltar aos documentos',
+    'blog.allCategories': 'Todos',
+    'blog.breadcrumb.home': 'Início',
+    'blog.breadcrumb.blog': 'Artigos',
+    'blog.disclaimer': 'Este artigo tem finalidade apenas informativa e não constitui aconselhamento médico. Consulte um profissional de saúde qualificado para decisões de tratamento.',
+
+    // DrugQuickNav
+    'drugNav.title': 'Consulta Rápida de Medicamentos',
+    'drugNav.ariaLabel': 'Navegação rápida de medicamentos',
+    'drugNav.estrogens': 'Estrogênios',
+    'drugNav.antiandrogens': 'Antiandrógenos',
+    'drugNav.progestogens': 'Progestógenos',
+    'drugNav.viewAll': 'Ver todos os 20 medicamentos →',
+
+    // HeroSearch
+    'hero.searchPlaceholder': 'Buscar medicamentos, sintomas ou guias...',
+    'hero.searchLabel': 'Busca no site',
+
+    // Links page
+    'links.title': 'Links Rápidos',
+    'links.subtitle': 'Baseado em Evidências · Redução de Danos · Cuidado Orientado',
+  },
 } as const;
 
 export type Locale = keyof typeof ui;
@@ -470,5 +581,6 @@ export function getLocale(astroLocale?: string, pathname?: string): Locale {
   if (pathname?.startsWith('/en')) return 'en';
   if (pathname?.startsWith('/ja')) return 'ja';
   if (pathname?.startsWith('/ko')) return 'ko';
+  if (pathname?.startsWith('/pt')) return 'pt';
   return 'zh';
 }

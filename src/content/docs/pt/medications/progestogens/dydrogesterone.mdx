@@ -1,0 +1,77 @@
+---
+title: Didrogesterona
+description: Didrogesterona na HRT transfeminina — mecanismo do progestágeno retroisômero, posologia, comparação com a progesterona micronizada e segurança.
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Didrogesterona"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+A didrogesterona é um retroisômero da progesterona com biodisponibilidade oral significativamente maior do que a da progesterona micronizada. É usada como opção alternativa de progestágeno na HRT transfeminina, embora as evidências clínicas específicas para o cuidado de pessoas transgênero ainda sejam limitadas<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mecanismo
+
+A didrogesterona é um análogo estrutural da progesterona natural, com atividade altamente seletiva sobre os receptores progestogênicos:
+
+- **Alta biodisponibilidade oral**: ~28% (vs ~10% da progesterona micronizada)
+- **Sem atividade antiandrogênica**: Diferentemente do CPA (acetato de ciproterona) ou da espironolactona, não atua diretamente sobre os androgênios
+- **Sem atividade glicocorticoide ou mineralocorticoide**
+- **Meia-vida**: ~14-17 horas
+
+### Comparação com a Progesterona Micronizada
+
+| Característica | Didrogesterona | [Progesterona Micronizada](/pt/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Tipo | Retroisômero (sintético) | Natural/bioidêntico |
+| Biodisponibilidade oral | ~28% | ~10% |
+| Efeito sedativo | Mínimo | Significativo (por isso a tomada à noite) |
+| Vias | Apenas oral | Oral/retal/vaginal |
+| Risco de VTE (tromboembolismo venoso) | Dados insuficientes | Neutro ou muito baixo |
+| Nível de evidência | C | C |
+
+## Posologia
+
+<DoseTable
+  headers={['Indicação', 'Dose', 'Observações']}
+  rows={[
+    ['Suplementação de progestágeno na HRT', '10-20 mg/day', 'Geralmente 1-2 vezes ao dia'],
+    ['Regime cíclico', '10 mg/day x 14 days/month', 'Imita a fase lútea do ciclo menstrual'],
+  ]}
+/>
+
+<WarningBox title="Progestágenos na HRT: A Controvérsia">
+O WPATH SOC 8 observa que os benefícios dos progestágenos na HRT transfeminina "não foram demonstrados de forma suficiente"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Algumas usuárias relatam que os progestágenos ajudam no desenvolvimento das mamas e no humor, mas as evidências são primariamente anedóticas e baseadas na experiência da comunidade.
+</WarningBox>
+
+## Marcas e Disponibilidade
+
+| Marca | Concentração | Região |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Amplamente disponível em todo o mundo (inclusive na China continental) |
+| Genéricos | 10 mg | Regiões selecionadas |
+
+## Monitoramento
+
+- **PRL (prolactina)**: A cada 6 meses. Os progestágenos podem elevar discretamente a prolactina
+- Não é necessário monitoramento hepático adicional (a didrogesterona tem hepatotoxicidade muito baixa)
+
+## Contraindicações
+
+- Alergia à didrogesterona
+- Sangramento vaginal de causa desconhecida (indicação para mulheres cisgênero — raramente aplicável no contexto trans)
+- Porfiria hepática aguda

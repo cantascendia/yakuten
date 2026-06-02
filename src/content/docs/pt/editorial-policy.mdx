@@ -1,0 +1,98 @@
+---
+title: Política Editorial
+description: Princípios editoriais da HRT Pharmacopoeia, processo de correção de erros, padrões de direitos autorais e citação, canais de reclamação e recurso, e divulgação de conflitos de interesse.
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+## Proibições Absolutas
+
+A HRT Pharmacopoeia nunca publicará nada do que segue:
+
+<DangerBox>
+- Orientação de prescrição personalizada ("você deveria tomar X mg")
+- Links de compra de medicamentos, intermediários de venda ou QR codes de indicação/comissão
+- Formulações que enfraqueçam o reconhecimento de emergências médicas (TVP, hepatotoxicidade, meningioma etc.)
+- Afirmações médicas sem DOI ou citação
+- Scripts de rastreamento de terceiros ou armazenamento de dados de saúde dos usuários
+- Configurações que contornem os avisos de isenção de responsabilidade da IA ou os alertas de segurança
+</DangerBox>
+
+## Linguagem e Tom
+
+- **Evite termos absolutos**: prefira "sugerimos / em geral / na maioria dos casos" a "deve / sempre / nunca"
+- **Dirija-se diretamente ao leitor**: escreva "você pode escolher A ou B" em vez de "os pacientes devem escolher A"
+- **Declare a incerteza com clareza**: conclusões com nível de evidência B/C/X devem ser marcadas com "os dados são limitados" ou "opinião de especialistas"
+- **Reduza o estigma**: use linguagem que afirme a comunidade e evite termos desatualizados ou excessivamente clínicos
+
+## Citações e Direitos Autorais
+
+- Toda afirmação médica é referenciada pelo componente `CitationRef` (os IDs correspondem às entradas em `src/data/references.json`)
+- DOIs são preferíveis; quando não houver DOI, cita-se a informação de publicação do periódico mais uma URL estável
+- Figuras e diagramas são originais ou provenientes de obras em Creative Commons / domínio público; as reproduções recebem o devido crédito
+- O conteúdo original do site é disponibilizado sob a licença CC BY-SA 4.0; o código é regido pela LICENSE do repositório
+
+## Correção de Erros
+
+Os leitores podem enviar relatos pelo [formulário de feedback](https://wj.qq.com/s2/16576000/5fe5/) ou pelas [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+
+| Tipo | Tempo de resposta | Tratamento |
+|---|---|---|
+| Erro factual | Resposta inicial em até 72 horas | **Aviso de errata** no topo da página + registro de alterações |
+| Desvio de citação | 72 horas | Substituir a citação e publicar um registro público de correção |
+| Informação desatualizada | 7 dias | Atualização incremental + atualização de `lastReviewed` |
+| Orientação perigosa | Remoção emergencial em 24 horas | Corrigir ou manter offline até revisão |
+
+Correções importantes também são propagadas para:
+
+- O histórico de versões em `/pt/appendix-references/`
+- Assinantes de RSS / Telegram / e-mail
+
+## Reclamações e Recursos
+
+- **Reclamações sobre conteúdo**: [formulário de feedback](https://wj.qq.com/s2/16576000/5fe5/)
+- **Questões jurídicas / direitos autorais**: abra uma GitHub Issue com o rótulo `legal`, ou entre em contato com os mantenedores do repositório
+- **Privacidade**: este site não coleta informações de identificação pessoal; qualquer vazamento de privacidade relatado é tratado em até 24 horas
+
+## Divulgação de Conflitos de Interesse
+
+- **Sem patrocínio comercial, sem publicidade de medicamentos, sem comissões de compra**
+- Os custos operacionais são cobertos por contribuições voluntárias e doações da comunidade de código aberto
+- Editores e consultores médicos assinam declarações de conflito de interesse; temas com relações de prescrição ou comerciais diretamente relacionadas são objeto de impedimento (recusa)
+- Nenhum link externo carrega identificadores de afiliação; são listados apenas recursos de hospitais e linhas de apoio avaliados pela comunidade
+
+## Ciclo de Revisão
+
+| Tipo de página | Intervalo de revisão padrão |
+|---|---|
+| Reconhecimento de emergências, limites de dose, alertas de perigo | **6 meses** |
+| Monografias de medicamentos e guias | **12 meses** |
+| Ferramentas, políticas, metodologia | **12 meses** |
+| Postagens do blog | Verificadas uma vez, 12 meses após a publicação |
+
+Uma mudança importante de diretriz (alerta de segurança da EMA/FDA, nova edição da WPATH / Endocrine Society) dispara uma **atualização incremental em até 48 horas**.
+
+<WarningBox>
+Esta página é um compromisso público com a autorregulação editorial. **Se você nos encontrar violando qualquer cláusula acima, denuncie publicamente** — essa prestação de contas é a única forma de mantermos a confiança dos nossos leitores.
+</WarningBox>
+
+## Documentos Relacionados
+
+- [Sobre este site](/pt/about/)
+- [Metodologia](/pt/methodology/)
+- [Consultores Médicos](/pt/medical-advisors/)

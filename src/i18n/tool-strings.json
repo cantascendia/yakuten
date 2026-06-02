@@ -92,6 +92,28 @@
       "actions": {
         "printResults": "결과 인쇄"
       }
+    },
+    "pt": {
+      "sections": {
+        "inputTitle": "Insira os valores do exame",
+        "resultTitle": "Avaliação",
+        "emptyHint": "Insira os valores do seu exame de sangue à esquerda. Os resultados aparecerão aqui em tempo real.",
+        "disclaimer1": "Esta ferramenta é apenas para referência e não substitui a interpretação de um médico. Se você estiver preocupado, procure atendimento médico diretamente.",
+        "disclaimer2": "Todos os cálculos são feitos localmente no seu navegador. Nenhum dado é transmitido ou armazenado.",
+        "viewEmergency": "Ver guia de emergência"
+      },
+      "rangeLabels": {
+        "e2": "E2 (Estradiol)",
+        "t": "T (Testosterona)",
+        "prl": "PRL (Prolactina)",
+        "alt": "ALT/AST (Função hepática)",
+        "k": "K+ (Potássio sérico)",
+        "hb": "Hb (Hemoglobina)",
+        "ddimer": "Dímero-D"
+      },
+      "actions": {
+        "printResults": "Imprimir resultados"
+      }
     }
   }
 }

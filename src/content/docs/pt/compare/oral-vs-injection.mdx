@@ -1,0 +1,211 @@
+---
+title: "Estradiol Oral vs. Injetável: Comparação Clínica das Vias"
+description: Uma comparação lado a lado entre o estradiol oral (Progynova) e o valerato de estradiol injetável (EV), abordando farmacocinética, risco de TEV, velocidade de início de ação, estabilidade dos níveis plasmáticos, disponibilidade na China continental e a curva de aprendizado da autoaplicação.
+evidenceLevel: A
+lastReviewed: 2026-04-19
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, aly-2021, ucsf-2016]
+noindex: true
+faqs:
+  - q: "Qual é melhor, estradiol oral ou injetável?"
+    a: "Ambas as vias conseguem atingir os níveis-alvo na maioria das pessoas. O risco de TEV da injeção fica próximo ao basal; o oral é de 2-4x o basal. As diretrizes internacionais recomendam preferencialmente as vias não orais (injeção / gel / adesivo) para pessoas com 40 anos ou mais, fumantes, com obesidade ou com distúrbios de coagulação. Pessoas jovens e saudáveis podem escolher qualquer uma das duas."
+  - q: "Eu preciso aplicar a injeção de estradiol em mim mesma?"
+    a: "Os hospitais na China continental geralmente não oferecem aplicação intramuscular de rotina para HRT; a maioria das pessoas se autoaplica ou conta com a ajuda de uma amiga. A curva de aprendizado é moderada, mas, na primeira injeção, você deve ter alguém presente ou orientação por vídeo, além de material de desinfecção e um plano para reações vasovagais."
+  - q: "Trocar do oral para a injeção causa um efeito rebote?"
+    a: "É possível haver uma flutuação transitória de curto prazo: os níveis plasmáticos do oral são eliminados em 24 horas após a última dose, enquanto a injeção leva 2-3 doses para atingir o estado de equilíbrio. Faça uma sobreposição de 1-2 semanas durante a transição e confirme o estado de equilíbrio com exame de sangue antes de suspender completamente o oral."
+  - q: "Qual é o tamanho do risco de TEV do estradiol oral?"
+    a: "O risco absoluto permanece baixo: o TEV basal em pessoas trans (MTF) jovens e saudáveis é de ~1-2/1000 pessoas-ano; o estradiol oral o eleva para ~3-6/1000 pessoas-ano. A injeção/transdérmico fica aproximadamente no nível basal. Tabagismo, obesidade e idade somam-se ao risco absoluto de forma substancial."
+  - q: "O sublingual conta como oral ou como transdérmico?"
+    a: "Fica entre os dois. A absorção pela mucosa sublingual contorna parcialmente o primeiro passo hepático, então o risco de TEV pode ser menor do que o do oral engolido, mas a evidência é mais fraca do que para a injeção/transdérmico. Os níveis plasmáticos apresentam picos altos e vales profundos, sendo menos estáveis do que o adesivo/gel/injeção."
+sidebar:
+  order: 11
+---
+
+import BylineCard from '../../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  evidenceLevel="A"
+  refCount={6}
+  locale="en"
+/>
+
+O estradiol oral (Progynova / comprimidos de valerato de estradiol) e o valerato de estradiol (EV) injetável por via intramuscular são as duas vias de E2 mais comuns na comunidade trans (MTF) de língua chinesa. Esta página compara a farmacocinética, a segurança e as barreiras práticas, **sem fazer uma recomendação universal**.
+
+:::note[Matriz de Decisão em 30 Segundos]
+| Se a sua situação é → | Escolha recomendada |
+|---|---|
+| Você quer o menor risco de TEV / idade ≥40 / fumante / IMC>30 | **EV injetável** · contorna o primeiro passo hepático, RR ≈ 1 |
+| Medo de agulhas / rotina caótica / sem disposição para aprender o procedimento | **Progynova oral** · curva de aprendizado zero |
+| Histórico de TEV / enxaqueca com aura / Fator V de Leiden | **EV injetável** (ou transdérmico) · oral contraindicado |
+| Acesso fácil na China continental + pouco esforço | **Progynova oral** · disponível em obstetrícia/ginecologia |
+| Meta de monoterapia (sem antiandrógeno) | **EV injetável** · ~82% atingem T &lt;50 ng/dL |
+| Intervalos de injeção irregulares / quer estabilidade ao longo do dia | **Oral 2x ao dia** · razão pico-vale da injeção ~3-4:1 |
+| Gravidez / amamentação / menor de 18 anos | Nenhuma das duas é recomendada; consulte um profissional de saúde |
+
+> Em dúvida? Continue lendo a comparação detalhada ou use o [autoavaliador de risco](/pt/tools/risk-screener/) para ajudar.
+:::
+
+## Visão Geral
+
+| Dimensão | Oral (Progynova) | Injeção (valerato de estradiol, EV) |
+|---|---|---|
+| **Primeiro passo hepático** | Sim (atravessa) | Não (contornado) |
+| **Risco de TEV** | 2-4x o basal | ~basal |
+| **Frequência de dosagem** | 1-3 vezes ao dia | A cada 5-10 dias |
+| **Estabilidade dos níveis plasmáticos** | Picos/vales ao longo do dia | Flutuação entre doses |
+| **Início de ação** | Pico em horas | Pico em 24-48 horas |
+| **Nível de evidência** | <EvidenceBadge level="A" /> | <EvidenceBadge level="A" /> |
+| **Disponibilidade na China continental** | Apenas com receita; comum em obstetrícia/ginecologia e endocrinologia | Apenas com receita; alguns hospitais relutam em prescrever |
+| **Custo mensal** | ~20-60 RMB | ~30-100 RMB |
+| **Barreira prática** | Nenhuma | Curva de aprendizado da autoaplicação IM |
+
+## Farmacocinética
+
+### Oral: o primeiro passo hepático molda a curva
+
+O estradiol oral ou o valerato de estradiol é absorvido no intestino delgado, entra no fígado pela veia porta e **perde 50-70% no metabolismo de primeiro passo**<CitationRef id="kuhl-2005" />. A dose sistêmica efetiva é de apenas 30-50% da dose engolida, e o fígado fica "encharcado" em altas concentrações de E2/E1.
+
+- Oral 2-4 mg → pico plasmático ~50-150 pg/mL, declina após 4-8 horas
+- Meia-vida ~12-14 horas (como E2), mas a razão E1/E2 fica desviada para cima
+- A produção hepática de SHBG, fatores de coagulação e PCR (proteína C-reativa) aumenta → risco elevado de TEV / colestase<CitationRef id="canonico-2018" />
+
+### Injeção: liberação lenta muscular, curva mais plana
+
+Após a injeção IM de EV, o veículo oleoso forma um depósito no músculo e a ligação éster sofre hidrólise lenta, liberando E2<CitationRef id="aly-2021" />:
+
+- 4 mg de EV IM → pico 24-48 horas depois em ~300-600 pg/mL, depois declina exponencialmente
+- Meia-vida ~4-5 dias; cai para 100-150 pg/mL em 5-7 dias
+- **Contorna completamente o primeiro passo hepático**; os efeitos na coagulação se aproximam do estradiol fisiológico
+
+## Comparação do Risco de TEV
+
+Com base em grandes coortes de pessoas trans (MTF) e em estudos de HRT na pós-menopausa<CitationRef id="canonico-2018" /><CitationRef id="coleman-2022" />:
+
+| Via | Risco relativo de TEV vs. basal |
+|---|---|
+| Estradiol oral | **2-4x** |
+| Estrogênios equinos conjugados (CEE, obsoletos) | 4-6x |
+| Sublingual | Possivelmente 1.5-3x (evidência limitada) |
+| Gel / adesivo transdérmico | **1x (basal)** |
+| Valerato de estradiol IM | **1x (basal)** |
+
+**O risco absoluto ainda é baixo**: o TEV basal em pessoas trans (MTF) jovens e saudáveis é de ~1-2/1000 pessoas-ano. Tabagismo + obesidade + idade >40 somam-se para elevar substancialmente o risco absoluto.
+
+**Posição das diretrizes**<CitationRef id="coleman-2022" /><CitationRef id="hembree-2017" />:
+- Idade ≥40 + qualquer fator de risco → prefira a via não oral
+- Histórico de TEV → evite o oral; prefira transdérmico/injeção + avaliação de anticoagulação
+- 2-4 semanas antes de cirurgia → troque para transdérmico ou pause
+
+## Estabilidade Plasmática
+
+<img
+  src="/images/diagrams/zh/oral-vs-injection-curves.webp"
+  alt="Forma de onda comparativa dos níveis plasmáticos de E2 por via oral vs. intramuscular: o oral duas vezes ao dia mostra flutuação de pico-vale ao longo do dia (100-400 pg/mL); a injeção semanal mostra um declínio lento do pico ~600 pg/mL até o vale ~150 pg/mL ao longo da semana"
+  width="1536"
+  height="1024"
+  loading="lazy"
+  decoding="async"
+  style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
+/>
+
+| Via | Variação ao longo do dia | Variação entre dias | Impacto nos sintomas |
+|---|---|---|---|
+| Oral uma vez ao dia | Pico/vale ~3:1 | Pequena | Oscilações de humor · sensação de edema cíclico |
+| Oral duas vezes ao dia | Pico/vale ~2:1 | Pequena | Mais uniforme |
+| Injeção a cada 7 dias | Nenhuma | Pico/vale ~3-4:1 | "Euforia pós-injeção" por alguns dias |
+| Injeção a cada 5 dias | Nenhuma | Pico/vale ~2:1 | Melhor estado de equilíbrio |
+| Adesivo / gel | Pequena | Pequena | O mais estável |
+
+**Lógica de escolha**: pessoas que buscam estabilidade de humor e corporificação preferem adesivo / gel / injeção em intervalos curtos; pessoas sensíveis à flexibilidade de dose preferem o oral.
+
+## Início de Ação e Transição
+
+### Início de ação do oral
+
+- Pico em 2-4 horas após a dose; respostas teciduais (desenvolvimento mamário, mudanças na pele) aparecem em 1-3 meses
+- Supressão de T em estado de equilíbrio em ~4-8 semanas (com antiandrógeno)
+
+### Início de ação da injeção
+
+- A primeira injeção atinge o pico em 24-48 horas, mas não consegue alcançar o estado de equilíbrio
+- Após 2-3 doses (~10-20 dias), aproxima-se do estado de equilíbrio
+- Durante a transição, recomenda-se a sobreposição: mantenha o oral por 1-2 semanas antes da primeira injeção e depois reduza gradualmente
+
+### Transição entre as vias
+
+**Oral → injeção**:
+1. Calcule a dose equivalente: oral 2-4 mg/dia ≈ EV 4-8 mg a cada 7 dias
+2. Mantenha o oral por 2-4 dias após a primeira injeção e depois reduza gradualmente
+3. Verifique o E2 de vale 4-6 semanas após a injeção para confirmar o estado de equilíbrio
+
+**Injeção → oral**:
+1. Suspenda a última injeção; aguarde 5-7 dias para os níveis plasmáticos caírem
+2. Inicie o oral; a dose inicial costuma ser 1-1.5x o equivalente da injeção em estado de equilíbrio (para compensar o primeiro passo hepático)
+3. Reavalie o exame de sangue em 2-4 semanas para ajuste
+
+## Barreiras Práticas
+
+### Oral
+
+- Barreira zero; basta tomar no horário
+- Observação: o Progynova é valerato de estradiol 2 mg por comprimido, equivalente a "estradiol 2 mg" — sem necessidade de conversão
+- Dose esquecida: tome dentro de 12 horas; pule se o atraso for maior que 12 horas
+
+### Autoaplicação
+
+- Injeção IM oleosa: agulha 23G de 1-1.5 polegada (~25-38 mm), 21G para aspirar
+- Locais de aplicação: dorsoglúteo (quadrante superior externo), face anterolateral da coxa, deltoide (pequenos volumes)
+- Desinfecção: álcool 70%; limpe a tampa do frasco por 30 segundos e passe o algodão no local da aplicação em movimento circular
+- Técnica: expulse as bolhas de ar, empurre lentamente (10-30 segundos) e pressione o local por 30 segundos após retirar a agulha
+
+<WarningBox>
+**Fortemente recomendado para a primeira injeção**: tenha uma amiga presente · mantenha números de emergência à mão · observe por 30 minutos para detectar reações alérgicas ou vasovagais. Veja nosso [guia da primeira injeção](/pt/guides/first-injection/) para o passo a passo detalhado.
+</WarningBox>
+
+### Alternativa subcutânea (SC)
+
+O EV oleoso pode ser **injetado por via subcutânea** (abdômen, face anterior da coxa), com menos dor e uma meia-vida ligeiramente mais longa. Agulha 25G × 5/8 polegada (16 mm). A evidência é moderada; algumas diretrizes já a aceitam<CitationRef id="aly-2021" />.
+
+## Disponibilidade na China Continental
+
+| Canal | Oral (Progynova) | Injeção (EV) |
+|---|---|---|
+| Obstetrícia/ginecologia | Disponível, fácil de prescrever | Alguns hospitais recusam |
+| Endocrinologia | Fácil | Depende da postura do médico |
+| Medicina reprodutiva | Muito fácil | Comum em protocolos de estimulação ovariana |
+| Psiquiatria (clínica trans) | Disponível | Disponível |
+| Custo | 20 mg × 30 comprimidos ~40 RMB | 5 mg/mL × 10 ampolas ~60-100 RMB |
+| Plano de saúde | Reembolso parcial | Reembolso parcial |
+
+## Como Escolher (Estrutura de Decisão Clínica)
+
+**Prefira o oral quando**:
+- Jovem, sem fatores de risco de TEV, sem disposição para aprender a injeção IM
+- O acesso à injeção é difícil ou os médicos se recusam a prescrever
+- Ponte de curto prazo que será trocada em alguns meses
+- Alta aceitação da forma de "medicação diária"
+
+**Prefira a injeção quando**:
+- Idade ≥40 ou fatores de risco de TEV (tabagismo/obesidade/histórico familiar)
+- Absorção oral inconsistente (histórico de cirurgia gastrointestinal, DII)
+- Busca por um perfil plasmático mais plano
+- Disposição para aprender a autoaplicação
+
+**Prefira adesivo / gel** (não comparados nesta página, mas frequentemente a melhor opção):
+- Histórico ou alto risco de TEV
+- Desejo de evitar agulhas por completo
+- Sensibilidade a ajustes finos de dose
+
+## Páginas Relacionadas
+
+- [Entrada detalhada do estradiol oral](/pt/medications/estrogens/oral/)
+- [Entrada detalhada da injeção de valerato de estradiol](/pt/medications/estrogens/injection/)
+- [Visão geral dos estrogênios e guia de escolha](/pt/medications/estrogens/overview/)
+- [Guia da primeira injeção](/pt/guides/first-injection/)
+- [Guia de troca de via de E2](/pt/guides/switch-e2-route/)

@@ -1,0 +1,108 @@
+---
+title: Visão geral dos estrogênios
+description: Uma comparação dos riscos de TEV, das vantagens e das desvantagens entre as diferentes vias de administração do estradiol (transdérmica, oral, sublingual e injetável).
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+noindex: true
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+O estradiol (E2) é o medicamento central na TH (terapia hormonal) de mulheres transgênero. Ao escolher a via de administração, **a segurança (especificamente o risco de Tromboembolismo Venoso, ou TEV) deve ser sua principal consideração**, e não apenas a conveniência ou o custo.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/en/routes-comparison.webp" alt="Comparação de três vias de administração do estradiol: oral pelo fígado, transdérmica por absorção direta, injeção na corrente sanguínea" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## Riscos de TEV por via de administração
+
+O Tromboembolismo Venoso (coágulos sanguíneos) é um dos riscos mais graves associados à terapia com estrogênio. O risco varia drasticamente conforme a forma como o estrogênio entra no seu organismo<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Via', 'Risco Relativo (RR)', 'Nível de Evidência', 'Observação']}
+  rows={[
+    ['Adesivo Transdérmico', 'RR ≈ 0.97', 'A', 'Sem aumento significativo de risco em relação a não usuárias'],
+    ['Gel Transdérmico', 'RR ≈ 0.97', 'A', 'Semelhante aos adesivos; evita a primeira passagem hepática'],
+    ['Oral (Valerato/Hemi-hidrato de Estradiol)', 'RR ≈ 1.48', 'A', 'Risco aumentado em ~48%'],
+    ['Sublingual', 'Dados Limitados', 'C', 'Evita parcialmente a primeira passagem; teoricamente menor que a via oral'],
+    ['Injetável (EV/EC/EEn)', 'Dados Limitados', 'C', 'Evita a primeira passagem, mas carece de dados de grandes ECRs sobre risco de coágulos'],
+  ]}
+/>
+
+<WarningBox title="Conclusão Principal">
+As vias transdérmicas (adesivos e gel) apresentam um risco de TEV estatisticamente idêntico ao de pessoas que não fazem TH (RR ≈ 0.97). Em contrapartida, a administração oral aumenta o risco em cerca de 48% (RR ≈ 1.48). Se você tiver qualquer fator de risco prévio para TEV, a via transdérmica deve ser sua primeira escolha absoluta<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Guia de escolha da via
+
+A estrutura a seguir baseia-se nas evidências clínicas atuais<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Cenário 1: Fatores de risco preexistentes para TEV
+
+**Os fatores de risco incluem:** idade >40, IMC >30, tabagismo, histórico familiar de TEV, histórico de distúrbios de coagulação ou enxaqueca com aura.
+
+- **Preferencial:** Adesivo Transdérmico ou Gel Transdérmico
+- **Evitar:** Estradiol Oral
+- **Evitar também:** combinar estrogênio oral com Acetato de Ciproterona (CPA)
+
+### Cenário 2: Sem fatores de risco para TEV
+
+Escolha com base em acessibilidade, orçamento e preferência pessoal:
+
+- **Estradiol Oral (Estrace, Progynova):** em geral a via mais acessível em preço e a mais amplamente disponível em todo o mundo.
+- **Adesivo Transdérmico (Climara, Estradot):** perfil de segurança superior, mas pode ser caro ou sofrer com a escassez nas cadeias de suprimento globais.
+- **Sublingual:** usa comprimidos orais dissolvidos sob a língua. Maior biodisponibilidade, mas gera grandes picos e quedas nos níveis sanguíneos.
+- **Injetáveis:** provoca flutuações significativas de pico e vale, mas é altamente eficaz para a monoterapia.
+
+### Cenário 3: Monoterapia (estrogênio sem antiandrógenos)
+
+Se você deseja suprimir a testosterona usando apenas estradiol, sem tomar um bloqueador antiandrógeno dedicado:
+
+- **Preferencial:** Estradiol Injetável (EV, EC, EEn) – mantém de forma confiável os níveis de E2 consistentemente altos que são necessários.
+- **Alternativa:** adesivos transdérmicos em dose alta (200-400 µg/day) ou gel transdérmico.
+- **Referência:** um estudo de 2025 de Misakian demonstrou que 82,6% das usuárias em um regime de monoterapia com EV injetável atingiram a supressão de T sem necessidade de antiandrógeno<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Referência rápida de prós e contras
+
+<DoseTable
+  headers={['Via', 'Prós', 'Contras', 'Acessibilidade Típica']}
+  rows={[
+    ['Adesivo Transdérmico', 'Menor risco de TEV; níveis sanguíneos estáveis; troca 1-2 vezes por semana', 'Irritação cutânea; pode ser caro ou estar frequentemente em falta no mundo todo', 'Moderada'],
+    ['Gel Transdérmico', 'Baixo risco de TEV; dosagem diária flexível', 'A absorção varia muito conforme o tipo de pele; exige tempo de secagem', 'Moderada'],
+    ['Oral (Comprimidos)', 'Acesso mais fácil; muito barato; simples de tomar', 'Maior risco de TEV; o metabolismo de primeira passagem hepática desperdiça grande parte do fármaco', 'Muito Alta'],
+    ['Sublingual', 'Maior biodisponibilidade que a via oral; evita parcialmente o fígado', 'Grandes picos e quedas nos níveis sanguíneos; exige dosagem 2-3 vezes ao dia', 'Muito Alta (usa comprimidos orais)'],
+    ['Injetável (EV/EEn)', 'Evita o fígado; altamente eficaz para a monoterapia', 'Exige agulhas/ansiedade com injeção; picos e vales intensos nos níveis sanguíneos', 'Varia conforme o país (muitas vezes DIY, autoaplicação)'],
+  ]}
+/>
+
+## Visão geral da posologia
+
+Faixas de dosagem padrão entre as diferentes vias<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Via', 'Dose Inicial', 'Dose de Manutenção', 'Dose Máxima Típica']}
+  rows={[
+    ['Adesivo Transdérmico', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Gel Transdérmico', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Estradiol Oral', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublingual', '1-2 mg/day (dividido 2-3x)', '2-4 mg/day (dividido 2-3x)', '6 mg/day'],
+    ['EV Injetável', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Páginas detalhadas
+
+Para aprofundamentos sobre a farmacologia, os métodos de uso e os alertas específicos de cada via, clique abaixo:
+
+- [Adesivos Transdérmicos](/pt/medications/estrogens/transdermal-patch/) — A via de administração mais segura
+- [Estradiol Oral](/pt/medications/estrogens/oral/) — Altamente acessível, mas acarreta risco de TEV ligeiramente elevado
+- [Sublingual](/pt/medications/estrogens/sublingual/) — Um meio-termo que oferece maior absorção, mas com flutuações acentuadas
+- [Gel Transdérmico](/pt/medications/estrogens/gel/) — Segurança flexível, situada entre os adesivos e a via oral
+- [Estradiol Injetável](/pt/medications/estrogens/injection/) — O padrão-ouro para a monoterapia

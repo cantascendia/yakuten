@@ -1,0 +1,82 @@
+---
+title: "Antes de Começar: Você Está Pronta?"
+description: Checklist essencial pré-HRT — exames de sangue de base, contraindicações absolutas e relativas, requisitos de consentimento informado e expectativas realistas para a sua jornada médica.
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+noindex: true
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Isto não é gatekeeping — é uma verificação de segurança. Começar a HRT (terapia hormonal) sem exames de base é como dirigir vendada.
+
+Os seguintes exames de base são recomendados por diretrizes internacionais<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Exames de Base
+
+Os exames a seguir devem ser realizados antes de iniciar a HRT. A maioria pode ser solicitada pelo seu médico de atenção primária, por uma clínica de consentimento informado ou por serviços como o Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormônios Sexuais', nameEn: 'Estradiol, Testosterona, LH, FSH', tag: 'required' },
+    { name: 'Função Hepática', nameEn: 'ALT, AST, Bilirrubina', tag: 'required' },
+    { name: 'Função Renal', nameEn: 'Creatinina, Ureia (BUN), TFGe (eGFR)', tag: 'required' },
+    { name: 'Hemograma Completo', nameEn: 'Hemograma com Diferencial (CBC)', tag: 'required' },
+    { name: 'Painel de Coagulação', nameEn: 'TP (PT), TTPa (aPTT), INR', tag: 'required' },
+    { name: 'Painel Metabólico', nameEn: 'Glicemia em Jejum, Lipídios', tag: 'recommended' },
+    { name: 'Prolactina', nameEn: 'Nível de PRL de base', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (varia conforme o plano de saúde e a localidade)"
+/>
+
+<WarningBox title="Já começou sem exames?">
+Se você iniciou a HRT sem fazer os exames de base — não é tarde demais. Faça-os o quanto antes.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Contraindicações Absolutas
+
+<ContraindicationBox type="absolute" title="Contraindicações Absolutas" sectionNum="">
+
+- Doença tromboembólica ativa (ex.: trombose venosa profunda, embolia pulmonar)
+- Neoplasia maligna hormônio-sensível confirmada ou suspeita (ex.: câncer de mama, câncer de próstata)
+- Comprometimento hepático ou renal grave em fase aguda
+- Sangramento vaginal inexplicado (para pessoas transmasculinas)
+- Alergia grave conhecida aos componentes do medicamento
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Contraindicações Relativas
+
+<ContraindicationBox type="relative" title="Contraindicações Relativas" sectionNum="">
+
+- Hipertensão não controlada ou doença cardiovascular
+- Diabetes mellitus mal controlado
+- Tabagismo (especialmente acima dos 35 anos; aumenta significativamente o risco de VTE)
+- Histórico de doença da vesícula biliar
+- Enxaqueca com aura (requer avaliação de risco criteriosa)
+- Obesidade grave (IMC &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Estabelecendo Expectativas Realistas
+
+<RealityCheck
+  items={[
+    { text: 'A HRT não é mágica. As mudanças acontecem ao longo de meses e anos — não espere uma transformação da noite para o dia.' },
+    { text: 'Algumas mudanças são irreversíveis (ex.: crescimento das mamas, engrossamento da voz, crescimento do clitóris). Entenda a que você está se comprometendo.' },
+    { text: 'A HRT pode reduzir ou eliminar permanentemente a fertilidade. Considere a preservação de gametas (congelamento de óvulos/espermatozoides) antes de começar.' },
+    { text: 'Oscilações de humor são um efeito colateral normal. Garanta que você tenha uma rede de apoio estável.' },
+  ]}
+/>
+
+<WarningBox title="O que ler em seguida">
+- [Caminho da HRT](/pt/pathway/) — Fluxo completo, da linha de base à manutenção a longo prazo
+- [Medicamentos](/pt/medications/estrogens/overview/) — Opções de medicamentos, dosagem e riscos
+- [Guia de HRT na China](/pt/china-reality/) — Como encontrar médicos, obter medicamentos e fazer exames de sangue
+- [Exames de Sangue](/pt/blood-tests/) — O que testar, onde ir, como interpretar os resultados
+</WarningBox>

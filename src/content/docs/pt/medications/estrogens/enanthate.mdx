@@ -1,0 +1,94 @@
+---
+title: Enantato de Estradiol (EEn)
+description: Guia completo do enantato de estradiol — farmacocinética, comparação com outros ésteres, posologia e limites de segurança.
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+noindex: true
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Enantato de Estradiol (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutânea (SC)"
+  evidenceLevel="B"
+>
+O enantato de estradiol (EEn) é um éster injetável de estradiol de ação intermediária a longa, com meia-vida situada entre a do valerato de estradiol (EV) e a do cipionato de estradiol (EC), em torno de 5-7 dias<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. É comumente encontrado como componente de contraceptivos injetáveis combinados (por exemplo, Perlutal) e também pode ser usado como medicamento de TH (terapia hormonal) isolado.
+</DrugInfoBox>
+
+## Farmacocinética
+
+Perfil farmacocinético do enantato de estradiol<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Meia-vida**: ~5-7 dias
+- **Tempo até o pico**: 3-5 dias após a injeção
+- **Tempo até o vale**: 7-10 dias após a injeção
+- **Estado de equilíbrio**: atingido após ~3-4 ciclos regulares
+
+### Comparação de FC entre os ésteres injetáveis de estradiol
+
+<DoseTable
+  headers={['Parâmetro', 'EV (Valerato)', 'EEn (Enantato)', 'EC (Cipionato)']}
+  rows={[
+    ['Meia-vida', '~4-5 dias', '~5-7 dias', '~8-10 dias'],
+    ['Tempo até o pico', '2-3 dias', '3-5 dias', '2-4 dias'],
+    ['Intervalo recomendado', '5-7 dias', '7-10 dias', '7-14 dias'],
+    ['Flutuação dos níveis séricos', 'Maior', 'Moderada', 'Menor'],
+    ['Disponibilidade', 'Global', 'Regiões limitadas', 'Américas'],
+  ]}
+/>
+
+O perfil farmacocinético do EEn fica entre o do EV e o do EC, oferecendo uma opção para quem deseja injeções semanais com uma curva mais suave<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Posologia
+
+### Posologia para adultos
+
+<DoseTable
+  headers={['Fase', 'Dose', 'Observações']}
+  rows={[
+    ['Dose inicial', '2-4 mg/semana', 'Início em dose baixa para preservar o desenvolvimento mamário'],
+    ['Dose de manutenção', '4-6 mg/semana', 'Ajustar conforme o E2 de vale; alvo de 100-200 pg/mL'],
+    ['Dose máxima', '10 mg/10 dias', 'Não ultrapassar'],
+  ]}
+/>
+
+Referências de posologia: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> e WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Nota sobre disponibilidade">
+O enantato de estradiol não está amplamente disponível em muitas regiões. É encontrado principalmente na América Latina (como componente do Perlutal) e em alguns países europeus. Se você precisa de estradiol injetável, o [valerato de estradiol](/pt/medications/estrogens/injection/) é mais acessível na maioria das regiões.
+</WarningBox>
+
+## Marcas e disponibilidade
+
+| Marca | Formulação | Região |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (contraceptivo combinado) | América Latina |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Países selecionados |
+| Formulações com agente único | Diversas concentrações | Farmácias de manipulação |
+
+## Monitoramento
+
+- **E2**: a cada 3 meses, coleta no vale (pela manhã, antes da injeção). Alvo de 100-200 pg/mL
+- **T**: a cada 3 meses. Alvo &lt;50 ng/dL
+- **Função hepática (ALT/AST)**: na linha de base + a cada 6 meses
+
+## Técnica de injeção
+
+O procedimento de injeção é idêntico ao da [injeção de valerato de estradiol](/pt/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Limites de segurança">
+- Aplicam-se os mesmos limites de segurança que os demais ésteres injetáveis de estradiol
+- A dose de uma única injeção não deve ultrapassar 10 mg
+- E2 >200 pg/mL não intensifica a feminização, apenas aumenta o risco<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Se você usar uma formulação combinada (por exemplo, Perlutal), o componente progestógeno pode trazer riscos adicionais; consulte um médico
+</DangerBox>

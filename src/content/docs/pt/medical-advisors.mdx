@@ -1,0 +1,66 @@
+---
+title: Conselheiros Médicos
+description: A composição, as áreas de atuação e os princípios de transparência da equipe de revisão médica da HRT Pharmacopoeia. Conselheiros de endocrinologia, psiquiatria e jurídico colaboram para garantir a precisão clínica do conteúdo baseado em evidências.
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+noindex: true
+sidebar:
+  order: 102
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+## Estrutura da Equipe de Revisão
+
+O conteúdo médico da HRT Pharmacopoeia é revisado por uma equipe voluntária multidisciplinar, com atribuições definidas por tema:
+
+| Área | Responsabilidade de revisão |
+|---|---|
+| Endocrinologia | Dosagem de estrogênio / antiandrógeno / progestágeno, interpretação de exames de sangue, metabolismo e densidade óssea |
+| Psiquiatria | Avaliação de afirmação de gênero, flutuações de humor, interações com medicamentos concomitantes |
+| Hepatologia / Hematologia | Hepatotoxicidade do CPA, risco de VTE (tromboembolismo venoso), monitoramento da coagulação |
+| Conselheiros jurídicos | Conformidade na prescrição na China continental, regulamentação de privacidade, viagens internacionais com medicamentos |
+
+## Quadro de Revisores
+
+> Respeitamos a escolha de identidade de cada pessoa voluntária. Os conselheiros que consentem com a atribuição pública são listados abaixo com nome / ORCID / vínculo profissional; aqueles que preferem privacidade são listados apenas pela credencial profissional e pelo tipo de departamento, sem divulgação de qualquer informação identificável.
+
+**Situação atual (2026-04-19)**
+
+O site encontra-se atualmente na fase de **"curadoria comunitária + diretrizes internacionais cruzadas"** e **ainda não contratou médicos licenciados nomeados publicamente**.
+
+- Todo o conteúdo médico está ancorado nas seguintes fontes de referência, cada uma citada com um DOI:
+  - Endocrine Society 2017, *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons*
+  - WPATH SOC 8 (2022)
+  - UCSF Transgender Care Guidelines
+  - Alertas de segurança de medicamentos da EMA / FDA
+- Toda afirmação médica deve vir acompanhada de um `<CitationRef>` apontando para a fonte primária
+- O frontmatter da página exige obrigatoriamente os três campos de metadados `evidenceLevel`, `lastReviewed` e `references`
+
+**Próximos passos**: estamos entrando em contato com médicos licenciados e acolhedores de pessoas trans na China continental, em Hong Kong / Macau / Taiwan, no Japão e na América do Norte para que integrem um grupo rotativo de revisão. Se você tiver interesse, entre em contato conosco pelo [formulário de feedback](https://wj.qq.com/s2/16576000/5fe5/) ou pelo GitHub.
+
+## Princípios de Revisão
+
+- **Sem relação de prescrição**: os revisores não têm relação direta de prescrição com os medicamentos ou marcas recomendados neste site, a fim de evitar conflitos de interesse
+- **Discordâncias registradas**: comentários de revisão e decisões editoriais são registrados em todas as etapas; divergências importantes são divulgadas publicamente
+- **Proteção de identidade**: os conselheiros podem permanecer anônimos, mas devem fornecer à equipe editorial uma cópia de sua licença profissional e comprovante de vínculo
+- **Obrigação de atualização**: no prazo de 48 horas após uma atualização importante de diretriz, os revisores confirmam se as páginas existentes são afetadas
+
+<WarningBox>
+**Esta página não substitui o cuidado médico**. Para diagnóstico e tratamento personalizados, consulte um médico qualificado na sua região. O site fornece **informações baseadas em evidências** e não constitui prescrição nem orientação individualizada.
+</WarningBox>
+
+## Documentos Relacionados
+
+- [Sobre este site](/pt/about/)
+- [Metodologia](/pt/methodology/)
+- [Política Editorial](/pt/editorial-policy/)

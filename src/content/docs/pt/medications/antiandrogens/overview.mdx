@@ -1,0 +1,81 @@
+---
+title: Visão Geral dos Antiandrógenos
+description: Um guia comparativo de CPA, Espironolactona, Bicalutamida e Agonistas de GnRH—abordando mecanismo de ação, eficácia, perfis de segurança e custo.
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+noindex: true
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+## Por Que Você Precisa de um Antiandrógeno?
+
+Para a maioria das mulheres transgênero, o estradiol isolado (especialmente nas dosagens típicas em comprimido) é insuficiente para suprimir a testosterona (T) até a faixa-alvo feminina (< 50 ng/dL)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Os antiandrógenos (bloqueadores de T) são usados em conjunto com o estradiol para interromper a produção de testosterona ou impedir que ela se ligue aos seus receptores celulares, abrindo assim caminho para a feminização<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+No entanto, uma ressalva importante: **nem todo mundo precisa de um antiandrógeno**. Se você utiliza um regime de estradiol em alta dose (sobretudo injetável) que, por si só, suprime sua T até a faixa-alvo, acrescentar um bloqueador de T é biologicamente redundante e o expõe a efeitos colaterais desnecessários<CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />. Isso é conhecido como "monoterapia".
+
+## Os 4 Principais Antiandrógenos Comparados
+
+<DoseTable
+  headers={['Medicamento', 'CPA (Androcur)', 'Espironolactona', 'Bicalutamida', 'Agonistas de GnRH']}
+  rows={[
+    ['Nome Genérico', 'Acetato de Ciproterona', 'Espironolactona', 'Bicalutamida', 'Leuprorrelina / Gosserrelina'],
+    ['Mecanismo', 'Retroalimentação negativa progestínica\n(Interrompe a produção de T)', 'Antagonista fraco do AR\n(Não interrompe a produção de T)', 'Antagonista potente do AR\n(Não interrompe a produção de T)', 'Desliga completamente o eixo HHG\n(Reduz a T diretamente a níveis de castração)'],
+    ['Eficácia', 'Forte (Reduz a T à faixa feminina)', 'Fraca (Bloqueia receptores, a T permanece alta)', 'Não reduz a T (a T pode até disparar)', 'A Mais Forte de Todas (Castração química)'],
+    ['Dose Típica', '5-12.5 mg/day', '50-200 mg/day', '25-50 mg/day', 'Varia rigorosamente conforme o tipo de injeção'],
+    ['Administração', 'Oral', 'Oral', 'Oral', 'Injeção Subcutânea / IM'],
+    ['Principais Riscos', 'Tumores tipo meningioma (≥25mg)\nHepatotoxicidade / Depressão', 'Hipercalemia (Picos Fatais de Potássio)\nPressão arterial baixa', 'Hepatotoxicidade\nDificulta a leitura dos exames de sangue', 'Diminuição da densidade óssea\nReações no local da injeção'],
+    ['Status nas Diretrizes', 'Recomendada por ES 2017 e WPATH SOC 8', 'Recomendada por ES 2017 e WPATH SOC 8', 'NÃO recomendada para uso padrão', 'Fortemente Recomendados pelas diretrizes'],
+    ['Acesso Global', 'Proibida nos EUA.\nComum na UE/Reino Unido/Ásia.', 'Padrão nos EUA.\nDisponível globalmente.', 'Exige prescrição em todo o mundo.', 'Extremamente restritos devido ao preço.'],
+  ]}
+/>
+
+<WarningBox title="Uma Observação sobre as Evidências das Diretrizes">
+A CPA, a Espironolactona e os Agonistas de GnRH são formalmente recomendados pelas duas grandes autoridades internacionais: Endocrine Society 2017 e WPATH SOC 8<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />. Embora a Bicalutamida seja amplamente utilizada na comunidade DIY (autoadministração) devido à sua potência, há uma preocupante escassez de dados de longo prazo que estudem especificamente coortes transgênero, e ela **não é recomendada** por essas grandes diretrizes para a GAHT (terapia hormonal de afirmação de gênero) padrão.
+</WarningBox>
+
+## Como Escolher
+
+A escolha do seu antiandrógeno deve ser guiada pelo seu estado de saúde de base, pela disponibilidade regional e pelo seu orçamento<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### A Escolha Ideal: Agonistas de GnRH (Bloqueadores de Puberdade)
+
+- **Público:** Pessoas com boa cobertura de plano de saúde ou acesso a sistemas públicos de saúde como o NHS.
+- **Vantagem:** Eficácia imbatível. Desliga a produção de testosterona de forma impecável, com toxicidade orgânica praticamente nula.
+- **Desvantagem:** Surpreendentemente caros (muitas vezes $500-$2000 USD do próprio bolso por dose) e exigem injeções.
+
+### O Padrão Confiável (Fora dos EUA): CPA em Baixa Dose
+
+- **Público:** A escolha padrão de primeira linha em toda a Europa, no Reino Unido e na Ásia.
+- **Vantagem:** Extremamente potente. Reduz a testosterona de modo confiável e barato.
+- **Desvantagem:** Proibida pela FDA nos Estados Unidos por questões hepáticas. Doses acima de 12.5mg aumentam o risco de tumores cerebrais (meningiomas).
+
+### O Padrão dos EUA: Espironolactona
+
+- **Público:** O antiandrógeno-padrão absoluto nos Estados Unidos em clínicas de consentimento informado.
+- **Vantagem:** Disponível legalmente com facilidade e incrivelmente barata.
+- **Desvantagem:** É um diurético (faz você urinar constantemente) e carrega o risco letal de Hipercalemia (acúmulo fatal de potássio). Além disso, bloqueia os receptores em vez de interromper a produção de T, o que dificulta a interpretação dos exames de sangue.
+
+### A Opção Não Convencional: Bicalutamida
+
+- **Público:** Pessoas que não toleram Espironolactona ou CPA, trabalhando estritamente em conjunto com um(a) endocrinologista.
+- **Vantagem:** Extremamente eficaz em bloquear o receptor androgênico. Preserva a função sexual melhor do que a CPA.
+- **Desvantagem:** Riscos diretos de hepatotoxicidade. Como ela apenas bloqueia os receptores sem reduzir a produção de T, seus níveis de testosterona no sangue na verdade dispararão (ainda que a T não consiga atuar). Isso torna quase impossível ajustar a dose por meio dos exames de sangue convencionais.
+
+<DangerBox title="A Combinação Letal: CPA + Bicalutamida">
+Você **nunca** deve tomar CPA e Bicalutamida ao mesmo tempo. Ambos os fármacos sobrecarregam intrinsecamente o sistema hepático; combiná-los amplifica fortemente o seu risco de insuficiência hepática induzida quimicamente<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Se estiver trocando de um pelo outro, suspenda completamente o primeiro fármaco antes de iniciar o segundo.
+</DangerBox>
+
+## Páginas Detalhadas
+
+- [CPA (Acetato de Ciproterona)](/pt/medications/antiandrogens/cpa/) — O bloqueador mais comum no mundo; limites de dose e riscos de tumor cerebral.
+- [Espironolactona](/pt/medications/antiandrogens/spironolactone/) — O padrão dos EUA; como manejar o risco mortal de hipercalemia.
+- [Bicalutamida](/pt/medications/antiandrogens/bicalutamide/) — A alternativa rebelde; navegando pelos riscos hepáticos e pela confusão nos exames de sangue.
+- [Agonistas de GnRH](/pt/medications/antiandrogens/gnrh-agonists/) — O desligamento padrão-ouro; os altos custos e o manejo da densidade óssea.

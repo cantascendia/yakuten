@@ -1,0 +1,35 @@
+---
+title: Comparador de Medicamentos
+description: Compare lado a lado os principais parâmetros de diferentes medicamentos de TH. Ferramenta totalmente client-side — nenhum dado é transmitido.
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+noindex: true
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## Comparação de medicamentos
+
+Selecione de 2 a 3 medicamentos para comparar rapidamente seus principais parâmetros.
+
+**Esta ferramenta ajuda você a entender:**
+
+- As diferenças no risco de TEV (tromboembolismo venoso) entre as vias de administração do estrogênio (oral vs. transdérmica vs. injetável)
+- As exigências de monitoramento e as contraindicações dos antiandrógenos
+- Os níveis de evidência e as faixas de dose de cada medicamento
+
+<DrugComparator client:visible />
+
+## Como interpretar os resultados
+
+- **Risco de TEV (RR)**: valor de risco relativo. RR=1,0 é o valor de referência; >1,5 indica um aumento significativo
+- **Nível de evidência**: A = ECR/metanálise, B = ECR único/estudo de coorte, C = relato de caso/opinião de especialista
+- **Monitoramento**: exames laboratoriais necessários durante o uso do medicamento
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Apenas para referência</div>
+
+Esta ferramenta não constitui aconselhamento médico. A escolha do medicamento deve considerar histórico médico pessoal, fatores de risco, disponibilidade e custo. **Tome decisões sob a orientação de um profissional de saúde.**
+</div>
