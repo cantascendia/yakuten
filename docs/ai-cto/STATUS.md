@@ -1,8 +1,53 @@
 # STATUS
 
-**Last Updated:** 2026-05-26
+**Last Updated:** 2026-06-02
 **Current Version:** v1.2.0-pre (Phase 12 — Content citation integrity)
 **Git Tag:** —
+
+---
+
+## 2026-06-02 · 「虚拟医疗信息产品公司」多角色审计 + 两轮修复（PR #16 已合并 / PR #17 待合并）
+
+以多角色 agent team（临床/编辑/中文/前端/SEO/用户代表/安全/无障碍）做全站只读审计 → 评分 → 路线图，
+随后分两轮实施。两轮都经 **workflow 验证层 + codex(gpt-5.5) 跨模型层** 双重评审，主控逐条复核后定稿。
+
+**已合并 — PR #16（squash `ac536eb`）**：IMM-1~8 + ST-1/2/5/7 + codex P2。
+数据契约(DrugCards/InjectionCalculator 7-10mg 安全/DrugComparator 数字漂移/CitationRef 回退) ·
+引用纪律(references.json 署名 SSOT，817 处归一化) · 医学准确性(EMA ≥10mg 源核实/脑膜瘤-垂体瘤机制
+分离/肝毒性引用) · 急救(K⁺ 语气/risks 拨120 硬指令/AI 急症触发) · 隐私(AI origin hrtyaku.com/
+Vercel Analytics 披露) · trans-friendly→跨性别友好。
+
+**待合并 — PR #17（branch `fix/st-batch-parallel`）**：ST-3/4/6/8/9，19-agent workflow 并行实装。
+ST-3 安全文字四语化 · ST-4 急症速查表(DVT/PE 区分) · ST-6 11 博客 FAQPage 结构化数据(JSON-LD-only，
+codex P1 后回退，不渲染可见未引用医疗内容) · ST-8 红色安全文字对比度达 AA · ST-9 急救语气三档。
+
+**评分**：≈68.5 → ≈81.5（详见 PR 描述 + 本次会话计划文件，计划文件在操作者本地 home，不随 git 同步）。
+
+### 换机继续指引（resume on another machine）
+1. `git fetch origin && git checkout fix/st-batch-parallel`（PR #17 分支）。
+2. 读 PR #16/#17 描述 + 本文件 + `docs/ai-cto/REVIEW-QUEUE.md`（两轮 codex 评审记录）。
+3. 全绿基线：`npm run build` / `npx astro check` / `node scripts/check-citation-refs.mjs $(find src/content -name '*.mdx')` / `node scripts/verify-blog-links.mjs $(find src/content/blog -name '*.mdx')`。
+
+### 剩余工作（接手即可做）
+**A. PR #17 verify 残留 5 项（低 severity，已记录在 PR #17 + REVIEW-QUEUE）**
+- #10 sakura 黄「需注意」文字对比（--color-caution 作正文色 <4.5:1；需新增 --color-caution-on-light + 改 BloodTestChecker/RiskScreener/ContraindicationBox 文字用色，跨组件设计判断）
+- #11 blood-b32 微型 kicker（10px --b32-ink-3 2.96:1；改用 --b32-ink-2 或加大字号，B32App.tsx）
+- #14 BloodTestChecker BLOOD_RANGES label 中文硬编码潜在 fallback（当前被 rangeLabels 覆盖掩盖）+ aria 'value input' 英文后缀外化
+- #15 RiskScreener 介绍屏「7 问·约 2 分钟」+ 免责文 ko fallback 英文（UI_COPY.ko 补全）
+- #16 B32Sheet title=undefined 时 dialog 无 accessible name（加 aria-labelledby 或守卫）
+
+**B. 运维（操作者处理，主控不接触密钥/Vercel）**
+- 🔑 轮换 Gemini API 密钥；确认/设置 Vercel `ALLOWED_ORIGINS=hrtyaku.com,...`
+- 📝 CLAUDE.md「Analytics: Umami」与代码（Vercel）不符，建议同步
+
+**C. 长期（路线图 LT，需医学引用/专家审阅）**
+- LT-1 补内容簇（比卡鲁胺对比/螺内酯高钾/5α-RI/贴片凝胶/中国就医路径博客，走 cto-blog-pipeline）
+- LT-2 新循证工具（单位换算+采血时机/抗雄交互对比/就医清单生成器，纯前端零存储）
+- LT-3 可信度机制（证据徽章视觉一等公民/「先别慌」三段框架/来源透明+最近核对日期）
+- LT-4 工程基建（ESLint react-hooks/@ts-eslint · OG YAML 换 gray-matter · Edge 限速接 Vercel KV · prompt 注入 deny-list · bcImportJSON 结构校验 · sakura 字体自托管去 Google Fonts CDN）
+- LT-5 未成年安全底线政策 · LT-6 i18n 战略（ko freeze 去留 / 四语医疗警告同步机制）
+- DrugComparator 完整架构级 SSOT（需先扩 drugs.json schema 补四语 + bioavailability/vteRR）
+- MPA 定级（现「绝对禁止」，WPATH 用「不建议」，待医学确认是否降级）
 
 ---
 
