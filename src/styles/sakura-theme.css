@@ -292,9 +292,9 @@
   --color-caution: var(--butter-deep);
   /* 「需注意/caution」文字色：装饰仍用亮黄 --color-caution(--butter-deep #F5C842)，
      但该亮黄做文字在奶油纸上对比度太低，文字改用深琥珀 #8A6700。
-     实测 #8A6700 on cream --bg-1 #FFF5E0 ≈5.5:1、on ivory --bg-2 #FFFAF0 ≈5.7:1、
-     on bg-5 #FFE4EC ≈5.0:1，均过 AA 4.5:1。 */
-  --color-caution-text: #8A6700;
+     #805E00（与浅色主题统一、并覆盖较深的 container 底）：on cream #FFF5E0 ≈6.0:1、
+     on ivory #FFFAF0 ≈6.2:1、on bg-5 #FFE4EC ≈5.5:1，均过 AA 4.5:1。 */
+  --color-caution-text: #805E00;
   --color-danger: var(--danger);
   --color-danger-dark: var(--danger-deep);
   --color-info: var(--sky-deep);
