@@ -29,12 +29,13 @@ codex P1 后回退，不渲染可见未引用医疗内容) · ST-8 红色安全�
 3. 全绿基线：`npm run build` / `npx astro check` / `node scripts/check-citation-refs.mjs $(find src/content -name '*.mdx')` / `node scripts/verify-blog-links.mjs $(find src/content/blog -name '*.mdx')`。
 
 ### 剩余工作（接手即可做）
-**A. PR #17 verify 残留 5 项（低 severity，已记录在 PR #17 + REVIEW-QUEUE）**
-- #10 sakura 黄「需注意」文字对比（--color-caution 作正文色 <4.5:1；需新增 --color-caution-on-light + 改 BloodTestChecker/RiskScreener/ContraindicationBox 文字用色，跨组件设计判断）
-- #11 blood-b32 微型 kicker（10px --b32-ink-3 2.96:1；改用 --b32-ink-2 或加大字号，B32App.tsx）
-- #14 BloodTestChecker BLOOD_RANGES label 中文硬编码潜在 fallback（当前被 rangeLabels 覆盖掩盖）+ aria 'value input' 英文后缀外化
-- #15 RiskScreener 介绍屏「7 问·约 2 分钟」+ 免责文 ko fallback 英文（UI_COPY.ko 补全）
-- #16 B32Sheet title=undefined 时 dialog 无 accessible name（加 aria-labelledby 或守卫）
+**A. PR #17 verify 残留 5 项 — ✅ 已全部解决**（2026-06-02，8-agent ultracode workflow + 敌对验证 + codex）
+- #10 新增主题感知 --color-caution-text（暗 #FF9800 / 浅色+sakura #805E00，≥4.95:1 含结果卡 container 底），文字用途切换、装饰保留 --color-caution
+- #11 --b32-ink-3(2.96:1) 全 13 处微型文字 → --b32-ink-2(5.83:1)（Dashboard/InputSheet/Primitives/SettingsSheet/B32App）
+- #14 aria 'value input' 四语化（inputValueSuffix）+ BLOOD_RANGES label 兜底注释
+- #15 RiskScreener startMeta/highRiskNote 提升 UI_COPY 四语（ko 不再 fallback）
+- #16 B32Sheet dialog 兜底 aria-label（copy.settings 四语）
+- 额外：ko/risks aria 回退英文匹配冻结正文（Constitution §3）；codex P2 修正 container 底对比度边界
 
 **B. 运维（操作者处理，主控不接触密钥/Vercel）**
 - 🔑 轮换 Gemini API 密钥；确认/设置 Vercel `ALLOWED_ORIGINS=hrtyaku.com,...`
