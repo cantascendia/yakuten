@@ -266,7 +266,7 @@ export const RingGauge = ({
           </div>
         )}
         {sublabel && (
-          <div style={{ fontSize: 11, color: 'var(--b32-ink-3)', marginTop: 2 }}>{sublabel}</div>
+          <div style={{ fontSize: 11, color: 'var(--b32-ink-2)', marginTop: 2 }}>{sublabel}</div>
         )}
       </div>
     </div>
@@ -350,7 +350,11 @@ export const B32Sheet = ({
 }) => {
   // Close button is a control read aloud by screen readers — its label must be
   // localized, not the hard-coded English "close" (i18n 铁律 #10).
-  const closeLabel = getB32Copy(locale ?? detectLocaleFromPath()).close;
+  const sheetCopy = getB32Copy(locale ?? detectLocaleFromPath());
+  const closeLabel = sheetCopy.close;
+  // Modal needs an accessible name. When a sheet has no visible title, fall back
+  // to a localized generic name so the dialog never reports aria-label=undefined.
+  const dialogLabel = title ?? sheetCopy.settings;
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -386,7 +390,7 @@ export const B32Sheet = ({
         className="b32-slide-up"
         role="dialog"
         aria-modal="true"
-        aria-label={title}
+        aria-label={dialogLabel}
         style={{
           position: 'fixed',
           left: isDesktop ? '50%' : 0,

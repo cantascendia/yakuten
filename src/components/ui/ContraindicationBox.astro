@@ -124,7 +124,7 @@ const badgeText = isAbsolute ? BADGE_TEXT[locale].absolute : BADGE_TEXT[locale].
   .contraindication-box--relative .contraindication-box__section-num,
   .contraindication-box--relative .contraindication-box__icon,
   .contraindication-box--relative .contraindication-box__badge-text {
-    color: var(--color-caution);
+    color: var(--color-caution-text);
   }
 
   .contraindication-box__header {
@@ -209,7 +209,7 @@ const badgeText = isAbsolute ? BADGE_TEXT[locale].absolute : BADGE_TEXT[locale].
 
   .contraindication-box--relative .contraindication-box__content :global(li::before) {
     content: "\0021";
-    color: var(--color-caution);
+    color: var(--color-caution-text);
     font-weight: 700;
   }
 

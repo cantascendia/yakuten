@@ -125,7 +125,7 @@ export default function Dashboard({
               );
             })}
             {Object.keys(activeRecord.values).length === 0 && (
-              <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--b32-ink-3)', fontSize: 13 }}>
+              <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--b32-ink-2)', fontSize: 13 }}>
                 {copy.sectionMetricsEmpty}
               </div>
             )}
@@ -346,7 +346,7 @@ function StreakItem({ label, value }: { label: string; value: string }) {
       <span
         style={{
           fontSize: 10,
-          color: 'var(--b32-ink-3)',
+          color: 'var(--b32-ink-2)',
           fontWeight: 700,
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
@@ -528,7 +528,7 @@ function TimelineRail({
                 <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--b32-ink)' }} className="b32-tabnum">
                   {r.date}
                 </div>
-                <div style={{ fontSize: 11, color: 'var(--b32-ink-3)', marginTop: 1 }}>{r.phase || '—'}</div>
+                <div style={{ fontSize: 11, color: 'var(--b32-ink-2)', marginTop: 1 }}>{r.phase || '—'}</div>
               </div>
               <div className="b32-tabnum" style={{ fontSize: 15, fontWeight: 700, color: active ? 'var(--b32-sakura-deep)' : 'var(--b32-ink-2)' }}>
                 {s ?? '—'}
@@ -620,7 +620,7 @@ function MetricRow({
       <div style={{ minWidth: 0 }}>
         <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--b32-ink)' }}>
           {metric.labelZh}
-          <span style={{ marginLeft: 6, fontSize: 11, color: 'var(--b32-ink-3)', fontWeight: 500 }}>{metric.label}</span>
+          <span style={{ marginLeft: 6, fontSize: 11, color: 'var(--b32-ink-2)', fontWeight: 500 }}>{metric.label}</span>
         </div>
         <div style={{ marginTop: 4 }}>
           <LevelChip level={ev.level} locale={locale} />
@@ -642,10 +642,10 @@ function MetricRow({
           >
             {displayed != null ? bcFormat(displayed, unit?.decimals ?? 1) : '—'}
           </span>
-          <span style={{ fontSize: 10, color: 'var(--b32-ink-3)', fontWeight: 600 }}>{unit?.label}</span>
+          <span style={{ fontSize: 10, color: 'var(--b32-ink-2)', fontWeight: 600 }}>{unit?.label}</span>
         </div>
         {trend && (
-          <div className="b32-tabnum" style={{ fontSize: 10, color: 'var(--b32-ink-3)', fontWeight: 600, marginTop: 2 }}>
+          <div className="b32-tabnum" style={{ fontSize: 10, color: 'var(--b32-ink-2)', fontWeight: 600, marginTop: 2 }}>
             {trend.arrow} {Math.abs(trend.pct).toFixed(0)}%
           </div>
         )}

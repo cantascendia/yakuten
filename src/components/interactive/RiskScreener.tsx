@@ -17,6 +17,8 @@ const UI_COPY = {
     disclaimerBanner: '本工具不能替代专业医疗评估。结果仅供参考，不构成诊断或用药建议。',
     start: '开始评估',
     startDesc: '回答 7 个简短问题，了解你的个人 HRT 风险因素概况。所有计算在浏览器本地完成，不上传任何数据。',
+    startMeta: '7 个问题 · 约 2 分钟',
+    highRiskNote: '高风险不代表不能使用 HRT，只意味着需要更密切的监测。',
     next: '下一步',
     prev: '上一步',
     viewResults: '查看结果',
@@ -79,6 +81,8 @@ const UI_COPY = {
     disclaimerBanner: 'This tool cannot replace professional medical evaluation. Results are for reference only and do not constitute diagnosis or medication advice.',
     start: 'Start Assessment',
     startDesc: 'Answer 7 short questions to understand your personal HRT risk profile. All calculations run locally in your browser — no data is transmitted.',
+    startMeta: '7 questions · ~2 minutes',
+    highRiskNote: 'High risk ≠ no HRT. It means closer monitoring is needed.',
     next: 'Next',
     prev: 'Previous',
     viewResults: 'View Results',
@@ -141,6 +145,8 @@ const UI_COPY = {
     disclaimerBanner: 'このツールは専門的な医療評価の代替にはなりません。結果は参考情報のみであり、診断や処方の助言を構成するものではありません。',
     start: '評価を開始',
     startDesc: '7つの質問に答えて、あなたのHRTリスクプロファイルを把握しましょう。すべての計算はブラウザ内で完結し、データは送信されません。',
+    startMeta: '7問 · 約2分',
+    highRiskNote: '高リスク ≠ HRT不可。より注意深いモニタリングが必要という意味です。',
     next: '次へ',
     prev: '前へ',
     viewResults: '結果を見る',
@@ -203,6 +209,8 @@ const UI_COPY = {
     disclaimerBanner: '이 도구는 전문 의료 평가를 대체할 수 없습니다. 결과는 참고용일 뿐 진단이나 처방 권고가 아닙니다.',
     start: '평가 시작',
     startDesc: '간단한 7개 질문에 답하여 개인 HRT 위험 요인 프로필을 확인하세요. 모든 계산은 브라우저 안에서 수행되며 데이터는 전송되지 않습니다.',
+    startMeta: '7개 질문 · 약 2분',
+    highRiskNote: '고위험이라고 해서 HRT를 사용할 수 없는 것은 아니며, 더 면밀한 모니터링이 필요하다는 의미입니다.',
     next: '다음',
     prev: '이전',
     viewResults: '결과 보기',
@@ -431,9 +439,13 @@ function computeRisks(answers: Record<string, string>, locale: Locale): RiskResu
    Styles
    ================================ */
 
+// LEVEL_COLORS values are used only as TEXT color (resultLevel label, line ~765),
+// so `moderate` uses the light-bg-safe caution text token. `low` (safe) text
+// color stays unchanged. The decorative riskBar gradient still uses
+// var(--color-caution) as a background, intentionally.
 const LEVEL_COLORS: Record<RiskLevel, string> = {
   low: 'var(--color-safe)',
-  moderate: 'var(--color-caution)',
+  moderate: 'var(--color-caution-text)',
   high: 'var(--color-danger)',
   very_high: 'var(--color-danger-dark)',
 };
@@ -721,11 +733,11 @@ export default function RiskScreener() {
         <div style={s.disclaimerBar} role="alert">{ui.disclaimerBanner}</div>
         <div style={s.startBox}>
           <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--color-accent)', marginBottom: 'var(--space-md)' }}>
-            {locale === 'zh' ? '7 个问题 · 约 2 分钟' : locale === 'ja' ? '7問 · 約2分' : '7 questions · ~2 minutes'}
+            {ui.startMeta}
           </div>
           <div style={s.startDesc}>{ui.startDesc}</div>
           <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: 'var(--space-sm) var(--space-md)', borderLeft: '2px solid var(--color-accent)', marginTop: 'var(--space-md)', marginBottom: 'var(--space-xl)', textAlign: 'left', maxWidth: '500px', marginInline: 'auto' }}>
-            {locale === 'zh' ? '高风险不代表不能使用 HRT，只意味着需要更密切的监测。' : locale === 'ja' ? '高リスク ≠ HRT不可。より注意深いモニタリングが必要という意味です。' : 'High risk ≠ no HRT. It means closer monitoring is needed.'}
+            {ui.highRiskNote}
           </div>
           <button type="button" style={s.startBtn} onClick={() => setStep(0)}>
             {ui.start}

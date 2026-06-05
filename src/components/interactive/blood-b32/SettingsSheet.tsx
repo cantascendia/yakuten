@@ -46,7 +46,7 @@ export default function SettingsSheet({ open, prefs, locale, onSavePrefs, onImpo
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                color: 'var(--b32-ink-3)',
+                color: 'var(--b32-ink-2)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 marginBottom: 6,
@@ -61,7 +61,7 @@ export default function SettingsSheet({ open, prefs, locale, onSavePrefs, onImpo
               <option value="EU">{copy.regionEU}</option>
               <option value="JP">{copy.regionJP}</option>
             </select>
-            <div style={{ fontSize: 12, color: 'var(--b32-ink-3)', marginTop: 6 }}>{copy.settingsRegionHint}</div>
+            <div style={{ fontSize: 12, color: 'var(--b32-ink-2)', marginTop: 6 }}>{copy.settingsRegionHint}</div>
           </label>
         </section>
 

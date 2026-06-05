@@ -197,7 +197,7 @@ export default function InputSheet({ open, record, prefs, locale, onSave, onClos
 
 const metaLabelStyle = {
   fontSize: 11,
-  color: 'var(--b32-ink-3)',
+  color: 'var(--b32-ink-2)',
   fontWeight: 700,
   letterSpacing: '0.06em',
   textTransform: 'uppercase' as const,
@@ -207,7 +207,7 @@ const metaLabelStyle = {
 
 const sectionHeadStyle = {
   fontSize: 11,
-  color: 'var(--b32-ink-3)',
+  color: 'var(--b32-ink-2)',
   fontWeight: 700,
   letterSpacing: '0.08em',
   textTransform: 'uppercase' as const,
@@ -259,7 +259,7 @@ function MetricField({
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
         <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--b32-ink-2)' }}>
-          {metric.labelZh} <span style={{ fontWeight: 500, color: 'var(--b32-ink-3)' }}>{metric.label}</span>
+          {metric.labelZh} <span style={{ fontWeight: 500, color: 'var(--b32-ink-2)' }}>{metric.label}</span>
         </span>
         {unitSpec.units.length > 1 ? (
           <select
@@ -283,7 +283,7 @@ function MetricField({
             ))}
           </select>
         ) : (
-          <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--b32-ink-3)' }}>{unitSpec.units[0].label}</span>
+          <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--b32-ink-2)' }}>{unitSpec.units[0].label}</span>
         )}
       </div>
       <input

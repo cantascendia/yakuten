@@ -21,6 +21,7 @@ type BloodCheckerStrings = {
     disclaimer1: string;
     disclaimer2: string;
     viewEmergency: string;
+    inputValueSuffix: string;
     statusGreen: string;
     statusYellow: string;
     statusRed: string;
@@ -56,6 +57,9 @@ interface RangeSpec {
  * 那份 JSON 会丢失 en/ja/ko 的急救提示，属 P0 i18n 安全回归。
  * 当前 src/data/blood-ranges.json 不被任何运行时代码消费，仅作文档/规格参考；
  * 调整阈值请改这里，并视需要同步该 JSON 规格以免维护者混淆。
+ *
+ * 注意：下方各项 label 为中文硬编码兜底，运行时由 tool-strings.json 的 rangeLabels 覆盖。
+ * 新增指标须同步在 rangeLabels 的 zh/en/ja/ko 四语补充对应 label，否则该语言会回退中文。
  */
 const BLOOD_RANGES: RangeSpec[] = [
   {
@@ -620,7 +624,7 @@ function InputField({
           style={s.input}
           value={value}
           onChange={handleInput}
-          aria-label={`${labelText} value input`}
+          aria-label={`${labelText} ${sectionCopy.inputValueSuffix}`}
           aria-invalid={isRed || undefined}
           aria-describedby={statusText ? statusId : undefined}
         />
@@ -678,7 +682,7 @@ function ResultBar({ spec, value }: { spec: RangeSpec; value: number }) {
               level === 'green'
                 ? 'var(--color-safe)'
                 : level === 'yellow'
-                  ? 'var(--color-caution)'
+                  ? 'var(--color-caution-text)'
                   : level === 'red'
                     ? 'var(--color-danger)'
                     : 'var(--color-text-muted)',

@@ -139,7 +139,7 @@ export default function B32App() {
               style={{
                 fontFamily: 'var(--b32-font-ui)',
                 fontSize: 10,
-                color: 'var(--b32-ink-3)',
+                color: 'var(--b32-ink-2)',
                 fontWeight: 700,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
@@ -210,7 +210,7 @@ export default function B32App() {
           <div
             style={{
               fontSize: 10,
-              color: 'var(--b32-ink-3)',
+              color: 'var(--b32-ink-2)',
               fontWeight: 700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
