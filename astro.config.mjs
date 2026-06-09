@@ -44,6 +44,11 @@ export default defineConfig({
               slug: 'before-you-start',
             },
             {
+              label: '生育力保存',
+              translations: { en: 'Fertility Preservation', ja: '妊孕性温存', ko: '가임력 보존' },
+              slug: 'fertility-preservation',
+            },
+            {
               label: '中国 HRT 现实路径图',
               translations: { en: 'China HRT Guide', ja: '中国HRTガイド', ko: '중국 HRT 가이드' },
               slug: 'china-reality',
@@ -204,6 +209,11 @@ export default defineConfig({
                   translations: { en: 'Bicalutamide', ja: 'ビカルタミド', ko: '비칼루타마이드' },
                   slug: 'medications/antiandrogens/bicalutamide',
                   badge: { text: { 'zh-CN': '慎用', en: 'Caution', ja: '要注意', ko: '주의' }, variant: 'caution' },
+                },
+                {
+                  label: 'GnRH 拮抗剂',
+                  translations: { en: 'GnRH Antagonists', ja: 'GnRHアンタゴニスト', ko: 'GnRH 길항제' },
+                  slug: 'medications/antiandrogens/gnrh-antagonists',
                 },
               ],
             },

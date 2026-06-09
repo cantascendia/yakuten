@@ -15,7 +15,6 @@ sidebar:
 
 import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
 import DoseTable from '../../../../../components/ui/DoseTable.astro';
-import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
 import CitationRef from '../../../../../components/ui/CitationRef.astro';
 import WarningBox from '../../../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../../../components/ui/DangerBox.astro';
@@ -119,13 +118,13 @@ GnRH 拮抗剂与激动剂在监测逻辑上高度一致：核心是确认睾酮
     ['睾酮（T）', '起始后约 4-8 周 + 每 3-6 月', 'T < 50 ng/dL（去势水平）', '未达标：评估依从性/剂量，咨询医生'],
     ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '确保 E2 充足以保护骨骼与情绪'],
     ['骨密度（DEXA）', '长期使用者基线 + 每 1-2 年', 'T-score > -1.0', 'E2 长期偏低或显著下降需干预'],
-    ['肝功能（瑞卢戈利口服）', '基线 + 按医生建议复查', 'ALT/AST 在正常范围', '异常升高需就医评估'],
+    ['肝功能（瑞卢戈利口服）', '基线 + 按医生建议复查', 'ALT/AST 在正常范围', 'ALT/AST 超过正常上限 3 倍，或出现黄疸/腹痛：停药并就医'],
     ['注射部位（地加瑞克）', '每次注射观察', '局部红肿/疼痛多为轻中度', '持续加重或感染征象需就医'],
   ]}
 />
 
 <DangerBox title="缺乏雌二醇保护时不要单独长期抑制睾酮">
-无论激动剂还是拮抗剂，将睾酮压到去势水平的同时若长期缺乏足量外源雌二醇，会导致体内性激素全面不足，引发严重骨质流失、剧烈潮热与情绪障碍。任何上游抑制方案都必须配合规律、足量的雌二醇补充<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。如出现剧烈潮热、骨痛持续或明显情绪障碍，应及时就医检测 E2 水平，评估是否需要调整方案。
+无论激动剂还是拮抗剂，将睾酮压到去势水平的同时若长期缺乏足量外源雌二醇，会导致体内性激素全面不足，引发严重骨质流失、剧烈潮热与情绪障碍。任何上游抑制方案都必须配合规律、足量的雌二醇补充<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。如出现剧烈潮热、骨痛持续或明显情绪障碍，请尽快前往内分泌科就诊、检测 E2 水平，不要自行停药后观察等待。
 </DangerBox>
 
 ## 中国获取现状与成本现实
