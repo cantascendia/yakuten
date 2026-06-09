@@ -308,5 +308,55 @@
     "doi": "10.1016/j.jsxm.2020.07.081",
     "url": "https://doi.org/10.1016/j.jsxm.2020.07.081",
     "evidenceLevel": "B"
+  },
+  {
+    "id": "shore-2020",
+    "authors": "Shore ND et al.",
+    "year": 2020,
+    "title": "Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer",
+    "journal": "The New England Journal of Medicine",
+    "doi": "10.1056/NEJMoa2004325",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32469183/",
+    "evidenceLevel": "A"
+  },
+  {
+    "id": "kasparian-2023",
+    "authors": "Kasparian S et al.",
+    "year": 2023,
+    "title": "A Practical Guide to Relugolix: Early Experience With Oral Androgen Deprivation Therapy",
+    "journal": "The Oncologist",
+    "doi": "10.1093/oncolo/oyad036",
+    "url": "https://doi.org/10.1093/oncolo/oyad036",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "klotz-2008",
+    "authors": "Klotz L et al.",
+    "year": 2008,
+    "title": "The efficacy and safety of degarelix: a 12-month, comparative, randomised, open-label, parallel-group phase III study in patients with prostate cancer",
+    "journal": "BJU International",
+    "doi": "10.1111/j.1464-410X.2008.08183.x",
+    "url": "https://doi.org/10.1111/j.1464-410X.2008.08183.x",
+    "evidenceLevel": "A"
+  },
+  {
+    "id": "denie-2023",
+    "authors": "de Nie I et al.",
+    "year": 2023,
+    "title": "Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women",
+    "journal": "Cell Reports Medicine",
+    "doi": "10.1016/j.xcrm.2022.100858",
+    "url": "https://doi.org/10.1016/j.xcrm.2022.100858",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "choi-2022",
+    "authors": "Choi JY, Kim TJ",
+    "year": 2022,
+    "title": "Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population",
+    "journal": "Biomedicines",
+    "doi": "10.3390/biomedicines10092279",
+    "url": "https://doi.org/10.3390/biomedicines10092279",
+    "evidenceLevel": "C"
   }
 ]
