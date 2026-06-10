@@ -70,7 +70,11 @@
   /* ===== FOREGROUND ===== */
   --fg-1: #4A2838;
   --fg-2: #7A5568;
-  --fg-3: #B08D9E;
+  /* ST-8 WCAG AA: was #B08D9E (~2.71:1 on cream #FFF5E0, FAIL).
+     #86596F keeps the muted plum hue but passes AA as body/caption text:
+     cream 5.28:1 · ivory #FFFAF0 5.5:1 · bg-5 #FFE4EC 4.78:1.
+     Used by small / .text-micro / .text-muted / --sl-color-gray-3. */
+  --fg-3: #86596F;
   --fg-invert: #FFF5E0;
   --fg-on-pink: #FFFFFF;
   --fg-on-cream: #4A2838;
@@ -79,7 +83,11 @@
   --safe: var(--mint-deep);
   --info: var(--sky-deep);
   --caution: var(--butter-deep);
-  --danger: #E85A7A;
+  /* ST-8 WCAG AA: was #E85A7A (~3.14:1 on cream #FFF5E0, FAIL).
+     #B5304F passes AA as status/body text on every real sakura paper:
+     cream 5.54:1 · ivory #FFFAF0 5.77:1 · blush #FFD4E0 4.5:1 · bg-5 #FFE4EC 5.02:1.
+     Flows into --color-danger, .evidence-X, --sl-color-* etc. */
+  --danger: #B5304F;
   --danger-deep: #C23D5C;
   --warning-hot: var(--coral-deep);
 
@@ -282,6 +290,11 @@
 
   --color-safe: var(--mint-deep);
   --color-caution: var(--butter-deep);
+  /* 「需注意/caution」文字色：装饰仍用亮黄 --color-caution(--butter-deep #F5C842)，
+     但该亮黄做文字在奶油纸上对比度太低，文字改用深琥珀 #8A6700。
+     #805E00（与浅色主题统一、并覆盖较深的 container 底）：on cream #FFF5E0 ≈6.0:1、
+     on ivory #FFFAF0 ≈6.2:1、on bg-5 #FFE4EC ≈5.5:1，均过 AA 4.5:1。 */
+  --color-caution-text: #805E00;
   --color-danger: var(--danger);
   --color-danger-dark: var(--danger-deep);
   --color-info: var(--sky-deep);
@@ -663,9 +676,8 @@ html.sakura .particle-dots {
 
 /* =========================================================================
    EMERGENCY BANNER — sakura mode 显式覆盖
-   原默认 banner 用 var(--color-danger) 在 sakura 下被映射成 #E85A7A，
-   该色 vs 白字对比仅 ~3.5:1，不达 WCAG AA。
-   这里硬覆写背景为 #E5578B（樱花深粉，对白字 ~4.6:1，达 AA 大文本标准），
+   不依赖 --color-danger 映射，直接硬覆写背景为 #E5578B→#C23D5C 渐变
+   （樱花深粉，对白字 ~4.6:1，达 AA 大文本标准），
    并保留紧急 banner 的视觉强度（白字 + 醒目焦点环）。
    ========================================================================= */
 html.sakura .emergency-banner {

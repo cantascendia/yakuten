@@ -55,3 +55,22 @@ bytes: 33800
 なし（DrugComparator 完全SSOT化は既知LT項目）
 
 ---
+
+## 2026-06-02 — Codex cross-model review: fix/st-batch-parallel
+
+**Reviewer**: codex-gpt5.5 | **Mode**: manual-cross-review | 八维 + 安全
+
+### 发现（4）→ 全部已修
+- **[P1] 可视 FAQ = 未引用医疗内容**：使 frontmatter faqs 可见后，含剂量阈值的 FAQ 成为
+  需逐条挂引用的正文，但 frontmatter 串无法承载 CitationRef → 违反"无引用不上线"。
+  **裁决**：FAQ rich results 自 2023-08 仅限权威机构站，可见性收益已极有限；故**回退**为
+  JSON-LD-only（保留 AEO 结构化数据，仓库既有安全模式）。built HTML 实测：可视 faq-section=0、
+  FAQPage 节点=1。
+- **[P2] FaqSchema 纯文本渲染** `**谷值**`/`&lt;50` 会原样显示 → 随 P1 回退而 moot。
+- **[P2] CPA 停药肾上腺声明缺引用**：重新挂回 hembree-2017（与本页 line49 同主题引用一致），
+  保留"理论/证据有限"措辞。
+- **[P3] bujiale 漏迁移的"舌下含多久"FAQ**：已补回 frontmatter。
+
+### 验证
+build ✓ · astro check 0 error · check-citation-refs ✓(1538) · validate-content ✓ · built HTML 实测。
+未削弱任何急救/安全警告。

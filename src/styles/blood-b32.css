@@ -62,9 +62,11 @@
   --b32-caution-tint: var(--b32-butter-paper);
   --b32-caution-soft: rgba(245, 179, 71, 0.22);
 
-  --b32-danger: #E85A7A;
+  /* danger 同时用于 disclaimerRed 等生命安全文字（B32App），需对奶油纸底达 WCAG AA。
+     #B5304F 在 #FFF5E0 上 ≈5.54:1（与 sakura-theme.css --danger 对齐）。 */
+  --b32-danger: #B5304F;
   --b32-danger-tint: #FFDCE5;
-  --b32-danger-soft: rgba(232, 90, 122, 0.18);
+  --b32-danger-soft: rgba(181, 48, 79, 0.18);
 
   /* Radii */
   --b32-r-xs: 8px;

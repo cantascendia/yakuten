@@ -1,7 +1,7 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import type { Level } from '../../../utils/blood/metrics';
 import { b32Color, b32Tint, b32LevelLabelZh } from '../../../utils/blood/scoring';
-import { getB32Copy, type Locale } from '../../../utils/blood/i18n';
+import { getB32Copy, detectLocaleFromPath, type Locale } from '../../../utils/blood/i18n';
 
 export const SakuraLogo = ({ size = 22, petalR = 5.5 }: { size?: number; petalR?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -266,7 +266,7 @@ export const RingGauge = ({
           </div>
         )}
         {sublabel && (
-          <div style={{ fontSize: 11, color: 'var(--b32-ink-3)', marginTop: 2 }}>{sublabel}</div>
+          <div style={{ fontSize: 11, color: 'var(--b32-ink-2)', marginTop: 2 }}>{sublabel}</div>
         )}
       </div>
     </div>
@@ -335,6 +335,7 @@ export const B32Sheet = ({
   actions,
   fullHeight,
   maxWidth = 560,
+  locale,
 }: {
   open: boolean;
   onClose: () => void;
@@ -344,7 +345,16 @@ export const B32Sheet = ({
   actions?: ReactNode;
   fullHeight?: boolean;
   maxWidth?: number;
+  /** Optional override; defaults to the locale inferred from the URL path. */
+  locale?: Locale;
 }) => {
+  // Close button is a control read aloud by screen readers — its label must be
+  // localized, not the hard-coded English "close" (i18n 铁律 #10).
+  const sheetCopy = getB32Copy(locale ?? detectLocaleFromPath());
+  const closeLabel = sheetCopy.close;
+  // Modal needs an accessible name. When a sheet has no visible title, fall back
+  // to a localized generic name so the dialog never reports aria-label=undefined.
+  const dialogLabel = title ?? sheetCopy.settings;
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -380,7 +390,7 @@ export const B32Sheet = ({
         className="b32-slide-up"
         role="dialog"
         aria-modal="true"
-        aria-label={title}
+        aria-label={dialogLabel}
         style={{
           position: 'fixed',
           left: isDesktop ? '50%' : 0,
@@ -455,7 +465,7 @@ export const B32Sheet = ({
               {actions}
               <button
                 onClick={onClose}
-                aria-label="close"
+                aria-label={closeLabel}
                 type="button"
                 style={{
                   width: 36,

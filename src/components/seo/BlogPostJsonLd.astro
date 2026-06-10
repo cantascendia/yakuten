@@ -71,6 +71,9 @@ const graph: Record<string, unknown>[] = [
   }
 ];
 
+// FAQ：以 FAQPage 结构化数据（JSON-LD）提供，供搜索/答案引擎消费。
+// 注：不在博客正文渲染为可见 FAQ——可见的医学问答会成为需逐条挂 CitationRef 的正文，
+// 而 frontmatter 字符串无法承载引用组件（codex cross-review P1）；故保持仅结构化数据。
 if (faqs && faqs.length > 0) {
   graph.push({
     "@type": "FAQPage",

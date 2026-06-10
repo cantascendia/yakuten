@@ -12,7 +12,11 @@
         "emptyHint": "你可以在左侧输入血检数值，系统将实时展示评估结果。",
         "disclaimer1": "本工具提供的信息仅供参考，通常不能替代专业医生的临床诊断。如果你有任何疑虑，建议及时就医咨询。",
         "disclaimer2": "数据计算通常在浏览器本地进行，我们不会上传或存储你的任何数据。",
-        "viewEmergency": "查看急症指南"
+        "viewEmergency": "查看急症指南",
+        "inputValueSuffix": "数值输入",
+        "statusGreen": "在目标范围内",
+        "statusYellow": "需注意",
+        "statusRed": "超出安全范围，需就医评估"
       },
       "rangeLabels": {
         "e2": "E2 (雌二醇)",
@@ -34,7 +38,11 @@
         "emptyHint": "Enter your blood test values on the left. Results will appear here in real time.",
         "disclaimer1": "This tool is for reference only and cannot replace clinician interpretation. If you are concerned, seek medical care directly.",
         "disclaimer2": "All calculations run locally in your browser. No data is transmitted or stored.",
-        "viewEmergency": "View emergency guide"
+        "viewEmergency": "View emergency guide",
+        "inputValueSuffix": "value input",
+        "statusGreen": "Within target range",
+        "statusYellow": "Needs attention",
+        "statusRed": "Outside the safe range — seek medical evaluation"
       },
       "rangeLabels": {
         "e2": "E2 (Estradiol)",
@@ -56,7 +64,11 @@
         "emptyHint": "左側に血液検査の数値を入力すると、結果がここに表示されます。",
         "disclaimer1": "このツールは参考用であり、医師の判断の代わりにはなりません。不安がある場合は直接受診してください。",
         "disclaimer2": "すべての計算はブラウザ内で完結し、データは送信・保存されません。",
-        "viewEmergency": "緊急ガイドを見る"
+        "viewEmergency": "緊急ガイドを見る",
+        "inputValueSuffix": "値入力",
+        "statusGreen": "目標範囲内",
+        "statusYellow": "要注意",
+        "statusRed": "安全範囲を超えています。受診して評価を受けてください"
       },
       "rangeLabels": {
         "e2": "E2 (エストラジオール)",
@@ -78,7 +90,11 @@
         "emptyHint": "왼쪽에 혈액 검사 수치를 입력하면 결과가 실시간으로 표시됩니다.",
         "disclaimer1": "이 도구는 참고용이며 의사의 판단을 대신할 수 없습니다. 우려가 있다면 직접 진료를 받으세요.",
         "disclaimer2": "모든 계산은 브라우저 내에서 처리되며 데이터는 전송되거나 저장되지 않습니다.",
-        "viewEmergency": "응급 가이드 보기"
+        "viewEmergency": "응급 가이드 보기",
+        "inputValueSuffix": "수치 입력",
+        "statusGreen": "목표 범위 내",
+        "statusYellow": "주의 필요",
+        "statusRed": "안전 범위를 벗어남 — 의료 평가가 필요합니다"
       },
       "rangeLabels": {
         "e2": "E2 (에스트라디올)",

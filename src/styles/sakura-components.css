@@ -191,7 +191,8 @@ html.sakura .dose-table tbody td {
 }
 html.sakura .dose-table .dose-value {
   font-family: "JetBrains Mono", monospace !important;
-  color: var(--sakura-pink-deep) !important;
+  /* 剂量数字（医疗关键信息）须达 AA：#E5578B 在 ivory 上仅 3.33:1，#C02868 ≥4.5:1。 */
+  color: #C02868 !important;
   font-weight: 700;
 }
 

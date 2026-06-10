@@ -37,6 +37,9 @@
   /* 语义色 - 证据等级和安全信号 */
   --color-safe: #4CAF50;
   --color-caution: #FF9800;
+  /* 主题感知「需注意/caution」文字色（仅用于文字，装饰仍用 --color-caution）。
+     暗色默认 #FF9800 在 --color-bg-primary #0D0B14 上实测 ≈9.6:1，远超 AA 4.5:1。 */
+  --color-caution-text: #FF9800;
   --color-danger: #F44336;
   --color-danger-dark: #D32F2F;
   /* Darkened from #7C8CF0 — white text now 4.9:1 (passes AA) instead of 3.8:1 */
@@ -180,6 +183,10 @@
   --color-text-secondary: #5A5270;
   /* Darkened from #8A82A0 (~3.4:1 on #FAF7FC, failed AA) → #6B6280 (~5.3:1, passes 4.5:1) */
   --color-text-muted: #6B6280;
+  /* 浅色底需深色文字。#8A6700 在 --color-bg-container #EDE8F2（结果卡底）仅 ≈4.33:1（FAIL，
+     codex cross-review P2）；改用 #805E00：实测 on #EDE8F2 ≈4.95:1、on #FFFFFF ≈5.97:1、
+     on #FAF7FC ≈5.6:1，均过 AA 4.5:1。 */
+  --color-caution-text: #805E00;
   --color-outline-20: rgba(200, 75, 124, 0.15);
   --glass-bg: rgba(255, 255, 255, 0.7);
 }
