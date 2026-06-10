@@ -43,135 +43,151 @@
 
 ## 2. 视觉设计规范
 
-### 2.1 设计风格：米哈游「二相乐园」风
+### 2.1 设计风格：樱粉手账「绯英典籍」v2
 
-整站视觉以《崩坏：星穹铁道》4.0 版本「二相乐园」为灵感，融合绯英角色元素。
+整站视觉为**樱粉手账纸面**（浅色默认）：医学严肃，包装温柔。设计交接源：`design_handoff_site_v2`（Claude Design）。
 
-**风格关键词**: 半透明毛玻璃、几何装饰线条、对角切角、粒子光效、二次元与专业感并存
+**风格关键词**: 手账纸面、漫画描边硬投影、washi 胶带、线装书「卷」、尺刀「裁定」、幻月夜
+**设计原则**: 可爱属于容器，严肃属于内容 —— 危险信息脱离可爱风（墨底红章），证据等级用临床 A/B/C/X。
+**禁用**: 毛玻璃 backdrop-filter、clip-path 切角、霓虹赛博、纯黑 `#000`（墨色永远是梅子墨 `#4A2838`）、抽卡稀有度/星级标注医学信息。
 
-### 2.2 色彩系统
+四个结构系统：
+1. **骨架层**（`src/styles/layout.css`）：`.yk-page` 容器、响应式网格、CJK 防断行
+2. **线装书「卷」页头**（`.yk-pagehead`）：竖排卷标 + 杂志级标题 + 装订墨线红结
+3. **尺刀「裁定」判读语言**：RangeGauge 直尺刻度 + SealStamp 裁定印章（目标/注意/偏离/停药就医）
+4. **幻月夜模式**：真实当日月相做开关，夜晚书桌模型（桌面变梦境紫，纸张仍亮着）
+
+### 2.2 色彩系统（实现见 `src/styles/global.css`）
 
 ```css
 :root {
-  /* === 暗色主题（默认） === */
+  /* === 浅色纸面（默认） === */
 
-  /* 主色 - 绯英绯色系 */
-  --color-primary: #C84B7C;
-  --color-primary-light: #E8A0BE;
-  --color-primary-dark: #8B2D55;
+  /* 主色 - 樱粉系 */
+  --sakura-pink: #FFA8C5;        /* 主色 */
+  --sakura-pink-hot: #FF7FA8;    /* hover */
+  --sakura-pink-deep: #E5578B;   /* pressed / 装饰 */
+  --sakura-pink-text: #C02868;   /* 文字级绯红（AA） */
+  --sakura-blush: #FFD4E0;
 
-  /* 副色 - 幻月金系 */
-  --color-accent: #D4A853;
-  --color-accent-light: #F0D68A;
-  --color-accent-dark: #9A7A2E;
+  /* 辅助 */
+  --coral: #FF8E7F;  --butter: #FFE89C;  --honey: #F5B347;
+  --mint: #A8E6C9;   --sky: #A8D5F5;     --lavender: #D4C5F5;
 
-  /* 中性色 */
-  --color-bg-primary: #0D0B14;
-  --color-bg-secondary: #1A1625;
-  --color-bg-tertiary: #241F33;
-  --color-text-primary: #F0EBF5;
-  --color-text-secondary: #A49CB5;
-  --color-text-muted: #6B6280;
-  --color-border: rgba(200, 75, 124, 0.2);
+  /* 墨与纸 */
+  --ink: #4A2838;                /* 梅子墨，禁纯黑 */
+  --bg-1: #FFF5E0;               /* 手账米白桌面 */
+  --bg-3: #FFFFFF;               /* 卡片白 */
+  --ivory: #FFFAF0;
 
-  /* 语义色 - 用于证据等级和安全信号 */
-  --color-safe: #4CAF50;          /* 绿灯 / 证据等级A */
-  --color-caution: #FF9800;       /* 黄灯 / 证据等级C */
-  --color-danger: #F44336;        /* 红灯 / 禁忌 */
-  --color-info: #7C8CF0;          /* 蓝色 / 证据等级B */
+  /* 语义色 - 证据等级和安全信号 */
+  --safe: #5AC89D;               /* 绿 / 证据A */
+  --info: #5BA8E0;               /* 蓝 / 证据B */
+  --caution: #F5C842;            /* 黄 / 证据C（文字用 #805E00） */
+  --danger: #B5304F;             /* 文字级红（AA on cream） */
+  --danger-deep: #C23D5C;        /* 应急横幅纯红 */
+  --danger-bright: #E85A7A;      /* 纯装饰红 */
 }
 
-[data-theme="light"] {
-  --color-bg-primary: #FAF7FC;
-  --color-bg-secondary: #FFFFFF;
-  --color-bg-tertiary: #F3EEF8;
-  --color-text-primary: #1A1625;
-  --color-text-secondary: #5A5270;
-  --color-text-muted: #8A82A0;
-  --color-border: rgba(200, 75, 124, 0.15);
+[data-theme="dark"] {
+  /* 幻月夜：仅翻转桌面；--ink 不翻转，卡片仍是亮纸 */
+  --bg-1: #2E1F42;  --bg-2: #3D2A55;       /* 梦境紫 */
+  --fg-1: #FFF5E0;  --fg-2: #D4C5F5;       /* 页面级文字翻奶油/薰衣草 */
 }
+/* 纸面作用域：任何浅色卡/面板加 data-paper（或 .yk-paper），文字锁回梅子墨 */
 ```
 
-### 2.3 字体
+旧 `--color-*` 变量已全量映射到上述 token（legacy compat 层），既有组件自动跟随。
+
+### 2.3 字体（5 核心家族）
 
 ```css
 :root {
-  --font-display: "Noto Serif SC", "Noto Serif JP", serif;
-  --font-body: "Noto Sans SC", "Noto Sans JP", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  --font-accent: "ZCOOL XiaoWei", serif; /* slogan/特殊标题 */
+  --font-display: "Fraunces", "Noto Serif SC", serif;   /* 海报级标题 */
+  --font-heading: "Noto Serif SC", sans-serif;          /* 页内标题/裁定印章 */
+  --font-body: "Noto Sans SC", sans-serif;              /* 正文与 UI */
+  --font-hand: "Ma Shan Zheng", cursive;                /* 手写批注/空状态 */
+  --font-hud: "JetBrains Mono", monospace;              /* 仅数值/日期，禁用于 UI */
 }
 ```
 
 ### 2.4 UI 组件规范
 
-**毛玻璃卡片**:
+**贴纸纸卡**（取代毛玻璃卡）:
 ```css
-.glass-card {
-  background: rgba(26, 22, 37, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  clip-path: polygon(
-    0 0, calc(100% - 16px) 0, 100% 16px,
-    100% 100%, 16px 100%, 0 calc(100% - 16px)
-  );
+.ink-card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);   /* 14px */
+  box-shadow: 4px 4px 0 var(--ink);  /* 硬偏移投影，无模糊 */
 }
+/* hover: translate(-2px,-2px) + 投影 6px；active: translate(2px,2px) + 投影归零 */
 ```
 
-**紧急警告横幅**（首页顶部 + 风险页顶部）:
+**紧急警告横幅**（首页顶部 + 风险页顶部）— 脱离可爱风:
 ```css
 .emergency-banner {
-  background: linear-gradient(135deg, #F44336, #D32F2F);
+  background: var(--danger-deep);    /* 纯红，白字 ≈5.1:1 AA */
   color: #FFFFFF;
-  padding: 16px 24px;
-  border-radius: 8px;
+  border-bottom: 2px solid var(--ink);
   font-weight: 700;
-  font-size: 16px;
-  /* 固定在视口顶部，不可关闭 */
+  /* 不可关闭 */
 }
 ```
 
-**证据等级标签**:
+**裁定印章**（血检判读 / 危险标注）:
 ```css
-.evidence-badge[data-level="A"] { background: var(--color-safe); }
-.evidence-badge[data-level="B"] { background: var(--color-info); }
-.evidence-badge[data-level="C"] { background: var(--color-caution); }
-.evidence-badge[data-level="X"] { background: var(--color-danger); }
+.yk-seal {
+  border: 2.5px solid var(--danger);
+  color: var(--danger);
+  border-radius: 6px;
+  transform: rotate(-5deg);
+  font-family: var(--font-heading);
+  letter-spacing: 0.18em;
+}
+```
+
+**证据等级标签**（临床 A/B/C/X，mono 字母 + 中文标签 + 对应色描边，ivory 底）:
+```css
+.evidence-badge--A { border: 2px solid var(--safe); }
+.evidence-badge--B { border: 2px solid var(--info); }
+.evidence-badge--C { border: 2px solid var(--butter-deep); }
+.evidence-badge--X { border: 2px solid var(--danger-bright); }
 ```
 
 **红绿灯指标卡片**（血检解读器用）:
 ```css
-.indicator-green  { border-left: 4px solid var(--color-safe); }
-.indicator-yellow { border-left: 4px solid var(--color-caution); }
-.indicator-red    { border-left: 4px solid var(--color-danger); }
+.indicator-green  { border-left: 4px solid var(--safe); }
+.indicator-yellow { border-left: 4px solid var(--butter-deep); }
+.indicator-red    { border-left: 4px solid var(--danger-bright); }
 ```
 
-**导航栏**: 半透明毛玻璃，固定顶部。左侧 logo（含狐耳轮廓），右侧：语言切换 → 主题切换 → 搜索
+**导航栏**: 奶油纸条吸顶（`.yk-nav`），2px 墨线下边 + 腮红投影。左侧五瓣花印 logo + 品牌字，链接为糖果胶囊（active 粉底白字硬投影），右侧：语言切换 → 月相夜间开关 → 搜索
 
-**侧边栏**: 左侧固定，深色半透明背景，当前页高亮用绯色竖线
+**侧边栏**: 米白纸底，分组标题粉色 kicker，当前页粉底白字硬投影 pill
 
-### 2.5 Logo
+### 2.5 Logo / 吉祥物
 
-- 主体：「药」字简化几何形态
-- 彩蛋：字形中暗藏狐耳轮廓（绯英元素）
-- 配色：绯色 → 金色渐变
-- 格式：SVG 矢量，16px favicon 到 512px
+- **HibiscusMark 五瓣花印**：站点品牌（导航/页脚）。5 圆瓣 `#FFA8C5` + 金色圆心，纯平面无描边
+- **FoxTeacherMark 狐狸老师**：AI 问答人格（蜜金 `#F5B347` + 眼镜墨描边），用于问答浮窗/提示气泡/空状态
+- 全部为原创简单几何 SVG；**不得引入任何游戏立绘素材**
 
 ### 2.6 动画规范
 
 | 动画 | 实现 | 性能要求 |
 |------|------|---------|
-| 页面加载 | 粒子飘散（轻量 Canvas） | requestAnimationFrame，不超过 60 粒子 |
-| 卡片进入 | fade-in + translateY(20px) | CSS only，staggered delay |
-| hover | 发光边框 + scale(1.02) | CSS transform + box-shadow |
+| 页面背景 | 樱瓣飘落（轻量 Canvas） | requestAnimationFrame，不超过 60 瓣 |
+| 卡片 hover | translate(-2px,-2px) + 硬投影加深 | `.15s cubic-bezier(0.34,1.56,0.64,1)` |
+| 按钮 active | translate(2px,2px) + 投影归零 | CSS transform only |
 | 主题切换 | 全局 transition 0.3s | CSS variables transition |
 | 路径图节点 | 点击展开详情 | CSS max-height transition |
+| 血检游标 | left 过渡回弹曲线 | transform/位置过渡 0.25s |
 
 **硬性要求**:
 - 所有动画仅使用 `transform` 和 `opacity`
 - 提供 `prefers-reduced-motion: reduce` 回退
-- 粒子背景可关闭（设置页或自动检测低端设备）
+- 樱瓣背景可关闭（设置页或自动检测低端设备）
+- 焦点环：`outline: 3px solid var(--sakura-pink-deep); outline-offset: 3px`（红底上强制白色）
 
 ---
 

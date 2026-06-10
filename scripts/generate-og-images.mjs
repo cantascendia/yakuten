@@ -4,8 +4,8 @@
  * and write to dist/og/<locale>/<path>.png. Overwrites the <meta og:image>
  * injected by Head.astro at render time (which points here).
  *
- * Uses sharp with an in-memory SVG template. 米哈游「二相乐园」palette:
- *   bg #0D0B14, panel #1A1625 at 60%, primary #C84B7C (绯), accent #D4A853 (幻月金)
+ * Uses sharp with an in-memory SVG template. 樱粉手账「绯英典籍」v2 palette:
+ *   bg cream #FFF5E0, panel paper #FFFFFF + 梅子墨 hard shadow, primary 绯红 #E5578B, accent 蜜金 #F5B347
  *
  * Fonts: SVG uses "Noto Serif SC" for title, "Noto Sans SC" for meta; sharp
  * renders via fontconfig on the host. Chinese fallback stack ensures pages
@@ -20,30 +20,34 @@ const BLOG_DIR = path.resolve('src/content/blog');
 const OUT_DIR = path.resolve('dist/og');
 
 const COLORS = {
-  bg: '#0D0B14',
-  panel: '#1A1625',
-  primary: '#C84B7C',
-  accent: '#D4A853',
-  text: '#F5EEDC',
-  muted: '#8B7E92',
+  bg: '#FFF5E0',        // 手账米白桌面
+  bg2: '#FFFAF0',       // 纸张最亮
+  panel: '#FFFFFF',     // 卡片白
+  ink: '#4A2838',       // 梅子墨（描边/硬投影/正文）
+  primary: '#E5578B',   // 绯红
+  primaryText: '#C02868', // 文字级绯红（AA on cream）
+  accent: '#F5B347',    // 蜜金
+  blush: '#FFD4E0',
+  text: '#4A2838',
+  muted: '#7A5568',
 };
 
 const EVIDENCE_FILL = {
-  A: '#3FA66A',
-  B: '#4A8CC1',
-  C: '#D4A853',
-  X: '#C84B7C',
+  A: '#5AC89D',
+  B: '#5BA8E0',
+  C: '#F5C842',
+  X: '#E85A7A',
 };
 
 // Blog category → (zh label, accent color). Keep in sync with src/utils/blogHelpers.ts.
 const BLOG_CATEGORY = {
-  'estrogen-guide':     { zh: '雌激素指南',  color: '#C84B7C' },
+  'estrogen-guide':     { zh: '雌激素指南',  color: '#E5578B' },
   'antiandrogen-guide': { zh: '抗雄指南',    color: '#9B7DD4' },
-  'blood-test':         { zh: '血检相关',    color: '#4A8CC1' },
-  safety:               { zh: '安全与风险',  color: '#D4564B' },
-  practical:            { zh: '实操经验',    color: '#3FA66A' },
-  comparison:           { zh: '药物对比',    color: '#D4A853' },
-  general:              { zh: '综合',        color: '#8B7E92' },
+  'blood-test':         { zh: '血检相关',    color: '#5BA8E0' },
+  safety:               { zh: '安全与风险',  color: '#C23D5C' },
+  practical:            { zh: '实操经验',    color: '#5AC89D' },
+  comparison:           { zh: '药物对比',    color: '#F5B347' },
+  general:              { zh: '综合',        color: '#7A5568' },
 };
 
 function escapeXml(s) {
@@ -122,7 +126,7 @@ function buildSvg({ title, description, evidenceLevel, refCount, lastReviewed, l
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${COLORS.bg}"/>
-      <stop offset="100%" stop-color="#1E1A2E"/>
+      <stop offset="100%" stop-color="${COLORS.bg2}"/>
     </linearGradient>
     <linearGradient id="accentBar" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="${COLORS.primary}"/>
@@ -131,22 +135,30 @@ function buildSvg({ title, description, evidenceLevel, refCount, lastReviewed, l
     <style>
       .title { font-family: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", serif; font-weight: 700; fill: ${COLORS.text}; }
       .desc  { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-weight: 400; fill: ${COLORS.muted}; }
-      .brand { font-family: "Noto Serif SC", serif; font-weight: 600; fill: ${COLORS.accent}; letter-spacing: 0.1em; }
+      .brand { font-family: "Noto Serif SC", serif; font-weight: 600; fill: ${COLORS.primaryText}; letter-spacing: 0.1em; }
       .meta  { font-family: "JetBrains Mono", "Menlo", monospace; font-weight: 500; fill: ${COLORS.muted}; letter-spacing: 0.08em; }
       .tag   { font-family: "Noto Sans SC", sans-serif; font-weight: 400; fill: ${COLORS.muted}; letter-spacing: 0.3em; }
-      .badge { font-family: "JetBrains Mono", monospace; font-weight: 700; fill: #fff; }
+      .badge { font-family: "JetBrains Mono", monospace; font-weight: 700; fill: ${COLORS.ink}; }
     </style>
   </defs>
 
-  <!-- background -->
+  <!-- background: cream paper + dotted grid -->
   <rect width="${W}" height="${H}" fill="url(#bgGrad)"/>
+  ${Array.from({ length: 12 })
+    .map((_, i) =>
+      Array.from({ length: 7 })
+        .map((__, j) => `<circle cx="${50 + i * 100}" cy="${45 + j * 90}" r="2" fill="${COLORS.ink}" fill-opacity="0.06"/>`)
+        .join(''),
+    )
+    .join('\n  ')}
 
-  <!-- diagonal clip-path panel (米哈游 style) -->
-  <path d="M 60 60 L ${W - 76} 60 L ${W - 60} 76 L ${W - 60} ${H - 60} L 76 ${H - 60} L 60 ${H - 76} Z"
-        fill="${COLORS.panel}" fill-opacity="0.7" stroke="${COLORS.primary}" stroke-opacity="0.25" stroke-width="1.5"/>
+  <!-- paper panel with 梅子墨 hard offset shadow (sticker look) -->
+  <rect x="68" y="68" width="${W - 120}" height="${H - 120}" rx="18" fill="${COLORS.ink}"/>
+  <rect x="60" y="60" width="${W - 120}" height="${H - 120}" rx="18"
+        fill="${COLORS.panel}" stroke="${COLORS.ink}" stroke-width="3"/>
 
-  <!-- accent bar top -->
-  <rect x="80" y="90" width="140" height="4" fill="url(#accentBar)"/>
+  <!-- washi accent bar top -->
+  <rect x="80" y="90" width="140" height="6" rx="3" fill="url(#accentBar)"/>
 
   <!-- brand line -->
   <text x="80" y="130" class="brand" font-size="22">${escapeXml(brand)}</text>
@@ -169,14 +181,13 @@ function buildSvg({ title, description, evidenceLevel, refCount, lastReviewed, l
       : ''
   }
 
-  <!-- meta strip bottom -->
-  <rect x="60" y="${H - 100}" width="${W - 120}" height="1" fill="${COLORS.primary}" fill-opacity="0.3"/>
+  <!-- meta strip on the cream desk below the paper panel -->
   ${evidenceFill
-    ? `<rect x="80" y="${H - 78}" width="44" height="44" rx="6" fill="${evidenceFill}"/>
-       <text x="102" y="${H - 48}" class="badge" font-size="28" text-anchor="middle">${escapeXml(evidenceLevel)}</text>`
+    ? `<rect x="80" y="${H - 52}" width="40" height="40" rx="8" fill="${evidenceFill}" stroke="${COLORS.ink}" stroke-width="2"/>
+       <text x="100" y="${H - 24}" class="badge" font-size="26" text-anchor="middle">${escapeXml(evidenceLevel)}</text>`
     : ''}
-  <text x="${evidenceFill ? 140 : 80}" y="${H - 50}" class="meta" font-size="20">${escapeXml(metaText)}</text>
-  <text x="${W - 80}" y="${H - 50}" class="meta" font-size="18" text-anchor="end">${escapeXml((locale || 'zh').toUpperCase())}</text>
+  <text x="${evidenceFill ? 136 : 80}" y="${H - 24}" class="meta" font-size="20">${escapeXml(metaText)}</text>
+  <text x="${W - 80}" y="${H - 24}" class="meta" font-size="18" text-anchor="end">${escapeXml((locale || 'zh').toUpperCase())}</text>
 </svg>`;
 }
 
@@ -229,52 +240,53 @@ function buildBlogSvg({ title, description, category, publishDate, locale }) {
 <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
     <linearGradient id="blogBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%"   stop-color="#0D0B14"/>
-      <stop offset="55%"  stop-color="#1A1230"/>
-      <stop offset="100%" stop-color="#2A1F3D"/>
+      <stop offset="0%"   stop-color="${COLORS.bg}"/>
+      <stop offset="100%" stop-color="${COLORS.bg2}"/>
     </linearGradient>
     <linearGradient id="blogAccent" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%"   stop-color="${COLORS.primary}"/>
       <stop offset="100%" stop-color="${COLORS.accent}"/>
     </linearGradient>
-    <radialGradient id="blogGlow" cx="0.85" cy="0.15" r="0.55">
-      <stop offset="0%"   stop-color="${COLORS.primary}" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="${COLORS.primary}" stop-opacity="0"/>
-    </radialGradient>
     <style>
       .b-title { font-family: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", "Microsoft YaHei", serif; font-weight: 700; fill: ${COLORS.text}; }
       .b-desc  { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-weight: 400; fill: ${COLORS.muted}; }
-      .b-brand { font-family: "Noto Serif SC", serif; font-weight: 700; fill: ${COLORS.accent}; letter-spacing: 0.12em; }
+      .b-brand { font-family: "Noto Serif SC", serif; font-weight: 700; fill: ${COLORS.primaryText}; letter-spacing: 0.12em; }
       .b-tag   { font-family: "Noto Sans SC", sans-serif; font-weight: 400; fill: ${COLORS.muted}; letter-spacing: 0.32em; }
       .b-meta  { font-family: "JetBrains Mono", "Menlo", monospace; font-weight: 500; fill: ${COLORS.muted}; letter-spacing: 0.08em; }
-      .b-cat   { font-family: "Noto Sans SC", sans-serif; font-weight: 600; fill: #fff; letter-spacing: 0.12em; }
+      .b-cat   { font-family: "Noto Sans SC", sans-serif; font-weight: 600; fill: ${COLORS.ink}; letter-spacing: 0.12em; }
       .b-date  { font-family: "Noto Sans SC", sans-serif; font-weight: 500; fill: ${COLORS.text}; letter-spacing: 0.06em; }
     </style>
   </defs>
 
-  <!-- background gradient + soft glow in top-right -->
+  <!-- background: cream paper + dotted grid -->
   <rect width="${W}" height="${H}" fill="url(#blogBg)"/>
-  <rect width="${W}" height="${H}" fill="url(#blogGlow)"/>
+  ${Array.from({ length: 12 })
+    .map((_, i) =>
+      Array.from({ length: 7 })
+        .map((__, j) => `<circle cx="${50 + i * 100}" cy="${45 + j * 90}" r="2" fill="${COLORS.ink}" fill-opacity="0.06"/>`)
+        .join(''),
+    )
+    .join('\n  ')}
 
-  <!-- 米哈游 diagonal-clip outer panel -->
-  <path d="M 60 60 L ${W - 76} 60 L ${W - 60} 76 L ${W - 60} ${H - 60} L 76 ${H - 60} L 60 ${H - 76} Z"
-        fill="#1A1625" fill-opacity="0.55" stroke="${COLORS.primary}" stroke-opacity="0.28" stroke-width="1.5"/>
+  <!-- paper panel with 梅子墨 hard offset shadow (sticker look) -->
+  <rect x="68" y="68" width="${W - 120}" height="${H - 120}" rx="18" fill="${COLORS.ink}"/>
+  <rect x="60" y="60" width="${W - 120}" height="${H - 120}" rx="18"
+        fill="${COLORS.panel}" stroke="${COLORS.ink}" stroke-width="3"/>
 
-  <!-- 几何 accent: 右上斜角块 + 浮动圆点 -->
-  <path d="M ${W - 200} 60 L ${W - 60} 60 L ${W - 60} 200 Z" fill="${COLORS.primary}" fill-opacity="0.10"/>
-  <circle cx="${W - 140}" cy="180" r="6"  fill="${COLORS.accent}" fill-opacity="0.85"/>
-  <circle cx="${W - 110}" cy="240" r="3"  fill="${COLORS.accent}" fill-opacity="0.65"/>
-  <circle cx="${W - 170}" cy="120" r="4"  fill="${COLORS.primary}" fill-opacity="0.55"/>
+  <!-- 手账 accent: 右上散落樱瓣圆点 -->
+  <circle cx="${W - 140}" cy="180" r="7"  fill="${COLORS.blush}" stroke="${COLORS.ink}" stroke-width="1.5"/>
+  <circle cx="${W - 110}" cy="240" r="4"  fill="${COLORS.accent}" fill-opacity="0.75"/>
+  <circle cx="${W - 170}" cy="120" r="5"  fill="${COLORS.primary}" fill-opacity="0.45"/>
 
   <!-- Brand block -->
-  <rect x="80" y="92" width="120" height="3" fill="url(#blogAccent)"/>
+  <rect x="80" y="92" width="120" height="5" rx="2.5" fill="url(#blogAccent)"/>
   <text x="80" y="130" class="b-brand" font-size="22">${escapeXml(brand)}</text>
   <text x="80" y="158" class="b-tag"   font-size="13">${escapeXml(tagline)}</text>
 
-  <!-- Category badge (top-left, sticker style) -->
+  <!-- Category badge (top-left, sticker style: ivory + colored border) -->
   <g transform="translate(80, 188)">
-    <rect width="${badgeW}" height="44" rx="22" fill="${catColor}" fill-opacity="0.92"/>
-    <rect width="${badgeW}" height="44" rx="22" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1"/>
+    <rect width="${badgeW}" height="44" rx="22" fill="#FFFAF0"/>
+    <rect width="${badgeW}" height="44" rx="22" fill="none" stroke="${catColor}" stroke-width="2.5"/>
     <text x="${badgeW / 2}" y="29" class="b-cat" font-size="18" text-anchor="middle">${escapeXml(catLabel)}</text>
   </g>
 
@@ -293,8 +305,7 @@ function buildBlogSvg({ title, description, category, publishDate, locale }) {
       : ''
   }
 
-  <!-- Bottom rule + meta strip -->
-  <rect x="60" y="${H - 100}" width="${W - 120}" height="1" fill="${COLORS.primary}" fill-opacity="0.32"/>
+  <!-- Meta strip on the cream desk below the paper panel -->
   ${dateLabel
     ? `<text x="80" y="${H - 50}" class="b-date" font-size="22">${escapeXml(dateLabel)}</text>
        <text x="80" y="${H - 22}" class="b-meta" font-size="14">BLOG · 跨性别 HRT 安全底线</text>`
