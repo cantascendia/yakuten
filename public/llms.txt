@@ -176,7 +176,7 @@ For AI/LLM citation, the canonical source is always the page URL; please preserv
 
 - WPATH Standards of Care v8 (2022): doi:10.1080/26895269.2022.2100644
 - Endocrine Society Guidelines (2017): doi:10.1210/jc.2017-01658
-- Canonico et al. (2018) VTE meta-analysis: doi:10.1080/13697137.2017.1416458
+- Canonico et al. (2018) VTE meta-analysis: doi:10.1080/13697137.2018.1446931
 - Hudelist et al. (2026) meningioma risk: recent cohort data
 - UCSF Transgender Care Guidelines: https://transcare.ucsf.edu/guidelines
 
