@@ -308,5 +308,55 @@
     "doi": "10.1016/j.jsxm.2020.07.081",
     "url": "https://doi.org/10.1016/j.jsxm.2020.07.081",
     "evidenceLevel": "B"
+  },
+  {
+    "id": "livertox-flutamide-2023",
+    "authors": "LiverTox",
+    "year": 2023,
+    "title": "Flutamide",
+    "journal": "LiverTox: Clinical and Research Information on Drug-Induced Liver Injury (NIDDK)",
+    "doi": null,
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK548908/",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "wysowski-1993",
+    "authors": "Wysowski DK et al.",
+    "year": 1993,
+    "title": "Fatal and Nonfatal Hepatotoxicity Associated with Flutamide",
+    "journal": "Annals of Internal Medicine",
+    "doi": "10.7326/0003-4819-118-11-199306010-00006",
+    "url": "https://doi.org/10.7326/0003-4819-118-11-199306010-00006",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "brahm-2011",
+    "authors": "Brahm J et al.",
+    "year": 2011,
+    "title": "Acute and fulminant hepatitis induced by flutamide: case series report and review of the literature",
+    "journal": "Annals of Hepatology",
+    "doi": null,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21301018/",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "louw-du-toit-2017",
+    "authors": "Louw-du Toit R et al.",
+    "year": 2017,
+    "title": "Comparing the androgenic and estrogenic properties of progestins used in contraception and hormone therapy",
+    "journal": "Biochemical and Biophysical Research Communications",
+    "doi": "10.1016/j.bbrc.2017.07.063",
+    "url": "https://doi.org/10.1016/j.bbrc.2017.07.063",
+    "evidenceLevel": "C"
+  },
+  {
+    "id": "patel-2022",
+    "authors": "Patel KT et al.",
+    "year": 2022,
+    "title": "Progestogen Use in Gender-Affirming Hormone Therapy: A Systematic Review",
+    "journal": "Endocrine Practice",
+    "doi": "10.1016/j.eprac.2022.08.012",
+    "url": "https://doi.org/10.1016/j.eprac.2022.08.012",
+    "evidenceLevel": "B"
   }
 ]

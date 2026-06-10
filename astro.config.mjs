@@ -218,6 +218,12 @@ export default defineConfig({
                   slug: 'medications/antiandrogens/bicalutamide',
                   badge: { text: { 'zh-CN': '慎用', en: 'Caution', ja: '要注意', ko: '주의', pt: 'Cautela', ru: 'Осторожно', es: 'Precaución', id: 'Hati-hati', th: 'ใช้ด้วยความระวัง', fil: 'Pag-iingat', hi: 'सावधानी', vi: 'Thận Trọng', ar: 'تحذير', fa: 'احتیاط', fr: 'Prudence', de: 'Vorsicht', tr: 'Dikkat' }, variant: 'caution' },
                 },
+                {
+                  label: '氟他胺',
+                  translations: { en: 'Flutamide', ja: 'フルタミド', ko: '플루타마이드' },
+                  slug: 'medications/antiandrogens/flutamide',
+                  badge: { text: { 'zh-CN': '不推荐', en: 'Avoid', ja: '非推奨', ko: '비권장' }, variant: 'danger' },
+                },
               ],
             },
             // ── 孕激素：扁平化，去掉推荐/替代中间层 ──
@@ -252,6 +258,12 @@ export default defineConfig({
                   label: '屈螺酮',
                   translations: { en: 'Drospirenone', ja: 'ドロスピレノン', ko: '드로스피레논', pt: 'Drospirenona' },
                   slug: 'medications/progestogens/drospirenone',
+                },
+                {
+                  label: '炔诺酮',
+                  translations: { en: 'Norethisterone', ja: 'ノルエチステロン', ko: '노르에티스테론' },
+                  slug: 'medications/progestogens/norethisterone',
+                  badge: { text: { 'zh-CN': '慎用', en: 'Caution', ja: '要注意', ko: '주의' }, variant: 'caution' },
                 },
                 {
                   label: '不推荐孕激素 (MPA)',
