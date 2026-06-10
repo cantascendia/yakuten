@@ -106,6 +106,12 @@ export default defineConfig({
               slug: 'controversies-faq',
               badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새', pt: 'Novo', ru: 'Новое', es: 'Nuevo', id: 'Baru', th: 'ใหม่', fil: 'Bago', hi: 'नया', vi: 'Mới', ar: 'جديد', fa: 'جدید', fr: 'Nouveau', de: 'Neu', tr: 'Yeni' }, variant: 'success' },
             },
+            {
+              label: '三大指南对照',
+              translations: { en: 'Guidelines Compared', ja: 'ガイドライン比較', ko: '가이드라인 비교' },
+              slug: 'guidelines-comparison',
+              badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새' }, variant: 'success' },
+            },
           ],
         },
         // ── 实操指南 ──
