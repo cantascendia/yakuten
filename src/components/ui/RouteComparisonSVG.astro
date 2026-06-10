@@ -8,7 +8,8 @@ import { getLocale } from '../../i18n/ui';
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
-const L = {
+type RouteLabels = { title: string; bio: string; vte: string; hl: string; freq: string; routes: string[] };
+const L: RouteLabels = ({
   zh: { title: '雌二醇给药途径对比', bio: '生物利用度', vte: 'VTE 风险', hl: '半衰期', freq: '频率',
     routes: ['口服', '舌下', '凝胶', '贴片', '注射'] },
   en: { title: 'Estradiol Route Comparison', bio: 'Bioavail.', vte: 'VTE Risk', hl: 'Half-life', freq: 'Frequency',
@@ -17,7 +18,7 @@ const L = {
     routes: ['経口', '舌下', 'ゲル', 'パッチ', '注射'] },
   ko: { title: '에스트라디올 투여 경로 비교', bio: '생체이용률', vte: 'VTE 위험', hl: '반감기', freq: '빈도',
     routes: ['경구', '설하', '젤', '패치', '주사'] },
-}[locale] ?? {
+} as Record<string, RouteLabels>)[locale] ?? {
   title: 'Route Comparison', bio: 'Bioavail.', vte: 'VTE', hl: 'Half-life', freq: 'Freq.',
   routes: ['Oral', 'Sublingual', 'Gel', 'Patch', 'Injection'],
 };
