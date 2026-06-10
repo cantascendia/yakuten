@@ -57,6 +57,11 @@ export default defineConfig({
               slug: 'before-you-start',
             },
             {
+              label: '生育力保存',
+              translations: { en: 'Fertility Preservation', ja: '妊孕性温存', ko: '가임력 보존' },
+              slug: 'fertility-preservation',
+            },
+            {
               label: '中国 HRT 现实路径图',
               translations: { en: 'China HRT Guide', ja: '中国HRTガイド', ko: '중국 HRT 가이드', pt: 'Guia de TH na China', ru: 'HRT в Китае', es: 'Guía de THS en China', id: 'Panduan HRT Tiongkok', th: 'คู่มือ HRT จีน', fil: 'Gabay sa HRT sa Tsina', hi: 'चीन HRT गाइड', vi: 'Hướng Dẫn HRT Trung Quốc', ar: 'دليل العلاج الهرموني في الصين', fa: 'راهنمای HRT چین', fr: 'Guide THS en Chine', de: 'HRT-Leitfaden China', tr: 'Çin HRT Rehberi' },
               slug: 'china-reality',
@@ -223,6 +228,11 @@ export default defineConfig({
                   translations: { en: 'Flutamide', ja: 'フルタミド', ko: '플루타마이드' },
                   slug: 'medications/antiandrogens/flutamide',
                   badge: { text: { 'zh-CN': '不推荐', en: 'Avoid', ja: '非推奨', ko: '비권장' }, variant: 'danger' },
+                },
+                {
+                  label: 'GnRH 拮抗剂',
+                  translations: { en: 'GnRH Antagonists', ja: 'GnRHアンタゴニスト', ko: 'GnRH 길항제' },
+                  slug: 'medications/antiandrogens/gnrh-antagonists',
                 },
               ],
             },
