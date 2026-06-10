@@ -1,0 +1,93 @@
+---
+title: "Estradiol Enanthate (EEn)"
+description: "Hướng dẫn đầy đủ về estradiol enanthate — dược động học, so sánh với các ester khác, liều dùng và giới hạn an toàn."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Tiêm bắp (IM) / Tiêm dưới da (SC)"
+  evidenceLevel="B"
+>
+Estradiol enanthate (EEn) là một ester estradiol dạng tiêm tác dụng trung bình đến dài, có thời gian bán thải nằm giữa estradiol valerate (EV) và estradiol cypionate (EC), vào khoảng 5-7 ngày<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Hoạt chất này thường xuất hiện như một thành phần của thuốc tránh thai dạng tiêm phối hợp (ví dụ Perlutal) và cũng có thể được dùng như một thuốc HRT độc lập.
+</DrugInfoBox>
+
+## Dược động học
+
+Đặc điểm dược động học của estradiol enanthate<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Thời gian bán thải**: ~5-7 ngày
+- **Thời điểm đạt đỉnh**: 3-5 ngày sau khi tiêm
+- **Thời điểm đáy**: 7-10 ngày sau khi tiêm
+- **Trạng thái ổn định**: Đạt được sau khoảng 3-4 chu kỳ tiêm đều đặn
+
+### So sánh dược động học giữa các ester estradiol dạng tiêm
+
+<DoseTable
+  headers={['Thông số', 'EV (Valerate)', 'EEn (Enanthate)', 'EC (Cypionate)']}
+  rows={[
+    ['Thời gian bán thải', '~4-5 ngày', '~5-7 ngày', '~8-10 ngày'],
+    ['Thời điểm đạt đỉnh', '2-3 ngày', '3-5 ngày', '2-4 ngày'],
+    ['Khoảng cách tiêm khuyến nghị', '5-7 ngày', '7-10 ngày', '7-14 ngày'],
+    ['Dao động nồng độ huyết thanh', 'Lớn hơn', 'Trung bình', 'Nhỏ hơn'],
+    ['Mức độ sẵn có', 'Toàn cầu', 'Một số khu vực hạn chế', 'Châu Mỹ'],
+  ]}
+/>
+
+Đặc điểm dược động học của EEn nằm giữa EV và EC, mang lại một lựa chọn cho những người muốn tiêm hằng tuần với đường nồng độ mượt mà hơn<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Liều dùng
+
+### Liều dùng cho người lớn
+
+<DoseTable
+  headers={['Giai đoạn', 'Liều', 'Ghi chú']}
+  rows={[
+    ['Liều khởi đầu', '2-4 mg/week', 'Khởi đầu liều thấp để bảo vệ quá trình phát triển ngực'],
+    ['Liều duy trì', '4-6 mg/week', 'Điều chỉnh dựa trên E2 đáy; mục tiêu 100-200 pg/mL'],
+    ['Liều tối đa', '10 mg/10 days', 'Không được vượt quá'],
+  ]}
+/>
+
+Tài liệu tham khảo về liều dùng: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> và WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Lưu ý về mức độ sẵn có">
+Estradiol enanthate không được phân phối rộng rãi ở nhiều khu vực. Nó chủ yếu xuất hiện ở khu vực Mỹ Latinh (như một thành phần của Perlutal) và một số quốc gia châu Âu. Nếu bạn cần estradiol dạng tiêm, [estradiol valerate](/vi/medications/estrogens/injection/) dễ tiếp cận hơn ở hầu hết các khu vực.
+</WarningBox>
+
+## Thương hiệu & mức độ sẵn có
+
+| Thương hiệu | Dạng bào chế | Khu vực |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (thuốc tránh thai phối hợp) | Mỹ Latinh |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Một số quốc gia |
+| Chế phẩm đơn hoạt chất | Nhiều nồng độ khác nhau | Nhà thuốc pha chế |
+
+## Theo dõi
+
+- **E2**: Mỗi 3 tháng, lấy máu ở thời điểm đáy (buổi sáng trước khi tiêm). Mục tiêu 100-200 pg/mL
+- **T**: Mỗi 3 tháng. Mục tiêu &lt;50 ng/dL
+- **Chức năng gan (ALT/AST)**: Lúc nền + mỗi 6 tháng
+
+## Kỹ thuật tiêm
+
+Quy trình tiêm giống hệt với [tiêm estradiol valerate](/vi/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Giới hạn an toàn">
+- Áp dụng cùng các giới hạn an toàn như các ester estradiol dạng tiêm khác
+- Liều mỗi mũi tiêm không được vượt quá 10 mg
+- E2 >200 pg/mL không làm tăng cường nữ hóa, chỉ làm tăng nguy cơ<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Nếu dùng chế phẩm phối hợp (ví dụ Perlutal), thành phần progestogen có thể mang thêm nguy cơ; hãy tham khảo ý kiến bác sĩ
+</DangerBox>

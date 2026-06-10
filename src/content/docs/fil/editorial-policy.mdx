@@ -1,0 +1,97 @@
+---
+title: "Patakaran sa Editoryal"
+description: "Ang mga prinsipyong editoryal ng HRT Pharmacopoeia, proseso ng pagwawasto ng mali, mga pamantayan sa copyright at pagsipi, mga daluyan para sa reklamo at apela, at pagsisiwalat ng conflict of interest."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="en"
+/>
+
+## Mga Lubos na Ipinagbabawal
+
+Hindi kailanman ilalathala ng HRT Pharmacopoeia ang alinman sa mga sumusunod:
+
+<DangerBox>
+- Personalisadong payo sa reseta ("dapat kang uminom ng X mg")
+- Mga link para sa pagbili ng gamot, ahente sa pagbebenta, o QR code para sa referral/komisyon
+- Pananalitang nagpapahina sa pagkilala sa mga medikal na emerhensiya (DVT, hepatotoxicity, meningioma, atbp.)
+- Mga medikal na pahayag na walang DOI o sanggunian
+- Mga third-party na tracking script o pag-iimbak ng datos sa kalusugan ng gumagamit
+- Mga konpigurasyong umiiwas sa mga AI disclaimer o babala sa kaligtasan
+</DangerBox>
+
+## Wika at Tono
+
+- **Iwasan ang mga absoluto**: piliin ang "iminumungkahi namin / karaniwan / sa karamihan ng pagkakataon" kaysa sa "dapat / palagi / hindi kailanman"
+- **Kausapin nang direkta ang mambabasa**: isulat ang "maaari kang pumili ng A o B" sa halip na "dapat pumili ang mga pasyente ng A"
+- **Sabihin nang malinaw ang kawalang-katiyakan**: ang mga konklusyon sa antas ng ebidensiyang B/C/X ay dapat tatakan ng "limitado ang datos" o "opinyon ng eksperto"
+- **Bawasan ang stigma**: gumamit ng pananalitang nagpapatibay sa komunidad at iwasan ang mga lumang o sobrang klinikal na termino
+
+## Pagsipi at Copyright
+
+- Bawat medikal na pahayag ay may pinagmulang sanggunian sa pamamagitan ng `CitationRef` component (ang mga ID ay tumutugma sa mga entry sa `src/data/references.json`)
+- Mas pinipili ang mga DOI; kung walang DOI, banggitin ang impormasyon ng paglalathala sa journal kasama ang isang matatag na URL
+- Ang mga pigura at diagram ay orihinal o galing sa mga gawang Creative Commons / public domain; binibigyan ng pagkilala ang mga reproduksiyon
+- Ang orihinal na nilalaman ng site ay inilalabas sa ilalim ng CC BY-SA 4.0; ang code ay pinamamahalaan ng LICENSE ng repository
+
+## Pagwawasto ng Mali
+
+Maaaring magsumite ang mga mambabasa ng ulat sa pamamagitan ng [feedback form](https://wj.qq.com/s2/16576000/5fe5/) o [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+
+| Uri | Oras ng pagtugon | Pangangasiwa |
+|---|---|---|
+| Maling impormasyon | Unang tugon sa loob ng 72 oras | **Paunawa ng erratum** sa itaas ng pahina + change log |
+| Pagkalihis ng sanggunian | 72 oras | Palitan ang sanggunian at ilathala ang pampublikong log ng pagwawasto |
+| Lumang impormasyon | 7 araw | Incremental update + i-refresh ang `lastReviewed` |
+| Mapanganib na payo | 24 na oras na emergency takedown | Ayusin o panatilihing offline habang isinasailalim sa pagsusuri |
+
+Ang mga malalaking pagwawasto ay ipinapaabot din sa:
+
+- Kasaysayan ng bersiyon sa `/fil/appendix-references/`
+- Mga subscriber ng RSS / Telegram / email
+
+## Mga Reklamo at Apela
+
+- **Reklamo sa nilalaman**: [feedback form](https://wj.qq.com/s2/16576000/5fe5/)
+- **Legal / copyright**: magbukas ng GitHub Issue na may label na `legal`, o makipag-ugnayan sa mga maintainer ng repository
+- **Privacy**: hindi kinukolekta ng site na ito ang impormasyong nagpapakilala sa indibidwal; anumang iniulat na pagtagas ng privacy ay pinangangasiwaan sa loob ng 24 na oras
+
+## Pagsisiwalat ng Conflict of Interest
+
+- **Walang komersiyal na sponsorship, walang advertising ng gamot, walang komisyon sa pagbili**
+- Ang mga gastos sa operasyon ay sinasagot ng mga boluntaryong kontribusyon at mga donasyon ng open-source na komunidad
+- Ang mga editor at medikal na tagapayo ay pumipirma ng mga pagsisiwalat ng conflict of interest; ang mga paksang may direktang kaugnay na relasyon sa pagrereseta o komersiyo ay iniiwasan (recused)
+- Walang panlabas na link na may dalang affiliate identifier; ang mga inilalistang ospital at hotline ay mga mapagkukunang sinuri ng komunidad lamang
+
+## Siklo ng Pagsusuri
+
+| Uri ng pahina | Default na agwat ng pagsusuri |
+|---|---|
+| Pagkilala sa emerhensiya, mga red line sa dosis, mga babala sa panganib | **6 na buwan** |
+| Mga drug monograph at gabay | **12 buwan** |
+| Mga kagamitan, patakaran, metodolohiya | **12 buwan** |
+| Mga blog post | Beripikado isang beses 12 buwan matapos ang paglalathala |
+
+Ang isang malaking pagbabago sa gabay (safety alert ng EMA/FDA, bagong edisyon ng WPATH / Endocrine Society) ay nagdudulot ng **incremental update sa loob ng 48 oras**.
+
+<WarningBox>
+Ang pahinang ito ay isang pampublikong pangako sa editoryal na pamamahala sa sarili. **Kung makita mo kaming lumalabag sa alinmang sugnay sa itaas, mangyaring ipahayag ito nang hayagan** — ang pananagutang iyon lamang ang paraan namin upang manatiling tapat sa aming mga mambabasa.
+</WarningBox>
+
+## Mga Kaugnay na Dokumento
+
+- [Tungkol sa site na ito](/fil/about/)
+- [Metodolohiya](/fil/methodology/)
+- [Mga Medikal na Tagapayo](/fil/medical-advisors/)

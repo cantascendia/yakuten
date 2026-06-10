@@ -33,6 +33,10 @@ export const collections = {
 					// Used for incomplete translations that should not be indexed by search engines
 					// while still remaining reachable for users who navigate to them.
 					noindex: z.boolean().optional(),
+					// Set true when the page renders its `faqs` visibly in-body via <FaqSchema items={frontmatter.faqs} />.
+					// FaqSchema then emits the FAQPage JSON-LD, so JsonLd.astro suppresses its own to avoid a
+					// duplicate FAQPage block on one page (which can invalidate the structured data).
+					faqsRenderedInBody: z.boolean().optional(),
 				})
 				.superRefine((data, ctx) => {
 					if (data.evidenceLevel !== 'X' && data.references.length === 0) {

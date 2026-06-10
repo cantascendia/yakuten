@@ -1,0 +1,210 @@
+---
+title: "Estradiol oral vs injectable : comparaison clinique des voies d'administration"
+description: "Comparaison côte à côte de l'estradiol oral (Progynova) et du valérate d'estradiol en injection (EV), couvrant la pharmacocinétique, le risque de VTE, la rapidité d'action, la stabilité des taux plasmatiques, la disponibilité en Chine continentale et la courbe d'apprentissage de l'auto-injection."
+evidenceLevel: A
+lastReviewed: 2026-04-19
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, aly-2021, ucsf-2016]
+faqs:
+  - q: "Vaut-il mieux opter pour l'estradiol oral ou injectable ?"
+    a: "Les deux voies permettent d'atteindre les taux cibles chez la plupart des personnes. Le risque de VTE de l'injection est proche du niveau de base ; celui de l'oral est de 2 à 4 fois le niveau de base. Les recommandations internationales privilégient les voies non orales (injection / gel / patch) pour les personnes de 40 ans et plus, fumeuses, en situation d'obésité ou présentant un trouble de la coagulation. Les personnes jeunes et en bonne santé peuvent choisir l'une ou l'autre."
+  - q: "Suis-je obligée de m'injecter l'estradiol moi-même ?"
+    a: "Les hôpitaux de Chine continentale ne proposent généralement pas de service d'injection IM de routine pour le THS ; la plupart des personnes s'auto-injectent ou se font aider par un proche. La courbe d'apprentissage est modérée, mais pour la première injection il est préférable d'avoir quelqu'un à vos côtés ou un guidage vidéo, ainsi que du matériel de désinfection et un plan en cas de réaction vagale."
+  - q: "Le passage de l'oral à l'injection provoque-t-il un effet rebond ?"
+    a: "Une fluctuation transitoire à court terme est possible : les taux plasmatiques de l'oral s'éliminent en 24 heures après la dernière prise, tandis que l'injection met 2 à 3 doses à atteindre l'état d'équilibre. Faites chevaucher les deux pendant 1 à 2 semaines lors de la transition et confirmez l'état d'équilibre par un bilan sanguin avant d'arrêter complètement l'oral."
+  - q: "Quelle est l'ampleur du risque de VTE lié à l'estradiol oral ?"
+    a: "Le risque absolu reste faible : la VTE de base chez les personnes MTF jeunes et en bonne santé est d'environ 1-2/1000 personnes-années ; l'estradiol oral le porte à environ 3-6/1000 personnes-années. L'injection / le transdermique se situent à peu près au niveau de base. Le tabagisme, l'obésité et l'âge majorent substantiellement le risque absolu."
+  - q: "La voie sublinguale compte-t-elle comme orale ou transdermique ?"
+    a: "Elle se situe entre les deux. L'absorption par la muqueuse sublinguale contourne en partie le premier passage hépatique, de sorte que le risque de VTE peut être plus faible que celui de l'oral avalé, mais les données sont moins solides que pour l'injection / le transdermique. Les taux plasmatiques présentent des pics élevés et des creux profonds, moins stables que le patch / gel / l'injection."
+sidebar:
+  order: 11
+---
+
+import BylineCard from '../../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<BylineCard
+  author="Équipe éditoriale de la Pharmacopée HRT"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  evidenceLevel="A"
+  refCount={6}
+  locale="fr"
+/>
+
+L'estradiol oral (Progynova / comprimés de valérate d'estradiol) et le valérate d'estradiol (EV) en injection intramusculaire sont les deux voies d'administration de l'E2 les plus répandues au sein de la communauté MTF sinophone. Cette page compare la pharmacocinétique, la sécurité et les obstacles pratiques, **sans formuler de recommandation universelle**.
+
+:::note[Matrice de décision en 30 secondes]
+| Si votre situation est → | Choix recommandé |
+|---|---|
+| Vous recherchez le risque de VTE le plus faible / âge ≥40 / fumeuse / IMC>30 | **EV injectable** · contourne le premier passage hépatique, RR ≈ 1 |
+| Phobie des aiguilles / emploi du temps chaotique / réticence à apprendre la procédure | **Progynova oral** · aucune courbe d'apprentissage |
+| Antécédent de VTE / migraine avec aura / Facteur V Leiden | **EV injectable** (ou transdermique) · oral contre-indiqué |
+| Accès facile en Chine continentale + faible effort | **Progynova oral** · disponible en gynécologie-obstétrique |
+| Objectif de monothérapie (sans antiandrogène) | **EV injectable** · ~82 % atteignent une T &lt;50 ng/dL |
+| Intervalles d'injection irréguliers / recherche de stabilité intrajournalière | **Oral BID** · ratio pic-creux de l'injection ~3-4:1 |
+| Grossesse / allaitement / moins de 18 ans | Aucune des deux recommandée ; veuillez consulter un médecin |
+
+> Indécise ? Poursuivez la lecture pour la comparaison détaillée, ou utilisez l'[auto-dépistage des risques](/fr/tools/risk-screener/) pour vous aider.
+:::
+
+## En un coup d'œil
+
+| Dimension | Oral (Progynova) | Injection (valérate d'estradiol, EV) |
+|---|---|---|
+| **Premier passage hépatique** | Oui (y passe) | Non (contourné) |
+| **Risque de VTE** | 2-4× le niveau de base | ~niveau de base |
+| **Fréquence des prises** | 1 à 3 fois par jour | Tous les 5 à 10 jours |
+| **Stabilité des taux plasmatiques** | Pics/creux intrajournaliers | Fluctuation entre les doses |
+| **Délai d'action** | Pic en quelques heures | Pic en 24-48 heures |
+| **Niveau de preuve** | <EvidenceBadge level="A" /> | <EvidenceBadge level="A" /> |
+| **Disponibilité en Chine continentale** | Sur ordonnance ; courant en gynécologie-obstétrique et endocrinologie | Sur ordonnance ; certains hôpitaux réticents à le prescrire |
+| **Coût mensuel** | ~20-60 RMB | ~30-100 RMB |
+| **Obstacle pratique** | Aucun | Courbe d'apprentissage de l'auto-IM |
+
+## Pharmacocinétique
+
+### Oral : le premier passage hépatique façonne la courbe
+
+L'estradiol ou le valérate d'estradiol par voie orale est absorbé dans l'intestin grêle, gagne le foie par la veine porte et **perd 50 à 70 % au métabolisme de premier passage**<CitationRef id="kuhl-2005" />. La dose effective systémique ne représente que 30 à 50 % de la dose avalée, et le foie est « imprégné » de fortes concentrations d'E2/E1.
+
+- Oral 2-4 mg → pic plasmatique ~50-150 pg/mL, redescend après 4-8 heures
+- Demi-vie ~12-14 heures (sous forme d'E2), mais le rapport E1/E2 est élevé
+- La production hépatique de SHBG, de facteurs de coagulation et de CRP augmente → risque accru de VTE / cholestase<CitationRef id="canonico-2018" />
+
+### Injection : libération lente depuis le muscle, courbe plus plate
+
+Après injection IM d'EV, le véhicule huileux forme un dépôt dans le muscle et la liaison ester s'hydrolyse lentement pour libérer l'E2<CitationRef id="aly-2021" /> :
+
+- 4 mg EV IM → pic 24-48 heures plus tard à ~300-600 pg/mL, puis décroissance exponentielle
+- Demi-vie ~4-5 jours ; chute à 100-150 pg/mL au bout de 5-7 jours
+- **Contourne entièrement le premier passage hépatique** ; les effets sur la coagulation se rapprochent de ceux de l'estradiol physiologique
+
+## Comparaison du risque de VTE
+
+D'après de larges cohortes MTF et des études sur le THS postménopausique<CitationRef id="canonico-2018" /><CitationRef id="coleman-2022" /> :
+
+| Voie | Risque relatif de VTE vs niveau de base |
+|---|---|
+| Estradiol oral | **2-4×** |
+| Œstrogènes équins conjugués (CEE, obsolètes) | 4-6× |
+| Sublingual | Possiblement 1,5-3× (données limitées) |
+| Gel / patch transdermique | **1× (niveau de base)** |
+| Valérate d'estradiol IM | **1× (niveau de base)** |
+
+**Le risque absolu reste faible** : la VTE de base chez les personnes MTF jeunes et en bonne santé est d'environ 1-2/1000 personnes-années. Le tabagisme + l'obésité + l'âge >40 ans se cumulent pour majorer substantiellement le risque absolu.
+
+**Position des recommandations**<CitationRef id="coleman-2022" /><CitationRef id="hembree-2017" /> :
+- Âge ≥40 + tout facteur de risque → privilégier la voie non orale
+- Antécédent de VTE → éviter l'oral ; privilégier le transdermique/l'injection + évaluation d'une anticoagulation
+- 2-4 semaines avant une chirurgie → passer au transdermique ou suspendre
+
+## Stabilité plasmatique
+
+<img
+  src="/images/diagrams/en/oral-vs-injection-curves.webp"
+  alt="Courbe comparative des taux plasmatiques d'E2 par voie orale et intramusculaire : l'oral deux fois par jour montre une fluctuation pic-creux intrajournalière (100-400 pg/mL) ; l'injection hebdomadaire montre une décroissance lente d'un pic de ~600 pg/mL à un creux de ~150 pg/mL au fil de la semaine"
+  width="1536"
+  height="1024"
+  loading="lazy"
+  decoding="async"
+  style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
+/>
+
+| Voie | Variation intrajournalière | Variation interjournalière | Impact sur les symptômes |
+|---|---|---|---|
+| Oral une fois par jour | Pic/creux ~3:1 | Faible | Sautes d'humeur · sensation d'œdème cyclique |
+| Oral deux fois par jour | Pic/creux ~2:1 | Faible | Plus régulier |
+| Injection tous les 7 jours | Aucune | Pic/creux ~3-4:1 | « Euphorie post-injection » pendant quelques jours |
+| Injection tous les 5 jours | Aucune | Pic/creux ~2:1 | Meilleur état d'équilibre |
+| Patch / gel | Faible | Faible | Le plus stable |
+
+**Logique de choix** : les personnes recherchant une humeur stable et une incarnation régulière privilégient le patch / gel / l'injection à intervalle court ; celles sensibles à la souplesse posologique privilégient l'oral.
+
+## Délai d'action et transition
+
+### Délai d'action de l'oral
+
+- Pic 2-4 heures après la prise ; les réponses tissulaires (développement mammaire, modifications cutanées) apparaissent à 1-3 mois
+- Suppression de la T à l'état d'équilibre ~4-8 semaines (avec antiandrogène)
+
+### Délai d'action de l'injection
+
+- La première injection atteint un pic en 24-48 heures mais ne peut pas atteindre l'état d'équilibre
+- Après 2-3 doses (~10-20 jours), on s'approche de l'état d'équilibre
+- Pendant la transition, un chevauchement est recommandé : maintenir l'oral pendant 1-2 semaines avant la première injection, puis diminuer progressivement
+
+### Passer d'une voie à l'autre
+
+**Oral → injection** :
+1. Calculer la dose équivalente : oral 2-4 mg/jour ≈ EV 4-8 mg tous les 7 jours
+2. Maintenir l'oral pendant 2-4 jours après la première injection, puis diminuer progressivement
+3. Contrôler l'E2 résiduel (creux) à 4-6 semaines après l'injection pour confirmer l'état d'équilibre
+
+**Injection → oral** :
+1. Arrêter la dernière injection ; attendre 5-7 jours que les taux plasmatiques chutent
+2. Débuter l'oral ; la dose initiale est souvent de 1 à 1,5× l'équivalent de l'injection à l'état d'équilibre (pour compenser le premier passage hépatique)
+3. Refaire un bilan sanguin à 2-4 semaines pour ajuster
+
+## Obstacles pratiques
+
+### Oral
+
+- Aucun obstacle ; il suffit de prendre les comprimés à l'heure
+- À noter : le Progynova correspond à du valérate d'estradiol 2 mg par comprimé, équivalent à « estradiol 2 mg » — aucune conversion nécessaire
+- Oubli de prise : la prendre dans les 12 heures ; sauter la dose si le retard dépasse 12 heures
+
+### Auto-injection
+
+- Injection IM huileuse : aiguille 23G 1-1,5 pouce (~25-38 mm), 21G pour aspirer
+- Sites d'injection : dorsoglutéal (quadrant supéro-externe), face antéro-latérale de la cuisse, deltoïde (petits volumes)
+- Désinfection : alcool à 70 % ; essuyer le bouchon du flacon pendant 30 secondes, désinfecter le site d'injection par un mouvement circulaire
+- Technique : purger les bulles d'air, pousser lentement (10-30 secondes), comprimer le site pendant 30 secondes après le retrait
+
+<WarningBox>
+**Vivement recommandé pour la première injection** : avoir un proche à vos côtés · garder les numéros d'urgence à portée de main · surveiller pendant 30 minutes l'apparition d'une réaction allergique ou vagale. Consultez notre [guide de la première injection](/fr/guides/first-injection/) pour le déroulé détaillé.
+</WarningBox>
+
+### Alternative sous-cutanée (SC)
+
+L'EV huileux peut **s'injecter par voie sous-cutanée** (abdomen, face antérieure de la cuisse), avec moins de douleur et une demi-vie légèrement plus longue. Aiguille 25G × 5/8 pouce (16 mm). Les données sont modérées ; certaines recommandations l'admettent désormais<CitationRef id="aly-2021" />.
+
+## Disponibilité en Chine continentale
+
+| Filière | Oral (Progynova) | Injection (EV) |
+|---|---|---|
+| Gynécologie-obstétrique | Disponible, facile à prescrire | Certains hôpitaux refusent |
+| Endocrinologie | Facile | Dépend de l'attitude du médecin |
+| Médecine de la reproduction | Très facile | Courant dans les protocoles de stimulation ovarienne |
+| Psychiatrie (clinique trans) | Disponible | Disponible |
+| Coût | 20 mg × 30 comprimés ~40 RMB | 5 mg/mL × 10 ampoules ~60-100 RMB |
+| Assurance | Remboursement partiel | Remboursement partiel |
+
+## Comment choisir (cadre de décision clinique)
+
+**Privilégier l'oral lorsque** :
+- Personne jeune, sans facteur de risque de VTE, réticente à apprendre l'injection IM
+- L'accès à l'injection est difficile ou les médecins refusent de la prescrire
+- Solution-relais à court terme avec passage prévu dans quelques mois
+- Forte acceptation de la forme « médicament quotidien »
+
+**Privilégier l'injection lorsque** :
+- Âge ≥40 ans ou facteurs de risque de VTE (tabagisme/obésité/antécédents familiaux)
+- Absorption orale inconstante (antécédent de chirurgie digestive, MICI)
+- Recherche d'un profil plasmatique plus plat
+- Volonté d'apprendre l'auto-injection
+
+**Privilégier le patch / gel** (non comparés sur cette page, mais souvent optimaux) :
+- Antécédent ou risque élevé de VTE
+- Souhait d'éviter totalement les aiguilles
+- Sensibilité aux ajustements posologiques fins
+
+## Pages associées
+
+- [Fiche détaillée de l'estradiol oral](/fr/medications/estrogens/oral/)
+- [Fiche détaillée du valérate d'estradiol en injection](/fr/medications/estrogens/injection/)
+- [Vue d'ensemble des œstrogènes et guide de choix](/fr/medications/estrogens/overview/)
+- [Guide de la première injection](/fr/guides/first-injection/)
+- [Guide de changement de voie d'administration de l'E2](/fr/guides/switch-e2-route/)

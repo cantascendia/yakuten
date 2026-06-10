@@ -1,0 +1,107 @@
+---
+title: "Tentang Situs Ini"
+description: "Misi di balik HRT Yakuten, sumber konten berbasis bukti kami (WPATH, Endocrine Society), proses tinjauan sejawat, komitmen privasi, dan penafian medis."
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Misi
+
+**Berbasis Bukti · Pengurangan Dampak Buruk · Mengarahkan Anda ke Layanan Medis**
+
+HRT Yakuten adalah situs informasi batas dasar keselamatan untuk perempuan transgender di komunitas berbahasa Tionghoa yang menggunakan HRT. Tujuan kami bukan menggantikan dokter, melainkan membantu mereka yang sudah menjalani — atau hendak memulai — terapi hormon:
+
+- **Memahami hasil tes darah Anda** dan mengenali nilai abnormal mana yang memerlukan kunjungan medis
+- **Mengetahui risiko obat yang sebenarnya**, alih-alih bersandar pada kabar burung komunitas dan kesaksian yang belum terverifikasi
+- **Mengenali tanda peringatan darurat** (DVT, kerusakan hati, meningioma) dan mengambil keputusan tepat pada saat genting
+- **Menemukan sumber daya medis yang ramah trans** dan beralih dari DIY ke perawatan medis yang diawasi
+
+### Yang BUKAN situs ini
+
+- ❌ Bukan ensiklopedia atau buku teks kedokteran
+- ❌ Bukan forum, komunitas, atau platform sosial
+- ❌ Bukan saluran pembelian obat atau situs rekomendasi apotek
+- ❌ Tidak memberikan saran dosis yang dipersonalisasi ("Anda sebaiknya minum X mg")
+
+## Sumber Konten
+
+Seluruh konten medis di situs ini didasarkan pada pedoman klinis internasional dan literatur yang ditinjau sejawat berikut:
+
+| Sumber | Keterangan |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — Pedoman Praktik Klinis |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, Versi 8 |
+| **UCSF Transgender Care** | University of California, San Francisco — Pedoman Perawatan Transgender |
+| **EMA (2020)** | Pembatasan dan penilaian keselamatan European Medicines Agency terhadap CPA |
+| **PubMed / PMC** | Makalah penelitian asli yang ditinjau sejawat (setiap sitasi menyertakan DOI) |
+
+Angka superskrip di samping setiap rekomendasi medis (mis. <sup>[1]</sup>) menautkan ke referensi spesifik. **Tanpa sitasi = tanpa konten** — ini adalah aturan baku situs ini.
+
+## Proses Tinjauan Konten
+
+| Langkah | Standar |
+|------|----------|
+| **Keharusan sitasi** | Setiap rekomendasi klinis harus dapat dilacak kembali ke setidaknya satu makalah yang ditinjau sejawat atau pedoman internasional |
+| **Validasi silang** | Rentang dosis obat harus divalidasi silang terhadap ≥2 sumber independen (mis. WPATH + Endocrine Society + UCSF) |
+| **Pemeringkatan bukti** | Setiap halaman diberi label tingkat bukti: A (banyak RCT/Meta-analisis), B (RCT/kohort tunggal), C (laporan kasus/opini ahli), X (tanpa bukti) |
+| **Tanggal tinjauan** | Setiap halaman menampilkan tanggal tinjauan terakhirnya di bagian bawah |
+| **Siklus pembaruan** | Konten ditinjau setiap kuartal untuk kemutakhiran dan diperbarui berdasarkan literatur yang baru terbit |
+
+<WarningBox title="Keterbatasan Konten">
+Situs ini saat ini dikelola oleh perorangan dan belum menjalani tinjauan sejawat formal oleh editor medis profesional. Kami berupaya sebaik mungkin memastikan keakuratan, tetapi kesalahan dan kelalaian tetap mungkin terjadi. Jika Anda menemukan ketidakakuratan, silakan kirim Issue di GitHub.
+</WarningBox>
+
+## Implementasi Teknis
+
+| Teknologi | Tujuan |
+|------------|---------|
+| **Astro + Starlight** | Pembuatan situs statis — tanpa JS secara bawaan, pemuatan sangat cepat |
+| **React Islands** | JS sisi klien hanya untuk alat interaktif (pemeriksa hasil tes darah, simulator dosis, dll.) |
+| **Pagefind** | Indeks pencarian statis dengan dukungan bahasa Tionghoa/Inggris/Jepang |
+| **Vercel** | Hosting statis + Edge Functions (Tanya Jawab AI) |
+| **Sumber Terbuka** | Kode sumber lengkap tersedia di [GitHub](https://github.com/cantascendia/yakuten) |
+
+## Privasi
+
+**Situs ini tidak mengumpulkan atau menyimpan data pribadi apa pun.**
+
+| Kategori | Tindakan |
+|----------|---------|
+| **Alat tes darah** | Perhitungan JavaScript murni sisi depan — data masukan Anda tidak pernah meninggalkan peramban Anda dan tidak pernah dikirim ke server mana pun |
+| **Tanya Jawab AI** | Percakapan diproses secara real-time melalui Edge Functions — tidak ada yang disimpan, dicatat, atau digunakan untuk pelatihan |
+| **Analitik** | Vercel Web Analytics & Speed Insights — hanya tampilan halaman agregat dan metrik performa; tanpa cookie, tanpa penyimpanan pengenal pribadi, tanpa pelacakan lintas situs |
+| **Pelacakan** | Tanpa Google Analytics, tanpa pelacak media sosial atau iklan tertanam — selain analitik agregat Vercel di atas |
+| **Cookie** | Hanya digunakan untuk preferensi tema (mode gelap/terang), bukan untuk pelacakan |
+| **Iklan** | Tidak ada, dan tidak akan pernah ada |
+
+## Penafian
+
+Konten di situs ini **hanya untuk tujuan edukasi dan informasi** dan tidak merupakan nasihat medis.
+
+- Situs ini tidak dapat menggantikan diagnosis dan penanganan tatap muka oleh dokter yang berkualifikasi
+- Penggunaan, penyesuaian, dan penghentian obat harus dilakukan di bawah bimbingan tenaga kesehatan yang berkualifikasi
+- Jika Anda mengalami gejala darurat apa pun (pembengkakan/nyeri pada satu kaki, nyeri dada mendadak, penyakit kuning, dll.), segera hentikan obat dan pergi ke unit gawat darurat terdekat
+- Situs ini tidak bertanggung jawab atas akibat medis apa pun yang timbul dari penggunaan kontennya
+
+**Pengobatan mandiri (DIY) membawa risiko nyata.** Situs ini bertujuan membantu Anda menggunakan obat dengan lebih aman, tetapi pendekatan teraman selalu menjalani HRT di bawah pengawasan dokter.
+
+## Alat Pendamping
+
+- **hananote** — Aplikasi pelacakan HRT untuk perempuan transgender (Flutter), membantu melacak obat, tes darah, dan perubahan fisik. Melengkapi konten situs ini dengan manajemen kesehatan jangka panjang yang dipersonalisasi. Proyek: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+
+## Kontak & Kontribusi
+
+- **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Kirim Issue atau Pull Request
+- **Koreksi konten**: Menemukan kesalahan medis? Silakan kirim GitHub Issue beserta referensi yang menurut Anda benar
+- **Galeri merek**: Jika Anda memiliki foto obat asli yang ingin Anda sumbangkan, silakan hubungi kami melalui GitHub (wajib lisensi CC-BY-SA)
+
+## Lisensi
+
+Konten situs ini dilisensikan di bawah [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Anda bebas membagikan dan mengadaptasinya, asalkan memberikan atribusi yang sesuai, tidak menggunakannya untuk tujuan komersial, dan mendistribusikan karya turunan di bawah lisensi yang sama.
+
+Kode sumber dilisensikan di bawah Lisensi MIT.

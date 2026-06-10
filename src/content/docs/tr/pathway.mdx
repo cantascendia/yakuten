@@ -1,0 +1,225 @@
+---
+title: "HRT Klinik Tedavi Yolu"
+description: "Başlangıç tahlillerinden idame dönemine kadar tüm HRT tedavi yolu; aşama hedefleri, karar düğümleri ve izlem programları dahil."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Bu tedavi yolu, WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ve Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> kılavuzlarına dayanır ve transfeminen HRT başlatma ile idamesi için standart bir çerçeve sunar.
+</p>
+
+<img src="/images/diagrams/en/pathway-timeline.webp" alt="HRT tedavi yolu zaman çizelgesi: Başlangıç → Düşük Doz (1-6 ay) → Titrasyon (6-12 ay) → İdame (12 ay+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">HAFTA 0</div>
+  <PhaseBlock phase={0} title="Başlangıç Değerlendirmesi" color="green">
+    <p class="phase-block__desc">
+      Herhangi bir ilaca başlamadan önce, kontrendikasyonları dışlamak ve kişisel referans değerlerinizi belirlemek için kapsamlı bir başlangıç tahlil paneli yaptırın.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Cinsiyet hormonları (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Karaciğer ve böbrek fonksiyonları, lipid paneli
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Pıhtılaşma paneli ve D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Açlık kan şekeri + tam kan sayımı (CBC)
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">BAŞLATMA · 1-6 AY</div>
+  <PhaseBlock phase={1} title="Düşük Dozda Başlatma" color="green" week="1-6 AY">
+    <DoseTable
+      headers={['Uygulama Yolu', 'Başlangıç Dozu', 'Kaynak']}
+      rows={[
+        ['Oral estradiol', '2.0 mg / gün', '[2]'],
+        ['Transdermal bant', '50-100 µg / 24s', '[2]'],
+        ['Topikal jel', '1.5 mg / gün', '[2]'],
+        ['IM estradiol valerat', '1-2 mg / hafta', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Anti-androjen (gerekirse): CPA 5-12.5 mg/gün veya spironolakton 50-100 mg/gün. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Hedef E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Hedef T Eğilimi</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Azalıyor
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Güvenlik uyarısı: Vücudunuzun reseptör değişikliklerine uyum sağlaması zaman alır. Kan tahlili yaptırmadan dozu asla artırmayın. "Hiçbir şey olmuyor" hissetseniz bile dozu yükseltmeyin. Göğüs tomurcuğu belirtileri genellikle 3-6 ay içinde görülür.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="KARAR" timepoint="3. AY">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL ve T azalıyor → Mevcut rejime 6. aya kadar devam edin"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Faz 2 dozajına yükseltmeyi değerlendirin"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Anormal karaciğer fonksiyon testleri (LFT) / PRL >30 / belirgin ruh hali kötüleşmesi → Durdurun ve tıbbi yardım alın"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">TİTRASYON · 6-12 AY</div>
+  <PhaseBlock phase={2} title="Doz Titrasyonu" color="yellow" week="6-12 AY">
+    <p class="phase-block__desc">
+      3. ay tahlil sonuçlarına göre dozu ayarlayın. Amaç, transfeminen bireyler için standart fizyolojik aralığa ulaşmaktır.
+    </p>
+    <DoseTable
+      headers={['Uygulama Yolu', 'Ayarlanmış Doz']}
+      rows={[
+        ['Transdermal bant', '100-200 µg / gün'],
+        ['Oral estradiol', '4 mg / gün'],
+        ['Topikal jel', '3 mg / gün'],
+        ['IM estradiol valerat', '2-4 mg / hafta'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Hedef E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Hedef T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesteron (isteğe bağlı)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Göğüs gelişimine göre değerlendirin (Tanner 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/hafta</span>
+      <span class="dose-tag dose-tag--yellow">Topikal jel 3.0-4.5 mg/gün</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="STABİLİTE" timepoint="6. AY">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL ve T <50 ng/dL → İdame fazına geçin"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 ancak E2 hedefte → Anti-androjeni ayarlayın (T'yi baskılamak için E2'yi artırmayın)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Güvenli sınırlar içinde dozu yükseltmeye devam edin"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">DENGE DURUMU · 12 AY+</div>
+  <PhaseBlock phase={3} title="Uzun Vadeli İdame" color="pink" week="12 AY+">
+    <p class="phase-block__desc">
+      Hormon düzeyleri ve fiziksel değişiklikler stabil hale geldiğinde, düşük sıklıkta izleme geçin. E2'yi 100-200 pg/mL, T'yi &lt;50 ng/dL düzeyinde tutmak için en düşük etkili dozu sürdürün.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">İzlem Sıklığı</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Ay</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Her 6 ayda bir tam hormon paneli ve VTE risk faktörleri. Yıllık lipid ve açlık kan şekeri. Kemik yoğunluğu taramasını değerlendirin.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL daha fazla feminizasyon sağlamaz — yalnızca riski artırır (Endocrine Society 2017, Öneri 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">BAŞLANGIÇ FAZININ SONU</p>
+    <p class="pathway-end-sub">Sürekli İzlem</p>
+  </div>
+</div>
+
+</div>
+</div>

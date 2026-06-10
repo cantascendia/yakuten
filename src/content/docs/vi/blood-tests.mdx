@@ -1,0 +1,271 @@
+---
+title: "Xét nghiệm máu & Công cụ tự kiểm tra"
+description: "Các xét nghiệm máu cần làm trong quá trình HRT, lịch tái kiểm tra, cách đọc kết quả và công cụ tự kiểm tra tương tác."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Xét nghiệm máu là nền tảng của việc quản lý an toàn khi dùng HRT. Không có dữ liệu xét nghiệm máu, bạn không có cách nào biết được thuốc có đang phát huy tác dụng hay không, liều dùng có an toàn không, hay cơ thể có đang gánh chịu những rủi ro không cần thiết. Trang này sẽ hướng dẫn bạn khi nào nên đi xét nghiệm, cần xét nghiệm những gì và cách hiểu kết quả của mình<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Tiếp cận xét nghiệm máu">
+Tùy nơi bạn sống, bạn có thể làm xét nghiệm máu thông qua bác sĩ chăm sóc ban đầu, phòng khám theo mô hình đồng thuận có hiểu biết (informed consent, như Planned Parenthood ở Mỹ), các phòng khám chuyên về bản dạng giới (như NHS hoặc GenderCare ở Anh), hoặc các dịch vụ xét nghiệm tư nhân (như Medichecks). Dù đi theo con đường nào, việc làm xét nghiệm cũng rất quan trọng. Sau khi nhận kết quả, hãy đối chiếu với hệ thống đèn giao thông của chúng tôi bên dưới.
+</WarningBox>
+
+## 6.1 Xét nghiệm những gì và khi nào
+
+Lịch xét nghiệm máu được chia thành ba giai đoạn, tương ứng với [Lộ trình HRT](/vi/pathway/) của chúng tôi<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Giai đoạn 1: Khởi đầu (Tháng 1-6)
+
+Đây là giai đoạn điều chỉnh dồn dập nhất, cần theo dõi thường xuyên hơn để bảo đảm thuốc phát huy tác dụng và loại trừ các tác dụng phụ sớm.
+
+**Kiểm tra tuần thứ 4:**
+
+<DoseTable
+  headers={['Hạng mục xét nghiệm', 'Mục đích', 'Đối tượng cần làm']}
+  rows={[
+    ['Bảng hormone sinh dục (E2, T, LH, FSH, PRL, P4)', 'Xác nhận E2 đang tăng và T đang giảm', 'Tất cả người dùng'],
+    ['Chức năng gan (ALT, AST)', 'Loại trừ độc tính gan sớm', 'Người dùng CPA / Bicalutamide'],
+    ['Điện giải (K⁺, Na⁺)', 'Loại trừ nguy cơ tăng kali máu', 'Người dùng Spironolactone'],
+  ]}
+/>
+
+**Kiểm tra tuần thứ 12:**
+
+<DoseTable
+  headers={['Hạng mục xét nghiệm', 'Mục đích', 'Đối tượng cần làm']}
+  rows={[
+    ['Bảng hormone sinh dục', 'Đánh giá đã đạt mục tiêu giai đoạn chưa (E2 50-100 pg/mL)', 'Tất cả người dùng'],
+    ['Chức năng gan (ALT, AST)', 'Theo dõi liên tục mức độ an toàn của gan', 'Người dùng CPA / Bicalutamide'],
+    ['Bảng mỡ máu (TC, TG, LDL, HDL)', 'Đánh giá ảnh hưởng đến chuyển hóa', 'Tất cả người dùng'],
+    ['Điện giải (K⁺)', 'Theo dõi liên tục kali máu', 'Người dùng Spironolactone'],
+  ]}
+/>
+
+<WarningBox title="Mục tiêu Giai đoạn 1">
+E2 đạt 50-100 pg/mL, T có xu hướng giảm. Nếu E2 dưới 30 pg/mL, bạn có thể cần điều chỉnh cách dùng thuốc hoặc liều dùng (xem [Lộ trình](/vi/pathway/) của chúng tôi)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **Đừng tự ý tăng liều trong giai đoạn này chỉ vì bạn "chưa cảm thấy gì".**
+</WarningBox>
+
+### Giai đoạn 2: Điều chỉnh (Tháng 6-12)
+
+Kiểm tra mỗi 3 tháng<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Hạng mục xét nghiệm', 'Tần suất', 'Mục tiêu']}
+  rows={[
+    ['Hormone sinh dục (E2, T, PRL)', 'Mỗi 3 tháng', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Chức năng gan (ALT, AST)', 'Mỗi 3 tháng (CPA/Bica)', 'ALT/AST ≤ giới hạn trên bình thường'],
+    ['Prolactin (PRL)', 'Mỗi 6 tháng', 'PRL <50 ng/mL'],
+    ['Điện giải (K⁺)', 'Mỗi 3 tháng (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Giai đoạn 3: Duy trì (Từ 12 tháng trở đi)
+
+Khi nồng độ hormone đã ổn định, có thể giảm tần suất kiểm tra<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**Kiểm tra định kỳ mỗi 6 tháng:**
+
+<DoseTable
+  headers={['Hạng mục xét nghiệm', 'Mô tả']}
+  rows={[
+    ['Hormone sinh dục (E2, T, PRL)', 'Xác nhận bạn vẫn nằm trong ngưỡng mục tiêu'],
+    ['Chức năng gan (ALT, AST)', 'Theo dõi liên tục (người dùng CPA/Bica mỗi 3-6 tháng)'],
+    ['Điện giải', 'Theo dõi liên tục cho người dùng Spironolactone'],
+  ]}
+/>
+
+**Kiểm tra toàn diện hằng năm:**
+
+<DoseTable
+  headers={['Hạng mục xét nghiệm', 'Mô tả']}
+  rows={[
+    ['Bảng mỡ máu', 'Đánh giá ảnh hưởng chuyển hóa lâu dài'],
+    ['Đường huyết lúc đói', 'Loại trừ tình trạng kháng insulin tiến triển'],
+    ['Công thức máu (gồm Hb)', 'Theo dõi xu hướng thiếu máu'],
+    ['Đông máu + D-Dimer', 'Đánh giá nguy cơ VTE (huyết khối tĩnh mạch — đặc biệt quan trọng với người dùng E2 đường uống)'],
+    ['Mật độ xương (DXA)', 'Cân nhắc làm, nhất là nếu đã ngừng estrogen trong thời gian dài'],
+  ]}
+/>
+
+---
+
+## 6.2 Hiểu kết quả của bạn (Đèn giao thông)
+
+Phần dưới đây minh họa trực quan 7 chỉ số xét nghiệm máu cốt lõi liên quan đến HRT. **Xanh lá** = Ngưỡng mục tiêu, **Vàng** = Cần thận trọng, **Đỏ** = Nguy hiểm, cần hành động<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/en/blood-tubes.webp" alt="Ba ống lấy máu: tím (công thức máu), vàng (sinh hóa/hormone), xanh dương (đông máu)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Thời điểm lấy máu quyết định tất cả">
+Thời điểm lấy máu ảnh hưởng trực tiếp đến khả năng diễn giải kết quả<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Vui lòng tuân theo các nguyên tắc sau (đo **nồng độ đáy — trough**):
+
+- **Miếng dán qua da**: 12-24 giờ trước khi thay miếng dán kế tiếp
+- **Đường uống/Ngậm dưới lưỡi**: Ngay trước liều kế tiếp
+- **Tiêm**: Vào buổi sáng, ngay trước mũi tiêm kế tiếp
+
+Nếu bạn KHÔNG lấy máu ở nồng độ đáy, chỉ số E2 sẽ cao một cách giả tạo, dẫn đến diễn giải sai về việc liều dùng đã đủ hay chưa.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 100-200 pg/mL là khuyến nghị duy trì theo các hướng dẫn quốc tế<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Vượt quá 200 pg/mL sẽ KHÔNG khiến quá trình nữ hóa diễn ra nhanh hơn; nó chỉ làm tăng nguy cơ huyết khối và khiến mầm vú đóng sớm. Nồng độ E2 dưới 20 pg/mL sau khi điều trị gợi ý có vấn đề trong cách dùng thuốc.
+
+<DangerBox title="E2 > 500 pg/mL">
+Nếu E2 ở nồng độ đáy vượt quá 500 pg/mL, hãy giảm liều ngay lập tức và đi khám để được đánh giá. Mức này làm tăng đáng kể nguy cơ huyết khối tĩnh mạch sâu (VTE — huyết khối thuyên tắc tĩnh mạch)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosterone (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+Ức chế T xuống &lt;50 ng/dL (ngưỡng điển hình của nữ giới hợp giới) là một mục tiêu cốt lõi của HRT<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Nếu sau 6 tháng T vẫn >100 ng/dL, thông thường bạn cần điều chỉnh thuốc kháng androgen thay vì cố ép tăng liều E2<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolactin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Cả estrogen lẫn CPA đều có thể làm tăng prolactin<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Mức tăng nhẹ (25-50 ng/mL) thường không có ý nghĩa lâm sàng nhưng cần theo dõi. PRL trên 50 ng/mL nên được đánh giá để loại trừ u tuyến yên tiết prolactin (prolactinoma). Người dùng CPA cần đặc biệt theo dõi sát chỉ số này.
+
+### Chức năng gan (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA và bicalutamide tiềm ẩn nguy cơ độc tính gan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Giới hạn trên bình thường thường là 40 U/L. Tăng lên 1-3 lần giới hạn trên cần theo dõi sát; vượt quá 3 lần (>120 U/L) nghĩa là bạn nên ngừng CPA hoặc bicalutamide ngay lập tức và đi khám bác sĩ<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Dấu hiệu cảnh báo tổn thương gan">
+Nếu bạn xuất hiện vàng da/vàng mắt (hoàng đản), nước tiểu sẫm màu, buồn nôn dai dẳng, hoặc đau vùng bụng trên bên phải, hãy ngừng thuốc ngay lập tức bất kể chỉ số ALT/AST gần nhất là bao nhiêu<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Đây là những triệu chứng cấp tính cần được cấp cứu.
+</DangerBox>
+
+### Kali máu (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Spironolactone là một thuốc lợi tiểu giữ kali có thể gây tăng kali máu<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Tạm ngừng spironolactone nếu K⁺ vượt quá 5.5 mmol/L. Trong thời gian dùng spironolactone, hãy hạn chế thực phẩm giàu kali và không dùng các loại muối thay thế.
+
+<DangerBox title="Triệu chứng tăng kali máu">
+Yếu cơ, tê hoặc châm chích ở tay chân, đánh trống ngực, hoặc rối loạn nhịp tim. Nếu đang dùng spironolactone và gặp những dấu hiệu này, hãy đi kiểm tra kali ngay lập tức<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Huyết sắc tố (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb giảm xuống ngưỡng của nữ giới hợp giới sau khi bắt đầu dùng estrogen là điều có thể đoán trước; đây là hiện tượng sinh lý bình thường<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Nhưng Hb dưới 110 g/L báo hiệu tình trạng thiếu máu cần được chẩn đoán.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+D-dimer tăng gợi ý có huyết khối/tiêu sợi huyết<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Tăng nhẹ (0.5-1.0) cần được xem xét trong bối cảnh lâm sàng. Trên 1.0 mg/L — nhất là khi đi kèm sưng bắp chân, đau ngực, hoặc khó thở — là một tình huống cấp cứu cần loại trừ DVT (huyết khối tĩnh mạch sâu) hoặc PE (thuyên tắc phổi)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Triệu chứng = Cấp cứu">
+D-dimer tăng đơn độc không tự động đồng nghĩa với huyết khối, nhưng nếu kết hợp với sưng/nóng bắp chân, đau ngực đột ngột, hoặc ho ra máu, hãy đến phòng cấp cứu ngay lập tức. Estradiol đường uống có nguy cơ VTE cao hơn so với đường qua da<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Hướng dẫn tổng hợp
+
+<DoseTable
+  headers={['Chỉ số', 'Mục tiêu (Xanh)', 'Thận trọng (Vàng)', 'Nguy hiểm (Đỏ)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 hoặc 200-300', '>500 hoặc <20 (sau khi dùng thuốc)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (sau 6 tháng)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (loại trừ prolactinoma)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3 lần giới hạn)', '>120 (Ngừng CPA/Bica)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Ngừng Spiro)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Thiếu máu)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Loại trừ huyết khối)'],
+  ]}
+/>
+
+---
+
+## 6.3 Công cụ tự kiểm tra tương tác
+
+<WarningBox title="Sắp ra mắt">
+Thành phần React tương tác **BloodTestChecker** sẽ sớm được ra mắt. Nó cho phép bạn nhập các chỉ số của mình để nhận phản hồi đèn giao thông tức thì cùng lời khuyên phù hợp.
+
+Mọi phép tính đều diễn ra ngay trên trình duyệt của bạn — không có dữ liệu nào được lưu hay gửi đến bất kỳ máy chủ nào.
+</WarningBox>
+
+<WarningBox title="Nên đọc tiếp">
+- [Lộ trình HRT](/vi/pathway/) — Nên làm gì tiếp theo dựa trên kết quả của bạn
+- [Giới hạn liều](/vi/dose-limits/) — Xác nhận liều của bạn nằm trong ngưỡng an toàn
+- [Rủi ro & Tình huống khẩn cấp](/vi/risks/) — Khi nào cần ngừng ngay lập tức
+</WarningBox>

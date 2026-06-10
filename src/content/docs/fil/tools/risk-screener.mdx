@@ -1,0 +1,33 @@
+---
+title: "Risk Screener"
+description: "Sagutin ang mga maikling tanong upang maunawaan ang iyong personal na risk profile sa HRT. Purong frontend na tool — walang datos na ipinapadala."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import RiskScreener from '../../../../components/interactive/RiskScreener.tsx';
+
+## Self-Assessment ng mga Risk Factor sa HRT
+
+Sagutin ang 7 maikling tanong upang mabilis na maunawaan ang iyong mga personal na risk factor.
+
+**Tinutulungan ka ng tool na ito na matukoy ang:**
+
+- Ang iyong personal na antas ng panganib sa VTE (deep vein thrombosis / pulmonary embolism)
+- Mga panganib sa kaligtasan ng gamot na may kaugnayan sa atay
+- Panganib ng meningioma (may kaugnayan sa dosis ng CPA)
+- Komprehensibong pagtatasa ng panganib sa puso at daluyan ng dugo (cardiovascular)
+
+<RiskScreener client:visible />
+
+## Mahahalagang Paalala
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Hindi Ito Diagnosis na Medikal</div>
+
+Ang tool na ito ay **hindi maaaring pumalit** sa propesyonal na medikal na pagsusuri. Ang mga risk score ay nakabatay sa kilalang istatistika ng populasyon at hindi nito masasalamin nang buo ang iyong personal na kalagayan ng kalusugan. Mangyaring ibahagi ang resulta ng iyong pagtatasa sa iyong healthcare provider bilang panimulang punto ng talakayan.
+
+**Ang mataas na panganib ay hindi nangangahulugang hindi ka maaaring gumamit ng HRT** — ibig sabihin nito ay maaaring kailanganin mo ng mas madalas na pagmo-monitor, ibang ruta ng pag-inom o pagbibigay ng gamot, o tiyak na mga hakbang sa pag-iwas.
+</div>

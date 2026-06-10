@@ -1,0 +1,175 @@
+---
+title: "Estradiol dạng tiêm (EV / EC / EEn)"
+description: "Hướng dẫn đầy đủ về estradiol dạng tiêm—dược động học, liều dùng, so sánh SC và IM, khả năng dùng đơn trị, quy trình tiêm và những lằn ranh an toàn quan trọng."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Tiêm bắp (IM) / Tiêm dưới da (SC)"
+  evidenceLevel="A"
+>
+Estradiol dạng tiêm là lựa chọn mạnh nhất, không thể bàn cãi, trong HRT chuyển giới nữ. Nó hoàn toàn bỏ qua chuyển hóa lần đầu ở gan và mang lại nồng độ estrogen chiếm ưu thế, rất dễ dự đoán. Các tổng quan lâm sàng gần đây xác nhận rằng tiêm dưới da (SC) cũng hiệu quả không kém tiêm bắp (IM)<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. Đáng kinh ngạc là khoảng 82,6% người dùng đường tiêm có thể đạt được mức ức chế testosterone hoàn toàn khi dùng đơn trị (Monotherapy), không cần bất kỳ thuốc kháng androgen nào<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="Ống tiêm estradiol valerate Progynon Depot 10mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## Dược động học (Các ester)
+
+Estradiol dạng tiêm được gắn với một "ester" (chuỗi axit béo) làm chậm quá trình phóng thích vào máu, tạo ra hiệu ứng kho dự trữ (depot). Ba loại phổ biến nhất là:
+- **Estradiol Valerate (EV)**: Thời gian bán thải ngắn nhất (~4-5 ngày). Cần tiêm mỗi 5 đến 7 ngày. Tăng vọt nhanh và giảm mạnh.
+- **Estradiol Cypionate (EC)**: Thời gian bán thải trung bình (~8-10 ngày). Đường cong phẳng và mượt hơn. Thường tiêm mỗi 7 đến 10 ngày.
+- **Estradiol Enanthate (EEn)**: Thời gian bán thải dài. Có thể duy trì nồng độ ổn định, mượt mà khi tiêm mỗi 7 đến 14 ngày. Được dùng rất nhiều trong cộng đồng DIY thị trường chợ đen.
+
+Trong hướng dẫn này (và theo chuẩn hướng dẫn của Endocrine Society), chúng tôi sẽ lấy **Estradiol Valerate (EV)** làm chuẩn nền, vì đây là dạng bào chế thương mại được chuẩn hóa nhất và được sản xuất nhiều ở Mỹ và Nhật Bản<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Liều dùng cho EV
+
+### Khoảng liều cho người lớn
+
+<DoseTable
+  headers={['Giai đoạn', 'Liều dùng', 'Hướng dẫn']}
+  rows={[
+    ['Liều khởi đầu', '1-2 mg / tuần', 'Giai đoạn khởi đầu liều thấp (Tháng 1-6) để bảo vệ sự phân nhánh ống tuyến.'],
+    ['Duy trì', '2-4 mg / tuần', 'Chỉnh liều dựa trên xét nghiệm máu ở đáy. Mục tiêu E2: 100-200 pg/mL.'],
+    ['Mức tối đa tuyệt đối', '5 mg / tuần', 'Trần an toàn tuyệt đối do Rothman 2024 đề xuất. Không bao giờ vượt qua một cách mù quáng.'],
+  ]}
+/>
+
+Những con số này hoàn toàn phù hợp với WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> và hướng dẫn của Endocrine Society<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+<WarningBox title="Sai lầm chí mạng: Vội vàng trong quá trình này">
+Giới hạn bản thân ở mức 1-2 mg/tuần trong 6 tháng đầu không phải là "rào cản bảo thủ"; đó là sự bảo vệ về mặt sinh học. Đổ một đợt tăng vọt 5mg EV ồ ạt vào máu ngay trong tháng đầu sẽ buộc các tiểu thùy-nang trưởng thành sớm, chấm dứt vĩnh viễn quá trình phân nhánh ống tuyến vú của bạn. Xem [hướng dẫn Phát triển ngực](/vi/breast-development/).
+</WarningBox>
+
+### Thời điểm xét nghiệm máu
+
+Bạn phải lấy máu vào buổi sáng của ngày tiêm, **ngay trước khi tiêm**. Điều này đo được **nồng độ ở đáy (Trough Level)** của bạn (nồng độ E2 thấp nhất tuyệt đối trong suốt chu kỳ).
+- **Mục tiêu ở đáy:** 100-200 pg/mL.
+- **Cảnh báo:** Nồng độ ở đáy >200 pg/mL khi dùng EV nghĩa là đỉnh vào ngày 2 của bạn nhiều khả năng đã ở mức cực cao (ví dụ 500-800 pg/mL). Nồng độ cao chỉ làm tăng nguy cơ tim mạch, chứ không thúc đẩy nữ hóa.
+- Nếu nồng độ ở đáy của bạn tụt xuống dưới 50 pg/mL trong chu kỳ EV 7 ngày, bạn nên chuyển sang chu kỳ 5 ngày (với liều thấp hơn theo tỷ lệ) để làm phẳng đường cong, thay vì cứ tiêm liều cao hơn mỗi 7 ngày.
+
+## Tiêm dưới da (SC) so với tiêm bắp (IM)
+
+Trong nhiều thập kỷ, nội tiết học đã buộc phụ nữ chuyển giới phải dùng kim to để đẩy dầu sâu vào cơ (IM). Dữ liệu quy mô lớn hiện nay chứng minh rằng đưa thuốc dưới da (SC) vào lớp mỡ bụng/đùi là hoàn toàn tương đương<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['Chỉ số', 'Tiêm dưới da (SC)', 'Tiêm bắp (IM)']}
+  rows={[
+    ['Nồng độ E2 xét nghiệm', 'Giống hệt IM', 'Chuẩn truyền thống'],
+    ['Ức chế testosterone', 'Giống hệt IM', 'Chuẩn truyền thống'],
+    ['Mức độ đau', 'Hầu như không đau', 'Có thể gây nhức và mỏi cơ sâu'],
+    ['Cỡ kim', 'Rất nhỏ (25-27G)', 'Dày hơn (21-23G), dài hơn'],
+    ['Độ dễ dùng', 'Rất dễ tự tiêm', 'Tiêm bắp mông thường cần người khác/y tá'],
+  ]}
+/>
+
+**Kết luận:** Nếu bạn tự tiêm, tiêm dưới da (SC) là lựa chọn ưu việt hơn, an toàn hơn và ít gây tổn thương hơn.
+
+<img src="/images/diagrams/en/injection-angles.webp" alt="So sánh mặt cắt kỹ thuật tiêm dưới da (45°) và tiêm bắp (90°)" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## Lợi thế của đơn trị
+
+Estradiol dạng tiêm ức chế testosterone tốt hơn hẳn so với viên uống. Một nghiên cứu đoàn hệ năm 2025 của Misakian và cộng sự cho thấy **82,6%** người dùng estradiol dạng tiêm đạt được mức ức chế testosterone hoàn toàn (T < 50 ng/dL) mà không cần dùng bất kỳ Spironolactone, Bicalutamide hay Cyproterone nào<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- Loại bỏ nguy cơ độc gan của CPA.
+- Loại bỏ nguy cơ lợi tiểu và tăng kali máu của Spiro.
+
+<WarningBox title="Đừng theo đuổi đơn trị một cách liều lĩnh">
+Khoảng 17% số người về mặt sinh học không thể đạt được đơn trị. Nếu bạn đang tiêm 5 mg/tuần mà testosterone vẫn ở mức 300 ng/dL, **đừng tăng liều tiêm lên 8mg hay 10mg**. Bạn thuộc nhóm 17% đó. Hãy chấp nhận thực tế và thêm một thuốc kháng androgen liều thấp.
+</WarningBox>
+
+## Quy trình tiêm
+
+### Dụng cụ
+
+| Đường tiêm | Bơm tiêm | Kim hút | Kim tiêm |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (để hút dầu) | 25-27G × 1/2" đến 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (để hút dầu) | 21-23G × 1" đến 1.5" |
+
+Luôn dùng hai kim. Dùng kim to để hút dầu đặc ra khỏi lọ, rồi đổi sang kim nhỏ, sắc để tiêm. Việc đâm xuyên nút cao su dày của lọ làm cùn kim ở mức vi mô; bạn không muốn ép một cây kim cùn, lụt vào da mình.
+
+### Vị trí tiêm
+
+- **Cho SC:** Bụng (cách rốn ít nhất 2 inch) hoặc mặt ngoài trên của đùi. Véo lớp mỡ lên.
+- **Cho IM:** Cơ rộng ngoài (vastus lateralis, một phần ba giữa mặt ngoài đùi) hoặc cơ mông trước-bên (ventrogluteal, vùng hông/mông).
+
+### Cách thực hiện
+
+1. **Vệ sinh:** Rửa tay kỹ bằng xà phòng. Chuẩn bị sẵn bông cồn và thùng đựng vật sắc nhọn.
+2. **Khử trùng:** Lau nút cao su của lọ. Lau da theo vòng xoáy hướng ra ngoài trong phạm vi 2 inch. Để khô hoàn toàn trong không khí.
+3. **Hút thuốc:** Hút vào bơm tiêm một lượng không khí bằng với liều của bạn. Bơm không khí vào lọ để cân bằng áp suất. Hút dầu xuống. Búng nhẹ để loại bỏ bọt khí.
+4. **Đổi kim & đâm:** Đổi sang cây kim tiêm nhỏ. Với SC, véo lớp mỡ lên và đâm kim vào ở góc 45°.
+5. **Hút thử (Tùy chọn nhưng thường làm với IM):** Kéo nhẹ pít-tông ra. Nếu máu trào vào trong ống, bạn đã chạm vào tĩnh mạch. Rút ra và làm lại ở vị trí khác.
+6. **Bơm:** Tiêm dầu đặc thật chậm (~10 giây).
+7. **Rút kim:** Rút ra một cách dứt khoát. Thấm bằng bông gòn. Bỏ kim vào thùng đựng vật sắc nhọn ngay lập tức.
+
+## Quy đổi mg sang mL (Cách tính)
+
+Nếu bạn có một lọ thương mại tiêu chuẩn của Mỹ chứa **Estradiol Valerate 20 mg/mL** (nghĩa là có 20mg EV trong mỗi 1 mL dầu):
+
+<DoseTable
+  headers={['Liều mục tiêu (mg)', 'Thể tích tiêm (mL)', 'Nồng độ trong lọ']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="Kiểm tra nồng độ của bạn">
+Các lọ DIY trên toàn cầu thường được pha ở nồng độ rất đậm đặc (40 mg/mL, 50 mg/mL). Ống thủy tinh của Nhật (Progynon Depot) thường là 10 mg/mL. **Luôn tính toán dựa trên nồng độ của CHÍNH lọ thuốc bạn dùng.**
+Thể tích (mL) = Liều mục tiêu (mg) ÷ Nồng độ trong lọ (mg/mL).
+</WarningBox>
+
+## Thực tế về ống thủy tinh (ampoule)
+
+Ở nhiều nơi tại châu Á và châu Âu, EV dạng tiêm được bán trong các ống thủy tinh nhỏ, dễ vỡ thay vì lọ có nút cao su.
+- Ống thủy tinh KHÔNG chứa chất bảo quản (như benzyl alcohol).
+- Một khi bạn đã bẻ ống thủy tinh, dịch bên trong đã bị xâm phạm. Bạn không thể để một ống đã mở trên bàn cả tuần rồi tiêm nốt nửa còn lại sau đó.
+- Một số tài liệu hướng dẫn gợi ý hút trước phần liều còn lại vào một bơm tiêm vô trùng và bảo quản trong tủ lạnh tối đa 7 ngày. Cách này tiềm ẩn nguy cơ nhiễm khuẩn. Hãy hết sức thận trọng.
+
+<DangerBox title="Những lằn ranh đỏ chí mạng">
+Tránh những hậu quả thảm khốc cho sức khỏe. Không bao giờ làm những điều sau:
+
+- **Một mũi tiêm ≥ 10 mg:** Tiêm những liều khổng lồ tạo ra nồng độ đỉnh >1000 pg/mL, kéo theo các biến cố cục máu đông / VTE (thuyên tắc huyết khối tĩnh mạch) nguy hiểm<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **Liều cao + khoảng cách ngắn (ví dụ 5mg mỗi 3 ngày):** Hiệu ứng tích lũy chồng thời gian bán thải lên nhau không ngừng cho đến khi cơ thể quá tải ở mức độc hại<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+Nếu 5mg/tuần không đè được testosterone của bạn, hãy chấp nhận rằng đơn trị đã thất bại và thêm một thuốc kháng androgen. Đừng biến mình thành mối nguy sinh học.
+</DangerBox>
+
+---
+
+**Tài liệu tham khảo**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

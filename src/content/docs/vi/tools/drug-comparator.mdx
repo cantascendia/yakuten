@@ -1,0 +1,34 @@
+---
+title: "Công cụ so sánh thuốc"
+description: "So sánh trực tiếp các thông số chính của những thuốc HRT khác nhau. Công cụ chạy hoàn toàn ở phía trình duyệt — không có dữ liệu nào được truyền đi."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## So sánh thuốc
+
+Chọn 2-3 loại thuốc để so sánh nhanh các thông số chính của chúng.
+
+**Công cụ này giúp bạn hiểu:**
+
+- Khác biệt về nguy cơ VTE (huyết khối tĩnh mạch) giữa các đường dùng estrogen (uống vs qua da vs tiêm)
+- Yêu cầu theo dõi và các chống chỉ định của thuốc kháng androgen
+- Mức độ bằng chứng và khoảng liều của từng loại thuốc
+
+<DrugComparator client:visible />
+
+## Cách diễn giải kết quả
+
+- **Nguy cơ VTE (RR)**: Giá trị nguy cơ tương đối. RR=1.0 là mức nền; >1.5 cho thấy mức tăng đáng kể
+- **Mức độ bằng chứng**: A = RCT/Phân tích gộp, B = Một RCT đơn lẻ/Nghiên cứu thuần tập, C = Báo cáo ca/Ý kiến chuyên gia
+- **Theo dõi**: Các xét nghiệm cần làm trong quá trình dùng thuốc
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Chỉ mang tính tham khảo</div>
+
+Công cụ này không phải là lời khuyên y tế. Việc lựa chọn thuốc phải cân nhắc tiền sử bệnh, các yếu tố nguy cơ, khả năng tiếp cận và chi phí của từng cá nhân. **Vui lòng đưa ra quyết định dưới sự hướng dẫn của một nhân viên y tế chuyên môn.**
+</div>

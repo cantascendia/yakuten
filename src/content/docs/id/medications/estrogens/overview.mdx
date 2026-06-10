@@ -1,0 +1,107 @@
+---
+title: "Ringkasan Estrogen"
+description: "Perbandingan risiko VTE, kelebihan, dan kekurangan antara berbagai rute pemberian estradiol (transdermal, oral, sublingual, dan injeksi)."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, misakian-2025]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import RouteComparisonSVG from '../../../../../components/ui/RouteComparisonSVG.astro';
+
+Estradiol (E2) adalah obat inti dalam HRT untuk perempuan transgender. Saat memilih rute pemberian, **keamanan (khususnya risiko Tromboemboli Vena, atau VTE) seharusnya menjadi pertimbangan utama Anda**, bukan sekadar kenyamanan atau biaya.
+
+<RouteComparisonSVG />
+
+<img src="/images/diagrams/en/routes-comparison.webp" alt="Perbandingan tiga rute pemberian estradiol: oral melalui hati, transdermal yang diserap langsung, dan injeksi ke aliran darah" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+## Risiko VTE Berdasarkan Rute Pemberian
+
+Tromboemboli Vena (bekuan darah) adalah salah satu risiko paling serius yang terkait dengan terapi estrogen. Besarnya risiko ini sangat bervariasi tergantung pada bagaimana estrogen masuk ke dalam tubuh Anda<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+<DoseTable
+  headers={['Rute', 'Risiko Relatif (RR)', 'Tingkat Bukti', 'Catatan']}
+  rows={[
+    ['Koyo Transdermal', 'RR ≈ 0.97', 'A', 'Tidak ada peningkatan risiko bermakna dibanding orang yang tidak menggunakan HRT'],
+    ['Gel Transdermal', 'RR ≈ 0.97', 'A', 'Serupa dengan koyo, melewati metabolisme lintas pertama di hati'],
+    ['Oral (Estradiol Valerat/Hemihidrat)', 'RR ≈ 1.48', 'A', 'Risiko meningkat sekitar ~48%'],
+    ['Sublingual', 'Data Terbatas', 'C', 'Sebagian melewati metabolisme lintas pertama, secara teoretis lebih rendah daripada oral'],
+    ['Injeksi (EV/EC/EEn)', 'Data Terbatas', 'C', 'Melewati metabolisme lintas pertama, tetapi belum ada data RCT besar mengenai risiko bekuan darah'],
+  ]}
+/>
+
+<WarningBox title="Poin Penting">
+Rute transdermal (koyo dan gel) membawa risiko VTE yang secara statistik setara dengan orang yang tidak menggunakan HRT (RR ≈ 0.97). Sebaliknya, pemberian oral meningkatkan risiko sekitar 48% (RR ≈ 1.48). Jika Anda memiliki faktor risiko VTE sebelumnya, rute transdermal seharusnya menjadi pilihan pertama Anda secara mutlak<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.
+</WarningBox>
+
+## Panduan Pemilihan Rute
+
+Kerangka berikut disusun berdasarkan bukti klinis terkini<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+### Skenario 1: Terdapat Faktor Risiko VTE
+
+**Faktor risiko meliputi:** Usia >40, IMT >30, merokok, riwayat VTE dalam keluarga, riwayat gangguan pembekuan darah, atau migrain dengan aura.
+
+- **Disarankan:** Koyo Transdermal atau Gel Transdermal
+- **Hindari:** Estradiol Oral
+- **Juga Hindari:** Mengombinasikan estrogen oral dengan Siproteron Asetat (CPA)
+
+### Skenario 2: Tanpa Faktor Risiko VTE
+
+Pilih berdasarkan ketersediaan, anggaran, dan preferensi pribadi:
+
+- **Estradiol Oral (Estrace, Progynova):** Umumnya rute yang paling terjangkau dan paling mudah diakses secara global.
+- **Koyo Transdermal (Climara, Estradot):** Profil keamanan unggul, tetapi bisa mahal atau mengalami kelangkaan akibat masalah rantai pasok global.
+- **Sublingual:** Menggunakan pil oral yang dilarutkan di bawah lidah. Bioavailabilitas lebih tinggi, tetapi menimbulkan lonjakan/penurunan kadar darah yang besar.
+- **Injeksi:** Menyebabkan fluktuasi puncak/lembah yang signifikan, tetapi sangat efektif untuk monoterapi.
+
+### Skenario 3: Monoterapi (Estrogen Tanpa Anti-Androgen)
+
+Jika Anda ingin menekan testosteron hanya dengan estradiol tanpa menggunakan penghambat anti-androgen tersendiri:
+
+- **Disarankan:** Estradiol Injeksi (EV, EC, EEn) – secara andal mempertahankan kadar E2 yang konsisten tinggi sebagaimana dibutuhkan.
+- **Alternatif:** Koyo transdermal dosis tinggi (200-400 µg/day) atau gel transdermal.
+- **Rujukan:** Sebuah studi tahun 2025 oleh Misakian menunjukkan bahwa 82.6% pengguna dengan regimen monoterapi EV injeksi mencapai supresi T tanpa memerlukan anti-androgen<CitationRef id="misakian-2025" num={4} authors="Misakian AL et al." year={2025} title="Estradiol valerate monotherapy outcomes in transgender women" />.
+
+## Rujukan Cepat Kelebihan & Kekurangan
+
+<DoseTable
+  headers={['Rute', 'Kelebihan', 'Kekurangan', 'Ketersediaan Umum']}
+  rows={[
+    ['Koyo Transdermal', 'Risiko VTE terendah; kadar darah stabil; diganti 1-2 kali seminggu', 'Iritasi kulit; bisa mahal atau sering kehabisan stok secara global', 'Sedang'],
+    ['Gel Transdermal', 'Risiko VTE rendah; dosis harian yang fleksibel', 'Penyerapan sangat bervariasi tergantung jenis kulit; perlu waktu untuk mengering', 'Sedang'],
+    ['Oral (Pil)', 'Paling mudah diakses; sangat murah; sederhana untuk dikonsumsi', 'Risiko VTE lebih tinggi; metabolisme lintas pertama di hati membuang sebagian besar obat', 'Sangat Tinggi'],
+    ['Sublingual', 'Bioavailabilitas lebih tinggi daripada oral; sebagian melewati hati', 'Lonjakan dan penurunan kadar darah yang besar; perlu diberikan 2-3 kali sehari', 'Sangat Tinggi (Menggunakan pil oral)'],
+    ['Injeksi (EV/EEn)', 'Melewati hati; sangat efektif untuk monoterapi', 'Memerlukan jarum/menimbulkan kecemasan terhadap suntikan; puncak dan lembah kadar darah yang ekstrem', 'Bervariasi menurut negara (sering DIY)'],
+  ]}
+/>
+
+## Ringkasan Dosis
+
+Rentang dosis standar untuk berbagai rute<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Rute', 'Dosis Awal', 'Dosis Pemeliharaan', 'Dosis Maksimal Umum']}
+  rows={[
+    ['Koyo Transdermal', '50-100 µg/day', '100-200 µg/day', '400 µg/day'],
+    ['Gel Transdermal', '1.5 mg/day', '3 mg/day', '6 mg/day'],
+    ['Estradiol Oral', '2 mg/day', '4 mg/day', '8 mg/day'],
+    ['Sublingual', '1-2 mg/day (dibagi 2-3x)', '2-4 mg/day (dibagi 2-3x)', '6 mg/day'],
+    ['Injeksi EV', '1-2 mg/week', '2-4 mg/week', '5 mg/week'],
+  ]}
+/>
+
+## Halaman Terperinci
+
+Untuk pembahasan mendalam mengenai farmakologi, cara penggunaan, dan peringatan spesifik untuk setiap rute, klik tautan di bawah ini:
+
+- [Koyo Transdermal](/id/medications/estrogens/transdermal-patch/) — Rute pemberian paling aman
+- [Estradiol Oral](/id/medications/estrogens/oral/) — Sangat mudah diakses, tetapi membawa risiko VTE yang sedikit lebih tinggi
+- [Sublingual](/id/medications/estrogens/sublingual/) — Jalan tengah yang menawarkan penyerapan lebih tinggi tetapi fluktuasi yang besar
+- [Gel Transdermal](/id/medications/estrogens/gel/) — Keamanan yang fleksibel, berada di antara koyo dan oral
+- [Estradiol Injeksi](/id/medications/estrogens/injection/) — Standar emas untuk monoterapi

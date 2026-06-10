@@ -1,0 +1,184 @@
+---
+title: "Bicalutamide"
+description: "Off-label na paggamit ng bicalutamide sa HRT ng transgender — mekanismo ng AR blockade nang hindi pinapababa ang testosterone, pagsubaybay sa hepatotoxicity at pulmonary toxicity, tahasang pagbabawal sa pagsabay nito sa CPA, at ang pinakabagong datos mula sa mga pag-aaral sa populasyong transgender."
+evidenceLevel: C
+lastReviewed: 2026-04-14
+references: [coleman-2022, neyman-2019, fuqua-2024, angus-2024, wilde-2024, matsumoto-2020]
+sidebar:
+  order: 3
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Bicalutamide"
+  nameCN="比卡鲁胺"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  Ang bicalutamide ay isang malakas na non-steroidal na antagonist ng androgen receptor (AR) na orihinal na binuo para sa paggamot ng prostate cancer. Sa HRT ng transgender, itinuturing itong **huling-rekursong antiandrogen** — isinasaalang-alang lamang kapag hindi available ang lahat ng CPA, spironolactone, at GnRH agonists. Tahasang hindi inirerekomenda ng WPATH SOC 8 ang paggamit nito para sa karaniwang GAHT.
+</DrugInfoBox>
+
+<WarningBox title="Off-Label na Paggamit">
+Ang paggamit ng bicalutamide sa HRT ng mga transgender na kababaihan ay bumubuo ng **off-label na paggamit**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Tahasang binabanggit ng WPATH SOC 8 na ang bicalutamide ay may bihira ngunit posibleng nakamamatay na hepatotoxicity na hindi ganap na mapipigilan sa pamamagitan ng pagsubaybay
+- Walang labeling ng gamot na naglilista ng gender-affirming hormone therapy bilang isang aprubadong indikasyon
+- Hindi tinatalakay ng mga gabay ng Endocrine Society 2017 ang bicalutamide
+- Ang kasalukuyang datos mula sa populasyong transgender ay nagmumula sa maliliit na obserbasyonal na pag-aaral (humigit-kumulang 170 kaso nang pinagsama-sama)
+</WarningBox>
+
+<DangerBox title="Kontraindikado kapag Isinabay sa CPA">
+Ang bicalutamide at CPA (cyproterone acetate) ay **hindi dapat kailanman gamitin nang sabay-sabay**.
+
+Pareho silang may potensyal na hepatotoxic; ang sabay na paggamit ay maaaring magresulta sa dagdag na panganib ng pinsala sa atay. Ang kontraindikasyong ito ay nakabatay sa mga prinsipyo ng kaligtasang pharmacological — walang pag-aaral ang direktang sumuri sa kaligtasan ng pagsabay sa kanila, ngunit dahil sa indibidwal na profile ng hepatotoxicity ng bawat gamot, walang responsableng klinikal na praktis ang dapat magpahintulot ng sabay na paggamit nila.
+
+**Kung lilipat mula sa CPA patungong bicalutamide (o kabaligtaran), ang unang gamot ay dapat itigil sa ilalim ng pangangasiwang medikal, na may agwat na hindi bababa sa 2–4 na linggo at may nakumpirmang normal na paggana ng atay bago simulan ang pangalawang gamot.**
+</DangerBox>
+
+## Pharmacology
+
+### Mekanismo ng Pagkilos
+
+<img src="/images/diagrams/en/bica-ar-mechanism.webp" alt="Mekanismo ng bicalutamide: hinaharangan ang AR ngunit tumataas ang T dahil sa pagkawala ng negative feedback patungo sa hypothalamus" width="800" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+Ang bicalutamide ay isa sa mga non-steroidal na AR antagonist na may pinakamataas na binding affinity na kasalukuyang ginagamit sa klinika:
+
+1. **Malakas na AR blockade** (tanging mekanismo): Mapagkumpitensyang hinaharangan ang mga androgen receptor, na pumipigil sa testosterone (T) at DHT na magdulot ng biyolohikal na epekto
+2. **Hindi pinapababa ang antas ng testosterone**: Dahil sa mga mekanismo ng feedback, maaaring tumaas pa nga ang antas ng T
+3. **Walang epekto sa GnRH–LH/FSH axis**: Hindi pinipigilan ang hypothalamic–pituitary–gonadal axis
+
+### Pharmacokinetics
+
+- **Oral bioavailability**: Humigit-kumulang 90%
+- **Steady-state half-life**: 5–6 araw — nangangahulugang ang isang nakaligtaang dosis ay may maliit na epekto sa konsentrasyon sa plasma, bagaman dapat pa ring iwasan ang madalas na pagkaligta sa dosis
+- **Oras hanggang sa peak concentration**: Humigit-kumulang 31 oras
+- **Oras hanggang sa steady state**: Humigit-kumulang 4 na linggo
+
+### Ang Problema ng Tumataas na Antas ng Testosterone
+
+Ito ay isang natatanging penomena kapag ginamit ang bicalutamide sa GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+- Sa sandaling harangan ng bicalutamide ang AR, hindi na nararamdaman ng hypothalamus ang androgen-mediated na negative feedback
+- Ang pituitary ay nagbabayad-pinsala sa pamamagitan ng pagtaas ng sekresyon ng LH, na nag-uudyok sa mga testis na gumawa ng mas maraming testosterone
+- Ang antas ng serum testosterone ay maaaring tumaas hanggang 1.5–2× ng mga halaga bago ang paggamot
+- Bagaman naharang ang mga biyolohikal na epekto ng T, ang nakataas na T ay maaaring ma-convert sa estradiol sa pamamagitan ng aromatase
+- Sa mga pasyenteng may prostate cancer, ang pagtaas na ito ng testosterone ay kung minsan ay humahantong sa gynecomastia
+
+**Mga implikasyon para sa mga transgender na gumagamit**: Bagaman naharang ang AR, ang nakataas na antas ng testosterone ay nangangahulugang kung ititigil ang gamot o bababa ang pagsunod dito, maaaring mabilis na bumalik ang mga epektong masculinizing.
+
+## Mga Rekomendasyon sa Dosis
+
+<DoseTable
+  headers={['Protocol', 'Dosis', 'Mga Tala', 'Pinagmulan']}
+  rows={[
+    ['Panimula / Standard', '25 mg/day', 'Mababang dosis na ginamit sa karamihan ng mga pag-aaral sa transgender hanggang sa ngayon', 'Angus 2024; Burgener 2025'],
+    ['Saklaw ng Pag-aayos', '25–50 mg/day', 'Ini-titrate batay sa klinikal na tugon', 'Neyman 2019 (50 mg); Angus 2024 (25 mg)'],
+    ['Ganap na Maximum', '50 mg/day', 'Walang dagdag na benepisyo ang mas mataas na dosis ngunit pinapataas nito ang panganib ng hepatotoxicity', 'FDA label (dosis ng combination therapy para sa prostate cancer)'],
+  ]}
+/>
+
+<WarningBox title="Huwag Gamitin ang Antas ng Testosterone Upang Tasahin ang Bisa">
+Kapag gumagamit ng bicalutamide, ang serum testosterone ay **hindi** maaaring magsilbing marker ng tugon sa paggamot. Ang antas ng testosterone ay maaaring manatiling normal o tumaas pa nga; hangga't epektibong naharang ang AR, napipigilan ang mga androgenic na epekto<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide as an Androgen Blocker With Secondary Effect of Promoting Feminization in Male-to-Female Transgender Adolescents" />. Ang bisa ay dapat tasahin batay sa mga klinikal na palatandaan (nabawasang produksyon ng sebum, mas mabagal na paglaki ng balahibo sa katawan, atbp.) sa halip na batay lamang sa mga halaga ng testosterone.
+</WarningBox>
+
+## Masamang Epekto
+
+### Hepatotoxicity (Pinakamahalagang Panganib)
+
+Ang hepatotoxicity ang pangunahing dahilan na naglilimita sa paggamit ng bicalutamide sa GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Datos mula sa FDA label (mula sa mga klinikal na pagsubok sa prostate cancer)**:
+- Humigit-kumulang **6%** ang nakaranas ng panandalian at walang sintomas na pagtaas ng ALT
+- Humigit-kumulang **1%** ang huminto dahil sa hepatitis o malaking pagtaas ng enzyme
+- Malaking 150 mg monotherapy trial (EPC, n=8,113): abnormal na LFTs sa **3.4%** (vs. 1.9% placebo)
+- Hindi bababa sa 10 seryosong case report ng pinsala sa atay ang nailathala matapos ang pagbebenta, kabilang ang 2 pagkamatay
+
+**Datos mula sa populasyong transgender** (limitado ngunit kapaki-pakinabang):
+- Neyman 2019: 23 kabataan, 50 mg/day, walang klinikal na makabuluhang hepatotoxicity<CitationRef id="neyman-2019" num={2} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} />
+- Fuqua 2024: 40 kabataan sa follow-up, 50 mg/day, walang seryosong pangyayaring hepatic<CitationRef id="fuqua-2024" num={3} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Follow-up of bicalutamide treatment in transgender youth" />
+- Angus 2024: 24 na nasa hustong gulang, 25 mg/day, 1 kaso ng banayad na pagtaas ng enzyme (reversible)<CitationRef id="angus-2024" num={4} authors="Angus LM et al." year={2024} title="Bicalutamide as an alternative antiandrogen in gender-affirming hormone treatment" />
+- Wilde 2024: 1 case report, 50 mg/day, nagkaroon ng hepatotoxicity (reversible matapos itigil)<CitationRef id="wilde-2024" num={5} authors="Wilde B et al." year={2024} title="Bicalutamide-induced hepatotoxicity in transgender woman" />
+
+Ang mga dataset na ito ay nananatiling masyadong maliit nang pinagsama-sama (humigit-kumulang 170 kaso) upang maalis ang posibilidad ng bihira ngunit seryosong pinsala sa atay.
+
+<DangerBox title="Mga Sintomas ng Pinsala sa Atay — Itigil Kaagad at Humingi ng Atensyong Medikal">
+- Paninilaw ng balat o ng puti ng mga mata (jaundice)
+- Maitim na ihi (kulay tsaa)
+- Patuloy na pananakit o di-ginhawa sa itaas na kanang bahagi ng tiyan
+- Hindi pangkaraniwang pagkapagod, kawalan ng gana sa pagkain, pagduduwal, o pagsusuka
+- ALT/AST &gt; 3× sa itaas na hangganan ng normal
+
+**Kung lumitaw ang alinman sa mga sintomas sa itaas, itigil kaagad ang bicalutamide at humingi ng medikal na pagsusuri sa paggana ng atay.**
+</DangerBox>
+
+### Pulmonary Toxicity (Interstitial Lung Disease)
+
+Kasama sa FDA label ang isang babala matapos ang pagbebenta para sa interstitial lung disease (ILD), kabilang ang interstitial pneumonitis at pulmonary fibrosis, na ang ilan ay nakamatay.
+
+- **Napakababa ng pangkalahatang insidente**: humigit-kumulang 0.01% (1/10,000), higit na mas mababa kaysa sa kaugnay na gamot na nilutamide (0.77%)
+- **Datos ng pharmacovigilance ng Japan**: Sinuri ng Matsumoto 2020 ang Japanese Adverse Drug Event Report database (JADER) at natagpuan ang reporting odds ratio para sa ILD na kaugnay ng bicalutamide na 9.2 (95% CI 7.9–10.6), na may median na panahon ng pagsisimula na 50 araw<CitationRef id="matsumoto-2020" num={6} authors="Matsumoto K et al." year={2020} title="Bicalutamide-associated interstitial lung disease: pharmacovigilance analysis" />
+
+<WarningBox title="Tala sa Panganib ng Pulmonary Toxicity sa mga Populasyong Asyano">
+Ipinapakita ng mga database ng pharmacovigilance ng Japan ang mas mataas na bilang ng mga ulat ng ILD na kaugnay ng bicalutamide, ngunit **hindi ito nagpapahiwatig ng genetikong predisposisyon sa mga indibidwal na Asyano** — ang pangkalahatang reporting rate ng Japan para sa drug-induced na ILD ay mas mataas kaysa sa ibang mga bansa (malamang na sumasalamin sa kultura ng pag-uulat at mga pattern ng pagrereseta). Walang prospective na pag-aaral ang nagpatunay ng pagkakaiba sa panganib batay sa lahi. Gayunpaman, kung magkaroon ng tuyong ubo, dyspnea, o lagnat, agad na humingi ng atensyong medikal at ipaalam sa gumagamot na klinisyan ang paggamit ng bicalutamide.
+</WarningBox>
+
+### Pananakit ng Suso at Gynecomastia
+
+- Karaniwang nagdudulot ang bicalutamide ng gynecomastia sa mga pasyenteng may prostate cancer
+- Sa mga transgender na gumagamit, ang epektong ito ay maaaring ituring na nais na kinalabasan
+- Medyo karaniwan ang pananakit ng suso
+
+### Iba Pang Masamang Epekto
+
+- Hot flashes (mas madalang kaysa sa mga GnRH agonist)
+- Di-ginhawa sa gastrointestinal (pagduduwal, pagtatae)
+- Tuyong balat
+
+## Mga Kinakailangan sa Pagsubaybay
+
+<DoseTable
+  headers={['Test', 'Dalas', 'Target / Hangganan ng Babala', 'Aksyon']}
+  rows={[
+    ['Paggana ng atay (ALT/AST)', 'Baseline + buwan-buwan sa unang 6 na buwan → pagkatapos ay bawat 3 buwan', 'ALT/AST ≤ itaas na hangganan ng normal', '>3× ULN: itigil kaagad at humingi ng medikal na pagsusuri'],
+    ['Bilirubin', 'Kasabay ng mga test sa paggana ng atay', 'Normal na saklaw', 'Ang pagtaas ay nagpapahiwatig ng lumalalang pinsala sa atay'],
+    ['Testosterone (T)', 'Bawat 3–6 buwan', 'Para sa sanggunian lamang (maaaring nakataas ang T)', 'Hindi pangunahing marker ng bisa ng paggamot'],
+    ['Estradiol (E2)', 'Kasabay ng testosterone', '100–200 pg/mL', 'Tasahin ang bisa ng pinagsamang regimen'],
+  ]}
+/>
+
+<WarningBox title="Hindi Mapag-uusapan ang Pagsubaybay sa Paggana ng Atay">
+Kahit pa pakiramdam mo ay ganap kang malusog, **hindi maaaring kaltasin ang buwan-buwang pagsusuri sa paggana ng atay sa unang 6 na buwan** ng paggamit ng bicalutamide. Ang pinsala sa atay ay maaaring walang sintomas at matutukoy lamang nang maaga sa pamamagitan ng pagsusuri sa dugo. Kung hindi mo kayang magtalaga sa buwan-buwang pagsubaybay sa paggana ng atay, hindi dapat gamitin ang bicalutamide.
+</WarningBox>
+
+## Mga Angkop na Kaso ng Paggamit
+
+Ang bicalutamide ay may napakalimitadong papel sa GAHT<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />:
+
+**Isaalang-alang lamang kapag natutugunan ang lahat ng sumusunod na kondisyon**:
+- Hindi available ang CPA (hindi ibinebenta sa lokal / hindi natitiis / panganib ng meningioma)
+- Hindi available ang spironolactone (kapinsalaan sa bato / panganib ng hyperkalemia / hindi sapat na epekto)
+- Hindi available ang mga GnRH agonist (mga hadlang sa pananalapi / pag-access)
+- **May nakalaang pangangasiwang medikal at regular na pagsubaybay**
+
+**Mga Kontraindikasyon**:
+- Umiiral nang sakit sa atay o abnormal na paggana ng atay
+- Kasalukuyang gumagamit ng CPA o iba pang hepatotoxic na gamot
+- Hindi kayang sumailalim sa regular na pagsusuri ng dugo para sa paggana ng atay
+
+## Availability
+
+- **Katayuan sa regulasyon**: Ang bicalutamide ay aprubado sa mainland China (para sa paggamot ng prostate cancer)
+- **Pag-access**: Maaaring ireseta sa pamamagitan ng mga departamento ng urology o oncology
+- **Mga Brand**: Casodex (orihinal) at mga domestikong generic (hal., Langyi)
+- **Halaga**: Orihinal na humigit-kumulang CNY 200–400/buwan; mga generic na humigit-kumulang CNY 50–150/buwan (50 mg na tabletas)
+- **Tala**: Karamihan sa mga doktor ay hindi pamilyar sa paggamit nito sa GAHT; ang pagkuha ng reseta ay maaaring mangailangan ng pagbabalangkas ng indikasyon sa paligid ng mga kondisyong kaugnay ng prostate
+
+<DrugBrandGallery drugId="bicalutamide" />

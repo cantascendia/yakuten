@@ -1,0 +1,101 @@
+---
+title: "Méthodologie"
+description: "Comment le contenu de la Pharmacopée HRT est produit, de la recherche bibliographique à la publication — alignement sur les recommandations cliniques, citations DOI, gradation des preuves A/B/C/X, double vérification croisée, relecture par un conseiller médical et révision trimestrielle continue."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 101
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<BylineCard
+  author="Équipe éditoriale de la Pharmacopée HRT"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="fr"
+/>
+
+Cette page décrit la manière dont chaque élément de contenu de la Pharmacopée HRT est rédigé, relu et mis à jour. C'est notre engagement envers nos lecteurs : **un texte qui n'a pas suivi ce processus n'est pas publié**.
+
+## 1. Trois principes fondamentaux
+
+1. **Pas d'affirmation sans citation** : toute affirmation médicale doit s'appuyer sur au moins un DOI ou une recommandation internationale ; si une affirmation ne peut être sourcée, elle est soit signalée <EvidenceBadge level="X" />, soit retirée.
+2. **Croiser les données posologiques** : les doses prescrites doivent figurer dans au moins deux sources faisant autorité et indépendantes (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, et autres sources comparables).
+3. **Éviter le langage absolu** : préférer « habituellement / recommandé / dans la grande majorité des cas » à « il faut / toujours / jamais ».
+
+## 2. Déroulé complet
+
+### 1. Choix du sujet
+- Les sujets sont retenus en fonction de la demande de recherche, des questions des lecteurs, des mises à jour des recommandations et des alertes de sécurité majeures (EMA/FDA)
+- Chaque page énumère les 3 à 7 questions précises auxquelles elle doit répondre
+- Le public visé (patiente / médecin de premier recours / proche) est défini en amont
+
+### 2. Recherche bibliographique
+- Canaux principaux : PubMed, Cochrane, sites officiels de recommandations, revues de Transfemscience
+- Sont exclus : les messages anonymes de forums, les sites commerciaux, les blogs sans relecture par les pairs
+- Chaque affirmation clé consigne sa citation d'origine (DOI de préférence ; à défaut, les informations de publication de la revue)
+
+### 3. Gradation des preuves
+Gradation selon la robustesse du protocole d'étude :
+
+| Niveau | Signification | Exemple de preuve |
+|---|---|---|
+| <EvidenceBadge level="A" /> | Solide | Plusieurs essais randomisés contrôlés (RCT), revues systématiques / méta-analyses, recommandation internationale explicite |
+| <EvidenceBadge level="B" /> | Modérée | Un seul essai randomisé contrôlé (RCT), plusieurs cohortes prospectives |
+| <EvidenceBadge level="C" /> | Faible | Études de cas, études rétrospectives, avis d'experts |
+| <EvidenceBadge level="X" /> | Aucune | Savoir communautaire, expérience personnelle, déduction |
+
+### 4. Rédaction
+- Utilisation de composants partagés : `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
+- Le frontmatter consigne `evidenceLevel`, `lastReviewed` et `references` (imposé par la CI)
+- Les tableaux de doses valident automatiquement les limites supérieures et les associations contre-indiquées
+
+### 5. Double vérification croisée
+- L'auteur termine une ébauche → un second éditeur vérifie de façon indépendante chaque `<CitationRef>` par rapport à la source primaire
+- En cas d'écart ou de surinterprétation → renvoi pour correction
+- Si la source d'origine a été rétractée ou corrigée → recherche et remplacement à l'échelle de tout le site
+
+### 6. Relecture par un conseiller médical
+- Des conseillers en endocrinologie / psychiatrie / domaine juridique sont désignés selon le sujet
+- Les comptes rendus de relecture, y compris les désaccords et les décisions finales, sont archivés
+- Si aucun relecteur qualifié ne peut être joint, le sujet n'est pas publié
+
+### 7. Contrôle qualité de la publication et de l'accessibilité
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
+- Contraste des couleurs, accessibilité au clavier et sémantique pour lecteur d'écran validés
+- Points de rupture mobiles et solution de repli `prefers-reduced-motion` vérifiés
+
+### 8. Révision continue
+- Réévaluation par défaut tous les **12 mois**, avec actualisation de `lastReviewed`
+- Les pages à haut risque (risques, seuils posologiques, urgences) sont réévaluées tous les **6 mois**
+- En cas de changement majeur d'une recommandation → mise à jour incrémentale dans les 48 heures
+
+## 3. Correction des erreurs
+
+Lorsque des lecteurs signalent des erreurs factuelles, une dérive des citations ou un contenu obsolète :
+
+1. Soumettre via le [formulaire de retour](https://wj.qq.com/s2/16576000/5fe5/) ou une issue GitHub
+2. Première réponse sous 72 heures
+3. Une fois l'erreur factuelle confirmée, un **avis d'erratum** est ajouté en haut de la page, et l'historique des versions consigne l'erreur initiale ainsi que la date de correction
+4. Les corrections majeures sont diffusées aux abonnés par e-mail / RSS / Telegram
+
+## 4. Déclaration de conflits d'intérêts
+
+- Ce site ne fait l'objet d'aucun parrainage commercial, d'aucune publicité pour des médicaments et d'aucune commission sur les achats
+- Les frais de fonctionnement sont pris en charge personnellement par des bénévoles ; nous acceptons les dons de la communauté open source
+- Les éditeurs et les conseillers médicaux signent des déclarations de conflits d'intérêts ; les médicaments faisant l'objet d'une relation de prescription active ne sont pas relus de façon indépendante par la partie en situation de conflit
+
+<WarningBox>
+Ce site propose des références fondées sur les preuves et **ne constitue pas un avis médical**. Consultez un professionnel de santé qualifié avant de modifier votre traitement, et consultez en urgence en cas de symptômes aigus.
+</WarningBox>
+
+## Documents connexes
+
+- [À propos de ce site](/fr/about/)
+- [Conseillers médicaux](/fr/medical-advisors/)
+- [Politique éditoriale](/fr/editorial-policy/)
+- [Bibliothèque de références](/fr/appendix-references/)

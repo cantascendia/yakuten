@@ -1,0 +1,81 @@
+---
+title: "Bago Ka Magsimula: Handa Ka Na Ba?"
+description: "Mahalagang checklist bago ang HRT — baseline na blood test, absolute at relative na contraindication, mga kinakailangan sa informed consent, at makatotohanang inaasahan para sa iyong panggamot na paglalakbay."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Hindi ito gatekeeping — isa itong pagsusuri para sa kaligtasan. Ang pagsisimula ng HRT nang walang baseline na lab ay parang nagmamaneho nang nakapiring.
+
+Ang mga sumusunod na baseline na test ay inirerekomenda ng mga internasyonal na alituntunin<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Baseline na Lab Work
+
+Ang mga sumusunod na test ay dapat makumpleto bago magsimula ng HRT. Karamihan dito ay maaaring i-order sa pamamagitan ng iyong primary care provider, isang informed consent clinic, o mga serbisyo tulad ng Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Mga Sex Hormone', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Liver Function', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Kidney Function', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Full Blood Count', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Coagulation Panel', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Metabolic Panel', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolactin', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (nag-iiba ayon sa insurance at lokasyon)"
+/>
+
+<WarningBox title="Nagsimula ka na nang walang lab?">
+Kung nagsimula ka na ng HRT nang hindi muna kumukuha ng baseline na lab — hindi pa huli ang lahat. Ipagawa ito sa lalong madaling panahon.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Absolute na mga Contraindication
+
+<ContraindicationBox type="absolute" title="Absolute na mga Contraindication" sectionNum="">
+
+- Aktibong thromboembolic na sakit (hal., deep vein thrombosis (DVT), pulmonary embolism (PE))
+- Nakumpirma o pinaghihinalaang hormone-sensitive na malignancy (hal., breast cancer, prostate cancer)
+- Malubhang hepatic o renal na kapansanan sa acute na yugto
+- Hindi maipaliwanag na vaginal bleeding (para sa mga transmasculine na indibidwal)
+- Kilalang malubhang allergy sa mga sangkap ng gamot
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Relative na mga Contraindication
+
+<ContraindicationBox type="relative" title="Relative na mga Contraindication" sectionNum="">
+
+- Hindi kontroladong hypertension o cardiovascular na sakit
+- Mahinang kontroladong diabetes mellitus
+- Paggamit ng tabako (lalo na sa edad 35+, malaki ang naidaragdag sa panganib ng VTE)
+- Kasaysayan ng sakit sa apdo (gallbladder)
+- Migraine na may aura (nangangailangan ng maingat na pagtatasa ng panganib)
+- Malubhang labis na katabaan (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Pagtatakda ng Makatotohanang Inaasahan
+
+<RealityCheck
+  items={[
+    { text: 'Hindi mahika ang HRT. Ang mga pagbabago ay nangyayari sa loob ng mga buwan at taon — huwag asahan ang biglaang pagbabago.' },
+    { text: 'May mga pagbabagong hindi na maibabalik (hal., paglaki ng dibdib, paglalim ng boses, paglaki ng clitoris). Unawain kung ano ang iyong sinusuong.' },
+    { text: 'Maaaring bawasan o tuluyang alisin ng HRT ang fertility. Isaalang-alang ang gamete preservation (pag-freeze ng itlog/tamod) bago magsimula.' },
+    { text: 'Ang pabago-bagong mood ay isang normal na side effect. Tiyaking mayroon kang matatag na support system.' },
+  ]}
+/>
+
+<WarningBox title="Ano ang susunod na babasahin">
+- [Daan ng HRT](/fil/pathway/) — Kumpletong daloy mula sa baseline hanggang sa pangmatagalang pagpapanatili
+- [Mga Gamot](/fil/medications/estrogens/overview/) — Mga opsyon sa gamot, dosing, at mga panganib
+- [Gabay sa HRT sa China](/fil/china-reality/) — Paano humanap ng doktor, kumuha ng gamot, at magpa-blood test
+- [Mga Blood Test](/fil/blood-tests/) — Ano ang ipa-test, saan pupunta, paano basahin ang mga resulta
+</WarningBox>

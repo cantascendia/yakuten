@@ -1,0 +1,175 @@
+---
+title: "استرادیول تزریقی (EV / EC / EEn)"
+description: "راهنمای کامل استرادیول تزریقی—فارماکوکینتیک، دوزبندی، مقایسه SC با IM، امکان‌پذیری تک‌درمانی (مونوتراپی)، پروتکل‌های تزریق و خط‌قرمزهای حیاتی ایمنی."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+استرادیول تزریقی بی‌چون‌وچرا قوی‌ترین گزینه‌ی HRT زنانه‌سازی است. این روش به‌طور کامل از متابولیسم عبور اول کبدی عبور می‌کند و سطوح استروژنی بسیار قابل‌پیش‌بینی و غالب فراهم می‌آورد. مرورهای بالینی اخیر تأیید می‌کنند که تزریق زیرجلدی (SC) درست به اندازه‌ی تزریق عضلانی (IM) مؤثر است<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. شگفت‌آور آنکه حدود ۸۲٫۶٪ از کاربرانِ تزریقی می‌توانند سرکوب کامل T را به‌صورت تک‌درمانی (مونوتراپی) و بدون هیچ آنتی‌آندروژنی به دست آورند<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="آمپول‌های تزریقی استرادیول والرات Progynon Depot 10mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## فارماکوکینتیک (استرها)
+
+استرادیول تزریقی به یک «استر» (یک زنجیره‌ی اسید چرب) متصل است که آزادسازی آن را به جریان خون کند کرده و اثری انباره‌ای (depot) ایجاد می‌کند. سه نوع رایج‌تر عبارت‌اند از:
+- **استرادیول والرات (EV)**: کوتاه‌ترین نیمه‌عمر (~۴ تا ۵ روز). نیازمند تزریق هر ۵ تا ۷ روز یک بار. سریع اوج می‌گیرد و به‌شدت افت می‌کند.
+- **استرادیول سیپیونات (EC)**: نیمه‌عمر متوسط (~۸ تا ۱۰ روز). منحنی صاف‌تر و یکنواخت‌تر. اغلب هر ۷ تا ۱۰ روز یک بار تزریق می‌شود.
+- **استرادیول انانتات (EEn)**: نیمه‌عمر طولانی. می‌تواند با تزریق هر ۷ تا ۱۴ روز یک بار سطوحی پایدار و یکنواخت فراهم کند. در جامعه‌ی DIY بازار خاکستری به‌فراوانی استفاده می‌شود.
+
+برای این راهنما (و مطابق دستورالعمل‌های استاندارد Endocrine Society)، **استرادیول والرات (EV)** را به‌عنوان مبنا در نظر می‌گیریم، چون استانداردترین فرمولاسیون تجاری است که به‌وفور در ایالات متحده و ژاپن تولید می‌شود<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## دوزبندی برای EV
+
+### محدوده‌های بزرگسالان
+
+<DoseTable
+  headers={['مرحله', 'دوز', 'دستورالعمل']}
+  rows={[
+    ['دوز شروع', '1-2 mg / week', 'مرحله‌ی شروع با دوز پایین (ماه‌های ۱ تا ۶) برای محافظت از انشعاب مجاری شیری.'],
+    ['نگهدارنده', '2-4 mg / week', 'بر اساس آزمایش خونِ سطح ته‌نشست (trough) تنظیم کنید. هدف E2: 100-200 pg/mL.'],
+    ['سقف قطعی', '5 mg / week', 'سقف مطلق ایمنی پیشنهادی Rothman 2024. هرگز کورکورانه از آن فراتر نروید.'],
+  ]}
+/>
+
+این اعداد کاملاً با WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> و دستورالعمل‌های Endocrine Society<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> هم‌خوانی دارند.
+
+<WarningBox title="خطای کشنده: عجله در روند">
+محدود کردن خود به 1-2 mg/week در شش ماه نخست «دروازه‌بانی محافظه‌کارانه» نیست؛ بلکه محافظتی زیستی است. وارد کردن یک جهش عظیم 5mg از EV به جریان خون در ماه نخست، بلوغ زودرس لوبولوآلوئولار را تحمیل می‌کند و انشعاب مجاری شیری شما را برای همیشه متوقف می‌سازد. به [راهنمای رشد سینه](/fa/breast-development/) مراجعه کنید.
+</WarningBox>
+
+### زمان‌بندی آزمایش خون
+
+باید صبح روزِ تزریق، **درست پیش از تزریق**، خون بگیرید. این کار **سطح ته‌نشست (Trough Level)** شما را اندازه می‌گیرد (پایین‌ترین غلظت مطلق E2 در طول چرخه).
+- **سطح ته‌نشست هدف:** 100-200 pg/mL.
+- **هشدار:** سطح ته‌نشست بالاتر از 200 pg/mL روی EV یعنی اوجِ روزِ دوم شما احتمالاً سرسام‌آور بوده است (مثلاً 500-800 pg/mL). محدوده‌های بالا فقط خطرات قلبی‌عروقی را افزایش می‌دهند و زنانه‌سازی را تقویت نمی‌کنند.
+- اگر سطح ته‌نشست شما در یک چرخه‌ی ۷ روزه‌ی EV به زیر 50 pg/mL سقوط کرد، باید به یک چرخه‌ی ۵ روزه (با استفاده از دوزی متناسباً پایین‌تر) جابه‌جا شوید تا منحنی صاف‌تر شود، نه اینکه صرفاً هر ۷ روز یک دوز بالاتر شلیک کنید.
+
+## زیرجلدی (SC) در برابر عضلانی (IM)
+
+برای دهه‌ها، غدد‌شناسی (اندوکرینولوژی) زنان ترنس را مجبور می‌کرد از سرسوزن‌های بزرگ برای رساندن روغن به عمق عضله (IM) استفاده کنند. داده‌های گسترده‌ی کنونی ثابت می‌کنند که تجویز زیرجلدی (SC) به چربی شکم/ران کاملاً معادل آن است<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['شاخص', 'زیرجلدی (SC)', 'عضلانی (IM)']}
+  rows={[
+    ['سطوح آزمایشگاهی E2', 'یکسان با IM', 'استاندارد تاریخی'],
+    ['سرکوب T', 'یکسان با IM', 'استاندارد تاریخی'],
+    ['عامل درد', 'تقریباً بدون درد', 'می‌تواند درد و گرفتگی عمیق عضلانی ایجاد کند'],
+    ['ضخامت سوزن', 'بسیار نازک (25-27G)', 'ضخیم‌تر (21-23G) و بلندتر'],
+    ['سهولت استفاده', 'تزریق به خود بسیار آسان', 'تزریق IM در باسن اغلب نیازمند همراه/پرستار است'],
+  ]}
+/>
+
+**حکم نهایی:** اگر خودتان تزریق می‌کنید، زیرجلدی (SC) گزینه‌ی برتر، ایمن‌تر و کم‌آسیب‌تر است.
+
+<img src="/images/diagrams/en/injection-angles.webp" alt="مقایسه‌ی مقطعی تکنیک‌های تزریق زیرجلدی (۴۵ درجه) در برابر عضلانی (۹۰ درجه)" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## مزیت تک‌درمانی (مونوتراپی)
+
+استرادیول تزریقی به‌مراتب بهتر از قرص‌های خوراکی تستوسترون را سرکوب می‌کند. یک مطالعه‌ی هم‌گروهی ۲۰۲۵ توسط Misakian و همکاران نشان داد که **۸۲٫۶٪** از کاربران استرادیول تزریقی به سرکوب کامل تستوسترون (T < 50 ng/dL) بدون هیچ‌گونه اسپیرونولاکتون، بیکالوتامید یا سیپروترون دست یافتند<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- خطرات سمیت کبدی CPA را حذف می‌کند.
+- خطرات ادرارآوری و پتاسیمِ اسپیرو (Spiro) را حذف می‌کند.
+
+<WarningBox title="بی‌ملاحظه به دنبال تک‌درمانی نروید">
+حدود ۱۷٪ از افراد از نظر زیستی نمی‌توانند به تک‌درمانی برسند. اگر 5 mg/week تزریق می‌کنید و T شما روی 300 ng/dL باقی می‌ماند، **دوز تزریق خود را به 8mg یا 10mg افزایش ندهید**. شما جزو آن ۱۷٪ هستید. واقعیت را بپذیرید و یک آنتی‌آندروژن با دوز پایین اضافه کنید.
+</WarningBox>
+
+## پروتکل تزریق
+
+### تجهیزات
+
+| مسیر | سرنگ | سوزن کشیدن | سوزن تزریق |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (برای کشیدن روغن) | 25-27G × 1/2" to 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (برای کشیدن روغن) | 21-23G × 1" to 1.5" |
+
+همیشه از دو سوزن استفاده کنید. از یک سوزن ضخیم برای کشیدن روغن غلیظ از ویال استفاده کنید، سپس به سوزن نازک و تیز تعویض کنید تا تزریق نمایید. سوراخ کردن دربِ لاستیکی ضخیم ویال، سوزن را در حد میکروسکوپی کند می‌کند؛ شما نمی‌خواهید یک سوزن کندشده و بی‌تیزی را به زور وارد پوست خود کنید.
+
+### محل‌ها
+
+- **برای SC:** شکم (۲ اینچ از ناف فاصله بگیرید) یا قسمت بالایی و بیرونی ران‌ها. چربی را بین انگشتان بگیرید.
+- **برای IM:** عضله‌ی پهن خارجی (وستوس لترالیس، یک‌سوم میانیِ بیرونی ران) یا ونتروگلوتئال (لگن/باسن).
+
+### اجرا
+
+1. **بهداشت:** دست‌هایتان را با صابون بشویید. یک پدِ الکلی و سطل تیز و برنده (sharps bin) آماده داشته باشید.
+2. **ضدعفونی:** دربِ لاستیکی ویال را پاک کنید. پوست خود را به‌صورت مارپیچی ۲ اینچ به سمت بیرون پاک کنید. بگذارید کاملاً در هوا خشک شود.
+3. **کشیدن:** هوا را به اندازه‌ی دوز خود وارد سرنگ کنید. هوا را به داخل ویال برانید تا فشار متعادل شود. روغن را به پایین بکشید. حباب‌ها را با ضربه خارج کنید.
+4. **تعویض و فروبردن:** به سوزن کوچک تزریق تعویض کنید. برای SC، پدِ چربی را بین انگشتان بگیرید و سوزن را با زاویه‌ی ۴۵ درجه فروکنید.
+5. **آسپیراسیون (اختیاری اما رایج برای IM):** پیستون را اندکی به عقب بکشید. اگر خون به داخل بدنه‌ی سرنگ پاشید، به یک رگ زده‌اید. بیرون بکشید و از نقطه‌ای دیگر دوباره شروع کنید.
+6. **تزریق:** روغن غلیظ را به‌آهستگی تزریق کنید (~۱۰ ثانیه).
+7. **خارج کردن:** به‌نرمی بیرون بکشید. با یک پنبه فشار دهید. سوزن را بلافاصله در سطل تیز و برنده دور بیندازید.
+
+## تبدیل mg به mL (محاسبه)
+
+اگر یک ویال تجاری استاندارد آمریکایی از **Estradiol Valerate 20 mg/mL** دارید (یعنی در هر 1 mL روغن، 20mg از EV وجود دارد):
+
+<DoseTable
+  headers={['دوز هدف (mg)', 'حجم تزریق (mL)', 'غلظت ویال']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="غلظت خود را تأیید کنید">
+ویال‌های DIY در سراسر جهان اغلب با غلظت‌های عجیبی ساخته می‌شوند (40 mg/mL، 50 mg/mL). آمپول‌های ژاپنی (Progynon Depot) اغلب 10 mg/mL هستند. **همیشه محاسبه را بر اساس غلظت ویالِ خودتان انجام دهید.**
+حجم (mL) = دوز هدف (mg) ÷ غلظت ویال (mg/mL).
+</WarningBox>
+
+## بررسی واقعیت آمپول
+
+در بسیاری از نقاط آسیا و اروپا، EV تزریقی به‌جای ویال‌های با دربِ لاستیکی، در آمپول‌های شیشه‌ایِ کوچک و شکستنی فروخته می‌شود.
+- آمپول‌ها هیچ ماده‌ی نگهدارنده‌ای (مانند بنزیل الکل) ندارند.
+- پس از شکستن شیشه، مایع آلوده می‌شود. نمی‌توانید یک آمپول باز را یک هفته روی میز خود رها کنید تا نیمه‌ی باقی‌مانده را بعداً تزریق نمایید.
+- برخی راهنماها پیشنهاد می‌کنند دوز باقی‌مانده را پیشاپیش به داخل یک سرنگ استریل کشیده و حداکثر تا ۷ روز در یخچال نگهداری کنید. این کار خطرات ذاتی آلودگی به همراه دارد. با احتیاط بسیار زیاد عمل کنید.
+
+<DangerBox title="خط‌قرمزهای کشنده">
+از پیامدهای فاجعه‌بار سلامتی پرهیز کنید. هرگز موارد زیر را انجام ندهید:
+
+- **تزریق‌های تکیِ ≥ 10 mg:** شلیک دوزهای عظیم، سطوح اوجِ بالاتر از 1000 pg/mL ایجاد می‌کند و رویدادهای بحرانیِ لخته‌ی خون / VTE (ترومبوآمبولی وریدی) را دعوت می‌کند<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **دوز بالا + فاصله‌ی کوتاه (مثلاً 5mg هر ۳ روز):** اثر تجمعی، نیمه‌عمر را بی‌وقفه روی هم انباشته می‌کند تا به اضافه‌بارِ سمیِ فیزیولوژیک برسید<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+اگر 5mg/week تستوسترون شما را سرکوب نمی‌کند، بپذیرید که تک‌درمانی شکست خورده است و یک آنتی‌آندروژن اضافه کنید. خود را به یک خطر زیستی (biohazard) تبدیل نکنید.
+</DangerBox>
+
+---
+
+**منابع**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

@@ -1,0 +1,93 @@
+---
+title: "Эстрадиола энантат (EEn)"
+description: "Полное руководство по эстрадиола энантату — фармакокинетика, сравнение с другими эфирами, режим дозирования и пределы безопасности."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Enanthate (EEn)"
+  nameCN="Estradiol Enanthate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="B"
+>
+Эстрадиола энантат (EEn) — инъекционный эфир эстрадиола среднего и длительного действия, период полувыведения которого находится между эстрадиола валератом (EV) и эстрадиола ципионатом (EC) и составляет приблизительно 5–7 дней<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Чаще всего он встречается как компонент комбинированных инъекционных контрацептивов (например, Perlutal), но может применяться и как самостоятельный препарат для ГТ.
+</DrugInfoBox>
+
+## Фармакокинетика
+
+Фармакокинетический профиль эстрадиола энантата<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Период полувыведения**: ~5–7 дней
+- **Время достижения пика**: 3–5 дней после инъекции
+- **Время минимальной концентрации (надир)**: 7–10 дней после инъекции
+- **Равновесная концентрация**: достигается примерно через 3–4 регулярных цикла
+
+### Сравнение фармакокинетики инъекционных эфиров эстрадиола
+
+<DoseTable
+  headers={['Параметр', 'EV (валерат)', 'EEn (энантат)', 'EC (ципионат)']}
+  rows={[
+    ['Период полувыведения', '~4-5 days', '~5-7 days', '~8-10 days'],
+    ['Время достижения пика', '2-3 days', '3-5 days', '2-4 days'],
+    ['Рекомендуемый интервал', '5-7 days', '7-10 days', '7-14 days'],
+    ['Колебания уровня в сыворотке', 'Больше', 'Умеренные', 'Меньше'],
+    ['Доступность', 'По всему миру', 'Ограниченные регионы', 'Америка'],
+  ]}
+/>
+
+По своему фармакокинетическому профилю EEn занимает промежуточное положение между EV и EC, предлагая вариант для тех, кому нужны еженедельные инъекции с более плавной кривой концентрации<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Дозирование
+
+### Дозы для взрослых
+
+<DoseTable
+  headers={['Этап', 'Доза', 'Примечания']}
+  rows={[
+    ['Стартовая доза', '2-4 mg/week', 'Низкая стартовая доза для защиты развития груди'],
+    ['Поддерживающая доза', '4-6 mg/week', 'Корректируйте по минимальному уровню E2; целевой диапазон 100-200 pg/mL'],
+    ['Максимальная доза', '10 mg/10 days', 'Не превышать'],
+  ]}
+/>
+
+Источники по дозированию: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> и WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Примечание о доступности">
+Эстрадиола энантат широко доступен далеко не во всех регионах. В основном он встречается в Латинской Америке (как компонент Perlutal) и в отдельных европейских странах. Если вам нужен инъекционный эстрадиол, [эстрадиола валерат](/ru/medications/estrogens/injection/) в большинстве регионов более доступен.
+</WarningBox>
+
+## Бренды и доступность
+
+| Бренд | Состав | Регион |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (комбинированный контрацептив) | Латинская Америка |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | Отдельные страны |
+| Монопрепараты | Различные концентрации | Аптеки с рецептурным изготовлением |
+
+## Мониторинг
+
+- **E2**: каждые 3 месяца, забор на минимальном уровне (утром перед инъекцией). Целевой диапазон 100-200 pg/mL
+- **T**: каждые 3 месяца. Цель &lt;50 ng/dL
+- **Функция печени (ALT/AST)**: исходно + каждые 6 месяцев
+
+## Техника инъекции
+
+Процедура инъекции идентична [инъекции эстрадиола валерата](/ru/medications/estrogens/injection/#injection-technique).
+
+<DangerBox title="Пределы безопасности">
+- Действуют те же пределы безопасности, что и для других инъекционных эфиров эстрадиола
+- Разовая доза для инъекции не должна превышать 10 mg
+- E2 >200 pg/mL не усиливает феминизацию, а лишь повышает риск<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Если вы используете комбинированный препарат (например, Perlutal), прогестагенный компонент может нести дополнительные риски; проконсультируйтесь с врачом
+</DangerBox>

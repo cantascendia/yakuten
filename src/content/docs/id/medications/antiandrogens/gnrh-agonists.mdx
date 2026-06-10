@@ -1,0 +1,291 @@
+---
+title: "Agonis GnRH"
+description: "Panduan lengkap agonis GnRH (Leuprorelin, Goserelin, Triptorelin) untuk HRT transgender — mekanisme, perbandingan 6 obat, teknik penyuntikan, penanganan flare, pemantauan kepadatan tulang, penanganan dosis terlewat, dan alternatif antagonis GnRH."
+evidenceLevel: A
+lastReviewed: 2026-04-12
+references: [coleman-2022, hembree-2017]
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="GnRH Agonists (Leuprorelin, Goserelin, Triptorelin, etc.)"
+  nameCN="GnRH Agonists (GnRH 激动剂)"
+  category="antiandrogen"
+  route="Injeksi Subkutan / Intramuskular · Semprot Hidung · Implan"
+  evidenceLevel="A"
+>
+Agonis GnRH adalah antiandrogen paling efektif yang tersedia, menekan testosteron hingga kadar kastrasi (< 50 ng/dL) dengan mematikan poros hipotalamus-hipofisis-gonad. Baik Endocrine Society 2017 maupun WPATH SOC 8 merekomendasikan penggunaannya. Bila dapat diakses, agonis GnRH merupakan pilihan antiandrogen yang ideal.
+</DrugInfoBox>
+
+## Farmakologi
+
+### Cara Kerjanya
+
+Agonis GnRH bekerja pada tingkat yang secara mendasar berbeda dari antiandrogen lain — obat ini menyasar pusat kendali hulu dari produksi hormon<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Fase Flare-Up:** Pada 1-2 minggu pertama, obat ini menstimulasi berlebihan reseptor GnRH hipofisis, menyebabkan lonjakan sementara pada LH/FSH dan testosteron.
+2. **Desensitisasi Reseptor:** Stimulasi terus-menerus membuat reseptor GnRH hipofisis mengalami regulasi turun (downregulation) dan menjadi tidak responsif.
+3. **Supresi Total:** Dalam 2-4 minggu, keluaran LH/FSH terhenti, menurunkan T hingga kadar kastrasi (< 50 ng/dL).
+
+Mekanisme ini menekan T secara langsung dan andal — tanpa risiko hepatotoksisitas seperti CPA (siproteron asetat) maupun risiko hiperkalemia seperti spironolakton<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+### Supresi T Dibandingkan Antiandrogen Lain
+
+<DoseTable
+  headers={['Antiandrogen', 'Mekanisme', 'Supresi T', 'Keterbatasan Utama']}
+  rows={[
+    ['GnRH Agonists', 'Penonaktifan poros HPG', '~95% (< 50 ng/dL)', 'Sangat mahal; perlu injeksi'],
+    ['CPA 5-12.5mg', 'Antagonisme AR + umpan balik progestogenik', '~90% (rentang perempuan)', 'Risiko meningioma (≥25mg)'],
+    ['Spironolactone 100-200mg', 'Antagonisme AR lemah', '~30-50% (sering tidak memadai)', 'Hiperkalemia; supresi T tidak andal'],
+    ['Bicalutamide 50mg', 'Antagonisme AR murni', 'T dapat meningkat', 'Hepatotoksisitas; perlu pemantauan'],
+  ]}
+/>
+
+## Sediaan yang Tersedia
+
+### Bentuk Injeksi
+
+<DoseTable
+  headers={['Obat', 'Nama Dagang', 'Dosis', 'Interval', 'Rute', 'Pemberian Mandiri']}
+  rows={[
+    ['Leuprorelin', 'Lupron / Eligard / Prostap', '3.75mg / 11.25mg / 22.5mg / 45mg', 'Bulanan / 3 bulan / 6 bulan', 'SubQ atau IM', 'Sebagian sediaan SubQ dapat disuntikkan sendiri'],
+    ['Goserelin', 'Zoladex', '3.6mg / 10.8mg', 'Bulanan / 3 bulan', 'Implan SubQ (perut)', 'Memerlukan pemberian oleh tenaga klinis (jarum 16G)'],
+    ['Triptorelin', 'Decapeptyl / Trelstar', '3.75mg / 11.25mg / 22.5mg', 'Bulanan / 3 bulan / 6 bulan', 'Injeksi IM', 'Memerlukan pemberian oleh tenaga klinis'],
+  ]}
+/>
+
+### Bentuk Non-Injeksi
+
+<DoseTable
+  headers={['Obat', 'Merek', 'Bentuk', 'Pemberian', 'Keunggulan', 'Keterbatasan']}
+  rows={[
+    ['Buserelin', 'Suprefact', 'Semprot hidung', '2-3 semprotan per hari', 'Tidak perlu injeksi', 'Beban kepatuhan (beberapa dosis per hari)'],
+    ['Nafarelin', 'Synarel', 'Semprot hidung', '2-3 semprotan per hari', 'Non-invasif; penurunan T ~95%', 'Pasokan global terbatas'],
+    ['Histrelin', 'Supprelin LA', 'Batang implan SubQ', 'Pemasangan bedah di lengan atas; bertahan 12 bulan', 'Sekali setahun; kepatuhan terbaik', 'Sangat mahal; perlu pemasangan/pelepasan secara bedah'],
+  ]}
+/>
+
+## Panduan Pemberian
+
+### Injeksi Subkutan (Leuprorelin, dll.)
+
+Sebagian besar agonis GnRH diberikan melalui injeksi subkutan atau intramuskular. Beberapa sediaan (mis. leuprorelin SubQ) dapat disuntikkan sendiri setelah mendapat pelatihan dari perawat<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Pemilihan Lokasi Injeksi:**
+- **Utama:** Perut, sekitar 5cm lateral dari pusar (hindari area 2cm di sekitar pusar)
+- **Alternatif:** Bagian luar depan paha, sepertiga tengah
+- **Rotasi:** Bergantian lokasi setiap kali menyuntik; jaga jarak minimal 3cm antartitik injeksi; hindari area yang berbenjol atau memar
+
+**Langkah Injeksi Subkutan:**
+
+1. **Persiapan:** Cuci tangan. Diamkan obat yang disimpan di lemari es hingga mencapai suhu ruang (15-30 menit). Periksa tanggal kedaluwarsa dan tampilan larutan.
+2. **Bersihkan:** Usap lokasi injeksi dengan kapas alkohol. Biarkan mengering sepenuhnya di udara.
+3. **Cubit:** Dengan tangan non-dominan, cubit lipatan kulit selebar 2cm.
+4. **Tusukkan:** Tusukkan jarum dengan cepat dan mantap pada sudut 45-90°, hingga jarum tertanam penuh (kedalaman 1-2cm).
+5. **Suntikkan:** Tekan plunger perlahan selama ~30 detik. Jangan terburu-buru.
+6. **Tarik:** Lepaskan cubitan kulit, lalu tarik jarum dengan cepat. Tekan kapas kering pada lokasi selama 15 detik (jangan digosok).
+7. **Buang:** Tempatkan jarum di wadah benda tajam (sharps container). Catat tanggal dan lokasi injeksi.
+
+<InjectionSiteSVG />
+
+<WarningBox title="Catatan Goserelin (Zoladex)">
+Zoladex menggunakan jarum suntik pra-isi yang tebal (sekitar 16G) yang menanamkan pelet depot padat di bawah lemak perut. Sediaan ini harus selalu diberikan oleh tenaga kesehatan profesional.
+</WarningBox>
+
+### Rekonstitusi Serbuk Liofilisat GnRH dari India (Lupride Depot, dll.)
+
+Lupride Depot (leuprorelin) dari India umum diperoleh di komunitas transgender karena harganya jauh lebih murah dibandingkan produk setara dalam negeri. Lupride Depot hadir sebagai kit dua vial berupa **serbuk liofilisat + pelarut** yang memerlukan rekonstitusi sebelum injeksi.
+
+<img src="/images/drugs/lupride-depot-studio.webp" alt="Foto produk injeksi serbuk liofilisat leuprorelin Lupride Depot 3.75mg" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+**Isi Kit**:
+- 1 vial serbuk liofilisat (serbuk putih berisi leuprorelin 3.75 mg)
+- 1 vial pelarut (air steril untuk injeksi)
+- Jarum suntik dan jarum (disertakan pada sebagian kemasan)
+
+<img src="/images/diagrams/en/gnrh-reconstitution.webp" alt="Langkah rekonstitusi GnRH: tarik pelarut, suntikkan ke vial serbuk, putar perlahan untuk melarutkan, tarik larutan, siap disuntikkan" width="900" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+**Langkah Rekonstitusi**:
+
+1. **Periksa**: Pastikan kedua vial masih dalam masa berlaku; serbuk harus berwarna putih hingga putih pudar (tanpa perubahan warna)
+2. **Cuci tangan**: Cuci tangan secara menyeluruh dengan sabun dan air
+3. **Disinfeksi**: Usap tutup karet kedua vial dengan kapas alkohol, biarkan mengering di udara
+4. **Tarik pelarut**: Dengan jarum suntik yang dipasangi jarum penarik (18-20G), tarik seluruh pelarut dari vial pelarut
+5. **Suntikkan ke vial serbuk**: Suntikkan pelarut perlahan menyusuri dinding vial serbuk — **jangan menyemprotkannya langsung ke serbuk**
+6. **Larutkan**: Putar vial dengan lembut (**jangan dikocok keras**) hingga serbuk larut sepenuhnya. Larutan harus jernih atau sedikit opalescent (keruh berkilau)
+7. **Tarik larutan**: Balikkan vial dan tarik seluruh larutan hasil rekonstitusi, keluarkan gelembung udara
+8. **Ganti jarum**: Ganti dengan jarum injeksi (SC: 25-27G, IM: 21-23G)
+9. **Suntikkan**: Ikuti langkah injeksi subkutan yang dijelaskan di atas
+
+<DangerBox title="Tindakan Pencegahan Rekonstitusi">
+
+- **Larutan hasil rekonstitusi harus segera disuntikkan** — jangan disimpan. Produk hasil rekonstitusi tidak mengandung pengawet; penundaan berisiko kontaminasi bakteri dan penurunan potensi
+- **Jangan dikocok keras**: Hal ini menimbulkan gelembung dan dapat merusak aktivitas obat
+- Bila larutan tampak **keruh secara kasatmata, mengandung partikel, atau berubah warna**, buang larutan tersebut
+- Bila vial pelarut rusak atau segelnya tidak utuh, **buang seluruh kit**
+- Pengguna baru sebaiknya meminta bimbingan dari orang yang berpengalaman
+</DangerBox>
+
+### Semprot Hidung (Buserelin / Nafarelin)
+
+1. Embuskan hidung perlahan untuk membersihkan saluran.
+2. Kocok botol dan lepaskan tutupnya.
+3. Miringkan kepala sedikit ke depan; masukkan nosel ke salah satu lubang hidung.
+4. Tekan nosel sambil menarik napas perlahan.
+5. Bergantian lubang hidung pada setiap pemakaian.
+6. Hindari mengembuskan hidung selama 30 menit setelah pemberian.
+
+### Implan (Histrelin)
+
+Implan Supprelin LA dipasang secara bedah di bawah kulit bagian dalam lengan atas oleh tenaga kesehatan. Implan ini melepaskan obat secara terus-menerus selama 12 bulan, setelah itu harus diangkat dan diganti secara bedah.
+
+### Persyaratan Penyimpanan
+
+<DoseTable
+  headers={['Obat', 'Penyimpanan', 'Catatan']}
+  rows={[
+    ['Leuprorelin (depot)', 'Suhu ruang (di bawah 25°C)', 'Lindungi dari cahaya dan panas'],
+    ['Goserelin (Zoladex)', 'Suhu ruang (di bawah 25°C)', 'Jarum suntik pra-isi; jangan dibekukan'],
+    ['Triptorelin (Decapeptyl)', 'Simpan di lemari es (2-8°C)', 'Serbuk liofilisat; rekonstitusi sebelum digunakan'],
+    ['Buserelin semprot hidung', 'Suhu ruang', 'Gunakan dalam 28 hari setelah dibuka'],
+  ]}
+/>
+
+## Penanganan Flare
+
+Lonjakan testosteron awal ("flare-up") setelah injeksi agonis GnRH pertama adalah respons farmakologis yang normal<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+### Lini Masa Flare
+
+<DoseTable
+  headers={['Waktu', 'Yang Terjadi', 'Gejala']}
+  rows={[
+    ['Hari ke-0', 'Agonis GnRH disuntikkan', '—'],
+    ['Hari ke-2-4', 'T melonjak hingga ~2× dari kadar awal', 'Mungkin timbul jerawat, perubahan suasana hati, perubahan libido'],
+    ['Hari ke-7-8', 'T kembali ke kadar awal', 'Gejala mulai mereda'],
+    ['Hari ke-14-28', 'T turun ke kadar kastrasi (< 50 ng/dL)', 'Efek antiandrogen penuh tercapai'],
+  ]}
+/>
+
+### Cara Menangani Flare
+
+<WarningBox title="Pertimbangkan Penutup Antiandrogen Selama Flare">
+Untuk meredakan gejala flare selama injeksi pertama, Anda dapat memulai antiandrogen jangka pendek secara bersamaan atau 1 minggu sebelumnya<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+- **CPA 12.5mg/hari** selama 2-4 minggu, lalu dihentikan setelah flare mereda
+- **Spironolakton 100mg/hari** selama 2-4 minggu (bila CPA tidak sesuai)
+- Bila Anda sudah menggunakan estradiol, dampak klinis flare biasanya ringan
+- Injeksi berikutnya tidak menimbulkan flare lagi (hanya pada injeksi pertama)
+</WarningBox>
+
+<DangerBox title="Jangan Pernah Menggunakan Agonis GnRH Tanpa Estradiol">
+Agonis GnRH menekan testosteron DAN estradiol endogen hingga hampir nol. Anda WAJIB memberikan estradiol secara bersamaan untuk mencegah pengeroposan tulang yang parah, hot flashes (rasa panas mendadak), dan gangguan suasana hati<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+</DangerBox>
+
+## Dosis Terlewat
+
+- **Injeksi terlewat:** Berikan sesegera mungkin (jangan menunggu tanggal terjadwal berikutnya).
+- **Sesuaikan jadwal:** Hitung dosis berikutnya dari tanggal injeksi yang sebenarnya (bulanan: +28 hari; per kuartal: +84 hari).
+- **Terlambat >1 minggu:** T mungkin pulih sebagian. Periksa kadar T 4 minggu setelah injeksi yang terlambat.
+- **Semprot hidung terlewat:** Gunakan begitu teringat. Jangan menggandakan dosis.
+
+## Efek Samping
+
+### Penurunan Kepadatan Tulang
+
+Penggunaan jangka panjang tanpa estradiol yang memadai dapat menyebabkan penurunan kepadatan tulang<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Baik T maupun E2 penting untuk pemeliharaan tulang
+- **Kunci:** Mempertahankan E2 pada 100-200 pg/mL secara substansial meredam risiko ini
+- Pemindaian DEXA dianjurkan bagi pengguna agonis GnRH selama > 2 tahun
+
+### Reaksi di Lokasi Injeksi
+
+- Nyeri, kemerahan, dan pengerasan (indurasi) di lokasi injeksi (umum terjadi)
+- Jarum 16G Goserelin menimbulkan rasa tidak nyaman yang lebih nyata
+- Rotasikan lokasi injeksi untuk meminimalkan reaksi
+
+### Hot Flashes
+
+- Disebabkan oleh supresi hormon seks yang cepat<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+- Dosis estradiol yang memadai secara signifikan menguranginya
+- Umumnya mereda begitu kadar E2 stabil
+
+### Perubahan Suasana Hati
+
+- Sebagian pengguna mengalami fluktuasi suasana hati, terutama di awal pengobatan
+- Umumnya lebih ringan dibanding efek suasana hati CPA
+- Membaik begitu kadar hormon stabil
+
+## Pemantauan
+
+<DoseTable
+  headers={['Tes', 'Frekuensi', 'Target / Peringatan', 'Tindakan']}
+  rows={[
+    ['Testosteron (T)', '4 minggu pasca-injeksi + setiap 3-6 bulan', 'T < 50 ng/dL', 'Jika tinggi: evaluasi interval injeksi/kepatuhan'],
+    ['Estradiol (E2)', 'Diperiksa bersama T', '100-200 pg/mL', 'Pastikan E2 memadai untuk perlindungan tulang'],
+    ['Kepadatan Tulang (DEXA)', 'Awal (baseline) + setiap 1-2 tahun setelah 2+ tahun', 'T-score > -1.0', 'T-score < -2.5: osteoporosis — perlu intervensi'],
+    ['LH/FSH', 'Opsional, 3 bulan pertama', 'LH < 1, FSH < 4.3', 'Konfirmasi supresi hipofisis'],
+  ]}
+/>
+
+**Waktu pengambilan darah:** Depot agonis GnRH mempertahankan kadar obat yang relatif stabil. Darah dapat diambil kapan saja relatif terhadap injeksi — tidak ada jendela waktu khusus yang diperlukan.
+
+## Antagonis GnRH: Alternatif yang Berkembang
+
+Selain agonis GnRH, terdapat **antagonis** GnRH — obat yang langsung memblokir reseptor GnRH **tanpa flare awal**.
+
+<DoseTable
+  headers={['Obat', 'Merek', 'Mekanisme', 'Waktu hingga Kastrasi', 'Keunggulan', 'Keterbatasan']}
+  rows={[
+    ['Degarelix', 'Firmagon', 'Blokade reseptor GnRH langsung', '3-7 hari', 'Tanpa flare; awitan lebih cepat', 'Injeksi SubQ bulanan; reaksi di lokasi injeksi menonjol'],
+    ['Relugolix', 'Orgovyx', 'Antagonis GnRH oral', '~2 minggu', 'Pemberian oral; tanpa flare', 'Dosis oral harian; sangat mahal; bukti pada transgender terbatas'],
+  ]}
+/>
+
+<WarningBox title="Bukti pada Transgender Terbatas">
+Antagonis GnRH terutama disetujui untuk kanker prostat. Bukti untuk penggunaan HRT transgender masih terbatas dan belum direkomendasikan secara formal oleh WPATH SOC 8 maupun Endocrine Society 2017. Gunakan di bawah pengawasan medis yang berpengalaman.
+</WarningBox>
+
+## Keunggulan & Keterbatasan
+
+### Keunggulan
+
+- **Supresi T terkuat dan paling andal**: Konsisten mencapai kadar kastrasi<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+- **Profil keamanan sangat baik**: Tanpa hepatotoksisitas, tanpa hiperkalemia, tanpa risiko meningioma
+- **Pemberian jarang**: Injeksi bulanan atau per kuartal; kepatuhan sangat baik
+- **Reversibel**: Poros HPG pulih setelah penghentian (dalam hitungan minggu hingga bulan); kesuburan dapat kembali
+- **Direkomendasikan pedoman**: Didukung oleh ES 2017 maupun WPATH SOC 8<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+
+### Keterbatasan
+
+- **Biaya yang menghambat**: $1,000-3,000/injeksi di AS; NHS Inggris/Uni Eropa mungkin menanggung; Tiongkok ~¥1,000-2,000/bulan
+- **Memerlukan injeksi**: Tidak dapat diminum secara oral (semprot hidung ketersediaannya terbatas)
+- **Hambatan akses**: Memerlukan resep; sering diresepkan secara off-label untuk disforia gender
+- **Flare awal**: Injeksi pertama menyebabkan lonjakan T sementara (dapat dikelola dengan penutup antiandrogen)
+- **Pemantauan kepadatan tulang**: Penggunaan jangka panjang memerlukan pemindaian DEXA; estradiol harus selalu diberikan bersamaan
+
+## Kapan Mempertimbangkan Agonis GnRH
+
+**Direkomendasikan bila**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Kondisi keuangan memungkinkan penggunaan berkelanjutan
+- CPA dikontraindikasikan (masalah hati, risiko meningioma, efek suasana hati yang berat)
+- Spironolakton tidak dapat ditoleransi (risiko hiperkalemia, insufisiensi ginjal)
+- Diinginkan keandalan supresi T yang maksimal
+- Supresi pubertas pada remaja (di bawah pengawasan spesialis)
+
+**Mungkin tidak sesuai bila**:
+- Biaya terlalu menghambat
+- Kunjungan klinik rutin untuk injeksi tidak memungkinkan
+- Terdapat osteoporosis berat (evaluasi kepadatan tulang terlebih dahulu)
+
+<DrugBrandGallery drugId="gnrh-agonist" />

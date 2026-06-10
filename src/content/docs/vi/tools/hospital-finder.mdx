@@ -1,0 +1,57 @@
+---
+title: "Danh bạ cơ sở y tế"
+description: "Danh bạ có cấu trúc về các nguồn tiếp cận chăm sóc do cộng đồng báo cáo. Hãy xác minh trực tiếp trước khi đến."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Xác minh trước khi đến">
+Các mục liệt kê này là ghi chú về khả năng tiếp cận do cộng đồng duy trì, không phải là cam kết chính thức của cơ sở. Chính sách, khoa phòng và sự sẵn có của bác sĩ có thể thay đổi nhanh chóng, vì vậy việc xác nhận trực tiếp luôn là điều cần thiết.
+</WarningBox>
+
+Danh bạ này hiện bao gồm {hospitals.length} mục do cộng đồng báo cáo trên {cityCount} thành phố. Dữ liệu nguồn nền tảng ở giai đoạn này vẫn chủ yếu bằng tiếng Trung, nên tên bệnh viện và các ghi chú địa phương có thể vẫn hiển thị bằng tiếng Trung.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**Cách sử dụng trang này**
+
+1. Hãy dùng nó làm điểm khởi đầu cho việc tự xác minh của bạn.
+2. Xác nhận trực tiếp với cơ sở về khoa phòng, sự sẵn có của bác sĩ và quy định đăng ký.
+3. Kết hợp việc tiếp cận cơ sở khám chữa bệnh với việc lên kế hoạch xét nghiệm nền (baseline) và nhận thức về tình huống khẩn cấp.
+
+</GlassCard>
+
+<DangerBox title="Lưu ý khẩn cấp">
+Danh bạ này không phải là dịch vụ chuyển tuyến cấp cứu. Nếu bạn có triệu chứng cấp bách, hãy đến cơ sở cấp cứu trước thay vì dựa vào việc tra cứu danh bạ.
+</DangerBox>

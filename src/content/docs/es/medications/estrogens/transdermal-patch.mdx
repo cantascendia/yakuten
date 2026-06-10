@@ -1,0 +1,136 @@
+---
+title: "Parches transdérmicos de estradiol"
+description: "Farmacología completa, recomendaciones de dosis, datos de riesgo de TEV y consejos prácticos de uso de los parches transdérmicos de estradiol."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Parche transdérmico de estradiol"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdérmica"
+  evidenceLevel="A"
+>
+  Los parches transdérmicos son reconocidos de forma unánime por la evidencia clínica como la vía más segura de administración de estradiol. Como el estradiol se absorbe a través de la piel y pasa directamente al torrente sanguíneo, evita por completo el metabolismo hepático de primer paso, lo que significa que su perfil de riesgo de TEV (trombo sanguíneo) es estadísticamente idéntico al de quienes no usan estrógenos.
+</DrugInfoBox>
+
+## Farmacología
+
+### Evitar el metabolismo de primer paso
+
+Cuando se traga estradiol oral, este llega al tracto gastrointestinal y luego viaja directamente al hígado (metabolismo de primer paso). Este proceso:
+- Obliga al hígado a aumentar la síntesis de factores de coagulación, lo que eleva el riesgo de TEV.
+- Destruye alrededor del 95 % del fármaco, lo que reduce drásticamente la biodisponibilidad.
+- Altera el metabolismo de los lípidos y el colesterol.
+
+Los parches liberan estradiol a través de la piel directamente hacia la circulación sistémica, **evitando por completo el metabolismo hepático de primer paso**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Esto implica:
+- Un impacto insignificante sobre los factores de coagulación hepáticos.
+- Una biodisponibilidad muy estable y superior.
+- Un efecto suave sobre el hígado y el perfil lipídico.
+
+### Datos de riesgo de TEV (trombo sanguíneo)
+
+Los parches transdérmicos presentan el menor riesgo de TEV de todas las vías de administración de estradiol<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Vía', 'Riesgo relativo (RR)', 'IC 95 %']}
+  rows={[
+    ['Parche transdérmico', '0.97', '0.79 - 1.19'],
+    ['Estradiol oral', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Un **RR ≈ 0.97** significa, en la práctica, que usar parches transdérmicos no conlleva ningún aumento estadísticamente significativo del riesgo de TEV en comparación con las personas que no reciben ningún tratamiento con estrógenos<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Esto consolida al parche como la primera opción obligada para cualquier persona con factores de riesgo de coagulación preexistentes.
+
+### Perfil de concentración en sangre
+
+- Alcanza concentraciones sanguíneas en estado estacionario aproximadamente entre 12 y 24 horas después de la aplicación.
+- Mantiene niveles de E2 sumamente planos y estables durante toda la vida útil del parche.
+- Evita por completo los abruptos picos y valles asociados a las vías oral, sublingual o inyectable.
+
+## Recomendaciones de dosis
+
+Estos rangos de dosis se alinean con las Guías de la Endocrine Society 2017<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> y con WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Etapa', 'Dosis', 'E2 objetivo (pg/mL)', 'Cronograma']}
+  rows={[
+    ['Inicio con dosis baja', '50-100 µg/day', '50-100', 'Meses 1-6'],
+    ['Titulación moderada', '100-200 µg/day', '100-200', 'Meses 6-12'],
+    ['Fase de mantenimiento', '100-200 µg/day', '100-200', 'Más de 12 meses'],
+    ['Monoterapia (sin bloqueadores)', '200-400 µg/day', '200-300', 'Solo si se prescinde de antiandrógenos'],
+  ]}
+/>
+
+<WarningBox title="El máximo habitual">
+La dosis máxima estándar es de **400 µg/day**, utilizada históricamente solo cuando se intenta la monoterapia (suprimir la T sin antiandrógenos). La gran mayoría de las usuarias alcanza su rango clínico objetivo de E2 (100-200 pg/mL) con 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Llevar el E2 por encima de 200 pg/mL no te feminizará más rápido; solo amplifica los riesgos para la salud.
+</WarningBox>
+
+## Cómo usarlos
+
+### Zonas de aplicación
+
+- **Recomendadas:** parte baja del abdomen, parte alta de los glúteos, cara externa de los muslos.
+- **Evitar:** la zona de las mamas (una concentración localizada y prolongada de E2 supone un riesgo grave de cáncer de mama), las articulaciones o zonas donde rozan las cinturas ajustadas.
+- **Rotar:** nunca apliques un parche nuevo exactamente en el mismo punto que el anterior, para prevenir la dermatitis de contacto.
+
+### Frecuencia de recambio
+
+<WarningBox title="Lleva la cuenta del tiempo de uso">
+La mayoría de los parches están diseñados para cambiarse **cada 3.5 días (dos veces por semana)** o **cada 7 días (una vez por semana)**, según la marca concreta. Sigue el calendario del fabricante sin excepciones. Saltarte un recambio hará que tu E2 se desplome y desencadene sofocos y cambios de humor. Configura alarmas en el teléfono.
+</WarningBox>
+
+### Consejos prácticos
+
+- Aplica solo sobre piel limpia y completamente seca. No coloques los parches sobre lociones, aceites ni piel recién afeitada y húmeda.
+- Presiona el parche con firmeza usando la palma de la mano durante 10 segundos completos para activar el adhesivo con el calor.
+- Ducharse y nadar con normalidad está bien, pero los baños largos y muy calientes pueden aflojar el adhesivo y liberar el fármaco en tu organismo de forma prematura.
+- Si un parche se despega, intenta volver a pegarlo; si no se sostiene, aplica uno nuevo de inmediato.
+
+## A quién se dirige
+
+Los parches transdérmicos se recomiendan encarecidamente para<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **Todo el mundo** (los parches son el estándar de oro en seguridad en todos los casos).
+- **Personas con factores de riesgo de TEV** (IMC >30, edad >40, fumadoras, antecedentes familiares de TEV): aquí los parches son innegociables.
+- **Personas que toman CPA** — la CPA es intrínsecamente procoagulante; usar parches evita acumular riesgos de trombos.
+- **Personas con alteraciones hepáticas** — evitar el hígado reduce drásticamente la carga metabólica.
+
+## Realidades del suministro global
+
+Aunque son médicamente superiores, los parches enfrentan desafíos logísticos a nivel mundial:
+
+- **Costo:** sin un seguro sólido ni un sistema de salud público, los parches resultan, de bolsillo, mucho más caros que las pastillas orales.
+- **Desabastecimiento:** las cadenas de suministro mundiales de marcas como Estradot o Climara colapsan con frecuencia, lo que provoca escasez regional de meses en el Reino Unido, la UE y Australia.
+- Si los parches te resultan totalmente inaccesibles, la vía oral es una alternativa viable, siempre que no tengas riesgos de TEV preexistentes.
+
+## Marcas habituales
+
+<DoseTable
+  headers={['Marca', 'Especificación', 'Ciclo de recambio', 'Región']}
+  rows={[
+    ['Climara', 'Libera 50 / 100 µg/day', 'Cada 7 días', 'EE. UU. / UE / Global'],
+    ['Estradot', 'Libera 25-100 µg/day', 'Cada 3.5 días', 'Reino Unido / UE / Australia'],
+    ['Vivelle-Dot', 'Libera 25-100 µg/day', 'Cada 3.5 días', 'EE. UU.'],
+    ['Estrana Tape', 'Libera 50 µg/day', 'Cada 2 días', 'Japón (común en el DIY asiático)'],
+  ]}
+/>
+
+## Consejos de monitoreo
+
+- **Cuándo extraer sangre:** 12-24 horas antes de tu próximo cambio de parche (midiendo el nivel valle)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Objetivos:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

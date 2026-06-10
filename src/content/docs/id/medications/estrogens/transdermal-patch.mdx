@@ -1,0 +1,136 @@
+---
+title: "Patch Transdermal Estradiol"
+description: "Farmakologi lengkap, rekomendasi dosis, data risiko VTE, dan tips penggunaan praktis untuk patch transdermal estradiol."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, ucsf-2016]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Estradiol Transdermal Patch"
+  nameCN="经皮雌二醇贴片"
+  category="estrogen"
+  route="Transdermal"
+  evidenceLevel="A"
+>
+  Patch transdermal diakui secara universal oleh bukti klinis sebagai metode pemberian estradiol yang paling aman. Karena estradiol diserap melalui kulit langsung ke aliran darah, ia sepenuhnya melewati metabolisme lintas pertama hati (first-pass), yang berarti profil risiko VTE (bekuan darah) secara statistik identik dengan profil orang yang tidak menggunakan estrogen.
+</DrugInfoBox>
+
+## Farmakologi
+
+### Melewati Metabolisme Lintas Pertama (First-Pass)
+
+Ketika Anda menelan estradiol oral, obat tersebut masuk ke saluran pencernaan lalu langsung menuju hati Anda (metabolisme lintas pertama / first-pass). Proses ini:
+- Memaksa hati meningkatkan sintesis faktor koagulasi (pembekuan), sehingga menaikkan risiko VTE.
+- Menghancurkan ~95% obat, sehingga bioavailabilitas anjlok.
+- Mengubah metabolisme lipid/kolesterol.
+
+Patch menghantarkan estradiol melalui kulit langsung ke sirkulasi sistemik, **sepenuhnya melewati metabolisme lintas pertama hati**<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. Artinya:
+- Dampak yang dapat diabaikan terhadap faktor koagulasi hati.
+- Bioavailabilitas yang sangat stabil dan unggul.
+- Lembut terhadap hati dan profil lipid.
+
+### Data Risiko VTE (Bekuan Darah)
+
+Patch transdermal memiliki risiko VTE terendah dibandingkan metode pemberian estradiol mana pun<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />:
+
+<DoseTable
+  headers={['Rute', 'Risiko Relatif (RR)', '95% CI']}
+  rows={[
+    ['Patch Transdermal', '0.97', '0.79 - 1.19'],
+    ['Estradiol Oral', '1.48', '1.27 - 1.72'],
+  ]}
+/>
+
+Nilai **RR ≈ 0.97** secara fungsional berarti bahwa penggunaan patch transdermal tidak membawa peningkatan risiko VTE yang signifikan secara statistik dibandingkan orang yang sama sekali tidak menjalani terapi estrogen<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Hal ini menegaskan patch sebagai pilihan pertama yang wajib bagi siapa pun yang memiliki faktor risiko pembekuan darah yang sudah ada sebelumnya.
+
+### Profil Konsentrasi dalam Darah
+
+- Mencapai konsentrasi darah kondisi tunak (steady-state) kira-kira 12-24 jam setelah penempelan.
+- Mempertahankan kadar E2 yang sangat datar dan stabil selama masa pakai patch.
+- Sepenuhnya menghindari lonjakan puncak-dan-lembah (peak-and-trough) yang agresif seperti pada rute oral, sublingual, maupun injeksi.
+
+## Rekomendasi Dosis
+
+Rentang dosis ini sejalan dengan Pedoman Endocrine Society 2017<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> dan WPATH SOC 8<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+<DoseTable
+  headers={['Tahap', 'Dosis', 'Target E2 (pg/mL)', 'Jangka Waktu']}
+  rows={[
+    ['Mulai Dosis Rendah', '50-100 µg/day', '50-100', 'Bulan 1-6'],
+    ['Titrasi Sedang', '100-200 µg/day', '100-200', 'Bulan 6-12'],
+    ['Fase Pemeliharaan', '100-200 µg/day', '100-200', '12 Bulan+'],
+    ['Monoterapi (Bila tanpa blocker)', '200-400 µg/day', '200-300', 'Hanya jika tanpa T-blocker'],
+  ]}
+/>
+
+<WarningBox title="Maksimum yang Lazim">
+Dosis maksimum standar adalah **400 µg/day**, secara historis hanya digunakan jika mencoba monoterapi (menekan T tanpa anti-androgen). Sebagian besar pengguna mencapai rentang klinis E2 target mereka (100-200 pg/mL) pada 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. Mendorong E2 melampaui 200 pg/mL tidak akan memfeminisasi Anda lebih cepat; hal itu hanya memperbesar risiko kesehatan.
+</WarningBox>
+
+## Cara Menggunakannya
+
+### Lokasi Penempelan
+
+- **Direkomendasikan:** Perut bagian bawah, bokong bagian atas, paha bagian luar.
+- **Hindari:** Area payudara (konsentrasi E2 lokal yang berkepanjangan merupakan risiko kanker payudara yang serius), sendi, atau area yang tergesek ikat pinggang ketat.
+- **Rotasi:** Jangan pernah menempelkan patch baru tepat di lokasi yang sama dengan patch lama untuk mencegah dermatitis kontak.
+
+### Frekuensi Penggantian
+
+<WarningBox title="Catat Lama Pemakaian Anda">
+Sebagian besar patch dirancang untuk diganti setiap **3,5 hari (dua kali seminggu)** atau **7 hari (sekali seminggu)**, tergantung mereknya. Patuhi jadwal pabrik dengan ketat. Melewatkan penggantian akan membuat E2 Anda anjlok, memicu hot flash dan perubahan suasana hati. Pasang alarm di ponsel.
+</WarningBox>
+
+### Tips Praktis
+
+- Tempelkan hanya pada kulit yang bersih dan benar-benar kering. Jangan memasang patch di atas losion, minyak, atau kulit basah yang baru dicukur.
+- Tekan patch dengan kuat menggunakan telapak tangan selama 10 detik penuh untuk mengaktifkan perekat dengan panas.
+- Mandi pancuran dan berenang secara normal tidak masalah, tetapi berendam panas yang lama dan sangat panas dapat melonggarkan perekat dan melepaskan obat ke tubuh Anda secara prematur.
+- Jika patch terlepas, coba tempelkan kembali; jika tidak mau menempel, segera pasang patch baru.
+
+## Sasaran Pengguna
+
+Patch transdermal sangat direkomendasikan untuk<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />:
+
+- **Semua orang** (Patch adalah standar emas keamanan secara menyeluruh).
+- **Pengguna dengan Faktor Risiko VTE** (BMI >30, Usia >40, perokok, riwayat VTE dalam keluarga) — Di sini patch tidak bisa ditawar.
+- **Pengguna yang memakai CPA** (siproteron asetat) — CPA secara intrinsik bersifat pro-koagulan; penggunaan patch mencegah penumpukan risiko bekuan darah.
+- **Pengguna dengan Kelainan Hati** — Melewati hati secara drastis mengurangi beban metabolik.
+
+## Realitas Pasokan Global
+
+Meskipun unggul secara medis, patch menghadapi tantangan logistik global:
+
+- **Biaya:** Tanpa asuransi yang memadai atau layanan kesehatan nasional, biaya patch yang harus dibayar sendiri jauh lebih mahal daripada pil oral.
+- **Kelangkaan:** Rantai pasok global untuk merek seperti Estradot atau Climara kerap runtuh, mengakibatkan kelangkaan regional berbulan-bulan di Inggris, Uni Eropa, dan Australia.
+- Jika patch benar-benar tidak terjangkau bagi Anda, pemberian oral merupakan alternatif yang layak—asalkan Anda tidak memiliki risiko VTE yang sudah ada sebelumnya.
+
+## Merek Umum
+
+<DoseTable
+  headers={['Merek', 'Spesifikasi', 'Siklus Penggantian', 'Wilayah']}
+  rows={[
+    ['Climara', 'Melepaskan 50 / 100 µg/day', 'Setiap 7 Hari', 'AS / UE / Global'],
+    ['Estradot', 'Melepaskan 25-100 µg/day', 'Setiap 3,5 Hari', 'Inggris / UE / AUS'],
+    ['Vivelle-Dot', 'Melepaskan 25-100 µg/day', 'Setiap 3,5 Hari', 'AS'],
+    ['Estrana Tape', 'Melepaskan 50 µg/day', 'Setiap 2 Hari', 'Jepang (Umum dalam DIY di Asia)'],
+  ]}
+/>
+
+## Saran Pemantauan
+
+- **Kapan mengambil darah:** 12-24 jam sebelum penggantian patch berikutnya (mengukur kadar trough)<CitationRef id="ucsf-2016" num={5} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+- **Target:** E2 100-200 pg/mL, T < 50 ng/dL.
+
+<DrugBrandGallery drugId="estradiol-patch" />

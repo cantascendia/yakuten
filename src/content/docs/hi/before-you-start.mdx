@@ -1,0 +1,81 @@
+---
+title: "शुरू करने से पहले: क्या आप तैयार हैं?"
+description: "HRT शुरू करने से पहले की ज़रूरी जाँच-सूची — बेसलाइन रक्त परीक्षण, पूर्ण और सापेक्ष निषेध (contraindications), सूचित सहमति की आवश्यकताएँ, और आपकी चिकित्सा-यात्रा के लिए वास्तविक अपेक्षाएँ।"
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+यह कोई द्वारपाली (gatekeeping) नहीं है — यह एक सुरक्षा जाँच है। बेसलाइन लैब किए बिना HRT शुरू करना आँखों पर पट्टी बाँधकर गाड़ी चलाने जैसा है।
+
+नीचे दी गई बेसलाइन जाँचें अंतरराष्ट्रीय दिशानिर्देशों द्वारा अनुशंसित हैं<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />।
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> बेसलाइन लैब जाँच
+
+HRT शुरू करने से पहले नीचे दी गई जाँचें पूरी कर लेनी चाहिए। इनमें से अधिकांश को आपके प्राथमिक देखभाल चिकित्सक (primary care provider), किसी सूचित-सहमति क्लिनिक, या Planned Parenthood जैसी सेवाओं के ज़रिए करवाया जा सकता है:
+
+<BaselineChecklist
+  items={[
+    { name: 'सेक्स हार्मोन', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'यकृत कार्यक्षमता (Liver Function)', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'गुर्दा कार्यक्षमता (Kidney Function)', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'पूर्ण रक्त गणना (Full Blood Count)', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'रक्त-स्कंदन पैनल (Coagulation Panel)', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'चयापचय पैनल (Metabolic Panel)', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'प्रोलैक्टिन (Prolactin)', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (बीमा व स्थान के अनुसार बदलता है)"
+/>
+
+<WarningBox title="लैब किए बिना ही शुरू कर दिया?">
+अगर आपने बेसलाइन लैब करवाए बिना ही HRT शुरू कर दिया है — तो अब भी देर नहीं हुई है। इन्हें जल्द से जल्द करवा लें।
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> पूर्ण निषेध (Absolute Contraindications)
+
+<ContraindicationBox type="absolute" title="पूर्ण निषेध" sectionNum="">
+
+- सक्रिय थ्रोम्बोएम्बोलिक रोग (जैसे, डीप वेन थ्रोम्बोसिस DVT, पल्मोनरी एम्बोलिज़्म PE)
+- पुष्ट या संदिग्ध हार्मोन-संवेदनशील कैंसर (जैसे, स्तन कैंसर, प्रोस्टेट कैंसर)
+- तीव्र अवस्था में गंभीर यकृत या गुर्दा क्षति
+- अस्पष्ट योनि रक्तस्राव (ट्रांसमैस्क्युलिन व्यक्तियों के लिए)
+- दवा के घटकों से ज्ञात गंभीर एलर्जी
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> सापेक्ष निषेध (Relative Contraindications)
+
+<ContraindicationBox type="relative" title="सापेक्ष निषेध" sectionNum="">
+
+- अनियंत्रित उच्च रक्तचाप या हृदय-संवहनी रोग
+- खराब रूप से नियंत्रित मधुमेह (diabetes mellitus)
+- तंबाकू का सेवन (विशेषकर 35+ की उम्र में, VTE का जोखिम काफी बढ़ा देता है)
+- पित्ताशय रोग (gallbladder disease) का इतिहास
+- ऑरा के साथ माइग्रेन (सावधानीपूर्वक जोखिम-आकलन की आवश्यकता)
+- गंभीर मोटापा (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> वास्तविक अपेक्षाएँ तय करना
+
+<RealityCheck
+  items={[
+    { text: 'HRT कोई जादू नहीं है। बदलाव महीनों और वर्षों में आते हैं — रातोंरात कायापलट की उम्मीद न करें।' },
+    { text: 'कुछ बदलाव अपरिवर्तनीय (irreversible) होते हैं (जैसे, स्तन वृद्धि, आवाज़ का गहरा होना, क्लिटोरल वृद्धि)। समझ लें कि आप किसके लिए तैयारी कर रहे हैं।' },
+    { text: 'HRT प्रजनन क्षमता को घटा सकता है या स्थायी रूप से समाप्त कर सकता है। शुरू करने से पहले युग्मक संरक्षण (अंडाणु/शुक्राणु फ्रीज़िंग) पर विचार करें।' },
+    { text: 'मूड में उतार-चढ़ाव एक सामान्य दुष्प्रभाव है। सुनिश्चित करें कि आपके पास एक स्थिर सहायता-तंत्र मौजूद हो।' },
+  ]}
+/>
+
+<WarningBox title="आगे क्या पढ़ें">
+- [HRT पथ (Pathway)](/hi/pathway/) — बेसलाइन से दीर्घकालिक रखरखाव तक का पूरा प्रवाह
+- [दवाइयाँ](/hi/medications/estrogens/overview/) — दवा विकल्प, खुराक, और जोखिम
+- [चीन HRT गाइड](/hi/china-reality/) — डॉक्टर कैसे ढूँढें, दवाएँ कैसे पाएँ, और रक्त परीक्षण कैसे करवाएँ
+- [रक्त परीक्षण](/hi/blood-tests/) — क्या जाँचें, कहाँ जाएँ, परिणाम कैसे पढ़ें
+</WarningBox>

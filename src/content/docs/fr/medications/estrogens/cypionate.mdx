@@ -1,0 +1,98 @@
+---
+title: "Cypionate d'estradiol (EC)"
+description: "Guide complet du cypionate d'estradiol — comparaison pharmacocinétique avec le valérate d'estradiol, posologie, protocoles d'injection et limites de sécurité."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Cypionate d'estradiol (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Intramusculaire (IM) / Sous-cutanée (SC)"
+  evidenceLevel="B"
+>
+Le cypionate d'estradiol (EC) est un ester injectable d'estradiol à action prolongée, utilisé principalement sur le continent américain. Comparé au valérate d'estradiol (EV), l'EC présente une demi-vie plus longue (~8-10 jours contre 4-5 jours), ce qui permet d'espacer davantage les injections<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Nom commercial : Depo-Estradiol.
+</DrugInfoBox>
+
+## Pharmacocinétique
+
+Profil pharmacocinétique du cypionate d'estradiol<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /> :
+
+- **Demi-vie** : ~8-10 jours (contre ~4-5 jours pour l'EV)
+- **Délai du pic** : 2-4 jours après l'injection
+- **Délai du creux** : 7-10 jours après l'injection
+- **État d'équilibre** : atteint après ~3-4 cycles réguliers
+
+### Comparaison avec le valérate d'estradiol (EV)
+
+<DoseTable
+  headers={['Paramètre', "Cypionate d'estradiol (EC)", "Valérate d'estradiol (EV)"]}
+  rows={[
+    ['Demi-vie', '~8-10 jours', '~4-5 jours'],
+    ['Délai du pic', '2-4 jours', '2-3 jours'],
+    ['Intervalle recommandé', '7-14 jours', '5-7 jours'],
+    ['Fluctuation du taux sérique', 'Plus faible', 'Plus marquée'],
+    ['Région principale', 'Amériques', 'Mondial'],
+    ['Risque de TEV (RR)', '~1.0 (contourne le premier passage)', '~1.0'],
+    ['Niveau de preuve', 'B', 'A'],
+  ]}
+/>
+
+La demi-vie plus longue de l'EC entraîne une moindre baisse de l'E2 au creux, produisant une courbe de concentration plus régulière<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Posologie
+
+### Posologie chez l'adulte
+
+<DoseTable
+  headers={['Phase', 'Dose', 'Remarques']}
+  rows={[
+    ['Dose initiale', '2-3 mg/semaine', 'Démarrage à faible dose (1-6 premiers mois) pour préserver le développement mammaire'],
+    ['Dose d\'entretien', '3-5 mg/semaine', 'À ajuster selon l\'E2 au creux ; cible 100-200 pg/mL'],
+    ['Dose maximale', '7 mg/10-14 jours', 'À ne pas dépasser'],
+  ]}
+/>
+
+Références posologiques : Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> et WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. En raison de la demi-vie plus longue de l'EC, certaines personnes optent pour des intervalles d'injection de 10-14 jours.
+
+<WarningBox title="Intervalle d'injection et moment du prélèvement sanguin">
+Les personnes utilisant l'EC devraient faire pratiquer leur prélèvement sanguin le **matin précédant l'injection suivante** afin de mesurer le taux au creux. Sur un schéma de 10 jours, le creux se situe le matin du 10e jour. Cible de l'E2 au creux : 100-200 pg/mL.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Concentration | Région |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | États-Unis |
+| Pharmacies préparatrices | Variable | Certaines régions |
+
+L'EC est principalement disponible aux États-Unis et en Amérique latine. Dans les régions où il n'est pas disponible, le [valérate d'estradiol en injection](/fr/medications/estrogens/injection/) constitue l'alternative de référence.
+
+## Suivi
+
+Identique à celui des autres esters d'estradiol injectables :
+
+- **E2** : tous les 3 mois, prélèvement au creux (le matin avant l'injection). Cible 100-200 pg/mL
+- **T** : tous les 3 mois. Cible &lt;50 ng/dL
+- **Fonction hépatique (ALT/AST)** : à l'inclusion + tous les 6 mois
+
+## Technique d'injection
+
+La procédure d'injection est identique à celle du [valérate d'estradiol en injection](/fr/medications/estrogens/injection/#injection-technique). Les voies SC et IM conviennent toutes deux.
+
+<DangerBox title="Limites de sécurité">
+- **Une dose unique d'injection ne doit pas dépasser 10 mg**
+- L'objectif est de maintenir un taux d'E2 physiologique stable, et non de rechercher des pics élevés
+- Un E2 >200 pg/mL ne produit pas de féminisation plus forte, mais augmente seulement le risque de caillot<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Si l'EC n'est pas disponible dans votre région, ne l'achetez pas par des canaux non vérifiés
+</DangerBox>

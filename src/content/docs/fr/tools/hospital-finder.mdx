@@ -1,0 +1,57 @@
+---
+title: "Annuaire médical"
+description: "Un annuaire structuré de ressources d'accès aux soins signalées par la communauté. Vérifiez directement avant de vous déplacer."
+evidenceLevel: X
+lastReviewed: 2026-04-09
+references: []
+pagefind: false
+---
+
+import HospitalCard from '../../../../components/ui/HospitalCard.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GlassCard from '../../../../components/ui/GlassCard.astro';
+
+import hospitalsRaw from '../../../../data/hospitals.json';
+
+export const hospitals = hospitalsRaw;
+export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const hospitalsByCity = cityOrder
+  .map((city) => ({
+    city,
+    hospitals: hospitals.filter((hospital) => hospital.city === city),
+  }))
+  .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
+export const cityCount = hospitalsByCity.length;
+
+<WarningBox title="Vérifiez avant de vous déplacer">
+Ces fiches sont des notes d'accès tenues à jour par la communauté, et non des garanties institutionnelles officielles. Les politiques, les services et la disponibilité des médecins peuvent changer rapidement ; une confirmation directe reste donc toujours indispensable.
+</WarningBox>
+
+Cet annuaire compte actuellement {hospitals.length} fiches signalées par la communauté, réparties sur {cityCount} villes. À ce stade, les données sources sous-jacentes restent principalement en chinois ; les noms d'établissements et les notes locales peuvent donc apparaître encore en chinois.
+
+---
+
+{hospitalsByCity.map(({ city, hospitals: cityHospitals }) => (
+  <>
+    <h2>{city}</h2>
+    {cityHospitals.map((hospital) => <HospitalCard hospital={hospital} />)}
+    <hr />
+  </>
+))}
+
+---
+
+<GlassCard>
+
+**Comment utiliser cette page**
+
+1. Servez-vous-en comme point de départ pour votre propre vérification.
+2. Confirmez directement auprès de l'établissement le service concerné, la disponibilité des médecins et les modalités d'inscription.
+3. Associez l'accès à un soignant à une planification de bilan biologique de référence et à une vigilance face aux urgences.
+
+</GlassCard>
+
+<DangerBox title="Note relative aux urgences">
+Cet annuaire n'est pas un service d'orientation en urgence. En cas de symptômes urgents, rendez-vous d'abord aux urgences plutôt que de vous fier à la consultation de l'annuaire.
+</DangerBox>

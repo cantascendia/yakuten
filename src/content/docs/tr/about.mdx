@@ -1,0 +1,107 @@
+---
+title: "Bu Site Hakkında"
+description: "HRT Yakuten'in misyonu, kanıta dayalı içerik kaynaklarımız (WPATH, Endocrine Society), akran değerlendirme süreci, gizlilik taahhütleri ve tıbbi sorumluluk reddi."
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Misyon
+
+**Kanıta Dayalı · Zarar Azaltma · Sizi Tıbbi Bakıma Yönlendirme**
+
+HRT Yakuten, Çince konuşulan toplulukta HRT kullanan transgender kadınlar için bir güvenlik temeli bilgi sitesidir. Amacımız doktorların yerini almak değil, halihazırda hormon tedavisi alan ya da almaya başlamak üzere olan kişilere şu konularda destek olmaktır:
+
+- **Kan tahlili sonuçlarınızı anlamak** ve hangi anormal değerlerin tıbbi başvuru gerektirdiğini bilmek
+- **İlaçların gerçek risklerini öğrenmek**, topluluk söylentilerine ve doğrulanmamış kişisel anlatılara güvenmek yerine
+- **Acil uyarı belirtilerini tanımak** (DVT, karaciğer hasarı, meningiyom) ve kritik anlarda doğru kararı vermek
+- **Trans dostu tıbbi kaynaklara ulaşmak** ve DIY'den (kendi başına ilaç kullanımı) gözetim altındaki tıbbi bakıma geçmek
+
+### Bu site NE DEĞİLDİR
+
+- ❌ Bir ansiklopedi ya da tıp ders kitabı değildir
+- ❌ Bir forum, topluluk ya da sosyal platform değildir
+- ❌ Bir ilaç satın alma kanalı ya da eczane tavsiye sitesi değildir
+- ❌ Kişiselleştirilmiş doz tavsiyesi vermez ("şu kadar mg almalısınız")
+
+## İçerik Kaynakları
+
+Bu sitedeki tüm tıbbi içerik aşağıdaki uluslararası klinik kılavuzlara ve akran değerlendirmesinden geçmiş literatüre dayanmaktadır:
+
+| Kaynak | Açıklama |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — Klinik Uygulama Kılavuzu |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, 8. Sürüm |
+| **UCSF Transgender Care** | University of California, San Francisco — Transgender Bakım Kılavuzu |
+| **EMA (2020)** | Avrupa İlaç Ajansı'nın CPA üzerindeki kısıtlamaları ve güvenlik değerlendirmesi |
+| **PubMed / PMC** | Akran değerlendirmesinden geçmiş özgün araştırma makaleleri (her atıf bir DOI içerir) |
+
+Her tıbbi öneri yanındaki üst simge sayılar (örneğin <sup>[1]</sup>) ilgili kaynağa bağlanır. **Atıf yoksa içerik de yok** — bu, sitemizin değişmez bir kuralıdır.
+
+## İçerik Değerlendirme Süreci
+
+| Adım | Standart |
+|------|----------|
+| **Atıf zorunluluğu** | Her klinik öneri, en az bir akran değerlendirmesinden geçmiş makaleye ya da uluslararası kılavuza dayanmalıdır |
+| **Çapraz doğrulama** | İlaç doz aralıkları ≥2 bağımsız kaynağa karşı çapraz doğrulanmalıdır (örneğin WPATH + Endocrine Society + UCSF) |
+| **Kanıt derecelendirmesi** | Her sayfa bir kanıt düzeyiyle etiketlenir: A (birden çok RCT/Meta-analiz), B (tek RCT/kohort), C (vaka raporları/uzman görüşü), X (kanıt yok) |
+| **Değerlendirme tarihi** | Her sayfa, en son değerlendirildiği tarihi alt kısmında gösterir |
+| **Güncelleme döngüsü** | İçerik güncelliği açısından üç ayda bir gözden geçirilir ve yeni yayımlanan literatüre göre güncellenir |
+
+<WarningBox title="İçerik Sınırlamaları">
+Bu site şu anda bir birey tarafından sürdürülmektedir ve profesyonel bir tıbbi editör tarafından resmi akran değerlendirmesinden geçmemiştir. Doğruluğu sağlamak için her türlü çabayı gösteriyoruz; ancak hata ve eksiklikler olabilir. Herhangi bir yanlışlık fark ederseniz, lütfen GitHub üzerinden bir Issue gönderin.
+</WarningBox>
+
+## Teknik Altyapı
+
+| Teknoloji | Amaç |
+|------------|---------|
+| **Astro + Starlight** | Statik site üretimi — varsayılan olarak sıfır JS, son derece hızlı yükleme |
+| **React Islands** | İstemci tarafı JS yalnızca etkileşimli araçlar için (kan tahlili kontrolcüsü, doz simülatörü vb.) |
+| **Pagefind** | Çince/İngilizce/Japonca desteğiyle statik arama dizini |
+| **Vercel** | Statik barındırma + Edge Functions (yapay zekâ Soru-Cevap) |
+| **Açık Kaynak** | Tüm kaynak kodu [GitHub](https://github.com/cantascendia/yakuten) üzerinde mevcuttur |
+
+## Gizlilik
+
+**Bu site hiçbir kişisel veriyi toplamaz veya saklamaz.**
+
+| Kategori | Önlem |
+|----------|---------|
+| **Kan tahlili aracı** | Tamamen istemci tarafı JavaScript hesaplaması — girdiğiniz veriler tarayıcınızdan asla çıkmaz ve hiçbir sunucuya gönderilmez |
+| **Yapay zekâ Soru-Cevap** | Görüşmeler Edge Functions aracılığıyla gerçek zamanlı olarak işlenir — hiçbir şey saklanmaz, kaydedilmez ya da eğitim için kullanılmaz |
+| **Analitik** | Vercel Web Analytics & Speed Insights — yalnızca toplu sayfa görüntüleme ve performans ölçütleri; çerezsiz, kişisel kimlik bilgisi saklanmaz, siteler arası izleme yapılmaz |
+| **İzleme** | Google Analytics yok, gömülü sosyal medya ya da reklam izleyici yok — yukarıdaki toplu Vercel analitiği dışında |
+| **Çerezler** | Yalnızca tema tercihi (koyu/açık mod) için kullanılır, izleme için değil |
+| **Reklamlar** | Yok ve asla olmayacak |
+
+## Sorumluluk Reddi
+
+Bu sitedeki içerik **yalnızca eğitim ve bilgilendirme amaçlıdır** ve tıbbi tavsiye niteliği taşımaz.
+
+- Bu site, yetkin bir hekimin yüz yüze tanı ve tedavisinin yerini tutamaz
+- İlaçların kullanımı, ayarlanması ve bırakılması yetkin bir sağlık uzmanının gözetiminde yapılmalıdır
+- Herhangi bir acil belirti yaşarsanız (tek taraflı bacak şişmesi/ağrısı, ani göğüs ağrısı, sarılık vb.) ilacı derhal bırakın ve en yakın acil servise gidin
+- Bu site, içeriğinin kullanımından kaynaklanan herhangi bir tıbbi sonuçtan sorumluluk kabul etmez
+
+**Kendi kendine ilaç kullanımı (DIY) gerçek riskler taşır.** Bu site, ilaçları daha güvenli kullanmanıza yardımcı olmayı amaçlar; ancak en güvenli yol her zaman HRT'yi bir doktorun gözetiminde sürdürmektir.
+
+## Tamamlayıcı Araçlar
+
+- **hananote** — Transgender kadınlar için bir HRT takip uygulaması (Flutter); ilaçları, kan tahlillerini ve fiziksel değişiklikleri izlemeye yardımcı olur. Bu sitenin içeriğini kişiselleştirilmiş uzun vadeli sağlık yönetimiyle tamamlar. Proje: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+
+## İletişim & Katkılar
+
+- **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Bir Issue ya da Pull Request gönderin
+- **İçerik düzeltmeleri**: Bir tıbbi hata mı buldunuz? Lütfen doğru olduğunu düşündüğünüz kaynağı belirterek bir GitHub Issue gönderin
+- **Marka galerisi**: Katkıda bulunmak istediğiniz gerçek ilaç fotoğraflarınız varsa, lütfen GitHub üzerinden bizimle iletişime geçin (CC-BY-SA lisansı gereklidir)
+
+## Lisans
+
+Bu sitenin içeriği [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) altında lisanslanmıştır. Uygun atıfta bulunmanız, ticari amaçlarla kullanmamanız ve türev çalışmaları aynı lisans altında dağıtmanız koşuluyla içeriği serbestçe paylaşabilir ve uyarlayabilirsiniz.
+
+Kaynak kodu MIT Lisansı altında lisanslanmıştır.

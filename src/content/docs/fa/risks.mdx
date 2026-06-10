@@ -1,0 +1,247 @@
+---
+title: "خطرها و تشخیص موارد اورژانسی"
+description: "راهنمای جامع خطرهای HRT — ترومبوآمبولی وریدی (VTE)، نگرانی‌های مربوط به عملکرد کبد، عوامل خطر مننژیوما، علائمی که نیازمند مراقبت اورژانسی فوری هستند، و منابع کمک در بحران سلامت روان."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+<EvidenceBadge level="B" />
+
+HRT در مجموع پروفایل ایمنی بسیار خوبی دارد، اما تشخیص عوارض جدی و نادر برای هر فردی که تحت هورمون‌درمانی است ضروری است. داده‌های زیر بر پایهٔ مشاهدات بالینی و تحلیل دارویی استوار است.
+
+<img src="/images/diagrams/en/emergency-signs.webp" alt="سه علامت هشداردهندهٔ اورژانسی که نیازمند مراقبت پزشکی فوری هستند: درد قفسهٔ سینه، تورم ساق پا، مشکلات بینایی" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+پروفایل‌های خطر زیر از راهنمای Endocrine Society 2017<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> و WPATH SOC 8<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> استخراج شده‌اند.
+
+## 7.1 خطرهای شناخته‌شدهٔ HRT
+
+<div class="risk-grid">
+  <div class="risk-item">
+  <RiskCard
+    title="ترومبوز ورید عمقی (DVT)"
+    category="خطر اورژانسی"
+    severity="red"
+    drug="استرادیول خوراکی (E2)"
+    probability="< 0.5% (سالانه)"
+    signs="قرمزی، تورم، گرمی و درد شدید یک‌طرفه در ساق پا."
+  >
+  <p class="risk-citation">خطر VTE در استرادیول خوراکی به‌طور قابل‌توجهی بالاتر از مسیرهای ترانس‌درمال است<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. بروز سالانه تقریباً 0.2-0.5%؛ مصرف سیگار و افزایش سن خطر را بیشتر می‌کنند.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="آسیب کبدی"
+    category="خطر کبدی"
+    severity="red"
+    drug="CPA / داروهای خوراکی"
+    probability="نادر (پایش LFT)"
+    signs="زردی چشم/پوست، ادرار تیره، خستگی شدید."
+  >
+  <p class="risk-citation">هم CPA و هم بیکالوتامید گزارش‌های موردی از سمیت کبدی دارند. EMA دربارهٔ خطر آسیب کبدی ناشی از CPA هشدار صادر کرده است<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="عوارض قلبی‌-عروقی"
+    category="خطر قلبی"
+    severity="orange"
+    drug="همهٔ فرمولاسیون‌های E2"
+    probability="با افزایش سن / سیگار بالاتر"
+    signs="تپش قلب، فشار غیرقابل‌توضیح در قفسهٔ سینه."
+  >
+  <p class="risk-citation">مسیر خوراکی به دلیل اثر عبور اول کبدی بر عوامل انعقادی، خطر قلبی‌-عروقی بالاتری نسبت به ترانس‌درمال دارد<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="مننژیوما"
+    category="خطر عصبی"
+    severity="red"
+    drug="CPA با دوز بالا"
+    probability="دوز تجمعی > 10g"
+    signs="تغییرات بینایی، کاهش شنوایی، سردردهای غیرعادی."
+  >
+  <p class="risk-citation">دوز روزانهٔ CPA معادل ≥25 mg: خطر مننژیوما OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />. EMA دوزهای ≥25 mg/day را محدود کرده است<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="تغییرات خلقی و افسردگی"
+    category="خطر روانی"
+    severity="yellow"
+    drug="CPA / سطح پایین E2"
+    probability="شایع (5-15%)"
+    signs="افکار خودکشی، گریهٔ بی‌دلیل، از دست رفتن انگیزه."
+  >
+  <p class="risk-citation">فعالیت پروژستوژنی CPA می‌تواند سبب تغییرات خلقی و افسردگی شود؛ بروز آن تقریباً 5-15% است<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="افزایش پرولاکتین"
+    category="خطر غدد درون‌ریز"
+    severity="yellow"
+    drug="استرادیول / CPA"
+    probability="نیازمند پایش دوره‌ای"
+    signs="ترشح از نوک پستان، سردرد شدید و پایدار."
+  >
+  <p class="risk-citation">هم استرادیول و هم CPA می‌توانند پرولاکتین را افزایش دهند. PRL >50 ng/mL نیازمند بررسی پرولاکتینومای هیپوفیز است<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />.</p>
+  </RiskCard>
+  </div>
+</div>
+
+## 7.2 علائمی که نیازمند مراقبت پزشکی فوری هستند
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="علائمی که نیازمند مراقبت پزشکی فوری هستند">
+
+**در صورت بروز هر یک از موارد زیر، HRT را قطع کنید و به نزدیک‌ترین بخش اورژانس مراجعه کنید:**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">تورم یا درد یک‌طرفهٔ ساق پا</strong> — ممکن است نشانهٔ ترومبوز ورید عمقی (DVT) باشد
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">درد ناگهانی قفسهٔ سینه یا سرفهٔ خونی</strong> — ممکن است نشانهٔ آمبولی ریه باشد
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">ضعف یک‌طرفه یا افتادگی صورت</strong> — نشانهٔ احتمالی هشدار سکتهٔ مغزی
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">زردی پوست یا سفیدی چشم</strong> — آسیب حاد کبدی
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">سردرد شدید ناگهانی همراه با کاهش بینایی</strong> — افزایش احتمالی فشار داخل جمجمه
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 پشتیبانی در بحران و خطوط تلفن کمک
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="خطوط تلفن کمک در بحران">
+
+### به کمک نیاز دارید؟
+
+اگر دچار آشفتگی روانی شدید یا افکار آسیب به خود هستید، لطفاً بی‌درنگ با یکی از این خدمات پشتیبانی تماس بگیرید. شما تنها نیستید.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Trans Lifeline</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:+18775658860" style="color: var(--color-primary); text-decoration: none;">877-565-8860</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">آمریکا — توسط و برای افراد ترنس</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">988 Suicide & Crisis</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:988" style="color: var(--color-primary); text-decoration: none;">988</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">آمریکا — تماس یا پیامک ۲۴/۷</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">اورژانس</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:911" style="color: var(--color-danger); text-decoration: none;">911</a> / <a href="tel:112" style="color: var(--color-danger); text-decoration: none;">112</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">آمریکا: 911 · اتحادیهٔ اروپا: 112 · بریتانیا: 999</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**منابع بین‌المللی:**
+- **بریتانیا**: Samaritans — 116 123 (رایگان، ۲۴/۷)
+- **کانادا**: Trans Lifeline — 877-330-6366
+- **استرالیا**: Lifeline — 13 11 14
+- **بین‌المللی**: [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<WarningBox title="پس از این‌که در امان قرار گرفتید، گام‌های بعدی">
+- [بررسی آزمایش خون](/fa/blood-tests/#tool) — بررسی کنید آیا سطوح شما در محدودهٔ ایمن است
+- [مسیر HRT](/fa/pathway/) — به مرحلهٔ کنونی خود بازگردید
+- [راهنمای HRT در چین](/fa/china-reality/) — یافتن پزشکان و منابع همراه
+- [داروها](/fa/medications/estrogens/overview/) — برنامهٔ دارویی خود را بازارزیابی کنید
+</WarningBox>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .risk-grid > .risk-item + .risk-item {
+    margin-top: 0;
+  }
+
+  .risk-item > .risk-card {
+    flex: 1;
+  }
+
+  .risk-citation {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid rgba(200, 75, 124, 0.2);
+  }
+`}</style>

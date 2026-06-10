@@ -1,0 +1,291 @@
+---
+title: "Mga GnRH Agonist"
+description: "Kumpletong gabay sa mga GnRH agonist (Leuprorelin, Goserelin, Triptorelin) para sa transgender na HRT — mekanismo, paghahambing ng 6 na gamot, teknik sa pag-iiniksyon, pangangasiwa ng flare, pagsubaybay sa bone density, pag-aasikaso ng nalimutang dosis, at mga alternatibong GnRH antagonist."
+evidenceLevel: A
+lastReviewed: 2026-04-12
+references: [coleman-2022, hembree-2017]
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="GnRH Agonists (Leuprorelin, Goserelin, Triptorelin, etc.)"
+  nameCN="GnRH Agonists (GnRH 激动剂)"
+  category="antiandrogen"
+  route="Subcutaneous / Intramuscular na Iniksyon · Nasal Spray · Implant"
+  evidenceLevel="A"
+>
+Ang mga GnRH Agonist ang pinaka-epektibong anti-androgen na makukuha, na pinipigil ang testosterone hanggang sa antas ng castrate (< 50 ng/dL) sa pamamagitan ng pagpapatigil sa hypothalamic-pituitary-gonadal axis. Parehong inirerekomenda ng Endocrine Society 2017 at WPATH SOC 8 ang paggamit nito. Kapag naa-access, ang mga GnRH agonist ang pinakaangkop na pagpipilian sa anti-androgen.
+</DrugInfoBox>
+
+## Parmakolohiya
+
+### Paano Gumagana ang mga Ito
+
+Ang mga GnRH agonist ay kumikilos sa isang ganap na ibang antas kumpara sa ibang mga anti-androgen — tinatarget nila ang upstream na sentro ng kontrol ng paggawa ng hormone<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Yugto ng Flare-Up:** Sa unang 1-2 linggo, sobrang sinisimulan ng gamot ang mga pituitary GnRH receptor, na nagdudulot ng panandaliang pagtaas ng LH/FSH at testosterone.
+2. **Pag-desensitize ng Receptor:** Ang tuluy-tuloy na pagsimula ay nagdudulot ng pag-downregulate ng mga pituitary GnRH receptor at nagiging walang tugon ang mga ito.
+3. **Ganap na Pagsupil:** Sa loob ng 2-4 na linggo, humihinto ang produksyon ng LH/FSH, na nagpapababa sa T hanggang sa antas ng castrate (< 50 ng/dL).
+
+Ang mekanismong ito ay direkta at maaasahang pumipigil sa T — nang walang panganib ng hepatotoxicity ng CPA o panganib ng hyperkalemia ng spironolactone<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+### Pagsupil ng T Kumpara sa Ibang mga Anti-Androgen
+
+<DoseTable
+  headers={['Anti-Androgen', 'Mekanismo', 'Pagsupil ng T', 'Pangunahing Limitasyon']}
+  rows={[
+    ['GnRH Agonists', 'Pagpapatigil ng HPG axis', '~95% (< 50 ng/dL)', 'Napakamahal; kailangan ng iniksyon'],
+    ['CPA 5-12.5mg', 'AR antagonism + progestogenic feedback', '~90% (saklaw ng babae)', 'Panganib ng meningioma (≥25mg)'],
+    ['Spironolactone 100-200mg', 'Mahinang AR antagonism', '~30-50% (madalas na hindi sapat)', 'Hyperkalemia; hindi maaasahang pagsupil ng T'],
+    ['Bicalutamide 50mg', 'Purong AR antagonism', 'Maaaring tumaas ang T', 'Hepatotoxicity; kailangan ng pagsubaybay'],
+  ]}
+/>
+
+## Mga Magagamit na Formulation
+
+### Mga Anyong Pang-iniksyon
+
+<DoseTable
+  headers={['Gamot', 'Mga Pangalan ng Brand', 'Dosis', 'Pagitan', 'Ruta', 'Sariling Pag-aadminister']}
+  rows={[
+    ['Leuprorelin', 'Lupron / Eligard / Prostap', '3.75mg / 11.25mg / 22.5mg / 45mg', 'Buwanan / 3-buwan / 6-buwan', 'SubQ o IM', 'Ang ilang anyong SubQ ay maaaring mai-iniksyon nang mag-isa'],
+    ['Goserelin', 'Zoladex', '3.6mg / 10.8mg', 'Buwanan / 3-buwan', 'SubQ implant (tiyan)', 'Kailangan ng pagbibigay sa klinika (16G na karayom)'],
+    ['Triptorelin', 'Decapeptyl / Trelstar', '3.75mg / 11.25mg / 22.5mg', 'Buwanan / 3-buwan / 6-buwan', 'IM na iniksyon', 'Kailangan ng pagbibigay sa klinika'],
+  ]}
+/>
+
+### Mga Anyong Hindi Pang-iniksyon
+
+<DoseTable
+  headers={['Gamot', 'Brand', 'Anyo', 'Pag-aadminister', 'Bentaha', 'Limitasyon']}
+  rows={[
+    ['Buserelin', 'Suprefact', 'Nasal spray', '2-3 spray araw-araw', 'Hindi kailangan ng iniksyon', 'Pasanin sa pagsunod (maraming dosis bawat araw)'],
+    ['Nafarelin', 'Synarel', 'Nasal spray', '2-3 spray araw-araw', 'Hindi invasive; ~95% pagbaba ng T', 'Limitado ang pandaigdigang supply'],
+    ['Histrelin', 'Supprelin LA', 'SubQ implant rod', 'Surgical na pagkabit sa itaas na braso; tumatagal ng 12 buwan', 'Minsan kada taon; pinakamahusay na pagsunod', 'Napakamahal; kailangan ng surgical na pagkabit/pagtanggal'],
+  ]}
+/>
+
+## Gabay sa Pag-aadminister
+
+### Subcutaneous na Iniksyon (Leuprorelin, atbp.)
+
+Karamihan sa mga GnRH agonist ay ibinibigay sa pamamagitan ng subcutaneous o intramuscular na iniksyon. Ang ilang formulation (hal., leuprorelin SubQ) ay maaaring i-iniksyon nang mag-isa pagkatapos ng pagsasanay ng nurse<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+**Pagpili ng Lugar ng Iniksyon:**
+- **Pangunahin:** Tiyan, humigit-kumulang 5cm sa gilid ng pusod (iwasan ang 2cm sa paligid ng pusod)
+- **Alternatibo:** Anterior na panlabas na hita, gitnang bahagi
+- **Pag-ikot:** Magpalit ng lugar sa bawat iniksyon; panatilihin ang hindi bababa sa 3cm na pagitan sa mga puntong tinuturok; iwasan ang mga lugar na may bukol o pasa
+
+**Mga Hakbang sa Subcutaneous na Iniksyon:**
+
+1. **Maghanda:** Maghugas ng kamay. Iangat ang naka-refrigerate na gamot sa temperatura ng silid (15-30 minuto). Suriin ang petsa ng pagkapaso at hitsura ng solusyon.
+2. **Linisin:** Punasan ang lugar ng iniksyon gamit ang alcohol prep pad. Hayaang ganap na matuyo sa hangin.
+3. **Kurutin:** Gamit ang iyong hindi-dominanteng kamay, kurutin ang 2cm na fold ng balat.
+4. **Ipasok:** Ipasok ang karayom sa 45-90° na anggulo nang mabilis at matatag, na ibinabaon nang buo ang karayom (1-2cm na lalim).
+5. **I-iniksyon:** Dahan-dahang itulak ang plunger sa loob ng ~30 segundo. Huwag magmadali.
+6. **Bunutin:** Bitawan ang balat, pagkatapos ay bunutin ang karayom nang mabilis. Idiin ang tuyong cotton ball sa lugar nang 15 segundo (huwag kuskusin).
+7. **Itapon:** Ilagay ang karayom sa sharps container. Itala ang petsa at lugar ng iniksyon.
+
+<InjectionSiteSVG />
+
+<WarningBox title="Tala Tungkol sa Goserelin (Zoladex)">
+Gumagamit ang Zoladex ng makapal na pre-loaded na hiringgilya (humigit-kumulang 16G) na nag-iimplant ng solidong depot pellet sa ilalim ng taba ng tiyan. Dapat itong palaging ibinibigay ng isang propesyonal sa pangangalagang pangkalusugan.
+</WarningBox>
+
+### Pagbubuo-muli ng Indian GnRH Lyophilized Powder (Lupride Depot atbp.)
+
+Ang Lupride Depot (leuprorelin) mula sa India ay karaniwang nakukuha sa mga komunidad ng transgender dahil sa makabuluhang mas mababang gastos kumpara sa mga lokal na katumbas. Ang Lupride Depot ay dumarating bilang isang **lyophilized powder + diluent** na kit na may dalawang vial na nangangailangan ng pagbubuo-muli bago i-iniksyon.
+
+<img src="/images/drugs/lupride-depot-studio.webp" alt="Larawan ng produktong Lupride Depot 3.75mg leuprorelin lyophilized powder na iniksyon" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+**Mga Laman ng Kit**:
+- 1 vial ng lyophilized powder (puting pulbos na naglalaman ng leuprorelin 3.75 mg)
+- 1 vial ng diluent (sterile na tubig para sa iniksyon)
+- Hiringgilya at mga karayom (kasama sa ilang pakete)
+
+<img src="/images/diagrams/en/gnrh-reconstitution.webp" alt="Mga hakbang sa pagbubuo-muli ng GnRH: kunin ang diluent, i-iniksyon sa vial ng pulbos, ikutin upang matunaw, kunin ang solusyon, handa nang i-iniksyon" width="900" height="500" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+**Mga Hakbang sa Pagbubuo-muli**:
+
+1. **Suriin**: Tiyakin na ang parehong vial ay nasa loob pa ng petsa ng pagkapaso; ang pulbos ay dapat puti hanggang off-white (walang pagbabago ng kulay)
+2. **Maghugas ng kamay**: Hugasang mabuti ang mga kamay gamit ang sabon at tubig
+3. **Mag-disinfect**: Punasan ang goma na takip ng parehong vial gamit ang alcohol wipes, hayaang matuyo sa hangin
+4. **Kunin ang diluent**: Gamit ang hiringgilyang may drawing needle (18-20G), kunin ang lahat ng diluent mula sa vial ng diluent
+5. **I-iniksyon sa vial ng pulbos**: Dahan-dahang i-iniksyon ang diluent sa gilid ng pader ng vial ng pulbos — **huwag direktang i-spray sa pulbos**
+6. **Tunawin**: Marahang ikutin ang vial (**huwag iling nang malakas**) hanggang ganap na matunaw ang pulbos. Ang solusyon ay dapat malinaw o bahagyang opalescent
+7. **Kunin ang solusyon**: Baligtarin ang vial at kunin ang lahat ng nabuong-muling solusyon, palabasin ang mga bula ng hangin
+8. **Palitan ang karayom**: Lumipat sa karayom ng iniksyon (SC: 25-27G, IM: 21-23G)
+9. **I-iniksyon**: Sundin ang mga hakbang sa subcutaneous na iniksyon na inilarawan sa itaas
+
+<DangerBox title="Mga Pag-iingat sa Pagbubuo-muli">
+
+- **Ang nabuong-muling solusyon ay dapat i-iniksyon agad** — huwag itago. Ang nabuong-muling produkto ay walang laman na preservatives; ang pagkaantala ay may panganib ng bacterial contamination at nababawasang lakas
+- **Huwag iling nang malakas**: Lumilikha ito ng mga bula at maaaring makasira sa aktibidad ng gamot
+- Kung ang solusyon ay lumilitaw na **kitang-kitang malabo, may laman na mga particle, o nagbago ang kulay**, itapon ito
+- Kung ang vial ng diluent ay nasira o ang selyo ay nakompromiso, **itapon ang buong kit**
+- Ang mga first-time na gumagamit ay dapat humingi ng patnubay mula sa isang may karanasan
+</DangerBox>
+
+### Nasal Spray (Buserelin / Nafarelin)
+
+1. Marahang singain ang iyong ilong upang malinis ang daanan.
+2. Iling ang bote at alisin ang takip.
+3. Bahagyang iyuko ang ulo pasulong; ipasok ang nozzle sa isang butas ng ilong.
+4. Idiin ang nozzle habang dahan-dahang humihinga.
+5. Magpalit ng butas ng ilong sa bawat paggamit.
+6. Iwasang singain ang iyong ilong sa loob ng 30 minuto pagkatapos ng pag-aadminister.
+
+### Implant (Histrelin)
+
+Ang Supprelin LA implant ay surgical na inilalagay sa ilalim ng balat ng panloob na itaas na braso ng isang tagapagbigay ng pangangalagang pangkalusugan. Tuluy-tuloy nitong inilalabas ang gamot sa loob ng 12 buwan, pagkatapos nito ay dapat itong surgical na tanggalin at palitan.
+
+### Mga Kinakailangan sa Pag-iimbak
+
+<DoseTable
+  headers={['Gamot', 'Pag-iimbak', 'Mga Tala']}
+  rows={[
+    ['Leuprorelin (depot)', 'Temperatura ng silid (mas mababa sa 25°C)', 'Protektahan mula sa liwanag at init'],
+    ['Goserelin (Zoladex)', 'Temperatura ng silid (mas mababa sa 25°C)', 'Pre-filled na hiringgilya; huwag i-freeze'],
+    ['Triptorelin (Decapeptyl)', 'I-refrigerate (2-8°C)', 'Lyophilized powder; buuin-muli bago gamitin'],
+    ['Buserelin nasal spray', 'Temperatura ng silid', 'Gamitin sa loob ng 28 araw pagkatapos buksan'],
+  ]}
+/>
+
+## Pangangasiwa ng Flare
+
+Ang unang pagtaas ng testosterone ("flare-up") pagkatapos ng unang iniksyon ng GnRH agonist ay isang normal na pharmacological na tugon<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+
+### Timeline ng Flare
+
+<DoseTable
+  headers={['Oras', 'Ano ang Nangyayari', 'Mga Sintomas']}
+  rows={[
+    ['Araw 0', 'Iniksyon ng GnRH agonist', '—'],
+    ['Araw 2-4', 'Tumataas ang T hanggang ~2× ng baseline', 'Posibleng acne, pagbabago ng mood, pagbabago ng libido'],
+    ['Araw 7-8', 'Bumabalik ang T sa baseline', 'Nagsisimulang humupa ang mga sintomas'],
+    ['Araw 14-28', 'Bumababa ang T sa antas ng castrate (< 50 ng/dL)', 'Naitatag ang ganap na epekto ng anti-androgen'],
+  ]}
+/>
+
+### Paano Pangasiwaan ang Flare
+
+<WarningBox title="Isaalang-alang ang Anti-Androgen Cover Sa Panahon ng Flare">
+Upang mapagaan ang mga sintomas ng flare sa unang iniksyon, maaari kang magsimula ng maikling kurso ng anti-androgen nang sabay-sabay o 1 linggo bago<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+- **CPA 12.5mg/day** sa loob ng 2-4 na linggo, pagkatapos ay ihinto kapag humupa na ang flare
+- **Spironolactone 100mg/day** sa loob ng 2-4 na linggo (kung hindi angkop ang CPA)
+- Kung ikaw ay nasa estradiol na, ang klinikal na epekto ng flare ay kadalasang banayad
+- Ang mga sumunod na iniksyon ay hindi nagdudulot ng panibagong flare (unang iniksyon lamang)
+</WarningBox>
+
+<DangerBox title="Huwag Kailanman Gumamit ng GnRH Agonist Nang Walang Estradiol">
+Ang mga GnRH agonist ay pumipigil sa parehong testosterone AT endogenous na estradiol hanggang halos zero. KAILANGAN mong i-co-administer ang estradiol upang maiwasan ang matinding pagkawala ng buto, hot flashes, at mga mood disorder<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+</DangerBox>
+
+## Nalimutang Dosis
+
+- **Nalimutang iniksyon:** Ibigay sa lalong madaling panahon (huwag maghintay sa susunod na nakatakdang petsa).
+- **Iayos ang iskedyul:** Kalkulahin ang susunod na dosis mula sa aktwal na petsa ng iniksyon (buwanan: +28 araw; quarterly: +84 araw).
+- **Naantala nang >1 linggo:** Maaaring bahagyang gumaling ang T. Suriin ang mga antas ng T 4 na linggo pagkatapos ng huling iniksyon.
+- **Nalimutang nasal spray:** Gamitin sa sandaling maalala. Huwag i-doble ang dosis.
+
+## Mga Side Effect
+
+### Pagkawala ng Bone Density
+
+Ang pangmatagalang paggamit nang walang sapat na estradiol ay maaaring magdulot ng pagbaba ng bone density<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Parehong T at E2 ay mahalaga para sa pagpapanatili ng buto
+- **Mahalaga:** Ang pagpapanatili ng E2 sa 100-200 pg/mL ay malaki ang naitutulong sa pagpapagaan ng panganib na ito
+- Inirerekomenda ang DEXA scan para sa mga gumagamit ng GnRH agonist nang > 2 taon
+
+### Mga Reaksyon sa Lugar ng Iniksyon
+
+- Pananakit, pamumula, at pagtigas sa lugar ng iniksyon (karaniwan)
+- Ang 16G na karayom ng Goserelin ay nagdudulot ng mas malinaw na kakulangan ng kaginhawahan
+- Ikutin ang mga lugar ng iniksyon upang mabawasan ang mga reaksyon
+
+### Hot Flashes
+
+- Dulot ng mabilis na pagsupil ng sex hormone<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+- Ang sapat na dosis ng estradiol ay malaki ang nababawas dito
+- Karaniwang humuhupa kapag naka-stable na ang mga antas ng E2
+
+### Mga Pagbabago sa Mood
+
+- Ang ilang gumagamit ay nakakaranas ng pagbabago ng mood, lalo na sa maagang bahagi ng paggamot
+- Karaniwang mas banayad kaysa sa mga epekto sa mood ng CPA
+- Bumubuti kapag naka-stable na ang mga antas ng hormone
+
+## Pagsubaybay
+
+<DoseTable
+  headers={['Pagsusuri', 'Dalas', 'Target / Alerto', 'Aksyon']}
+  rows={[
+    ['Testosterone (T)', '4 na linggo pagkatapos ng iniksyon + tuwing 3-6 na buwan', 'T < 50 ng/dL', 'Kung mataas: suriin ang pagitan ng iniksyon/pagsunod'],
+    ['Estradiol (E2)', 'Sinusuri kasama ng T', '100-200 pg/mL', 'Tiyakin ang sapat na E2 para sa proteksyon ng buto'],
+    ['Bone Density (DEXA)', 'Baseline + tuwing 1-2 taon pagkatapos ng 2+ taon', 'T-score > -1.0', 'T-score < -2.5: osteoporosis — kailangan ng interbensyon'],
+    ['LH/FSH', 'Opsyonal, unang 3 buwan', 'LH < 1, FSH < 4.3', 'Kumpirmahin ang pagsupil ng pituitary'],
+  ]}
+/>
+
+**Timing ng pagkuha ng dugo:** Ang mga GnRH agonist depot ay nagpapanatili ng medyo stable na antas ng gamot. Maaaring kunin ang dugo anumang oras kaugnay sa iniksyon — walang tiyak na timing window na kinakailangan.
+
+## Mga GnRH Antagonist: Umuusbong na Alternatibo
+
+Bukod sa mga GnRH **agonist**, may mga GnRH **antagonist** — mga gamot na direktang humaharang sa mga GnRH receptor **nang walang panimulang flare**.
+
+<DoseTable
+  headers={['Gamot', 'Brand', 'Mekanismo', 'Oras Hanggang Castrate', 'Bentaha', 'Limitasyon']}
+  rows={[
+    ['Degarelix', 'Firmagon', 'Direktang pagharang sa GnRH receptor', '3-7 araw', 'Walang flare; mas mabilis na simula', 'Buwanang SubQ na iniksyon; kapansin-pansing reaksyon sa lugar ng iniksyon'],
+    ['Relugolix', 'Orgovyx', 'Oral na GnRH antagonist', '~2 linggo', 'Oral na pag-aadminister; walang flare', 'Araw-araw na oral na dosis; napakamahal; limitadong ebidensya sa transgender'],
+  ]}
+/>
+
+<WarningBox title="Limitadong Ebidensya sa Transgender">
+Ang mga GnRH antagonist ay pangunahing aprubado para sa prostate cancer. Ang ebidensya para sa paggamit sa transgender na HRT ay limitado at hindi pa pormal na inirerekomenda ng WPATH SOC 8 o Endocrine Society 2017. Gamitin sa ilalim ng pangangasiwa ng may karanasang medikal na propesyonal.
+</WarningBox>
+
+## Mga Bentaha at Limitasyon
+
+### Mga Bentaha
+
+- **Pinakamalakas, pinaka-maaasahang pagsupil ng T**: Tuluy-tuloy na umaabot sa antas ng castrate<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
+- **Mahusay na profile ng kaligtasan**: Walang hepatotoxicity, walang hyperkalemia, walang panganib ng meningioma
+- **Hindi madalas na dosis**: Buwanan o quarterly na iniksyon; mahusay na pagsunod
+- **Reversible**: Gumagaling ang HPG axis pagkatapos ihinto (linggo hanggang buwan); maaaring bumalik ang pertilidad
+- **Inirerekomenda ng gabay**: Sinusuportahan ng parehong ES 2017 at WPATH SOC 8<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />
+
+### Mga Limitasyon
+
+- **Napakamahal na gastos**: $1,000-3,000/iniksyon sa US; maaaring sakupin ng UK/EU NHS; China ~¥1,000-2,000/buwan
+- **Kailangan ng iniksyon**: Hindi maaaring inumin (ang mga nasal spray ay may limitadong magagamit)
+- **Mga hadlang sa access**: Kailangan ng reseta; madalas na nirereseta off-label para sa gender dysphoria
+- **Panimulang flare**: Ang unang iniksyon ay nagdudulot ng pansamantalang pagtaas ng T (mapangangasiwaan gamit ang anti-androgen cover)
+- **Pagsubaybay sa bone density**: Ang pangmatagalang paggamit ay nangangailangan ng DEXA scan; dapat palaging i-co-administer ang estradiol
+
+## Kailan Isasaalang-alang ang mga GnRH Agonist
+
+**Inirerekomenda kapag**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+- Pinahihintulutan ng pinansya ang patuloy na paggamit
+- Kontraindikado ang CPA (mga isyu sa atay, panganib ng meningioma, matinding epekto sa mood)
+- Hindi matiis ang spironolactone (panganib ng hyperkalemia, renal insufficiency)
+- Ninanais ang pinakamataas na pagiging maaasahan ng pagsupil ng T
+- Pagsupil ng pagdadalaga sa adolescent (sa ilalim ng pangangasiwa ng specialist)
+
+**Maaaring hindi angkop kapag**:
+- Napakamahal ang gastos
+- Hindi magagawa ang regular na pagbisita sa klinika para sa mga iniksyon
+- May matinding osteoporosis (suriin muna ang bone density)
+
+<DrugBrandGallery drugId="gnrh-agonist" />

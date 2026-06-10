@@ -1,0 +1,134 @@
+---
+title: "CPA (Cyproteronacetat)"
+description: "Die vollständige Pharmakologie von Cyproteron (Androcur), wirksame Niedrigdosis-Schwellen, Hirntumorrisiken, EMA-Beschränkungen und die unverzichtbare Laborüberwachung."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Cyproteronacetat (CPA)"
+  nameCN="Cyproteronacetat (Androcur)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+Cyproteronacetat (CPA, überwiegend unter dem Markennamen Androcur bekannt) gehört zu den weltweit am häufigsten eingesetzten Antiandrogenen in der medizinischen Versorgung von Transpersonen (außerhalb der USA). Bereits in sehr niedrigen Dosen (5-12,5 mg/Tag) unterdrückt es Testosteron zuverlässig und wird in den Leitlinien der Endocrine Society 2017 sowie WPATH SOC 8 ausdrücklich empfohlen. Bei falscher Dosierung birgt es jedoch schwerwiegende Tumorrisiken.
+</DrugInfoBox>
+
+<img src="/images/drugs/androcur-studio.webp" alt="Produktfoto von Androcur 50-mg-Tabletten mit Cyproteronacetat" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<DangerBox title="50 mg sind eine schwere Überdosierung">
+Veraltete Community-Schemata und unzureichend informierte Ärzte verordnen CPA häufig in einer Dosis von 50 mg/Tag oder sogar 100 mg/Tag. Diese extremen Hochdosen wurden für **Männer mit fortgeschrittenem Prostatakrebs** entwickelt, nicht für eine geschlechtsangleichende Hormontherapie (GAHT). Klinische Studien belegen eindeutig, dass bereits 5-12,5 mg/Tag vollkommen ausreichen, um den T-Spiegel auf den weiblichen Normalbereich zu senken<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />. Die Einnahme von 50 mg senkt das Testosteron nicht schneller; sie erhöht lediglich drastisch das Risiko für Hirntumoren, Lebertoxizität und schwere Depressionen. **Wenn Sie aktuell 50 mg einnehmen, reduzieren Sie die Dosis umgehend.**
+</DangerBox>
+
+## Pharmakologie
+
+### Der Wirkmechanismus
+
+CPA senkt den Testosteronspiegel über mehrere parallele Angriffspunkte<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Die gestagene Rückkopplungsschleife** (primär): Als ausgesprochen wirksames Gestagen täuscht CPA dem Hypothalamus vor, die Ausschüttung von GnRH zu stoppen. Dadurch sendet die Hypophyse keine Signale mehr an die Hoden, und die Testosteronsynthese kommt vollständig zum Erliegen.
+2. **Schwacher Rezeptorantagonismus**: Es blockiert in geringem Maße, dass verbleibendes Testosteron an die Zellrezeptoren bindet (dieser Effekt ist jedoch schwach im Vergleich zu Bicalutamid).
+3. **Hemmung der 5α-Reduktase**: Es hemmt in geringem Maße die Umwandlung von T zu DHT.
+
+In der GAHT senkt CPA den Testosteronspiegel, indem es die körpereigene Produktion vollständig herunterfährt<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />. Ihre Blutwerte zeigen dann einen stark abgesenkten T-Spiegel.
+
+### Wirksamkeit in niedriger Dosierung
+
+Zahlreiche Kohortenstudien belegen, dass niedrig dosiertes CPA dem Mythos der Hochdosis weit überlegen ist<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- 10 mg/Tag senken den T-Spiegel zuverlässig unter den weiblichen Schwellenwert von 50 ng/dL.
+- 5 mg/Tag reichen häufig aus, wenn sie mit einer angemessenen Estrogendosis kombiniert werden.
+- Eine Erhöhung auf 50 mg/Tag bewirkt keine zusätzliche Absenkung des T-Spiegels.
+
+## Dosierungsempfehlungen
+
+<DoseTable
+  headers={['Schema', 'Dosis', 'Hinweise', 'Quelle']}
+  rows={[
+    ['Empfohlener Einstieg', '5 mg/Tag ODER 12,5 mg jeden zweiten Tag', 'Die übliche Niedrigdosis in Kombination mit E2.', 'Meyer 2020; WPATH SOC 8'],
+    ['Übliche Erhaltungsdosis', '5-12,5 mg/Tag', 'Anhand Ihrer T-Werte anpassen.', 'ES 2017'],
+    ['Absolute Obergrenze', '12,5 mg/Tag', 'Jede Dosis ab ≥25 mg löst stark erhöhte Tumorrisiken aus.', 'Lee 2022; EMA 2020'],
+  ]}
+/>
+
+<img src="/images/diagrams/en/cpa-pill-splitting.webp" alt="Diagramm zum Teilen der Tablette: eine 50-mg-CPA-Tablette mit Bruchkerbe wird mit einem Tablettenteiler in vier Viertel zu je 12,5 mg geteilt" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<WarningBox title="So nehmen Sie 12,5 mg ein">
+Da CPA von der Pharmaindustrie für die Prostatakrebsbehandlung hergestellt wird, kommen die Tabletten fast immer in großen 50-mg-Einheiten. Sie benötigen einen Tablettenteiler und schneiden die Tablette in Viertel. Die Einnahme eines Viertels (12,5 mg) täglich oder sogar eines Viertels jeden zweiten Tag (im Schnitt ~6,25 mg/Tag) ist die sicherste und wirksamste Methode.
+</WarningBox>
+
+### Schema zum schrittweisen Ausschleichen
+
+Wenn Sie derzeit 50 mg/Tag einnehmen und dies korrigieren müssen<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- **Reduktion auf 25 mg:** Bleiben Sie hier 2 Wochen, damit sich Ihr Körper ohne starke T-Anstiege anpassen kann.
+- **Reduktion auf 12,5 mg:** Bleiben Sie hier 2 Wochen.
+- Kontrollieren Sie die Werte nach 3 Monaten per Blutuntersuchung. Senken Sie Ihr Estrogen nicht, während Sie das CPA ausschleichen.
+
+## Das Meningeom-Risiko
+
+<DangerBox title="Meningeom — die gefährlichste Bedrohung durch CPA">
+Eine langfristige Einnahme von CPA in Dosen ab ≥ 25 mg/Tag steht in eindeutigem Zusammenhang mit der Entstehung von **Meningeomen** (meist gutartige, aber sehr gefährliche Tumoren, die an den Häuten von Gehirn und Rückenmark wachsen)<CitationRef id="lee-2022" num={4} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />:
+
+- Die Einnahme von ≥ 25 mg/Tag über mehr als ein Jahr erhöht das Risiko, einen Hirntumor zu entwickeln, etwa um das **12-Fache** gegenüber dem Normalwert.
+- Eine umfassende Kohortenstudie aus dem Jahr 2026 hat diese Gefahr speziell für Transfrauen vollständig bestätigt<CitationRef id="hudelist-2026" num={5} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />.
+- Aus diesem Grund hat die **Europäische Arzneimittel-Agentur (EMA) im Jahr 2020 strenge rechtliche Beschränkungen erlassen** und fordert, dass Ärzte CPA in hohen Dosen nur dann verordnen, wenn buchstäblich keine andere Option besteht<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />.
+
+**Die Warnzeichen:** Wenn Sie während der CPA-Einnahme unter anhaltend zunehmenden Kopfschmerzen, verschwommenem oder doppeltem Sehen oder unprovozierten Krampfanfällen leiden, **setzen Sie das Medikament sofort ab** und bestehen Sie auf einem MRT des Schädels.
+</DangerBox>
+
+<img src="/images/diagrams/en/cpa-meningioma-risk.webp" alt="Diagramm zum dosisabhängigen Meningeom-Risiko von CPA: Das Risiko steigt oberhalb von 25 mg täglich drastisch an" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Weitere Nebenwirkungen
+
+### Lebertoxizität
+CPA belastet die Leber<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />:
+- Bei 12,5 mg selten, eine Überwachung ist jedoch zwingend erforderlich.
+- Wenn Ihre Leberenzyme (ALT/AST) auf das > 3-Fache des oberen Normwerts ansteigen, müssen Sie CPA absetzen.
+
+### Prolaktin-Anstiege
+Da CPA stark gestagen wirkt, kann es die Hypophyse veranlassen, den Körper mit Prolaktin zu überschwemmen<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />:
+- Eine leichte Erhöhung ist normal und unbedenklich.
+- Wenn das Prolaktin > 50 ng/mL übersteigt, muss Ihr Arzt eine Bildgebung veranlassen, um ein Prolaktinom (einen gutartigen Hypophysentumor) auszuschließen.
+
+### Depression
+Als starkes Gestagen hat CPA dokumentierte psychische Nebenwirkungen<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- Schwere Erschöpfung, Antriebslosigkeit und depressive Episoden werden häufig berichtet.
+- Wenn bei Ihnen eine manisch-depressive Erkrankung oder eine schwere Depression vorbesteht, ist CPA ein sehr riskantes Wagnis.
+
+### VTE (Blutgerinnsel)
+CPA erhöht von sich aus die Gerinnungsneigung des Blutes<CitationRef id="canonico-2018" num={7} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />. Die Kombination von oralem CPA mit oralem Estrogen erzeugt einen äußerst gefährlichen, sich verstärkenden Effekt. Wer CPA einnimmt, sollte konsequent auf transdermales Estrogen (Pflaster oder Gel) umsteigen.
+
+## Verpflichtende Blutkontrollen
+
+<DoseTable
+  headers={['Untersuchung', 'Häufigkeit', 'Zielbereich / Warnung', 'Erforderliche Maßnahme']}
+  rows={[
+    ['Leberenzyme (ALT/AST)', 'Monat 1, 2, 3 → danach alle 3-6 Monate', 'Innerhalb der üblichen Laborbereiche halten', 'Bei > 3-fachem Höchstwert: Medikament absetzen.'],
+    ['Prolaktin (PRL)', 'Ausgangswert, dann alle 6 Monate', 'PRL < 50 ng/mL', 'Bei > 50 ng/mL: Hypophyse bildgebend untersuchen.'],
+    ['Testosteron (T)', 'Monat 1, dann alle 3-6 Monate', 'T < 50 ng/dL', 'Bei stabilem Wert: niedrige Dosis beibehalten.'],
+  ]}
+/>
+
+<WarningBox title="Abruptes Absetzen">
+Anders als Estrogen (das Sie vorsichtig ausschleichen müssen, um Knochenverlust und psychische Beeinträchtigungen zu vermeiden) wird das Gestagen CPA aufgrund seiner Halbwertszeit rasch aus dem Körper ausgeschieden. Bei akuten Leber- oder Tumorsymptomen können Sie CPA bedenkenlos abrupt absetzen. Ihr Testosteron steigt langsam wieder an, weshalb Sie zügig einen Ersatz-Blocker organisieren müssen<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+</WarningBox>
+
+## Globale Verfügbarkeit & das FDA-Verbot
+
+- **In den Vereinigten Staaten**: CPA ist von der FDA weitgehend verboten und über legale Apotheken praktisch nicht erhältlich, sodass amerikanische Transfrauen auf Spironolacton ausweichen müssen.
+- **In Europa/Großbritannien/Australien/Asien**: Weit verbreitet verordnet und vollkommen legal; es bildet das infrastrukturelle Rückgrat der Trans-Gesundheitsversorgung außerhalb der USA.
+- **Der Graumarkt**: DIY-Gruppen weltweit schmuggeln CPA in erheblichen Mengen über Grenzen. Wenn Sie CPA bei unregulierten internationalen Apotheken bestellen, gehen Sie das Risiko manipulierter oder längst abgelaufener Medikamente ein. Gehen Sie mit größter Vorsicht vor.
+
+<DrugBrandGallery drugId="cyproterone-acetate" />

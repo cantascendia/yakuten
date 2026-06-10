@@ -1,0 +1,97 @@
+---
+title: "Chính sách Biên tập"
+description: "Các nguyên tắc biên tập, quy trình đính chính sai sót, chuẩn mực bản quyền và trích dẫn, kênh khiếu nại và phản hồi, cùng việc công bố xung đột lợi ích của HRT药典."
+evidenceLevel: X
+lastReviewed: 2026-04-19
+references: []
+sidebar:
+  order: 103
+---
+
+import BylineCard from '../../../components/ui/BylineCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+
+<BylineCard
+  author="Ban Biên tập HRT药典"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  locale="vi"
+/>
+
+## Những điều tuyệt đối cấm
+
+HRT药典 sẽ không bao giờ đăng tải bất kỳ nội dung nào sau đây:
+
+<DangerBox>
+- Lời khuyên kê đơn cá nhân hóa ("bạn nên dùng X mg")
+- Đường dẫn mua thuốc, đại lý bán hàng, hoặc mã QR giới thiệu/hoa hồng
+- Cách diễn đạt làm suy giảm khả năng nhận biết các tình huống cấp cứu y khoa (DVT, độc tính trên gan, u màng não, v.v.)
+- Tuyên bố y khoa không có DOI hoặc nguồn trích dẫn
+- Mã theo dõi của bên thứ ba hoặc việc lưu trữ dữ liệu sức khỏe của người dùng
+- Cấu hình nhằm vượt qua các tuyên bố miễn trừ trách nhiệm hoặc cảnh báo an toàn của AI
+</DangerBox>
+
+## Ngôn ngữ và giọng điệu
+
+- **Tránh từ ngữ tuyệt đối**: ưu tiên "chúng tôi gợi ý / thường thì / trong phần lớn trường hợp" thay vì "phải / luôn luôn / không bao giờ"
+- **Nói trực tiếp với người đọc**: viết "bạn có thể chọn A hoặc B" thay vì "bệnh nhân nên chọn A"
+- **Nêu rõ điểm chưa chắc chắn**: các kết luận ở mức chứng cứ B/C/X phải được gắn nhãn "dữ liệu còn hạn chế" hoặc "ý kiến chuyên gia"
+- **Giảm kỳ thị**: dùng ngôn ngữ tôn trọng cộng đồng và tránh các thuật ngữ lỗi thời hoặc quá nặng tính lâm sàng
+
+## Trích dẫn và bản quyền
+
+- Mọi tuyên bố y khoa đều được dẫn nguồn qua component `CitationRef` (các ID ánh xạ tới các mục trong `src/data/references.json`)
+- Ưu tiên DOI; khi không có DOI, dẫn thông tin xuất bản của tạp chí kèm một URL ổn định
+- Hình minh họa và sơ đồ là tác phẩm gốc hoặc lấy từ các tác phẩm Creative Commons / phạm vi công cộng; các bản tái sử dụng đều được ghi nhận nguồn
+- Nội dung gốc của trang được phát hành theo giấy phép CC BY-SA 4.0; mã nguồn tuân theo tệp LICENSE của kho lưu trữ
+
+## Đính chính sai sót
+
+Người đọc có thể gửi báo cáo qua [biểu mẫu phản hồi](https://wj.qq.com/s2/16576000/5fe5/) hoặc [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+
+| Loại | Thời gian phản hồi | Cách xử lý |
+|---|---|---|
+| Sai sót dữ kiện | Phản hồi ban đầu trong vòng 72 giờ | **Thông báo đính chính** ở đầu trang + nhật ký thay đổi |
+| Trích dẫn sai lệch | 72 giờ | Thay nguồn trích dẫn và công bố nhật ký đính chính công khai |
+| Thông tin lỗi thời | 7 ngày | Cập nhật bổ sung + làm mới `lastReviewed` |
+| Lời khuyên nguy hiểm | Gỡ bỏ khẩn cấp trong 24 giờ | Sửa chữa hoặc tạm gỡ khỏi trang chờ rà soát |
+
+Các đính chính quan trọng cũng được lan truyền tới:
+
+- Lịch sử phiên bản tại `/vi/appendix-references/`
+- Người đăng ký RSS / Telegram / email
+
+## Khiếu nại và phản hồi
+
+- **Khiếu nại về nội dung**: [biểu mẫu phản hồi](https://wj.qq.com/s2/16576000/5fe5/)
+- **Pháp lý / bản quyền**: mở một GitHub Issue với nhãn `legal`, hoặc liên hệ với những người duy trì kho lưu trữ
+- **Quyền riêng tư**: trang này không thu thập thông tin nhận dạng cá nhân; mọi rò rỉ quyền riêng tư được báo cáo đều được xử lý trong vòng 24 giờ
+
+## Công bố xung đột lợi ích
+
+- **Không tài trợ thương mại, không quảng cáo thuốc, không hoa hồng mua hàng**
+- Chi phí vận hành được trang trải bằng đóng góp tình nguyện và quyên góp từ cộng đồng mã nguồn mở
+- Biên tập viên và cố vấn y khoa ký cam kết công bố xung đột lợi ích; các chủ đề có quan hệ kê đơn hoặc thương mại liên quan trực tiếp sẽ được loại trừ khỏi quá trình biên tập
+- Không liên kết bên ngoài nào mang định danh tiếp thị liên kết (affiliate); chỉ liệt kê các nguồn bệnh viện và đường dây nóng đã được cộng đồng thẩm định
+
+## Chu kỳ rà soát
+
+| Loại trang | Khoảng cách rà soát mặc định |
+|---|---|
+| Nhận biết cấp cứu, lằn ranh đỏ về liều, cảnh báo nguy hiểm | **6 tháng** |
+| Chuyên khảo và hướng dẫn về thuốc | **12 tháng** |
+| Công cụ, chính sách, phương pháp luận | **12 tháng** |
+| Bài blog | Được xác minh một lần sau 12 tháng kể từ ngày đăng |
+
+Một thay đổi lớn trong hướng dẫn (cảnh báo an toàn của EMA/FDA, phiên bản mới của WPATH / Endocrine Society) sẽ kích hoạt **một bản cập nhật bổ sung trong vòng 48 giờ**.
+
+<WarningBox>
+Trang này là cam kết công khai về việc tự quản lý biên tập. **Nếu bạn phát hiện chúng tôi vi phạm bất kỳ điều khoản nào ở trên, xin hãy lên tiếng công khai** — chính sự giám sát đó là cách duy nhất để chúng tôi giữ trọn niềm tin với người đọc.
+</WarningBox>
+
+## Tài liệu liên quan
+
+- [Về trang này](/vi/about/)
+- [Phương pháp luận](/vi/methodology/)
+- [Cố vấn Y khoa](/vi/medical-advisors/)

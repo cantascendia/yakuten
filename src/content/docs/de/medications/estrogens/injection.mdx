@@ -1,0 +1,175 @@
+---
+title: "Injizierbares Estradiol (EV / EC / EEn)"
+description: "Der vollständige Leitfaden zu injizierbarem Estradiol – Pharmakokinetik, Dosierung, Vergleich SC vs. IM, Eignung als Monotherapie, Injektionsprotokolle und kritische Sicherheits-Grenzen."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injizierbares Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuskulär (IM) / Subkutan (SC)"
+  evidenceLevel="A"
+>
+Injizierbares Estradiol ist das unbestrittene Schwergewicht der transfemininen HRT. Es umgeht den First-Pass-Metabolismus der Leber vollständig und liefert hoch vorhersehbare, dominante Östrogenspiegel. Aktuelle klinische Übersichtsarbeiten bestätigen, dass subkutane (SC) Injektionen ebenso wirksam sind wie intramuskuläre (IM) Injektionen<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. Bemerkenswerterweise erreichen rund 82,6 % der Anwenderinnen unter Injektionen eine vollständige T-Suppression als Monotherapie und benötigen dabei keinerlei Antiandrogen-Blocker<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="Progynon Depot 10mg Estradiolvalerat Injektionsampullen" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injizierbares Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## Pharmakokinetik (die Ester)
+
+Injizierbares Estradiol ist an einen „Ester" (eine Fettsäurekette) gekoppelt, der seine Freisetzung ins Blut verlangsamt und einen Depot-Effekt erzeugt. Die drei häufigsten sind:
+- **Estradiolvalerat (EV)**: Kürzeste Halbwertszeit (~4-5 Tage). Erfordert eine Injektion alle 5 bis 7 Tage. Steigt schnell an und fällt steil ab.
+- **Estradiolcypionat (EC)**: Mittlere Halbwertszeit (~8-10 Tage). Flacherer, gleichmäßigerer Verlauf. Wird oft alle 7 bis 10 Tage injiziert.
+- **Estradiolenanthat (EEn)**: Lange Halbwertszeit. Kann bei Injektion alle 7 bis 14 Tage stabile, gleichmäßige Spiegel liefern. Wird in der grauen DIY-Community stark genutzt.
+
+Für diesen Leitfaden (und in Übereinstimmung mit den Standard-Leitlinien der Endocrine Society) gehen wir von **Estradiolvalerat (EV)** als Grundlage aus, da es die am stärksten standardisierte kommerzielle Darreichungsform ist, die in großem Umfang in den USA und Japan hergestellt wird<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dosierung für EV
+
+### Erwachsenen-Bereiche
+
+<DoseTable
+  headers={['Phase', 'Dosierung', 'Hinweis']}
+  rows={[
+    ['Startdosis', '1-2 mg / Woche', 'Niedrigdosierte Einleitungsphase (Monate 1-6) zum Schutz der duktalen Verzweigung.'],
+    ['Erhaltung', '2-4 mg / Woche', 'Titration anhand der Talspiegel-Blutwerte. Ziel E2: 100-200 pg/mL.'],
+    ['Hartes Maximum', '5 mg / Woche', 'Die von Rothman 2024 vorgeschlagene absolute Sicherheitsobergrenze. Niemals blind überschreiten.'],
+  ]}
+/>
+
+Diese Werte stimmen perfekt mit den WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> und den Leitlinien der Endocrine Society überein<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+<WarningBox title="Der fatale Fehler: den Prozess überstürzen">
+Sich in den ersten 6 Monaten auf 1-2 mg/Woche zu beschränken, ist kein „konservatives Gatekeeping"; es ist biologischer Schutz. Im ersten Monat einen massiven 5-mg-EV-Peak in den Blutkreislauf zu pumpen, erzwingt eine vorzeitige lobuloalveoläre Reifung und beendet die duktale Verzweigung der Brust dauerhaft. Siehe den [Leitfaden zur Brustentwicklung](/de/breast-development/).
+</WarningBox>
+
+### Zeitpunkt der Blutentnahme
+
+Du musst das Blut am Morgen deines Injektionstags abnehmen, **unmittelbar bevor du injizierst**. So misst du deinen **Talspiegel** (deine absolut niedrigste E2-Konzentration im Verlauf des Zyklus).
+- **Ziel-Talspiegel:** 100-200 pg/mL.
+- **Warnung:** Ein Talspiegel >200 pg/mL unter EV bedeutet, dass dein Peak an Tag 2 wahrscheinlich extrem hoch war (z. B. 500-800 pg/mL). Hohe Werte erhöhen nur die kardiovaskulären Risiken, sie verstärken die Feminisierung nicht.
+- Wenn dein Talspiegel in einem 7-Tage-EV-Zyklus unter 50 pg/mL abstürzt, solltest du auf einen 5-Tage-Zyklus umstellen (mit einer proportional niedrigeren Dosis), um den Verlauf zu glätten, anstatt einfach alle 7 Tage eine höhere Dosis hineinzupumpen.
+
+## Subkutan (SC) vs. intramuskulär (IM)
+
+Jahrzehntelang zwang die Endokrinologie Trans-Frauen, massive Nadeln zu verwenden, um das Öl tief in den Muskel zu treiben (IM). Aktuelle umfangreiche Daten belegen, dass die subkutane (SC) Verabreichung in das Bauch-/Oberschenkelfett vollkommen gleichwertig ist<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['Kriterium', 'Subkutan (SC)', 'Intramuskulär (IM)']}
+  rows={[
+    ['E2-Laborwerte', 'Identisch mit IM', 'Der historische Standard'],
+    ['T-Suppression', 'Identisch mit IM', 'Der historische Standard'],
+    ['Schmerzfaktor', 'Praktisch schmerzfrei', 'Kann tiefes Muskelziehen und Wundsein auslösen'],
+    ['Nadelstärke', 'Sehr fein (25-27G)', 'Dicker (21-23G), länger'],
+    ['Handhabung', 'Sehr leicht selbst zu verabreichen', 'Glutäale IM erfordert oft eine Begleitperson/Pflegekraft'],
+  ]}
+/>
+
+**Fazit:** Wenn du dir selbst injizierst, ist subkutan (SC) die überlegene, sicherere und weniger belastende Option.
+
+<img src="/images/diagrams/en/injection-angles.webp" alt="Querschnittsvergleich der subkutanen (45°) und intramuskulären (90°) Injektionstechnik" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## Der Vorteil der Monotherapie
+
+Injizierbares Estradiol unterdrückt Testosteron deutlich besser als orale Tabletten. Eine Kohortenstudie von Misakian et al. aus dem Jahr 2025 zeigte, dass **82,6 %** der Anwenderinnen unter injizierbarem Estradiol eine vollständige Testosteron-Suppression (T < 50 ng/dL) ohne jegliches Spironolacton, Bicalutamid oder Cyproteron erreichten<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- Beseitigt die Lebertoxizitätsrisiken von CPA.
+- Beseitigt die diuretischen und Kalium-Risiken von Spiro.
+
+<WarningBox title="Jage der Monotherapie nicht leichtsinnig hinterher">
+Rund 17 % der Personen können aus biologischen Gründen keine Monotherapie erreichen. Wenn du 5 mg/Woche injizierst und dein T bei 300 ng/dL bleibt, **erhöhe deine Injektionsdosis nicht auf 8 mg oder 10 mg**. Du gehörst zu den 17 %. Akzeptiere die Realität und ergänze ein niedrig dosiertes Antiandrogen.
+</WarningBox>
+
+## Injektionsprotokoll
+
+### Die Ausrüstung
+
+| Verabreichung | Spritze | Aufziehnadel | Injektionsnadel |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (zum Aufziehen des Öls) | 25-27G × 1/2" bis 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (zum Aufziehen des Öls) | 21-23G × 1" bis 1,5" |
+
+Verwende immer zwei Nadeln. Nimm eine dicke Nadel, um das zähe Öl aus dem Fläschchen zu ziehen, und wechsle dann zur dünnen, scharfen Nadel zum Injizieren. Das Durchstechen des dicken Gummistopfens des Fläschchens stumpft die Nadel mikroskopisch ab; du willst keine stumpfe, abgenutzte Nadel in deine Haut zwingen.
+
+### Die Stellen
+
+- **Für SC:** Der Bauch (mindestens 5 cm vom Bauchnabel entfernt bleiben) oder die oberen äußeren Oberschenkel. Das Fett zusammenkneifen.
+- **Für IM:** Der Vastus lateralis (äußeres mittleres Drittel des Oberschenkels) oder ventrogluteal (Hüfte/Gesäß).
+
+### Die Durchführung
+
+1. **Hygiene:** Hände mit Seife gründlich waschen. Einen Alkoholtupfer und einen Abwurfbehälter für scharfe Gegenstände bereithalten.
+2. **Desinfizieren:** Den Gummistopfen des Fläschchens abwischen. Die Haut in einer etwa 5 cm großen, nach außen führenden Spirale abwischen. Vollständig an der Luft trocknen lassen.
+3. **Aufziehen:** Luft in der Menge deiner Dosis in die Spritze ziehen. Die Luft in das Fläschchen drücken, um den Druck auszugleichen. Das Öl herunterziehen. Blasen herausklopfen.
+4. **Wechseln & Einstechen:** Zur winzigen Injektionsnadel wechseln. Für SC die Fettfalte zusammenkneifen und die Nadel in einem Winkel von 45° einstechen.
+5. **Aspirieren (optional, aber bei IM üblich):** Den Kolben leicht zurückziehen. Wenn Blut in den Spritzenzylinder eintritt, hast du eine Vene getroffen. Herausziehen und an anderer Stelle neu beginnen.
+6. **Injizieren:** Das zähe Öl langsam injizieren (~10 Sekunden).
+7. **Zurückziehen:** Gleichmäßig herausziehen. Mit einem Wattebausch betupfen. Die Nadel sofort im Abwurfbehälter für scharfe Gegenstände entsorgen.
+
+## Umrechnung von mg in mL (die Rechnung)
+
+Wenn du ein gängiges kommerzielles US-amerikanisches Fläschchen mit **Estradiolvalerat 20 mg/mL** hast (das bedeutet, in jedem 1 mL Öl sind 20 mg EV enthalten):
+
+<DoseTable
+  headers={['Zieldosis (mg)', 'Injektionsvolumen (mL)', 'Konzentration des Fläschchens']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="Überprüfe deine Konzentration">
+DIY-Fläschchen aus aller Welt werden oft in verrückten Dichten gebraut (40 mg/mL, 50 mg/mL). Japanische Ampullen (Progynon Depot) enthalten häufig 10 mg/mL. **Rechne immer auf Basis der Konzentration DEINES Fläschchens.**
+Volumen (mL) = Zieldosis (mg) ÷ Konzentration des Fläschchens (mg/mL).
+</WarningBox>
+
+## Realitätscheck zu Ampullen
+
+In vielen Teilen Asiens und Europas wird injizierbares EV in winzigen, zerbrechlichen Glasampullen statt in Fläschchen mit Gummistopfen verkauft.
+- Ampullen enthalten KEINE Konservierungsstoffe (wie Benzylalkohol).
+- Sobald du das Glas aufbrichst, ist die Flüssigkeit kompromittiert. Du kannst eine geöffnete Ampulle nicht eine Woche lang auf deinem Schreibtisch stehen lassen, um die verbleibende Hälfte später zu injizieren.
+- Manche Anleitungen schlagen vor, die verbleibende Dosis in eine sterile Spritze vorzuziehen und sie maximal 7 Tage im Kühlschrank zu lagern. Das birgt ein inhärentes Kontaminationsrisiko. Sei äußerst vorsichtig.
+
+<DangerBox title="Die tödlichen Grenzen">
+Vermeide katastrophale gesundheitliche Folgen. Tu Folgendes niemals:
+
+- **Einzelinjektionen ≥ 10 mg:** Das Hineinpumpen kolossaler Dosen erzeugt Spitzenwerte >1000 pg/mL und lädt kritische Blutgerinnsel-/VTE-Ereignisse geradezu ein<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **Hohe Dosis + kurzes Intervall (z. B. 5 mg alle 3 Tage):** Der kumulative Effekt staut die Halbwertszeit endlos nach oben, bis du eine toxische physiologische Überladung erreichst<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+Wenn 5 mg/Woche dein T nicht niederringt, akzeptiere, dass die Monotherapie gescheitert ist, und ergänze ein Antiandrogen. Mach dich nicht selbst zu einem Biogefahrenstoff.
+</DangerBox>
+
+---
+
+**Quellenangaben**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />
