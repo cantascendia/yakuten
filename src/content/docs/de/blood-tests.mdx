@@ -1,0 +1,271 @@
+---
+title: "Blutuntersuchungen & Selbstkontroll-Tools"
+description: "Erforderliche Blutuntersuchungen während der HRT, Kontrollintervalle, das Lesen der eigenen Befunde sowie interaktive Selbstkontroll-Tools."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Blutuntersuchungen sind das Fundament eines sicheren HRT-Managements. Ohne Blutwerte lässt sich nicht beurteilen, ob die Medikation wirkt, ob die Dosis sicher ist oder ob der Körper unnötige Risiken eingeht. Diese Seite begleitet dich dabei, wann untersucht werden sollte, welche Parameter bestimmt werden und wie die Ergebnisse zu verstehen sind<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Zugang zu Blutuntersuchungen">
+Je nach Wohnort kannst du Blutuntersuchungen über die hausärztliche Praxis, eine Informed-Consent-Klinik (etwa Planned Parenthood in den USA), spezialisierte Gender-Sprechstunden (wie das NHS oder GenderCare im Vereinigten Königreich) oder private Labordienste (wie Medichecks) erhalten. Unabhängig vom Weg ist die Untersuchung entscheidend. Vergleiche deine Befunde nach Erhalt mit dem Ampelsystem weiter unten.
+</WarningBox>
+
+## 6.1 Was und wann untersuchen
+
+Der Untersuchungsplan gliedert sich in drei Phasen, abgestimmt auf unseren [HRT-Pfad](/de/pathway/)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Phase 1: Einstieg (Monate 1-6)
+
+Dies ist die intensivste Anpassungsphase. Sie erfordert eine engmaschigere Überwachung, um sicherzustellen, dass die Medikation wirkt, und um frühe Nebenwirkungen auszuschließen.
+
+**Kontrolle in Woche 4:**
+
+<DoseTable
+  headers={['Untersuchungsparameter', 'Zweck', 'Zielgruppe']}
+  rows={[
+    ['Sexualhormon-Panel (E2, T, LH, FSH, PRL, P4)', 'Bestätigen, dass E2 ansteigt und T abfällt', 'Alle Anwenderinnen'],
+    ['Leberfunktion (ALT, AST)', 'Frühe Lebertoxizität ausschließen', 'CPA-/Bicalutamid-Anwenderinnen'],
+    ['Elektrolyte (K⁺, Na⁺)', 'Risiko einer Hyperkaliämie ausschließen', 'Spironolacton-Anwenderinnen'],
+  ]}
+/>
+
+**Kontrolle in Woche 12:**
+
+<DoseTable
+  headers={['Untersuchungsparameter', 'Zweck', 'Zielgruppe']}
+  rows={[
+    ['Sexualhormon-Panel', 'Beurteilen, ob die Phasenziele erreicht sind (E2 50-100 pg/mL)', 'Alle Anwenderinnen'],
+    ['Leberfunktion (ALT, AST)', 'Fortlaufende Überwachung der Lebersicherheit', 'CPA-/Bicalutamid-Anwenderinnen'],
+    ['Lipidprofil (TC, TG, LDL, HDL)', 'Stoffwechselauswirkungen beurteilen', 'Alle Anwenderinnen'],
+    ['Elektrolyte (K⁺)', 'Fortlaufende Überwachung des Serumkaliums', 'Spironolacton-Anwenderinnen'],
+  ]}
+/>
+
+<WarningBox title="Ziele der Phase 1">
+E2 erreicht 50-100 pg/mL, T zeigt einen fallenden Trend. Liegt E2 unter 30 pg/mL, kann eine Anpassung der Applikationsform oder der Dosis nötig sein (siehe unseren [Pfad](/de/pathway/))<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **Erhöhe die Dosis in dieser Phase nicht eigenmächtig, nur weil du „nichts spürst".**
+</WarningBox>
+
+### Phase 2: Anpassung (Monate 6-12)
+
+Kontrolle alle 3 Monate<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Untersuchungsparameter', 'Häufigkeit', 'Zielwert']}
+  rows={[
+    ['Sexualhormone (E2, T, PRL)', 'Alle 3 Monate', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Leberfunktion (ALT, AST)', 'Alle 3 Monate (CPA/Bica)', 'ALT/AST ≤ oberer Normwert'],
+    ['Prolaktin (PRL)', 'Alle 6 Monate', 'PRL <50 ng/mL'],
+    ['Elektrolyte (K⁺)', 'Alle 3 Monate (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Phase 3: Erhaltung (ab Monat 12)
+
+Sobald die Hormonspiegel stabil sind, kann die Häufigkeit reduziert werden<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**Routinekontrollen alle 6 Monate:**
+
+<DoseTable
+  headers={['Untersuchungsparameter', 'Beschreibung']}
+  rows={[
+    ['Sexualhormone (E2, T, PRL)', 'Bestätigen, dass du im Zielbereich bleibst'],
+    ['Leberfunktion (ALT, AST)', 'Fortlaufende Überwachung (CPA-/Bica-Anwenderinnen alle 3-6 Monate)'],
+    ['Elektrolyte', 'Fortlaufende Überwachung für Spironolacton-Anwenderinnen'],
+  ]}
+/>
+
+**Jährliche Gesamtkontrollen:**
+
+<DoseTable
+  headers={['Untersuchungsparameter', 'Beschreibung']}
+  rows={[
+    ['Lipidprofil', 'Langfristige Stoffwechselauswirkungen beurteilen'],
+    ['Nüchternblutzucker', 'Fortschreitende Insulinresistenz ausschließen'],
+    ['Blutbild (inkl. Hb)', 'Anämietrends überwachen'],
+    ['Gerinnung + D-Dimer', 'VTE-Risiko beurteilen (entscheidend für Anwenderinnen von oralem E2)'],
+    ['Knochendichte (DXA)', 'Erwägen, insbesondere wenn Östrogen lange ausgesetzt wurde'],
+  ]}
+/>
+
+---
+
+## 6.2 Den Befund verstehen (Ampelsystem)
+
+Im Folgenden werden 7 zentrale HRT-relevante Blutwerte anschaulich dargestellt. **Grün** = Zielbereich, **Gelb** = Vorsicht, **Rot** = Gefahr, Handlungsbedarf<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/en/blood-tubes.webp" alt="Drei Blutentnahmeröhrchen: violett (Blutbild), gelb (Biochemie/Hormone), blau (Gerinnung)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Der Zeitpunkt ist entscheidend">
+Der Zeitpunkt der Blutentnahme beeinflusst die Aussagekraft unmittelbar<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Bitte beachte diese Regeln (es werden **Talspiegel** gemessen):
+
+- **Transdermale Pflaster**: 12-24 Stunden vor dem nächsten Pflasterwechsel
+- **Oral/Sublingual**: Unmittelbar vor der nächsten Einnahme
+- **Injektionen**: Am Morgen der nächsten Injektion, unmittelbar davor
+
+Wird das Blut nicht im Talspiegel abgenommen, fallen die E2-Werte künstlich zu hoch aus und führen zu Fehlinterpretationen darüber, ob die Dosis ausreichend ist.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 100-200 pg/mL ist die internationale Leitlinienempfehlung für die Erhaltung<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Über 200 pg/mL hinaus erfolgt die Feminisierung NICHT schneller; es steigt lediglich das Risiko für Blutgerinnsel und einen vorzeitigen Verschluss der Brustknospen-Wachstumsfugen. E2-Werte unter 20 pg/mL nach Therapiebeginn deuten auf ein Applikationsproblem hin.
+
+<DangerBox title="E2 > 500 pg/mL">
+Übersteigt der E2-Talspiegel 500 pg/mL, reduziere die Dosis umgehend und lass dich ärztlich beurteilen. Dieses Niveau erhöht das Risiko einer venösen Thromboembolie (VTE) deutlich<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosteron (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+T auf &lt;50 ng/dL zu senken (typischer Bereich von Cis-Frauen) ist ein zentrales HRT-Ziel<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Bleibt T nach 6 Monaten über 100 ng/dL, sollte in der Regel das Antiandrogen angepasst werden, statt einfach die E2-Dosis mit Gewalt hochzutreiben<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolaktin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Sowohl Östrogen als auch CPA können das Prolaktin erhöhen<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Leichte Erhöhungen (25-50 ng/mL) sind klinisch oft unbedeutend, sollten aber überwacht werden. Ein PRL über 50 ng/mL sollte abgeklärt werden, um ein Prolaktinom auszuschließen. CPA-Anwenderinnen müssen dies besonders aufmerksam verfolgen.
+
+### Leberfunktion (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA und Bicalutamid bergen ein Risiko für Lebertoxizität<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Der obere Normwert liegt typischerweise bei 40 U/L. Erhöhungen auf das 1- bis 3-Fache des oberen Werts erfordern engmaschige Überwachung; ein Überschreiten des 3-Fachen (>120 U/L) bedeutet, dass CPA oder Bicalutamid umgehend abgesetzt und ärztlicher Rat eingeholt werden sollte<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Warnzeichen einer Leberschädigung">
+Treten eine Gelbfärbung von Haut/Augen (Ikterus), dunkler Urin, anhaltende Übelkeit oder Schmerzen im rechten Oberbauch auf, setze die Medikation unabhängig von deinen letzten ALT/AST-Werten sofort ab<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Dies sind akute Symptome, die eine notfallmäßige Versorgung erfordern.
+</DangerBox>
+
+### Serumkalium (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Spironolacton ist ein kaliumsparendes Diuretikum, das eine Hyperkaliämie verursachen kann<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Setze Spironolacton aus, wenn K⁺ 5.5 mmol/L übersteigt. Reduziere während der Einnahme von Spironolacton kaliumreiche Lebensmittel und verwende keine Kochsalzersatzprodukte.
+
+<DangerBox title="Symptome einer Hyperkaliämie">
+Muskelschwäche, Taubheitsgefühl oder Kribbeln in den Gliedmaßen, Herzklopfen oder Herzrhythmusstörungen. Wenn du Spironolacton einnimmst und diese auftreten, lass dein Kalium umgehend kontrollieren<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Hämoglobin (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb sinkt nach Beginn der Östrogentherapie erwartungsgemäß in den Bereich von Cis-Frauen; dies ist physiologisch<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ein Hb unter 110 g/L signalisiert jedoch eine Anämie, die abgeklärt werden muss.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+Erhöhte D-Dimer-Werte deuten auf Thrombose/Fibrinolyse hin<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Eine leichte Erhöhung (0.5-1.0) bedarf der klinischen Einordnung. Über 1.0 mg/L – insbesondere zusammen mit einer Wadenschwellung, Brustschmerzen oder Atemnot – stellt einen Notfall dar, um eine DVT (tiefe Venenthrombose) oder LE (Lungenembolie) auszuschließen<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Symptome = Notfall">
+Ein allein erhöhtes D-Dimer ist nicht automatisch ein Gerinnsel, doch in Kombination mit einer Wadenschwellung/-überwärmung, plötzlichen Brustschmerzen oder Bluthusten gehe sofort in die Notaufnahme. Orales Estradiol birgt ein höheres VTE-Risiko als die transdermale Anwendung<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Gesamtübersicht
+
+<DoseTable
+  headers={['Parameter', 'Zielbereich (Grün)', 'Vorsicht (Gelb)', 'Gefahr (Rot)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 oder 200-300', '>500 oder <20 (nach Therapiebeginn)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (nach 6 Mon.)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (Prolaktinom ausschließen)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3x Normwert)', '>120 (CPA/Bica absetzen)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Spiro absetzen)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Anämie)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Gerinnsel ausschließen)'],
+  ]}
+/>
+
+---
+
+## 6.3 Interaktives Selbstkontroll-Tool
+
+<WarningBox title="Demnächst verfügbar">
+Die interaktive React-Komponente **BloodTestChecker** wird in Kürze eingeführt. Mit ihr kannst du deine Werte eingeben und erhältst sofort eine Ampelrückmeldung sowie auf dich zugeschnittene Hinweise.
+
+Alle Berechnungen erfolgen in deinem Browser – es werden keine Daten gespeichert oder an Server gesendet.
+</WarningBox>
+
+<WarningBox title="Was du als Nächstes lesen solltest">
+- [HRT-Pfad](/de/pathway/) — Was du auf Basis deiner Ergebnisse als Nächstes tun solltest
+- [Dosisgrenzen](/de/dose-limits/) — Bestätigen, dass deine Dosis im sicheren Bereich liegt
+- [Risiken & Notfälle](/de/risks/) — Wann sofort abgesetzt werden muss
+</WarningBox>

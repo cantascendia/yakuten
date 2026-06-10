@@ -1,0 +1,74 @@
+---
+title: "Drospirenona"
+description: "La drospirenona en la THS feminizante — un progestágeno con propiedades antiandrogénicas y antimineralocorticoides."
+evidenceLevel: C
+sidebar:
+  order: 4
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Drospirenona"
+  nameCN="Drospirenone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+La drospirenona es un progestágeno sintético derivado estructuralmente de la espironolactona, que posee de forma simultánea actividad **antiandrogénica** y **antimineralocorticoide** (similar a la espironolactona). Es una opción no convencional en la THS feminizante, y su perfil farmacológico singular puede resultar útil en escenarios seleccionados<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mecanismo
+
+La drospirenona tiene múltiples actividades farmacológicas:
+
+- **Actividad progestagénica**: se une a los receptores de progesterona
+- **Actividad antiandrogénica**: unión competitiva al receptor de andrógenos (mecanismo similar al de la espironolactona)
+- **Actividad antimineralocorticoide**: efecto diurético similar al de la espironolactona
+- **Sin actividad estrogénica ni glucocorticoide**
+
+### Posicionamiento singular
+
+La drospirenona es el **único progestágeno que combina actividad antiandrogénica y antimineralocorticoide**. Para quienes buscan tanto efectos progestagénicos como una cobertura antiandrogénica leve, la drospirenona puede reducir la necesidad de un antiandrógeno por separado.
+
+## Dosificación
+
+<DoseTable
+  headers={['Fuente', 'Dosis', 'Notas']}
+  rows={[
+    ['En anticonceptivos orales', '3-4 mg/day', 'Combinada con etinilestradiol (NO recomendada para THS)'],
+    ['Monofármaco', '4 mg/day', 'Slynd (píldora de drospirenona sola)'],
+    ['Complemento de THS (exploratorio)', '3-4 mg/day', 'Sin datos de ensayos clínicos a gran escala en THS'],
+  ]}
+/>
+
+<WarningBox title="Precaución de uso">
+La mayoría de los productos que contienen drospirenona son anticonceptivos orales combinados (p. ej. Yaz, Yasmin) que contienen **etinilestradiol (EE)**. Este sitio [prohíbe explícitamente](/es/medications/banned-drugs/) el etinilestradiol en la THS. Si se opta por la drospirenona, hay que usar una **formulación de drospirenona sola** (p. ej. Slynd 4 mg), no un producto combinado con EE.
+</WarningBox>
+
+## Marcas y disponibilidad
+
+| Marca | Formulación | Notas |
+|-------|-------------|-------|
+| **Slynd** | 4 mg de drospirenona sola | Sin EE, apta para THS |
+| **Yaz / Yasmin** | 3 mg de drospirenona + EE | Contiene etinilestradiol, **PROHIBIDA para THS** |
+| Genéricos | Varias | Confirmar que no contengan EE |
+
+## Seguimiento
+
+- **K+ (potasio)**: la drospirenona tiene efectos ahorradores de potasio similares a los de la espironolactona; vigilar el potasio
+- **PRL**: cada 6 meses
+- Si se administra junto con espironolactona, el riesgo de hiperpotasemia aumenta de forma considerable
+
+<DangerBox title="Límites de seguridad">
+- **No debe combinarse con espironolactona**: ambas tienen efectos ahorradores de potasio; la combinación puede provocar una hiperpotasemia peligrosa<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- **No deben usarse formulaciones que contengan EE** (Yaz/Yasmin, etc.)
+- Usar con precaución en caso de insuficiencia renal
+- No existen datos de seguridad a gran escala sobre la drospirenona en la THS de personas trans
+</DangerBox>

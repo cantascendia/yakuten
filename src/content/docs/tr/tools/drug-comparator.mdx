@@ -1,0 +1,34 @@
+---
+title: "İlaç Karşılaştırıcı"
+description: "Farklı HRT ilaçlarının temel parametrelerini yan yana karşılaştırın. Tamamen ön yüzde çalışan bir araç — hiçbir veri iletilmez."
+evidenceLevel: X
+lastReviewed: 2026-04-10
+references: []
+pagefind: false
+---
+
+import DrugComparator from '../../../../components/interactive/DrugComparator.tsx';
+
+## İlaç Karşılaştırması
+
+Temel parametrelerini hızlıca karşılaştırmak için 2-3 ilaç seçin.
+
+**Bu araç şunları anlamanıza yardımcı olur:**
+
+- Östrojen uygulama yolları arasındaki VTE riski farkları (ağızdan vs transdermal vs enjeksiyon)
+- Anti-androjenlerin izlem gereksinimleri ve kontrendikasyonları
+- Her ilaç için kanıt düzeyleri ve doz aralıkları
+
+<DrugComparator client:visible />
+
+## Sonuçlar Nasıl Yorumlanır
+
+- **VTE Riski (RR)**: Görece risk değeri. RR=1.0 başlangıç düzeyidir; >1.5 belirgin bir artışa işaret eder
+- **Kanıt Düzeyi**: A = RCT/Meta-analiz, B = Tek RCT/Kohort çalışması, C = Olgu sunumu/Uzman görüşü
+- **İzlem**: İlacın kullanımı sırasında gereken laboratuvar tetkikleri
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Yalnızca Bilgilendirme Amaçlıdır</div>
+
+Bu araç tıbbi tavsiye niteliği taşımaz. İlaç seçimi; kişisel tıbbi geçmiş, risk faktörleri, ulaşılabilirlik ve maliyet göz önünde bulundurularak yapılmalıdır. **Lütfen kararlarınızı bir sağlık profesyonelinin rehberliğinde verin.**
+</div>

@@ -1,0 +1,76 @@
+---
+title: "Dydrogesterone"
+description: "Dydrogesterone dalam HRT transfeminin — mekanisme progestogen retro-isomer, dosis, perbandingan dengan progesteron mikronisasi, dan keamanan."
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesterone"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+Dydrogesterone adalah retro-isomer progesteron dengan bioavailabilitas oral yang jauh lebih tinggi daripada progesteron mikronisasi. Digunakan sebagai pilihan progestogen alternatif dalam HRT transfeminin, meskipun bukti klinis yang spesifik untuk perawatan transgender masih terbatas<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mekanisme
+
+Dydrogesterone merupakan analog struktural progesteron alami dengan aktivitas reseptor progestogenik yang sangat selektif:
+
+- **Bioavailabilitas oral tinggi**: ~28% (vs ~10% untuk progesteron mikronisasi)
+- **Tanpa aktivitas anti-androgenik**: Tidak seperti CPA atau spironolakton, tidak secara langsung memengaruhi androgen
+- **Tanpa aktivitas glukokortikoid atau mineralokortikoid**
+- **Waktu paruh**: ~14-17 jam
+
+### Perbandingan dengan Progesteron Mikronisasi
+
+| Karakteristik | Dydrogesterone | [Progesteron Mikronisasi](/id/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Jenis | Retro-isomer (sintetik) | Alami/bioidentik |
+| Bioavailabilitas oral | ~28% | ~10% |
+| Efek sedatif | Minimal | Signifikan (karena itu dikonsumsi menjelang tidur) |
+| Rute pemberian | Hanya oral | Oral/rektal/vaginal |
+| Risiko VTE | Data tidak memadai | Netral atau sangat rendah |
+| Tingkat bukti | C | C |
+
+## Dosis
+
+<DoseTable
+  headers={['Indikasi', 'Dosis', 'Catatan']}
+  rows={[
+    ['Suplementasi progestogen HRT', '10-20 mg/day', 'Biasanya 1-2 kali sehari'],
+    ['Regimen siklik', '10 mg/day x 14 days/month', 'Meniru fase luteal siklus menstruasi'],
+  ]}
+/>
+
+<WarningBox title="Progestogen dalam HRT: Kontroversinya">
+WPATH SOC 8 mencatat bahwa manfaat progestogen dalam HRT transfeminin "belum cukup terbukti"<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Sebagian pengguna melaporkan progestogen membantu perkembangan payudara dan suasana hati, tetapi buktinya sebagian besar bersifat anekdotal dan berbasis komunitas.
+</WarningBox>
+
+## Merek & Ketersediaan
+
+| Merek | Kekuatan | Wilayah |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Tersedia luas secara global (termasuk Tiongkok daratan) |
+| Generik | 10 mg | Wilayah tertentu |
+
+## Pemantauan
+
+- **PRL (prolaktin)**: Setiap 6 bulan. Progestogen dapat sedikit meningkatkan prolaktin
+- Tidak diperlukan pemantauan hati tambahan (dydrogesterone memiliki hepatotoksisitas yang sangat rendah)
+
+## Kontraindikasi
+
+- Alergi terhadap dydrogesterone
+- Perdarahan vagina yang tidak diketahui penyebabnya (indikasi cisgender — jarang berlaku dalam konteks transgender)
+- Porfiria hepatik akut

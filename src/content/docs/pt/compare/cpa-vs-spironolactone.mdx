@@ -1,0 +1,209 @@
+---
+title: "CPA vs. Espironolactona: Comparação Clínica na Escolha do Antiandrógeno"
+description: "Comparação lado a lado de CPA (Androcur) e espironolactona (Aldactone) na HRT para mulheres trans (MTF), abordando mecanismo de ação, eficácia na supressão de T, efeitos colaterais, monitoramento, contraindicações e disponibilidade na China continental. Baseado em WPATH SOC 8 e Endocrine Society 2017."
+evidenceLevel: A
+lastReviewed: 2026-04-19
+references: [coleman-2022, hembree-2017, meyer-2020, ema-2020, lee-2022, ucsf-2016]
+faqs:
+  - q: "Qual é melhor, CPA ou espironolactona?"
+    a: "Ambos são opções de primeira linha endossadas pela WPATH SOC 8; não há um vencedor universal. O CPA oferece supressão de T mais confiável, mas carrega riscos cumulativos de meningioma e hepatotoxicidade; a espironolactona é mais fácil de obter e não tem risco de meningioma, mas exige monitoramento rigoroso do potássio. A escolha depende das comorbidades individuais, das condições de monitoramento e do acesso ao medicamento."
+  - q: "A que devo prestar atenção ao trocar de CPA para espironolactona?"
+    a: "Durante a troca, primeiro titule a espironolactona até a dose-alvo ao longo de 2-4 semanas e, em seguida, reduza o CPA gradualmente para evitar o rebote de testosterona. Dentro da janela de transição, verifique potássio, função renal e testosterona a cada 2-4 semanas. Consulte nosso guia de troca de antiandrógeno para ver os passos detalhados."
+  - q: "CPA e espironolactona podem ser usados juntos?"
+    a: "A combinação de rotina não é recomendada. Os efeitos colaterais se somam (hepatotoxicidade + hipercalemia) e não há benefício adicional na supressão de T. Em casos especiais (quando a monoterapia não consegue suprimir o T), a combinação de curto prazo pode ser usada sob supervisão médica com monitoramento intensificado."
+  - q: "Quando o CPA deve ser evitado?"
+    a: "Histórico de meningioma ou ressonância magnética (RM) basal alterada, insuficiência hepática grave, dose cumulativa aproximando-se de 10 g, e usuárias jovens que planejam HRT de longo prazo (>5 anos) devem considerar preferencialmente a espironolactona ou um agonista de GnRH."
+  - q: "Quando a espironolactona deve ser evitada?"
+    a: "Insuficiência renal (eGFR <30), histórico de hipercalemia, hipotensão grave, ou uso concomitante de IECA/BRA sem capacidade de monitorar o potássio. Se os resultados de feminização forem insatisfatórios e não houver contraindicações ao CPA, o CPA pode ser a melhor escolha."
+sidebar:
+  order: 10
+---
+
+import BylineCard from '../../../../components/ui/BylineCard.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+
+<BylineCard
+  author="HRT Pharmacopoeia Editorial Team"
+  lastReviewed="2026-04-19"
+  nextReview="2026-10-19"
+  evidenceLevel="A"
+  refCount={6}
+  locale="en"
+/>
+
+O CPA (acetato de ciproterona, comumente vendido como Androcur) e a espironolactona (Aldactone) são os dois antiandrógenos mais utilizados na HRT para mulheres trans (MTF) no mundo de língua chinesa. Esta página os compara dimensão por dimensão ao longo dos eixos de decisão clínica. **Ela não fornece uma recomendação universal** — a escolha deve ser feita por um(a) profissional de saúde com base nas comorbidades individuais, nas condições de monitoramento e na disponibilidade do medicamento.
+
+:::note[Matriz de Decisão em 30 Segundos]
+| Se a sua situação for → | Escolha recomendada |
+|---|---|
+| Você quer que o T sérico caia rapidamente para a faixa feminina | **CPA 5-12.5 mg** · supressão por retroalimentação negativa mais confiável |
+| Tendência depressiva existente / função hepática alterada / planejamento de uso a longo prazo (>5 anos) | **Espironolactona** · sem risco cumulativo de meningioma |
+| Uso concomitante de IECA/BRA ou dieta rica em potássio | **CPA** · o efeito poupador de potássio da espironolactona agrava o risco de hipercalemia |
+| Insuficiência renal (eGFR &lt;60) | **CPA** (dose reduzida) · espironolactona contraindicada |
+| Acesso fácil na China continental / preocupação com custo | **Espironolactona** · genéricos nacionais amplamente disponíveis, cobertos pelo plano de saúde |
+| Histórico de meningioma / RM basal alterada | **Espironolactona** · CPA absolutamente contraindicado |
+| Gravidez / amamentação / menor de 18 anos | Nenhum dos dois é recomendado; consulte um(a) profissional de saúde |
+
+> Em dúvida? Continue lendo a comparação detalhada, ou use o [autoavaliador de risco](/pt/tools/risk-screener/) para obter ajuda.
+:::
+
+## Em Resumo
+
+| Dimensão | CPA (Androcur) | Espironolactona (Aldactone) |
+|---|---|---|
+| **Mecanismo** | Agonismo do receptor de progesterona + antagonismo fraco de AR + supressão de LH/FSH | Antagonismo da aldosterona (diurético poupador de potássio) + antagonismo de AR em alta dose |
+| **Eficácia na supressão de T** | Mais confiável (retroalimentação negativa na hipófise) | Moderada (sobretudo bloqueio de receptor; o T sérico pode não atingir a faixa de castração) |
+| **Dose padrão** | 5-12.5 mg/day | 100-300 mg/day |
+| **Nível de evidência** | <EvidenceBadge level="A" /> | <EvidenceBadge level="A" /> |
+| **Risco mais grave a longo prazo** | Meningioma (relacionado à dose cumulativa) | Hipercalemia (relacionada à função renal) |
+| **Foco do monitoramento** | Função hepática · prolactina · dose cumulativa · cefaleia/alterações visuais | Potássio · função renal · pressão arterial |
+| **Disponibilidade na China continental** | Somente com prescrição; obtenível em ambulatórios de psiquiatria/endocrinologia | Estocada nos serviços de cardiologia/nefrologia; relativamente fácil de obter |
+| **Custo mensal** | ~30-80 RMB | ~10-30 RMB |
+
+## Diferenças de Mecanismo
+
+### CPA: supressão por múltiplas vias, principalmente por retroalimentação negativa
+
+O CPA reduz a ação androgênica por meio de três mecanismos<CitationRef id="meyer-2020" />:
+
+1. **Retroalimentação negativa via receptor de progesterona** (principal): suprime o GnRH hipotalâmico → reduz o LH/FSH hipofisário → diminui a síntese de testosterona
+2. **Antagonismo fraco do receptor de androgênio**: muito mais fraco que a bicalutamida, com relevância clínica limitada
+3. **Inibição leve da 5α-redutase**: reduz a conversão de T → DHT
+
+Resultado: a testosterona sérica geralmente cai para a faixa feminina (&lt;50 ng/dL); o efeito é mais estável quando combinado com estrogênio.
+
+### Espironolactona: dupla via, aldosterona + androgênio
+
+A espironolactona é originalmente um diurético poupador de potássio; sua ação antiandrogênica vem do bloqueio competitivo do receptor de androgênio em altas doses<CitationRef id="hembree-2017" /><CitationRef id="ucsf-2016" />:
+
+1. **Antagonismo do receptor de aldosterona** (mecanismo principal): diurese poupadora de potássio, reduz a pressão arterial
+2. **Antagonismo do receptor de androgênio** (alta dose): surge acima de 100 mg
+3. **Leve supressão da síntese de testosterona**: mecanismo não totalmente compreendido
+
+Resultado: a testosterona sérica pode cair apenas moderadamente ou permanecer na faixa normal, mas a ação androgênica em nível tecidual é bloqueada, e a feminização clínica ainda é alcançável.
+
+## Eficácia na Supressão de T
+
+| Indicador | CPA 5-12.5 mg | Espironolactona 100-300 mg |
+|---|---|---|
+| Redução mediana da testosterona sérica | 80-95% | 30-60% |
+| Proporção que atinge a faixa feminina (&lt;50 ng/dL) | Maior | Menor; geralmente requer coadministração de E2 |
+| Tempo até o início do efeito | 4-8 semanas | 6-12 semanas |
+| Efeito sobre a DHT | Moderado | Reduzida indiretamente via bloqueio de AR |
+
+**Ponto-chave**: para usuárias "sensíveis aos números séricos" (que querem valores de T na faixa feminina), o CPA atinge a meta com mais facilidade; para usuárias "orientadas por sintomas" (focadas em pelos corporais, sebo, libido), ambos podem ser eficazes.
+
+## Perfil de Efeitos Colaterais
+
+### Principais riscos do CPA
+
+<DangerBox title="Meningioma — relacionado à dose cumulativa">
+A restrição da EMA 2020<CitationRef id="ema-2020" /> baseia-se na coorte nacional francesa (Meyer 2020)<CitationRef id="meyer-2020" /> e em estudos de seguimento<CitationRef id="lee-2022" />:
+
+- **≥25 mg/day cumulativo por ≥1 ano**: OR = 12.4 (95% CI 5.9-26.1)
+- **Dose cumulativa ≥60 g**: risco significativamente elevado
+- O esquema de 5-12.5 mg/day comum no cuidado de pessoas trans tem exposição cumulativa menor, mas o uso a longo prazo ainda exige monitoramento
+
+**Sintomas de alerta**: cefaleia persistente, defeitos do campo visual, convulsões, mudanças de personalidade → procure atendimento imediato e faça uma RM cerebral.
+</DangerBox>
+
+Outros riscos:
+- **Hepatotoxicidade**: elevação de ALT/AST, rara insuficiência hepática aguda; verifique a função hepática a cada 3-6 meses
+- **Humor deprimido / depressão**: efeito progestogênico, relatado por ~10-20% das usuárias
+- **Hiperprolactinemia**: monitore a PRL; elevação persistente sugere redução de dose
+- **Diminuição da libido**: efeito esperado da supressão acentuada de T; algumas usuárias acham incômodo
+
+### Principais riscos da espironolactona
+
+<WarningBox title="Hipercalemia — risco determinado pela função renal">
+A espironolactona inibe a aldosterona → retenção renal de potássio → elevação do potássio sérico. Fatores de risco:
+
+- Função renal reduzida (eGFR &lt;60)
+- Uso concomitante de IECA/BRA, AINEs, suplementos de potássio
+- Ingestão excessiva de alimentos ricos em potássio (água de coco, bananas, sal substituto de potássio)
+- Desidratação, após exercício intenso
+
+**Monitoramento**: verifique potássio + creatinina na semana 2, 2 semanas após cada ajuste de dose e a cada 3-6 meses uma vez estabilizada.
+</WarningBox>
+
+Outros riscos:
+- **Poliúria / noctúria**: efeito diurético; a maioria tolera em 4-8 semanas
+- **Hipotensão / tontura ortostática**: mais proeminente no início do tratamento
+- **Sensibilidade mamária**: comum, geralmente não exige interrupção
+- **Flutuação da libido**: variação individual significativa
+
+## Contraindicações
+
+| Contraindicação | CPA | Espironolactona |
+|---|---|---|
+| Histórico de meningioma | Contraindicação absoluta | Seguro |
+| Insuficiência hepática grave | Contraindicado | Usar com cautela |
+| Insuficiência renal (eGFR &lt;30) | Reduzir a dose | Contraindicada |
+| Hipercalemia conhecida | Seguro | Contraindicada |
+| Uso concomitante de IECA/BRA sem monitoramento | Seguro | Contraindicada |
+| Episódio depressivo/bipolar ativo | Usar com cautela | Relativamente segura |
+| Gravidez (em usuárias férteis) | Contraindicado | Contraindicada |
+
+## Cronograma de Monitoramento
+
+| Momento | CPA | Espironolactona |
+|---|---|---|
+| Basal | Função hepática · prolactina · RM (opcional) | Potássio · função renal · pressão arterial |
+| Semana 2 | — | Potássio · pressão arterial |
+| Semana 6-8 | Testosterona · função hepática · prolactina | Testosterona · potássio · função renal |
+| A cada 3-6 meses | Função hepática · prolactina · revisão da dose cumulativa | Potássio · função renal |
+| Anualmente | RM cerebral (usuárias de longo prazo) | Rastreamento mamário |
+
+## Disponibilidade na China Continental
+
+- **CPA**: "Sepukon" (Androcur) 50 mg é a cartela principal; alguns hospitais estocam "comprimidos de acetato de ciproterona" nacionais. Serviços de psiquiatria, endocrinologia e medicina reprodutiva podem prescrever. ~30-80 RMB por caixa; cobertura do plano de saúde limitada
+- **Espironolactona**: "Aldactone" 20 mg/40 mg predominam; estocada em cardiologia, nefrologia e dermatologia (indicação para acne). Barata, amplamente coberta pelo plano de saúde
+
+**Mercado paralelo / encomenda por correio do exterior**: não recomendado devido à falsificação, temperaturas de armazenamento não controladas e falta de rastreabilidade.
+
+## Como Escolher (Estrutura de Decisão Clínica)
+
+**Prefira o CPA quando**:
+- Você quer valores de T sérico na faixa feminina
+- A monoterapia com espironolactona não suprime o T de forma suficiente
+- Você tem problemas renais ou tendência ao aumento do potássio
+- Você não tolera os efeitos diuréticos da espironolactona
+
+**Prefira a espironolactona quando**:
+- Você é uma usuária jovem planejando HRT de longo prazo (>5 anos), em que a dose cumulativa importa
+- Você tem histórico de meningioma ou RM basal alterada
+- Você também precisa de controle da pressão arterial ou proteção cardiovascular
+- O CPA está indisponível ou é financeiramente oneroso
+
+**Considere um agonista de GnRH quando**:
+- Tanto o CPA quanto a espironolactona forem contraindicados/intoleráveis
+- Você precisa de supressão máxima de T (período de transição antes da gonadectomia)
+- As finanças permitirem
+
+**Monoterapia com injeção de E2 / monoterapia em alta dose**:
+- Algumas usuárias alcançam a supressão natural de T com injeção de E2 em alta dose e podem suspender os antiandrógenos
+- Deve ser feito sob supervisão de um(a) profissional de saúde com monitoramento sanguíneo contínuo
+
+## Fluxo de Trabalho da Troca
+
+Veja o guia detalhado: [Guia Completo de Troca de Antiandrógeno](/pt/guides/switch-antiandrogen/)
+
+<GuideCTA
+  eyebrow="Guia prático"
+  title="Trocando entre dois antiandrógenos?"
+  description="Protocolo passo a passo para trocar de CPA para espironolactona ou para escalonar da espironolactona a um agonista de GnRH, incluindo um cronograma de monitoramento e uma lista de verificação para a consulta."
+  ctaText="Abrir o guia de troca de antiandrógeno"
+  ctaHref="/pt/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+## Páginas Relacionadas
+
+- [Entrada detalhada do CPA (Androcur)](/pt/medications/antiandrogens/cpa/)
+- [Entrada detalhada da espironolactona](/pt/medications/antiandrogens/spironolactone/)
+- [Visão geral dos antiandrógenos](/pt/medications/antiandrogens/overview/)
+- [Guia de exames de sangue](/pt/blood-tests/)

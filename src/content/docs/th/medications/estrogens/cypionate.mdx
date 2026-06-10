@@ -1,0 +1,98 @@
+---
+title: "Estradiol Cypionate (EC)"
+description: "คู่มือฉบับสมบูรณ์ของเอสตราไดออลไซพิโอเนต — เปรียบเทียบเภสัชจลนศาสตร์กับเอสตราไดออลวาเลอเรต ขนาดยา โปรโตคอลการฉีด และขีดจำกัดด้านความปลอดภัย"
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Cypionate (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="ฉีดเข้ากล้ามเนื้อ (IM) / ฉีดใต้ผิวหนัง (SC)"
+  evidenceLevel="B"
+>
+เอสตราไดออลไซพิโอเนต (Estradiol Cypionate, EC) เป็นเอสเทอร์ของเอสตราไดออลชนิดฉีดที่ออกฤทธิ์ยาวนาน ใช้กันเป็นหลักในทวีปอเมริกา เมื่อเทียบกับเอสตราไดออลวาเลอเรต (Estradiol Valerate, EV) แล้ว EC มีค่าครึ่งชีวิตที่ยาวกว่า (~8-10 วัน เทียบกับ 4-5 วัน) จึงสามารถเว้นระยะการฉีดให้ห่างขึ้นได้<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /> ชื่อทางการค้า: Depo-Estradiol
+</DrugInfoBox>
+
+## เภสัชจลนศาสตร์
+
+โปรไฟล์เภสัชจลนศาสตร์ของเอสตราไดออลไซพิโอเนต<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **ค่าครึ่งชีวิต (Half-life)**: ~8-10 วัน (เทียบกับ ~4-5 วันสำหรับ EV)
+- **เวลาถึงระดับสูงสุด (Peak)**: 2-4 วันหลังฉีด
+- **เวลาถึงระดับต่ำสุด (Trough)**: 7-10 วันหลังฉีด
+- **ระดับคงตัว (Steady state)**: เข้าสู่ภาวะคงตัวหลังจากฉีดตามรอบสม่ำเสมอ ~3-4 รอบ
+
+### เปรียบเทียบกับเอสตราไดออลวาเลอเรต (EV)
+
+<DoseTable
+  headers={['พารามิเตอร์', 'Estradiol Cypionate (EC)', 'Estradiol Valerate (EV)']}
+  rows={[
+    ['ค่าครึ่งชีวิต', '~8-10 วัน', '~4-5 วัน'],
+    ['เวลาถึงระดับสูงสุด', '2-4 วัน', '2-3 วัน'],
+    ['ระยะการฉีดที่แนะนำ', '7-14 วัน', '5-7 วัน'],
+    ['ความผันผวนของระดับในเลือด', 'น้อยกว่า', 'มากกว่า'],
+    ['ภูมิภาคที่ใช้เป็นหลัก', 'ทวีปอเมริกา', 'ทั่วโลก'],
+    ['ความเสี่ยง VTE (RR)', '~1.0 (เลี่ยงการเผาผลาญผ่านตับรอบแรก)', '~1.0'],
+    ['ระดับหลักฐาน', 'B', 'A'],
+  ]}
+/>
+
+ค่าครึ่งชีวิตที่ยาวกว่าของ EC ทำให้ระดับ E2 ลดลงน้อยกว่าในช่วงต่ำสุด จึงได้กราฟความเข้มข้นที่ราบเรียบกว่า<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />
+
+## ขนาดยา
+
+### ขนาดยาสำหรับผู้ใหญ่
+
+<DoseTable
+  headers={['ระยะ', 'ขนาดยา', 'หมายเหตุ']}
+  rows={[
+    ['ขนาดเริ่มต้น', '2-3 mg/week', 'เริ่มด้วยขนาดต่ำ (ใน 1-6 เดือนแรก) เพื่อปกป้องการพัฒนาของเต้านม'],
+    ['ขนาดคงระดับ (Maintenance)', '3-5 mg/week', 'ปรับตามค่า E2 ช่วงต่ำสุด; เป้าหมาย 100-200 pg/mL'],
+    ['ขนาดสูงสุด', '7 mg/10-14 days', 'ห้ามเกินกว่านี้'],
+  ]}
+/>
+
+แหล่งอ้างอิงขนาดยา: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> และ WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> เนื่องจาก EC มีค่าครึ่งชีวิตที่ยาวกว่า ผู้ใช้บางรายจึงเลือกเว้นระยะการฉีดทุก 10-14 วัน
+
+<WarningBox title="ระยะการฉีดและจังหวะเวลาเจาะเลือด">
+ผู้ใช้ EC ควรเจาะเลือดใน**เช้าวันก่อนถึงกำหนดฉีดครั้งถัดไป** เพื่อวัดระดับช่วงต่ำสุด (trough) หากใช้รอบการฉีดทุก 10 วัน ระดับต่ำสุดจะอยู่ในเช้าของวันที่ 10 เป้าหมายค่า E2 ช่วงต่ำสุด: 100-200 pg/mL
+</WarningBox>
+
+## ยี่ห้อและการหาซื้อ
+
+| ยี่ห้อ | ความเข้มข้น | ภูมิภาค |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | สหรัฐอเมริกา |
+| ร้านยาปรุงยาเฉพาะราย (Compounding pharmacies) | หลากหลาย | บางภูมิภาค |
+
+EC หาซื้อได้เป็นหลักในสหรัฐอเมริกาและละตินอเมริกา ในภูมิภาคที่ไม่มีจำหน่าย [เอสตราไดออลวาเลอเรตชนิดฉีด](/th/medications/estrogens/injection/) คือทางเลือกมาตรฐาน
+
+## การติดตามผล
+
+เช่นเดียวกับเอสเทอร์ของเอสตราไดออลชนิดฉีดอื่น ๆ:
+
+- **E2**: ทุก 3 เดือน เจาะช่วงต่ำสุด (เช้าวันก่อนฉีด) เป้าหมาย 100-200 pg/mL
+- **T**: ทุก 3 เดือน เป้าหมาย &lt;50 ng/dL
+- **การทำงานของตับ (ALT/AST)**: ค่าพื้นฐาน + ทุก 6 เดือน
+
+## เทคนิคการฉีด
+
+ขั้นตอนการฉีดเหมือนกับ [เอสตราไดออลวาเลอเรตชนิดฉีด](/th/medications/estrogens/injection/#injection-technique) ทุกประการ ใช้ได้ทั้งวิธีฉีดใต้ผิวหนัง (SC) และฉีดเข้ากล้ามเนื้อ (IM)
+
+<DangerBox title="ขีดจำกัดด้านความปลอดภัย">
+- **ขนาดยาต่อการฉีดหนึ่งครั้งต้องไม่เกิน 10 mg**
+- เป้าหมายคือการรักษาระดับ E2 ให้อยู่ในช่วงสรีรวิทยาที่คงตัว ไม่ใช่การไล่ตามระดับสูงสุดที่พุ่งขึ้น
+- ค่า E2 >200 pg/mL ไม่ได้ทำให้การสร้างความเป็นหญิงแรงขึ้น มีแต่จะเพิ่มความเสี่ยงการเกิดลิ่มเลือด<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- หาก EC ไม่มีจำหน่ายในภูมิภาคของคุณ อย่าซื้อผ่านช่องทางที่ไม่ผ่านการตรวจสอบ
+</DangerBox>

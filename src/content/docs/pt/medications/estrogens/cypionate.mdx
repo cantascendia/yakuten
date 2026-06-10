@@ -1,0 +1,98 @@
+---
+title: "Cipionato de Estradiol (EC)"
+description: "Guia completo sobre o cipionato de estradiol — comparação farmacocinética com o valerato de estradiol, posologia, protocolos de injeção e limites de segurança."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Cipionato de Estradiol (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutânea (SC)"
+  evidenceLevel="B"
+>
+O cipionato de estradiol (EC) é um éster injetável de estradiol de ação prolongada, usado principalmente nas Américas. Em comparação com o valerato de estradiol (EV), o EC tem uma meia-vida mais longa (~8-10 dias contra 4-5 dias), o que permite intervalos de injeção mais espaçados<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Nome comercial: Depo-Estradiol.
+</DrugInfoBox>
+
+## Farmacocinética
+
+Perfil farmacocinético do cipionato de estradiol<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Meia-vida**: ~8-10 dias (contra ~4-5 dias do EV)
+- **Tempo até o pico**: 2-4 dias após a injeção
+- **Tempo até o vale**: 7-10 dias após a injeção
+- **Estado de equilíbrio**: atingido após ~3-4 ciclos regulares
+
+### Comparação com o valerato de estradiol (EV)
+
+<DoseTable
+  headers={['Parâmetro', 'Cipionato de Estradiol (EC)', 'Valerato de Estradiol (EV)']}
+  rows={[
+    ['Meia-vida', '~8-10 dias', '~4-5 dias'],
+    ['Tempo até o pico', '2-4 dias', '2-3 dias'],
+    ['Intervalo recomendado', '7-14 dias', '5-7 dias'],
+    ['Flutuação do nível sérico', 'Menor', 'Maior'],
+    ['Região predominante', 'Américas', 'Global'],
+    ['Risco de TEV (RR)', '~1.0 (contorna a primeira passagem)', '~1.0'],
+    ['Nível de evidência', 'B', 'A'],
+  ]}
+/>
+
+A meia-vida mais longa do EC resulta em menor queda do E2 no vale, produzindo uma curva de concentração mais suave<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Posologia
+
+### Posologia em adultos
+
+<DoseTable
+  headers={['Fase', 'Dose', 'Observações']}
+  rows={[
+    ['Dose inicial', '2-3 mg/semana', 'Início em dose baixa (primeiros 1-6 meses) para proteger o desenvolvimento mamário'],
+    ['Dose de manutenção', '3-5 mg/semana', 'Ajustar com base no E2 de vale; alvo de 100-200 pg/mL'],
+    ['Dose máxima', '7 mg/10-14 dias', 'Não ultrapassar'],
+  ]}
+/>
+
+Referências de posologia: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> e WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Devido à meia-vida mais longa do EC, algumas pessoas optam por intervalos de injeção de 10-14 dias.
+
+<WarningBox title="Intervalo de injeção e momento da coleta de sangue">
+Quem usa EC deve coletar sangue na **manhã anterior à próxima injeção** para medir os níveis de vale. Em um esquema de 10 dias, o vale ocorre na manhã do dia 10. E2 de vale alvo: 100-200 pg/mL.
+</WarningBox>
+
+## Marcas e disponibilidade
+
+| Marca | Concentração | Região |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | Estados Unidos |
+| Farmácias de manipulação | Variável | Regiões específicas |
+
+O EC está disponível principalmente nos EUA e na América Latina. Em regiões onde não é encontrado, a [injeção de valerato de estradiol](/pt/medications/estrogens/injection/) é a alternativa padrão.
+
+## Monitoramento
+
+Igual ao de outros ésteres injetáveis de estradiol:
+
+- **E2**: a cada 3 meses, coleta no vale (manhã antes da injeção). Alvo de 100-200 pg/mL
+- **T**: a cada 3 meses. Alvo de &lt;50 ng/dL
+- **Função hepática (ALT/AST)**: basal + a cada 6 meses
+
+## Técnica de injeção
+
+O procedimento de injeção é idêntico ao da [injeção de valerato de estradiol](/pt/medications/estrogens/injection/#injection-technique). Tanto a via SC quanto a IM são adequadas.
+
+<DangerBox title="Limites de segurança">
+- **A dose de uma única injeção não deve ultrapassar 10 mg**
+- O objetivo é manter níveis fisiológicos estáveis de E2, e não perseguir picos elevados
+- E2 >200 pg/mL não produz feminização mais intensa, apenas aumenta o risco de coágulos<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Se o EC não estiver disponível na sua região, não o adquira por canais não verificados
+</DangerBox>

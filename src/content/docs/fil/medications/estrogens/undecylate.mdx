@@ -1,0 +1,91 @@
+---
+title: "Estradiol Undecylate (EU)"
+description: "Kumpletong gabay sa estradiol undecylate — pharmacokinetics, dosing, at mga konsiderasyon sa kaligtasan ng ultra-long-acting na injectable na ester."
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Undecylate (EU)"
+  nameCN="Estradiol Undecylate Injection"
+  category="estrogen"
+  route="Intramuscular (IM)"
+  evidenceLevel="C"
+>
+Ang estradiol undecylate (EU) ay isa sa pinakamatagal kumilos na injectable na ester ng estradiol, na may half-life na humigit-kumulang 20-30 days, kaya nagbibigay-daan ito sa buwanan o mas mahabang agwat ng iniksyon<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Dating ibinebenta bilang Progynon Depot 100 at iba pang mga brand, ngunit napakalimitado na ngayon ng pandaigdigang availability nito. Evidence level C ito dahil sa kakulangan ng datos mula sa malakihang klinikal na pagsubok sa HRT.
+</DrugInfoBox>
+
+## Pharmacokinetics
+
+Profile ng pharmacokinetics ng estradiol undecylate<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
+
+- **Half-life**: ~20-30 days (pinakamahaba sa lahat ng injectable na ester)
+- **Oras ng peak**: ~3-7 days pagkatapos ng iniksyon
+- **Tagal ng pagkilos**: Ang isang iniksyon ay nagpapanatili ng epektibong antas ng E2 nang ~30-40 days
+- **Steady state**: Dahil sa napakahabang half-life, nangangailangan ng ~2-3 na buwan upang maabot ang steady state
+
+### Paghahambing sa Ibang Injectable na Ester
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerate)', 'EC (Cypionate)', 'EU (Undecylate)']}
+  rows={[
+    ['Half-life', '~4-5 days', '~8-10 days', '~20-30 days'],
+    ['Agwat ng iniksyon', '5-7 days', '7-14 days', '21-30 days'],
+    ['Kakayahang i-adjust ang dosis', 'Mataas', 'Katamtaman', 'Mababa'],
+    ['Pagbabago-bago ng antas sa serum', 'Mas malaki', 'Katamtaman', 'Mas maliit'],
+    ['Pandaigdigang availability', 'Malawak na makukuha', 'Amerika', 'Napakalimitado'],
+    ['Evidence level', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="Evidence Level C">
+Napakalimitado ng klinikal na datos sa estradiol undecylate para sa HRT ng transgender. Karamihan ng datos sa pharmacokinetics ay nagmula sa maliliit na pag-aaral na isinagawa noong 1970s-1980s. Kapag may makukuhang ibang injectable na ester (EV o EC), karaniwang inirerekomenda ang mga ito bilang first-line na opsyon dahil mas matibay ang ebidensya.
+</WarningBox>
+
+## Dosing
+
+### Dosis para sa Adulto (Sanggunian Lamang)
+
+<DoseTable
+  headers={['Yugto', 'Dosis', 'Tala']}
+  rows={[
+    ['Panimulang dosis', '20-40 mg/month', 'Konserbatibong simula'],
+    ['Pampanatiling dosis', '40-100 mg/month', 'I-adjust batay sa trough E2'],
+    ['Pinakamataas na dosis', '100 mg/month', 'Huwag lalampasan'],
+  ]}
+/>
+
+Dahil sa napakahabang half-life nito, **mabagal magkabisa** ang mga pagbabago sa dosis ng EU. Para sa mga sitwasyong nangangailangan ng mabilis na pag-adjust ng antas, mas angkop ang mga mas maikli kumilos na ester (EV)<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+## Mga Brand at Availability
+
+| Brand | Konsentrasyon | Rehiyon | Status |
+|-------|---------------|---------|--------|
+| **Progynon Depot 100** | 100 mg/mL | Dating Europa/Asya | Hindi na ginagawa |
+| Mga compounding pharmacy | Iba't iba | Napakakaunting rehiyon | Limitado |
+
+**Napakalimitado** ng pandaigdigang availability ng EU. Karamihan ng mga gumagamit ay dapat pumili ng EV o EC bilang kanilang ninanais na injectable na estradiol.
+
+## Monitoring
+
+- **E2**: Tuwing 3 buwan, trough draw 1-2 araw bago ang iniksyon. Target na 100-200 pg/mL
+- **T**: Tuwing 3 buwan. Target na &lt;50 ng/dL
+- **Liver function (ALT/AST)**: Baseline + tuwing 6 na buwan
+
+Dahil sa napakahabang half-life, kailangan ng mas madalas na blood monitoring sa simula ng paggamit upang kumpirmahin ang antas ng accumulation.
+
+<DangerBox title="Mga Hangganan sa Kaligtasan">
+- Ang ultra-long na half-life ng EU ay nangangahulugang mas mataas na panganib ng accumulation — kapag nagkaroon ng side effects, mananatili ang gamot sa katawan nang ilang linggo pagkatapos ihinto
+- Hindi angkop sa mga sitwasyong nangangailangan ng mabilis na pag-adjust ng dosis
+- Ang E2 >200 pg/mL ay hindi nagdudulot ng mas matinding feminization<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Dahil sa labis na hindi matatag na pandaigdigang supply, hindi inirerekomenda ang EU bilang pangunahing rehimen ng HRT
+</DangerBox>

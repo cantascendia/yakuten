@@ -1,0 +1,271 @@
+---
+title: "Tes Darah & Alat Pemeriksaan Mandiri"
+description: "Tes darah yang wajib dilakukan selama HRT, jadwal pemeriksaan ulang, cara membaca hasil laboratorium Anda, dan alat pemeriksaan mandiri interaktif."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [hembree-2017, coleman-2022, canonico-2018, ema-2020]
+sidebar:
+  order: 6
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import BloodTestRange from '../../../components/ui/BloodTestRange.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+
+<EvidenceBadge level="A" />
+
+Tes darah adalah fondasi pengelolaan keamanan HRT. Tanpa data tes darah, Anda tidak punya cara untuk mengetahui apakah obat bekerja, apakah dosis Anda aman, atau apakah tubuh Anda menanggung risiko yang tidak perlu. Halaman ini akan memandu Anda mengenai kapan harus menjalani tes, apa yang perlu diperiksa, dan bagaimana memahami hasilnya<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Mengakses Tes Darah">
+Bergantung pada lokasi Anda, tes darah bisa diakses melalui layanan dokter primer, klinik berbasis informed consent (seperti Planned Parenthood di AS), klinik identitas gender khusus (seperti NHS atau GenderCare di Inggris), atau layanan tes swasta (seperti Medichecks). Apa pun jalurnya, menjalani tes adalah hal yang penting. Setelah menerima hasil, bandingkan dengan sistem lampu lalu lintas kami di bawah.
+</WarningBox>
+
+## 6.1 Apa yang Perlu Diperiksa dan Kapan
+
+Jadwal tes darah dibagi menjadi tiga fase, sejalan dengan [Jalur HRT](/id/pathway/) kami<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Fase 1: Inisiasi (Bulan 1-6)
+
+Ini adalah periode penyesuaian paling intensif, membutuhkan pemantauan lebih sering untuk memastikan obat bekerja dan menyingkirkan efek samping dini.
+
+**Pemeriksaan Minggu ke-4:**
+
+<DoseTable
+  headers={['Item Tes', 'Tujuan', 'Pengguna Sasaran']}
+  rows={[
+    ['Panel Hormon Seks (E2, T, LH, FSH, PRL, P4)', 'Memastikan E2 naik dan T turun', 'Semua pengguna'],
+    ['Fungsi Hati (ALT, AST)', 'Menyingkirkan hepatotoksisitas dini', 'Pengguna CPA / Bikalutamida'],
+    ['Elektrolit (K⁺, Na⁺)', 'Menyingkirkan risiko hiperkalemia', 'Pengguna Spironolakton'],
+  ]}
+/>
+
+**Pemeriksaan Minggu ke-12:**
+
+<DoseTable
+  headers={['Item Tes', 'Tujuan', 'Pengguna Sasaran']}
+  rows={[
+    ['Panel Hormon Seks', 'Menilai apakah target tahap ini tercapai (E2 50-100 pg/mL)', 'Semua pengguna'],
+    ['Fungsi Hati (ALT, AST)', 'Pemantauan berkelanjutan keamanan hati', 'Pengguna CPA / Bikalutamida'],
+    ['Panel Lipid (TC, TG, LDL, HDL)', 'Menilai dampak metabolik', 'Semua pengguna'],
+    ['Elektrolit (K⁺)', 'Pemantauan berkelanjutan kalium darah', 'Pengguna Spironolakton'],
+  ]}
+/>
+
+<WarningBox title="Target Fase 1">
+E2 mencapai 50-100 pg/mL, T menurun. Jika E2 di bawah 30 pg/mL, Anda mungkin perlu menyesuaikan metode pemberian atau dosis (lihat [Jalur HRT](/id/pathway/) kami)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. **Jangan menaikkan dosis sembarangan pada tahap ini hanya karena Anda merasa "tidak ada perubahan".**
+</WarningBox>
+
+### Fase 2: Penyesuaian (Bulan 6-12)
+
+Periksa setiap 3 bulan<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+<DoseTable
+  headers={['Item Tes', 'Frekuensi', 'Target']}
+  rows={[
+    ['Hormon Seks (E2, T, PRL)', 'Setiap 3 bulan', 'E2 100-200 pg/mL, T <50 ng/dL'],
+    ['Fungsi Hati (ALT, AST)', 'Setiap 3 bulan (CPA/Bika)', 'ALT/AST ≤ batas atas normal'],
+    ['Prolaktin (PRL)', 'Setiap 6 bulan', 'PRL <50 ng/mL'],
+    ['Elektrolit (K⁺)', 'Setiap 3 bulan (Spiro)', 'K⁺ 3.5-5.0 mmol/L'],
+  ]}
+/>
+
+### Fase 3: Pemeliharaan (12 Bulan+)
+
+Setelah kadar hormon stabil, frekuensi bisa dikurangi<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+**Pemeriksaan Rutin Tiap 6 Bulan:**
+
+<DoseTable
+  headers={['Item Tes', 'Keterangan']}
+  rows={[
+    ['Hormon Seks (E2, T, PRL)', 'Memastikan Anda tetap dalam rentang target'],
+    ['Fungsi Hati (ALT, AST)', 'Pemantauan berkelanjutan (pengguna CPA/Bika setiap 3-6 bulan)'],
+    ['Elektrolit', 'Pemantauan berkelanjutan untuk pengguna Spironolakton'],
+  ]}
+/>
+
+**Pemeriksaan Komprehensif Tahunan:**
+
+<DoseTable
+  headers={['Item Tes', 'Keterangan']}
+  rows={[
+    ['Panel Lipid', 'Menilai dampak metabolik jangka panjang'],
+    ['Gula Darah Puasa', 'Menyingkirkan resistensi insulin yang progresif'],
+    ['Hitung Darah Lengkap (termasuk Hb)', 'Memantau tren anemia'],
+    ['Koagulasi + D-Dimer', 'Menilai risiko VTE (krusial bagi pengguna E2 oral)'],
+    ['Densitas Tulang (DXA)', 'Dipertimbangkan, terutama jika estrogen ditahan dalam waktu lama'],
+  ]}
+/>
+
+---
+
+## 6.2 Memahami Hasil Laboratorium Anda (Lampu Lalu Lintas)
+
+Berikut ini secara visual menggambarkan 7 penanda inti tes darah yang terkait dengan HRT. **Hijau** = Rentang Target, **Kuning** = Waspada, **Merah** = Bahaya, perlu tindakan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<img src="/images/diagrams/en/blood-tubes.webp" alt="Tiga tabung pengambilan darah: ungu (hitung darah lengkap), kuning (biokimia/hormon), biru (koagulasi)" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-lg) 0 var(--space-md);" />
+
+<WarningBox title="Waktu Adalah Segalanya">
+Waktu pengambilan darah langsung memengaruhi keterbacaan hasil<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Ikuti aturan berikut (ukur **kadar trough/terendah**):
+
+- **Patch Transdermal**: 12-24 jam sebelum penggantian patch berikutnya
+- **Oral/Sublingual**: Tepat sebelum dosis berikutnya
+- **Injeksi**: Pagi hari, tepat sebelum injeksi berikutnya
+
+Jika Anda TIDAK mengambil darah pada kadar trough, pembacaan E2 akan tampak tinggi secara semu, sehingga menimbulkan salah tafsir mengenai apakah dosis sudah memadai.
+</WarningBox>
+
+### Estradiol (E2)
+
+<BloodTestRange
+  label="E2"
+  unit="pg/mL"
+  greenMin={100}
+  greenMax={200}
+  yellowMin={200}
+  yellowMax={300}
+  redThreshold={500}
+  redDirection="above"
+/>
+
+E2 100-200 pg/mL adalah rekomendasi pedoman internasional untuk pemeliharaan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Melebihi 200 pg/mL TIDAK akan mempercepat feminisasi; itu hanya meningkatkan risiko pembekuan darah dan penutupan dini lempeng pertumbuhan payudara. Kadar E2 di bawah 20 pg/mL setelah pengobatan menandakan adanya masalah pada pemberian obat.
+
+<DangerBox title="E2 > 500 pg/mL">
+Jika E2 trough melebihi 500 pg/mL, segera kurangi dosis dan cari evaluasi medis. Kadar ini secara signifikan meningkatkan risiko trombosis vena dalam (VTE)<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />.
+</DangerBox>
+
+### Testosteron (T)
+
+<BloodTestRange
+  label="T"
+  unit="ng/dL"
+  greenMin={0}
+  greenMax={50}
+  yellowMin={50}
+  yellowMax={100}
+  redThreshold={100}
+  redDirection="above"
+/>
+
+Menekan T hingga &lt;50 ng/dL (rentang khas perempuan cis) adalah salah satu target inti HRT<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Jika T tetap >100 ng/dL setelah 6 bulan, biasanya Anda perlu menyesuaikan anti-androgen, bukan sekadar memaksakan dosis E2 yang lebih tinggi<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+### Prolaktin (PRL)
+
+<BloodTestRange
+  label="PRL"
+  unit="ng/mL"
+  greenMin={0}
+  greenMax={25}
+  yellowMin={25}
+  yellowMax={50}
+  redThreshold={50}
+  redDirection="above"
+/>
+
+Baik estrogen maupun CPA dapat meningkatkan prolaktin<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Peningkatan ringan (25-50 ng/mL) seringkali tidak bermakna secara klinis tetapi perlu dipantau. PRL di atas 50 ng/mL sebaiknya dievaluasi untuk menyingkirkan prolaktinoma. Pengguna CPA harus memantaunya dengan cermat.
+
+### Fungsi Hati (ALT/AST)
+
+<BloodTestRange
+  label="ALT/AST"
+  unit="U/L"
+  greenMin={0}
+  greenMax={40}
+  yellowMin={40}
+  yellowMax={120}
+  redThreshold={120}
+  redDirection="above"
+/>
+
+CPA dan bikalutamida membawa risiko hepatotoksisitas<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Batas atas normal biasanya 40 U/L. Peningkatan hingga 1-3 kali batas atas memerlukan pemantauan ketat; melebihi 3 kali (>120 U/L) berarti Anda harus segera menghentikan CPA atau bikalutamida dan berkonsultasi dengan dokter<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+
+<DangerBox title="Tanda Peringatan Kerusakan Hati">
+Jika muncul kulit/mata menguning (ikterus), urine gelap, mual yang menetap, atau nyeri perut kanan atas, segera hentikan obat tanpa memandang angka ALT/AST terakhir Anda<CitationRef id="ema-2020" num={4} authors="EMA" year={2020} title="Restrictions on use of cyproterone" />. Ini adalah gejala akut yang memerlukan perawatan gawat darurat.
+</DangerBox>
+
+### Kalium Darah (K⁺)
+
+<BloodTestRange
+  label="K⁺"
+  unit="mmol/L"
+  greenMin={3.5}
+  greenMax={5.0}
+  yellowMin={5.0}
+  yellowMax={5.5}
+  redThreshold={5.5}
+  redDirection="above"
+/>
+
+Spironolakton adalah diuretik hemat kalium yang dapat menyebabkan hiperkalemia<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Hentikan sementara spironolakton jika K⁺ melebihi 5.5 mmol/L. Selama menggunakan spironolakton, batasi makanan tinggi kalium dan jangan gunakan garam pengganti (salt substitute).
+
+<DangerBox title="Gejala Hiperkalemia">
+Kelemahan otot, kebas atau kesemutan di ekstremitas, jantung berdebar, atau aritmia. Jika sedang memakai spironolakton dan mengalami hal ini, segera periksakan kadar kalium Anda<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />.
+</DangerBox>
+
+### Hemoglobin (Hb)
+
+<BloodTestRange
+  label="Hb"
+  unit="g/L"
+  greenMin={120}
+  greenMax={160}
+  yellowMin={110}
+  yellowMax={120}
+  redThreshold={110}
+  redDirection="below"
+/>
+
+Hb akan turun secara terduga ke rentang perempuan cis setelah memulai estrogen; ini bersifat fisiologis<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Namun Hb di bawah 110 g/L menandakan anemia yang perlu ditelusuri penyebabnya.
+
+### D-Dimer
+
+<BloodTestRange
+  label="D-Dimer"
+  unit="mg/L"
+  greenMin={0}
+  greenMax={0.5}
+  yellowMin={0.5}
+  yellowMax={1.0}
+  redThreshold={1.0}
+  redDirection="above"
+/>
+
+Peningkatan D-dimer mengindikasikan trombosis/fibrinolisis<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Peningkatan ringan (0.5-1.0) perlu dilihat dalam konteks klinis. Di atas 1.0 mg/L—terutama jika disertai pembengkakan betis, nyeri dada, atau sesak napas—merupakan kondisi gawat darurat untuk menyingkirkan DVT atau PE<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+
+<DangerBox title="D-Dimer + Gejala = Gawat Darurat">
+D-dimer yang meningkat saja tidak otomatis berarti ada bekuan darah, tetapi jika disertai pembengkakan/rasa panas pada betis, nyeri dada mendadak, atau batuk darah, segera ke IGD. Estradiol oral membawa risiko VTE lebih tinggi daripada transdermal<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} />.
+</DangerBox>
+
+### Panduan Komprehensif
+
+<DoseTable
+  headers={['Penanda', 'Target (Hijau)', 'Waspada (Kuning)', 'Bahaya (Merah)']}
+  rows={[
+    ['E2 (pg/mL)', '100-200', '<50 atau 200-300', '>500 atau <20 (pasca-obat)'],
+    ['T (ng/dL)', '<50', '50-100', '>100 (setelah 6 bln)'],
+    ['PRL (ng/mL)', '<25', '25-50', '>50 (singkirkan prolaktinoma)'],
+    ['ALT/AST (U/L)', '≤40', '40-120 (1-3x batas)', '>120 (Hentikan CPA/Bika)'],
+    ['K⁺ (mmol/L)', '3.5-5.0', '5.0-5.5', '>5.5 (Hentikan Spiro)'],
+    ['Hb (g/L)', '>120', '110-120', '<110 (Anemia)'],
+    ['D-Dimer (mg/L)', '<0.5', '0.5-1.0', '>1.0 (Singkirkan bekuan)'],
+  ]}
+/>
+
+---
+
+## 6.3 Alat Pemeriksaan Mandiri Interaktif
+
+<WarningBox title="Segera Hadir">
+Komponen React interaktif **BloodTestChecker** akan segera diluncurkan. Komponen ini memungkinkan Anda memasukkan nilai-nilai Anda untuk mendapatkan umpan balik lampu lalu lintas secara instan beserta saran yang disesuaikan.
+
+Semua perhitungan terjadi di peramban Anda—tidak ada data yang disimpan atau dikirim ke server mana pun. 
+</WarningBox>
+
+<WarningBox title="Bacaan selanjutnya">
+- [Jalur HRT](/id/pathway/) — Apa yang harus dilakukan berikutnya berdasarkan hasil Anda
+- [Batas Dosis](/id/dose-limits/) — Pastikan dosis Anda berada dalam rentang aman
+- [Risiko & Kegawatdaruratan](/id/risks/) — Kapan harus segera berhenti
+</WarningBox>

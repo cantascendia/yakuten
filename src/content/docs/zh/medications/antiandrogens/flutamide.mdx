@@ -1,0 +1,152 @@
+---
+title: 氟他胺
+description: 客观记录氟他胺（Flutamide）这一非甾体抗雄药物（NSAA）。解析其纯 AR 拮抗（不降睾酮）机制、与比卡鲁胺的异同，重点说明严重肝毒性（含暴发性肝衰竭报告）为何使其在跨性别 HRT 中被淘汰，以及若已在用如何更安全、何时停药就医。
+evidenceLevel: C
+lastReviewed: 2026-06-09
+references: [coleman-2022, livertox-flutamide-2023, wysowski-1993, brahm-2011]
+drug:
+  nonProprietaryName: "Flutamide"
+  activeIngredient: "氟他胺 (Flutamide)"
+  mechanismOfAction: "第一代非甾体雄激素受体拮抗剂;单用时血清睾酮不下降反升,严重肝毒性(含暴发性肝衰竭)是其被淘汰的主要原因"
+  atc: "L02BB01"
+sidebar:
+  order: 4
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox
+  name="Flutamide"
+  nameCN="氟他胺"
+  category="antiandrogen"
+  route="口服给药（Oral）"
+  evidenceLevel="C"
+>
+  氟他胺是第一代非甾体类抗雄激素（NSAA）受体（AR）拮抗剂，原用于晚期前列腺癌治疗。由于存在严重且可能致命的肝毒性，它在临床上已基本被比卡鲁胺取代，在性别肯定激素治疗（GAHT）中**不推荐使用**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。本页客观记录其机制、风险，以及"若你因可及性已在使用"时如何更安全、何时停药就医。
+</DrugInfoBox>
+
+<DangerBox title="为何本站不推荐氟他胺">
+氟他胺最受关注的风险是**严重肝毒性**，包括罕见但可能致命的**暴发性肝衰竭（acute liver failure）**，部分病例需要肝移植才能挽救生命<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} title="Flutamide" />。
+
+与同类的比卡鲁胺相比，氟他胺通常没有任何抗雄疗效上的优势，却伴随更高的肝损伤风险与更频繁的给药（一日三次）。在 CPA、螺内酯、GnRH 激动剂、比卡鲁胺等更安全选项可及的情况下，通常没有理由选择氟他胺。
+</DangerBox>
+
+<GuideCTA
+  eyebrow="切换方案"
+  title="正在用氟他胺，想换更安全的抗雄？"
+  description="如果你目前在用氟他胺并考虑切换到比卡鲁胺、螺内酯或其他抗雄，本指南提供更换思路。无论切换与否，使用期间都建议在医生指导下进行定期肝功能（ALT/AST）监测。"
+  ctaText="打开抗雄切换完整指南"
+  ctaHref="/zh/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+## 药理特点
+
+### 作用机制
+
+氟他胺是一种纯 AR 拮抗剂，其药理特性与比卡鲁胺类似，但效价更低<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />：
+
+1. **AR 拮抗**：竞争性阻断雄激素受体，阻止睾酮（T）和双氢睾酮（DHT）与受体结合发挥作用。其主要活性代谢物羟基氟他胺（hydroxyflutamide）对 AR 的亲和力远高于母体药物。
+2. **不直接降低 T 水平**：与比卡鲁胺一样，单用时阻断了负反馈，体内 T 水平可能不降反升。
+3. **不抑制下丘脑-垂体-性腺轴**：对 GnRH-LH/FSH 轴没有直接抑制作用。
+
+<WarningBox title="不能用 T 数值评估疗效">
+和比卡鲁胺一样，氟他胺**单用时不降睾酮**，血清 T 甚至可能升高。因此服药期间 T 的数值**不能**用来判断抗雄是否"起效"——只要 AR 被有效阻断，雄激素效应即被抑制。但请注意，本站记录这一机制是为了让你理解药物特性，**并不构成对氟他胺方案的推荐**。
+</WarningBox>
+
+### 与比卡鲁胺的异同
+
+<DoseTable
+  headers={['维度', '氟他胺', '比卡鲁胺']}
+  rows={[
+    ['药物类别', '第一代 NSAA', '第二代 NSAA'],
+    ['AR 拮抗机制', '纯拮抗,不降 T', '纯拮抗,不降 T'],
+    ['给药频率', '通常一日三次', '通常一日一次'],
+    ['活性物半衰期', '羟基氟他胺约 8-10 小时', '约 5-6 天'],
+    ['肝毒性', '较高,含暴发性肝衰竭/致死报告', '罕见但同样需监测'],
+    ['临床地位', '已基本被淘汰', 'GAHT 中亦属最后手段'],
+  ]}
+/>
+
+简而言之：两药机制相近，但氟他胺在**安全性、耐受性、给药便利性**上均不及比卡鲁胺，临床上已大体被后者取代<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />。这是它在现代 HRT 中"不被推荐"的核心原因。
+
+## 肝毒性（核心风险）
+
+<DangerBox title="氟他胺的肝损伤可能致命">
+氟他胺相关肝损伤的严重程度与暴发性病例，是它退出常规抗雄方案的根本原因。
+</DangerBox>
+
+**肝酶与肝损伤的发生率**（数据主要源自前列腺癌人群，仅供理解风险量级）<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />：
+
+- 高达约 **42–62%** 的患者可出现血清转氨酶（ALT/AST）升高，多数为一过性、无症状。
+- 约 **3–5%** 出现明显升高（超过正常上限 5 倍）。
+- **临床显性肝损伤**约见于 **0.1–1%** 的使用者，但其中部分病程迁延、严重甚至致命。
+- 损伤多在用药后 **1–10 个月**（平均约 3 个月）出现，停药后通常在 1–2 周内开始好转，但**已有在规范监测下仍突然起病的致死病例**。
+
+**FDA 与文献中的严重/致死病例**：
+
+- FDA 在氟他胺上市头 5 年内即收到约 **20 例致死性肝毒性**报告<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />。
+- Wysowski 等 1993 年对 FDA 报告的分析中，19 例严重肝毒性患者里，14 例停药/减量后好转，**5 例死于进行性肝病**<CitationRef id="wysowski-1993" num={3} authors="Wysowski DK et al." year={1993} title="Fatal and Nonfatal Hepatotoxicity Associated with Flutamide" />。
+- Brahm 等 2011 年的病例系列（共 10 例，含 7 名因高雄激素状态用药的年轻女性）中，**7 名女性里有 5 例进展为急性肝衰竭并接受紧急肝移植**——提示非前列腺癌、较年轻人群同样存在暴发性肝衰竭风险<CitationRef id="brahm-2011" num={4} authors="Brahm J et al." year={2011} title="Acute and fulminant hepatitis induced by flutamide: case series report and review of the literature" />。
+
+<WarningBox title="跨性别人群证据有限">
+目前缺乏针对跨性别女性使用氟他胺的高质量前瞻性研究。现有肝毒性数据主要来自顺性别男性（前列腺癌）和高雄激素女性人群。证据有限，但这些人群中已记录的暴发性肝衰竭，足以构成"不推荐"的充分理由。
+</WarningBox>
+
+<DangerBox title="肝损伤症状 — 出现立即停药就医">
+- 皮肤或眼白发黄（黄疸）
+- 尿液颜色显著变深（呈浓茶色）
+- 持续性的右上腹疼痛或不适
+- 异常疲劳、食欲不振、恶心或呕吐
+- ALT/AST 显著升高（如超过正常上限 3 倍）
+
+**一旦出现上述任何一项，请立即停用氟他胺并尽快就医检查肝功能。** 氟他胺的肝损伤可能在没有任何前驱症状的情况下迅速进展，不要等待"观察几天"。
+</DangerBox>
+
+## 剂量信息（仅作背景，不构成用药建议）
+
+<WarningBox title="历史剂量 ≠ HRT 剂量,本站不提供个性化剂量">
+以下数字仅用于让你理解该药的历史用法背景，**不是** GAHT 用药建议。本站不对氟他胺给出任何个性化剂量。前列腺癌的历史剂量远高于任何抗雄需要，且高剂量与肝毒性风险相关。如果你已在使用，请在医生指导下确定方案，切勿自行加量。
+</WarningBox>
+
+<DoseTable
+  headers={['场景', '历史剂量', '说明', '来源']}
+  rows={[
+    ['前列腺癌（历史适应症）', '250 mg,一日三次', '远高于抗雄所需,仅为历史背景', 'LiverTox 2023'],
+    ['高雄/皮肤科（历史超说明书）', '文献中曾用更低剂量', '剂量范围不一,且仍有肝毒性报告', 'LiverTox 2023'],
+    ['跨性别 HRT', '不推荐 / 无既定方案', '缺乏可靠剂量证据,本站不提供', 'WPATH SOC 8'],
+  ]}
+/>
+
+## 监测要求（若已在使用）
+
+<DoseTable
+  headers={['检查项目', '频率', '目标/警戒值', '处理']}
+  rows={[
+    ['肝功能（ALT/AST）', '基线 + 前 4 月每月 → 之后定期', 'ALT/AST 在正常范围', '> 3× 上限:立即停药就医'],
+    ['胆红素', '与肝功能同时', '正常范围', '升高提示肝损伤加重'],
+    ['睾酮（T）', '每 3-6 月', '仅供参考(T 可能升高)', '不作为疗效主要指标'],
+  ]}
+/>
+
+<WarningBox title="监测无法完全消除风险">
+即使每月查肝功能，也**不能保证**避免严重后果——文献已记录在规范监测下仍突然起病的暴发性肝衰竭<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />。因此监测只能降低、而非消除风险。如果你能接触到比卡鲁胺、螺内酯、CPA 或 GnRH 激动剂等更安全的选择，通常建议优先考虑它们，并就切换方案咨询医生。
+</WarningBox>
+
+## 中国获取现状
+
+- **上市状态**：氟他胺片在中国大陆已上市，主要用于晚期前列腺癌的治疗，规格通常为 250 mg/片，商品名包括福至尔等。
+- **DIY 现实**：因其作为前列腺癌药相对易得，历史上曾有人在 DIY 抗雄中接触到它。可及性高**不等于**安全——它恰恰是同类药中肝毒性最受关注的一种。
+- **更安全的替代**：比卡鲁胺同样在国内可经泌尿外科/肿瘤科开具，给药更方便、安全性记录更好；螺内酯、GnRH 激动剂亦可经医院处方获得。如果你正考虑抗雄方案，通常没有理由选择氟他胺。
+- **若你已在使用**：建议尽快与医生讨论切换更安全的抗雄，并在切换前后做肝功能检查；在此期间留意上文列出的肝损伤就医信号。
+
+## 相关对比与内链
+
+- [比卡鲁胺：机制与肝毒性](/zh/medications/antiandrogens/bicalutamide/)
+- [抗雄切换指南](/zh/guides/switch-antiandrogen/)

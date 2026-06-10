@@ -42,6 +42,9 @@ const lastReviewed = data.lastReviewed
   : '2026-04-12';
 const referenceIds: string[] = (data.references as string[]) ?? [];
 const faqs: { q: string; a: string }[] = (data.faqs as { q: string; a: string }[]) ?? [];
+// When the page renders its faqs in-body via <FaqSchema>, that component already emits the
+// FAQPage JSON-LD. Suppress this layer's FAQPage to avoid a duplicate block on one page.
+const faqsRenderedInBody = (data.faqsRenderedInBody as boolean) ?? false;
 const drug = data.drug as
   | { activeIngredient?: string; mechanismOfAction?: string; atc?: string; rxnorm?: string; nonProprietaryName?: string }
   | undefined;
@@ -322,8 +325,8 @@ if (isDrugPage) {
   graph.push({ '@type': 'MedicalWebPage', ...basePage });
 }
 
-// FAQPage (if frontmatter declares faqs)
-if (faqs.length > 0) {
+// FAQPage (if frontmatter declares faqs and they are NOT already rendered in-body by <FaqSchema>)
+if (faqs.length > 0 && !faqsRenderedInBody) {
   graph.push({
     '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({

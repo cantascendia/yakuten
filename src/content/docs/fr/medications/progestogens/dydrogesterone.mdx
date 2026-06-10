@@ -1,0 +1,76 @@
+---
+title: "Dydrogestérone"
+description: "La dydrogestérone dans le THS féminisant — mécanisme du progestatif rétro-isomère, posologie, comparaison avec la progestérone micronisée et profil de sécurité."
+evidenceLevel: C
+sidebar:
+  order: 3
+lastReviewed: 2026-04-10
+references: [coleman-2022, hembree-2017]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dydrogesterone"
+  nameCN="Dydrogesterone"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+La dydrogestérone est un rétro-isomère de la progestérone, dotée d'une biodisponibilité orale nettement supérieure à celle de la progestérone micronisée. Elle est utilisée comme option progestative alternative dans le THS féminisant, bien que les données cliniques propres aux soins des personnes transgenres restent limitées<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+</DrugInfoBox>
+
+## Mécanisme
+
+La dydrogestérone est un analogue structurel de la progestérone naturelle, doté d'une activité progestative hautement sélective sur ses récepteurs :
+
+- **Biodisponibilité orale élevée** : ~28 % (contre ~10 % pour la progestérone micronisée)
+- **Pas d'activité anti-androgénique** : contrairement à la CPA ou à la spironolactone, elle n'agit pas directement sur les androgènes
+- **Pas d'activité glucocorticoïde ni minéralocorticoïde**
+- **Demi-vie** : ~14-17 heures
+
+### Comparaison avec la progestérone micronisée
+
+| Caractéristique | Dydrogestérone | [Progestérone micronisée](/fr/medications/progestogens/progesterone/) |
+|---------|----------------|----------------|
+| Type | Rétro-isomère (synthétique) | Naturelle/bio-identique |
+| Biodisponibilité orale | ~28 % | ~10 % |
+| Effet sédatif | Minime | Marqué (d'où une prise au coucher) |
+| Voies d'administration | Orale uniquement | Orale/rectale/vaginale |
+| Risque de TEV (VTE) | Données insuffisantes | Neutre ou très faible |
+| Niveau de preuve | C | C |
+
+## Posologie
+
+<DoseTable
+  headers={['Indication', 'Dose', 'Remarques']}
+  rows={[
+    ['Supplémentation progestative dans le THS', '10-20 mg/day', 'Généralement 1 à 2 fois par jour'],
+    ['Schéma cyclique', '10 mg/day x 14 days/month', 'Reproduit la phase lutéale du cycle menstruel'],
+  ]}
+/>
+
+<WarningBox title="Progestatifs dans le THS : la controverse">
+Les WPATH SOC 8 soulignent que les bénéfices des progestatifs dans le THS féminisant « n'ont pas été suffisamment démontrés »<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Certaines personnes rapportent que les progestatifs favorisent le développement mammaire et l'humeur, mais ces données reposent principalement sur des témoignages anecdotiques et communautaires.
+</WarningBox>
+
+## Marques et disponibilité
+
+| Marque | Dosage | Région |
+|-------|----------|--------|
+| **Duphaston** | 10 mg | Largement disponible dans le monde (y compris en Chine continentale) |
+| Génériques | 10 mg | Certaines régions |
+
+## Surveillance
+
+- **PRL (prolactine)** : tous les 6 mois. Les progestatifs peuvent légèrement augmenter la prolactine
+- Aucune surveillance hépatique supplémentaire nécessaire (la dydrogestérone présente une très faible hépatotoxicité)
+
+## Contre-indications
+
+- Allergie à la dydrogestérone
+- Saignements vaginaux inexpliqués (indication chez les femmes cisgenres — rarement applicable dans le contexte trans)
+- Porphyrie hépatique aiguë

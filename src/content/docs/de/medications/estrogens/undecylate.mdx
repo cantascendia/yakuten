@@ -1,0 +1,91 @@
+---
+title: "Estradiolundecylat (EU)"
+description: "Vollständiger Leitfaden zu Estradiolundecylat — Pharmakokinetik, Dosierung und Sicherheitsaspekte des ultralang wirksamen injizierbaren Esters."
+evidenceLevel: C
+sidebar:
+  order: 8
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiolundecylat (EU)"
+  nameCN="Estradiol Undecylate Injection"
+  category="estrogen"
+  route="Intramuskulär (i.m.)"
+  evidenceLevel="C"
+>
+Estradiolundecylat (EU) ist einer der am längsten wirksamen injizierbaren Estradiolester mit einer Halbwertszeit von etwa 20-30 Tagen, was monatliche oder längere Injektionsintervalle ermöglicht<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Früher unter dem Namen Progynon Depot 100 und anderen Marken vertrieben, ist die weltweite Verfügbarkeit heute sehr eingeschränkt. Das Evidenzniveau liegt bei C, da umfangreiche klinische HRT-Studiendaten fehlen.
+</DrugInfoBox>
+
+## Pharmakokinetik
+
+Pharmakokinetisches Profil von Estradiolundecylat<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /><CitationRef id="oriowo-1980" num={2} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />:
+
+- **Halbwertszeit**: ~20-30 Tage (die längste aller injizierbaren Ester)
+- **Zeit bis zum Maximum**: ~3-7 Tage nach der Injektion
+- **Wirkdauer**: Eine einzelne Injektion hält wirksame E2-Spiegel für ~30-40 Tage aufrecht
+- **Steady State**: Aufgrund der sehr langen Halbwertszeit werden ~2-3 Monate benötigt, um den Steady State zu erreichen
+
+### Vergleich mit anderen injizierbaren Estern
+
+<DoseTable
+  headers={['Parameter', 'EV (Valerat)', 'EC (Cypionat)', 'EU (Undecylat)']}
+  rows={[
+    ['Halbwertszeit', '~4-5 Tage', '~8-10 Tage', '~20-30 Tage'],
+    ['Injektionsintervall', '5-7 Tage', '7-14 Tage', '21-30 Tage'],
+    ['Flexibilität der Dosisanpassung', 'Hoch', 'Mittel', 'Gering'],
+    ['Schwankung des Serumspiegels', 'Größer', 'Mittel', 'Geringer'],
+    ['Weltweite Verfügbarkeit', 'Breit verfügbar', 'Amerika', 'Sehr eingeschränkt'],
+    ['Evidenzniveau', 'A', 'B', 'C'],
+  ]}
+/>
+
+<WarningBox title="Evidenzniveau C">
+Klinische Daten zu Estradiolundecylat in der Transgender-HRT sind sehr begrenzt. Die meisten pharmakokinetischen Daten stammen aus kleinen Studien der 1970er- und 1980er-Jahre. Wenn andere injizierbare Ester (EV oder EC) verfügbar sind, werden diese aufgrund der stärkeren Evidenz in der Regel als Mittel der ersten Wahl empfohlen.
+</WarningBox>
+
+## Dosierung
+
+### Erwachsenendosierung (nur als Referenz)
+
+<DoseTable
+  headers={['Phase', 'Dosis', 'Hinweise']}
+  rows={[
+    ['Anfangsdosis', '20-40 mg/Monat', 'Vorsichtiger Einstieg'],
+    ['Erhaltungsdosis', '40-100 mg/Monat', 'Anpassung anhand des E2-Talspiegels'],
+    ['Maximaldosis', '100 mg/Monat', 'Nicht überschreiten'],
+  ]}
+/>
+
+Aufgrund seiner sehr langen Halbwertszeit wirken sich Dosisanpassungen bei EU **nur langsam aus**. Für Situationen, die eine schnelle Spiegelanpassung erfordern, sind kürzer wirksame Ester (EV) besser geeignet<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+## Marken & Verfügbarkeit
+
+| Marke | Konzentration | Region | Status |
+|-------|---------------|--------|--------|
+| **Progynon Depot 100** | 100 mg/mL | Früher Europa/Asien | Eingestellt |
+| Compounding-Apotheken | Verschieden | Sehr wenige Regionen | Eingeschränkt |
+
+EU hat eine **äußerst eingeschränkte** weltweite Verfügbarkeit. Die meisten Anwenderinnen sollten EV oder EC als bevorzugtes injizierbares Estradiol wählen.
+
+## Monitoring
+
+- **E2**: Alle 3 Monate, Talspiegelentnahme 1-2 Tage vor der Injektion. Zielwert 100-200 pg/mL
+- **T**: Alle 3 Monate. Zielwert &lt;50 ng/dL
+- **Leberfunktion (ALT/AST)**: Ausgangswert + alle 6 Monate
+
+Aufgrund der sehr langen Halbwertszeit ist zu Beginn der Anwendung eine häufigere Blutkontrolle erforderlich, um die Akkumulationsspiegel zu bestätigen.
+
+<DangerBox title="Sicherheitsgrenzen">
+- Die ultralange Halbwertszeit von EU bedeutet ein höheres Akkumulationsrisiko — treten Nebenwirkungen auf, verbleibt das Medikament nach dem Absetzen noch wochenlang im Körper
+- Nicht geeignet für Situationen, die eine schnelle Dosisanpassung erfordern
+- E2 >200 pg/mL führt nicht zu einer stärkeren Feminisierung<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Aufgrund der äußerst instabilen weltweiten Versorgung wird EU nicht als primäres HRT-Schema empfohlen
+</DangerBox>

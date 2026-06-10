@@ -1,0 +1,107 @@
+---
+title: "Về trang web này"
+description: "Sứ mệnh đằng sau HRT Yakuten, các nguồn nội dung dựa trên bằng chứng (WPATH, Endocrine Society), quy trình bình duyệt, cam kết về quyền riêng tư và các tuyên bố miễn trừ y khoa."
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Sứ mệnh
+
+**Dựa trên bằng chứng · Giảm thiểu tác hại · Hướng dẫn bạn đến với chăm sóc y tế**
+
+HRT Yakuten là một trang thông tin về ngưỡng an toàn cơ bản dành cho phụ nữ chuyển giới trong cộng đồng nói tiếng Trung đang sử dụng HRT. Mục tiêu của chúng tôi không phải là thay thế bác sĩ, mà là hỗ trợ những người đang dùng — hoặc sắp bắt đầu — liệu pháp hormone:
+
+- **Hiểu kết quả xét nghiệm máu của bạn** và biết những giá trị bất thường nào cần được thăm khám
+- **Nắm rõ các rủi ro thực sự của thuốc**, thay vì dựa vào lời đồn trong cộng đồng và những giai thoại chưa được kiểm chứng
+- **Nhận biết các dấu hiệu cảnh báo cấp cứu** (DVT, tổn thương gan, u màng não) và đưa ra quyết định đúng đắn vào những thời điểm then chốt
+- **Tìm các nguồn lực y tế thân thiện với người chuyển giới** và chuyển từ tự dùng thuốc (DIY) sang chăm sóc y tế có giám sát
+
+### Trang web này KHÔNG phải là gì
+
+- ❌ Không phải bách khoa toàn thư hay sách giáo khoa y học
+- ❌ Không phải diễn đàn, cộng đồng hay nền tảng mạng xã hội
+- ❌ Không phải kênh mua thuốc hay trang gợi ý nhà thuốc
+- ❌ Không cung cấp lời khuyên liều lượng cá nhân hóa ("bạn nên dùng X mg")
+
+## Nguồn nội dung
+
+Toàn bộ nội dung y khoa trên trang này được xây dựng dựa trên các hướng dẫn lâm sàng quốc tế và tài liệu đã qua bình duyệt sau đây:
+
+| Nguồn | Mô tả |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — Hướng dẫn thực hành lâm sàng |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, Phiên bản 8 |
+| **UCSF Transgender Care** | Đại học California, San Francisco — Hướng dẫn chăm sóc người chuyển giới |
+| **EMA (2020)** | Các hạn chế và đánh giá an toàn của Cơ quan Quản lý Dược phẩm Châu Âu về CPA |
+| **PubMed / PMC** | Các bài nghiên cứu gốc đã qua bình duyệt (mỗi trích dẫn đều kèm một DOI) |
+
+Các con số ở dạng chỉ số trên bên cạnh mỗi khuyến nghị y khoa (ví dụ <sup>[1]</sup>) liên kết đến tài liệu tham khảo cụ thể. **Không trích dẫn = không có nội dung** — đây là quy tắc bất di bất dịch của trang web này.
+
+## Quy trình bình duyệt nội dung
+
+| Bước | Tiêu chuẩn |
+|------|----------|
+| **Yêu cầu trích dẫn** | Mỗi khuyến nghị lâm sàng phải truy nguyên được về ít nhất một bài báo đã qua bình duyệt hoặc một hướng dẫn quốc tế |
+| **Đối chiếu chéo** | Khoảng liều thuốc phải được đối chiếu chéo với ≥2 nguồn độc lập (ví dụ WPATH + Endocrine Society + UCSF) |
+| **Xếp hạng bằng chứng** | Mỗi trang được gắn nhãn mức độ bằng chứng: A (nhiều RCT/Meta-analysis), B (một RCT/đoàn hệ đơn lẻ), C (báo cáo ca bệnh/ý kiến chuyên gia), X (không có bằng chứng) |
+| **Ngày rà soát** | Mỗi trang hiển thị ngày rà soát gần nhất ở cuối trang |
+| **Chu kỳ cập nhật** | Nội dung được rà soát hằng quý để bảo đảm tính thời sự và được cập nhật dựa trên tài liệu mới công bố |
+
+<WarningBox title="Giới hạn của nội dung">
+Trang web này hiện do một cá nhân duy trì và chưa trải qua quá trình bình duyệt chính thức bởi biên tập viên y khoa chuyên nghiệp. Chúng tôi nỗ lực hết sức để bảo đảm độ chính xác, nhưng vẫn có thể có sai sót và thiếu sót. Nếu bạn phát hiện điểm nào không chính xác, vui lòng gửi một Issue trên GitHub.
+</WarningBox>
+
+## Triển khai kỹ thuật
+
+| Công nghệ | Mục đích |
+|------------|---------|
+| **Astro + Starlight** | Tạo trang tĩnh — mặc định không dùng JS, tải cực nhanh |
+| **React Islands** | JS phía trình duyệt chỉ dành cho các công cụ tương tác (trình kiểm tra xét nghiệm máu, công cụ mô phỏng liều, v.v.) |
+| **Pagefind** | Chỉ mục tìm kiếm tĩnh, hỗ trợ tiếng Trung/Anh/Nhật |
+| **Vercel** | Lưu trữ tĩnh + Edge Functions (hỏi đáp AI) |
+| **Mã nguồn mở** | Toàn bộ mã nguồn có sẵn trên [GitHub](https://github.com/cantascendia/yakuten) |
+
+## Quyền riêng tư
+
+**Trang web này không thu thập hay lưu trữ bất kỳ dữ liệu cá nhân nào.**
+
+| Hạng mục | Biện pháp |
+|----------|---------|
+| **Công cụ xét nghiệm máu** | Tính toán hoàn toàn bằng JavaScript phía trình duyệt — dữ liệu bạn nhập không bao giờ rời khỏi trình duyệt và không bao giờ được gửi đến bất kỳ máy chủ nào |
+| **Hỏi đáp AI** | Cuộc trò chuyện được xử lý theo thời gian thực qua Edge Functions — không có gì được lưu trữ, ghi lại hay dùng để huấn luyện |
+| **Phân tích truy cập** | Vercel Web Analytics & Speed Insights — chỉ tổng hợp lượt xem trang và các chỉ số hiệu năng; không dùng cookie, không lưu định danh cá nhân, không theo dõi xuyên trang |
+| **Theo dõi** | Không Google Analytics, không nhúng trình theo dõi mạng xã hội hay quảng cáo — ngoài phần phân tích tổng hợp của Vercel nêu trên |
+| **Cookie** | Chỉ dùng cho tùy chọn giao diện (chế độ tối/sáng), không dùng để theo dõi |
+| **Quảng cáo** | Không có, và sẽ không bao giờ có |
+
+## Tuyên bố miễn trừ trách nhiệm
+
+Nội dung trên trang này **chỉ nhằm mục đích giáo dục và cung cấp thông tin** và không cấu thành lời khuyên y khoa.
+
+- Trang web này không thể thay thế việc chẩn đoán và điều trị trực tiếp bởi bác sĩ có chuyên môn
+- Việc sử dụng, điều chỉnh và ngừng thuốc nên được thực hiện dưới sự hướng dẫn của nhân viên y tế có chuyên môn
+- Nếu bạn gặp bất kỳ triệu chứng cấp cứu nào (sưng/đau một bên chân, đau ngực đột ngột, vàng da, v.v.), hãy ngừng thuốc ngay lập tức và đến phòng cấp cứu gần nhất
+- Trang web này không chịu trách nhiệm về bất kỳ hậu quả y tế nào phát sinh từ việc sử dụng nội dung của trang
+
+**Tự dùng thuốc (DIY) tiềm ẩn những rủi ro thực sự.** Trang web này hướng đến việc giúp bạn dùng thuốc an toàn hơn, nhưng cách an toàn nhất luôn là thực hiện HRT dưới sự giám sát của bác sĩ.
+
+## Công cụ đồng hành
+
+- **hananote** — Một ứng dụng theo dõi HRT dành cho phụ nữ chuyển giới (Flutter), giúp theo dõi thuốc, xét nghiệm máu và những thay đổi cơ thể. Bổ trợ cho nội dung của trang này với việc quản lý sức khỏe dài hạn được cá nhân hóa. Dự án: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+
+## Liên hệ & Đóng góp
+
+- **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Gửi một Issue hoặc Pull Request
+- **Sửa nội dung**: Phát hiện một lỗi y khoa? Vui lòng gửi một GitHub Issue kèm tài liệu tham khảo mà bạn cho là chính xác
+- **Bộ sưu tập nhãn hiệu**: Nếu bạn có ảnh chụp thuốc thực tế muốn đóng góp, vui lòng liên hệ với chúng tôi qua GitHub (yêu cầu giấy phép CC-BY-SA)
+
+## Giấy phép
+
+Nội dung của trang này được cấp phép theo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Bạn được tự do chia sẻ và phỏng tác, với điều kiện ghi nhận nguồn phù hợp, không sử dụng cho mục đích thương mại và phân phối các tác phẩm phái sinh theo cùng giấy phép.
+
+Mã nguồn được cấp phép theo Giấy phép MIT.

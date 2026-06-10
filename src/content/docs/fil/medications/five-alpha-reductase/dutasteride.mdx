@@ -1,0 +1,89 @@
+---
+title: "Dutasteride"
+description: "Dutasteride sa transfeminine na HRT — dobleng pagharang sa 5α-reductase, paghahambing sa finasteride, pagdo-dose, at kaligtasan."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasteride"
+  nameCN="Dutasteride"
+  category="5α-reductase inhibitor"
+  route="Inumin (oral)"
+  evidenceLevel="C"
+>
+Ang dutasteride ay isang dobleng type I + type II na 5α-reductase inhibitor na nagpapababa ng serum DHT ng humigit-kumulang 90-95%, mas malakas kaysa finasteride<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Ginagamit bilang pandagdag (adjunctive) na gamot sa transfeminine na HRT kapag hindi sapat ang finasteride.
+</DrugInfoBox>
+
+## Mekanismo
+
+Sabay na hinaharang ng dutasteride ang **type I at type II** na 5α-reductase:
+
+- **Type I**: Karaniwang matatagpuan sa balat (sebaceous glands) at atay
+- **Type II**: Karaniwang matatagpuan sa hair follicles at prostate
+
+Ang dobleng pagharang na ito ay umaabot sa **90-95%** na pagbaba ng DHT, kumpara sa ~65-70% sa [finasteride](/fil/medications/five-alpha-reductase/finasteride/).
+
+## Paghahambing sa Finasteride
+
+| Katangian | Dutasteride | Finasteride |
+|---------|-------------|-------------|
+| Target | Type I + II | Type II lamang |
+| Pagbaba ng DHT | ~90-95% | ~65-70% |
+| Half-life | ~4-5 linggo | ~6-8 oras |
+| Pagsisimula ng epekto | 3-6 buwan | 3-6 buwan |
+| Washout pagkatigil | Buwan-buwan (napakahabang half-life) | Linggo-linggo |
+| Availability ng generic | Limitado | Laganap |
+| Antas ng ebidensiya | C | B |
+
+## Pagdo-dose
+
+<DoseTable
+  headers={['Indikasyon', 'Dose', 'Mga Tala']}
+  rows={[
+    ['Pandagdag sa HRT', '0.5 mg/day', 'Standard na dose; huwag lampasan'],
+  ]}
+/>
+
+- 0.5 mg/day ang tanging inirerekomendang dose
+- Dahil sa napakahabang half-life (~4-5 linggo), **hindi kailangan ng make-up dose kapag nakaligtaan ang isang araw**
+- Hindi dapat buksan o nguyain ang mga kapsula
+
+<WarningBox title="Karaniwang Pangalawang Linya (Second-Line) ang Dutasteride">
+Kung hindi pa nasusubukan ang finasteride, sa pangkalahatan ay inirerekomendang subukan muna ang finasteride sa loob ng 6 na buwan. Mas mababa ang ebidensiya ng dutasteride (C), mas mahal ito, at dahil sa sobrang habang half-life nito ay nananatili ang mga side effect nang ilang buwan pagkatapos ihinto.
+</WarningBox>
+
+## Mga Brand at Availability
+
+| Brand | Lakas | Mga Tala |
+|-------|----------|-------|
+| **Avodart** | 0.5 mg kapsula | Orihinal na brand |
+| Mga generic | 0.5 mg kapsula | Mabibili sa ilang rehiyon |
+
+## Pagsubaybay (Monitoring)
+
+- **T**: Ipagpatuloy ang rutinang pagsubaybay sa HRT tuwing 3 buwan
+- **DHT** (opsyonal): Makakatulong upang kumpirmahin ang epekto ng 5αRI
+- **PSA**: Pinapababa ng dutasteride ang PSA; sabihin sa iyong doktor kung sinusuri ka nito
+
+## Mga Kontraindikasyon
+
+- Allergy sa dutasteride
+- Malubhang sakit sa atay (hepatic impairment) (na-metabolize ang dutasteride sa pamamagitan ng CYP3A4)
+- Sabay na paggamit ng malakas na CYP3A4 inhibitors (hal. ketoconazole) — maaaring magdulot ng pagtipon (accumulation) ng dutasteride
+
+<DangerBox title="Mahahalagang Tala">
+- **Napakahabang half-life** (4-5 linggo): nananatili ang pagsupil sa DHT nang ilang buwan pagkatapos ihinto
+- Teratogenic ang nilalaman ng kapsula; hindi dapat hawakan ng mga buntis ang mga tumutulong kapsula
+- Huwag ihinto ang iba pang gamot sa HRT dahil lamang bumuti ang pagkalagas ng buhok
+- Kung epektibo na ang finasteride, hindi na kailangang lumipat (mag-escalate) sa dutasteride
+</DangerBox>

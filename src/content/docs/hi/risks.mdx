@@ -1,0 +1,247 @@
+---
+title: "जोखिम और आपातकालीन पहचान"
+description: "HRT जोखिमों की विस्तृत मार्गदर्शिका — शिरापरक थ्रोम्बोएम्बोलिज़्म (VTE), यकृत कार्य संबंधी चिंताएँ, मेनिंजियोमा के जोखिम कारक, तत्काल आपातकालीन देखभाल की आवश्यकता वाले लक्षण, और मानसिक स्वास्थ्य संकट के संसाधन।"
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
+import EmergencyBanner from '../../../components/ui/EmergencyBanner.astro';
+import RiskCard from '../../../components/ui/RiskCard.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+<EmergencyBanner />
+
+<EvidenceBadge level="B" />
+
+समग्र रूप से HRT की सुरक्षा प्रोफ़ाइल बहुत अच्छी है, लेकिन दुर्लभ गंभीर जटिलताओं को पहचानना हार्मोन थेरेपी ले रहे हर व्यक्ति के लिए आवश्यक है। नीचे दिया गया डेटा नैदानिक प्रेक्षण और औषधीय विश्लेषण पर आधारित है।
+
+<img src="/images/diagrams/en/emergency-signs.webp" alt="तीन आपातकालीन चेतावनी संकेत जिनके लिए तत्काल चिकित्सा देखभाल आवश्यक है: सीने में दर्द, सूजी हुई पिंडली, दृष्टि संबंधी समस्याएँ" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+नीचे दी गई जोखिम प्रोफ़ाइलें Endocrine Society 2017 दिशानिर्देशों<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> और WPATH SOC 8<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> से ली गई हैं।
+
+## 7.1 HRT के ज्ञात जोखिम
+
+<div class="risk-grid">
+  <div class="risk-item">
+  <RiskCard
+    title="गहन शिरा घनास्त्रता (DVT)"
+    category="आपातकालीन जोखिम"
+    severity="red"
+    drug="मौखिक एस्ट्राडियोल (E2)"
+    probability="< 0.5% (वार्षिक)"
+    signs="एकतरफ़ा निचले पैर में लालिमा, सूजन, गर्माहट, तीव्र दर्द।"
+  >
+  <p class="risk-citation">मौखिक एस्ट्राडियोल का VTE जोखिम ट्रांसडर्मल मार्गों की तुलना में काफ़ी अधिक होता है<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />। वार्षिक घटना दर लगभग 0.2-0.5%; धूम्रपान और बढ़ती उम्र जोखिम को और बढ़ा देते हैं।</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="यकृत क्षति"
+    category="यकृत जोखिम"
+    severity="red"
+    drug="CPA / मौखिक दवाएँ"
+    probability="दुर्लभ (LFT की निगरानी करें)"
+    signs="आँखों/त्वचा का पीला पड़ना, गहरे रंग का मूत्र, अत्यधिक थकान।"
+  >
+  <p class="risk-citation">CPA और बाइकैलुटामाइड दोनों के यकृत-विषाक्तता संबंधी केस रिपोर्ट मौजूद हैं। EMA ने CPA से जुड़ी यकृत क्षति के जोखिम को लेकर चेतावनी जारी की है<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />।</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="हृदय-संवहनी जटिलताएँ"
+    category="हृदय संबंधी जोखिम"
+    severity="orange"
+    drug="सभी E2 फ़ॉर्मूलेशन"
+    probability="उम्र / धूम्रपान के साथ अधिक"
+    signs="धड़कन तेज़ होना, बिना कारण सीने में दबाव।"
+  >
+  <p class="risk-citation">यकृत के फ़र्स्ट-पास प्रभाव के कारण थक्का-निर्माण कारकों पर असर पड़ता है, जिससे मौखिक मार्ग का हृदय-संवहनी जोखिम ट्रांसडर्मल की तुलना में अधिक होता है<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />।</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="मेनिंजियोमा"
+    category="तंत्रिका संबंधी जोखिम"
+    severity="red"
+    drug="उच्च-खुराक CPA"
+    probability="संचयी खुराक > 10g"
+    signs="दृष्टि में बदलाव, श्रवण हानि, असामान्य सिरदर्द।"
+  >
+  <p class="risk-citation">CPA की दैनिक खुराक ≥25 mg पर: मेनिंजियोमा का जोखिम OR=12.36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />। EMA ≥25 mg/day की खुराक को प्रतिबंधित करता है<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />।</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="मनोदशा में बदलाव और अवसाद"
+    category="मानसिक जोखिम"
+    severity="yellow"
+    drug="CPA / कम E2 स्तर"
+    probability="आम (5-15%)"
+    signs="आत्महत्या के विचार, बिना कारण रोना, प्रेरणा में कमी।"
+  >
+  <p class="risk-citation">CPA की प्रोजेस्टोजेनिक सक्रियता मनोदशा में बदलाव और अवसाद का कारण बन सकती है, घटना दर लगभग 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />।</p>
+  </RiskCard>
+  </div>
+  <div class="risk-item">
+  <RiskCard
+    title="प्रोलैक्टिन में वृद्धि"
+    category="अंतःस्रावी जोखिम"
+    severity="yellow"
+    drug="एस्ट्राडियोल / CPA"
+    probability="समय-समय पर निगरानी आवश्यक"
+    signs="निप्पल से स्राव, लगातार तीव्र सिरदर्द।"
+  >
+  <p class="risk-citation">एस्ट्राडियोल और CPA दोनों प्रोलैक्टिन बढ़ा सकते हैं। PRL >50 ng/mL होने पर पीयूष ग्रंथि प्रोलैक्टिनोमा की जाँच आवश्यक है<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />।</p>
+  </RiskCard>
+  </div>
+</div>
+
+## 7.2 तत्काल चिकित्सा सहायता की आवश्यकता वाले लक्षण
+
+<div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="तत्काल चिकित्सा सहायता की आवश्यकता वाले लक्षण">
+
+**यदि आपको निम्नलिखित में से कोई भी लक्षण महसूस हो, तो HRT बंद कर दें और अपने निकटतम आपातकालीन विभाग में जाएँ:**
+
+<div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
+  <div>
+    <strong style="color: var(--color-danger);">एकतरफ़ा पिंडली में सूजन या दर्द</strong> — गहन शिरा घनास्त्रता (DVT) का संकेत हो सकता है
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">2.</span>
+  <div>
+    <strong style="color: var(--color-danger);">अचानक सीने में दर्द या खाँसी के साथ खून आना</strong> — फुफ्फुसीय अन्तःशल्यता (PE) का संकेत हो सकता है
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">3.</span>
+  <div>
+    <strong style="color: var(--color-danger);">एकतरफ़ा कमज़ोरी या चेहरे का एक ओर झुक जाना</strong> — स्ट्रोक का संभावित चेतावनी संकेत
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">4.</span>
+  <div>
+    <strong style="color: var(--color-danger);">त्वचा या आँखों के सफ़ेद भाग का पीला पड़ना</strong> — तीव्र यकृत क्षति
+  </div>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); align-items: baseline;">
+  <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">5.</span>
+  <div>
+    <strong style="color: var(--color-danger);">अचानक तीव्र सिरदर्द के साथ दृष्टि का खो जाना</strong> — मस्तिष्क के भीतर दबाव बढ़ने का संभावित संकेत
+  </div>
+</div>
+
+</div>
+</div>
+
+## 7.3 संकट सहायता और हेल्पलाइन
+
+<div class="glass-card glass-card--sm" style="margin: var(--space-xl) 0; padding: var(--space-lg);" aria-label="संकट हेल्पलाइन">
+
+### मदद चाहिए?
+
+यदि आप गंभीर मानसिक पीड़ा या स्वयं को नुकसान पहुँचाने के विचारों से गुज़र रहे हैं, तो कृपया तुरंत इनमें से किसी एक सहायता सेवा से संपर्क करें। आप अकेले नहीं हैं।
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Trans Lifeline</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:+18775658860" style="color: var(--color-primary); text-decoration: none;">877-565-8860</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — ट्रांस लोगों द्वारा, ट्रांस लोगों के लिए</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">988 Suicide & Crisis</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-primary); margin-top: var(--space-xs);">
+    <a href="tel:988" style="color: var(--color-primary); text-decoration: none;">988</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US — कॉल करें या टेक्स्ट करें, 24/7</div>
+</div>
+
+<div class="glass-card glass-card--sm" style="padding: var(--space-md); text-align: center;">
+  <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">आपातकाल</div>
+  <div style="font-size: 1.25rem; font-weight: bold; color: var(--color-danger); margin-top: var(--space-xs);">
+    <a href="tel:911" style="color: var(--color-danger); text-decoration: none;">911</a> / <a href="tel:112" style="color: var(--color-danger); text-decoration: none;">112</a>
+  </div>
+  <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 2px;">US: 911 · EU: 112 · UK: 999</div>
+</div>
+
+</div>
+
+<div style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--color-text-muted);">
+
+**अंतरराष्ट्रीय संसाधन:**
+- **UK**: Samaritans — 116 123 (निःशुल्क, 24/7)
+- **Canada**: Trans Lifeline — 877-330-6366
+- **Australia**: Lifeline — 13 11 14
+- **अंतरराष्ट्रीय**: [findahelpline.com](https://findahelpline.com/)
+
+</div>
+
+</div>
+
+<WarningBox title="जब आप सुरक्षित हों, तो आगे के कदम">
+- [रक्त परीक्षण जाँचकर्ता](/hi/blood-tests/#tool) — जाँचें कि आपके स्तर सुरक्षित सीमा में हैं या नहीं
+- [HRT पथ](/hi/pathway/) — अपने वर्तमान चरण पर लौटें
+- [चीन HRT मार्गदर्शिका](/hi/china-reality/) — सहयोगी डॉक्टर और संसाधन खोजें
+- [दवाएँ](/hi/medications/estrogens/overview/) — अपनी दवा योजना का पुनर्मूल्यांकन करें
+</WarningBox>
+
+<style>{`
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .risk-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .risk-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .risk-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .risk-grid > .risk-item + .risk-item {
+    margin-top: 0;
+  }
+
+  .risk-item > .risk-card {
+    flex: 1;
+  }
+
+  .risk-citation {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid rgba(200, 75, 124, 0.2);
+  }
+`}</style>

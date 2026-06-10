@@ -1,0 +1,114 @@
+---
+title: "Progesterona Micronizada"
+description: "A farmacologia da progesterona bioidêntica, os benefícios para o sono, os ciclos de dosagem e por que ela nunca deve ser introduzida no início da transição."
+evidenceLevel: C
+lastReviewed: 2026-04-07
+references: [canonico-2018, hembree-2017, kuhl-2005, patel-2021, prior-2019]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Progesterona Micronizada"
+  nameCN="Progesterona Micronizada (Prometrium / Utrogestan)"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+A Progesterona Micronizada bioidêntica é o único progestogênio que deveria ser considerado para a terapia hormonal de pessoas transgênero. Quimicamente idêntica à progesterona produzida pelo ovário humano, seu perfil de risco de TEV (tromboembolismo venoso) parece ser muito mais seguro do que o das alternativas sintéticas. Devido a seus intensos efeitos colaterais sedativos, ela é amplamente utilizada off-label para corrigir casos graves de insônia.
+</DrugInfoBox>
+
+<img src="/images/drugs/utrogestan-studio.webp" alt="Foto do produto: cápsulas de progesterona micronizada Utrogestan 200mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<DangerBox title="Não comece a usar antes de 12 meses">
+O desenvolvimento mamário inicial (Tanner I-III) depende exclusivamente da ação do estrogênio para impulsionar a ramificação dos ductos. Forçar a entrada da progesterona cedo demais funciona como um interruptor químico que desliga essa ramificação, desencadeando a diferenciação terminal<CitationRef id="patel-2021" num={1} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" />. Isso vai fundir prematuramente os brotos mamários, interrompendo o potencial de crescimento total. **Espere pelo menos 12 meses** e certifique-se de que suas mamas atingiram o estágio Tanner III antes de tomar um único comprimido de progesterona.
+</DangerBox>
+
+---
+
+## Farmacologia
+
+### A superioridade da forma bioidêntica
+
+A progesterona micronizada é produzida moendo-se progesterona pura e bioidêntica em partículas microscópicas, suspensas em uma cápsula gelatinosa oleosa para evitar sua destruição imediata pelo fígado<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />. 
+
+Características principais:
+- **Estrutura**: Fisicamente idêntica à P4 (progesterona).
+- **Os metabólitos**: Quando ingerida, o fígado decompõe uma grande parcela dela em 5α-pregnanolona (alopregnanolona). Esse metabólito atua diretamente sobre seus receptores GABA-A, agindo como um potente tranquilizante e ansiolítico<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} title="Progesterone is important for transgender women's therapy" />.
+- **Meia-vida**: Cerca de 16-18 horas quando tomada por via oral.
+- **Biodisponibilidade**: Excepcionalmente baixa (em torno de 10%), o que a torna relativamente segura quanto à sobrecarga hepática.
+
+### O perfil de TEV
+
+Evidências iniciais apontam fortemente para o fato de que a progesterona bioidêntica não apresenta os assustadores efeitos pró-coagulantes (de formação de coágulos) que tornam os progestinas sintéticas (como a medroxiprogesterona) perigosas<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />. Embora nenhum medicamento tenha "risco zero", ela é infinitamente mais segura de combinar com o estradiol em comparação com as progestinas sintéticas usadas em anticoncepcionais.
+
+## Recomendações de dosagem
+
+Com base na escassa literatura clínica e no amplo consenso entre profissionais de endocrinologia<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} /><CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+<DoseTable
+  headers={['Protocolo', 'Dose', 'Administração', 'Observações']}
+  rows={[
+    ['Dose inicial', '100 mg/day', 'Ingerida logo antes de dormir', 'Mantenha por 4-8 semanas para avaliar os efeitos psíquicos.'],
+    ['Manutenção padrão', '100-200 mg/day', 'Ingerida logo antes de dormir', 'A maioria das usuárias chega ao limite aqui.'],
+    ['O método cíclico', '200 mg/day por 10-14 dias por mês', 'Ingerida logo antes de dormir', 'Simula um ciclo menstrual cisgênero.'],
+  ]}
+/>
+
+### Como tomar
+
+- **Logo antes de dormir**: Como ela força seu cérebro a um estado de forte sedação, tomá-la pela manhã vai, na prática, deixá-la "dopada", tornando-a letárgica, tonta e sem condições de dirigir.
+- Engula a cápsula inteira com água. Não tente morder nem mastigar a cápsula gelatinosa; o óleo tem um gosto horrível.
+- Tomá-la junto com um lanche leve e bem gorduroso (como pasta de amendoim) aumenta bastante a taxa de absorção.
+- Se você esquecer uma dose, simplesmente vá dormir. Não tome 200mg na noite seguinte para "compensar".
+
+<WarningBox title="O debate sobre a ciclagem">
+Muitas pessoas que fazem DIY defendem "ciclar" a progesterona (tomá-la por apenas 2 semanas do mês e depois parar) para imitar um ciclo ovulatório cisgênero. A queda intensa de hormônios quando você interrompe o medicamento pode desencadear quedas emocionais brutais, semelhantes à TPM. Não existe nenhuma prova clínica de que a ciclagem desenvolve mamas melhores do que o uso contínuo.
+</WarningBox>
+
+---
+
+## Benefícios teóricos
+
+### Maturação mamária
+
+A Dra. Jerilynn Prior formulou a célebre hipótese de que a progesterona atua como o gatilho final da maturação lobuloalveolar (Tanner IV-V), fazendo com que as mamas se arredondem e se preencham com tecido glandular mais denso<CitationRef id="prior-2019" num={3} authors="Prior JC" year={2019} />. 
+- **A ressalva**: Isso se baseia inteiramente em relatos das próprias pacientes, e não em exames de ressonância magnética que medem o volume. Continua sendo "Opinião de Especialista" (Evidência de Nível C).
+- Muitas usuárias relatam um inchaço significativo das mamas após começar o uso, mas isso geralmente é apenas retenção de líquido, que regride quando o medicamento é interrompido.
+
+### A solução para o sono (insônia)
+
+Este é o efeito mais incontestável da progesterona. O metabólito alopregnanolona atua sobre seus receptores GABA exatamente como um ansiolítico ou um indutor do sono.
+- Combate vigorosamente a insônia.
+- Aumenta consideravelmente a duração do sono REM profundo.
+- O efeito sedativo atinge o pico cerca de 60 a 90 minutos após a ingestão do comprimido.
+
+### Estabilização do humor
+
+Algumas usuárias relatam que uma ansiedade incapacitante desaparece com a progesterona. Outras relatam sentir-se de repente desesperançadamente deprimidas e emocionalmente instáveis. Isso é altamente genético e subjetivo. Se a progesterona destruir sua saúde mental, pare de tomá-la imediatamente.
+
+## Efeitos colaterais
+
+- **Sonolência/sedação intensa**: O motivo exato pelo qual você a toma à noite.
+- **Vertigem (tontura)**: Muito comum se você se levantar rápido demais logo depois que o comprimido começa a fazer efeito.
+- **Inchaço e náusea**: Tomá-la com alimento ameniza esses efeitos.
+- **Dor nas mamas**: Mamilos endurecidos e doloridos são extremamente comuns nas primeiras semanas de uso.
+
+<DangerBox title="Não dirija">
+Não engula seu comprimido de progesterona e em seguida dirija um carro ou opere máquinas pesadas. O efeito sedativo é real e prejudica os tempos de reação exatamente como um benzodiazepínico leve.
+</DangerBox>
+
+## Diretrizes de monitoramento
+
+- Faça um painel sanguíneo padrão 4 a 8 semanas após começar, para checar seus níveis de P4.
+- Acompanhe sua saúde mental em um diário. Os efeitos colaterais psicológicos surgem sorrateiramente.
+- Se a depressão se tornar avassaladora, simplesmente pare. A progesterona não exige desmame gradual.
+
+<DrugBrandGallery drugId="progesterone" />

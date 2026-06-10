@@ -1,0 +1,98 @@
+---
+title: "Estradiol Sipiyonat (EC)"
+description: "Estradiol sipiyonat için kapsamlı rehber — estradiol valeratla farmakokinetik karşılaştırma, dozlama, enjeksiyon protokolleri ve güvenlik sınırları."
+evidenceLevel: B
+sidebar:
+  order: 6
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, rothman-2024, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Estradiol Sipiyonat (EC)"
+  nameCN="Estradiol Cypionate Injection"
+  category="estrogen"
+  route="Kas içi (IM) / Deri altı (SC)"
+  evidenceLevel="B"
+>
+Estradiol sipiyonat (EC), başlıca Amerika kıtasında kullanılan uzun etkili enjekte edilebilir bir estradiol esteridir. Estradiol valeratla (EV) karşılaştırıldığında EC'nin yarı ömrü daha uzundur (~8-10 gün, EV için ~4-5 güne karşılık) ve bu da enjeksiyon aralıklarının uzatılmasına olanak tanır<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. Marka adı: Depo-Estradiol.
+</DrugInfoBox>
+
+## Farmakokinetik
+
+Estradiol sipiyonatın farmakokinetik profili<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **Yarı ömür**: ~8-10 gün (EV için ~4-5 güne karşılık)
+- **Tepe zamanı**: enjeksiyondan 2-4 gün sonra
+- **Dip zamanı**: enjeksiyondan 7-10 gün sonra
+- **Kararlı durum**: ~3-4 düzenli döngüden sonra ulaşılır
+
+### Estradiol Valeratla (EV) Karşılaştırma
+
+<DoseTable
+  headers={['Parametre', 'Estradiol Sipiyonat (EC)', 'Estradiol Valerat (EV)']}
+  rows={[
+    ['Yarı ömür', '~8-10 gün', '~4-5 gün'],
+    ['Tepe zamanı', '2-4 gün', '2-3 gün'],
+    ['Önerilen aralık', '7-14 gün', '5-7 gün'],
+    ['Serum düzeyi dalgalanması', 'Daha küçük', 'Daha büyük'],
+    ['Başlıca bölge', 'Amerika kıtası', 'Küresel'],
+    ['VTE riski (RR)', '~1.0 (ilk geçişi atlar)', '~1.0'],
+    ['Kanıt düzeyi', 'B', 'A'],
+  ]}
+/>
+
+EC'nin daha uzun yarı ömrü, dip noktasında E2 düşüşünün daha az olmasını ve dolayısıyla daha düzgün bir konsantrasyon eğrisini sağlar<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## Dozlama
+
+### Yetişkin Dozlaması
+
+<DoseTable
+  headers={['Aşama', 'Doz', 'Notlar']}
+  rows={[
+    ['Başlangıç dozu', '2-3 mg/hafta', 'Meme gelişimini korumak için düşük dozla başlangıç (ilk 1-6 ay)'],
+    ['İdame dozu', '3-5 mg/hafta', 'Dip E2 düzeyine göre ayarlayın; hedef 100-200 pg/mL'],
+    ['Maksimum doz', '7 mg/10-14 gün', 'Aşmayın'],
+  ]}
+/>
+
+Dozlama kaynakları: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> ve WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. EC'nin daha uzun yarı ömrü nedeniyle bazı kullanıcılar 10-14 günlük enjeksiyon aralıklarını tercih eder.
+
+<WarningBox title="Enjeksiyon Aralığı ve Kan Alma Zamanlaması">
+EC kullanıcıları, dip düzeylerini ölçmek için kanlarını **bir sonraki enjeksiyondan önceki sabah** aldırmalıdır. 10 günlük bir program kullanılıyorsa dip noktası 10. günün sabahıdır. Hedef dip E2: 100-200 pg/mL.
+</WarningBox>
+
+## Markalar ve Bulunabilirlik
+
+| Marka | Konsantrasyon | Bölge |
+|-------|---------------|--------|
+| **Depo-Estradiol** | 5 mg/mL | Amerika Birleşik Devletleri |
+| Bileşik eczaneler | Çeşitli | Belirli bölgeler |
+
+EC başlıca ABD'de ve Latin Amerika'da bulunur. Bulunmadığı bölgelerde standart alternatif [estradiol valerat enjeksiyonudur](/tr/medications/estrogens/injection/).
+
+## İzleme
+
+Diğer enjekte edilebilir estradiol esterleriyle aynıdır:
+
+- **E2**: Her 3 ayda bir, dip ölçümü (enjeksiyondan önceki sabah). Hedef 100-200 pg/mL
+- **T**: Her 3 ayda bir. Hedef &lt;50 ng/dL
+- **Karaciğer fonksiyonu (ALT/AST)**: Başlangıçta + her 6 ayda bir
+
+## Enjeksiyon Tekniği
+
+Enjeksiyon prosedürü [estradiol valerat enjeksiyonuyla](/tr/medications/estrogens/injection/#injection-technique) aynıdır. Hem SC hem de IM yolları uygundur.
+
+<DangerBox title="Güvenlik Sınırları">
+- **Tek enjeksiyon dozu 10 mg'ı aşmamalıdır**
+- Amaç, yüksek tepe değerlerinin peşinden koşmak değil, kararlı fizyolojik E2 düzeylerini korumaktır
+- E2 >200 pg/mL daha güçlü bir feminizasyon sağlamaz, yalnızca pıhtı riskini artırır<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- EC bölgenizde bulunmuyorsa doğrulanmamış kanallar üzerinden satın almayın
+</DangerBox>

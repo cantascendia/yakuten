@@ -1,0 +1,80 @@
+---
+title: "Ikhtisar Anti-Androgen"
+description: "Panduan komparatif untuk CPA, Spironolakton, Bikalutamid, dan Agonis GnRH—mencakup mekanisme kerja, efikasi, profil keamanan, dan biaya."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+sidebar:
+  order: 0
+---
+
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+
+## Mengapa Anda Membutuhkan Anti-Androgen?
+
+Bagi sebagian besar perempuan transgender, estradiol saja (terutama pada dosis pil yang umum) tidak cukup untuk menekan testosteron (T) hingga ke rentang sasaran perempuan (< 50 ng/dL)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Anti-androgen (penyekat T) digunakan bersamaan dengan estradiol untuk menghentikan produksi testosteron atau menghalanginya berikatan dengan reseptor seluler Anda, sehingga membuka jalan bagi feminisasi<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+Namun, ada satu peringatan penting: **Tidak semua orang membutuhkan anti-androgen**. Jika Anda menggunakan regimen estradiol dosis tinggi (khususnya suntikan) yang berhasil menekan T Anda hingga ke rentang sasaran dengan sendirinya, menambahkan penyekat T menjadi mubazir secara biologis dan justru memaparkan Anda pada efek samping yang tidak perlu<CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />. Pendekatan ini dikenal sebagai "Monoterapi".
+
+## Perbandingan 4 Anti-Androgen Utama
+
+<DoseTable
+  headers={['Obat', 'CPA (Androcur)', 'Spironolakton', 'Bikalutamid', 'Agonis GnRH']}
+  rows={[
+    ['Nama Generik', 'Siproteron Asetat', 'Spironolakton', 'Bikalutamid', 'Leuprorelin / Goserelin'],
+    ['Mekanisme', 'Umpan balik negatif progestin\n(Menghentikan produksi T)', 'Antagonis AR ringan\n(Tidak menghentikan produksi T)', 'Antagonis AR kuat\n(Tidak menghentikan produksi T)', 'Mematikan sepenuhnya poros HPG\n(Langsung menurunkan T ke kadar kastrasi)'],
+    ['Efikasi', 'Kuat (Menurunkan T ke rentang perempuan)', 'Lemah (Menyekat reseptor, T tetap tinggi)', 'Tidak menurunkan T (T bahkan dapat melonjak)', 'Paling kuat secara mutlak (Kastrasi kimiawi)'],
+    ['Dosis Umum', '5-12.5 mg/day', '50-200 mg/day', '25-50 mg/day', 'Bervariasi ketat menurut jenis suntikan'],
+    ['Cara Pemberian', 'Oral', 'Oral', 'Oral', 'Suntikan Subkutan / IM'],
+    ['Risiko Utama', 'Tumor meningioma (≥25mg)\nToksisitas hati / Depresi', 'Hiperkalemia (Lonjakan Kalium yang Mematikan)\nTekanan darah rendah', 'Toksisitas hati\nMenyulitkan pembacaan hasil tes darah', 'Penurunan kepadatan tulang\nReaksi di tempat suntikan'],
+    ['Status Pedoman', 'Direkomendasikan oleh ES 2017 & WPATH SOC 8', 'Direkomendasikan oleh ES 2017 & WPATH SOC 8', 'TIDAK direkomendasikan untuk penggunaan standar', 'Sangat direkomendasikan oleh pedoman'],
+    ['Akses Global', 'Dilarang di AS.\nUmum di UE/Inggris/Asia.', 'Standar di AS.\nTersedia secara global.', 'Memerlukan resep secara global.', 'Sangat dibatasi karena harga.'],
+  ]}
+/>
+
+<WarningBox title="Catatan tentang Bukti Pedoman">
+CPA, Spironolakton, dan Agonis GnRH secara resmi direkomendasikan oleh dua otoritas internasional terkemuka: Endocrine Society 2017 dan WPATH SOC 8<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />. Meskipun Bikalutamid banyak digunakan di kalangan DIY karena potensinya, obat ini sangat kekurangan data jangka panjang yang secara khusus meneliti kelompok transgender dan **tidak direkomendasikan** oleh pedoman-pedoman utama ini untuk GAHT (terapi hormon penegasan gender) standar.
+</WarningBox>
+
+## Cara Memilih
+
+Pemilihan anti-androgen Anda sebaiknya didasarkan pada kondisi kesehatan dasar Anda, ketersediaan di wilayah Anda, dan anggaran<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />:
+
+### Pilihan Ideal: Agonis GnRH (Penghambat Pubertas)
+
+- **Sasaran pengguna:** Pengguna dengan cakupan asuransi yang memadai atau akses ke sistem layanan kesehatan nasional seperti NHS.
+- **Kelebihan:** Efikasi yang tak tertandingi. Mematikan produksi testosteron dengan sempurna nyaris tanpa toksisitas organ.
+- **Kekurangan:** Sangat mahal (sering kali $500-$2000 USD dari kantong sendiri per dosis) dan memerlukan suntikan.
+
+### Standar Andal (Di Luar AS): CPA Dosis Rendah
+
+- **Sasaran pengguna:** Pilihan lini pertama yang standar di seluruh Eropa, Inggris, dan Asia.
+- **Kelebihan:** Sangat poten. Menekan testosteron secara andal dan murah.
+- **Kekurangan:** Dilarang oleh FDA di Amerika Serikat karena kekhawatiran pada hati. Dosis di atas 12.5mg berisiko menimbulkan tumor otak (meningioma).
+
+### Standar AS: Spironolakton
+
+- **Sasaran pengguna:** Anti-androgen yang menjadi pilihan baku mutlak di Amerika Serikat di klinik berbasis informed consent.
+- **Kelebihan:** Mudah didapat secara legal dan sangat murah.
+- **Kekurangan:** Bersifat diuretik (membuat Anda terus-menerus buang air kecil) dan membawa risiko mematikan berupa Hiperkalemia (penumpukan kalium yang fatal). Obat ini juga menyekat reseptor alih-alih menghentikan produksi T, sehingga hasil tes darah menjadi sulit ditafsirkan.
+
+### Opsi Tidak Lazim: Bikalutamid
+
+- **Sasaran pengguna:** Pengguna yang tidak dapat menoleransi Spiro atau CPA, bekerja ketat bersama seorang endokrinolog.
+- **Kelebihan:** Sangat kuat dalam menyekat reseptor androgen. Mempertahankan fungsi seksual lebih baik dibanding CPA.
+- **Kekurangan:** Risiko toksisitas hati yang nyata. Karena obat ini murni menyekat reseptor tanpa menurunkan produksi T, kadar testosteron darah Anda justru akan melonjak tinggi (meskipun T tersebut tidak bisa berbuat apa-apa). Hal ini membuat penyesuaian dosis melalui tes darah standar menjadi nyaris mustahil.
+
+<DangerBox title="Kombinasi Mematikan: CPA + Bikalutamid">
+Anda **tidak boleh** mengonsumsi CPA dan Bikalutamid secara bersamaan. Kedua obat ini secara inheren membebani sistem hepatik (hati); menggabungkannya sangat memperbesar risiko gagal hati akibat zat kimia<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Jika Anda beralih dari yang satu ke yang lain, hentikan sepenuhnya obat pertama sebelum memulai yang kedua.
+</DangerBox>
+
+## Halaman Terperinci
+
+- [CPA (Siproteron Asetat)](/id/medications/antiandrogens/cpa/) — Penyekat yang paling umum secara global; batas dosis dan risiko tumor otak.
+- [Spironolakton](/id/medications/antiandrogens/spironolactone/) — Standar AS; mengelola risiko hiperkalemia yang mematikan.
+- [Bikalutamid](/id/medications/antiandrogens/bicalutamide/) — Alternatif pemberontak; menyiasati risiko hati dan kerancuan tes darah.
+- [Agonis GnRH](/id/medications/antiandrogens/gnrh-agonists/) — Standar emas penekanan total; soal harga dan pengelolaan kepadatan tulang.

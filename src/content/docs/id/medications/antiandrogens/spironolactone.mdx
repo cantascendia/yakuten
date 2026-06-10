@@ -1,0 +1,114 @@
+---
+title: "Spironolakton"
+description: "Mekanisme anti-androgenik spironolakton, rekomendasi dosis, risiko hiperkalemia yang mematikan, pemantauan ginjal yang wajib, serta konteks globalnya sebagai standar di Amerika Serikat."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, ucsf-2016]
+sidebar:
+  order: 2
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Spironolactone (Aldactone)"
+  nameCN="Spironolactone (螺内酯/安体舒通)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="B"
+>
+Spironolakton (Spiro) secara struktural adalah diuretik hemat kalium (obat tekanan darah) yang memiliki efek samping anti-androgenik ringan yang tidak disengaja. Karena CPA dilarang sepenuhnya oleh FDA, spironolakton menjadi anti-androgen baku yang mutlak di Amerika Serikat. Obat ini mengandalkan pemblokiran reseptor alih-alih menurunkan produksi testosteron, dan membawa risiko serius akibat penumpukan kalium yang bisa berakibat fatal.
+</DrugInfoBox>
+
+<DangerBox title="Hiperkalemia — Risiko Jantung yang Mematikan">
+Karena Spiro adalah diuretik "hemat kalium", obat ini memaksa ginjal Anda membuang natrium dan air dengan cepat sambil menahan kalium di dalam darah<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Jika kadar kalium Anda melampaui ambang toksik (Hiperkalemia: K⁺ > 5.5 mmol/L), Anda menghadapi risiko tinggi mengalami aritmia jantung yang mendadak dan fatal.
+
+**Selama mengonsumsi spironolakton, Anda WAJIB:**
+- Menjalani tes darah kalium secara ketat (setiap bulan pada awalnya, lalu setiap 3-6 bulan).
+- **Menghindari** asupan makanan kaya kalium dalam jumlah besar (misalnya makan beberapa pisang setiap hari, air kelapa, pasta tomat dalam jumlah banyak).
+- **Jangan pernah** mengonsumsi suplemen kalium makanan jenis apa pun.
+- **Jangan pernah** menggabungkannya dengan penghambat ACE (ACE inhibitor) atau ARB (obat tekanan darah) kecuali di bawah pengawasan ketat dokter spesialis jantung.
+
+**SEGERA KE UGD JIKA:** Anda merasakan kelemahan otot mendadak, jantung berdebar, sesak napas berat, atau kebas dan kesemutan yang menjalar ke anggota gerak.
+</DangerBox>
+
+## Farmakologi
+
+### Mekanisme Kerja
+
+Cara Spiro menangani testosteron sangat berbeda dan bisa dibilang lebih lemah dibandingkan CPA atau agonis GnRH<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
+
+1. **Pemblokiran Reseptor Androgen** (Utama): Obat ini menyumbat reseptor di sel tubuh Anda sehingga testosteron dan DHT secara fisik tidak dapat berikatan dengannya untuk memicu maskulinisasi.
+2. **Gangguan Sintesis Ringan**: Obat ini sangat sedikit mengganggu enzim yang digunakan testis untuk memproduksi testosteron, sehingga hanya sedikit menurunkan produksi sebenarnya.
+3. **Tidak Menghancurkan T Secara Langsung**: Kadar testosteron dalam serum darah Anda mungkin nyaris tidak turun sama sekali.
+
+**Kesalahpahaman yang Krusial**: Spironolakton tidak menghancurkan jumlah testosteron Anda secara kimiawi. Testosteron tetap beredar bebas dalam darah Anda, hanya saja ia tidak dapat "tersambung" ke sel<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Oleh karena itu, mengukur kemajuan Anda melalui tes darah kadar T saat menggunakan Spiro sangat menyesatkan. Anda tidak dapat menilai efektivitas Spiro hanya dari angka T saja.
+
+### Efektivitas Dibandingkan CPA
+
+Spiro secara umum dianggap sebagai pilihan anti-androgen yang lebih lemah<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- Afinitas ikatannya terhadap reseptor androgen sangat lemah dibandingkan alternatif yang jauh lebih kuat seperti Bikalutamid.
+- Karena tidak dapat mematikan sistem seperti CPA, banyak pengguna melaporkan menabrak batas pada dosis maksimum tanpa merasa cukup terfeminisasi.
+- Obat ini sangat membutuhkan kadar estradiol yang tinggi berjalan bersamanya agar maskulinisasi berhasil ditekan.
+
+## Rekomendasi Dosis
+
+<DoseTable
+  headers={['Fase', 'Dosis', 'Catatan', 'Sumber']}
+  rows={[
+    ['Dosis Awal', '50 mg/day', 'Menilai toleransi dan kestabilan kalium awal.', 'ES 2017'],
+    ['Titrasi Standar', '100 mg/day', 'Dasar efektif rata-rata bagi sebagian besar pengguna.', 'UCSF 2016'],
+    ['Batas Maksimum', '200 mg/day', 'Melampaui 200mg hanya mengundang efek samping yang melumpuhkan tanpa tambahan manfaat anti-androgenik sama sekali.', 'ES 2017; WPATH SOC 8'],
+  ]}
+/>
+
+### Tips Penggunaan
+
+- Bagi tablet Anda (minum separuh di pagi hari, separuh di malam hari) untuk menstabilkan fluktuasi kalium dan meminimalkan penurunan tekanan darah yang mendadak<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />.
+- Mengonsumsinya bersama makanan sangat meningkatkan laju penyerapannya.
+- Karena obat ini secara harfiah adalah diuretik yang dirancang untuk mengosongkan kandung kemih Anda, meminumnya tepat sebelum tidur pasti akan merusak tidur Anda karena memaksa Anda buang air kecil sepanjang malam. Minumlah dosis malam Anda lebih awal pada sore atau petang hari.
+
+<WarningBox title="Dosis Lebih Tinggi Tidak Bekerja Lebih Cepat">
+Mendorong melebihi 200 mg/day tidak secara ajaib menekan reseptor androgen lebih kuat lagi. Hal itu hanya memperparah penurunan tekanan darah dan mendorong kalium Anda naik ke tepi jurang yang berpotensi mematikan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Jika Anda telah mencapai 200 mg/day dan maskulinisasi Anda belum berhenti, Anda harus mengganti penghambat (blocker), atau meningkatkan estradiol transdermal/suntik Anda secara signifikan untuk menekan T secara alami.
+</WarningBox>
+
+## Kerugian terhadap Kualitas Hidup
+
+Selain risiko serius aritmia jantung, Spiro menimbulkan beberapa kerugian berat terhadap kualitas hidup:
+
+### Tekanan Darah yang Anjlok (Hipotensi Ortostatik)
+Tujuan farmasi utama Spiro adalah menurunkan hipertensi<CitationRef id="ucsf-2016" num={2} authors="Deutsch MB (ed.)" year={2016} />. Jika Anda berdiri terlalu cepat dari kursi, Anda akan sering mengalami pusing hebat atau bahkan pingsan mendadak.
+- Anda WAJIB menjaga hidrasi secara aktif dengan air putih setiap hari.
+- Jangan membatasi asupan garam Anda (berbeda dengan kalium, Anda justru akan mengidam dan sangat membutuhkan natrium).
+- Jika tekanan darah dasar alami Anda sebelum HRT sudah sangat rendah, Spiro kemungkinan bukan pilihan yang layak bagi Anda.
+
+### Buang Air Kecil Terus-menerus (Poliuria)
+- Obat ini memaksa cairan keluar dari tubuh Anda dengan cepat. Anda akan buang air kecil terus-menerus dan merasa dehidrasi secara kronis. Minumlah air tanpa henti.
+
+## Protokol Pemantauan Wajib
+
+<DoseTable
+  headers={['Panel Pemeriksaan', 'Frekuensi', 'Rentang Target / Peringatan', 'Tindakan yang Diperlukan']}
+  rows={[
+    ['Kalium (K⁺)', 'Bulan ke-1, 2, 3 → Lalu setiap 6 bulan', 'K⁺ 3.5-5.0 mmol/L', 'Jika > 5.5: Hentikan obat, segera ke UGD.'],
+    ['Fungsi Ginjal (Kreatinin / eGFR)', 'Saat awal + setiap 6 bulan', 'eGFR > 60 mL/min', 'Jika anjlok: Hentikan Spiro sebelum ginjal kolaps.'],
+    ['Tekanan Darah', 'Setiap kunjungan klinik', 'Tidak ada pusing hebat', 'Jika sering pingsan: Kurangi dosis.'],
+  ]}
+/>
+
+## Akses Global
+
+Karena CPA dilarang di Amerika, Spiro adalah raja tak tertandingi dalam jalur pengobatan di AS:
+
+- **Di AS:** Diberikan secara bebas di klinik Informed Consent (seperti Planned Parenthood). Sangat mudah diakses, tersedia di mana-mana, dan sangat murah dengan asuransi/GoodRx.
+- **Di Eropa/Asia:** Hampir secara eksklusif digunakan sebagai obat cadangan bagi orang-orang yang hatinya tidak dapat menoleransi CPA, atau mereka yang selamat dari tumor otak akibat CPA.
+- **Risiko DIY:** Meskipun Spiro sendiri jarang dipalsukan, mencoba mengelola Spiro secara mandiri (DIY) tanpa membayar pemeriksaan panel ginjal pribadi sama saja dengan bermain rolet Rusia dengan risiko serangan jantung.
+
+<DrugBrandGallery drugId="spironolactone" />

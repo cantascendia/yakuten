@@ -1,0 +1,175 @@
+---
+title: "เอสตราไดออลชนิดฉีด (EV / EC / EEn)"
+description: "คู่มือฉบับสมบูรณ์ว่าด้วยเอสตราไดออลชนิดฉีด ทั้งเภสัชจลนศาสตร์ การคำนวณขนาดยา การเปรียบเทียบฉีดใต้ผิวหนัง (SC) กับฉีดเข้ากล้าม (IM) ความเป็นไปได้ของการใช้เป็นยาเดี่ยว วิธีปฏิบัติในการฉีด และเส้นแดงด้านความปลอดภัยที่ห้ามข้าม"
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+sidebar:
+  order: 5
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+เอสตราไดออลชนิดฉีดคือยาตัวเอกที่ทรงพลังที่สุดในการทำฮอร์โมนบำบัดเพื่อความเป็นหญิง (transfeminine HRT) อย่างไม่มีข้อโต้แย้ง เพราะมันข้ามผ่านการเผาผลาญรอบแรกที่ตับ (first-pass metabolism) ได้อย่างสมบูรณ์ และให้ระดับเอสโตรเจนที่สูงเด่นและคาดการณ์ได้แม่นยำ การทบทวนทางคลินิกล่าสุดยืนยันว่าการฉีดใต้ผิวหนัง (Subcutaneous, SC) ได้ผลดีเทียบเท่ากับการฉีดเข้ากล้าม (Intramuscular, IM)<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /> ที่น่าทึ่งคือ ผู้ใช้ยาฉีดราว 82.6% สามารถกดฮอร์โมนเทสโทสเตอโรน (T) ได้อย่างสมบูรณ์โดยใช้เป็นยาเดี่ยว (Monotherapy) โดยไม่ต้องใช้ยาต้านแอนโดรเจน (anti-androgen) ใด ๆ เลย<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="หลอดบรรจุยาฉีด Progynon Depot 10mg เอสตราไดออล วาเลอเรต" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## เภสัชจลนศาสตร์ (เรื่องของเอสเทอร์)
+
+เอสตราไดออลชนิดฉีดจะถูกพ่วงเข้ากับ "เอสเทอร์" (ester ซึ่งเป็นสายกรดไขมัน) ที่ทำหน้าที่ชะลอการปลดปล่อยตัวยาเข้าสู่กระแสเลือดให้กลายเป็นแบบค่อย ๆ ปล่อย (depot effect) ชนิดที่พบบ่อยที่สุดมีสามตัว ได้แก่
+- **เอสตราไดออล วาเลอเรต (Estradiol Valerate, EV)**: ค่าครึ่งชีวิตสั้นที่สุด (~4-5 วัน) ต้องฉีดทุก 5 ถึง 7 วัน ระดับยาพุ่งขึ้นเร็วและตกลงแรง
+- **เอสตราไดออล ไซพิโอเนต (Estradiol Cypionate, EC)**: ค่าครึ่งชีวิตปานกลาง (~8-10 วัน) เส้นกราฟราบเรียบและนุ่มนวลกว่า มักฉีดทุก 7 ถึง 10 วัน
+- **เอสตราไดออล อีแนนเทต (Estradiol Enanthate, EEn)**: ค่าครึ่งชีวิตยาว ให้ระดับยาที่คงที่และราบเรียบได้โดยฉีดทุก 7 ถึง 14 วัน เป็นที่นิยมใช้กันมากในชุมชนที่ผสมยาเองจากตลาดสีเทา (grey-market DIY)
+
+สำหรับคู่มือนี้ (และตามแนวทางมาตรฐานของ Endocrine Society) เราจะใช้ **เอสตราไดออล วาเลอเรต (EV)** เป็นค่าตั้งต้น เพราะเป็นสูตรยาเชิงพาณิชย์ที่ได้มาตรฐานมากที่สุดและผลิตในปริมาณมากทั้งในสหรัฐอเมริกาและญี่ปุ่น<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />
+
+## ขนาดยาสำหรับ EV
+
+### ช่วงขนาดยาในผู้ใหญ่
+
+<DoseTable
+  headers={['ระยะ', 'ขนาดยา', 'คำแนะนำ']}
+  rows={[
+    ['ขนาดเริ่มต้น', '1-2 mg / week', 'ระยะเริ่มต้นด้วยขนาดยาต่ำ (เดือนที่ 1-6) เพื่อปกป้องการแตกแขนงของท่อน้ำนม'],
+    ['ขนาดคงระดับ', '2-4 mg / week', 'ปรับขนาดยาตามผลเลือดที่ระดับต่ำสุด (trough) เป้าหมาย E2: 100-200 pg/mL'],
+    ['เพดานสูงสุดเด็ดขาด', '5 mg / week', 'เพดานความปลอดภัยสูงสุดเด็ดขาดตามคำแนะนำของ Rothman 2024 ห้ามฝ่าฝืนข้ามไปโดยไม่ไตร่ตรอง'],
+  ]}
+/>
+
+ตัวเลขเหล่านี้สอดคล้องอย่างสมบูรณ์กับ WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> และแนวทางเวชปฏิบัติของ Endocrine Society<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+
+<WarningBox title="ความผิดพลาดร้ายแรง: การเร่งกระบวนการ">
+การจำกัดขนาดยาไว้ที่ 1-2 mg/week ในช่วง 6 เดือนแรกไม่ใช่ "การกีดกันแบบอนุรักษนิยม" แต่คือการปกป้องทางชีววิทยา การกระหน่ำอัด EV ขนาดมหาศาล 5mg เข้าสู่กระแสเลือดตั้งแต่เดือนแรกจะบังคับให้เนื้อเยื่อต่อมน้ำนม (lobuloalveolar) เจริญเต็มที่ก่อนกำหนด ซึ่งจะยุติการแตกแขนงของท่อน้ำนมอย่างถาวร ดู[คู่มือการพัฒนาหน้าอก](/th/breast-development/)
+</WarningBox>
+
+### ช่วงเวลาในการตรวจเลือด
+
+คุณต้องเจาะเลือดในช่วงเช้าของวันที่ฉีดยา **ก่อนฉีดยาทันที** วิธีนี้จะวัด **ระดับต่ำสุด (Trough Level)** ของคุณ (คือความเข้มข้นของ E2 ที่ต่ำที่สุดในรอบการฉีด)
+- **ระดับต่ำสุด (Trough) เป้าหมาย:** 100-200 pg/mL
+- **คำเตือน:** หากระดับต่ำสุดของ EV สูงเกิน 200 pg/mL แสดงว่าระดับสูงสุด (peak) ในวันที่ 2 ของคุณน่าจะพุ่งทะลุเพดานแล้ว (เช่น 500-800 pg/mL) ระดับที่สูงเกินไปมีแต่จะเพิ่มความเสี่ยงต่อระบบหัวใจและหลอดเลือด ไม่ได้ช่วยเสริมความเป็นหญิงแต่อย่างใด
+- หากระดับต่ำสุดของคุณดิ่งลงต่ำกว่า 50 pg/mL ในรอบการฉีด EV แบบ 7 วัน คุณควรปรับมาเป็นรอบ 5 วัน (โดยใช้ขนาดยาที่ลดลงตามสัดส่วน) เพื่อทำให้เส้นกราฟราบเรียบขึ้น แทนที่จะกระหน่ำอัดขนาดยาให้สูงขึ้นทุก 7 วัน
+
+## ฉีดใต้ผิวหนัง (SC) เทียบกับฉีดเข้ากล้าม (IM)
+
+เป็นเวลาหลายทศวรรษที่วงการต่อมไร้ท่อบังคับให้ผู้หญิงข้ามเพศต้องใช้เข็มขนาดใหญ่เพื่อดันน้ำมันลงลึกเข้าไปในกล้ามเนื้อ (IM) ข้อมูลขนาดใหญ่ในปัจจุบันพิสูจน์แล้วว่าการให้ยาใต้ผิวหนัง (SC) เข้าไปในชั้นไขมันที่หน้าท้องหรือต้นขานั้นได้ผลเทียบเท่ากันทุกประการ<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['ตัวชี้วัด', 'ฉีดใต้ผิวหนัง (SC)', 'ฉีดเข้ากล้าม (IM)']}
+  rows={[
+    ['ระดับ E2 ในผลเลือด', 'เท่ากับ IM ทุกประการ', 'มาตรฐานดั้งเดิม'],
+    ['การกด T', 'เท่ากับ IM ทุกประการ', 'มาตรฐานดั้งเดิม'],
+    ['ระดับความเจ็บ', 'แทบไม่เจ็บเลย', 'อาจทำให้ปวดเมื่อยและเจ็บลึกในกล้ามเนื้อ'],
+    ['ขนาดเข็ม (Gauge)', 'เล็กมาก (25-27G)', 'หนากว่า (21-23G) และยาวกว่า'],
+    ['ความง่ายในการใช้', 'ฉีดด้วยตนเองได้ง่ายมาก', 'การฉีดเข้ากล้ามที่สะโพกมักต้องอาศัยคู่ของคุณหรือพยาบาล'],
+  ]}
+/>
+
+**ข้อสรุป:** หากคุณฉีดยาด้วยตนเอง การฉีดใต้ผิวหนัง (SC) คือทางเลือกที่เหนือกว่า ปลอดภัยกว่า และก่อให้เกิดบาดแผลทางใจน้อยกว่า
+
+<img src="/images/diagrams/en/injection-angles.webp" alt="ภาพตัดขวางเปรียบเทียบเทคนิคการฉีดใต้ผิวหนัง (45°) กับการฉีดเข้ากล้าม (90°)" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## ข้อได้เปรียบของการใช้เป็นยาเดี่ยว (Monotherapy)
+
+เอสตราไดออลชนิดฉีดกดฮอร์โมนเทสโทสเตอโรนได้ดีกว่ายาเม็ดชนิดรับประทานอย่างมาก การศึกษาแบบกลุ่มประชากร (cohort study) ในปี 2025 โดย Misakian และคณะ เผยให้เห็นว่าผู้ใช้เอสตราไดออลชนิดฉีดถึง **82.6%** สามารถกดฮอร์โมนเทสโทสเตอโรนได้อย่างสมบูรณ์ (T < 50 ng/dL) โดยไม่ต้องใช้ Spironolactone, Bicalutamide หรือ Cyproterone เลย<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />
+
+- ขจัดความเสี่ยงพิษต่อตับจาก CPA
+- ขจัดความเสี่ยงด้านการขับปัสสาวะและระดับโพแทสเซียมจาก Spiro
+
+<WarningBox title="อย่าไล่ล่าการใช้ยาเดี่ยวอย่างประมาท">
+ราว 17% ของผู้คนไม่สามารถใช้เป็นยาเดี่ยวได้ด้วยข้อจำกัดทางชีววิทยา หากคุณฉีดยาขนาด 5 mg/week แล้วระดับ T ของคุณยังค้างอยู่ที่ 300 ng/dL **อย่าเพิ่มขนาดยาฉีดของคุณเป็น 8mg หรือ 10mg** คุณเป็นส่วนหนึ่งของ 17% นั้น จงยอมรับความจริงและเพิ่มยาต้านแอนโดรเจน (anti-androgen) ขนาดต่ำเข้ามา
+</WarningBox>
+
+## วิธีปฏิบัติในการฉีดยา
+
+### อุปกรณ์
+
+| เส้นทางการให้ยา | กระบอกฉีดยา | เข็มดูดยา | เข็มฉีดยา |
+|----------|--------|---------|---------|
+| **SC** | Luer-Lock ขนาด 1 mL | 18-20G (สำหรับดูดน้ำมัน) | 25-27G × 1/2" ถึง 5/8" |
+| **IM** | Luer-Lock ขนาด 1 mL | 18-20G (สำหรับดูดน้ำมัน) | 21-23G × 1" ถึง 1.5" |
+
+ให้ใช้เข็มสองอันเสมอ ใช้เข็มขนาดใหญ่ดูดน้ำมันข้นออกจากขวดยา แล้วจึงเปลี่ยนมาใช้เข็มเล็กที่คมเพื่อฉีด การแทงทะลุจุกยางหนา ๆ ของขวดยาจะทำให้ปลายเข็มทื่อลงในระดับจุลภาค คุณคงไม่อยากฝืนแทงเข็มที่ทื่อแล้วเข้าไปในผิวหนังของคุณ
+
+### ตำแหน่งฉีด
+
+- **สำหรับ SC:** หน้าท้อง (อยู่ห่างจากสะดืออย่างน้อย 2 นิ้ว) หรือต้นขาด้านบนค่อนไปด้านนอก ให้จับหนีบชั้นไขมันขึ้นมา
+- **สำหรับ IM:** กล้ามเนื้อต้นขาด้านนอก (vastus lateralis คือบริเวณกลางค่อนนอกของต้นขา) หรือกล้ามเนื้อสะโพกด้านข้าง (ventrogluteal คือบริเวณสะโพก)
+
+### ขั้นตอนการปฏิบัติ
+
+1. **สุขอนามัย:** ล้างมือให้สะอาดด้วยสบู่ เตรียมสำลีชุบแอลกอฮอล์และกล่องทิ้งเข็ม (sharps bin) ให้พร้อม
+2. **ฆ่าเชื้อ:** เช็ดจุกยางของขวดยา เช็ดผิวหนังของคุณเป็นวงก้นหอยออกด้านนอกในรัศมี 2 นิ้ว ปล่อยให้แห้งสนิทเอง
+3. **ดูดยา:** ดึงอากาศเข้ากระบอกฉีดให้เท่ากับปริมาณยาของคุณ ดันอากาศเข้าไปในขวดยาเพื่อปรับสมดุลความดัน แล้วดูดน้ำมันลงมา เคาะไล่ฟองอากาศออก
+4. **เปลี่ยนเข็มและแทง:** เปลี่ยนมาใช้เข็มฉีดอันเล็ก สำหรับ SC ให้จับหนีบชั้นไขมันขึ้นมาแล้วแทงเข็มเข้าไปอย่างรวดเร็วที่มุม 45°
+5. **ทดสอบดูดกลับ (ไม่บังคับ แต่นิยมทำสำหรับ IM):** ดึงก้านสูบกลับเล็กน้อย หากมีเลือดวาบเข้ามาในกระบอก แสดงว่าคุณแทงโดนเส้นเลือด ให้ถอนเข็มออกและเริ่มใหม่ที่ตำแหน่งอื่น
+6. **ดันยา:** ค่อย ๆ ฉีดน้ำมันข้นเข้าไปอย่างช้า ๆ (~10 วินาที)
+7. **ถอนเข็ม:** ดึงเข็มออกอย่างนุ่มนวล กดด้วยสำลี ทิ้งเข็มลงในกล่องทิ้งเข็มทันที
+
+## การแปลงหน่วย mg เป็น mL (เรื่องคำนวณ)
+
+หากคุณมีขวดยาเชิงพาณิชย์มาตรฐานแบบอเมริกัน **เอสตราไดออล วาเลอเรต 20 mg/mL** (หมายความว่ามี EV 20mg อยู่ในน้ำมันทุก ๆ 1 mL):
+
+<DoseTable
+  headers={['ขนาดยาเป้าหมาย (mg)', 'ปริมาตรที่ฉีด (mL)', 'ความเข้มข้นของขวดยา']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="ตรวจสอบความเข้มข้นของคุณ">
+ขวดยาที่ผสมเอง (DIY) จากทั่วโลกมักถูกปรุงให้มีความเข้มข้นสูงลิ่ว (40 mg/mL, 50 mg/mL) ส่วนหลอดยา (ampoule) ของญี่ปุ่น (Progynon Depot) มักจะมีความเข้มข้น 10 mg/mL **ให้คำนวณจากความเข้มข้นของขวดยาที่คุณมีเสมอ**
+ปริมาตร (mL) = ขนาดยาเป้าหมาย (mg) ÷ ความเข้มข้นของขวดยา (mg/mL)
+</WarningBox>
+
+## ความจริงเรื่องหลอดยา (Ampoule)
+
+ในหลายพื้นที่ของเอเชียและยุโรป EV ชนิดฉีดถูกจำหน่ายในรูปแบบหลอดแก้วเล็ก ๆ ที่หักได้ (ampoule) แทนที่จะเป็นขวดที่มีจุกยาง
+- หลอดยา (ampoule) ไม่มีสารกันเสีย (เช่น benzyl alcohol)
+- เมื่อคุณหักหลอดแก้วแล้ว ของเหลวข้างในจะปนเปื้อนได้ทันที คุณไม่สามารถวางหลอดยาที่เปิดแล้วทิ้งไว้บนโต๊ะเป็นเวลาหนึ่งสัปดาห์เพื่อฉีดส่วนที่เหลืออีกครึ่งในภายหลังได้
+- คู่มือบางเล่มแนะนำให้ดูดยาส่วนที่เหลือเข้ากระบอกฉีดที่ปลอดเชื้อไว้ล่วงหน้า แล้วเก็บไว้ในตู้เย็นได้นานสุด 7 วัน วิธีนี้มีความเสี่ยงในการปนเปื้อนอยู่ในตัว ต้องใช้ความระมัดระวังอย่างยิ่งยวด
+
+<DangerBox title="เส้นแดงร้ายแรงที่ห้ามข้าม">
+จงหลีกเลี่ยงผลลัพธ์ด้านสุขภาพที่ร้ายแรงถึงชีวิต ห้ามทำสิ่งต่อไปนี้เด็ดขาด:
+
+- **ฉีดครั้งเดียว ≥ 10 mg:** การกระหน่ำอัดยาขนาดมหึมาจะสร้างระดับสูงสุด (peak) เกิน 1000 pg/mL ซึ่งเปิดทางให้เกิดภาวะลิ่มเลือดอุดตัน / ลิ่มเลือดอุดตันในหลอดเลือดดำ (VTE) ที่อันตรายถึงชีวิต<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />
+- **ขนาดยาสูง + ช่วงห่างสั้น (เช่น 5mg ทุก 3 วัน):** ผลสะสมจะทบค่าครึ่งชีวิตให้สูงขึ้นไม่หยุดยั้ง จนกระทั่งคุณถึงจุดที่ร่างกายรับภาระเกินขีดจนเป็นพิษ<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />
+
+หาก 5mg/week ยังกดระดับ T ของคุณลงไม่ได้ จงยอมรับว่าการใช้ยาเดี่ยวล้มเหลว และเพิ่มยาต้านแอนโดรเจนเข้ามา อย่าเปลี่ยนตัวเองให้กลายเป็นแหล่งอันตรายต่อชีวภาพ (biohazard)
+</DangerBox>
+
+---
+
+**เอกสารอ้างอิง**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

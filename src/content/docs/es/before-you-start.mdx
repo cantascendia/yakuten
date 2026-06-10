@@ -1,0 +1,81 @@
+---
+title: "Antes de empezar: ¿estás lista?"
+description: "Lista de verificación esencial previa a la THS — análisis de sangre de base, contraindicaciones absolutas y relativas, requisitos del consentimiento informado y expectativas realistas para tu proceso médico."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Esto no es ponerte trabas: es un control de seguridad. Empezar la THS (terapia hormonal de afirmación de género, GAHT) sin análisis de base es como conducir con los ojos vendados.
+
+Las siguientes pruebas de base están recomendadas por las guías internacionales<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Análisis de base
+
+Las siguientes pruebas deberían realizarse antes de empezar la THS. La mayoría puede solicitarse a través de tu médico de atención primaria, una clínica de consentimiento informado o servicios como Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormonas sexuales', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Función hepática', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Función renal', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Hemograma completo', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Panel de coagulación', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Panel metabólico', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolactina', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (varía según el seguro y la ubicación)"
+/>
+
+<WarningBox title="¿Ya empezaste sin análisis?">
+Si empezaste la THS sin hacerte los análisis de base, no es demasiado tarde. Hazlos cuanto antes.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Contraindicaciones absolutas
+
+<ContraindicationBox type="absolute" title="Contraindicaciones absolutas" sectionNum="">
+
+- Enfermedad tromboembólica activa (p. ej., trombosis venosa profunda [DVT], embolia pulmonar [PE])
+- Neoplasia maligna hormonosensible confirmada o sospechada (p. ej., cáncer de mama, cáncer de próstata)
+- Insuficiencia hepática o renal grave en fase aguda
+- Sangrado vaginal inexplicado (en personas transmasculinas)
+- Alergia grave conocida a los componentes del fármaco
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Contraindicaciones relativas
+
+<ContraindicationBox type="relative" title="Contraindicaciones relativas" sectionNum="">
+
+- Hipertensión no controlada o enfermedad cardiovascular
+- Diabetes mellitus mal controlada
+- Consumo de tabaco (sobre todo a partir de los 35 años; aumenta de forma significativa el riesgo de VTE [tromboembolismo venoso])
+- Antecedentes de enfermedad de la vesícula biliar
+- Migraña con aura (requiere una evaluación cuidadosa del riesgo)
+- Obesidad grave (IMC &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Establecer expectativas realistas
+
+<RealityCheck
+  items={[
+    { text: 'La THS no es magia. Los cambios ocurren a lo largo de meses y años; no esperes una transformación de la noche a la mañana.' },
+    { text: 'Algunos cambios son irreversibles (p. ej., el crecimiento mamario, el agravamiento de la voz, el crecimiento del clítoris). Entiende a qué te estás comprometiendo.' },
+    { text: 'La THS puede reducir o eliminar de forma permanente la fertilidad. Considera la preservación de gametos (congelación de óvulos/espermatozoides) antes de empezar.' },
+    { text: 'Las fluctuaciones del estado de ánimo son un efecto secundario normal. Asegúrate de contar con una red de apoyo estable.' },
+  ]}
+/>
+
+<WarningBox title="Qué leer a continuación">
+- [Recorrido de la THS](/es/pathway/) — Flujo completo desde la base hasta el mantenimiento a largo plazo
+- [Medicamentos](/es/medications/estrogens/overview/) — Opciones de fármacos, dosificación y riesgos
+- [Guía de THS en China](/es/china-reality/) — Cómo encontrar médicos, conseguir medicamentos y hacerse análisis de sangre
+- [Análisis de sangre](/es/blood-tests/) — Qué analizar, dónde acudir y cómo interpretar los resultados
+</WarningBox>

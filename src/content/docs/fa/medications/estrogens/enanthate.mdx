@@ -1,0 +1,93 @@
+---
+title: "استرادیول انانتات (EEn)"
+description: "راهنمای کامل استرادیول انانتات — فارماکوکینتیک، مقایسه با سایر استرها، دوزدهی و محدودیت‌های ایمنی."
+evidenceLevel: B
+sidebar:
+  order: 7
+lastReviewed: 2026-04-10
+references: [oriowo-1980, kuhl-2005, coleman-2022, hembree-2017, aly-2021]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="استرادیول انانتات (EEn)"
+  nameCN="استرادیول انانتات تزریقی"
+  category="estrogen"
+  route="عضلانی (IM) / زیرجلدی (SC)"
+  evidenceLevel="B"
+>
+استرادیول انانتات (EEn) یک استر تزریقی استرادیول با اثر متوسط تا طولانی است که نیمه‌عمری بین استرادیول والرات (EV) و استرادیول سیپیونات (EC) دارد، در حدود 5-7 روز<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" />. این دارو معمولاً به‌عنوان جزئی از داروهای ضدبارداری تزریقی ترکیبی (مانند Perlutal) یافت می‌شود و می‌تواند به‌صورت داروی HRT مستقل نیز به‌کار رود.
+</DrugInfoBox>
+
+## فارماکوکینتیک
+
+نمای فارماکوکینتیک استرادیول انانتات<CitationRef id="oriowo-1980" num={1} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />:
+
+- **نیمه‌عمر**: ~5-7 روز
+- **زمان اوج**: 3-5 روز پس از تزریق
+- **زمان حداقل (تروف)**: 7-10 روز پس از تزریق
+- **حالت پایدار**: پس از حدود 3-4 دوره منظم به‌دست می‌آید
+
+### مقایسه فارماکوکینتیک استرهای تزریقی استرادیول
+
+<DoseTable
+  headers={['پارامتر', 'EV (والرات)', 'EEn (انانتات)', 'EC (سیپیونات)']}
+  rows={[
+    ['نیمه‌عمر', '~4-5 روز', '~5-7 روز', '~8-10 روز'],
+    ['زمان اوج', '2-3 روز', '3-5 روز', '2-4 روز'],
+    ['فاصله توصیه‌شده', '5-7 روز', '7-10 روز', '7-14 روز'],
+    ['نوسان سطح سرمی', 'بیشتر', 'متوسط', 'کمتر'],
+    ['در دسترس بودن', 'جهانی', 'مناطق محدود', 'قاره آمریکا'],
+  ]}
+/>
+
+نمای فارماکوکینتیک EEn میان EV و EC قرار می‌گیرد و گزینه‌ای برای کاربرانی است که تزریق هفتگی با منحنی هموارتر می‌خواهند<CitationRef id="aly-2021" num={3} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## دوزدهی
+
+### دوزدهی بزرگسالان
+
+<DoseTable
+  headers={['مرحله', 'دوز', 'یادداشت‌ها']}
+  rows={[
+    ['دوز شروع', '2-4 mg/week', 'شروع با دوز پایین برای محافظت از رشد سینه'],
+    ['دوز نگهدارنده', '4-6 mg/week', 'بر اساس E2 در نقطه تروف تنظیم کنید؛ هدف 100-200 pg/mL'],
+    ['دوز حداکثر', '10 mg/10 days', 'از این مقدار فراتر نروید'],
+  ]}
+/>
+
+منابع دوزدهی: Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> و WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="نکته درباره در دسترس بودن">
+استرادیول انانتات در بسیاری از مناطق به‌طور گسترده در دسترس نیست. این دارو عمدتاً در آمریکای لاتین (به‌عنوان جزئی از Perlutal) و برخی کشورهای اروپایی یافت می‌شود. اگر به استرادیول تزریقی نیاز دارید، [استرادیول والرات](/fa/medications/estrogens/injection/) در بیشتر مناطق در دسترس‌تر است.
+</WarningBox>
+
+## برندها و در دسترس بودن
+
+| برند | فرمولاسیون | منطقه |
+|-------|-------------|--------|
+| **Perlutal** | EEn 10 mg + DHPA 150 mg (ضدبارداری ترکیبی) | آمریکای لاتین |
+| **Topasel** | EEn 10 mg + DHPA 150 mg | کشورهای منتخب |
+| فرمولاسیون‌های تک‌جزئی | غلظت‌های مختلف | داروخانه‌های ترکیب‌کننده (compounding) |
+
+## پایش
+
+- **E2**: هر 3 ماه، نمونه‌گیری در نقطه تروف (صبح پیش از تزریق). هدف 100-200 pg/mL
+- **T**: هر 3 ماه. هدف &lt;50 ng/dL
+- **عملکرد کبد (ALT/AST)**: پایه + هر 6 ماه
+
+## تکنیک تزریق
+
+روند تزریق با [تزریق استرادیول والرات](/fa/medications/estrogens/injection/#injection-technique) یکسان است.
+
+<DangerBox title="محدودیت‌های ایمنی">
+- همان محدودیت‌های ایمنی سایر استرهای تزریقی استرادیول اعمال می‌شود
+- یک دوز تزریقی نباید از 10 mg فراتر رود
+- E2 >200 pg/mL زنانه‌سازی را تقویت نمی‌کند، تنها خطر را افزایش می‌دهد<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- اگر از فرمولاسیون ترکیبی (مانند Perlutal) استفاده می‌کنید، جزء پروژستوژنی ممکن است خطرات افزوده‌ای به همراه داشته باشد؛ با پزشک مشورت کنید
+</DangerBox>

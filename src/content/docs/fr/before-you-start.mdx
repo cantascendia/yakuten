@@ -1,0 +1,81 @@
+---
+title: "Avant de commencer : êtes-vous prête ?"
+description: "Liste de vérification essentielle avant de débuter un THS — bilan sanguin de référence, contre-indications absolues et relatives, exigences de consentement éclairé et attentes réalistes pour votre parcours médical."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Il ne s'agit pas de vous mettre des bâtons dans les roues — c'est une mesure de sécurité. Commencer un THS sans bilan de référence revient à conduire les yeux bandés.
+
+Les bilans de référence suivants sont recommandés par les recommandations internationales<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Bilan sanguin de référence
+
+Les analyses suivantes devraient être réalisées avant de débuter un THS. La plupart peuvent être prescrites par votre médecin traitant, une clinique de consentement éclairé ou des structures comme le Planning familial :
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormones sexuelles', nameEn: 'Estradiol, Testostérone, LH, FSH', tag: 'required' },
+    { name: 'Fonction hépatique', nameEn: 'ALT, AST, Bilirubine', tag: 'required' },
+    { name: 'Fonction rénale', nameEn: 'Créatinine, Urée, DFGe', tag: 'required' },
+    { name: 'Numération formule sanguine', nameEn: 'NFS avec formule leucocytaire', tag: 'required' },
+    { name: 'Bilan de coagulation', nameEn: 'TP, TCA, INR', tag: 'required' },
+    { name: 'Bilan métabolique', nameEn: 'Glycémie à jeun, Bilan lipidique', tag: 'recommended' },
+    { name: 'Prolactine', nameEn: 'Taux de PRL de référence', tag: 'recommended' },
+  ]}
+  costRange="150 - 400 USD (variable selon l'assurance et le lieu)"
+/>
+
+<WarningBox title="Vous avez déjà commencé sans bilan ?">
+Si vous avez débuté un THS sans avoir fait de bilan de référence — il n'est pas trop tard. Faites-les réaliser dès que possible.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Contre-indications absolues
+
+<ContraindicationBox type="absolute" title="Contre-indications absolues" sectionNum="">
+
+- Maladie thromboembolique active (p. ex. thrombose veineuse profonde, embolie pulmonaire)
+- Cancer hormonodépendant confirmé ou suspecté (p. ex. cancer du sein, cancer de la prostate)
+- Insuffisance hépatique ou rénale sévère en phase aiguë
+- Saignement vaginal inexpliqué (chez les personnes transmasculines)
+- Allergie sévère connue à un composant du médicament
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Contre-indications relatives
+
+<ContraindicationBox type="relative" title="Contre-indications relatives" sectionNum="">
+
+- Hypertension ou maladie cardiovasculaire non contrôlée
+- Diabète sucré mal équilibré
+- Tabagisme (en particulier à partir de 35 ans, augmente nettement le risque de MTEV [VTE])
+- Antécédents de maladie de la vésicule biliaire
+- Migraine avec aura (nécessite une évaluation attentive du risque)
+- Obésité sévère (IMC &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Adopter des attentes réalistes
+
+<RealityCheck
+  items={[
+    { text: "Le THS n'est pas magique. Les changements s'installent sur des mois et des années — ne vous attendez pas à une transformation du jour au lendemain." },
+    { text: "Certains changements sont irréversibles (p. ex. développement mammaire, mue de la voix, croissance du clitoris). Comprenez bien ce à quoi vous vous engagez." },
+    { text: "Le THS peut réduire ou supprimer définitivement la fertilité. Envisagez une préservation des gamètes (congélation d'ovocytes/de spermatozoïdes) avant de commencer." },
+    { text: "Les fluctuations de l'humeur sont un effet secondaire normal. Assurez-vous de disposer d'un système de soutien stable." },
+  ]}
+/>
+
+<WarningBox title="À lire ensuite">
+- [Parcours THS](/fr/pathway/) — Le déroulé complet, du bilan de référence au suivi à long terme
+- [Médicaments](/fr/medications/estrogens/overview/) — Options thérapeutiques, posologies et risques
+- [Guide du THS en Chine](/fr/china-reality/) — Comment trouver des médecins, obtenir des médicaments et faire ses analyses sanguines
+- [Analyses sanguines](/fr/blood-tests/) — Quoi tester, où aller, comment lire ses résultats
+</WarningBox>

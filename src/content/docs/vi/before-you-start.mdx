@@ -1,0 +1,81 @@
+---
+title: "Trước Khi Bắt Đầu: Bạn Đã Sẵn Sàng Chưa?"
+description: "Danh sách kiểm tra thiết yếu trước HRT — xét nghiệm máu nền, chống chỉ định tuyệt đối và tương đối, yêu cầu đồng thuận có hiểu biết, và những kỳ vọng thực tế cho hành trình y tế của bạn."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Đây không phải là rào cản kiểm soát — đây là một bước kiểm tra an toàn. Bắt đầu HRT mà không có xét nghiệm nền cũng giống như lái xe khi bịt mắt.
+
+Các xét nghiệm nền sau đây được khuyến nghị bởi các hướng dẫn lâm sàng quốc tế<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Xét Nghiệm Máu Nền
+
+Các xét nghiệm sau đây nên được hoàn tất trước khi bắt đầu HRT. Hầu hết có thể được chỉ định qua bác sĩ chăm sóc ban đầu của bạn, phòng khám theo mô hình đồng thuận có hiểu biết, hoặc các dịch vụ như Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormone Sinh Dục', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Chức Năng Gan', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Chức Năng Thận', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Công Thức Máu Toàn Phần', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Xét Nghiệm Đông Máu', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Xét Nghiệm Chuyển Hóa', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolactin', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (thay đổi tùy theo bảo hiểm & địa điểm)"
+/>
+
+<WarningBox title="Đã bắt đầu mà chưa làm xét nghiệm?">
+Nếu bạn đã bắt đầu HRT mà chưa làm xét nghiệm nền — vẫn chưa quá muộn. Hãy làm các xét nghiệm này càng sớm càng tốt.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Chống Chỉ Định Tuyệt Đối
+
+<ContraindicationBox type="absolute" title="Chống Chỉ Định Tuyệt Đối" sectionNum="">
+
+- Bệnh huyết khối tắc mạch đang hoạt động (ví dụ: huyết khối tĩnh mạch sâu (DVT), thuyên tắc phổi (PE))
+- Ung thư nhạy cảm với hormone đã được xác nhận hoặc nghi ngờ (ví dụ: ung thư vú, ung thư tuyến tiền liệt)
+- Suy gan hoặc suy thận nặng trong giai đoạn cấp tính
+- Chảy máu âm đạo không rõ nguyên nhân (đối với người chuyển giới nam)
+- Dị ứng nặng đã biết với các thành phần của thuốc
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Chống Chỉ Định Tương Đối
+
+<ContraindicationBox type="relative" title="Chống Chỉ Định Tương Đối" sectionNum="">
+
+- Tăng huyết áp hoặc bệnh tim mạch không kiểm soát được
+- Đái tháo đường kiểm soát kém
+- Hút thuốc lá (đặc biệt từ 35 tuổi trở lên, làm tăng đáng kể nguy cơ VTE)
+- Tiền sử bệnh túi mật
+- Đau nửa đầu kèm tiền triệu (cần đánh giá nguy cơ cẩn thận)
+- Béo phì nặng (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Thiết Lập Kỳ Vọng Thực Tế
+
+<RealityCheck
+  items={[
+    { text: 'HRT không phải là phép màu. Những thay đổi diễn ra qua nhiều tháng và nhiều năm — đừng kỳ vọng một sự chuyển hóa chỉ sau một đêm.' },
+    { text: 'Một số thay đổi là không thể đảo ngược (ví dụ: ngực phát triển, giọng trầm đi, âm vật phát triển). Hãy hiểu rõ những gì bạn đang chấp nhận.' },
+    { text: 'HRT có thể làm giảm hoặc loại bỏ vĩnh viễn khả năng sinh sản. Hãy cân nhắc bảo quản giao tử (đông lạnh trứng/tinh trùng) trước khi bắt đầu.' },
+    { text: 'Dao động tâm trạng là một tác dụng phụ bình thường. Hãy đảm bảo bạn có một hệ thống hỗ trợ ổn định.' },
+  ]}
+/>
+
+<WarningBox title="Đọc tiếp theo">
+- [Lộ Trình HRT](/vi/pathway/) — Toàn bộ quy trình từ xét nghiệm nền đến duy trì lâu dài
+- [Thuốc Men](/vi/medications/estrogens/overview/) — Các lựa chọn thuốc, liều dùng và rủi ro
+- [Hướng Dẫn HRT tại Trung Quốc](/vi/china-reality/) — Cách tìm bác sĩ, lấy thuốc và làm xét nghiệm máu
+- [Xét Nghiệm Máu](/vi/blood-tests/) — Xét nghiệm gì, đi đâu, cách đọc kết quả
+</WarningBox>

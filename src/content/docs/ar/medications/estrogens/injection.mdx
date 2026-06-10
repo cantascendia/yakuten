@@ -1,0 +1,175 @@
+---
+title: "الإستراديول الحقني (EV / EC / EEn)"
+description: "الدليل الكامل للإستراديول الحقني — الحرائك الدوائية، الجرعات، مقارنة SC مقابل IM، جدوى العلاج الأحادي، بروتوكولات الحقن، والخطوط الحمراء الحرجة للسلامة."
+evidenceLevel: A
+sidebar:
+  order: 5
+lastReviewed: 2026-04-07
+references: [aly-2021, coleman-2022, fuji-2023, hembree-2017, herndon-2023, kanin-2025, misakian-2025, oriowo-1980, poage-2026, rothman-2024]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
+import InjectionSiteSVG from '../../../../../components/ui/InjectionSiteSVG.astro';
+
+<DrugInfoBox
+  name="Injectable Estradiol"
+  nameCN="注射雌二醇"
+  category="estrogen"
+  route="Intramuscular (IM) / Subcutaneous (SC)"
+  evidenceLevel="A"
+>
+الإستراديول الحقني هو بلا منازع الخيار الأقوى في العلاج الهرموني المؤنّث. فهو يتجاوز كليًا أيض المرور الأول عبر الكبد ويوفّر مستويات إستروجين سائدة وقابلة للتنبؤ إلى حدّ كبير. تؤكّد المراجعات السريرية الحديثة أنّ الحقن تحت الجلد (SC) فعّال تمامًا كالحقن العضلي (IM)<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" />. والمدهش أنّ نحو 82.6% من مستخدمي الحقن يستطيعون تحقيق كبح كامل للتستوستيرون (T) عبر العلاج الأحادي (Monotherapy)، دون أيّ حاصرات مضادة للأندروجين<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+</DrugInfoBox>
+
+<img src="/images/drugs/progynon-depot-studio.webp" alt="أمبولات حقن فاليرات الإستراديول Progynon Depot 10mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<PKCurveChart label="Injectable Estradiol (EV)" halfLifeH={80} peakH={24} doseMg={4} freqH={120} targetMin={100} targetMax={200} dangerMax={500} color="var(--color-accent, #D4A853)" />
+
+## الحرائك الدوائية (الإسترات)
+
+يأتي الإستراديول الحقني مرتبطًا بـ"إستر" (سلسلة حمض دهني) تُبطئ تحرّره في الدم على شكل تأثير مستودعي. والأنواع الثلاثة الأكثر شيوعًا هي:
+- **فاليرات الإستراديول (EV)**: أقصر عمر نصفي (~4-5 days). يتطلّب الحقن كل 5 إلى 7 أيام. يرتفع بسرعة ويهبط بحدّة.
+- **سيبيونات الإستراديول (EC)**: عمر نصفي متوسط (~8-10 days). منحنى أكثر استواءً وانسيابية. يُحقن غالبًا كل 7 إلى 10 أيام.
+- **إينانتات الإستراديول (EEn)**: عمر نصفي طويل. يمكن أن يوفّر مستويات ثابتة وسلسة عند الحقن كل 7 إلى 14 يومًا. يُستخدم بكثرة في أوساط الـ DIY في السوق الرمادية.
+
+في هذا الدليل (وبما يتوافق مع إرشادات Endocrine Society المعتادة)، سنعتمد **فاليرات الإستراديول (EV)** كخط أساس، لأنه التركيبة التجارية الأكثر توحيدًا والأوسع تصنيعًا في الولايات المتحدة واليابان<CitationRef id="oriowo-1980" num={3} authors="Oriowo MA et al." year={1980} title="Pharmacokinetics of Estradiol Esters" /><CitationRef id="aly-2021" num={4} authors="Aly" year={2021} title="Injectable Estradiol Meta-Analysis" />.
+
+## جرعات EV
+
+### النطاقات لدى البالغين
+
+<DoseTable
+  headers={['المرحلة', 'الجرعة', 'التوجيه']}
+  rows={[
+    ['الجرعة الابتدائية', '1-2 mg / week', 'مرحلة البدء بجرعة منخفضة (الأشهر 1-6) لحماية تفرّع القنوات اللبنية.'],
+    ['الجرعة الصيانية', '2-4 mg / week', 'عايِر الجرعة بناءً على تحليل القاع. المستوى المستهدف لـ E2: 100-200 pg/mL.'],
+    ['الحدّ الأقصى الصارم', '5 mg / week', 'سقف السلامة المطلق الذي اقترحه Rothman 2024. لا تتجاوزه أبدًا بشكل أعمى.'],
+  ]}
+/>
+
+تتوافق هذه الأرقام تمامًا مع WPATH SOC 8<CitationRef id="coleman-2022" num={6} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> وإرشادات Endocrine Society<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+<WarningBox title="الخطأ القاتل: استعجال العملية">
+حصر نفسك ضمن 1-2 mg/week خلال الأشهر الستة الأولى ليس "تحفّظًا تقييديًا"؛ بل هو حماية بيولوجية. إنّ إغراق مجرى دمك بطفرة هائلة قدرها 5mg من EV في الشهر الأول يُجبر النضج الفصيصي السنخي على الحدوث قبل أوانه، فينهي تفرّع قنواتك اللبنية بشكل دائم. راجِع [دليل نمو الثدي](/ar/breast-development/).
+</WarningBox>
+
+### توقيت تحليل الدم
+
+يجب سحب الدم صباح يوم الحقن، **قبيل الحقن مباشرة**. هذا يقيس **مستوى القاع** لديك (أدنى تركيز مطلق لـ E2 خلال الدورة).
+- **القاع المستهدف:** 100-200 pg/mL.
+- **تحذير:** قاع أعلى من 200 pg/mL على EV يعني أنّ ذروة اليوم الثاني كانت على الأرجح هائلة (مثلًا 500-800 pg/mL). النطاقات المرتفعة لا تزيد إلا من المخاطر القلبية الوعائية، ولا تعزّز التأنيث.
+- إذا هبط قاعك دون 50 pg/mL في دورة EV مدتها 7 أيام، فينبغي أن تنتقل إلى دورة من 5 أيام (مع استخدام جرعة أقل بالتناسب) لتسوية المنحنى، بدلًا من مجرد ضخّ جرعة أعلى كل 7 أيام.
+
+## الحقن تحت الجلد (SC) مقابل الحقن العضلي (IM)
+
+طوال عقود، أرغمت علومُ الغدد الصمّاء النساءَ العابرات على استخدام إبر ضخمة لدفع الزيت عميقًا داخل العضلة (IM). تثبت البيانات الواسعة النطاق الحالية أنّ الإيصال تحت الجلد (SC) في دهون البطن/الفخذ معادل تمامًا<CitationRef id="herndon-2023" num={1} authors="Herndon JS et al." year={2023} /><CitationRef id="poage-2026" num={8} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />:
+
+<DoseTable
+  headers={['المعيار', 'تحت الجلد (SC)', 'عضلي (IM)']}
+  rows={[
+    ['مستويات E2 المخبرية', 'مطابقة لـ IM', 'المعيار التاريخي'],
+    ['كبح التستوستيرون', 'مطابق لـ IM', 'المعيار التاريخي'],
+    ['عامل الألم', 'غير مؤلم عمليًا', 'قد يثير وجعًا عضليًا عميقًا وتقرّحًا'],
+    ['قياس الإبرة', 'دقيقة جدًا (25-27G)', 'أسمك (21-23G) وأطول'],
+    ['سهولة الاستخدام', 'سهل جدًا للحقن الذاتي', 'الحقن العضلي الأَلوي غالبًا يتطلّب شريكًا/ممرّضًا'],
+  ]}
+/>
+
+**الخلاصة:** إذا كنتِ تحقنين نفسك بنفسك، فالحقن تحت الجلد (SC) هو الخيار الأفضل والأكثر أمانًا والأقل إيلامًا.
+
+<img src="/images/diagrams/en/injection-angles.webp" alt="مقارنة مقطعية بين تقنيتي الحقن تحت الجلد (45°) والحقن العضلي (90°)" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0;" />
+
+## ميزة العلاج الأحادي
+
+يكبح الإستراديول الحقني التستوستيرون بفعالية أكبر بكثير من الحبوب الفموية. كشفت دراسة أترابية أجراها Misakian وزملاؤه عام 2025 أنّ **82.6%** من مستخدمي الإستراديول الحقني حقّقوا كبحًا كاملًا للتستوستيرون (T < 50 ng/dL) دون أيّ Spironolactone أو Bicalutamide أو Cyproterone<CitationRef id="misakian-2025" num={2} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+- يلغي مخاطر السمّية الكبدية المرتبطة بـ CPA.
+- يلغي مخاطر الإدرار والبوتاسيوم المرتبطة بـ Spiro.
+
+<WarningBox title="لا تلاحقي العلاج الأحادي بتهوّر">
+نحو 17% من الأفراد لا يستطيعون بيولوجيًا تحقيق العلاج الأحادي. إذا كنتِ تحقنين 5 mg/week وبقي التستوستيرون لديكِ عند 300 ng/dL، **فلا تزيدي جرعة الحقن إلى 8mg أو 10mg**. أنتِ ضمن الـ 17%. تقبّلي الواقع وأضيفي مضادًا للأندروجين بجرعة منخفضة.
+</WarningBox>
+
+## بروتوكول الحقن
+
+### الأدوات
+
+| الطريق | المحقنة | إبرة السحب | إبرة الحقن |
+|----------|--------|---------|---------|
+| **SC** | 1 mL Luer-Lock | 18-20G (لسحب الزيت) | 25-27G × 1/2" to 5/8" |
+| **IM** | 1 mL Luer-Lock | 18-20G (لسحب الزيت) | 21-23G × 1" to 1.5" |
+
+استخدمي دائمًا إبرتين. استعملي إبرة سميكة لسحب الزيت الكثيف من القنينة، ثم استبدليها بالإبرة الرفيعة الحادّة للحقن. إنّ ثقب السدادة المطاطية الكثيفة للقنينة يُكِلّ حدّ الإبرة على مستوى مجهري؛ ولا ترغبين في دفع إبرة كليلة غير حادّة إلى داخل جلدك.
+
+### المواضع
+
+- **للحقن تحت الجلد (SC):** البطن (ابقي على بُعد إنشين عن السرّة) أو الجزء العلوي الخارجي من الفخذين. اقرصي الدهون.
+- **للحقن العضلي (IM):** العضلة المتسعة الجانبية (الثلث الأوسط الخارجي من الفخذ) أو الموضع البطني الأَلوي (الورك/الأرداف).
+
+### التنفيذ
+
+1. **النظافة:** افركي يديكِ بالصابون. جهّزي مسحة كحولية وحاوية للأدوات الحادّة.
+2. **التعقيم:** امسحي سدادة القنينة المطاطية. امسحي جلدك بحركة لولبية متّجهة للخارج بقطر إنشين. اتركيه يجفّ تمامًا في الهواء.
+3. **السحب:** اسحبي إلى داخل المحقنة هواءً يعادل جرعتك. ادفعي الهواء داخل القنينة لمعادلة الضغط. اسحبي الزيت إلى الأسفل. انقري لإخراج الفقاعات.
+4. **الاستبدال والوخز:** استبدلي بالإبرة الرفيعة المخصّصة للحقن. للحقن تحت الجلد (SC)، اقرصي الوسادة الدهنية وادفعي الإبرة بزاوية 45°.
+5. **السحب الارتجاعي (اختياري لكنه شائع في الحقن العضلي IM):** اسحبي المكبس قليلًا إلى الخلف. إذا ظهر دم في الأسطوانة، فقد أصبتِ وريدًا. اسحبي الإبرة وابدئي من جديد في موضع آخر.
+6. **الدفع:** احقني الزيت الكثيف ببطء (~10 ثوانٍ).
+7. **السحب:** اسحبي الإبرة بسلاسة. اضغطي بقطنة. تخلّصي من الإبرة في حاوية الأدوات الحادّة فورًا.
+
+## تحويل mg إلى mL (الحساب)
+
+إذا كانت لديكِ قنينة تجارية أمريكية قياسية من **Estradiol Valerate 20 mg/mL** (أي أنّ هناك 20mg من EV في كل 1 mL من الزيت):
+
+<DoseTable
+  headers={['الجرعة المستهدفة (mg)', 'حجم الحقن (mL)', 'تركيز القنينة']}
+  rows={[
+    ['2 mg', '0.1 mL', '20 mg/mL'],
+    ['3 mg', '0.15 mL', '20 mg/mL'],
+    ['4 mg', '0.2 mL', '20 mg/mL'],
+  ]}
+/>
+
+<WarningBox title="تحقّقي من التركيز لديكِ">
+تُحضَّر قنينات الـ DIY حول العالم غالبًا بكثافات جنونية (40 mg/mL، 50 mg/mL). أمّا الأمبولات اليابانية (Progynon Depot) فكثيرًا ما تكون 10 mg/mL. **احسبي دائمًا بناءً على تركيز قنينتكِ أنتِ.**
+الحجم (mL) = الجرعة المستهدفة (mg) ÷ تركيز القنينة (mg/mL).
+</WarningBox>
+
+## مراجعة واقعية للأمبولات
+
+في أنحاء كثيرة من آسيا وأوروبا، يُباع EV الحقني في أمبولات زجاجية صغيرة قابلة للكسر بدلًا من القنينات ذات السدادة المطاطية.
+- الأمبولات لا تحتوي على مواد حافظة (مثل benzyl alcohol).
+- بمجرد كسر الزجاج، يصبح السائل عرضة للتلف. لا يمكنكِ ترك أمبولة مفتوحة على مكتبكِ لأسبوع لتحقني نصفها المتبقي لاحقًا.
+- تقترح بعض الأدلّة سحب الجرعة المتبقية مسبقًا في محقنة معقّمة وتخزينها في الثلاجة لمدة 7 days كحدّ أقصى. ينطوي هذا على مخاطر تلوّث جوهرية. توخّي حذرًا بالغًا.
+
+<DangerBox title="الخطوط الحمراء القاتلة">
+تجنّبي النتائج الصحية الكارثية. لا تفعلي أبدًا ما يلي:
+
+- **حقن مفردة ≥ 10 mg:** ضخّ جرعات هائلة يخلق مستويات ذروة تتجاوز 1000 pg/mL، ما يستجلب أحداث جلطات دموية / VTE حرجة<CitationRef id="rothman-2024" num={7} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+- **جرعة عالية + فاصل قصير (مثلًا 5mg كل 3 أيام):** يراكم التأثير التراكمي العمر النصفي صعودًا بلا نهاية حتى تبلغي حالة فرط فسيولوجي سامّ<CitationRef id="kanin-2025" num={10} authors="Kanin M et al." year={2025} title="Injectable Estradiol Dosing Regimens" />.
+
+إذا لم يكبح 5mg/week التستوستيرون لديكِ، فتقبّلي أنّ العلاج الأحادي فشل وأضيفي مضادًا للأندروجين. لا تحوّلي نفسكِ إلى خطر بيولوجي.
+</DangerBox>
+
+---
+
+**المراجع**
+
+1. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+2. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+3. <span id="ref-oriowo-1980">Oriowo MA et al. Pharmacokinetics of Estradiol Esters. *Contraception* 1980.</span>
+4. <span id="ref-aly-2021">Aly. Injectable Estradiol Meta-Analysis. *Transfemscience.org* 2021/2025.</span>
+5. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+6. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+7. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+8. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+9. <span id="ref-kanin-2025">Kanin M et al. Injectable Estradiol Dosing Regimens. *J Endocr Soc* 2025;9(5):bvaf004.</span>
+
+<InjectionSiteSVG />
+
+<DrugBrandGallery drugId="estradiol-injection" />

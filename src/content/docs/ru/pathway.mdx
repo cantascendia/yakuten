@@ -1,0 +1,225 @@
+---
+title: "Клинический маршрут ГЗТ"
+description: "Полный маршрут ГЗТ от исходных анализов до поддерживающей терапии, включая цели каждого этапа, узлы принятия решений и графики мониторинга."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Этот маршрут основан на WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> и рекомендациях Эндокринологического общества (Endocrine Society) 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> и представляет собой стандартизированную схему начала и поддержания трансфеминной ГЗТ.
+</p>
+
+<img src="/images/diagrams/en/pathway-timeline.webp" alt="Временная шкала маршрута ГЗТ: исходное состояние → низкая доза (1-6 мес.) → титрование (6-12 мес.) → поддерживающая терапия (12 мес.+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">НЕДЕЛЯ 0</div>
+  <PhaseBlock phase={0} title="Исходное обследование" color="green">
+    <p class="phase-block__desc">
+      Прежде чем начинать приём любых препаратов, пройдите полное исходное обследование, чтобы исключить противопоказания и установить ваши личные референсные значения.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Половые гормоны (E2, T, ГСПГ/SHBG, ЛГ/ФСГ)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Функция печени и почек, липидный профиль
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Коагулограмма и D-димер
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Глюкоза натощак + общий анализ крови
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">НАЧАЛО · 1-6 МЕСЯЦЕВ</div>
+  <PhaseBlock phase={1} title="Начало с низкой дозы" color="green" week="1-6 МЕСЯЦЕВ">
+    <DoseTable
+      headers={['Путь введения', 'Начальная доза', 'Источник']}
+      rows={[
+        ['Эстрадиол перорально', '2.0 mg / day', '[2]'],
+        ['Трансдермальный пластырь', '50-100 µg / 24h', '[2]'],
+        ['Гель для наружного применения', '1.5 mg / day', '[2]'],
+        ['Эстрадиола валерат в/м (IM)', '1-2 mg / week', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Антиандроген (при необходимости): CPA (ципротерона ацетат) 5-12.5 mg/day или спиронолактон 50-100 mg/day. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Целевой E2</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Целевая динамика T</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Снижение
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Предупреждение о безопасности: организму нужно время, чтобы адаптироваться к изменениям на уровне рецепторов. Никогда не повышайте дозу без анализа крови. Не увеличивайте дозу, даже если вам кажется, что «ничего не происходит». Зачатки молочных желёз обычно появляются на 3-6 месяце.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="РЕШЕНИЕ" timepoint="3 МЕСЯЦА">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL и снижение T → Продолжайте текущую схему до 6 месяцев"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Рассмотрите переход к дозам этапа 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Отклонения в печёночных пробах / ПРЛ (PRL) >30 / тяжёлое ухудшение настроения → Прекратите и обратитесь за медицинской помощью"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">ТИТРОВАНИЕ · 6-12 МЕСЯЦЕВ</div>
+  <PhaseBlock phase={2} title="Титрование дозы" color="yellow" week="6-12 МЕСЯЦЕВ">
+    <p class="phase-block__desc">
+      Корректируйте дозу на основе результатов анализов на 3-м месяце. Цель — достичь стандартного физиологического диапазона для трансфеминных людей.
+    </p>
+    <DoseTable
+      headers={['Путь введения', 'Скорректированная доза']}
+      rows={[
+        ['Трансдермальный пластырь', '100-200 µg / day'],
+        ['Эстрадиол перорально', '4 mg / day'],
+        ['Гель для наружного применения', '3 mg / day'],
+        ['Эстрадиола валерат в/м (IM)', '2-4 mg / week'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Целевой E2</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Целевой T</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Прогестерон (опционально)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Рассмотрите с учётом развития груди (стадия Таннера 3+)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">в/м E2V 2-4 mg/week</span>
+      <span class="dose-tag dose-tag--yellow">Гель для наружного применения 3.0-4.5 mg/day</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="СТАБИЛЬНОСТЬ" timepoint="6 МЕСЯЦ">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL и T <50 ng/dL → Переход к поддерживающему этапу"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50, но E2 в целевом диапазоне → Скорректируйте антиандроген (не повышайте E2 для подавления T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Продолжайте повышение дозы в пределах безопасных значений"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">УСТОЙЧИВОЕ СОСТОЯНИЕ · 12 МЕСЯЦЕВ+</div>
+  <PhaseBlock phase={3} title="Долгосрочная поддерживающая терапия" color="pink" week="12 МЕСЯЦЕВ+">
+    <p class="phase-block__desc">
+      После стабилизации уровней гормонов и физических изменений перейдите к редкому мониторингу. Поддерживайте минимальную эффективную дозу, чтобы удерживать E2 в диапазоне 100-200 pg/mL, T &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Частота мониторинга</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Месяцев</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Полный гормональный профиль и факторы риска VTE (венозной тромбоэмболии) каждые 6 месяцев. Липидный профиль и глюкоза натощак — ежегодно. Рассмотрите скрининг плотности костной ткани.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL не усиливает феминизацию — он лишь повышает риск (Endocrine Society 2017, Rec 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">КОНЕЦ НАЧАЛЬНОГО ЭТАПА</p>
+    <p class="pathway-end-sub">Постоянный мониторинг</p>
+  </div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,107 @@
+---
+title: "Über diese Seite"
+description: "Die Mission hinter HRT Yakuten, unsere evidenzbasierten Inhaltsquellen (WPATH, Endocrine Society), unser Peer-Review-Prozess, unsere Datenschutzversprechen und medizinischen Hinweise."
+evidenceLevel: X
+lastReviewed: 2026-04-08
+references: []
+sidebar:
+  order: 100
+---
+
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+## Mission
+
+**Evidenzbasiert · Schadensminderung · Begleitung zur medizinischen Versorgung**
+
+HRT Yakuten ist eine Informationsseite mit Sicherheitsgrundlagen für transgeschlechtliche Frauen in der chinesischsprachigen Community, die eine HRT anwenden. Unser Ziel ist es nicht, Ärztinnen und Ärzte zu ersetzen, sondern denjenigen zu helfen, die bereits eine Hormontherapie anwenden oder kurz davorstehen, sie zu beginnen:
+
+- **Verstehe deine Blutwerte** und erkenne, welche auffälligen Werte einen Arztbesuch erforderlich machen
+- **Erfahre die realen Risiken von Medikamenten**, statt dich auf Hörensagen aus der Community und ungeprüfte Erfahrungsberichte zu verlassen
+- **Erkenne Notfall-Warnzeichen** (tiefe Venenthrombose [DVT], Leberschäden, Meningeom) und triff in kritischen Momenten die richtige Entscheidung
+- **Finde trans-freundliche medizinische Angebote** und gehe vom DIY-Ansatz zu einer ärztlich begleiteten Versorgung über
+
+### Was diese Seite NICHT ist
+
+- ❌ Kein Lexikon und kein medizinisches Lehrbuch
+- ❌ Kein Forum, keine Community und keine Social-Media-Plattform
+- ❌ Kein Bezugskanal für Medikamente und keine Empfehlungsseite für Apotheken
+- ❌ Bietet keine personalisierten Dosierungsempfehlungen („du solltest X mg nehmen")
+
+## Inhaltsquellen
+
+Alle medizinischen Inhalte dieser Seite beruhen auf den folgenden internationalen klinischen Leitlinien und der peer-reviewten Fachliteratur:
+
+| Quelle | Beschreibung |
+|--------|-------------|
+| **Endocrine Society 2017** | *Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons* — klinische Praxisleitlinie |
+| **WPATH SOC 8 (2022)** | *Standards of Care for the Health of Transgender and Gender Diverse People*, Version 8 |
+| **UCSF Transgender Care** | University of California, San Francisco — Leitlinien zur Transgender-Versorgung |
+| **EMA (2020)** | Beschränkungen und Sicherheitsbewertung der Europäischen Arzneimittel-Agentur zu CPA |
+| **PubMed / PMC** | Peer-reviewte Originalstudien (jede Quellenangabe enthält einen DOI) |
+
+Die hochgestellten Zahlen neben jeder medizinischen Empfehlung (z. B. <sup>[1]</sup>) verweisen auf die jeweilige Quelle. **Keine Quelle = kein Inhalt** — das ist eine unumstößliche Regel dieser Seite.
+
+## Prozess der inhaltlichen Prüfung
+
+| Schritt | Standard |
+|------|----------|
+| **Quellenpflicht** | Jede klinische Empfehlung muss sich auf mindestens eine peer-reviewte Studie oder internationale Leitlinie zurückführen lassen |
+| **Quervalidierung** | Dosierungsbereiche von Medikamenten müssen gegen ≥2 unabhängige Quellen abgeglichen werden (z. B. WPATH + Endocrine Society + UCSF) |
+| **Evidenzeinstufung** | Jede Seite ist mit einem Evidenzgrad gekennzeichnet: A (mehrere RCTs/Metaanalysen), B (einzelne RCT/Kohorte), C (Fallberichte/Expertenmeinung), X (keine Evidenz) |
+| **Prüfdatum** | Jede Seite zeigt am Ende ihr Datum der letzten Prüfung an |
+| **Aktualisierungszyklus** | Die Inhalte werden vierteljährlich auf Aktualität geprüft und auf Grundlage neu veröffentlichter Literatur überarbeitet |
+
+<WarningBox title="Grenzen der Inhalte">
+Diese Seite wird derzeit von einer Einzelperson gepflegt und hat noch keine formale Peer-Review durch eine professionelle medizinische Redaktion durchlaufen. Wir bemühen uns nach Kräften um Richtigkeit, doch Fehler und Auslassungen sind möglich. Wenn du Ungenauigkeiten findest, reiche bitte ein Issue auf GitHub ein.
+</WarningBox>
+
+## Technische Umsetzung
+
+| Technologie | Zweck |
+|------------|---------|
+| **Astro + Starlight** | Statische Seitengenerierung — standardmäßig kein JS, äußerst schnelles Laden |
+| **React Islands** | Clientseitiges JS nur für interaktive Werkzeuge (Blutwert-Checker, Dosis-Simulator usw.) |
+| **Pagefind** | Statischer Suchindex mit Unterstützung für Chinesisch, Englisch und Japanisch |
+| **Vercel** | Statisches Hosting + Edge Functions (KI-Fragen & -Antworten) |
+| **Open Source** | Vollständiger Quellcode verfügbar auf [GitHub](https://github.com/cantascendia/yakuten) |
+
+## Datenschutz
+
+**Diese Seite erhebt und speichert keinerlei personenbezogene Daten.**
+
+| Kategorie | Maßnahme |
+|----------|---------|
+| **Blutwert-Werkzeug** | Reine clientseitige JavaScript-Berechnung — deine eingegebenen Daten verlassen niemals deinen Browser und werden an keinen Server gesendet |
+| **KI-Fragen & -Antworten** | Gespräche werden in Echtzeit über Edge Functions verarbeitet — nichts wird gespeichert, protokolliert oder zum Training verwendet |
+| **Analyse** | Vercel Web Analytics & Speed Insights — ausschließlich aggregierte Seitenaufrufe und Performance-Kennzahlen; cookielos, keine Speicherung personenbezogener Identifikatoren, kein seitenübergreifendes Tracking |
+| **Tracking** | Kein Google Analytics, keine eingebetteten Social-Media- oder Werbe-Tracker — abgesehen von der oben genannten aggregierten Vercel-Analyse |
+| **Cookies** | Werden nur für die Designvorliebe (dunkler/heller Modus) verwendet, nicht zum Tracking |
+| **Werbung** | Keine, und das wird auch so bleiben |
+
+## Haftungsausschluss
+
+Die Inhalte dieser Seite dienen **ausschließlich Bildungs- und Informationszwecken** und stellen keine medizinische Beratung dar.
+
+- Diese Seite kann eine persönliche Diagnose und Behandlung durch eine qualifizierte Ärztin oder einen qualifizierten Arzt nicht ersetzen
+- Der Einsatz, die Anpassung und das Absetzen von Medikamenten sollten unter ärztlicher Begleitung durch qualifiziertes medizinisches Fachpersonal erfolgen
+- Solltest du Notfallsymptome bemerken (einseitige Schwellung/Schmerzen im Bein, plötzliche Brustschmerzen, Gelbsucht usw.), setze die Medikation sofort ab und suche die nächstgelegene Notaufnahme auf
+- Diese Seite übernimmt keine Verantwortung für medizinische Folgen, die aus der Nutzung ihrer Inhalte entstehen
+
+**Selbstmedikation (DIY) birgt reale Risiken.** Diese Seite möchte dir helfen, Medikamente sicherer anzuwenden, doch der sicherste Weg ist stets eine HRT unter ärztlicher Aufsicht.
+
+## Begleitende Werkzeuge
+
+- **hananote** — Eine HRT-Tracking-App für transgeschlechtliche Frauen (Flutter), die beim Nachverfolgen von Medikamenten, Blutwerten und körperlichen Veränderungen hilft. Sie ergänzt die Inhalte dieser Seite um ein personalisiertes, langfristiges Gesundheitsmanagement. Projekt: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+
+## Kontakt & Mitwirken
+
+- **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Reiche ein Issue oder einen Pull Request ein
+- **Inhaltliche Korrekturen**: Hast du einen medizinischen Fehler entdeckt? Bitte reiche ein GitHub-Issue mit der Quelle ein, die deiner Ansicht nach korrekt ist
+- **Marken-Galerie**: Wenn du Fotos von echten Medikamenten beisteuern möchtest, kontaktiere uns bitte über GitHub (CC-BY-SA-Lizenz erforderlich)
+
+## Lizenz
+
+Die Inhalte dieser Seite stehen unter der Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Du darfst sie frei teilen und anpassen, sofern du angemessene Urheberangaben machst, sie nicht zu kommerziellen Zwecken nutzt und abgeleitete Werke unter derselben Lizenz weitergibst.
+
+Der Quellcode steht unter der MIT-Lizenz.

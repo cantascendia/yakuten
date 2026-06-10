@@ -1,0 +1,89 @@
+---
+title: "Dutasterida"
+description: "Dutasterida na HRT transfeminina — inibição dupla da 5α-redutase, comparação com a finasterida, posologia e segurança."
+evidenceLevel: C
+sidebar:
+  order: 2
+lastReviewed: 2026-04-10
+references: [hembree-2017, coleman-2022]
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+
+<DrugInfoBox
+  name="Dutasterida"
+  nameCN="Dutasteride"
+  category="Inibidor da 5α-redutase"
+  route="Via oral"
+  evidenceLevel="C"
+>
+A dutasterida é um inibidor duplo da 5α-redutase dos tipos I + II que reduz o DHT sérico em aproximadamente 90-95%, de forma mais potente do que a finasterida<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Usada como terapia adjuvante na HRT transfeminina quando a finasterida se mostra insuficiente.
+</DrugInfoBox>
+
+## Mecanismo
+
+A dutasterida inibe simultaneamente **tanto a 5α-redutase do tipo I quanto a do tipo II**:
+
+- **Tipo I**: encontrada principalmente na pele (glândulas sebáceas) e no fígado
+- **Tipo II**: encontrada principalmente nos folículos pilosos e na próstata
+
+Essa inibição dupla atinge uma redução do DHT de **90-95%**, em comparação com cerca de ~65-70% obtidos com a [finasterida](/pt/medications/five-alpha-reductase/finasteride/).
+
+## Comparação com a finasterida
+
+| Característica | Dutasterida | Finasterida |
+|---------|-------------|-------------|
+| Alvo | Tipo I + II | Apenas tipo II |
+| Redução do DHT | ~90-95% | ~65-70% |
+| Meia-vida | ~4-5 semanas | ~6-8 horas |
+| Início de efeito | 3-6 meses | 3-6 meses |
+| Eliminação após interrupção | Meses (meia-vida muito longa) | Semanas |
+| Disponibilidade de genérico | Limitada | Ampla |
+| Nível de evidência | C | B |
+
+## Posologia
+
+<DoseTable
+  headers={['Indicação', 'Dose', 'Observações']}
+  rows={[
+    ['Adjuvante da HRT', '0.5 mg/day', 'Dose padrão; não exceder'],
+  ]}
+/>
+
+- 0.5 mg/day é a única dose recomendada
+- Devido à meia-vida muito longa (~4-5 semanas), **pular um dia não exige dose de reposição**
+- As cápsulas não devem ser abertas nem mastigadas
+
+<WarningBox title="A dutasterida costuma ser de segunda linha">
+Se a finasterida ainda não foi testada, em geral recomenda-se experimentar a finasterida por 6 meses primeiro. A dutasterida tem nível de evidência menor (C), custo mais alto e, por sua meia-vida extremamente longa, os efeitos colaterais persistem por meses após a interrupção.
+</WarningBox>
+
+## Marcas e disponibilidade
+
+| Marca | Concentração | Observações |
+|-------|----------|-------|
+| **Avodart** | cápsula de 0.5 mg | Marca original |
+| Genéricos | cápsula de 0.5 mg | Disponíveis em algumas regiões |
+
+## Monitoramento
+
+- **T**: manter o monitoramento de rotina da HRT a cada 3 meses
+- **DHT** (opcional): pode confirmar o efeito do 5αRI (inibidor da 5α-redutase)
+- **PSA**: a dutasterida reduz o PSA; informe seu médico caso vá fazer o exame
+
+## Contraindicações
+
+- Alergia à dutasterida
+- Insuficiência hepática grave (a dutasterida é metabolizada pela CYP3A4)
+- Uso concomitante de inibidores potentes da CYP3A4 (p. ex. cetoconazol) — pode causar acúmulo de dutasterida
+
+<DangerBox title="Observações importantes">
+- **Meia-vida muito longa** (4-5 semanas): a supressão do DHT persiste por meses após a interrupção
+- O conteúdo da cápsula é teratogênico; pessoas grávidas não devem manusear cápsulas com vazamento
+- Não interrompa outros medicamentos da HRT só porque a queda de cabelo melhorou
+- Se a finasterida já é eficaz, não há necessidade de escalonar para a dutasterida
+</DangerBox>

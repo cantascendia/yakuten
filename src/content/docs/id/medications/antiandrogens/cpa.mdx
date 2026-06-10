@@ -1,0 +1,134 @@
+---
+title: "CPA (Siproteron Asetat)"
+description: "Farmakologi lengkap Siproteron (Androcur), ambang dosis rendah yang efektif, risiko tumor otak, pembatasan EMA, dan pemantauan laboratorium yang krusial."
+evidenceLevel: A
+lastReviewed: 2026-04-07
+references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
+sidebar:
+  order: 1
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
+
+<DrugInfoBox
+  name="Cyproterone Acetate (CPA)"
+  nameCN="Cyproterone Acetate (Androcur)"
+  category="antiandrogen"
+  route="Oral"
+  evidenceLevel="A"
+>
+Siproteron Asetat (CPA, dengan merek dagang utama Androcur) adalah salah satu antiandrogen yang paling luas digunakan dalam alur layanan medis transgender di seluruh dunia (di luar Amerika Serikat). Pada dosis yang sangat rendah (5-12.5 mg/day), obat ini menekan testosteron dengan sempurna dan sangat direkomendasikan oleh pedoman Endocrine Society 2017 dan WPATH SOC 8. Namun, jika dosisnya tidak tepat, obat ini membawa risiko tumor yang katastrofik.
+</DrugInfoBox>
+
+<img src="/images/drugs/androcur-studio.webp" alt="Foto produk tablet Androcur 50mg siproteron asetat" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<DangerBox title="50 mg Adalah Overdosis Berat">
+Regimen komunitas yang sudah usang dan dokter yang kurang kompeten sering meresepkan CPA pada 50 mg/day atau bahkan 100 mg/day. Mega-dosis absolut ini dirancang untuk **pria yang melawan kanker prostat stadium lanjut**, bukan untuk terapi hormon afirmasi gender (GAHT, gender-affirming hormone therapy). Studi klinis membuktikan secara meyakinkan bahwa hanya 5-12.5 mg/day sudah sepenuhnya cukup untuk menekan T hingga ke garis dasar perempuan<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />. Mengonsumsi 50 mg tidak menekan T Anda lebih cepat; ia hanya melonjakkan risiko tumor otak, toksisitas hati, dan depresi klinis berat. **Jika Anda sedang mengonsumsi 50 mg saat ini, segera turunkan dosis Anda.**
+</DangerBox>
+
+## Farmakologi
+
+### Mekanisme Kerja
+
+CPA menghancurkan testosteron melalui serangan dari berbagai arah<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />:
+
+1. **Lingkar Umpan Balik Progestin** (Utama): Sebagai progestogen yang sangat kuat, CPA mengelabui hipotalamus agar menghentikan pelepasan GnRH. Hal ini menghentikan kelenjar hipofisis dari pemberian sinyal ke testis Anda, sehingga sintesis testosteron berhenti total.
+2. **Antagonisme Reseptor Ringan**: CPA secara ringan menghalangi sisa testosteron yang masih ada agar tidak berikatan dengan reseptor sel Anda (meski efek ini lemah dibandingkan Bikalutamid).
+3. **Sabotase 5α-reductase**: CPA secara ringan menghambat konversi T menjadi DHT.
+
+Dalam GAHT, CPA menurunkan testosteron Anda dengan mematikan total "pabrik produksinya"<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />. Tes darah Anda akan benar-benar menunjukkan kadar T yang anjlok.
+
+### Efektivitas Dosis Rendah
+
+Banyak sekali studi kohort membuktikan bahwa CPA dosis rendah jauh mengungguli mitos dosis tinggi<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />:
+
+- 10 mg/day secara rutin menurunkan T di bawah ambang perempuan 50 ng/dL.
+- 5 mg/day sering kali sudah cukup bila dijalankan bersama dosis estrogen yang tepat.
+- Menaikkan dosis hingga 50 mg/day tidak memberikan penurunan T tambahan.
+
+## Rekomendasi Dosis
+
+<DoseTable
+  headers={['Protokol', 'Dosis', 'Catatan', 'Sumber']}
+  rows={[
+    ['Awal yang Direkomendasikan', '5 mg/day OR 12.5 mg/every other day', 'Dosis rendah standar bila dipadukan dengan E2.', 'Meyer 2020; WPATH SOC 8'],
+    ['Pemeliharaan Umum', '5-12.5 mg/day', 'Sesuaikan berdasarkan hasil lab T Anda.', 'ES 2017'],
+    ['Batas Atas Absolut', '12.5 mg/day', 'Dosis apa pun yang mendorong hingga ≥25 mg memicu risiko tumor yang meledak.', 'Lee 2022; EMA 2020'],
+  ]}
+/>
+
+<img src="/images/diagrams/en/cpa-pill-splitting.webp" alt="Diagram pembelahan pil: tablet CPA 50mg dengan alur silang dibelah menjadi empat bagian 12.5mg menggunakan pemotong pil" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<WarningBox title="Cara Mengonsumsi 12.5 mg">
+Karena industri farmasi besar memproduksi CPA untuk kanker prostat, pilnya hampir selalu hadir dalam tablet besar 50 mg. Anda harus membeli pemotong pil dan mengiris pil tersebut menjadi empat bagian. Mengonsumsi satu bagian (12.5 mg) per hari, atau bahkan satu bagian setiap dua hari sekali (rata-rata ~6.25 mg/day), adalah metode yang paling aman dan paling efektif.
+</WarningBox>
+
+### Protokol Penurunan Bertahap
+
+Jika Anda saat ini mengonsumsi 50 mg/day dan perlu memperbaikinya<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- **Turunkan ke 25 mg:** Tahan di sini selama 2 minggu agar tubuh Anda menyesuaikan diri tanpa lonjakan T yang agresif.
+- **Turunkan ke 12.5 mg:** Tahan di sini selama 2 minggu.
+- Verifikasi melalui pemeriksaan darah pada bulan ke-3. Jangan menurunkan estrogen Anda saat menurunkan CPA secara bertahap.
+
+## Risiko Meningioma
+
+<DangerBox title="Meningioma — Ancaman Paling Mematikan dari CPA">
+Paparan CPA yang berkepanjangan pada dosis ≥ 25 mg/day terbukti secara meyakinkan berkaitan dengan pemicuan **Meningioma** (sebagian besar jinak, tetapi merupakan tumor yang sangat berbahaya yang tumbuh pada selaput otak dan sumsum tulang belakang Anda)<CitationRef id="lee-2022" num={4} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />:
+
+- Mengonsumsi ≥ 25 mg/day selama lebih dari satu tahun melonjakkan peluang Anda mengembangkan tumor otak menjadi kira-kira **12 kali lebih tinggi** daripada normal.
+- Sebuah studi kohort berskala besar pada tahun 2026 sepenuhnya mengukuhkan krisis ini secara khusus pada perempuan transgender<CitationRef id="hudelist-2026" num={5} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />.
+- Karena hal ini, **Badan Obat Eropa (EMA, European Medicines Agency) menerbitkan pembatasan hukum yang ketat pada tahun 2020**, mengharuskan dokter untuk hanya meresepkan CPA dalam dosis tinggi ketika benar-benar tidak ada pilihan lain<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />.
+
+**Tanda-Tanda Peringatan:** Jika Anda mengalami sakit kepala yang terus memburuk tanpa henti, penglihatan kabur/ganda, atau kejang spontan saat menggunakan CPA, **hentikan obat seketika** dan minta dilakukan MRI kepala.
+</DangerBox>
+
+<img src="/images/diagrams/en/cpa-meningioma-risk.webp" alt="Grafik risiko meningioma CPA yang bergantung pada dosis: risiko meningkat drastis di atas 25mg per hari" width="800" height="450" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+## Efek Samping Tambahan
+
+### Toksisitas Hati
+CPA membebani hati<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />:
+- Jarang terjadi pada 12.5mg, tetapi pemantauan tetap wajib.
+- Jika enzim hati Anda (ALT/AST) melonjak hingga > 3x batas atas normal, Anda harus menghentikan CPA.
+
+### Lonjakan Prolaktin
+Karena CPA bersifat sangat progestogenik, ia dapat menyebabkan kelenjar hipofisis Anda membanjiri tubuh dengan prolaktin<CitationRef id="meyer-2020" num={1} authors="Meyer G et al." year={2020} />:
+- Peningkatan ringan adalah hal yang normal dan tidak berbahaya.
+- Jika prolaktin menembus > 50 ng/mL, dokter Anda harus melakukan pemindaian untuk menyingkirkan kemungkinan prolaktinoma (tumor hipofisis jinak).
+
+### Depresi Klinis
+Sebagai progestin yang kuat, CPA memiliki efek samping psikologis yang terdokumentasi<CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} />:
+- Kelelahan berat, kelesuan, dan episode depresif banyak dilaporkan.
+- Jika Anda memiliki riwayat manik-depresif atau depresi klinis berat sebelumnya, CPA merupakan pertaruhan yang sangat berisiko.
+
+### VTE (Bekuan Darah)
+CPA secara inheren meningkatkan kemampuan darah Anda untuk membeku<CitationRef id="canonico-2018" num={7} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />. Menumpuk CPA oral dengan Estrogen oral menciptakan efek gabungan yang sangat berbahaya. Pengguna CPA sebaiknya dengan tegas beralih ke Estrogen Transdermal (koyo/patch atau gel).
+
+## Pemantauan Darah Wajib
+
+<DoseTable
+  headers={['Panel Tes', 'Frekuensi', 'Rentang Target / Peringatan', 'Tindakan yang Diperlukan']}
+  rows={[
+    ['Enzim Hati (ALT/AST)', 'Bulan 1, 2, 3 → Lalu setiap 3-6 bulan', 'Pertahankan dalam rentang lab standar', 'Jika > 3x batas maksimum: Hentikan obat.'],
+    ['Prolaktin (PRL)', 'Awal/baseline, lalu setiap 6 bulan', 'PRL < 50 ng/mL', 'Jika > 50 ng/mL: Pindai hipofisis.'],
+    ['Testosteron (T)', 'Bulan 1, lalu setiap 3-6 bulan', 'T < 50 ng/dL', 'Jika stabil, tetap pada dosis rendah.'],
+  ]}
+/>
+
+<WarningBox title="Berhenti Mendadak (Cold Turkey)">
+Tidak seperti estrogen (yang harus Anda turunkan secara hati-hati untuk mencegah pengeroposan tulang/kehancuran psikologis), waktu paruh progestin CPA terbersihkan dengan cepat dari tubuh. Jika Anda mengalami gejala hati atau tumor akut, Anda benar-benar boleh menghentikan CPA secara mendadak. Testosteron Anda akan pulih kembali secara perlahan, jadi Anda harus segera mengamankan penghambat (blocker) pengganti<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+</WarningBox>
+
+## Akses Global & Pelarangan FDA
+
+- **Di Amerika Serikat**: CPA dilarang keras oleh FDA dan sama sekali tidak terjangkau melalui apotek resmi, sehingga memaksa perempuan trans Amerika untuk mengandalkan Spironolakton.
+- **Di Eropa/Inggris/Australia/Asia**: Diresepkan secara luas dan sepenuhnya legal, berfungsi sebagai tulang punggung infrastruktur layanan kesehatan trans di luar AS.
+- **Pasar Gelap**: Kelompok DIY di seluruh dunia menyelundupkan CPA lintas perbatasan dalam jumlah yang mencengangkan. Jika Anda memesan CPA dari apotek internasional yang tidak teregulasi, Anda menanggung risiko memperoleh obat yang dipalsukan atau sudah jauh kedaluwarsa. Lanjutkan dengan kehati-hatian penuh.
+
+<DrugBrandGallery drugId="cyproterone-acetate" />

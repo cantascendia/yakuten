@@ -1,0 +1,81 @@
+---
+title: "Sebelum Memulai: Apakah Anda Sudah Siap?"
+description: "Daftar periksa penting sebelum HRT — tes darah dasar, kontraindikasi absolut dan relatif, persyaratan informed consent, serta ekspektasi yang realistis untuk perjalanan medis Anda."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
+import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+Ini bukan upaya menghalangi akses — ini adalah pemeriksaan keselamatan. Memulai HRT tanpa pemeriksaan darah dasar sama seperti menyetir dengan mata tertutup.
+
+Tes darah dasar berikut direkomendasikan oleh pedoman internasional<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+
+## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Pemeriksaan Laboratorium Dasar
+
+Tes berikut sebaiknya diselesaikan sebelum memulai HRT. Sebagian besar dapat dipesan melalui dokter layanan primer Anda, klinik berbasis informed consent, atau layanan seperti Planned Parenthood:
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormon Seks', nameEn: 'Estradiol, Testosterone, LH, FSH', tag: 'required' },
+    { name: 'Fungsi Hati', nameEn: 'ALT, AST, Bilirubin', tag: 'required' },
+    { name: 'Fungsi Ginjal', nameEn: 'Creatinine, BUN, eGFR', tag: 'required' },
+    { name: 'Hitung Darah Lengkap', nameEn: 'CBC with Differential', tag: 'required' },
+    { name: 'Panel Koagulasi', nameEn: 'PT, aPTT, INR', tag: 'required' },
+    { name: 'Panel Metabolik', nameEn: 'Fasting Glucose, Lipids', tag: 'recommended' },
+    { name: 'Prolaktin', nameEn: 'Baseline PRL level', tag: 'recommended' },
+  ]}
+  costRange="$150 - $400 USD (bervariasi menurut asuransi & lokasi)"
+/>
+
+<WarningBox title="Sudah memulai tanpa pemeriksaan lab?">
+Jika Anda mulai HRT tanpa melakukan pemeriksaan darah dasar — belum terlambat. Lakukan secepat mungkin.
+</WarningBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Kontraindikasi Absolut
+
+<ContraindicationBox type="absolute" title="Kontraindikasi Absolut" sectionNum="">
+
+- Penyakit tromboemboli aktif (mis. deep vein thrombosis, pulmonary embolism)
+- Keganasan yang sensitif terhadap hormon yang terkonfirmasi atau dicurigai (mis. kanker payudara, kanker prostat)
+- Gangguan hati atau ginjal berat pada fase akut
+- Perdarahan vagina yang tidak dapat dijelaskan (untuk individu transmaskulin)
+- Alergi berat yang diketahui terhadap komponen obat
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-caution);">§ 1.3</span> Kontraindikasi Relatif
+
+<ContraindicationBox type="relative" title="Kontraindikasi Relatif" sectionNum="">
+
+- Hipertensi atau penyakit kardiovaskular yang tidak terkontrol
+- Diabetes melitus yang terkontrol buruk
+- Penggunaan tembakau (terutama pada usia 35+, secara signifikan meningkatkan risiko VTE)
+- Riwayat penyakit kandung empedu
+- Migrain dengan aura (memerlukan penilaian risiko yang cermat)
+- Obesitas berat (BMI &gt; 30)
+
+</ContraindicationBox>
+
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Menetapkan Ekspektasi yang Realistis
+
+<RealityCheck
+  items={[
+    { text: 'HRT bukan keajaiban. Perubahan terjadi dalam hitungan bulan dan tahun — jangan mengharapkan transformasi dalam semalam.' },
+    { text: 'Beberapa perubahan bersifat permanen (mis. pertumbuhan payudara, pendalaman suara, pembesaran klitoris). Pahami apa yang akan Anda jalani.' },
+    { text: 'HRT dapat mengurangi atau menghilangkan kesuburan secara permanen. Pertimbangkan penyimpanan sel kelamin (pembekuan sel telur/sperma) sebelum memulai.' },
+    { text: 'Fluktuasi suasana hati adalah efek samping yang normal. Pastikan Anda memiliki sistem dukungan yang stabil.' },
+  ]}
+/>
+
+<WarningBox title="Apa yang dibaca selanjutnya">
+- [Alur HRT](/id/pathway/) — Alur lengkap dari kondisi dasar hingga pemeliharaan jangka panjang
+- [Obat-obatan](/id/medications/estrogens/overview/) — Pilihan obat, dosis, dan risiko
+- [Panduan HRT Tiongkok](/id/china-reality/) — Cara menemukan dokter, mendapatkan obat, dan melakukan tes darah
+- [Tes Darah](/id/blood-tests/) — Apa yang perlu dites, ke mana harus pergi, cara membaca hasil
+</WarningBox>

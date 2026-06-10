@@ -1,0 +1,225 @@
+---
+title: "Lộ trình lâm sàng HRT"
+description: "Lộ trình HRT đầy đủ từ xét nghiệm nền đến giai đoạn duy trì, bao gồm mục tiêu từng giai đoạn, các điểm quyết định và lịch theo dõi."
+evidenceLevel: B
+lastReviewed: 2026-04-07
+references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
+import DecisionNode from '../../../components/ui/DecisionNode.astro';
+import DecisionBranch from '../../../components/ui/DecisionBranch.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+import '../../../styles/pathway.css';
+
+<div class="pathway-wrapper">
+
+<p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
+  Lộ trình này dựa trên WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> và Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, cung cấp một khung chuẩn hóa cho việc khởi trị và duy trì HRT ở người chuyển giới nữ.
+</p>
+
+<img src="/images/diagrams/en/pathway-timeline.webp" alt="Dòng thời gian lộ trình HRT: Nền → Liều thấp (1-6 tháng) → Hiệu chỉnh liều (6-12 tháng) → Duy trì (12 tháng trở lên)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
+
+<div class="pathway-timeline">
+
+{/* ======== PHASE 0: Baseline ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">TUẦN 0</div>
+  <PhaseBlock phase={0} title="Đánh giá nền" color="green">
+    <p class="phase-block__desc">
+      Trước khi bắt đầu bất kỳ loại thuốc nào, hãy hoàn tất một bộ xét nghiệm nền đầy đủ để loại trừ các chống chỉ định và thiết lập giá trị tham chiếu cá nhân của bạn.
+    </p>
+    <ul class="phase-block__list">
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Hormone sinh dục (E2, T, SHBG, LH/FSH)
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Chức năng gan và thận, bộ lipid máu
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Bộ đông máu và D-dimer
+      </li>
+      <li class="phase-block__list-item">
+        <span class="phase-block__list-bullet phase-block__list-bullet--green" />
+        Đường huyết lúc đói + công thức máu (CBC)
+      </li>
+    </ul>
+  </PhaseBlock>
+</div>
+
+{/* ======== PHASE 1: Low Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--green" />
+  <div class="phase-label" style="color: var(--color-safe);">KHỞI TRỊ · 1-6 THÁNG</div>
+  <PhaseBlock phase={1} title="Khởi trị liều thấp" color="green" week="1-6 THÁNG">
+    <DoseTable
+      headers={['Đường dùng', 'Liều khởi đầu', 'Nguồn']}
+      rows={[
+        ['Estradiol uống', '2.0 mg / ngày', '[2]'],
+        ['Miếng dán qua da', '50-100 µg / 24h', '[2]'],
+        ['Gel bôi ngoài da', '1.5 mg / ngày', '[2]'],
+        ['Estradiol valerate tiêm bắp (IM)', '1-2 mg / tuần', '[3]'],
+      ]}
+    />
+    <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+      Thuốc kháng androgen (nếu cần): CPA 5-12.5 mg/ngày hoặc spironolactone 50-100 mg/ngày. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+    </p>
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 mục tiêu</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          50-100 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">Xu hướng T mục tiêu</p>
+        <p class="phase-stat__value phase-stat__value--green">
+          &#x2193; Giảm dần
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        Cảnh báo an toàn: Cơ thể bạn cần thời gian để thích nghi với những thay đổi ở thụ thể. Đừng bao giờ tăng liều khi chưa có kết quả xét nghiệm máu. Đừng tăng liều ngay cả khi bạn cảm thấy "chẳng có gì xảy ra". Dấu hiệu chồi vú thường xuất hiện vào tháng thứ 3-6.
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 1: 3 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="QUYẾT ĐỊNH" timepoint="THÁNG 3">
+    <DecisionBranch
+      outcome="green"
+      text="E2 30-100 pg/mL và T đang giảm → Tiếp tục phác đồ hiện tại đến tháng thứ 6"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <30 pg/mL → Cân nhắc tăng lên liều của Giai đoạn 2"
+    />
+    <DecisionBranch
+      outcome="red"
+      text="Men gan bất thường / PRL >30 / khí sắc xấu đi nghiêm trọng → Ngừng thuốc và tìm chăm sóc y tế"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 2: Moderate Dose ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--yellow" />
+  <div class="phase-label" style="color: var(--color-accent);">HIỆU CHỈNH LIỀU · 6-12 THÁNG</div>
+  <PhaseBlock phase={2} title="Hiệu chỉnh liều" color="yellow" week="6-12 THÁNG">
+    <p class="phase-block__desc">
+      Điều chỉnh dựa trên kết quả xét nghiệm tại tháng thứ 3. Mục tiêu là đạt được khoảng sinh lý tiêu chuẩn cho người chuyển giới nữ.
+    </p>
+    <DoseTable
+      headers={['Đường dùng', 'Liều đã điều chỉnh']}
+      rows={[
+        ['Miếng dán qua da', '100-200 µg / ngày'],
+        ['Estradiol uống', '4 mg / ngày'],
+        ['Gel bôi ngoài da', '3 mg / ngày'],
+        ['Estradiol valerate tiêm bắp (IM)', '2-4 mg / tuần'],
+      ]}
+    />
+    <div class="phase-stats">
+      <div class="phase-stat">
+        <p class="phase-stat__label">E2 mục tiêu</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          100-200 <span class="phase-stat__unit">pg/mL</span>
+        </p>
+      </div>
+      <div class="phase-stat">
+        <p class="phase-stat__label">T mục tiêu</p>
+        <p class="phase-stat__value phase-stat__value--yellow">
+          &lt;50 <span class="phase-stat__unit">ng/dL</span>
+        </p>
+      </div>
+    </div>
+    <div class="phase-stats" style="margin-top: var(--space-sm);">
+      <div class="phase-stat">
+        <p class="phase-stat__label">Progesterone (tùy chọn)</p>
+        <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
+          Cân nhắc dựa trên mức độ phát triển của vú (Tanner 3 trở lên)
+        </p>
+      </div>
+    </div>
+    <div class="dose-tags">
+      <span class="dose-tag dose-tag--yellow">IM E2V 2-4 mg/tuần</span>
+      <span class="dose-tag dose-tag--yellow">Gel bôi ngoài da 3.0-4.5 mg/ngày</span>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== DECISION NODE 2: 6 Month ======== */}
+
+<div class="decision-row">
+  <DecisionNode title="ỔN ĐỊNH" timepoint="THÁNG 6">
+    <DecisionBranch
+      outcome="green"
+      text="E2 100-200 pg/mL và T <50 ng/dL → Bước vào giai đoạn duy trì"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="T >50 nhưng E2 đạt mục tiêu → Điều chỉnh thuốc kháng androgen (không tăng E2 để ức chế T)"
+    />
+    <DecisionBranch
+      outcome="yellow"
+      text="E2 <100 pg/mL → Tiếp tục tăng liều trong giới hạn an toàn"
+    />
+  </DecisionNode>
+</div>
+
+{/* ======== PHASE 3: Maintenance ======== */}
+
+<div class="phase-row">
+  <div class="phase-marker phase-marker--pink" />
+  <div class="phase-label" style="color: var(--color-primary);">TRẠNG THÁI ỔN ĐỊNH · 12 THÁNG TRỞ LÊN</div>
+  <PhaseBlock phase={3} title="Duy trì dài hạn" color="pink" week="12 THÁNG TRỞ LÊN">
+    <p class="phase-block__desc">
+      Khi nồng độ và các thay đổi cơ thể đã ổn định, hãy chuyển sang theo dõi với tần suất thấp. Duy trì liều hiệu quả tối thiểu để giữ E2 ở mức 100-200 pg/mL, T &lt;50 ng/dL.
+    </p>
+    <div class="monitor-box">
+      <p class="monitor-box__title">Tần suất theo dõi</p>
+      <div class="monitor-box__content">
+        <div>
+          <p class="monitor-box__number monitor-box__number--pink">6</p>
+          <p class="monitor-box__unit">Tháng</p>
+        </div>
+        <div class="monitor-box__divider" />
+        <p class="monitor-box__desc">
+          Xét nghiệm bộ hormone đầy đủ và các yếu tố nguy cơ VTE mỗi 6 tháng. Lipid máu và đường huyết lúc đói hằng năm. Cân nhắc tầm soát mật độ xương.
+        </p>
+      </div>
+    </div>
+    <div class="phase-warning" style="margin-top: var(--space-md);">
+      <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
+      <p class="phase-warning__text">
+        E2 &gt;200 pg/mL không tạo ra nhiều nữ hóa hơn — nó chỉ làm tăng nguy cơ (Endocrine Society 2017, Khuyến nghị 2.2)
+      </p>
+    </div>
+  </PhaseBlock>
+</div>
+
+{/* ======== End Marker ======== */}
+
+<div class="pathway-end">
+  <div class="pathway-end-box">
+    <p class="pathway-end-title">KẾT THÚC GIAI ĐOẠN KHỞI ĐẦU</p>
+    <p class="pathway-end-sub">Theo dõi liên tục</p>
+  </div>
+</div>
+
+</div>
+</div>
