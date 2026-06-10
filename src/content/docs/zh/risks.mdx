@@ -164,6 +164,17 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     margin: var(--space-xl) 0 var(--space-2xl);
   }
 
+  /* Infographic <img> placed between RiskCards are direct grid children.
+     Without this they collapse into a single 1/3-width cell and read as a
+     broken "card". Span the full row and center so they render as proper
+     full-width figures between the card rows. */
+  .risk-grid > img {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 520px;
+    height: auto;
+  }
+
   @media (min-width: 640px) {
     .risk-grid {
       grid-template-columns: repeat(2, 1fr);
