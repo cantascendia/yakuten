@@ -1,14 +1,17 @@
-/* === Emergency & Warning Styles === */
-/* Urgent banners and safety warnings — NOT dismissible */
+/* === Emergency & Warning Styles · 绯英典籍 v2 === */
+/* 应急横幅：纯红 · 白字 · 不可关闭（Constitution §1）。
+   生命安全信息脱离可爱风 —— 无贴纸、无糖果渐变、无斜纹。 */
 
 .emergency-banner {
-  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
-  color: var(--color-text-on-dark);
+  /* --danger-deep #C23D5C：白字 ≈5.1:1，过 AA */
+  background: var(--danger-deep);
+  color: #FFFFFF;
   padding: var(--space-sm) var(--space-lg);
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
+  border-bottom: 2px solid var(--ink);
 }
 
 /* When embedded inside Starlight prose (e.g. /zh/risks/),
@@ -16,62 +19,36 @@
    Scoped so the homepage top-of-page banner is unaffected. */
 .sl-markdown-content .emergency-banner {
   margin: var(--space-lg) 0 var(--space-xl);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
 }
 
 .emergency-banner a,
 .sl-markdown-content .emergency-banner a {
-  color: var(--color-text-on-dark);
+  color: #FFFFFF;
   text-decoration: underline;
   font-weight: 700;
+  background-image: none !important;
 }
 
 .emergency-banner a:hover {
   opacity: 0.9;
 }
 
-/* Warning box (yellow) — important but not life-threatening */
-.warning-box {
-  background: rgba(255, 152, 0, 0.1);
-  border-left: 4px solid var(--color-caution);
-  border-radius: var(--radius-none);
-  padding: var(--space-md) var(--space-lg);
-  margin: var(--space-lg) 0;
+/* CTA 按钮：半透明白底/白边维持紧急基调 */
+.emergency-banner .emergency-banner__cta {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #FFFFFF;
+}
+.emergency-banner .emergency-banner__cta:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
-.warning-box__title {
-  color: var(--color-caution);
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
+/* 焦点环：全局焦点是绯红，红底上看不见 —— 强制白色 */
+.emergency-banner :where(a, button, [role="button"]):focus-visible,
+.emergency-banner .emergency-banner__cta:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
 }
-
-/* Danger box (red) — life-threatening or serious harm */
-.danger-box {
-  background: rgba(244, 67, 54, 0.1);
-  border-left: 4px solid var(--color-danger);
-  border-radius: var(--radius-none);
-  padding: var(--space-md) var(--space-lg);
-  margin: var(--space-lg) 0;
-}
-
-.danger-box__title {
-  color: var(--color-danger);
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-/* Blood test indicator colors */
-.indicator-green  { border-left: 4px solid var(--color-safe); }
-.indicator-yellow { border-left: 4px solid var(--color-caution); }
-.indicator-red    { border-left: 4px solid var(--color-danger); }

@@ -1,0 +1,558 @@
+/* =========================================================================
+   HRT药典 — Starlight Skin · 绯英典籍 v2
+   针对 Starlight 实际 DOM 的手账典籍改造（默认生效，含幻月夜变体）。
+   · 纸底网点背景 ｜ 卡片 2px 墨线边 + 4px 硬投影
+   · 典籍章节序号（壹貳叁）＋ 着重号强调 ＋ 660px 版心
+   · 危险层脱离可爱风（墨底红章）
+   合并自原 starlight-override.css + sakura-skin.css。
+   ========================================================================= */
+
+/* --- Splash page: hide Starlight's default hero, reduce whitespace --- */
+[data-has-hero] .hero { display: none; }
+[data-has-hero] .content-panel { padding-top: 0; }
+[data-has-hero] .sl-markdown-content { margin-top: 0; }
+
+/* ============================================================
+   Global fix: disable Starlight prose margin inside flex/grid
+   ============================================================ */
+.phase-stats > *,
+.phase-stats > * > *,
+.action-cards__grid > *,
+.risk-grid > *,
+.drug-nav__grid > *,
+.brand-gallery__grid > *,
+.quick-tools__links > *,
+.dose-tags > *,
+.monitor-box__content > * {
+  margin-top: 0 !important;
+}
+
+/* Starlight 字体变量 */
+:root {
+  --sl-font: var(--font-body);
+  --sl-font-system-mono: var(--font-code);
+}
+
+/* =========================================================================
+   纸底 —— 整个 body 加网点纸；夜模式换梦境紫桌面（网点变月光色）
+   ========================================================================= */
+body {
+  background-color: var(--bg-1);
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.08) 1px, transparent 0);
+  background-size: 22px 22px;
+  background-attachment: fixed;
+}
+:root[data-theme='dark'] body {
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(255, 245, 224, 0.06) 1px, transparent 0);
+}
+
+/* 主容器透明，让纸底透出来 */
+.main-frame,
+.page,
+main {
+  background: transparent;
+}
+
+/* =========================================================================
+   顶栏 —— 米白纸条（夜模式变夜桌面板）
+   ========================================================================= */
+header.header {
+  background: var(--bg-2);
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 2px 0 rgba(74, 40, 56, 0.08);
+}
+:root[data-theme='dark'] header.header {
+  border-bottom-color: rgba(255, 245, 224, 0.25);
+  box-shadow: 0 2px 0 rgba(20, 10, 35, 0.4);
+}
+
+.site-title,
+.site-title * {
+  color: var(--fg-1);
+  font-family: var(--font-display);
+}
+
+/* 顶栏按钮（搜索、主题、语言）—— 糖果胶囊 */
+header.header button,
+header.header [role="combobox"],
+header.header select {
+  background: var(--bg-3);
+  border: 2px solid var(--ink) !important;
+  border-radius: 999px !important;
+  color: var(--fg-on-cream) !important;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+header.header button:hover,
+header.header [role="combobox"]:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+:root[data-theme='dark'] header.header button,
+:root[data-theme='dark'] header.header [role="combobox"],
+:root[data-theme='dark'] header.header select {
+  background: var(--night-2);
+  border-color: rgba(255, 245, 224, 0.4) !important;
+  color: var(--cream) !important;
+  box-shadow: 2px 2px 0 rgba(20, 10, 35, 0.8);
+}
+
+/* =========================================================================
+   左侧栏 —— 手账本侧脊
+   ========================================================================= */
+nav.sidebar,
+.sidebar-pane {
+  background: var(--bg-2);
+  border-right: 2px solid var(--ink-faint);
+}
+.sidebar-content { background: transparent; }
+
+/* 侧栏分组标题 —— 粉色 kicker */
+.sidebar-content details > summary,
+.sidebar-content .group-label,
+.sidebar-content h2 {
+  font-family: var(--font-ui-accent) !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  color: var(--sakura-pink-text) !important;
+  text-transform: none !important;
+  letter-spacing: 0.08em !important;
+  padding: 8px 12px !important;
+}
+:root[data-theme='dark'] .sidebar-content details > summary,
+:root[data-theme='dark'] .sidebar-content .group-label,
+:root[data-theme='dark'] .sidebar-content h2 {
+  color: var(--sakura-pink) !important;
+}
+
+/* 侧栏链接 —— hover 糖果 pill */
+.sidebar-content a {
+  border-radius: 999px !important;
+  color: var(--fg-1) !important;
+  font-family: var(--font-body) !important;
+  transition: background 0.15s, transform 0.15s;
+}
+.sidebar-content a:hover {
+  background: var(--sakura-blush) !important;
+  color: var(--ink) !important;
+  transform: translateX(2px);
+}
+
+/* 当前页高亮 —— 粉底白字硬投影 */
+.sidebar-content a[aria-current="page"],
+.sidebar-content a.large[aria-current="page"] {
+  background: var(--sakura-pink-deep) !important;
+  color: #fff !important;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   内容区标题 —— 典籍排印：display 衬线 + 朱色章节序号（壹貳叁）
+   ========================================================================= */
+@counter-style yk-zhang {
+  system: fixed;
+  symbols: "壹" "貳" "叁" "肆" "伍" "陸" "柒" "捌" "玖" "拾" "拾壹" "拾貳" "拾叁" "拾肆" "拾伍";
+  suffix: "";
+}
+
+.sl-markdown-content h1 {
+  font-family: var(--font-display) !important;
+  color: var(--fg-1) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.sl-markdown-content { counter-reset: yk-zhang; }
+.sl-markdown-content h2 {
+  font-family: var(--font-display) !important;
+  color: var(--fg-1) !important;
+  font-weight: 700 !important;
+  counter-increment: yk-zhang;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.sl-markdown-content h2::before {
+  content: counter(yk-zhang, yk-zhang);
+  font-family: var(--font-heading);
+  font-size: 0.55em;
+  color: var(--sakura-pink-text);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+:root[data-theme='dark'] .sl-markdown-content h2::before { color: var(--sakura-pink); }
+
+.sl-markdown-content h3 {
+  font-family: var(--font-heading) !important;
+  color: var(--fg-1) !important;
+  font-weight: 700 !important;
+  border-left: 5px solid var(--sakura-pink);
+  padding-left: 12px;
+}
+
+.sl-markdown-content h4 {
+  font-family: var(--font-heading) !important;
+  color: var(--fg-1) !important;
+}
+
+/* =========================================================================
+   正文段落 —— 版心行长 + 着重号
+   ========================================================================= */
+.sl-markdown-content p {
+  color: var(--fg-1);
+  line-height: 1.85;
+  font-family: var(--font-body);
+  text-wrap: pretty;
+}
+
+/* 着重号 —— 中文排印的正统强调（替代生硬加粗）。
+   只作用于段落内 strong，表格/卡片里的 strong 不加点。 */
+.sl-markdown-content > p > strong {
+  font-weight: 700;
+  text-emphasis: filled dot var(--sakura-pink-deep);
+  text-emphasis-position: under right;
+  -webkit-text-emphasis: filled dot var(--sakura-pink-deep);
+  -webkit-text-emphasis-position: under right;
+}
+
+/* 行内代码 —— 小便签（药名/剂量须达 AA：#C02868 on bg-5 ≥4.5:1） */
+.sl-markdown-content :not(pre) > code {
+  background: var(--bg-5) !important;
+  color: #C02868 !important;
+  border: 1.5px solid var(--ink) !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 500;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* 行内链接 —— 手写下划线 */
+.sl-markdown-content a {
+  color: var(--sakura-pink-text);
+  text-decoration: none;
+  background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0 2px;
+  font-weight: 600;
+  transition: background-size 0.2s ease;
+}
+.sl-markdown-content a:hover {
+  background-image: linear-gradient(transparent 0%, var(--sakura-pink) 100%);
+  color: var(--ink);
+}
+:root[data-theme='dark'] .sl-markdown-content a {
+  color: var(--sakura-pink);
+  background-image: linear-gradient(transparent 60%, rgba(229, 87, 139, 0.35) 60%);
+}
+:root[data-theme='dark'] .sl-markdown-content a:hover { color: var(--cream); }
+
+/* =========================================================================
+   Aside / Callout —— 贴纸卡；危险层脱离可爱风（墨底红章）
+   纸面卡在夜模式下仍然亮着（夜晚书桌模型）
+   ========================================================================= */
+.sl-markdown-content .starlight-aside {
+  background: var(--bg-3);
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 18px !important;
+  margin: 20px 0 !important;
+  color: #4A2838;
+}
+:root[data-theme='dark'] .sl-markdown-content .starlight-aside {
+  box-shadow: 4px 4px 0 rgba(20, 10, 35, 0.8);
+}
+
+.starlight-aside--note { background: var(--ivory) !important; }
+.starlight-aside--tip { background: rgba(168, 230, 201, 0.35) !important; }
+.starlight-aside--caution { background: var(--butter) !important; }
+.starlight-aside--note,
+.starlight-aside--note *,
+.starlight-aside--tip,
+.starlight-aside--tip *,
+.starlight-aside--caution,
+.starlight-aside--caution * {
+  color: #4A2838 !important;
+}
+
+/* 危险 = 墨底 + 红描边 + 白标题/奶油正文（不用贴纸可爱风） */
+.sl-markdown-content .starlight-aside--danger {
+  background: var(--ink) !important;
+  border: 2px solid var(--danger-bright) !important;
+  color: #FFF5E0 !important;
+}
+.starlight-aside--danger .starlight-aside__title { color: #FFFFFF !important; }
+.starlight-aside--danger * { color: #FFF5E0; }
+.starlight-aside--danger a {
+  color: #FFD4E0 !important;
+  background-image: none !important;
+  text-decoration: underline;
+}
+
+.starlight-aside__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+/* =========================================================================
+   代码块（expressive-code）—— 便签
+   ========================================================================= */
+.expressive-code,
+.sl-markdown-content pre {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+}
+.expressive-code .frame,
+.expressive-code pre,
+.sl-markdown-content pre {
+  background: var(--bg-3) !important;
+}
+.expressive-code .frame .header {
+  background: var(--sakura-blush) !important;
+  border-bottom: 1.5px solid var(--ink);
+}
+.sl-markdown-content pre code { color: #4A2838; }
+
+/* =========================================================================
+   表格 —— 手账方格（腮红表头 + 虚线分隔，DocScreen 规格）
+   ========================================================================= */
+.sl-markdown-content table {
+  border: 2px solid var(--ink) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--ink);
+  border-collapse: separate !important;
+  border-spacing: 0;
+  background: var(--ivory);
+}
+.sl-markdown-content thead { background: var(--sakura-blush) !important; }
+.sl-markdown-content thead th {
+  color: #4A2838 !important;
+  font-family: var(--font-ui-accent) !important;
+  font-size: 0.78em;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  border: none !important;
+  border-bottom: 2px solid var(--ink) !important;
+  white-space: nowrap;
+}
+.sl-markdown-content tbody tr:nth-child(even) { background: var(--bg-4) !important; }
+.sl-markdown-content tbody tr:nth-child(odd) { background: var(--ivory) !important; }
+.sl-markdown-content tbody td {
+  border: none !important;
+  border-top: 1px dashed rgba(74, 40, 56, 0.25) !important;
+  color: #4A2838 !important;
+}
+
+/* =========================================================================
+   引用块
+   ========================================================================= */
+.sl-markdown-content blockquote {
+  background: var(--bg-5);
+  border-left: 6px solid var(--sakura-pink-deep) !important;
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px !important;
+  margin: 20px 0 !important;
+  color: #7A5568;
+  font-style: italic;
+  box-shadow: 3px 3px 0 rgba(74, 40, 56, 0.1);
+}
+.sl-markdown-content blockquote p { color: #7A5568; }
+
+/* =========================================================================
+   列表 —— 樱粉项目符号
+   ========================================================================= */
+.sl-markdown-content ul > li::marker { color: var(--sakura-pink-deep); }
+.sl-markdown-content ol > li::marker {
+  color: var(--sakura-pink-text);
+  font-weight: 700;
+}
+:root[data-theme='dark'] .sl-markdown-content ul > li::marker,
+:root[data-theme='dark'] .sl-markdown-content ol > li::marker {
+  color: var(--sakura-pink);
+}
+
+/* =========================================================================
+   分隔线 —— 点线
+   ========================================================================= */
+.sl-markdown-content hr {
+  border: none;
+  height: 4px;
+  background-image: radial-gradient(circle, var(--sakura-pink-deep) 2px, transparent 2.5px);
+  background-size: 16px 4px;
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  margin: 32px 0;
+}
+
+/* =========================================================================
+   右侧目录 TOC —— 左描边滚动跟随
+   ========================================================================= */
+.right-sidebar,
+.page-aside,
+starlight-toc {
+  background: transparent;
+}
+starlight-toc nav {
+  background: var(--bg-2);
+  border: 2px solid var(--ink-faint);
+  border-radius: 14px;
+  padding: 14px;
+}
+starlight-toc a {
+  color: var(--fg-2) !important;
+  border-left: 3px solid var(--ink-faint);
+  border-radius: 0 6px 6px 0;
+  padding: 3px 10px;
+  transition: background 0.15s, color 0.15s;
+}
+starlight-toc a:hover {
+  background: var(--sakura-blush) !important;
+  color: var(--ink) !important;
+}
+starlight-toc a[aria-current="true"] {
+  border-left-color: var(--sakura-pink-deep);
+  color: var(--sakura-pink-text) !important;
+  font-weight: 700;
+  background: transparent;
+}
+:root[data-theme='dark'] starlight-toc a[aria-current="true"] {
+  color: var(--sakura-pink) !important;
+  border-left-color: var(--sakura-pink);
+}
+
+/* =========================================================================
+   分页（典籍翻页：上一页/下一页 奶油卡）
+   ========================================================================= */
+.pagination-links a {
+  background: var(--cream) !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 14px !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.pagination-links a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+  background: var(--sakura-blush) !important;
+}
+.pagination-links a span { color: #4A2838 !important; }
+.pagination-links a .link-title {
+  color: var(--sakura-pink-text) !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   底部 Footer（Starlight 文档页脚区）
+   ========================================================================= */
+.site-legal-footer {
+  background: var(--bg-2);
+  border-top: 2px solid var(--ink-faint);
+  margin-top: 48px;
+}
+.site-legal-footer a { color: var(--sakura-pink-text); }
+:root[data-theme='dark'] .site-legal-footer a { color: var(--sakura-pink); }
+
+/* =========================================================================
+   Pagefind 搜索 —— 纸卡风
+   ========================================================================= */
+site-search button[data-open-modal] {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: var(--fg-on-cream);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+site-search button[data-open-modal]:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+}
+:root[data-theme='dark'] site-search button[data-open-modal] {
+  background: var(--night-2);
+  border-color: rgba(255, 245, 224, 0.4);
+  color: var(--cream);
+  box-shadow: 2px 2px 0 rgba(20, 10, 35, 0.8);
+}
+
+site-search dialog {
+  background: var(--ivory);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--ink);
+  color: #4A2838;
+}
+site-search dialog::backdrop {
+  background: rgba(74, 40, 56, 0.4);
+}
+:root[data-theme='dark'] site-search dialog::backdrop {
+  background: rgba(20, 10, 35, 0.6);
+}
+
+#starlight__search .pagefind-ui__search-input {
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  color: #4A2838;
+  font-family: var(--font-body);
+}
+#starlight__search .pagefind-ui__search-input:focus {
+  border-color: var(--sakura-pink-deep);
+  box-shadow: 2px 2px 0 var(--sakura-pink-deep);
+}
+#starlight__search .pagefind-ui__search-input:focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+site-search dialog button { color: #7A5568; }
+
+#starlight__search mark {
+  background: var(--sakura-blush);
+  color: #C02868;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+#starlight__search .pagefind-ui__result {
+  background: var(--bg-3);
+  border: 2px solid var(--ink-faint);
+  border-radius: 12px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+#starlight__search .pagefind-ui__result:hover {
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+#starlight__search .pagefind-ui__result-title { color: var(--sakura-pink-text); }
+#starlight__search .pagefind-ui__result-excerpt { color: #7A5568; }
+#starlight__search .pagefind-ui__message { color: #7A5568; }
+
+/* =========================================================================
+   移动端目录 / 面包屑小条
+   ========================================================================= */
+mobile-starlight-toc nav {
+  background: var(--bg-2);
+  border-bottom: 2px solid var(--ink-faint);
+}
+mobile-starlight-toc summary { color: var(--fg-1); }

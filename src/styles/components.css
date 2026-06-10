@@ -1,0 +1,304 @@
+/* =========================================================================
+   HRT药典 — Components Skin · 绯英典籍 v2
+   给既有 Astro/MDX 组件换上手账贴纸壳。
+   危险层一律脱离可爱风：墨底 + 红描边 + 白标题/奶油正文。
+   （原 sakura-components.css 去前缀升级版）
+   ========================================================================= */
+
+/* ===== DrugInfoBox ===== */
+.drug-info-box {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  background: var(--bg-3) !important;
+  padding: 20px !important;
+  margin: 20px 0 !important;
+}
+.drug-info-box__category {
+  font-family: var(--font-ui-accent) !important;
+  color: var(--sakura-pink-text) !important;
+  font-weight: 700 !important;
+}
+.drug-info-box__name {
+  font-family: var(--font-display) !important;
+  color: var(--ink) !important;
+}
+.drug-info-box__generic {
+  font-family: var(--font-ui-accent) !important;
+  color: var(--ink-soft) !important;
+}
+.drug-info-box__route {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--butter);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-family: var(--font-ui-accent) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+}
+
+/* ===== WarningBox — 便签黄（重要但非致命） ===== */
+.warning-box {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  background: linear-gradient(135deg, var(--butter), var(--honey)) !important;
+  padding: 18px !important;
+  color: #4A2838 !important;
+  margin: 20px 0 !important;
+}
+.warning-box__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  color: #4A2838 !important;
+  text-transform: none !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px !important;
+}
+.warning-box__content,
+.warning-box__content p {
+  color: #4A2838 !important;
+}
+
+/* ===== DangerBox — 墨底红章（生命安全层，脱离可爱风） ===== */
+.danger-box {
+  border: 2px solid var(--danger-bright) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  background: var(--ink) !important;
+  padding: 18px 20px !important;
+  color: #FFF5E0 !important;
+  margin: 20px 0 !important;
+}
+.danger-box__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  text-shadow: none;
+  text-transform: none !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px !important;
+}
+.danger-box__content,
+.danger-box__content p {
+  color: #FFF5E0 !important;
+}
+.danger-box a {
+  color: #FFD4E0 !important;
+  text-decoration: underline;
+  background-image: none !important;
+}
+.danger-box :where(a, button):focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* ===== EvidenceBadge — 临床 A/B/C/X（绿/蓝/橙/红描边，ivory 底） ===== */
+.evidence-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto !important;
+  height: auto !important;
+  padding: 3px 10px !important;
+  background: var(--ivory) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-family: var(--font-hud) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  color: #4A2838 !important;
+  white-space: nowrap;
+}
+.evidence-badge--A { border: 2px solid var(--safe) !important; }
+.evidence-badge--B { border: 2px solid var(--info) !important; }
+.evidence-badge--C { border: 2px solid var(--butter-deep) !important; }
+.evidence-badge--X { border: 2px solid var(--danger-bright) !important; }
+
+/* ===== CitationRef ===== */
+.citation-ref,
+a.citation-ref {
+  background: var(--sakura-blush) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--ink) !important;
+  border-radius: 4px !important;
+  padding: 1px 6px !important;
+  font-family: var(--font-hud) !important;
+  font-size: 0.75em !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  box-shadow: 1px 1px 0 var(--ink);
+  background-image: none !important;
+  vertical-align: super;
+  line-height: 1;
+}
+
+/* ===== DoseTable — 腮红表头 + mono 剂量数字 ===== */
+.dose-table-wrapper { margin: 24px 0 !important; }
+.dose-table {
+  width: 100%;
+  border: 2px solid var(--ink) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--ink) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background: var(--ivory) !important;
+}
+.dose-table thead { background: var(--sakura-blush) !important; }
+.dose-table thead th {
+  color: #4A2838 !important;
+  font-family: var(--font-ui-accent) !important;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border: none !important;
+  border-bottom: 2px solid var(--ink) !important;
+  padding: 10px 14px !important;
+  text-shadow: none;
+  white-space: nowrap;
+}
+.dose-table tbody tr:nth-child(even) { background: var(--bg-4) !important; }
+.dose-table tbody tr:nth-child(odd) { background: var(--ivory) !important; }
+.dose-table tbody td {
+  padding: 10px 14px !important;
+  border: none !important;
+  border-top: 1px dashed rgba(74, 40, 56, 0.25) !important;
+  color: #4A2838 !important;
+}
+.dose-table .dose-value {
+  font-family: var(--font-hud) !important;
+  /* 剂量数字（医疗关键信息）须达 AA：#C02868 on ivory ≥4.5:1 */
+  color: #C02868 !important;
+  font-weight: 700;
+}
+
+/* ===== 通用纸卡组件 ===== */
+.emergency-actions,
+.reality-check,
+.risk-card,
+.phase-block,
+.contraindication-box,
+.baseline-checklist,
+.decision-branch,
+.decision-node,
+.blood-test-range,
+.hospital-card,
+.drug-brand-gallery {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  background: var(--bg-3) !important;
+  padding: 18px !important;
+  margin: 20px 0 !important;
+}
+
+.phase-block {
+  background: linear-gradient(135deg, var(--sakura-blush), var(--cream)) !important;
+}
+
+/* 禁忌 = 危险层级，同样墨底冷处理 */
+.contraindication-box {
+  background: var(--ink) !important;
+  border-color: var(--danger-bright) !important;
+  color: #FFF5E0 !important;
+}
+.contraindication-box :where(h3, h4, strong) { color: #FFFFFF !important; }
+.contraindication-box p, .contraindication-box li { color: #FFF5E0 !important; }
+
+.reality-check {
+  background: var(--butter) !important;
+  color: #4A2838 !important;
+}
+
+/* ===== CrisisHotline — 应急层：深红、白字（AA），不可爱化 ===== */
+.crisis-hotline {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  background: var(--danger-deep) !important;
+  color: #fff !important;
+  padding: 18px !important;
+  margin: 20px 0 !important;
+}
+.crisis-hotline a,
+.crisis-hotline h3,
+.crisis-hotline h4,
+.crisis-hotline p,
+.crisis-hotline li {
+  color: #fff !important;
+}
+.crisis-hotline :where(a, button):focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* ===== RelatedDocs / RelatedBlogPosts ===== */
+.related-docs,
+.related-blog-posts {
+  border: 2px dashed var(--ink) !important;
+  border-radius: 14px !important;
+  background: var(--bg-4) !important;
+  padding: 18px !important;
+  box-shadow: none !important;
+  margin: 24px 0 !important;
+}
+
+/* ===== GuideCTA ===== */
+.guide-cta {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  background: var(--sakura-pink-deep) !important;
+  box-shadow: 4px 4px 0 var(--ink) !important;
+  color: #fff !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.guide-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink) !important;
+}
+.guide-cta * { color: #fff !important; }
+
+/* ===== PKCurveChart / RouteComparisonSVG 等 SVG 图卡 ===== */
+.pk-curve-chart,
+.route-comparison-svg,
+.injection-site-svg {
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  box-shadow: 3px 3px 0 var(--ink) !important;
+  background: var(--ivory) !important;
+  padding: 16px !important;
+}
+
+/* ===== InlineValue 行内数据 ===== */
+.inline-value {
+  background: var(--butter) !important;
+  color: #4A2838 !important;
+  border: 1.5px solid var(--ink) !important;
+  border-radius: 6px !important;
+  padding: 1px 6px !important;
+  font-family: var(--font-hud) !important;
+  font-weight: 700;
+  box-shadow: 1px 1px 0 var(--ink);
+  background-image: none !important;
+}
+
+/* ===== 血检指示条 ===== */
+.indicator-green  { border-left: 4px solid var(--safe); }
+.indicator-yellow { border-left: 4px solid var(--butter-deep); }
+.indicator-red    { border-left: 4px solid var(--danger-bright); }
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-cta { transition: none !important; }
+}

@@ -1,0 +1,126 @@
+---
+/**
+ * MoonPhaseToggle — 幻月夜开关 ·「满月是神不在的时间」
+ * 导航上的真实当日月相即昼夜开关：
+ * · 月相按 synodic 29.53059d 实算（epoch 2000-01-06 18:14 UTC），非装饰数据
+ * · 点击在「白天纸面 / 幻月夜书桌」间切换，偏好存 localStorage("starlight-theme")
+ * · 月亮 SVG 的照亮比例 = (1 - cos(2π·age/P)) / 2
+ */
+const pathname = Astro.url.pathname;
+const locale = pathname.startsWith('/en/')
+  ? 'en'
+  : pathname.startsWith('/ja/')
+    ? 'ja'
+    : pathname.startsWith('/ko/')
+      ? 'ko'
+      : 'zh';
+
+const PHASES: Record<string, string[]> = {
+  zh: ['新月', '蛾眉月', '上弦月', '盈凸月', '满月', '亏凸月', '下弦月', '残月'],
+  en: ['New Moon', 'Waxing Crescent', 'First Quarter', 'Waxing Gibbous', 'Full Moon', 'Waning Gibbous', 'Last Quarter', 'Waning Crescent'],
+  ja: ['新月', '三日月', '上弦の月', '十三夜月', '満月', '寝待月', '下弦の月', '有明月'],
+  ko: ['삭', '초승달', '상현달', '차가는 달', '보름달', '기우는 달', '하현달', '그믐달'],
+};
+const LABELS: Record<string, { day: string; night: string; aria: string; illum: string }> = {
+  zh: { day: '幻月', night: '夜', aria: '切换幻月夜模式', illum: '今日照亮' },
+  en: { day: 'Moon', night: 'Night', aria: 'Toggle moonlit night mode', illum: 'Illumination' },
+  ja: { day: '幻月', night: '夜', aria: '幻月夜モードを切り替え', illum: '今日の輝面比' },
+  ko: { day: '환월', night: '밤', aria: '환월 야간 모드 전환', illum: '오늘의 위상' },
+};
+const phases = PHASES[locale] ?? PHASES.zh;
+const labels = LABELS[locale] ?? LABELS.zh;
+---
+
+<button
+  class="yk-moon-toggle"
+  type="button"
+  aria-pressed="false"
+  aria-label={labels.aria}
+>
+  <svg class="yk-moon-toggle__moon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="11" fill="var(--ivory)" stroke="var(--ink)" stroke-width="2"></circle>
+    <path class="yk-moon-toggle__fill" d="" fill="var(--honey)"></path>
+  </svg>
+  <span class="yk-moon-toggle__label yk-nowrap"></span>
+</button>
+
+<style>
+  .yk-moon-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+  }
+  .yk-moon-toggle:hover {
+    border-color: var(--ink-faint);
+    background: var(--primary-a10);
+  }
+  .yk-moon-toggle__label {
+    font-family: var(--font-ui-accent);
+    font-size: 11px;
+    color: var(--sakura-pink-text);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  :global([data-theme='dark']) .yk-moon-toggle__label {
+    color: var(--sakura-pink);
+  }
+  :global([data-theme='dark']) .yk-moon-toggle .yk-moon-toggle__fill {
+    fill: var(--lavender-deep);
+  }
+  @media (max-width: 720px) {
+    .yk-moon-toggle__label { display: none; }
+  }
+</style>
+
+<script is:inline define:vars={{ phases, labels }}>
+  (() => {
+    const SYNODIC = 29.53058867;
+    const EPOCH = Date.UTC(2000, 0, 6, 18, 14);
+    const age = (((Date.now() - EPOCH) / 86400000) % SYNODIC + SYNODIC) % SYNODIC;
+    const illum = (1 - Math.cos((2 * Math.PI * age) / SYNODIC)) / 2;
+    const idx =
+      age < 1.85 ? 0 : age < 5.54 ? 1 : age < 9.23 ? 2 : age < 12.92 ? 3 :
+      age < 16.61 ? 4 : age < 20.3 ? 5 : age < 23.99 ? 6 : age < 27.68 ? 7 : 0;
+    const phaseName = phases[idx];
+
+    /* 月面照亮路径：clip ∈ [0,1] */
+    const r = 11;
+    const clip = Math.max(0, Math.min(1, illum));
+    const d = `M 12 ${12 - r} A ${r} ${r} 0 0 1 12 ${12 + r} A ${Math.abs(r * (1 - 2 * clip))} ${r} 0 0 ${clip < 0.5 ? 0 : 1} 12 ${12 - r} Z`;
+
+    document.querySelectorAll('.yk-moon-toggle').forEach((btn) => {
+      if (btn.dataset.ykMoonInit) return;
+      btn.dataset.ykMoonInit = '1';
+      const fill = btn.querySelector('.yk-moon-toggle__fill');
+      const label = btn.querySelector('.yk-moon-toggle__label');
+      if (fill) fill.setAttribute('d', d);
+
+      const render = () => {
+        const night = document.documentElement.dataset.theme === 'dark';
+        btn.setAttribute('aria-pressed', night ? 'true' : 'false');
+        btn.title = `${labels.aria} · ${labels.illum} ${Math.round(illum * 100)}%`;
+        if (label) label.textContent = `${night ? labels.night : labels.day} · ${phaseName}`;
+      };
+      render();
+
+      btn.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try {
+          localStorage.setItem('starlight-theme', next);
+        } catch (_) {}
+        document.querySelectorAll('.yk-moon-toggle').forEach((other) => {
+          other.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+          const otherLabel = other.querySelector('.yk-moon-toggle__label');
+          if (otherLabel) otherLabel.textContent = `${next === 'dark' ? labels.night : labels.day} · ${phaseName}`;
+        });
+      });
+    });
+  })();
+</script>
