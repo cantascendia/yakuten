@@ -7,12 +7,13 @@ import { getLocale } from '../../i18n/ui';
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
-const L = {
+type SiteLabels = { title: string; abdomen: string; thigh: string; avoid: string; rotate: string; navel: string; site: string };
+const L: SiteLabels = ({
   zh: { title: '皮下注射部位', abdomen: '腹部', thigh: '大腿', avoid: '避免区域', rotate: '轮换注射', navel: '脐', site: '注射点' },
   en: { title: 'Subcutaneous Injection Sites', abdomen: 'Abdomen', thigh: 'Thigh', avoid: 'Avoid', rotate: 'Rotate sites', navel: 'Navel', site: 'Site' },
   ja: { title: '皮下注射部位', abdomen: '腹部', thigh: '大腿', avoid: '避けるべき範囲', rotate: '部位をローテーション', navel: '臍', site: '注射部位' },
   ko: { title: '피하주사 부위', abdomen: '복부', thigh: '대퇴', avoid: '피해야 할 부위', rotate: '부위를 교대', navel: '배꼽', site: '주사 부위' },
-}[locale] ?? { title: 'Injection Sites', abdomen: 'Abdomen', thigh: 'Thigh', avoid: 'Avoid', rotate: 'Rotate', navel: 'Navel', site: 'Site' };
+} as Record<string, SiteLabels>)[locale] ?? { title: 'Injection Sites', abdomen: 'Abdomen', thigh: 'Thigh', avoid: 'Avoid', rotate: 'Rotate', navel: 'Navel', site: 'Site' };
 ---
 
 <figure class="inj-site" role="img" aria-label={L.title}>

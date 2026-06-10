@@ -58,7 +58,7 @@ const LABELS = {
   de: { author: 'Autor', reviewer: 'Medizinisch geprüft', lastReviewed: 'Zuletzt geprüft', nextReview: 'Nächste Prüfung', evidence: 'Evidenzgrad', refs: 'Quellen', refsSuffix: '' },
   tr: { author: 'Yazar', reviewer: 'Tıbbi inceleme', lastReviewed: 'Son inceleme', nextReview: 'Sonraki inceleme', evidence: 'Kanıt düzeyi', refs: 'Kaynaklar', refsSuffix: '' },
 };
-const L = LABELS[locale] ?? LABELS.en;
+const L = (LABELS as Record<string, typeof LABELS.en>)[locale] ?? LABELS.en;
 ---
 
 <aside class="byline-card" aria-label={L.reviewer}>
