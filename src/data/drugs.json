@@ -41,7 +41,7 @@
         "peakTime": "3-6小时",
         "vteRisk": {
           "rr": 1.48,
-          "source": "Canonico 2018"
+          "source": "Scarabin 2018"
         },
         "evidenceLevel": "A"
       }
@@ -168,7 +168,7 @@
     "references": [
       "Hembree 2017 DOI:10.1210/jc.2017-01658",
       "Coleman 2022 DOI:10.1080/26895269.2022.2100644",
-      "Canonico 2018",
+      "Scarabin 2018",
       "UCSF Transgender Care Guidelines"
     ]
   },
@@ -212,7 +212,7 @@
         "peakTime": "0.5-2小时",
         "vteRisk": {
           "rr": 1.48,
-          "source": "Canonico 2018（与口服途径类似，目前独立数据有限）"
+          "source": "Scarabin 2018（与口服途径类似，目前独立数据有限）"
         },
         "evidenceLevel": "C"
       }
@@ -358,7 +358,7 @@
         "peakTime": "贴后12-24小时达稳态",
         "vteRisk": {
           "rr": 0.97,
-          "source": "Canonico 2018"
+          "source": "Scarabin 2018"
         },
         "evidenceLevel": "A"
       }
@@ -442,7 +442,7 @@
         "drug": "吸烟",
         "severity": "major",
         "description": "可能会升高 VTE 风险，但透皮给药途径的风险通常远低于口服途径",
-        "source": "Canonico 2018"
+        "source": "Scarabin 2018"
       }
     ],
     "chinaAccess": {
@@ -453,7 +453,7 @@
     "references": [
       "Hembree 2017 DOI:10.1210/jc.2017-01658",
       "Coleman 2022 DOI:10.1080/26895269.2022.2100644",
-      "Canonico 2018",
+      "Scarabin 2018",
       "Endocrine Society 2017"
     ]
   },
@@ -500,7 +500,7 @@
         "peakTime": "涂抹后2-6小时",
         "vteRisk": {
           "rr": 0.97,
-          "source": "Canonico 2018（与贴片类似）"
+          "source": "Scarabin 2018（与贴片类似）"
         },
         "evidenceLevel": "B"
       }
@@ -584,7 +584,7 @@
         "drug": "吸烟",
         "severity": "major",
         "description": "可能会升高 VTE 风险，但透皮给药途径的风险通常远低于口服途径",
-        "source": "Canonico 2018"
+        "source": "Scarabin 2018"
       }
     ],
     "chinaAccess": {
@@ -595,7 +595,7 @@
     "references": [
       "Hembree 2017 DOI:10.1210/jc.2017-01658",
       "Coleman 2022 DOI:10.1080/26895269.2022.2100644",
-      "Canonico 2018",
+      "Scarabin 2018",
       "Transfeminine Science"
     ]
   },
@@ -2215,7 +2215,7 @@
     "references": [
       "Hembree 2017 DOI:10.1210/jc.2017-01658",
       "Coleman 2022 DOI:10.1080/26895269.2022.2100644",
-      "Canonico 2018"
+      "Scarabin 2018"
     ]
   },
   {

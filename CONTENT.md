@@ -183,13 +183,13 @@
 #### 3.1 雌二醇
 
 **经皮贴片 — 最安全的给药途径**
-- VTE: RR ≈ 0.97（与未用药无异）— Canonico 2018
+- VTE: RR ≈ 0.97（与未用药无异）— Scarabin 2018
 - 绕过肝脏首过效应
 - 推荐人群: 所有人，特别是有 VTE 风险因素者
 - 中国获取: 困难（网售禁令后更难）
 
 **口服E2/戊酸E2 — 最易获取但风险稍高**
-- VTE: RR ≈ 1.48 — Canonico 2018
+- VTE: RR ≈ 1.48 — Scarabin 2018
 - 补佳乐（戊酸E2 1mg）线下药房仍有售
 - 剂量换算: 2mg 戊酸E2 ≈ 1.5mg E2
 - 推荐: 无VTE风险、年轻、BMI正常、不吸烟者
@@ -438,7 +438,7 @@
 - Wiepjes CM et al. 心血管. Eur Heart J 2025
 
 **VTE/安全性**
-- Canonico M et al. 经皮vs口服VTE. Climacteric 2018. [经皮RR=0.97, 口服RR=1.48]
+- Scarabin PY 经皮vs口服VTE. Climacteric 2018. [经皮RR=0.97, 口服RR=1.48]
 - Vinogradova Y et al. BMJ 2019
 - King H et al. ASH Education Program 2024. PMC11665511
 
