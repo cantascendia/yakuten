@@ -563,7 +563,7 @@ export const ui = {
   ru: {
     // HeroSection
     'hero.title': 'HRT Yakuten',
-    'hero.slogan': 'Пусть этот путь приведёт тебя к настоящему себе',
+    'hero.slogan': 'Пусть этот путь приведёт вас к настоящей себе',
 
     // SplashNav
     'nav.before': 'Перед началом',
@@ -1562,7 +1562,7 @@ export const ui = {
   fr: {
     // HeroSection
     'hero.title': 'HRT Yakuten',
-    'hero.slogan': 'Que ce voyage te mène vers ton vrai toi',
+    'hero.slogan': 'Que ce voyage vous mène vers votre véritable soi',
 
     // SplashNav
     'nav.before': 'Avant de Commencer',
