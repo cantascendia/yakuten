@@ -32,7 +32,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 />
 
 <WarningBox title="すでに検査なしでHRTを開始してしまった方へ">
-ベースラインの血液検査を受けずにHRTを始めてしまった場合でも、手遅れではありません。できるだけ早く検査を受けてください。
+  ベースラインの血液検査を受けずにHRTを始めてしまった場合でも、手遅れではありません。できるだけ早く検査を受けてください。
 </WarningBox>
 
 ## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> 絶対的禁忌
@@ -42,7 +42,6 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 - 活動性の血栓塞栓症（例：深部静脈血栓症、肺塞栓症）
 - ホルモン感受性悪性腫瘍の確定診断または疑い（例：乳がん、前立腺がん）
 - 急性期の重度肝障害または腎障害
-- 原因不明の性器出血（トランスマスキュリンの方の場合）
 - 薬剤成分に対する重篤なアレルギーの既往
 
 </ContraindicationBox>
@@ -65,15 +64,16 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 <RealityCheck
   items={[
     { text: 'HRTは魔法ではありません。変化は数か月から数年かけて起こります。一晩で劇的な変化を期待しないでください。' },
-    { text: '一部の変化は不可逆的です（例：乳房の発達、声の低音化、陰核の成長）。何が起こるのかを十分に理解した上で始めてください。' },
-    { text: 'HRTにより生殖能力が低下、または永久に失われる可能性があります。開始前に配偶子保存（精子凍結・卵子凍結）を検討してください。' },
+    {
+      text: '一部の変化（乳房の発達など）は不可逆的です。また、骨格の構造や声帯の厚さなど、すでに完了した身体的発達はエストロゲンによって元に戻ることはありません。十分に理解した上で始めてください。',
+    },
+    { text: 'HRTにより生殖能力が低下、または永久に失われる可能性があります。開始前に精子凍結保存を検討してください。' },
     { text: '気分の変動は正常な副作用です。安定したサポート体制を確保してから開始してください。' },
   ]}
 />
 
 <WarningBox title="次に読むべきページ">
-- [HRT経路マップ](/ja/pathway/) — ベースラインから長期維持までの完全フロー
-- [薬物ガイド](/ja/medications/estrogens/overview/) — 薬の選択、用量、リスク
-- [中国HRTガイド](/ja/china-reality/) — 医師の探し方、薬の入手、血液検査
-- [血液検査ガイド](/ja/blood-tests/) — 何を検査し、どう読むか
+  - [HRT経路マップ](/ja/pathway/) — ベースラインから長期維持までの完全フロー -
+  [薬物ガイド](/ja/medications/estrogens/overview/) — 薬の選択、用量、リスク - [中国HRTガイド](/ja/china-reality/) —
+  医師の探し方、薬の入手、血液検査 - [血液検査ガイド](/ja/blood-tests/) — 何を検査し、どう読むか
 </WarningBox>
