@@ -208,7 +208,7 @@ export default defineConfig({
                   slug: 'medications/antiandrogens/overview',
                 },
                 {
-                  label: 'CPA（色谱龙）',
+                  label: 'CPA（色普龙）',
                   translations: { en: 'CPA (Cyproterone)', ja: 'CPA（酢酸シプロテロン）', ko: 'CPA (시프로테론)', pt: 'CPA (Ciproterona)', ru: 'ЦПА (Ципротерон)', es: 'CPA (Ciproterona)', id: 'CPA (Siproteron)', th: 'CPA (ไซโปรเทอโรน)', fil: 'CPA (Cyproterone)', hi: 'CPA (साइप्रोटेरोन)', vi: 'CPA (Cyproterone)', ar: 'CPA (سيبروتيرون)', fa: 'CPA (سیپروترون)', fr: 'CPA (Cyprotérone)', de: 'CPA (Cyproteron)', tr: 'CPA (Siproteron)' },
                   slug: 'medications/antiandrogens/cpa',
                   badge: { text: { 'zh-CN': '常用', en: 'Common', ja: '基本', ko: '일반', pt: 'Comum', ru: 'Часто', es: 'Común', id: 'Umum', th: 'ทั่วไป', fil: 'Karaniwan', hi: 'सामान्य', vi: 'Phổ Biến', ar: 'شائع', fa: 'رایج', fr: 'Courant', de: 'Üblich', tr: 'Yaygın' }, variant: 'tip' },

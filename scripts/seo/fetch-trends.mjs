@@ -35,7 +35,7 @@ const TIER_M = 10;
 
 // Seed keyword list if none exists yet.
 const DEFAULT_KEYWORDS = [
-  { term: '色谱龙', category: 'drug-brand', target: '/zh/medications/antiandrogens/cpa/' },
+  { term: '色普龙', category: 'drug-brand', target: '/zh/medications/antiandrogens/cpa/' },
   { term: '螺内酯', category: 'drug-generic', target: '/zh/medications/antiandrogens/spironolactone/' },
   { term: '补佳乐', category: 'drug-brand', target: '/zh/medications/estrogens/oral/' },
   { term: '戊酸雌二醇', category: 'drug-generic', target: '/zh/medications/estrogens/injection/' },

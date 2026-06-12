@@ -12,7 +12,7 @@ const LINKS = {
   // antiandrogens
   'src/content/docs/zh/medications/antiandrogens/cpa.mdx': [
     ['CPA vs 螺内酯:临床对比', '/zh/compare/cpa-vs-spironolactone/'],
-    ['色谱龙安全剂量 5-12.5 mg', '/zh/blog/cpa-dose-safe-range/'],
+    ['色普龙安全剂量 5-12.5 mg', '/zh/blog/cpa-dose-safe-range/'],
     ['CPA 脑膜瘤风险循证评估', '/zh/blog/cpa-meningioma-risk-evidence/'],
   ],
   'src/content/docs/zh/medications/antiandrogens/spironolactone.mdx': [

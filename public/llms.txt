@@ -51,7 +51,7 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 
 **Anti-androgens:**
 - /zh/medications/antiandrogens/overview/ — Anti-androgen selection guide
-- /zh/medications/antiandrogens/cpa/ — Cyproterone acetate (CPA, 色谱龙)
+- /zh/medications/antiandrogens/cpa/ — Cyproterone acetate (CPA, 色普龙)
 - /zh/medications/antiandrogens/spironolactone/ — Spironolactone (安体舒通)
 - /zh/medications/antiandrogens/bicalutamide/ — Bicalutamide
 - /zh/medications/antiandrogens/gnrh-agonists/ — GnRH agonists
