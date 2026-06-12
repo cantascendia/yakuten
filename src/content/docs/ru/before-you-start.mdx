@@ -1,24 +1,35 @@
 ---
 title: "Прежде чем начать: готовы ли вы?"
-description: "Необходимый чек-лист перед началом ЗГТ — исходные анализы крови, абсолютные и относительные противопоказания, требования к информированному согласию и реалистичные ожидания от вашего медицинского пути."
-evidenceLevel: B
-lastReviewed: 2026-04-07
-references: [coleman-2022, hembree-2017]
+description: "Необходимый чек-лист перед началом ГАГТ — исходные анализы крови, абсолютные и относительные противопоказания, требования к информированному согласию и реалистичные ожидания от вашего медицинского пути."
+evidenceLevel: A
+lastReviewed: 2026-05-26
+references: [hembree-2017, coleman-2022, ucsf-2016, canonico-2018, vinogradova-2019, patel-2021, deblok-2021]
+faqs:
+  - q: "Какие анализы обязательны перед началом ГАГТ?"
+    a: "Обязательно: половые гормоны (эстрадиол, тестостерон, ЛГ, ФСГ, пролактин, ГСПГ), функции печени и почек, общий анализ крови и коагулограмма (свёртываемость). Рекомендуется: глюкоза натощак. Эти анализы позволяют получить базовые показатели для сравнения и исключить противопоказания."
+  - q: "Кому категорически противопоказана ГАГТ?"
+    a: "Абсолютные противопоказания включают: активные тромбоэмболические заболевания (ТГВ, ТЭЛА), диагностированные или подозреваемые гормонозависимые опухоли (рак груди, рак простаты), тяжёлую почечную или печёночную недостаточность в острой фазе и известную аллергию на компоненты препаратов. Рекомендуется пройти быстрый 30-секундный тест на риски."
+  - q: "Можно ли начинать ГАГТ несовершеннолетним?"
+    a: "Этот сайт ориентирован на совершеннолетних пользователей. Гормональная терапия для несовершеннолетних требует согласия опекунов и междисциплинарной оценки (психиатр, эндокринолог), как указано в WPATH SOC 8. Данное руководство не предоставляет схем для несовершеннолетних. Совершеннолетним пациентам с относительными противопоказаниями (курение, неконтролируемое давление, диабет, ИМТ > 30) требуется оценка врача перед началом терапии."
+  - q: "Безопасен ли самостоятельный приём гормонов (DIY)?"
+    a: "Это не запрет, а мера безопасности. Перед началом самостоятельного приёма необходимо сдать базовые анализы и исключить абсолютные противопоказания. Риски DIY включают покупку некачественных или неверно промаркированных препаратов, отсутствие контроля показателей крови, приводящее к передозировке, и неспособность вовремя распознать опасные симптомы (тромбоз, поражение печени). Мы настоятельно советуем найти дружественного врача для контроля терапии."
+  - q: "Как быстро проявятся эффекты ГАГТ?"
+    a: "Гормоны действуют постепенно. Начало роста молочных желёз обычно заметно через 3–6 месяцев; смягчение кожи и уменьшение роста волос на теле — через 1–3 месяца; перераспределение жира занимает 2–3 года. Некоторые изменения (например, рост груди) необратимы. Терапия также снижает фертильность вплоть до полного бесплодия, поэтому стоит заранее подумать о криоконсервации спермы."
 ---
 
+import { Aside } from '@astrojs/starlight/components';
 import CitationRef from '../../../components/ui/CitationRef.astro';
 import BaselineChecklist from '../../../components/ui/BaselineChecklist.astro';
 import ContraindicationBox from '../../../components/ui/ContraindicationBox.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
+import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 
-Это не препятствие на пути к лечению — это проверка безопасности. Начинать ЗГТ (гормональную заместительную терапию) без исходных анализов — всё равно что вести машину с завязанными глазами.
-
-Перечисленные ниже исходные анализы рекомендованы международными клиническими рекомендациями<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+Это не препятствие на пути к лечению — это проверка безопасности. Начинать ГАГТ (гендерно-аффирмативную гормональную терапию) без исходных анализов — всё равно что вести машину с завязанными глазами. В соответствии с рекомендациями Endocrine Society 2017 и WPATH SOC 8 перед началом терапии рекомендуется пройти базовую оценку здоровья, чтобы выявить возможные противопоказания<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
 
 ## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Исходные лабораторные анализы
 
-Перечисленные ниже анализы следует сдать до начала ЗГТ. Большинство из них можно назначить через вашего лечащего врача, клинику информированного согласия или такие службы, как Planned Parenthood:
+Перечисленные ниже анализы следует сдать до начала ГАГТ. Эти исследования рекомендованы Разделом 6 клинического руководства Endocrine Society 2017 и стандартами базовой помощи трансгендерным людям UCSF<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />:
 
 <BaselineChecklist
   items={[
@@ -34,18 +45,24 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 />
 
 <WarningBox title="Уже начали без анализов?">
-Если вы начали ЗГТ, не сдав исходные анализы, — ещё не поздно. Сдайте их как можно скорее.
+Если вы начали ГАГТ, не сдав исходные анализы, — ещё не поздно. Сдайте их как можно скорее, чтобы иметь точку отсчёта.
 </WarningBox>
 
 ## <span style="font-family: var(--font-mono); color: var(--color-danger);">§ 1.2</span> Абсолютные противопоказания
 
+<Aside type="tip" title="Пройдите быструю самооценку">
+Прежде чем читать полный список, вы можете за 30 секунд пройти наш [тест на риски](/ru/tools/risk-screener/). Семь простых вопросов помогут предварительно оценить состояние вашего здоровья.
+</Aside>
+
 <ContraindicationBox type="absolute" title="Абсолютные противопоказания" sectionNum="">
 
-- Активное тромбоэмболическое заболевание (например, тромбоз глубоких вен (DVT), тромбоэмболия лёгочной артерии (PE))
-- Подтверждённое или подозреваемое гормонозависимое злокачественное новообразование (например, рак молочной железы, рак предстательной железы)
-- Тяжёлое нарушение функции печени или почек в острой фазе
-- Кровотечение из влагалища неясного происхождения (для трансмаскулинных людей)
+- Активное тромбоэмболическое заболевание (например, тромбоз глубоких вен (ТГВ/DVT) или тромбоэмболия лёгочной артерии (ТЭЛА/PE))<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" /><CitationRef id="vinogradova-2019" num={5} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" />
+- Подтверждённое или подозреваемое гормонозависимое злокачественное новообразование (например, рак молочной железы, рак предстательной железы)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Тяжёлое нарушение функции печени или почек в острой фазе<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Кровотечение из влагалища неясного происхождения (для трансмаскулинных людей)<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
 - Известная тяжёлая аллергия на компоненты препарата
+
+Подробный список противопоказаний приводится в Таблице 11 руководства Endocrine Society 2017, а также в Главе 12 стандартов WPATH SOC 8<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
 
 </ContraindicationBox>
 
@@ -53,29 +70,33 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 <ContraindicationBox type="relative" title="Относительные противопоказания" sectionNum="">
 
-- Неконтролируемая артериальная гипертензия или сердечно-сосудистое заболевание
-- Плохо контролируемый сахарный диабет
-- Курение (особенно в возрасте 35+, существенно повышает риск ВТЭ (VTE — венозная тромбоэмболия))
+- Неконтролируемая артериальная гипертензия или сердечно-сосудистые заболевания<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Плохо контролируемый сахарный диабет<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />
+- Курение (особенно в возрасте 35+, существенно повышает риск тромбоза)<CitationRef id="vinogradova-2019" num={5} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" /><CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism: an updated overview" />
 - Заболевания желчного пузыря в анамнезе
-- Мигрень с аурой (требует тщательной оценки рисков)
-- Тяжёлое ожирение (ИМТ &gt; 30)
+- Мигрень (особенно мигрень с аурой, требует тщательной оценки рисков)<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />
+- Тяжёлое ожирение (ИМТ &gt; 30)<CitationRef id="vinogradova-2019" num={5} authors="Vinogradova Y et al." year={2019} title="Use of hormone replacement therapy and risk of venous thromboembolism" />
 
 </ContraindicationBox>
 
 ## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Формирование реалистичных ожиданий
 
+Временная шкала физических изменений основана на исследованиях когорты развития груди Patel 2021 и Амстердамской когорты de Blok 2018<CitationRef id="patel-2021" num={6} authors="Patel et al." year={2021} title="Breast development in transgender women on hormone therapy" /><CitationRef id="deblok-2021" num={7} authors="de Blok CJM et al." year={2021} title="Amsterdam cohort 50-year follow-up" />; влияние на фертильность приводится в соответствии с разделами о репродуктивном здоровье руководств Endocrine Society 2017 и WPATH SOC 8<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
 <RealityCheck
   items={[
-    { text: 'ЗГТ — это не волшебство. Изменения происходят на протяжении месяцев и лет — не ждите преображения за одну ночь.' },
-    { text: 'Некоторые изменения необратимы (например, рост груди, понижение голоса, рост клитора). Понимайте, на что вы соглашаетесь.' },
-    { text: 'ЗГТ может снизить или необратимо устранить фертильность. Рассмотрите возможность сохранения половых клеток (заморозка яйцеклеток/спермы) до начала терапии.' },
-    { text: 'Колебания настроения — нормальный побочный эффект. Убедитесь, что у вас есть устойчивая система поддержки.' },
+    { text: 'Гендерно-аффирмативная гормональная терапия — это не магия. Телесные изменения происходят очень медленно, в течение месяцев и лет. Пожалуйста, запаситесь терпением и не ждите преображения за одну ночь.' },
+    { text: 'Некоторые изменения (в частности, развитие груди) необратимы. Чётко понимайте свои долгосрочные желания.' },
+    { text: 'Приём гормонов обычно снижает или полностью подавляет фертильность. Стоит заранее подумать о сохранении спермы (криоконсервации) до начала терапии.' },
+    { text: 'Колебания настроения — частая естественная реакция организма. Убедитесь, что у вас есть близкие или сообщество, готовые вас поддержать.' },
   ]}
 />
 
 <WarningBox title="Что читать дальше">
-- [Маршрут ЗГТ](/ru/pathway/) — Полный путь от исходного состояния до долгосрочного поддержания
-- [Препараты](/ru/medications/estrogens/overview/) — Варианты препаратов, дозирование и риски
-- [Руководство по ЗГТ в Китае](/ru/china-reality/) — Как найти врача, получить препараты и сдать анализы крови
+- [Маршрут ГАГТ](/ru/pathway/) — Полный путь от исходного состояния до долгосрочного поддержания
+- [Препараты эстрогенов](/ru/medications/estrogens/overview/) — Варианты препаратов, дозирование и риски
+- [Реальность в вашей стране](/ru/china-reality/) — Как найти врача, получить препараты и сдать анализы крови
 - [Анализы крови](/ru/blood-tests/) — Что сдавать, куда идти и как читать результаты
 </WarningBox>
+
+<RelatedBlogPosts />

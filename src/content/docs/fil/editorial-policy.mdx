@@ -1,6 +1,6 @@
 ---
-title: "Patakaran sa Editoryal"
-description: "Ang mga prinsipyong editoryal ng HRT Pharmacopoeia, proseso ng pagwawasto ng mali, mga pamantayan sa copyright at pagsipi, mga daluyan para sa reklamo at apela, at pagsisiwalat ng conflict of interest."
+title: "Patakarang Editoryal"
+description: "Ang mga prinsipyong editoryal ng HRT Yakuten, proseso ng pagwawasto ng pagkakamali, mga pamantayan sa copyright at pagsipi, mga paraan para sa reklamo at apila, at pagsisiwalat ng conflict of interest."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -13,85 +13,85 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 
 <BylineCard
-  author="HRT Pharmacopoeia Editorial Team"
+  author="Koponan ng Editoryal ng HRT Yakuten"
   lastReviewed="2026-04-19"
   nextReview="2026-10-19"
-  locale="en"
+  locale="fil"
 />
 
 ## Mga Lubos na Ipinagbabawal
 
-Hindi kailanman ilalathala ng HRT Pharmacopoeia ang alinman sa mga sumusunod:
+Hindi kailanman ilalathala ng HRT Yakuten ang alinman sa mga sumusunod:
 
 <DangerBox>
-- Personalisadong payo sa reseta ("dapat kang uminom ng X mg")
-- Mga link para sa pagbili ng gamot, ahente sa pagbebenta, o QR code para sa referral/komisyon
-- Pananalitang nagpapahina sa pagkilala sa mga medikal na emerhensiya (DVT, hepatotoxicity, meningioma, atbp.)
-- Mga medikal na pahayag na walang DOI o sanggunian
-- Mga third-party na tracking script o pag-iimbak ng datos sa kalusugan ng gumagamit
-- Mga konpigurasyong umiiwas sa mga AI disclaimer o babala sa kaligtasan
+- Personaladong payo sa dosis ("dapat kang uminom ng X mg")
+- Mga link para sa pagbili ng gamot, ahente sa pagbebenta, o mga QR code para sa referral/komisyon
+- Mga pahayag na nagpapaliit o nagwawalang-bahala sa mga medikal na emergency (DVT, pinsala sa atay, meningioma, atbp.)
+- Mga medikal na pahayag na walang DOI o malinaw na sanggunian
+- Mga third-party tracking script o pag-iimbak ng sensitibong datos sa kalusugan ng mambabasa
+- Mga configuration na umiiwas o nagtatanggal sa mga AI disclaimer o babala sa kaligtasan
 </DangerBox>
 
 ## Wika at Tono
 
-- **Iwasan ang mga absoluto**: piliin ang "iminumungkahi namin / karaniwan / sa karamihan ng pagkakataon" kaysa sa "dapat / palagi / hindi kailanman"
-- **Kausapin nang direkta ang mambabasa**: isulat ang "maaari kang pumili ng A o B" sa halip na "dapat pumili ang mga pasyente ng A"
-- **Sabihin nang malinaw ang kawalang-katiyakan**: ang mga konklusyon sa antas ng ebidensiyang B/C/X ay dapat tatakan ng "limitado ang datos" o "opinyon ng eksperto"
-- **Bawasan ang stigma**: gumamit ng pananalitang nagpapatibay sa komunidad at iwasan ang mga lumang o sobrang klinikal na termino
+- **Iwasan ang mga absolutong pahayag**: Piliin ang mga salitang gaya ng "iminumungkahi namin / karaniwan / sa karamihan ng pagkakataon" sa halip na "dapat / palagi / hindi kailanman".
+- **Kausapin nang direkta ang mambabasa**: Isulat ang "maaari kang pumili ng A o B" sa halip na "dapat pumili ang mga pasyente ng A".
+- **Ipahayag nang malinaw ang kawalang-katiyakan**: Ang mga konklusyon sa antas ng ebidensiyang B/C/X ay dapat malinaw na lagyan ng marka na "limitado ang datos" o "opinyon ng eksperto".
+- **Bawasan ang stigma**: Gumamit ng pananalitang nagpapatibay sa komunidad at iwasan ang mga luma o labis na klinikal na termino.
 
 ## Pagsipi at Copyright
 
-- Bawat medikal na pahayag ay may pinagmulang sanggunian sa pamamagitan ng `CitationRef` component (ang mga ID ay tumutugma sa mga entry sa `src/data/references.json`)
-- Mas pinipili ang mga DOI; kung walang DOI, banggitin ang impormasyon ng paglalathala sa journal kasama ang isang matatag na URL
-- Ang mga pigura at diagram ay orihinal o galing sa mga gawang Creative Commons / public domain; binibigyan ng pagkilala ang mga reproduksiyon
-- Ang orihinal na nilalaman ng site ay inilalabas sa ilalim ng CC BY-SA 4.0; ang code ay pinamamahalaan ng LICENSE ng repository
+- Bawat medikal na pahayag ay may pinagmulang sanggunian sa pamamagitan ng `CitationRef` component (ang mga ID ay tumutugma sa mga entry sa `src/data/references.json`).
+- Mas pinipili ang mga DOI; kung walang magagamit na DOI, babanggitin ang impormasyon ng paglalathala sa journal kasama ang isang matatag na URL.
+- Ang mga larawan at diagram ay orihinal o galing sa mga gawang Creative Commons / public domain; binibigyan ng maayos na pagkilala ang mga hiniram na gawa.
+- Ang orihinal na nilalaman ng site ay inilalabas sa ilalim ng CC BY-NC-SA 4.0; ang code naman ay pinamamahalaan ng lisensya (LICENSE) ng repository.
 
-## Pagwawasto ng Mali
+## Pagwawasto ng mga Pagkakamali
 
 Maaaring magsumite ang mga mambabasa ng ulat sa pamamagitan ng [feedback form](https://wj.qq.com/s2/16576000/5fe5/) o [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
 
-| Uri | Oras ng pagtugon | Pangangasiwa |
+| Uri | Oras ng pagtugon | Aksyon |
 |---|---|---|
 | Maling impormasyon | Unang tugon sa loob ng 72 oras | **Paunawa ng erratum** sa itaas ng pahina + change log |
-| Pagkalihis ng sanggunian | 72 oras | Palitan ang sanggunian at ilathala ang pampublikong log ng pagwawasto |
-| Lumang impormasyon | 7 araw | Incremental update + i-refresh ang `lastReviewed` |
-| Mapanganib na payo | 24 na oras na emergency takedown | Ayusin o panatilihing offline habang isinasailalim sa pagsusuri |
+| Maling sanggunian | 72 oras | Palitan ang sanggunian at ilathala ang pampublikong log ng pagwawasto |
+| Lumang impormasyon | 7 araw | Paunti-unting pag-update (incremental update) + i-refresh ang `lastReviewed` |
+| Mapanganib na payo | 24 na oras | Emergency takedown: Ayusin o panatilihing offline habang sinusuri |
 
-Ang mga malalaking pagwawasto ay ipinapaabot din sa:
+Ang mga pangunahing pagwawasto ay ipinapaalam din sa pamamagitan ng:
 
 - Kasaysayan ng bersiyon sa `/fil/appendix-references/`
-- Mga subscriber ng RSS / Telegram / email
+- Mga channel sa RSS / Telegram / email list
 
-## Mga Reklamo at Apela
+## Mga Reklamo at Apila
 
-- **Reklamo sa nilalaman**: [feedback form](https://wj.qq.com/s2/16576000/5fe5/)
-- **Legal / copyright**: magbukas ng GitHub Issue na may label na `legal`, o makipag-ugnayan sa mga maintainer ng repository
-- **Privacy**: hindi kinukolekta ng site na ito ang impormasyong nagpapakilala sa indibidwal; anumang iniulat na pagtagas ng privacy ay pinangangasiwaan sa loob ng 24 na oras
+- **Reklamo sa nilalaman**: Gamitin ang [feedback form](https://wj.qq.com/s2/16576000/5fe5/).
+- **Legal / Copyright**: Magbukas ng GitHub Issue na may label na `legal`, o makipag-ugnayan sa mga maintainer ng repository.
+- **Privacy**: Hindi kinukolekta ng site na ito ang impormasyong nagpapakilala sa indibidwal; ang anumang naiulat na isyu sa privacy ay tutugunan sa loob ng 24 na oras.
 
 ## Pagsisiwalat ng Conflict of Interest
 
-- **Walang komersiyal na sponsorship, walang advertising ng gamot, walang komisyon sa pagbili**
-- Ang mga gastos sa operasyon ay sinasagot ng mga boluntaryong kontribusyon at mga donasyon ng open-source na komunidad
-- Ang mga editor at medikal na tagapayo ay pumipirma ng mga pagsisiwalat ng conflict of interest; ang mga paksang may direktang kaugnay na relasyon sa pagrereseta o komersiyo ay iniiwasan (recused)
-- Walang panlabas na link na may dalang affiliate identifier; ang mga inilalistang ospital at hotline ay mga mapagkukunang sinuri ng komunidad lamang
+- **Walang komersiyal na sponsorship, walang advertising ng gamot, walang komisyon sa pagbili.**
+- Ang mga gastusin sa pagpapatakbo ng site ay sinasagot ng mga boluntaryong kontribusyon at mga donasyon mula sa open-source na komunidad.
+- Ang mga editor at medikal na tagapayo ay pumipirma ng pagsisiwalat ng conflict of interest; iniiwasan ang mga paksang may direktang ugnayan sa pagrereseta o komersyo (recused).
+- Walang panlabas na link na may dalang affiliate identifier; ang mga nakalistang ospital at hotline ay mga mapagkukunang sinuri ng komunidad lamang.
 
-## Siklo ng Pagsusuri
+## Siklo ng Pagsusuri ng Nilalaman
 
 | Uri ng pahina | Default na agwat ng pagsusuri |
 |---|---|
-| Pagkilala sa emerhensiya, mga red line sa dosis, mga babala sa panganib | **6 na buwan** |
-| Mga drug monograph at gabay | **12 buwan** |
-| Mga kagamitan, patakaran, metodolohiya | **12 buwan** |
-| Mga blog post | Beripikado isang beses 12 buwan matapos ang paglalathala |
+| Pagtukoy sa emergency, mga limitasyon sa dosis, mga babala sa panganib | **6 na buwan** |
+| Detalye ng gamot (monograph) at mga gabay | **12 buwan** |
+| Mga interaktibong tool, patakaran, at metodolohiya | **12 buwan** |
+| Mga artikulo sa blog | Sinusuri nang isang beses, 12 buwan matapos mailathala |
 
-Ang isang malaking pagbabago sa gabay (safety alert ng EMA/FDA, bagong edisyon ng WPATH / Endocrine Society) ay nagdudulot ng **incremental update sa loob ng 48 oras**.
+Ang anumang malaking pagbabago sa mga opisyal na guideline (gaya ng safety alert mula sa EMA/FDA, bagong edisyon ng WPATH / Endocrine Society) ay magreresulta sa **incremental update sa loob ng 48 oras**.
 
 <WarningBox>
-Ang pahinang ito ay isang pampublikong pangako sa editoryal na pamamahala sa sarili. **Kung makita mo kaming lumalabag sa alinmang sugnay sa itaas, mangyaring ipahayag ito nang hayagan** — ang pananagutang iyon lamang ang paraan namin upang manatiling tapat sa aming mga mambabasa.
+Ang pahinang ito ay isang pampublikong pangako sa aming editoryal na pamamahala. **Kung may makita kang paglabag sa alinman sa mga tuntunin sa itaas, mangyaring ipagbigay-alam ito sa amin nang hayagan** — ang pananagutang iyon lamang ang paraan namin upang manatiling tapat sa aming mga mambabasa.
 </WarningBox>
 
 ## Mga Kaugnay na Dokumento
 
-- [Tungkol sa site na ito](/fil/about/)
+- [Tungkol sa Site na Ito](/fil/about/)
 - [Metodolohiya](/fil/methodology/)
 - [Mga Medikal na Tagapayo](/fil/medical-advisors/)
