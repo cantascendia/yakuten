@@ -29,7 +29,7 @@
 
 | keyword | volume | mtf_rank | yakuten_rank | yakuten_url | priority | action |
 |---|---|---|---|---|---|---|
-| 色谱龙 | **H** | 1-3 | ? | `/zh/medications/antiandrogens/cpa/` | P0 | ✅ drug schema + FAQPage 已注入 · 中文 slug 301 已开 · 下一步:单独博客《色谱龙吃多少安全》《色谱龙和螺内酯怎么选》 |
+| 色普龙 | **H** | 1-3 | ? | `/zh/medications/antiandrogens/cpa/` | P0 | ✅ drug schema + FAQPage 已注入 · 中文 slug 301 已开 · 下一步:单独博客《色普龙吃多少安全》《色普龙和螺内酯怎么选》 |
 | 螺内酯 MTF | **H** | ? | ? | `/zh/medications/antiandrogens/spironolactone/` | P0 | ✅ drug+FAQ 已注入 · 正文补"螺内酯 MTF"长尾 h2 段落;增加和心内科高血压场景的语义隔离 |
 | 补佳乐 | **H** | ? | ? | `/zh/medications/estrogens/oral/` | P0 | ✅ drug+FAQ 已注入 · 需竞争 gynecology 流量,增加"补佳乐 MTF 剂量"h2 + 内链到 compare 页 |
 | 戊酸雌二醇 注射 | **M-H** | ? | ? | `/zh/medications/estrogens/injection/` | P0 | ✅ drug+FAQ 已注入 · 单独博客《戊酸雌二醇打几天一次》《戊酸雌二醇怎么抽》 |
@@ -51,7 +51,7 @@
 
 | keyword | volume | mtf_rank | yakuten_rank | yakuten_url | priority | action |
 |---|---|---|---|---|---|---|
-| CPA vs 螺内酯 / 色谱龙和螺内酯哪个好 | **M** | — | ? | `/zh/compare/cpa-vs-spironolactone/` | P0 | ✅ 新页已上线 · 在 CPA/螺内酯 主页内链此页 |
+| CPA vs 螺内酯 / 色普龙和螺内酯哪个好 | **M** | — | ? | `/zh/compare/cpa-vs-spironolactone/` | P0 | ✅ 新页已上线 · 在 CPA/螺内酯 主页内链此页 |
 | 口服 vs 注射 雌二醇 | **M** | — | ? | `/zh/compare/oral-vs-injection/` | P0 | ✅ 新页已上线 · 从 oral/injection 两页双向内链 |
 | 凝胶 vs 贴片 | **L-M** | — | ? | `/zh/compare/gel-vs-patch/` | P0 | ✅ 新页已上线 |
 
@@ -63,8 +63,8 @@
 
 | keyword | volume | yakuten 覆盖 | action |
 |---|---|---|---|
-| 色谱龙 副作用 | **M** | 在 CPA 主页 | 独立博客长文 |
-| 色谱龙 停药 | **L-M** | 在 CPA 主页 | 博客《色谱龙怎么停》 |
+| 色普龙 副作用 | **M** | 在 CPA 主页 | 独立博客长文 |
+| 色普龙 停药 | **L-M** | 在 CPA 主页 | 博客《色普龙怎么停》 |
 | 螺内酯 高钾 | **L-M** | 在螺内酯主页 | 博客《螺内酯高钾怎么办》 |
 | 补佳乐 剂量 MTF | **M** | 部分 | description 补 · 博客 |
 | 戊酸雌二醇 副作用 | **L-M** | 在 injection 页 | 博客 |
@@ -100,7 +100,7 @@
 
 - "打针当天能喝酒吗"
 - "HRT 多久能停抗雄"
-- "色谱龙 孕激素 情绪"
+- "色普龙 孕激素 情绪"
 - "雌二醇 片剂 和 注射 换算"
 - "跨性别 DIY 买药被查了怎么办"(敏感,博客要谨慎语言)
 - "HRT 吃错药会怎样"
@@ -131,7 +131,7 @@
 - [ ] 新增外链来源: <列表>
 
 **排位变化**(Google Search Console 截图 + 手工 20 词抽样):
-- 色谱龙: 上月 #? → 本月 #?
+- 色普龙: 上月 #? → 本月 #?
 - 螺内酯 MTF: ...
 - 补佳乐: ...
 - CPA 脑膜瘤: ...
@@ -150,7 +150,7 @@
 
 | KPI | 目标(2027-04) | 当前 |
 |---|---|---|
-| Google 中文"色谱龙"、"螺内酯 剂量"、"HRT 血检"排位 | **前 5** | 未知 |
+| Google 中文"色普龙"、"螺内酯 剂量"、"HRT 血检"排位 | **前 5** | 未知 |
 | mtf.wiki 占位 top 50 词 · yakuten 覆盖率 | **≥ 80%** | ~60%(估计) |
 | GSC 月均 impressions 同比 | **+200%** | 基线 |
 | GSC zh-CN 平均 CTR | **≥ 4%** | 未知 |
@@ -206,7 +206,7 @@ AHREFS_API_TOKEN=xxx
 **schema 已就位**:Drug · FAQPage · MedicalGuideline · MedicalWebPage · BreadcrumbList · ScholarlyArticle · Organization · WebSite
 **sitemap**:228 URL 带 `<lastmod>`(postbuild 自动注入)
 **OG 图**:186 张 1200×630 PNG 每页独立生成
-**中文 slug 301**:32 条(色谱龙 / 螺内酯 / 补佳乐 / 戊酸雌二醇 等 → 英文规范 URL)
+**中文 slug 301**:32 条(色普龙 / 螺内酯 / 补佳乐 / 戊酸雌二醇 等 → 英文规范 URL)
 
 <!-- AUTO-SNAPSHOT:BEGIN -->
 
@@ -224,7 +224,7 @@ tier 阈值: H ≥ 40 · M ≥ 10 (0-100 相对指数)
 | 地屈孕酮 | drug-generic | 6.8 | 100 | 0 | — | L | `/zh/medications/progestogens/dydrogesterone/` |
 | 螺内酯 | drug-generic | 3.4 | 100 | 0 | — | L | `/zh/medications/antiandrogens/spironolactone/` |
 | MTF HRT | protocol | 3.3 | 100 | 0 | — | L | `/zh/before-you-start/` |
-| 色谱龙 | drug-brand | 1.9 | 100 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
+| 色普龙 | drug-brand | 1.9 | 100 | 0 | — | L | `/zh/medications/antiandrogens/cpa/` |
 | 补佳乐 | drug-brand | 1.9 | 100 | 25 | ↑ | L | `/zh/medications/estrogens/oral/` |
 | 屈螺酮 | drug-generic | 1.9 | 100 | 0 | — | L | `/zh/medications/progestogens/drospirenone/` |
 | estradiol half life | pharm-en | 1.9 | 100 | 25 | ↑ | L | `/en/medications/estrogens/oral/` |

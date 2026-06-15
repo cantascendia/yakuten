@@ -1,5 +1,5 @@
 [
-  { "term": "色谱龙", "category": "drug-brand", "target": "/zh/medications/antiandrogens/cpa/" },
+  { "term": "色普龙", "category": "drug-brand", "target": "/zh/medications/antiandrogens/cpa/" },
   { "term": "色普龙", "category": "drug-brand-variant", "target": "/zh/medications/antiandrogens/cpa/" },
   { "term": "醋酸环丙孕酮", "category": "drug-chemical", "target": "/zh/medications/antiandrogens/cpa/" },
   { "term": "螺内酯", "category": "drug-generic", "target": "/zh/medications/antiandrogens/spironolactone/" },
