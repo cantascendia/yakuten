@@ -1,14 +1,14 @@
 ---
 title: GnRH 拮抗剂
-description: 介绍 GnRH 拮抗剂（瑞卢戈利口服、地加瑞克注射）在性别肯定激素治疗（HRT）中的潜在应用。直接阻断 GnRH 受体、无激动剂初期睾酮 flare，与 GnRH 激动剂互补对照；客观说明降睾酮证据来源、中国大陆可及性与高成本现实、安全监测。
+description: 介绍 GnRH 拮抗剂（瑞卢戈利口服、地加瑞克注射）在性别肯定激素治疗（HRT）中的潜在应用、药理机制、降睾酮临床证据以及中国大陆的可及性与高成本现实。
 evidenceLevel: C
-lastReviewed: 2026-06-09
+lastReviewed: 2026-06-12
 references: [coleman-2022, hembree-2017, ucsf-2016, shore-2020, kasparian-2023, klotz-2008]
 drug:
-  nonProprietaryName: "GnRH antagonist"
-  activeIngredient: "瑞卢戈利 / 地加瑞克 (Relugolix / Degarelix)"
-  mechanismOfAction: "GnRH 受体竞争性拮抗剂;直接阻断垂体 GnRH 受体,无激动剂初期睾酮 flare,LH/FSH 与睾酮快速下降"
-  atc: "L02BX"
+  nonProprietaryName: 'GnRH antagonist'
+  activeIngredient: '瑞卢戈利 / 地加瑞克 (Relugolix / Degarelix)'
+  mechanismOfAction: 'GnRH 受体竞争性拮抗剂；直接阻断垂体 GnRH 受体，无激动剂初期睾酮一过性升高，LH/FSH 与睾酮快速下降'
+  atc: 'L02BX'
 sidebar:
   order: 5
 ---
@@ -27,120 +27,163 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
   route="口服（瑞卢戈利）· 皮下注射（地加瑞克）"
   evidenceLevel="C"
 >
-  促性腺激素释放激素（GnRH）拮抗剂直接、竞争性地阻断垂体的 GnRH 受体，从而快速抑制 LH/FSH 分泌、降低睾酮（T），且**不会引起 GnRH 激动剂特有的初期睾酮“flare”（一过性升高）**。目前这类药物主要获批用于前列腺癌，在性别肯定激素治疗（GAHT）中属于**超说明书、循证数据有限**的新兴选项，WPATH SOC 8 与 Endocrine Society 2017 均未将其列为常规推荐方案<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />。本页主要作为信息完整性补充，帮助你理解机制与现实可及性。
+  促性腺激素释放激素（GnRH）拮抗剂通过直接、竞争性阻断垂体 GnRH
+  受体，快速抑制黄体生成素（LH）与卵泡刺激素（FSH）的分泌，从而阻断睾丸的睾酮（T）合成。其药理学优势在于**不会引发 GnRH
+  激动剂特有的初期睾酮“flare”（一过性升高）**。此类药物主要临床适应症为前列腺癌，在性别肯定激素治疗（GAHT）中属于**超说明书用药且跨性别临床证据极有限**的方案。WPATH
+  SOC 8 与内分泌学会指南均未将其列为常规抗雄推荐方案
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  。本页主要作机制梳理与客观现实评估。
 </DrugInfoBox>
 
 <GuideCTA
-  eyebrow="先看主流方案"
-  title="GnRH 激动剂是更成熟的选择"
-  description="与拮抗剂直接阻断受体不同，GnRH 激动剂通过持续激动使垂体脱敏来降睾酮，循证更充分、指南明确推荐，且国内已合法上市。如果你正在权衡上游抑制方案，建议先阅读 GnRH 激动剂页（亮丙瑞林 / 戈舍瑞林 / 曲普瑞林）。"
-  ctaText="查看 GnRH 激动剂完整页"
+  eyebrow="方案对比"
+  title="GnRH 激动剂是更为成熟的同类选择"
+  description="相比于拮抗剂直接阻断受体，GnRH 激动剂通过持续激动受体引发垂体降调节脱敏来关闭睾酮，其在跨性别人群中的循证证据更为充分，且国内可及性明显更好。建议先阅读 GnRH 激动剂页面（亮丙瑞林 / 戈舍瑞林 / 曲普瑞林）。"
+  ctaText="查看 GnRH 激动剂页面"
   ctaHref="/zh/medications/antiandrogens/gnrh-agonists/"
   variant="accent"
 />
 
-<WarningBox title="超说明书用药 · 跨性别循证数据有限">
-GnRH 拮抗剂在跨性别女性 HRT 中属于**超说明书用药（Off-Label Use）**，使用前建议了解以下背景：
+<WarningBox title="超说明书用药与证据局限">
+在跨性别女性 HRT 中考虑使用 GnRH 拮抗剂时，应明确以下事实：
 
-- **指南尚未纳入**：WPATH SOC 8 与 Endocrine Society 2017 性别肯定指南均未将 GnRH 拮抗剂列为常规抗雄方案<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
-- **降睾酮证据来自前列腺癌人群**：本页引用的降 T 效力与动力学数据，主要来自前列腺癌的随机对照试验（如瑞卢戈利 HERO 研究、地加瑞克 CS21 研究），**尚缺乏跨性别人群的专门前瞻性研究**。将其外推到 GAHT 时，需理解证据等级因此受限。
-- **机制上合理、临床上待验证**：从药理学看，拮抗剂同样作用于 HPG 轴上游、可将 T 降至去势水平，与激动剂目标一致；但在跨性别长期用药的安全性、最佳剂量上仍属待核实。
+- **指南尚未正式纳入**：目前主流的性别肯定治疗指南均未将 GnRH 拮抗剂作为常规抗雄推荐方案<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
+- **证据链主要外推自前列腺癌研究**：目前关于其降睾酮效力及药物不良反应的数据，主要来自针对前列腺癌患者的临床随机对照试验（如瑞卢戈利的 HERO 研究及地加瑞克的 CS21 研究），**缺乏在跨性别人群中的前瞻性安全性与剂量滴定研究**。
+- **机制可行性与临床空白**：尽管从内分泌原理上，阻断 HPG 轴上游完全可以实现去势，但在跨性别人群中长期使用的安全剂量及骨安全随访数据仍处于临床空白阶段。
+
 </WarningBox>
 
-## 与 GnRH 激动剂的核心区别
+---
 
-GnRH **激动剂**与 GnRH **拮抗剂**都作用于内分泌轴的上游（垂体 GnRH 受体），最终目标都是关闭睾酮合成；但二者达到这一目标的路径相反，这也是拮抗剂最受关注的差异点<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />：
+## 一、与 GnRH 激动剂的作用机制区别
 
-- **激动剂（持续激动 → 脱敏）**：先持续刺激受体，使垂体在约 2-4 周后脱敏、下调，期间存在 1-2 周的初期睾酮一过性升高（"flare"）。
-- **拮抗剂（直接阻断 → 即时关闭）**：竞争性占据 GnRH 受体、阻止内源 GnRH 结合，LH/FSH 与睾酮**自给药后数天内快速下降，无初期 flare**。
+尽管 GnRH 激动剂与拮抗剂最终都能实现睾酮的去势级抑制，但其药理路径存在根本差异<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />：
+
+- **激动剂（持续刺激 → 脱敏降调节）**：用药初期会过度刺激受体，导致促性腺激素一过性急剧升高，体现在临床上即为 1-2 周的“睾酮 flare”（反弹升高期）。
+- **拮抗剂（直接阻断受体）**：竞争性结合 GnRH 受体，阻断内源性 GnRH 的结合。LH/FSH 与睾酮在给药后数天内即快速下降，**不产生初期睾酮反弹**。
 
 <DoseTable
-  headers={['维度', 'GnRH 激动剂', 'GnRH 拮抗剂']}
+  headers={['比较维度', 'GnRH 激动剂', 'GnRH 拮抗剂']}
   rows={[
-    ['作用方式', '持续激动→垂体脱敏', '竞争性直接阻断受体'],
-    ['初期睾酮 flare', '有（约 1-2 周，需口服抗雄过渡）', '无'],
-    ['达去势速度', '约 2-4 周', '数天（更快）'],
-    ['常见剂型', '长效注射 / 植入 / 鼻喷', '口服（瑞卢戈利）/ 月度皮下注射（地加瑞克）'],
-    ['跨性别循证', '指南推荐、数据较充分', '超说明书、数据有限'],
-    ['国内可及性', '已合法上市', '可及性与成本是主要现实障碍'],
+    ['作用机制', '持续激动受体致脱敏与降调节', '直接竞争性阻断受体活性'],
+    ['初期睾酮 flare', '存在（约 1-2 周，需口服抗雄保护）', '无'],
+    ['降睾酮起效速度', '达到去势水平通常需要 2-4 周', '通常仅需数天'],
+    ['常见给药途径', '长效皮下/肌肉注射，或鼻喷雾剂', '口服（瑞卢戈利）/ 每月皮下注射（地加瑞克）'],
+    ['跨性别临床循证', '多国指南推荐，临床应用时间长，数据充分', '属于超说明书探索方案，数据极少'],
+    ['中国大陆可及性', '已合规上市，三甲医院易于处方', '可及性低，自费成本高昂'],
   ]}
 />
 
-<WarningBox title="“无 flare”≠ 可单独使用">
-拮抗剂不引发初期睾酮升高，确实省去了激动剂首针时的口服抗雄过渡。但与激动剂一样，拮抗剂会把内源 T 与内源雌二醇（E2）一并压低。因此**仍需规律、足量补充外源雌二醇**，否则同样会面临骨质流失、潮热与情绪问题。详见 GnRH 激动剂页中关于骨安全与 E2 保护的说明。
+<WarningBox title="提示：“无 flare”不代表可单药使用">
+  虽然拮抗剂省去了激动剂首针时需要叠加口服抗雄药物（如螺内酯或
+  CPA）以对抗睾酮反弹的麻烦，但由于其同样会将内源性性激素（睾酮与雌二醇）一并压制到极低水平，因此**必须规律、足量补充外源雌二醇**，以规避潮热、情绪波动及骨质流失等低性激素导致的健康风险。
 </WarningBox>
 
-## 瑞卢戈利（Relugolix）— 口服
+---
 
-瑞卢戈利是首个口服的非肽类 GnRH 受体拮抗剂，2020 年 12 月经美国 FDA 批准用于晚期前列腺癌（商品名 Orgovyx）<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} title="A Practical Guide to Relugolix: Early Experience With Oral Androgen Deprivation Therapy" />。
+## 二、瑞卢戈利（Relugolix）— 口服拮抗剂
 
-### 降睾酮证据（来自前列腺癌 HERO 研究）
+瑞卢戈利为口服非肽类 GnRH 受体拮抗剂，经 FDA 批准用于晚期前列腺癌治疗<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} title="A Practical Guide to Relugolix: Early Experience With Oral Androgen Deprivation Therapy" />。
 
-在比较瑞卢戈利与亮丙瑞林（GnRH 激动剂）的 3 期 HERO 随机对照试验中（**以下数值均来自前列腺癌患者，向 GAHT 外推需谨慎**）<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} title="Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer" />：
+### 临床降睾酮证据
 
-- **持续去势率**：48 周内维持去势水平者，瑞卢戈利组为 **96.7%**（95% CI 94.9-97.9），亮丙瑞林组为 88.8%。
-- **起效更快、无 flare**：用药第 4 天达到去势睾酮水平者，瑞卢戈利组为 **56.0%**，亮丙瑞林组为 **0%**；亮丙瑞林组睾酮先升高（典型 flare）后才下降，而瑞卢戈利组无此一过性升高。
-- **停药后恢复较快**：因口服、半衰期短，停药后睾酮回升相对迅速——HERO 子集中，停药 90 天时瑞卢戈利组平均睾酮恢复明显高于亮丙瑞林组。这意味着**漏服会较快丧失抑制效果，依从性要求高**<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} />。
+在其针对前列腺癌的 3 期 HERO 临床随机对照试验中（**数据来自前列腺癌患者，向 GAHT 场景外推需谨慎**）<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} title="Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer" />：
+
+- **持续去势率**：在 48 周治疗期间，瑞卢戈利组的去势维持率达到 **96.7%**（95% CI: 94.9-97.9%），对照亮丙瑞林组为 88.8%。
+- **降睾酮速度**：给药第 4 天时，瑞卢戈利组已有 **56.0%** 的患者达到去势睾酮水平，而亮丙瑞林组由于 flare 效应，第 4 天去势率仍为 **0%**。
+- **半衰期与依从性**：瑞卢戈利为口服制剂，体内半衰期短，停药后 HPG 轴和睾酮水平恢复显著快于长效注射液<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} />。这意味着**该药对漏服高度敏感**，漏服极易导致睾酮水平迅速回升，对用药依从性要求极严格。
 
 <WarningBox title="HERO 数据来自前列腺癌人群">
 上述数值来自前列腺癌患者（多为年长男性）的随机对照试验，是目前瑞卢戈利降睾酮效力最可靠的证据来源；但**尚无跨性别女性的专门前瞻性研究**验证同等效力与长期安全性。将其外推到 GAHT 时请理解这一局限<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} />。
 </WarningBox>
 
-### 给药特点
-
-- **给药方式**：每日口服一次，与激动剂注射相比对针头恐惧或注射条件受限者更友好。
-- **依从性敏感**：半衰期短，漏服后睾酮回升较快；规律服药是维持抑制的关键。
-- **跨性别剂量**：GAHT 中的最佳剂量尚无专门研究确立，**本页不提供个性化剂量建议**，任何尝试都应在专业医生评估与监测下进行。
-
-## 地加瑞克（Degarelix）— 注射
-
-地加瑞克是一种注射用 GnRH 受体拮抗剂（商品名 Firmagon），用于前列腺癌，通常采用**首剂负荷后每月皮下注射维持**的方案<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} title="The efficacy and safety of degarelix: a 12-month, comparative, randomised, open-label, parallel-group phase III study in patients with prostate cancer" />。
-
-### 降睾酮证据（来自前列腺癌 CS21 研究）
-
-在比较地加瑞克与亮丙瑞林的 12 个月 3 期随机对照试验（CS21，610 例）中<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} />：
-
-- **快速降 T、无 flare**：地加瑞克起效比亮丙瑞林更快，**第 3 天**时血清睾酮即显著低于亮丙瑞林组，且无激动剂特有的初期升高。
-- **持续去势率**：以"第 28-364 天每次检测睾酮 ≤0.5 ng/mL"为应答标准，地加瑞克 240/80 mg 方案应答率为 **97.2%**（亮丙瑞林组 96.4%）。
-- **主要不良反应是注射部位反应**：注射处疼痛、红肿较常见，多为轻至中度，且以首剂后更明显。
-
-<WarningBox title="CS21 数据同样来自前列腺癌人群">
-地加瑞克的降睾酮与安全性数据来自前列腺癌随机对照试验，质量较高，但人群非跨性别。地加瑞克在 GAHT 中应用的专门研究有限，长期使用经验不足<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} />。
+<WarningBox title="剂量说明">
+  由于目前缺乏在跨性别女性中滴定瑞卢戈利或地加瑞克最佳剂量的临床研究，本站不提供瑞卢戈利与地加瑞克的具体剂量方案。任何超说明书用药尝试均应在专业医生评估下进行。
 </WarningBox>
 
-## 安全监测要点
+---
 
-GnRH 拮抗剂与激动剂在监测逻辑上高度一致：核心是确认睾酮被有效抑制、雌二醇足量保护骨骼，并关注各自的剂型相关反应<CitationRef id="ucsf-2016" num={6} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />。
+## 三、地加瑞克（Degarelix）— 注射拮抗剂
+
+地加瑞克为注射用 GnRH 拮抗剂，通过每月皮下注射给药维持去势状态<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} title="The efficacy and safety of degarelix: a 12-month, comparative, randomised, open-label, parallel-group phase III study in patients with prostate cancer" />。
+
+### 临床降睾酮证据
+
+在 610 例前列腺癌患者参与的 3 期 CS21 对照试验中<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} />：
+
+- **降 T 速度**：地加瑞克用药第 3 天时血清睾酮即快速降至生理去势水平，无一过性升高。
+- **去势维持**：在 12 个月的随访中，使用 240/80 mg（首剂/维持剂）方案的患者，去势维持率达到 **97.2%**。
+- **副作用特性**：最常见的不良反应为注射部位的局部红肿、疼痛和硬结，多为轻至中度，通常在首剂大剂量注射后最为明显。
+
+---
+
+## 四、安全性与临床监测要点
+
+GnRH 拮抗剂的监测逻辑与激动剂一致，核心在于评估睾酮抑制程度、确认外源雌二醇对骨安全的生理支持，并监测可能的系统性副作用<CitationRef id="ucsf-2016" num={6} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />。
 
 <DoseTable
-  headers={['检查项目', '频率', '目标 / 关注点', '处理']}
+  headers={['监测项目', '建议频率', '临床靶值 / 关注点', '指标异常处理建议']}
   rows={[
-    ['睾酮（T）', '起始后约 4-8 周 + 每 3-6 月', 'T < 50 ng/dL（去势水平）', '未达标：评估依从性/剂量，咨询医生'],
-    ['雌二醇（E2）', '与 T 同时检测', '100-200 pg/mL', '确保 E2 充足以保护骨骼与情绪'],
-    ['骨密度（DEXA）', '长期使用者基线 + 每 1-2 年', 'T-score > -1.0', 'E2 长期偏低或显著下降需干预'],
-    ['肝功能（瑞卢戈利口服）', '基线 + 按医生建议复查', 'ALT/AST 在正常范围', 'ALT/AST 超过正常上限 3 倍，或出现黄疸/腹痛：停药并就医'],
-    ['注射部位（地加瑞克）', '每次注射观察', '局部红肿/疼痛多为轻中度', '持续加重或感染征象需就医'],
+    [
+      '血清睾酮（T）',
+      '起始后第 4-8 周，之后每 3-6 个月复查一次。',
+      '控制在 < 50 ng/dL（约 < 1.7 nmol/L）。',
+      '若睾酮未达标，优先排查口服依从性，并在医生指导下调整剂量。',
+    ],
+    [
+      '血清雌二醇（E2）',
+      '与睾酮复查同步。',
+      '控制在 100-200 pg/mL 的合理生理区间。',
+      '确保雌二醇达到基线水平，以规避骨量流失与潮热症状。',
+    ],
+    [
+      '骨密度（DEXA）',
+      '长期使用者建议进行基线筛查，之后每 1-2 年复查。',
+      'T-score > -1.0。',
+      '若发现骨量减少，需评估并提高外源 E2 剂量，并纠正钙/维生素 D 摄入。',
+    ],
+    [
+      '肝功能（ALT/AST）',
+      '瑞卢戈利口服者在基线及用药前几个月定期监测。',
+      '转氨酶在正常参考范围内。',
+      '若 ALT/AST 超过正常上限 3 倍，或出现全身黄疸，必须立即停药并就医。',
+    ],
+    [
+      '注射部位状况',
+      '每次地加瑞克注射后观察。',
+      '局部红肿、硬结是否在数天内消退。',
+      '若局部红肿持续扩散或伴发热，警惕感染风险，应及时就诊。',
+    ],
   ]}
 />
 
 <DangerBox title="缺乏雌二醇保护时不要单独长期抑制睾酮">
-无论激动剂还是拮抗剂，将睾酮压到去势水平的同时若长期缺乏足量外源雌二醇，会导致体内性激素全面不足，引发严重骨质流失、剧烈潮热与情绪障碍。任何上游抑制方案都必须配合规律、足量的雌二醇补充<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。如出现剧烈潮热、骨痛持续或明显情绪障碍，请尽快前往内分泌科就诊、检测 E2 水平，不要自行停药后观察等待。
+  长期将睾酮抑制在去势水平，同时未补充足量的雌二醇，会导致人体长期处于双无（无雄激素且无雌激素）状态，引发严重的骨质疏松、抑郁心境及潮热症状。任何上游抑制方案都必须配合规律、足量的雌二醇补充<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。一旦出现持续性关节/骨骼疼痛、严重情绪低落或频繁发作的潮热，请尽快前往内分泌科就诊、检测 E2 水平，不要自行停药后观察等待。
 </DangerBox>
 
-## 中国获取现状与成本现实
+---
 
-本节主要作为**信息完整性**与减害视角的客观说明，不构成购药指引或方案推荐。
+## 五、中国大陆的获取现状与可及性
 
-- **瑞卢戈利（口服）**：在中国大陆的可及性有限。即使可获得，作为新型口服制剂其**自费成本通常较高**，且适应症为前列腺癌、不含 GAHT，需超说明书处方。
-- **地加瑞克（注射）**：同样以前列腺癌为适应症，需在医疗机构由专业人员注射，月度给药且费用偏高。
-- **共同的现实障碍**：相较已在国内合法上市、价格相对可控的 CPA（色谱龙）、螺内酯，以及已上市的 GnRH 激动剂，GnRH 拮抗剂在中国大陆的**可及性低、成本高**，对多数使用者并非务实首选。
-- **减害立场**：如果你出于现实条件难以获取或负担拮抗剂，这并不意味着无法安全用药——在医生指导下，安全性已获较充分验证的低剂量 CPA、螺内酯或 GnRH 激动剂，依然是有效且性价比更高的减害选择<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />。
+本段仅作为客观现实的减害信息呈现，不构成任何购药指引：
+
+- **瑞卢戈利与地加瑞克**：虽然已在国内上市用于前列腺癌治疗，但由于适应症不涵盖性别肯定医疗，在常规门诊超说明书获取难度极大。此外，作为新型制剂，其自费开药的**经济成本非常高昂**。
+- **依从性与经济风险**：对于口服的瑞卢戈利，若由于经济因素或代购渠道不稳定发生频繁断药、漏服，会导致体内睾酮水平快速反弹反扑，相比长效激动剂而言具有更高的激素波动风险。
+- **减害与务实替代**：对绝大多数跨性别女性而言，高成本的 GnRH 拮抗剂并非务实的首选方案。在临床医生指导下，选用经济性更佳、临床安全性数据更为丰富的低剂量醋酸环丙孕酮（CPA）、螺内酯或长效 GnRH 激动剂，通常是更为稳妥和可持续的治疗策略<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />。
 
 <WarningBox title="想尝试请先与专业医生评估">
 GnRH 拮抗剂在跨性别 HRT 中证据有限、成本高、可及性低。如果你出于个人身体状况（例如无法耐受 CPA/螺内酯、希望避免激动剂初期 flare、或偏好口服）希望了解此类方案，建议在有经验的内分泌或跨性别友好专科医生指导下评估，并配合规律的睾酮、雌二醇与骨安全监测。本页不提供个性化剂量。
 </WarningBox>
 
-## 相关对比与内链
+---
+
+## 相关阅读
 
 - [GnRH 激动剂：亮丙瑞林 / 戈舍瑞林 / 曲普瑞林](/zh/medications/antiandrogens/gnrh-agonists/)
 - [CPA vs 螺内酯：临床对比](/zh/compare/cpa-vs-spironolactone/)
