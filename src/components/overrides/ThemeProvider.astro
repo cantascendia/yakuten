@@ -1,0 +1,26 @@
+---
+/**
+ * ThemeProvider override — 绯英典籍 v2
+ * 纸面浅色是品牌默认主题；只有用户显式开过「幻月夜」才恢复夜模式。
+ * （Starlight 默认无偏好时跟随 OS，会让首访用户落入夜模式 —— 与
+ *  设计交接「浅色手账纸面为默认」相悖，故覆盖。）
+ * 保留 window.StarlightThemeProvider API 以兼容 Starlight 内部调用。
+ */
+---
+
+{/* This is intentionally inlined to avoid FOUC. */}
+<script is:inline>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		document.documentElement.dataset.theme = storedTheme === 'dark' ? 'dark' : 'light';
+		return {
+			updatePickers() {
+				document.querySelectorAll('.yk-moon-toggle').forEach((btn) => {
+					const night = document.documentElement.dataset.theme === 'dark';
+					btn.setAttribute('aria-pressed', night ? 'true' : 'false');
+				});
+			},
+		};
+	})();
+</script>

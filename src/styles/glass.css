@@ -1,20 +1,24 @@
-/* === Glass Morphism Styles === */
-/* 米哈游「二相乐園」毛玻璃效果 */
+/* === Legacy Card Compat · 绯英典籍 v2 ===
+   旧「玻璃拟态/切角」类的纸卡映射 —— 供 blog / links 等独立页面 @import。
+   v2 设计语言：禁 backdrop blur、禁 clip-path 切角；统一 2px 墨线 + 硬投影。
+   （Starlight 页面由 global.css 提供同名类，此文件保持别名一致） */
 
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: var(--glass-border);
-  border-radius: var(--radius-md);
-  clip-path: var(--clip-corner);
+.glass-card,
+.glass-panel {
+  background: var(--bg-3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md, 14px);
+  clip-path: none;
   padding: var(--space-lg);
+  box-shadow: 4px 4px 0 var(--ink);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .glass-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(200, 75, 124, 0.15);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -25,12 +29,22 @@
 
 /* Small variant */
 .glass-card--sm {
-  clip-path: var(--clip-corner-sm);
+  clip-path: none;
   padding: var(--space-md);
 }
 
 /* No hover variant (for static info cards) */
 .glass-card--static:hover {
   transform: none;
-  box-shadow: none;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.clipped-card,
+.clipped-card-sm,
+.clipped-card-accent {
+  clip-path: none;
+  border-radius: var(--radius-md, 14px);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  background: var(--bg-3);
 }

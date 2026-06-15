@@ -1,77 +1,122 @@
-/* === HRT药典 Global Styles === */
-/* 米哈游「二相乐園」风格 — Stitch DESIGN.md "The Ethereal Clinic" */
+/* =========================================================================
+   HRT药典 — Global Styles · 樱粉手账「绯英典籍」v2
+   Design handoff: design_handoff_site_v2 (Claude Design, 2026-06)
+   默认主题 = 浅色手账纸面（cream paper）。
+   幻月夜模式 = [data-theme="dark"]（夜晚书桌模型：桌面变梦境紫，纸张仍亮着）。
+   颜色一律走 CSS 变量；墨色永远是梅子墨 #4A2838，禁纯黑。
+   ========================================================================= */
 
-/* ================================
-   CSS Custom Properties
-   ================================ */
+/* 字体（5 核心家族 + 既有组件依赖的辅助族）。
+   display · Fraunces + Noto Serif SC ｜ heading · Noto Serif SC
+   body · Noto Sans SC ｜ hand · Ma Shan Zheng ｜ mono · JetBrains Mono
+   Plus Jakarta Sans / Zen Maru Gothic / Klee One 为 blood-b32 等组件继续引用。 */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+/* =========================================================================
+   DESIGN TOKENS — v2（colors_and_type.css 移植，含 WCAG AA 校正）
+   ========================================================================= */
 :root {
-  /* 主色 - 绯英绯色系 */
-  --color-primary: #C84B7C;
-  --color-primary-light: #E8A0BE;
-  --color-primary-dark: #8B2D55;
-  --color-primary-container: #E76395;
+  /* ===== PRIMARY — 绯英粉彩系 ===== */
+  --sakura-pink: #FFA8C5;             /* 主色 · 樱粉（柔） */
+  --sakura-pink-hot: #FF7FA8;         /* hover · 蜜桃深 */
+  --sakura-pink-deep: #E5578B;        /* pressed · 绯红（装饰/大字号用） */
+  /* 绯红做正文级文字时的 AA 替身：#C02868 on cream ≈4.8:1 / on ivory ≈5.0:1 */
+  --sakura-pink-text: #C02868;
+  --sakura-blush: #FFD4E0;            /* 最浅 · 腮红 */
 
-  /* 副色 - 幻月金系 */
-  --color-accent: #D4A853;
-  --color-accent-light: #F0D68A;
-  --color-accent-dark: #9A7A2E;
+  --coral: #FF8E7F;
+  --coral-deep: #E65D4A;
 
-  /* 辅助色 - 淡紫 */
-  --color-tertiary: #CBC2DD;
-  --color-tertiary-dim: #958DA5;
+  /* ===== 奶油 / 象牙 ===== */
+  --cream: #FFF5E0;
+  --cream-warm: #FFE8C2;
+  --ivory: #FFFAF0;
 
-  /* 中性色 — "Cosmic" depth layers */
-  --color-bg-primary: #0D0B14;
-  --color-bg-secondary: #14121B;
-  --color-bg-tertiary: #1A1625;
-  --color-bg-container: #211E28;
-  --color-bg-container-high: #2B2933;
-  --color-bg-container-highest: #36333E;
-  --color-text-primary: #E6E0EE;
-  --color-text-secondary: #CBC2DD;
-  /* Bumped from #A48A90 (~2.8:1) — now ~5.4:1 on #0D0B14, passes WCAG AA */
-  --color-text-muted: #BFB0C5;
-  --color-outline: #564147;
-  --color-outline-20: rgba(86, 65, 71, 0.2);
+  /* ===== 薄荷 / 青柠 ===== */
+  --mint: #A8E6C9;
+  --mint-deep: #5AC89D;
+  --pistachio: #D4E896;
 
-  /* 语义色 - 证据等级和安全信号 */
-  --color-safe: #4CAF50;
-  --color-caution: #FF9800;
-  /* 主题感知「需注意/caution」文字色（仅用于文字，装饰仍用 --color-caution）。
-     暗色默认 #FF9800 在 --color-bg-primary #0D0B14 上实测 ≈9.6:1，远超 AA 4.5:1。 */
-  --color-caution-text: #FF9800;
-  --color-danger: #F44336;
-  --color-danger-dark: #D32F2F;
-  /* Darkened from #7C8CF0 — white text now 4.9:1 (passes AA) instead of 3.8:1 */
-  --color-info: #5168E6;
+  /* ===== 奶黄 / 金 ===== */
+  --butter: #FFE89C;
+  --butter-deep: #F5C842;
+  --honey: #F5B347;
 
-  /* 玻璃效果 */
-  --glass-bg: rgba(26, 22, 37, 0.6);
-  --glass-blur: blur(12px);
-  --glass-blur-soft: blur(4px);    /* 遮罩层/极轻玻璃 */
-  --glass-blur-medium: blur(8px);  /* 次级小卡 */
-  --glass-blur-strong: blur(20px); /* 模态/浮层 */
-  --glass-border: 1px solid var(--color-outline-20);
+  /* ===== 薰衣草 / 紫 ===== */
+  --lavender: #D4C5F5;
+  --lavender-deep: #9B7DD4;
+  --grape: #7A5FB5;
 
-  /* 对角切角 — Penacony Geometric Signature
-     统一到 Stitch 原案同款 92% / 12% 切角。
-     --clip-corner-sm 保留作别名供既有引用平滑过渡。
-     --clip-corner-accent 为强调变体（大标题/Hero 卡）。 */
-  --clip-corner: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
-  --clip-corner-sm: var(--clip-corner);
-  --clip-corner-accent: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
+  /* ===== 天蓝 ===== */
+  --sky: #A8D5F5;
+  --sky-deep: #5BA8E0;
 
-  /* 字体 — 按 DESIGN.md §3
-     中文/日文/韩文 body 要让 CJK 字体统一处理文字+数字，避免 Manrope 渲染数字
-     与 Noto Sans 渲染中文的 x-height/字重不一致导致的混排断裂。
-     Manrope 仅在 :lang(en) 及 ui-accent 中使用。*/
-  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --font-mono: var(--font-ui-accent);
-  --font-code: "JetBrains Mono", "Fira Code", "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  /* ===== INK — 漫画描边用暖棕梅子墨，不是硬黑 ===== */
+  --ink: #4A2838;
+  --ink-soft: #7A5568;
+  --ink-faint: rgba(74, 40, 56, 0.25);
 
-  /* 间距 */
+  /* ===== BACKGROUND — 手账纸面（默认浅色） ===== */
+  --bg-1: #FFF5E0;                    /* 桌面 · 手账米白 */
+  --bg-2: #FFFAF0;                    /* 纸张最亮 */
+  --bg-3: #FFFFFF;                    /* 卡片白 */
+  --bg-4: #FFF0E5;                    /* 柔粉米 */
+  --bg-5: #FFE4EC;                    /* 粉贴纸底 */
+  --bg-6: #FFDCE5;
+
+  /* 幻月夜的「梦境紫」 */
+  --night-1: #2E1F42;
+  --night-2: #3D2A55;
+  --night-3: #5A3F7A;
+
+  /* ===== FOREGROUND ===== */
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  /* WCAG AA: #B08D9E 在 cream 上仅 ~2.7:1，改 #86596F（cream 5.28:1 / ivory 5.5:1） */
+  --fg-3: #86596F;
+  --fg-invert: #FFF5E0;
+  --fg-on-pink: #FFFFFF;
+  --fg-on-cream: #4A2838;
+
+  /* ===== SEMANTIC ===== */
+  --safe: var(--mint-deep);
+  --info: var(--sky-deep);
+  --caution: var(--butter-deep);
+  /* 危险三阶：
+     --danger        文字级红（#B5304F：cream 5.5:1，过 AA），印章/文字用
+     --danger-deep   应急横幅纯红（白字 ≈5.1:1，过 AA）
+     --danger-bright 纯装饰红（色区/描边，不承载文字对比） */
+  --danger: #B5304F;
+  --danger-deep: #C23D5C;
+  --danger-bright: #E85A7A;
+  --warning-hot: var(--coral-deep);
+
+  /* ===== ALPHAS ===== */
+  --primary-a10: rgba(255, 168, 197, 0.12);
+  --primary-a15: rgba(255, 168, 197, 0.2);
+  --primary-a25: rgba(255, 168, 197, 0.35);
+  --primary-a40: rgba(255, 168, 197, 0.5);
+  --primary-a60: rgba(255, 168, 197, 0.7);
+  --accent-a08: rgba(245, 200, 66, 0.12);
+  --accent-a15: rgba(245, 200, 66, 0.2);
+  --accent-a30: rgba(245, 200, 66, 0.35);
+  --cyan-a20: rgba(91, 168, 224, 0.25);
+  --violet-a20: rgba(155, 125, 212, 0.25);
+  --safe-a15: rgba(90, 200, 157, 0.2);
+  --caution-a15: rgba(245, 200, 66, 0.2);
+  --danger-a10: rgba(232, 90, 122, 0.15);
+  --danger-a25: rgba(232, 90, 122, 0.3);
+
+  /* ===== RADII — 圆润手账 ===== */
+  --radius-none: 0px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --radius-token: 40px 8px 40px 8px;
+
+  /* ===== SPACING — 4px 基网 ===== */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -80,124 +125,299 @@
   --space-2xl: 48px;
   --space-3xl: 64px;
 
-  /* 圆角 — DESIGN.md: Roundedness Scale is strictly 0px */
-  --radius-none: 0px;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-full: 9999px;
+  /* ===== SHADOW — 硬偏移投影（无模糊）+ 柔软落影 ===== */
+  --shadow-soft: 0 4px 12px rgba(74, 40, 56, 0.08);
+  --shadow-card: 0 8px 24px rgba(74, 40, 56, 0.12);
+  --shadow-lift: 0 12px 32px rgba(74, 40, 56, 0.16);
+  --shadow-hard-sm: 3px 3px 0 var(--ink);
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-lg: 6px 6px 0 var(--ink);
+  --shadow-hard-flame: 4px 4px 0 var(--sakura-pink-deep);
+  --shadow-hard-gold: 4px 4px 0 var(--honey);
 
-  /* 边框色 */
-  --color-border: var(--color-outline-20);
+  /* ===== MOTION — 回弹曲线；动画仅 transform/opacity ===== */
+  --transition-fast: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-normal: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* 白色文字 (用于深色背景上的文字) */
+  /* ===== FONTS ===== */
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+  --font-display-zh: "Noto Serif SC", serif;
+  --font-heading: "Noto Serif SC", "Noto Sans SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-hand: "Ma Shan Zheng", "Klee One", cursive;
+  --font-ui-accent: "Plus Jakarta Sans", "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-hud: "JetBrains Mono", monospace;
+  --font-accent: var(--font-body);
+  --font-pixel: var(--font-hud);
+  --font-mono: var(--font-hud);
+  --font-code: var(--font-hud);
+  --font-arcade: var(--font-ui-accent);
+
+  /* ===== TYPE SIZES ===== */
+  --fs-display: clamp(4rem, 10vw, 8rem);
+  --fs-h1: clamp(2.5rem, 5vw, 4rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-micro: 0.75rem;
+  --fs-slogan: clamp(1.25rem, 2.5vw, 1.75rem);
+
+  --lh-tight: 1.15;
+  --lh-body: 1.8;
+  --lh-loose: 1.95;
+
+  --ls-display: -0.01em;
+  --ls-slogan: 0.2em;
+  --ls-micro-caps: 0.15em;
+  --ls-label: 0.1em;
+
+  /* =====================================================================
+     LEGACY COMPAT — 项目既有 --color-* 变量整站映射到 v2 token。
+     文字/背景对映射到 --fg-* / --bg-*（随幻月夜翻转），
+     纸面组件通过 [data-paper]/.yk-paper 把文字锁回梅子墨。
+     ===================================================================== */
+  --color-primary: var(--sakura-pink);
+  --color-primary-light: var(--sakura-blush);
+  --color-primary-dark: var(--sakura-pink-deep);
+  --color-primary-container: var(--coral);
+
+  --color-accent: var(--butter-deep);
+  --color-accent-light: var(--butter);
+  --color-accent-dark: var(--honey);
+
+  --color-tertiary: var(--lavender);
+  --color-tertiary-dim: var(--lavender-deep);
+
+  --color-bg-primary: var(--bg-1);
+  --color-bg-secondary: var(--bg-2);
+  --color-bg-tertiary: var(--bg-4);
+  --color-bg-container: var(--bg-3);
+  --color-bg-container-high: var(--bg-5);
+  --color-bg-container-highest: var(--bg-6);
+
+  --color-text-primary: var(--fg-1);
+  --color-text-secondary: var(--fg-2);
+  --color-text-muted: var(--fg-2);
   --color-text-on-dark: #FFFFFF;
 
-  /* 低风险黄色 */
-  --color-warning-low: #FFEB3B;
+  --color-outline: var(--ink);
+  --color-outline-15: rgba(74, 40, 56, 0.15);
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+  --color-outline-25: rgba(74, 40, 56, 0.25);
+  --color-border: var(--color-outline-20);
+  --color-border-subtle: var(--color-outline-15);
 
-  /* 语义色透明度变体 — React inline styles 用 */
-  --color-primary-alpha-15: rgba(200, 75, 124, 0.15);
-  --color-primary-alpha-25: rgba(200, 75, 124, 0.25);
-  --color-primary-alpha-40: rgba(200, 75, 124, 0.4);
-  --color-primary-alpha-60: rgba(200, 75, 124, 0.6);
-  --color-accent-alpha-08: rgba(212, 168, 83, 0.08);
-  --color-caution-alpha-08: rgba(255, 152, 0, 0.08);
-  --color-caution-alpha-15: rgba(255, 152, 0, 0.15);
-  --color-danger-alpha-10: rgba(244, 67, 54, 0.1);
-  --color-safe-alpha-15: rgba(76, 175, 80, 0.15);
-  --color-safe-alpha-30: rgba(76, 175, 80, 0.3);
-  --color-white-alpha-03: rgba(255, 255, 255, 0.03);
-  --color-white-alpha-08: rgba(255, 255, 255, 0.08);
-  --color-outline-15: rgba(86, 65, 71, 0.15);
-  --glass-bg-30: rgba(26, 22, 37, 0.3);
-  --glass-bg-40: rgba(26, 22, 37, 0.4);
-  --glass-bg-80: rgba(26, 22, 37, 0.8);
-  --glass-bg-92: rgba(13, 11, 20, 0.92);  /* 搜索模态等浮层底色 */
-  --color-border-subtle: rgba(200, 175, 190, 0.2);
-  --color-danger-border: rgba(220, 50, 50, 0.4);
-  --color-danger-bg-low: rgba(60, 20, 20, 0.4);
-  --color-safe-badge-bg: rgba(40, 167, 69, 0.2);
-  --color-info-badge-bg: rgba(0, 123, 255, 0.2);
-  --color-caution-badge-bg: rgba(255, 193, 7, 0.2);
-  --color-danger-badge-bg: rgba(220, 53, 69, 0.25);
-  --color-accent-alpha-10: rgba(212, 168, 83, 0.1);
-  --color-accent-alpha-30: rgba(212, 168, 83, 0.3);
-  --color-primary-alpha-20: rgba(200, 75, 124, 0.2);
-  --color-outline-25: rgba(86, 65, 71, 0.25);
-  --color-danger-alpha-50: rgba(220, 50, 50, 0.5);
-  --color-danger-bg-alpha-50: rgba(60, 20, 20, 0.5);
-  --color-green-alpha-15: rgba(40, 167, 69, 0.15);
-  --color-amber-alpha-15: rgba(255, 193, 7, 0.15);
-  --glass-bg-85: rgba(26, 22, 37, 0.85);
-  --color-primary-alpha-08: rgba(200, 75, 124, 0.08);
-  --color-primary-alpha-10: rgba(200, 75, 124, 0.1);
-  --color-caution-alpha-10: rgba(255, 152, 0, 0.1);
-  --color-caution-alpha-75: rgba(255, 152, 0, 0.75);
-  --color-safe-alpha-80: rgba(76, 175, 80, 0.8);
-  --color-text-alpha-60: rgba(230, 224, 238, 0.6);
-  --color-black-alpha-40: rgba(0, 0, 0, 0.4);
-  --color-black-alpha-50: rgba(0, 0, 0, 0.5);
-  --color-white-alpha-06: rgba(255, 255, 255, 0.06);
-
-  /* 过渡 */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-}
-
-:root:lang(zh),
-:root:lang(zh-CN) {
-  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-  --font-ui-accent: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-}
-
-:root:lang(ja) {
-  --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  --font-ui-accent: "Space Grotesk", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-}
-
-:root:lang(en) {
-  --font-display: "Noto Serif", Georgia, "Times New Roman", serif;
-  --font-body: "Manrope", "Noto Sans", "Segoe UI", system-ui, sans-serif;
-  --font-ui-accent: "Space Grotesk", "Noto Sans", "Segoe UI", system-ui, sans-serif;
-}
-
-:root:lang(ko) {
-  --font-display: "Noto Serif KR", "Batang", serif;
-  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-  --font-ui-accent: "Space Grotesk", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-}
-
-/* ================================
-   Light Theme
-   ================================ */
-[data-theme="light"] {
-  --color-bg-primary: #FAF7FC;
-  --color-bg-secondary: #FFFFFF;
-  --color-bg-tertiary: #F3EEF8;
-  --color-bg-container: #EDE8F2;
-  --color-bg-container-high: #E6E0EE;
-  --color-text-primary: #1A1625;
-  --color-text-secondary: #5A5270;
-  /* Darkened from #8A82A0 (~3.4:1 on #FAF7FC, failed AA) → #6B6280 (~5.3:1, passes 4.5:1) */
-  --color-text-muted: #6B6280;
-  /* 浅色底需深色文字。#8A6700 在 --color-bg-container #EDE8F2（结果卡底）仅 ≈4.33:1（FAIL，
-     codex cross-review P2）；改用 #805E00：实测 on #EDE8F2 ≈4.95:1、on #FFFFFF ≈5.97:1、
-     on #FAF7FC ≈5.6:1，均过 AA 4.5:1。 */
+  --color-safe: var(--mint-deep);
+  --color-caution: var(--butter-deep);
+  /* caution 文字色（亮黄做文字在奶油纸上过低）：#805E00 on cream ≈6.0:1 */
   --color-caution-text: #805E00;
-  --color-outline-20: rgba(200, 75, 124, 0.15);
-  --glass-bg: rgba(255, 255, 255, 0.7);
+  --color-danger: var(--danger);
+  --color-danger-dark: var(--danger-deep);
+  --color-info: var(--sky-deep);
+  --color-warning-low: var(--butter);
+
+  --color-primary-alpha-08: rgba(255, 168, 197, 0.1);
+  --color-primary-alpha-10: var(--primary-a10);
+  --color-primary-alpha-15: var(--primary-a15);
+  --color-primary-alpha-20: rgba(255, 168, 197, 0.25);
+  --color-primary-alpha-25: var(--primary-a25);
+  --color-primary-alpha-40: var(--primary-a40);
+  --color-primary-alpha-60: var(--primary-a60);
+  --color-accent-alpha-08: var(--accent-a08);
+  --color-accent-alpha-10: rgba(245, 200, 66, 0.14);
+  --color-accent-alpha-30: var(--accent-a30);
+  --color-caution-alpha-08: var(--accent-a08);
+  --color-caution-alpha-10: rgba(245, 200, 66, 0.15);
+  --color-caution-alpha-15: var(--caution-a15);
+  --color-caution-alpha-75: rgba(245, 200, 66, 0.75);
+  --color-danger-alpha-10: var(--danger-a10);
+  --color-danger-alpha-50: rgba(232, 90, 122, 0.5);
+  --color-danger-bg-low: rgba(255, 228, 236, 0.5);
+  --color-danger-bg-alpha-50: rgba(255, 228, 236, 0.6);
+  --color-danger-border: rgba(232, 90, 122, 0.4);
+  --color-safe-alpha-15: var(--safe-a15);
+  --color-safe-alpha-30: rgba(90, 200, 157, 0.3);
+  --color-safe-alpha-80: rgba(90, 200, 157, 0.8);
+  --color-safe-badge-bg: rgba(168, 230, 201, 0.5);
+  --color-info-badge-bg: rgba(168, 213, 245, 0.5);
+  --color-caution-badge-bg: rgba(255, 232, 156, 0.6);
+  --color-danger-badge-bg: rgba(255, 212, 224, 0.7);
+  --color-green-alpha-15: var(--safe-a15);
+  --color-amber-alpha-15: var(--caution-a15);
+  --color-white-alpha-03: rgba(74, 40, 56, 0.03);
+  --color-white-alpha-06: rgba(74, 40, 56, 0.06);
+  --color-white-alpha-08: rgba(74, 40, 56, 0.08);
+  --color-text-alpha-60: rgba(74, 40, 56, 0.6);
+  --color-black-alpha-40: rgba(74, 40, 56, 0.4);
+  --color-black-alpha-50: rgba(74, 40, 56, 0.5);
+
+  /* 旧玻璃变量 → 轻纱（实际卡片样式见 components 层的纸卡映射） */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-30: rgba(255, 255, 255, 0.35);
+  --glass-bg-40: rgba(255, 255, 255, 0.45);
+  --glass-bg-80: rgba(255, 255, 255, 0.85);
+  --glass-bg-85: rgba(255, 245, 224, 0.85);
+  --glass-bg-92: rgba(255, 245, 224, 0.92);
+  --glass-blur: blur(10px);
+  --glass-blur-soft: blur(4px);
+  --glass-blur-medium: blur(8px);
+  --glass-blur-strong: blur(16px);
+  --glass-border: 2px solid var(--ink);
+
+  /* 切角几何已退役（手账风无切角）；变量保留为 none 以防遗留引用报错 */
+  --clip-corner: none;
+  --clip-corner-sm: none;
+  --clip-corner-accent: none;
+
+  /* 其余 legacy 别名 */
+  --fei-primary: var(--sakura-pink);
+  --fei-primary-light: var(--sakura-blush);
+  --fei-primary-dark: var(--sakura-pink-deep);
+  --fei-accent: var(--butter-deep);
+  --paper: var(--cream);
+  --outline-20: rgba(74, 40, 56, 0.2);
+  --outline-15: rgba(74, 40, 56, 0.15);
+  --border: var(--outline-20);
+  --border-subtle: var(--outline-15);
 }
 
-/* ================================
-   Base Styles
-   ================================ */
+/* =========================================================================
+   STARLIGHT 内部变量 — 映射到 v2 token。
+   写在 :root 与两个 data-theme 作用域上，保证压过 Starlight 自带的
+   :root[data-theme=…] 高特异度规则。
+   ========================================================================= */
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+  --sl-color-bg: var(--bg-1);
+  --sl-color-bg-nav: var(--bg-2);
+  --sl-color-bg-sidebar: var(--bg-2);
+  --sl-color-bg-inline-code: var(--bg-5);
+  --sl-color-bg-accent: var(--sakura-pink);
+
+  --sl-color-text: var(--fg-1);
+  --sl-color-text-accent: var(--sakura-pink-deep);
+  --sl-color-text-invert: var(--ivory);
+
+  --sl-color-gray-1: var(--fg-1);
+  --sl-color-gray-2: var(--fg-2);
+  --sl-color-gray-3: var(--fg-3);
+
+  --sl-color-accent: var(--sakura-pink-deep);
+  --sl-color-accent-low: var(--sakura-blush);
+  --sl-color-accent-high: var(--fg-1);
+
+  --sl-color-bg-code-block: var(--bg-5);
+  --sl-color-text-code: var(--ink);
+  --sl-color-bg-sidebar-item-hover: var(--bg-4);
+}
+:root,
+:root[data-theme='light'] {
+  --sl-color-black: var(--cream);
+  --sl-color-white: var(--ink);
+  --sl-color-gray-4: rgba(74, 40, 56, 0.3);
+  --sl-color-gray-5: rgba(74, 40, 56, 0.2);
+  --sl-color-gray-6: var(--bg-5);
+  --sl-color-gray-7: var(--bg-4);
+  --sl-color-hairline: rgba(74, 40, 56, 0.15);
+  --sl-color-hairline-light: rgba(74, 40, 56, 0.12);
+  --sl-color-hairline-shade: rgba(74, 40, 56, 0.2);
+}
+:root[data-theme='dark'] {
+  --sl-color-black: var(--night-1);
+  --sl-color-white: var(--cream);
+  --sl-color-gray-4: rgba(255, 245, 224, 0.3);
+  --sl-color-gray-5: rgba(255, 245, 224, 0.22);
+  --sl-color-gray-6: var(--night-2);
+  --sl-color-gray-7: var(--night-2);
+  --sl-color-hairline: rgba(255, 245, 224, 0.18);
+  --sl-color-hairline-light: rgba(255, 245, 224, 0.14);
+  --sl-color-hairline-shade: rgba(255, 245, 224, 0.22);
+}
+
+/* =========================================================================
+   语言字体覆盖（保留 :lang 机制）
+   ========================================================================= */
+:root:lang(ja) {
+  --font-body: "Zen Maru Gothic", "Noto Sans SC", "Hiragino Sans", sans-serif;
+  --font-heading: "Noto Serif SC", "Klee One", "Hiragino Mincho ProN", serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+}
+:root:lang(en) {
+  --font-body: "Plus Jakarta Sans", "Noto Sans SC", system-ui, sans-serif;
+  --font-heading: "Fraunces", "Noto Serif SC", serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+}
+:root:lang(ko) {
+  --font-body: "Noto Sans SC", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --font-heading: "Noto Serif SC", "Batang", serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+}
+
+/* =========================================================================
+   幻月夜 —「满月是神不在的时间」。夜晚书桌模型：
+   桌面变梦境紫，纸张（[data-paper]/.yk-paper 表面）仍然亮着，墨色不变。
+   ========================================================================= */
+:root[data-theme='dark'] {
+  --bg-1: var(--night-1);
+  --bg-2: var(--night-2);
+  --bg-4: #4A3270;
+  --bg-6: #5C3E85;
+  --fg-1: var(--cream);
+  --fg-2: var(--lavender);
+  --fg-3: #B8A0D8;
+  --outline-20: rgba(255, 245, 224, 0.25);
+  --color-outline-20: rgba(255, 245, 224, 0.25);
+  --color-outline-15: rgba(255, 245, 224, 0.18);
+  --ink-faint: rgba(255, 245, 224, 0.3);
+  --shadow-soft: 0 4px 12px rgba(20, 10, 35, 0.4);
+  --shadow-card: 0 8px 24px rgba(20, 10, 35, 0.5);
+  --shadow-lift: 0 12px 32px rgba(20, 10, 35, 0.55);
+}
+
+/* 纸面表面 —— 纸上文字永远是梅子墨，无论昼夜。
+   新组件加 data-paper 属性或 .yk-paper 类；
+   旧的卡片类在此一并锁墨，避免夜模式下白卡配奶油字。 */
+[data-paper],
+.yk-paper,
+.glass-panel,
+.glass-card,
+.ink-card,
+.clipped-card,
+.clipped-card-sm,
+.clipped-card-accent,
+.drug-info-box,
+.warning-box,
+.reality-check,
+.phase-block,
+.baseline-checklist,
+.blood-test-range,
+.hospital-card,
+.drug-brand-gallery,
+.emergency-actions {
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  --color-text-primary: #4A2838;
+  --color-text-secondary: #7A5568;
+  --color-text-muted: #7A5568;
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+  --color-outline-15: rgba(74, 40, 56, 0.15);
+}
+
+/* =========================================================================
+   SEMANTIC TYPOGRAPHY
+   ========================================================================= */
 body {
   font-family: var(--font-body);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background-color: var(--bg-1);
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   font-variant-numeric: lining-nums proportional-nums;
@@ -206,171 +426,250 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
+  color: var(--fg-1);
+  line-height: var(--lh-tight);
 }
 
-code, pre {
+code, pre, .text-code, .text-hud {
   font-family: var(--font-code);
   font-variant-numeric: lining-nums tabular-nums;
 }
 
-table,
-input,
-textarea,
-select,
-button {
+table, input, textarea, select, button {
   font-variant-numeric: lining-nums tabular-nums;
 }
 
-::selection {
-  background: rgba(200, 75, 124, 0.3);
+small, .text-micro { font-size: var(--fs-micro); color: var(--fg-3); }
+.text-secondary { color: var(--fg-2); }
+.text-muted { color: var(--fg-3); }
+
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-weight: 400;
 }
 
-/* ================================
-   Glass Panel — Stitch 统一毛玻璃
-   ================================ */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: var(--glass-border);
-}
-
-/* ================================
-   Clipped Cards — Penacony 几何签名
-   ================================ */
-.clipped-card {
-  clip-path: var(--clip-corner);
-}
-
-.clipped-card-sm {
-  clip-path: var(--clip-corner-sm);
-}
-
-.clipped-card-accent {
-  clip-path: var(--clip-corner-accent);
-}
-
-/* ================================
-   Particle Background
-   ================================ */
-.particle-bg {
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(200, 75, 124, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(212, 168, 83, 0.05) 0%, transparent 50%);
-}
-
-.particle-dots {
-  background-image: radial-gradient(circle at 2px 2px, rgba(200, 75, 124, 0.15) 1px, transparent 0);
-  background-size: 40px 40px;
-}
-
-/* ================================
-   Hero Text Glow
-   ================================ */
-.hero-text-glow {
-  text-shadow: 0 0 30px rgba(200, 75, 124, 0.4);
-}
-
+/* 渐变重点词（仅 hero / 页脚 logo 等少数位置；页面标题用 .yk-accent-zhu 朱字） */
+.text-gradient-flame,
+.text-gradient-sakura,
 .hero-gradient-text {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container), var(--color-accent));
+  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral) 50%, var(--honey));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-moon {
+  background: linear-gradient(135deg, var(--sky-deep), var(--lavender-deep), var(--sakura-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-glow-flame,
+.hero-text-glow { text-shadow: 0 0 24px rgba(229, 87, 139, 0.4); }
+.text-glow-cyan { text-shadow: 0 0 24px rgba(91, 168, 224, 0.4); }
+
+.text-slogan {
+  font-family: var(--font-display);
+  font-size: var(--fs-slogan);
+  color: var(--sakura-pink-deep);
+  letter-spacing: var(--ls-slogan);
 }
 
-/* ================================
-   Ghost Border — Stitch "shimmer" 边框
-   ================================ */
-.ghost-border {
-  border: 1px solid var(--color-outline-20);
+.text-label {
+  font-family: var(--font-ui-accent);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-micro-caps);
 }
 
-/* ================================
-   Buttons — The Command Units (DESIGN.md §5)
-   ================================ */
-.btn-primary,
-.btn-ghost {
+/* 临床证据等级 A/B/C/X（禁止稀有度/星级标注医学信息） */
+.evidence-A { color: var(--safe); }
+.evidence-B { color: var(--info); }
+.evidence-C { color: var(--color-caution-text); }
+.evidence-X { color: var(--danger); }
+
+::selection { background: var(--primary-a40); color: var(--ink); }
+
+/* =========================================================================
+   CORE CARDS & PANELS — 贴纸卡
+   ========================================================================= */
+.ink-card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+}
+
+.panel-flame {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--fg-on-pink);
+}
+
+.panel-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--ink);
+}
+
+/* 旧玻璃面板 / 切角卡 → 统一纸卡（禁 backdrop blur、禁切角） */
+.glass-panel,
+.glass-card {
+  background: var(--bg-3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+}
+.clipped-card,
+.clipped-card-sm,
+.clipped-card-accent {
+  clip-path: none;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  background: var(--bg-3);
+}
+.ghost-border { border: 1px solid var(--color-outline-20); }
+.tonal-shift { background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-4) 100%); }
+
+/* =========================================================================
+   BUTTONS — 糖果按钮（hover 抬升 + 投影加深；active 按下归零）
+   ========================================================================= */
+.btn-flame, .btn-gold, .btn-ghost, .btn-arcade, .btn-mint,
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
-  min-height: 44px; /* WCAG 2.5.5 touch target */
-  padding: var(--space-sm) var(--space-lg);
+  gap: var(--space-sm);
+  min-height: 48px;
+  padding: 12px 28px;
   font-family: var(--font-ui-accent);
-  font-weight: 600;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
   text-decoration: none;
-  clip-path: var(--clip-corner-sm);
-  border: none;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: filter var(--transition-fast), transform var(--transition-fast),
-              box-shadow var(--transition-normal), background var(--transition-fast),
-              border-color var(--transition-fast);
   white-space: nowrap;
+  box-shadow: var(--shadow-hard);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  clip-path: none;
+}
+.btn-flame,
+.btn-primary {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  color: var(--fg-on-pink);
+}
+.btn-flame:hover, .btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+  filter: none;
+}
+.btn-flame:active, .btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
-  color: var(--color-text-on-dark);
+.btn-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  color: var(--ink);
 }
-.btn-primary:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 0 30px var(--color-primary-alpha-25);
-}
-.btn-primary:active { transform: translateY(1px); }
+.btn-gold:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+.btn-gold:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink); }
 
 .btn-ghost {
-  background: transparent;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent-alpha-30);
+  background: var(--ivory);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
 }
 .btn-ghost:hover {
-  background: var(--color-accent-alpha-08);
-  border-color: var(--color-accent);
+  background: var(--bg-5);
+  border-color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
 }
-.btn-ghost:active { transform: translateY(1px); }
+.btn-ghost:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink); }
 
-/* ================================
-   Focus Visibility — WCAG 2.4.7 兜底
-   所有可聚焦元素未定义 focus-visible 时，显示金色 focus ring
-   ================================ */
+.btn-arcade, .btn-mint {
+  background: var(--mint);
+  color: var(--ink);
+  border-radius: var(--radius-md);
+}
+.btn-arcade:hover, .btn-mint:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+
+/* =========================================================================
+   FOCUS RING — 全局绯红焦点环（WCAG 2.4.7）
+   ========================================================================= */
 :where(button, a, [role="tab"], [role="button"], summary, input, select, textarea):focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 0; /* 保持非圆角 */
-}
-
-/* 按钮类显式 focus-visible 覆盖 */
-.btn-primary:focus-visible,
-.btn-ghost:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 3px solid var(--sakura-pink-deep);
   outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
-/* ================================
-   Tonal Shift — 用色调替代分割线
-   ================================ */
-.tonal-shift {
-  background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
+/* =========================================================================
+   BACKGROUND PATTERNS — 手账纸纹
+   ========================================================================= */
+.bg-halftone {
+  background-image: radial-gradient(circle at 2px 2px, var(--ink-faint) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+.bg-halftone-pink {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.3) 1.2px, transparent 0);
+  background-size: 8px 8px;
+}
+.bg-stripes {
+  background: repeating-linear-gradient(45deg, var(--sakura-pink) 0 20px, var(--sakura-blush) 20px 40px);
+}
+.bg-grid-paper {
+  background-image:
+    linear-gradient(rgba(74, 40, 56, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 40, 56, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.bg-dots-paper {
+  background-image: radial-gradient(circle, rgba(74, 40, 56, 0.15) 1.2px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+.bg-sakura-pattern {
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--sakura-blush) 8px, transparent 9px),
+    radial-gradient(circle at 70% 70%, var(--butter) 6px, transparent 7px),
+    radial-gradient(circle at 40% 80%, var(--mint) 5px, transparent 6px);
+  background-size: 120px 120px;
+}
+.particle-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 168, 197, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(168, 230, 201, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 232, 156, 0.1) 0%, transparent 50%);
+}
+.particle-dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.15) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+/* 夜晚桌面上的纸纹换成月光色 */
+:root[data-theme='dark'] .particle-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 168, 197, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(155, 125, 212, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(91, 168, 224, 0.06) 0%, transparent 50%);
 }
 
-/* ================================
-   Diamond Decision Node (路径图用)
-   ================================ */
-.diamond-node {
-  transform: rotate(45deg);
-}
-
-.diamond-content {
-  transform: rotate(-45deg);
-}
-
-/* ================================
-   Reduced Motion
-   ================================ */
+/* =========================================================================
+   REDUCED MOTION
+   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -381,11 +680,3 @@ button {
     scroll-behavior: auto !important;
   }
 }
-
-/* ================================
-   Evidence Level Colors
-   ================================ */
-.evidence-A { color: var(--color-safe); }
-.evidence-B { color: var(--color-info); }
-.evidence-C { color: var(--color-caution); }
-.evidence-X { color: var(--color-danger); }

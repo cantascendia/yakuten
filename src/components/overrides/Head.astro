@@ -11,8 +11,6 @@
 import Default from '@astrojs/starlight/components/Head.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import ThemeToggle from '../ThemeToggle.astro';
-import SakuraHint from '../ui/SakuraHint.astro';
 import JsonLd from '../seo/JsonLd.astro';
 
 const pathname = Astro.url.pathname;
@@ -144,8 +142,6 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
     <meta name="twitter:card" content="summary_large_image" />
   </>
 )}
-<ThemeToggle />
-{headLocale === 'zh' && <SakuraHint />}
 <script is:inline>
   // Dev-mode opt-out for Vercel Analytics & Speed Insights.
   // Run `localStorage.setItem('yakuten-dev','1')` once in any browser you use

@@ -33,17 +33,17 @@ export default defineConfig({
         Head: './src/components/overrides/Head.astro',
         Footer: './src/components/overrides/Footer.astro',
         SiteTitle: './src/components/overrides/SiteTitle.astro',
+        ThemeProvider: './src/components/overrides/ThemeProvider.astro',
+        ThemeSelect: './src/components/overrides/ThemeSelect.astro',
       },
       customCss: [
+        // 绯英典籍 v2：tokens → 骨架 → 组件壳 → 应急层 → 页面级 → Starlight skin
         './src/styles/global.css',
-        './src/styles/glass.css',
+        './src/styles/layout.css',
+        './src/styles/components.css',
         './src/styles/emergency.css',
         './src/styles/pathway.css',
-        './src/styles/starlight-override.css',
-        // 新版皮肤（只在 <html class="sakura"> 时激活，不影响默认外观）
-        './src/styles/sakura-theme.css',
-        './src/styles/sakura-components.css',
-        './src/styles/sakura-skin.css',
+        './src/styles/starlight-skin.css',
       ],
       sidebar: [
         // ── 开始 ──
