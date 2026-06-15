@@ -1,445 +1,512 @@
+/* 绯英典籍 v2 — opt-in 皮肤（html.sakura 时激活；原版米哈游为默认不变）
+   源自 #32，已用 postcss 整体 scope 到 html.sakura。*/
 /* =========================================================================
-   🌸 Sakura Skin — 针对 Starlight 实际 DOM 的手账风改造
-   只在 html.sakura 激活时生效。目标：
-   · 纸底网点背景
-   · 卡片 2px 墨线边 + 4px 硬阴影（贴纸感）
-   · 标题手写字 + 樱粉下划线
-   · 代码块做成便签
-   · 链接改糖果 pill
-   · 去掉 Starlight 默认的"扁平灰底"
+   HRT药典 — LAYOUT & SKELETON（骨架层）· 绯英典籍 v2
+   页面骨架：容器 · 节奏 · 导航 · 网格 · CJK 文本安全
+   移植自 design_handoff_site_v2/design_files/layout.css
    ========================================================================= */
 
-/* 纸底 —— 整个 body 加网点纸 */
-html.sakura body {
-  background-color: var(--cream) !important;
-  background-image:
-    radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.08) 1px, transparent 0);
-  background-size: 22px 22px;
-  background-attachment: fixed;
-}
+html.sakura {
+  /* ---------- Layout tokens ---------- */
+  --nav-h: 68px;
+  --page-max: 1280px;
+  --page-max-narrow: 1040px;
+  --page-pad: clamp(20px, 4vw, 48px);
+  --section-gap: clamp(36px, 5vw, 64px);
+  --card-gap: clamp(14px, 2vw, 24px);
 
-/* 主容器半透明，让纸底透出来 */
-html.sakura .main-frame,
-html.sakura .page,
-html.sakura main {
-  background: transparent !important;
+  /* ---------- Z-index scale ---------- */
+  --z-bg: 0;
+  --z-content: 1;
+  --z-sticky: 50;
+  --z-overlay: 100;
+  --z-toast: 200;
 }
 
 /* =========================================================================
-   顶栏 —— 改成米白纸条
+   TEXT SAFETY — CJK 混排防断行（禁止「血检 HUD」折行、「目 标」拆字）
    ========================================================================= */
-html.sakura header.header,
-html.sakura .header {
-  background: var(--ivory) !important;
-  border-bottom: 2px solid var(--ink) !important;
-  box-shadow: 0 2px 0 rgba(74, 40, 56, 0.08);
-}
+html.sakura .yk-nowrap { white-space: nowrap; }
 
-/* 顶栏站点标题 */
-html.sakura .site-title,
-html.sakura .site-title * {
-  color: var(--ink) !important;
-  font-family: var(--font-display, "Fraunces", serif);
-}
-
-/* 顶栏按钮（搜索、主题、语言） */
-html.sakura header.header button,
-html.sakura header.header [role="combobox"],
-html.sakura header.header select {
-  background: var(--bg-3);
-  border: 2px solid var(--ink) !important;
-  border-radius: 999px !important;
-  color: var(--ink) !important;
-  box-shadow: 2px 2px 0 var(--ink);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-html.sakura header.header button:hover,
-html.sakura header.header [role="combobox"]:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--ink);
+/* 短标签类元素一律不许折行 */
+html.sakura .yk-kicker, html.sakura .yk-chip, html.sakura .yk-nav__link, html.sakura .yk-meta-label {
+  white-space: nowrap;
 }
 
 /* =========================================================================
-   左侧栏 —— 手账本侧脊
+   PAGE SCAFFOLD — 每个屏幕的统一容器
    ========================================================================= */
-html.sakura nav.sidebar,
-html.sakura .sidebar-pane {
-  background: var(--ivory) !important;
-  border-right: 2px solid var(--ink) !important;
-}
-
-html.sakura .sidebar-content {
-  background: transparent;
-}
-
-/* 侧栏分组标题 —— 手写标签样式 */
-html.sakura .sidebar-content details > summary,
-html.sakura .sidebar-content .group-label,
-html.sakura .sidebar-content h2 {
-  font-family: var(--font-heading, "Klee One", serif) !important;
-  font-weight: 700 !important;
-  color: var(--sakura-pink-deep) !important;
-  text-transform: none !important;
-  letter-spacing: 0.05em !important;
-  padding: 8px 12px !important;
-}
-
-/* 侧栏链接 —— hover 糖果 pill */
-html.sakura .sidebar-content a {
-  border-radius: 999px !important;
-  color: var(--ink) !important;
-  font-family: var(--font-body) !important;
-  transition: background 0.15s, transform 0.15s;
-}
-html.sakura .sidebar-content a:hover {
-  background: var(--sakura-blush) !important;
-  color: var(--ink) !important;
-  transform: translateX(2px);
-}
-
-/* 当前页高亮 */
-html.sakura .sidebar-content a[aria-current="page"],
-html.sakura .sidebar-content a.large[aria-current="page"] {
-  background: var(--sakura-pink) !important;
-  color: var(--fg-on-pink) !important;
-  border: 2px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--ink);
-  font-weight: 700;
-}
-
-/* =========================================================================
-   内容区标题 —— 手写字 + 樱粉笔画下划线
-   ========================================================================= */
-html.sakura .sl-markdown-content h1,
-html.sakura main h1 {
-  font-family: var(--font-display, "Fraunces", "Noto Serif SC", serif) !important;
-  color: var(--ink) !important;
-  font-weight: 600 !important;
+html.sakura .yk-page {
   position: relative;
-  padding-bottom: 12px;
-  margin-bottom: 24px;
+  z-index: var(--z-content);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--section-gap) var(--page-pad);
+}
+html.sakura .yk-page--narrow { max-width: var(--page-max-narrow); }
+
+html.sakura .yk-section { margin-top: var(--section-gap); }
+html.sakura .yk-section:first-child { margin-top: 0; }
+
+/* Kicker row — washi tape + label（安静版：颜色交给胶带，文字退后） */
+html.sakura .yk-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family: var(--font-ui-accent);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  color: var(--fg-3);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-html.sakura .sl-markdown-content h1::after,
-html.sakura main h1::after {
+/* washi 胶带条（纯 CSS 版，供 Astro 组件 / MDX 使用） */
+html.sakura .yk-washi {
+  display: inline-block;
+  width: 60px;
+  height: 16px;
+  background: repeating-linear-gradient(45deg, var(--sakura-pink) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px);
+  border-left: 1px dashed rgba(255, 255, 255, 0.6);
+  border-right: 1px dashed rgba(255, 255, 255, 0.6);
+  box-shadow: 1px 2px 4px rgba(74, 40, 56, 0.15);
+  transform: rotate(-4deg);
+  opacity: 0.92;
+}
+html.sakura .yk-washi--mint { background: repeating-linear-gradient(45deg, var(--mint) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px); }
+html.sakura .yk-washi--butter { background: repeating-linear-gradient(45deg, var(--butter) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px); }
+html.sakura .yk-washi--sky { background: repeating-linear-gradient(45deg, var(--sky) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px); }
+html.sakura .yk-washi--lavender { background: repeating-linear-gradient(45deg, var(--lavender) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px); }
+
+/* =========================================================================
+   PAGE HEAD — 线装书「卷」页头：竖排卷标 + 杂志级标题 + 装订墨线
+   ========================================================================= */
+html.sakura .yk-pagehead {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 30px);
+  align-items: flex-start;
+  margin-bottom: clamp(26px, 4vw, 44px);
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--ink);
+  position: relative;
+}
+html.sakura .yk-pagehead__tab {
+  writing-mode: vertical-rl;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: var(--sakura-pink-deep);
+  background: var(--ivory);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 14px 7px;
+  box-shadow: 2px 2px 0 var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+}
+html.sakura .yk-pagehead__body { min-width: 0; flex: 1; }
+html.sakura .yk-pagehead__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 4px 0 12px;
+  color: var(--fg-1);
+}
+html.sakura .yk-pagehead__lede {
+  font-size: 14px;
+  color: var(--fg-2);
+  max-width: 720px;
+  line-height: 1.75;
+  margin: 0;
+}
+/* 装订线：页头底部墨线右端的红色线装结 */
+html.sakura .yk-pagehead::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 72px;
-  height: 6px;
-  background: var(--sakura-pink);
-  border-radius: 6px;
-  box-shadow: 2px 2px 0 var(--ink);
+  right: 0;
+  bottom: -7.5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--danger-bright);
+  border: 2px solid var(--ink);
+}
+@media (max-width: 720px) {
+  html.sakura .yk-pagehead__tab { display: none; }
+}
+/* 夜模式下墨线换奶油描边，保持可见 */
+html.sakura[data-theme='dark'] .yk-pagehead { border-bottom-color: var(--ink-faint); }
+
+/* 朱色重点词 — 替代满屏渐变字：实色绯红 + 手账波浪线 */
+html.sakura .yk-accent-zhu {
+  color: var(--sakura-pink-deep);
+  font-style: normal;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--sakura-pink);
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 10px;
 }
 
-html.sakura .sl-markdown-content h2,
-html.sakura main h2 {
-  font-family: var(--font-heading, "Klee One", "Noto Serif SC", serif) !important;
-  color: var(--ink) !important;
-  font-weight: 700 !important;
-  padding: 6px 14px;
+/* 朱批手写注记 */
+html.sakura .yk-hand-note {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
   display: inline-block;
-  background: var(--butter);
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  box-shadow: 3px 3px 0 var(--ink);
-  margin-bottom: 20px !important;
 }
+html.sakura .yk-hand-note--zhu { color: var(--sakura-pink-deep); }
+/* 夜晚书桌上的手写字换薰衣草笔 —— plain color，不动 token */
+html.sakura[data-theme='dark'] .yk-hand-note { color: #B8A0D8; }
+html.sakura[data-theme='dark'] .yk-hand-note--zhu { color: var(--sakura-pink); }
+html.sakura[data-theme='dark'] [data-paper] .yk-hand-note,
+html.sakura[data-theme='dark'] .yk-paper .yk-hand-note { color: var(--ink-soft); }
 
-html.sakura .sl-markdown-content h3,
-html.sakura main h3 {
-  font-family: var(--font-heading, "Klee One", serif) !important;
-  color: var(--sakura-pink-deep) !important;
-  font-weight: 700 !important;
-  border-left: 6px solid var(--sakura-pink);
-  padding-left: 12px;
-  margin-left: -4px;
-}
-
-html.sakura .sl-markdown-content h4,
-html.sakura main h4 {
-  font-family: var(--font-heading, "Klee One", serif) !important;
-  color: var(--ink) !important;
-}
-
-/* =========================================================================
-   正文段落
-   ========================================================================= */
-html.sakura .sl-markdown-content p,
-html.sakura main p {
-  color: var(--fg-1) !important;
-  line-height: 1.85;
-  font-family: var(--font-body) !important;
-}
-
-/* 行内代码 —— 小便签 */
-html.sakura .sl-markdown-content :not(pre) > code,
-html.sakura main :not(pre) > code {
-  background: var(--bg-5) !important;
-  /* 行内代码（常含药名/剂量）须达 AA：#E5578B 在 bg-5 上仅 2.89:1，#C02868 ≥4.5:1。 */
-  color: #C02868 !important;
-  border: 1.5px solid var(--ink) !important;
-  border-radius: 6px !important;
-  padding: 2px 8px !important;
-  font-family: var(--font-mono, "JetBrains Mono", monospace) !important;
-  font-weight: 500;
-  box-shadow: 1px 1px 0 var(--ink);
-}
-
-/* 行内链接 —— 手写下划线 */
-html.sakura .sl-markdown-content a,
-html.sakura main article a {
-  color: var(--sakura-pink-deep) !important;
-  text-decoration: none;
-  background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  padding: 0 2px;
-  font-weight: 600;
-  transition: background-size 0.2s ease;
-}
-html.sakura .sl-markdown-content a:hover,
-html.sakura main article a:hover {
-  background-image: linear-gradient(transparent 0%, var(--sakura-pink) 100%);
-  color: var(--ink) !important;
-}
-
-/* =========================================================================
-   卡片 / Aside / Callout —— 贴纸卡
-   ========================================================================= */
-html.sakura .sl-markdown-content .starlight-aside,
-html.sakura main .starlight-aside,
-html.sakura aside.starlight-aside {
-  background: var(--bg-3) !important;
-  border: 2px solid var(--ink) !important;
-  border-radius: 14px !important;
-  box-shadow: 4px 4px 0 var(--ink) !important;
-  padding: 18px !important;
-  margin: 20px 0 !important;
-}
-
-html.sakura .starlight-aside--note {
-  background: var(--ivory) !important;
-}
-html.sakura .starlight-aside--tip {
-  background: rgba(168, 230, 201, 0.35) !important;
-}
-html.sakura .starlight-aside--caution {
-  background: var(--butter) !important;
-}
-html.sakura .starlight-aside--danger {
-  background: linear-gradient(135deg, var(--sakura-pink), var(--coral)) !important;
-  color: var(--fg-on-pink) !important;
-}
-html.sakura .starlight-aside--danger * {
-  color: var(--fg-on-pink) !important;
-}
-
-html.sakura .starlight-aside__title {
-  font-family: var(--font-heading, "Klee One", serif) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
-
-/* =========================================================================
-   代码块（expressive-code）—— 便签
-   ========================================================================= */
-html.sakura .expressive-code,
-html.sakura pre {
-  border: 2px solid var(--ink) !important;
-  border-radius: 14px !important;
-  box-shadow: 4px 4px 0 var(--ink) !important;
-  overflow: hidden;
-}
-
-html.sakura .expressive-code .frame,
-html.sakura .expressive-code pre,
-html.sakura pre {
-  background: var(--bg-3) !important;
-}
-
-html.sakura .expressive-code .frame .header {
-  background: var(--sakura-blush) !important;
-  border-bottom: 1.5px solid var(--ink);
-}
-
-/* =========================================================================
-   表格 —— 手账方格
-   ========================================================================= */
-html.sakura .sl-markdown-content table,
-html.sakura main table {
-  border: 2px solid var(--ink) !important;
-  border-radius: 12px !important;
-  overflow: hidden;
-  box-shadow: 3px 3px 0 var(--ink);
-  border-collapse: separate !important;
-  border-spacing: 0;
-}
-
-html.sakura thead {
-  background: var(--sakura-pink) !important;
-}
-html.sakura thead th {
-  color: var(--fg-on-pink) !important;
-  font-family: var(--font-heading, "Klee One", serif) !important;
-  border: none !important;
-}
-
-html.sakura tbody tr:nth-child(even) {
-  background: var(--bg-4) !important;
-}
-html.sakura tbody tr:nth-child(odd) {
-  background: var(--ivory) !important;
-}
-html.sakura tbody td {
-  border-top: 1px solid rgba(74, 40, 56, 0.15) !important;
-  border-right: none !important;
-  border-left: none !important;
-  border-bottom: none !important;
-  color: var(--ink) !important;
-}
-
-/* =========================================================================
-   引用块
-   ========================================================================= */
-html.sakura .sl-markdown-content blockquote,
-html.sakura main blockquote {
-  background: var(--bg-5) !important;
-  border-left: 6px solid var(--sakura-pink-deep) !important;
-  border-radius: 0 12px 12px 0 !important;
-  padding: 14px 18px !important;
-  margin: 20px 0 !important;
-  color: var(--ink-soft) !important;
-  font-style: italic;
-  box-shadow: 3px 3px 0 rgba(74, 40, 56, 0.1);
-}
-
-/* =========================================================================
-   列表 —— 樱花项目符号
-   ========================================================================= */
-html.sakura .sl-markdown-content ul > li::marker,
-html.sakura main ul > li::marker {
-  color: var(--sakura-pink-deep);
-}
-
-html.sakura .sl-markdown-content ol > li::marker,
-html.sakura main ol > li::marker {
-  color: var(--sakura-pink-deep);
-  font-weight: 700;
-}
-
-/* =========================================================================
-   分隔线 —— 波浪线/虚线
-   ========================================================================= */
-html.sakura .sl-markdown-content hr,
-html.sakura main hr {
+/* 典籍目录行 — 点线引导符 */
+html.sakura .yk-toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+  background: none;
   border: none;
-  height: 4px;
-  background-image: radial-gradient(circle, var(--sakura-pink-deep) 2px, transparent 2.5px);
-  background-size: 16px 4px;
-  background-repeat: repeat-x;
-  background-position: 0 50%;
-  margin: 32px 0;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+html.sakura .yk-toc-row:hover .yk-toc-row__title { color: var(--sakura-pink-deep); }
+html.sakura .yk-toc-row__vol {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--sakura-pink-text);
+  white-space: nowrap;
+}
+html.sakura .yk-toc-row__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--fg-1);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+html.sakura .yk-toc-row__leader {
+  flex: 1;
+  border-bottom: 2px dotted var(--ink-faint);
+  transform: translateY(-4px);
+  min-width: 24px;
+}
+html.sakura .yk-toc-row__meta {
+  font-family: var(--font-hud);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg-3);
+  white-space: nowrap;
 }
 
 /* =========================================================================
-   右侧目录 TOC
+   GRIDS — 响应式卡片网格
    ========================================================================= */
-html.sakura .right-sidebar,
-html.sakura .page-aside,
-html.sakura starlight-toc {
-  background: transparent !important;
+html.sakura .yk-grid {
+  display: grid;
+  gap: var(--card-gap);
+}
+html.sakura .yk-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.sakura .yk-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+html.sakura .yk-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+html.sakura .yk-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
 }
 
-html.sakura starlight-toc nav {
-  background: var(--ivory);
-  border: 2px solid var(--ink);
-  border-radius: 14px;
-  box-shadow: 3px 3px 0 var(--ink);
-  padding: 14px;
+@media (max-width: 1080px) {
+  html.sakura .yk-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 880px) {
+  html.sakura .yk-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  html.sakura .yk-hero-grid > .yk-hero-collage { display: none; }
+  html.sakura .yk-grid--3 { grid-template-columns: minmax(0, 1fr); }
+  html.sakura .yk-grid--2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  html.sakura .yk-grid--4 { grid-template-columns: minmax(0, 1fr); }
 }
 
-html.sakura starlight-toc a {
-  color: var(--ink-soft) !important;
-  border-radius: 6px;
-  padding: 3px 8px;
-  transition: background 0.15s;
+/* 文档页三栏：侧栏 · 正文 · TOC（独立页面用；Starlight 页面有自己的栅格） */
+html.sakura .yk-doc-grid {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr) 170px;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+@media (max-width: 1080px) {
+  html.sakura .yk-doc-grid { grid-template-columns: minmax(190px, 230px) minmax(0, 1fr); }
+  html.sakura .yk-doc-toc { display: none; }
+}
+@media (max-width: 880px) {
+  html.sakura .yk-doc-grid { grid-template-columns: minmax(0, 1fr); }
+  html.sakura .yk-doc-side { display: none; }
 }
 
-html.sakura starlight-toc a:hover,
-html.sakura starlight-toc a[aria-current="true"] {
-  background: var(--sakura-blush) !important;
-  color: var(--sakura-pink-deep) !important;
+/* 文档正文排印 — 版心行长 + 着重号 */
+html.sakura .yk-article { font-size: 15.5px; }
+html.sakura .yk-article p, html.sakura .yk-article ol { max-width: 660px; }
+html.sakura .yk-article p strong {
+  font-weight: 700;
+  text-emphasis: filled dot var(--sakura-pink-deep);
+  text-emphasis-position: under right;
+  -webkit-text-emphasis: filled dot var(--sakura-pink-deep);
+  -webkit-text-emphasis-position: under right;
 }
 
 /* =========================================================================
-   分页按钮（上一页/下一页）
+   NAV — 吸顶手账顶栏
    ========================================================================= */
-html.sakura .pagination-links a {
-  background: var(--ivory) !important;
-  border: 2px solid var(--ink) !important;
-  border-radius: 14px !important;
-  box-shadow: 3px 3px 0 var(--ink);
-  padding: 14px !important;
-  transition: transform 0.15s, box-shadow 0.15s;
+html.sakura .yk-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--nav-h);
+  padding: 8px var(--page-pad);
+  background: var(--cream);
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 3px 0 var(--sakura-blush);
 }
-html.sakura .pagination-links a:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--ink);
-  background: var(--sakura-blush) !important;
+html.sakura .yk-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+html.sakura .yk-nav__links {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  margin-left: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 2px;
+}
+html.sakura .yk-nav__links::-webkit-scrollbar { display: none; }
+html.sakura .yk-nav__link {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--fg-1);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+html.sakura .yk-nav__link:hover { background: var(--sakura-blush); border-color: var(--ink-faint); }
+html.sakura .yk-nav__link[aria-current="page"] {
+  background: var(--sakura-pink);
+  color: #fff;
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translate(-1px, -1px);
+}
+html.sakura .yk-nav__aside {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  html.sakura .yk-nav__brand-sub { display: none; }
 }
 
-html.sakura .pagination-links a span {
-  color: var(--ink) !important;
-}
-html.sakura .pagination-links a .link-title {
-  color: var(--sakura-pink-deep) !important;
+/* =========================================================================
+   EMERGENCY BANNER — 冷、直接。生命安全信息不用可爱风包装。
+   纯红 · 白字 · 不可关闭（具体样式见 emergency.css，类保持 .emergency-banner）
+   ========================================================================= */
+html.sakura .yk-banner {
+  background: var(--danger-deep);
+  color: #fff;
+  padding: 10px var(--page-pad);
+  font-family: var(--font-ui-accent);
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  border-bottom: 2px solid var(--ink);
   font-weight: 700;
 }
+html.sakura .yk-banner a,
+html.sakura .yk-banner u {
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  text-underline-offset: 3px;
+}
 
 /* =========================================================================
-   底部 Footer
+   SEAL — 裁定印章（尺刀裁定意象：判读 = 盖章）
    ========================================================================= */
-html.sakura .site-legal-footer {
-  background: var(--ivory);
+html.sakura .yk-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border: 2.5px solid var(--danger);
+  border-radius: 6px;
+  color: var(--danger);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  transform: rotate(-5deg);
+  white-space: nowrap;
+  background: transparent;
+}
+html.sakura .yk-seal--safe { border-color: var(--safe); color: var(--safe); }
+html.sakura .yk-seal--caution { border-color: var(--color-caution-text); color: var(--color-caution-text); }
+html.sakura .yk-seal--lg {
+  padding: 10px 16px;
+  font-size: 17px;
+  border-width: 2.5px;
+}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+html.sakura .yk-footer {
+  margin-top: var(--section-gap);
+  padding: 40px var(--page-pad) 32px;
+  background: var(--sakura-blush);
   border-top: 2px solid var(--ink);
-  margin-top: 48px;
+  position: relative;
+  z-index: var(--z-content);
 }
-
-html.sakura .site-legal-footer a {
-  color: var(--sakura-pink-deep) !important;
+html.sakura .yk-footer__grid {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+html.sakura .yk-footer__legal {
+  max-width: var(--page-max);
+  margin: 24px auto 0;
+  padding-top: 16px;
+  border-top: 2px dashed var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-family: var(--font-ui-accent);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+html.sakura .yk-footer__legal > * { white-space: nowrap; }
+@media (max-width: 880px) {
+  html.sakura .yk-footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  html.sakura .yk-footer__grid { grid-template-columns: 1fr; }
 }
 
 /* =========================================================================
-   Emergency banner —— 保持危险感但换调色
+   FORM BASELINE — 输入控件统一手账风
    ========================================================================= */
-html.sakura .emergency-banner {
-  /* 急症 banner 为白字，渐变两端须对白字达 WCAG AA ≥4.5:1。
-     原 #E5578B→#E65D4A 对白字仅 ~3.46:1（FAIL）；改用深红渐变保持危险感且白字达标。 */
-  background: linear-gradient(135deg, #B5304F, #9E1C3A) !important;
-  border: 2px solid var(--ink) !important;
-  box-shadow: 0 4px 0 var(--ink);
+html.sakura .yk-input {
+  width: 100%;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  color: var(--fg-on-cream);
+  padding: 10px 14px;
+  font-family: var(--font-hud);
+  font-size: 15px;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+html.sakura .yk-input:focus {
+  border-color: var(--sakura-pink-deep);
+  box-shadow: 2px 2px 0 var(--sakura-pink-deep);
+}
+html.sakura .yk-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fg-1);
+  margin-bottom: 6px;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+html.sakura .yk-field-label > * { white-space: nowrap; }
+
+/* =========================================================================
+   CHIP — 不折行小胶囊
+   ========================================================================= */
+html.sakura .yk-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: var(--ivory);
+  color: var(--sakura-pink-text);
+  border: 2px solid var(--sakura-pink-deep);
+  border-radius: 999px;
+  font-family: var(--font-ui-accent);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+html.sakura .yk-chip--filled {
+  background: var(--sakura-pink-deep);
+  color: #fff;
+}
+html.sakura .yk-chip--ink {
+  border-color: var(--ink);
+  color: var(--fg-on-cream);
 }
 
 /* =========================================================================
-   Hero 区块（如首页）
+   SKIP LINK — a11y
    ========================================================================= */
-html.sakura .hero-section {
-  background-image:
-    radial-gradient(circle at 20% 30%, var(--sakura-blush) 8px, transparent 9px),
-    radial-gradient(circle at 70% 70%, var(--butter) 6px, transparent 7px),
-    radial-gradient(circle at 40% 80%, var(--mint) 5px, transparent 6px);
-  background-size: 180px 180px;
+html.sakura .yk-skip {
+  position: absolute;
+  left: -9999px;
+  z-index: var(--z-toast);
+  padding: 10px 18px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
 }
-
-/* =========================================================================
-   Reduced motion
-   ========================================================================= */
-@media (prefers-reduced-motion: reduce) {
-  html.sakura * {
-    transition: none !important;
-    animation: none !important;
-  }
-}
+html.sakura .yk-skip:focus { left: 12px; top: 12px; }
