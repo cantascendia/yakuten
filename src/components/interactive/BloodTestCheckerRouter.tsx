@@ -1,44 +1,59 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import ClassicBloodTestChecker from './BloodTestChecker';
 
 import '../../styles/blood-b32.css';
 
 const B32App = lazy(() => import('./blood-b32/B32App'));
 
-function readSakuraClass(): boolean {
-  if (typeof document === 'undefined') return false;
-  return document.documentElement.classList.contains('sakura');
-}
+type Mode = 'classic' | 'tracker';
 
 /**
- * Router that renders the classic red/yellow/green checker by default,
- * and the v3.2 乐园手账 tracker (records + scoring + timeline) when
- * ThemeToggle.astro enables `html.sakura`.
+ * In-page toggle between the two blood-test tools — decoupled from the global theme.
  *
- * - Classic mode:   stateless single-shot checker (zero storage)
- * - Sakura mode:    localStorage-backed tracker (records persist locally)
+ *  - 快速判读 (classic): stateless single-shot checker — zero storage, zero transmission (DEFAULT).
+ *  - 血检手账 (v3.2):    localStorage-backed tracker — records persist on-device only (opt-in).
+ *
+ * Classic stays the default per the project privacy rule (classic mode must remain storage-free);
+ * the tracker is opt-in via this visible toggle. Previously the tracker was tied to `html.sakura`
+ * (set by the now-removed ThemeToggle); 绯英典籍 v2 switched theming to `data-theme`, so the
+ * trigger is moved here to keep v3.2 reachable independent of the active theme.
  */
 export default function BloodTestCheckerRouter() {
-  const [sakura, setSakura] = useState<boolean>(() => readSakuraClass());
+  const [mode, setMode] = useState<Mode>('classic');
 
-  useEffect(() => {
-    setSakura(readSakuraClass());
-    const html = document.documentElement;
-    const observer = new MutationObserver(() => {
-      setSakura(html.classList.contains('sakura'));
-    });
-    observer.observe(html, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
+  return (
+    <div className="bt-router">
+      <div className="bt-mode-toggle" role="tablist" aria-label="血检工具模式">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'classic'}
+          className={`bt-mode-toggle__btn${mode === 'classic' ? ' is-active' : ''}`}
+          onClick={() => setMode('classic')}
+        >
+          快速判读
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'tracker'}
+          className={`bt-mode-toggle__btn${mode === 'tracker' ? ' is-active' : ''}`}
+          onClick={() => setMode('tracker')}
+        >
+          血检手账
+          <span className="bt-mode-toggle__badge">本地记录</span>
+        </button>
+      </div>
 
-  if (sakura) {
-    return (
-      <Suspense fallback={<B32Loading />}>
-        <B32App />
-      </Suspense>
-    );
-  }
-  return <ClassicBloodTestChecker />;
+      {mode === 'tracker' ? (
+        <Suspense fallback={<B32Loading />}>
+          <B32App />
+        </Suspense>
+      ) : (
+        <ClassicBloodTestChecker />
+      )}
+    </div>
+  );
 }
 
 function B32Loading() {
@@ -51,7 +66,7 @@ function B32Loading() {
         justifyContent: 'center',
         minHeight: 320,
         fontFamily: 'var(--b32-font-display)',
-        color: 'var(--b32-ink-3)',
+        color: 'var(--b32-ink-2)',
         fontSize: 14,
       }}
     >

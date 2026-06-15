@@ -234,3 +234,80 @@ html.sakura .b32-root {
     var(--b32-bg);
   background-size: 18px 18px, auto;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   血检工具模式切换：快速判读 / 血检手账
+   页内切换，与全站主题（data-theme）解耦。快速判读为零存储默认，
+   血检手账（localStorage 本地记录）为显式 opt-in。配色取 v2 樱粉墨子，
+   active 用文字安全深粉 #C02868（白字 ≈6.2:1，过 WCAG AA）。
+   ───────────────────────────────────────────────────────────── */
+.bt-router { width: 100%; }
+
+.bt-mode-toggle {
+  display: inline-flex;
+  gap: 4px;
+  margin: 0 0 1.25rem;
+  padding: 4px;
+  border-radius: 999px;
+  background: #FFE4EC;
+  border: 2px solid #4A2838;
+  box-shadow: 2px 2px 0 #4A2838;
+}
+
+.bt-mode-toggle__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7A5568;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.bt-mode-toggle__btn:hover:not(.is-active) { color: #4A2838; }
+
+.bt-mode-toggle__btn.is-active {
+  background: #C02868;
+  color: #fff;
+}
+
+.bt-mode-toggle__btn:focus-visible {
+  outline: 2px solid #C02868;
+  outline-offset: 2px;
+}
+
+.bt-mode-toggle__badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #F5C842;
+  color: #4A2838;
+  letter-spacing: 0.02em;
+}
+
+.bt-mode-toggle__btn.is-active .bt-mode-toggle__badge {
+  background: #FFF4C9;
+  color: #4A2838;
+}
+
+/* 幻月夜暗模式 */
+[data-theme='dark'] .bt-mode-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+}
+[data-theme='dark'] .bt-mode-toggle__btn { color: #D8C3CE; }
+[data-theme='dark'] .bt-mode-toggle__btn:hover:not(.is-active) { color: #FFE4EC; }
+[data-theme='dark'] .bt-mode-toggle__btn.is-active { background: #E5578B; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-mode-toggle__btn { transition: none; }
+}
