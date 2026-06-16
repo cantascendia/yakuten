@@ -17,7 +17,8 @@
     "seo:gsc": "node scripts/seo/fetch-gsc.mjs",
     "seo:trends": "node scripts/seo/fetch-trends.mjs",
     "seo:refresh": "node scripts/seo/refresh-keyword-gap.mjs",
-    "seo:all": "npm run seo:trends && npm run seo:gsc && npm run seo:refresh"
+    "seo:ai": "node scripts/seo/ai-analyze.mjs",
+    "seo:all": "npm run seo:trends && npm run seo:gsc && npm run seo:refresh && npm run seo:ai"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.59",
