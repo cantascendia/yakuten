@@ -17,6 +17,21 @@
       "permanent": true
     },
     {
+      "source": "/:locale/zh/blog/:rest*",
+      "destination": "/zh/blog/:rest*",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(en|ja|ko|pt|ru|es|id|th|fil|hi|vi|ar|fa|fr|de|tr)/blog/:rest*",
+      "destination": "/zh/blog/:rest*",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(zh|en|ja|ko)/medications/:cat(estrogens|antiandrogens|progestogens|five-alpha-reductase)/",
+      "destination": "/:locale/medications/:cat/overview/",
+      "permanent": true
+    },
+    {
       "source": "/zh/药物",
       "destination": "/zh/medications/",
       "permanent": true
