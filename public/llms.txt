@@ -22,12 +22,15 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 ### Clinical Pathway
 - /zh/ — Home / site overview
 - /zh/before-you-start/ — Baseline labs, contraindications, informed consent
+- /zh/fertility-preservation/ — Sperm banking and fertility options before/during HRT
 - /zh/pathway/ — Complete HRT pathway from initiation to maintenance
 - /zh/china-reality/ — HRT access reality in mainland China
 - /zh/dose-limits/ — Maximum doses and dangerous combinations
 - /zh/blood-tests/ — Required monitoring and lab interpretation
 - /zh/risks/ — Risk identification and emergency recognition
 - /zh/breast-development/ — Breast development physiology and realistic expectations
+- /zh/guidelines-comparison/ — WPATH SOC8 vs Endocrine Society 2017 vs UCSF side-by-side
+- /zh/controversies-faq/ — Evidence-based answers to common HRT controversies
 
 ### Task Guides (实操指南)
 - /zh/guides/ — Guides overview
@@ -35,7 +38,7 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 - /zh/guides/switch-antiandrogen/ — Switching anti-androgen medications
 - /zh/guides/switch-e2-route/ — Switching estradiol administration route
 
-### Medications (20 drugs covered)
+### Medications (18 individual drug pages + category overviews)
 
 **Estrogens:**
 - /zh/medications/estrogens/overview/ — Estrogen selection guide (VTE comparison)
@@ -51,10 +54,12 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 
 **Anti-androgens:**
 - /zh/medications/antiandrogens/overview/ — Anti-androgen selection guide
-- /zh/medications/antiandrogens/cpa/ — Cyproterone acetate (CPA, 色谱龙)
+- /zh/medications/antiandrogens/cpa/ — Cyproterone acetate (CPA, 色普龙)
 - /zh/medications/antiandrogens/spironolactone/ — Spironolactone (安体舒通)
 - /zh/medications/antiandrogens/bicalutamide/ — Bicalutamide
 - /zh/medications/antiandrogens/gnrh-agonists/ — GnRH agonists
+- /zh/medications/antiandrogens/gnrh-antagonists/ — GnRH antagonists (relugolix, degarelix)
+- /zh/medications/antiandrogens/flutamide/ — Flutamide (not recommended — hepatotoxicity)
 
 **Progestogens:**
 - /zh/medications/progestogens/overview/ — Progestogen overview (optional in HRT)
@@ -62,6 +67,7 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 - /zh/medications/progestogens/hydroxyprogesterone/ — Hydroxyprogesterone
 - /zh/medications/progestogens/dydrogesterone/ — Dydrogesterone
 - /zh/medications/progestogens/drospirenone/ — Drospirenone
+- /zh/medications/progestogens/norethisterone/ — Norethisterone (caution — partial androgenic activity)
 - /zh/medications/progestogens/cautioned-progestins/ — Cautioned progestins (MPA)
 
 **5α-Reductase Inhibitors:**
@@ -91,9 +97,14 @@ All paths listed below are the Chinese (zh) versions. Equivalent pages exist in 
 - /zh/blog/hormone-panel-interpretation/ — How to read hormone blood panels
 - /zh/blog/hrt-monitoring-schedule/ — Blood test frequency schedule
 - /zh/blog/cpa-side-effects-guide/ — CPA side effects guide
+- /zh/blog/cpa-dose-safe-range/ — CPA safe dose range (5–12.5 mg/day)
+- /zh/blog/cpa-meningioma-risk-evidence/ — CPA meningioma risk: the evidence
 - /zh/blog/cpa-vs-spironolactone/ — CPA vs spironolactone comparison
 - /zh/blog/oral-vs-patch-safety/ — Oral vs patch safety comparison
+- /zh/blog/injectable-estradiol-how-to-choose/ — Choosing an injectable estradiol ester
 - /zh/blog/estradiol-gel-how-to/ — Transdermal gel application guide
+- /zh/blog/progesterone-whether-to-add/ — Whether to add progesterone in HRT
+- /zh/blog/blood-test-timing-after-injection/ — Blood test timing after injection
 - /zh/blog/hrt-emergency-symptoms/ — Emergency symptoms requiring stop + ER
 - /zh/blog/hrt-safe-discontinuation/ — Safe HRT discontinuation guide
 

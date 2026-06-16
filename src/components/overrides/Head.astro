@@ -133,7 +133,8 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 <Default {...Astro.props}><slot /></Default>
 <JsonLd />
 <link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex,nofollow" />}
+{/* noindex pages (e.g. paused ko locale) still pass link equity: index=no, follow=yes. */}
+{noindex && <meta name="robots" content="noindex,follow" />}
 <meta property="og:url" content={canonical} />
 <link rel="manifest" href="/manifest.json" />
 <link rel="alternate" hreflang="x-default" href={xDefault} />

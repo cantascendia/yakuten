@@ -41,6 +41,8 @@ stitch-prompts.md
 # SEO automation secrets & raw pulls (do not commit)
 .gsc-credentials.json
 docs/data/gsc-*.csv
+# AI SEO report — derived from GSC, may contain real search queries
+docs/data/ai-seo-report-*.md
 
 # gpt-image-2 raw downloads (large PNG/JPG source, compressed webp committed separately)
 scripts/gpt-image-2-raw/

@@ -1,14 +1,15 @@
 # SEO 自动化一次性设置
 
-本项目有 3 条 SEO 数据管道:
+本项目有 4 条 SEO 数据管道:
 
 | 管道 | 认证 | 首次设置 | 之后 |
 |---|---|---|---|
 | Google Trends | 无需 | 0 步 | `npm run seo:trends` |
 | Google Search Console | 服务账号 JSON | ~10 min(见下) | `npm run seo:gsc` |
 | 合并到 keyword-gap.md | 无 | 0 步 | `npm run seo:refresh` |
+| AI 策略分析(Gemini) | 复用 Gemini API key | 0 步 | `npm run seo:ai` |
 
-一条命令跑全套: `npm run seo:all`
+一条命令跑全套: `npm run seo:all`(trends → gsc → refresh → ai)
 
 ---
 
@@ -118,6 +119,24 @@ npm run seo:refresh
 - **手工维护的 P0/P1/P2 表格保留不动**(在 AUTO-SNAPSHOT 块外)
 
 每月跑一次即可追踪趋势。
+
+---
+
+## 三·五、AI 策略分析(Gemini)
+
+```bash
+npm run seo:ai                 # 调 Gemini 生成行动报告
+npm run seo:ai -- --dry-run    # 只验证数据管道,不调 API
+```
+
+**工作方式**:
+- 读 `gsc-latest.csv` + `trends-latest.json` + `seo-keyword-gap.md`(策略上下文)+ `llms.txt`(页面清单)——有哪个读哪个,至少要有 GSC 或 Trends 之一。
+- 喂给 Gemini(`gemini-3-flash-preview`,可用 `SEO_AI_MODEL` 覆盖),产出:Striking-distance 快赢 / 内容缺口 / AEO 改进 / 本轮 Top 5。
+- 写 `docs/data/ai-seo-report-YYYY-MM-DD.md` + `ai-seo-report-latest.md`。
+
+**认证**:复用 `GOOGLE_GENERATIVE_AI_API_KEY`(AI 问答那把同款 key)。本地从 `.env.local` 自动加载,CI 用环境变量。
+
+**隐私**:GSC 行是站点自己页面的**聚合搜索词**(不是用户健康数据/对话/血检),仅用于 SEO 分析,不越隐私红线。报告文件 gitignore(衍生自 GSC,可能含真实搜索词)。
 
 ---
 
