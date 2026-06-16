@@ -32,7 +32,7 @@ Primary handbook:
 - **i18n**: Astro native routing (/zh/, /en/, /ja/, /ko/)
 - **Deploy**: Vercel (static + Edge Functions)
 - **AI**: Google Gemini (gemini-3-flash-preview) via Vercel Edge Function
-- **Analytics**: Umami (self-hosted, privacy-first)
+- **Analytics**: Vercel Analytics + Google Analytics 4 (aggregate pageview/event only; GA's gtag is blocked in mainland China, so mainland traffic is measured via Bing Webmaster + Vercel Analytics)
 - **Language**: TypeScript strict mode
 
 ## Build & Test Commands
@@ -52,7 +52,7 @@ npm run astro check  # TypeScript checking
 - **Blood test tool · classic mode**: pure frontend JS, zero storage, zero transmission
 - **Blood test tool · sakura mode (v3.2 血检手账)**: records persist in `localStorage` on the user's device only. Never transmitted to any server. Cleared via the in-app "清空所有记录" action or by clearing site data.
 - AI chat does not store conversations
-- No third-party tracking scripts
+- Third-party analytics limited to aggregate pageview/event metrics (Vercel Analytics + Google Analytics 4, both honoring the `yakuten-dev` opt-out via `PUBLIC_GA_ID`). Never send health data, user input, AI-chat content, or blood-test records to any analytics endpoint. No ad/social pixels (FB/TikTok/etc.). GA's gtag is blocked in mainland China — mainland traffic is measured via Bing Webmaster + Vercel Analytics.
 - All colors via CSS variables, never hardcoded
 - All animations: transform + opacity only, with prefers-reduced-motion fallback
 - Emergency banners: red background, white text, NOT dismissible
