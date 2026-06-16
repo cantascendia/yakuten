@@ -75,7 +75,8 @@
 - 血检自查工具 sakura mode (v3.2 血检手账)：**仅 localStorage 在用户设备上**，永不上传。
 - AI 问答：**不存储对话**（Vercel Edge function，stateless）。
 - 任何引入「上传 / sync / account / 第三方追踪」的修改必须更新 SPEC + 走 §4 spec-driven。
-- 无第三方 GA / FB pixel；分析仅 Vercel Analytics / Speed Insights（含 dev opt-out）。
+- 分析仅限聚合 PV/事件：Vercel Analytics / Speed Insights + Google Analytics 4（`PUBLIC_GA_ID` 控制，均含 `yakuten-dev` opt-out）。**绝不**向分析端点上报健康数据 / 用户输入 / AI 对话 / 血检记录；无 FB/TikTok 等广告社媒像素。GA gtag 在大陆被墙，大陆以 Bing 站长 + Vercel 为准。
+  - 备案：2026-06 owner 批准接入 GA4（仅聚合），已同步更新 SPEC §3 技术栈表 / §10.2 安全要求 + CLAUDE.md + ARCHITECTURE.md，满足上一条「更新 SPEC + spec-driven」门槛。
 
 ### §7. 引证完整 — 无引用即无医疗内容
 

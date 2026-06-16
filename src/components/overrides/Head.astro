@@ -19,6 +19,24 @@ const pathname = Astro.url.pathname;
 const site = 'https://hrtyaku.com';
 const canonical = new URL(pathname, site).href;
 
+// Google Analytics 4 — measurement ID G-1E6C28RJFJ.
+// Active on PRODUCTION builds by default (no Vercel config needed). `PUBLIC_GA_ID`
+// (Vercel env) overrides the ID anywhere; `astro dev` keeps GA OFF so local work is
+// never tracked. To disable in prod without code changes, set PUBLIC_GA_ID="" .
+//
+// ⚠ Known limitation — mainland China blindspot:
+//   gtag.js is served from googletagmanager.com, which the Great Firewall blocks /
+//   throttles inconsistently. Mainland-China pageviews are therefore largely NOT
+//   captured by GA. Mainland traffic is measured instead via Bing Webmaster Tools
+//   and Vercel Analytics (both reachable inside China). The script is `async`, so a
+//   blocked/slow gtag request never blocks rendering for mainland visitors.
+//
+// Privacy scope: GA collects aggregate pageview/event metrics only. We never send
+// health data, user input, AI-chat content, or blood-test records to GA. No ad or
+// social pixels (FB/TikTok/etc.). Honors the same `yakuten-dev` opt-out as Vercel.
+const FALLBACK_GA_ID = 'G-1E6C28RJFJ';
+const gaId = import.meta.env.PUBLIC_GA_ID ?? (import.meta.env.PROD ? FALLBACK_GA_ID : undefined);
+
 // Per-page authority signals for E-E-A-T (crawler-readable meta)
 const route = Astro.locals.starlightRoute;
 
@@ -163,6 +181,24 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 </script>
 <Analytics />
 <SpeedInsights />
+{gaId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
+      // Respect the same `yakuten-dev` opt-out used for Vercel analytics:
+      // `localStorage.setItem('yakuten-dev','1')` flips GA's official kill switch.
+      try {
+        if (localStorage.getItem('yakuten-dev') === '1') {
+          window['ga-disable-' + gaId] = true;
+        }
+      } catch (_) { /* private mode etc. */ }
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </>
+)}
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});

@@ -140,7 +140,7 @@ public/
 2. **引用强制** — 所有医疗声明需 `<CitationRef>`，无引用不发布
 3. **纯前端工具** — 血检 / 计算器 / 模拟器零数据传输，无后端存储
 4. **AI 无状态** — 对话不持久化，不存储用户数据
-5. **无第三方 tracking** — 仅 Vercel Analytics（带 dev opt-out），无 GA/FB pixel
+5. **第三方分析仅聚合** — Vercel Analytics + Google Analytics 4（`PUBLIC_GA_ID` 控制，均带 `yakuten-dev` opt-out），仅采集聚合 PV/事件，不上报健康数据/用户输入/血检记录；无 FB/TikTok 等广告社媒像素；GA gtag 在大陆被墙，大陆以 Bing 站长 + Vercel 为准
 6. **颜色变量化** — 所有颜色通过 CSS variables，不硬编码
 7. **动画限制** — 仅 transform + opacity，需 `prefers-reduced-motion` fallback
 8. **紧急横幅不可关闭** — 红底白字，无关闭按钮

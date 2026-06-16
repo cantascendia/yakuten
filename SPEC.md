@@ -372,7 +372,7 @@ yakuten/
 | 血检工具 | 纯前端 JS | 不传输任何个人健康数据 |
 | 部署 | Vercel | 免费静态托管 + Edge Functions |
 | 字体 | 自托管 Google Fonts | 不依赖外部 CDN，中国可访问 |
-| 分析 | Umami 自托管 | 隐私友好，不用 Google Analytics |
+| 分析 | Vercel Analytics + Google Analytics 4 | 仅聚合 PV/事件；GA 在大陆被墙，大陆以 Bing 站长 + Vercel 为准；均带 `yakuten-dev` opt-out |
 | 域名注册 | Cloudflare Registrar | 便宜，WHOIS 隐私免费 |
 
 ---
@@ -800,7 +800,7 @@ const SYSTEM_PROMPT = `你是 HRT药典 的 AI 助手。
 - 不收集用户个人数据
 - 血检工具纯前端计算，零数据传输
 - AI 问答不存储对话记录
-- 不使用第三方追踪脚本
+- 第三方分析仅限聚合 PV/事件（Vercel Analytics + Google Analytics 4，带 `yakuten-dev` opt-out）；绝不上报健康数据 / 用户输入 / 血检记录；无广告或社媒像素；GA 在大陆被墙
 - HTTPS 强制
 - CSP headers 配置
 - API key 仅存在于 Vercel Edge Function 环境变量
