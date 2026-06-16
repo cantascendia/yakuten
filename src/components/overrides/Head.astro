@@ -19,9 +19,10 @@ const pathname = Astro.url.pathname;
 const site = 'https://hrtyaku.com';
 const canonical = new URL(pathname, site).href;
 
-// Google Analytics 4 — gated on the PUBLIC_GA_ID build-time env var (set it in
-// Vercel → Project → Settings → Environment Variables as `PUBLIC_GA_ID=G-XXXXXXXXXX`).
-// When the var is unset (dev, forks, preview without it) nothing is emitted.
+// Google Analytics 4 — measurement ID G-1E6C28RJFJ.
+// Active on PRODUCTION builds by default (no Vercel config needed). `PUBLIC_GA_ID`
+// (Vercel env) overrides the ID anywhere; `astro dev` keeps GA OFF so local work is
+// never tracked. To disable in prod without code changes, set PUBLIC_GA_ID="" .
 //
 // ⚠ Known limitation — mainland China blindspot:
 //   gtag.js is served from googletagmanager.com, which the Great Firewall blocks /
@@ -33,7 +34,8 @@ const canonical = new URL(pathname, site).href;
 // Privacy scope: GA collects aggregate pageview/event metrics only. We never send
 // health data, user input, AI-chat content, or blood-test records to GA. No ad or
 // social pixels (FB/TikTok/etc.). Honors the same `yakuten-dev` opt-out as Vercel.
-const gaId = import.meta.env.PUBLIC_GA_ID;
+const FALLBACK_GA_ID = 'G-1E6C28RJFJ';
+const gaId = import.meta.env.PUBLIC_GA_ID ?? (import.meta.env.PROD ? FALLBACK_GA_ID : undefined);
 
 // Per-page authority signals for E-E-A-T (crawler-readable meta)
 const route = Astro.locals.starlightRoute;
