@@ -1,6 +1,6 @@
 ---
 title: "Protocolo Clínico de TRH"
-description: "Protocolo completo de TRH, dos exames de base à manutenção, incluindo metas de cada etapa, pontos de decisão e cronogramas de monitoramento."
+description: "Protocolo completo de TRH, dos exames de base à manutenção, com as metas de cada etapa, os pontos de decisão e os cronogramas de monitoramento."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Este protocolo baseia-se no WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> e na Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, oferecendo um marco padronizado para a iniciação e a manutenção da TRH transfeminina.
+  Este protocolo segue o WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> e a Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, oferecendo um marco padronizado para começar e manter a TRH transfeminina.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Linha do tempo do protocolo de TRH: Base → Dose Baixa (1-6 meses) → Titulação (6-12 meses) → Manutenção (12 meses+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">SEMANA 0</div>
   <PhaseBlock phase={0} title="Avaliação Inicial" color="green">
     <p class="phase-block__desc">
-      Antes de iniciar qualquer medicação, faça um painel de exames de base completo para descartar contraindicações e estabelecer seus valores de referência pessoais.
+      Antes de começar qualquer medicação, faça um painel de exames de base completo para descartar contraindicações e estabelecer os seus próprios valores de referência.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Aviso de segurança: seu corpo precisa de tempo para se adaptar às alterações nos receptores. Nunca aumente a dose sem exames de sangue. Não aumente a dose mesmo que sinta que "nada está acontecendo". Os brotos mamários costumam aparecer entre 3 e 6 meses.
+        Aviso de segurança: o seu corpo precisa de tempo para se adaptar às mudanças nos receptores. Nunca aumente a dose sem exames de sangue. Não aumente a dose mesmo que sinta que "nada está acontecendo". Os primeiros brotos mamários costumam surgir entre 3 e 6 meses.
       </p>
     </div>
   </PhaseBlock>
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">ESTADO ESTÁVEL · 12 MESES+</div>
   <PhaseBlock phase={3} title="Manutenção de Longo Prazo" color="pink" week="12 MESES+">
     <p class="phase-block__desc">
-      Quando os níveis e as mudanças físicas se estabilizarem, passe ao monitoramento de baixa frequência. Mantenha a menor dose eficaz para conservar E2 em 100-200 pg/mL e T &lt;50 ng/dL.
+      Quando os níveis e as mudanças físicas se estabilizarem, passe a um monitoramento menos frequente. Mantenha a menor dose eficaz para conservar o E2 em 100-200 pg/mL e a T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Frequência de Monitoramento</p>
@@ -199,14 +199,14 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          Painel hormonal completo e fatores de risco para TEV (tromboembolismo venoso) a cada 6 meses. Perfil lipídico e glicemia de jejum anuais. Considerar a triagem de densidade óssea.
+          Painel hormonal completo e fatores de risco para TEV (tromboembolismo venoso) a cada 6 meses. Perfil lipídico e glicemia de jejum uma vez por ano. Considerar a triagem de densidade óssea.
         </p>
       </div>
     </div>
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL não produz mais feminização — apenas aumenta o risco (Endocrine Society 2017, Rec 2.2)
+        E2 &gt;200 pg/mL não traz mais feminização — apenas aumenta o risco (Endocrine Society 2017, Rec 2.2)
       </p>
     </div>
   </PhaseBlock>
