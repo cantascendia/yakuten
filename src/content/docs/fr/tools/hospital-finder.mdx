@@ -1,6 +1,6 @@
 ---
 title: "Annuaire médical"
-description: "Un annuaire structuré de ressources d'accès aux soins signalées par la communauté. Vérifiez directement avant de vous déplacer."
+description: "Un annuaire structuré de ressources d'accès aux soins remontées par la communauté. Vérifiez toujours directement avant de vous déplacer."
 evidenceLevel: X
 lastReviewed: 2026-04-09
 references: []
@@ -25,10 +25,10 @@ export const hospitalsByCity = cityOrder
 export const cityCount = hospitalsByCity.length;
 
 <WarningBox title="Vérifiez avant de vous déplacer">
-Ces fiches sont des notes d'accès tenues à jour par la communauté, et non des garanties institutionnelles officielles. Les politiques, les services et la disponibilité des médecins peuvent changer rapidement ; une confirmation directe reste donc toujours indispensable.
+Ces fiches sont des notes d'accès tenues à jour par la communauté, et non des garanties officielles émanant des établissements. Les politiques, les services et la disponibilité des médecins peuvent évoluer du jour au lendemain : une confirmation directe reste donc toujours indispensable.
 </WarningBox>
 
-Cet annuaire compte actuellement {hospitals.length} fiches signalées par la communauté, réparties sur {cityCount} villes. À ce stade, les données sources sous-jacentes restent principalement en chinois ; les noms d'établissements et les notes locales peuvent donc apparaître encore en chinois.
+Cet annuaire recense pour l'instant {hospitals.length} fiches remontées par la communauté, réparties sur {cityCount} villes. À ce stade, les données sources sont encore majoritairement en chinois ; les noms d'établissements et les notes locales peuvent donc s'afficher en chinois.
 
 ---
 
@@ -46,12 +46,12 @@ Cet annuaire compte actuellement {hospitals.length} fiches signalées par la com
 
 **Comment utiliser cette page**
 
-1. Servez-vous-en comme point de départ pour votre propre vérification.
+1. Considérez-la comme un point de départ pour mener vos propres vérifications.
 2. Confirmez directement auprès de l'établissement le service concerné, la disponibilité des médecins et les modalités d'inscription.
-3. Associez l'accès à un soignant à une planification de bilan biologique de référence et à une vigilance face aux urgences.
+3. Associez l'accès à un soignant à la planification d'un bilan biologique de référence et à une vigilance face aux urgences.
 
 </GlassCard>
 
 <DangerBox title="Note relative aux urgences">
-Cet annuaire n'est pas un service d'orientation en urgence. En cas de symptômes urgents, rendez-vous d'abord aux urgences plutôt que de vous fier à la consultation de l'annuaire.
+Cet annuaire n'est pas un service d'orientation en urgence. En cas de symptômes urgents, rendez-vous d'abord aux urgences plutôt que de vous en remettre à la consultation de cet annuaire.
 </DangerBox>
