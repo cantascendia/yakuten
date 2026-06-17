@@ -1,6 +1,6 @@
 ---
 title: "Metodología"
-description: "Cómo se produce el contenido de la Farmacopea de THR, desde la búsqueda bibliográfica hasta la publicación — alineación con guías clínicas, citas con DOI, gradación de la evidencia A/B/C/X, doble verificación independiente, revisión por asesores médicos y revisión trimestral continua."
+description: "Cómo elaboramos cada contenido de la Farmacopea de THR, desde la búsqueda bibliográfica hasta la publicación: alineación con las guías clínicas, citas con DOI, gradación de la evidencia A/B/C/X, doble verificación independiente, revisión por asesores médicos y revisión continua trimestral."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -19,78 +19,78 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
   locale="es"
 />
 
-Esta página describe cómo se redacta, revisa y actualiza cada pieza de contenido de la Farmacopea de THR. Es nuestro compromiso con quienes nos leen: **el texto que no ha pasado por este proceso no se publica**.
+En esta página te contamos cómo se escribe, se revisa y se actualiza cada contenido de la Farmacopea de THR. Es el compromiso que asumimos contigo: **lo que no pasa por este proceso, no se publica**.
 
 ## 1. Tres principios fundamentales
 
-1. **Ninguna afirmación sin cita**: toda afirmación médica debe llevar al menos un DOI o una referencia a una guía internacional; si una afirmación no puede sustentarse en una fuente, o bien se marca como <EvidenceBadge level="X" /> o bien se elimina.
-2. **Datos de dosificación de fuentes cruzadas**: las dosis de prescripción deben aparecer en al menos dos fuentes autorizadas e independientes (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, y similares).
-3. **Evitar el lenguaje absoluto**: se omite "hay que / siempre / nunca" en favor de "habitualmente / se sugiere / en la gran mayoría de los casos".
+1. **Sin cita no hay afirmación**: toda afirmación médica lleva al menos un DOI o una referencia a una guía internacional; si algo no puede respaldarse con una fuente, se marca como <EvidenceBadge level="X" /> o no se escribe.
+2. **Dosis con fuentes cruzadas**: las dosis de prescripción deben aparecer en al menos dos fuentes autorizadas e independientes (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, entre otras).
+3. **Sin lenguaje absoluto**: evitamos el "hay que / siempre / nunca" y preferimos "habitualmente / se sugiere / en la gran mayoría de los casos".
 
 ## 2. Flujo de trabajo completo
 
 ### 1. Selección de temas
-- Los temas se eligen según la demanda de búsqueda, las preguntas de quienes leen, las actualizaciones de las guías y las principales alertas de seguridad (EMA/FDA)
-- Cada página enumera las 3 a 7 preguntas concretas que debe responder
-- El público objetivo (paciente / personal de atención primaria / familiar) se define desde el inicio
+- Elegimos los temas según la demanda de búsqueda, las preguntas de quienes nos leen, las actualizaciones de las guías y las grandes alertas de seguridad (EMA/FDA).
+- Cada página deja por escrito las 3 a 7 preguntas concretas que debe responder.
+- Definimos desde el principio a quién va dirigida (paciente / personal de atención primaria / familiar).
 
 ### 2. Búsqueda bibliográfica
-- Canales principales: PubMed, Cochrane, sitios oficiales de guías, revisiones de Transfemscience
-- Excluidos: publicaciones anónimas en foros, sitios comerciales, blogs sin revisión por pares
-- Cada afirmación clave registra su cita original (se prefiere el DOI; en su defecto, los datos de publicación de la revista)
+- Fuentes principales: PubMed, Cochrane, las webs oficiales de las guías y las revisiones de Transfemscience.
+- Lo que dejamos fuera: mensajes anónimos de foros, sitios comerciales y blogs sin revisión por pares.
+- Cada afirmación clave guarda su cita original (preferimos el DOI; en su defecto, los datos de publicación de la revista).
 
 ### 3. Gradación de la evidencia
-Graduada según la solidez del diseño del estudio:
+La graduamos según la solidez del diseño del estudio:
 
 | Nivel | Significado | Ejemplo de evidencia |
 |---|---|---|
-| <EvidenceBadge level="A" /> | Sólida | Múltiples ECA, revisiones sistemáticas / metaanálisis, recomendación explícita de una guía internacional |
-| <EvidenceBadge level="B" /> | Moderada | ECA único, múltiples cohortes prospectivas |
+| <EvidenceBadge level="A" /> | Sólida | Varios ECA, revisiones sistemáticas / metaanálisis, recomendación explícita de una guía internacional |
+| <EvidenceBadge level="B" /> | Moderada | Un solo ECA, varias cohortes prospectivas |
 | <EvidenceBadge level="C" /> | Débil | Reportes de casos, estudios retrospectivos, opinión de personas expertas |
 | <EvidenceBadge level="X" /> | Nula | Saber popular de la comunidad, experiencia personal, inferencia |
 
 ### 4. Redacción
-- Se usan componentes compartidos: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
-- El frontmatter registra `evidenceLevel`, `lastReviewed` y `references` (verificado por CI)
-- Las tablas de dosis validan automáticamente los límites superiores y las combinaciones contraindicadas
+- Usamos componentes compartidos: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
+- El frontmatter registra `evidenceLevel`, `lastReviewed` y `references` (lo verifica CI).
+- Las tablas de dosis validan de forma automática los límites superiores y las combinaciones contraindicadas.
 
 ### 5. Doble verificación independiente
-- El autor o autora termina un borrador → una segunda persona editora verifica de forma independiente cada `<CitationRef>` contra la fuente primaria
-- Discrepancias o sobreinterpretaciones → se devuelve para revisión
-- Si la fuente original ha sido retractada o corregida → búsqueda y reemplazo en todo el sitio
+- Una vez terminado el borrador, una segunda persona editora comprueba de forma independiente cada `<CitationRef>` frente a la fuente primaria.
+- Si hay discrepancias o se va más allá de lo que dice la fuente → se devuelve para revisión.
+- Si la fuente original ha sido retractada o corregida → búsqueda y reemplazo en todo el sitio.
 
 ### 6. Revisión por asesores médicos
-- Los asesores de endocrinología / psiquiatría / asuntos legales se asignan según el tema
-- Se archivan los registros de la revisión, incluidos los desacuerdos y las decisiones finales
-- Si no se puede contactar con un revisor cualificado, el tema no se publica
+- Asignamos a los asesores de endocrinología / psiquiatría / asuntos legales según el tema.
+- Archivamos los registros de la revisión, incluidos los desacuerdos y las decisiones finales.
+- Si no es posible contar con un revisor cualificado, el tema no se publica.
 
 ### 7. Control de calidad de publicación y accesibilidad
-- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
-- Se validan el contraste de color, el acceso por teclado y la semántica para lectores de pantalla
-- Se verifican los puntos de quiebre móviles y el respaldo para `prefers-reduced-motion`
+- `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95).
+- Validamos el contraste de color, el acceso por teclado y la semántica para lectores de pantalla.
+- Verificamos los puntos de quiebre en móvil y el respaldo para `prefers-reduced-motion`.
 
 ### 8. Revisión continua
-- Por defecto, se revisa de nuevo cada **12 meses**, actualizando `lastReviewed`
-- Las páginas de alto riesgo (riesgos, líneas rojas de dosis, urgencias) se revisan de nuevo cada **6 meses**
-- Un cambio importante en una guía → actualización incremental en un plazo de 48 horas
+- Por defecto, volvemos a revisar cada **12 meses** y actualizamos `lastReviewed`.
+- Las páginas de alto riesgo (riesgos, líneas rojas de dosis, urgencias) se revisan de nuevo cada **6 meses**.
+- Ante un cambio importante en una guía → actualización incremental en un plazo de 48 horas.
 
 ## 3. Corrección de errores
 
-Cuando quienes nos leen detectan errores de hecho, deriva en las citas o contenido desactualizado:
+Si al leernos detectas un error de hecho, una cita que se ha desviado de su fuente o contenido desactualizado:
 
-1. Envíelo a través del [formulario de comentarios](https://wj.qq.com/s2/16576000/5fe5/) o de un Issue de GitHub
-2. Respuesta inicial en un plazo de 72 horas
-3. Una vez confirmado como un error de hecho, se añade un **aviso de fe de erratas** al inicio de la página, y el historial de versiones registra el error original y la fecha de corrección
-4. Las correcciones importantes se notifican a quienes están suscritos por correo electrónico / RSS / Telegram
+1. Envíanoslo a través del [formulario de comentarios](https://wj.qq.com/s2/16576000/5fe5/) o de un Issue de GitHub.
+2. Te damos una primera respuesta en un plazo de 72 horas.
+3. Una vez confirmado como error de hecho, añadimos un **aviso de fe de erratas** al principio de la página, y el historial de versiones deja constancia del error original y de la fecha de corrección.
+4. Las correcciones importantes se avisan a quienes están suscritos por correo electrónico / RSS / Telegram.
 
 ## 4. Declaración de conflictos de interés
 
-- Este sitio no tiene patrocinio comercial, ni publicidad de medicamentos, ni comisiones por compra
-- Los costos de operación son cubiertos de su propio bolsillo por personas voluntarias; aceptamos donaciones de la comunidad de código abierto
-- Las personas editoras y los asesores médicos firman declaraciones de conflicto de interés; los medicamentos con una relación de prescripción activa no son revisados de forma independiente por la parte en conflicto
+- Este sitio no tiene patrocinio comercial, ni publicidad de medicamentos, ni comisiones por compra.
+- Los gastos de funcionamiento los cubren de su propio bolsillo personas voluntarias; aceptamos donaciones de la comunidad de código abierto.
+- Las personas editoras y los asesores médicos firman declaraciones de conflicto de interés; los medicamentos con una relación de prescripción activa no los revisa de forma independiente la parte implicada.
 
 <WarningBox>
-Este sitio ofrece material de referencia basado en la evidencia y **no constituye consejo médico**. Consulte a un profesional de la salud cualificado antes de modificar su medicación, y busque atención de urgencia de inmediato ante síntomas agudos.
+Este sitio ofrece material de referencia basado en la evidencia y **no constituye consejo médico**. Consulta a un profesional de la salud cualificado antes de modificar tu medicación, y busca atención de urgencia de inmediato ante cualquier síntoma agudo.
 </WarningBox>
 
 ## Documentos relacionados
