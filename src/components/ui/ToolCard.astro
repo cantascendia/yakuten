@@ -1,0 +1,89 @@
+---
+/**
+ * ToolCard — 工具中心入口卡（绯英典籍 v2 · ToolsScreen 形态）
+ * 图标方块（粉彩底 + 墨线 + 小硬投影）+ 名称 + 描述 + 可选 tag chip。
+ * 样式见 src/styles/tools.css（页面侧 import）；标记需置于 .not-content 容器内
+ * 以脱离 Starlight markdown 默认排版。
+ */
+
+type IconName = 'drop' | 'clipboard' | 'pill' | 'route' | 'book' | 'pin' | 'tape' | 'file' | 'fox';
+type ColorName = 'mint' | 'butter' | 'sakura' | 'sky' | 'lavender' | 'coral';
+
+interface Props {
+  title: string;
+  href: string;
+  description: string;
+  icon?: IconName;
+  color?: ColorName;
+  tag?: string;
+}
+
+const { title, href, description, icon = 'book', color = 'sakura', tag } = Astro.props;
+
+/* 2px 线性图标 path（移植自设计包 Primitives.jsx Icon） */
+const ICON_PATHS: Record<string, string> = {
+  drop: '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',
+  clipboard: '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+  pill: '<path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/>',
+  route: '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  pin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+  tape: '<rect x="3" y="8" width="18" height="8" rx="1"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="3" y1="14" x2="21" y2="14"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',
+};
+
+/* CTA 文案 — 组件内建四语 dict（参照 MoonPhaseToggle 模式） */
+const pathname = Astro.url.pathname;
+const locale = pathname.startsWith('/en/')
+  ? 'en'
+  : pathname.startsWith('/ja/')
+    ? 'ja'
+    : pathname.startsWith('/ko/')
+      ? 'ko'
+      : 'zh';
+const CTA: Record<string, string> = { zh: '打开', en: 'Open', ja: '開く', ko: '열기' };
+const cta = CTA[locale] ?? CTA.zh;
+
+const isFox = icon === 'fox';
+const iconPath = ICON_PATHS[icon] ?? ICON_PATHS.book;
+---
+
+<a href={href} class={`yk-tool-card yk-tool-card--${color}`} data-paper>
+  <div class="yk-tool-card__top">
+    <span class="yk-tool-card__icon" aria-hidden="true">
+      {/* fox = 狐狸老师（原创平面几何，源自设计包 Primitives.jsx，颜色全 token 化） */}
+      {isFox ? (
+        <svg width="36" height="36" viewBox="0 0 64 64">
+          <polygon points="13,30 17,7 31,21" fill="var(--honey)"></polygon>
+          <polygon points="51,30 47,7 33,21" fill="var(--honey)"></polygon>
+          <polygon points="17.5,26 19.5,13 27.5,21" fill="var(--cream)"></polygon>
+          <polygon points="46.5,26 44.5,13 36.5,21" fill="var(--cream)"></polygon>
+          <circle cx="32" cy="38" r="20" fill="var(--honey)"></circle>
+          <ellipse cx="32" cy="46" rx="11" ry="9" fill="var(--ivory)"></ellipse>
+          <circle cx="32" cy="43" r="2.4" fill="var(--ink)"></circle>
+          <circle cx="23.5" cy="35" r="6" fill="var(--ivory)" stroke="var(--ink)" stroke-width="2.4"></circle>
+          <circle cx="40.5" cy="35" r="6" fill="var(--ivory)" stroke="var(--ink)" stroke-width="2.4"></circle>
+          <line x1="29.5" y1="35" x2="34.5" y2="35" stroke="var(--ink)" stroke-width="2.4"></line>
+          <circle cx="23.5" cy="35" r="1.6" fill="var(--ink)"></circle>
+          <circle cx="40.5" cy="35" r="1.6" fill="var(--ink)"></circle>
+        </svg>
+      ) : (
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          set:html={iconPath}
+        />
+      )}
+    </span>
+    {tag && <span class="yk-tool-card__tag yk-nowrap">{tag}</span>}
+  </div>
+  <h3 class="yk-tool-card__title">{title}</h3>
+  <p class="yk-tool-card__desc">{description}</p>
+  <span class="yk-tool-card__cta" aria-hidden="true">{cta} →</span>
+</a>

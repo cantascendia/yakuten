@@ -1,0 +1,134 @@
+/* =========================================================================
+   HRT药典 — Tools Hub · 绯英典籍 v2（ToolsScreen 形态）
+   工具中心入口卡：图标方块 + 名称 + 描述 + tag chip（无左色条）。
+   由 src/content/docs/<locale>/tools/index.mdx import；
+   卡片标记见 src/components/ui/ToolCard.astro。
+   ========================================================================= */
+
+/* 网格 — 自适应列宽（Starlight 版心 ~45rem 内 2 列，窄屏 1 列） */
+.yk-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--card-gap, 16px);
+  margin: 1rem 0 1.5rem;
+}
+
+/* 卡片 — 墨线硬投影纸卡，hover 抬升 */
+.yk-tool-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--fg-1);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.yk-tool-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.yk-tool-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yk-tool-card:hover,
+  .yk-tool-card:active {
+    transform: none;
+    box-shadow: var(--shadow-hard);
+  }
+}
+
+/* Starlight markdown 容器内的保险（卡片应置于 .not-content 网格中） */
+.sl-markdown-content a.yk-tool-card {
+  text-decoration: none;
+  color: var(--fg-1);
+}
+
+.yk-tool-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* 图标方块 — 粉彩底 + 墨线 + 小硬投影 */
+.yk-tool-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink);
+  background: var(--sakura-pink);
+  overflow: hidden;
+}
+
+.yk-tool-card--mint .yk-tool-card__icon { background: var(--mint); }
+.yk-tool-card--butter .yk-tool-card__icon { background: var(--butter); }
+.yk-tool-card--sakura .yk-tool-card__icon { background: var(--sakura-pink); }
+.yk-tool-card--sky .yk-tool-card__icon { background: var(--sky); }
+.yk-tool-card--lavender .yk-tool-card__icon { background: var(--lavender); }
+.yk-tool-card--coral .yk-tool-card__icon { background: var(--coral); }
+
+/* tag chip — ivory 底 + 变体色描边（文字保持梅子墨，AA 安全） */
+.yk-tool-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: var(--ivory);
+  border: 2px solid var(--ink-faint);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui-accent);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--fg-1);
+  white-space: nowrap;
+}
+
+.yk-tool-card--mint .yk-tool-card__tag { border-color: var(--mint-deep); }
+.yk-tool-card--butter .yk-tool-card__tag { border-color: var(--butter-deep); }
+.yk-tool-card--sakura .yk-tool-card__tag { border-color: var(--sakura-pink-deep); }
+.yk-tool-card--sky .yk-tool-card__tag { border-color: var(--sky-deep); }
+.yk-tool-card--lavender .yk-tool-card__tag { border-color: var(--lavender-deep); }
+.yk-tool-card--coral .yk-tool-card__tag { border-color: var(--coral-deep); }
+
+.yk-tool-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--fg-1);
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+
+.yk-tool-card__desc {
+  font-size: 0.8125rem;
+  color: var(--fg-2);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+/* CTA — 统一 AA 文字红（变体深色不承载文字对比） */
+.yk-tool-card__cta {
+  margin-top: 14px;
+  color: var(--sakura-pink-text);
+  font-family: var(--font-ui-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}

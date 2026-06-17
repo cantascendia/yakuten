@@ -1,0 +1,206 @@
+---
+/**
+ * CodexToc — 典籍目录（绯英典籍 v2 新增首页区块）
+ *
+ * 线装书意象：cream 纸卡内五卷目录行（.yk-toc-row 点线引导符，
+ * 样式来自 layout.css 骨架层）+ 右上手写注记。
+ *
+ * 五卷链接（已按仓库实际路由验证）：
+ *   卷一 幻月路径 → /{locale}/pathway/
+ *   卷二 药物图鉴 → /{locale}/medications/estrogens/overview/
+ *   卷三 文档     → /{locale}/before-you-start/（文档首篇）
+ *   卷四 临床工具 → /{locale}/tools/（与 SplashNav 同口径）
+ *   卷五 友好医院 → /{locale}/tools/hospital-finder/
+ *
+ * 统计数字全部来自真实数据源：drugs.json / hospitals.json 长度、
+ * docs 集合按 locale 实数（构建期计算，不手填）。
+ */
+import { getLocale } from '../../i18n/ui';
+import { getCollection } from 'astro:content';
+import drugsData from '../../data/drugs.json';
+import hospitalsData from '../../data/hospitals.json';
+
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+const prefix = `/${locale}`;
+
+const drugCount = Array.isArray(drugsData) ? drugsData.length : 20;
+const hospitalCount = Array.isArray(hospitalsData) ? hospitalsData.length : 25;
+
+// 本语言文档页数 / 临床工具数（构建期从 docs 集合实数）
+let pageCount = 44;
+let toolCount = 9;
+try {
+  const allDocs = await getCollection('docs');
+  const localeDocs = allDocs.filter((entry) => {
+    const id = entry.id ?? '';
+    return id.startsWith(`${locale}/`) && id !== `${locale}/index`;
+  });
+  pageCount = localeDocs.length;
+  toolCount = localeDocs.filter((entry) => (entry.id ?? '').startsWith(`${locale}/tools/`)).length;
+} catch {
+  // 集合不可用时回退到保守的真实下限（zh 现状）
+}
+
+interface TocStrings {
+  ariaLabel: string;
+  heading: string;
+  handNote: string;
+  vols: [string, string, string, string, string];
+  titles: [string, string, string, string, string];
+  metas: [string, string, string, string, string];
+}
+
+/* v2 新增字符串（四语 dict，参照 MoonPhaseToggle 模式） */
+const STRINGS: Record<string, TocStrings> = {
+  zh: {
+    ariaLabel: '典籍目录',
+    heading: '目錄',
+    handNote: '一部安全底线的典籍，共五卷。',
+    vols: ['卷一', '卷二', '卷三', '卷四', '卷五'],
+    titles: ['幻月路径', '药物图鉴', '文档', '临床工具', '友好医院'],
+    metas: [
+      '四阶段 · 决策节点',
+      `${drugCount} 种 · 循证`,
+      `${pageCount} 页 × 4 语言`,
+      `${toolCount} 件 · 零上传`,
+      `${hospitalCount} 家 · 社区验证`,
+    ],
+  },
+  en: {
+    ariaLabel: 'Codex contents',
+    heading: 'Contents',
+    handNote: 'A codex of safety baselines, in five volumes.',
+    vols: ['Vol. I', 'Vol. II', 'Vol. III', 'Vol. IV', 'Vol. V'],
+    titles: ['Moonlit Pathway', 'Drug Codex', 'Documentation', 'Clinical Tools', 'Friendly Hospitals'],
+    metas: [
+      '4 phases · decision nodes',
+      `${drugCount} drugs · evidence-based`,
+      `${pageCount} pages × 4 languages`,
+      `${toolCount} tools · zero upload`,
+      `${hospitalCount} hospitals · community-verified`,
+    ],
+  },
+  ja: {
+    ariaLabel: '典籍目次',
+    heading: '目次',
+    handNote: '安全ラインの典籍、全五巻。',
+    vols: ['巻一', '巻二', '巻三', '巻四', '巻五'],
+    titles: ['幻月パスウェイ', '薬物図鑑', 'ドキュメント', '臨床ツール', 'フレンドリー病院'],
+    metas: [
+      '4 段階 · 意思決定ノード',
+      `${drugCount} 種 · エビデンス`,
+      `${pageCount} ページ × 4 言語`,
+      `${toolCount} 件 · アップロードなし`,
+      `${hospitalCount} 院 · コミュニティ検証`,
+    ],
+  },
+  ko: {
+    ariaLabel: '전적 목차',
+    heading: '목차',
+    handNote: '안전 기준선의 전적, 총 5권.',
+    vols: ['제1권', '제2권', '제3권', '제4권', '제5권'],
+    titles: ['환월 경로', '약물 도감', '문서', '임상 도구', '친화적 병원'],
+    metas: [
+      '4단계 · 결정 노드',
+      `${drugCount}종 · 근거 기반`,
+      `${pageCount}페이지 × 4개 언어`,
+      `${toolCount}종 · 업로드 없음`,
+      `${hospitalCount}곳 · 커뮤니티 검증`,
+    ],
+  },
+};
+const s = STRINGS[locale] ?? STRINGS.en;
+
+const hrefs: [string, string, string, string, string] = [
+  `${prefix}/pathway/`,
+  `${prefix}/medications/estrogens/overview/`,
+  `${prefix}/before-you-start/`,
+  `${prefix}/tools/`,
+  `${prefix}/tools/hospital-finder/`,
+];
+
+const rows = s.vols.map((vol, i) => ({
+  vol,
+  title: s.titles[i],
+  meta: s.metas[i],
+  href: hrefs[i],
+}));
+---
+
+<section class="codex-toc">
+  <nav class="codex-toc__card ink-card" aria-label={s.ariaLabel} data-paper>
+    <div class="codex-toc__head">
+      <h2 class="codex-toc__heading">{s.heading}</h2>
+      <span class="codex-toc__note yk-hand-note">{s.handNote}</span>
+    </div>
+    {rows.map((row) => (
+      <a class="yk-toc-row" href={row.href}>
+        <span class="yk-toc-row__vol">{row.vol}</span>
+        <span class="yk-toc-row__title">{row.title}</span>
+        <span class="yk-toc-row__leader" aria-hidden="true"></span>
+        <span class="yk-toc-row__meta">{row.meta}</span>
+      </a>
+    ))}
+  </nav>
+</section>
+
+<style>
+  .codex-toc {
+    position: relative;
+    z-index: 10;
+    padding: var(--space-sm) var(--page-pad) var(--space-2xl);
+    max-width: var(--page-max);
+    margin: 0 auto;
+  }
+
+  /* cream 纸卡（.ink-card 提供墨线 + 硬投影 + data-paper 锁墨） */
+  .codex-toc__card {
+    display: block;
+    background: var(--cream);
+    padding: 22px 28px;
+    max-width: 760px;
+  }
+
+  .codex-toc__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .codex-toc__heading {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.375rem;
+    color: var(--fg-1);
+    margin: 0;
+  }
+
+  .codex-toc__note {
+    font-size: 15px;
+  }
+
+  /* 行级 hover 也给 meta 一点反馈（颜色过渡，无位移） */
+  .codex-toc__card :global(.yk-toc-row:hover .yk-toc-row__meta) {
+    color: var(--fg-2);
+  }
+
+  @media (max-width: 560px) {
+    .codex-toc__card {
+      padding: 18px 18px;
+    }
+    /* 窄屏收起点线，避免 meta 被挤断行 */
+    .codex-toc__card :global(.yk-toc-row) {
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+    .codex-toc__card :global(.yk-toc-row__leader) {
+      display: none;
+    }
+    .codex-toc__card :global(.yk-toc-row__meta) {
+      margin-left: auto;
+    }
+  }
+</style>
