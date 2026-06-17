@@ -35,6 +35,9 @@ stitch-prompts.md
 .design-unzip/
 .claude-design-bundle/
 
+# Claude Code temporary agent worktrees (never commit — embedded git checkouts)
+.claude/worktrees/
+
 .vercel
 .env*.local
 
