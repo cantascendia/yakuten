@@ -1,6 +1,6 @@
 ---
 title: "Política editorial"
-description: "Principios editoriales de HRT Pharmacopoeia, proceso de corrección de errores, normas de derechos de autor y citación, canales de reclamaciones y apelaciones, y declaración de conflictos de interés."
+description: "Principios editoriales de HRT Pharmacopoeia: cómo corregimos errores, nuestras normas de derechos de autor y citación, los canales de reclamación y apelación, y nuestra declaración de conflictos de interés."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -21,65 +21,65 @@ import DangerBox from '../../../components/ui/DangerBox.astro';
 
 ## Prohibiciones absolutas
 
-HRT Pharmacopoeia nunca publicará ninguno de los siguientes contenidos:
+En HRT Pharmacopoeia jamás publicaremos ninguno de estos contenidos:
 
 <DangerBox>
 - Recomendaciones de prescripción personalizadas ("deberías tomar X mg")
-- Enlaces de compra de medicamentos, agentes de venta o códigos QR de referidos/comisiones
-- Formulaciones que debiliten el reconocimiento de emergencias médicas (TVP [DVT], hepatotoxicidad, meningioma, etc.)
+- Enlaces de compra de medicamentos, intermediarios de venta o códigos QR de referidos/comisiones
+- Redacciones que debiliten el reconocimiento de una urgencia médica (TVP [DVT], hepatotoxicidad, meningioma, etc.)
 - Afirmaciones médicas sin un DOI o una cita
-- Scripts de seguimiento de terceros o almacenamiento de datos de salud de las personas usuarias
+- Scripts de rastreo de terceros o almacenamiento de datos de salud de las personas usuarias
 - Configuraciones que eludan las advertencias de la IA o las alertas de seguridad
 </DangerBox>
 
 ## Lenguaje y tono
 
-- **Evitar los términos absolutos**: preferir "sugerimos / por lo general / en la mayoría de los casos" frente a "debe / siempre / nunca"
-- **Dirigirse directamente a la persona lectora**: escribir "puedes elegir A o B" en lugar de "los pacientes deben elegir A"
-- **Expresar la incertidumbre con claridad**: las conclusiones con nivel de evidencia B/C/X deben etiquetarse como "los datos son limitados" u "opinión de expertos"
-- **Reducir el estigma**: usar un lenguaje que valide a la comunidad y evitar términos anticuados o excesivamente clínicos
+- **Evitamos los términos absolutos**: preferimos "sugerimos / por lo general / en la mayoría de los casos" antes que "debe / siempre / nunca"
+- **Hablamos directamente contigo**: escribimos "puedes elegir A o B" en lugar de "los pacientes deben elegir A"
+- **Nombramos la incertidumbre sin rodeos**: las conclusiones con nivel de evidencia B/C/X se marcan como "los datos son limitados" u "opinión de expertos"
+- **Reducimos el estigma**: usamos un lenguaje que valida a la comunidad y evitamos términos anticuados o demasiado clínicos
 
 ## Citas y derechos de autor
 
-- Toda afirmación médica se respalda mediante el componente `CitationRef` (los identificadores se corresponden con las entradas de `src/data/references.json`)
-- Se prefieren los DOI; cuando no existe un DOI, se cita la información de publicación de la revista junto con una URL estable
+- Toda afirmación médica se respalda con el componente `CitationRef` (los identificadores se corresponden con las entradas de `src/data/references.json`)
+- Damos preferencia a los DOI; cuando no hay un DOI, citamos los datos de publicación de la revista junto con una URL estable
 - Las figuras y los diagramas son originales o proceden de obras Creative Commons / de dominio público; las reproducciones se atribuyen debidamente
 - El contenido original del sitio se publica bajo CC BY-SA 4.0; el código se rige por la LICENSE del repositorio
 
 ## Corrección de errores
 
-Las personas lectoras pueden enviar reportes a través del [formulario de retroalimentación](https://wj.qq.com/s2/16576000/5fe5/) o de [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+Puedes enviarnos un reporte a través del [formulario de retroalimentación](https://wj.qq.com/s2/16576000/5fe5/) o de [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
 
 | Tipo | Tiempo de respuesta | Tratamiento |
 |---|---|---|
 | Error de hecho | Respuesta inicial en un plazo de 72 horas | **Aviso de fe de erratas** al inicio de la página + registro de cambios |
-| Desviación de citas | 72 horas | Sustituir la cita y publicar un registro de corrección público |
+| Desviación en una cita | 72 horas | Sustituir la cita y publicar un registro de corrección público |
 | Información desactualizada | 7 días | Actualización incremental + actualizar `lastReviewed` |
 | Recomendación peligrosa | Retirada de emergencia en 24 horas | Corregir o mantener fuera de línea a la espera de revisión |
 
 Las correcciones importantes también se propagan a:
 
 - El historial de versiones en `/es/appendix-references/`
-- Suscriptores de RSS / Telegram / correo electrónico
+- Quienes están suscritos por RSS / Telegram / correo electrónico
 
 ## Reclamaciones y apelaciones
 
 - **Reclamaciones sobre el contenido**: [formulario de retroalimentación](https://wj.qq.com/s2/16576000/5fe5/)
-- **Cuestiones legales / derechos de autor**: abre un GitHub Issue con la etiqueta `legal`, o contacta con quienes mantienen el repositorio
-- **Privacidad**: este sitio no recopila información de identificación personal; cualquier filtración de privacidad que se reporte se gestiona en un plazo de 24 horas
+- **Cuestiones legales / derechos de autor**: abre un GitHub Issue con la etiqueta `legal`, o escribe a quienes mantienen el repositorio
+- **Privacidad**: este sitio no recopila información que identifique a las personas; cualquier filtración de privacidad que se nos reporte se gestiona en un plazo de 24 horas
 
 ## Declaración de conflictos de interés
 
 - **Sin patrocinio comercial, sin publicidad de medicamentos, sin comisiones por compras**
 - Los costos de operación se cubren con aportes voluntarios y donaciones de la comunidad de código abierto
-- El equipo editorial y las personas asesoras médicas firman declaraciones de conflicto de interés; los temas con relaciones de prescripción o comerciales directamente vinculadas se gestionan con recusación
-- Ningún enlace externo lleva identificadores de afiliación; solo se listan recursos hospitalarios y líneas de ayuda verificados por la comunidad
+- El equipo editorial y las personas asesoras médicas firman declaraciones de conflicto de interés; quien tenga una relación de prescripción o comercial directamente vinculada a un tema se abstiene de participar en él
+- Ningún enlace externo lleva identificadores de afiliación; solo listamos recursos hospitalarios y líneas de ayuda verificados por la comunidad
 
 ## Ciclo de revisión
 
 | Tipo de página | Intervalo de revisión predeterminado |
 |---|---|
-| Reconocimiento de emergencias, límites de dosis, advertencias de peligro | **6 meses** |
+| Reconocimiento de urgencias, límites de dosis, advertencias de peligro | **6 meses** |
 | Monografías de medicamentos y guías | **12 meses** |
 | Herramientas, políticas, metodología | **12 meses** |
 | Entradas del blog | Verificadas una vez, 12 meses después de su publicación |
@@ -87,7 +87,7 @@ Las correcciones importantes también se propagan a:
 Un cambio importante en una guía clínica (alerta de seguridad de la EMA/FDA, nueva edición de WPATH / Endocrine Society) desencadena una **actualización incremental en un plazo de 48 horas**.
 
 <WarningBox>
-Esta página es un compromiso público de autogobierno editorial. **Si nos encuentras incumpliendo cualquiera de las cláusulas anteriores, denúncialo públicamente** — esa rendición de cuentas es la única forma de mantener la confianza con quienes nos leen.
+Esta página es un compromiso público de autogobierno editorial. **Si nos descubres incumpliendo cualquiera de las cláusulas anteriores, denúncialo públicamente** — esa rendición de cuentas es la única forma de mantener la confianza con quienes nos leen.
 </WarningBox>
 
 ## Documentos relacionados

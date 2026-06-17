@@ -1,6 +1,6 @@
 ---
 title: "Acerca de este sitio"
-description: "La misión detrás de HRT Yakuten, nuestras fuentes de contenido basadas en evidencia (WPATH, Endocrine Society), el proceso de revisión por pares, los compromisos de privacidad y los avisos médicos."
+description: "La misión que da vida a HRT Yakuten: nuestras fuentes basadas en evidencia (WPATH, Endocrine Society), el proceso de revisión por pares, nuestros compromisos de privacidad y los avisos médicos."
 evidenceLevel: X
 lastReviewed: 2026-04-08
 references: []
@@ -12,25 +12,25 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 ## Misión
 
-**Basado en evidencia · Reducción de daños · Orientándote hacia la atención médica**
+**Basado en evidencia · Reducción de daños · Acompañándote hacia la atención médica**
 
-HRT Yakuten es un sitio de información sobre el umbral de seguridad dirigido a mujeres transgénero de la comunidad de habla china que usan HRT (terapia hormonal). Nuestro objetivo no es reemplazar a los médicos, sino ayudar a quienes ya están tomando — o están a punto de iniciar — la terapia hormonal a:
+HRT Yakuten es un sitio de información sobre los mínimos de seguridad, pensado para mujeres trans que usan HRT (terapia hormonal). No buscamos reemplazar a los médicos, sino acompañar a quienes ya están en tratamiento — o están a punto de empezar — para ayudarles a:
 
-- **Entender los resultados de tus análisis de sangre** y saber qué valores alterados justifican una consulta médica
-- **Conocer los riesgos reales de los medicamentos**, en lugar de basarte en rumores de la comunidad y relatos sin verificar
-- **Reconocer las señales de alerta de emergencia** (DVT, trombosis venosa profunda; daño hepático; meningioma) y tomar la decisión correcta en los momentos críticos
-- **Encontrar recursos médicos amigables con personas trans** y hacer la transición del DIY (automedicación) hacia la atención médica supervisada
+- **Entender tus análisis de sangre** y saber qué valores alterados ameritan una consulta médica
+- **Conocer los riesgos reales de los medicamentos**, en lugar de guiarte por rumores de la comunidad y testimonios sin verificar
+- **Reconocer las señales de alarma de una urgencia** (TVP, trombosis venosa profunda; daño hepático; meningioma) y tomar la decisión correcta en los momentos críticos
+- **Encontrar recursos médicos amigables con personas trans** y dar el paso del DIY (automedicación) hacia una atención médica supervisada
 
 ### Lo que este sitio NO es
 
 - ❌ No es una enciclopedia ni un libro de texto de medicina
 - ❌ No es un foro, una comunidad ni una red social
-- ❌ No es un canal de compra de medicamentos ni un sitio de recomendación de farmacias
-- ❌ No brinda recomendaciones de dosificación personalizadas ("deberías tomar X mg")
+- ❌ No es un canal de compra de medicamentos ni un sitio que recomiende farmacias
+- ❌ No da recomendaciones de dosis personalizadas ("deberías tomar X mg")
 
 ## Fuentes de contenido
 
-Todo el contenido médico de este sitio se basa en las siguientes guías clínicas internacionales y en la literatura revisada por pares:
+Todo el contenido médico de este sitio se apoya en las siguientes guías clínicas internacionales y en literatura revisada por pares:
 
 | Fuente | Descripción |
 |--------|-------------|
@@ -40,29 +40,29 @@ Todo el contenido médico de este sitio se basa en las siguientes guías clínic
 | **EMA (2020)** | Restricciones y evaluación de seguridad de la Agencia Europea de Medicamentos sobre el CPA |
 | **PubMed / PMC** | Artículos de investigación original revisados por pares (cada cita incluye un DOI) |
 
-Los números en superíndice junto a cada recomendación médica (p. ej. <sup>[1]</sup>) enlazan con la referencia específica. **Sin cita = sin contenido** — esta es una regla inquebrantable de este sitio.
+Los números en superíndice que acompañan a cada recomendación médica (p. ej. <sup>[1]</sup>) enlazan con la referencia concreta. **Sin cita = sin contenido**: es una regla inquebrantable de este sitio.
 
 ## Proceso de revisión de contenido
 
 | Paso | Criterio |
 |------|----------|
 | **Exigencia de cita** | Toda recomendación clínica debe poder rastrearse hasta al menos un artículo revisado por pares o una guía internacional |
-| **Validación cruzada** | Los rangos de dosificación de los medicamentos deben validarse de forma cruzada con ≥2 fuentes independientes (p. ej. WPATH + Endocrine Society + UCSF) |
+| **Validación cruzada** | Los rangos de dosis de los medicamentos deben validarse de forma cruzada con ≥2 fuentes independientes (p. ej. WPATH + Endocrine Society + UCSF) |
 | **Clasificación de la evidencia** | Cada página recibe un nivel de evidencia: A (múltiples ECA/metanálisis), B (ECA/cohorte único), C (informes de casos/opinión de expertos), X (sin evidencia) |
 | **Fecha de revisión** | Cada página muestra al pie la fecha de su última revisión |
-| **Ciclo de actualización** | El contenido se revisa trimestralmente para verificar su vigencia y se actualiza en función de la literatura recién publicada |
+| **Ciclo de actualización** | El contenido se revisa cada trimestre para comprobar que sigue vigente y se actualiza según la literatura recién publicada |
 
 <WarningBox title="Limitaciones del contenido">
-Actualmente este sitio es mantenido por una sola persona y no ha pasado por una revisión formal por pares realizada por un editor médico profesional. Hacemos todo lo posible por garantizar la exactitud, pero pueden existir errores y omisiones. Si encuentras alguna imprecisión, abre una Issue en GitHub.
+Por ahora este sitio lo mantiene una sola persona y no ha pasado por una revisión formal por pares a cargo de un editor médico profesional. Ponemos todo de nuestra parte para garantizar la exactitud, pero pueden existir errores y omisiones. Si detectas alguna imprecisión, abre una Issue en GitHub.
 </WarningBox>
 
 ## Implementación técnica
 
-| Tecnología | Finalidad |
+| Tecnología | Para qué sirve |
 |------------|---------|
-| **Astro + Starlight** | Generación de sitio estático — cero JS de forma predeterminada, carga extremadamente rápida |
-| **React Islands** | JS del lado del cliente solo para herramientas interactivas (verificador de análisis de sangre, simulador de dosis, etc.) |
-| **Pagefind** | Índice de búsqueda estático con soporte para chino/inglés/japonés |
+| **Astro + Starlight** | Generación de sitio estático — cero JS de forma predeterminada, carga muy rápida |
+| **React Islands** | JavaScript del lado del cliente solo para las herramientas interactivas (autochequeo de análisis de sangre, simulador de dosis, etc.) |
+| **Pagefind** | Índice de búsqueda estático con soporte para chino, inglés y japonés |
 | **Vercel** | Alojamiento estático + Edge Functions (preguntas y respuestas con IA) |
 | **Código abierto** | Código fuente completo disponible en [GitHub](https://github.com/cantascendia/yakuten) |
 
@@ -72,36 +72,36 @@ Actualmente este sitio es mantenido por una sola persona y no ha pasado por una 
 
 | Categoría | Medida |
 |----------|---------|
-| **Herramienta de análisis de sangre** | Cálculo puramente en el front-end con JavaScript — los datos que ingresas nunca salen de tu navegador y nunca se envían a ningún servidor |
-| **Preguntas y respuestas con IA** | Las conversaciones se procesan en tiempo real mediante Edge Functions — nada se almacena, registra ni se usa para entrenamiento |
-| **Analytics** | Vercel Web Analytics y Speed Insights — solo visitas de página agregadas y métricas de rendimiento; sin cookies, sin almacenamiento de identificadores personales, sin rastreo entre sitios |
-| **Rastreo** | Sin Google Analytics, sin rastreadores de redes sociales ni de anuncios incorporados — salvo las estadísticas agregadas de Vercel mencionadas arriba |
-| **Cookies** | Se usan únicamente para la preferencia de tema (modo oscuro/claro), no para rastreo |
+| **Herramienta de análisis de sangre** | El cálculo ocurre por completo en tu navegador, con JavaScript — los datos que introduces nunca lo abandonan ni se envían a ningún servidor |
+| **Preguntas y respuestas con IA** | Las conversaciones se procesan en tiempo real mediante Edge Functions — no se almacena, ni registra, ni se usa para entrenamiento |
+| **Analytics** | Vercel Web Analytics y Speed Insights — solo visitas de página agregadas y métricas de rendimiento; sin cookies, sin almacenar identificadores personales, sin rastreo entre sitios |
+| **Rastreo** | Sin Google Analytics, sin rastreadores de redes sociales ni de anuncios incrustados — salvo las estadísticas agregadas de Vercel mencionadas arriba |
+| **Cookies** | Se usan únicamente para recordar tu preferencia de tema (modo oscuro/claro), no para rastrearte |
 | **Anuncios** | Ninguno, y nunca los habrá |
 
 ## Aviso legal
 
 El contenido de este sitio es **solo con fines educativos e informativos** y no constituye consejo médico.
 
-- Este sitio no puede reemplazar el diagnóstico y el tratamiento presencial por parte de un médico calificado
-- El uso, ajuste e interrupción de los medicamentos deben llevarse a cabo bajo la orientación de un profesional de salud calificado
-- Si presentas cualquier síntoma de emergencia (hinchazón/dolor en una sola pierna, dolor torácico súbito, ictericia, etc.), suspende el medicamento de inmediato y acude a la sala de urgencias más cercana
+- Este sitio no puede sustituir el diagnóstico y el tratamiento presenciales por parte de un médico cualificado
+- El uso, el ajuste y la suspensión de los medicamentos deben hacerse bajo la orientación de un profesional de salud cualificado
+- Si presentas cualquier síntoma de urgencia (hinchazón o dolor en una sola pierna, dolor torácico súbito, ictericia, etc.), suspende el medicamento de inmediato y acude a urgencias lo antes posible
 - Este sitio no asume ninguna responsabilidad por las consecuencias médicas que se deriven del uso de su contenido
 
-**La automedicación (DIY) conlleva riesgos reales.** Este sitio busca ayudarte a usar los medicamentos de forma más segura, pero el enfoque más seguro es siempre realizar la HRT bajo la supervisión de un médico.
+**La automedicación (DIY) conlleva riesgos reales.** Este sitio busca ayudarte a usar los medicamentos de forma más segura, pero la opción más segura sigue siendo hacer la HRT bajo la supervisión de un médico.
 
 ## Herramientas complementarias
 
-- **hananote** — Una aplicación de seguimiento de HRT para mujeres transgénero (Flutter), que ayuda a registrar medicamentos, análisis de sangre y cambios físicos. Complementa el contenido de este sitio con una gestión personalizada de la salud a largo plazo. Proyecto: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+- **hananote** — Una app de seguimiento de HRT para mujeres trans (Flutter), que te ayuda a registrar medicamentos, análisis de sangre y cambios físicos. Complementa el contenido de este sitio con una gestión personalizada de la salud a largo plazo. Proyecto: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
 
 ## Contacto y contribuciones
 
 - **GitHub**: [github.com/cantascendia/yakuten](https://github.com/cantascendia/yakuten) — Abre una Issue o un Pull Request
 - **Correcciones de contenido**: ¿Encontraste un error médico? Abre una Issue en GitHub con la referencia que creas que es la correcta
-- **Galería de marcas**: Si tienes fotos de medicamentos reales que te gustaría aportar, contáctanos a través de GitHub (se requiere licencia CC-BY-SA)
+- **Galería de marcas**: Si tienes fotos de medicamentos reales que quieras aportar, escríbenos a través de GitHub (se requiere licencia CC-BY-SA)
 
 ## Licencia
 
-El contenido de este sitio está licenciado bajo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Eres libre de compartirlo y adaptarlo, siempre que des el crédito apropiado, no lo uses con fines comerciales y distribuyas las obras derivadas bajo la misma licencia.
+El contenido de este sitio está publicado bajo la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Eres libre de compartirlo y adaptarlo, siempre que des el crédito correspondiente, no lo uses con fines comerciales y distribuyas las obras derivadas bajo la misma licencia.
 
-El código fuente está licenciado bajo la Licencia MIT.
+El código fuente está publicado bajo la Licencia MIT.
