@@ -1,6 +1,6 @@
 ---
 title: "Méthodologie"
-description: "Comment le contenu de la Pharmacopée HRT est produit, de la recherche bibliographique à la publication — alignement sur les recommandations cliniques, citations DOI, gradation des preuves A/B/C/X, double vérification croisée, relecture par un conseiller médical et révision trimestrielle continue."
+description: "Comment se fabrique le contenu de la Pharmacopée HRT, de la recherche bibliographique à la publication : alignement sur les recommandations cliniques, citations DOI, gradation des preuves A/B/C/X, double vérification croisée, relecture par un conseiller médical et révision trimestrielle continue."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -19,28 +19,28 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
   locale="fr"
 />
 
-Cette page décrit la manière dont chaque élément de contenu de la Pharmacopée HRT est rédigé, relu et mis à jour. C'est notre engagement envers nos lecteurs : **un texte qui n'a pas suivi ce processus n'est pas publié**.
+Cette page explique comment chaque contenu de la Pharmacopée HRT est rédigé, relu, puis tenu à jour. C'est l'engagement que nous prenons envers vous : **un texte qui n'est pas passé par ce processus n'est jamais mis en ligne**.
 
 ## 1. Trois principes fondamentaux
 
-1. **Pas d'affirmation sans citation** : toute affirmation médicale doit s'appuyer sur au moins un DOI ou une recommandation internationale ; si une affirmation ne peut être sourcée, elle est soit signalée <EvidenceBadge level="X" />, soit retirée.
-2. **Croiser les données posologiques** : les doses prescrites doivent figurer dans au moins deux sources faisant autorité et indépendantes (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, et autres sources comparables).
-3. **Éviter le langage absolu** : préférer « habituellement / recommandé / dans la grande majorité des cas » à « il faut / toujours / jamais ».
+1. **Pas d'affirmation sans source** : chaque affirmation médicale doit s'appuyer sur au moins un DOI ou une recommandation internationale ; faute de source, elle est soit signalée <EvidenceBadge level="X" />, soit retirée.
+2. **Croiser les données posologiques** : une dose ne figure ici que si elle est attestée par au moins deux sources de référence indépendantes (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, et autres sources comparables).
+3. **Bannir le langage absolu** : nous préférons « habituellement / recommandé / dans la grande majorité des cas » à « il faut / toujours / jamais ».
 
-## 2. Déroulé complet
+## 2. Le déroulé complet
 
 ### 1. Choix du sujet
 - Les sujets sont retenus en fonction de la demande de recherche, des questions des lecteurs, des mises à jour des recommandations et des alertes de sécurité majeures (EMA/FDA)
-- Chaque page énumère les 3 à 7 questions précises auxquelles elle doit répondre
-- Le public visé (patiente / médecin de premier recours / proche) est défini en amont
+- Chaque page énonce les 3 à 7 questions précises auxquelles elle doit répondre
+- Le public visé (patiente / médecin de premier recours / proche) est défini dès le départ
 
 ### 2. Recherche bibliographique
-- Canaux principaux : PubMed, Cochrane, sites officiels de recommandations, revues de Transfemscience
-- Sont exclus : les messages anonymes de forums, les sites commerciaux, les blogs sans relecture par les pairs
-- Chaque affirmation clé consigne sa citation d'origine (DOI de préférence ; à défaut, les informations de publication de la revue)
+- Canaux privilégiés : PubMed, Cochrane, sites officiels de recommandations, revues de Transfemscience
+- Écartés : les messages anonymes de forums, les sites commerciaux, les blogs sans relecture par les pairs
+- Chaque affirmation clé garde la trace de sa source d'origine (DOI de préférence ; à défaut, les informations de publication de la revue)
 
 ### 3. Gradation des preuves
-Gradation selon la robustesse du protocole d'étude :
+La note dépend de la solidité du protocole d'étude :
 
 | Niveau | Signification | Exemple de preuve |
 |---|---|---|
@@ -50,23 +50,23 @@ Gradation selon la robustesse du protocole d'étude :
 | <EvidenceBadge level="X" /> | Aucune | Savoir communautaire, expérience personnelle, déduction |
 
 ### 4. Rédaction
-- Utilisation de composants partagés : `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
-- Le frontmatter consigne `evidenceLevel`, `lastReviewed` et `references` (imposé par la CI)
-- Les tableaux de doses valident automatiquement les limites supérieures et les associations contre-indiquées
+- Recours à des composants partagés : `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>`, etc.
+- Le frontmatter consigne `evidenceLevel`, `lastReviewed` et `references` (vérifié par la CI)
+- Les tableaux de doses contrôlent automatiquement les limites supérieures et les associations contre-indiquées
 
 ### 5. Double vérification croisée
-- L'auteur termine une ébauche → un second éditeur vérifie de façon indépendante chaque `<CitationRef>` par rapport à la source primaire
-- En cas d'écart ou de surinterprétation → renvoi pour correction
+- L'auteur boucle une ébauche → un second éditeur vérifie de façon indépendante chaque `<CitationRef>` par rapport à la source primaire
+- Au moindre écart ou surinterprétation → renvoi pour correction
 - Si la source d'origine a été rétractée ou corrigée → recherche et remplacement à l'échelle de tout le site
 
 ### 6. Relecture par un conseiller médical
-- Des conseillers en endocrinologie / psychiatrie / domaine juridique sont désignés selon le sujet
+- Des conseillers en endocrinologie / psychiatrie / domaine juridique sont sollicités selon le sujet
 - Les comptes rendus de relecture, y compris les désaccords et les décisions finales, sont archivés
-- Si aucun relecteur qualifié ne peut être joint, le sujet n'est pas publié
+- Si aucun relecteur qualifié ne peut être joint, le sujet n'est pas mis en ligne
 
 ### 7. Contrôle qualité de la publication et de l'accessibilité
 - `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
-- Contraste des couleurs, accessibilité au clavier et sémantique pour lecteur d'écran validés
+- Contraste des couleurs, navigation au clavier et sémantique pour lecteur d'écran validés
 - Points de rupture mobiles et solution de repli `prefers-reduced-motion` vérifiés
 
 ### 8. Révision continue
@@ -76,17 +76,17 @@ Gradation selon la robustesse du protocole d'étude :
 
 ## 3. Correction des erreurs
 
-Lorsque des lecteurs signalent des erreurs factuelles, une dérive des citations ou un contenu obsolète :
+Lorsqu'un lecteur signale une erreur factuelle, une dérive des citations ou un contenu obsolète :
 
-1. Soumettre via le [formulaire de retour](https://wj.qq.com/s2/16576000/5fe5/) ou une issue GitHub
+1. Adressez-vous à nous via le [formulaire de retour](https://wj.qq.com/s2/16576000/5fe5/) ou une issue GitHub
 2. Première réponse sous 72 heures
 3. Une fois l'erreur factuelle confirmée, un **avis d'erratum** est ajouté en haut de la page, et l'historique des versions consigne l'erreur initiale ainsi que la date de correction
-4. Les corrections majeures sont diffusées aux abonnés par e-mail / RSS / Telegram
+4. Les corrections majeures sont relayées aux abonnés par e-mail / RSS / Telegram
 
 ## 4. Déclaration de conflits d'intérêts
 
-- Ce site ne fait l'objet d'aucun parrainage commercial, d'aucune publicité pour des médicaments et d'aucune commission sur les achats
-- Les frais de fonctionnement sont pris en charge personnellement par des bénévoles ; nous acceptons les dons de la communauté open source
+- Ce site ne reçoit aucun parrainage commercial, ne diffuse aucune publicité pour des médicaments et ne touche aucune commission sur les achats
+- Les frais de fonctionnement sont assumés personnellement par des bénévoles ; nous acceptons les dons de la communauté open source
 - Les éditeurs et les conseillers médicaux signent des déclarations de conflits d'intérêts ; les médicaments faisant l'objet d'une relation de prescription active ne sont pas relus de façon indépendante par la partie en situation de conflit
 
 <WarningBox>
