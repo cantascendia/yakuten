@@ -1,6 +1,6 @@
 ---
 title: "Directorio médico"
-description: "Un directorio estructurado de recursos de acceso a atención reportados por la comunidad. Verifica directamente antes de ir."
+description: "Un directorio de recursos de acceso a la atención médica, recopilados y reportados por la comunidad. Confirma siempre directamente antes de acudir."
 evidenceLevel: X
 lastReviewed: 2026-04-09
 references: []
@@ -24,11 +24,11 @@ export const hospitalsByCity = cityOrder
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
 
-<WarningBox title="Verifica antes de ir">
-Estos listados son notas de acceso mantenidas por la comunidad, no garantías institucionales oficiales. Las políticas, los departamentos y la disponibilidad de médicos pueden cambiar con rapidez, por lo que confirmar directamente siempre es necesario.
+<WarningBox title="Confirma antes de acudir">
+Estos listados son notas de acceso que mantiene la comunidad, no garantías oficiales de las instituciones. Las políticas, los servicios y la disponibilidad de médicos pueden cambiar de un día para otro, así que confirmar directamente con el centro es siempre imprescindible.
 </WarningBox>
 
-Este directorio incluye actualmente {hospitals.length} entradas reportadas por la comunidad en {cityCount} ciudades. Los datos de origen siguen estando principalmente en chino en esta etapa, por lo que los nombres de los hospitales y las notas locales pueden aparecer aún en chino.
+Por ahora este directorio reúne {hospitals.length} entradas aportadas por la comunidad en {cityCount} ciudades. Los datos de origen siguen estando, en esta etapa, mayormente en chino, de modo que es posible que los nombres de los hospitales y las notas locales aún aparezcan en ese idioma.
 
 ---
 
@@ -44,14 +44,14 @@ Este directorio incluye actualmente {hospitals.length} entradas reportadas por l
 
 <GlassCard>
 
-**Cómo usar esta página**
+**Cómo aprovechar esta página**
 
-1. Úsala como punto de partida para tu propia verificación.
-2. Confirma directamente con la institución el departamento, la disponibilidad de médicos y las reglas de registro.
-3. Combina el acceso a un proveedor con la planificación de análisis de base y la conciencia ante emergencias.
+1. Tómala como punto de partida para tu propia comprobación.
+2. Confirma directamente con el centro el servicio, la disponibilidad de médicos y las reglas para sacar cita.
+3. Combina el acceso a un proveedor con la planificación de tus análisis de base y con estar preparada ante una emergencia.
 
 </GlassCard>
 
 <DangerBox title="Nota sobre emergencias">
-Este directorio no es un servicio de derivación de urgencias. Si presentas síntomas urgentes, acude primero a atención de emergencia en lugar de depender de la consulta del directorio.
+Este directorio no es un servicio de derivación de urgencias. Si tienes síntomas urgentes, acude antes que nada a un servicio de emergencias en lugar de fiarte de lo que consultes aquí.
 </DangerBox>
