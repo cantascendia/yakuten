@@ -1,6 +1,6 @@
 ---
 title: "Parcours clinique du THS"
-description: "Parcours THS complet, du bilan initial à l'entretien, incluant les objectifs par étape, les nœuds de décision et les calendriers de suivi."
+description: "Le parcours THS de bout en bout, du bilan initial à l'entretien au long cours : objectifs de chaque étape, points de décision et rythme de suivi."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Ce parcours s'appuie sur les WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> et sur les recommandations de l'Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, offrant un cadre standardisé pour l'instauration et l'entretien du THS transféminin.
+  Ce parcours s'appuie sur les WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> et sur les recommandations de l'Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Il propose un cadre clair pour instaurer et entretenir un THS transféminin.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Chronologie du parcours THS : Bilan initial → Faible dose (1-6 mois) → Titration (6-12 mois) → Entretien (12 mois+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">SEMAINE 0</div>
   <PhaseBlock phase={0} title="Évaluation initiale" color="green">
     <p class="phase-block__desc">
-      Avant d'instaurer tout traitement, réalisez un bilan initial complet afin d'écarter les contre-indications et d'établir vos valeurs de référence personnelles.
+      Avant de commencer tout traitement, faites un bilan initial complet : il permet d'écarter les contre-indications et d'établir vos propres valeurs de référence.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -71,7 +71,7 @@ import '../../../styles/pathway.css';
       ]}
     />
     <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-      Anti-androgène (si nécessaire) : CPA 5-12.5 mg/jour ou spironolactone 50-100 mg/jour. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /> ; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+      Anti-androgène (si besoin) : CPA 5-12.5 mg/jour ou spironolactone 50-100 mg/jour. [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /> ; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
     </p>
     <div class="phase-stats">
       <div class="phase-stat">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Mise en garde de sécurité : votre corps a besoin de temps pour s'adapter aux changements des récepteurs. N'augmentez jamais la dose sans bilan sanguin. N'augmentez pas la dose même si vous avez l'impression qu'« il ne se passe rien ». Les premiers bourgeons mammaires apparaissent généralement entre 3 et 6 mois.
+        Mise en garde de sécurité : votre corps a besoin de temps pour s'adapter aux changements au niveau des récepteurs. N'augmentez jamais la dose sans bilan sanguin. N'augmentez pas non plus la dose même si vous avez l'impression qu'« il ne se passe rien ». Les premiers bourgeons mammaires apparaissent généralement entre 3 et 6 mois.
       </p>
     </div>
   </PhaseBlock>
@@ -102,15 +102,15 @@ import '../../../styles/pathway.css';
   <DecisionNode title="DÉCISION" timepoint="3 MOIS">
     <DecisionBranch
       outcome="green"
-      text="E2 30-100 pg/mL et T en baisse → Poursuivre le schéma actuel jusqu'à 6 mois"
+      text="E2 30-100 pg/mL et T en baisse → Poursuivez le schéma actuel jusqu'à 6 mois"
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <30 pg/mL → Envisager le passage aux doses de la Phase 2"
+      text="E2 <30 pg/mL → Envisagez de passer aux doses de la Phase 2"
     />
     <DecisionBranch
       outcome="red"
-      text="Bilan hépatique anormal / PRL >30 / dégradation sévère de l'humeur → Arrêter et consulter un médecin"
+      text="Bilan hépatique anormal / PRL >30 / dégradation sévère de l'humeur → Arrêtez et consultez un médecin"
     />
   </DecisionNode>
 </div>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 MOIS</div>
   <PhaseBlock phase={2} title="Titration de la dose" color="yellow" week="6-12 MOIS">
     <p class="phase-block__desc">
-      Ajustez selon les résultats du bilan à 3 mois. L'objectif est d'atteindre la fourchette physiologique standard pour les personnes transféminines.
+      Ajustez en fonction des résultats du bilan à 3 mois. L'objectif est d'atteindre la fourchette physiologique de référence pour les personnes transféminines.
     </p>
     <DoseTable
       headers={['Voie', 'Dose ajustée']}
@@ -168,15 +168,15 @@ import '../../../styles/pathway.css';
   <DecisionNode title="STABILITÉ" timepoint="6 MOIS">
     <DecisionBranch
       outcome="green"
-      text="E2 100-200 pg/mL et T <50 ng/dL → Entrer en phase d'entretien"
+      text="E2 100-200 pg/mL et T <50 ng/dL → Passez en phase d'entretien"
     />
     <DecisionBranch
       outcome="yellow"
-      text="T >50 mais E2 dans la cible → Ajuster l'anti-androgène (ne pas augmenter l'E2 pour supprimer la T)"
+      text="T >50 mais E2 dans la cible → Ajustez l'anti-androgène (n'augmentez pas l'E2 pour faire baisser la T)"
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <100 pg/mL → Poursuivre l'augmentation dans les limites de sécurité"
+      text="E2 <100 pg/mL → Poursuivez l'augmentation en restant dans les limites de sécurité"
     />
   </DecisionNode>
 </div>
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">RÉGIME STABLE · 12 MOIS+</div>
   <PhaseBlock phase={3} title="Entretien au long cours" color="pink" week="12 MOIS+">
     <p class="phase-block__desc">
-      Une fois les taux et les changements physiques stabilisés, passez à un suivi à faible fréquence. Maintenez la dose minimale efficace pour conserver une E2 de 100-200 pg/mL et une T &lt;50 ng/dL.
+      Une fois vos taux et vos changements physiques stabilisés, espacez le suivi. Conservez la dose minimale efficace pour maintenir une E2 de 100-200 pg/mL et une T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Fréquence de suivi</p>
@@ -199,14 +199,14 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          Bilan hormonal complet et facteurs de risque de MTEV (VTE) tous les 6 mois. Bilan lipidique et glycémie à jeun une fois par an. Envisager un dépistage de la densité osseuse.
+          Bilan hormonal complet et facteurs de risque de MTEV (TEV) tous les 6 mois. Bilan lipidique et glycémie à jeun une fois par an. À envisager : un dépistage de la densité osseuse.
         </p>
       </div>
     </div>
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Une E2 &gt;200 pg/mL n'entraîne pas davantage de féminisation — elle ne fait qu'augmenter le risque (Endocrine Society 2017, Rec 2.2)
+        Une E2 &gt;200 pg/mL n'apporte pas plus de féminisation — elle ne fait qu'augmenter le risque (Endocrine Society 2017, Rec 2.2)
       </p>
     </div>
   </PhaseBlock>
