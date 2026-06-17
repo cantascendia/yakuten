@@ -1,6 +1,6 @@
 ---
 title: 'Antes de empezar: ¿estás lista?'
-description: 'Lista de verificación esencial previa a la THS — análisis de sangre de base, contraindicaciones absolutas y relativas, requisitos del consentimiento informado y expectativas realistas para tu proceso médico.'
+description: 'Lista esencial de comprobaciones antes de la THS: análisis de sangre de base, contraindicaciones absolutas y relativas, qué implica el consentimiento informado y qué esperar de forma realista en tu proceso médico.'
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017]
@@ -12,13 +12,13 @@ import ContraindicationBox from '../../../components/ui/ContraindicationBox.astr
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
 
-Esto no es ponerte trabas: es un control de seguridad. Empezar la THS (terapia hormonal de afirmación de género, GAHT) sin análisis de base es como conducir con los ojos vendados.
+Esto no es ponerte trabas: es una revisión de seguridad. Empezar la THS (terapia hormonal de afirmación de género, GAHT) sin unos análisis de partida es como conducir con los ojos vendados.
 
-Las siguientes pruebas de base están recomendadas por las guías internacionales<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
+Las siguientes pruebas de base son las que recomiendan las guías clínicas internacionales<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} title="Standards of Care v8" />.
 
 ## <span style="font-family: var(--font-mono); color: var(--color-accent);">§ 1.1</span> Análisis de base
 
-Las siguientes pruebas deberían realizarse antes de empezar la THS. La mayoría puede solicitarse a través de tu médico de atención primaria, una clínica de consentimiento informado o servicios como Planned Parenthood:
+Conviene tener listas estas pruebas antes de iniciar la THS. En la mayoría de los casos puedes solicitarlas a través de tu médico de cabecera, de una clínica que trabaje con consentimiento informado o de un servicio de salud sexual de tu zona:
 
 <BaselineChecklist
   items={[
@@ -61,21 +61,21 @@ Las siguientes pruebas deberían realizarse antes de empezar la THS. La mayoría
 
 </ContraindicationBox>
 
-## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Establecer expectativas realistas
+## <span style="font-family: var(--font-mono); color: var(--color-info);">§ 1.4</span> Ajusta tus expectativas
 
 <RealityCheck
   items={[
     {
-      text: 'La THS no es magia. Los cambios ocurren a lo largo de meses y años; no esperes una transformación de la noche a la mañana.',
+      text: 'La THS no es magia. Los cambios llegan a lo largo de meses y años; no esperes una transformación de la noche a la mañana.',
     },
     {
-      text: 'Algunos cambios son irreversibles (como el desarrollo mamario), mientras que los cambios óseos establecidos y el grosor de las cuerdas vocales no se revertirán con el estrógeno. Entiende a qué te estás comprometiendo.',
+      text: 'Algunos cambios son irreversibles (como el desarrollo mamario), mientras que los cambios óseos ya consolidados y el grosor de las cuerdas vocales no revierten con el estrógeno. Ten claro a qué te estás comprometiendo.',
     },
     {
-      text: 'La THS puede reducir o eliminar de forma permanente la fertilidad. Considera la criopreservación de espermatozoides antes de empezar.',
+      text: 'La THS puede reducir la fertilidad o eliminarla de forma permanente. Plantéate la criopreservación de espermatozoides antes de empezar.',
     },
     {
-      text: 'Las fluctuaciones del estado de ánimo son un efecto secundario normal. Asegúrate de contar con una red de apoyo estable.',
+      text: 'Las fluctuaciones del estado de ánimo son un efecto secundario normal. Asegúrate de tener una red de apoyo estable a tu lado.',
     },
   ]}
 />
