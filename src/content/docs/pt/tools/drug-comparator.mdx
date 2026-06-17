@@ -1,6 +1,6 @@
 ---
 title: "Comparador de Medicamentos"
-description: "Compare lado a lado os principais parâmetros de diferentes medicamentos de TH. Ferramenta totalmente client-side — nenhum dado é transmitido."
+description: "Compare lado a lado os principais parâmetros de diferentes medicamentos de TH. Ferramenta totalmente client-side — nenhum dado sai do seu dispositivo."
 evidenceLevel: X
 lastReviewed: 2026-04-10
 references: []
@@ -11,24 +11,24 @@ import DrugComparator from '../../../../components/interactive/DrugComparator.ts
 
 ## Comparação de medicamentos
 
-Selecione de 2 a 3 medicamentos para comparar rapidamente seus principais parâmetros.
+Escolha de 2 a 3 medicamentos para comparar, de forma rápida e lado a lado, os seus principais parâmetros.
 
 **Esta ferramenta ajuda você a entender:**
 
-- As diferenças no risco de TEV (tromboembolismo venoso) entre as vias de administração do estrogênio (oral vs. transdérmica vs. injetável)
+- As diferenças no risco de TEV (tromboembolismo venoso) entre as vias de administração do estrogênio (oral, transdérmica ou injetável)
 - As exigências de monitoramento e as contraindicações dos antiandrógenos
-- Os níveis de evidência e as faixas de dose de cada medicamento
+- O nível de evidência e a faixa de dose de cada medicamento
 
 <DrugComparator client:visible />
 
 ## Como interpretar os resultados
 
-- **Risco de TEV (RR)**: valor de risco relativo. RR=1,0 é o valor de referência; >1,5 indica um aumento significativo
+- **Risco de TEV (RR)**: o valor de risco relativo. RR = 1,0 é o ponto de referência; acima de 1,5 indica um aumento significativo
 - **Nível de evidência**: A = ECR/metanálise, B = ECR único/estudo de coorte, C = relato de caso/opinião de especialista
-- **Monitoramento**: exames laboratoriais necessários durante o uso do medicamento
+- **Monitoramento**: os exames laboratoriais recomendados enquanto você usa o medicamento
 
 <div class="warning-box">
 <div class="warning-box__title">⚠ Apenas para referência</div>
 
-Esta ferramenta não constitui aconselhamento médico. A escolha do medicamento deve considerar histórico médico pessoal, fatores de risco, disponibilidade e custo. **Tome decisões sob a orientação de um profissional de saúde.**
+Esta ferramenta não substitui aconselhamento médico. A escolha do medicamento precisa levar em conta o seu histórico de saúde, os seus fatores de risco, a disponibilidade e o custo. **Tome qualquer decisão com o acompanhamento de um profissional de saúde.**
 </div>
