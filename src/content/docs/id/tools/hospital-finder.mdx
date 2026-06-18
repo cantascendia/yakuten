@@ -1,6 +1,6 @@
 ---
 title: "Direktori Medis"
-description: "Direktori terstruktur berisi sumber daya akses layanan yang dilaporkan komunitas. Lakukan verifikasi langsung sebelum Anda berangkat."
+description: "Direktori terstruktur berisi sumber daya akses layanan yang dilaporkan komunitas. Pastikan untuk memverifikasi langsung sebelum Anda berangkat."
 evidenceLevel: X
 lastReviewed: 2026-04-09
 references: []
@@ -24,11 +24,11 @@ export const hospitalsByCity = cityOrder
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
 
-<WarningBox title="Verifikasi sebelum berangkat">
-Daftar ini berupa catatan akses yang dikelola komunitas, bukan jaminan resmi dari institusi. Kebijakan, departemen, dan ketersediaan dokter dapat berubah dengan cepat, sehingga konfirmasi langsung selalu diperlukan.
+<WarningBox title="Verifikasi dulu sebelum berangkat">
+Daftar ini merupakan catatan akses yang dikelola bersama oleh komunitas, bukan jaminan resmi dari pihak rumah sakit. Kebijakan, departemen, maupun jadwal dokter bisa berubah sewaktu-waktu, jadi konfirmasi langsung tetap selalu diperlukan.
 </WarningBox>
 
-Direktori ini saat ini mencakup {hospitals.length} entri yang dilaporkan komunitas di {cityCount} kota. Data sumber yang mendasarinya pada tahap ini masih terutama dalam bahasa Tionghoa, sehingga nama rumah sakit dan catatan lokal mungkin masih tampil dalam bahasa Tionghoa.
+Saat ini direktori ini memuat {hospitals.length} entri yang dilaporkan komunitas dari {cityCount} kota. Data sumber yang menjadi dasarnya untuk sekarang masih sebagian besar berbahasa Tionghoa, sehingga nama rumah sakit dan catatan setempat mungkin masih tampil dalam bahasa Tionghoa.
 
 ---
 
@@ -44,14 +44,14 @@ Direktori ini saat ini mencakup {hospitals.length} entri yang dilaporkan komunit
 
 <GlassCard>
 
-**Cara menggunakan halaman ini**
+**Cara memakai halaman ini**
 
-1. Gunakan sebagai titik awal untuk verifikasi Anda sendiri.
-2. Konfirmasikan departemen, ketersediaan dokter, dan aturan pendaftaran langsung dengan institusi yang bersangkutan.
-3. Padukan akses penyedia layanan dengan perencanaan pemeriksaan laboratorium dasar dan kesiapsiagaan darurat.
+1. Jadikan ini sebagai titik awal untuk verifikasi Anda sendiri.
+2. Konfirmasikan departemen, jadwal dokter, dan aturan pendaftaran langsung ke rumah sakit yang bersangkutan.
+3. Padukan akses ke penyedia layanan dengan perencanaan pemeriksaan laboratorium dasar dan kesiapan menghadapi keadaan darurat.
 
 </GlassCard>
 
 <DangerBox title="Catatan darurat">
-Direktori ini bukan layanan rujukan darurat. Jika Anda mengalami gejala mendesak, segera pergi ke layanan gawat darurat alih-alih mengandalkan penelusuran direktori.
+Direktori ini bukan layanan rujukan darurat. Jika Anda mengalami gejala yang mendesak, segera pergi ke layanan gawat darurat alih-alih mengandalkan penelusuran direktori.
 </DangerBox>
