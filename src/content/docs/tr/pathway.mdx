@@ -1,6 +1,6 @@
 ---
 title: "HRT Klinik Tedavi Yolu"
-description: "Başlangıç tahlillerinden idame dönemine kadar tüm HRT tedavi yolu; aşama hedefleri, karar düğümleri ve izlem programları dahil."
+description: "Başlangıç tahlillerinden idame dönemine kadar HRT tedavi yolunun tamamı: her aşamanın hedefleri, karar düğümleri ve izlem programları."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Bu tedavi yolu, WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ve Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> kılavuzlarına dayanır ve transfeminen HRT başlatma ile idamesi için standart bir çerçeve sunar.
+  Bu tedavi yolu, WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ve Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> kılavuzlarını temel alır; transfeminen HRT'ye başlama ve onu sürdürme için standart bir çerçeve sunar.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="HRT tedavi yolu zaman çizelgesi: Başlangıç → Düşük Doz (1-6 ay) → Titrasyon (6-12 ay) → İdame (12 ay+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">HAFTA 0</div>
   <PhaseBlock phase={0} title="Başlangıç Değerlendirmesi" color="green">
     <p class="phase-block__desc">
-      Herhangi bir ilaca başlamadan önce, kontrendikasyonları dışlamak ve kişisel referans değerlerinizi belirlemek için kapsamlı bir başlangıç tahlil paneli yaptırın.
+      Herhangi bir ilaca başlamadan önce, kontrendikasyonları dışlamak ve kendi referans değerlerinizi belirlemek için kapsamlı bir başlangıç tahlil paneli yaptırın.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -60,7 +60,7 @@ import '../../../styles/pathway.css';
 <div class="phase-row">
   <div class="phase-marker phase-marker--green" />
   <div class="phase-label" style="color: var(--color-safe);">BAŞLATMA · 1-6 AY</div>
-  <PhaseBlock phase={1} title="Düşük Dozda Başlatma" color="green" week="1-6 AY">
+  <PhaseBlock phase={1} title="Düşük Dozla Başlama" color="green" week="1-6 AY">
     <DoseTable
       headers={['Uygulama Yolu', 'Başlangıç Dozu', 'Kaynak']}
       rows={[
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Güvenlik uyarısı: Vücudunuzun reseptör değişikliklerine uyum sağlaması zaman alır. Kan tahlili yaptırmadan dozu asla artırmayın. "Hiçbir şey olmuyor" hissetseniz bile dozu yükseltmeyin. Göğüs tomurcuğu belirtileri genellikle 3-6 ay içinde görülür.
+        Güvenlik uyarısı: Vücudunuzun reseptör değişikliklerine uyum sağlaması zaman alır. Kan tahlili yaptırmadan dozu asla artırmayın. "Hiçbir şey değişmiyor" hissetseniz bile dozu yükseltmeyin. Göğüs tomurcuğu belirtileri çoğunlukla 3-6 ay içinde ortaya çıkar.
       </p>
     </div>
   </PhaseBlock>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">TİTRASYON · 6-12 AY</div>
   <PhaseBlock phase={2} title="Doz Titrasyonu" color="yellow" week="6-12 AY">
     <p class="phase-block__desc">
-      3. ay tahlil sonuçlarına göre dozu ayarlayın. Amaç, transfeminen bireyler için standart fizyolojik aralığa ulaşmaktır.
+      Dozu, 3. ay tahlil sonuçlarına göre ayarlayın. Amaç, transfeminen bireyler için standart fizyolojik aralığa ulaşmaktır.
     </p>
     <DoseTable
       headers={['Uygulama Yolu', 'Ayarlanmış Doz']}
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">DENGE DURUMU · 12 AY+</div>
   <PhaseBlock phase={3} title="Uzun Vadeli İdame" color="pink" week="12 AY+">
     <p class="phase-block__desc">
-      Hormon düzeyleri ve fiziksel değişiklikler stabil hale geldiğinde, düşük sıklıkta izleme geçin. E2'yi 100-200 pg/mL, T'yi &lt;50 ng/dL düzeyinde tutmak için en düşük etkili dozu sürdürün.
+      Hormon düzeyleri ve fiziksel değişiklikler dengeye oturduğunda, daha seyrek izleme geçin. E2'yi 100-200 pg/mL, T'yi &lt;50 ng/dL düzeyinde tutmak için en düşük etkili dozu sürdürün.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">İzlem Sıklığı</p>

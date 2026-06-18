@@ -1,6 +1,6 @@
 ---
 title: "Riskler ve Acil Durum Tanıma"
-description: "Kapsamlı HRT risk rehberi — venöz tromboembolizm (VTE), karaciğer fonksiyon endişeleri, meningioma risk faktörleri, derhal acil bakım gerektiren belirtiler ve ruh sağlığı kriz kaynakları."
+description: "Kapsamlı HRT risk rehberi — venöz tromboembolizm (VTE), karaciğer fonksiyonu endişeleri, meningioma risk faktörleri, derhal acil bakım gerektiren belirtiler ve ruh sağlığı kriz kaynakları."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [canonico-2018, coleman-2022, ema-2020, hembree-2017, hudelist-2026, lee-2022, meyer-2020]
@@ -16,11 +16,11 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 <EvidenceBadge level="B" />
 
-HRT genel olarak çok iyi bir güvenlik profiline sahiptir, ancak nadir görülen ciddi komplikasyonları tanımak hormon tedavisi alan herkes için temel önemdedir. Aşağıdaki veriler klinik gözlem ve farmakolojik analize dayanmaktadır.
+HRT'nin güvenlik profili genel olarak oldukça iyidir, ancak nadiren ortaya çıkan ciddi komplikasyonları tanıyabilmek, hormon tedavisi alan herkes için hayati önem taşır. Aşağıdaki veriler klinik gözlemlere ve farmakolojik analizlere dayanmaktadır.
 
 <img src="/images/diagrams/en/emergency-signs.webp" alt="Derhal tıbbi bakım gerektiren üç acil uyarı işareti: göğüs ağrısı, şişmiş baldır, görme sorunları" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
-Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> ve WPATH SOC 8'den<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> türetilmiştir.
+Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> ve WPATH SOC 8'den<CitationRef id="coleman-2022" num={7} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> derlenmiştir.
 
 ## 7.1 HRT'nin Bilinen Riskleri
 
@@ -32,9 +32,9 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
     severity="red"
     drug="Oral östradiol (E2)"
     probability="< %0,5 (yıllık)"
-    signs="Tek taraflı alt bacakta kızarıklık, şişlik, sıcaklık, şiddetli ağrı."
+    signs="Tek bacakta kızarıklık, şişlik, sıcaklık ve şiddetli ağrı."
   >
-  <p class="risk-citation">Oral östradiolün VTE riski transdermal yollara kıyasla belirgin şekilde daha yüksektir<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Yıllık görülme sıklığı yaklaşık %0,2-0,5; sigara kullanımı ve yaş riski daha da artırır.</p>
+  <p class="risk-citation">Oral östradiolün VTE riski, transdermal yollara kıyasla belirgin biçimde daha yüksektir<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. Yıllık görülme sıklığı yaklaşık %0,2-0,5'tir; sigara ve ileri yaş bu riski daha da artırır.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -44,9 +44,9 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
     severity="red"
     drug="CPA / oral ilaçlar"
     probability="Nadir (KCFT izlemi)"
-    signs="Gözlerde/ciltte sararma, koyu renk idrar, aşırı yorgunluk."
+    signs="Gözlerde/ciltte sararma, koyu renkli idrar, aşırı yorgunluk."
   >
-  <p class="risk-citation">Hem CPA hem de bikalutamid için hepatotoksisite vaka bildirimleri mevcuttur. EMA, CPA'ya bağlı karaciğer hasarı riski konusunda uyarılar yayımlamıştır<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  <p class="risk-citation">Hem CPA hem de bikalutamid için hepatotoksisite vaka bildirimleri bulunmaktadır. EMA, CPA'ya bağlı karaciğer hasarı riski konusunda uyarılar yayımlamıştır<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -70,7 +70,7 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
     probability="Kümülatif doz > 10g"
     signs="Görme değişiklikleri, işitme kaybı, alışılmadık baş ağrıları."
   >
-  <p class="risk-citation">Günlük CPA dozu ≥25 mg: meningioma riski OR=12,36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />. EMA, ≥25 mg/gün dozları kısıtlamaktadır<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
+  <p class="risk-citation">Günlük CPA dozu ≥25 mg olduğunda meningioma riski OR=12,36<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} /><CitationRef id="hudelist-2026" num={4} authors="Hudelist G et al." year={2026} title="CPA-associated meningioma in transgender women" />. EMA, ≥25 mg/gün dozları kısıtlamaktadır<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -82,7 +82,7 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
     probability="Yaygın (%5-15)"
     signs="İntihar düşüncesi, açıklanamayan ağlama, motivasyon kaybı."
   >
-  <p class="risk-citation">CPA'nın progestojenik aktivitesi duygudurum değişikliklerine ve depresyona yol açabilir; görülme sıklığı yaklaşık %5-15<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  <p class="risk-citation">CPA'nın progestojenik etkinliği duygudurum değişikliklerine ve depresyona yol açabilir; görülme sıklığı yaklaşık %5-15'tir<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -94,7 +94,7 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
     probability="Periyodik izlem gerektirir"
     signs="Meme başından akıntı, ısrarcı şiddetli baş ağrısı."
   >
-  <p class="risk-citation">Hem östradiol hem de CPA prolaktini yükseltebilir. PRL >50 ng/mL hipofiz prolaktinoma değerlendirmesi gerektirir<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />.</p>
+  <p class="risk-citation">Hem östradiol hem de CPA prolaktin düzeyini yükseltebilir. PRL >50 ng/mL hipofiz prolaktinoması açısından değerlendirme gerektirir<CitationRef id="hembree-2017" num={6} authors="Hembree WC et al." year={2017} />.</p>
   </RiskCard>
   </div>
 </div>
@@ -110,7 +110,7 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
 <div style="display: flex; gap: var(--space-sm); align-items: baseline;">
   <span style="color: var(--color-danger); font-weight: bold; font-size: 1.2rem;">1.</span>
   <div>
-    <strong style="color: var(--color-danger);">Tek taraflı baldır şişmesi veya ağrısı</strong> — derin ven trombozuna (DVT) işaret edebilir
+    <strong style="color: var(--color-danger);">Tek taraflı baldır şişmesi veya ağrısı</strong> — derin ven trombozunun (DVT) belirtisi olabilir
   </div>
 </div>
 
@@ -151,7 +151,7 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
 
 ### Yardıma mı ihtiyacınız var?
 
-Şiddetli psikolojik sıkıntı veya kendine zarar verme düşünceleri yaşıyorsanız, lütfen derhal bu destek hizmetlerinden birine ulaşın. Yalnız değilsiniz.
+Yoğun bir psikolojik sıkıntı ya da kendine zarar verme düşünceleri yaşıyorsanız, lütfen vakit kaybetmeden aşağıdaki destek hizmetlerinden birine ulaşın. Yalnız değilsiniz.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
 
@@ -193,11 +193,11 @@ Aşağıdaki risk profilleri Endocrine Society 2017 kılavuzlarından<CitationRe
 
 </div>
 
-<WarningBox title="Güvende olduğunuzda, sonraki adımlar">
+<WarningBox title="Güvendeyken atılacak sonraki adımlar">
 - [Kan Tahlili Denetleyici](/tr/blood-tests/#tool) — Değerlerinizin güvenli aralıkta olup olmadığını kontrol edin
-- [HRT Yol Haritası](/tr/pathway/) — Mevcut aşamanıza geri dönün
+- [HRT Yol Haritası](/tr/pathway/) — Bulunduğunuz aşamaya geri dönün
 - [Çin HRT Rehberi](/tr/china-reality/) — Dost hekimleri ve kaynakları bulun
-- [İlaçlar](/tr/medications/estrogens/overview/) — İlaç planınızı yeniden değerlendirin
+- [İlaçlar](/tr/medications/estrogens/overview/) — İlaç planınızı yeniden gözden geçirin
 </WarningBox>
 
 <style>{`
