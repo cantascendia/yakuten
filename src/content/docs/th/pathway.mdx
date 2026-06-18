@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  แนวทางนี้อ้างอิงจาก WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> และ Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> โดยวางกรอบมาตรฐานสำหรับการเริ่มและคงระดับ HRT (การบำบัดด้วยฮอร์โมน) สำหรับผู้หญิงข้ามเพศ
+  แนวทางนี้อ้างอิงจาก WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> และ Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> เพื่อวางกรอบมาตรฐานสำหรับการเริ่มและการคงระดับ HRT (การบำบัดด้วยฮอร์โมน) ในผู้หญิงข้ามเพศ
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="เส้นเวลาแนวทาง HRT: ค่าพื้นฐาน → ขนาดยาต่ำ (1-6 เดือน) → ปรับขนาดยา (6-12 เดือน) → คงระดับ (12 เดือนขึ้นไป)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">สัปดาห์ที่ 0</div>
   <PhaseBlock phase={0} title="การประเมินค่าพื้นฐาน" color="green">
     <p class="phase-block__desc">
-      ก่อนเริ่มใช้ยาใด ๆ ควรตรวจแผงค่าพื้นฐานให้ครบถ้วน เพื่อแยกข้อห้ามใช้ออกไป และเพื่อกำหนดค่าอ้างอิงเฉพาะตัวของคุณเอง
+      ก่อนเริ่มใช้ยาตัวใด ๆ ควรตรวจแผงค่าพื้นฐานให้ครบถ้วน เพื่อคัดข้อห้ามใช้ออกไป และเพื่อกำหนดค่าอ้างอิงเฉพาะตัวของคุณเอง
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        คำเตือนด้านความปลอดภัย: ร่างกายต้องใช้เวลาในการปรับตัวต่อการเปลี่ยนแปลงของตัวรับฮอร์โมน อย่าเพิ่มขนาดยาโดยไม่ตรวจเลือด อย่าเร่งขนาดยาแม้จะรู้สึกว่า "ไม่มีอะไรเกิดขึ้นเลย" สัญญาณตุ่มเต้านมมักปรากฏในช่วง 3-6 เดือน
+        คำเตือนด้านความปลอดภัย: ร่างกายต้องใช้เวลาในการปรับตัวต่อการเปลี่ยนแปลงของตัวรับฮอร์โมน ห้ามเพิ่มขนาดยาโดยไม่ตรวจเลือด อย่าเร่งขนาดยาแม้จะรู้สึกว่า "ไม่มีอะไรเกิดขึ้นเลย" สัญญาณตุ่มเต้านมมักปรากฏในช่วง 3-6 เดือน
       </p>
     </div>
   </PhaseBlock>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">การปรับขนาดยา · 6-12 เดือน</div>
   <PhaseBlock phase={2} title="การปรับขนาดยา" color="yellow" week="6-12 เดือน">
     <p class="phase-block__desc">
-      ปรับตามผลตรวจเลือดที่ 3 เดือน เป้าหมายคือให้ระดับฮอร์โมนเข้าสู่ช่วงสรีรวิทยามาตรฐานสำหรับผู้หญิงข้ามเพศ
+      ปรับตามผลตรวจเลือดที่ 3 เดือน โดยมีเป้าหมายให้ระดับฮอร์โมนเข้าสู่ช่วงสรีรวิทยามาตรฐานสำหรับผู้หญิงข้ามเพศ
     </p>
     <DoseTable
       headers={['วิธีให้ยา', 'ขนาดยาที่ปรับแล้ว']}
