@@ -1,6 +1,6 @@
 ---
 title: "المسار السريري للعلاج الهرموني البديل (HRT)"
-description: "المسار الكامل للعلاج الهرموني البديل من الفحوص المخبرية الأساسية حتى مرحلة المداومة، شاملاً أهداف كل مرحلة، ونقاط القرار، وجداول المتابعة."
+description: "المسار الكامل للعلاج الهرموني البديل، من الفحوص المخبرية الأساسية وصولاً إلى مرحلة المداومة، مع أهداف كل مرحلة ونقاط القرار وجداول المتابعة."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  يستند هذا المسار إلى معايير WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ودليل جمعية الغدد الصماء 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />، ويقدّم إطاراً موحّداً لبدء العلاج الهرموني البديل المؤنِّث (transfeminine) والاستمرار عليه.
+  يستند هذا المسار إلى معايير WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> ودليل جمعية الغدد الصماء لعام 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />، ويقدّم إطاراً موحّداً لبدء العلاج الهرموني البديل المؤنِّث (transfeminine) والاستمرار عليه.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="الخط الزمني لمسار العلاج الهرموني البديل: الفحص الأساسي ← الجرعة المنخفضة (1-6 أشهر) ← المعايرة (6-12 شهراً) ← المداومة (12 شهراً فأكثر)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">الأسبوع 0</div>
   <PhaseBlock phase={0} title="التقييم الأساسي" color="green">
     <p class="phase-block__desc">
-      قبل البدء بأي دواء، أكمِل لوحة فحوص أساسية كاملة لاستبعاد موانع الاستعمال وتثبيت قيمك المرجعية الشخصية.
+      قبل تناول أي دواء، أجرِ لوحة فحوص أساسية كاملة لاستبعاد موانع الاستعمال وتثبيت قيمك المرجعية الخاصة بك.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        تحذير السلامة: يحتاج جسمك إلى وقت ليتكيّف مع التغيّرات في المستقبِلات. لا ترفع الجرعة أبداً دون فحص دم. لا تصعّد الجرعة حتى لو شعرت بأن "لا شيء يحدث". تظهر براعم الثدي عادةً خلال 3-6 أشهر.
+        تحذير يخصّ سلامتك: يحتاج جسمك إلى وقت ليتكيّف مع التغيّرات في المستقبِلات. لا ترفع الجرعة أبداً دون فحص دم. لا تصعّد الجرعة حتى لو شعرت بأن "لا شيء يحدث". تبدأ براعم الثدي بالظهور عادةً خلال 3-6 أشهر.
       </p>
     </div>
   </PhaseBlock>
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">الحالة المستقرة · 12 شهراً فأكثر</div>
   <PhaseBlock phase={3} title="المداومة طويلة الأمد" color="pink" week="12 شهراً فأكثر">
     <p class="phase-block__desc">
-      بمجرد استقرار المستويات والتغيّرات الجسدية، انتقِل إلى متابعة منخفضة التكرار. حافظ على أدنى جرعة فعّالة لإبقاء E2 بين 100-200 pg/mL و T &lt;50 ng/dL.
+      بمجرد استقرار المستويات والتغيّرات الجسدية، انتقِل إلى متابعة أقل تكراراً. حافظ على أدنى جرعة فعّالة لإبقاء E2 بين 100-200 pg/mL و T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">وتيرة المتابعة</p>
@@ -206,7 +206,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL لا يزيد من التأنيث — بل يزيد من المخاطر فقط (جمعية الغدد الصماء 2017، التوصية 2.2)
+        E2 &gt;200 pg/mL لا يزيد من التأنيث — بل يرفع المخاطر فقط (جمعية الغدد الصماء 2017، التوصية 2.2)
       </p>
     </div>
   </PhaseBlock>
