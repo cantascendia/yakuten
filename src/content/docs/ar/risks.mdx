@@ -16,7 +16,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 <EvidenceBadge level="B" />
 
-يتمتّع العلاج الهرموني (HRT) بسجل أمان ممتاز بشكل عام، لكنّ التعرّف على المضاعفات الخطيرة النادرة أمرٌ أساسي لكلّ من يتلقّى العلاج الهرموني. تستند البيانات التالية إلى الملاحظة السريرية والتحليل الدوائي.
+العلاج الهرموني (HRT) آمنٌ إلى حدٍّ بعيد في معظم الحالات، غير أنّ معرفة المضاعفات الخطيرة النادرة والتعرّف عليها مبكراً أمرٌ لا غنى عنه لكلّ من يتلقّاه. تستند المعطيات التالية إلى الملاحظة السريرية والتحليل الدوائي.
 
 <img src="/images/diagrams/en/emergency-signs.webp" alt="ثلاث علامات إنذار طارئة تستلزم رعاية طبية فورية: ألم في الصدر، وانتفاخ في الساق، ومشكلات في الرؤية" width="800" height="400" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
@@ -34,7 +34,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
     probability="< 0.5% (سنوياً)"
     signs="احمرار وانتفاخ ودفء في ساق واحدة، مع ألم شديد."
   >
-  <p class="risk-citation">يرتفع خطر الانصمام الخثاري الوريدي (VTE) مع الإستراديول الفموي ارتفاعاً ملحوظاً مقارنةً بالطرق عبر الجلد<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. ويبلغ معدّل الحدوث السنوي نحو 0.2-0.5%؛ ويزيد التدخين والعمر من الخطر أكثر.</p>
+  <p class="risk-citation">يرتفع خطر الانصمام الخثاري الوريدي (VTE) مع الإستراديول الفموي ارتفاعاً ملحوظاً مقارنةً بالطرق عبر الجلد<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />. ويبلغ معدّل الحدوث السنوي نحو 0.2-0.5%، ويزيده التدخين والتقدّم في العمر أكثر.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -46,7 +46,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
     probability="نادر (راقبي وظائف الكبد LFTs)"
     signs="اصفرار العينين/الجلد، بول داكن، إرهاق شديد."
   >
-  <p class="risk-citation">يوجد لكلٍّ من CPA والبيكالوتاميد تقارير حالات عن السمّية الكبدية. وقد أصدرت EMA تحذيرات بشأن خطر الأذية الكبدية المرتبطة بـ CPA<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
+  <p class="risk-citation">لكلٍّ من CPA والبيكالوتاميد تقارير حالات عن السمّية الكبدية. وقد أصدرت EMA تحذيرات بشأن خطر الأذية الكبدية المرتبط بـ CPA<CitationRef id="ema-2020" num={2} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" /><CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -58,7 +58,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
     probability="أعلى مع التقدّم في العمر / التدخين"
     signs="خفقان، أو ضغط غير مبرَّر في الصدر."
   >
-  <p class="risk-citation">يحمل الطريق الفموي خطراً قلبياً وعائياً أعلى من الطريق عبر الجلد، بسبب تأثير المرور الكبدي الأول على عوامل التخثّر<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.</p>
+  <p class="risk-citation">يحمل الطريق الفموي خطراً قلبياً وعائياً أعلى من الطريق عبر الجلد، بسبب تأثير المرور الكبدي الأول في عوامل التخثّر<CitationRef id="canonico-2018" num={1} authors="Canonico M et al." year={2018} />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -80,9 +80,9 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
     severity="yellow"
     drug="CPA / انخفاض مستويات E2"
     probability="شائع (5-15%)"
-    signs="أفكار انتحارية، بكاء غير مبرَّر، فقدان الدافعية."
+    signs="أفكار انتحارية، بكاء غير مبرَّر, فقدان الدافعية."
   >
-  <p class="risk-citation">قد يسبّب النشاط البروجستيني لـ CPA تقلّبات مزاجية واكتئاباً، بمعدّل حدوث يقارب 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
+  <p class="risk-citation">قد يُحدِث النشاط البروجستيني لـ CPA تقلّبات مزاجية واكتئاباً، بمعدّل حدوث يقارب 5-15%<CitationRef id="meyer-2020" num={5} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />.</p>
   </RiskCard>
   </div>
   <div class="risk-item">
@@ -103,7 +103,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 <div class="emergency-actions glass-card glass-card--sm" style="margin: var(--space-xl) 0;" role="alert" aria-label="الأعراض التي تستلزم رعاية طبية فورية">
 
-**أوقفي العلاج الهرموني واتّجهي إلى أقرب قسم طوارئ إذا واجهتِ أيّاً ممّا يلي:**
+**أوقفي العلاج الهرموني وتوجّهي إلى أقرب قسم طوارئ إذا واجهتِ أيّاً ممّا يلي:**
 
 <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
 
@@ -151,7 +151,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 ### هل تحتاجين إلى مساعدة؟
 
-إذا كنتِ تمرّين بضائقة نفسية شديدة أو بأفكار لإيذاء النفس، فيُرجى التواصل فوراً مع إحدى خدمات الدعم التالية. أنتِ لستِ وحدكِ.
+إذا كنتِ تمرّين بضائقة نفسية شديدة أو تراودكِ أفكار لإيذاء النفس، فلا تتردّدي في التواصل فوراً مع إحدى خدمات الدعم التالية. أنتِ لستِ وحدكِ.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
 
