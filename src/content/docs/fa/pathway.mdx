@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  این مسیر بر پایهٔ WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> و Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> استوار است و چارچوبی استاندارد برای شروع و نگه‌داری HRT در زنان ترنس (transfeminine) ارائه می‌دهد.
+  این مسیر بر پایهٔ WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> و Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> تنظیم شده و چارچوبی استاندارد برای آغاز و نگه‌داری HRT در زنان ترنس (transfeminine) به دست می‌دهد.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="خط زمانی مسیر HRT: پایه ← دوز پایین (۱ تا ۶ ماه) ← تنظیم تدریجی دوز (۶ تا ۱۲ ماه) ← نگه‌دارنده (۱۲ ماه به بعد)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">هفتهٔ ۰</div>
   <PhaseBlock phase={0} title="ارزیابی پایه" color="green">
     <p class="phase-block__desc">
-      پیش از شروع هر دارویی، یک پنل آزمایش پایهٔ کامل انجام دهید تا موارد منع مصرف کنار گذاشته شوند و مقادیر مرجع شخصی شما مشخص شود.
+      پیش از شروع هر دارویی، یک پنل آزمایش پایهٔ کامل بدهید تا موارد منع مصرف کنار گذاشته شوند و مقادیر مرجع شخصی خودتان مشخص شود.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        هشدار ایمنی: بدن شما به زمان نیاز دارد تا با تغییرات گیرنده‌ها سازگار شود. هرگز بدون آزمایش خون دوز را افزایش ندهید. حتی اگر احساس می‌کنید «هیچ اتفاقی نمی‌افتد»، دوز را بالا نبرید. نشانه‌های جوانهٔ پستان معمولاً در ۳ تا ۶ ماه ظاهر می‌شوند.
+        هشدار ایمنی: بدن شما زمان لازم دارد تا با تغییر گیرنده‌ها سازگار شود. هرگز بدون آزمایش خون دوز را بالا نبرید. حتی اگر حس می‌کنید «هیچ اتفاقی نمی‌افتد»، باز هم دوز را افزایش ندهید. نشانه‌های جوانهٔ پستان معمولاً در ۳ تا ۶ ماه پدیدار می‌شوند.
       </p>
     </div>
   </PhaseBlock>
@@ -110,7 +110,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="red"
-      text="اختلال آنزیم‌های کبدی (LFT) / PRL >30 / بدتر شدن شدید خلق ← قطع کنید و به پزشک مراجعه نمایید"
+      text="اختلال آنزیم‌های کبدی (LFT) / PRL >30 / بدتر شدن شدید خلق ← مصرف را قطع کنید و به پزشک مراجعه نمایید"
     />
   </DecisionNode>
 </div>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">تنظیم تدریجی دوز · ۶ تا ۱۲ ماه</div>
   <PhaseBlock phase={2} title="تنظیم تدریجی دوز" color="yellow" week="۶ تا ۱۲ ماه">
     <p class="phase-block__desc">
-      بر اساس نتایج آزمایش ماه ۳ تنظیم کنید. هدف، رسیدن به محدودهٔ فیزیولوژیک استاندارد برای زنان ترنس (transfeminine) است.
+      بر پایهٔ نتایج آزمایش ماه ۳ دوز را تنظیم کنید. هدف، رسیدن به محدودهٔ فیزیولوژیک استاندارد برای زنان ترنس (transfeminine) است.
     </p>
     <DoseTable
       headers={['مسیر مصرف', 'دوز تنظیم‌شده']}
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">وضعیت پایدار · ۱۲ ماه به بعد</div>
   <PhaseBlock phase={3} title="نگه‌داری بلندمدت" color="pink" week="۱۲ ماه به بعد">
     <p class="phase-block__desc">
-      پس از پایدار شدن سطح هورمون‌ها و تغییرات بدنی، به پایش کم‌تکرار تغییر دهید. کمترین دوز مؤثر را برای حفظ E2 در محدودهٔ 100-200 pg/mL و T &lt;50 ng/dL نگه دارید.
+      پس از پایدار شدن سطح هورمون‌ها و تغییرات بدنی، به پایش با تناوب کمتر تغییر دهید. کمترین دوز مؤثر را برای حفظ E2 در محدودهٔ 100-200 pg/mL و T &lt;50 ng/dL نگه دارید.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">تناوب پایش</p>
@@ -206,7 +206,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL زنانه‌شدن بیشتری ایجاد نمی‌کند — فقط خطر را افزایش می‌دهد (Endocrine Society 2017، Rec 2.2)
+        E2 &gt;200 pg/mL زنانه‌شدن بیشتری ایجاد نمی‌کند — فقط خطر را بالا می‌برد (Endocrine Society 2017، Rec 2.2)
       </p>
     </div>
   </PhaseBlock>
