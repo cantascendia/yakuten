@@ -1,6 +1,6 @@
 ---
 title: "Alur Klinis HRT"
-description: "Alur HRT lengkap dari pemeriksaan laboratorium awal hingga fase pemeliharaan, mencakup target tiap tahap, simpul keputusan, dan jadwal pemantauan."
+description: "Alur lengkap HRT, dari pemeriksaan laboratorium awal hingga fase pemeliharaan: mencakup target tiap tahap, simpul keputusan, dan jadwal pemantauan."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Alur ini didasarkan pada WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> dan Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, yang menyediakan kerangka kerja standar untuk memulai dan mempertahankan HRT (terapi hormon) transfeminin.
+  Alur ini berlandaskan WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> dan Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, yang memberikan kerangka baku untuk memulai dan mempertahankan HRT (terapi hormon) transfeminin.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Garis waktu alur HRT: Awal → Dosis Rendah (1-6 bln) → Titrasi (6-12 bln) → Pemeliharaan (12 bln+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">MINGGU 0</div>
   <PhaseBlock phase={0} title="Penilaian Awal" color="green">
     <p class="phase-block__desc">
-      Sebelum memulai obat apa pun, lengkapi panel pemeriksaan awal secara menyeluruh untuk menyingkirkan kontraindikasi dan menetapkan nilai rujukan pribadi Anda.
+      Sebelum mulai mengonsumsi obat apa pun, lakukan panel pemeriksaan awal yang lengkap untuk menyingkirkan kontraindikasi sekaligus menetapkan nilai rujukan pribadi Anda.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Peringatan keselamatan: Tubuh Anda membutuhkan waktu untuk beradaptasi terhadap perubahan reseptor. Jangan pernah menaikkan dosis tanpa hasil pemeriksaan darah. Jangan menaikkan dosis sekalipun Anda merasa "tidak terjadi apa-apa". Tunas payudara biasanya mulai muncul pada bulan ke-3 hingga ke-6.
+        Peringatan keselamatan: Tubuh Anda perlu waktu untuk menyesuaikan diri dengan perubahan reseptor. Jangan pernah menaikkan dosis tanpa hasil pemeriksaan darah. Jangan menaikkan dosis sekalipun Anda merasa "tidak ada yang terjadi". Tunas payudara umumnya mulai muncul pada bulan ke-3 hingga ke-6.
       </p>
     </div>
   </PhaseBlock>
@@ -106,11 +106,11 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <30 pg/mL → Pertimbangkan untuk meningkatkan ke dosis Fase 2"
+      text="E2 <30 pg/mL → Pertimbangkan untuk menaikkan ke dosis Fase 2"
     />
     <DecisionBranch
       outcome="red"
-      text="Fungsi hati (LFT) abnormal / PRL >30 / kemunduran suasana hati yang berat → Hentikan dan cari bantuan medis"
+      text="Fungsi hati (LFT) abnormal / PRL >30 / suasana hati memburuk secara berat → Hentikan dan cari bantuan medis"
     />
   </DecisionNode>
 </div>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">TITRASI · 6-12 BULAN</div>
   <PhaseBlock phase={2} title="Titrasi Dosis" color="yellow" week="6-12 BULAN">
     <p class="phase-block__desc">
-      Sesuaikan berdasarkan hasil laboratorium bulan ke-3. Tujuannya adalah mencapai rentang fisiologis standar untuk individu transfeminin.
+      Sesuaikan berdasarkan hasil laboratorium bulan ke-3. Tujuannya adalah mencapai rentang fisiologis baku bagi individu transfeminin.
     </p>
     <DoseTable
       headers={['Rute', 'Dosis yang Disesuaikan']}
