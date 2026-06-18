@@ -1,6 +1,6 @@
 ---
 title: "Medikamenten-Vergleich"
-description: "Vergleichen Sie die wichtigsten Parameter verschiedener HRT-Medikamente nebeneinander. Reines Frontend-Tool — es werden keine Daten übertragen."
+description: "Vergleichen Sie die wichtigsten Kennwerte verschiedener HRT-Medikamente direkt nebeneinander. Reines Frontend-Tool — es werden keine Daten übertragen."
 evidenceLevel: X
 lastReviewed: 2026-04-10
 references: []
@@ -11,24 +11,24 @@ import DrugComparator from '../../../../components/interactive/DrugComparator.ts
 
 ## Medikamentenvergleich
 
-Wählen Sie 2–3 Medikamente aus, um ihre wichtigsten Parameter rasch zu vergleichen.
+Wähle 2–3 Medikamente aus und vergleiche ihre wichtigsten Kennwerte direkt nebeneinander.
 
-**Dieses Tool hilft Ihnen, Folgendes zu verstehen:**
+**Dieses Tool hilft dir zu verstehen:**
 
-- Unterschiede im VTE-Risiko zwischen den Estrogen-Applikationswegen (oral vs. transdermal vs. Injektion)
-- Überwachungsanforderungen und Kontraindikationen von Antiandrogenen
-- Evidenzgrade und Dosisbereiche der einzelnen Medikamente
+- wie sich das VTE-Risiko je nach Estrogen-Applikationsweg unterscheidet (oral vs. transdermal vs. Injektion)
+- welche Kontrolluntersuchungen und Kontraindikationen bei Antiandrogenen zu beachten sind
+- welchen Evidenzgrad und welche Dosisbereiche die einzelnen Medikamente haben
 
 <DrugComparator client:visible />
 
-## So interpretieren Sie die Ergebnisse
+## So liest du die Ergebnisse
 
-- **VTE-Risiko (RR)**: relativer Risikowert. RR=1.0 ist die Ausgangsbasis; >1.5 weist auf eine deutliche Erhöhung hin
+- **VTE-Risiko (RR)**: relativer Risikowert. RR=1.0 ist der Ausgangswert; ein Wert über 1.5 weist auf eine deutliche Erhöhung hin
 - **Evidenzgrad**: A = RCT/Metaanalyse, B = einzelne RCT/Kohortenstudie, C = Fallbericht/Expertenmeinung
-- **Überwachung**: Laboruntersuchungen, die während der Anwendung des Medikaments erforderlich sind
+- **Kontrolluntersuchungen**: Laborwerte, die während der Anwendung des Medikaments überwacht werden sollten
 
 <div class="warning-box">
 <div class="warning-box__title">⚠ Nur zur Orientierung</div>
 
-Dieses Tool stellt keine medizinische Beratung dar. Die Medikamentenwahl muss die persönliche Krankengeschichte, Risikofaktoren, Verfügbarkeit und Kosten berücksichtigen. **Bitte treffen Sie Entscheidungen unter ärztlicher Begleitung.**
+Dieses Tool ersetzt keine ärztliche Beratung. Bei der Wahl eines Medikaments spielen deine persönliche Krankengeschichte, deine Risikofaktoren sowie Verfügbarkeit und Kosten eine Rolle. **Bitte triff solche Entscheidungen in ärztlicher Begleitung.**
 </div>

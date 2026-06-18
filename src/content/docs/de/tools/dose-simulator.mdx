@@ -19,4 +19,32 @@ Nutze diesen Simulator nicht als persönlichen Rezept-Rechner. Betrachte die Erg
 Die Oberfläche des interaktiven Tools wird noch übersetzt. Einzelne Beschriftungen und Hilfetexte können vorübergehend auf Chinesisch bleiben.
 :::
 
+## Blutspiegel-Kurve simulieren
+
+Du kannst einen bestimmten Wirkstoff auswählen und Dosis sowie Dosierungsintervall festlegen, um anschaulich zu verfolgen, wie der Blutspiegel theoretisch im Zeitverlauf schwankt.
+
+Dieser Simulator beruht auf dem klassischen Ein-Kompartiment-Modell der Pharmakokinetik (Bateman-Funktion). Da hierfür keine direkten klinischen Studiendaten vorliegen (Evidenzgrad X), dient das Modell nur als verständliche Orientierung, um folgende Konzepte nachzuvollziehen:
+
+- Unterschiede zwischen den Verabreichungswegen (z. B. oral, transdermal, Injektion) bei der Geschwindigkeit von Aufnahme und Abbau
+- Wie der Wirkstoffspiegel nach mehreren aufeinanderfolgenden Gaben allmählich einen Steady-State-Bereich erreicht
+- Wie sich kleine Änderungen am Dosierungsintervall auf die Schwankung des Blutspiegels auswirken
+- Warum der Unterschied zwischen Tal- und Spitzenwert bei der Injektion meist deutlich größer ist als bei oraler Einnahme
+
 <DoseSimulator client:visible />
+
+## Die Kurve richtig lesen
+
+- **Spitzenwert (Peak)**: der höchste Blutspiegel, der nach einer Gabe erreicht wird. Ein zu hoher Spitzenwert erhöht in der Regel die Wahrscheinlichkeit von Nebenwirkungen.
+- **Talwert (Trough)**: der niedrigste Spiegel kurz vor der nächsten Gabe. Wenn du eine Blutuntersuchung machst, wird üblicherweise empfohlen, zu diesem Zeitpunkt Blut abzunehmen.
+- **Schwankungsbreite**: wird üblicherweise als `(Spitzenwert − Talwert) / Spitzenwert` berechnet. Sind die Schwankungen zu groß, kann sich dein Körpergefühl weniger stabil anfühlen.
+- **Steady State**: Nach etwa 5 Halbwertszeiten kontinuierlicher Anwendung pendelt sich der Wirkstoffspiegel im Blut auf einen stabilen Bereich ein.
+
+## Grenzen des Modells
+
+<div class="warning-box">
+<div class="warning-box__title">⚠ Diese Simulation ersetzt keine echte Blutuntersuchung</div>
+
+Diese Kurve zeigt nur den **theoretischen relativen Konzentrationsverlauf** und entspricht nicht unmittelbar den tatsächlichen pg/mL-Werten in deinem Körper. In der Realität unterscheiden sich Stoffwechselrate, Körpergewicht, Körperfettanteil, Injektionstechnik sowie Leber- und Nierenfunktion von Mensch zu Mensch — all das beeinflusst deinen echten Blutspiegel erheblich.
+
+**Orientiere dich beim Anpassen deines Dosierungsschemas immer in erster Linie an echten Blutwerten und sprich mit trans-freundlichem medizinischem Fachpersonal.**
+</div>
