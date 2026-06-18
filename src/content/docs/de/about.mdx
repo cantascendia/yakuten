@@ -1,6 +1,6 @@
 ---
 title: "Über diese Seite"
-description: "Die Mission hinter HRT Yakuten, unsere evidenzbasierten Inhaltsquellen (WPATH, Endocrine Society), unser Peer-Review-Prozess, unsere Datenschutzversprechen und medizinischen Hinweise."
+description: "Die Mission hinter HRT Yakuten, unsere evidenzbasierten Inhaltsquellen (WPATH, Endocrine Society), unser Peer-Review-Prozess, unsere Datenschutzversprechen und unsere medizinischen Hinweise."
 evidenceLevel: X
 lastReviewed: 2026-04-08
 references: []
@@ -12,25 +12,25 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 
 ## Mission
 
-**Evidenzbasiert · Schadensminderung · Begleitung zur medizinischen Versorgung**
+**Evidenzbasiert · Schadensminderung · Begleitung in die medizinische Versorgung**
 
-HRT Yakuten ist eine Informationsseite mit Sicherheitsgrundlagen für transgeschlechtliche Frauen in der chinesischsprachigen Community, die eine HRT anwenden. Unser Ziel ist es nicht, Ärztinnen und Ärzte zu ersetzen, sondern denjenigen zu helfen, die bereits eine Hormontherapie anwenden oder kurz davorstehen, sie zu beginnen:
+HRT Yakuten ist eine Informationsseite mit den wichtigsten Sicherheitsgrundlagen für trans Frauen, die eine HRT anwenden. Wir wollen keine Ärztin und keinen Arzt ersetzen, sondern dich begleiten, wenn du bereits Hormone nimmst oder gerade davorstehst, damit anzufangen:
 
-- **Verstehe deine Blutwerte** und erkenne, welche auffälligen Werte einen Arztbesuch erforderlich machen
-- **Erfahre die realen Risiken von Medikamenten**, statt dich auf Hörensagen aus der Community und ungeprüfte Erfahrungsberichte zu verlassen
-- **Erkenne Notfall-Warnzeichen** (tiefe Venenthrombose [DVT], Leberschäden, Meningeom) und triff in kritischen Momenten die richtige Entscheidung
-- **Finde trans-freundliche medizinische Angebote** und gehe vom DIY-Ansatz zu einer ärztlich begleiteten Versorgung über
+- **Verstehe deine Blutwerte** und erkenne, welche Auffälligkeiten einen Arztbesuch nötig machen
+- **Lerne die tatsächlichen Risiken der Medikamente kennen**, statt dich auf Gerüchte aus der Community und ungeprüfte Erfahrungsberichte zu verlassen
+- **Erkenne die Warnzeichen eines Notfalls** (tiefe Venenthrombose [TVT], Leberschäden, Meningeom) und triff im entscheidenden Moment die richtige Entscheidung
+- **Finde trans-freundliche medizinische Anlaufstellen** und finde den Weg vom DIY-Ansatz hin zu einer ärztlich begleiteten Versorgung
 
 ### Was diese Seite NICHT ist
 
 - ❌ Kein Lexikon und kein medizinisches Lehrbuch
 - ❌ Kein Forum, keine Community und keine Social-Media-Plattform
 - ❌ Kein Bezugskanal für Medikamente und keine Empfehlungsseite für Apotheken
-- ❌ Bietet keine personalisierten Dosierungsempfehlungen („du solltest X mg nehmen")
+- ❌ Keine personalisierten Dosierungsempfehlungen („Du solltest X mg nehmen")
 
 ## Inhaltsquellen
 
-Alle medizinischen Inhalte dieser Seite beruhen auf den folgenden internationalen klinischen Leitlinien und der peer-reviewten Fachliteratur:
+Alle medizinischen Inhalte dieser Seite stützen sich auf die folgenden internationalen klinischen Leitlinien und auf peer-reviewte Fachliteratur:
 
 | Quelle | Beschreibung |
 |--------|-------------|
@@ -40,7 +40,7 @@ Alle medizinischen Inhalte dieser Seite beruhen auf den folgenden internationale
 | **EMA (2020)** | Beschränkungen und Sicherheitsbewertung der Europäischen Arzneimittel-Agentur zu CPA |
 | **PubMed / PMC** | Peer-reviewte Originalstudien (jede Quellenangabe enthält einen DOI) |
 
-Die hochgestellten Zahlen neben jeder medizinischen Empfehlung (z. B. <sup>[1]</sup>) verweisen auf die jeweilige Quelle. **Keine Quelle = kein Inhalt** — das ist eine unumstößliche Regel dieser Seite.
+Die hochgestellten Zahlen neben jeder medizinischen Empfehlung (z. B. <sup>[1]</sup>) verweisen auf die zugehörige Quelle. **Keine Quelle = kein Inhalt** — das ist eine unumstößliche Regel dieser Seite.
 
 ## Prozess der inhaltlichen Prüfung
 
@@ -53,14 +53,14 @@ Die hochgestellten Zahlen neben jeder medizinischen Empfehlung (z. B. <sup>[1]</
 | **Aktualisierungszyklus** | Die Inhalte werden vierteljährlich auf Aktualität geprüft und auf Grundlage neu veröffentlichter Literatur überarbeitet |
 
 <WarningBox title="Grenzen der Inhalte">
-Diese Seite wird derzeit von einer Einzelperson gepflegt und hat noch keine formale Peer-Review durch eine professionelle medizinische Redaktion durchlaufen. Wir bemühen uns nach Kräften um Richtigkeit, doch Fehler und Auslassungen sind möglich. Wenn du Ungenauigkeiten findest, reiche bitte ein Issue auf GitHub ein.
+Diese Seite wird derzeit von einer einzelnen Person gepflegt und hat noch kein formales Peer-Review durch eine professionelle medizinische Redaktion durchlaufen. Wir geben unser Bestes, um die Richtigkeit sicherzustellen, doch Fehler und Auslassungen sind möglich. Wenn dir Ungenauigkeiten auffallen, reiche bitte ein Issue auf GitHub ein.
 </WarningBox>
 
 ## Technische Umsetzung
 
 | Technologie | Zweck |
 |------------|---------|
-| **Astro + Starlight** | Statische Seitengenerierung — standardmäßig kein JS, äußerst schnelles Laden |
+| **Astro + Starlight** | Statische Seitengenerierung — standardmäßig kein JS, dadurch extrem schnelles Laden |
 | **React Islands** | Clientseitiges JS nur für interaktive Werkzeuge (Blutwert-Checker, Dosis-Simulator usw.) |
 | **Pagefind** | Statischer Suchindex mit Unterstützung für Chinesisch, Englisch und Japanisch |
 | **Vercel** | Statisches Hosting + Edge Functions (KI-Fragen & -Antworten) |
@@ -72,7 +72,7 @@ Diese Seite wird derzeit von einer Einzelperson gepflegt und hat noch keine form
 
 | Kategorie | Maßnahme |
 |----------|---------|
-| **Blutwert-Werkzeug** | Reine clientseitige JavaScript-Berechnung — deine eingegebenen Daten verlassen niemals deinen Browser und werden an keinen Server gesendet |
+| **Blutwert-Werkzeug** | Reine clientseitige JavaScript-Berechnung — die von dir eingegebenen Daten verlassen niemals deinen Browser und werden an keinen Server gesendet |
 | **KI-Fragen & -Antworten** | Gespräche werden in Echtzeit über Edge Functions verarbeitet — nichts wird gespeichert, protokolliert oder zum Training verwendet |
 | **Analyse** | Vercel Web Analytics & Speed Insights — ausschließlich aggregierte Seitenaufrufe und Performance-Kennzahlen; cookielos, keine Speicherung personenbezogener Identifikatoren, kein seitenübergreifendes Tracking |
 | **Tracking** | Kein Google Analytics, keine eingebetteten Social-Media- oder Werbe-Tracker — abgesehen von der oben genannten aggregierten Vercel-Analyse |
@@ -84,15 +84,15 @@ Diese Seite wird derzeit von einer Einzelperson gepflegt und hat noch keine form
 Die Inhalte dieser Seite dienen **ausschließlich Bildungs- und Informationszwecken** und stellen keine medizinische Beratung dar.
 
 - Diese Seite kann eine persönliche Diagnose und Behandlung durch eine qualifizierte Ärztin oder einen qualifizierten Arzt nicht ersetzen
-- Der Einsatz, die Anpassung und das Absetzen von Medikamenten sollten unter ärztlicher Begleitung durch qualifiziertes medizinisches Fachpersonal erfolgen
+- Der Einsatz, die Anpassung und das Absetzen von Medikamenten sollten unter Begleitung durch qualifiziertes medizinisches Fachpersonal erfolgen
 - Solltest du Notfallsymptome bemerken (einseitige Schwellung/Schmerzen im Bein, plötzliche Brustschmerzen, Gelbsucht usw.), setze die Medikation sofort ab und suche die nächstgelegene Notaufnahme auf
 - Diese Seite übernimmt keine Verantwortung für medizinische Folgen, die aus der Nutzung ihrer Inhalte entstehen
 
-**Selbstmedikation (DIY) birgt reale Risiken.** Diese Seite möchte dir helfen, Medikamente sicherer anzuwenden, doch der sicherste Weg ist stets eine HRT unter ärztlicher Aufsicht.
+**Selbstmedikation (DIY) birgt reale Risiken.** Diese Seite möchte dir helfen, Medikamente sicherer anzuwenden, doch der sicherste Weg ist und bleibt eine HRT unter ärztlicher Aufsicht.
 
 ## Begleitende Werkzeuge
 
-- **hananote** — Eine HRT-Tracking-App für transgeschlechtliche Frauen (Flutter), die beim Nachverfolgen von Medikamenten, Blutwerten und körperlichen Veränderungen hilft. Sie ergänzt die Inhalte dieser Seite um ein personalisiertes, langfristiges Gesundheitsmanagement. Projekt: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
+- **hananote** — Eine HRT-Tracking-App für trans Frauen (Flutter), die beim Nachverfolgen von Medikamenten, Blutwerten und körperlichen Veränderungen hilft. Sie ergänzt die Inhalte dieser Seite um ein personalisiertes, langfristiges Gesundheitsmanagement. Projekt: [github.com/cantascendia/hananote](https://github.com/cantascendia/hananote)
 
 ## Kontakt & Mitwirken
 
