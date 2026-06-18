@@ -1,6 +1,6 @@
 ---
 title: "Клинический маршрут ГЗТ"
-description: "Полный маршрут ГЗТ от исходных анализов до поддерживающей терапии, включая цели каждого этапа, узлы принятия решений и графики мониторинга."
+description: "Полный маршрут ГЗТ — от исходных анализов до поддерживающей терапии: цели каждого этапа, ключевые развилки и графики наблюдения."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Этот маршрут основан на WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> и рекомендациях Эндокринологического общества (Endocrine Society) 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> и представляет собой стандартизированную схему начала и поддержания трансфеминной ГЗТ.
+  Этот маршрут опирается на WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> и рекомендации Эндокринологического общества (Endocrine Society) 2017 года<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Это стандартизированная схема начала и поддержания трансфеминной ГЗТ.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Временная шкала маршрута ГЗТ: исходное состояние → низкая доза (1-6 мес.) → титрование (6-12 мес.) → поддерживающая терапия (12 мес.+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">НЕДЕЛЯ 0</div>
   <PhaseBlock phase={0} title="Исходное обследование" color="green">
     <p class="phase-block__desc">
-      Прежде чем начинать приём любых препаратов, пройдите полное исходное обследование, чтобы исключить противопоказания и установить ваши личные референсные значения.
+      Прежде чем начать приём любых препаратов, пройдите полное исходное обследование: оно помогает исключить противопоказания и зафиксировать ваши личные референсные значения.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Предупреждение о безопасности: организму нужно время, чтобы адаптироваться к изменениям на уровне рецепторов. Никогда не повышайте дозу без анализа крови. Не увеличивайте дозу, даже если вам кажется, что «ничего не происходит». Зачатки молочных желёз обычно появляются на 3-6 месяце.
+        Предупреждение о безопасности: организму нужно время, чтобы перестроиться на уровне рецепторов. Никогда не повышайте дозу без анализа крови. Не увеличивайте дозу, даже если кажется, что «ничего не происходит». Первые зачатки молочных желёз обычно появляются на 3-6 месяце.
       </p>
     </div>
   </PhaseBlock>
@@ -102,7 +102,7 @@ import '../../../styles/pathway.css';
   <DecisionNode title="РЕШЕНИЕ" timepoint="3 МЕСЯЦА">
     <DecisionBranch
       outcome="green"
-      text="E2 30-100 pg/mL и снижение T → Продолжайте текущую схему до 6 месяцев"
+      text="E2 30-100 pg/mL и T снижается → Продолжайте текущую схему до 6 месяцев"
     />
     <DecisionBranch
       outcome="yellow"
@@ -110,7 +110,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="red"
-      text="Отклонения в печёночных пробах / ПРЛ (PRL) >30 / тяжёлое ухудшение настроения → Прекратите и обратитесь за медицинской помощью"
+      text="Отклонения в печёночных пробах / ПРЛ (PRL) >30 / резкое ухудшение настроения → Прекратите приём и обратитесь за медицинской помощью"
     />
   </DecisionNode>
 </div>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">ТИТРОВАНИЕ · 6-12 МЕСЯЦЕВ</div>
   <PhaseBlock phase={2} title="Титрование дозы" color="yellow" week="6-12 МЕСЯЦЕВ">
     <p class="phase-block__desc">
-      Корректируйте дозу на основе результатов анализов на 3-м месяце. Цель — достичь стандартного физиологического диапазона для трансфеминных людей.
+      Корректируйте дозу по результатам анализов на 3-м месяце. Цель — выйти на стандартный физиологический диапазон для трансфеминных людей.
     </p>
     <DoseTable
       headers={['Путь введения', 'Скорректированная доза']}
@@ -172,7 +172,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="yellow"
-      text="T >50, но E2 в целевом диапазоне → Скорректируйте антиандроген (не повышайте E2 для подавления T)"
+      text="T >50, но E2 в целевом диапазоне → Скорректируйте антиандроген (не повышайте E2, чтобы подавить T)"
     />
     <DecisionBranch
       outcome="yellow"
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">УСТОЙЧИВОЕ СОСТОЯНИЕ · 12 МЕСЯЦЕВ+</div>
   <PhaseBlock phase={3} title="Долгосрочная поддерживающая терапия" color="pink" week="12 МЕСЯЦЕВ+">
     <p class="phase-block__desc">
-      После стабилизации уровней гормонов и физических изменений перейдите к редкому мониторингу. Поддерживайте минимальную эффективную дозу, чтобы удерживать E2 в диапазоне 100-200 pg/mL, T &lt;50 ng/dL.
+      Когда уровни гормонов и физические изменения стабилизируются, переходите к более редкому наблюдению. Поддерживайте минимальную эффективную дозу, удерживая E2 в диапазоне 100-200 pg/mL, а T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Частота мониторинга</p>
@@ -199,7 +199,7 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          Полный гормональный профиль и факторы риска VTE (венозной тромбоэмболии) каждые 6 месяцев. Липидный профиль и глюкоза натощак — ежегодно. Рассмотрите скрининг плотности костной ткани.
+          Полный гормональный профиль и факторы риска VTE (венозной тромбоэмболии) — каждые 6 месяцев. Липидный профиль и глюкоза натощак — раз в год. Стоит рассмотреть скрининг плотности костной ткани.
         </p>
       </div>
     </div>
@@ -217,7 +217,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-end">
   <div class="pathway-end-box">
     <p class="pathway-end-title">КОНЕЦ НАЧАЛЬНОГО ЭТАПА</p>
-    <p class="pathway-end-sub">Постоянный мониторинг</p>
+    <p class="pathway-end-sub">Постоянное наблюдение</p>
   </div>
 </div>
 
