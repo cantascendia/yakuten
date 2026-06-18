@@ -1,6 +1,6 @@
 ---
 title: "Danh bạ cơ sở y tế"
-description: "Danh bạ có cấu trúc về các nguồn tiếp cận chăm sóc do cộng đồng báo cáo. Hãy xác minh trực tiếp trước khi đến."
+description: "Danh bạ có cấu trúc tập hợp các nguồn tiếp cận chăm sóc do cộng đồng chia sẻ. Hãy xác minh trực tiếp trước khi đến."
 evidenceLevel: X
 lastReviewed: 2026-04-09
 references: []
@@ -24,11 +24,11 @@ export const hospitalsByCity = cityOrder
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
 
-<WarningBox title="Xác minh trước khi đến">
-Các mục liệt kê này là ghi chú về khả năng tiếp cận do cộng đồng duy trì, không phải là cam kết chính thức của cơ sở. Chính sách, khoa phòng và sự sẵn có của bác sĩ có thể thay đổi nhanh chóng, vì vậy việc xác nhận trực tiếp luôn là điều cần thiết.
+<WarningBox title="Hãy xác minh trước khi đến">
+Những mục dưới đây là ghi chú về khả năng tiếp cận do cộng đồng cùng nhau cập nhật, chứ không phải cam kết chính thức từ phía cơ sở y tế. Chính sách, khoa phòng và lịch làm việc của bác sĩ có thể thay đổi rất nhanh, nên việc gọi điện hay hỏi trực tiếp để xác nhận luôn là bước không thể bỏ qua.
 </WarningBox>
 
-Danh bạ này hiện bao gồm {hospitals.length} mục do cộng đồng báo cáo trên {cityCount} thành phố. Dữ liệu nguồn nền tảng ở giai đoạn này vẫn chủ yếu bằng tiếng Trung, nên tên bệnh viện và các ghi chú địa phương có thể vẫn hiển thị bằng tiếng Trung.
+Hiện danh bạ này gồm {hospitals.length} mục do cộng đồng chia sẻ, trải rộng trên {cityCount} thành phố. Ở giai đoạn này, dữ liệu gốc vẫn chủ yếu bằng tiếng Trung, nên tên bệnh viện cùng các ghi chú địa phương có thể vẫn hiển thị bằng tiếng Trung.
 
 ---
 
@@ -44,14 +44,14 @@ Danh bạ này hiện bao gồm {hospitals.length} mục do cộng đồng báo 
 
 <GlassCard>
 
-**Cách sử dụng trang này**
+**Cách dùng trang này**
 
-1. Hãy dùng nó làm điểm khởi đầu cho việc tự xác minh của bạn.
-2. Xác nhận trực tiếp với cơ sở về khoa phòng, sự sẵn có của bác sĩ và quy định đăng ký.
-3. Kết hợp việc tiếp cận cơ sở khám chữa bệnh với việc lên kế hoạch xét nghiệm nền (baseline) và nhận thức về tình huống khẩn cấp.
+1. Hãy xem đây là điểm khởi đầu để bạn tự tìm hiểu và xác minh thêm.
+2. Hỏi trực tiếp cơ sở y tế về khoa phòng, lịch làm việc của bác sĩ và quy định đăng ký khám.
+3. Kết hợp việc tìm nơi khám với việc lên kế hoạch xét nghiệm nền (baseline) và chuẩn bị sẵn cách nhận biết tình huống khẩn cấp.
 
 </GlassCard>
 
 <DangerBox title="Lưu ý khẩn cấp">
-Danh bạ này không phải là dịch vụ chuyển tuyến cấp cứu. Nếu bạn có triệu chứng cấp bách, hãy đến cơ sở cấp cứu trước thay vì dựa vào việc tra cứu danh bạ.
+Danh bạ này không phải là dịch vụ chuyển tuyến cấp cứu. Nếu bạn đang có triệu chứng cấp bách, hãy đến cơ sở cấp cứu ngay thay vì dựa vào việc tra cứu danh bạ.
 </DangerBox>
