@@ -1,6 +1,6 @@
 ---
 title: "İlaç Karşılaştırıcı"
-description: "Farklı HRT ilaçlarının temel parametrelerini yan yana karşılaştırın. Tamamen ön yüzde çalışan bir araç — hiçbir veri iletilmez."
+description: "Farklı HRT ilaçlarının temel parametrelerini yan yana karşılaştırın. Tümüyle tarayıcıda çalışan bir araç — hiçbir veri dışarı gönderilmez."
 evidenceLevel: X
 lastReviewed: 2026-04-10
 references: []
@@ -11,24 +11,24 @@ import DrugComparator from '../../../../components/interactive/DrugComparator.ts
 
 ## İlaç Karşılaştırması
 
-Temel parametrelerini hızlıca karşılaştırmak için 2-3 ilaç seçin.
+Temel parametreleri hızlıca yan yana görmek için 2-3 ilaç seçin.
 
-**Bu araç şunları anlamanıza yardımcı olur:**
+**Bu araç şunları kavramana yardımcı olur:**
 
-- Östrojen uygulama yolları arasındaki VTE riski farkları (ağızdan vs transdermal vs enjeksiyon)
+- Östrojenin uygulama yoluna göre değişen VTE riski (ağızdan vs transdermal vs enjeksiyon)
 - Anti-androjenlerin izlem gereksinimleri ve kontrendikasyonları
-- Her ilaç için kanıt düzeyleri ve doz aralıkları
+- Her ilaca ait kanıt düzeyleri ve doz aralıkları
 
 <DrugComparator client:visible />
 
 ## Sonuçlar Nasıl Yorumlanır
 
-- **VTE Riski (RR)**: Görece risk değeri. RR=1.0 başlangıç düzeyidir; >1.5 belirgin bir artışa işaret eder
+- **VTE Riski (RR)**: Görece risk değeri. RR=1.0 başlangıç düzeyini gösterir; >1.5 ise belirgin bir artışa işaret eder
 - **Kanıt Düzeyi**: A = RCT/Meta-analiz, B = Tek RCT/Kohort çalışması, C = Olgu sunumu/Uzman görüşü
-- **İzlem**: İlacın kullanımı sırasında gereken laboratuvar tetkikleri
+- **İzlem**: İlacı kullanırken yaptırman gereken laboratuvar tetkikleri
 
 <div class="warning-box">
 <div class="warning-box__title">⚠ Yalnızca Bilgilendirme Amaçlıdır</div>
 
-Bu araç tıbbi tavsiye niteliği taşımaz. İlaç seçimi; kişisel tıbbi geçmiş, risk faktörleri, ulaşılabilirlik ve maliyet göz önünde bulundurularak yapılmalıdır. **Lütfen kararlarınızı bir sağlık profesyonelinin rehberliğinde verin.**
+Bu araç tıbbi tavsiye yerine geçmez. İlaç seçimi; kişisel tıbbi geçmiş, risk faktörleri, ilacın ulaşılabilirliği ve maliyeti göz önünde bulundurularak yapılmalıdır. **Lütfen kararlarını bir sağlık profesyonelinin rehberliğinde ver.**
 </div>
