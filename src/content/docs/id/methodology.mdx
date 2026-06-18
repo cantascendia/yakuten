@@ -1,6 +1,6 @@
 ---
 title: "Metodologi"
-description: "Bagaimana konten HRT Pharmacopoeia diproduksi, dari penelusuran literatur hingga publikasi — penyelarasan dengan pedoman klinis, sitasi DOI, penilaian bukti A/B/C/X, pemeriksaan silang dua orang, telaah penasihat medis, dan telaah berkala setiap kuartal."
+description: "Bagaimana konten HRT Pharmacopoeia dibuat, mulai dari penelusuran literatur hingga publikasi — selaras dengan pedoman klinis, sitasi DOI, penilaian bukti A/B/C/X, pemeriksaan silang oleh dua orang, telaah penasihat medis, dan telaah berkala tiap kuartal."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -19,13 +19,13 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
   locale="en"
 />
 
-Halaman ini menjelaskan bagaimana setiap konten HRT Pharmacopoeia ditulis, ditelaah, dan diperbarui. Inilah komitmen kami kepada pembaca: **teks yang belum melalui proses ini tidak akan diterbitkan**.
+Halaman ini menjelaskan bagaimana setiap konten HRT Pharmacopoeia ditulis, ditelaah, dan diperbarui. Inilah janji kami kepada pembaca: **teks yang belum melewati proses ini tidak akan kami terbitkan**.
 
 ## 1. Tiga Prinsip Inti
 
-1. **Tidak ada klaim tanpa sitasi**: setiap klaim medis harus disertai setidaknya satu rujukan DOI atau pedoman internasional; jika sebuah klaim tidak dapat ditelusuri sumbernya, klaim tersebut ditandai sebagai <EvidenceBadge level="X" /> atau dihapus.
-2. **Data dosis dengan sumber silang**: dosis resep harus muncul setidaknya dalam dua sumber otoritatif yang independen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, dan sejenisnya).
-3. **Hindari bahasa absolut**: jangan gunakan "harus / selalu / tidak pernah", melainkan "umumnya / disarankan / pada sebagian besar kasus".
+1. **Tanpa sitasi, tanpa klaim**: setiap pernyataan medis wajib disertai setidaknya satu rujukan DOI atau pedoman internasional; jika sebuah klaim tak dapat ditelusuri sumbernya, klaim itu kami tandai <EvidenceBadge level="X" /> atau kami hapus.
+2. **Data dosis lewat sumber silang**: dosis resep harus muncul setidaknya dalam dua sumber otoritatif yang independen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, dan sejenisnya).
+3. **Menghindari bahasa absolut**: kami tidak memakai "harus / selalu / tidak pernah", melainkan "umumnya / disarankan / pada sebagian besar kasus".
 
 ## 2. Alur Kerja Lengkap
 
@@ -36,7 +36,7 @@ Halaman ini menjelaskan bagaimana setiap konten HRT Pharmacopoeia ditulis, ditel
 
 ### 2. Penelusuran literatur
 - Saluran utama: PubMed, Cochrane, situs pedoman resmi, telaah Transfemscience
-- Dikecualikan: kiriman forum anonim, situs komersial, blog tanpa peer review
+- Yang dikecualikan: kiriman forum anonim, situs komersial, blog tanpa peer review
 - Setiap klaim kunci mencatat sitasi aslinya (DOI lebih diutamakan; jika tidak ada, informasi publikasi jurnal)
 
 ### 3. Penilaian bukti
@@ -55,14 +55,14 @@ Dinilai berdasarkan kekuatan desain penelitian:
 - Tabel dosis secara otomatis memvalidasi batas atas dan kombinasi yang dikontraindikasikan
 
 ### 5. Pemeriksaan silang dua orang
-- Penulis menyelesaikan draf → editor kedua secara independen memverifikasi setiap `<CitationRef>` terhadap sumber primer
+- Penulis menyelesaikan draf → editor kedua memverifikasi setiap `<CitationRef>` secara independen terhadap sumber primer
 - Ketidaksesuaian atau klaim yang berlebihan → dikembalikan untuk revisi
 - Jika sumber asli telah ditarik atau dikoreksi → penelusuran dan penggantian di seluruh situs
 
 ### 6. Telaah penasihat medis
-- Penasihat bidang endokrinologi / psikiatri / hukum ditugaskan berdasarkan topik
+- Penasihat bidang endokrinologi / psikiatri / hukum ditugaskan sesuai topiknya
 - Catatan telaah, termasuk perbedaan pendapat dan keputusan akhir, diarsipkan
-- Jika tidak ada penelaah yang memenuhi syarat dapat dihubungi, topik tersebut tidak diterbitkan
+- Jika tidak ada penelaah berkualifikasi yang dapat dihubungi, topik itu tidak diterbitkan
 
 ### 7. QA publikasi dan aksesibilitas
 - `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
@@ -86,7 +86,7 @@ Ketika pembaca menemukan kesalahan faktual, pergeseran sitasi, atau konten yang 
 ## 4. Pernyataan Konflik Kepentingan
 
 - Situs ini tidak memiliki sponsor komersial, tidak ada iklan obat, dan tidak ada komisi pembelian
-- Biaya operasional ditanggung secara pribadi oleh para relawan; kami menerima donasi dari komunitas sumber terbuka (open-source)
+- Biaya operasional ditanggung sendiri oleh para relawan; kami menerima donasi dari komunitas sumber terbuka (open-source)
 - Editor dan penasihat medis menandatangani pengungkapan konflik kepentingan; obat yang memiliki hubungan peresepan aktif tidak ditelaah secara independen oleh pihak yang memiliki konflik tersebut
 
 <WarningBox>

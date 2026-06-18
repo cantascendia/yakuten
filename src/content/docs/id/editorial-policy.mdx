@@ -1,6 +1,6 @@
 ---
 title: "Kebijakan Editorial"
-description: "Prinsip editorial HRT Pharmacopoeia, proses koreksi kesalahan, standar hak cipta dan sitasi, saluran keluhan dan banding, serta pengungkapan konflik kepentingan."
+description: "Prinsip editorial HRT Pharmacopoeia, proses koreksi kesalahan, standar hak cipta dan sitasi, jalur keluhan dan banding, serta pengungkapan konflik kepentingan."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -26,35 +26,35 @@ HRT Pharmacopoeia tidak akan pernah memublikasikan hal-hal berikut:
 <DangerBox>
 - Saran resep yang dipersonalisasi ("Anda sebaiknya minum X mg")
 - Tautan pembelian obat, agen penjualan, atau kode QR rujukan/komisi
-- Kata-kata yang melemahkan pengenalan kondisi darurat medis (DVT, hepatotoksisitas, meningioma, dll.)
+- Kata-kata yang melemahkan kewaspadaan terhadap kondisi darurat medis (DVT, kerusakan hati, meningioma, dll.)
 - Klaim medis tanpa DOI atau sitasi
 - Skrip pelacak pihak ketiga atau penyimpanan data kesehatan pengguna
-- Konfigurasi yang melewati penafian (disclaimer) AI atau peringatan keselamatan
+- Pengaturan yang melewati penafian (disclaimer) AI atau peringatan keselamatan
 </DangerBox>
 
 ## Bahasa dan Nada
 
-- **Hindari kata mutlak**: lebih baik gunakan "kami menyarankan / umumnya / dalam sebagian besar kasus" daripada "harus / selalu / tidak pernah"
-- **Sapa pembaca secara langsung**: tulis "Anda dapat memilih A atau B" alih-alih "pasien sebaiknya memilih A"
-- **Sampaikan ketidakpastian secara terus terang**: kesimpulan pada tingkat bukti B/C/X harus ditandai dengan "data masih terbatas" atau "opini ahli"
-- **Kurangi stigma**: gunakan bahasa yang afirmatif terhadap komunitas dan hindari istilah yang usang atau terlalu klinis
+- **Hindari kata mutlak**: lebih baik tulis "kami menyarankan / umumnya / dalam sebagian besar kasus" daripada "harus / selalu / tidak pernah"
+- **Sapa pembaca secara langsung**: tulis "Anda bisa memilih A atau B", bukan "pasien sebaiknya memilih A"
+- **Sampaikan ketidakpastian secara jujur**: kesimpulan pada tingkat bukti B/C/X harus ditandai dengan "data masih terbatas" atau "opini ahli"
+- **Kurangi stigma**: gunakan bahasa yang afirmatif bagi komunitas dan hindari istilah yang usang atau terlalu klinis
 
 ## Sitasi dan Hak Cipta
 
-- Setiap klaim medis bersumber melalui komponen `CitationRef` (ID dipetakan ke entri di `src/data/references.json`)
-- DOI lebih diutamakan; bila tidak ada DOI, sertakan informasi publikasi jurnal beserta URL yang stabil
-- Gambar dan diagram bersifat orisinal atau bersumber dari karya Creative Commons / domain publik; reproduksi dicantumkan kreditnya
-- Konten orisinal situs ini dirilis di bawah lisensi CC BY-SA 4.0; kode diatur oleh LICENSE pada repositori
+- Setiap klaim medis dirujuk melalui komponen `CitationRef` (ID-nya dipetakan ke entri dalam `src/data/references.json`)
+- DOI lebih diutamakan; bila DOI tidak tersedia, cantumkan informasi terbitan jurnal beserta URL yang stabil
+- Gambar dan diagram bersifat orisinal atau bersumber dari karya Creative Commons / domain publik; reproduksi selalu dicantumkan kreditnya
+- Konten orisinal situs ini dirilis di bawah lisensi CC BY-SA 4.0; kode tunduk pada LICENSE di repositori
 
 ## Koreksi Kesalahan
 
-Pembaca dapat mengirimkan laporan melalui [formulir umpan balik](https://wj.qq.com/s2/16576000/5fe5/) atau [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
+Pembaca bisa mengirimkan laporan lewat [formulir umpan balik](https://wj.qq.com/s2/16576000/5fe5/) atau [GitHub Issues](https://github.com/cantascendia/yakuten/issues):
 
 | Jenis | Waktu tanggapan | Penanganan |
 |---|---|---|
 | Kesalahan faktual | Balasan awal dalam 72 jam | **Pemberitahuan ralat (erratum)** di bagian atas halaman + log perubahan |
-| Pergeseran sitasi | 72 jam | Ganti sitasi dan terbitkan log koreksi publik |
-| Informasi usang | 7 hari | Pembaruan bertahap + segarkan `lastReviewed` |
+| Pergeseran sitasi | 72 jam | Mengganti sitasi dan menerbitkan log koreksi publik |
+| Informasi usang | 7 hari | Pembaruan bertahap + menyegarkan `lastReviewed` |
 | Saran berbahaya | Penghapusan darurat dalam 24 jam | Diperbaiki atau dialihkan offline sambil menunggu peninjauan |
 
 Koreksi besar juga disebarkan ke:
@@ -72,7 +72,7 @@ Koreksi besar juga disebarkan ke:
 
 - **Tanpa sponsor komersial, tanpa iklan obat, tanpa komisi pembelian**
 - Biaya operasional ditanggung oleh kontribusi sukarelawan dan donasi komunitas sumber terbuka (open-source)
-- Editor dan penasihat medis menandatangani pengungkapan konflik kepentingan; topik yang memiliki hubungan peresepan atau komersial secara langsung dikecualikan (recusal)
+- Editor dan penasihat medis menandatangani pengungkapan konflik kepentingan; topik yang memiliki kaitan peresepan atau komersial langsung dikecualikan (recusal)
 - Tidak ada tautan eksternal yang membawa pengenal afiliasi; hanya sumber daya rumah sakit dan saluran bantuan (hotline) yang telah diverifikasi komunitas yang dicantumkan
 
 ## Siklus Peninjauan
