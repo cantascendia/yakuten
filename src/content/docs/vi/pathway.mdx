@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Lộ trình này dựa trên WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> và Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, cung cấp một khung chuẩn hóa cho việc khởi trị và duy trì HRT ở người chuyển giới nữ.
+  Lộ trình này dựa trên WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> và Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, mang đến một khung tham chiếu chuẩn hóa cho việc bắt đầu và duy trì HRT ở phụ nữ chuyển giới.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Dòng thời gian lộ trình HRT: Nền → Liều thấp (1-6 tháng) → Hiệu chỉnh liều (6-12 tháng) → Duy trì (12 tháng trở lên)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">TUẦN 0</div>
   <PhaseBlock phase={0} title="Đánh giá nền" color="green">
     <p class="phase-block__desc">
-      Trước khi bắt đầu bất kỳ loại thuốc nào, hãy hoàn tất một bộ xét nghiệm nền đầy đủ để loại trừ các chống chỉ định và thiết lập giá trị tham chiếu cá nhân của bạn.
+      Trước khi bắt đầu bất kỳ loại thuốc nào, hãy làm một bộ xét nghiệm nền đầy đủ để loại trừ các chống chỉ định và xác lập giá trị tham chiếu của riêng bạn.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -41,7 +41,7 @@ import '../../../styles/pathway.css';
       </li>
       <li class="phase-block__list-item">
         <span class="phase-block__list-bullet phase-block__list-bullet--green" />
-        Chức năng gan và thận, bộ lipid máu
+        Chức năng gan và thận, bộ mỡ máu
       </li>
       <li class="phase-block__list-item">
         <span class="phase-block__list-bullet phase-block__list-bullet--green" />
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Cảnh báo an toàn: Cơ thể bạn cần thời gian để thích nghi với những thay đổi ở thụ thể. Đừng bao giờ tăng liều khi chưa có kết quả xét nghiệm máu. Đừng tăng liều ngay cả khi bạn cảm thấy "chẳng có gì xảy ra". Dấu hiệu chồi vú thường xuất hiện vào tháng thứ 3-6.
+        Cảnh báo an toàn: Cơ thể bạn cần thời gian để thích nghi với những thay đổi ở thụ thể. Tuyệt đối không tăng liều khi chưa có kết quả xét nghiệm máu. Đừng tăng liều ngay cả khi bạn cảm thấy "chẳng có gì xảy ra". Dấu hiệu chồi vú thường xuất hiện vào tháng thứ 3-6.
       </p>
     </div>
   </PhaseBlock>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">HIỆU CHỈNH LIỀU · 6-12 THÁNG</div>
   <PhaseBlock phase={2} title="Hiệu chỉnh liều" color="yellow" week="6-12 THÁNG">
     <p class="phase-block__desc">
-      Điều chỉnh dựa trên kết quả xét nghiệm tại tháng thứ 3. Mục tiêu là đạt được khoảng sinh lý tiêu chuẩn cho người chuyển giới nữ.
+      Điều chỉnh dựa trên kết quả xét nghiệm ở tháng thứ 3. Mục tiêu là đưa nồng độ hormone về khoảng sinh lý tiêu chuẩn của phụ nữ chuyển giới.
     </p>
     <DoseTable
       headers={['Đường dùng', 'Liều đã điều chỉnh']}
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">TRẠNG THÁI ỔN ĐỊNH · 12 THÁNG TRỞ LÊN</div>
   <PhaseBlock phase={3} title="Duy trì dài hạn" color="pink" week="12 THÁNG TRỞ LÊN">
     <p class="phase-block__desc">
-      Khi nồng độ và các thay đổi cơ thể đã ổn định, hãy chuyển sang theo dõi với tần suất thấp. Duy trì liều hiệu quả tối thiểu để giữ E2 ở mức 100-200 pg/mL, T &lt;50 ng/dL.
+      Khi nồng độ hormone và các thay đổi cơ thể đã ổn định, hãy chuyển sang theo dõi với tần suất thưa hơn. Giữ liều hiệu quả tối thiểu để duy trì E2 ở mức 100-200 pg/mL, T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Tần suất theo dõi</p>
@@ -199,14 +199,14 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          Xét nghiệm bộ hormone đầy đủ và các yếu tố nguy cơ VTE mỗi 6 tháng. Lipid máu và đường huyết lúc đói hằng năm. Cân nhắc tầm soát mật độ xương.
+          Xét nghiệm bộ hormone đầy đủ và các yếu tố nguy cơ VTE mỗi 6 tháng. Mỡ máu và đường huyết lúc đói hằng năm. Cân nhắc tầm soát mật độ xương.
         </p>
       </div>
     </div>
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL không tạo ra nhiều nữ hóa hơn — nó chỉ làm tăng nguy cơ (Endocrine Society 2017, Khuyến nghị 2.2)
+        E2 &gt;200 pg/mL không mang lại nữ hóa nhiều hơn — nó chỉ làm tăng nguy cơ (Endocrine Society 2017, Khuyến nghị 2.2)
       </p>
     </div>
   </PhaseBlock>

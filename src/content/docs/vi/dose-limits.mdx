@@ -1,6 +1,6 @@
 ---
 title: "Giới hạn liều & các tổ hợp thuốc nguy hiểm"
-description: "Liều tối đa của từng loại thuốc HRT, các tổ hợp thuốc nguy hiểm và những phác đồ không an toàn thường gặp. Vượt qua lằn ranh đỏ không giúp nữ hóa nhanh hơn — chỉ làm tăng rủi ro."
+description: "Liều tối đa của từng loại thuốc HRT, các tổ hợp thuốc nguy hiểm và những phác đồ không an toàn thường gặp. Vượt qua lằn ranh đỏ không giúp bạn nữ hóa nhanh hơn — chỉ làm tăng rủi ro."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [hembree-2017, canonico-2018, coleman-2022, ema-2020, lee-2022, meyer-2020, patel-2021]
@@ -12,29 +12,29 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import CitationRef from '../../../components/ui/CitationRef.astro';
 import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 
-<WarningBox title="Thông điệp cốt lõi của trang này">
-Vượt quá những liều này sẽ không giúp bạn nữ hóa nhanh hơn. Bằng chứng cho thấy nồng độ E2 ở mức 100-200 pg/mL đã đủ để đạt nữ hóa hoàn toàn<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Nồng độ trên 200 pg/mL không mang lại lợi ích thêm — chỉ làm tăng nguy cơ VTE (thuyên tắc huyết khối tĩnh mạch), tổn thương gan và các biến chứng khác.
+<WarningBox title="Điều quan trọng nhất ở trang này">
+Dùng liều cao hơn những mức dưới đây sẽ không giúp bạn nữ hóa nhanh hơn. Bằng chứng cho thấy nồng độ E2 trong khoảng 100-200 pg/mL đã đủ để nữ hóa hoàn toàn<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />. Vượt quá 200 pg/mL không đem lại thêm lợi ích nào — chỉ làm tăng nguy cơ VTE (thuyên tắc huyết khối tĩnh mạch), tổn thương gan và các biến chứng khác.
 </WarningBox>
 
 ## 4.1 Bảng liều tối đa
 
-Các liều tối đa dưới đây được rút ra từ các hướng dẫn quốc tế và y văn bình duyệt. Vượt quá những giới hạn này thì cán cân lợi ích – rủi ro nhìn chung là bất lợi.
+Các liều tối đa dưới đây được rút ra từ các hướng dẫn quốc tế và y văn bình duyệt. Một khi vượt quá những giới hạn này, cán cân lợi ích – rủi ro nhìn chung trở nên bất lợi.
 
 ### Estrogen
 
 <DoseTable
   headers={['Thuốc', 'Liều tối đa mỗi ngày/tuần', 'Ghi chú', 'Nguồn']}
   rows={[
-    ['Miếng dán qua da', '400 µg/day', 'Chỉ dùng khi đơn trị; 200 µg/day thường đã đủ', 'ES 2017'],
+    ['Miếng dán qua da', '400 µg/day', 'Chỉ dùng khi đơn trị; thường 200 µg/day đã đủ', 'ES 2017'],
     ['Estradiol (E2) đường uống', '8 mg/day', 'Phần lớn bệnh nhân đạt mục tiêu ở mức 4 mg/day', 'WPATH SOC 8'],
     ['Estradiol valerate đường uống', '10 mg/day', '≈ tương đương 7.5 mg estradiol', 'WPATH SOC 8'],
-    ['Gel bôi ngoài da', '6 mg/day', 'Mức hấp thu dao động đáng kể; chỉnh liều theo nồng độ trong máu', 'ES 2017'],
+    ['Gel bôi ngoài da', '6 mg/day', 'Mức hấp thu dao động nhiều; chỉnh liều theo nồng độ trong máu', 'ES 2017'],
     ['Estradiol valerate (EV) tiêm bắp', '5 mg/week', 'Ngưỡng trần khuyến nghị; cấm tiêm một mũi ≥ 10 mg', 'Rothman 2024'],
   ]}
 />
 
-<WarningBox title={'Về khái niệm "liều tối đa"'}>
-"Liều tối đa" không có nghĩa là "liều khuyến nghị". Phần lớn bệnh nhân đạt mục tiêu E2 100-200 pg/mL ở mức thấp hơn nhiều so với liều tối đa<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Việc điều chỉnh liều phải luôn dựa trên kết quả xét nghiệm, chứ không phải tự ý tăng liều lên kịch trần.
+<WarningBox title={'Hiểu đúng về "liều tối đa"'}>
+"Liều tối đa" không đồng nghĩa với "liều khuyến nghị". Phần lớn bệnh nhân đạt mục tiêu E2 100-200 pg/mL ở mức thấp hơn nhiều so với liều tối đa<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Việc chỉnh liều phải luôn dựa trên kết quả xét nghiệm, chứ không phải tự ý tăng liều cho tới kịch trần.
 </WarningBox>
 
 ### Thuốc kháng androgen
@@ -43,7 +43,7 @@ Các liều tối đa dưới đây được rút ra từ các hướng dẫn qu
   headers={['Thuốc', 'Liều tối đa mỗi ngày', 'Ghi chú', 'Nguồn']}
   rows={[
     ['CPA (cyproterone acetate)', '12.5 mg/day', '≥ 25 mg: nguy cơ u màng não tăng vọt; EMA 2020 đã hạn chế', 'Lee 2022; EMA 2020'],
-    ['Spironolactone', '200 mg/day', 'Liều cao hơn không thêm lợi ích kháng androgen nhưng làm tăng đáng kể nguy cơ tăng kali máu', 'ES 2017; UCSF'],
+    ['Spironolactone', '200 mg/day', 'Liều cao hơn không thêm tác dụng kháng androgen mà làm tăng đáng kể nguy cơ tăng kali máu', 'ES 2017; UCSF'],
     ['Bicalutamide', '50 mg/day', 'Dùng ngoài chỉ định (off-label); không khuyến nghị cho GAHT thường quy', 'Angus 2024; Neyman 2019'],
   ]}
 />
@@ -54,8 +54,8 @@ Xem các trang thuốc riêng lẻ để biết chi tiết về dược lý.
 
 Một nguyên tắc cốt lõi: **khi liều tăng lên, rủi ro tăng không tương xứng trong khi lợi ích chững lại**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
 
-- **Estradiol**: Đi từ 100 lên 200 pg/mL chỉ thêm chút lợi ích nữ hóa, còn từ 200 lên 400 pg/mL gần như không có lợi ích thêm nào trong khi nguy cơ VTE tăng đáng kể<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
-- **CPA**: 5 mg và 50 mg ức chế T (testosterone) tương đương nhau, nhưng 50 mg mang nguy cơ u màng não cao hơn mười lần<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
+- **Estradiol**: Đi từ 100 lên 200 pg/mL chỉ thêm chút lợi ích nữ hóa, còn từ 200 lên 400 pg/mL gần như không thêm lợi ích nào trong khi nguy cơ VTE tăng đáng kể<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism" />
+- **CPA**: 5 mg và 50 mg ức chế T (testosterone) ngang nhau, nhưng 50 mg mang nguy cơ u màng não cao gấp hơn mười lần<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} title="Cyproterone acetate and meningioma risk" /><CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} title="Safety and rapid efficacy of guideline-based gender-affirming hormone therapy" />
 - **Spironolactone**: Từ 100 lên 200 mg chỉ thêm chút tác dụng kháng androgen nhưng làm tăng đáng kể nguy cơ tăng kali máu<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />
 
 ---
@@ -65,7 +65,7 @@ Một nguyên tắc cốt lõi: **khi liều tăng lên, rủi ro tăng không t
 ### Các tổ hợp bị cấm
 
 <DangerBox title="CPA + Bicalutamide → Tuyệt đối cấm">
-Cả CPA lẫn bicalutamide đều độc với gan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Dùng kết hợp sẽ cộng dồn nguy cơ tổn thương gan và có thể gây suy gan nặng. Cơ chế kháng androgen của chúng khác nhau (CPA tác động qua phản hồi ngược kiểu progestogen; bicalutamide là chất đối kháng thụ thể androgen), nên kết hợp lại không mang lại lợi ích hiệp đồng nào.
+Cả CPA lẫn bicalutamide đều độc với gan<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Dùng kết hợp sẽ cộng dồn nguy cơ tổn thương gan và có thể gây suy gan nặng. Cơ chế kháng androgen của hai thuốc khác nhau (CPA tác động qua phản hồi ngược kiểu progestogen; bicalutamide là chất đối kháng thụ thể androgen), nên ghép chúng lại không mang lại lợi ích hiệp đồng nào.
 
 **Nếu bạn đang dùng cả hai, hãy tham vấn bác sĩ để chuyển sang chỉ dùng một trong hai.**
 </DangerBox>
@@ -77,7 +77,7 @@ Thuốc tránh thai kết hợp đường uống (ví dụ loại chứa EE + CP
 </DangerBox>
 
 <DangerBox title="Bất kỳ estrogen nào + Hút thuốc → Cấm">
-Estrogen và việc dùng thuốc lá khi đi cùng nhau sẽ nhân lên nguy cơ VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Với người hút thuốc trên 35 tuổi, estrogen đường uống là **chống chỉ định tuyệt đối**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
+Khi đi cùng nhau, estrogen và thuốc lá nhân lên nguy cơ VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Với người hút thuốc trên 35 tuổi, estrogen đường uống là **chống chỉ định tuyệt đối**<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />.
 
 - Nếu bạn không thể bỏ thuốc lá, **hãy chọn đường dùng qua da** (miếng dán hoặc gel) — đường qua da có nguy cơ VTE thấp hơn nhiều so với đường uống<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />
 - Ngay cả khi dùng đường qua da, hút thuốc vẫn làm tăng nguy cơ tim mạch — bỏ thuốc luôn là biện pháp giảm hại quan trọng nhất
@@ -86,13 +86,13 @@ Estrogen và việc dùng thuốc lá khi đi cùng nhau sẽ nhân lên nguy c�
 ### Dùng thận trọng
 
 <WarningBox title="CPA + Estradiol đường uống → Dùng thận trọng; ưu tiên đường qua da">
-CPA có tác dụng thúc đẩy đông máu, còn estradiol đường uống do chuyển hóa qua gan lần đầu cũng làm tăng nguy cơ VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Khi đi cùng nhau, nguy cơ VTE cộng dồn lại.
+CPA có tác dụng thúc đẩy đông máu, còn estradiol đường uống vì phải qua chuyển hóa lần đầu ở gan cũng làm tăng nguy cơ VTE<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} />. Khi đi cùng nhau, nguy cơ VTE cộng dồn lại.
 
-**Khuyến nghị**: Nếu dùng CPA làm thuốc kháng androgen, hãy chọn estradiol đường qua da (miếng dán hoặc gel) để tránh cộng dồn nguy cơ VTE<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Nếu chỉ tiếp cận được estradiol đường uống, hãy giữ CPA ở liều thấp nhất có hiệu quả (5 mg/day hoặc thấp hơn) và theo dõi sát các triệu chứng DVT (huyết khối tĩnh mạch sâu).
+**Khuyến nghị**: Nếu dùng CPA làm thuốc kháng androgen, hãy chọn estradiol đường qua da (miếng dán hoặc gel) để tránh cộng dồn nguy cơ VTE<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />. Nếu chỉ tiếp cận được estradiol đường uống, hãy giữ CPA ở liều thấp nhất mà vẫn có hiệu quả (5 mg/day hoặc thấp hơn) và theo dõi sát các triệu chứng DVT (huyết khối tĩnh mạch sâu).
 </WarningBox>
 
 <DangerBox title="Spironolactone + Bổ sung kali hoặc thực phẩm giàu K → Nguy cơ tăng kali máu">
-Spironolactone là thuốc lợi tiểu giữ kali, làm tăng kali huyết thanh<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Kết hợp với việc bổ sung kali hoặc ăn quá nhiều thực phẩm giàu kali, nó có thể gây **tăng kali máu** (K⁺ > 5.5 mmol/L), có khả năng dẫn tới rối loạn nhịp tim gây tử vong.
+Spironolactone là thuốc lợi tiểu giữ kali, làm tăng kali trong huyết thanh<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Khi kết hợp với việc bổ sung kali hoặc ăn quá nhiều thực phẩm giàu kali, nó có thể gây **tăng kali máu** (K⁺ > 5.5 mmol/L), có khả năng dẫn tới rối loạn nhịp tim gây tử vong.
 
 **Khi đang dùng spironolactone:**
 - Tránh các sản phẩm bổ sung kali (kể cả một số loại muối thay thế)
@@ -145,7 +145,7 @@ Nhiều phác đồ được cộng đồng chia sẻ dùng CPA ở liều 50 mg
 **Vì sao điều này là sai:**
 
 - Các nghiên cứu cho thấy 5-12.5 mg/day đã ức chế hiệu quả T về dải nồng độ nữ<CitationRef id="meyer-2020" num={4} authors="Meyer G et al." year={2020} />
-- Khác biệt về mức ức chế T giữa 50 mg và 12.5 mg là rất nhỏ, nhưng **nguy cơ u màng não ở liều 50 mg cao hơn mười lần**<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} />
+- Khác biệt về mức ức chế T giữa 50 mg và 12.5 mg là rất nhỏ, nhưng **nguy cơ u màng não ở liều 50 mg cao gấp hơn mười lần**<CitationRef id="lee-2022" num={3} authors="Lee WC et al." year={2022} />
 - EMA (Cơ quan Dược phẩm châu Âu) đã ban hành các hạn chế đối với CPA ≥ 25 mg/day vào năm 2020<CitationRef id="ema-2020" num={6} authors="EMA" year={2020} title="Restrictions on use of cyproterone due to meningioma risk" />
 - Liều cao hơn cũng làm tăng độc tính gan, trầm cảm và tăng prolactin
 
@@ -191,5 +191,5 @@ Niềm tin rằng E2 huyết thanh cao hơn sẽ cho kết quả nữ hóa tốt
 2. **Đừng bao giờ kết hợp các thuốc bị cấm** — đặc biệt cảnh giác với độc tính gan cộng dồn và nguy cơ VTE
 3. **Để kết quả xét nghiệm dẫn dắt việc điều chỉnh liều** — đừng dựa theo cảm giác, đừng so với phác đồ của người khác, đừng đuổi theo những con số cao hơn
 
-Nếu phác đồ hiện tại của bạn gặp bất kỳ vấn đề nào trong số này, đừng hoảng — nhưng hãy điều chỉnh càng sớm càng tốt. Xem [Lộ trình HRT](/vi/pathway/) để biết cách tiếp cận theo từng nấc chuẩn mực, hoặc tham vấn một bác sĩ am hiểu thông qua các phòng khám đồng thuận sau khi được thông tin (informed consent), Planned Parenthood, hoặc các dịch vụ khám từ xa như FOLX Health hay Plume.
+Nếu phác đồ hiện tại của bạn gặp bất kỳ vấn đề nào trong số này, đừng hoảng — nhưng hãy điều chỉnh càng sớm càng tốt. Xem [Lộ trình HRT](/vi/pathway/) để biết cách tiếp cận theo từng nấc chuẩn mực, hoặc tham vấn một bác sĩ am hiểu thông qua các phòng khám đồng thuận sau khi được thông tin (informed consent), một phòng khám sức khỏe tình dục/sức khỏe giới ở khu vực của bạn, hoặc các dịch vụ khám từ xa uy tín.
 </WarningBox>
