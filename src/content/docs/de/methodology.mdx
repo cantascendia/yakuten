@@ -19,25 +19,25 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
   locale="de"
 />
 
-Diese Seite beschreibt, wie jeder Inhalt der HRT-Pharmakopöe verfasst, geprüft und aktualisiert wird. Es ist unsere Zusage an die Leserinnen und Leser: **Texte, die diesen Prozess nicht durchlaufen haben, werden nicht veröffentlicht.**
+Diese Seite beschreibt, wie jeder Inhalt der HRT-Pharmakopöe entsteht — wie er geschrieben, geprüft und aktualisiert wird. Das ist unser Versprechen an dich als Leserin: **Was diesen Prozess nicht durchlaufen hat, geht nicht online.**
 
 ## 1. Drei Grundprinzipien
 
-1. **Keine Aussage ohne Quelle**: Jede medizinische Aussage muss mindestens eine DOI oder einen Verweis auf eine internationale Leitlinie tragen; lässt sich eine Aussage nicht belegen, wird sie entweder mit <EvidenceBadge level="X" /> gekennzeichnet oder entfernt.
-2. **Dosierungsdaten mehrfach absichern**: Verordnete Dosierungen müssen in mindestens zwei unabhängigen, maßgeblichen Quellen vorkommen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA und vergleichbare).
-3. **Absolute Formulierungen vermeiden**: Statt „muss / immer / niemals" verwenden wir „in der Regel / empfohlen / in den allermeisten Fällen".
+1. **Keine Aussage ohne Beleg**: Jede medizinische Aussage trägt mindestens eine DOI oder einen Verweis auf eine internationale Leitlinie. Lässt sich etwas nicht belegen, kennzeichnen wir es mit <EvidenceBadge level="X" /> oder lassen es weg.
+2. **Dosierungsdaten doppelt absichern**: Verordnete Dosierungen müssen in mindestens zwei unabhängigen, maßgeblichen Quellen auftauchen (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA und vergleichbare).
+3. **Keine absoluten Formulierungen**: Statt „muss / immer / niemals" schreiben wir „in der Regel / empfohlen / in den allermeisten Fällen".
 
-## 2. Vollständiger Arbeitsablauf
+## 2. Der vollständige Arbeitsablauf
 
 ### 1. Themenauswahl
-- Themen werden nach Suchnachfrage, Leserfragen, Leitlinienaktualisierungen und wichtigen Sicherheitswarnungen (EMA/FDA) ausgewählt
-- Jede Seite benennt die 3–7 konkreten Fragen, die sie beantworten muss
-- Die Zielgruppe (Patientin / hausärztlich tätige Behandlerin / Angehörige) wird vorab festgelegt
+- Themen wählen wir nach Suchnachfrage, Leserfragen, Leitlinienaktualisierungen und wichtigen Sicherheitswarnungen (EMA/FDA) aus
+- Jede Seite benennt die 3–7 konkreten Fragen, die sie beantworten soll
+- Die Zielgruppe (Patientin / hausärztlich tätige Behandlerin / Angehörige) legen wir vorab fest
 
 ### 2. Literaturrecherche
 - Bevorzugte Quellen: PubMed, Cochrane, offizielle Leitlinien-Websites, Übersichtsarbeiten von Transfemscience
 - Ausgeschlossen: anonyme Forenbeiträge, kommerzielle Websites, Blogs ohne Peer-Review
-- Zu jeder zentralen Aussage wird die ursprüngliche Quelle festgehalten (DOI bevorzugt; andernfalls die Publikationsangaben der Zeitschrift)
+- Zu jeder zentralen Aussage halten wir die ursprüngliche Quelle fest (vorzugsweise die DOI, andernfalls die Publikationsangaben der Zeitschrift)
 
 ### 3. Evidenzgraduierung
 Bewertet nach der Aussagekraft des Studiendesigns:
@@ -50,19 +50,19 @@ Bewertet nach der Aussagekraft des Studiendesigns:
 | <EvidenceBadge level="X" /> | Keine | Wissen aus der Community, persönliche Erfahrung, Schlussfolgerung |
 
 ### 4. Texterstellung
-- Verwendung gemeinsamer Komponenten: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>` usw.
-- Das Frontmatter erfasst `evidenceLevel`, `lastReviewed` und `references` (durch CI erzwungen)
+- Wir verwenden gemeinsame Komponenten: `<DrugInfoBox>`, `<DoseTable>`, `<CitationRef>`, `<WarningBox>`, `<EmergencyBanner>` usw.
+- Das Frontmatter erfasst `evidenceLevel`, `lastReviewed` und `references` (von der CI erzwungen)
 - Dosistabellen prüfen Obergrenzen und kontraindizierte Kombinationen automatisch
 
 ### 5. Vier-Augen-Prüfung
-- Sobald die Autorin einen Entwurf fertigstellt → verifiziert eine zweite Redakteurin jede `<CitationRef>` unabhängig anhand der Primärquelle
-- Bei Abweichungen oder Überinterpretationen → Rückgabe zur Überarbeitung
+- Sobald die Autorin einen Entwurf fertigstellt → prüft eine zweite Redakteurin jede `<CitationRef>` unabhängig anhand der Primärquelle nach
+- Bei Abweichungen oder Überinterpretationen → zurück zur Überarbeitung
 - Wurde die ursprüngliche Quelle zurückgezogen oder korrigiert → seitenweite Suche und Ersetzung
 
 ### 6. Fachärztliche Begutachtung
-- Beraterinnen aus Endokrinologie / Psychiatrie / Recht werden je nach Thema zugeordnet
+- Beraterinnen aus Endokrinologie / Psychiatrie / Recht ordnen wir je nach Thema zu
 - Die Begutachtungsprotokolle, einschließlich abweichender Meinungen und der endgültigen Entscheidungen, werden archiviert
-- Ist keine qualifizierte Gutachterin erreichbar, wird das Thema nicht veröffentlicht
+- Ist keine qualifizierte Gutachterin erreichbar, geht das Thema nicht online
 
 ### 7. Veröffentlichung und Barrierefreiheits-QA
 - `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
@@ -76,17 +76,17 @@ Bewertet nach der Aussagekraft des Studiendesigns:
 
 ## 3. Fehlerkorrektur
 
-Wenn Leserinnen und Leser sachliche Fehler, abweichende Quellenangaben oder veraltete Inhalte finden:
+Wenn dir sachliche Fehler, abweichende Quellenangaben oder veraltete Inhalte auffallen:
 
 1. Einreichung über das [Feedback-Formular](https://wj.qq.com/s2/16576000/5fe5/) oder ein GitHub-Issue
 2. Erste Rückmeldung innerhalb von 72 Stunden
-3. Sobald ein sachlicher Fehler bestätigt ist, wird oben auf der Seite ein **Berichtigungshinweis** ergänzt, und die Versionshistorie hält den ursprünglichen Fehler sowie das Korrekturdatum fest
-4. Wesentliche Korrekturen werden an Abonnentinnen per E-Mail / RSS / Telegram ausgespielt
+3. Sobald ein sachlicher Fehler bestätigt ist, ergänzen wir oben auf der Seite einen **Berichtigungshinweis**, und die Versionshistorie hält den ursprünglichen Fehler sowie das Korrekturdatum fest
+4. Wesentliche Korrekturen spielen wir an Abonnentinnen per E-Mail / RSS / Telegram aus
 
 ## 4. Erklärung zu Interessenkonflikten
 
 - Diese Website hat kein kommerzielles Sponsoring, keine Arzneimittelwerbung und keine Verkaufsprovisionen
-- Die Betriebskosten werden von Freiwilligen aus eigener Tasche getragen; wir nehmen Spenden aus der Open-Source-Community an
+- Die Betriebskosten tragen Freiwillige aus eigener Tasche; wir nehmen Spenden aus der Open-Source-Community an
 - Redakteurinnen und medizinische Beraterinnen unterzeichnen Offenlegungen zu Interessenkonflikten; Medikamente, zu denen eine aktive Verordnungsbeziehung besteht, werden nicht unabhängig von der betroffenen Person begutachtet
 
 <WarningBox>

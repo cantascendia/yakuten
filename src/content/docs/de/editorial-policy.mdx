@@ -1,6 +1,6 @@
 ---
 title: "Redaktionelle Grundsätze"
-description: "Die redaktionellen Prinzipien der HRT-Pharmakopöe, das Verfahren zur Fehlerkorrektur, Urheberrechts- und Zitationsstandards, Beschwerde- und Einspruchswege sowie die Offenlegung von Interessenkonflikten."
+description: "Die redaktionellen Prinzipien der HRT-Pharmakopöe, das Verfahren zur Fehlerkorrektur, die Standards für Urheberrecht und Quellenangaben, die Wege für Beschwerden und Einsprüche sowie die Offenlegung von Interessenkonflikten."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -21,30 +21,30 @@ import DangerBox from '../../../components/ui/DangerBox.astro';
 
 ## Absolute Verbote
 
-Die HRT-Pharmakopöe veröffentlicht unter keinen Umständen Folgendes:
+Die HRT-Pharmakopöe veröffentlicht unter keinen Umständen Inhalte mit folgenden Merkmalen:
 
 <DangerBox>
-- Personalisierte Verschreibungsempfehlungen („Sie sollten X mg einnehmen")
-- Bezugsquellen für Medikamente, Verkaufsvermittler oder Empfehlungs-/Provisions-QR-Codes
+- Auf eine einzelne Person zugeschnittene Dosierungspläne („Sie sollten X mg einnehmen")
+- Bezugsquellen für Medikamente, Verkaufsvermittlung oder QR-Codes für Empfehlungs- bzw. Provisionsgeschäfte
 - Formulierungen, die das Erkennen medizinischer Notfälle (DVT, Lebertoxizität, Meningeom usw.) verharmlosen
-- Medizinische Aussagen ohne DOI oder Quellenangabe
-- Tracking-Skripte von Drittanbietern oder die Speicherung von Gesundheitsdaten der Nutzer
-- Konfigurationen, die AI-Haftungsausschlüsse oder Sicherheitshinweise umgehen
+- Medizinische Aussagen ohne DOI oder belastbare Quellenangabe
+- Tracking-Skripte von Drittanbietern oder das Speichern von Gesundheitsdaten der Nutzerinnen
+- Systemkonfigurationen, die KI-Haftungsausschlüsse oder Sicherheitshinweise umgehen
 </DangerBox>
 
 ## Sprache und Tonfall
 
 - **Absolute Aussagen vermeiden**: „wir empfehlen / in der Regel / in den meisten Fällen" ist „muss / immer / nie" vorzuziehen
-- **Die Leserin direkt ansprechen**: „Sie können A oder B wählen" statt „Patientinnen sollten A wählen"
+- **Die Leserin direkt ansprechen**: lieber „Sie können A oder B wählen" als „Patientinnen sollten A wählen"
 - **Unsicherheit klar benennen**: Schlussfolgerungen der Evidenzstufe B/C/X müssen mit „Datenlage begrenzt" oder „Expertenmeinung" gekennzeichnet werden
-- **Stigmatisierung reduzieren**: community-bejahende Sprache verwenden und veraltete oder übermäßig klinische Begriffe vermeiden
+- **Stigmatisierung abbauen**: community-bejahende Sprache verwenden und veraltete oder übermäßig klinische Begriffe vermeiden
 
 ## Quellenangaben und Urheberrecht
 
 - Jede medizinische Aussage ist über die `CitationRef`-Komponente belegt (die IDs verweisen auf Einträge in `src/data/references.json`)
-- DOIs werden bevorzugt; fehlt ein DOI, werden die Veröffentlichungsangaben der Zeitschrift sowie eine stabile URL angegeben
-- Abbildungen und Diagramme sind eigene Werke oder stammen aus Creative-Commons-/gemeinfreien Quellen; Reproduktionen werden mit Quellennachweis versehen
-- Originalinhalte der Website stehen unter CC BY-SA 4.0; für den Code gilt die LICENSE des Repositorys
+- DOIs werden bevorzugt; fehlt ein DOI, werden die Publikationsangaben der Zeitschrift sowie eine dauerhaft erreichbare URL angegeben
+- Abbildungen und Diagramme sind eigene Werke oder stammen aus Creative-Commons- bzw. gemeinfreien Quellen; Reproduktionen werden mit Quellennachweis versehen
+- Die eigenen Inhalte der Website stehen unter CC BY-SA 4.0; für den Code gilt die LICENSE des Repositorys
 
 ## Fehlerkorrektur
 
@@ -57,10 +57,10 @@ Leserinnen können Hinweise über das [Feedback-Formular](https://wj.qq.com/s2/1
 | Veraltete Information | 7 Tage | Schrittweise Aktualisierung + `lastReviewed` neu setzen |
 | Gefährliche Empfehlung | Notfall-Entfernung innerhalb von 24 Stunden | Korrigieren oder bis zur Prüfung offline nehmen |
 
-Wesentliche Korrekturen werden zudem weitergegeben an:
+Wesentliche Korrekturen werden außerdem weitergegeben an:
 
-- Versionsverlauf unter `/de/appendix-references/`
-- RSS-/Telegram-/E-Mail-Abonnenten
+- den Versionsverlauf unter `/de/appendix-references/`
+- RSS-, Telegram- und E-Mail-Abonnentinnen
 
 ## Beschwerden und Einsprüche
 
@@ -87,7 +87,7 @@ Wesentliche Korrekturen werden zudem weitergegeben an:
 Eine wesentliche Leitlinienänderung (Sicherheitswarnung der EMA/FDA, neue Ausgabe von WPATH / Endocrine Society) löst eine **schrittweise Aktualisierung innerhalb von 48 Stunden** aus.
 
 <WarningBox>
-Diese Seite ist eine öffentliche Selbstverpflichtung zur redaktionellen Selbstkontrolle. **Wenn Sie feststellen, dass wir gegen eine der obigen Klauseln verstoßen, machen Sie es bitte öffentlich** — diese Rechenschaftspflicht ist der einzige Weg, wie wir das Vertrauen unserer Leserinnen wahren.
+Diese Seite ist eine öffentliche Selbstverpflichtung zur redaktionellen Selbstkontrolle. **Wenn Sie feststellen, dass wir gegen eine der obigen Klauseln verstoßen, machen Sie es bitte öffentlich** — diese Rechenschaftspflicht ist der einzige Weg, wie wir das Vertrauen unserer Leserinnen bewahren.
 </WarningBox>
 
 ## Verwandte Dokumente
