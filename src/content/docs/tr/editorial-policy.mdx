@@ -25,26 +25,26 @@ HRT Farmakopesi aşağıdakilerin hiçbirini asla yayımlamaz:
 
 <DangerBox>
 - Kişiye özel reçete önerileri ("X mg almalısınız" gibi)
-- İlaç satın alma bağlantıları, satış aracıları veya yönlendirme/komisyon QR kodları
+- İlaç satış bağlantıları, satış aracıları veya komisyon/yönlendirme QR kodları
 - Tıbbi acil durumların (DVT, hepatotoksisite, menenjiom vb.) ciddiyetini hafifleten ifadeler
-- DOI veya atıf içermeyen tıbbi iddialar
+- DOI veya güvenilir bir atıf içermeyen tıbbi iddialar
 - Üçüncü taraf izleme betikleri veya kullanıcı sağlık verilerinin saklanması
-- AI uyarılarını veya güvenlik ikazlarını devre dışı bırakan yapılandırmalar
+- AI uyarılarını ya da güvenlik ikazlarını devre dışı bırakan yapılandırmalar
 </DangerBox>
 
 ## Dil ve Üslup
 
 - **Kesin ifadelerden kaçının**: "zorunlu / her zaman / asla" yerine "öneririz / genellikle / çoğu durumda" demeyi tercih edin
-- **Doğrudan okuyucuya hitap edin**: "hastalar A'yı seçmeli" yerine "A veya B'yi seçebilirsiniz" diye yazın
-- **Belirsizliği açıkça belirtin**: kanıt düzeyi B/C/X olan sonuçlar "veriler sınırlıdır" ya da "uzman görüşü" notuyla etiketlenmelidir
-- **Damgalamayı azaltın**: topluluğu olumlayan bir dil kullanın; modası geçmiş veya aşırı klinik terimlerden kaçının
+- **Doğrudan okuyucuya seslenin**: "hastalar A'yı seçmeli" yerine "A veya B'yi seçebilirsiniz" diye yazın
+- **Belirsizliği açıkça belirtin**: kanıt düzeyi B/C/X olan sonuçların yanına "veriler sınırlı" ya da "uzman görüşü" notunu ekleyin
+- **Damgalamayı azaltın**: topluluğu olumlayan bir dil kullanın; modası geçmiş ya da fazlaca klinik terimlerden uzak durun
 
 ## Atıflar ve Telif Hakkı
 
 - Her tıbbi iddia `CitationRef` bileşeni aracılığıyla kaynaklandırılır (kimlikler `src/data/references.json` içindeki kayıtlarla eşleşir)
-- DOI tercih edilir; DOI'nin bulunmadığı yerlerde dergi yayın bilgileriyle birlikte kalıcı bir URL belirtilir
+- DOI tercih edilir; DOI bulunmayan yerlerde dergi yayın bilgileriyle birlikte kalıcı bir URL verilir
 - Şekiller ve diyagramlar özgün üretimdir ya da Creative Commons / kamu malı kaynaklardan alınmıştır; çoğaltmalarda kaynak gösterilir
-- Sitenin özgün içeriği CC BY-SA 4.0 ile yayımlanır; kod, depodaki LICENSE dosyasına tabidir
+- Sitenin özgün içeriği CC BY-SA 4.0 ile yayımlanır; kod ise depodaki LICENSE dosyasına tabidir
 
 ## Hata Düzeltme
 
@@ -55,7 +55,7 @@ Okuyucular, [geri bildirim formu](https://wj.qq.com/s2/16576000/5fe5/) ya da [Gi
 | Olgusal hata | 72 saat içinde ilk yanıt | Sayfanın üst kısmında **düzeltme notu** + değişiklik kaydı |
 | Atıf kayması | 72 saat | Atıfı değiştir ve kamuya açık bir düzeltme kaydı yayımla |
 | Güncelliğini yitirmiş bilgi | 7 gün | Artımlı güncelleme + `lastReviewed` tarihini yenile |
-| Tehlikeli öneri | 24 saat içinde acil kaldırma | İncelenene kadar düzelt veya çevrimdışı tut |
+| Tehlikeli öneri | 24 saat içinde acil kaldırma | İnceleme tamamlanana kadar düzelt ya da çevrimdışı tut |
 
 Önemli düzeltmeler ayrıca şu kanallara da iletilir:
 
@@ -65,15 +65,15 @@ Okuyucular, [geri bildirim formu](https://wj.qq.com/s2/16576000/5fe5/) ya da [Gi
 ## Şikâyet ve İtiraz
 
 - **İçerik şikâyetleri**: [geri bildirim formu](https://wj.qq.com/s2/16576000/5fe5/)
-- **Hukuki / telif hakkı**: `legal` etiketiyle bir GitHub Issue açın veya depo yöneticileriyle iletişime geçin
+- **Hukuki / telif hakkı**: `legal` etiketiyle bir GitHub Issue açın veya depo yöneticilerine ulaşın
 - **Gizlilik**: bu site kişisel olarak tanımlanabilir bilgi toplamaz; bildirilen herhangi bir gizlilik ihlali 24 saat içinde ele alınır
 
 ## Çıkar Çatışması Beyanı
 
 - **Ticari sponsorluk yok, ilaç reklamı yok, satın alma komisyonu yok**
-- İşletme maliyetleri gönüllü katkılar ve açık kaynak topluluğu bağışlarıyla karşılanır
-- Editörler ve tıbbi danışmanlar çıkar çatışması beyanları imzalar; doğrudan ilişkili reçeteleme veya ticari ilişkiler içeren konularda ilgili kişiler kapsam dışı bırakılır
-- Hiçbir dış bağlantı ortaklık (affiliate) kimliği taşımaz; yalnızca toplulukça incelenmiş hastane ve yardım hattı kaynakları listelenir
+- İşletme maliyetleri gönüllü katkılar ve açık kaynak topluluğunun bağışlarıyla karşılanır
+- Editörler ve tıbbi danışmanlar çıkar çatışması beyanı imzalar; doğrudan ilişkili reçeteleme veya ticari ilişki içeren konularda ilgili kişiler kapsam dışı bırakılır
+- Hiçbir dış bağlantı ortaklık (affiliate) kimliği taşımaz; yalnızca toplulukça doğrulanmış hastane ve yardım hattı kaynakları listelenir
 
 ## İnceleme Döngüsü
 
@@ -87,7 +87,7 @@ Okuyucular, [geri bildirim formu](https://wj.qq.com/s2/16576000/5fe5/) ya da [Gi
 Önemli bir kılavuz değişikliği (EMA/FDA güvenlik uyarısı, yeni WPATH / Endocrine Society baskısı) **48 saat içinde artımlı bir güncellemeyi** tetikler.
 
 <WarningBox>
-Bu sayfa, editöryal öz denetime yönelik kamuya açık bir taahhüttür. **Yukarıdaki herhangi bir maddeyi ihlal ettiğimizi fark ederseniz, lütfen bunu açıkça dile getirin** — bu hesap verebilirlik, okuyucularımıza karşı verdiğimiz sözü tutmamızın tek yoludur.
+Bu sayfa, editöryal öz denetime yönelik kamuya açık bir taahhüttür. **Yukarıdaki maddelerden herhangi birini ihlal ettiğimizi fark ederseniz, lütfen bunu açıkça dile getirin** — bu hesap verebilirlik, okuyucularımıza verdiğimiz sözü tutmamızın tek yoludur.
 </WarningBox>
 
 ## İlgili Belgeler
