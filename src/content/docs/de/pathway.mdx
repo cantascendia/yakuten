@@ -1,6 +1,6 @@
 ---
 title: "Klinischer HRT-Behandlungspfad"
-description: "Vollständiger HRT-Pfad von der Basisdiagnostik bis zur Erhaltungstherapie — mit Phasenzielen, Entscheidungsknoten und Kontrollintervallen."
+description: "Der vollständige HRT-Weg von der Basisdiagnostik bis zur Erhaltungstherapie — mit Phasenzielen, Entscheidungspunkten und Kontrollintervallen."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Dieser Behandlungspfad basiert auf den WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> und den Leitlinien der Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> und bietet einen standardisierten Rahmen für Beginn und Erhaltung einer transfeminisierenden HRT.
+  Dieser Behandlungspfad stützt sich auf die WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> und die Leitlinien der Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> und bietet dir einen verlässlichen Rahmen für Beginn und Erhaltung einer transfeminisierenden HRT.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="HRT-Behandlungsverlauf: Basisdiagnostik → niedrige Dosis (1–6 Mon.) → Titration (6–12 Mon.) → Erhaltung (ab 12 Mon.)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">WOCHE 0</div>
   <PhaseBlock phase={0} title="Basisdiagnostik" color="green">
     <p class="phase-block__desc">
-      Bevor Sie mit einem Medikament beginnen, sollte eine vollständige Ausgangsuntersuchung erfolgen, um Kontraindikationen auszuschließen und Ihre persönlichen Referenzwerte festzuhalten.
+      Bevor du mit einem Medikament beginnst, sollte eine vollständige Ausgangsuntersuchung erfolgen — so lassen sich Kontraindikationen ausschließen und deine persönlichen Referenzwerte festhalten.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Sicherheitshinweis: Ihr Körper braucht Zeit, um sich an die Rezeptorveränderungen anzupassen. Erhöhen Sie die Dosis niemals ohne vorherige Blutuntersuchung. Steigern Sie auch dann nicht, wenn Sie das Gefühl haben, „es passiert nichts“. Erste Anzeichen der Brustentwicklung (Brustknospen) zeigen sich typischerweise nach 3-6 Monaten.
+        Sicherheitshinweis: Dein Körper braucht Zeit, um sich an die veränderte Rezeptorlage anzupassen. Erhöhe die Dosis niemals ohne vorherige Blutuntersuchung. Steigere sie auch dann nicht, wenn du das Gefühl hast, „es passiert nichts“. Erste Anzeichen der Brustentwicklung (Brustknospen) zeigen sich in der Regel nach 3-6 Monaten.
       </p>
     </div>
   </PhaseBlock>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6–12 MONATE</div>
   <PhaseBlock phase={2} title="Dosistitration" color="yellow" week="6–12 MONATE">
     <p class="phase-block__desc">
-      Anpassung auf Grundlage der Laborwerte aus Monat 3. Ziel ist das Erreichen des physiologischen Standardbereichs für transfeminine Personen.
+      Die Anpassung erfolgt auf Grundlage der Laborwerte aus Monat 3. Ziel ist es, den üblichen physiologischen Bereich für transfeminine Personen zu erreichen.
     </p>
     <DoseTable
       headers={['Applikationsweg', 'Angepasste Dosis']}
@@ -151,7 +151,7 @@ import '../../../styles/pathway.css';
       <div class="phase-stat">
         <p class="phase-stat__label">Progesteron (optional)</p>
         <p class="phase-stat__value" style="font-size: 0.625rem; color: var(--color-text-primary);">
-          Abhängig von der Brustentwicklung erwägen (Tanner 3+)
+          Je nach Brustentwicklung erwägen (Tanner 3+)
         </p>
       </div>
     </div>
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">STABILER ZUSTAND · AB 12 MONATEN</div>
   <PhaseBlock phase={3} title="Langfristige Erhaltung" color="pink" week="AB 12 MONATEN">
     <p class="phase-block__desc">
-      Sobald sich Werte und körperliche Veränderungen stabilisiert haben, wechseln Sie zu selteneren Kontrollen. Halten Sie die minimale wirksame Dosis, um E2 bei 100-200 pg/mL und T &lt;50 ng/dL zu halten.
+      Sobald sich Werte und körperliche Veränderungen stabilisiert haben, wechselst du zu selteneren Kontrollen. Halte die minimale wirksame Dosis, um E2 bei 100-200 pg/mL und T &lt;50 ng/dL zu halten.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Kontrollintervall</p>
@@ -206,7 +206,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL führt nicht zu mehr Feminisierung — es erhöht lediglich das Risiko (Endocrine Society 2017, Empf. 2.2)
+        Ein E2 &gt;200 pg/mL führt nicht zu mehr Feminisierung — es erhöht lediglich das Risiko (Endocrine Society 2017, Empf. 2.2)
       </p>
     </div>
   </PhaseBlock>
