@@ -1,6 +1,6 @@
 ---
 title: "HRT क्लिनिकल पाथवे (उपचार मार्ग)"
-description: "बेसलाइन जाँचों से लेकर रखरखाव तक का संपूर्ण HRT मार्ग — जिसमें प्रत्येक चरण के लक्ष्य, निर्णय बिंदु और निगरानी कार्यक्रम शामिल हैं।"
+description: "बेसलाइन जाँचों से लेकर रखरखाव तक का संपूर्ण HRT मार्ग — जिसमें हर चरण के लक्ष्य, निर्णय बिंदु और निगरानी कार्यक्रम शामिल हैं।"
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  यह मार्ग WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> और Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> पर आधारित है, और ट्रांसफेमिनिन HRT की शुरुआत व रखरखाव के लिए एक मानकीकृत ढाँचा प्रदान करता है।
+  यह मार्ग WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> और Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> पर आधारित है, और ट्रांसफेमिनिन HRT को शुरू करने तथा बनाए रखने के लिए एक मानकीकृत ढाँचा देता है।
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="HRT मार्ग की समयरेखा: बेसलाइन → कम खुराक (1-6 माह) → खुराक समायोजन (6-12 माह) → रखरखाव (12 माह+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">सप्ताह 0</div>
   <PhaseBlock phase={0} title="बेसलाइन मूल्यांकन" color="green">
     <p class="phase-block__desc">
-      कोई भी दवा शुरू करने से पहले, contraindications (वर्जनाओं) को बाहर करने और अपने व्यक्तिगत संदर्भ मानों को स्थापित करने के लिए एक पूर्ण बेसलाइन पैनल पूरा करें।
+      कोई भी दवा शुरू करने से पहले एक पूरा बेसलाइन पैनल करवा लें — ताकि contraindications (वर्जनाओं) को पहले ही रद्द किया जा सके और आपके अपने व्यक्तिगत संदर्भ मान तय हो जाएँ।
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -71,7 +71,7 @@ import '../../../styles/pathway.css';
       ]}
     />
     <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-      एंटी-एंड्रोजन (यदि आवश्यक हो): CPA 5-12.5 mg/day या स्पाइरोनोलैक्टोन 50-100 mg/day। [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
+      एंटी-एंड्रोजन (अगर ज़रूरत हो): CPA 5-12.5 mg/day या स्पाइरोनोलैक्टोन 50-100 mg/day। [2] = Hembree et al. 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />; [3] = Rothman 2024<CitationRef id="rothman-2024" num={3} authors="Rothman MS et al." year={2024} title="Injectable estradiol valerate dosing" />
     </p>
     <div class="phase-stats">
       <div class="phase-stat">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        सुरक्षा चेतावनी: आपके शरीर को रिसेप्टर में होने वाले बदलावों के अनुकूल होने में समय लगता है। रक्त जाँच के बिना कभी खुराक न बढ़ाएँ। यदि आपको लगे कि "कुछ नहीं हो रहा" तब भी खुराक न बढ़ाएँ। स्तन कलिका (breast bud) के शुरुआती संकेत आमतौर पर 3-6 माह में दिखते हैं।
+        सुरक्षा चेतावनी: रिसेप्टर में होने वाले बदलावों के साथ तालमेल बिठाने में आपके शरीर को समय लगता है। रक्त जाँच के बिना खुराक कभी न बढ़ाएँ। अगर आपको लगे कि "कुछ नहीं हो रहा", तब भी खुराक न बढ़ाएँ। स्तन कलिका (breast bud) के शुरुआती संकेत आमतौर पर 3-6 माह में दिखने लगते हैं।
       </p>
     </div>
   </PhaseBlock>
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">खुराक समायोजन · 6-12 माह</div>
   <PhaseBlock phase={2} title="खुराक का समायोजन" color="yellow" week="6-12 माह">
     <p class="phase-block__desc">
-      3-माह की लैब रिपोर्ट के आधार पर समायोजन करें। लक्ष्य ट्रांसफेमिनिन व्यक्तियों के लिए मानक शारीरिक (physiologic) सीमा तक पहुँचना है।
+      3-माह की लैब रिपोर्ट के आधार पर खुराक को समायोजित करें। लक्ष्य यह है कि ट्रांसफेमिनिन व्यक्तियों के लिए मानक शारीरिक (physiologic) सीमा तक पहुँचा जाए।
     </p>
     <DoseTable
       headers={['मार्ग', 'समायोजित खुराक']}
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">स्थिर अवस्था · 12 माह+</div>
   <PhaseBlock phase={3} title="दीर्घकालिक रखरखाव" color="pink" week="12 माह+">
     <p class="phase-block__desc">
-      एक बार स्तर और शारीरिक बदलाव स्थिर हो जाएँ, तो कम-आवृत्ति वाली निगरानी पर आ जाएँ। E2 को 100-200 pg/mL और T को &lt;50 ng/dL बनाए रखने के लिए न्यूनतम प्रभावी खुराक बनाए रखें।
+      एक बार स्तर और शारीरिक बदलाव स्थिर हो जाएँ, तो कम-आवृत्ति वाली निगरानी पर आ जाएँ। E2 को 100-200 pg/mL और T को &lt;50 ng/dL बनाए रखने के लिए न्यूनतम प्रभावी खुराक पर बने रहें।
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">निगरानी की आवृत्ति</p>
@@ -199,14 +199,14 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          हर 6 माह में पूर्ण हार्मोन पैनल और VTE जोखिम कारकों की जाँच। हर साल लिपिड और उपवास रक्त शर्करा। हड्डी घनत्व (bone density) स्क्रीनिंग पर विचार करें।
+          हर 6 माह में पूरा हार्मोन पैनल और VTE जोखिम कारकों की जाँच। हर साल लिपिड और उपवास रक्त शर्करा। हड्डी घनत्व (bone density) स्क्रीनिंग पर विचार करें।
         </p>
       </div>
     </div>
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        E2 &gt;200 pg/mL से अधिक स्त्रीकरण (feminization) नहीं होता — यह केवल जोखिम बढ़ाता है (Endocrine Society 2017, Rec 2.2)
+        E2 &gt;200 pg/mL से और ज़्यादा स्त्रीकरण (feminization) नहीं होता — यह सिर्फ़ जोखिम बढ़ाता है (Endocrine Society 2017, Rec 2.2)
       </p>
     </div>
   </PhaseBlock>
