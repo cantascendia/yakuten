@@ -22,7 +22,7 @@
       "permanent": true
     },
     {
-      "source": "/:locale(en|ja|ko|pt|ru|es|id|th|fil|hi|vi|ar|fa|fr|de|tr)/blog/:rest(.*)",
+      "source": "/:locale(en|ko|pt|ru|es|id|th|fil|hi|vi|ar|fa|fr|de|tr)/blog/:rest(.*)",
       "destination": "/zh/blog/:rest",
       "permanent": true
     },
