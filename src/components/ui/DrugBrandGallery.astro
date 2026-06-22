@@ -8,6 +8,7 @@
  * @prop title  - 板块标题（默认："品牌图鉴"）
  */
 import brandData from '../../data/drug-brands.json';
+import brandDataJa from '../../data/drug-brands.ja.json';
 import { t, getLocale } from '../../i18n/ui';
 
 interface Props {
@@ -16,7 +17,16 @@ interface Props {
 }
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
-const { drugId, title = '品牌图鉴' } = Astro.props;
+
+// Section chrome — localized inline (component-local labels). zh fallback.
+const GALLERY_LABELS: Record<string, { title: string; manufacturer: string; spec: string; appearance: string }> = {
+  zh: { title: '品牌图鉴', manufacturer: '厂商', spec: '规格', appearance: '外观' },
+  ja: { title: 'ブランド図鑑', manufacturer: 'メーカー', spec: '規格', appearance: '外観' },
+  en: { title: 'Brand Gallery', manufacturer: 'Maker', spec: 'Spec', appearance: 'Form' },
+  ko: { title: '브랜드 도감', manufacturer: '제조사', spec: '규격', appearance: '외형' },
+};
+const L = GALLERY_LABELS[locale] ?? GALLERY_LABELS.zh;
+const { drugId, title = L.title } = Astro.props;
 const indexPath = `/${locale}/tools/brand-index/`;
 
 type BrandEntry = {
@@ -29,7 +39,15 @@ type BrandEntry = {
   notes: string;
 };
 
-const brands: BrandEntry[] = (brandData as Record<string, BrandEntry[]>)[drugId] ?? [];
+// Brand reference data is authored in zh; for ja we merge a translated overlay
+// (drug-brands.ja.json, index-aligned per drugId) over the base entry so the
+// country/maker/spec/appearance/notes render in Japanese. Other locales use base.
+const baseBrands: BrandEntry[] = (brandData as Record<string, BrandEntry[]>)[drugId] ?? [];
+const jaOverlay = (brandDataJa as Record<string, Partial<BrandEntry>[]>)[drugId];
+const brands: BrandEntry[] =
+  locale === 'ja' && jaOverlay
+    ? baseBrands.map((b, i) => ({ ...b, ...(jaOverlay[i] ?? {}) }))
+    : baseBrands;
 
 /** Country code → flag emoji */
 function flag(code: string): string {
@@ -54,15 +72,15 @@ function flag(code: string): string {
             <h3 class="brand-card__name">{b.name}</h3>
             <dl class="brand-card__details">
               <div class="brand-card__row">
-                <dt>厂商</dt>
+                <dt>{L.manufacturer}</dt>
                 <dd>{b.manufacturer}</dd>
               </div>
               <div class="brand-card__row">
-                <dt>规格</dt>
+                <dt>{L.spec}</dt>
                 <dd>{b.spec}</dd>
               </div>
               <div class="brand-card__row">
-                <dt>外观</dt>
+                <dt>{L.appearance}</dt>
                 <dd>{b.appearance}</dd>
               </div>
             </dl>
