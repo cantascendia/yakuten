@@ -32,7 +32,10 @@ if (lastReviewed) {
 }
 
 // Only show BylineCard on content pages that have evidence metadata.
-const showByline = Boolean(lastReviewed);
+// Blog posts carry a neutral lastReviewed (to satisfy the shared schema) but
+// render their own meta line, so suppress the medical-style byline there.
+const isBlogPage = pathname.includes('/blog/');
+const showByline = Boolean(lastReviewed) && !isBlogPage;
 const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
   locale === 'zh' || locale === 'en' || locale === 'ja' || locale === 'ko' ? locale : 'zh';
 ---

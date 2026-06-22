@@ -1,9 +1,20 @@
 ---
 /**
- * BlogPostLayout — Full standalone layout for blog/article pages.
- * Independent from Starlight; reuses design tokens from global.css + glass.css.
+ * BlogPostLayout — Blog/article layout rendered THROUGH Starlight.
+ *
+ * Wraps the bespoke article body (breadcrumbs, meta, TOC sidebar, related
+ * docs/posts) in <StarlightPage template="splash"> so the post inherits the
+ * full site shell for free and forever: header, footer (Footer override →
+ * BylineCard + legal + FloatingAIChat), theme + 🌸 sakura (ThemeToggle),
+ * GA + opt-out, service worker, fonts, JsonLd — all via the shared Head
+ * override. No more standalone <html>/<head> chrome to drift out of sync.
+ *
+ * SEO specifics that Starlight's docs-shaped head does NOT cover are injected
+ * via `frontmatter.head` (article OG + per-post OG image) and a body-slot
+ * <BlogPostJsonLd> (BlogPosting + FAQPage). hreflang for /blog/ is handled by
+ * the Head override (self-only — blog posts are not 1:1 translations).
  */
-import BlogHeader from '../components/layout/BlogHeader.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import BlogBreadcrumbs from '../components/ui/BlogBreadcrumbs.astro';
 import BlogPostJsonLd from '../components/seo/BlogPostJsonLd.astro';
 import RelatedDocs from '../components/ui/RelatedDocs.astro';
@@ -11,8 +22,6 @@ import { t, getLocale } from '../i18n/ui';
 import { getRelatedPosts, getCategoryLabel, getBlogUrl, getBlogSlug } from '../utils/blogHelpers';
 import { getReadingTime } from '../utils/readingTime';
 import type { BlogEntry } from '../utils/blogHelpers';
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   entry: BlogEntry;
@@ -24,6 +33,7 @@ const { entry, headings, rawContent } = Astro.props;
 const { title, description, publishDate, updatedDate, tags, category, locale: postLocale, relatedDocs, author, faqs } = entry.data;
 const locale = getLocale(undefined, Astro.url.pathname);
 
+const slug = getBlogSlug(entry);
 const canonicalUrl = `https://hrtyaku.com${getBlogUrl(entry)}`;
 const readingTime = getReadingTime(rawContent, postLocale);
 const relatedPosts = await getRelatedPosts(entry.id, tags, postLocale, 3);
@@ -41,114 +51,46 @@ const updatedStr = updatedDate
     })
   : null;
 
-const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
-const htmlLang = langMap[postLocale] ?? 'zh-CN';
-
-// hreflang alternates — only emit for locales where this blog post actually
-// exists. Blogs currently ship zh-only; declaring en/ja/ko alternates would
-// point at 404s and cost crawl budget in GSC (see audit 2026-05-26).
-const slug = getBlogSlug(entry);
-const blogLocaleMap: Record<string, Array<{ code: string; prefix: string }>> = {
-  zh: [{ code: 'zh-CN', prefix: '/zh/' }],
-};
-const hreflangAlternates = blogLocaleMap[postLocale] ?? [{ code: htmlLang, prefix: `/${postLocale}/` }];
-
 // Per-post OG image — generated postbuild by scripts/generate-og-images.mjs
-// into dist/og/blog/<locale>/<slug>.png. Falls back to the global og-image.svg
-// shipped in /public if the postbuild step ever fails for a given post.
+// into dist/og/blog/<locale>/<slug>.png. Injected via frontmatter.head so
+// Starlight's getHead merge overrides the global og-image.svg default.
 const ogImageUrl = `https://hrtyaku.com/og/blog/${postLocale}/${slug}.png`;
+
+// Article-type OpenGraph + per-post OG image, expressed as Starlight head
+// entries. og:type is already set to "article" for /blog/ paths by the Head
+// override; here we add the article timestamps, tags, and the post image.
+const blogHead: Array<{ tag: 'meta'; attrs: Record<string, string> }> = [
+  { tag: 'meta' as const, attrs: { property: 'article:published_time', content: publishDate.toISOString() } },
+  ...(updatedDate ? [{ tag: 'meta' as const, attrs: { property: 'article:modified_time', content: updatedDate.toISOString() } }] : []),
+  ...tags.map((tag) => ({ tag: 'meta' as const, attrs: { property: 'article:tag', content: tag } })),
+  { tag: 'meta' as const, attrs: { property: 'og:image', content: ogImageUrl } },
+  { tag: 'meta' as const, attrs: { name: 'twitter:image', content: ogImageUrl } },
+  { tag: 'meta' as const, attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+];
 
 // TOC items (h2 and h3 only)
 const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
-<!doctype html>
-<html lang={htmlLang} data-theme="dark">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title} - HRT药典</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalUrl} />
-  <meta name="theme-color" content="#0D0B14" />
-  <link rel="manifest" href="/manifest.json" />
-
-  <!-- hreflang — only emitted for locales where this post exists -->
-  {hreflangAlternates.map(({ code, prefix }) => (
-    <link rel="alternate" hreflang={code} href={`https://hrtyaku.com${prefix}blog/${slug}/`} />
-  ))}
-  <link rel="alternate" hreflang="x-default" href={`https://hrtyaku.com/${postLocale}/blog/${slug}/`} />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:locale" content={htmlLang.replace('-', '_')} />
-  <meta property="og:site_name" content="HRT药典" />
-  <meta property="og:image" content={ogImageUrl} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content={title} />
-  <meta property="article:published_time" content={publishDate.toISOString()} />
-  {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
-  {tags.map((tag) => <meta property="article:tag" content={tag} />)}
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImageUrl} />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" />
-  </noscript>
-
-  <!-- Styles -->
-  <style is:global>
-    @import '../styles/global.css';
-    @import '../styles/glass.css';
-    @import '../styles/blog.css';
-
-    /* Skip-link — visually hidden until keyboard focus (WCAG 2.4.1) */
-    .blog-skip-link {
-      position: fixed;
-      top: 0.75rem;
-      inset-inline-start: 0.75rem;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      z-index: 10000;
-      background: var(--color-primary);
-      color: var(--color-text-on-dark);
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 4px;
-    }
-    .blog-skip-link:focus,
-    .blog-skip-link:focus-visible {
-      clip: auto;
-      clip-path: none;
-      width: auto;
-      height: auto;
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-    }
-  </style>
-
+<StarlightPage
+  frontmatter={{
+    title,
+    description,
+    template: 'splash',
+    tableOfContents: false,
+    pagefind: true,
+    head: blogHead,
+    // The project extends Starlight's docs schema with required medical fields;
+    // <StarlightPage> validates frontmatter against that same schema, so we
+    // supply neutral values. Blog is NOT reviewed medical content, so the
+    // docs-shaped consumers of these fields (Footer BylineCard, Head
+    // last-reviewed/OG meta, JsonLd MedicalWebPage) are gated off for /blog/.
+    evidenceLevel: 'X',
+    references: [],
+    lastReviewed: publishDate,
+  }}
+  hasSidebar={false}
+>
   <BlogPostJsonLd
     title={title}
     description={description}
@@ -160,100 +102,84 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
     author={author}
     faqs={faqs}
   />
-  <Analytics />
-  <SpeedInsights />
-</head>
 
-<body class="blog-page">
-  <a href="#blog-main-content" class="blog-skip-link">{t(locale, 'a11y.skipToMain')}</a>
+  <article class="blog-article">
+    <div class="blog-article__body">
+      <BlogBreadcrumbs title={title} relatedDocs={relatedDocs} />
 
-  <BlogHeader />
-
-  <main id="blog-main-content" class="blog-main">
-    <article class="blog-article">
-      <div class="blog-article__body">
-        <BlogBreadcrumbs title={title} relatedDocs={relatedDocs} />
-
-        <div class="blog-article__meta">
-          <span class="blog-article__category">{getCategoryLabel(category, locale)}</span>
-          <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
-          <time class="blog-article__date" datetime={publishDate.toISOString()}>
-            {t(locale, 'blog.publishedOn')} {dateStr}
-          </time>
-          {updatedStr && (
-            <>
-              <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
-              <time class="blog-article__date" datetime={updatedDate!.toISOString()}>
-                {t(locale, 'blog.updatedOn')} {updatedStr}
-              </time>
-            </>
-          )}
-          <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
-          <span class="blog-article__reading-time">
-            {t(locale, 'blog.readingTime').replace('{min}', String(readingTime))}
-          </span>
-        </div>
-
-        <h1 class="blog-article__title">{title}</h1>
-
-        <div class="blog-article__content">
-          <slot />
-        </div>
-
-        <!-- Disclaimer -->
-        <div class="blog-disclaimer">
-          {t(locale, 'blog.disclaimer')}
-        </div>
-
-        <!-- Related docs (hub-and-spoke) -->
-        <RelatedDocs relatedDocs={relatedDocs} />
-
-        <!-- Related blog posts -->
-        {relatedPosts.length > 0 && (
-          <section class="blog-related">
-            <h2 class="blog-related__title">{t(locale, 'blog.relatedArticles')}</h2>
-            <div class="blog-related__list">
-              {relatedPosts.map((post) => (
-                <a href={getBlogUrl(post)} class="blog-related__link">
-                  <span class="blog-related__icon" aria-hidden="true">&#128196;</span>
-                  {post.data.title}
-                </a>
-              ))}
-            </div>
-          </section>
+      <div class="blog-article__meta">
+        <span class="blog-article__category">{getCategoryLabel(category, locale)}</span>
+        <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+        <time class="blog-article__date" datetime={publishDate.toISOString()}>
+          {t(locale, 'blog.publishedOn')} {dateStr}
+        </time>
+        {updatedStr && (
+          <>
+            <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+            <time class="blog-article__date" datetime={updatedDate!.toISOString()}>
+              {t(locale, 'blog.updatedOn')} {updatedStr}
+            </time>
+          </>
         )}
-
-        <!-- Footer navigation -->
-        <div class="blog-footer-nav">
-          <a href={`/${locale}/blog/`}>{t(locale, 'blog.backToIndex')}</a>
-          <a href={`/${locale}/`}>{t(locale, 'blog.backToDocs')}</a>
-        </div>
+        <span class="blog-article__meta-sep" aria-hidden="true">&middot;</span>
+        <span class="blog-article__reading-time">
+          {t(locale, 'blog.readingTime').replace('{min}', String(readingTime))}
+        </span>
       </div>
 
-      <!-- Table of Contents (desktop sidebar) -->
-      {tocItems.length > 0 && (
-        <nav class="blog-toc" aria-label="Table of contents">
-          <div class="blog-toc__title">Contents</div>
-          <ul class="blog-toc__list">
-            {tocItems.map((item) => (
-              <li class="blog-toc__item">
-                <a
-                  href={`#${item.slug}`}
-                  class:list={['blog-toc__link', { 'blog-toc__link--h3': item.depth === 3 }]}
-                >
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
-    </article>
-  </main>
+      <h1 class="blog-article__title">{title}</h1>
 
-  <footer class="blog-site-footer">
-    <p>HRT药典 &middot; 循证 &middot; 减害 &middot; 引导就医</p>
-    <p>{t(locale, 'footer.notice')}</p>
-  </footer>
-</body>
-</html>
+      <div class="blog-article__content">
+        <slot />
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="blog-disclaimer">
+        {t(locale, 'blog.disclaimer')}
+      </div>
+
+      <!-- Related docs (hub-and-spoke) -->
+      <RelatedDocs relatedDocs={relatedDocs} />
+
+      <!-- Related blog posts -->
+      {relatedPosts.length > 0 && (
+        <section class="blog-related">
+          <h2 class="blog-related__title">{t(locale, 'blog.relatedArticles')}</h2>
+          <div class="blog-related__list">
+            {relatedPosts.map((post) => (
+              <a href={getBlogUrl(post)} class="blog-related__link">
+                <span class="blog-related__icon" aria-hidden="true">&#128196;</span>
+                {post.data.title}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Footer navigation -->
+      <div class="blog-footer-nav">
+        <a href={`/${locale}/blog/`}>{t(locale, 'blog.backToIndex')}</a>
+        <a href={`/${locale}/`}>{t(locale, 'blog.backToDocs')}</a>
+      </div>
+    </div>
+
+    <!-- Table of Contents (desktop sidebar) -->
+    {tocItems.length > 0 && (
+      <nav class="blog-toc" aria-label="Table of contents">
+        <div class="blog-toc__title">Contents</div>
+        <ul class="blog-toc__list">
+          {tocItems.map((item) => (
+            <li class="blog-toc__item">
+              <a
+                href={`#${item.slug}`}
+                class:list={['blog-toc__link', { 'blog-toc__link--h3': item.depth === 3 }]}
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </article>
+</StarlightPage>
