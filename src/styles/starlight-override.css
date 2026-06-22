@@ -118,9 +118,19 @@ nav.sidebar-content > ul > li > details > summary {
   border-radius: var(--radius-md);
 }
 
-/* Tables */
+/* Tables — native markdown tables (rendered by Starlight as bare <table>).
+   `display:block` + `overflow-x:auto` lets wide tables scroll on narrow
+   screens instead of overflowing the content column; rows/cells keep their
+   default table display so the internal table layout is preserved.
+   `min-width:100%` keeps the table full-width on desktop. */
 .sl-markdown-content table {
   border: 1px solid var(--color-border);
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sl-markdown-content th {
