@@ -47,7 +47,6 @@ const route = Astro.locals.starlightRoute;
 // Also rewrite `og:site_name` to a locale-aware brand string.
 // We mutate the existing head entries rather than appending new ones to avoid
 // emitting duplicate `<meta property="og:*">` tags.
-const isToolPage = pathname.includes('/tools/');
 const isMedicalPage =
   pathname.includes('/medications/') ||
   pathname.includes('/risks') ||
@@ -78,6 +77,15 @@ if (route?.head) {
     if (tag.attrs['property'] === 'og:type') tag.attrs.content = ogType;
     if (tag.attrs['property'] === 'og:site_name') tag.attrs.content = ogSiteName;
   }
+  // De-duplicate head tags that BOTH Starlight's getHead and this override emit.
+  // Starlight emits a short-form og:locale (e.g. "ja") and its own canonical; we
+  // emit the region-qualified og:locale ("ja_JP") and an explicit canonical below.
+  // Strip Starlight's versions so every page has exactly one of each (was 2/2).
+  route.head = route.head.filter(
+    (tag) =>
+      !(tag.tag === 'meta' && tag.attrs?.['property'] === 'og:locale') &&
+      !(tag.tag === 'link' && tag.attrs?.['rel'] === 'canonical'),
+  );
   // Blog posts are standalone articles, NOT 1:1 translations across locales
   // (the zh and ja blogs are different articles). Starlight's getHead emits a
   // per-locale hreflang alternate for every configured locale (17 of them) by
@@ -98,7 +106,7 @@ const pageLastReviewed = entryData.lastReviewed
   : null;
 const pageEvidenceLevel = (entryData.evidenceLevel as string) ?? null;
 const pageRefCount = Array.isArray(entryData.references) ? (entryData.references as string[]).length : 0;
-const pageMedicalReviewer = (entryData.medicalReviewer as string) ?? 'HRT药典 Editorial Team';
+const pageMedicalReviewer = (entryData.medicalReviewer as string) ?? `${siteNames[headLocale]} Editorial Team`;
 
 // Per-page OG image URL (generated postbuild into dist/og/<locale>/<path>.png).
 // Strip leading/trailing slash, drop locale segment if present (we want parts after /{locale}/).
@@ -126,12 +134,6 @@ for (const { prefix } of localeMap) {
     break;
   }
 }
-
-// Build alternate URLs
-const alternates = localeMap.map(({ code, prefix }) => ({
-  hreflang: code,
-  href: `${site}${prefix}${pagePath}`,
-}));
 
 // x-default points to the default locale (zh) for docs. Blog posts have no
 // cross-locale twin, so their x-default points at themselves (avoids a

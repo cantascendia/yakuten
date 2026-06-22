@@ -15,10 +15,13 @@ interface Props {
   faqs?: { q: string; a: string }[];
 }
 
+import { brandName } from '../../i18n/ui';
+
 const { title, description, publishDate, updatedDate, tags, url, locale, author, faqs } = Astro.props;
 
 const langMap: Record<string, string> = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
 const inLanguage = langMap[locale] ?? 'zh-CN';
+const orgName = brandName(locale);
 
 // Author resolution — frontmatter `author` overrides the editorial-team default.
 // When the author string matches "HRT药典编辑部" / "HRT Yakuten Editorial" we keep
@@ -35,7 +38,7 @@ const graph: Record<string, unknown>[] = [
   {
     "@type": "Organization",
     "@id": "https://hrtyaku.com/#organization",
-    "name": "HRT药典",
+    "name": orgName,
     "alternateName": "HRT Yakuten",
     "url": "https://hrtyaku.com",
     "logo": {
@@ -49,7 +52,7 @@ const graph: Record<string, unknown>[] = [
     "@type": "WebSite",
     "@id": "https://hrtyaku.com/#website",
     "url": "https://hrtyaku.com",
-    "name": "HRT药典",
+    "name": orgName,
     "publisher": { "@id": "https://hrtyaku.com/#organization" }
   },
   {
