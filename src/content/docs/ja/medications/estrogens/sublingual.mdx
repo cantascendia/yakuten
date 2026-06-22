@@ -44,6 +44,7 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 舌下投与の薬物動態は、通常の経口投与とは根本的に異なります<CitationRef id="price-1997" num={1} authors="Price TM et al." year={1997} />：
 
 <DoseTable
+  caption="舌下投与と経口投与の薬物動態パラメータの比較"
   headers={['パラメータ', '舌下投与', '経口投与 (飲み薬)']}
   rows={[
     ['ピーク到達時間 (Tmax)', '約 0.5〜1 時間', '約 3〜6 時間'],
@@ -89,6 +90,7 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 ### 用量スケジュール
 
 <DoseTable
+  caption="舌下投与のステージ別の用量と目標トラフE2"
   headers={['ステージ', '1回あたりの舌下用量', '頻度', '目標トラフE2 (pg/mL)', 'スケジュール']}
   rows={[
     ['開始時の低用量', '0.5 - 1 mg/回', '1日 2回', '50-100', '1〜6ヶ月'],
@@ -143,6 +145,7 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 ## 投与ルート比較の早見表
 
 <DoseTable
+  caption="舌下・経口・経皮の安定性とVTEリスクの早見比較"
   headers={['項目', '舌下投与', '経口 (飲み込む)', '経皮 (パッチ)']}
   rows={[
     ['バイオアベイラビリティ', '中〜高', '低い (約5%)', '高い'],

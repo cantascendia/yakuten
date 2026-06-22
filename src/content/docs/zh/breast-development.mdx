@@ -51,6 +51,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 <EvidenceBadge level="A" /> 乳房的发育历程在生理上遵循国际公认的 **Tanner 分期**（分为 I-V 期）。在顺性别女性的青春期发育中，这一历程通常需要持续 **3-5 年** 的时间<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
 <DoseTable
+  caption="乳房发育 Tanner 五期特征与对应 E2 水平"
   headers={['分期', '特征', '通常持续时间', '对应 E2 水平']}
   rows={[
     ['Tanner I', '青春期前，无乳腺组织', '—', '< 20 pg/mL'],
@@ -128,6 +129,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 ### 用数字说明
 
 <DoseTable
+  caption="不同初始 E2 水平对乳房发育结果的影响"
   headers={['方案', '初始 E2 水平', '可能结果']}
   rows={[
     ['低剂量起步（推荐）', '50-100 pg/mL', '导管充分分支 → 更大、更圆润的乳房'],
@@ -211,6 +213,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 ### E2 水平阶梯总览
 
 <DoseTable
+  caption="乳房发育三阶段 E2 目标与注射 EV 剂量阶梯"
   headers={['阶段', '时间', 'E2 目标 (pg/mL)', '注射 EV 参考', '关键原则']}
   rows={[
     ['低剂量起步', '0-6 个月', '50-100', '1-2 mg/周', '给导管分支留足温和发育时间'],
@@ -230,6 +233,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 <img src="/images/diagrams/zh/breast-myths.webp" alt="乳房发育六个谣言对比真相海报：剂量越高长得越快（实为导管过早闭合、乳房更小）、朋友大剂量效果好（幸存者偏差）、打针后胀起来（水肿而非腺体）、乳晕变黑（E2 过高预警）、黄体酮能让胸变大（无对照研究）、罩杯小是药不够（主要取决于遗传和体脂）" width="900" height="1350" loading="lazy" decoding="async" style="width:100%;max-width:500px;height:auto;border-radius:8px;margin:var(--space-md) auto var(--space-lg);display:block;" />
 
 <DoseTable
+  caption="乳房发育常见社区说法与生理真相对照"
   headers={['社区说法', '生理真相', '证据来源']}
   rows={[
     ['"用药剂量越高，乳房长得越快"', '这与生理规律不符。初期过高的 E2 容易提早唤起乳腺细胞的终末分化，致使导管系统分支受阻、提早停育，最终导致乳房体积受限', 'Kanin 2025; Misakian 2025'],
@@ -272,6 +276,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 <img src="/images/diagrams/zh/cis-vs-hrt-timeline.webp" alt="顺性别青春期 vs HRT 启动后乳房发育时间线对比：顺性别在 5 年内完成 Tanner II-V 发育；跨性别 HRT 用户通常比顺性别青春期慢 1-2 期，最终结果主要取决于遗传和体脂，数据来自 de Blok 2018 队列（n=224）及 Patel 2021 综述" width="1400" height="820" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
 
 <DoseTable
+  caption="顺性别青春期与 HRT 后乳房发育时间线对比"
   headers={['时间节点', '顺性别青春期阶段', 'HRT 开始后的重塑节奏', '生理现象说明']}
   rows={[
     ['0-6 个月', 'Tanner II（乳芽形成）', 'Tanner II', '乳头下方出现局部硬性结节，伴有触痛'],
@@ -364,6 +369,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 两种主流手术方案的临床对比：
 
 <DoseTable
+  caption="假体植入与自体脂肪移植隆胸方案对比"
   headers={['手术方案', '主要临床优势', '潜在手术局限', '大致费用参考（中国大陆）']}
   rows={[
     ['假体植入术', '术后隆起效果易于精确预测，通常一次手术即可达到期望容积', '假体并非长期永久无需维护，若干年后可能需再次手术更换，存在一定比例的包膜挛缩或触感变硬风险', '约 3-8 万元人民币'],

@@ -35,6 +35,7 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
 ### 雌激素类
 
 <DoseTable
+  caption="各雌激素制剂建议最大日 / 周剂量"
   headers={['药物', '最大日/周剂量', '说明', '来源']}
   rows={[
     ['经皮贴片', '400 µg/天', '仅单药疗法时可能需要；通常 200 µg/天已足够', 'ES 2017'],
@@ -52,6 +53,7 @@ import InlineValue from '../../../components/ui/InlineValue.astro';
 ### 抗雄激素类
 
 <DoseTable
+  caption="各抗雄药物建议最大日剂量"
   headers={['药物', '最大日剂量', '说明', '来源']}
   rows={[
     ['CPA（醋酸环丙孕酮）', '12.5 mg/天', '≥ 25 mg 脑膜瘤风险增加；欧洲药品管理局已限制其高剂量使用', 'Lee 2022; EMA 2020'],
@@ -150,6 +152,7 @@ CPA 本身具有一定的促凝血活性，而口服雌二醇经过肝脏代谢�
 ### 高风险组合速查表
 
 <DoseTable
+  caption="高风险药物组合危险等级速查"
   headers={['药物组合', '危险等级', '可能存在的风险']}
   rows={[
     ['CPA + 比卡鲁胺', '🔴 绝对禁止', '会使肝毒性风险显著叠加'],

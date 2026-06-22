@@ -62,6 +62,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">開始期 · 1〜6ヶ月</div>
   <PhaseBlock phase={1} title="低用量での開始" color="green" week="1〜6ヶ月">
     <DoseTable
+      caption="開始期 各投与経路の低用量スタートの目安"
       headers={['投与経路', '開始用量', '出典']}
       rows={[
         ['経口エストラジオール', '2.0 mg / 日', 'Endocrine Society 2017'],
@@ -125,6 +126,7 @@ import '../../../styles/pathway.css';
       3ヶ月目の検査結果に基づいて調整します。トランスフェミニンの方の標準的な生理的範囲に到達することが目標です。
     </p>
     <DoseTable
+      caption="漸増期 各投与経路の調整後用量の目安"
       headers={['投与経路', '調整後用量']}
       rows={[
         ['経皮パッチ', '100-200 µg / 日'],

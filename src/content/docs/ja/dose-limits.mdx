@@ -23,6 +23,7 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 ### エストロゲン製剤
 
 <DoseTable
+  caption="エストロゲン製剤の最大用量と出典"
   headers={['薬剤名', '最大日用量/週用量', '備考', '出典']}
   rows={[
     ['経皮パッチ', '400 \u00b5g/日', '単独療法のみ。通常200 \u00b5g/日で十分', 'ES 2017'],
@@ -40,6 +41,7 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 ### 抗アンドロゲン薬
 
 <DoseTable
+  caption="抗アンドロゲン薬の最大日用量と出典"
   headers={['薬剤名', '最大日用量', '備考', '出典']}
   rows={[
     ['酢酸シプロテロン (CPA)', '12.5 mg/日', '25 mg以上で髄膜腫リスクが急激に上昇。EMA 2020で制限', 'Lee 2022; EMA 2020'],
@@ -106,6 +108,7 @@ CPAには凝固促進作用があり、経口エストラジオールの肝初�
 ### クイックリファレンス表
 
 <DoseTable
+  caption="危険な薬物の組み合わせ別のリスクレベルの早見表"
   headers={['組み合わせ', 'リスクレベル', '主な危険性']}
   rows={[
     ['CPA + ビカルタミド', '\ud83d\udd34 禁忌', '肝毒性の相乗作用'],
