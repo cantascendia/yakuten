@@ -308,7 +308,7 @@ if (isDrugPage) {
     name: title,
     description,
     evidenceLevel: `http://schema.org/EvidenceLevel${evidenceLevel}`,
-    evidenceOrigin: 'HRT药典 — WPATH SOC 8 / Endocrine Society 2017 / UCSF 临床路径综合',
+    evidenceOrigin: `${brandName(locale)} — WPATH SOC 8 / Endocrine Society 2017 / UCSF`,
     guidelineDate: lastReviewed,
     guidelineSubject: { '@type': 'MedicalCondition', name: 'Gender Dysphoria' },
   });
