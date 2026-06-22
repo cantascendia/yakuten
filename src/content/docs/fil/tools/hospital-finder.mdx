@@ -1,6 +1,6 @@
 ---
-title: "Direktoryo ng Mga Pasilidad Medikal"
-description: "Isang strukturadong direktoryo ng mga mapagkukunan para sa access sa pangangalaga na iniulat ng komunidad. Direktang i-verify bago ka pumunta."
+title: "Direktoryo ng mga Pasilidad na Medikal"
+description: "Isang maayos na direktoryo ng mga mapagkukunan para sa pag-access sa pangangalaga na iniulat ng komunidad. Tiyakin nang direkta bago ka pumunta."
 evidenceLevel: X
 lastReviewed: 2026-04-09
 references: []
@@ -24,11 +24,11 @@ export const hospitalsByCity = cityOrder
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
 
-<WarningBox title="I-verify bago ka pumunta">
-Ang mga listahang ito ay mga tala sa access na pinananatili ng komunidad, hindi opisyal na garantiya ng institusyon. Mabilis na nagbabago ang mga patakaran, departamento, at availability ng doktor, kaya laging kailangan ang direktang kumpirmasyon.
+<WarningBox title="Tiyakin bago ka pumunta">
+Ang mga listahang ito ay mga tala sa pag-access na pinangangalagaan ng komunidad, hindi opisyal na garantiya mula sa mga institusyon. Mabilis na nagbabago ang mga patakaran, departamento, at availability ng mga doktor, kaya laging kailangang kumpirmahin ito nang direkta.
 </WarningBox>
 
-Kasalukuyang naglalaman ang direktoryong ito ng {hospitals.length} entry na iniulat ng komunidad sa {cityCount} na lungsod. Ang pinagbatayang datos ay nananatiling pangunahin sa Tsino sa yugtong ito, kaya maaaring lumitaw pa rin sa Tsino ang mga pangalan ng ospital at mga lokal na tala.
+Sa ngayon, naglalaman ang direktoryong ito ng {hospitals.length} na entry na iniulat ng komunidad sa {cityCount} na lungsod. Pangunahing nasa Tsino pa rin ang pinagmumulang datos sa yugtong ito, kaya maaaring lumitaw pa rin sa Tsino ang mga pangalan ng ospital at ang mga lokal na tala.
 
 ---
 
@@ -48,10 +48,10 @@ Kasalukuyang naglalaman ang direktoryong ito ng {hospitals.length} entry na iniu
 
 1. Gamitin ito bilang panimulang punto para sa sarili mong pag-verify.
 2. Direktang kumpirmahin sa institusyon ang departamento, availability ng doktor, at mga panuntunan sa pagpapatala.
-3. Isabay ang access sa provider sa pagpaplano ng baseline na lab at kamalayan sa emerhensiya.
+3. Isabay ang pag-access sa provider sa pagpaplano ng baseline na lab at sa kamalayan sa emerhensiya.
 
 </GlassCard>
 
 <DangerBox title="Tala sa emerhensiya">
-Ang direktoryong ito ay hindi serbisyo ng referral para sa emerhensiya. Kung mayroon kang madaliang sintomas, pumunta muna sa pangangalaga sa emerhensiya sa halip na umasa sa pag-browse ng direktoryo.
+Ang direktoryong ito ay hindi isang serbisyo ng referral para sa emerhensiya. Kung may madaliang sintomas ka, magtungo muna sa emergency care sa halip na umasa sa pag-browse ng direktoryo.
 </DangerBox>
