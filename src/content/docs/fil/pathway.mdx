@@ -1,6 +1,6 @@
 ---
 title: "Klinikal na Daloy ng HRT"
-description: "Buong daloy ng HRT mula sa baseline na lab hanggang sa maintenance, kasama ang mga layunin bawat yugto, decision node, at iskedyul ng monitoring."
+description: "Kumpletong daloy ng HRT mula sa baseline na lab hanggang sa maintenance — kasama ang mga layunin sa bawat yugto, decision node, at iskedyul ng monitoring."
 evidenceLevel: B
 lastReviewed: 2026-04-07
 references: [coleman-2022, hembree-2017, rothman-2024, ucsf-2016]
@@ -18,7 +18,7 @@ import '../../../styles/pathway.css';
 <div class="pathway-wrapper">
 
 <p class="phase-block__desc" style="text-align:center; max-width:40rem; margin:0 auto var(--space-3xl);">
-  Ang daloy na ito ay nakabatay sa WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> at Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, na nagbibigay ng pamantayang balangkas para sa pagsisimula at maintenance ng transfeminine na HRT.
+  Nakabatay ang daloy na ito sa WPATH SOC 8<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> at sa Endocrine Society 2017<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, na nagbibigay ng pamantayang balangkas para sa pagsisimula at maintenance ng transfeminine na HRT.
 </p>
 
 <img src="/images/diagrams/en/pathway-timeline.webp" alt="Timeline ng daloy ng HRT: Baseline → Mababang Dosis (1-6 buwan) → Titration (6-12 buwan) → Maintenance (12 buwan+)" width="900" height="300" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
@@ -32,7 +32,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">LINGGO 0</div>
   <PhaseBlock phase={0} title="Baseline na Pagsusuri" color="green">
     <p class="phase-block__desc">
-      Bago magsimula ng anumang gamot, kumpletuhin ang buong baseline na panel upang maalis ang mga kontraindikasyon at maitatag ang iyong personal na reference values.
+      Bago ka magsimula ng anumang gamot, kumpletuhin muna ang buong baseline na panel para maalis ang mga kontraindikasyon at maitala ang sarili mong reference values.
     </p>
     <ul class="phase-block__list">
       <li class="phase-block__list-item">
@@ -90,7 +90,7 @@ import '../../../styles/pathway.css';
     <div class="phase-warning">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Babala sa kaligtasan: Kailangan ng panahon ng iyong katawan upang makaangkop sa mga pagbabago sa receptor. Huwag kailanman dagdagan ang dosis nang walang blood work. Huwag itaas kahit pakiramdam mo ay "walang nangyayari." Karaniwang lumilitaw ang breast bud sa 3-6 na buwan.
+        Babala sa kaligtasan: Kailangan ng panahon ng iyong katawan para makaangkop sa mga pagbabago sa receptor. Huwag kailanman dagdagan ang dosis nang walang blood work. Huwag itaas kahit pakiramdam mo ay "walang nangyayari." Karaniwang lumilitaw ang breast bud sa loob ng 3-6 na buwan.
       </p>
     </div>
   </PhaseBlock>
@@ -106,7 +106,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <30 pg/mL → Isaalang-alang ang pagtaas sa dosing ng Phase 2"
+      text="E2 <30 pg/mL → Isaalang-alang ang pag-akyat sa dosing ng Phase 2"
     />
     <DecisionBranch
       outcome="red"
@@ -122,7 +122,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 BUWAN</div>
   <PhaseBlock phase={2} title="Pag-aayos ng Dosis" color="yellow" week="6-12 BUWAN">
     <p class="phase-block__desc">
-      Iayon batay sa resulta ng lab sa ika-3 buwan. Ang layunin ay maabot ang pamantayang physiologic na range para sa mga transfeminine na indibidwal.
+      Iayon ito batay sa resulta ng lab sa ika-3 buwan. Ang layunin ay maabot ang pamantayang physiologic na range para sa mga transfeminine na indibidwal.
     </p>
     <DoseTable
       headers={['Ruta', 'Inayos na Dosis']}
@@ -176,7 +176,7 @@ import '../../../styles/pathway.css';
     />
     <DecisionBranch
       outcome="yellow"
-      text="E2 <100 pg/mL → Ipagpatuloy ang pagtaas sa loob ng ligtas na limitasyon"
+      text="E2 <100 pg/mL → Ipagpatuloy ang pag-akyat sa loob ng ligtas na limitasyon"
     />
   </DecisionNode>
 </div>
@@ -188,7 +188,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 BUWAN+</div>
   <PhaseBlock phase={3} title="Pangmatagalang Maintenance" color="pink" week="12 BUWAN+">
     <p class="phase-block__desc">
-      Kapag napanatag na ang antas at mga pisikal na pagbabago, lumipat sa mababang-dalas na monitoring. Panatilihin ang pinakamababang epektibong dosis upang manatili ang E2 100-200 pg/mL, T &lt;50 ng/dL.
+      Kapag napanatag na ang iyong antas at mga pisikal na pagbabago, lumipat na sa mababang-dalas na monitoring. Panatilihin ang pinakamababang epektibong dosis upang manatili ang E2 sa 100-200 pg/mL, T &lt;50 ng/dL.
     </p>
     <div class="monitor-box">
       <p class="monitor-box__title">Dalas ng Monitoring</p>
@@ -199,14 +199,14 @@ import '../../../styles/pathway.css';
         </div>
         <div class="monitor-box__divider" />
         <p class="monitor-box__desc">
-          Buong hormone panel at mga risk factor ng VTE kada 6 na buwan. Taunang lipids at fasting glucose. Isaalang-alang ang bone density screening.
+          Buong hormone panel at mga risk factor ng VTE kada 6 na buwan. Taun-taon na lipids at fasting glucose. Isaalang-alang ang bone density screening.
         </p>
       </div>
     </div>
     <div class="phase-warning" style="margin-top: var(--space-md);">
       <span class="phase-warning__icon" aria-hidden="true">&#x26A0;&#xFE0F;</span>
       <p class="phase-warning__text">
-        Ang E2 &gt;200 pg/mL ay hindi nagdadagdag ng feminization — pinapataas lamang nito ang panganib (Endocrine Society 2017, Rec 2.2)
+        Ang E2 &gt;200 pg/mL ay hindi nagdudulot ng mas maraming feminization — pinapataas lamang nito ang panganib (Endocrine Society 2017, Rec 2.2)
       </p>
     </div>
   </PhaseBlock>
