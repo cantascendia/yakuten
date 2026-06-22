@@ -666,7 +666,7 @@ export default function DrugBrandIndex({ locale: localeProp }: { locale?: Locale
                     href={getDrugPageUrl(b.drugId, rawLocale)!}
                     style={S.drugPageLink}
                   >
-                    {locale === 'en' ? 'Drug details →' : locale === 'ja' ? '薬物詳細 →' : '药物详情 →'}
+                    {{ zh: '药物详情 →', en: 'Drug details →', ja: '薬物詳細 →', ko: '약물 상세 →' }[locale]}
                   </a>
                 )}
               </div>
