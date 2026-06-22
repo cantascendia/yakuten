@@ -133,23 +133,81 @@
       }
     } catch (e) {}
 
-    // 文案：根据当前模式动态切换
-    function copyFor(on) {
-      // on = 当前是否已是 sakura
-      if (on) {
-        return {
+    // 文案：按页面语言（html[lang]）本地化，再按当前模式切换。
+    // is:inline 脚本无法 import，故内嵌 zh/ja/en/ko 文案表；其余语种回退 en。
+    var I18N = {
+      zh: {
+        label: "新版",
+        off: {
+          ariaLabel: "切换到樱花手账主题（浅色 · 优化血检手账界面）",
+          title: "切换乐园手账主题（樱粉浅色风格 · 优化血检手账界面） — 不会跳转路由，侧栏/搜索/TOC 全部保留",
+          srDesc: "点击切换到樱花手账浅色主题，配色更柔和，并启用 v3.2 血检手账记录界面。皮肤偏好保存在你的浏览器，不会上传。",
+          hint: "切换主题"
+        },
+        on: {
           ariaLabel: "切回二相乐园主题（深色 · 米哈游风格）",
           title: "切回二相乐园主题（深色）— 当前为樱花手账浅色模式",
           srDesc: "当前为樱花手账浅色主题。点击切回米哈游二相乐园深色主题。皮肤偏好保存在你的浏览器，不会上传。",
           hint: "切回深色"
-        };
+        }
+      },
+      ja: {
+        label: "新スキン",
+        off: {
+          ariaLabel: "桜手帳テーマ（ライト · 血液検査手帳UI）に切り替える",
+          title: "桜手帳テーマに切り替え（桜色のライトスタイル · 血液検査手帳UI） — ページ遷移なし、サイドバー/検索/目次はすべて保持",
+          srDesc: "クリックで桜手帳ライトテーマに切り替えます。配色がより柔らかくなり、v3.2 血液検査手帳の記録UIが有効になります。スキン設定はお使いのブラウザに保存され、アップロードされません。",
+          hint: "テーマ切替"
+        },
+        on: {
+          ariaLabel: "二相のパライソテーマ（ダーク · miHoYo風）に戻す",
+          title: "二相のパライソテーマ（ダーク）に戻す — 現在は桜手帳ライトモードです",
+          srDesc: "現在は桜手帳ライトテーマです。クリックで miHoYo「二相のパライソ」ダークテーマに戻します。スキン設定はお使いのブラウザに保存され、アップロードされません。",
+          hint: "ダークに戻す"
+        }
+      },
+      en: {
+        label: "New skin",
+        off: {
+          ariaLabel: "Switch to the Sakura Journal theme (light · blood-test journal UI)",
+          title: "Switch to the Sakura Journal theme (soft-pink light style · blood-test journal UI) — no page reload; sidebar, search and TOC are all preserved",
+          srDesc: "Click to switch to the Sakura Journal light theme. Colors become softer and the v3.2 blood-test journal UI is enabled. Your skin preference is stored in your browser and never uploaded.",
+          hint: "Switch theme"
+        },
+        on: {
+          ariaLabel: "Switch back to the Dual-Paradise theme (dark · miHoYo style)",
+          title: "Switch back to the Dual-Paradise theme (dark) — currently in Sakura Journal light mode",
+          srDesc: "You are in the Sakura Journal light theme. Click to switch back to the miHoYo Dual-Paradise dark theme. Your skin preference is stored in your browser and never uploaded.",
+          hint: "Back to dark"
+        }
+      },
+      ko: {
+        label: "새 스킨",
+        off: {
+          ariaLabel: "사쿠라 수첩 테마(라이트 · 혈액검사 수첩 UI)로 전환",
+          title: "사쿠라 수첩 테마로 전환(부드러운 핑크 라이트 · 혈액검사 수첩 UI) — 페이지 이동 없음, 사이드바/검색/목차 모두 유지",
+          srDesc: "클릭하면 사쿠라 수첩 라이트 테마로 전환됩니다. 색감이 부드러워지고 v3.2 혈액검사 수첩 기록 UI가 활성화됩니다. 스킨 설정은 브라우저에 저장되며 업로드되지 않습니다.",
+          hint: "테마 전환"
+        },
+        on: {
+          ariaLabel: "이상낙원 테마(다크 · miHoYo 스타일)로 되돌리기",
+          title: "이상낙원 테마(다크)로 되돌리기 — 현재 사쿠라 수첩 라이트 모드",
+          srDesc: "현재 사쿠라 수첩 라이트 테마입니다. 클릭하면 miHoYo 이상낙원 다크 테마로 되돌립니다. 스킨 설정은 브라우저에 저장되며 업로드되지 않습니다.",
+          hint: "다크로"
+        }
       }
-      return {
-        ariaLabel: "切换到樱花手账主题（浅色 · 优化血检手账界面）",
-        title: "切换乐园手账主题（樱粉浅色风格 · 优化血检手账界面） — 不会跳转路由，侧栏/搜索/TOC 全部保留",
-        srDesc: "点击切换到樱花手账浅色主题，配色更柔和，并启用 v3.2 血检手账记录界面。皮肤偏好保存在你的浏览器，不会上传。",
-        hint: "切换主题"
-      };
+    };
+    var DOC_LANG = (document.documentElement.lang || "zh").toLowerCase();
+    var LANG = DOC_LANG.indexOf("ja") === 0 ? "ja"
+      : DOC_LANG.indexOf("ko") === 0 ? "ko"
+      : DOC_LANG.indexOf("zh") === 0 ? "zh"
+      : "en";
+    var STR = I18N[LANG] || I18N.en;
+
+    // 文案：根据当前模式动态切换（已按页面语言本地化）
+    function copyFor(on) {
+      // on = 当前是否已是 sakura
+      return on ? STR.on : STR.off;
     }
 
     function syncCopy(btn) {
@@ -188,9 +246,11 @@
       btn.setAttribute("aria-describedby", "sakura-toggle-desc");
       btn.innerHTML =
         '<span class="sakura-toggle__icon" aria-hidden="true">🌸</span>' +
-        '<span class="sakura-toggle__label">新版</span>' +
-        '<span class="sakura-toggle__hint" aria-hidden="true">切换主题</span>' +
+        '<span class="sakura-toggle__label"></span>' +
+        '<span class="sakura-toggle__hint" aria-hidden="true"></span>' +
         '<span id="sakura-toggle-desc" class="sakura-toggle-sr-only"></span>';
+      var labelEl = btn.querySelector(".sakura-toggle__label");
+      if (labelEl) labelEl.textContent = STR.label;
       syncCopy(btn);
       btn.addEventListener("click", function () {
         var on = root.classList.contains("sakura");
