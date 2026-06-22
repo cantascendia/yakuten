@@ -169,8 +169,9 @@ html.sakura .dose-table {
   background: var(--ivory) !important;
 }
 html.sakura .dose-table thead {
-  /* Deeper pink for white-text contrast (pass AA: ~5.2:1 vs 3.8:1 on --sakura-pink) */
-  background: var(--sakura-pink-deep) !important;
+  /* White header text needs ≥4.5:1. --sakura-pink-deep (#E5578B) only reaches
+     ~3.5:1, so use a darker pink (#C03070 ≈ 5.4:1 vs white) for the header bg. */
+  background: #c03070 !important;
 }
 html.sakura .dose-table thead th {
   color: #fff !important;

@@ -9,17 +9,20 @@
 interface Props {
   headers: string[];
   rows: string[][];
+  /** Optional accessible table name (screen-reader caption + scroll-region label). */
+  caption?: string;
 }
 
-const { headers, rows } = Astro.props;
+const { headers, rows, caption } = Astro.props;
 ---
 
-<div class="dose-table-wrapper">
+<div class="dose-table-wrapper" data-cols={headers.length} tabindex="0" role={caption ? 'region' : undefined} aria-label={caption}>
   <table class="dose-table">
+    {caption && <caption class="sr-only">{caption}</caption>}
     <thead>
       <tr>
         {headers.map((h) => (
-          <th>{h}</th>
+          <th scope="col">{h}</th>
         ))}
       </tr>
     </thead>
@@ -27,7 +30,7 @@ const { headers, rows } = Astro.props;
       {rows.map((row) => (
         <tr>
           {row.map((cell, i) => (
-            <td class={i === 1 ? 'dose-value' : ''}>
+            <td class={i === 1 ? 'dose-value' : ''} data-label={headers[i]}>
               {cell}
             </td>
           ))}

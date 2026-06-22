@@ -551,31 +551,54 @@
    ================================ */
 .dose-table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: var(--space-md);
+}
+/* Keyboard users can focus the scroll region and arrow through wide tables. */
+.dose-table-wrapper:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .dose-table {
   width: 100%;
+  /* fixed layout distributes columns to fill the container — kills the old
+     "content packs left, ~250px dead space on the right" look on desktop. */
+  table-layout: fixed;
   text-align: left;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem; /* 13px (was 12px) — easier to read dose numbers */
   border-collapse: collapse;
 }
+
+/* Column-count-aware label (first) column width so 2–5 column tables stay
+   balanced; remaining columns share the rest evenly under fixed layout. */
+.dose-table-wrapper[data-cols="2"] .dose-table :is(th, td):first-child { width: 34%; }
+.dose-table-wrapper[data-cols="3"] .dose-table :is(th, td):first-child { width: 26%; }
+.dose-table-wrapper[data-cols="4"] .dose-table :is(th, td):first-child { width: 22%; }
+.dose-table-wrapper[data-cols="5"] .dose-table :is(th, td):first-child { width: 18%; }
 
 .dose-table thead th {
   font-family: var(--font-body);
   font-weight: 500;
   color: var(--color-tertiary-dim);
-  padding-bottom: var(--space-sm);
+  /* logical padding: correct on RTL (ar/fa) too. Start edge flush. */
+  padding: var(--space-sm);
+  padding-inline-start: 0;
   border-bottom: 1px solid var(--color-outline-20);
   font-size: 0.6875rem;
+  vertical-align: bottom;
+  overflow-wrap: break-word;
 }
 
 .dose-table tbody td {
-  padding: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+  padding: var(--space-sm);
+  padding-inline-start: 0;
   border-bottom: 1px solid rgba(86, 65, 71, 0.1);
   color: var(--color-text-primary);
   opacity: 0.8;
+  vertical-align: top;
+  overflow-wrap: break-word;
 }
 
 .dose-table .dose-value {
@@ -583,6 +606,36 @@
   font-weight: 600;
   color: var(--color-text-primary);
   opacity: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Mobile: do NOT compress dose numbers (misreading 0.35 vs 0.3 is a safety
+   risk). Let the table take its natural width and scroll horizontally, with a
+   sticky first column + edge shadow so users know there is more to the side. */
+@media (max-width: 640px) {
+  .dose-table {
+    table-layout: auto;
+    min-width: max-content;
+  }
+  .dose-table-wrapper[data-cols] .dose-table :is(th, td):first-child {
+    width: auto;
+  }
+  .dose-table .dose-value {
+    white-space: nowrap;
+  }
+  .dose-table :is(th, td):first-child {
+    position: sticky;
+    inset-inline-start: 0;
+    background: var(--color-bg-primary);
+    min-width: 5.5em;
+    box-shadow: 6px 0 8px -6px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Light theme: the dim header color #958DA5 only reaches ~3:1 on the near-white
+   light background (fails WCAG AA). Darken it for light mode → ~5.5:1. */
+[data-theme='light'] {
+  --color-tertiary-dim: #6b5f80;
 }
 
 /* ================================
