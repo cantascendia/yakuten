@@ -62,6 +62,7 @@ import '../../../styles/pathway.css';
   <div class="phase-label" style="color: var(--color-safe);">INITIATION · 1-6 MONTHS</div>
   <PhaseBlock phase={1} title="Low-Dose Initiation" color="green" week="1-6 MONTHS">
     <DoseTable
+      caption="Low-dose initiation starting doses by route"
       headers={['Route', 'Starting Dose', 'Source']}
       rows={[
         ['Oral estradiol', '2.0 mg / day', '[2]'],
@@ -125,6 +126,7 @@ import '../../../styles/pathway.css';
       Adjust based on 3-month lab results. The goal is to reach the standard physiologic range for transfeminine individuals.
     </p>
     <DoseTable
+      caption="Titration-phase adjusted doses by route"
       headers={['Route', 'Adjusted Dose']}
       rows={[
         ['Transdermal patch', '100-200 µg / day'],

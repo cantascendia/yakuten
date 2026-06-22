@@ -53,6 +53,7 @@ import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 ### VTE (血栓症) リスクのデータ
 
 <DoseTable
+  caption="経口エストラジオールと経皮パッチのVTE相対リスク"
   headers={['投与経路', '相対リスク (RR)', '95% 信頼区間', '備考']}
   rows={[
     ['経口エストラジオール', '1.48', '1.27 - 1.72', '血栓リスクが約 48% 増加する'],
@@ -71,6 +72,7 @@ import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 以下の範囲は、Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /> および WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /> ガイドラインから統合されたデータです：
 
 <DoseTable
+  caption="経口エストラジオールのステージ別用量と目標トラフE2"
   headers={['ステージ', '用量 (E2ベース)', '目標 E2 トラフ値 (pg/mL)', 'スケジュール']}
   rows={[
     ['開始時の低用量', '2 mg/日', '50-100', '1〜6ヶ月'],

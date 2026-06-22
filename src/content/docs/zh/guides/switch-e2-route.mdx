@@ -61,6 +61,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 下表所整理的数据，主要参考了内分泌学会（Endocrine Society 2017）<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />、世界跨性别健康专业协会（WPATH SOC 8）<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> 以及 Kuhl 2005<CitationRef id="kuhl-2005" num={1} /> 推荐的**临床常规维持剂量**参考范围。
 
 <DoseTable
+  caption="五种 E2 给药途径维持 / 起始剂量对照"
   headers={['途径', '维持剂量', '起始剂量', '给药节奏']}
   rows={[
     ['口服 戊酸 E2', '2-4 mg/天', '1-2 mg/天', '每日 1 次'],
@@ -84,6 +85,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 肌肉注射戊酸雌二醇（EV）在体内的生物半衰期约为 4-5 天。在打完最后一针后的第 5 天左右，血液中的药物浓度通常会开始明显滑落，并在约 15-20 天后在体内完全代谢完毕。
 
 <DoseTable
+  caption="从注射 EV 切换到口服 / 舌下 / 经皮的过渡方案"
   headers={['目标方案', '停针节奏', '新药起始剂量', '过渡期 E2 预期']}
   rows={[
     ['→ 口服', '最后一针后 5 天起口服', '2 mg/天', '第 7-10 天可能有低谷，症状波动'],
@@ -102,6 +104,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 口服雌二醇在体内的半衰期约为 13-20 小时。由于其排泄较快，在停止服药的 2-3 天后，体内的药物成分基本可以代谢完毕。
 
 <DoseTable
+  caption="从口服 E2 切换到舌下 / 经皮 / 注射的过渡方案"
   headers={['目标方案', '停口服节奏', '新药起始剂量', '过渡期 E2 预期']}
   rows={[
     ['→ 舌下', '同日切换', '2 mg/天 分 2 次', '舌下峰值高于口服，注意 1-2 周适应'],
@@ -120,6 +123,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 由于舌下黏膜吸收较快，血液中的药物浓度通常呈现较明显的“高尖峰与低谷值”起伏。当你换用其他浓度更为稳健、持久的给药途径时，日常的生理与情绪舒适度通常会得到明显的改善。
 
 <DoseTable
+  caption="从舌下含服切换到口服 / 经皮 / 注射的过渡方案"
   headers={['目标方案', '停舌下节奏', '新药起始剂量', '过渡期 E2 预期']}
   rows={[
     ['→ 口服', '同日切换', '2 mg/天', '峰值下降，可能感觉"药效变弱"，实际是血药更稳'],
@@ -136,6 +140,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 在透皮贴片与凝胶这两种同属于经皮给药的方案之间进行互换，通常被视为“同类别内的常规剂量微调”，在操作上基本不需要设立任何药物洗脱期。然而，如果是要在经皮方案与口服或注射方案之间进行互换，则建议充分考虑不同药物半衰期带来的体内蓄积与洗脱过渡。
 
 <DoseTable
+  caption="从经皮贴片 / 凝胶切换到口服 / 注射的过渡方案"
   headers={['目标方案', '停经皮节奏', '新药起始剂量', '过渡期 E2 预期']}
   rows={[
     ['贴片 ↔ 凝胶', '当天切换', '新途径的起始剂量', '基本无波动'],

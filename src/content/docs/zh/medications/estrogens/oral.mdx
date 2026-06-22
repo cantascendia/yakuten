@@ -82,6 +82,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 ### VTE 风险数据
 
 <DoseTable
+  caption="口服雌二醇与经皮贴片 VTE 相对风险对比"
   headers={['途径', '相对风险 (RR)', '95% CI', '说明']}
   rows={[
     ['口服雌二醇', '1.48', '1.27 - 1.72', 'VTE 风险增加约 48%'],
@@ -100,6 +101,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 以下剂量范围参考 Endocrine Society 2017 指南<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />和 WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />：
 
 <DoseTable
+  caption="口服戊酸雌二醇分阶段剂量与 E2 当量"
   headers={['阶段', '剂量（戊酸 E2）', '≈ E2 当量', '目标 E2 (pg/mL)', '时间']}
   rows={[
     ['起始低剂量', '2 mg/天', '≈ 1.5 mg', '50-100', '第 1-6 个月'],

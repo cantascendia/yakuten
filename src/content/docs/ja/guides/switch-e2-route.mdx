@@ -61,6 +61,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 下の表に整理したデータは、主に内分泌学会（Endocrine Society 2017）<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />、世界トランスジェンダー・ヘルス専門家協会（WPATH SOC 8）<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care v8" />、および Kuhl 2005<CitationRef id="kuhl-2005" num={1} /> が推奨する**臨床的に標準的な維持用量**の参考範囲を参照しています。
 
 <DoseTable
+  caption="E2投与経路5種の維持用量と開始用量の対照"
   headers={['経路', '維持用量', '開始用量', '投与リズム']}
   rows={[
     ['経口 吉草酸 E2', '2-4 mg/日', '1-2 mg/日', '1 日 1 回'],
@@ -84,6 +85,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 筋肉注射の吉草酸エストラジオール（EV）の体内での生物学的半減期は約 4〜5 日です。最後の 1 本を打った後の 5 日目あたりから、血中の薬物濃度は通常はっきりと低下し始め、約 15〜20 日後には体内で完全に代謝されます。
 
 <DoseTable
+  caption="注射EVから他経路へ切り替える中止と開始のリズム"
   headers={['目標方式', '注射中止のリズム', '新薬の開始用量', '移行期の E2 予測']}
   rows={[
     ['→ 経口', '最後の注射から 5 日後に経口開始', '2 mg/日', '7〜10 日目に低トラフ、症状の変動の可能性'],
@@ -102,6 +104,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 経口エストラジオールの体内での半減期は約 13〜20 時間です。排泄が速いため、服薬を止めてから 2〜3 日後にはほぼ体内の薬物成分を代謝し終えます。
 
 <DoseTable
+  caption="経口E2から他経路へ切り替える中止と開始のリズム"
   headers={['目標方式', '経口中止のリズム', '新薬の開始用量', '移行期の E2 予測']}
   rows={[
     ['→ 舌下', '同日切り替え', '2 mg/日 2 回に分割', '舌下のピークは経口より高い、1〜2 週間の適応に注意'],
@@ -120,6 +123,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 舌下粘膜は吸収が速いため、血中の薬物濃度は通常、比較的はっきりした「高く鋭いピークと低いトラフ」の起伏を示します。より濃度が安定して持続する他の投与経路へ切り替えると、日々の生理的・情緒的な快適さは通常はっきりと改善します。
 
 <DoseTable
+  caption="舌下E2から他経路へ切り替える中止と開始のリズム"
   headers={['目標方式', '舌下中止のリズム', '新薬の開始用量', '移行期の E2 予測']}
   rows={[
     ['→ 経口', '同日切り替え', '2 mg/日', 'ピークが下がり「効きが弱くなった」と感じる場合があるが、実際は血中濃度がより安定している'],
@@ -136,6 +140,7 @@ import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
 経皮パッチとゲルという、ともに経皮投与に属する 2 つの方式のあいだで相互に切り替える場合は、通常「同一カテゴリー内での標準的な用量微調整」とみなされ、操作上は基本的に薬物のウォッシュアウト期間を設ける必要はありません。一方、経皮方式と経口または注射方式のあいだで相互に切り替える場合は、薬物の半減期の違いがもたらす体内での蓄積とウォッシュアウトの移行を十分に考慮することが推奨されます。
 
 <DoseTable
+  caption="パッチ・ゲルから他経路へ切り替える中止と開始のリズム"
   headers={['目標方式', '経皮中止のリズム', '新薬の開始用量', '移行期の E2 予測']}
   rows={[
     ['パッチ ↔ ゲル', '当日切り替え', '新経路の開始用量', '基本的に変動なし'],

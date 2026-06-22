@@ -40,6 +40,7 @@ import PhaseBlock from '../../../components/ui/PhaseBlock.astro';
 <EvidenceBadge level="A" /> 乳房の発育は、国際的に認められた**タナーステージ（Tanner Stages I〜V）**という段階を追って進みます。シスジェンダーの女性の場合、このプロセスが完了するまでに**3〜5年**かかります<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />。
 
 <DoseTable
+  caption="タナーステージ各段階の特徴と対応するE2レベルの目安"
   headers={['ステージ', '特徴', '平均的な期間', '対応する E2 レベルの目安']}
   rows={[
     ['Tanner I', '思春期前。腺組織なし', '—', '< 20 pg/mL'],
@@ -117,6 +118,7 @@ HRTの初期段階でいきなり高い E2 レベルに身を晒すと、体の�
 ### 予想される結果の比較表
 
 <DoseTable
+  caption="開始用量アプローチ別の初期E2と乳房発育の予想結果"
   headers={['アプローチ方法', '初期の E2 レベル', '可能性の高い最終結果']}
   rows={[
     ['低用量スタート (推奨)', '50-100 pg/mL', '乳管の枝分かれが最大化 → 丸みのある豊かな胸'],
@@ -203,6 +205,7 @@ HRTの初期段階でいきなり高い E2 レベルに身を晒すと、体の�
 <EvidenceBadge level="X" /> 以下は、日本のトランス女性コミュニティや匿名掲示板で広く信じられているものの、科学的な正当性が全くなく、しばしば取り返しのつかない自傷行為につながっている「神話」の数々です。
 
 <DoseTable
+  caption="乳房発育をめぐる巷の神話と医学的現実の対比"
   headers={['巷の神話', '医学的現実', 'ソース']}
   rows={[
     ['「高用量を打てば早く大きくなる」', '完全に嘘。高いE2は終末分化を引き起こし、構造的な成長を永遠に停止させるため、結果的に著しく小さな胸で終わります。', 'Kanin 2025; Misakian 2025'],

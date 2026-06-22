@@ -36,6 +36,7 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 **第4週目の検査:**
 
 <DoseTable
+  caption="導入期 第4週目に受ける検査項目と対象者"
   headers={['検査項目', '目的', '対象者']}
   rows={[
     ['性ホルモン (E2, T, LH, FSH, PRL, P4)', 'E2が上昇しTが低下しているかの確認', '全員'],
@@ -47,6 +48,7 @@ import EvidenceBadge from '../../../components/ui/EvidenceBadge.astro';
 **第12週目（3ヶ月）の検査:**
 
 <DoseTable
+  caption="導入期 第12週目に受ける検査項目と対象者"
   headers={['検査項目', '目的', '対象者']}
   rows={[
     ['性ホルモン', 'ステージ目標（E2 50-100 pg/mL）の達成確認', '全員'],
@@ -65,6 +67,7 @@ E2が 50〜100 pg/mL に達し、Tが低下傾向にあること。もし E2 が
 この期間は、3ヶ月ごとに検査を行います<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />。
 
 <DoseTable
+  caption="調整期に3ヶ月ごとに確認する検査項目と目標値"
   headers={['検査項目', '頻度', '目標値']}
   rows={[
     ['性ホルモン (E2, T, PRL)', '3ヶ月ごと', 'E2: 100-200 pg/mL, T: 50 ng/dL 未満'],
@@ -81,6 +84,7 @@ E2が 50〜100 pg/mL に達し、Tが低下傾向にあること。もし E2 が
 **定期的な半年に1回の検査:**
 
 <DoseTable
+  caption="維持期に半年ごとに受ける定期検査の項目"
   headers={['検査項目', '説明']}
   rows={[
     ['性ホルモン (E2, T, PRL)', '目標範囲に留まっているか確認'],
@@ -92,6 +96,7 @@ E2が 50〜100 pg/mL に達し、Tが低下傾向にあること。もし E2 が
 **年に1回の総合検査:**
 
 <DoseTable
+  caption="維持期に年1回受ける総合検査の項目"
   headers={['検査項目', '説明']}
   rows={[
     ['脂質パネル', '長期的な代謝影響の評価'],

@@ -175,6 +175,7 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 **第 4 周复查：**
 
 <DoseTable
+  caption="起始期第 4 周复查项目与目的"
   headers={['检查项目', '目的', '针对用药']}
   rows={[
     ['激素六项（E2、T、LH、FSH、PRL、P4）', '确认 E2 水平逐步上升、睾酮 / T 水平呈下降趋势', '所有用药者'],
@@ -186,6 +187,7 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 **第 12 周复查：**
 
 <DoseTable
+  caption="起始期第 12 周复查项目与目的"
   headers={['检查项目', '目的', '针对用药']}
   rows={[
     ['激素六项', '评估是否达到阶段目标（E2 50-100 pg/mL）', '所有用药者'],
@@ -204,6 +206,7 @@ E2 达到 50-100 pg/mL，T 呈下降趋势。如果 E2 低于 30 pg/mL，通常�
 建议每 3 个月复查一次<CitationRef id="coleman-2022" num={2} authors="Coleman E et al." year={2022} />：
 
 <DoseTable
+  caption="调整期（6-12 月）复查频率与目标"
   headers={['检查项目', '频率', '目标']}
   rows={[
     ['激素六项（E2、T、PRL）', '每 3 个月', 'E2 100-200 pg/mL, T &lt;50 ng/dL'],
@@ -220,6 +223,7 @@ E2 达到 50-100 pg/mL，T 呈下降趋势。如果 E2 低于 30 pg/mL，通常�
 **每 6 个月常规检查：**
 
 <DoseTable
+  caption="维持期每 6 个月常规检查项目"
   headers={['检查项目', '说明']}
   rows={[
     ['激素六项（E2、T、PRL）', '确认激素水平稳定在合适的目标范围'],
@@ -231,6 +235,7 @@ E2 达到 50-100 pg/mL，T 呈下降趋势。如果 E2 低于 30 pg/mL，通常�
 **每年全面检查：**
 
 <DoseTable
+  caption="维持期每年全面检查项目"
   headers={['检查项目', '说明']}
   rows={[
     ['血脂四项', '评估长期用药对代谢指标的影响'],
@@ -381,6 +386,7 @@ D-二聚体指标升高并不等同于血栓，但如果你在用药期间同时
 ### 综合参考表
 
 <DoseTable
+  caption="七项核心指标红绿灯参考范围总表"
   headers={['指标', '目标（绿色）', '注意（黄色）', '危险（红色）']}
   rows={[
     ['E2 (pg/mL)', '100-200', '&lt;50 或 200-300', '>500 或 &lt;20（用药后）'],
@@ -414,6 +420,7 @@ D-二聚体指标升高并不等同于血栓，但如果你在用药期间同时
 ### 红色（需行动）— 按指标对号入座
 
 <DoseTable
+  caption="各指标红色预警的应对措施与就医时限"
   headers={['指标', '红色阈值', '建议采取的措施', '时间要求']}
   rows={[
     ['E2 >500 pg/mL', '超越常规生理浓度', '停止维持此剂量、当天携报告就医复核方案；若伴单侧小腿肿痛/胸痛/呼吸困难→立即急诊', '当天就医（有 VTE 症状立即急诊）'],

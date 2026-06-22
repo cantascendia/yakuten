@@ -91,6 +91,7 @@ import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
 ## 剂量建议
 
 <DoseTable
+  caption="比卡鲁胺起始 / 调整范围 / 上限剂量方案"
   headers={['方案', '剂量', '说明', '来源']}
   rows={[
     ['起始/常规', '25 mg/天', '目前多数跨性别研究使用的低剂量', 'Angus 2024; Burgener 2025'],
@@ -159,6 +160,7 @@ FDA 官方标签的上市后警告中包含了间质性肺病（ILD，包括间�
 ## 监测要求
 
 <DoseTable
+  caption="比卡鲁胺用药期肝功能与睾酮监测要求"
   headers={['检查项目', '频率', '目标/警戒值', '处理']}
   rows={[
     ['肝功能（ALT/AST）', '基线 + 前 6 月每月 → 之后每 3 月', 'ALT/AST ≤ 正常上限', '> 3× 上限：立即停药就医'],
