@@ -26,7 +26,8 @@ const navItems: NavItem[] = [
   { label: t(locale, 'nav.pathway'), href: `${prefix}/pathway/` },
   { label: t(locale, 'nav.guides'), href: `${prefix}/guides/` },
   { label: t(locale, 'nav.tools'), href: `${prefix}/tools/` },
-  { label: t(locale, 'nav.blog'), href: '/zh/blog/' },  // blog is zh-only; never locale-prefix it
+  // Blog exists in zh (primary) and ja; other locales fall back to the zh blog.
+  { label: t(locale, 'nav.blog'), href: locale === 'ja' ? '/ja/blog/' : '/zh/blog/' },
   { label: t(locale, 'nav.medications'), href: `${prefix}/medications/estrogens/overview/` },
   { label: t(locale, 'nav.doseLimits'), href: `${prefix}/dose-limits/` },
   { label: t(locale, 'nav.bloodTests'), href: `${prefix}/blood-tests/` },
