@@ -1,6 +1,6 @@
 ---
 title: "Metodolohiya"
-description: "Kung paano ginagawa ang nilalaman ng HRT Pharmacopoeia, mula sa paghahanap ng literatura hanggang sa paglalathala — pag-aayon sa klinikal na gabay, pagsipi gamit ang DOI, pag-grado ng ebidensiya A/B/C/X, dalawahang cross-checking, pagsusuri ng medikal na tagapayo, at paikot-ikot na quarterly review."
+description: "Kung paano binubuo ang nilalaman ng HRT Pharmacopoeia, mula sa paghahanap ng literatura hanggang sa paglalathala — pagtutugma sa klinikal na gabay, pagsipi gamit ang DOI, pag-grado ng ebidensiya A/B/C/X, dalawahang cross-checking, pagsusuri ng medikal na tagapayo, at paulit-ulit na quarterly review."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -19,25 +19,25 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
   locale="fil"
 />
 
-Inilalarawan ng pahinang ito kung paano isinusulat, sinusuri, at ina-update ang bawat piraso ng nilalaman ng HRT Pharmacopoeia. Ito ang aming pangako sa mga mambabasa: **hindi inilalabas ang teksto na hindi dumaan sa prosesong ito**.
+Inilalahad ng pahinang ito kung paano isinusulat, sinusuri, at ina-update ang bawat piraso ng nilalaman ng HRT Pharmacopoeia. Ito ang aming pangako sa iyo bilang mambabasa: **walang tekstong inilalabas nang hindi dumaan sa prosesong ito**.
 
 ## 1. Tatlong Pangunahing Prinsipyo
 
-1. **Walang pahayag na walang sipi**: bawat medikal na pahayag ay dapat may kahit isang DOI o reperensiya sa internasyonal na gabay; kung hindi mapagmulan ang isang pahayag, ito ay minamarkahan ng <EvidenceBadge level="X" /> o tinatanggal.
-2. **Cross-source ang datos ng dosis**: ang mga reseta ng dosis ay dapat lumitaw sa kahit dalawang malayang awtoritatibong pinagmulan (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, at iba pa).
-3. **Iwasan ang ganap na pananalita**: laktawan ang "dapat / palagi / kailanman" pabor sa "karaniwang / iminumungkahi / sa nakararaming kaso".
+1. **Walang pahayag na walang sipi**: bawat medikal na pahayag ay kailangang may kahit isang DOI o reperensiya sa internasyonal na gabay; kung hindi matunton ang pinagmulan ng isang pahayag, ito ay minamarkahan ng <EvidenceBadge level="X" /> o tinatanggal.
+2. **Cross-source ang datos ng dosis**: ang mga reseta ng dosis ay kailangang lumitaw sa kahit dalawang malayang awtoritatibong pinagmulan (WPATH SOC 8 · Endocrine Society 2017 · UCSF · EMA, at iba pa).
+3. **Iwasan ang ganap na pananalita**: sa halip na "dapat / palagi / kailanman", ginagamit namin ang "karaniwang / iminumungkahi / sa nakararaming kaso".
 
 ## 2. Kumpletong Daloy ng Trabaho
 
 ### 1. Pagpili ng paksa
 - Ang mga paksa ay pinipili batay sa demand ng paghahanap, mga tanong ng mambabasa, pag-update ng gabay, at mahahalagang babala sa kaligtasan (EMA/FDA)
 - Bawat pahina ay naglilista ng 3–7 partikular na tanong na dapat nitong sagutin
-- Ang target na madla (pasyente / primary care na klinisyan / miyembro ng pamilya) ay tinutukoy sa simula pa lang
+- Tinutukoy nang maaga kung sino ang target na madla (pasyente / primary care na klinisyan / miyembro ng pamilya)
 
 ### 2. Paghahanap ng literatura
 - Mga pangunahing channel: PubMed, Cochrane, mga opisyal na site ng gabay, mga pagsusuri ng Transfemscience
 - Hindi kasama: mga anonymous na post sa forum, komersyal na site, mga blog na walang peer review
-- Bawat mahalagang pahayag ay nagtatala ng orihinal na sipi nito (mas pinipili ang DOI; kung wala, ang impormasyon ng publikasyon sa journal)
+- Itinatala ng bawat mahalagang pahayag ang orihinal na sipi nito (mas pinipili ang DOI; kung wala, ang impormasyon ng publikasyon sa journal)
 
 ### 3. Pag-grado ng ebidensiya
 Ginagrado batay sa lakas ng disenyo ng pag-aaral:
@@ -61,16 +61,16 @@ Ginagrado batay sa lakas ng disenyo ng pag-aaral:
 
 ### 6. Pagsusuri ng medikal na tagapayo
 - Ang mga tagapayo sa endokrinolohiya / saykayatriya / legal ay itinatalaga ayon sa paksa
-- Ang mga rekord ng pagsusuri, kabilang ang mga di-pagsang-ayon at pinal na desisyon, ay iniaarkibo
+- Ina-arkibo ang mga rekord ng pagsusuri, kasama ang mga di-pagkakasundo at ang pinal na desisyon
 - Kung walang kwalipikadong tagasuri na maaabot, hindi inilalabas ang paksa
 
 ### 7. Paglalathala at QA sa accessibility
 - `npm run astro check` + Lighthouse (SEO ≥ 95 / A11y ≥ 95)
-- Ang color contrast, naaabot sa keyboard, at semantics para sa screen-reader ay vino-validate
-- Ang mga mobile breakpoint at `prefers-reduced-motion` fallback ay sinisiguro
+- Vino-validate ang color contrast, naaabot sa keyboard, at semantics para sa screen-reader
+- Sinisiguro ang mga mobile breakpoint at ang `prefers-reduced-motion` fallback
 
-### 8. Paikot-ikot na pagsusuri
-- Bilang default, muling sinusuri tuwing **12 buwan**, nire-refresh ang `lastReviewed`
+### 8. Paulit-ulit na pagsusuri
+- Bilang default, muling sinusuri tuwing **12 buwan**, at nire-refresh ang `lastReviewed`
 - Ang mga pahinang mataas ang panganib (mga panganib, red line ng dosis, emergency) ay muling sinusuri tuwing **6 na buwan**
 - Sa malaking pagbabago ng gabay → unti-unting pag-update sa loob ng 48 oras
 
@@ -80,7 +80,7 @@ Kapag may natuklasang factual na pagkakamali, paglihis ng sipi, o lumang nilalam
 
 1. Magsumite sa pamamagitan ng [feedback form](https://wj.qq.com/s2/16576000/5fe5/) o GitHub Issue
 2. Unang sagot sa loob ng 72 oras
-3. Sa sandaling kumpirmadong factual na pagkakamali, isang **abiso ng pagwawasto (erratum)** ang idaragdag sa itaas ng pahina, at itatala ng version history ang orihinal na pagkakamali at petsa ng pagwawasto
+3. Sa sandaling makumpirma ang factual na pagkakamali, isang **abiso ng pagwawasto (erratum)** ang idaragdag sa itaas ng pahina, at itatala ng version history ang orihinal na pagkakamali at petsa ng pagwawasto
 4. Ang malalaking pagwawasto ay ipinapadala sa mga subscriber ng email / RSS / Telegram
 
 ## 4. Pahayag ng Salungatan ng Interes

@@ -1,6 +1,6 @@
 ---
 title: "Patakaran sa Editoryal"
-description: "Ang mga prinsipyong editoryal ng HRT Pharmacopoeia, proseso ng pagwawasto ng mali, mga pamantayan sa copyright at pagsipi, mga daluyan para sa reklamo at apela, at pagsisiwalat ng conflict of interest."
+description: "Ang mga prinsipyong editoryal ng HRT Pharmacopoeia: paano namin itinatama ang mga mali, ang aming mga pamantayan sa copyright at pagsipi, ang mga daluyan para sa reklamo at apela, at ang pagsisiwalat ng conflict of interest."
 evidenceLevel: X
 lastReviewed: 2026-04-19
 references: []
@@ -21,11 +21,11 @@ import DangerBox from '../../../components/ui/DangerBox.astro';
 
 ## Mga Lubos na Ipinagbabawal
 
-Hindi kailanman ilalathala ng HRT Pharmacopoeia ang alinman sa mga sumusunod:
+May mga bagay na hinding-hindi kailanman ilalathala ng HRT Pharmacopoeia:
 
 <DangerBox>
 - Personalisadong payo sa reseta ("dapat kang uminom ng X mg")
-- Mga link para sa pagbili ng gamot, ahente sa pagbebenta, o QR code para sa referral/komisyon
+- Mga link para sa pagbili ng gamot, ahente sa pagbebenta, o QR code para sa referral o komisyon
 - Pananalitang nagpapahina sa pagkilala sa mga medikal na emerhensiya (DVT, hepatotoxicity, meningioma, atbp.)
 - Mga medikal na pahayag na walang DOI o sanggunian
 - Mga third-party na tracking script o pag-iimbak ng datos sa kalusugan ng gumagamit
@@ -34,17 +34,17 @@ Hindi kailanman ilalathala ng HRT Pharmacopoeia ang alinman sa mga sumusunod:
 
 ## Wika at Tono
 
-- **Iwasan ang mga absoluto**: piliin ang "iminumungkahi namin / karaniwan / sa karamihan ng pagkakataon" kaysa sa "dapat / palagi / hindi kailanman"
-- **Kausapin nang direkta ang mambabasa**: isulat ang "maaari kang pumili ng A o B" sa halip na "dapat pumili ang mga pasyente ng A"
-- **Sabihin nang malinaw ang kawalang-katiyakan**: ang mga konklusyon sa antas ng ebidensiyang B/C/X ay dapat tatakan ng "limitado ang datos" o "opinyon ng eksperto"
-- **Bawasan ang stigma**: gumamit ng pananalitang nagpapatibay sa komunidad at iwasan ang mga lumang o sobrang klinikal na termino
+- **Iwasan ang mga absoluto**: mas piliin ang "iminumungkahi namin / karaniwan / sa karamihan ng pagkakataon" kaysa sa "dapat / palagi / hindi kailanman"
+- **Kausapin nang tuwiran ang mambabasa**: isulat ang "maaari kang pumili ng A o B" sa halip na "dapat pumili ang mga pasyente ng A"
+- **Aminin nang prangka ang kawalang-katiyakan**: ang mga konklusyong nasa antas ng ebidensiyang B/C/X ay dapat tatakan ng "limitado ang datos" o "opinyon ng eksperto"
+- **Bawasan ang stigma**: gumamit ng wikang nagpapatibay sa komunidad at iwasan ang mga lipas na o sobrang klinikal na termino
 
 ## Pagsipi at Copyright
 
 - Bawat medikal na pahayag ay may pinagmulang sanggunian sa pamamagitan ng `CitationRef` component (ang mga ID ay tumutugma sa mga entry sa `src/data/references.json`)
 - Mas pinipili ang mga DOI; kung walang DOI, banggitin ang impormasyon ng paglalathala sa journal kasama ang isang matatag na URL
-- Ang mga pigura at diagram ay orihinal o galing sa mga gawang Creative Commons / public domain; binibigyan ng pagkilala ang mga reproduksiyon
-- Ang orihinal na nilalaman ng site ay inilalabas sa ilalim ng CC BY-SA 4.0; ang code ay pinamamahalaan ng LICENSE ng repository
+- Ang mga pigura at diagram ay orihinal o galing sa mga gawang Creative Commons / public domain; binibigyang-pagkilala ang mga reproduksiyon
+- Ang orihinal na nilalaman ng site ay inilalabas sa ilalim ng CC BY-SA 4.0; ang code naman ay pinamamahalaan ng LICENSE ng repository
 
 ## Pagwawasto ng Mali
 
@@ -57,7 +57,7 @@ Maaaring magsumite ang mga mambabasa ng ulat sa pamamagitan ng [feedback form](h
 | Lumang impormasyon | 7 araw | Incremental update + i-refresh ang `lastReviewed` |
 | Mapanganib na payo | 24 na oras na emergency takedown | Ayusin o panatilihing offline habang isinasailalim sa pagsusuri |
 
-Ang mga malalaking pagwawasto ay ipinapaabot din sa:
+Ipinapaabot din ang mga malalaking pagwawasto sa:
 
 - Kasaysayan ng bersiyon sa `/fil/appendix-references/`
 - Mga subscriber ng RSS / Telegram / email
@@ -66,14 +66,14 @@ Ang mga malalaking pagwawasto ay ipinapaabot din sa:
 
 - **Reklamo sa nilalaman**: [feedback form](https://wj.qq.com/s2/16576000/5fe5/)
 - **Legal / copyright**: magbukas ng GitHub Issue na may label na `legal`, o makipag-ugnayan sa mga maintainer ng repository
-- **Privacy**: hindi kinukolekta ng site na ito ang impormasyong nagpapakilala sa indibidwal; anumang iniulat na pagtagas ng privacy ay pinangangasiwaan sa loob ng 24 na oras
+- **Privacy**: hindi kinokolekta ng site na ito ang impormasyong nagpapakilala sa indibidwal; anumang iniulat na pagtagas ng privacy ay pinangangasiwaan sa loob ng 24 na oras
 
 ## Pagsisiwalat ng Conflict of Interest
 
 - **Walang komersiyal na sponsorship, walang advertising ng gamot, walang komisyon sa pagbili**
 - Ang mga gastos sa operasyon ay sinasagot ng mga boluntaryong kontribusyon at mga donasyon ng open-source na komunidad
-- Ang mga editor at medikal na tagapayo ay pumipirma ng mga pagsisiwalat ng conflict of interest; ang mga paksang may direktang kaugnay na relasyon sa pagrereseta o komersiyo ay iniiwasan (recused)
-- Walang panlabas na link na may dalang affiliate identifier; ang mga inilalistang ospital at hotline ay mga mapagkukunang sinuri ng komunidad lamang
+- Ang mga editor at medikal na tagapayo ay pumipirma ng mga pagsisiwalat ng conflict of interest; iniiwasan (recused) ang mga paksang may direktang kaugnayan sa pagrereseta o komersiyo
+- Walang panlabas na link na may dalang affiliate identifier; mga mapagkukunang sinuri ng komunidad lamang ang inilalista naming ospital at hotline
 
 ## Siklo ng Pagsusuri
 
