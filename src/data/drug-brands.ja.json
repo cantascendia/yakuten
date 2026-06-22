@@ -1,0 +1,564 @@
+{
+  "estradiol-oral": [
+    {
+      "name": "Progynova",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "2mg × 21錠",
+      "appearance": "青色の糖衣錠",
+      "notes": "先発品、欧州/国際版パッケージ",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Progynova",
+      "manufacturer": "バイエル (Bayer China)",
+      "countryName": "中国",
+      "spec": "1mg × 21錠",
+      "appearance": "白色の小さな円形糖衣錠",
+      "notes": "1mg 規格の糖衣錠。要処方の経口エストラジオール製剤",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Progynova",
+      "manufacturer": "バイエル (Bayer Thailand)",
+      "countryName": "タイ",
+      "spec": "2mg × 28錠",
+      "appearance": "青色の糖衣錠",
+      "notes": "タイ版。ドイツ先発品と同一処方",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Progynova",
+      "manufacturer": "Zydus（バイエル・インド ライセンス）",
+      "countryName": "インド",
+      "spec": "2mg × 28錠",
+      "appearance": "青色の糖衣錠、インド版パッケージ",
+      "notes": "バイエルがライセンス供与し Zydus Cadila が製造。先発品と同一処方で価格は低め",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Estrofem",
+      "manufacturer": "Novo Nordisk",
+      "countryName": "タイ",
+      "spec": "2mg × 28錠",
+      "appearance": "青色の三角形フィルムコート錠",
+      "notes": "微粒化エストラジオール（エステルではない）。舌下投与に適する",
+      "activeIngredient": "微粒化エストラジオール"
+    }
+  ],
+  "estradiol-sublingual": [
+    {
+      "name": "Estrofem",
+      "manufacturer": "Novo Nordisk",
+      "countryName": "タイ",
+      "spec": "2mg × 28錠",
+      "appearance": "青色の三角形フィルムコート錠",
+      "notes": "舌下投与に最も広く用いられる製剤。微粒化エストラジオール",
+      "activeIngredient": "微粒化エストラジオール"
+    },
+    {
+      "name": "Progynova",
+      "manufacturer": "バイエル (Bayer) / Zydus",
+      "countryName": "中国/インド",
+      "spec": "1mg / 2mg",
+      "appearance": "糖衣錠",
+      "notes": "舌下投与も可能だが適応外。糖衣のため溶解（含み）速度に影響する",
+      "activeIngredient": "吉草酸エストラジオール"
+    }
+  ],
+  "estradiol-patch": [
+    {
+      "name": "Climara",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "50µg/24h · 100µg/24h",
+      "appearance": "透明な楕円形フィルム貼付剤",
+      "notes": "週1回交換、リザーバー型（貯蔵型）パッチ",
+      "activeIngredient": "エストラジオール"
+    },
+    {
+      "name": "Estradot",
+      "manufacturer": "Novartis",
+      "countryName": "スイス",
+      "spec": "25/37.5/50/75/100µg/24h",
+      "appearance": "小型の透明な円形貼付剤",
+      "notes": "週2回交換（3〜4日ごと）、マトリックス型パッチ",
+      "activeIngredient": "エストラジオール"
+    },
+    {
+      "name": "Estraderm",
+      "manufacturer": "Novartis",
+      "countryName": "アメリカ",
+      "spec": "50µg/24h · 100µg/24h",
+      "appearance": "透明な円形貼付剤",
+      "notes": "初期のリザーバー型（貯蔵型）パッチ。一部地域では Estradot に置き換えられている",
+      "activeIngredient": "エストラジオール"
+    }
+  ],
+  "estradiol-gel": [
+    {
+      "name": "Oestrogel",
+      "manufacturer": "Besins Healthcare",
+      "countryName": "フランス",
+      "spec": "0.06% · 80g チューブ",
+      "appearance": "透明・無色のゲル、ポンプ式",
+      "notes": "フランス先発品。1プッシュあたり E2 1.5mg。最も一般的なゲル製剤",
+      "activeIngredient": "エストラジオール"
+    },
+    {
+      "name": "Oestrogel",
+      "manufacturer": "Besins Healthcare (Thailand)",
+      "countryName": "タイ",
+      "spec": "0.06% · 80g",
+      "appearance": "透明・無色のゲル",
+      "notes": "タイ版",
+      "activeIngredient": "エストラジオール"
+    },
+    {
+      "name": "Sandrena",
+      "manufacturer": "Orion Pharma",
+      "countryName": "フィンランド",
+      "spec": "0.5mg / 1mg 個包装サシェ",
+      "appearance": "白色のゲル小袋",
+      "notes": "単回量の個包装で、計量が正確",
+      "activeIngredient": "エストラジオール"
+    },
+    {
+      "name": "Divigel",
+      "manufacturer": "Orion Pharma",
+      "countryName": "フィンランド",
+      "spec": "0.5mg / 1mg 個包装サシェ",
+      "appearance": "透明なゲル小袋",
+      "notes": "Sandrena と同様の単回量包装",
+      "activeIngredient": "エストラジオール"
+    }
+  ],
+  "estradiol-injection": [
+    {
+      "name": "Progynon Depot",
+      "manufacturer": "Zydus（バイエル・インド ライセンス）",
+      "countryName": "インド",
+      "spec": "10mg/mL × 1mL アンプル",
+      "appearance": "透明な油性注射液、ガラスアンプル",
+      "notes": "インド産の吉草酸エストラジオール注射剤。バイエルのライセンスに基づき製造される。",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Progynon Depot",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "10mg/mL × 1mL",
+      "appearance": "透明な油性注射液、アンプル",
+      "notes": "先発の注射用吉草酸エストラジオール。",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "プロギノン・デポー (Progynon Depot)",
+      "manufacturer": "富士製薬工業 (Fuji Pharma)",
+      "countryName": "日本",
+      "spec": "10mg/mL × 1mL アンプル",
+      "appearance": "透明な油性注射液、ガラスアンプル",
+      "notes": "日本産の吉草酸エストラジオール注射剤。富士製薬が独占的にライセンス製造する。",
+      "activeIngredient": "吉草酸エストラジオール"
+    },
+    {
+      "name": "Pelangi (EV)",
+      "manufacturer": "各社",
+      "countryName": "インドネシア",
+      "spec": "10mg/mL",
+      "appearance": "油性注射液、小瓶入り",
+      "notes": "インドネシア産。東南アジアの DIY コミュニティで流通している。",
+      "activeIngredient": "吉草酸エストラジオール"
+    }
+  ],
+  "estradiol-cypionate": [
+    {
+      "name": "Depo-Estradiol",
+      "manufacturer": "Pfizer (Upjohn)",
+      "countryName": "アメリカ",
+      "spec": "5mg/mL × 5mL マルチドーズバイアル",
+      "appearance": "透明な油性注射液（綿実油基剤）",
+      "notes": "FDA 承認のシピオン酸エストラジオール注射剤。クロロブタノールを保存剤として含む。",
+      "activeIngredient": "シピオン酸エストラジオール"
+    }
+  ],
+  "estradiol-enanthate": [
+    {
+      "name": "Perlutal",
+      "manufacturer": "ラテンアメリカの各社",
+      "countryName": "メキシコ",
+      "spec": "10mg EEn + 150mg DHPA / アンプル",
+      "appearance": "油性注射液",
+      "notes": "配合剤（DHPA を含む）。ラテンアメリカでのみ販売されており、単剤の EEn 製品は存在しない。",
+      "activeIngredient": "エナント酸エストラジオール ＋ DHPA"
+    }
+  ],
+  "estradiol-undecylate": [
+    {
+      "name": "Progynon Depot 100",
+      "manufacturer": "Schering AG（現バイエル）",
+      "countryName": "ドイツ",
+      "spec": "100mg/mL アンプル",
+      "appearance": "油性注射液",
+      "notes": "世界的に製造中止済み。かつて前立腺癌および更年期 HRT に用いられたが、現在いずれのメーカーも製造していない。",
+      "activeIngredient": "ウンデシル酸エストラジオール"
+    }
+  ],
+  "cyproterone-acetate": [
+    {
+      "name": "Androcur",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "50mg × 20錠",
+      "appearance": "白色の円形錠、片面に十字の割線（4分割可能）",
+      "notes": "先発の酢酸シプロテロン（CPA）。十字割線により 12.5mg へ分割して使用しやすい",
+      "activeIngredient": "酢酸シプロテロン"
+    },
+    {
+      "name": "アンドロキュア（Androcur）",
+      "manufacturer": "バイエル (Bayer Taiwan)",
+      "countryName": "台湾",
+      "spec": "50mg × 20錠",
+      "appearance": "白色の円形錠、十字の割線",
+      "notes": "台湾版の酢酸シプロテロン製剤",
+      "activeIngredient": "酢酸シプロテロン"
+    },
+    {
+      "name": "Androcur",
+      "manufacturer": "Zydus（バイエル・インド ライセンス）",
+      "countryName": "インド",
+      "spec": "50mg × 10錠",
+      "appearance": "白色の円形錠",
+      "notes": "インド産の CPA。欧州/台湾版より価格が大幅に低い",
+      "activeIngredient": "酢酸シプロテロン"
+    },
+    {
+      "name": "Cypotero",
+      "manufacturer": "インドの各社（後発品）",
+      "countryName": "インド",
+      "spec": "50mg",
+      "appearance": "白色の円形錠",
+      "notes": "インドの後発 CPA。製造元の信頼性を確認のうえ使用",
+      "activeIngredient": "酢酸シプロテロン"
+    },
+    {
+      "name": "Siterone",
+      "manufacturer": "AFT Pharmaceuticals",
+      "countryName": "ニュージーランド",
+      "spec": "50mg / 100mg",
+      "appearance": "白色の円形錠",
+      "notes": "ニュージーランド産。一部はインド経由で流通",
+      "activeIngredient": "酢酸シプロテロン"
+    }
+  ],
+  "spironolactone": [
+    {
+      "name": "スピロノラクトン（アルダクトン）",
+      "manufacturer": "各社後発品",
+      "countryName": "中国",
+      "spec": "20mg × 100錠",
+      "appearance": "白色の小型円形錠",
+      "notes": "安価で入手しやすい抗アンドロゲン薬。後発品が広く流通している",
+      "activeIngredient": "スピロノラクトン"
+    },
+    {
+      "name": "Aldactone",
+      "manufacturer": "RPG Life Sciences / Pfizer India",
+      "countryName": "インド",
+      "spec": "25mg / 50mg / 100mg",
+      "appearance": "白色〜微黄白色の円形錠",
+      "notes": "インド版のスピロノラクトン。複数の規格から選べる",
+      "activeIngredient": "スピロノラクトン"
+    },
+    {
+      "name": "Aldactone",
+      "manufacturer": "ファイザー (Pfizer)",
+      "countryName": "アメリカ",
+      "spec": "25mg / 50mg / 100mg",
+      "appearance": "白色／黄色のフィルムコート錠",
+      "notes": "先発ブランド。アメリカの HRT で最もよく使われる抗アンドロゲン薬",
+      "activeIngredient": "スピロノラクトン"
+    }
+  ],
+  "bicalutamide": [
+    {
+      "name": "Casodex",
+      "manufacturer": "アストラゼネカ (AstraZeneca)",
+      "countryName": "イギリス",
+      "spec": "50mg × 28錠",
+      "appearance": "白色のフィルムコート錠",
+      "notes": "先発のビカルタミド。価格は比較的高い",
+      "activeIngredient": "ビカルタミド"
+    },
+    {
+      "name": "Calutide",
+      "manufacturer": "Cipla",
+      "countryName": "インド",
+      "spec": "50mg",
+      "appearance": "白色のフィルムコート錠",
+      "notes": "Cipla の後発ビカルタミド。価格は先発の 1/5〜1/10",
+      "activeIngredient": "ビカルタミド"
+    },
+    {
+      "name": "Bicalox",
+      "manufacturer": "インドの各社（後発品）",
+      "countryName": "インド",
+      "spec": "50mg",
+      "appearance": "白色のフィルムコート錠",
+      "notes": "インドの後発ビカルタミド",
+      "activeIngredient": "ビカルタミド"
+    },
+    {
+      "name": "Bicatero",
+      "manufacturer": "Hetero",
+      "countryName": "インド",
+      "spec": "50mg",
+      "appearance": "白色のフィルムコート錠",
+      "notes": "世界的な後発品大手 Hetero グループが製造",
+      "activeIngredient": "ビカルタミド"
+    }
+  ],
+  "progesterone": [
+    {
+      "name": "Utrogestan（ユトロゲスタン）",
+      "manufacturer": "ベシン・ヘルスケア (Besins Healthcare)",
+      "countryName": "フランス",
+      "spec": "100mg / 200mg ソフトカプセル",
+      "appearance": "黄色の円形ソフトカプセル",
+      "notes": "先発の微粒化プロゲステロン、フランス製",
+      "activeIngredient": "微粒化プロゲステロン"
+    },
+    {
+      "name": "Susten",
+      "manufacturer": "サンファーマ (Sun Pharma)",
+      "countryName": "インド",
+      "spec": "100mg / 200mg / 300mg / 400mg ソフトカプセル",
+      "appearance": "黄色／類白色のソフトカプセル",
+      "notes": "インドのサンファーマ製の微粒化プロゲステロン、規格が豊富",
+      "activeIngredient": "微粒化プロゲステロン"
+    },
+    {
+      "name": "Naturogest",
+      "manufacturer": "Zydus Cadila",
+      "countryName": "インド",
+      "spec": "100mg / 200mg ソフトカプセル",
+      "appearance": "ソフトカプセル",
+      "notes": "Zydus 製の微粒化プロゲステロン",
+      "activeIngredient": "微粒化プロゲステロン"
+    },
+    {
+      "name": "Microgest",
+      "manufacturer": "Panacea Biotec",
+      "countryName": "インド",
+      "spec": "100mg / 200mg ソフトカプセル",
+      "appearance": "ソフトカプセル",
+      "notes": "Panacea 製の微粒化プロゲステロン",
+      "activeIngredient": "微粒化プロゲステロン"
+    },
+    {
+      "name": "Prometrium",
+      "manufacturer": "AbbVie",
+      "countryName": "アメリカ",
+      "spec": "100mg / 200mg ソフトカプセル",
+      "appearance": "桃色の円形ソフトカプセル",
+      "notes": "アメリカの先発の微粒化プロゲステロン",
+      "activeIngredient": "微粒化プロゲステロン"
+    }
+  ],
+  "gnrh-agonist": [
+    {
+      "name": "リュープリン (Lupron)",
+      "manufacturer": "武田薬品 (Takeda) / AbbVie",
+      "countryName": "日本",
+      "spec": "3.75mg / 11.25mg / 22.5mg 注射剤",
+      "appearance": "プレフィルドシリンジ、白色の凍結乾燥粉末",
+      "notes": "日本で最もよく使われる GnRH アゴニスト。皮下／筋肉注射が必要で、月製剤または3か月製剤がある",
+      "activeIngredient": "リュープロレリン"
+    },
+    {
+      "name": "リュープロレリン製剤",
+      "manufacturer": "AbbVie 系列",
+      "countryName": "中国",
+      "spec": "3.75mg / 11.25mg",
+      "appearance": "注射用の白色凍結乾燥粉末",
+      "notes": "リュープロレリン製剤。皮下／筋肉注射により下垂体・性腺軸を抑制する",
+      "activeIngredient": "リュープロレリン"
+    },
+    {
+      "name": "ゾラデックス (Zoladex)",
+      "manufacturer": "アストラゼネカ (AstraZeneca)",
+      "countryName": "イギリス",
+      "spec": "3.6mg / 10.8mg 皮下インプラント",
+      "appearance": "プレフィルドシリンジ＋固形徐放ロッド（16G の太い針）",
+      "notes": "皮下インプラント型の GnRH アゴニスト。針が太く、医療従事者による施術が必要",
+      "activeIngredient": "ゴセレリン"
+    },
+    {
+      "name": "Decapeptyl",
+      "manufacturer": "Ipsen",
+      "countryName": "フランス",
+      "spec": "3.75mg / 11.25mg / 22.5mg",
+      "appearance": "注射用の凍結乾燥粉末",
+      "notes": "フランス産のトリプトレリン。筋肉注射が必要",
+      "activeIngredient": "トリプトレリン"
+    },
+    {
+      "name": "Suprefact（ブセレリン）",
+      "manufacturer": "サノフィ (Sanofi)",
+      "countryName": "ドイツ",
+      "spec": "点鼻スプレー 100µg/噴霧 ・ 注射液",
+      "appearance": "点鼻ボトル／注射液",
+      "notes": "点鼻剤型が利用できる唯一の GnRH アゴニストで、注射が不要。1日2〜3回の点鼻、世界的に供給は限られる",
+      "activeIngredient": "ブセレリン"
+    },
+    {
+      "name": "Supprelin LA（ヒストレリン）",
+      "manufacturer": "Endo Pharmaceuticals",
+      "countryName": "アメリカ",
+      "spec": "65µg/日 × 12か月 皮下インプラント",
+      "appearance": "小型の柱状皮下インプラント",
+      "notes": "12か月持続する皮下インプラントで、年1回の手術で交換する。価格は極めて高く（アメリカで約 $45,000/年）、主に思春期ブロックに用いられる",
+      "activeIngredient": "ヒストレリン"
+    }
+  ],
+  "hydroxyprogesterone": [
+    {
+      "name": "Proluton Depot",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "250mg/mL × 1mL アンプル",
+      "appearance": "油性溶液、ガラスアンプル",
+      "notes": "注射用ヒドロキシプロゲステロンカプロン酸エステル、週1回投与",
+      "activeIngredient": "ヒドロキシプロゲステロンカプロン酸エステル"
+    },
+    {
+      "name": "Proluton Depot",
+      "manufacturer": "Zydus（バイエル・インド ライセンス）",
+      "countryName": "インド",
+      "spec": "250mg/mL / 500mg/mL",
+      "appearance": "油性溶液",
+      "notes": "インド製の注射用ヒドロキシプロゲステロンカプロン酸エステル",
+      "activeIngredient": "ヒドロキシプロゲステロンカプロン酸エステル"
+    }
+  ],
+  "dutasteride": [
+    {
+      "name": "Avodart（アボルブ）",
+      "manufacturer": "GSK（グラクソ・スミスクライン）",
+      "countryName": "イギリス",
+      "spec": "0.5mg ソフトカプセル",
+      "appearance": "楕円形の淡黄色ソフトカプセル",
+      "notes": "先発のデュタステリド",
+      "activeIngredient": "デュタステリド"
+    },
+    {
+      "name": "Dutas",
+      "manufacturer": "Dr. Reddy's Laboratories",
+      "countryName": "インド",
+      "spec": "0.5mg ソフトカプセル",
+      "appearance": "ソフトカプセル",
+      "notes": "インドの主要な後発品ブランド、WHO GMP 認証取得",
+      "activeIngredient": "デュタステリド"
+    }
+  ],
+  "finasteride": [
+    {
+      "name": "Propecia（プロペシア）",
+      "manufacturer": "MSD（メルク）",
+      "countryName": "アメリカ",
+      "spec": "1mg × 28錠",
+      "appearance": "淡褐色の八角形フィルムコート錠",
+      "notes": "先発のフィナステリド（脱毛症の適応）",
+      "activeIngredient": "フィナステリド"
+    },
+    {
+      "name": "Proscar（プロスカー）",
+      "manufacturer": "MSD（メルク）",
+      "countryName": "アメリカ",
+      "spec": "5mg フィルムコート錠",
+      "appearance": "青色のリンゴ形フィルムコート錠",
+      "notes": "先発のフィナステリド（前立腺肥大症の適応）、5mg 規格",
+      "activeIngredient": "フィナステリド"
+    },
+    {
+      "name": "Finpecia",
+      "manufacturer": "Cipla",
+      "countryName": "インド",
+      "spec": "1mg × 10錠/シート",
+      "appearance": "白色のフィルムコート錠",
+      "notes": "インドの Cipla 製の後発品、世界的に輸出量が多い",
+      "activeIngredient": "フィナステリド"
+    },
+    {
+      "name": "啓悦（フィナステリド後発品）",
+      "manufacturer": "天方薬業 (Tianfang Pharmaceutical)",
+      "countryName": "中国",
+      "spec": "1mg × 28錠",
+      "appearance": "フィルムコート錠",
+      "notes": "中国の後発フィナステリド",
+      "activeIngredient": "フィナステリド"
+    },
+    {
+      "name": "仙琚（フィナステリド後発品）",
+      "manufacturer": "浙江仙琚製薬 (Zhejiang Xianju Pharmaceutical)",
+      "countryName": "中国",
+      "spec": "1mg × 30錠",
+      "appearance": "フィルムコート錠",
+      "notes": "中国で最初に承認された国産後発フィナステリド（2003年）",
+      "activeIngredient": "フィナステリド"
+    }
+  ],
+  "drospirenone": [
+    {
+      "name": "Slynd",
+      "manufacturer": "Exeltis (Laboratorios Leon Farma)",
+      "countryName": "アメリカ",
+      "spec": "4mg × 24+4錠",
+      "appearance": "ピンク色の円形フィルムコート錠＋白色のプラセボ錠",
+      "notes": "唯一のドロスピレノン単剤（EE 非配合）で、トランスジェンダーの使用における第一選択の剤型。世界的に供給が不安定",
+      "activeIngredient": "ドロスピレノン"
+    },
+    {
+      "name": "Yasmin（ヤーズ／ヤスミン）",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "ドロスピレノン 3mg ＋ エチニルエストラジオール 0.03mg × 21錠",
+      "appearance": "黄色のフィルムコート錠",
+      "notes": "エチニルエストラジオール (EE) を配合しており、トランスジェンダー HRT には不適。EE の VTE リスクは生物学的に同一なエストラジオールより著しく高い",
+      "activeIngredient": "ドロスピレノン ＋ エチニルエストラジオール"
+    }
+  ],
+  "dydrogesterone": [
+    {
+      "name": "Duphaston（デュファストン）",
+      "manufacturer": "アボット (Abbott)（旧 Solvay）",
+      "countryName": "オランダ",
+      "spec": "10mg フィルムコート錠",
+      "appearance": "白色の円形フィルムコート錠",
+      "notes": "先発のジドロゲステロン。経口バイオアベイラビリティが微粒化プロゲステロンより優れ、鎮静作用がない",
+      "activeIngredient": "ジドロゲステロン"
+    }
+  ],
+  "ethinylestradiol": [
+    {
+      "name": "Diane-35（ダイアン35）",
+      "manufacturer": "バイエル (Bayer)",
+      "countryName": "ドイツ",
+      "spec": "CPA 2mg ＋ EE 0.035mg × 21錠",
+      "appearance": "ベージュ色の糖衣錠",
+      "notes": "エチニルエストラジオール (EE) を配合。トランスジェンダー HRT への使用は絶対禁止：EE の VTE リスクは生物学的に同一なエストラジオールの 4〜6 倍であり、肝臓への影響も顕著",
+      "activeIngredient": "エチニルエストラジオール ＋ 酢酸シプロテロン"
+    }
+  ],
+  "conjugated-estrogens": [
+    {
+      "name": "Premarin（プレマリン）",
+      "manufacturer": "ファイザー (Pfizer)（旧 Wyeth）",
+      "countryName": "アメリカ",
+      "spec": "0.3mg / 0.625mg / 1.25mg 錠",
+      "appearance": "各色の糖衣錠（用量ごとに着色）",
+      "notes": "妊娠ウマ尿に由来。トランスジェンダー HRT への使用は絶対禁止：ウマ由来エストロゲン（エクイリンなど）を含み、標準的なエストラジオール血液検査では正確にモニタリングできず、心血管リスクがより高い",
+      "activeIngredient": "結合型エストロゲン（ウマ由来）"
+    }
+  ]
+}

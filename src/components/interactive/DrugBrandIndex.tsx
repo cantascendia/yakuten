@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import brandData from '../../data/drug-brands.json';
+import brandDataJa from '../../data/drug-brands.ja.json';
 import { getDrugPageUrl, getLocaleFromPath } from '../../utils/drugLinks';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
@@ -188,14 +189,20 @@ function classifyRegion(country: string): Region {
 
 /* ── Flatten brand data ── */
 
-function flattenBrands(): FlatBrand[] {
+// Brand data is authored in zh. For ja we merge an index-aligned translated
+// overlay (drug-brands.ja.json) over the display fields; country/status/url/image
+// stay from the base so region classification and links are unaffected.
+function flattenBrands(locale: Locale): FlatBrand[] {
   const result: FlatBrand[] = [];
   const data = brandData as Record<string, BrandEntry[]>;
+  const overlay = brandDataJa as Record<string, Partial<BrandEntry>[]>;
   for (const [drugId, brands] of Object.entries(data)) {
     const category = classifyDrug(drugId);
-    for (const brand of brands) {
-      result.push({ ...brand, drugId, category });
-    }
+    const jaList = locale === 'ja' ? overlay[drugId] : undefined;
+    brands.forEach((brand, i) => {
+      const merged = jaList ? { ...brand, ...(jaList[i] ?? {}) } : brand;
+      result.push({ ...merged, drugId, category });
+    });
   }
   return result;
 }
@@ -414,11 +421,14 @@ const S: Record<string, CSSProperties> = {
 
 /* ── Component ── */
 
-export default function DrugBrandIndex() {
-  const locale = getLocale();
+export default function DrugBrandIndex({ locale: localeProp }: { locale?: Locale } = {}) {
+  // Prefer the explicit prop (from each locale's MDX) so the server render uses
+  // the right language — getLocale() returns 'zh' on the server (no window),
+  // which would SSR the ja tool page in Chinese until hydration.
+  const locale = localeProp ?? getLocale();
   const rawLocale = getLocaleFromPath();
   const t = UI[locale];
-  const allBrands = useMemo(flattenBrands, []);
+  const allBrands = useMemo(() => flattenBrands(locale), [locale]);
 
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState<Region>('all');

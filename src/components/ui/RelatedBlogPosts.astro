@@ -25,11 +25,21 @@ const related = allPosts
   .filter((p) => !p.data.draft && p.data.locale === locale && p.data.relatedDocs.includes(inferredSlug))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
   .slice(0, 3);
+
+// Section heading — localized inline (component-local chrome). Blog renders for
+// zh (primary) and ja; other locales fall back to zh.
+const RELATED_TITLE: Record<string, string> = {
+  zh: '延伸阅读',
+  ja: '関連記事',
+  en: 'Related reading',
+  ko: '관련 읽을거리',
+};
+const relatedTitle = RELATED_TITLE[locale] ?? RELATED_TITLE.zh;
 ---
 
 {related.length > 0 && (
   <aside class="blog-related" style="margin-top: var(--space-xl);">
-    <h3 class="blog-related__title">延伸阅读</h3>
+    <h3 class="blog-related__title">{relatedTitle}</h3>
     <div class="blog-related__list">
       {related.map((post) => (
         <a href={getBlogUrl(post)} class="blog-related__link">
