@@ -39,6 +39,7 @@ export default defineConfig({
         './src/styles/glass.css',
         './src/styles/emergency.css',
         './src/styles/pathway.css',
+        './src/styles/blog.css',
         './src/styles/starlight-override.css',
         // 新版皮肤（只在 <html class="sakura"> 时激活，不影响默认外观）
         './src/styles/sakura-theme.css',

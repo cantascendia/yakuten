@@ -2,6 +2,19 @@
 /* 博客/专题文章专用样式 — 复用 global.css 设计 token */
 
 /* ================================
+   Starlight splash integration
+   ================================ */
+/* The blog renders THROUGH Starlight's splash template (<StarlightPage>), which
+   auto-renders the frontmatter title as an <h1> at the top of .sl-container. The
+   blog provides its own styled <h1> (after the breadcrumb + meta line), so hide
+   the splash-generated title on blog pages to keep exactly one H1 (SEO/a11y).
+   Scoped via :has() to pages containing the blog body, so docs/home are untouched. */
+main:has(.blog-article) .sl-container > h1,
+main:has(.blog-index__header) .sl-container > h1 {
+  display: none;
+}
+
+/* ================================
    Blog Layout
    ================================ */
 .blog-page {
@@ -89,7 +102,7 @@
 .blog-article__category {
   display: inline-block;
   padding: 2px var(--space-sm);
-  background: rgba(200, 75, 124, 0.15);
+  background: var(--color-primary-alpha-15);
   color: var(--color-primary-light);
   font-size: 0.75rem;
   font-weight: 500;
@@ -338,7 +351,7 @@
 
 .blog-related__link:hover {
   transform: translateX(4px);
-  background: rgba(200, 75, 124, 0.1);
+  background: var(--color-primary-alpha-10);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -356,7 +369,7 @@
 .blog-disclaimer {
   margin-top: var(--space-xl);
   padding: var(--space-md);
-  background: rgba(255, 152, 0, 0.08);
+  background: var(--color-caution-alpha-08);
   border-left: 3px solid var(--color-caution);
   color: var(--color-text-secondary);
   font-size: 0.875rem;
@@ -426,12 +439,12 @@
 }
 
 .blog-filter__btn:hover {
-  background: rgba(200, 75, 124, 0.1);
+  background: var(--color-primary-alpha-10);
   color: var(--color-primary-light);
 }
 
 .blog-filter__btn--active {
-  background: rgba(200, 75, 124, 0.2);
+  background: var(--color-primary-alpha-20);
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
@@ -473,7 +486,7 @@
 
 .blog-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(200, 75, 124, 0.15);
+  box-shadow: 0 8px 32px var(--color-primary-alpha-15);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -492,7 +505,7 @@
 
 .blog-card__category {
   padding: 2px var(--space-xs);
-  background: rgba(200, 75, 124, 0.15);
+  background: var(--color-primary-alpha-15);
   color: var(--color-primary-light);
   font-size: 0.6875rem;
   font-weight: 500;

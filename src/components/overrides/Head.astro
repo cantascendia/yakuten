@@ -78,6 +78,18 @@ if (route?.head) {
     if (tag.attrs['property'] === 'og:type') tag.attrs.content = ogType;
     if (tag.attrs['property'] === 'og:site_name') tag.attrs.content = ogSiteName;
   }
+  // Blog posts are standalone articles, NOT 1:1 translations across locales
+  // (the zh and ja blogs are different articles). Starlight's getHead emits a
+  // per-locale hreflang alternate for every configured locale (17 of them) by
+  // swapping the URL prefix — for /blog/ those resolve to /en/blog/…, /pt/blog/…
+  // etc. that 404. Strip those auto alternates on blog pages so only the
+  // canonical (self) + a self x-default below remain. Docs are untouched
+  // (gated on isBlogPage), so their cross-locale hreflang is preserved.
+  if (isBlogPage) {
+    route.head = route.head.filter(
+      (tag) => !(tag.tag === 'link' && tag.attrs?.['rel'] === 'alternate' && 'hreflang' in (tag.attrs ?? {})),
+    );
+  }
 }
 const noindex = (route?.entry?.data as Record<string, unknown> | undefined)?.noindex === true;
 const entryData: Record<string, unknown> = (route?.entry?.data as Record<string, unknown>) ?? {};
@@ -121,8 +133,10 @@ const alternates = localeMap.map(({ code, prefix }) => ({
   href: `${site}${prefix}${pagePath}`,
 }));
 
-// x-default points to the default locale (zh)
-const xDefault = `${site}/zh/${pagePath}`;
+// x-default points to the default locale (zh) for docs. Blog posts have no
+// cross-locale twin, so their x-default points at themselves (avoids a
+// /zh/blog/<ja-slug>/ 404 for ja posts).
+const xDefault = isBlogPage ? canonical : `${site}/zh/${pagePath}`;
 
 // Detect current locale for og:locale
 const ogLocaleMap: Record<string, string> = { '/zh/': 'zh_CN', '/en/': 'en_US', '/ja/': 'ja_JP', '/ko/': 'ko_KR' };
@@ -142,7 +156,7 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 {alternateOgLocales.map((loc) => (
   <meta property="og:locale:alternate" content={loc} />
 ))}
-{pageLastReviewed && (
+{pageLastReviewed && !isBlogPage && (
   <>
     <meta property="article:modified_time" content={pageLastReviewed} />
     <meta property="og:updated_time" content={pageLastReviewed} />
@@ -152,8 +166,10 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
 {pageEvidenceLevel && <meta name="evidence-level" content={pageEvidenceLevel} />}
 {pageRefCount > 0 && <meta name="citation-count" content={String(pageRefCount)} />}
 <meta name="medical-reviewer" content={pageMedicalReviewer} />
-{/* Per-page OG image override (falls back to global og-image.svg set in astro.config.mjs). */}
-{pageLastReviewed && (
+{/* Per-page OG image override (falls back to global og-image.svg set in astro.config.mjs).
+    Blog pages supply their own OG image (different path) via frontmatter.head, so this
+    docs-shaped block is gated off for /blog/ to avoid emitting a wrong-path duplicate. */}
+{pageLastReviewed && !isBlogPage && (
   <>
     <meta property="og:image" content={perPageOgImage} />
     <meta property="og:image:width" content="1200" />
