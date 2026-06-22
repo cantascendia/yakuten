@@ -1,0 +1,82 @@
+---
+title: ツール総覧
+description: HRT薬典が厳選した9つのエビデンスベースの安全ツール。血液検査セルフチェック、用量シミュレーション、AIアシスタント、医療機関検索などを含みます。すべてのツールはブラウザのローカルで動作し、あなたのプライバシーデータはアップロードされません。
+evidenceLevel: X
+lastReviewed: 2026-04-28
+references: []
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+あなたのプライバシーを守るため、以下のツールはすべてブラウザのローカルで動作し、**あなたの個人健康データはサーバーへアップロードされません**。下のカードをクリックすれば、そのまま利用できます。
+
+## 安全セルフチェック
+
+<CardGrid>
+  <LinkCard
+    title="血液検査セルフチェックツール"
+    href="/ja/tools/blood-checker/"
+    description="ホルモン6項目、肝腎機能、凝固系の結果を項目ごとに入力でき、WPATH と Endocrine Society の参考区間と自動で照合します。「血液検査手帳」を有効にすれば、長期データを記録することもできます。"
+  />
+  <LinkCard
+    title="リスクセルフ評価"
+    href="/ja/tools/risk-screener/"
+    description="7つの簡単な質問に答えるだけで、30秒以内に VTE・肝臓・髄膜腫・心血管リスクを評価でき、医師と方針を相談する際の出発点になります。"
+  />
+  <LinkCard
+    title="AIアシスタント"
+    href="/ja/tools/ai-assistant/"
+    description="Gemini AI がエビデンスに基づく文献をもとに、あなたの HRT 安全に関する疑問に答えます。アシスタントは会話を保存せず、具体的な処方提案も行わず、緊急時には速やかな受診へと案内します。"
+  />
+</CardGrid>
+
+## 服薬と用量
+
+<CardGrid>
+  <LinkCard
+    title="注射用量換算"
+    href="/ja/tools/injection-calculator/"
+    description="EV、EC、EEn、EU など各種エストラジオールエステルの等価用量と投与間隔の換算に対応し、mL と mg の相互計算も提供します。"
+  />
+  <LinkCard
+    title="用量シミュレーター"
+    href="/ja/tools/dose-simulator/"
+    description="さまざまな投与方法における血中濃度の変化曲線をシミュレートでき、体内の血中濃度のピークとトラフの変動や定常状態の変化を、より直感的に理解できます。"
+  />
+  <LinkCard
+    title="薬物比較ツール"
+    href="/ja/tools/drug-comparator/"
+    description="複数の HRT 薬物の用量、効果発現までの時間、リスク、モニタリング要件を並べて比較でき、より落ち着いて方針を選ぶ助けになります。"
+  />
+</CardGrid>
+
+## リソースとクイックリファレンス
+
+<CardGrid>
+  <LinkCard
+    title="フレンドリー医療リソース"
+    href="/ja/tools/hospital-finder/"
+    description="地域で絞り込み、トランスジェンダーの HRT 診療に対応していることが知られている医療機関・クリニックを検索でき、診療科、受診の流れ、コミュニティからのフィードバックを確認できます。"
+  />
+  <LinkCard
+    title="ブランドインデックス"
+    href="/ja/tools/brand-index/"
+    description="国内外でよく使われる HRT 薬品のブランド、規格、剤形、価格帯を一覧で示し、処方や入手記録の照合に役立ちます。"
+  />
+  <LinkCard
+    title="クイックリファレンスカード"
+    href="/ja/tools/drug-cards/"
+    description="1ページのクイックリファレンスを提供します。各薬物の用量上限、モニタリングのタイミング、緊急中止のサインを整理し、スクリーンショットで保存していつでも確認できます。"
+  />
+</CardGrid>
+
+## プライバシーへの約束
+
+- すべてのツールは**ブラウザのローカルで動作**し、あなたの入力データは通常どのサーバーにも送信されません
+- AIアシスタントは**あなたの会話履歴を保存しません**。ページを閉じれば通常ただちに消去されます
+- 「血液検査手帳」機能は、記録を**あなたのローカル端末の `localStorage`** にのみ書き込みます。いつでもワンタップで全消去できます
+- サイト全体の分析には Vercel Web Analytics と Speed Insights を使用しています（Cookie なし、集計統計のみ、個人を特定しません）。Google Analytics やソーシャルメディアのトラッカーは使用していません
+
+## 注意
+
+これらのツールは診断を提供するものではありません。**もし何らかの異常な結果が出た場合は、速やかに医療機関を受診し、医師に相談することをおすすめします**。いま緊急の症状が出ている場合は、ただちに **119** に電話するか、最寄りの救急外来を受診し、[リスクと急性症状の見分け方](/ja/risks/) をよくお読みください。

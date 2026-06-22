@@ -1,0 +1,329 @@
+---
+title: 初回注射 完全ガイド
+description: エストラジオール注射のベースライン評価、事前血液検査、薬剤と針具、開始用量、初週のモニタリング・レッドライン、初回フォローアップと用量調整。
+evidenceLevel: A
+sidebar:
+  hidden: true
+lastReviewed: 2026-04-17
+references: [coleman-2022, hembree-2017, herndon-2023, misakian-2025, rothman-2024, poage-2026]
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import ContraindicationBox from '../../../../components/ui/ContraindicationBox.astro';
+import BaselineChecklist from '../../../../components/ui/BaselineChecklist.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="A" />
+
+エストラジオールを自分で注射すること自体は難しくありません。しかし第1回目の前の準備、そしてその後のモニタリングは、注射そのものよりもしばしば重要です。連続的かつ規則的な投薬と、適切なモニタリングを組み合わせてこそ、効果が現れる土台になります。
+
+すでに注射を使用していて他の投与経路へ切り替えを計画している場合は、[E2 投与経路の切り替えガイド](/ja/guides/switch-e2-route/) を参照してください。まだ投与経路を検討している段階なら、まず [エストラジオール投与経路の総まとめ](/ja/medications/estrogens/overview/) を読むとよいでしょう。
+
+---
+
+## 適応
+
+トランスジェンダーのHRTにおいて、エストラジオール注射の主なメリットは次の点にあります。肝臓の初回通過効果をバイパスできるため、肝機能が不安定な人にとって相対的により安全であり、同時に血中濃度がより予測しやすくなります。データによれば、注射使用者の約 <InlineValue value="82.6" unit="%" /> が、適切な用量の範囲内でモノセラピー（抗アンドロゲン剤を追加で使わない単剤療法）を達成できるとされています<CitationRef id="misakian-2025" num={1} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />。
+
+ただし、注射は初回HRTの唯一の選択肢ではありません。経口、舌下、貼付剤（パッチ）、ジェルにもそれぞれ適した場面があります。もしVTE（静脈血栓塞栓症）のリスク因子（喫煙、肥満、家族歴など）があるなら、通常は経皮経路（パッチまたはジェル）を選ぶことが勧められます。この場合、VTEリスクは相対的により低くなります（RR ≈ 0.97 vs 経口 1.48）。具体的にどう選ぶかについては、[エストラジオール投与経路の総まとめ](/ja/medications/estrogens/overview/) を参照してください。
+
+## 絶対禁忌
+
+<ContraindicationBox type="absolute" title="絶対禁忌（注射に特有のもの）" sectionNum="">
+
+- 現在罹患している血栓塞栓性疾患（深部静脈血栓症、肺塞栓症）
+- 吉草酸エストラジオール、または油性溶剤（ヒマシ油 / 安息香酸ベンジル）に対する既知の重度アレルギー
+- 重度の凝固機能異常
+
+HRT全般の絶対禁忌については [投薬前の準備 · 絶対禁忌](/ja/before-you-start/#-12-絶対的禁忌) を参照してください。
+
+</ContraindicationBox>
+
+## 相対禁忌
+
+<ContraindicationBox type="relative" title="相対禁忌（注射に特有のもの）" sectionNum="">
+
+- 過去の自然流産、静脈瘤、または血栓の家族歴
+- 一時的に薬剤を安定して入手できない状況（注射は連続性を要する方式であり、途中で薬が途切れたときの血中濃度の安定への影響は、通常、経口よりも大きくなります）
+- 注射針恐怖症があり、周囲に介助してくれる人がいない
+
+</ContraindicationBox>
+
+---
+
+## 事前血液検査
+
+第1回目の注射を打つ1〜2週間以内に、ベースラインを調べておくことを勧めます。これは [投薬前の準備](/ja/before-you-start/) のベースライン・チェックリストと同じですが、注射を選んだあなたには、追加で D-ダイマー検査を加えることを勧めます。
+
+<BaselineChecklist
+  items={[
+    { name: 'ホルモン6項目', nameEn: 'E2 / T / FSH / LH / PRL / P', tag: 'required' },
+    { name: '肝機能', nameEn: 'ALT / AST / ALP / GGT / ビリルビン', tag: 'required' },
+    { name: '腎機能', nameEn: 'Cr / eGFR', tag: 'required' },
+    { name: '凝固機能', nameEn: 'PT / APTT / D-ダイマー', tag: 'required' },
+    { name: '血算', nameEn: 'Full Blood Count', tag: 'required' },
+    { name: '空腹時血糖', nameEn: 'Fasting Glucose', tag: 'recommended' },
+    { name: '脂質', nameEn: 'Lipid Panel', tag: 'recommended' },
+  ]}
+  costRange="入手経路により差があります"
+/>
+
+これらの項目は、医療機関の内分泌科や大規模な健診センターで調べることができます。採血のタイミングや結果の読み方の詳細については、[血液検査ガイド](/ja/blood-tests/) を参照してください。
+
+<WarningBox title="ベースライン血液検査の結果が異常な場合">
+ALT が正常上限の2倍を超える、D-ダイマーが著しく上昇している、または凝固機能に異常がある場合は、まず医師に基礎疾患の診療を受け、HRTの開始を見合わせるべきです。
+</WarningBox>
+
+---
+
+## 薬剤・針具・消耗品
+
+### 薬剤
+
+**吉草酸エストラジオール注射液（EV）**。規格は 10 mg/mL × 1 mL アンプルが一般的です。コミュニティで流通している代表的な3つのバージョンは次の通りです。
+
+- **日本版**：日本の富士製薬 Progynon Depot。バイエルのライセンス生産で、油性溶液、品質管理が安定しています
+- **インド版**：インドの Zydus がバイエルのライセンスを受けた Progynon Depot。日本版と同じ処方で価格は比較的安いですが、外観はロット間でわずかな差があります
+- **ドイツ版（先発）**：ドイツ・バイエルの先発バージョン。入手はほぼ困難です
+
+より珍しいものとしては、インドネシア版 Pelangi（DIYコミュニティのグレーな入手経路）、北米の Delestrogen などもあります。ブランドの完全な対照表は [吉草酸エストラジオール注射液 · ブランド索引](/ja/medications/estrogens/injection/) を参照してください。
+
+<WarningBox title="購入前に必読">
+- 吉草酸エストラジオール注射液として正式に承認・販売されている製品は限られており、流通経路の多くは越境代理購入やグレーな入手経路に属します
+- 未開封の純正アンプルのみを受け取ることを勧めます。小分け品は避け、無包装の「バラ売り液」は拒否してください
+- 油剤は通常、透明で粒子がなく、変色もしていないはずです。濁り、綿状物、分離が見られる場合は廃棄を勧めます
+- 価格が極端に安い場合（例：「日本版 ◯円/本」など相場を大きく下回るもの）は、通常、偽薬のリスクがあります
+</WarningBox>
+
+### 針具
+
+基本的な勧め方は、太い針で薬を吸い、細い針で注射する、です。太い針で吸薬すると針先が鈍くなりやすく、太く鈍くなった針で注射すると、通常、痛みが明らかに増します。
+
+<DoseTable
+  headers={['経路', 'シリンジ', '吸薬用針', '注射用針']}
+  rows={[
+    ['皮下 (SC)', '1 mL Luer-Lock', '18-20G', '25-27G × 1/2"-5/8"'],
+    ['筋肉 (IM)', '1 mL Luer-Lock', '18-20G', '21-23G × 1"-1.5"'],
+  ]}
+/>
+
+<img src="/images/diagrams/zh/needle-gauges-comparison.webp" alt="注射器材の対照図：18G 緑色の吸薬用太針、23G 青色の IM 注射針、25G オレンジ色の SC 注射針、1 mL Luer-Lock シリンジ、吉草酸エストラジオール 10 mg/mL アンプル、個包装のアルコール綿" width="1400" height="901" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+### 消耗品
+
+- アルコール綿（個包装、≥ 10 枚を予備として）
+- 鋭利物回収ボックス（家庭用 ≥ 500 mL）
+- 綿棒 適量
+
+<WarningBox title="針は1回使い切り">
+針の使い回しは、初回投薬でよくある誤りです。針先は一度使用すると鈍くなりやすく、使い回すと痛み・感染・針折れのリスクが増します。使用済みの針はすぐに鋭利物ボックスに入れ、針キャップの再装着（リキャップ）はできるだけ避けてください（リキャップは針刺し損傷のよくある原因の1つです）。
+</WarningBox>
+
+---
+
+## 開始用量と手技
+
+### 開始用量
+
+最初の1〜6か月：推奨用量は <InlineValue value="1-2" unit="mg/週" /> です<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care v8" />。維持用量（2-4 mg/週）からいきなり始めないことを勧めます。これは主に乳房の発育を守るためです。早すぎる高用量の使用は乳芽の早期癒合を招くおそれがあり、これは通常、不可逆的です。詳しくは [乳房の形成](/ja/breast-development/) を参照してください。
+
+<DoseTable
+  headers={['週用量', '吸い取る量（10 mg/mL）', '頻度']}
+  rows={[
+    ['1 mg/週', '0.1 mL', '7日ごと'],
+    ['2 mg/週', '0.2 mL', '7日ごと'],
+  ]}
+/>
+
+### SC か IM かの選択
+
+E2の吸収とT（テストステロン）抑制の効果において、SC（皮下）とIM（筋肉）の間に有意な差はありません<CitationRef id="herndon-2023" num={4} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={5} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />。好みに応じて選んでかまいません。SCは針が細く痛みが軽いため、自分一人でも簡単に行えます。一方、IMは長めの針が必要で、臀部の部位の場合は通常、他者の介助が必要になります。完全な比較は [吉草酸エストラジオール注射液 · SC vs IM](/ja/medications/estrogens/injection/#皮下注射-sc-vs-筋肉注射-im) を参照してください。
+
+<img src="/images/diagrams/zh/injection-sites-anatomy.webp" alt="エストラジオール注射部位の選択 解剖図：SC 皮下注射は腹部の両脇（臍周囲 5 cm を避ける）と大腿外側上 1/3 を推奨、IM 筋肉注射は三角筋中部・外側広筋・中殿筋を推奨" width="1400" height="1045" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:var(--space-md) 0 var(--space-lg);" />
+
+### 注射手技の図解
+
+正しい順序で以下の8ステップを行ってください。各ステップで数秒間止まって状態を確認することを勧めます。丁寧に行うことのほうが、速さを求めることよりも大切です。
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-01.webp" alt="ステップ1：薬液を室温に戻す。冷蔵庫から取り出して 15-30 分静置し、アンプル・シリンジ・アルコール綿・ガーゼをそろえる" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-02.webp" alt="ステップ2：ガーゼでアンプルの首を包んで開封し、親指で外側に折る。ガラスによる切り傷を防ぐためガーゼで手を保護することを推奨" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-03.webp" alt="ステップ3：18G の太針で吸薬し、アンプルを傾けて目標用量まで吸う。例：0.2 mL = 2 mg" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-04.webp" alt="ステップ4：細針に付け替えて注射。SC は 25G、IM は 23G を選ぶ。吸薬用の太針はすでに鈍くなっており、付け替えずに打つと明らかに痛い" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-05.webp" alt="ステップ5：シリンジを垂直に持って軽く弾いて気泡を抜き、気泡が針先へ移動するのを待ち、針先からわずかに液が出るまでそっと押して、できるだけ気泡が無い状態にする" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-06.webp" alt="ステップ6：アルコール綿で注射部位を内側から外側へ渦巻き状に消毒し、15-30 秒待って自然乾燥させることを推奨。アルコールが乾かないうちに刺すと、明らかな刺痛を生じることがある" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-07.webp" alt="ステップ7：SC 皮下注射は皮膚をつまんで 45° で素早く刺入。IM 筋肉注射は皮膚を張って 90° で刺入" width="1200" height="800" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+<figure style="margin:var(--space-md) 0;">
+  <img src="/images/diagrams/zh/injection-step-08.webp" alt="ステップ8：約 10 秒かけて均一に注入 → 抜針 → 乾いた綿片で 1 分ほど軽く押さえる。もまないことを推奨。もむと薬液が散って吸収に影響したり、内出血を起こしやすい" width="1400" height="933" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:4px;" />
+</figure>
+
+### 注射手技でよくある問題
+
+完全な手技の詳細は [吉草酸エストラジオール注射液 · 注射手技のステップ](/ja/medications/estrogens/injection/) を参照してください。以下の6つの問題は、初回注射で最もよく起こります。
+
+1. **アルコールが乾かないうちに刺す** —— アルコールが揮発しきっていないまま刺すと、アルコールを皮下に持ち込みやすく、刺痛や局所刺激を引き起こすことがあります。消毒後は 15-30 秒待って自然乾燥させることを勧めます。
+2. **太針で吸薬してそのまま注射する** —— 太針は鈍くなると、注射時に明らかに痛くなります。吸薬後は細い注射針に付け替えることを勧めます。
+3. **刺入角度が不適切** —— SC は皮膚をつまんで 45° で刺入することを勧めます。IM は皮膚を張って 90° で刺入することを勧めます。
+4. **逆引き確認を忘れる** —— 薬液を注入する前に、プランジャーをわずかに引いて血液の逆流がないことを確認できます。逆血があれば、抜いて部位を変え、やり直すことを勧めます。
+5. **注入速度が速すぎる** —— ゆっくり一定の速度で注入することを勧めます。通常、0.1-0.2 mL を約10秒かけて注入します。
+6. **抜針後にもむ** —— 乾いた綿片で軽く押さえるだけにし、もまないことを勧めます。もむと薬液が散って吸収に影響したり、内出血を起こしやすくなります。
+
+### 用量換算ツール
+
+[注射用量換算ツール](/ja/tools/injection-calculator/) を使えば、薬瓶の濃度と目標用量から、吸い取る量を自動で計算できます。
+
+---
+
+## 初週のモニタリング
+
+### 正常な反応
+
+- **注射部位**：軽い張り・だるさ、局所の小さな内出血は、通常 2-5 日以内に自然に消えます
+- **気分**：変動することがあります。これはホルモン値が変化する際の正常な反応です
+- **乳房**：通常 2-6 週後にようやく張りや敏感さが現れます。初週に変化がなくても正常です
+- **活力 / 性欲**：やや低下したように感じることがありますが、これも正常な現象です
+
+### 受診して確認することを勧める場合
+
+必ずしも緊急とは限りませんが、以下の症状があれば受診して確認することを勧めます。
+
+- 注射部位の持続する発赤・腫れ・発熱、硬結の増大（局所感染の確認）
+- 重度の気分の落ち込み、または自傷の考え
+- 数日続き、説明のつかない新たな症状
+
+### ただちに投薬を中止して受診
+
+<DangerBox title="以下のいずれかが現れたら、ただちに投薬を中止し救急受診を">
+
+- 片側のふくらはぎの腫れ＋圧痛 —— 深部静脈血栓症（DVT）
+- 胸痛、呼吸困難、喀血 —— 肺塞栓症
+- 突発する激しい頭痛＋視界のかすみ、複視、または視野欠損 —— 静脈洞血栓症、脳卒中、髄膜腫
+- 片側の手足の脱力、口角のゆがみ、ろれつが回らない —— 脳卒中
+- 皮膚・白目が黄色くなる＋尿の色が濃くなる —— 急性肝毒性
+- 重度のアレルギー反応（呼吸困難＋発疹＋喉頭浮腫）
+
+リスクと急性症状の完全なリストは [リスクと急性症状の見分け方](/ja/risks/) を参照してください。緊急時には、ためらわず 119（救急）を呼んでください。
+
+</DangerBox>
+
+---
+
+## 初回フォローアップと用量調整
+
+### フォローアップの時期
+
+開始注射後 4-6 週目に、トラフ値の血液検査を1回行うことを勧めます。トラフ値とは、次の注射を打つ予定の当日の朝に採血したもので、注射周期全体のうち最も低い E2 濃度を反映します。多くの場合、トラフ値が目標に達していれば、周期全体も相対的に目標に達していることを意味します。
+
+### フォローアップ項目
+
+基本項目として E2、T を調べることができます。より包括的にしたい場合は、肝機能（ALT、AST）、腎機能（Cr）、PRL を追加で調べることもできます。詳しくは [血液検査ガイド](/ja/blood-tests/) を参照してください。
+
+### トラフ値に基づく用量調整
+
+<DoseTable
+  headers={['トラフ値 E2', 'トラフ値 T', '意味', '対応']}
+  rows={[
+    ['100-200 pg/mL', '< 50 ng/dL', '目標達成', '現在の方式を維持'],
+    ['< 50 pg/mL', '任意の値', '用量不足', '間隔を短くする（7→5 日）か、わずかに増量（≤ 5 mg/週）を推奨'],
+    ['> 200 pg/mL', '< 50 ng/dL', '用量過多', '減量を推奨'],
+    ['100-200 pg/mL', '> 50 ng/dL', 'E2 は足りているが T が下がっていない', 'E2 を増やし続けるのではなく、抗アンドロゲン剤の追加を推奨'],
+  ]}
+/>
+
+E2 > 200 pg/mL は、通常、女性化効果をさらに高めることはなく、かえって血栓などのリスクを増やすおそれがあります<CitationRef id="hembree-2017" num={2} />。より完全な用量の意思決定については [投薬パスマップ · 1-6 か月の段階](/ja/pathway/#phase1) を参照してください。
+
+<WarningBox title="モノセラピーの用量上限">
+モノセラピーの前提は、≤ 5 mg/週 の範囲内でトラフ値の T が < 50 ng/dL まで下がることです。もし 5 mg/週 でも T を十分に抑制できないなら、低用量の抗アンドロゲン剤を追加するほうが、注射量をさらに増やすよりも通常は安全です<CitationRef id="rothman-2024" num={6} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />。1回あたり 5 mg/週 を超える用量は、通常、E2 のピークが高くなりすぎやすく、それに伴って血栓リスクも上昇する可能性があります。
+</WarningBox>
+
+---
+
+## 受診前の準備
+
+- 方式の説明（例：EV 1-2 mg/週 SC で開始、6 か月後に調整）
+- ベースライン血液検査結果の印刷物
+- フォローアップ予定表の確認（4-6 週、3 か月、6 か月）
+- 危険な兆候が出たときの受診経路（上記「ただちに投薬を中止して受診」の節を参照）
+- 権威あるガイドラインの控え（HRTに不慣れな医師向け）：
+  - [WPATH SOC 8（Coleman 2022）](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017（Hembree ら）](https://doi.org/10.1210/jc.2017-01658)
+  - [参考文献ライブラリ](/ja/appendix-references/)
+
+<WarningBox title="このページの情報は専門の医師に代わるものではありません">
+このページは、国際的な臨床ガイドラインの参考情報を提供し、医師とのコミュニケーションをより十分に準備できるよう手助けすることを目的としています。あなたの最終的な方式は、専門の医療従事者が具体的な状況を踏まえて決めることが勧められます。お住まいの地域で friendly な医師が見つけにくい場合は、[日本の現状とハームリダクション](/ja/china-reality/) や [医療リソース](/ja/tools/hospital-finder/) を参照してください。
+</WarningBox>
+
+---
+
+## よくある質問
+
+### 初回注射の痛み
+
+軽い刺痛や張り・だるさは正常な現象です。痛みが激しく、30分以上続く場合は、次の点を確認することを勧めます。吸薬用の太針を、注射用の細針の代わりに使っていないか。薬液を冷蔵庫から取り出したばかりではないか（室温に戻すために 15-30 分置くことを勧めます）。そして注入速度が速すぎないか（約10秒に抑えることを勧めます）。
+
+### 注射時の出血への対処
+
+逆引きの際に血液の逆流があった場合：針を抜き、新しい部位と新しい針に変えてやり直すことを勧めます。無理に薬を押し込まないでください。注入後に注射点で少量の血の玉が見られた場合：通常は正常な現象で、綿片で軽く押さえて止血すれば十分です。
+
+### 注射を1回打ち忘れたときの対処
+
+遅れが ≤ 2 日の場合：気づいたときに予定どおりの用量を補い、次回はそのまま元の日付で続けます。遅れが 3-4 日の場合：予定どおりの用量を補い、新しい日付で注射周期を立て直します。遅れが ≥ 5 日の場合：通常は1回スキップしたのと同等とみなし、次回は予定どおりの用量を打てばよく、用量を倍にしないことを勧めます。
+
+### 初月に主観的な変化がない
+
+これはごく普通のことです。気分・性欲・活力などの主観的な感覚は 1-2 週以内に変化することがありますが、皮膚、脂肪の再分布、乳房の発育などの客観的な体の変化は、通常 2-6 か月かけてようやく現れ始めます。あまりに急激な変化は、通常、用量が高めであるサインであり、効果が高いことを意味するわけではありません。
+
+### 自己注射の実行可能性
+
+SC 注射は、完全に個人で独立して行えます。IM を選び、注射部位が大腿外側であれば、自分で行うのも比較的簡単です。ただし臀部の外側上象限を選ぶ場合は、鏡を併用しない限り、通常は他者の介助が必要です。初めての自己注射の前には、まず完全な解説動画を見て、誰かが付き添う環境で最初の1回を試みることを勧めます。
+
+---
+
+## 関連リソース
+
+- **詳しい手技と薬理**：[吉草酸エストラジオール注射液](/ja/medications/estrogens/injection/)
+- **他の経路との比較**：[エストラジオール投与経路の総まとめ](/ja/medications/estrogens/overview/)
+- **血液検査ガイド**：[血液検査ガイド](/ja/blood-tests/)
+- **リスクの見分け方**：[リスクと急性症状の見分け方](/ja/risks/)
+- **用量換算**：[注射用量換算ツール](/ja/tools/injection-calculator/)
+- **事前準備**：[投薬前：あなたは準備できていますか？](/ja/before-you-start/)
+- **長期の計画**：[投薬パスマップ](/ja/pathway/)
+- **医師を探す**：[日本の現状とハームリダクション](/ja/china-reality/) · [医療リソース](/ja/tools/hospital-finder/)
+
+<RelatedBlogPosts />
+
+---
+
+**参考文献**
+
+1. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+4. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+5. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>
+6. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
