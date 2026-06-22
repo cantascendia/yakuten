@@ -28,8 +28,10 @@ interface Props {
   locale?: string;
 }
 
+import { brandByline } from '../../i18n/ui';
+
 const {
-  author = 'HRT药典编辑部',
+  author,
   reviewer,
   reviewerCredential,
   lastReviewed,
@@ -38,6 +40,10 @@ const {
   refCount,
   locale = 'zh',
 } = Astro.props;
+
+// Default the byline to the locale's brand editorial team (ja → HRT薬典編集部),
+// so ja/other-locale pages never show the simplified-Chinese "HRT药典编辑部".
+const displayAuthor = author ?? brandByline(locale);
 
 const LABELS = {
   zh: { author: '作者', reviewer: '医学复审', lastReviewed: '最后复查', nextReview: '下次复查', evidence: '证据等级', refs: '参考文献', refsSuffix: '篇' },
@@ -65,7 +71,7 @@ const L = (LABELS as Record<string, typeof LABELS.en>)[locale] ?? LABELS.en;
   <dl class="byline-card__grid">
     <div class="byline-card__row">
       <dt>{L.author}</dt>
-      <dd>{author}</dd>
+      <dd>{displayAuthor}</dd>
     </div>
     {reviewer && (
       <div class="byline-card__row">

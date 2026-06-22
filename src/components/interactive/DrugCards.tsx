@@ -53,7 +53,7 @@ const UI = {
     target: '目標',
     danger: '危険信号',
     evidence: 'エビデンス',
-    brandLabel: 'HRT药典 · hrtyaku.com',
+    brandLabel: 'HRT薬典 · hrtyaku.com',
     banned: '使用禁止',
     bannedNote: 'この薬物はトランスジェンダーHRTに禁止されています',
     categoryLabels: { estrogen: 'エストロゲン', antiandrogen: '抗アンドロゲン', progestogen: 'プロゲストーゲン', '5ari': '5αRI', banned: '禁止' } as Record<string, string>,
@@ -277,8 +277,13 @@ const BADGE_STYLES: Record<string, CSSProperties> = {
 
 /* ── Component ── */
 
-export default function DrugCards() {
-  const rawLocale = getLocaleFromPath();
+export default function DrugCards({ locale: localeProp }: { locale?: string } = {}) {
+  // Prefer the explicit locale prop (passed from each locale's MDX) so the
+  // server render uses the correct language. Without it, getLocaleFromPath()
+  // returns 'zh' on the server (no window), which made every non-zh page SSR
+  // its UI chrome (labels, watermark, category filters) in Chinese until the
+  // client hydrated — a visible Chinese flash + wrong content for crawlers.
+  const rawLocale = localeProp ?? getLocaleFromPath();
   const locale = (rawLocale in UI ? rawLocale : 'zh') as keyof typeof UI;
   const t = UI[locale];
   const [category, setCategory] = useState<Category>('all');

@@ -7,7 +7,10 @@ export default defineConfig({
   site: 'https://hrtyaku.com',
   integrations: [
     starlight({
-      title: 'HRT药典',
+      // Locale-aware brand wordmark: Japanese must use 薬 (HRT薬典), not the
+      // simplified-Chinese 药. This feeds every page's <title> "… | {title}".
+      // Locales not listed fall back to the default-locale (zh) value.
+      title: { 'zh-CN': 'HRT药典', ja: 'HRT薬典', en: 'HRT Yakuten', ko: 'HRT 약전' },
       description: '循证 · 减害 · 引导就医 — 面向跨性别女性的 HRT 安全底线信息站',
       defaultLocale: 'zh',
       locales: {

@@ -229,7 +229,7 @@ export const ui = {
 
   ja: {
     // HeroSection
-    'hero.title': 'HRT药典',
+    'hero.title': 'HRT薬典',
     'hero.slogan': '願わくばこの旅路が、真の自分に届かんことを',
 
     // SplashNav
@@ -292,7 +292,7 @@ export const ui = {
     'footer.sources.text': 'すべてのデータはWPATH SOC 8、内分泌学会ガイドライン、査読済み研究論文に基づいています。',
     'footer.dev.title': 'オープンソース',
     'footer.dev.text': 'このプロジェクトはオープンソースで構築されています。開発者・医療者・コミュニティからの貢献を歓迎します。',
-    'footer.brand': 'HRT药典',
+    'footer.brand': 'HRT薬典',
     'footer.notice': '本サイトは処方箋の発行、薬物の販売、個人情報の収集を一切行いません。',
     'footer.navLabel': 'フッターリンク',
     'footer.link.guides': '実用ガイド',
@@ -300,7 +300,7 @@ export const ui = {
     'footer.link.disclaimer': '免責事項',
     'footer.link.github': 'オープンソース',
     'footer.link.feedback': 'フィードバック',
-    'footer.copy': 'HRT药典 · エビデンス · 害軽減 · 医療ガイド',
+    'footer.copy': 'HRT薬典 · エビデンス · 害軽減 · 医療ガイド',
 
     // DrugBrandGallery
     'brandGallery.viewAll': 'すべてのブランド索引を見る →',
@@ -1927,4 +1927,27 @@ export function getLocale(astroLocale?: string, pathname?: string): Locale {
   if (pathname?.startsWith('/de')) return 'de';
   if (pathname?.startsWith('/tr')) return 'tr';
   return 'zh';
+}
+
+/**
+ * Locale-aware brand wordmark. The default Chinese form "HRT药典" uses the
+ * simplified 药; Japanese must use the kanji 薬 ("HRT薬典"), and Latin/Korean
+ * locales use their own forms. Use everywhere the brand is shown to users or
+ * emitted in structured data so non-zh pages never leak the zh wordmark.
+ */
+const BRAND_NAME: Record<string, string> = { ja: 'HRT薬典', en: 'HRT Yakuten', ko: 'HRT 약전' };
+export function brandName(locale?: string): string {
+  const lang = (locale ?? '').split('-')[0];
+  return BRAND_NAME[lang] ?? 'HRT药典';
+}
+
+/** Locale-aware editorial-team byline (brand + "editorial team"). */
+const BRAND_BYLINE: Record<string, string> = {
+  ja: 'HRT薬典編集部',
+  en: 'HRT Yakuten Editorial',
+  ko: 'HRT 약전 편집부',
+};
+export function brandByline(locale?: string): string {
+  const lang = (locale ?? '').split('-')[0];
+  return BRAND_BYLINE[lang] ?? 'HRT药典编辑部';
 }

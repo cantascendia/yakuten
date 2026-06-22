@@ -25,6 +25,7 @@
  *            page-type hints for medication pages
  */
 import refData from '../../data/references.json';
+import { brandName } from '../../i18n/ui';
 
 const route = Astro.locals.starlightRoute;
 const pageUrl = Astro.url.href;
@@ -143,6 +144,15 @@ const segmentLabelsMap: Record<string, SegLabels> = {
     'breast-development': '乳房発達',
     pathway: '治療経路',
     'before-you-start': '開始前に',
+    'china-reality': '日本の現状',
+    about: 'このサイトについて',
+    methodology: '方法論',
+    'medical-advisors': '医療アドバイザー',
+    'editorial-policy': '編集方針',
+    compare: '比較',
+    'cpa-vs-spironolactone': 'CPA vs スピロノラクトン',
+    'oral-vs-injection': '経口 vs 注射',
+    'gel-vs-patch': 'ジェル vs パッチ',
   },
   ko: {
     medications: '약물',
@@ -202,7 +212,7 @@ const graph: Record<string, unknown>[] = [
   {
     '@type': 'Organization',
     '@id': 'https://hrtyaku.com/#organization',
-    name: 'HRT药典',
+    name: brandName(locale),
     alternateName: 'HRT Yakuten',
     url: 'https://hrtyaku.com',
     description: 'Evidence-based harm reduction HRT safety information for transgender women.',
@@ -218,7 +228,7 @@ const graph: Record<string, unknown>[] = [
     '@type': 'WebSite',
     '@id': 'https://hrtyaku.com/#website',
     url: 'https://hrtyaku.com',
-    name: 'HRT药典',
+    name: brandName(locale),
     alternateName: 'HRT Yakuten',
     description: '循证 · 减害 · 引导就医 — Evidence-based HRT safety baseline for transgender women',
     publisher: { '@id': 'https://hrtyaku.com/#organization' },
@@ -251,7 +261,7 @@ const basePage = {
   reviewedBy: {
     '@type': 'Organization',
     '@id': 'https://hrtyaku.com/#organization',
-    name: 'HRT药典 Editorial Team',
+    name: `${brandName(locale)} Editorial Team`,
   },
   isPartOf: { '@id': 'https://hrtyaku.com/#website' },
   medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
