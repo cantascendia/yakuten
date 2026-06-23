@@ -259,7 +259,9 @@ html.sakura .related-blog-posts {
 html.sakura .guide-cta {
   border: 2px solid var(--ink) !important;
   border-radius: 14px !important;
-  background: var(--sakura-pink-deep) !important;
+  /* White card text needs ≥4.5:1. --sakura-pink-deep (#E5578B) gives only ~3.5:1,
+     so use a darker pink (#C03070 ≈ 5.4:1 vs white). */
+  background: #c03070 !important;
   box-shadow: 4px 4px 0 var(--ink) !important;
   color: #fff !important;
   padding: 20px !important;
@@ -270,7 +272,21 @@ html.sakura .guide-cta:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 var(--ink) !important;
 }
-html.sakura .guide-cta * { color: #fff !important; }
+/* The inner .glass-panel paints an opaque light background over the pink card,
+   which hid the (white) eyebrow + description text. Make it transparent so the
+   pink shows through and the white text reads. */
+html.sakura .guide-cta__inner {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+}
+/* Force every text part white over the pink (specific enough to beat any
+   heading colour rule that was leaving the title dark / low-contrast). */
+html.sakura .guide-cta,
+html.sakura .guide-cta *,
+html.sakura .guide-cta .guide-cta__eyebrow,
+html.sakura .guide-cta .guide-cta__title,
+html.sakura .guide-cta .guide-cta__desc { color: #fff !important; }
 
 /* ===== PKCurveChart / RouteComparisonSVG 等 SVG 图卡 ===== */
 html.sakura .pk-curve-chart,
@@ -449,10 +465,11 @@ html.sakura .sidebar-content a:hover {
   transform: translateX(2px);
 }
 
-/* 当前页高亮 —— 粉底白字硬投影 */
+/* 当前页高亮 —— 粉底白字硬投影。白字需 ≥4.5:1：--sakura-pink-deep(#E5578B)
+   仅 ~3.5:1，改深粉 #C03070（白字 ≈5.4:1）。 */
 html.sakura .sidebar-content a[aria-current="page"],
 html.sakura .sidebar-content a.large[aria-current="page"] {
-  background: var(--sakura-pink-deep) !important;
+  background: #c03070 !important;
   color: #fff !important;
   border: 2px solid var(--ink);
   box-shadow: 2px 2px 0 var(--ink);

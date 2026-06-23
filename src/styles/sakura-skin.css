@@ -326,7 +326,9 @@ html.sakura .yk-nav__link {
 }
 html.sakura .yk-nav__link:hover { background: var(--sakura-blush); border-color: var(--ink-faint); }
 html.sakura .yk-nav__link[aria-current="page"] {
-  background: var(--sakura-pink);
+  /* white text needs ≥4.5:1; --sakura-pink (#FFA8C5) is far too light (~1.8:1).
+     Use the deep AA pink #C03070 (white ≈5.4:1). */
+  background: #c03070;
   color: #fff;
   border-color: var(--ink);
   box-shadow: 3px 3px 0 var(--ink);
