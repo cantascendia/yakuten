@@ -489,7 +489,8 @@ html.sakura .yk-chip {
   font-weight: 600;
 }
 html.sakura .yk-chip--filled {
-  background: var(--sakura-pink-deep);
+  /* white text needs ≥4.5:1; --sakura-pink-deep (#E5578B) only ~3.5:1 → #C03070 (5.4:1). */
+  background: #c03070;
   color: #fff;
 }
 html.sakura .yk-chip--ink {
