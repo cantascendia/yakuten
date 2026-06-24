@@ -287,6 +287,10 @@ html.sakura .guide-cta *,
 html.sakura .guide-cta .guide-cta__eyebrow,
 html.sakura .guide-cta .guide-cta__title,
 html.sakura .guide-cta .guide-cta__desc { color: #fff !important; }
+/* …but a nested button keeps its OWN contrast — ghost/gold sit on a light pill
+   (ink text); only a deep-pink flame button stays white. Otherwise the broad
+   white rule above turns the ghost button's text white-on-ivory (invisible). */
+html.sakura .guide-cta :where(.btn-ghost, .btn-gold) { color: var(--ink) !important; }
 
 /* ===== PKCurveChart / RouteComparisonSVG 等 SVG 图卡 ===== */
 html.sakura .pk-curve-chart,
