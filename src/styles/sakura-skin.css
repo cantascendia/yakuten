@@ -97,7 +97,7 @@ html.sakura .yk-pagehead__tab {
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.32em;
-  color: var(--sakura-pink-deep);
+  color: var(--sakura-pink-text);
   background: var(--ivory);
   border: 2px solid var(--ink);
   border-radius: 4px;
@@ -144,7 +144,7 @@ html.sakura[data-theme='dark'] .yk-pagehead { border-bottom-color: var(--ink-fai
 
 /* 朱色重点词 — 替代满屏渐变字：实色绯红 + 手账波浪线 */
 html.sakura .yk-accent-zhu {
-  color: var(--sakura-pink-deep);
+  color: var(--sakura-pink-text);
   font-style: normal;
   text-decoration-line: underline;
   text-decoration-style: wavy;
@@ -161,7 +161,7 @@ html.sakura .yk-hand-note {
   color: var(--ink-soft);
   display: inline-block;
 }
-html.sakura .yk-hand-note--zhu { color: var(--sakura-pink-deep); }
+html.sakura .yk-hand-note--zhu { color: var(--sakura-pink-text); }
 /* 夜晚书桌上的手写字换薰衣草笔 —— plain color，不动 token */
 html.sakura[data-theme='dark'] .yk-hand-note { color: #B8A0D8; }
 html.sakura[data-theme='dark'] .yk-hand-note--zhu { color: var(--sakura-pink); }
@@ -182,7 +182,7 @@ html.sakura .yk-toc-row {
   font-family: var(--font-body);
   text-decoration: none;
 }
-html.sakura .yk-toc-row:hover .yk-toc-row__title { color: var(--sakura-pink-deep); }
+html.sakura .yk-toc-row:hover .yk-toc-row__title { color: var(--sakura-pink-text); }
 html.sakura .yk-toc-row__vol {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -328,7 +328,7 @@ html.sakura .yk-nav__link:hover { background: var(--sakura-blush); border-color:
 html.sakura .yk-nav__link[aria-current="page"] {
   /* white text needs ≥4.5:1; --sakura-pink (#FFA8C5) is far too light (~1.8:1).
      Use the deep AA pink #C03070 (white ≈5.4:1). */
-  background: #c03070;
+  background: var(--sakura-pink-aa);
   color: #fff;
   border-color: var(--ink);
   box-shadow: 3px 3px 0 var(--ink);
@@ -490,7 +490,7 @@ html.sakura .yk-chip {
 }
 html.sakura .yk-chip--filled {
   /* white text needs ≥4.5:1; --sakura-pink-deep (#E5578B) only ~3.5:1 → #C03070 (5.4:1). */
-  background: #c03070;
+  background: var(--sakura-pink-aa);
   color: #fff;
 }
 html.sakura .yk-chip--ink {

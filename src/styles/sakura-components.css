@@ -261,7 +261,7 @@ html.sakura .guide-cta {
   border-radius: 14px !important;
   /* White card text needs ≥4.5:1. --sakura-pink-deep (#E5578B) gives only ~3.5:1,
      so use a darker pink (#C03070 ≈ 5.4:1 vs white). */
-  background: #c03070 !important;
+  background: var(--sakura-pink-aa) !important;
   box-shadow: 4px 4px 0 var(--ink) !important;
   color: #fff !important;
   padding: 20px !important;
@@ -469,7 +469,7 @@ html.sakura .sidebar-content a:hover {
    仅 ~3.5:1，改深粉 #C03070（白字 ≈5.4:1）。 */
 html.sakura .sidebar-content a[aria-current="page"],
 html.sakura .sidebar-content a.large[aria-current="page"] {
-  background: #c03070 !important;
+  background: var(--sakura-pink-aa) !important;
   color: #fff !important;
   border: 2px solid var(--ink);
   box-shadow: 2px 2px 0 var(--ink);
@@ -700,7 +700,7 @@ html.sakura .sl-markdown-content blockquote p { color: #7A5568; }
 /* =========================================================================
    列表 —— 樱粉项目符号
    ========================================================================= */
-html.sakura .sl-markdown-content ul > li::marker { color: var(--sakura-pink-deep); }
+html.sakura .sl-markdown-content ul > li::marker { color: var(--sakura-pink-text); }
 html.sakura .sl-markdown-content ol > li::marker {
   color: var(--sakura-pink-text);
   font-weight: 700;

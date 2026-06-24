@@ -24,6 +24,9 @@ html.sakura {
   --sakura-pink-deep: #E5578B;        /* pressed · 绯红（装饰/大字号用） */
   /* 绯红做正文级文字时的 AA 替身：#C02868 on cream ≈4.8:1 / on ivory ≈5.0:1 */
   --sakura-pink-text: #C02868;
+  /* 深粉「强调底」：白字配它达 AA（白字 ≈5.4:1）。浅樱粉/珊瑚做底配白字必挂，
+     凡是 CTA/按钮/当前页高亮等需要白字的实心粉底，统一用这个，别用浅彩。 */
+  --sakura-pink-aa: #C03070;
   --sakura-blush: #FFD4E0;            /* 最浅 · 腮红 */
 
   --coral: #FF8E7F;
@@ -476,7 +479,7 @@ html.sakura .text-glow-cyan { text-shadow: 0 0 24px rgba(91, 168, 224, 0.4); }
 html.sakura .text-slogan {
   font-family: var(--font-display);
   font-size: var(--fs-slogan);
-  color: var(--sakura-pink-deep);
+  color: var(--sakura-pink-text);
   letter-spacing: var(--ls-slogan);
 }
 
@@ -507,7 +510,8 @@ html.sakura .ink-card {
 }
 
 html.sakura .panel-flame {
-  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  /* white text on pastel pink→coral was ~2.1:1; use the deep AA flame gradient. */
+  background: linear-gradient(135deg, var(--sakura-pink-aa), var(--danger-deep));
   border: 2px solid var(--ink);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-hard);
@@ -570,7 +574,10 @@ html.sakura .btn-flame, html.sakura .btn-gold, html.sakura .btn-ghost, html.saku
 }
 html.sakura .btn-flame,
 html.sakura .btn-primary {
-  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  /* primary CTA = boldest. White text needs ≥4.5:1; the pastel sakura-pink→coral
+     gradient gave only ~2.1:1. Sink to a deep pink→crimson flame (both stops
+     pass white ≥5:1). Contrast with the light-on-dark gold/ghost buttons. */
+  background: linear-gradient(135deg, var(--sakura-pink-aa), var(--danger-deep));
   color: var(--fg-on-pink);
 }
 html.sakura .btn-flame:hover, html.sakura .btn-primary:hover {
