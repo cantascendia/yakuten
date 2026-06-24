@@ -57,6 +57,7 @@ const graph: Record<string, unknown>[] = [
   },
   {
     "@type": "BlogPosting",
+    "@id": `${url}#blogposting`,
     "headline": title,
     "description": description,
     "datePublished": publishDate.toISOString(),
@@ -80,6 +81,8 @@ const graph: Record<string, unknown>[] = [
 if (faqs && faqs.length > 0) {
   graph.push({
     "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    "mainEntityOfPage": { "@id": `${url}#blogposting` },
     "mainEntity": faqs.map((f) => ({
       "@type": "Question",
       "name": f.q,

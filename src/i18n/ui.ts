@@ -1935,19 +1935,22 @@ export function getLocale(astroLocale?: string, pathname?: string): Locale {
  * locales use their own forms. Use everywhere the brand is shown to users or
  * emitted in structured data so non-zh pages never leak the zh wordmark.
  */
-const BRAND_NAME: Record<string, string> = { ja: 'HRT薬典', en: 'HRT Yakuten', ko: 'HRT 약전' };
+// zh→药 / ja→薬 / ko→약전; every other locale falls back to the Latin
+// "HRT Yakuten" (NOT simplified-Chinese 药典), so es/pt/ar/… entities aren't
+// polluted with a Chinese brand string in JSON-LD / og:site_name.
+const BRAND_NAME: Record<string, string> = { zh: 'HRT药典', ja: 'HRT薬典', ko: 'HRT 약전' };
 export function brandName(locale?: string): string {
   const lang = (locale ?? '').split('-')[0];
-  return BRAND_NAME[lang] ?? 'HRT药典';
+  return BRAND_NAME[lang] ?? 'HRT Yakuten';
 }
 
 /** Locale-aware editorial-team byline (brand + "editorial team"). */
 const BRAND_BYLINE: Record<string, string> = {
+  zh: 'HRT药典编辑部',
   ja: 'HRT薬典編集部',
-  en: 'HRT Yakuten Editorial',
   ko: 'HRT 약전 편집부',
 };
 export function brandByline(locale?: string): string {
   const lang = (locale ?? '').split('-')[0];
-  return BRAND_BYLINE[lang] ?? 'HRT药典编辑部';
+  return BRAND_BYLINE[lang] ?? 'HRT Yakuten Editorial';
 }

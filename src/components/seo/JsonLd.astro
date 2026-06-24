@@ -241,6 +241,7 @@ const graph: Record<string, unknown>[] = [
   },
   {
     '@type': 'BreadcrumbList',
+    '@id': `${pageUrl}#breadcrumb`,
     itemListElement: breadcrumbItems.map((b, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -250,8 +251,12 @@ const graph: Record<string, unknown>[] = [
   },
 ];
 
-// Primary page entity (shared base for all MedicalWebPage variants)
+// Primary page entity (shared base for all MedicalWebPage variants).
+// @id + citation/isPartOf edges connect this page to its citations, the drug/FAQ
+// entity, and the site graph — so AI engines can attribute the cited literature's
+// authority to the page (vs treating each JSON-LD block as an isolated fragment).
 const basePage = {
+  '@id': `${pageUrl}#webpage`,
   url: pageUrl,
   name: title,
   description,
@@ -264,6 +269,9 @@ const basePage = {
     name: `${brandName(locale)} Editorial Team`,
   },
   isPartOf: { '@id': 'https://hrtyaku.com/#website' },
+  ...(citedRefs.length > 0
+    ? { citation: citedRefs.map((r) => ({ '@id': r.doi ? `https://doi.org/${r.doi}` : `${pageUrl}#ref-${r.id}` })) }
+    : {}),
   medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
   about: {
     '@type': 'MedicalCondition',
@@ -276,6 +284,7 @@ if (isDrugPage) {
   // Drug node + MedicalWebPage wrapper
   const drugNode: Record<string, unknown> = {
     '@type': 'Drug',
+    '@id': `${pageUrl}#drug`,
     name: title,
     description,
     nonProprietaryName: drug?.nonProprietaryName ?? drug?.activeIngredient ?? title,
@@ -298,6 +307,7 @@ if (isDrugPage) {
   graph.push({
     '@type': 'MedicalWebPage',
     ...basePage,
+    mainEntity: { '@id': `${pageUrl}#drug` },
     mainContentOfPage: { '@type': 'WebPageElement', cssSelector: 'main' },
     specialty: 'Endocrinology',
     aspect: 'Treatment',
@@ -344,6 +354,8 @@ if (isDrugPage) {
 if (faqs.length > 0 && !faqsRenderedInBody) {
   graph.push({
     '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
     mainEntity: faqs.map((f) => ({
       '@type': 'Question',
       name: f.q,
@@ -356,6 +368,7 @@ if (faqs.length > 0 && !faqsRenderedInBody) {
 for (const ref of citedRefs) {
   graph.push({
     '@type': 'ScholarlyArticle',
+    '@id': ref.doi ? `https://doi.org/${ref.doi}` : `${pageUrl}#ref-${ref.id}`,
     headline: ref.title,
     author: ref.authors,
     datePublished: String(ref.year),

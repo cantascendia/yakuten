@@ -430,6 +430,19 @@ async function generateBlogOg() {
 }
 
 async function main() {
+  // Default site-level OG card as a real PNG. Social platforms (Twitter/Slack/
+  // Discord/FB/LinkedIn) and most AI share cards do NOT render an SVG og:image,
+  // so the home / tools / about pages (no per-page PNG) were breaking. Convert
+  // the existing public/og-image.svg once into dist/og-default.png.
+  try {
+    await sharp(fs.readFileSync(path.resolve('public/og-image.svg')))
+      .resize(1200, 630, { fit: 'cover' })
+      .png({ compressionLevel: 9 })
+      .toFile(path.resolve('dist/og-default.png'));
+    console.log('Default OG PNG written: dist/og-default.png');
+  } catch (err) {
+    console.warn(`Default OG PNG fail: ${err.message}`);
+  }
   const docs = await generateDocsOg();
   const blog = await generateBlogOg();
   console.log(
