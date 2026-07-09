@@ -58,8 +58,10 @@ const citedRefs = referenceIds
   .filter((r): r is RefEntry => r !== undefined)
   .slice(0, 5);
 
-// Page-type detection from pathname (locale-agnostic)
-const pathSegmentsForType = pathname.replace(/^\/(zh|en|ja|ko)\//, '').replace(/\/$/, '').split('/');
+// Page-type detection from pathname (locale-agnostic). Matches a 2-3 letter
+// locale segment so all 17 configured locales (zh/en/ja/ko/pt/ru/es/id/th/
+// fil/hi/vi/ar/fa/fr/de/tr) are stripped, not just the original 4.
+const pathSegmentsForType = pathname.replace(/^\/[a-z]{2,3}\//, '').replace(/\/$/, '').split('/');
 const isDrugPage = pathSegmentsForType[0] === 'medications' && pathSegmentsForType.length >= 2;
 const isGuidePage = pathSegmentsForType[0] === 'guides';
 const isSafetyPage = ['risks', 'dose-limits', 'blood-tests', 'china-reality', 'pathway', 'before-you-start'].includes(pathSegmentsForType[0]);
@@ -232,7 +234,7 @@ const graph: Record<string, unknown>[] = [
     alternateName: 'HRT Yakuten',
     description: '循证 · 减害 · 引导就医 — Evidence-based HRT safety baseline for transgender women',
     publisher: { '@id': 'https://hrtyaku.com/#organization' },
-    inLanguage: ['zh-CN', 'en', 'ja', 'ko'],
+    inLanguage: ['zh-CN', 'en', 'ja', 'ko', 'pt-BR', 'ru', 'es', 'id', 'th', 'fil', 'hi', 'vi', 'ar', 'fa', 'fr', 'de', 'tr'],
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://hrtyaku.com/zh/?q={search_term_string}',

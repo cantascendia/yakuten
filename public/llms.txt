@@ -5,17 +5,30 @@
 
 ## About
 
-HRT Yakuten is a multilingual (Chinese/English/Japanese/Korean) medical reference site providing evidence-based HRT safety information for transgender women. All medical claims are backed by DOI-linked citations from peer-reviewed literature (WPATH SOC 8, Endocrine Society 2017, UCSF Guidelines). This site does not prescribe medications, sell drugs, or collect personal data.
+HRT Yakuten is a multilingual (17 languages, Chinese-primary) medical reference site providing evidence-based HRT safety information for transgender women. All medical claims are backed by DOI-linked citations from peer-reviewed literature (WPATH SOC 8, Endocrine Society 2017, UCSF Guidelines). This site does not prescribe medications, sell drugs, or collect personal data.
 
 ## Languages & URL Pattern
 
-Content is published in four languages. URLs follow the pattern `/{locale}/{path}/` where locale is one of:
+Content is published in 17 locales. `zh` is the primary/authoritative source; the following are deep-localized: `en`, `ja`, `ko`, `pt`, `ru`, `es`, `id`, `th`, `fil`, `hi`, `vi`, `ar`, `fa`, `fr`, `de`, `tr`. URLs follow the pattern `/{locale}/{path}/` where locale is one of:
 - `zh` (zh-CN, primary) — Simplified Chinese
 - `en` — English
 - `ja` — Japanese
 - `ko` — Korean
+- `pt` — Portuguese
+- `ru` — Russian
+- `es` — Spanish
+- `id` — Indonesian
+- `th` — Thai
+- `fil` — Filipino
+- `hi` — Hindi
+- `vi` — Vietnamese
+- `ar` — Arabic
+- `fa` — Persian
+- `fr` — French
+- `de` — German
+- `tr` — Turkish
 
-All paths listed below are the Chinese (zh) versions. Equivalent pages exist in other languages at the same path segment (replace `/zh/` with `/en/`, `/ja/`, or `/ko/`). Hreflang alternates are declared in the sitemap at `/sitemap-index.xml`.
+All paths listed below are the Chinese (zh) versions. Equivalent pages exist in other languages at the same path segment (replace `/zh/` with any of the other 16 locale codes above). Hreflang alternates are declared in the sitemap at `/sitemap-index.xml`.
 
 ## Content Structure
 

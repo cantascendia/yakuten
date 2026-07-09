@@ -158,7 +158,7 @@ const pagePath = pathname.replace(/^\/[a-z]{2,3}\//, '').replace(/\/$/, '');
 // x-default points to the default locale (zh) for docs. Blog posts have no
 // cross-locale twin, so their x-default points at themselves (avoids a
 // /zh/blog/<ja-slug>/ 404 for ja posts).
-const xDefault = isBlogPage ? canonical : `${site}/zh/${pagePath}`;
+const xDefault = isBlogPage ? canonical : `${site}/zh/${pagePath ? pagePath + '/' : ''}`;
 
 // og:locale of the current page + alternates (all 17 configured locales).
 const currentOgLocale = OG_LOCALE[pageLocale] ?? 'zh_CN';
