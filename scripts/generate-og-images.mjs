@@ -381,6 +381,77 @@ async function generateDocsOg() {
       console.warn(`OG fail ${abs}: ${err.message}`);
     }
   }
+
+  // ─── Fallback OG for untranslated locales ──────────────────────────────
+  // Starlight renders untranslated routes using the zh content as a fallback
+  // (e.g. /es/risks/ builds real HTML even though there's no
+  // src/content/docs/es/risks.mdx). Head.astro still emits
+  // `/og/<locale>/<path>.png` for those routes, which would 404 without this
+  // pass. Reuse the zh frontmatter to generate a PNG for every fallback
+  // route that actually built, targeting the locale directories that exist
+  // under dist/ (more reliable than a hardcoded locale list).
+  let fallbackOk = 0;
+  let fallbackFail = 0;
+  const distDir = path.resolve('dist');
+  if (fs.existsSync(distDir)) {
+    const zhEntries = entries.filter((e) => e.parts[0] === 'zh');
+    const localeDirs = fs
+      .readdirSync(distDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && /^[a-z]{2,3}$/.test(d.name) && d.name !== 'zh')
+      .map((d) => d.name);
+
+    for (const locale of localeDirs) {
+      for (const { abs, parts } of zhEntries) {
+        const rest = parts.slice(1); // drop leading 'zh'
+        const htmlPath = rest.length > 0
+          ? path.join(distDir, locale, ...rest, 'index.html')
+          : path.join(distDir, locale, 'index.html');
+        // Skip if this locale never actually built this page.
+        if (!fs.existsSync(htmlPath)) continue;
+
+        const outPath = rest.length > 0
+          ? path.join(OUT_DIR, locale, ...rest) + '.png'
+          : path.join(OUT_DIR, `${locale}.png`);
+        // Skip if a real translated OG (or an earlier fallback pass) already exists.
+        if (fs.existsSync(outPath)) continue;
+
+        try {
+          const src = fs.readFileSync(abs, 'utf8');
+          const fm = parseFrontmatter(src);
+          if (!fm || !fm.title) continue;
+          const refLine = src.match(/^references:\s*\[([^\]]*)\]/m);
+          const refCount = refLine
+            ? refLine[1].split(',').filter((s) => s.trim().length > 0).length
+            : 0;
+
+          const svg = buildSvg({
+            title: fm.title,
+            description: fm.description,
+            evidenceLevel: fm.evidenceLevel,
+            refCount,
+            lastReviewed: fm.lastReviewed,
+            locale,
+          });
+
+          fs.mkdirSync(path.dirname(outPath), { recursive: true });
+          await sharp(Buffer.from(svg))
+            .resize(1200, 630, { fit: 'cover' })
+            .png({ compressionLevel: 9 })
+            .toFile(outPath);
+          ok++;
+          fallbackOk++;
+        } catch (err) {
+          fail++;
+          fallbackFail++;
+          console.warn(`Fallback OG fail ${locale}/${rest.join('/') || 'index'}: ${err.message}`);
+        }
+      }
+    }
+    if (fallbackOk > 0 || fallbackFail > 0) {
+      console.log(`Fallback OG (untranslated locales): ${fallbackOk} ok · ${fallbackFail} failed`);
+    }
+  }
+
   return { ok, fail };
 }
 
@@ -430,6 +501,19 @@ async function generateBlogOg() {
 }
 
 async function main() {
+  // Default site-level OG card as a real PNG. Social platforms (Twitter/Slack/
+  // Discord/FB/LinkedIn) and most AI share cards do NOT render an SVG og:image,
+  // so the home / tools / about pages (no per-page PNG) were breaking. Convert
+  // the existing public/og-image.svg once into dist/og-default.png.
+  try {
+    await sharp(fs.readFileSync(path.resolve('public/og-image.svg')))
+      .resize(1200, 630, { fit: 'cover' })
+      .png({ compressionLevel: 9 })
+      .toFile(path.resolve('dist/og-default.png'));
+    console.log('Default OG PNG written: dist/og-default.png');
+  } catch (err) {
+    console.warn(`Default OG PNG fail: ${err.message}`);
+  }
   const docs = await generateDocsOg();
   const blog = await generateBlogOg();
   console.log(

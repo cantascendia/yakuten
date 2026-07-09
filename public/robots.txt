@@ -22,8 +22,30 @@ User-agent: Sogou web spider
 Allow: /
 Disallow: /*?q=
 
+# AI answer / search engines — explicitly welcomed. This is a free, public,
+# evidence-based harm-reduction medical reference; we WANT our DOI-cited safety
+# content surfaced and cited in AI answers. Explicit Allow (vs relying on the
+# wildcard below) states that intent to each engine and survives future tightening.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: CCBot
+Allow: /
+Disallow: /*?q=
+
 User-agent: *
 Allow: /
 Disallow: /*?q=
 
+# LLM guide (non-standard, ignored by crawlers that don't support it):
+# https://hrtyaku.com/llms.txt
 Sitemap: https://hrtyaku.com/sitemap-index.xml

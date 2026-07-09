@@ -14,6 +14,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 import ThemeToggle from '../ThemeToggle.astro';
 import SakuraHint from '../ui/SakuraHint.astro';
 import JsonLd from '../seo/JsonLd.astro';
+import { brandName } from '../../i18n/ui';
 
 const pathname = Astro.url.pathname;
 const site = 'https://hrtyaku.com';
@@ -56,21 +57,34 @@ const isMedicalPage =
 const isBlogPage = pathname.includes('/blog/');
 const ogType = isBlogPage || isMedicalPage ? 'article' : 'website';
 
-// Locale-aware site_name (preferred by Google for non-English markets).
-const headLocale = pathname.startsWith('/en/')
-  ? 'en'
-  : pathname.startsWith('/ja/')
-    ? 'ja'
-    : pathname.startsWith('/ko/')
-      ? 'ko'
-      : 'zh';
-const siteNames: Record<string, string> = {
-  zh: 'HRT药典',
-  en: 'HRT Yakuten',
-  ja: 'HRT薬典',
-  ko: 'HRT 약전',
+// Page locale (all 17 configured locales, not just zh/en/ja/ko) → og:locale
+// region code. Driving og:site_name / og:locale / x-default off the page's OWN
+// locale stops the 13 non-CJK locales (es/pt/ar/id/…) inheriting the Chinese
+// brand name, zh_CN, and a zh-homepage x-default — which confused AI/search
+// entity resolution and split one brand into two.
+const OG_LOCALE: Record<string, string> = {
+  zh: 'zh_CN', en: 'en_US', ja: 'ja_JP', ko: 'ko_KR', pt: 'pt_BR', ru: 'ru_RU',
+  es: 'es_ES', id: 'id_ID', th: 'th_TH', fil: 'fil_PH', hi: 'hi_IN', vi: 'vi_VN',
+  ar: 'ar_AR', fa: 'fa_IR', fr: 'fr_FR', de: 'de_DE', tr: 'tr_TR',
 };
-const ogSiteName = siteNames[headLocale];
+const pageLocale = pathname.match(/^\/([a-z]{2,3})\//)?.[1] ?? 'zh';
+// Locale-aware site_name (preferred by Google for non-English markets).
+const ogSiteName = brandName(pageLocale);
+
+// Per-page metadata (read early so the route.head de-dup below can decide whether
+// a per-page OG image will be emitted and strip the site-wide default accordingly).
+const entryData: Record<string, unknown> = (route?.entry?.data as Record<string, unknown>) ?? {};
+const pageLastReviewed = entryData.lastReviewed
+  ? new Date(entryData.lastReviewed as string | Date).toISOString()
+  : null;
+// Site-wide default OG image injected via astro.config `head` (lands in route.head
+// on EVERY page). Content pages emit a specific per-page image in the JSX below
+// (gated on lastReviewed); some pages carry their own via frontmatter.head. When a
+// more specific image will exist we must drop this generic default — crawlers read
+// the FIRST og:image and would otherwise pick the default over the page image.
+const ogDefaultUrl = `${site}/og-default.png`;
+const willEmitPerPageOgInBody = !!pageLastReviewed && !isBlogPage;
+
 if (route?.head) {
   for (const tag of route.head) {
     if (tag.tag !== 'meta' || !tag.attrs) continue;
@@ -86,6 +100,29 @@ if (route?.head) {
       !(tag.tag === 'meta' && tag.attrs?.['property'] === 'og:locale') &&
       !(tag.tag === 'link' && tag.attrs?.['rel'] === 'canonical'),
   );
+  // Drop the site-wide DEFAULT og:image / twitter:image (og-default.png) whenever a
+  // more specific image will be present — either emitted in the JSX below
+  // (willEmitPerPageOgInBody) or already supplied by the page's own frontmatter.head
+  // (a non-default og:image already sitting in route.head, e.g. blog posts, links).
+  // Pages that have ONLY the default (e.g. 404) keep it. This guarantees the page's
+  // specific image is the FIRST/only og:image crawlers and AI cards read.
+  const routeHasSpecificOgImage = route.head.some(
+    (tag) =>
+      tag.tag === 'meta' &&
+      tag.attrs?.['property'] === 'og:image' &&
+      typeof tag.attrs.content === 'string' &&
+      tag.attrs.content !== ogDefaultUrl,
+  );
+  if (willEmitPerPageOgInBody || routeHasSpecificOgImage) {
+    route.head = route.head.filter(
+      (tag) =>
+        !(
+          tag.tag === 'meta' &&
+          (tag.attrs?.['property'] === 'og:image' || tag.attrs?.['name'] === 'twitter:image') &&
+          tag.attrs?.content === ogDefaultUrl
+        ),
+    );
+  }
   // Blog posts are standalone articles, NOT 1:1 translations across locales
   // (the zh and ja blogs are different articles). Starlight's getHead emits a
   // per-locale hreflang alternate for every configured locale (17 of them) by
@@ -100,13 +137,9 @@ if (route?.head) {
   }
 }
 const noindex = (route?.entry?.data as Record<string, unknown> | undefined)?.noindex === true;
-const entryData: Record<string, unknown> = (route?.entry?.data as Record<string, unknown>) ?? {};
-const pageLastReviewed = entryData.lastReviewed
-  ? new Date(entryData.lastReviewed as string | Date).toISOString()
-  : null;
 const pageEvidenceLevel = (entryData.evidenceLevel as string) ?? null;
 const pageRefCount = Array.isArray(entryData.references) ? (entryData.references as string[]).length : 0;
-const pageMedicalReviewer = (entryData.medicalReviewer as string) ?? `${siteNames[headLocale]} Editorial Team`;
+const pageMedicalReviewer = (entryData.medicalReviewer as string) ?? `${brandName(pageLocale)} Editorial Team`;
 
 // Per-page OG image URL (generated postbuild into dist/og/<locale>/<path>.png).
 // Strip leading/trailing slash, drop locale segment if present (we want parts after /{locale}/).
@@ -117,33 +150,23 @@ const ogPageUrl = ogPathParts.length > 0
 // Fallback to global SVG if page isn't a content page (e.g., tool routes).
 const perPageOgImage = ogPageUrl;
 
-// Build hreflang alternates from current pathname
-// Pattern: /{locale}/rest/of/path/ → extract locale, build alternates
-const localeMap = [
-  { code: 'zh-CN', prefix: '/zh/' },
-  { code: 'en', prefix: '/en/' },
-  { code: 'ja', prefix: '/ja/' },
-  { code: 'ko', prefix: '/ko/' },
-] as const;
-
-// Extract the locale-independent path segment
-let pagePath = '';
-for (const { prefix } of localeMap) {
-  if (pathname.startsWith(prefix)) {
-    pagePath = pathname.slice(prefix.length);
-    break;
-  }
-}
+// Strip the locale prefix to get the shared path segment. Works for ALL 17
+// locales (was only zh/en/ja/ko), so x-default on /es/risks/, /ar/…, etc. now
+// points to the real zh twin page instead of falling back to the zh homepage.
+// Non-localized routes (e.g. /404, no locale prefix) get an empty pagePath so
+// x-default resolves to the zh homepage rather than a malformed `/zh//404/`
+// (the leading slash would otherwise survive the strip).
+const hasLocalePrefix = /^\/[a-z]{2,3}\//.test(pathname);
+const pagePath = hasLocalePrefix ? pathname.replace(/^\/[a-z]{2,3}\//, '').replace(/\/$/, '') : '';
 
 // x-default points to the default locale (zh) for docs. Blog posts have no
 // cross-locale twin, so their x-default points at themselves (avoids a
 // /zh/blog/<ja-slug>/ 404 for ja posts).
-const xDefault = isBlogPage ? canonical : `${site}/zh/${pagePath}`;
+const xDefault = isBlogPage ? canonical : `${site}/zh/${pagePath ? pagePath + '/' : ''}`;
 
-// Detect current locale for og:locale
-const ogLocaleMap: Record<string, string> = { '/zh/': 'zh_CN', '/en/': 'en_US', '/ja/': 'ja_JP', '/ko/': 'ko_KR' };
-const currentOgLocale = Object.entries(ogLocaleMap).find(([p]) => pathname.startsWith(p))?.[1] ?? 'zh_CN';
-const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== currentOgLocale);
+// og:locale of the current page + alternates (all 17 configured locales).
+const currentOgLocale = OG_LOCALE[pageLocale] ?? 'zh_CN';
+const alternateOgLocales = Object.values(OG_LOCALE).filter((l) => l !== currentOgLocale);
 ---
 
 <Default {...Astro.props}><slot /></Default>
@@ -182,7 +205,7 @@ const alternateOgLocales = Object.values(ogLocaleMap).filter((l) => l !== curren
   </>
 )}
 <ThemeToggle />
-{headLocale === 'zh' && <SakuraHint />}
+{pageLocale === 'zh' && <SakuraHint />}
 <script is:inline>
   // Dev-mode opt-out for Vercel Analytics & Speed Insights.
   // Run `localStorage.setItem('yakuten-dev','1')` once in any browser you use

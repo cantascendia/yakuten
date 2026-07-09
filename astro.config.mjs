@@ -7,10 +7,18 @@ export default defineConfig({
   site: 'https://hrtyaku.com',
   integrations: [
     starlight({
-      // Locale-aware brand wordmark: Japanese must use 薬 (HRT薬典), not the
-      // simplified-Chinese 药. This feeds every page's <title> "… | {title}".
-      // Locales not listed fall back to the default-locale (zh) value.
-      title: { 'zh-CN': 'HRT药典', ja: 'HRT薬典', en: 'HRT Yakuten', ko: 'HRT 약전' },
+      // Per-lang brand wordmark feeding every page's <title> "… | {title}":
+      // zh→药 (HRT药典) / ja→薬 (HRT薬典, NOT the simplified 药) / ko→약전; all other
+      // locales use the Latin "HRT Yakuten". Keys are BCP-47 langs matching each
+      // locale's `lang`. Listing all 17 stops es/pt/ar/… pages inheriting the
+      // Chinese brand in their <title> (Starlight falls back to the default locale).
+      title: {
+        'zh-CN': 'HRT药典', ja: 'HRT薬典', ko: 'HRT 약전',
+        en: 'HRT Yakuten', 'pt-BR': 'HRT Yakuten', ru: 'HRT Yakuten', es: 'HRT Yakuten',
+        id: 'HRT Yakuten', th: 'HRT Yakuten', fil: 'HRT Yakuten', hi: 'HRT Yakuten',
+        vi: 'HRT Yakuten', ar: 'HRT Yakuten', fa: 'HRT Yakuten', fr: 'HRT Yakuten',
+        de: 'HRT Yakuten', tr: 'HRT Yakuten',
+      },
       description: '循证 · 减害 · 引导就医 — 面向跨性别女性的 HRT 安全底线信息站',
       defaultLocale: 'zh',
       locales: {
@@ -386,7 +394,7 @@ export default defineConfig({
         // OG Image for social sharing
         {
           tag: 'meta',
-          attrs: { property: 'og:image', content: 'https://hrtyaku.com/og-image.svg' },
+          attrs: { property: 'og:image', content: 'https://hrtyaku.com/og-default.png' },
         },
         {
           tag: 'meta',
@@ -399,7 +407,7 @@ export default defineConfig({
         // Twitter Card
         {
           tag: 'meta',
-          attrs: { name: 'twitter:image', content: 'https://hrtyaku.com/og-image.svg' },
+          attrs: { name: 'twitter:image', content: 'https://hrtyaku.com/og-default.png' },
         },
         // Google Fonts — preconnect + stylesheet
         // CJK fonts auto-subset via unicode-range (~80-150KB per page instead of 6MB)
