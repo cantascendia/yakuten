@@ -153,7 +153,11 @@ const perPageOgImage = ogPageUrl;
 // Strip the locale prefix to get the shared path segment. Works for ALL 17
 // locales (was only zh/en/ja/ko), so x-default on /es/risks/, /ar/…, etc. now
 // points to the real zh twin page instead of falling back to the zh homepage.
-const pagePath = pathname.replace(/^\/[a-z]{2,3}\//, '').replace(/\/$/, '');
+// Non-localized routes (e.g. /404, no locale prefix) get an empty pagePath so
+// x-default resolves to the zh homepage rather than a malformed `/zh//404/`
+// (the leading slash would otherwise survive the strip).
+const hasLocalePrefix = /^\/[a-z]{2,3}\//.test(pathname);
+const pagePath = hasLocalePrefix ? pathname.replace(/^\/[a-z]{2,3}\//, '').replace(/\/$/, '') : '';
 
 // x-default points to the default locale (zh) for docs. Blog posts have no
 // cross-locale twin, so their x-default points at themselves (avoids a
