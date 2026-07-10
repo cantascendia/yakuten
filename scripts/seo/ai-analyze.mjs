@@ -9,7 +9,9 @@
  *
  * Auth:  GOOGLE_GENERATIVE_AI_API_KEY  (same key as api/ai-chat.ts; read from
  *        the environment, or auto-loaded from .env.local for local runs).
- * Model: SEO_AI_MODEL env, default `gemini-3-flash-preview` (matches the chat endpoint).
+ * Model: SEO_AI_MODEL env, default `gemini-3.5-flash`, with automatic fallback
+ *        down MODEL_CANDIDATES when a model is overloaded (503) / retired (404) /
+ *        quota-blocked (429) — so a single bad model never strands the pipeline.
  *
  * Inputs (uses whatever exists — at least one of GSC / Trends is required):
  *   docs/data/gsc-latest.csv       ← npm run seo:gsc   (real search queries)
@@ -42,7 +44,12 @@ const GAP_FILE = path.join(ROOT, 'docs', 'seo-keyword-gap.md');
 const LLMS_FILE = path.join(ROOT, 'public', 'llms.txt');
 
 const DRY_RUN = process.argv.includes('--dry-run');
-const MODEL = process.env.SEO_AI_MODEL || 'gemini-3-flash-preview';
+// Explicit SEO_AI_MODEL pins a single model (no fallback). Otherwise walk the
+// candidate list: newest stable first, then older still-alive fallbacks.
+const MODEL_CANDIDATES = process.env.SEO_AI_MODEL
+  ? [process.env.SEO_AI_MODEL]
+  : ['gemini-3.5-flash', 'gemini-3-flash-preview'];
+let MODEL = MODEL_CANDIDATES[0];
 
 /* ── Minimal .env.local loader (no dependency) ──────────────────────────────
    The chat endpoint runs on Vercel where env vars are injected. A local node
@@ -211,15 +218,33 @@ if (DRY_RUN) {
   const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
   const { generateText } = await import('ai');
   const google = createGoogleGenerativeAI();
-  console.log('  calling Gemini …');
-  const { text } = await generateText({
-    model: google(MODEL),
-    system: SYSTEM,
-    prompt: PROMPT,
-    maxOutputTokens: 4096,
-    temperature: 0.4,
-  });
-  report = text;
+  // Walk the candidate list: a retired (404), overloaded (503), or
+  // quota-blocked (429) model falls through to the next instead of stranding
+  // the whole pipeline (2026-07-10: gemini-3-flash-preview 503'd all day).
+  let lastErr;
+  for (const candidate of MODEL_CANDIDATES) {
+    try {
+      console.log(`  calling Gemini (${candidate}) …`);
+      const { text } = await generateText({
+        model: google(candidate),
+        system: SYSTEM,
+        prompt: PROMPT,
+        maxOutputTokens: 4096,
+        temperature: 0.4,
+      });
+      report = text;
+      MODEL = candidate; // record which one actually produced the report
+      break;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`  ✗ ${candidate} failed (${err?.statusCode ?? err?.name ?? 'error'}) — trying next model`);
+    }
+  }
+  if (!report) {
+    console.error('\n❌ 所有候选模型都失败了。最后一个错误如下。\n   （日常分析建议直接让 Claude 跑 /seo-ops——此脚本只是 CI 备用。）\n');
+    console.error(lastErr?.message ?? lastErr);
+    process.exit(1);
+  }
 }
 
 /* ── Write ────────────────────────────────────────────────────────────────── */

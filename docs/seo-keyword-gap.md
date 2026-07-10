@@ -210,7 +210,7 @@ AHREFS_API_TOKEN=xxx
 
 <!-- AUTO-SNAPSHOT:BEGIN -->
 
-## AUTO SNAPSHOT — 2026-04-19 15:31 UTC
+## AUTO SNAPSHOT — 2026-07-10 08:09 UTC
 
 > 本节由 `npm run seo:refresh` 自动生成。上方手工表格保留不动。
 
@@ -253,17 +253,60 @@ tier 阈值: H ≥ 40 · M ≥ 10 (0-100 相对指数)
 
 ### Google Search Console — top 40 queries (last 28 days)
 
-tier 阈值: H ≥ 2 impressions (top 5%) · M ≥ 1 (top 25%)
+tier 阈值: H ≥ 19 impressions (top 5%) · M ≥ 4 (top 25%)
 
 | query | impressions | clicks | ctr | avg pos | tier | top landing page |
 |---|---|---|---|---|---|---|
-| プロギノンデポー 個人輸入 | 2 | 0 | 0.00% | 26.50 | H | `/ja/medications/estrogens/injection/` |
-| hrt -site:reddit.com -site:twitter.com -site:x.com -site:wykop.pl -site:tripadvisor.com -site:youtube.com -site:yelp.com -site:booking.com -site:facebook.com -site:instagram.com -site:tiktok.com | 1 | 0 | 0.00% | 10.00 | M | `/en/pathway/` |
-| does hrt blacklist | 1 | 0 | 0.00% | 11.00 | M | `/en/medications/banned-drugs/` |
-| estradiol transdermal | 1 | 0 | 0.00% | 69.00 | M | `/en/medications/estrogens/transdermal-patch/` |
-| estrogen oral | 1 | 0 | 0.00% | 85.00 | M | `/en/medications/estrogens/oral/` |
-| micronized progesterone 中文 | 1 | 0 | 0.00% | 11.00 | M | `/zh/medications/progestogens/progesterone/` |
-| oral estradiol half life | 1 | 0 | 0.00% | 46.00 | M | `/en/medications/estrogens/oral/` |
-| 比卡鲁胺和色普龙 | 1 | 0 | 0.00% | 16.00 | M | `/zh/medications/antiandrogens/overview/` |
+| progesterona micronizada | 589 | 2 | 0.34% | 5.51 | H | `/es/medications/progestogens/progesterone/` |
+| 补佳乐 | 405 | 4 | 0.99% | 8.04 | H | `/zh/medications/estrogens/oral/` |
+| プロギノンデポー | 258 | 1 | 0.39% | 9.74 | H | `/ja/medications/estrogens/injection/` |
+| estradiol gel transdérmico portugal | 127 | 2 | 1.57% | 9.25 | H | `/pt/medications/estrogens/gel/` |
+| микронизированный прогестерон | 97 | 1 | 1.03% | 10.25 | H | `/ru/medications/progestogens/progesterone/` |
+| estradiol enanthate half life | 80 | 1 | 1.25% | 5.97 | H | `/en/medications/estrogens/injection/` |
+| アンドロキュア | 78 | 2 | 2.56% | 8.60 | H | `/ja/medications/antiandrogens/cpa/` |
+| 雌二醇凝胶 | 78 | 2 | 2.56% | 9.09 | H | `/zh/blog/estradiol-gel-how-to/` |
+| lịch sử hrt | 78 | 0 | 0.00% | 40.45 | H | `/vi/pathway/` |
+| estradiol enanthate | 72 | 3 | 4.17% | 9.82 | H | `/ru/medications/estrogens/enanthate/` |
+| gnrh agonist | 54 | 0 | 0.00% | 46.33 | H | `/de/medications/antiandrogens/gnrh-agonists/` |
+| 药娘用药指南 | 52 | 10 | 19.23% | 3.38 | H | `/zh/` |
+| estradiol jel | 52 | 2 | 3.85% | 5.94 | H | `/tr/medications/estrogens/gel/` |
+| ژل استرادیول | 52 | 1 | 1.92% | 4.13 | H | `/fa/medications/estrogens/gel/` |
+| injectable estradiol calculator | 52 | 0 | 0.00% | 8.10 | H | `/en/medications/estrogens/injection/` |
+| эстрадиол энантат | 49 | 4 | 8.16% | 2.41 | H | `/ru/medications/estrogens/enanthate/` |
+| 乳房芽 | 49 | 3 | 6.12% | 7.02 | H | `/ja/breast-development/` |
+| 補佳樂 | 43 | 1 | 2.33% | 7.21 | H | `/zh/blog/bujiale-how-to-take/` |
+| agonistas de gnrh | 43 | 0 | 0.00% | 9.05 | H | `/es/medications/antiandrogens/gnrh-agonists/` |
+| bicalutamide | 42 | 0 | 0.00% | 60.02 | H | `/de/medications/antiandrogens/bicalutamide/` |
+| プロギノンデポー 個人輸入 | 40 | 8 | 20.00% | 4.28 | H | `/ja/medications/estrogens/injection/` |
+| dutasteride คือ | 39 | 0 | 0.00% | 63.44 | H | `/fil/medications/five-alpha-reductase/dutasteride/` |
+| estradiol injection calculator | 38 | 0 | 0.00% | 7.11 | H | `/en/medications/estrogens/injection/` |
+| progynova是什么药 | 37 | 0 | 0.00% | 5.62 | H | `/zh/medications/estrogens/oral/` |
+| antagonistas gnrh | 36 | 0 | 0.00% | 39.81 | H | `/es/medications/antiandrogens/gnrh-agonists/` |
+| estrogen injection calculator | 36 | 0 | 0.00% | 8.47 | H | `/en/medications/estrogens/injection/` |
+| spironolactone | 31 | 0 | 0.00% | 68.52 | H | `/de/medications/antiandrogens/spironolactone/` |
+| ev injection | 30 | 1 | 3.33% | 4.93 | H | `/es/medications/estrogens/injection/` |
+| プロギノバ 舌下 | 27 | 1 | 3.70% | 7.19 | H | `/ja/medications/estrogens/oral/` |
+| estradiol injectable indication | 26 | 0 | 0.00% | 6.62 | H | `/fr/medications/estrogens/injection/` |
+| estradiol sublingual | 25 | 0 | 0.00% | 6.84 | H | `/de/medications/estrogens/sublingual/` |
+| estradiol valerate half life | 24 | 0 | 0.00% | 5.04 | H | `/en/medications/estrogens/injection/` |
+| finasteride | 24 | 0 | 0.00% | 70.50 | H | `/ar/medications/five-alpha-reductase/finasteride/` |
+| enantato de estradiol | 23 | 0 | 0.00% | 7.87 | H | `/es/medications/estrogens/enanthate/` |
+| cpa medizin | 22 | 0 | 0.00% | 15.00 | H | `/de/medications/antiandrogens/cpa/` |
+| dutasteride | 22 | 0 | 0.00% | 70.23 | H | `/id/medications/five-alpha-reductase/dutasteride/` |
+| estradiol injectable posologie | 22 | 0 | 0.00% | 5.73 | H | `/fr/medications/estrogens/injection/` |
+| hrt gel | 22 | 0 | 0.00% | 24.45 | H | `/de/medications/estrogens/gel/` |
+| spironolacton | 22 | 0 | 0.00% | 70.23 | H | `/de/medications/antiandrogens/spironolactone/` |
+| dydrogesterone tagalog | 21 | 1 | 4.76% | 9.71 | H | `/fil/medications/progestogens/dydrogesterone/` |
+
+### Striking distance (rank 10-30, ≥20 impressions) — quick-win 改写目标
+
+| query | position | impressions | clicks | landing page |
+|---|---|---|---|---|
+| микронизированный прогестерон | 10.25 | 97 | 1 | `/ru/medications/progestogens/progesterone/` |
+| cpa medizin | 15.00 | 22 | 0 | `/de/medications/antiandrogens/cpa/` |
+| hrt gel | 24.45 | 22 | 0 | `/de/medications/estrogens/gel/` |
+| estradiol gel | 20.62 | 21 | 1 | `/pt/medications/estrogens/gel/` |
+| patch oestrogene et baignade | 10.00 | 21 | 0 | `/fr/medications/estrogens/transdermal-patch/` |
 
 <!-- AUTO-SNAPSHOT:END -->
+
