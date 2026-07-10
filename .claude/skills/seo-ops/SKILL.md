@@ -101,6 +101,7 @@ GA4 埋点 Measurement ID `G-1E6C28RJFJ` 写死在 `src/components/overrides/Hea
 - ❌ **带真实数字的图必须走代码组件**（`PKCurveChart`、`DoseTable`、血检范围图），**不用 gpt-image-2** —— AI 画错剂量/半衰期/坐标轴数值是安全事故，不是画质问题。gpt-image-2 只做「示意/编辑/品牌」类图，不做「承载数据」类图。
 - ❌ 配图不得暗示疗效夸大、不得出现购药渠道/商业品牌导流、不得弱化风险。
 - ✅ 每张图必须有描述性 `alt`（无障碍 + SEO）；产品示意图 alt 标明是「示意图」。
+- ✅ **生成后人工核对渲染出的文字**——gpt-image-2 偶尔会加乱码字符或漏字，落库前肉眼确认文案正确（官方硬约束 `no extra/duplicate text` 是降低概率，不是保证）。
 - ✅ 生成后压缩为 WebP/AVIF（>500KB 必压），落 `public/images/`，OG 图postbuild 由 `generate-og-images.mjs` 处理。
 
 实际生图仍走 `/cto-image` 的委派流程（Codex gpt-image-2 asset-in-loop）；本 skill 只负责产出**符合上述规范的 prompt** + 医疗红线把关。

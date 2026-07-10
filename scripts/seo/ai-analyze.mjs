@@ -218,9 +218,15 @@ if (DRY_RUN) {
   const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
   const { generateText } = await import('ai');
   const google = createGoogleGenerativeAI();
-  // Walk the candidate list: a retired (404), overloaded (503), or
-  // quota-blocked (429) model falls through to the next instead of stranding
-  // the whole pipeline (2026-07-10: gemini-3-flash-preview 503'd all day).
+  // Walk the candidate list, but ONLY fall through on model-availability errors:
+  // retired (404), quota-blocked (429), overloaded/server (5xx). Auth/param
+  // errors (400/401/403) are NOT the model's fault — re-throw immediately so CI
+  // surfaces the real cause instead of masking it behind "all models failed".
+  // (2026-07-10: gemini-3-flash-preview 503'd all day →降级链存在的理由。)
+  const isDegradable = (err) => {
+    const s = Number(err?.statusCode ?? err?.status ?? err?.response?.status);
+    return s === 404 || s === 429 || (s >= 500 && s <= 599);
+  };
   let lastErr;
   for (const candidate of MODEL_CANDIDATES) {
     try {
@@ -236,8 +242,13 @@ if (DRY_RUN) {
       MODEL = candidate; // record which one actually produced the report
       break;
     } catch (err) {
+      if (!isDegradable(err)) {
+        // 400/401/403/参数错误/SDK 变更 → 非模型可用性问题，直接抛出真实错误
+        console.error(`\n❌ ${candidate} 报了非可降级错误（认证/参数/其他），不再试其他模型：\n`);
+        throw err;
+      }
       lastErr = err;
-      console.warn(`  ✗ ${candidate} failed (${err?.statusCode ?? err?.name ?? 'error'}) — trying next model`);
+      console.warn(`  ✗ ${candidate} 不可用 (${err?.statusCode ?? err?.status ?? err?.name ?? 'error'}) — 试下一个模型`);
     }
   }
   if (!report) {
