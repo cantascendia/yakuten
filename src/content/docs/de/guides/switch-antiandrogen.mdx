@@ -1,0 +1,267 @@
+---
+title: "Leitfaden: Antiandrogen-Wechsel"
+description: "Schritt-für-Schritt-Anleitung zum sicheren Wechsel zwischen Androcur (CPA), Spironolacton, Bicalutamid und GnRH-Agonisten — mit klinischen Indikationen, Auswaschphasen, Laborkontrollplan und DACH-spezifischen Kassenhinweisen."
+evidenceLevel: B
+sidebar:
+  order: 2
+lastReviewed: 2026-07-14
+references: [coleman-2022, hembree-2017, ucsf-2016, neyman-2019, fuqua-2024, kuhl-2005, ema-2020]
+faqs:
+  - q: "Wie wechsle ich von Androcur auf einen GnRH-Agonisten?"
+    a: "Androcur (CPA) sofort absetzen und am selben Tag die erste GnRH-Dosis spritzen lassen. In den ersten vier Wochen kann eine niedrige Begleitdosis CPA (5-6,25 mg) die Flare-Reaktion abfangen. Nach 2-3 Monaten Testosteron, Estradiol und Knochenmarker kontrollieren lassen."
+  - q: "Übernimmt die Krankenkasse GnRH-Agonisten bei Transidentität?"
+    a: "GnRH-Agonisten wie Enantone oder Trenantone sind in Deutschland grundsätzlich als Kassenleistung verordnungsfähig. Voraussetzung ist ein Indikationsschreiben der behandelnden Endokrinologin oder des Endokrinologen. Private Kassen übernehmen die Kosten in der Regel ebenfalls."
+  - q: "Warum wird Spironolacton in Deutschland kaum für GAHT verschrieben?"
+    a: "Spironolacton ist in Deutschland primär als Herzmedikament zugelassen, nicht als Antiandrogen. Androcur (CPA) ist für die Androgensuppression explizit zugelassen und deutlich wirksamer. In der DACH-GAHT-Praxis spielt Spironolacton daher nur eine Randrolle — etwa wenn CPA und GnRH-Agonisten kontraindiziert sind."
+  - q: "Wie lange dauert die Auswaschphase von Androcur?"
+    a: "Die Halbwertszeit von CPA liegt bei etwa 40 Stunden. Bei niedrigen Dosen (≤ 12,5 mg/Tag) ist keine formelle Auswaschphase nötig. Bei längerer Einnahme hoher Dosen empfiehlt sich ein Ausschleichen über 1-2 Wochen, um hormonelle Schwankungen zu vermeiden."
+  - q: "Darf ich CPA und Bicalutamid gleichzeitig einnehmen?"
+    a: "Nein, auf keinen Fall. Beide Wirkstoffe belasten die Leber, und eine Kombination kann das Risiko eines arzneimittelinduzierten Leberversagens massiv steigern. Zwischen dem Absetzen von Bicalutamid und dem Start von CPA müssen mindestens 2 Wochen Auswaschphase liegen."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Ein Antiandrogen zu wechseln ist kein simples Austauschen von Tabletten. Absetzrhythmus, Auswaschphase und Kontrolltermine nach dem Wechsel bestimmen unmittelbar, wie stabil dein Testosteron (T) unterdrückt bleibt und wie sicher der Übergang verläuft<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+Falls du noch gar kein Antiandrogen einnimmst, lies zuerst unseren Grundlagenartikel: [Antiandrogene im Überblick](/de/medications/antiandrogens/overview/). Beachte außerdem: Rund <InlineValue value="82,6" unit="%" /> der Anwender:innen mit Estradiol-Injektionen erreichen bei ausreichender Dosierung eine stabile Monotherapie — ein zusätzlicher Testosteronblocker ist dann biologisch nicht nötig.
+
+---
+
+## Wann ein Wechsel ansteht
+
+Folgende klinische Signale deuten darauf hin, dass dein aktuelles Antiandrogen nicht mehr das richtige für dich ist:
+
+### Androcur (CPA) — die DACH-Erstlinientherapie
+
+- **Leberwerte auffällig**: ALT oder AST auf das Zwei- bis Dreifache der Normgrenze erhöht — ein Zeichen für hepatotoxische Belastung;
+- **Prolaktin deutlich erhöht**: PRL &gt; 100 mIU/L oder &gt; 35 ng/mL — Hinweis auf ein Hypophysen-Prolaktinom;
+- **Stimmungstief oder Libidoverlust**: anhaltende depressive Verstimmung oder vollständiger Libidoverlust (typisch unter höheren CPA-Dosen);
+- **Langzeiteinnahme &gt; 5 Jahre** bei kumulativ hoher Dosis — die EMA hat 2020 die CPA-Dosierung auf ≤ 10 mg/Tag eingeschränkt, weil Dosen ≥ 25 mg das Meningeomrisiko signifikant erhöhen<CitationRef id="ema-2020" num={3} authors="EMA" year={2020} title="Cyproterone: Restrictions due to Meningioma Risk" />;
+- Versorgungsengpass oder Kostendruck (gelegentliche Lieferengpässe in DACH-Apotheken).
+
+### Spironolacton — in DACH selten, aber nicht ausgeschlossen
+
+In Deutschland, Österreich und der Schweiz wird Spironolacton für die geschlechtsangleichende Hormontherapie (GAHT) so gut wie nie verordnet — es ist hier primär als Herzmedikament (Aldactone) zugelassen. Solltest du es dennoch einnehmen (etwa nach einem Therapiebeginn im Ausland), gelten folgende Warnsignale:
+
+- **Hyperkaliämie**: K⁺ &gt; 5,5 mmol/L — die kaliumsparende Wirkung kann lebensgefährlich werden;
+- **Hypotonie**: systolischer Blutdruck &lt; 90 mmHg mit Schwindel, Schwäche oder Kollapsneigung;
+- Polyurie oder Nykturie, die den Schlaf massiv stören;
+- **Unzureichende T-Suppression**: nach ≥ 6 Monaten bei 150-200 mg/Tag bleibt T stabil &gt; 100 ng/dL;
+- Kreatinin steigt oder eGFR sinkt.
+
+### Bicalutamid
+
+- **Transaminasen erhöht**: ALT &gt; 2× Normgrenze — die FDA hat eine Lebertoxizitätswarnung ausgesprochen; etwa 1 % der Anwender:innen müssen deshalb absetzen<CitationRef id="neyman-2019" num={4} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide in Transfeminine Youth" />;
+- **Atembeschwerden**: unerklärte Dyspnoe, chronischer Reizhusten — seltenes Signal für Lungentoxizität oder interstitielle Pneumonitis<CitationRef id="fuqua-2024" num={5} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Bicalutamide Pulmonary Adverse Events" />;
+- T steigt paradox an (Bicalutamid blockiert den Androgenrezeptor, senkt aber das T nicht — langfristig kann freies T zum Problem werden).
+
+### GnRH-Agonisten (Enantone, Trenantone, Zoladex)
+
+- **Kosten**: ohne Kassenübernahme liegt der Eigenanteil pro Depot-Spritze bei 200-600 €;
+- **Knochendichteverlust**: bei &gt; 2 Jahren Dauertherapie ohne ausreichende Estradiol-Substitution zeigt die DEXA einen Rückgang;
+- Reaktionen an der Injektionsstelle, die nicht tolerierbar sind.
+
+<WarningBox title="GnRH-Agonisten und die Krankenkasse">
+Enantone, Trenantone (Leuprorelin) und Zoladex (Goserelin) sind in Deutschland als Kassenleistung verordnungsfähig. Voraussetzung ist ein Indikationsschreiben deiner Endokrinolog:in (F64.0 / HA60 — ICD-10 bzw. ICD-11). Viele Praxen stellen das Rezept dann direkt auf die GKV aus. Lass dir vor dem Wechsel die Kostenübernahme schriftlich bestätigen.
+</WarningBox>
+
+---
+
+## Von Androcur (CPA) auf ein anderes Antiandrogen
+
+CPA hat eine biologische Halbwertszeit von rund 40 Stunden — bei niedrigen Dosen (≤ 12,5 mg/Tag) ist meist keine formelle Auswaschphase nötig. Hast du allerdings über Monate hinweg ≥ 10 mg/Tag eingenommen, kann ein abruptes Absetzen durch die plötzliche Enthemmung der Gonadenachse zu Stimmungsschwankungen oder einem kurzen Libido-Rebound führen. In diesem Fall empfiehlt sich ein Ausschleichen über 1-2 Wochen (z. B. von 12,5 mg auf 6,25 mg, dann Absetzen).
+
+<DoseTable
+  caption="Von Androcur (CPA) wechseln — Übergangsschemata"
+  headers={['Zielmedikament', 'CPA absetzen', 'Startdosis', 'Erste Laborkontrolle']}
+  rows={[
+    ['→ GnRH-Agonist (Enantone etc.)', 'Sofort absetzen, am selben Tag erste Depot-Spritze', 'Gemäß Fachinformation (z. B. Leuprorelin 3,75 mg monatlich)', '2-3 Monate: T, E2, Knochenmarker'],
+    ['→ Spironolacton', 'Sofort absetzen', '50 mg/Tag in 2 Einzeldosen, nach 2 Wochen auf 100 mg/Tag steigern', '2-4 Wochen: T, K⁺, Kreatinin'],
+    ['→ Nur E2-Injektion (Monotherapie)', 'Sofort absetzen, E2 auf 3-5 mg/Woche hochfahren', 'Abhängig vom bestehenden E2-Schema', '4-6 Wochen: T-Talspiegel'],
+  ]}
+/>
+
+CPA und Bicalutamid dürfen **niemals gleichzeitig** eingenommen werden. Wenn du zu Bicalutamid wechseln musst, siehe weiter unten den Abschnitt „Von Bicalutamid auf ein anderes Antiandrogen".
+
+<WarningBox title="Flare-Reaktion in den ersten Wochen unter GnRH">
+Nach der ersten GnRH-Agonisten-Dosis (z. B. Enantone oder Trenantone) steigt das Testosteron vorübergehend für 1-2 Wochen an — der sogenannte Flare-Effekt. Das kann Stimmungsschwankungen, Hautunreinheiten oder Libidoveränderungen auslösen. Um diesen Anstieg abzufangen, kannst du in Absprache mit deiner Ärzt:in im ersten Monat eine niedrige Begleitdosis CPA (5-6,25 mg) beibehalten und dann vollständig absetzen.
+</WarningBox>
+
+<WarningBox title="Kaliumkontrolle nach dem Wechsel auf Spironolacton">
+Spironolacton ist ein kaliumsparendes Diuretikum. In den ersten 2-4 Wochen nach Therapiebeginn oder Dosiserhöhung musst du K⁺ und Kreatinin kontrollieren lassen. Verzichte auf kaliumhaltige Nahrungsergänzungsmittel und meide ACE-Hemmer oder Sartane ohne ärztliche Rücksprache. Auch kaliumreiche Lebensmittel (Kokoswasser, Bananen, Orangensaftkonzentrat, Natriumersatzsalze) solltest du im Auge behalten.
+</WarningBox>
+
+---
+
+## Von Spironolacton auf ein anderes Antiandrogen
+
+Da Spironolacton in der DACH-GAHT-Praxis eine Ausnahme ist, betrifft dieser Abschnitt vor allem Personen, die ihre Therapie im Ausland (typischerweise in den USA) begonnen haben und nun in Deutschland weiterbehandelt werden. Nach dem Absetzen normalisiert sich der Kaliumspiegel in der Regel innerhalb von 1-2 Wochen. Bei leicht erhöhtem K⁺ (5,0-5,4 mmol/L) vor dem Absetzen genügt eine Routinekontrolle nach 2-4 Wochen.
+
+<DoseTable
+  caption="Von Spironolacton wechseln — Übergangsschemata"
+  headers={['Zielmedikament', 'Spiro absetzen', 'Startdosis', 'Erste Laborkontrolle']}
+  rows={[
+    ['→ Androcur (CPA)', 'Spiro 3-5 Tage vorher absetzen, dann CPA starten', '6,25 mg/Tag, bei Bedarf auf max. 12,5 mg/Tag steigern', '4-6 Wochen: T, ALT, Prolaktin'],
+    ['→ GnRH-Agonist', 'Spiro 1-2 Tage vorher absetzen, dann erste Depot-Spritze', 'Gemäß Fachinformation', '2-3 Monate: T, E2, Knochenmarker'],
+    ['→ Nur E2-Injektion (Monotherapie)', 'Sofort absetzen, E2 auf 4-5 mg/Woche hochfahren', 'Abhängig vom bestehenden E2-Schema', '4-6 Wochen: T-Talspiegel'],
+  ]}
+/>
+
+<DangerBox title="CPA-Startdosis: maximal 12,5 mg/Tag">
+Ältere Dosierschemata und manche Praxen verordnen CPA immer noch mit 25 mg oder sogar 50 mg/Tag. Doch die EMA hat 2020 klargestellt: Dosen ≥ 25 mg/Tag erhöhen das Meningeomrisiko signifikant<CitationRef id="ema-2020" num={3} />. In der GAHT reichen 5-12,5 mg/Tag nachweislich aus, um T in den weiblichen Normbereich zu senken. Beginne immer mit 6,25 mg und steigere nur bei unzureichender T-Suppression auf maximal 12,5 mg.
+</DangerBox>
+
+---
+
+## Von einem GnRH-Agonisten auf ein anderes Antiandrogen
+
+Depot-Präparate wie Enantone oder Zoladex setzen ihren Wirkstoff über Wochen hinweg langsam frei. Nach der letzten Injektion bleibt die T-Suppression daher noch längere Zeit bestehen:
+
+- **Monatspräparat**: Restwirkung ca. 4-6 Wochen
+- **3-Monatspräparat**: Restwirkung ca. 3-4 Monate
+- **6-Monatspräparat**: Restwirkung ca. 6-8 Monate
+
+<DoseTable
+  caption="Von einem GnRH-Agonisten wechseln — Übergangsschemata"
+  headers={['Zielmedikament', 'GnRH absetzen', 'Startdosis', 'Erste Laborkontrolle']}
+  rows={[
+    ['→ Androcur (CPA)', 'Nicht nachspritzen; 4-8 Wochen nach letzter Injektion CPA starten', '6,25 mg/Tag', '6-8 Wochen: T, ALT, Prolaktin'],
+    ['→ Spironolacton', 'Nicht nachspritzen; 4-8 Wochen nach letzter Injektion Spiro starten', '50 → 100 mg/Tag', '6-8 Wochen: T, K⁺'],
+    ['→ Nur E2-Injektion (Monotherapie)', 'Nicht nachspritzen; E2 auf 4-5 mg/Woche erhöhen', 'Abhängig vom bestehenden E2-Schema', '6-8 Wochen: T-Talspiegel'],
+  ]}
+/>
+
+Während der Übergangsphase kann dein T zunächst niedrig bleiben und dann langsam ansteigen. Deshalb gilt: Die erste Laborkontrolle des neuen Medikaments frühestens 6-8 Wochen nach der letzten GnRH-Injektion. Frühere Blutabnahmen können durch die noch anhaltende GnRH-Wirkung ein falsches Bild der tatsächlichen Hormonspiegel zeigen.
+
+---
+
+## Von Bicalutamid auf ein anderes Antiandrogen
+
+Bicalutamid hat eine lange Halbwertszeit von etwa 6 Tagen. Nach dem Absetzen dauert es 2-3 Wochen, bis der Wirkstoff vollständig aus dem Körper ausgewaschen ist.
+
+<DoseTable
+  caption="Von Bicalutamid wechseln — Übergangsschemata"
+  headers={['Zielmedikament', 'Bicalutamid absetzen', 'Startdosis', 'Erste Laborkontrolle']}
+  rows={[
+    ['→ Androcur (CPA)', 'Bicalutamid 2 Wochen vorher absetzen (Lebertoxizitäts-Overlap vermeiden)', '6,25 mg/Tag', '4-6 Wochen: T, ALT, Prolaktin'],
+    ['→ Spironolacton', 'Bicalutamid 3-5 Tage vorher absetzen', '50 → 100 mg/Tag', '2-4 Wochen: T, K⁺'],
+    ['→ GnRH-Agonist', 'Bicalutamid 1 Woche vorher absetzen', 'Gemäß Fachinformation', '2-3 Monate: T, Knochenmarker'],
+  ]}
+/>
+
+<DangerBox title="CPA und Bicalutamid: absolute Kontraindikation für Kombinationstherapie">
+Beide Wirkstoffe werden über die Leber metabolisiert, und beide können lebertoxisch wirken. Eine gleichzeitige Einnahme potenziert das Risiko eines arzneimittelinduzierten Leberversagens. Zwischen dem Absetzen von Bicalutamid und dem Beginn von CPA müssen mindestens 2 Wochen Auswaschphase liegen. In der ersten Laborkontrolle danach sind die Transaminasen (ALT/AST) ein Pflichtparameter<CitationRef id="hembree-2017" num={2} />.
+</DangerBox>
+
+## Warum ein Wechsel „→ Bicalutamid" nicht empfohlen wird
+
+Bicalutamid hat in der GAHT-Anwendung bei trans Frauen nur eine sehr begrenzte Datenlage. Angesichts der FDA-Lebertoxizitätswarnung und der in Pharmakovigilanzdatenbanken dokumentierten Lungentoxizitätssignale wird Bicalutamid weder von der Endocrine Society (2017) noch von WPATH SOC 8 als Standardempfehlung geführt<CitationRef id="coleman-2022" num={1} /><CitationRef id="hembree-2017" num={2} />. In der DACH-Region kommt es in der GAHT praktisch nicht zum Einsatz. Ein Wechsel auf Bicalutamid kommt nur dann in Betracht, wenn CPA, Spironolacton und GnRH-Agonisten allesamt kontraindiziert oder nicht tolerierbar sind — und ausschließlich unter engmaschiger endokrinologischer Begleitung mit regelmäßiger Leberwert- und Lungenfunktionskontrolle.
+
+---
+
+## Blutkontrollen rund um den Wechsel
+
+### Zeitplan
+
+Nach dem Start eines neuen Antiandrogens brauchen T und E2 einige Wochen, um sich auf ein neues Gleichgewicht einzupendeln. Die erste Laborkontrolle sollte frühestens nach 4 Wochen stattfinden. In den ersten Monaten empfiehlt sich ein Kontrollintervall von 8-12 Wochen. Sobald zwei aufeinanderfolgende Messungen stabil im weiblichen Normbereich liegen, kannst du auf das Routineintervall von 3-6 Monaten zurückkehren. Details findest du in unserem [Blutuntersuchungs-Leitfaden](/de/blood-tests/).
+
+### Basislabor bei jedem Wechsel
+
+Gesamt-Testosteron (T), Estradiol (E2), Leberwerte (ALT/AST) und Blutdruck (Selbstmessung zu Hause reicht). In den ersten 6 Monaten einer Estradiol-Therapie zusätzlich ein großes Blutbild und Basiselektrolyte.
+
+### Zusatzparameter je nach neuem Medikament
+
+- **Nach Wechsel auf Androcur (CPA)**: Prolaktin (PRL) + vollständiger Leberstatus;
+- **Nach Wechsel auf Spironolacton**: Elektrolyte (K⁺, Na⁺), Kreatinin und Blutdruckmonitoring;
+- **Nach Wechsel auf Bicalutamid**: in den ersten 3 Monaten monatliche ALT/AST-Kontrolle; außerdem aktiv auf unerklärten Husten oder Atemnot achten;
+- **Nach Wechsel auf GnRH-Agonisten**: E2-Spiegel prüfen (Ziel: E2 ≥ 100 pg/mL zum Schutz der Knochendichte); nach 2 Jahren Dauertherapie eine DEXA-Knochendichtemessung veranlassen.
+
+---
+
+## Typische Begleiterscheinungen während des Wechsels
+
+### Vorübergehende Übergangsreaktionen (normal — beobachten und dokumentieren)
+
+- **Kurzzeitige Stimmungsschwankungen**: In den 1-2 Wochen nach dem Wechsel können hormonelle Schwankungen zu erhöhter Empfindlichkeit oder leichter Reizbarkeit führen — das ist ein erwartbarer Übergangseffekt;
+- **Kurzfristiger Libido-Rebound**: Besonders nach Absetzen von CPA kann die Libido vorübergehend zurückkehren und sich nach Stabilisierung des neuen Schemas wieder einpendeln;
+- **Veränderungen bei Hautfett und Körperbehaarung**: Vorübergehende Schwankungen des freien Testosterons können sich kurzzeitig in der Talgproduktion oder dem Haarwachstum bemerkbar machen.
+
+### Ärztliche Rücksprache empfohlen
+
+- 4-6 Wochen nach dem Wechsel zeigt die Laborkontrolle ein T deutlich über deinem Ausgangswert (das neue Medikament greift möglicherweise nicht ausreichend);
+- Nach 3 Monaten stagnieren die körperlichen Veränderungen oder die Laborwerte bessern sich nicht;
+- Neue, anhaltende Symptome, die sich nicht von selbst zurückbilden (hartnäckiger Hautausschlag, Herzklopfen, Engegefühl in der Brust, Atemnot).
+
+### Sofortiges Absetzen und Notaufnahme
+
+<DangerBox title="Bei einem dieser Anzeichen: sofort 112 anrufen oder in die Notaufnahme">
+- **Tiefe Beinvenenthrombose**: ein Bein schwillt plötzlich und einseitig an, fühlt sich heiß an und schmerzt beim Gehen oder auf Druck;
+- **Lungenembolie**: plötzliche, stechende Brustschmerzen, akute Atemnot oder Bluthusten;
+- **Schwere neurologische Symptome**: plötzlicher, extremer Kopfschmerz, Sehstörungen (Gesichtsfeldausfälle, Doppelbilder) oder Krämpfe — Warnsignale für Meningeom, Schlaganfall oder Sinusvenenthrombose;
+- **Akute Leberschädigung**: Gelbfärbung der Haut oder Augenweiß (Ikterus), starker generalisierter Juckreiz, dunkelbrauner Urin;
+- **Schwere allergische Reaktion**: generalisierter Hautausschlag, Gesichtsschwellung, Atemnot.
+
+Notruf in Deutschland, Österreich und der Schweiz: **112**. Die vollständige Warnsignal-Übersicht findest du unter [Risiken erkennen & im Notfall richtig handeln](/de/risks/).
+</DangerBox>
+
+---
+
+## Vorbereitung für den Arzttermin
+
+- **Klinische Daten zusammenstellen**, die den Wechsel begründen: z. B. „ALT 85 U/L bei Normgrenze 40 U/L" oder „Prolaktin &gt; 35 ng/mL unter CPA";
+- **Wunschziel formulieren**: z. B. „Wechsel von CPA 12,5 mg/Tag auf Enantone 3,75 mg Monatsdepot — ist das bei meiner Kasse erstattungsfähig?";
+- **Absetz- und Startzeitplan kennen** (du findest die Übergangsschemata oben in den jeweiligen Tabellen);
+- **Kontrolltermine vereinbaren**: 4 Wochen, 8 Wochen und 12 Wochen nach dem Wechsel;
+- **Notfallsignale kennen**: mach dich mit der Liste der sofortigen Abbruchkriterien vertraut (siehe oben);
+- **Leitlinien als Backup mitnehmen**: Falls deine Ärzt:in wenig Erfahrung mit geschlechtsangleichender Hormontherapie hat, können diese Quellen als Entscheidungsgrundlage dienen:
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [UCSF Trans Care 2016](https://transcare.ucsf.edu/guidelines)
+  - [Quellenverzeichnis](/de/appendix-references/)
+
+<WarningBox title="Diese Seite ersetzt keine ärztliche Beratung">
+Der Zeitpunkt für einen Antiandrogen-Wechsel, die genaue Dosierung und die notwendige Überwachung hängen von deiner individuellen Krankengeschichte, deinen Ausgangslaborwerten und möglichen Begleitmedikamenten ab. Diese Entscheidungen gehören in die Hände einer erfahrenen Endokrinolog:in. Die hier zusammengestellten Informationen sollen dir helfen, dich auf das Gespräch vorzubereiten und die klinischen Zusammenhänge besser einzuordnen. Wenn du Schwierigkeiten hast, eine Praxis mit GAHT-Erfahrung zu finden, schau in unsere [Ressource für freundliche Anlaufstellen](/de/tools/hospital-finder/).
+</WarningBox>
+
+---
+
+## Weiterführende Seiten
+
+<GuideCTA
+  eyebrow="Vergleichstool"
+  title="Alle 4 Antiandrogene direkt vergleichen"
+  description="CPA, Spironolacton, Bicalutamid und GnRH-Agonisten in einer Gegenüberstellung — Wirkmechanismus, Wirksamkeit, Risiken, Kontraindikationen."
+  ctaText="Zum Medikamentenvergleich"
+  ctaHref="/de/tools/drug-comparator/"
+  variant="accent"
+/>
+
+- [Antiandrogene im Überblick](/de/medications/antiandrogens/overview/) — Vergleich und Entscheidungslogik der vier Optionen
+- [CPA (Androcur)](/de/medications/antiandrogens/cpa/) — Meningeomrisiko, Leberkontrolle, EMA-Dosisbeschränkung
+- [Spironolacton](/de/medications/antiandrogens/spironolactone/) — Hyperkaliämie-Management, Dosistabelle
+- [Bicalutamid](/de/medications/antiandrogens/bicalutamide/) — Off-Label-Risikobewertung
+- [GnRH-Agonisten](/de/medications/antiandrogens/gnrh-agonists/) — Präparatevergleich, Knochendichteschutz
+- [Blutuntersuchungs-Leitfaden](/de/blood-tests/) — Kontrollparameter rund um den Wechsel
+- [Risiken erkennen & im Notfall richtig handeln](/de/risks/) — Warnsignale und Notfallcheckliste
+- [Freundliche Anlaufstellen finden](/de/tools/hospital-finder/)
+
+<RelatedBlogPosts />
+
+---
+
+**Quellenverzeichnis**
+
+1. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-ema-2020">EMA. Cyproterone-containing medicinal products: new measures to minimise risk of meningioma. 2020.</span>
+4. <span id="ref-neyman-2019">Neyman A et al. Bicalutamide as an Androgen Blocker in Transfeminine Adolescents. *J Adolesc Health* 2019;64(4):544-546.</span>
+5. <span id="ref-fuqua-2024">Fuqua SAW et al. Bicalutamide-Associated Pulmonary Adverse Events. 2024.</span>

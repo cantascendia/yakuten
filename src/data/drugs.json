@@ -5,6 +5,7 @@
       "generic": "Estradiol Valerate (Oral)",
       "zh": "口服雌二醇/戊酸雌二醇",
       "ja": "エストラジオール吉草酸エステル（経口）",
+      "de": "Östradiolvalerat (oral)",
       "slang": [
         "补佳乐",
         "口E",
@@ -178,6 +179,7 @@
       "generic": "Estradiol (Sublingual)",
       "zh": "舌下含服雌二醇",
       "ja": "エストラジオール（舌下）",
+      "de": "Mikronisiertes Östradiol (sublingual)",
       "slang": [
         "舌下E2",
         "含服E2"
@@ -322,6 +324,7 @@
       "generic": "Estradiol Transdermal Patch",
       "zh": "经皮雌二醇贴片",
       "ja": "エストラジオール経皮パッチ",
+      "de": "Östradiol-Pflaster (transdermal)",
       "slang": [
         "贴片",
         "E2贴"
@@ -463,6 +466,7 @@
       "generic": "Estradiol Transdermal Gel",
       "zh": "经皮雌二醇凝胶",
       "ja": "エストラジオール経皮ジェル",
+      "de": "Östradiol-Gel (transdermal)",
       "slang": [
         "凝胶",
         "E2凝胶",
@@ -605,6 +609,7 @@
       "generic": "Estradiol Valerate Injection",
       "zh": "戊酸雌二醇注射液",
       "ja": "プロギノン・デポー",
+      "de": "Östradiolvalerat-Injektion",
       "slang": [
         "日雌",
         "EV注射",
@@ -786,6 +791,7 @@
       "generic": "Estradiol Cypionate (EC)",
       "zh": "环戊丙酸雌二醇注射液",
       "ja": "エストラジオールシピオネート注射液",
+      "de": "Östradiolcypionat-Injektion",
       "slang": [
         "EC"
       ],
@@ -847,6 +853,7 @@
       "generic": "Estradiol Enanthate (EEn)",
       "zh": "庚酸雌二醇注射液",
       "ja": "エストラジオールエナント酸エステル注射液",
+      "de": "Östradiolenanthat-Injektion",
       "slang": [
         "EEn"
       ],
@@ -908,6 +915,7 @@
       "generic": "Estradiol Undecylate (EU)",
       "zh": "十一酸雌二醇注射液",
       "ja": "ウンデシル酸エストラジオール注射液",
+      "de": "Östradiolundecylat-Injektion",
       "slang": [
         "EU"
       ],
@@ -969,6 +977,7 @@
       "generic": "Cyproterone Acetate",
       "zh": "醋酸环丙孕酮",
       "ja": "酢酸シプロテロン",
+      "de": "Cyproteronacetat (CPA)",
       "slang": [
         "CPA",
         "色普龙",
@@ -1152,6 +1161,7 @@
       "generic": "Spironolactone",
       "zh": "螺内酯",
       "ja": "スピロノラクトン",
+      "de": "Spironolacton",
       "slang": [
         "螺",
         "安体舒通"
@@ -1316,6 +1326,7 @@
       "generic": "Bicalutamide",
       "zh": "比卡鲁胺",
       "ja": "ビカルタミド",
+      "de": "Bicalutamid",
       "slang": [
         "比卡",
         "Bica"
@@ -1457,6 +1468,7 @@
       "generic": "GnRH Agonist",
       "zh": "GnRH 激动剂",
       "ja": "GnRHアゴニスト",
+      "de": "GnRH-Agonisten",
       "slang": [
         "青春期阻断剂",
         "GnRHa",
@@ -1608,6 +1620,7 @@
       "generic": "Finasteride",
       "zh": "非那雄胺",
       "ja": "フィナステリド",
+      "de": "Finasterid",
       "slang": [
         "fin"
       ],
@@ -1672,6 +1685,7 @@
       "generic": "Dutasteride",
       "zh": "度他雄胺",
       "ja": "デュタステリド",
+      "de": "Dutasterid",
       "slang": [
         "度他"
       ],
@@ -1736,6 +1750,7 @@
       "generic": "Micronized Progesterone",
       "zh": "微粒化黄体酮",
       "ja": "プロゲステロン（微粒化）",
+      "de": "Mikronisiertes Progesteron",
       "slang": [
         "黄体酮",
         "天然孕激素",
@@ -1855,6 +1870,7 @@
       "generic": "Hydroxyprogesterone Caproate",
       "zh": "己酸羟孕酮",
       "ja": "ヒドロキシプロゲステロンカプロン酸エステル",
+      "de": "Hydroxyprogesteroncaproat",
       "slang": [
         "羟孕酮注射"
       ],
@@ -1983,6 +1999,7 @@
       "generic": "Dydrogesterone",
       "zh": "地屈孕酮",
       "ja": "ジドロゲステロン",
+      "de": "Dydrogesteron",
       "slang": [
         "达芙通"
       ],
@@ -2046,6 +2063,7 @@
       "generic": "Drospirenone",
       "zh": "屈螺酮",
       "ja": "ドロスピレノン",
+      "de": "Drospirenon",
       "slang": [
         "DRSP"
       ],
@@ -2119,6 +2137,7 @@
       "generic": "Ethinylestradiol",
       "zh": "炔雌醇",
       "ja": "エチニルエストラジオール",
+      "de": "Ethinylöstradiol",
       "slang": [
         "EE",
         "达英-35中的雌激素"
@@ -2224,6 +2243,7 @@
       "generic": "Conjugated Estrogens",
       "zh": "结合雌激素",
       "ja": "結合型エストロゲン",
+      "de": "Konjugierte Östrogene",
       "slang": [
         "倍美力",
         "CEE",

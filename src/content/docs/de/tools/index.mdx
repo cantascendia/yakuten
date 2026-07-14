@@ -1,0 +1,93 @@
+---
+title: "Interaktive Werkzeuge"
+description: "9 evidenzbasierte Werkzeuge rund um HRT-Sicherheit: Blutwert-Checker, Dosis-Simulator, KI-Assistent, Klinik-Finder und mehr. Alle Werkzeuge laufen lokal in deinem Browser — deine Gesundheitsdaten werden nicht hochgeladen."
+sidebar:
+  order: 5
+evidenceLevel: X
+lastReviewed: 2026-04-28
+references: []
+faqs:
+  - q: "Werden meine Daten gespeichert oder an einen Server gesendet?"
+    a: "Nein. Alle Werkzeuge laufen vollständig in deinem Browser. Deine Eingaben verlassen dein Gerät nicht. Die einzige Ausnahme ist der KI-Assistent, der deine Frage an ein Sprachmodell sendet — aber auch dort werden weder Gespräche gespeichert noch persönliche Daten verknüpft. Die Bluttest-Chronik speichert Einträge ausschließlich im localStorage deines Browsers, nie auf einem Server."
+  - q: "Ersetzen die Werkzeuge eine ärztliche Untersuchung?"
+    a: "Auf keinen Fall. Die Werkzeuge liefern eine erste Orientierung anhand veröffentlichter Leitlinien (WPATH SOC 8, Endocrine Society 2017, UCSF). Auffällige Ergebnisse, unklare Symptome oder Notfälle gehören immer in die Hände einer qualifizierten Fachperson. Nutze die Ergebnisse als Gesprächsgrundlage beim nächsten Arzttermin."
+  - q: "Funktionieren die Werkzeuge auch auf dem Handy?"
+    a: "Ja. Alle Werkzeuge sind responsiv gestaltet und laufen auf Smartphones, Tablets und Desktop-Browsern. Da alles im Browser ausgeführt wird, brauchst du keine App zu installieren."
+  - q: "In welcher Sprache sind die Werkzeug-Oberflächen verfügbar?"
+    a: "Die interaktiven Oberflächen werden derzeit aus dem Chinesischen in weitere Sprachen übertragen. Einzelne Bedienelemente und Hinweise können vorerst noch auf Chinesisch erscheinen. Die umgebenden Erklärungen und Warnhinweise sind bereits vollständig auf Deutsch."
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Um deine Privatsphäre zu schützen, laufen alle Werkzeuge direkt in deinem Browser — **deine persönlichen Gesundheitsdaten werden nicht an einen Server übertragen**. Klicke einfach auf eine Karte, um loszulegen.
+
+## Sicherheits-Selbstcheck
+
+<CardGrid>
+  <LinkCard
+    title="Blutwert-Checker"
+    href="/de/tools/blood-checker/"
+    description="Trage deine Laborergebnisse ein — Hormonstatus, Leber- und Nierenwerte, Gerinnung — und vergleiche sie automatisch mit den Referenzbereichen nach WPATH und Endocrine Society. Optional kannst du die Bluttest-Chronik aktivieren, um deine Werte über längere Zeit zu verfolgen."
+  />
+  <LinkCard
+    title="Risiko-Screening"
+    href="/de/tools/risk-screener/"
+    description="Beantworte 7 kurze Fragen und erhalte in 30 Sekunden eine Einschätzung deines VTE-, Leber-, Meningeom- und kardiovaskulären Risikos — als Ausgangspunkt für das Gespräch mit deiner Ärztin oder deinem Arzt."
+  />
+  <LinkCard
+    title="KI-Assistent"
+    href="/de/tools/ai-assistant/"
+    description="Ein KI-gestützter Assistent (Gemini), der deine Fragen zur HRT-Sicherheit anhand evidenzbasierter Literatur beantwortet. Keine Gesprächsspeicherung, keine individuellen Dosierungsvorschläge — bei Notfällen wirst du direkt an den Rettungsdienst verwiesen."
+  />
+</CardGrid>
+
+## Medikation und Dosierung
+
+<CardGrid>
+  <LinkCard
+    title="Injektions-Rechner"
+    href="/de/tools/injection-calculator/"
+    description="Rechne äquivalente Dosen und Injektionsintervalle für verschiedene Estradiolester um (EV, EC, EEn, EU) — inklusive Umrechnung zwischen mL und mg."
+  />
+  <LinkCard
+    title="Dosis-Simulator"
+    href="/de/tools/dose-simulator/"
+    description="Simuliere die Blutspiegelkurve unter verschiedenen Dosierungsschemata und beobachte anschaulich, wie sich Spitzen- und Talspiegel bis zum Steady State entwickeln."
+  />
+  <LinkCard
+    title="Wirkstoff-Vergleich"
+    href="/de/tools/drug-comparator/"
+    description="Vergleiche mehrere HRT-Präparate nebeneinander: Dosierungen, Wirkeintritt, Risikoprofil und Monitoring-Anforderungen — damit du deine Optionen in Ruhe abwägen kannst."
+  />
+</CardGrid>
+
+## Nachschlagewerke
+
+<CardGrid>
+  <LinkCard
+    title="Klinik-Finder"
+    href="/de/tools/hospital-finder/"
+    description="Finde Praxen und Kliniken, die Erfahrung mit der HRT-Versorgung von trans Personen haben — filterbar nach Region, mit Angaben zu Fachrichtung, Zugangsweg und Community-Feedback."
+  />
+  <LinkCard
+    title="Marken-Index"
+    href="/de/tools/brand-index/"
+    description="Eine Übersicht gängiger HRT-Präparate mit Markenname, Wirkstärke, Darreichungsform und Preisspanne — praktisch zum Abgleich mit deinem Rezept oder deiner Bestellung."
+  />
+  <LinkCard
+    title="Wirkstoff-Karten"
+    href="/de/tools/drug-cards/"
+    description="Kompakte Einzelseiten pro Wirkstoff: Höchstdosis, Kontrollzeitpunkte und Warnsignale für einen sofortigen Therapiestopp — ideal zum Speichern als Screenshot."
+  />
+</CardGrid>
+
+## Datenschutz-Versprechen
+
+- Alle Werkzeuge laufen **vollständig im Browser** — deine Eingaben werden in der Regel nicht an einen Server gesendet
+- Der KI-Assistent **speichert keine Gespräche** — beim Schließen der Seite werden sie in der Regel sofort gelöscht
+- Die Bluttest-Chronik schreibt Einträge ausschließlich in den **`localStorage` deines Geräts** — du kannst sie jederzeit mit einem Klick löschen
+- Die Website-Analyse nutzt Vercel Web Analytics und Speed Insights (kein Cookie, nur aggregierte Statistiken, keine Zuordnung zu Personen). Google Analytics oder Social-Media-Tracker werden nicht eingesetzt
+
+## Hinweis
+
+Diese Werkzeuge liefern keine Diagnose. **Wenn ein Ergebnis auffällig ist, nimm es mit zum nächsten Arzttermin und besprich es mit deiner Ärztin oder deinem Arzt.** Falls du gerade akute Symptome hast, ruf sofort die **112** an oder geh in die nächste Notaufnahme — und lies die Seite [Risiken und Notfallzeichen](/de/risks/).

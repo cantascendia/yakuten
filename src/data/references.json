@@ -418,5 +418,15 @@
     "doi": "10.1016/j.eprac.2022.08.012",
     "url": "https://doi.org/10.1016/j.eprac.2022.08.012",
     "evidenceLevel": "B"
+  },
+  {
+    "id": "awmf-s3-2019",
+    "authors": "AWMF (Deutsche Gesellschaft für Sexualmedizin, Sexualtherapie und Sexualwissenschaft et al.)",
+    "year": 2019,
+    "title": "S3-Leitlinie Geschlechtsinkongruenz, Geschlechtsdysphorie und Trans-Gesundheit: Diagnostik, Beratung, Behandlung",
+    "journal": "AWMF-Register-Nr. 138/001",
+    "doi": "10.1007/s00103-019-03026-1",
+    "url": "https://register.awmf.org/de/leitlinien/detail/138-001",
+    "evidenceLevel": "A"
   }
 ]

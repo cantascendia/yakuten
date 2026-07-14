@@ -4,7 +4,8 @@
     "name": {
       "zh": "雌二醇 (E2)",
       "en": "Estradiol (E2)",
-      "ja": "エストラジオール (E2)"
+      "ja": "エストラジオール (E2)",
+      "de": "Östradiol (E2)"
     },
     "unit": "pg/mL",
     "ranges": {
@@ -48,7 +49,8 @@
     "name": {
       "zh": "睾酮 (T)",
       "en": "Testosterone (T)",
-      "ja": "テストステロン (T)"
+      "ja": "テストステロン (T)",
+      "de": "Testosteron (T)"
     },
     "unit": "ng/dL",
     "ranges": {
@@ -82,7 +84,8 @@
     "name": {
       "zh": "泌乳素 (PRL)",
       "en": "Prolactin (PRL)",
-      "ja": "プロラクチン (PRL)"
+      "ja": "プロラクチン (PRL)",
+      "de": "Prolaktin (PRL)"
     },
     "unit": "ng/mL",
     "ranges": {
@@ -120,7 +123,8 @@
     "name": {
       "zh": "肝功能 (ALT/AST)",
       "en": "Liver Function (ALT/AST)",
-      "ja": "肝機能 (ALT/AST)"
+      "ja": "肝機能 (ALT/AST)",
+      "de": "Leberfunktion (ALT/AST)"
     },
     "unit": "U/L",
     "ranges": {
@@ -158,7 +162,8 @@
     "name": {
       "zh": "血钾 (K⁺)",
       "en": "Potassium (K⁺)",
-      "ja": "カリウム (K⁺)"
+      "ja": "カリウム (K⁺)",
+      "de": "Kalium (K⁺)"
     },
     "unit": "mmol/L",
     "ranges": {
@@ -196,7 +201,8 @@
     "name": {
       "zh": "血红蛋白 (Hb)",
       "en": "Hemoglobin (Hb)",
-      "ja": "ヘモグロビン (Hb)"
+      "ja": "ヘモグロビン (Hb)",
+      "de": "Hämoglobin (Hb)"
     },
     "unit": "g/L",
     "ranges": {
@@ -230,7 +236,8 @@
     "name": {
       "zh": "D-二聚体",
       "en": "D-dimer",
-      "ja": "Dダイマー"
+      "ja": "Dダイマー",
+      "de": "D-Dimer"
     },
     "unit": "mg/L",
     "ranges": {

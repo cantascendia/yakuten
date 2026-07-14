@@ -1,0 +1,202 @@
+---
+title: "GnRH-Antagonisten"
+description: "GnRH-Antagonisten (Relugolix / Degarelix) in der Trans-HRT: Wirkmechanismus ohne Flare, klinische Evidenz aus Prostatakarzinom-Studien, Abgrenzung zu GnRH-Agonisten, Monitoring-Empfehlungen und Verfügbarkeit im DACH-Raum."
+evidenceLevel: B
+lastReviewed: 2026-07-14
+references: [coleman-2022, hembree-2017, ucsf-2016, shore-2020, kasparian-2023, klotz-2008]
+drug:
+  nonProprietaryName: 'GnRH-Antagonist'
+  activeIngredient: 'Relugolix / Degarelix'
+  mechanismOfAction: 'Kompetitive Blockade des GnRH-Rezeptors an der Hypophyse; direkter LH/FSH-Abfall ohne initialen Testosteron-Flare'
+  atc: 'L02BX'
+sidebar:
+  order: 7
+faqs:
+  - q: "Was ist der Unterschied zwischen GnRH-Agonisten und GnRH-Antagonisten?"
+    a: "GnRH-Agonisten (z. B. Leuprorelin) stimulieren den GnRH-Rezeptor über, bis die Hypophyse abstumpft und kein LH/FSH mehr ausschüttet — das dauert 2-4 Wochen und verursacht anfangs einen Testosteron-Flare. GnRH-Antagonisten (Relugolix, Degarelix) blockieren den Rezeptor direkt und kompetitiv: Testosteron sinkt innerhalb weniger Tage, ohne Flare."
+  - q: "Sind GnRH-Antagonisten für die Trans-Hormontherapie zugelassen?"
+    a: "Nein. Sowohl Relugolix (Orgovyx) als auch Degarelix (Firmagon) sind in der EU ausschließlich für das fortgeschrittene Prostatakarzinom zugelassen. Jeder Einsatz in der geschlechtsangleichenden Hormontherapie ist Off-Label. Weder WPATH SOC 8 noch die Endocrine Society 2017 empfehlen sie formell als Antiandrogen in der GAHT."
+  - q: "Kann ich Relugolix (Orgovyx) in Deutschland auf Rezept bekommen?"
+    a: "Relugolix ist in der EU als Orgovyx zugelassen und grundsätzlich verschreibungsfähig, jedoch nur für die Indikation Prostatakarzinom. Eine Off-Label-Verordnung für GAHT liegt im ärztlichen Ermessen, wird aber von den Krankenkassen in aller Regel nicht erstattet. Die monatlichen Selbstzahlerkosten sind erheblich."
+  - q: "Muss ich bei GnRH-Antagonisten trotzdem Estradiol einnehmen?"
+    a: "Ja, zwingend. GnRH-Antagonisten unterdrücken die gesamte Sexualhormonproduktion — sowohl Testosteron als auch körpereigenes Estradiol. Ohne externe Estradiol-Substitution drohen schwerer Knochendichteverlust, Hitzewallungen und depressive Verstimmungen."
+  - q: "Warum empfehlt diese Seite keine konkreten Dosierungen?"
+    a: "Es fehlen prospektive Studien, die die optimale Dosis von Relugolix oder Degarelix speziell für trans Frauen untersucht haben. Die vorhandenen Daten stammen aus Prostatakarzinom-Studien an älteren cis Männern. Jede Off-Label-Anwendung sollte ausschließlich unter ärztlicher Aufsicht mit individueller Dosisfindung erfolgen."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox
+  name="GnRH-Antagonisten (Relugolix, Degarelix)"
+  nameCN="GnRH-Antagonisten (Orgovyx, Firmagon)"
+  category="antiandrogen"
+  route="Oral (Relugolix) · Subkutane Injektion (Degarelix)"
+  evidenceLevel="B"
+>
+  GnRH-Antagonisten blockieren den GnRH-Rezeptor der Hypophyse direkt und kompetitiv. Dadurch fallen LH, FSH und Testosteron innerhalb weniger Tage ab — **ohne den initialen Testosteron-Flare**, der bei GnRH-Agonisten unvermeidlich ist. Die klinische Zulassung beschränkt sich in der EU auf das fortgeschrittene Prostatakarzinom. In der geschlechtsangleichenden Hormontherapie (GAHT) handelt es sich um einen **Off-Label-Einsatz mit sehr begrenzter Trans-spezifischer Evidenz**. Weder WPATH SOC 8 noch die Endocrine Society 2017 führen GnRH-Antagonisten als reguläre Antiandrogen-Empfehlung
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . Diese Seite dient der sachlichen Einordnung des Wirkmechanismus und einer realistischen Bewertung der klinischen Datenlage.
+</DrugInfoBox>
+
+<GuideCTA
+  eyebrow="Vergleich"
+  title="GnRH-Agonisten sind die etablierte Alternative"
+  description="Im Gegensatz zu Antagonisten, die den Rezeptor direkt blockieren, führen GnRH-Agonisten über eine anhaltende Überstimulation zur Desensibilisierung der Hypophyse. Ihre Evidenzlage in der Trans-HRT ist deutlich breiter, und die Verfügbarkeit im DACH-Raum ist besser. Lies zuerst die Seite zu GnRH-Agonisten (Leuprorelin / Goserelin / Triptorelin)."
+  ctaText="Zur GnRH-Agonisten-Seite"
+  ctaHref="/de/medications/antiandrogens/gnrh-agonists/"
+  variant="accent"
+/>
+
+<WarningBox title="Off-Label-Einsatz und Evidenzlücken">
+Bevor du GnRH-Antagonisten für deine HRT in Betracht ziehst, solltest du dir über folgende Punkte im Klaren sein:
+
+- **Keine Leitlinienempfehlung:** Die maßgeblichen GAHT-Leitlinien führen GnRH-Antagonisten nicht als reguläre Antiandrogen-Option<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+- **Evidenz stammt aus der Onkologie:** Die verfügbaren Wirksamkeits- und Sicherheitsdaten basieren auf randomisierten kontrollierten Studien an Prostatakarzinom-Patient:innen (v. a. die HERO-Studie zu Relugolix und die CS21-Studie zu Degarelix). **Prospektive Studien an trans Personen fehlen gänzlich.**
+- **Pharmakologisch plausibel, klinisch unbelegt:** Die Unterdrückung der HPG-Achse ist endokrinologisch nachvollziehbar, doch Langzeitsicherheit, optimale Dosierung und Knochengesundheit unter GAHT-Bedingungen sind nicht untersucht.
+
+</WarningBox>
+
+---
+
+## Abgrenzung zu GnRH-Agonisten
+
+Sowohl GnRH-Agonisten als auch Antagonisten erreichen letztlich eine Testosteron-Suppression auf Kastrationsniveau — der pharmakologische Weg dorthin unterscheidet sich jedoch grundlegend<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />:
+
+- **Agonisten (Dauerstimulation bis zur Desensibilisierung):** In den ersten 1-2 Wochen nach der Erstinjektion überstimulieren sie den GnRH-Rezeptor. LH, FSH und Testosteron steigen vorübergehend stark an (der sogenannte „Flare"), bevor die Hypophyse abstumpft und die Hormonproduktion einbricht.
+- **Antagonisten (direkte Rezeptorblockade):** Sie binden kompetitiv an den GnRH-Rezeptor und unterbinden die Signalweiterleitung sofort. LH/FSH und Testosteron sinken innerhalb weniger Tage — **ohne initialen Flare**.
+
+<DoseTable
+  caption="GnRH-Agonisten vs. Antagonisten im Vergleich"
+  headers={['Vergleichsdimension', 'GnRH-Agonisten', 'GnRH-Antagonisten']}
+  rows={[
+    ['Wirkmechanismus', 'Dauerüberstimulation bis zur Rezeptor-Desensibilisierung', 'Direkte kompetitive Rezeptorblockade'],
+    ['Initialer Testosteron-Flare', 'Ja (ca. 1-2 Wochen; Antiandrogen-Schutz empfohlen)', 'Nein'],
+    ['Dauer bis Kastrationsniveau', 'Etwa 2-4 Wochen', 'Wenige Tage'],
+    ['Gängige Darreichungsformen', 'Depot-Injektion (monatlich bis halbjährlich), Nasenspray, Implantat', 'Oral (Relugolix) / monatliche SubQ-Injektion (Degarelix)'],
+    ['Trans-spezifische Evidenz', 'Leitlinienempfohlen; breite klinische Erfahrung', 'Off-Label; kaum Trans-spezifische Daten'],
+    ['Verfügbarkeit im DACH-Raum', 'Zugelassen und GKV-erstattungsfähig (bei Indikation)', 'Zugelassen für Prostatakarzinom; Off-Label-Erstattung bei GAHT unwahrscheinlich'],
+  ]}
+/>
+
+<WarningBox title="Kein Flare heißt nicht: kein Estradiol nötig">
+  Auch wenn dir der Flare-Schutz mit einem begleitenden Antiandrogen erspart bleibt, unterdrücken Antagonisten die gesamte Sexualhormonachse — Testosteron **und** körpereigenes Estradiol. Du **musst** regelmäßig und ausreichend dosiertes exogenes Estradiol einnehmen, um Hitzewallungen, Stimmungseinbrüche und Knochendichteverlust zu vermeiden.
+</WarningBox>
+
+---
+
+## Relugolix (Orgovyx) — oraler Antagonist
+
+Relugolix ist ein oral einzunehmender, nicht-peptidischer GnRH-Rezeptorantagonist. In der EU ist er unter dem Handelsnamen **Orgovyx** für das fortgeschrittene hormonsensitive Prostatakarzinom zugelassen<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} title="A Practical Guide to Relugolix: Early Experience With Oral Androgen Deprivation Therapy" />.
+
+### Klinische Daten zur Testosteron-Suppression
+
+Die wichtigste Evidenzquelle ist die Phase-III-Studie **HERO** an Prostatakarzinom-Patient:innen (**Extrapolation auf GAHT mit Vorsicht**)<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} title="Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer" />:
+
+- **Nachhaltige Kastrationsrate:** Über 48 Wochen erreichte die Relugolix-Gruppe eine Kastrationsrate von **96,7 %** (95 % KI: 94,9-97,9 %); in der Leuprorelin-Kontrollgruppe lag sie bei 88,8 %.
+- **Schneller Wirkeintritt:** Bereits an Tag 4 hatten **56,0 %** der Relugolix-Patient:innen Kastrationsniveau erreicht — in der Leuprorelin-Gruppe waren es aufgrund des Flare noch **0 %**.
+- **Kurze Halbwertszeit und Reversibilität:** Nach dem Absetzen erholen sich HPG-Achse und Testosteron deutlich schneller als bei Depot-Injektionen<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} />. Das bedeutet im Umkehrschluss: **Vergessene Dosen führen rasch zu einem Wiederanstieg des Testosterons.** Die Anforderungen an die tägliche Einnahmetreue sind hoch.
+
+<WarningBox title="HERO-Daten stammen aus der Onkologie">
+Die oben genannten Zahlen wurden an Prostatakarzinom-Patient:innen (überwiegend ältere cis Männer) erhoben — sie stellen die derzeit belastbarste Evidenz zur Testosteron-Suppression durch Relugolix dar. **Prospektive Studien an trans Frauen existieren bislang nicht.** Übertrage diese Daten auf deinen GAHT-Kontext nur mit Vorbehalt<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} />.
+</WarningBox>
+
+<WarningBox title="Keine Dosierungsempfehlung">
+  Da keine klinischen Studien die optimale Dosierung von Relugolix oder Degarelix speziell für trans Frauen untersucht haben, gibt diese Seite keine konkreten Dosierungsschemata an. Jeder Off-Label-Einsatz sollte ausschließlich unter ärztlicher Begleitung mit individueller Dosisfindung und regelmäßigem Monitoring erfolgen.
+</WarningBox>
+
+---
+
+## Degarelix (Firmagon) — Injektions-Antagonist
+
+Degarelix ist ein injizierbarer GnRH-Antagonist. In der EU ist er unter dem Handelsnamen **Firmagon** zugelassen und wird als monatliche subkutane Injektion verabreicht<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} title="The efficacy and safety of degarelix: a 12-month, comparative, randomised, open-label, parallel-group phase III study in patients with prostate cancer" />.
+
+### Klinische Daten zur Testosteron-Suppression
+
+In der Phase-III-Studie **CS21** mit 610 Prostatakarzinom-Patient:innen<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} />:
+
+- **Schneller T-Abfall:** Bereits an Tag 3 lag das Serum-Testosteron im Kastrationsbereich — ohne jeglichen Flare.
+- **Stabile Suppression:** Im 240/80-mg-Schema (Aufsättigungsdosis / Erhaltungsdosis) betrug die Kastrationsrate über 12 Monate **97,2 %**.
+- **Nebenwirkungsprofil:** Die häufigsten unerwünschten Wirkungen sind Reaktionen an der Injektionsstelle — Rötung, Schwellung und Verhärtung, überwiegend nach der ersten, höher dosierten Injektion. Diese sind meist leicht bis mittelgradig und bilden sich innerhalb weniger Tage zurück.
+
+---
+
+## Sicherheit und Monitoring
+
+Die Überwachungslogik entspricht im Wesentlichen der bei GnRH-Agonisten: Testosteron-Suppression prüfen, ausreichende Estradiol-Substitution sicherstellen und systemische Nebenwirkungen im Blick behalten<CitationRef id="ucsf-2016" num={6} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+
+<DoseTable
+  caption="Monitoring unter GnRH-Antagonisten: Testosteron, Estradiol, Knochen, Leber"
+  headers={['Parameter', 'Empfohlene Häufigkeit', 'Zielwert / Aufmerksamkeit', 'Vorgehen bei Abweichung']}
+  rows={[
+    [
+      'Serum-Testosteron (T)',
+      '4-8 Wochen nach Therapiebeginn, danach alle 3-6 Monate.',
+      '< 50 ng/dL (ca. < 1,7 nmol/L).',
+      'Bei Verfehlung des Zielwerts: zunächst Einnahmetreue prüfen (v. a. bei Relugolix); ärztliche Dosisanpassung erwägen.',
+    ],
+    [
+      'Serum-Estradiol (E2)',
+      'Zeitgleich mit T.',
+      '100-200 pg/mL (physiologischer Zielbereich).',
+      'Sicherstellen, dass die exogene E2-Dosis ausreicht, um Knochenverlust und vasomotorische Symptome zu verhindern.',
+    ],
+    [
+      'Knochendichte (DEXA)',
+      'Ausgangsmessung bei Langzeitanwendung, danach alle 1-2 Jahre.',
+      'T-Score > -1,0.',
+      'Bei Knochendichteverlust: E2-Dosis erhöhen, Kalzium- und Vitamin-D-Zufuhr korrigieren, ggf. endokrinologisches Konsil.',
+    ],
+    [
+      'Leberwerte (ALT/AST)',
+      'Bei Relugolix-Einnahme: vor Therapiebeginn sowie in den ersten Monaten regelmäßig.',
+      'Transaminasen im Normbereich.',
+      'Bei Anstieg auf > 3-fache Obergrenze oder Ikterus: sofortiges Absetzen und ärztliche Vorstellung.',
+    ],
+    [
+      'Injektionsstelle',
+      'Nach jeder Degarelix-Injektion.',
+      'Rötung/Verhärtung sollte innerhalb weniger Tage abklingen.',
+      'Bei anhaltender Ausbreitung oder Fieber: an eine Infektion denken und zeitnah ärztlich abklären.',
+    ],
+  ]}
+/>
+
+<DangerBox title="Ohne Estradiol keine langfristige Testosteron-Suppression">
+  Wer das Testosteron dauerhaft auf Kastrationsniveau drückt, ohne gleichzeitig ausreichend Estradiol zuzuführen, versetzt den Körper in einen Zustand ohne jegliches Sexualhormon. Die Folgen sind gravierend: Osteoporose, depressive Verstimmung und schwere Hitzewallungen. Jede HPG-Achsen-Suppression — ob durch Agonisten oder Antagonisten — erfordert zwingend eine begleitende Estradiol-Substitution<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />. Bei anhaltenden Gelenk- oder Knochenschmerzen, starken Stimmungseinbrüchen oder häufigen Hitzewallungen: **nicht abwarten**, sondern umgehend in einer endokrinologischen Praxis die E2-Werte kontrollieren lassen. Im Notfall erreichst du den ärztlichen Bereitschaftsdienst unter **116 117** oder den Notruf unter **112**.
+</DangerBox>
+
+---
+
+## Verfügbarkeit und Kosten im DACH-Raum
+
+Dieser Abschnitt dient ausschließlich der sachlichen Einordnung und stellt keine Kaufempfehlung dar:
+
+- **Relugolix (Orgovyx):** In der EU zugelassen, in deutschen Apotheken verfügbar — jedoch ausschließlich mit der Indikation Prostatakarzinom. Eine Off-Label-Verordnung für GAHT liegt im Ermessen der behandelnden Ärzt:innen. Die **GKV-Erstattung ist bei Off-Label-Einsatz in aller Regel ausgeschlossen**; die monatlichen Selbstzahlerkosten sind erheblich.
+- **Degarelix (Firmagon):** Ebenfalls in der EU zugelassen (Prostatakarzinom). Die Injektion erfolgt in der Regel in einer urologischen Praxis. Auch hier gilt: Off-Label-Erstattung für GAHT ist nicht zu erwarten.
+- **Einnahmetreue und Kostenrisiko:** Relugolix muss täglich eingenommen werden. Aufgrund der kurzen Halbwertszeit führt jede Unterbrechung — ob aus finanziellen Gründen oder Versorgungslücken — zu einem raschen Testosteron-Wiederanstieg. Gegenüber Depot-Injektionen (GnRH-Agonisten mit monatlichem bis halbjährlichem Intervall) ist das Risiko hormoneller Schwankungen höher.
+- **Pragmatische Alternativen:** Für die allermeisten trans Frauen im DACH-Raum sind GnRH-Antagonisten keine realistische Erstlinienoption. Unter ärztlicher Begleitung bieten niedrig dosiertes CPA (Androcur), Spironolacton oder GnRH-Agonisten (Leuprorelin, Goserelin, Triptorelin) ein besseres Verhältnis aus Evidenz, Kosten und Verfügbarkeit<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />.
+
+<WarningBox title="Nur unter ärztlicher Aufsicht">
+GnRH-Antagonisten sind in der Trans-HRT evidenzarm, teuer und im DACH-Raum schwer erstattungsfähig. Wenn du sie trotzdem in Erwägung ziehst — etwa weil du CPA oder Spironolacton nicht verträgst, den Flare vermeiden möchtest oder eine orale Option bevorzugst — besprich das mit erfahrenen Endokrinolog:innen oder einer trans-freundlichen Schwerpunktpraxis. Regelmäßige Kontrollen von Testosteron, Estradiol und Knochendichte sind dabei unverzichtbar. Diese Seite gibt keine individuellen Dosierungsempfehlungen.
+</WarningBox>
+
+---
+
+## Weiterführende Seiten
+
+- [GnRH-Agonisten: Leuprorelin / Goserelin / Triptorelin](/de/medications/antiandrogens/gnrh-agonists/)
+- [CPA (Cyproteronacetat)](/de/medications/antiandrogens/cpa/)
+- [Spironolacton](/de/medications/antiandrogens/spironolactone/)
+- [Bicalutamid](/de/medications/antiandrogens/bicalutamide/)
+- [Antiandrogene im Überblick](/de/medications/antiandrogens/overview/)
