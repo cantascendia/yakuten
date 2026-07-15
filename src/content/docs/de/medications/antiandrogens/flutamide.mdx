@@ -1,0 +1,170 @@
+---
+title: "Flutamid"
+description: "Warum Flutamid (Fugerel) in der geschlechtsangleichenden Hormontherapie (GAHT) nicht eingesetzt werden sollte: schwere, potenziell tödliche Hepatotoxizität, fulminantes Leberversagen auch bei jungen Patient:innen, und sicherere Alternativen im DACH-Raum."
+evidenceLevel: C
+lastReviewed: 2026-07-14
+references: [coleman-2022, livertox-flutamide-2023, wysowski-1993, brahm-2011]
+drug:
+  nonProprietaryName: 'Flutamid'
+  activeIngredient: 'Flutamid (Flutamide)'
+  mechanismOfAction: 'Nichtsteroidaler Androgenrezeptor-Antagonist der 1. Generation; senkt das Serumtestosteron in Monotherapie nicht, schwere und unvorhersehbare Hepatotoxizität ist der Hauptgrund für die Kontraindikation in der GAHT'
+  atc: 'L02BB01'
+sidebar:
+  order: 6
+faqs:
+  - q: "Warum wird Flutamid in der Trans-HRT nicht empfohlen?"
+    a: "Flutamid verursacht in bis zu 62 % der Fälle Transaminasenerhöhungen und kann unvorhersehbar ein fulminantes Leberversagen auslösen — auch bei jungen, lebergesunden Patient:innen. Da im DACH-Raum sicherere Alternativen wie Androcur (CPA), Spironolacton, Bicalutamid und GnRH-Agonisten verfügbar sind, gibt es keinen medizinisch vertretbaren Grund für den Einsatz von Flutamid in der GAHT."
+  - q: "Was ist der Unterschied zwischen Flutamid und Bicalutamid?"
+    a: "Beide sind nichtsteroidale Androgenrezeptor-Antagonisten, doch Flutamid (1. Generation) muss dreimal täglich eingenommen werden und weist eine deutlich höhere Hepatotoxizitätsrate auf. Bicalutamid (2. Generation) wird nur einmal täglich dosiert, hat eine Halbwertszeit von 5-6 Tagen und ein günstigeres Lebersicherheitsprofil — obwohl auch Bicalutamid nur Off-Label und als Reserveoption gilt."
+  - q: "Was tun, wenn ich bereits Flutamid einnehme?"
+    a: "Lass umgehend deine Leberwerte (ALT, AST, Bilirubin) kontrollieren und besprich mit deiner Ärzt:in eine Umstellung auf ein sichereres Antiandrogen. Bei Symptomen wie Gelbsucht, dunklem Urin oder Oberbauchschmerzen Flutamid sofort absetzen und die Notaufnahme (112) aufsuchen."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox name="Flutamid" nameCN="Flutamid (Fugerel)" category="antiandrogen" route="Oral" evidenceLevel="C">
+  Flutamid ist ein nichtsteroidaler Androgenrezeptor-Antagonist (AR-Antagonist) der 1. Generation, der ursprünglich zur Behandlung des fortgeschrittenen Prostatakarzinoms zugelassen wurde. In Deutschland war es unter dem Handelsnamen **Fugerel** erhältlich. Aufgrund seiner schweren, potenziell tödlichen Hepatotoxizität — einschließlich fulminantem Leberversagen — wird Flutamid in der geschlechtsangleichenden Hormontherapie (GAHT) **ausdrücklich nicht empfohlen**
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . Diese Seite dokumentiert das toxikologische Risikoprofil und bietet Schadensbegrenzung für Personen, die das Medikament derzeit noch einnehmen.
+</DrugInfoBox>
+
+<DangerBox title="Sicherheitswarnung: Flutamid birgt ein hohes Hepatotoxizitätsrisiko">
+Die schwerwiegendste Nebenwirkung von Flutamid ist eine **akute Leberschädigung** (Drug-Induced Liver Injury, DILI). Es liegen zahlreiche Fallberichte über **fulminantes Leberversagen** vor, die zu Todesfällen oder Notfall-Lebertransplantationen geführt haben<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} title="Flutamide" />.
+
+Im Vergleich zu Bicalutamid (2. Generation) erfordert Flutamid eine dreimal tägliche Einnahme, weist eine deutlich höhere Hepatotoxizitätsrate auf und bietet keinerlei Vorteil in der antiandrogenen Wirksamkeit. Solange im DACH-Raum Cyproteronacetat (Androcur), Spironolacton, Bicalutamid und GnRH-Agonisten verfügbar sind, **besteht in aller Regel kein medizinisch vertretbarer Grund für den Einsatz von Flutamid**.
+
+</DangerBox>
+
+<GuideCTA
+  eyebrow="Schadensbegrenzung"
+  title="Wie stellst du sicher auf ein anderes Antiandrogen um?"
+  description="Falls du Flutamid derzeit noch einnimmst — etwa weil dir andere Optionen nicht zugänglich waren —, besprich mit deiner Ärzt:in zeitnah einen Umstellungsplan (z. B. Wechsel auf Bicalutamid, Spironolacton oder niedrigdosiertes CPA). Unabhängig davon sollte die Leberfunktion (ALT/AST) während der Einnahme regelmäßig kontrolliert werden."
+  ctaText="Zum Antiandrogen-Wechsel-Leitfaden"
+  ctaHref="/de/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+---
+
+## 1. Pharmakologie und Wirkmechanismus
+
+1. **Reine AR-Blockade**: Flutamid und sein aktiver Hauptmetabolit Hydroxyflutamid binden kompetitiv an den Androgenrezeptor (AR) in den Zielgeweben und verdrängen dadurch Testosteron (T) und Dihydrotestosteron (DHT) von der Rezeptorbindung.
+2. **Testosteron sinkt nicht — es steigt**: Wie bei Bicalutamid unterbricht auch Flutamid in Monotherapie die negative Rückkopplung am Hypothalamus, was zu einer vermehrten LH-Ausschüttung und einem reaktiven Anstieg des Serumtestosterons führt. Flutamid selbst senkt den Testosteronspiegel nicht.
+3. **Der T-Wert ist kein Wirksamkeitsmarker**: Unter Flutamid-Monotherapie spiegelt der Serumtestosteronwert die antiandrogene Wirkung nicht wider. Die Wirksamkeit lässt sich nur indirekt anhand von Feminisierungszeichen (z. B. weicheres Körperhaar, weniger Talgproduktion) beurteilen — was die klinische Steuerung erheblich erschwert.
+
+<WarningBox title="T-Werte sind unter Flutamid kein Maßstab">
+Genau wie bei Bicalutamid **senkt Flutamid in Monotherapie das Testosteron nicht** — der Serumspiegel kann sogar ansteigen. Deshalb eignet sich der T-Wert **nicht** zur Beurteilung, ob die Androgenblockade „funktioniert". Solange der AR wirksam blockiert ist, werden androgene Effekte unterdrückt. Diese Information dient dem Verständnis des Wirkmechanismus und ist **keine Empfehlung für eine Flutamid-Therapie**.
+</WarningBox>
+
+<WarningBox title="Pharmakokinetischer Vergleich: Flutamid vs. Bicalutamid">
+  Da die Halbwertszeit des aktiven Flutamid-Metaboliten nur etwa 8-10 Stunden beträgt, ist eine **dreimal tägliche Einnahme** erforderlich, um eine ausreichende Rezeptorblockade aufrechtzuerhalten. Im Gegensatz dazu hat Bicalutamid eine Halbwertszeit von 5-6 Tagen und muss nur **einmal täglich** eingenommen werden — mit entsprechend besserer Therapietreue
+  <CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />.
+</WarningBox>
+
+---
+
+## 2. Schwere Hepatotoxizität — die klinische Evidenz
+
+Die arzneimittelinduzierte Leberschädigung (DILI) durch Flutamid ist klinisch heimtückisch: Sie verläuft initial oft symptomarm, kann aber rasant fortschreiten und ist potenziell tödlich. Dies ist der zentrale Grund, warum Flutamid aus den GAHT-Leitlinien gestrichen wurde.
+
+### 2.1 Häufigkeit der Transaminasenerhöhung
+
+Langzeitdaten aus der Prostatakarzinom-Behandlung zeigen<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />:
+
+- Bei ca. **42-62 %** der Anwender:innen treten Transaminasenerhöhungen (ALT/AST) auf, meist asymptomatisch und passager.
+- Bei ca. **3-5 %** kommt es zu klinisch relevanten Leberenzymanstiegen (über das 5-Fache der Obergrenze des Normbereichs).
+- Bei ca. **0,1-1 %** entwickelt sich eine manifeste Gelbsucht oder schwere Hepatitis.
+- Die Schädigung tritt typischerweise **1-10 Monate** (im Mittel ca. 3 Monate) nach Therapiebeginn auf. Nach Absetzen bessert sie sich meist innerhalb von 1-2 Wochen — **doch es gibt dokumentierte Todesfälle trotz regelrechter Laborüberwachung**.
+
+### 2.2 Fulminantes Leberversagen — Fallberichte
+
+- **Frühe FDA-Meldungen**: Bereits in den ersten 5 Jahren nach Markteinführung gingen bei der US-amerikanischen FDA rund **20 Meldungen über tödliche Hepatotoxizität** unter Flutamid ein<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />.
+- **Wysowski et al. (1993) — FDA-Datenanalyse**: Von 19 Patient:innen mit schwerer Hepatotoxizität erholten sich 14 nach Absetzen oder Dosisreduktion; **5 verstarben an einem progredienten Leberversagen**<CitationRef id="wysowski-1993" num={3} authors="Wysowski DK et al." year={1993} title="Fatal and Nonfatal Hepatotoxicity Associated with Flutamide" />.
+- **Junge Frauen besonders gefährdet**: Brahm et al. (2011) analysierten 10 Fälle schwerer Flutamid-Hepatotoxizität. Von 7 jungen Frauen, die Flutamid wegen Hyperandrogenismus (Hirsutismus, Akne) erhielten, entwickelten **5 ein fulminantes Leberversagen und benötigten eine Notfall-Lebertransplantation**. Dies belegt, dass Flutamid auch bei jungen, lebergesunden Personen unvorhersehbare, lebensbedrohliche Leberschäden verursachen kann<CitationRef id="brahm-2011" num={4} authors="Brahm J et al." year={2011} title="Acute and fulminant hepatitis induced by flutamide: case series report and review of the literature" />.
+
+<WarningBox title="Kaum Daten bei trans Personen">
+Es gibt keine qualitativ hochwertigen prospektiven Studien zum Einsatz von Flutamid bei trans Frauen. Die bestehende Evidenz zur Hepatotoxizität stammt hauptsächlich aus Kohorten cisgeschlechtlicher Männer (Prostatakarzinom) und hyperandrogener Frauen. Trotz dieser eingeschränkten Datenlage reichen die dokumentierten Fälle von fulminantem Leberversagen aus, um die Empfehlung „nicht verwenden" zu begründen.
+</WarningBox>
+
+<WarningBox title="Die Grenzen der Laborüberwachung">
+  Klinische Evidenz zeigt, dass selbst eine engmaschige Kontrolle der Leberwerte **ein fulminantes Leberversagen nicht sicher verhindern kann**. Bei manchen Patient:innen verläuft das Zeitfenster zwischen dem ersten Leberenzym-Anstieg und dem manifesten Leberversagen extrem kurz<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />. Die wirksamste Risikoreduktion besteht deshalb darin, Flutamid gar nicht erst einzunehmen bzw. auf eine sicherere Alternative umzustellen.
+</WarningBox>
+
+<DangerBox title="Warnsignale einer Leberschädigung — sofort absetzen und Notaufnahme aufsuchen">
+Wenn du Flutamid einnimmst und eines der folgenden Symptome bei dir feststellst, **setze das Medikament sofort ab und ruf die 112 an bzw. geh direkt in die nächste Notaufnahme**:
+
+- Gelbfärbung der Haut oder des Augenweiß (Ikterus)
+- Dunkel verfärbter Urin (teefarben bis braungelb)
+- Anhaltende Schmerzen oder Druckempfindlichkeit im rechten Oberbauch
+- Ausgeprägte Schwäche, extreme Müdigkeit, plötzlicher Appetitverlust mit Übelkeit und Erbrechen
+- Leberwerte (ALT/AST) über dem 3-Fachen des oberen Referenzwerts
+
+**Bei auch nur einem dieser Zeichen: Flutamid sofort absetzen und umgehend die Leberfunktion ärztlich überprüfen lassen.** Die Leberschädigung durch Flutamid kann sich ohne Vorwarnung rapide verschlechtern — warte nicht ab.
+
+</DangerBox>
+
+---
+
+## 3. Dosierungsangaben (rein historisch, keine Therapieempfehlung)
+
+<WarningBox title="Historische Dosen ≠ HRT-Dosen — keine individuelle Dosierungsempfehlung">
+Die folgenden Angaben dienen ausschließlich der Einordnung der historischen Anwendung und stellen **keine** Dosierungsempfehlung für die GAHT dar. Die Dosen bei Prostatakarzinom lagen weit über dem antiandrogenen Bedarf, und höhere Dosen korrelieren mit einem erhöhten Hepatotoxizitätsrisiko. Falls du Flutamid einnimmst, besprich die Dosierung mit deiner Ärzt:in — erhöhe die Dosis niemals eigenmächtig.
+</WarningBox>
+
+<DoseTable
+  caption="Historische Dosierungen von Flutamid nach Indikation (keine Therapieempfehlung)"
+  headers={['Indikation', 'Historische Dosis', 'Anmerkung', 'Quelle']}
+  rows={[
+    ['Prostatakarzinom (hist. Zulassung)', '250 mg, dreimal täglich', 'Weit über dem antiandrogenen Bedarf, rein historisch', 'LiverTox 2023'],
+    ['Hyperandrogenismus / Dermatologie (hist. Off-Label)', 'Niedrigere Dosen (variabel)', 'Dennoch Fälle von Hepatotoxizität dokumentiert', 'LiverTox 2023'],
+    ['Trans-HRT', 'Nicht empfohlen / kein etabliertes Schema', 'Keine belastbare Dosisevidenz, keine Empfehlung', 'WPATH SOC 8'],
+  ]}
+/>
+
+---
+
+## 4. Laborüberwachung (falls du Flutamid derzeit noch einnimmst)
+
+<DoseTable
+  caption="Empfohlene Laborüberwachung bei laufender Flutamid-Einnahme"
+  headers={['Parameter', 'Intervall', 'Ziel- / Warnwerte', 'Vorgehen']}
+  rows={[
+    ['Leberwerte (ALT/AST)', 'Baseline + erste 4 Monate monatlich, danach regelmäßig', 'ALT/AST im Normbereich', '> 3× Obergrenze: sofort absetzen und ärztliche Abklärung'],
+    ['Bilirubin', 'Gleichzeitig mit Leberwerten', 'Im Normbereich', 'Erhöhung deutet auf fortschreitende Leberschädigung hin'],
+    ['Testosteron (T)', 'Alle 3-6 Monate', 'Nur als Referenz (T kann erhöht sein)', 'Kein primärer Wirksamkeitsmarker'],
+  ]}
+/>
+
+<WarningBox title="Überwachung kann das Risiko nicht eliminieren">
+Auch bei monatlicher Kontrolle der Leberwerte lässt sich ein fulminantes Leberversagen **nicht sicher ausschließen** — es sind Fälle dokumentiert, in denen die Erkrankung trotz engmaschiger Überwachung fulminant verlief<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />. Überwachung senkt das Risiko, eliminiert es aber nicht. Wenn du Zugang zu Androcur (CPA), Spironolacton, Bicalutamid oder GnRH-Agonisten hast, solltest du vorrangig auf eine dieser sichereren Optionen umstellen — sprich deine Ärzt:in darauf an.
+</WarningBox>
+
+---
+
+## 5. Wenn du Flutamid aktuell noch einnimmst: sichere Umstellung
+
+Für Personen, die Flutamid aus Mangel an Alternativen derzeit noch verwenden, gelten folgende Empfehlungen zur Schadensbegrenzung:
+
+1. **Sofort Leberwerte kontrollieren lassen**: Lass ALT, AST und Bilirubin als Ausgangswerte bestimmen. Während der Umstellungsphase empfehlen sich Kontrollen alle 2-4 Wochen.
+2. **Niemals eigenmächtig die Dosis erhöhen**: Die Hepatotoxizität von Flutamid ist dosisabhängig — eine Dosissteigerung auf eigene Faust ist gefährlich.
+3. **Absetzen und Umstellung ärztlich begleiten lassen**: Ein abruptes Absetzen des Antiandrogens kann zu einem Testosteron-Rebound führen, mit vorübergehend verstärkter Talgproduktion oder Geschlechtsdysphorie. Der sicherste Weg ist, zeitnah eine Ärzt:in mit Erfahrung in der trans Gesundheitsversorgung zu konsultieren und unter Kontrolle der Leberfunktion auf Spironolacton, Bicalutamid oder einen GnRH-Agonisten (z. B. Triptorelin) umzustellen. Bei klinischen Anzeichen einer Leberschädigung muss Flutamid sofort und bedingungslos abgesetzt werden — in diesem Fall die 112 rufen oder die nächste Notaufnahme aufsuchen.
+
+---
+
+## Weiterführende Seiten
+
+- [Bicalutamid: Wirkmechanismus und Hepatotoxizität](/de/medications/antiandrogens/bicalutamide/)
+- [CPA (Cyproteronacetat / Androcur)](/de/medications/antiandrogens/cpa/)
+- [Antiandrogen-Wechsel-Leitfaden](/de/guides/switch-antiandrogen/)

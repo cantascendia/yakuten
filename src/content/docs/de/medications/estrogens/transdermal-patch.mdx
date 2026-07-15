@@ -17,8 +17,8 @@ import DangerBox from '../../../../../components/ui/DangerBox.astro';
 import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astro';
 
 <DrugInfoBox
-  name="Estradiol Transdermal Patch"
-  nameCN="经皮雌二醇贴片"
+  name="Transdermales Estradiolpflaster (Estramon, Climara)"
+  nameCN="Estradiolpflaster"
   category="estrogen"
   route="Transdermal"
   evidenceLevel="A"
@@ -67,15 +67,15 @@ Diese Dosierungsbereiche stehen im Einklang mit den Leitlinien der Endocrine Soc
 <DoseTable
   headers={['Phase', 'Dosis', 'Ziel-E2 (pg/mL)', 'Zeitrahmen']}
   rows={[
-    ['Niedrigdosierter Beginn', '50-100 µg/day', '50-100', 'Monate 1-6'],
-    ['Moderate Titration', '100-200 µg/day', '100-200', 'Monate 6-12'],
-    ['Erhaltungsphase', '100-200 µg/day', '100-200', 'Ab 12 Monaten'],
-    ['Monotherapie (ohne Blocker)', '200-400 µg/day', '200-300', 'Nur ohne T-Blocker'],
+    ['Niedrigdosierter Beginn', '50-100 µg/Tag', '50-100', 'Monate 1-6'],
+    ['Moderate Titration', '100-200 µg/Tag', '100-200', 'Monate 6-12'],
+    ['Erhaltungsphase', '100-200 µg/Tag', '100-200', 'Ab 12 Monaten'],
+    ['Monotherapie (ohne Blocker)', '200-400 µg/Tag', '200-300', 'Nur ohne T-Blocker'],
   ]}
 />
 
 <WarningBox title="Die übliche Höchstdosis">
-Die übliche Höchstdosis liegt bei **400 µg/day** und kam historisch nur bei einer Monotherapie zum Einsatz (Unterdrückung von Testosteron ohne Antiandrogene). Die allermeisten Anwenderinnen erreichen ihren klinischen Ziel-E2-Bereich (100-200 pg/mL) bereits mit 100-200 µg/day<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. E2 über 200 pg/mL zu treiben, feminisiert nicht schneller, sondern verstärkt nur die gesundheitlichen Risiken.
+Die übliche Höchstdosis liegt bei **400 µg/Tag** und kam historisch nur bei einer Monotherapie zum Einsatz (Unterdrückung von Testosteron ohne Antiandrogene). Die allermeisten Anwenderinnen erreichen ihren klinischen Ziel-E2-Bereich (100-200 pg/mL) bereits mit 100-200 µg/Tag<CitationRef id="hembree-2017" num={3} authors="Hembree WC et al." year={2017} />. E2 über 200 pg/mL zu treiben, feminisiert nicht schneller, sondern verstärkt nur die gesundheitlichen Risiken.
 </WarningBox>
 
 ## Anwendung
@@ -121,10 +121,11 @@ Medizinisch sind Pflaster zwar überlegen, kämpfen aber weltweit mit logistisch
 <DoseTable
   headers={['Marke', 'Spezifikation', 'Wechselintervall', 'Region']}
   rows={[
-    ['Climara', 'Abgabe 50 / 100 µg/day', 'Alle 7 Tage', 'USA / EU / weltweit'],
-    ['Estradot', 'Abgabe 25-100 µg/day', 'Alle 3,5 Tage', 'GB / EU / AUS'],
-    ['Vivelle-Dot', 'Abgabe 25-100 µg/day', 'Alle 3,5 Tage', 'USA'],
-    ['Estrana Tape', 'Abgabe 50 µg/day', 'Alle 2 Tage', 'Japan (verbreitet im asiatischen DIY-Umfeld)'],
+    ['Estramon (Hexal)', 'Abgabe 25-100 µg/Tag', 'Alle 3,5 Tage', 'DACH / EU'],
+    ['Climara (Bayer)', 'Abgabe 50 / 100 µg/Tag', 'Alle 7 Tage', 'DACH / EU / weltweit'],
+    ['Estradot', 'Abgabe 25-100 µg/Tag', 'Alle 3,5 Tage', 'GB / EU / AUS'],
+    ['Vivelle-Dot', 'Abgabe 25-100 µg/Tag', 'Alle 3,5 Tage', 'USA'],
+    ['Estrana Tape', 'Abgabe 50 µg/Tag', 'Alle 2 Tage', 'Japan'],
   ]}
 />
 

@@ -1,0 +1,338 @@
+---
+title: "Leitfaden: Die erste Injektion"
+description: "Vollständiger Leitfaden zur ersten Estradiolvalerat-Injektion — Baseline-Laborwerte, Injektionsmaterial, Startdosis, Überwachung in der ersten Woche, erste Kontrolluntersuchung und Dosisanpassung. Speziell für den DACH-Raum aufbereitet."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-07-14
+references: [coleman-2022, hembree-2017, herndon-2023, misakian-2025, rothman-2024, poage-2026, awmf-s3-2019]
+faqs:
+  - q: "Ist die Estradiol-Injektion in Deutschland auf Kassenrezept erhältlich?"
+    a: "Estradiolvalerat-Injektionen (Progynon Depot) haben in Deutschland, Österreich und der Schweiz keine aktuelle Zulassung und sind regulär nicht verordnungsfähig. Die meisten Anwender:innen beziehen Progynon Depot über internationale Apotheken (z. B. Japan, Indonesien) per Privatimport. Endokrinolog:innen können unter Umständen ein Privatrezept für den Off-Label-Import ausstellen, eine Kassenerstattung ist in der Regel nicht möglich. Die gängigen erstattungsfähigen Alternativen sind orales Estradiol (Progynova), transdermale Gele (Gynokadin) oder Pflaster (Estradot, Estramon)."
+  - q: "Wo bekomme ich Spritzen und Kanülen in Deutschland?"
+    a: "Spritzen und Kanülen sind in Deutschland nicht verschreibungspflichtig. Du kannst sie in jeder Apotheke kaufen — sage einfach, dass du eine 1-mL-Luer-Lock-Spritze, eine Aufziehkanüle (18-20G) und eine Injektionskanüle (25G für SC oder 23G für IM) benötigst. Alternativ sind sie auch über Online-Apotheken und Sanitätshäuser erhältlich. Die Kosten liegen bei wenigen Euro."
+  - q: "Subkutan oder intramuskulär — was ist besser?"
+    a: "Klinische Studien zeigen keine signifikanten Unterschiede in der E2-Aufnahme oder T-Suppression zwischen SC und IM. SC ist deutlich einfacher selbst durchzuführen (dünnere Kanüle, weniger Schmerzen, Bauch oder Oberschenkel als Injektionsstelle). IM in den Gluteus erfordert in der Regel eine zweite Person. Für die erste Injektion empfehlen die meisten Leitfäden SC als einsteigerfreundliche Option."
+  - q: "Was mache ich, wenn ich eine Injektion vergessen habe?"
+    a: "Bis zu 2 Tage Verspätung: Nachholen und den regulären Rhythmus beibehalten. 3-4 Tage Verspätung: Nachholen und den Zyklus ab dem neuen Datum neu starten. Ab 5 Tagen: Die verpasste Dosis überspringen, beim nächsten regulären Termin die normale Dosis spritzen — niemals die doppelte Dosis nachholen."
+  - q: "Tut die erste Injektion weh?"
+    a: "Ein leichtes Stechen beim Einstich und ein kurzes Druckgefühl beim Injizieren sind normal. Starke Schmerzen deuten auf einen Fehler hin: zu dicke Kanüle (Aufziehkanüle statt Injektionskanüle verwendet), kalte Lösung (nicht auf Raumtemperatur gebracht) oder zu schnelles Injizieren. Mit der richtigen Technik ist SC nahezu schmerzfrei."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import ContraindicationBox from '../../../../components/ui/ContraindicationBox.astro';
+import BaselineChecklist from '../../../../components/ui/BaselineChecklist.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Die Injektion von Estradiol ist technisch nicht schwierig — aber die Vorbereitung davor und die Überwachung danach sind oft wichtiger als die Injektion selbst. Regelmäßige Gabe plus saubere Laborkontrollen bilden das Fundament einer wirksamen Therapie.
+
+Falls du bereits injizierst und den Applikationsweg wechseln möchtest, findest du Hinweise im [E2-Applikationsweg-Wechsel-Leitfaden](/de/guides/switch-e2-route/). Wenn du noch zwischen den verschiedenen Verabreichungsformen abwägst, hilft die [Estradiol-Applikationsformen-Übersicht](/de/medications/estrogens/overview/) weiter.
+
+:::note[Besonderheit im DACH-Raum]
+Injiziertes Estradiol spielt in Deutschland, Österreich und der Schweiz eine deutlich kleinere Rolle als in Nordamerika oder Asien. Die AWMF S3-Leitlinie 138/001 nennt transdermales Estradiol (Gel, Pflaster) und orales Estradiol als die bevorzugten Applikationswege<CitationRef id="awmf-s3-2019" num={6} authors="AWMF" year={2019} title="S3-Leitlinie Geschlechtsinkongruenz, Geschlechtsdysphorie und Trans-Gesundheit" />. Die meisten Ärzt:innen verschreiben zunächst orales Estradiol (Progynova), transdermales Gel (Gynokadin) oder Pflaster (Estradot, Estramon). Progynon Depot (Estradiolvalerat i.m.) ist in DACH nicht zugelassen und wird in der Regel über Privatimport bezogen. Besprich mit deiner Endokrinologin oder deinem Endokrinologen, ob die Injektion für dich der richtige Weg ist.
+:::
+
+---
+
+## Eignung
+
+Die Injektion von Estradiol hat in der transfemininen HRT einen entscheidenden Vorteil: Sie umgeht den First-Pass-Metabolismus der Leber vollständig, was bei instabiler Leberfunktion relativ sicherer ist, und liefert gut vorhersagbare Plasmaspiegel. Daten zeigen, dass etwa <InlineValue value="82,6" unit="%" /> der Anwender:innen unter Injektionen bei angemessener Dosierung eine Monotherapie erreichen (also keine zusätzliche Antiandrogen-Gabe benötigen)<CitationRef id="misakian-2025" num={1} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+Allerdings ist die Injektion nicht der einzige Weg: Orales Estradiol, sublingual, Pflaster und Gel haben jeweils eigene Stärken. Wenn VTE-Risikofaktoren vorliegen (z. B. Rauchen, Adipositas, familiäre Vorbelastung), empfehlen die Leitlinien in der Regel transdermale Applikationswege (Pflaster oder Gel), da das VTE-Risiko dort am niedrigsten liegt (RR ≈ 0,97 vs. oral 1,48). Einen vollständigen Vergleich findest du in der [Estradiol-Applikationsformen-Übersicht](/de/medications/estrogens/overview/).
+
+## Absolute Kontraindikationen
+
+<ContraindicationBox type="absolute" title="Absolute Kontraindikationen (injektionsspezifisch)" sectionNum="">
+
+- Aktive thromboembolische Erkrankung (tiefe Beinvenenthrombose, Lungenembolie)
+- Bekannte schwere Allergie gegen Estradiolvalerat oder den Ölträger (Rizinusöl / Benzylbenzoat)
+- Schwere Gerinnungsstörung
+
+Allgemeine absolute Kontraindikationen der HRT findest du unter [Bevor du beginnst — Absolute Kontraindikationen](/de/before-you-start/#12-absolute-kontraindikationen-absolute).
+
+</ContraindicationBox>
+
+## Relative Kontraindikationen
+
+<ContraindicationBox type="relative" title="Relative Kontraindikationen (injektionsspezifisch)" sectionNum="">
+
+- Frühere spontane Fehlgeburten, Krampfadern oder familiäre Thrombose-Belastung
+- Instabiler Zugang zum Medikament (die Injektion erfordert kontinuierliche Gabe; ein Abbruch wirkt sich auf den Plasmaspiegel in der Regel stärker aus als bei oraler Einnahme)
+- Ausgeprägte Nadelphobie ohne Unterstützungsperson in der Nähe
+
+</ContraindicationBox>
+
+---
+
+## Baseline-Laborwerte
+
+Lass dir in den 1-2 Wochen vor der ersten Injektion Baseline-Werte bestimmen. Die Liste entspricht den Empfehlungen unter [Bevor du beginnst](/de/before-you-start/); für die Injektion kommt zusätzlich die D-Dimere-Bestimmung hinzu.
+
+<BaselineChecklist
+  items={[
+    { name: 'Sexualhormone', nameEn: 'E2 / T / FSH / LH / PRL / P', tag: 'required' },
+    { name: 'Leberfunktion', nameEn: 'ALT / AST / ALP / GGT / Bilirubin', tag: 'required' },
+    { name: 'Nierenfunktion', nameEn: 'Kreatinin / eGFR', tag: 'required' },
+    { name: 'Gerinnungsstatus', nameEn: 'PT / aPTT / D-Dimere', tag: 'required' },
+    { name: 'Großes Blutbild', nameEn: 'Differenzialblutbild', tag: 'required' },
+    { name: 'Nüchternblutzucker', nameEn: 'Nüchternglukose', tag: 'recommended' },
+    { name: 'Lipidprofil', nameEn: 'Cholesterin, Triglyceride, HDL, LDL', tag: 'recommended' },
+  ]}
+  costRange="80 - 200 EUR (je nach Versicherungsstatus)"
+/>
+
+Die Laborwerte kannst du über deine Hausarztpraxis, eine endokrinologische Praxis oder direkt über ein Privatlabor bestimmen lassen. Wenn du gesetzlich versichert bist, übernimmt die Kasse die meisten dieser Werte im Rahmen einer ärztlichen Verordnung. Detaillierte Informationen zur Blutentnahme und Befundinterpretation findest du im [Blutuntersuchungs-Leitfaden](/de/blood-tests/).
+
+<WarningBox title="Auffällige Baseline-Werte">
+Wenn die ALT mehr als das Doppelte des oberen Normwerts beträgt, die D-Dimere deutlich erhöht sind oder eine Gerinnungsstörung vorliegt: Lass die Grunderkrankung zunächst ärztlich abklären und behandeln, bevor du mit der HRT beginnst.
+</WarningBox>
+
+---
+
+## Medikament, Kanülen und Zubehör
+
+### Medikament
+
+**Estradiolvalerat-Injektionslösung (EV)** — gängig ist die Konzentration 10 mg/mL in 1-mL-Glasampullen.
+
+Im DACH-Raum gibt es kein zugelassenes Estradiolvalerat zur Injektion. Die gängigen Bezugsquellen in der Community sind:
+
+- **Progynon Depot (Japan)**: Hergestellt von Fuji Pharma (Bayer-Lizenz), ölige Lösung, konstante Qualität. Bezug über internationale Apotheken oder Privatimport.
+- **Progynon Depot (Indien)**: Zydus (Bayer-Lizenz), gleiche Zusammensetzung wie die japanische Version, günstiger, optische Varianz zwischen Chargen.
+- **Pelangi (Indonesien)**: In der DIY-Community vereinzelt erhältlich, eingeschränkt nachvollziehbare Lieferkette.
+
+Einen vollständigen Markenvergleich findest du unter [Injizierbares Estradiol — Markenübersicht](/de/medications/estrogens/injection/).
+
+<WarningBox title="Vor dem Kauf unbedingt beachten">
+- In Deutschland, Österreich und der Schweiz ist kein Estradiolvalerat zur Injektion zugelassen; jeder Bezug erfolgt per Privatimport oder über Graumarkt-Kanäle
+- Akzeptiere ausschließlich original versiegelte Ampullen — keine Umfüllungen, keine unverpackte „lose Flüssigkeit"
+- Die Öllösung sollte klar und farblos bis leicht gelblich sein, ohne Partikel, Trübung oder Phasentrennung; bei Auffälligkeiten die Ampulle verwerfen
+- Unrealistisch niedrige Preise deuten auf Fälschungsrisiko hin
+- Besprich den Import vorab mit deiner Endokrinologin oder deinem Endokrinologen — manche Praxen unterstützen ein Off-Label-Privatrezept
+</WarningBox>
+
+### Kanülen und Spritzen
+
+Grundregel: Mit der dicken Kanüle aufziehen, mit der dünnen Kanüle injizieren. Nach dem Aufziehen ist die Kanülenspitze leicht abgestumpft — eine stumpfe Kanüle zum Injizieren zu verwenden, erhöht Schmerzen und Gewebeschaden deutlich.
+
+<DoseTable
+  caption="Spritzen- und Kanülenauswahl für SC- und IM-Injektion"
+  headers={['Applikationsweg', 'Spritze', 'Aufziehkanüle', 'Injektionskanüle']}
+  rows={[
+    ['Subkutan (SC)', '1 mL Luer-Lock', '18-20G (rosa/gelb)', '25-27G × 16 mm (orange/grau)'],
+    ['Intramuskulär (IM)', '1 mL Luer-Lock', '18-20G (rosa/gelb)', '21-23G × 30-40 mm (grün/blau)'],
+  ]}
+/>
+
+Spritzen und Kanülen sind in Deutschland rezeptfrei in jeder Apotheke erhältlich. Sage einfach, welche Größen du brauchst — Luer-Lock-Spritzen und Einmalkanülen in den gängigen Stärken sind Standardware. Alternativ kannst du sie auch bei Online-Apotheken oder über Sanitätshäuser bestellen.
+
+### Zubehör
+
+- Alkoholtupfer (einzeln verpackt, mindestens 10 Stück auf Vorrat)
+- Kanülenabwurfbehälter (Apotheke oder Sanitätshaus, Mindestgröße 500 mL)
+- Tupfer / Mullkompressen
+
+<WarningBox title="Kanüle nur einmal verwenden">
+Eine gebrauchte Kanüle ist an der Spitze abgestumpft. Wiederverwendung erhöht das Risiko für Schmerzen, Infektionen und Kanülenbruch. Gebrauchte Kanülen sofort in den Kanülenabwurfbehälter geben. Vermeide das Zurückstecken der Schutzkappe — das ist eine der häufigsten Ursachen für Nadelstichverletzungen.
+</WarningBox>
+
+---
+
+## Startdosis und Durchführung
+
+### Startdosis
+
+In den ersten 1-6 Monaten: Die empfohlene Startdosis beträgt <InlineValue value="1-2" unit="mg/Woche" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care v8" />. Beginne nicht direkt mit der Erhaltungsdosis (2-4 mg/Woche) — die niedrige Startdosis schützt die Brustentwicklung. Ein zu hoher Anfangsspiegel kann zum vorzeitigen Verschluss der Milchgangverzweigung führen, was in der Regel irreversibel ist. Details findest du im [Brustentwicklungs-Leitfaden](/de/breast-development/).
+
+<DoseTable
+  caption="Startdosis und Aufziehvolumen (bei 10 mg/mL)"
+  headers={['Wochendosis', 'Aufziehvolumen (10 mg/mL)', 'Intervall']}
+  rows={[
+    ['1 mg/Woche', '0,1 mL', 'alle 7 Tage'],
+    ['2 mg/Woche', '0,2 mL', 'alle 7 Tage'],
+  ]}
+/>
+
+### SC vs. IM — die Wahl
+
+Hinsichtlich der E2-Aufnahme und T-Suppression gibt es keine signifikanten Unterschiede zwischen subkutaner (SC) und intramuskulärer (IM) Injektion<CitationRef id="herndon-2023" num={4} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={7} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />. Du kannst nach Vorliebe entscheiden: SC bedeutet dünnere Kanüle, weniger Schmerzen und einfache Selbstverabreichung. IM erfordert eine längere Kanüle — bei glutealer Injektion brauchst du in der Regel eine zweite Person. Einen vollständigen Vergleich findest du unter [Injizierbares Estradiol — SC vs. IM](/de/medications/estrogens/injection/#sc-vs-im).
+
+### Schritt-für-Schritt-Anleitung
+
+Gehe die folgenden 8 Schritte in der richtigen Reihenfolge durch. Nimm dir bei jedem Schritt ein paar Sekunden, um den Status zu prüfen — Sorgfalt ist wichtiger als Geschwindigkeit.
+
+1. **Temperaturausgleich** — Nimm die Ampulle aus dem Kühlschrank und lasse sie 15-30 Minuten bei Raumtemperatur stehen. Lege Ampulle, Spritzen, Kanülen, Alkoholtupfer und Tupfer bereit.
+
+2. **Ampulle öffnen** — Wickle ein Stück Mull um den Ampullenhals und brich die Spitze mit dem Daumen nach außen ab. Der Mull schützt vor Schnittverletzungen durch Glassplitter.
+
+3. **Aufziehen** — Setze die Aufziehkanüle (18-20G) auf die Spritze, kippe die Ampulle leicht und ziehe die gewünschte Menge auf (z. B. 0,2 mL = 2 mg bei 10 mg/mL).
+
+4. **Kanüle wechseln** — Entferne die Aufziehkanüle und setze die Injektionskanüle auf (SC: 25G; IM: 23G). Die Aufziehkanüle ist nach dem Durchstechen leicht abgestumpft und sollte nicht zum Injizieren verwendet werden.
+
+5. **Entlüften** — Halte die Spritze senkrecht mit der Kanüle nach oben. Klopfe leicht gegen den Spritzenkörper, damit Luftblasen nach oben steigen. Drücke den Kolben vorsichtig, bis ein kleiner Tropfen an der Kanülenspitze erscheint.
+
+6. **Injektionsstelle desinfizieren** — Wische die Stelle mit einem Alkoholtupfer in einer Spiralbewegung von innen nach außen ab. Warte 15-30 Sekunden, bis der Alkohol vollständig getrocknet ist — Einstich in feuchten Alkohol brennt spürbar.
+
+7. **Einstich** — SC: Hautfalte zusammenkneifen, Kanüle im 45°-Winkel zügig einstechen. IM: Haut straff spannen, Kanüle im 90°-Winkel einstechen.
+
+8. **Injektion und Nachsorge** — Etwa 10 Sekunden lang gleichmäßig injizieren. Kanüle herausziehen. Trockenen Tupfer leicht auf die Einstichstelle drücken (ca. 1 Minute). Nicht reiben — Reiben kann das Medikament verteilen und die Aufnahme beeinträchtigen, außerdem begünstigt es Blutergüsse.
+
+### Häufige Fehler bei der ersten Injektion
+
+Die vollständige Injektionsanleitung findest du unter [Injizierbares Estradiol — Injektionsprotokoll](/de/medications/estrogens/injection/#injektionsprotokoll). Die folgenden 6 Fehler treten bei der ersten Injektion am häufigsten auf:
+
+1. **Einstich bei feuchtem Alkohol** — Alkohol, der noch nicht verdunstet ist, wird unter die Haut getragen und verursacht ein brennendes Stechen. Warte nach der Desinfektion 15-30 Sekunden, bis die Stelle trocken ist.
+2. **Aufziehkanüle zum Injizieren verwendet** — Die Aufziehkanüle ist nach dem Gebrauch abgestumpft; die Injektion damit ist deutlich schmerzhafter. Wechsle immer zur Injektionskanüle.
+3. **Falscher Einstichwinkel** — SC: 45° bei zusammengekniffener Hautfalte. IM: 90° bei straff gespannter Haut.
+4. **Keine Aspiration vor dem Injizieren** — Ziehe den Kolben leicht zurück, bevor du das Medikament injizierst. Tritt Blut in die Spritze, hast du ein Blutgefäß getroffen — ziehe die Kanüle heraus und stich an einer anderen Stelle neu ein.
+5. **Zu schnelles Injizieren** — Injiziere langsam und gleichmäßig. Für 0,1-0,2 mL brauchst du etwa 10 Sekunden.
+6. **Reiben nach dem Herausziehen** — Nur mit einem trockenen Tupfer leicht andrücken. Reiben verteilt das Medikament im Gewebe und fördert Blutergüsse.
+
+### Dosisrechner
+
+Der [Injektionsdosis-Rechner](/de/tools/injection-calculator/) berechnet anhand der Ampullenkonzentration und der gewünschten Dosis automatisch das aufzuziehende Volumen.
+
+---
+
+## Überwachung in der ersten Woche
+
+### Normale Reaktionen
+
+- **Injektionsstelle**: Leichtes Ziehen, Spannungsgefühl oder ein kleiner Bluterguss sind normal und klingen in 2-5 Tagen ab
+- **Stimmung**: Schwankungen sind möglich und gehören zur hormonellen Umstellung
+- **Brust**: Spannungsgefühl oder Empfindlichkeit treten in der Regel erst nach 2-6 Wochen auf — in der ersten Woche ist es normal, nichts zu spüren
+- **Energie / Libido**: Kann vorübergehend absinken, auch das ist eine normale Reaktion
+
+### Ärztliche Abklärung empfohlen
+
+Die folgenden Symptome sind nicht zwingend ein Notfall, sollten aber zeitnah ärztlich abgeklärt werden:
+
+- Anhaltende Rötung, Überwärmung oder wachsende Verhärtung an der Injektionsstelle (Verdacht auf lokale Infektion)
+- Schwere depressive Verstimmung oder Gedanken an Selbstverletzung — wende dich bitte an die **Telefonseelsorge: 0800 111 0 111** (kostenlos, 24/7) oder den **ärztlichen Bereitschaftsdienst: 116 117**
+- Jedes neue Symptom, das über mehrere Tage anhält und sich nicht erklären lässt
+
+### Sofort absetzen und Notaufnahme aufsuchen
+
+<DangerBox title="Bei einem der folgenden Anzeichen: Sofort absetzen und 112 rufen">
+
+- Einseitige Unterschenkelschwellung mit Druckschmerz — tiefe Beinvenenthrombose (TVT)
+- Brustschmerzen, Atemnot, Bluthusten — Lungenembolie
+- Plötzlicher schwerer Kopfschmerz mit Sehstörungen, Doppelbildern oder Gesichtsfeldausfällen — Sinusvenenthrombose, Schlaganfall, Meningeom
+- Einseitige Schwäche einer Extremität, hängender Mundwinkel, undeutliche Sprache — Schlaganfall
+- Gelbfärbung von Haut oder Augenweiß, dunkler Urin — akute Leberschädigung
+- Schwere allergische Reaktion (Atemnot, Hautausschlag, Kehlkopfschwellung)
+
+Vollständige Risiko- und Notfallübersicht unter [Risiken erkennen und im Notfall richtig handeln](/de/risks/).
+
+</DangerBox>
+
+---
+
+## Erste Kontrolluntersuchung und Dosisanpassung
+
+### Zeitpunkt der Kontrolle
+
+Lass 4-6 Wochen nach Beginn der Injektionen eine Talspiegel-Blutentnahme durchführen. „Talspiegel" bedeutet: Du gehst am Morgen des geplanten Injektionstags zur Blutentnahme — also unmittelbar vor der nächsten Injektion. Der Talspiegel spiegelt die niedrigste E2-Konzentration in deinem Injektionszyklus wider. Liegt der Talspiegel im Zielbereich, ist in der Regel auch der restliche Verlauf im sicheren Bereich.
+
+### Kontrollparameter
+
+Die Basisuntersuchung umfasst E2 und T. Für ein vollständigeres Bild kannst du zusätzlich Leberwerte (ALT, AST), Nierenfunktion (Kreatinin) und PRL bestimmen lassen. Details im [Blutuntersuchungs-Leitfaden](/de/blood-tests/).
+
+### Dosisanpassung anhand der Talspiegel
+
+<DoseTable
+  caption="Dosisanpassung nach Talspiegel-E2 und -T"
+  headers={['Talspiegel E2', 'Talspiegel T', 'Bedeutung', 'Maßnahme']}
+  rows={[
+    ['100-200 pg/mL', '< 50 ng/dL', 'Ziel erreicht', 'Aktuelle Dosis beibehalten'],
+    ['< 50 pg/mL', 'beliebig', 'Dosis zu niedrig', 'Intervall verkürzen (7 → 5 Tage) oder Dosis leicht erhöhen (max. 5 mg/Woche)'],
+    ['> 200 pg/mL', '< 50 ng/dL', 'Dosis zu hoch', 'Dosis reduzieren'],
+    ['100-200 pg/mL', '> 50 ng/dL', 'E2 ausreichend, T nicht supprimiert', 'Antiandrogen ergänzen (z. B. niedrig dosiertes CPA), nicht die E2-Dosis weiter steigern'],
+  ]}
+/>
+
+E2-Talspiegel über 200 pg/mL bringen in der Regel keinen zusätzlichen Feminisierungseffekt, erhöhen aber das Thromboserisiko<CitationRef id="hembree-2017" num={2} />. Detailliertere Dosierungsentscheidungen findest du im [HRT-Pfad — Phase 1-6 Monate](/de/pathway/#phase1).
+
+<WarningBox title="Obergrenze bei Monotherapie">
+Monotherapie funktioniert nur, wenn bei einer Dosis von maximal 5 mg/Woche der Talspiegel-T unter 50 ng/dL fällt. Falls 5 mg/Woche das T nicht ausreichend supprimiert, ist ein niedrig dosiertes Antiandrogen (z. B. Androcur 5-10 mg/Tag) in der Regel sicherer als eine weitere Dosissteigerung<CitationRef id="rothman-2024" num={5} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />. Einzeldosen über 5 mg/Woche können zu exzessiven E2-Spitzenwerten führen und das Thromboserisiko deutlich erhöhen.
+</WarningBox>
+
+---
+
+## Vorbereitung auf den Arzttermin
+
+- Therapieplan mitbringen (z. B. EV 1-2 mg/Woche SC als Startdosis, nach 6 Monaten Anpassung)
+- Baseline-Laborwerte ausdrucken
+- Kontrolltermine klären (4-6 Wochen, 3 Monate, 6 Monate)
+- Notfallplan besprechen (wann 112 rufen? — siehe Abschnitt „Sofort absetzen und Notaufnahme aufsuchen")
+- Leitlinien als Gesprächsgrundlage mitbringen (besonders wenn deine Ärztin/dein Arzt wenig Erfahrung mit trans HRT hat):
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [S3-Leitlinie „Geschlechtsinkongruenz, Geschlechtsdysphorie und Trans-Gesundheit" (AWMF)](https://register.awmf.org/de/leitlinien/detail/138-001)
+  - [Referenzbibliothek](/de/appendix-references/)
+
+:::note[Kassenrezept vs. Privatrezept]
+Die meisten GKV-verordnungsfähigen Estradiol-Präparate (Progynova, Gynokadin Gel, Estradot-Pflaster) werden bei entsprechender Indikation (F64.0 / ICD-11 HA60) auf Kassenrezept verordnet. Für den Import von Progynon Depot (in DACH nicht zugelassen) ist in der Regel ein Privatrezept erforderlich — eine Erstattung durch die GKV ist nicht zu erwarten. Kläre die Kostenübernahme vorab mit deiner Krankenkasse.
+:::
+
+<WarningBox title="Diese Seite ersetzt keine ärztliche Beratung">
+Dieser Leitfaden stellt Referenzinformationen auf Basis internationaler klinischer Leitlinien zusammen. Dein konkretes Therapieschema sollte eine qualifizierte Fachperson gemeinsam mit dir festlegen. Wenn du Schwierigkeiten hast, eine trans-freundliche Praxis zu finden, können die [Freundliche medizinische Anlaufstellen](/de/tools/hospital-finder/) weiterhelfen.
+</WarningBox>
+
+---
+
+## Häufige Fragen
+
+### Schmerzen bei der ersten Injektion
+
+Leichtes Stechen und kurzes Spannungsgefühl sind normal. Bei starken, über 30 Minuten anhaltenden Schmerzen prüfe: Hast du versehentlich die dicke Aufziehkanüle zum Injizieren verwendet? War die Lösung kalt (nicht auf Raumtemperatur gebracht)? Hast du zu schnell injiziert (empfohlen: ca. 10 Sekunden für 0,1-0,2 mL)?
+
+### Blutung beim Injizieren
+
+Blut beim Aspirieren: Kanüle herausziehen, neue Kanüle und neue Stelle wählen, nicht gewaltsam weiter injizieren. Ein kleiner Bluttropfen nach dem Herausziehen der Kanüle ist normal — mit einem Tupfer leicht andrücken, bis die Blutung steht.
+
+### Verpasste Injektion
+
+Bis 2 Tage Verspätung: Nachholen und den regulären Rhythmus beibehalten. 3-4 Tage Verspätung: Nachholen und den Zyklus ab dem neuen Datum neu starten. Ab 5 Tagen: Die verpasste Dosis überspringen, die nächste reguläre Dosis wie geplant geben — keinesfalls die doppelte Menge spritzen.
+
+### Keine spürbaren Veränderungen im ersten Monat
+
+Das ist normal. Stimmung, Libido und Energielevel können sich innerhalb von 1-2 Wochen verändern. Sichtbare körperliche Veränderungen — Hautveränderungen, Fettumverteilung, Brustentwicklung — brauchen in der Regel 2-6 Monate, um einzusetzen. Sehr schnelle Veränderungen sind eher ein Zeichen für eine zu hohe Dosis als für besonders gute Wirkung.
+
+### Selbstinjektion — ist das machbar?
+
+Die SC-Injektion kann problemlos allein durchgeführt werden. Auch die IM-Injektion am äußeren Oberschenkel ist allein gut machbar. Nur bei der glutealen IM-Injektion brauchst du in der Regel Hilfe oder einen Spiegel. Für die allererste Injektion empfiehlt es sich, eine Vertrauensperson dabeizuhaben — zur Unterstützung und für den (seltenen) Fall einer vasovagalen Reaktion (Kreislaufreaktion).
+
+---
+
+## Weiterführende Ressourcen
+
+- **Injektionstechnik und Pharmakologie**: [Injizierbares Estradiol (EV / EC / EEn)](/de/medications/estrogens/injection/)
+- **Applikationswege im Vergleich**: [Estradiol-Applikationsformen-Übersicht](/de/medications/estrogens/overview/)
+- **Blutuntersuchungen**: [Blutuntersuchungs-Leitfaden](/de/blood-tests/)
+- **Risikoerkennung**: [Risiken erkennen und im Notfall richtig handeln](/de/risks/)
+- **Dosisrechner**: [Injektionsdosis-Rechner](/de/tools/injection-calculator/)
+- **Vorbereitung**: [Bevor du beginnst: Bist du bereit?](/de/before-you-start/)
+- **Langzeitplanung**: [HRT-Pfad](/de/pathway/)
+- **Praxisfinder**: [Freundliche medizinische Anlaufstellen](/de/tools/hospital-finder/)
+
+<RelatedBlogPosts />
+
+---
+
+**Quellenverzeichnis**
+
+1. <span id="ref-misakian-2025">Misakian AL et al. Injectable Estradiol Monotherapy in Transgender Individuals. *Endocrine Practice* 2025.</span>
+2. <span id="ref-hembree-2017">Hembree WC et al. Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. *J Clin Endocrinol Metab* 2017;102(11):3869-3903. DOI:10.1210/jc.2017-01658</span>
+3. <span id="ref-coleman-2022">Coleman E et al. Standards of Care for the Health of Transgender and Gender Diverse People, Version 8. *Int J Transgend Health* 2022;23(S1):S1-S259. DOI:10.1080/26895269.2022.2100644</span>
+4. <span id="ref-herndon-2023">Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. *Endocr Pract* 2023;29(5):356-361.</span>
+5. <span id="ref-rothman-2024">Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. *Transgender Health* 2024;9(6):463-465.</span>
+6. <span id="ref-awmf-s3-2019">AWMF (Deutsche Gesellschaft für Sexualmedizin, Sexualtherapie und Sexualwissenschaft et al.). S3-Leitlinie Geschlechtsinkongruenz, Geschlechtsdysphorie und Trans-Gesundheit: Diagnostik, Beratung, Behandlung. AWMF-Register-Nr. 138/001, 2019. DOI:10.1007/s00103-019-03026-1</span>
+7. <span id="ref-poage-2026">Poage AC et al. Subcutaneous vs Intramuscular Estradiol Valerate Injection. PMC12922051, 2026.</span>

@@ -37,5 +37,83 @@
     "lastVerified": "2026-04-08",
     "sourceTitle": "国家卫生健康委员会：院前医疗急救管理办法",
     "sourceUrl": "https://www.nhc.gov.cn/wjw/c100221/202201/26ea3c97e82d466f9aa2b4a9901ae187/files/%E9%99%A2%E5%89%8D%E5%8C%BB%E7%96%97%E6%80%A5%E6%95%91%E7%AE%A1%E7%90%86%E5%8A%9E%E6%B3%95.pdf"
+  },
+  {
+    "id": "telefonseelsorge-de-111",
+    "label": "Crisis Counseling DE",
+    "name": "Telefonseelsorge (Leitung 1)",
+    "number": "0800 111 0 111",
+    "href": "tel:08001110111",
+    "scope": "Deutschland",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Telefonseelsorge: Kostenlose Beratung rund um die Uhr",
+    "sourceUrl": "https://www.telefonseelsorge.de/"
+  },
+  {
+    "id": "telefonseelsorge-de-222",
+    "label": "Crisis Counseling DE (alt)",
+    "name": "Telefonseelsorge (Leitung 2)",
+    "number": "0800 111 0 222",
+    "href": "tel:08001110222",
+    "scope": "Deutschland",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Telefonseelsorge: Kostenlose Beratung rund um die Uhr",
+    "sourceUrl": "https://www.telefonseelsorge.de/"
+  },
+  {
+    "id": "nummer-gegen-kummer-youth",
+    "label": "Youth Crisis Line DE",
+    "name": "Nummer gegen Kummer (Kinder- und Jugendtelefon)",
+    "number": "116 111",
+    "href": "tel:116111",
+    "scope": "Deutschland",
+    "hours": "Mo-Sa 14:00-20:00",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Nummer gegen Kummer: Kinder- und Jugendtelefon",
+    "sourceUrl": "https://www.nummergegenkummer.de/"
+  },
+  {
+    "id": "telefonseelsorge-at-142",
+    "label": "Crisis Counseling AT",
+    "name": "Telefonseelsorge Österreich",
+    "number": "142",
+    "href": "tel:142",
+    "scope": "Österreich",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Telefonseelsorge Österreich: Notruf 142",
+    "sourceUrl": "https://www.telefonseelsorge.at/"
+  },
+  {
+    "id": "dargebotene-hand-ch-143",
+    "label": "Crisis Counseling CH",
+    "name": "Die Dargebotene Hand (Tel 143)",
+    "number": "143",
+    "href": "tel:143",
+    "scope": "Schweiz",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Die Dargebotene Hand: Tel 143 – Beratung und Seelsorge",
+    "sourceUrl": "https://www.143.ch/"
+  },
+  {
+    "id": "european-emergency-112",
+    "label": "European Emergency",
+    "name": "Europaweiter Notruf",
+    "number": "112",
+    "href": "tel:112",
+    "scope": "EU-weit",
+    "hours": "24h",
+    "verificationLevel": "official",
+    "lastVerified": "2026-07-14",
+    "sourceTitle": "Europäische Kommission: Die einheitliche europäische Notrufnummer 112",
+    "sourceUrl": "https://ec.europa.eu/info/112_de"
   }
 ]

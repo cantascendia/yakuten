@@ -1,0 +1,206 @@
+{
+  "estradiol-oral": [
+    {
+      "name": "Progynova",
+      "manufacturer": "Bayer",
+      "countryName": "Deutschland",
+      "spec": "1mg/2mg × 21 Tabletten",
+      "appearance": "Weiße/blaue Dragees",
+      "notes": "Originalpräparat, in Deutschland und international weit verbreitet",
+      "activeIngredient": "Östradiolvalerat"
+    },
+    {
+      "name": "Estrifam",
+      "manufacturer": "Novo Nordisk",
+      "countryName": "Dänemark",
+      "spec": "1mg/2mg × 28 Filmtabletten",
+      "appearance": "Blaue Filmtablette",
+      "notes": "Mikronisiertes Östradiol, für sublinguale Anwendung geeignet",
+      "activeIngredient": "Mikronisiertes Östradiol"
+    }
+  ],
+  "estradiol-gel": [
+    {
+      "name": "Gynokadin",
+      "manufacturer": "Dr. Kade/Besins",
+      "countryName": "Deutschland",
+      "spec": "0,06% Gel, 80g Dosierspender",
+      "appearance": "Transparentes Gel im Dosierspender",
+      "notes": "In Deutschland meistverordnetes E2-Gel. 1 Hub = 0,75mg Östradiol",
+      "activeIngredient": "Östradiol-Hemihydrat"
+    },
+    {
+      "name": "Estreva",
+      "manufacturer": "Theramex/Besins",
+      "countryName": "Frankreich",
+      "spec": "0,1% Gel, 50g Tube",
+      "appearance": "Transparentes Gel",
+      "notes": "Höhere Konzentration als Gynokadin; in D verfügbar",
+      "activeIngredient": "Östradiol-Hemihydrat"
+    },
+    {
+      "name": "Sandrena",
+      "manufacturer": "Orion Pharma",
+      "countryName": "Finnland",
+      "spec": "0,5mg/1mg Einzelbeutel",
+      "appearance": "Gel in Einzeldosis-Beuteln",
+      "notes": "Einzeldosis-Beutel, praktisch für unterwegs",
+      "activeIngredient": "Östradiol"
+    }
+  ],
+  "estradiol-patch": [
+    {
+      "name": "Estramon",
+      "manufacturer": "Hexal/Sandoz",
+      "countryName": "Deutschland",
+      "spec": "25/50/75/100 µg/24h",
+      "appearance": "Transparentes Matrixpflaster",
+      "notes": "Generikum, kostengünstiger als Climara",
+      "activeIngredient": "Östradiol-Hemihydrat"
+    },
+    {
+      "name": "Climara",
+      "manufacturer": "Bayer",
+      "countryName": "Deutschland",
+      "spec": "25/50/100 µg/24h",
+      "appearance": "Transparentes Pflaster",
+      "notes": "Originalpräparat, einmal wöchentlich wechseln",
+      "activeIngredient": "Östradiol"
+    },
+    {
+      "name": "Estradot",
+      "manufacturer": "Novartis",
+      "countryName": "Schweiz",
+      "spec": "25/37,5/50/75/100 µg/24h",
+      "appearance": "Kleines rundes Matrixpflaster",
+      "notes": "Zweimal wöchentlich wechseln",
+      "activeIngredient": "Östradiol-Hemihydrat"
+    }
+  ],
+  "estradiol-injection": [
+    {
+      "name": "Progynon Depot",
+      "manufacturer": "Bayer",
+      "countryName": "Deutschland",
+      "spec": "10mg/ml, 1ml Ampulle",
+      "appearance": "Ölige Injektionslösung in Glasampulle",
+      "notes": "Originalpräparat für IM-Injektion; in Deutschland schwer verfügbar, häufig über internationale Apotheken bezogen",
+      "activeIngredient": "Östradiolvalerat"
+    }
+  ],
+  "cpa": [
+    {
+      "name": "Androcur",
+      "manufacturer": "Bayer",
+      "countryName": "Deutschland",
+      "spec": "10mg/50mg × 50 Tabletten",
+      "appearance": "Weiße runde Tabletten",
+      "notes": "Originalpräparat. EMA empfiehlt ≤10mg/Tag für GAHT. 10mg-Tablette ideal für Niedrigdosis-Protokoll",
+      "activeIngredient": "Cyproteronacetat"
+    }
+  ],
+  "gnrh-agonists": [
+    {
+      "name": "Enantone",
+      "manufacturer": "Takeda",
+      "countryName": "Japan/Deutschland",
+      "spec": "3,75mg/11,25mg Depot",
+      "appearance": "Pulver zur Herstellung einer Injektionssuspension",
+      "notes": "Monatliche oder 3-monatige Depotinjektion",
+      "activeIngredient": "Leuprorelinacetat"
+    },
+    {
+      "name": "Trenantone",
+      "manufacturer": "Takeda",
+      "countryName": "Deutschland",
+      "spec": "11,25mg Depot",
+      "appearance": "Depot-Injektionssuspension",
+      "notes": "3-Monats-Depot; in Deutschland für GAHT off-label verschrieben",
+      "activeIngredient": "Leuprorelinacetat"
+    }
+  ],
+  "progesterone": [
+    {
+      "name": "Utrogest",
+      "manufacturer": "Dr. Kade/Besins",
+      "countryName": "Deutschland",
+      "spec": "100mg/200mg Weichkapseln",
+      "appearance": "Gelbe, ovale Weichgelatinekapsel",
+      "notes": "In Deutschland Standardpräparat für mikronisiertes Progesteron. Kann oral oder vaginal/rektal angewendet werden",
+      "activeIngredient": "Mikronisiertes Progesteron"
+    },
+    {
+      "name": "Progestan",
+      "manufacturer": "Dr. Kade",
+      "countryName": "Deutschland",
+      "spec": "100mg/200mg Weichkapseln",
+      "appearance": "Gelbe Weichkapsel",
+      "notes": "Generikum von Utrogest",
+      "activeIngredient": "Mikronisiertes Progesteron"
+    }
+  ],
+  "dydrogesterone": [
+    {
+      "name": "Duphaston",
+      "manufacturer": "Viatris (ehem. Mylan/Abbott)",
+      "countryName": "Niederlande",
+      "spec": "10mg × 28 Filmtabletten",
+      "appearance": "Weiße, runde Filmtablette",
+      "notes": "In DACH erhältlich; selten in GAHT verwendet",
+      "activeIngredient": "Dydrogesteron"
+    }
+  ],
+  "spironolactone": [
+    {
+      "name": "Aldactone",
+      "manufacturer": "Pfizer",
+      "countryName": "USA/Deutschland",
+      "spec": "25mg/50mg/100mg Tabletten",
+      "appearance": "Weiße bis cremefarbene Tabletten",
+      "notes": "In Europa seltener für GAHT eingesetzt als in den USA; Endokrinolog:innen bevorzugen CPA",
+      "activeIngredient": "Spironolacton"
+    }
+  ],
+  "bicalutamide": [
+    {
+      "name": "Casodex",
+      "manufacturer": "AstraZeneca",
+      "countryName": "Großbritannien",
+      "spec": "50mg/150mg Filmtabletten",
+      "appearance": "Weiße Filmtablette",
+      "notes": "Originalpräparat; off-label in GAHT; Bicalutamid-Generika auch in D verfügbar",
+      "activeIngredient": "Bicalutamid"
+    }
+  ],
+  "finasteride": [
+    {
+      "name": "Proscar",
+      "manufacturer": "MSD",
+      "countryName": "USA/Deutschland",
+      "spec": "5mg × 28 Filmtabletten",
+      "appearance": "Blaue, apfelförmige Filmtablette",
+      "notes": "5mg für BPH zugelassen; in GAHT off-label",
+      "activeIngredient": "Finasterid"
+    },
+    {
+      "name": "Propecia",
+      "manufacturer": "MSD",
+      "countryName": "USA/Deutschland",
+      "spec": "1mg × 28 Filmtabletten",
+      "appearance": "Achteckige Filmtablette",
+      "notes": "1mg für androgenetische Alopezie; kostengünstiger: Finasterid-Generika",
+      "activeIngredient": "Finasterid"
+    }
+  ],
+  "dutasteride": [
+    {
+      "name": "Avodart",
+      "manufacturer": "GSK",
+      "countryName": "Großbritannien",
+      "spec": "0,5mg × 30 Weichkapseln",
+      "appearance": "Gelbe, längliche Weichkapsel",
+      "notes": "In Deutschland verfügbar; off-label in GAHT",
+      "activeIngredient": "Dutasterid"
+    }
+  ]
+}
