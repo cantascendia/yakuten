@@ -46,6 +46,11 @@ stitch-prompts.md
 docs/data/gsc-*.csv
 # AI SEO report — derived from GSC, may contain real search queries
 docs/data/ai-seo-report-*.md
+# keyword-gap 快照含 GSC 真实查询词 + Trends 数据 — 公开仓库不存 SEO 数据（改用 Claude Code 手动 SEO）
+docs/seo-keyword-gap.md
+docs/data/trends-latest.json
+docs/data/trends-20*.json
+# 保留 docs/data/trends-keywords.json（手动种子配置，非性能数据）
 
 # gpt-image-2 raw downloads (large PNG/JPG source, compressed webp committed separately)
 scripts/gpt-image-2-raw/
