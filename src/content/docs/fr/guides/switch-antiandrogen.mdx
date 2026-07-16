@@ -1,0 +1,203 @@
+---
+title: "Guide : Changement d'antiandrogene"
+description: "Guide pas a pas pour changer d'antiandrogene en toute securite entre Androcur (CPA), spironolactone, bicalutamide et agonistes GnRH -- avec indications cliniques, periodes de sevrage et specificites francophones."
+evidenceLevel: B
+sidebar:
+  order: 2
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, ucsf-2016, neyman-2019, fuqua-2024, kuhl-2005, ema-2020]
+faqs:
+  - q: "Comment passer de l'Androcur a un agoniste GnRH ?"
+    a: "Arreter l'Androcur (CPA) immediatement et faire la premiere injection GnRH le meme jour. Durant les quatre premieres semaines, une faible dose d'accompagnement de CPA (5-6,25 mg) peut attenuer la reaction flare. Controler la testosterone, l'estradiol et les marqueurs osseux apres 2-3 mois."
+  - q: "Les agonistes GnRH sont-ils rembourses par la Securite sociale en France ?"
+    a: "Les agonistes GnRH comme le Decapeptyl (triptoreline) sont remboursables en France dans le cadre de l'ALD (Affection de Longue Duree). La prescription doit etre faite par un·e endocrinologue ou un·e specialiste. En Belgique, l'INAMI/RIZIV couvre egalement avec une prescription specialisee. En Suisse, la LAMal peut couvrir avec indication medicale."
+  - q: "Pourquoi la spironolactone est-elle rarement prescrite en France ?"
+    a: "La spironolactone est principalement autorisee en France comme medicament cardiologique (Aldactone), pas comme antiandrogene. L'Androcur (CPA) est explicitement autorise pour la suppression androgenique et nettement plus efficace. Dans la pratique francaise du THAG, la spironolactone ne joue qu'un role marginal -- par exemple lorsque le CPA et les agonistes GnRH sont contre-indiques."
+  - q: "Combien de temps dure la phase de sevrage de l'Androcur ?"
+    a: "La demi-vie du CPA est d'environ 40 heures. A faibles doses (12,5 mg/jour ou moins), aucune phase de sevrage formelle n'est necessaire. En cas de prise prolongee de doses elevees, un sevrage progressif sur 1-2 semaines est recommande pour eviter les fluctuations hormonales."
+  - q: "Puis-je prendre du CPA et du bicalutamide en meme temps ?"
+    a: "Non, en aucun cas. Les deux principes actifs sollicitent le foie, et la combinaison peut augmenter massivement le risque d'insuffisance hepatique medicamenteuse. Un minimum de 2 semaines de sevrage doit separer l'arret du bicalutamide et le debut du CPA."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Changer d'antiandrogene n'est pas un simple echange de comprimes. Le rythme d'arret, la periode de sevrage et les rendez-vous de controle apres le changement determinent directement la stabilite de la suppression de ta testosterone (T) et la securite de la transition<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+---
+
+## Quand un changement s'impose
+
+### Androcur (CPA) -- le traitement de premiere ligne en France
+
+- **Bilan hepatique anormal** : ALT ou AST a deux a trois fois la limite superieure de la norme
+- **Prolactine nettement elevee** : PRL > 100 mUI/L ou > 35 ng/mL
+- **Humeur depressive ou perte de libido** : humeur depressive persistante ou perte complete de libido (typique a doses elevees de CPA)
+- **Prise prolongee > 5 ans** a dose cumulative elevee -- l'EMA a restreint la dose de CPA a 10 mg/jour ou moins en 2020, car des doses de 25 mg ou plus augmentent significativement le risque de meningiome<CitationRef id="ema-2020" num={3} authors="EMA" year={2020} title="Cyproterone: Restrictions due to Meningioma Risk" />
+- Rupture d'approvisionnement ou contrainte de cout
+
+### Spironolactone -- rare en France, mais possible
+
+- **Hyperkaliemie** : K+ > 5,5 mmol/L
+- **Hypotension** : pression arterielle systolique < 90 mmHg avec vertiges
+- **Suppression insuffisante du T** : apres 6 mois ou plus a 150-200 mg/jour, T reste stable > 100 ng/dL
+- Creatinine qui augmente ou DFGe qui diminue
+
+### Bicalutamide
+
+- **Transaminases elevees** : ALT > 2x la norme -- la FDA a emis un avertissement de toxicite hepatique<CitationRef id="neyman-2019" num={4} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide in Transfeminine Youth" />
+- **Difficultes respiratoires** : dyspnee inexpliquee, toux irritative chronique<CitationRef id="fuqua-2024" num={5} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Bicalutamide Pulmonary Adverse Events" />
+
+### Agonistes GnRH (Decapeptyl, Enantone, Zoladex)
+
+- **Cout** : sans remboursement, le reste a charge par injection depot est de 200-600 EUR
+- **Perte de densite osseuse** : apres plus de 2 ans de traitement continu sans substitution estradiol suffisante
+- Reactions intolerabiles au site d'injection
+
+---
+
+## De l'Androcur (CPA) vers un autre antiandrogene
+
+Le CPA a une demi-vie biologique d'environ 40 heures. A faibles doses (12,5 mg/jour ou moins), aucune phase de sevrage formelle n'est generalement necessaire.
+
+<DoseTable
+  caption="De l'Androcur (CPA) : schemas de transition"
+  headers={['Medicament cible', 'Arret du CPA', 'Dose de depart', 'Premier controle']}
+  rows={[
+    ['-> Agoniste GnRH (Decapeptyl etc.)', 'Arret immediat, premiere injection depot le meme jour', 'Selon la monographie (p. ex. triptoreline 3,75 mg mensuel)', '2-3 mois : T, E2, marqueurs osseux'],
+    ['-> Spironolactone', 'Arret immediat', '50 mg/jour en 2 prises, apres 2 semaines augmenter a 100 mg/jour', '2-4 semaines : T, K+, creatinine'],
+    ['-> Monotherapie E2 (injection)', 'Arret immediat, augmenter E2 a 3-5 mg/semaine', 'Selon le schema E2 existant', '4-6 semaines : T au creux'],
+  ]}
+/>
+
+<WarningBox title="Reaction flare dans les premieres semaines sous GnRH">
+Apres la premiere dose d'agoniste GnRH (p. ex. Decapeptyl), la testosterone augmente temporairement pendant 1-2 semaines -- l'effet flare. Pour attenuer cette augmentation, une faible dose d'accompagnement de CPA (5-6,25 mg) peut etre maintenue le premier mois en accord avec ton medecin, puis arretee completement.
+</WarningBox>
+
+---
+
+## De la spironolactone vers un autre antiandrogene
+
+<DoseTable
+  caption="De la spironolactone : schemas de transition"
+  headers={['Medicament cible', 'Arret de la spiro', 'Dose de depart', 'Premier controle']}
+  rows={[
+    ['-> Androcur (CPA)', 'Arreter la spiro 3-5 jours avant, puis commencer le CPA', '6,25 mg/jour, augmenter a max. 12,5 mg/jour si necessaire', '4-6 semaines : T, ALT, prolactine'],
+    ['-> Agoniste GnRH', 'Arreter la spiro 1-2 jours avant, puis premiere injection depot', 'Selon la monographie', '2-3 mois : T, E2, marqueurs osseux'],
+    ['-> Monotherapie E2 (injection)', 'Arret immediat, augmenter E2 a 4-5 mg/semaine', 'Selon le schema E2 existant', '4-6 semaines : T au creux'],
+  ]}
+/>
+
+<DangerBox title="Dose de depart du CPA : maximum 12,5 mg/jour">
+D'anciens schemas posologiques et certains praticiens prescrivent encore le CPA a 25 mg voire 50 mg/jour. Mais l'EMA a clarifie en 2020 : des doses de 25 mg/jour ou plus augmentent significativement le risque de meningiome<CitationRef id="ema-2020" num={3} />. Dans le THAG, 5-12,5 mg/jour suffisent pour supprimer le T dans la fourchette feminine. Commence toujours a 6,25 mg et n'augmente qu'en cas de suppression insuffisante du T, jusqu'a 12,5 mg maximum.
+</DangerBox>
+
+---
+
+## D'un agoniste GnRH vers un autre antiandrogene
+
+Les preparations depot comme le Decapeptyl ou le Zoladex liberent leur principe actif lentement sur des semaines. Apres la derniere injection, la suppression du T persiste encore longtemps :
+
+- **Preparation mensuelle** : effet residuel environ 4-6 semaines
+- **Preparation trimestrielle** : effet residuel environ 3-4 mois
+
+<DoseTable
+  caption="D'un agoniste GnRH : schemas de transition"
+  headers={['Medicament cible', 'Arret du GnRH', 'Dose de depart', 'Premier controle']}
+  rows={[
+    ['-> Androcur (CPA)', 'Ne pas renouveler ; 4-8 semaines apres la derniere injection, commencer le CPA', '6,25 mg/jour', '6-8 semaines : T, ALT, prolactine'],
+    ['-> Spironolactone', 'Ne pas renouveler ; 4-8 semaines apres la derniere injection, commencer la spiro', '50 -> 100 mg/jour', '6-8 semaines : T, K+'],
+    ['-> Monotherapie E2 (injection)', 'Ne pas renouveler ; augmenter E2 a 4-5 mg/semaine', 'Selon le schema E2 existant', '6-8 semaines : T au creux'],
+  ]}
+/>
+
+---
+
+## Du bicalutamide vers un autre antiandrogene
+
+Le bicalutamide a une longue demi-vie d'environ 6 jours. Apres l'arret, il faut 2-3 semaines pour que le principe actif soit entierement elimine.
+
+<DoseTable
+  caption="Du bicalutamide : schemas de transition"
+  headers={['Medicament cible', 'Arret du bicalutamide', 'Dose de depart', 'Premier controle']}
+  rows={[
+    ['-> Androcur (CPA)', 'Arreter le bicalutamide 2 semaines avant (eviter le chevauchement de toxicite hepatique)', '6,25 mg/jour', '4-6 semaines : T, ALT, prolactine'],
+    ['-> Spironolactone', 'Arreter le bicalutamide 3-5 jours avant', '50 -> 100 mg/jour', '2-4 semaines : T, K+'],
+    ['-> Agoniste GnRH', 'Arreter le bicalutamide 1 semaine avant', 'Selon la monographie', '2-3 mois : T, marqueurs osseux'],
+  ]}
+/>
+
+<DangerBox title="CPA et bicalutamide : contre-indication absolue pour la combinaison">
+Les deux principes actifs sont metabolises par le foie et peuvent tous deux etre hepatotoxiques. La prise simultanee potentialise le risque d'insuffisance hepatique medicamenteuse. Un minimum de 2 semaines de sevrage doit separer l'arret du bicalutamide et le debut du CPA. Lors du premier controle, les transaminases (ALT/AST) sont un parametre obligatoire<CitationRef id="hembree-2017" num={2} />.
+</DangerBox>
+
+---
+
+## Effets secondaires typiques pendant le changement
+
+### Reactions transitoires normales
+
+- **Fluctuations d'humeur passageres** : dans les 1-2 semaines apres le changement, les fluctuations hormonales peuvent entrainer une sensibilite accrue
+- **Rebond de libido transitoire** : surtout apres l'arret du CPA
+- **Variations de la peau et de la pilosite** : fluctuations transitoires de la testosterone libre
+
+### Arret immediat et urgences
+
+<DangerBox title="En cas de l'un de ces signes : appeler immediatement le 15 ou le 112">
+- **Thrombose veineuse profonde** : gonflement soudain et unilateral d'une jambe, chaleur, douleur
+- **Embolie pulmonaire** : douleur thoracique soudaine, essoufflement aigu ou hemoptysie
+- **Symptomes neurologiques severes** : cephalee extreme soudaine, troubles visuels ou convulsions
+- **Atteinte hepatique aigue** : jaunissement de la peau ou du blanc des yeux, urines foncees
+- **Reaction allergique severe** : eruption cutanee generalisee, oedeme facial, essoufflement
+
+Numero d'urgence en France : **15 (SAMU)** ou **112**. En Belgique et en Suisse : **112**.
+</DangerBox>
+
+---
+
+## Preparation au rendez-vous medical
+
+- **Reunir les donnees cliniques** justifiant le changement : p. ex. "ALT 85 U/L pour une limite superieure de 40 U/L" ou "prolactine > 35 ng/mL sous CPA"
+- **Formuler l'objectif** : p. ex. "Passage du CPA 12,5 mg/jour au Decapeptyl 3,75 mg mensuel -- est-ce remboursable dans mon cas ?"
+- **Connaitre le calendrier d'arret et de depart** (schemas de transition ci-dessus)
+- **Convenir des rendez-vous de controle** : 4 semaines, 8 semaines et 12 semaines apres le changement
+- **Apporter les recommandations en soutien** :
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [Base de references](/fr/appendix-references/)
+
+<WarningBox title="Cette page ne remplace pas un avis medical">
+Le moment du changement d'antiandrogene, le dosage precis et le suivi necessaire dependent de tes antecedents medicaux individuels, de tes bilans de base et de tes traitements concomitants. Ces decisions appartiennent a un·e endocrinologue experimente·e. Si tu as des difficultes a trouver un cabinet avec experience en THAG, consulte nos [structures d'accueil bienveillantes](/fr/tools/hospital-finder/).
+</WarningBox>
+
+---
+
+## Pages complementaires
+
+<GuideCTA
+  eyebrow="Outil de comparaison"
+  title="Comparer directement les 4 antiandrogenes"
+  description="CPA, spironolactone, bicalutamide et agonistes GnRH en comparaison directe -- mecanisme d'action, efficacite, risques, contre-indications."
+  ctaText="Vers le comparateur"
+  ctaHref="/fr/tools/drug-comparator/"
+  variant="accent"
+/>
+
+- [Antiandrogenes en vue d'ensemble](/fr/medications/antiandrogens/overview/)
+- [CPA (Androcur)](/fr/medications/antiandrogens/cpa/)
+- [Spironolactone](/fr/medications/antiandrogens/spironolactone/)
+- [Bicalutamide](/fr/medications/antiandrogens/bicalutamide/)
+- [Agonistes GnRH](/fr/medications/antiandrogens/gnrh-agonists/)
+- [Guide des bilans sanguins](/fr/blood-tests/)
+- [Risques et urgences](/fr/risks/)
+- [Structures d'accueil bienveillantes](/fr/tools/hospital-finder/)
+
+<RelatedBlogPosts />

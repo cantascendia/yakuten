@@ -1,0 +1,172 @@
+---
+title: "Antagonistes de la GnRH"
+description: "Antagonistes de la GnRH (relugolix / degarelix) dans le THS trans : mecanisme d'action sans flare, donnees cliniques issues des etudes sur le cancer de la prostate, distinction avec les agonistes GnRH et disponibilite en France."
+evidenceLevel: B
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, ucsf-2016, shore-2020, kasparian-2023, klotz-2008]
+drug:
+  nonProprietaryName: 'GnRH Antagonist'
+  activeIngredient: 'Relugolix / Degarelix'
+  mechanismOfAction: 'Blocage competitif du recepteur de la GnRH au niveau de l hypophyse ; chute directe de LH/FSH sans flare initial de testosterone'
+  atc: 'L02BX'
+sidebar:
+  order: 7
+faqs:
+  - q: "Quelle est la difference entre agonistes et antagonistes de la GnRH ?"
+    a: "Les agonistes GnRH (p. ex. triptoreline/Decapeptyl) surstimulent le recepteur GnRH jusqu'a desensibilisation de l'hypophyse -- cela prend 2-4 semaines et provoque initialement un flare de testosterone. Les antagonistes GnRH (relugolix, degarelix) bloquent le recepteur directement et de maniere competitive : la testosterone chute en quelques jours, sans flare."
+  - q: "Les antagonistes de la GnRH sont-ils autorises pour le THS trans ?"
+    a: "Non. Tant le relugolix (Orgovyx) que le degarelix (Firmagon) ne sont autorises dans l'UE que pour le cancer de la prostate avance. Toute utilisation dans le THAG est hors AMM. Ni WPATH SOC 8 ni l'Endocrine Society 2017 ne les recommandent formellement comme antiandrogene dans le THAG."
+  - q: "Puis-je obtenir le relugolix (Orgovyx) sur ordonnance en France ?"
+    a: "Le relugolix est autorise dans l'UE sous le nom d'Orgovyx et est prescriptible, mais uniquement pour l'indication cancer de la prostate. Une prescription hors AMM pour le THAG est a la discretion du medecin, mais le remboursement par la Securite sociale n'est en regle generale pas possible. Les couts mensuels en autofinancement sont consequents."
+  - q: "Dois-je quand meme prendre de l'estradiol avec les antagonistes GnRH ?"
+    a: "Oui, obligatoirement. Les antagonistes GnRH suppriment toute la production d'hormones sexuelles -- testosterone et estradiol endogene. Sans substitution d'estradiol exogene, un risque severe de perte de densite osseuse, de bouffees de chaleur et d'humeur depressive existe."
+  - q: "Pourquoi cette page ne donne-t-elle pas de dosages concrets ?"
+    a: "Il n'existe pas d'etudes prospectives ayant determine la dose optimale de relugolix ou degarelix specifiquement pour les femmes trans. Les donnees disponibles proviennent d'etudes sur le cancer de la prostate chez des hommes cisgenres plus ages. Toute utilisation hors AMM doit se faire exclusivement sous suivi medical avec dosage individuel."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox
+  name="Antagonistes de la GnRH (Relugolix, Degarelix)"
+  nameCN="Antagonistes de la GnRH (Orgovyx, Firmagon)"
+  category="antiandrogen"
+  route="Oral (Relugolix) / Injection sous-cutanee (Degarelix)"
+  evidenceLevel="B"
+>
+  Les antagonistes de la GnRH bloquent le recepteur GnRH de l'hypophyse directement et de maniere competitive. LH, FSH et testosterone chutent ainsi en quelques jours -- **sans le flare initial de testosterone** inevitable avec les agonistes GnRH. L'autorisation clinique dans l'UE se limite au cancer de la prostate avance. Dans le THAG, il s'agit d'un **usage hors AMM avec des preuves trans-specifiques tres limitees**. Ni WPATH SOC 8 ni l'Endocrine Society 2017 ne citent les antagonistes GnRH comme recommandation d'antiandrogene reguliere
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  .
+</DrugInfoBox>
+
+<GuideCTA
+  eyebrow="Comparaison"
+  title="Les agonistes GnRH sont l'alternative etablie"
+  description="Contrairement aux antagonistes qui bloquent directement le recepteur, les agonistes GnRH menent a une desensibilisation de l'hypophyse par surstimulation prolongee. Leur niveau de preuves dans le THS trans est nettement plus large, et leur disponibilite en France est meilleure."
+  ctaText="Vers la page des agonistes GnRH"
+  ctaHref="/fr/medications/antiandrogens/gnrh-agonists/"
+  variant="accent"
+/>
+
+<WarningBox title="Usage hors AMM et lacunes des preuves">
+Avant d'envisager les antagonistes GnRH pour ton THS, tu dois etre conscient·e des points suivants :
+
+- **Pas de recommandation dans les guidelines** : Les principales recommandations du THAG ne citent pas les antagonistes GnRH comme option d'antiandrogene reguliere<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+- **Preuves issues de l'oncologie** : Les donnees d'efficacite et de securite proviennent d'essais controles randomises sur des patient·e·s atteint·e·s de cancer de la prostate. **Des etudes prospectives chez des personnes trans font completement defaut.**
+- **Pharmacologiquement plausible, cliniquement non demontre** : La suppression de l'axe HPG est endocrinologiquement comprehensible, mais la securite a long terme, le dosage optimal et la sante osseuse en conditions de THAG n'ont pas ete etudies.
+
+</WarningBox>
+
+---
+
+## Distinction avec les agonistes GnRH
+
+<DoseTable
+  caption="Agonistes GnRH vs. Antagonistes en comparaison"
+  headers={['Dimension de comparaison', 'Agonistes GnRH', 'Antagonistes GnRH']}
+  rows={[
+    ['Mecanisme d action', 'Surstimulation prolongee jusqu a desensibilisation du recepteur', 'Blocage competitif direct du recepteur'],
+    ['Flare initial de testosterone', 'Oui (environ 1-2 semaines ; protection antiandrogene recommandee)', 'Non'],
+    ['Delai jusqu au niveau de castration', 'Environ 2-4 semaines', 'Quelques jours'],
+    ['Formes galeniques courantes', 'Injection depot (mensuelle a semestrielle), spray nasal, implant', 'Oral (relugolix) / injection SC mensuelle (degarelix)'],
+    ['Preuves trans-specifiques', 'Recommande par les guidelines ; large experience clinique', 'Hors AMM ; quasi aucune donnee trans-specifique'],
+    ['Disponibilite en France', 'Autorise et remboursable (avec indication)', 'Autorise pour le cancer de la prostate ; remboursement hors AMM pour le THAG peu probable'],
+  ]}
+/>
+
+---
+
+## Relugolix (Orgovyx) -- antagoniste oral
+
+Le relugolix est un antagoniste oral non peptidique du recepteur GnRH. Dans l'UE, il est autorise sous le nom d'**Orgovyx** pour le cancer de la prostate hormono-sensible avance<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} title="A Practical Guide to Relugolix: Early Experience With Oral Androgen Deprivation Therapy" />.
+
+### Donnees cliniques sur la suppression de la testosterone
+
+La source de preuves la plus importante est l'essai de phase III **HERO** chez des patient·e·s atteint·e·s de cancer de la prostate (**extrapolation au THAG avec prudence**)<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} title="Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer" /> :
+
+- **Taux de castration soutenu** : Sur 48 semaines, le groupe relugolix a atteint un taux de castration de **96,7 %** ; le groupe leuproline de controle 88,8 %
+- **Debut d'action rapide** : Des le jour 4, **56,0 %** des patient·e·s sous relugolix avaient atteint le niveau de castration -- dans le groupe leuproline, c'etait encore **0 %** en raison du flare
+- **Courte demi-vie et reversibilite** : Apres l'arret, l'axe HPG et la testosterone se retablissent nettement plus rapidement qu'apres des injections depot. Cela signifie en contrepartie : **les doses oubliees entrainent rapidement une remontee de la testosterone**
+
+<WarningBox title="Pas de recommandation de dosage">
+  Comme aucune etude clinique n'a examine le dosage optimal de relugolix ou degarelix specifiquement pour les femmes trans, cette page ne donne pas de schemas posologiques concrets. Toute utilisation hors AMM doit se faire exclusivement sous suivi medical avec dosage individuel et suivi regulier.
+</WarningBox>
+
+---
+
+## Degarelix (Firmagon) -- antagoniste injectable
+
+Le degarelix est un antagoniste GnRH injectable, autorise dans l'UE sous le nom de **Firmagon** et administre en injection sous-cutanee mensuelle<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} title="The efficacy and safety of degarelix: a 12-month, comparative, randomised, open-label, parallel-group phase III study in patients with prostate cancer" />.
+
+Dans l'essai de phase III **CS21** avec 610 patient·e·s atteint·e·s de cancer de la prostate :
+
+- **Chute rapide du T** : Des le jour 3, la testosterone serique etait au niveau de castration -- sans aucun flare
+- **Suppression stable** : Dans le schema 240/80 mg (dose de charge / dose d'entretien), le taux de castration sur 12 mois etait de **97,2 %**
+- **Effets indesirables** : Les plus frequents sont les reactions au site d'injection -- rougeur, gonflement et induration
+
+---
+
+## Securite et suivi
+
+<DoseTable
+  caption="Suivi sous antagonistes GnRH : testosterone, estradiol, os, foie"
+  headers={['Parametre', 'Frequence recommandee', 'Valeur cible / attention', 'Conduite en cas d ecart']}
+  rows={[
+    [
+      'Testosterone serique (T)',
+      '4-8 semaines apres le debut, puis tous les 3-6 mois.',
+      '< 50 ng/dL (environ < 1,7 nmol/L).',
+      'En cas de non-atteinte de la cible : verifier d abord l observance (surtout pour le relugolix) ; envisager un ajustement de dose sous suivi medical.',
+    ],
+    [
+      'Estradiol serique (E2)',
+      'Simultanement avec T.',
+      '100-200 pg/mL (fourchette cible physiologique).',
+      'S assurer que la dose d E2 exogene est suffisante pour prevenir la perte osseuse et les symptomes vasomoteurs.',
+    ],
+    [
+      'Densite osseuse (DEXA)',
+      'Mesure de reference en cas d utilisation prolongee, puis tous les 1-2 ans.',
+      'T-Score > -1,0.',
+      'En cas de perte de densite osseuse : augmenter la dose d E2, corriger l apport en calcium et vitamine D.',
+    ],
+    [
+      'Bilan hepatique (ALT/AST)',
+      'Sous relugolix : avant le traitement et regulierement dans les premiers mois.',
+      'Transaminases dans la norme.',
+      'En cas d elevation > 3 fois la limite superieure ou d ictere : arret immediat et consultation medicale.',
+    ],
+  ]}
+/>
+
+<DangerBox title="Sans estradiol, pas de suppression de testosterone a long terme">
+  Quiconque supprime durablement la testosterone au niveau de castration sans apporter suffisamment d'estradiol place le corps dans un etat sans aucune hormone sexuelle. Les consequences sont graves : osteoporose, humeur depressive et bouffees de chaleur severes. Toute suppression de l'axe HPG -- que ce soit par agonistes ou antagonistes -- exige obligatoirement une substitution d'estradiol en parallele<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />. En cas de douleurs articulaires ou osseuses persistantes, de chutes d'humeur severes ou de bouffees de chaleur frequentes : **ne pas attendre**, mais faire verifier immediatement les taux d'E2. En urgence : **15 (SAMU)** ou **112**.
+</DangerBox>
+
+---
+
+## Disponibilite et couts en France
+
+- **Relugolix (Orgovyx)** : Autorise dans l'UE, disponible dans les pharmacies francaises -- mais exclusivement avec l'indication cancer de la prostate. Une prescription hors AMM pour le THAG est a la discretion du prescripteur. Le **remboursement par la Securite sociale est en regle generale exclu** en cas d'usage hors AMM.
+- **Degarelix (Firmagon)** : Egalement autorise dans l'UE (cancer de la prostate). L'injection est generalement realisee en cabinet urologique.
+- **Alternatives pragmatiques** : Pour la grande majorite des femmes trans en France, les antagonistes GnRH ne sont pas une option realiste de premiere ligne. Sous suivi medical, le CPA (Androcur) a faible dose, la spironolactone ou les agonistes GnRH (Decapeptyl, triptoreline) offrent un meilleur rapport entre preuves, couts et disponibilite<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />.
+
+---
+
+## Pages complementaires
+
+- [Agonistes GnRH : triptoreline / leuproline / gosereline](/fr/medications/antiandrogens/gnrh-agonists/)
+- [CPA (Acetate de cyproterone)](/fr/medications/antiandrogens/cpa/)
+- [Spironolactone](/fr/medications/antiandrogens/spironolactone/)
+- [Bicalutamide](/fr/medications/antiandrogens/bicalutamide/)
+- [Antiandrogenes en vue d'ensemble](/fr/medications/antiandrogens/overview/)

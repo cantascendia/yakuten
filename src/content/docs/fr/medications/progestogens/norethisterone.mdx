@@ -1,0 +1,140 @@
+---
+title: "Norethisterone (NET / NETA)"
+description: "Pourquoi la norethisterone (norethindrone) ne convient pas dans le THS trans : activite androgenique residuelle, metabolisation en ethinylestradiol, risque de TEV et alternatives sures."
+evidenceLevel: C
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, kuhl-2005, canonico-2018]
+drug:
+  nonProprietaryName: 'Norethisterone'
+  activeIngredient: 'Norethisterone / Norethisterone acetate (NETA)'
+  mechanismOfAction: 'Progestatif synthetique de 1re generation derive de la nandrolone (19-nortestosterone) ; activite progestative + activite androgenique residuelle + metabolisation partielle en ethinylestradiol (EE)'
+  atc: 'G03DC02 / G03AC01'
+sidebar:
+  order: 3
+faqs:
+  - q: "Pourquoi la norethisterone est-elle deconseillée dans le THS trans ?"
+    a: "La norethisterone possede une activite androgenique residuelle et est partiellement metabolisee en ethinylestradiol (EE), un estrogene synthetique qui augmente significativement le risque de TEV. L'Utrogestan (progesterone micronisee) est disponible en France sans ces inconvenients et constitue l'alternative recommandee si un progestatif est indique dans ton THS."
+  - q: "Quelle est la difference entre la norethisterone et la progesterone micronisee (Utrogestan) ?"
+    a: "L'Utrogestan (progesterone micronisee) est la progesterone bioidentique -- identique a l'hormone produite par le corps. La norethisterone est un progestatif synthetique derive de la nandrolone avec une activite androgenique residuelle et une metabolisation en ethinylestradiol. Dans le THS trans, la progesterone micronisee est privilegiee car elle n'augmente pas le risque de TEV et n'a pas d'effet androgenisant."
+  - q: "La norethisterone est-elle disponible en France ?"
+    a: "Oui, la norethisterone est autorisee en France sous le nom de Primolut-Nor (Bayer) et dans plusieurs pilules contraceptives. Elle est principalement prescrite en gynecologie pour les troubles du cycle et l'endometriose. Son utilisation dans le THS trans est extremement rare et non recommandee par les guidelines."
+  - q: "Comment remplacer la norethisterone dans mon THS ?"
+    a: "Si un progestatif est indique dans ton THS (p. ex. pour le developpement mammaire de stade Tanner IV-V), l'Utrogestan (progesterone micronisee) 100-200 mg/jour au coucher est l'alternative recommandee. L'Utrogestan est rembourse en France dans le cadre de l'ALD. Discute le changement avec ton endocrinologue."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox name="Norethisterone (NET / NETA)" nameCN="Norethisterone" category="progestogen" route="Oral" evidenceLevel="C">
+  La norethisterone (norethindrone) est un progestatif synthetique de 1re generation derive de la nandrolone (19-nortestosterone). En raison de son **activite androgenique residuelle** et de sa **metabolisation partielle en ethinylestradiol (EE)** -- un estrogene synthetique avec un risque de TEV nettement plus eleve --, la norethisterone **n'est pas recommandee** dans le traitement hormonal d'affirmation de genre (THAG)
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . En France, l'**Utrogestan** (progesterone micronisee) est l'alternative standard.
+</DrugInfoBox>
+
+<WarningBox title="Pourquoi cette page est-elle un avertissement et non un guide de dosage ?">
+Cette page n'a pas pour but de t'aider a prendre de la norethisterone, mais de t'expliquer pourquoi elle ne convient pas dans le THS trans et comment la remplacer par un progestatif plus sur. Le principal est : **si tu prends actuellement de la norethisterone dans le cadre de ton THS, discute avec ton medecin d'un changement vers l'Utrogestan** (progesterone micronisee).
+</WarningBox>
+
+---
+
+## 1. Pourquoi la norethisterone est problematique dans le THS trans
+
+### 1.1 Activite androgenique residuelle
+
+La norethisterone est derivee de la nandrolone (19-nortestosterone) et se lie non seulement au recepteur de la progesterone, mais aussi au recepteur androgenique. Les consequences<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" /> :
+
+- **Antagonise l'effet antiandrogene** : l'activite androgenique residuelle agit directement a l'encontre de la suppression du T recherchee dans le THS trans
+- **Effets indesirables virilisants possibles** : acne, pilosite accrue, alopecie androgenique
+
+### 1.2 Metabolisation en ethinylestradiol (EE)
+
+La norethisterone est partiellement metabolisee en **ethinylestradiol (EE)** dans le foie<CitationRef id="kuhl-2005" num={3} />. L'EE est un estrogene synthetique qui :
+
+- **Augmente significativement le risque de TEV** : les etudes cliniques montrent un risque de TEV nettement plus eleve sous EE que sous estradiol bioidentique<CitationRef id="canonico-2018" num={4} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />
+- **Perturbe l'interpretation des bilans** : les taux seriques d'E2 mesures ne refletent pas l'exposition estrogenique totale, car l'EE n'est pas detecte par les dosages standard de l'estradiol
+- **Le risque est additif** : sous norethisterone en combinaison avec de l'estradiol exogene, l'EE produit par metabolisation s'ajoute a l'exposition estrogenique
+
+### 1.3 Classification par les guidelines
+
+Ni WPATH SOC 8 ni l'Endocrine Society 2017 ne recommandent les progestatifs synthetiques derives des 19-nortestosterones dans le THS trans. Le seul progestatif specifiquement mentionne est la **progesterone micronisee**<CitationRef id="coleman-2022" num={1} /><CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+---
+
+## 2. Comparaison : norethisterone vs. progesterone micronisee (Utrogestan)
+
+<DoseTable
+  caption="Norethisterone vs. progesterone micronisee (Utrogestan)"
+  headers={['Dimension', 'Norethisterone (NET)', 'Progesterone micronisee (Utrogestan)']}
+  rows={[
+    ['Structure chimique', 'Synthetique, derivee de la 19-nortestosterone', 'Bioidentique, identique a la P4 endogene'],
+    ['Activite androgenique', 'Oui (cliniquement pertinente)', 'Non'],
+    ['Metabolisation en EE', 'Oui (augmentation du risque de TEV)', 'Non'],
+    ['Impact TEV', 'Augmente le risque', 'Risque neutre a faible'],
+    ['Recommandation guidelines', 'Non recommandee dans le THAG', 'Seul progestatif mentionne dans les guidelines'],
+    ['Disponibilite en France', 'Primolut-Nor, pilules contraceptives', 'Utrogestan 100/200 mg (rembourse ALD)'],
+  ]}
+/>
+
+---
+
+## 3. Si tu prends actuellement de la norethisterone
+
+### 3.1 Changement vers l'Utrogestan
+
+Le changement de la norethisterone vers la progesterone micronisee (Utrogestan) est en regle generale simple :
+
+1. **Prendre rendez-vous avec ton endocrinologue** et exposer la situation
+2. **Arreter la norethisterone** le soir convenu
+3. **Commencer l'Utrogestan** le lendemain soir au coucher -- 100-200 mg par voie orale ou rectale
+4. **Controle biologique** apres 4-6 semaines : P4, E2, T, bilan hepatique
+
+<WarningBox title="Quand la progesterone est-elle indiquee ?">
+L'ajout d'un progestatif dans le THS trans n'est pas systematique. La question de savoir si la progesterone apporte un benefice concret dans ton cas precis (p. ex. amelioration du developpement mammaire a partir du stade Tanner IV) est un sujet debattu et doit etre discutee individuellement avec ton endocrinologue<CitationRef id="coleman-2022" num={1} />.
+</WarningBox>
+
+### 3.2 Bilan de controle apres le changement
+
+- **4 semaines** : P4, E2, T, ALT, bilan lipidique
+- **3 mois** : controle de routine
+- **Ensuite** : dans le cadre du suivi regulier tous les 6 mois
+
+---
+
+## 4. Autres progestatifs synthetiques a eviter
+
+La norethisterone n'est pas le seul progestatif synthetique derive de la 19-nortestosterone. Le meme avertissement s'applique aux substances suivantes :
+
+- **Levonorgestrel** (Mirena, Microval) -- activite androgenique residuelle, pas d'indication dans le THS trans
+- **Desogestrel** (Cerazette) -- profil androgenique plus faible, mais toujours synthetique et non recommande dans les guidelines
+- **Etonogestrel** (Nexplanon) -- implant contraceptif, pas d'utilisation dans le THS trans
+- **Dienogest** (Visanne) -- anti-androgenique, mais non etudie dans le THS trans
+
+<DangerBox title="Signaux d'alerte -- urgences sous progestatif">
+Independamment du progestatif que tu prends, les symptomes suivants exigent un arret immediat et un appel au **15 (SAMU)** ou au **112** :
+
+- Gonflement soudain et unilateral d'une jambe (TVP)
+- Douleur thoracique soudaine, essoufflement ou hemoptysie (embolie pulmonaire)
+- Cephalee severe soudaine avec troubles visuels (thrombose veineuse cerebrale)
+- Jaunissement de la peau ou du blanc des yeux (atteinte hepatique)
+
+</DangerBox>
+
+---
+
+## Pages complementaires
+
+- [Progesterone micronisee (Utrogestan)](/fr/medications/progestogens/micronized-p4/)
+- [Progestatifs en vue d'ensemble](/fr/medications/progestogens/overview/)
+- [Bilans sanguins et suivi](/fr/blood-tests/)
+- [Risques et urgences](/fr/risks/)

@@ -1,0 +1,139 @@
+---
+title: "Noretisterona (NET / NETA)"
+description: "Por que a noretisterona não é recomendada na TH transfeminina — atividade androgênica residual, conversão em etinilestradiol em doses altas e alternativas mais seguras no Brasil."
+evidenceLevel: C
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, kuhl-2005, louw-du-toit-2017, patel-2022]
+drug:
+  nonProprietaryName: 'Norethisterone'
+  activeIngredient: 'Noretisterona (Norethisterone) / Acetato de noretisterona (NETA)'
+  mechanismOfAction: 'Derivado de 19-nortestosterona; ativação forte do receptor de progesterona com atividade androgênica residual fraca, aromatização metabólica a etinilestradiol em doses altas'
+  atc: 'G03DC02'
+sidebar:
+  order: 6
+faqs:
+  - q: "O que é noretisterona e por que não é recomendada na TH?"
+    a: "A noretisterona (NET) é um progestágeno sintético do grupo dos derivados de 19-nortestosterona. Possui atividade androgênica residual fraca no receptor androgênico, contrária ao objetivo de feminização. Além disso, em doses altas pode ser convertida em etinilestradiol, aumentando o risco de trombose. Diretrizes clínicas como a WPATH SOC 8 recomendam progesterona micronizada."
+  - q: "A noretisterona está disponível no Brasil?"
+    a: "Sim, a noretisterona está presente em numerosos medicamentos no Brasil — especialmente em anticoncepcionais orais combinados e em preparações para terapia de reposição hormonal na menopausa. No entanto, não é adequada para TH transfeminina."
+  - q: "Quais alternativas à noretisterona existem para mulheres trans?"
+    a: "A alternativa preferida é a progesterona micronizada (Utrogestan). É bioidentical, não tem atividade androgênica e apresenta perfil de risco trombótico mais favorável. Outra opção é a didrogesterona (Duphaston)."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox
+  name="Noretisterona (NET / NETA)"
+  nameCN="Noretisterona (Acetato de noretisterona NETA)"
+  category="progestogen"
+  route="Oral"
+  evidenceLevel="C"
+>
+  A noretisterona (internacionalmente também noretindrona; a pró-droga acetato é chamada NETA) é um progestágeno sintético potente usado principalmente em anticoncepcionais orais combinados e no tratamento de endometriose. Por pertencer à classe dos derivados de 19-nortestosterona, possui **atividade androgênica residual fraca no receptor androgênico**. Em doses altas, pode ser parcialmente convertida em etinilestradiol. Portanto, a noretisterona **não é uma escolha recomendada na TH transfeminina** — clinicamente, prefere-se [progesterona micronizada](/pt/medications/progestogens/progesterone/), que não tem atividade androgênica.
+</DrugInfoBox>
+
+<WarningBox title="Evitar progestágenos sintéticos com atividade androgênica">
+  Na THAG, a suplementação de progestágeno deve imitar o ambiente fisiológico da progesterona. A noretisterona, como derivado de 19-nortestosterona, possui atividade androgênica residual mensurável<CitationRef id="louw-du-toit-2017" num={1} authors="Louw-du Toit R et al." year={2017} title="Comparing the androgenic and estrogenic properties of progestins used in contraception and hormone therapy" /> — farmacologicamente, isso se opõe ao objetivo de feminização e supressão androgênica. [Progesterona micronizada](/pt/medications/progestogens/progesterone/) é bioidentical à progesterona endógena e não apresenta atividade no receptor androgênico.
+
+  Importante: A **evidência direta para uso de noretisterona em mulheres trans é muito escassa**. As informações nesta página baseiam-se predominantemente em estudos farmacológicos e dados da população cisgênero — nível de evidência C.
+</WarningBox>
+
+---
+
+## Propriedades farmacológicas e riscos
+
+### 1. Atividade androgênica residual fraca
+
+Como derivado sintético de 19-nortestosterona, a noretisterona manteve afinidade cruzada com o receptor androgênico (AR). Estudos de ligação ao receptor demonstram atividade agonista direta no AR, embora fraca<CitationRef id="louw-du-toit-2017" num={1} authors="Louw-du Toit R et al." year={2017} />. Na prática, isso pode significar: o efeito feminizante do estradiol é parcialmente atenuado, e efeitos colaterais como acne ou aumento da oleosidade podem ocorrer.
+
+Ao contrário do CPA (Androcur), que tem atividade antiandrogênica pronunciada, a noretisterona **não fornece nenhum efeito antiandrogênico** — farmacologicamente, atua até ligeiramente na direção oposta.
+
+### 2. Aromatização a etinilestradiol (EE)
+
+Revisões farmacocinéticas mostram que a noretisterona pode ser aromatizada por enzimas hepáticas, gerando em pequenas quantidades o potente estrogênio sintético **etinilestradiol (EE)**<CitationRef id="kuhl-2005" num={2} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens: influence of different routes of administration" />.
+
+<WarningBox title="Em doses altas: conversão em etinilestradiol">
+A taxa de conversão aumenta de forma dose-dependente:
+
+- **Doses baixas** (dose contraceptiva típica, cerca de 0,5-1 mg): a quantidade de EE gerada é mínima e clinicamente pouco relevante.
+- **Doses altas** (5-10 mg): a exposição a EE pode atingir valores na faixa de dezenas de microgramas por dia. O etinilestradiol tem efeito de primeira passagem hepática pronunciado e estimula a síntese de fatores de coagulação — por isso, EE oral é explicitamente evitado como estrogênio principal na TH transfeminina.
+
+A consequência: **noretisterona não é um progestágeno "neutro"** — em doses altas, introduz adicionalmente um componente de EE, e o etinilestradiol é **não recomendado** na TH devido ao seu perfil de risco de TEV.
+</WarningBox>
+
+### 3. Farmacocinética (oral)
+
+- **Biodisponibilidade**: Cerca de 47-73% (variação interindividual significativa)
+- **Meia-vida**: Cerca de 8-11 horas; geralmente necessária tomada diária
+- **Metabolismo**: Metabolização hepática; NETA é hidrolisado no corpo primeiro a noretisterona
+
+---
+
+## Classificação clínica e recomendações de diretrizes
+
+1. **Sem benefício comprovado para feminização**: Uma revisão sistemática mostra que progestágenos sintéticos em mulheres trans estão associados a **redução do colesterol HDL** e **aumento do risco de TEV**, sem evidência robusta de benefício para desenvolvimento mamário, composição corporal ou qualidade de vida<CitationRef id="patel-2022" num={3} authors="Patel KT et al." year={2022} title="Progestogen Use in Gender-Affirming Hormone Therapy: A Systematic Review" />.
+2. **Posição cautelosa das diretrizes**: Devido à falta de evidência de eficácia e aos riscos cardiovasculares e metabólicos dos progestágenos sintéticos, tanto a WPATH SOC 8 quanto a Endocrine Society **não recomendam** noretisterona e outros progestágenos sintéticos como componente da TH transfeminina<CitationRef id="hembree-2017" num={5} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} />.
+3. **Momento da introdução de progestágeno**: Se houver uso de progestágeno, deve ser iniciado **no mínimo após 12 meses de TH**<CitationRef id="coleman-2022" num={4} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
+
+<WarningBox title="Sem recomendação de dosagem para feminização">
+Como a noretisterona **não é recomendada** para TH transfeminina e faltam estudos de dosagem específicos na população trans, esta página **não fornece** dosagens concretas para feminização. Se um progestágeno for desejado, deve-se preferir [progesterona micronizada (Utrogestan)](/pt/medications/progestogens/progesterone/).
+</WarningBox>
+
+---
+
+## Se você está usando noretisterona atualmente
+
+- **Verifique o medicamento — substituir combinados**: Se seu medicamento contém noretisterona **mais** etinilestradiol (típica "pílula" combinada), converse com seu médico sobre a troca. O etinilestradiol na combinação é o principal fator de risco trombótico e deve ser substituído por estradiol natural (como Primogyna, Oestrogel).
+- **Transição gradual, não abrupta**: Não suspenda noretisterona por conta própria da noite para o dia — flutuações hormonais abruptas podem causar sangramento de privação, oscilações de humor e desconforto físico. Converse com seu médico sobre uma redução gradual e transição para [progesterona micronizada (Utrogestan)](/pt/medications/progestogens/progesterone/).
+- **Fique atenta aos sinais de alerta**: Sob qualquer progestágeno, fique atenta a sinais precoces de trombose: inchaço unilateral na panturrilha com dor, dor torácica súbita, falta de ar ou hemoptise.
+
+<DangerBox title="Sintomas de trombose são uma emergência">
+Com qualquer um dos seguintes sinais de trombose venosa ou embolia pulmonar, **suspenda imediatamente** todos os hormônios e ligue para a emergência — **SAMU 192** (Brasil) ou **112** (Portugal):
+
+- Inchaço unilateral na perna com calor e dor à pressão (suspeita de TVP)
+- Dor torácica súbita, falta de ar ou hemoptise (suspeita de embolia pulmonar)
+- Fraqueza unilateral súbita, alteração da fala ou paralisia facial (suspeita de evento cerebrovascular)
+
+**Se qualquer um desses sintomas ocorrer, aja imediatamente. Informe a equipe médica sobre os hormônios que você usa.**
+
+</DangerBox>
+
+---
+
+## Comparação: Noretisterona vs. progesterona micronizada
+
+<DoseTable
+  headers={['Critério', 'Noretisterona (NET/NETA)', 'Progesterona micronizada']}
+  rows={[
+    ['Estrutura', 'Progestágeno sintético derivado de 19-nortestosterona.', 'Bioidentical à progesterona endógena.'],
+    ['Atividade androgênica', 'Atividade agonista fraca no AR — pode contrariar a feminização.', 'Sem atividade no receptor androgênico.'],
+    ['Conversão metabólica', 'Em doses altas, aromatização hepática a etinilestradiol (EE).', 'Degradação a alopregnanolona e outros metabólitos neutros; sem conversão em estrogênios.'],
+    ['Efeitos no SNC', 'Sem efeito sedativo relevante.', 'Metabólito alopregnanolona atua no receptor GABA-A com efeito calmante e promotor do sono.'],
+    ['Posição na THAG', 'Diretrizes desaconselham — medicamento a ser substituído se necessário.', 'Progestágeno preferido quando suplementação é desejada.'],
+  ]}
+/>
+
+---
+
+## Disponibilidade no Brasil e Portugal
+
+- **Brasil**: A noretisterona está presente em numerosos medicamentos, incluindo anticoncepcionais orais combinados e preparações para reposição hormonal na menopausa. É de venda sob prescrição. Apesar da ampla disponibilidade, **não é adequada para TH transfeminina**. Se um progestágeno for desejado, converse com seu médico sobre [progesterona micronizada (Utrogestan)](/pt/medications/progestogens/progesterone/) — disponível sem dificuldade em todo o Brasil.
+- **Portugal**: Também disponível em diversos anticoncepcionais e medicamentos de reposição hormonal, sob prescrição.
+
+---
+
+## Páginas relacionadas
+
+- [Progestágenos na TH — visão geral](/pt/medications/progestogens/overview/)
+- [Progesterona micronizada (progestágeno preferido)](/pt/medications/progestogens/progesterone/)
+- [Progestinas não recomendadas: MPA](/pt/medications/progestogens/cautioned-progestins/)
+
+import RelatedBlogPosts from '../../../../../components/ui/RelatedBlogPosts.astro';
+
+<RelatedBlogPosts />

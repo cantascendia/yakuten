@@ -18,8 +18,8 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 
 <DrugInfoBox
-  name="Oral Estradiol (Estrace, Progynova)"
-  nameCN="口服雌二醇"
+  name="Estradiol Oral (Primogyna, Progynova)"
+  nameCN="Estradiol Oral (Comprimidos)"
   category="estrogen"
   route="Oral"
   evidenceLevel="A"
@@ -29,7 +29,7 @@ import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 
 <img src="/images/drugs/progynova-studio.webp" alt="Progynova 2mg estradiol valerate tablets product photo" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
-<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+<PKCurveChart label="Estradiol Oral (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
 
 ## Farmacologia
 
@@ -73,10 +73,10 @@ As faixas a seguir reúnem dados das Diretrizes da Endocrine Society 2017<Citati
 <DoseTable
   headers={['Fase', 'Dose (Base de Estradiol)', 'E2 Alvo (pg/mL)', 'Cronograma']}
   rows={[
-    ['Início em Dose Baixa', '2 mg/day', '50-100', 'Meses 1-6'],
-    ['Titulação Moderada', '4 mg/day', '100-200', 'Meses 6-12'],
-    ['Fase de Manutenção', '4-6 mg/day', '100-200', '12 meses+'],
-    ['Dose Máxima', '8 mg/day', 'Não ultrapassar 200', 'Apenas em circunstâncias especiais'],
+    ['Início em Dose Baixa', '2 mg/dia', '50-100', 'Meses 1-6'],
+    ['Titulação Moderada', '4 mg/dia', '100-200', 'Meses 6-12'],
+    ['Fase de Manutenção', '4-6 mg/dia', '100-200', '12 meses+'],
+    ['Dose Máxima', '8 mg/dia', 'Não ultrapassar 200', 'Apenas em circunstâncias especiais'],
   ]}
 />
 
@@ -87,7 +87,7 @@ Mesmo que pareça que a dose baixa "não está fazendo nada", os primeiros 6 mes
 ### Modos de Administração
 
 - Tome os comprimidos mais ou menos no mesmo horário todos os dias, para criar uma rotina.
-- Se a sua dose for de 4 mg/day, dividi-la (2 mg de manhã + 2 mg à noite) suaviza bastante as oscilações da concentração sanguínea.
+- Se a sua dose for de 4 mg/dia, dividi-la (2 mg de manhã + 2 mg à noite) suaviza bastante as oscilações da concentração sanguínea.
 - Tomar os comprimidos junto com as refeições dá um ganho pequeno de absorção, mas manter um horário consistente importa mais.
 - Se você esquecer uma dose, é só aguardar e tomar a próxima no horário previsto. Não dobre a dose para compensar.
 
@@ -116,8 +116,9 @@ O estradiol oral é adequado para os seguintes perfis<CitationRef id="hembree-20
 
 Os comprimidos continuam sendo a referência para a grande maioria do mundo:
 
-- **EUA/Canadá**: muitas vezes prescritos como estradiol genérico (Estrace) em modelos de consentimento informado. Extremamente baratos pelo plano de saúde ou pelo GoodRx.
-- **Reino Unido/UE/Austrália**: prescritos por vias oficiais (NHS, GICs) ou por provedores particulares. Tanto o Progynova (valerato) quanto o Estrofem (hemi-hidrato) são padrão.
+- **Brasil:** Disponível como Primogyna (valerato de estradiol, Bayer) em farmácias comuns, mediante prescrição. Genéricos de estradiol também estão amplamente disponíveis a preços acessíveis. Algumas farmácias populares podem oferecer descontos adicionais.
+- **Portugal:** Progynova (valerato) e Estrofem (hemi-hidrato) estão disponíveis mediante prescrição médica, com cobertura parcial pelo SNS.
+- **UE/Reino Unido/Austrália**: prescritos por vias oficiais (SNS, GICs) ou por provedores particulares. Tanto o Progynova (valerato) quanto o Estrofem (hemi-hidrato) são padrão.
 - **Mercado DIY Global**: os comprimidos circulam muito nos mercados descentralizados, por serem fáceis de enviar e difíceis de quebrar. Verifique sempre a procedência.
 
 ## Orientações de Monitoramento

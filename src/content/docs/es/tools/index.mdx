@@ -1,0 +1,93 @@
+---
+title: "Herramientas interactivas"
+description: "9 herramientas basadas en evidencia para la seguridad de tu TRH: verificador de analisis, simulador de dosis, asistente IA, buscador de clinicas y mas. Todo funciona en tu navegador."
+sidebar:
+  order: 5
+evidenceLevel: X
+lastReviewed: 2026-07-15
+references: []
+faqs:
+  - q: "Se guardan mis datos o se envian a un servidor?"
+    a: "No. Todas las herramientas funcionan completamente en tu navegador. Tus entradas no abandonan tu dispositivo. La unica excepcion es el asistente IA, que envia tu pregunta a un modelo de lenguaje — pero tampoco alli se almacenan conversaciones ni se vinculan datos personales. El historial de analisis de sangre guarda las entradas exclusivamente en el localStorage de tu navegador, nunca en un servidor."
+  - q: "Sustituyen las herramientas una consulta medica?"
+    a: "De ninguna manera. Las herramientas ofrecen una primera orientacion basada en guias publicadas (WPATH SOC 8, Endocrine Society 2017, UCSF). Resultados anormales, sintomas poco claros o emergencias siempre deben estar en manos de un profesional cualificado. Usa los resultados como base de conversacion en tu proxima cita medica."
+  - q: "Funcionan las herramientas en el movil?"
+    a: "Si. Todas las herramientas estan disenadas de forma responsiva y funcionan en smartphones, tablets y navegadores de escritorio. Como todo se ejecuta en el navegador, no necesitas instalar ninguna aplicacion."
+  - q: "En que idioma estan disponibles las interfaces?"
+    a: "Las interfaces interactivas se estan traduciendo gradualmente desde el chino a otros idiomas. Algunos elementos de la interfaz y avisos pueden aparecer temporalmente en chino. Las explicaciones y advertencias circundantes ya estan completamente en espanol."
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Para proteger tu privacidad, todas las herramientas funcionan directamente en tu navegador — **tus datos personales de salud no se transmiten a ningun servidor**. Simplemente haz clic en una tarjeta para comenzar.
+
+## Autoevaluacion de seguridad
+
+<CardGrid>
+  <LinkCard
+    title="Verificador de analisis de sangre"
+    href="/es/tools/blood-checker/"
+    description="Introduce tus resultados de laboratorio — perfil hormonal, valores hepaticos y renales, coagulacion — y comparalos automaticamente con los rangos de referencia segun WPATH y Endocrine Society. Opcionalmente puedes activar el historial de analisis para seguir tus valores a lo largo del tiempo."
+  />
+  <LinkCard
+    title="Screening de riesgo"
+    href="/es/tools/risk-screener/"
+    description="Responde 7 preguntas cortas y obtiene en 30 segundos una evaluacion de tu riesgo de TEV, hepatico, de meningioma y cardiovascular — como punto de partida para la conversacion con tu medico/a."
+  />
+  <LinkCard
+    title="Asistente IA"
+    href="/es/tools/ai-assistant/"
+    description="Un asistente basado en IA (Gemini) que responde tus preguntas sobre seguridad de la TRH a partir de literatura basada en evidencia. Sin almacenamiento de conversaciones, sin recomendaciones de dosis individuales — en emergencias te redirige directamente al servicio de emergencias."
+  />
+</CardGrid>
+
+## Medicacion y dosificacion
+
+<CardGrid>
+  <LinkCard
+    title="Calculadora de inyecciones"
+    href="/es/tools/injection-calculator/"
+    description="Convierte dosis equivalentes e intervalos de inyeccion para diferentes esteres de estradiol (EV, EC, EEn, EU) — incluyendo la conversion entre mL y mg."
+  />
+  <LinkCard
+    title="Simulador de dosis"
+    href="/es/tools/dose-simulator/"
+    description="Simula la curva de niveles sanguineos bajo diferentes esquemas de dosificacion y observa de forma visual como evolucionan los picos y valles hasta alcanzar el estado estable."
+  />
+  <LinkCard
+    title="Comparador de farmacos"
+    href="/es/tools/drug-comparator/"
+    description="Compara varios preparados de TRH en paralelo: dosificaciones, inicio de accion, perfil de riesgo y requisitos de monitorizacion — para que puedas evaluar tus opciones con calma."
+  />
+</CardGrid>
+
+## Obras de referencia
+
+<CardGrid>
+  <LinkCard
+    title="Buscador de clinicas"
+    href="/es/tools/hospital-finder/"
+    description="Encuentra consultas y clinicas con experiencia en la atencion de TRH para personas trans — filtrable por region, con informacion sobre especialidad, via de acceso y valoraciones de la comunidad."
+  />
+  <LinkCard
+    title="Indice de marcas"
+    href="/es/tools/brand-index/"
+    description="Una vista general de los preparados de TRH mas comunes con nombre comercial, concentracion, forma farmaceutica y rango de precios — practico para verificar tu receta o tu pedido."
+  />
+  <LinkCard
+    title="Fichas de farmacos"
+    href="/es/tools/drug-cards/"
+    description="Paginas compactas individuales por principio activo: dosis maxima, momentos de control y senales de alerta para una suspension inmediata de la terapia — ideal para guardar como captura de pantalla."
+  />
+</CardGrid>
+
+## Compromiso de privacidad
+
+- Todas las herramientas funcionan **completamente en el navegador** — tus entradas generalmente no se envian a ningun servidor
+- El asistente IA **no almacena conversaciones** — al cerrar la pagina se eliminan generalmente de inmediato
+- El historial de analisis de sangre escribe las entradas exclusivamente en el **`localStorage` de tu dispositivo** — puedes eliminarlas en cualquier momento con un clic
+- El analisis del sitio web utiliza Vercel Web Analytics y Speed Insights (sin cookies, solo estadisticas agregadas, sin vinculacion a personas). No se emplean Google Analytics ni rastreadores de redes sociales
+
+## Aviso
+
+Estas herramientas no proporcionan un diagnostico. **Si un resultado es anomalo, llevalo a tu proxima cita medica y comentalo con tu medico/a.** Si tienes sintomas agudos en este momento, llama inmediatamente al **112** (Espana) / **107** (Argentina) / **911** (Mexico, Colombia, Chile), o acude a la urgencia mas cercana — y lee la pagina [Riesgos y senales de emergencia](/es/risks/).

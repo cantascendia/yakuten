@@ -1,0 +1,96 @@
+---
+title: "Feedback e Relato de Erros"
+description: "Encontrou um erro de conteúdo ou tem uma sugestão de melhoria? Veja como enviar feedback para a equipe do HRT Yakuten. Toda correção é cuidadosamente verificada."
+evidenceLevel: X
+lastReviewed: 2026-07-15
+references: []
+faqsRenderedInBody: true
+faqs:
+  - q: "Como faço para relatar um erro médico?"
+    a: "A melhor forma é abrir uma issue no GitHub pelo formulário de correção nesta página. Informe a URL da página afetada, o trecho com erro, sua sugestão de correção e, se possível, uma referência com DOI."
+  - q: "Não sei usar o GitHub. Posso dar feedback mesmo assim?"
+    a: "Claro. Escreva para nós por e-mail em hi@hrtyaku.com ou entre em contato pelo X (Twitter). Você pode descrever seu ponto em suas próprias palavras, em português mesmo."
+  - q: "Em quanto tempo meu feedback é processado?"
+    a: "Relatos relacionados à segurança (como dosagens incorretas ou contraindicações faltantes) são verificados geralmente em até 48 horas. Sugestões mais gerais são processadas normalmente dentro de uma a duas semanas."
+sidebar:
+  order: 102
+---
+
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+A precisão do conteúdo médico é uma base essencial para a segurança da nossa comunidade. Se você perceber um erro, uma informação desatualizada ou uma oportunidade de melhoria durante a leitura, ficaremos muito gratos pelo seu retorno. **Feedback em português é muito bem-vindo** — você não precisa escrever em inglês.
+
+:::note[Privacidade no feedback]
+Seu retorno é usado exclusivamente para melhoria do conteúdo deste site. Não armazenamos dados pessoais além do necessário para o processamento. Se você estiver na União Europeia, seus direitos sob o **RGPD** permanecem garantidos. No Brasil, seus direitos sob a **LGPD** são igualmente respeitados. Mais detalhes na nossa [página Sobre](/pt/about/).
+:::
+
+<WarningBox>
+**Relatos de correção relacionados à segurança (como dosagens incorretas, contraindicações faltantes ou avisos de emergência incompletos) são verificados e processados pela equipe editorial geralmente em até 48 horas.**
+</WarningBox>
+
+---
+
+## Correções de conteúdo
+
+Se você encontrou um erro médico ou uma informação imprecisa, pode enviar um relato estruturado de correção via issue no GitHub.
+
+**As seguintes informações nos ajudam a verificar seu relato mais rapidamente:**
+- A URL da página afetada
+- O trecho com erro (pode citar literalmente)
+- Sua sugestão de formulação correta
+- Se possível: uma referência com DOI ou link para publicação revisada por pares
+
+<a href="https://github.com/cantascendia/yakuten/issues/new?template=content_correction.yml" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Enviar relato de correção
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+:::note[Não sabe usar o GitHub?]
+Sem problema! Você também pode entrar em contato por e-mail ou pelo X (Twitter). Descreva seu ponto com suas próprias palavras — isso é mais do que suficiente.
+:::
+
+---
+
+## Sugestões de funcionalidade e relatos de bugs
+
+Se você encontrou um problema técnico — como uma ferramenta com defeito, exibição incorreta ou link quebrado — ou tem uma ideia para uma nova funcionalidade:
+
+<a href="https://github.com/cantascendia/yakuten/issues/new/choose" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Enviar sugestão / relato de bug
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+---
+
+## Feedback geral
+
+Quer simplesmente compartilhar sua experiência com o site, fazer um elogio ou uma sugestão geral de melhoria? Ficaremos felizes com qualquer mensagem:
+
+**[hi@hrtyaku.com](mailto:hi@hrtyaku.com)** — escreva em português, inglês ou qualquer outro idioma que preferir.
+
+---
+
+## Redes sociais
+
+Você também pode nos encontrar no X (Twitter):
+
+**[@hrtyakuten](https://x.com/hrtyakuten)** — siga-nos para novidades e envie suas perguntas ou comentários por lá.
+
+---
+
+## Processo de verificação de correções
+
+1. **Confirmação de recebimento** — Seu relato é registrado e entra na fila de verificação.
+2. **Verificação de evidências** — A equipe editorial compara sua sugestão de correção com a literatura científica citada.
+3. **Atualização** — Após verificação positiva, o conteúdo é corrigido e a data de revisão é atualizada.
+4. **Retorno** — Após publicação da correção, confirmamos a alteração na issue do GitHub ou pelo canal que você escolheu.
+
+| Tipo de relato | Prazo estimado de processamento |
+|----------------|----------------------------------|
+| Relacionado à segurança (dosagem / contraindicação / emergência) | Até 48 horas |
+| Erro médico factual | Até uma semana |
+| Revisão linguística ou tradução | 1-2 semanas |
+| Sugestões de funcionalidade | Conforme planejamento de desenvolvimento |
+
+<FaqSchema items={frontmatter.faqs} title="Perguntas frequentes sobre feedback" />

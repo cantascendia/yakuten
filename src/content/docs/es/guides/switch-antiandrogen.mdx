@@ -1,0 +1,207 @@
+---
+title: "Guia: Cambio de antiandrogenico"
+description: "Guia paso a paso para el cambio seguro entre Androcur (CPA), espironolactona, bicalutamida y agonistas de GnRH — con indicaciones clinicas, periodos de lavado y plan de control de laboratorio."
+evidenceLevel: B
+sidebar:
+  order: 2
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, ucsf-2016, neyman-2019, fuqua-2024, kuhl-2005, ema-2020]
+faqs:
+  - q: "Como cambio de Androcur a un agonista de GnRH?"
+    a: "Suspender el Androcur (CPA) inmediatamente e inyectar la primera dosis de GnRH el mismo dia. En las primeras cuatro semanas, una dosis baja de acompanamiento de CPA (5-6,25 mg) puede amortiguar la reaccion de flare. Controlar testosterona, estradiol y marcadores oseos a los 2-3 meses."
+  - q: "Por que la espironolactona es mas usada en Latinoamerica que en Espana?"
+    a: "En Latinoamerica, la espironolactona es a menudo la primera linea porque es economica, ampliamente disponible y no requiere los controles hepaticos estrictos del CPA. En Espana, las UTIG suelen preferir CPA (Androcur) y agonistas de GnRH (Decapeptyl) porque estan cubiertos por el SNS y tienen una supresion de T mas directa."
+  - q: "Cuanto dura el periodo de lavado del Androcur?"
+    a: "La vida media del CPA es de aproximadamente 40 horas. Con dosis bajas (12,5 mg/dia o menos) no se necesita un periodo formal de lavado. Con dosis altas prolongadas, se recomienda reducir gradualmente durante 1-2 semanas para evitar fluctuaciones hormonales."
+  - q: "Puedo tomar CPA y bicalutamida al mismo tiempo?"
+    a: "No, bajo ningun concepto. Ambos farmacos afectan al higado, y la combinacion puede aumentar masivamente el riesgo de insuficiencia hepatica medicamentosa. Entre la suspension de bicalutamida y el inicio de CPA deben transcurrir al menos 2 semanas de periodo de lavado."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Cambiar de antiandrogenico no es un simple intercambio de pastillas. El ritmo de suspension, el periodo de lavado y los controles tras el cambio determinan directamente la estabilidad de la supresion de testosterona (T) y la seguridad de la transicion<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care v8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+
+Si aun no tomas ningun antiandrogenico, lee primero el articulo basico: [Antiandrogenicos — vision general](/es/medications/antiandrogens/overview/). Ten en cuenta ademas que aproximadamente el <InlineValue value="82,6" unit="%" /> de las usuarias con inyecciones de estradiol a dosis adecuada alcanzan monoterapia estable — un bloqueador de testosterona adicional puede no ser biologicamente necesario.
+
+---
+
+## Cuando es necesario un cambio
+
+### Androcur (CPA) — primera linea en Espana y ampliamente disponible en Latinoamerica
+
+- **Valores hepaticos alterados**: ALT o AST elevados al doble o triple del limite normal — signo de carga hepatotoxica;
+- **Prolactina claramente elevada**: PRL > 100 mIU/L o > 35 ng/mL — indicacion de prolactinoma hipofisario;
+- **Bajo animo o perdida de libido**: depresion persistente o perdida completa de libido (tipico con dosis altas de CPA);
+- **Uso prolongado > 5 anos** con dosis acumulada alta — la EMA restringio la dosis de CPA a 10 mg/dia o menos en 2020, ya que dosis de 25 mg o mas aumentan significativamente el riesgo de meningioma<CitationRef id="ema-2020" num={3} authors="EMA" year={2020} title="Cyproterone: Restrictions due to Meningioma Risk" />;
+- Desabastecimiento o presion de costos.
+
+### Espironolactona — frecuente en Latinoamerica
+
+En Argentina, Mexico y Colombia, la espironolactona es a menudo el antiandrogenico de primera linea por su disponibilidad y bajo costo. Senales de alerta:
+
+- **Hiperpotasemia**: K+ > 5,5 mmol/L — el efecto ahorrador de potasio puede ser potencialmente mortal;
+- **Hipotension**: presion sistolica < 90 mmHg con mareo, debilidad o tendencia al colapso;
+- Poliuria o nicturia que alteran significativamente el sueno;
+- **Supresion de T insuficiente**: despues de 6 meses o mas con 150-200 mg/dia, la T permanece estable > 100 ng/dL;
+- La creatinina sube o la TFGe baja.
+
+### Bicalutamida
+
+- **Transaminasas elevadas**: ALT > 2 veces el limite normal — la FDA ha emitido una advertencia de hepatotoxicidad; aproximadamente el 1 % de las usuarias deben suspenderla<CitationRef id="neyman-2019" num={4} authors="Neyman A, Fuqua JS, Eugster EA" year={2019} title="Bicalutamide in Transfeminine Youth" />;
+- **Dificultad respiratoria**: disnea inexplicable, tos irritativa cronica — senal rara de toxicidad pulmonar<CitationRef id="fuqua-2024" num={5} authors="Fuqua JS, Shi A, Eugster EA" year={2024} title="Bicalutamide Pulmonary Adverse Events" />;
+- La T sube paradojicamente.
+
+### Agonistas de GnRH (Decapeptyl, Zoladex)
+
+- **Costos**: sin cobertura, el costo por inyeccion depot puede ser de 200-600 EUR;
+- **Perdida de densidad osea**: con > 2 anos de terapia continua sin sustitucion suficiente de estradiol;
+- Reacciones en la zona de inyeccion que no son tolerables.
+
+---
+
+## De Androcur (CPA) a otro antiandrogenico
+
+El CPA tiene una vida media biologica de aproximadamente 40 horas — con dosis bajas (12,5 mg/dia o menos) generalmente no se necesita un periodo formal de lavado.
+
+<DoseTable
+  caption="De Androcur (CPA) — esquemas de transicion"
+  headers={['Medicamento objetivo', 'Suspender CPA', 'Dosis inicial', 'Primer control de laboratorio']}
+  rows={[
+    ['Agonista de GnRH (Decapeptyl, etc.)', 'Suspender inmediatamente, primera inyeccion depot el mismo dia', 'Segun ficha tecnica (p. ej. triptorelina 3,75 mg mensual)', '2-3 meses: T, E2, marcadores oseos'],
+    ['Espironolactona', 'Suspender inmediatamente', '50 mg/dia en 2 tomas, despues de 2 semanas subir a 100 mg/dia', '2-4 semanas: T, K+, creatinina'],
+    ['Solo inyeccion de E2 (monoterapia)', 'Suspender inmediatamente, subir E2 a 3-5 mg/semana', 'Dependiente del esquema de E2 existente', '4-6 semanas: T valle'],
+  ]}
+/>
+
+CPA y bicalutamida **nunca** deben tomarse simultaneamente.
+
+<WarningBox title="Reaccion de flare en las primeras semanas con GnRH">
+Tras la primera dosis de agonista de GnRH (p. ej. Decapeptyl), la testosterona sube temporalmente durante 1-2 semanas — el llamado efecto flare. Para amortiguarlo, puedes mantener una dosis baja de acompanamiento de CPA (5-6,25 mg) durante el primer mes y luego suspenderlo completamente, en acuerdo con tu medico/a.
+</WarningBox>
+
+<WarningBox title="Control de potasio tras el cambio a espironolactona">
+La espironolactona es un diuretico ahorrador de potasio. En las primeras 2-4 semanas tras el inicio o aumento de dosis debes controlar K+ y creatinina. Evita suplementos de potasio y ten cuidado con alimentos ricos en potasio (agua de coco, platanos, jugo de naranja concentrado).
+</WarningBox>
+
+---
+
+## De espironolactona a otro antiandrogenico
+
+Tras la suspension, el nivel de potasio se normaliza generalmente en 1-2 semanas.
+
+<DoseTable
+  caption="De espironolactona — esquemas de transicion"
+  headers={['Medicamento objetivo', 'Suspender espiro', 'Dosis inicial', 'Primer control de laboratorio']}
+  rows={[
+    ['Androcur (CPA)', 'Suspender espiro 3-5 dias antes, luego iniciar CPA', '6,25 mg/dia, si es necesario subir a max. 12,5 mg/dia', '4-6 semanas: T, ALT, prolactina'],
+    ['Agonista de GnRH', 'Suspender espiro 1-2 dias antes, luego primera inyeccion depot', 'Segun ficha tecnica', '2-3 meses: T, E2, marcadores oseos'],
+    ['Solo inyeccion de E2 (monoterapia)', 'Suspender inmediatamente, subir E2 a 4-5 mg/semana', 'Dependiente del esquema de E2 existente', '4-6 semanas: T valle'],
+  ]}
+/>
+
+<DangerBox title="Dosis inicial de CPA: maximo 12,5 mg/dia">
+Esquemas de dosificacion antiguos y algunos profesionales aun recetan CPA con 25 mg o incluso 50 mg/dia. Pero la EMA aclaro en 2020: dosis de 25 mg/dia o mas aumentan significativamente el riesgo de meningioma<CitationRef id="ema-2020" num={3} />. En la THAG, 5-12,5 mg/dia son demostradamente suficientes para suprimir la T al rango femenino. Comienza siempre con 6,25 mg y aumenta solo si la supresion de T es insuficiente hasta un maximo de 12,5 mg.
+</DangerBox>
+
+---
+
+## De bicalutamida a otro antiandrogenico
+
+La bicalutamida tiene una vida media larga de aproximadamente 6 dias. Tras la suspension, se necesitan 2-3 semanas hasta que el principio activo se elimine completamente del cuerpo.
+
+<DoseTable
+  caption="De bicalutamida — esquemas de transicion"
+  headers={['Medicamento objetivo', 'Suspender bicalutamida', 'Dosis inicial', 'Primer control de laboratorio']}
+  rows={[
+    ['Androcur (CPA)', 'Suspender bicalutamida 2 semanas antes (evitar superposicion de hepatotoxicidad)', '6,25 mg/dia', '4-6 semanas: T, ALT, prolactina'],
+    ['Espironolactona', 'Suspender bicalutamida 3-5 dias antes', '50 a 100 mg/dia', '2-4 semanas: T, K+'],
+    ['Agonista de GnRH', 'Suspender bicalutamida 1 semana antes', 'Segun ficha tecnica', '2-3 meses: T, marcadores oseos'],
+  ]}
+/>
+
+<DangerBox title="CPA y bicalutamida: contraindicacion absoluta para combinacion">
+Ambos principios activos se metabolizan en el higado y ambos pueden ser hepatotoxicos. La ingesta simultanea potencia el riesgo de insuficiencia hepatica medicamentosa. Entre la suspension de bicalutamida y el inicio de CPA deben transcurrir al menos 2 semanas de periodo de lavado. En el primer control posterior, las transaminasas (ALT/AST) son un parametro obligatorio<CitationRef id="hembree-2017" num={2} />.
+</DangerBox>
+
+---
+
+## Controles de sangre durante el cambio
+
+### Cronograma
+
+Tras el inicio de un nuevo antiandrogenico, T y E2 necesitan varias semanas para equilibrarse. El primer control de laboratorio debe realizarse como minimo 4 semanas despues. En los primeros meses se recomienda un intervalo de control de 8-12 semanas. Cuando dos mediciones consecutivas esten estables en el rango femenino, puedes volver al intervalo de rutina de 3-6 meses.
+
+### Parametros adicionales segun el nuevo medicamento
+
+- **Tras cambio a Androcur (CPA)**: prolactina (PRL) + perfil hepatico completo;
+- **Tras cambio a espironolactona**: electrolitos (K+, Na+), creatinina y monitorizacion de presion arterial;
+- **Tras cambio a bicalutamida**: control mensual de ALT/AST en los primeros 3 meses; ademas, estar alerta ante tos inexplicable o dificultad respiratoria;
+- **Tras cambio a agonistas de GnRH**: comprobar nivel de E2 (objetivo: E2 mayor o igual a 100 pg/mL para proteccion osea); tras 2 anos de terapia continua, densitometria osea (DEXA).
+
+---
+
+## Efectos acompanantes tipicos durante el cambio
+
+### Sofort suspender y llamar a emergencias
+
+<DangerBox title="Ante cualquiera de estas senales: llamar inmediatamente a emergencias">
+- **Trombosis venosa profunda**: una pierna se hincha subita y unilateralmente, se siente caliente y duele al caminar o presionar;
+- **Embolia pulmonar**: dolor toracico punzante subito, dificultad respiratoria aguda o tos con sangre;
+- **Sintomas neurologicos severos**: cefalea subita extrema, alteraciones visuales o convulsiones;
+- **Dano hepatico agudo**: coloracion amarilla de piel u ojos (ictericia), picazon generalizado intenso, orina de color oscuro;
+- **Reaccion alergica severa**: erupcion cutanea generalizada, edema facial, dificultad respiratoria.
+
+Emergencias: **112** (Espana) / **107** (Argentina) / **911** (Mexico, Colombia, Chile).
+</DangerBox>
+
+---
+
+## Preparacion para la consulta medica
+
+- **Reunir datos clinicos** que justifiquen el cambio: p. ej. "ALT 85 U/L con limite normal de 40 U/L" o "prolactina > 35 ng/mL con CPA";
+- **Formular el objetivo**: p. ej. "Cambio de CPA 12,5 mg/dia a Decapeptyl 3,75 mg mensual";
+- **Conocer el plan de suspension e inicio** (encontraras los esquemas de transicion en las tablas anteriores);
+- **Programar citas de control**: 4 semanas, 8 semanas y 12 semanas tras el cambio;
+- **Conocer las senales de emergencia**: familiarizate con los criterios de suspension inmediata;
+- **Llevar guias como respaldo**:
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [UCSF Trans Care 2016](https://transcare.ucsf.edu/guidelines)
+  - [Biblioteca de referencias](/es/appendix-references/)
+
+<WarningBox title="Esta pagina no sustituye la consulta medica">
+El momento de cambiar de antiandrogenico, la dosis exacta y la monitorizacion necesaria dependen de tu historial medico individual, tus valores basales de laboratorio y posibles medicaciones concomitantes. Estas decisiones corresponden a un endocrinologo/a con experiencia. La informacion aqui recopilada te ayuda a prepararte para la conversacion y comprender mejor las relaciones clinicas. Si tienes dificultades para encontrar un profesional con experiencia en THAG, consulta nuestros [centros medicos amigables](/es/tools/hospital-finder/).
+</WarningBox>
+
+---
+
+## Paginas relacionadas
+
+<GuideCTA
+  eyebrow="Herramienta de comparacion"
+  title="Comparar los 4 antiandrogenicos directamente"
+  description="CPA, espironolactona, bicalutamida y agonistas de GnRH en una comparacion — mecanismo de accion, eficacia, riesgos, contraindicaciones."
+  ctaText="Ir al comparador de medicamentos"
+  ctaHref="/es/tools/drug-comparator/"
+  variant="accent"
+/>
+
+- [Antiandrogenicos — vision general](/es/medications/antiandrogens/overview/)
+- [CPA (Androcur)](/es/medications/antiandrogens/cpa/)
+- [Espironolactona](/es/medications/antiandrogens/spironolactone/)
+- [Bicalutamida](/es/medications/antiandrogens/bicalutamide/)
+- [Agonistas de GnRH](/es/medications/antiandrogens/gnrh-agonists/)
+- [Guia de analisis de sangre](/es/blood-tests/)
+- [Riesgos y senales de emergencia](/es/risks/)
+- [Centros medicos amigables](/es/tools/hospital-finder/)
+
+<RelatedBlogPosts />

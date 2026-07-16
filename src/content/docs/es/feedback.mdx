@@ -1,0 +1,96 @@
+---
+title: "Comentarios y notificacion de errores"
+description: "Has encontrado un error de contenido o tienes una sugerencia? Asi puedes enviar tu comentario al equipo de la Farmacopea HRT. Cada correccion se revisa cuidadosamente."
+evidenceLevel: X
+lastReviewed: 2026-07-15
+references: []
+faqsRenderedInBody: true
+faqs:
+  - q: "Como notifico un error medico?"
+    a: "Lo mejor es enviar un issue en GitHub a traves del formulario de correccion de esta pagina. Indica la URL de la pagina afectada, la seccion con el error, tu propuesta de correccion y, si es posible, una referencia con DOI."
+  - q: "No se usar GitHub. Puedo enviar comentarios de todas formas?"
+    a: "Por supuesto. Escribenos un correo electronico a hi@hrtyaku.com o contactanos en X (Twitter). Puedes describir tu consulta con tus propias palabras."
+  - q: "En cuanto tiempo se procesa mi comentario?"
+    a: "Los reportes relacionados con la seguridad (p. ej. dosificaciones erroneas o contraindicaciones faltantes) se revisan generalmente en un plazo de 48 horas. Las sugerencias generales se procesan normalmente en una o dos semanas."
+sidebar:
+  order: 102
+---
+
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+La exactitud de los contenidos medicos es una base fundamental para la seguridad de nuestra comunidad. Si al leer encuentras un error, informacion desactualizada o una posibilidad de mejora, agradecemos mucho tu retroalimentacion. **Los comentarios en espanol son bienvenidos** — no necesitas escribir en otro idioma.
+
+:::note[Privacidad en los comentarios]
+Tu retroalimentacion se utiliza exclusivamente para mejorar el contenido de esta pagina. No almacenamos datos personales mas alla de lo necesario para el procesamiento. Si te encuentras en Espana, tus derechos bajo el **Reglamento General de Proteccion de Datos (RGPD)** — en particular, de acceso, rectificacion y supresion — quedan garantizados. Mas detalles en nuestra [pagina Acerca de](/es/about/).
+:::
+
+<WarningBox>
+**Las notificaciones de correccion relacionadas con la seguridad (p. ej. dosificaciones erroneas, contraindicaciones faltantes o avisos de emergencia incompletos) son revisadas y procesadas por el equipo editorial generalmente en un plazo de 48 horas.**
+</WarningBox>
+
+---
+
+## Correcciones de contenido
+
+Si has encontrado un error medico o una imprecision, puedes enviar una notificacion de correccion estructurada a traves de un issue en GitHub.
+
+**La siguiente informacion nos ayuda a revisar tu notificacion mas rapidamente:**
+- La URL de la pagina afectada
+- La seccion con el error (puedes citarla textualmente)
+- Tu propuesta de formulacion correcta
+- Si es posible: una referencia con DOI o un enlace a una publicacion revisada por pares
+
+<a href="https://github.com/cantascendia/yakuten/issues/new?template=content_correction.yml" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Enviar notificacion de correccion
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+:::note[No sabes usar GitHub?]
+No hay problema. Tambien puedes contactarnos por correo electronico o a traves de X (Twitter). Describe tu consulta con tus propias palabras — eso es suficiente.
+:::
+
+---
+
+## Sugerencias de funciones y reportes de errores
+
+Si has encontrado un problema tecnico — como una herramienta defectuosa, una visualizacion incorrecta o un enlace roto — o tienes una idea para una nueva funcion:
+
+<a href="https://github.com/cantascendia/yakuten/issues/new/choose" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Enviar sugerencia / reporte de error
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+---
+
+## Comentarios generales
+
+Quieres compartir tu experiencia con el sitio, dejarnos un elogio o hacer una sugerencia general de mejora? Nos encanta recibir cualquier mensaje:
+
+**[hi@hrtyaku.com](mailto:hi@hrtyaku.com)** — escribenos en espanol, ingles o en cualquier otro idioma que prefieras.
+
+---
+
+## Redes sociales
+
+Tambien puedes contactarnos a traves de X (Twitter):
+
+**[@hrtyakuten](https://x.com/hrtyakuten)** — siguenos para novedades y escribenos tus preguntas o comentarios.
+
+---
+
+## Proceso de revision de correcciones
+
+1. **Confirmacion de recepcion** — Tu notificacion se registra y entra en la cola de revision.
+2. **Revision de evidencia** — El equipo editorial contrasta tu propuesta de correccion con la literatura cientifica citada.
+3. **Actualizacion** — Tras una revision positiva, el contenido se corrige y se actualiza la fecha de revision.
+4. **Respuesta** — Tras la publicacion de la correccion, confirmamos el cambio en el issue de GitHub correspondiente o por el canal que hayas elegido.
+
+| Tipo de notificacion | Tiempo estimado de procesamiento |
+|----------------------|----------------------------------|
+| Relacionada con seguridad (dosificacion / contraindicacion / emergencia) | En un plazo de 48 horas |
+| Error medico factual | En una semana |
+| Revision linguistica o traduccion | 1-2 semanas |
+| Sugerencias de funciones | Segun la planificacion de desarrollo |
+
+<FaqSchema items={frontmatter.faqs} title="Preguntas frecuentes sobre comentarios" />

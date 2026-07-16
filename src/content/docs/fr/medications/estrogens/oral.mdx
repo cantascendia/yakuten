@@ -18,10 +18,10 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 
 <DrugInfoBox
-  name="Oral Estradiol (Estrace, Progynova)"
-  nameCN="口服雌二醇"
+  name="Estradiol oral (Provames, Progynova, Estrofem)"
+  nameCN="Estradiol oral (Provames, Progynova, Estrofem)"
   category="estrogen"
-  route="Oral"
+  route="Voie orale"
   evidenceLevel="A"
 >
   L'estradiol oral (comprimés à avaler) est la forme d'œstrogène la plus facile à se procurer dans le monde. Son risque de MTEV (thrombose veineuse) est un peu plus élevé que celui de la voie transdermique, mais il reste un choix tout à fait acceptable et classique pour les personnes jeunes qui n'ont aucun facteur de risque particulier.
@@ -29,7 +29,7 @@ import PKCurveChart from '../../../../../components/ui/PKCurveChart.astro';
 
 <img src="/images/drugs/progynova-studio.webp" alt="Photo du produit : comprimés de valérate d'estradiol Progynova 2 mg" width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);" />
 
-<PKCurveChart label="Oral Estradiol (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
+<PKCurveChart label="Estradiol oral (EV)" halfLifeH={16} peakH={4} doseMg={4} freqH={24} targetMin={100} targetMax={200} dangerMax={400} />
 
 ## Pharmacologie
 
@@ -73,10 +73,10 @@ Les plages ci-dessous reprennent les données des recommandations de l'Endocrine
 <DoseTable
   headers={['Étape', 'Dose (estradiol base)', 'Cible E2 (pg/mL)', 'Échéancier']}
   rows={[
-    ['Démarrage à faible dose', '2 mg/day', '50-100', 'Mois 1-6'],
-    ['Titration modérée', '4 mg/day', '100-200', 'Mois 6-12'],
-    ['Phase d\'entretien', '4-6 mg/day', '100-200', 'À partir de 12 mois'],
-    ['Dose maximale', '8 mg/day', 'Sans dépasser 200', 'Circonstances exceptionnelles uniquement'],
+    ['Démarrage à faible dose', '2 mg/jour', '50-100', 'Mois 1-6'],
+    ['Titration modérée', '4 mg/jour', '100-200', 'Mois 6-12'],
+    ['Phase d\'entretien', '4-6 mg/jour', '100-200', 'À partir de 12 mois'],
+    ['Dose maximale', '8 mg/jour', 'Sans dépasser 200', 'Circonstances exceptionnelles uniquement'],
   ]}
 />
 
@@ -87,7 +87,7 @@ Même si vous avez l'impression que la faible dose « ne fait rien », les 6 pre
 ### Modalités d'administration
 
 - Prenez vos comprimés à peu près à la même heure chaque jour, pour vous créer une routine.
-- Si vous prenez 4 mg/day, fractionner la dose (2 mg le matin + 2 mg le soir) lisse nettement les variations de la concentration sanguine.
+- Si vous prenez 4 mg/jour, fractionner la dose (2 mg le matin + 2 mg le soir) lisse nettement les variations de la concentration sanguine.
 - Prendre les comprimés au cours d'un repas améliore un peu l'absorption, mais la régularité des horaires compte davantage.
 - Si vous oubliez une prise, attendez simplement et reprenez à la dose suivante comme prévu. Ne doublez pas la dose pour rattraper.
 
@@ -116,8 +116,8 @@ L'estradiol oral convient aux profils suivants<CitationRef id="hembree-2017" num
 
 Dans la grande majorité du monde, le comprimé reste la solution par défaut :
 
-- **États-Unis / Canada** : souvent prescrit sous forme d'estradiol générique (Estrace) dans le cadre du consentement éclairé. Très bon marché avec une assurance ou via GoodRx.
-- **Royaume-Uni / UE / Australie** : prescrit par les voies officielles (NHS, GIC) ou par des prestataires privés. Le Progynova (valérate) comme l'Estrofem (hémihydrate) sont l'un et l'autre courants.
+- **France** : le Provames (valérate d'estradiol, Novo Nordisk) est le comprimé de référence, pris en charge par la Sécurité sociale. L'Estrofem (hémihydrate, Novo Nordisk) est aussi disponible. Prescrit par les endocrinologues, gynécologues ou médecins généralistes via les parcours officiels ou les associations de santé trans.
+- **Belgique / Suisse / Québec** : le Progynova (Bayer) et l'Estrofem sont couramment prescrits. En Belgique, la prise en charge passe par les centres de genre ; en Suisse, par les endocrinologues avec couverture LAMal ; au Québec, par les médecins de famille ou les cliniques de santé trans.
 - **Marché mondial du DIY** : les comprimés circulent largement sur les marchés décentralisés, car ils s'expédient facilement et résistent bien. Vérifiez toujours la source.
 
 ## Conseils de suivi

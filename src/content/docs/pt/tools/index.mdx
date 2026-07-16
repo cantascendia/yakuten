@@ -1,0 +1,93 @@
+---
+title: "Ferramentas Interativas"
+description: "9 ferramentas baseadas em evidências para segurança da TH: verificador de exames, simulador de dose, assistente de IA, localizador de serviços e mais. Tudo roda no seu navegador."
+sidebar:
+  order: 5
+evidenceLevel: X
+lastReviewed: 2026-07-15
+references: []
+faqs:
+  - q: "Meus dados são armazenados ou enviados para um servidor?"
+    a: "Não. Todas as ferramentas rodam completamente no seu navegador. Seus dados não saem do seu dispositivo. A única exceção é o Assistente de IA, que envia sua pergunta para um modelo de linguagem — mas mesmo ali, conversas não são armazenadas e dados pessoais não são vinculados. O histórico de exames de sangue salva registros exclusivamente no localStorage do seu navegador, nunca em um servidor."
+  - q: "As ferramentas substituem uma consulta médica?"
+    a: "De forma alguma. As ferramentas oferecem uma orientação inicial com base em diretrizes publicadas (WPATH SOC 8, Endocrine Society 2017, UCSF). Resultados alterados, sintomas indefinidos ou emergências sempre pertencem às mãos de um profissional qualificado. Use os resultados como base para conversa na próxima consulta."
+  - q: "As ferramentas funcionam no celular?"
+    a: "Sim. Todas as ferramentas são responsivas e funcionam em smartphones, tablets e navegadores de desktop. Como tudo roda no navegador, não é necessário instalar nenhum aplicativo."
+  - q: "Em que idioma estão as interfaces das ferramentas?"
+    a: "As interfaces interativas estão sendo progressivamente traduzidas do chinês para outros idiomas. Alguns elementos de interface podem ainda aparecer em chinês por enquanto. As explicações e avisos ao redor já estão completamente em português."
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Para proteger sua privacidade, todas as ferramentas rodam diretamente no seu navegador — **seus dados pessoais de saúde não são transmitidos para nenhum servidor**. Clique em um cartão para começar.
+
+## Autoavaliação de segurança
+
+<CardGrid>
+  <LinkCard
+    title="Verificador de exames de sangue"
+    href="/pt/tools/blood-checker/"
+    description="Insira seus resultados laboratoriais — hormônios, fígado, rins, coagulação — e compare automaticamente com as faixas de referência da WPATH e Endocrine Society. Opcionalmente, ative o histórico de exames para acompanhar seus valores ao longo do tempo."
+  />
+  <LinkCard
+    title="Triagem de riscos"
+    href="/pt/tools/risk-screener/"
+    description="Responda 7 perguntas rápidas e obtenha em 30 segundos uma avaliação do seu risco de TEV, hepático, de meningioma e cardiovascular — como ponto de partida para a conversa com seu médico."
+  />
+  <LinkCard
+    title="Assistente de IA"
+    href="/pt/tools/ai-assistant/"
+    description="Um assistente alimentado por IA (Gemini) que responde suas perguntas sobre segurança da TH com base em literatura baseada em evidências. Sem armazenamento de conversas, sem sugestões individuais de dose — em emergências, encaminha diretamente para o serviço de resgate."
+  />
+</CardGrid>
+
+## Medicação e dosagem
+
+<CardGrid>
+  <LinkCard
+    title="Calculadora de injeção"
+    href="/pt/tools/injection-calculator/"
+    description="Converta doses equivalentes e intervalos de injeção para diferentes ésteres de estradiol (EV, EC, EEn, EU) — incluindo conversão entre mL e mg."
+  />
+  <LinkCard
+    title="Simulador de dose"
+    href="/pt/tools/dose-simulator/"
+    description="Simule a curva de nível sanguíneo sob diferentes esquemas de dosagem e observe visualmente como picos e vales se desenvolvem até o estado de equilíbrio."
+  />
+  <LinkCard
+    title="Comparador de medicamentos"
+    href="/pt/tools/drug-comparator/"
+    description="Compare vários medicamentos de TH lado a lado: dosagens, início de ação, perfil de risco e requisitos de monitoramento — para que você possa avaliar suas opções com calma."
+  />
+</CardGrid>
+
+## Referências
+
+<CardGrid>
+  <LinkCard
+    title="Localizador de serviços"
+    href="/pt/tools/hospital-finder/"
+    description="Encontre clínicas e profissionais com experiência no atendimento de TH para pessoas trans — filtrável por região, com informações sobre especialidade, via de acesso e feedback da comunidade."
+  />
+  <LinkCard
+    title="Índice de marcas"
+    href="/pt/tools/brand-index/"
+    description="Uma visão geral dos medicamentos de TH mais comuns com nome comercial, dosagem, forma de apresentação e faixa de preço — prático para comparar com sua receita ou seu pedido."
+  />
+  <LinkCard
+    title="Fichas de medicamentos"
+    href="/pt/tools/drug-cards/"
+    description="Páginas individuais compactas por princípio ativo: dose máxima, datas de controle e sinais de alerta para parada imediata da terapia — ideais para salvar como captura de tela."
+  />
+</CardGrid>
+
+## Compromisso de privacidade
+
+- Todas as ferramentas rodam **completamente no navegador** — seus dados geralmente não são enviados para nenhum servidor
+- O Assistente de IA **não armazena conversas** — ao fechar a página, elas são geralmente apagadas imediatamente
+- O histórico de exames de sangue salva registros exclusivamente no **`localStorage` do seu dispositivo** — você pode apagá-los a qualquer momento com um clique
+- A análise do site usa Vercel Web Analytics e Speed Insights (sem cookies, apenas estatísticas agregadas, sem identificação pessoal). Google Analytics ou rastreadores de redes sociais não são utilizados
+
+## Aviso
+
+Estas ferramentas não fornecem diagnóstico. **Se um resultado estiver alterado, leve-o à próxima consulta médica e discuta com seu médico ou médica.** Se você está com sintomas agudos no momento, ligue imediatamente para o **SAMU 192** (Brasil) ou **112** (Portugal), ou vá à emergência mais próxima — e leia a página [Riscos e sinais de emergência](/pt/risks/).

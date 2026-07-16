@@ -1,0 +1,173 @@
+{
+  "estradiol-oral": [
+    {
+      "name": "Progynova",
+      "manufacturer": "Bayer",
+      "countryName": "Alemania/Internacional",
+      "spec": "1mg/2mg x 21 comprimidos",
+      "appearance": "Grageas blancas/azules",
+      "notes": "Producto original, ampliamente disponible en Latinoamerica y Espana. Uso sublingual off-label frecuente en comunidad trans",
+      "activeIngredient": "Valerato de estradiol"
+    },
+    {
+      "name": "Meriestra",
+      "manufacturer": "Elea",
+      "countryName": "Argentina",
+      "spec": "1mg/2mg x 28 comprimidos",
+      "appearance": "Comprimidos recubiertos celestes",
+      "notes": "Marca argentina muy accesible. Alternativa local a Progynova",
+      "activeIngredient": "Valerato de estradiol"
+    }
+  ],
+  "estradiol-gel": [
+    {
+      "name": "Oestrogel",
+      "manufacturer": "Besins Healthcare",
+      "countryName": "Francia/Espana",
+      "spec": "0,06% gel, 80g dosificador",
+      "appearance": "Gel transparente en dosificador",
+      "notes": "1 pulsacion = 0,75mg de estradiol. Via transdermica con menor riesgo trombotico que la oral",
+      "activeIngredient": "Estradiol hemihidrato"
+    },
+    {
+      "name": "Sandrena",
+      "manufacturer": "Orion Pharma",
+      "countryName": "Finlandia/Espana",
+      "spec": "0,5mg/1mg sobres monodosis",
+      "appearance": "Gel en sobres individuales",
+      "notes": "Sobres monodosis, practicos para dosificacion precisa",
+      "activeIngredient": "Estradiol"
+    }
+  ],
+  "estradiol-patch": [
+    {
+      "name": "Evopad",
+      "manufacturer": "Janssen-Cilag",
+      "countryName": "Espana",
+      "spec": "25/50/75/100 mcg/24h",
+      "appearance": "Parche matricial transparente",
+      "notes": "Disponible en Espana. Cambio cada 3-4 dias",
+      "activeIngredient": "Estradiol"
+    },
+    {
+      "name": "Climara",
+      "manufacturer": "Bayer",
+      "countryName": "Alemania/Internacional",
+      "spec": "25/50/100 mcg/24h",
+      "appearance": "Parche transparente",
+      "notes": "Producto original, cambio semanal. Disponible en Mexico y Chile",
+      "activeIngredient": "Estradiol"
+    },
+    {
+      "name": "Estradot",
+      "manufacturer": "Novartis",
+      "countryName": "Suiza/Espana",
+      "spec": "25/37,5/50/75/100 mcg/24h",
+      "appearance": "Parche matricial redondo pequeno",
+      "notes": "Cambio dos veces por semana",
+      "activeIngredient": "Estradiol hemihidrato"
+    }
+  ],
+  "estradiol-injection": [
+    {
+      "name": "Progynon Depot",
+      "manufacturer": "Bayer",
+      "countryName": "Alemania/Latinoamerica",
+      "spec": "10mg/ml, ampolla de 1ml",
+      "appearance": "Solucion oleosa inyectable en ampolla de vidrio",
+      "notes": "Inyeccion intramuscular. Disponibilidad variable segun pais; en Argentina y Mexico se consigue en farmacias especializadas",
+      "activeIngredient": "Valerato de estradiol"
+    }
+  ],
+  "cpa": [
+    {
+      "name": "Androcur",
+      "manufacturer": "Bayer",
+      "countryName": "Alemania/Internacional",
+      "spec": "10mg/50mg x 50 comprimidos",
+      "appearance": "Comprimidos blancos redondos",
+      "notes": "Producto original. EMA recomienda <=10mg/dia para THAG. Disponible en Espana, Mexico, Argentina, Colombia y Chile",
+      "activeIngredient": "Acetato de ciproterona"
+    },
+    {
+      "name": "Ciproterona generico",
+      "manufacturer": "Varios (Bagó, Gador)",
+      "countryName": "Argentina",
+      "spec": "50mg x 20 comprimidos",
+      "appearance": "Comprimidos blancos",
+      "notes": "Genericos argentinos mas economicos. Se fracciona a 12,5mg (1/4) o 10mg como dosis habitual en THAG",
+      "activeIngredient": "Acetato de ciproterona"
+    }
+  ],
+  "spironolactone": [
+    {
+      "name": "Aldactone",
+      "manufacturer": "Pfizer",
+      "countryName": "EE.UU./Internacional",
+      "spec": "25mg/50mg/100mg comprimidos",
+      "appearance": "Comprimidos blancos a cremosos",
+      "notes": "Antiandrogenico mas usado en EE.UU. y Latinoamerica donde CPA no esta disponible o es costosa",
+      "activeIngredient": "Espironolactona"
+    },
+    {
+      "name": "Espironolactona generico",
+      "manufacturer": "Varios",
+      "countryName": "Mexico/Colombia",
+      "spec": "25mg/100mg comprimidos",
+      "appearance": "Comprimidos blancos",
+      "notes": "Genericos ampliamente disponibles en farmacias latinoamericanas. Dosis tipica THAG: 100-200mg/dia",
+      "activeIngredient": "Espironolactona"
+    }
+  ],
+  "bicalutamide": [
+    {
+      "name": "Casodex",
+      "manufacturer": "AstraZeneca",
+      "countryName": "Reino Unido/Internacional",
+      "spec": "50mg/150mg comprimidos recubiertos",
+      "appearance": "Comprimido recubierto blanco",
+      "notes": "Producto original; uso off-label en THAG. Genericos disponibles en Espana y Latinoamerica",
+      "activeIngredient": "Bicalutamida"
+    }
+  ],
+  "gnrh-agonist": [
+    {
+      "name": "Decapeptyl",
+      "manufacturer": "Ipsen",
+      "countryName": "Francia/Espana",
+      "spec": "3,75mg/11,25mg depot",
+      "appearance": "Polvo para suspension inyectable",
+      "notes": "Inyeccion depot mensual o trimestral. Disponible en Espana y varios paises latinoamericanos",
+      "activeIngredient": "Triptorelina"
+    },
+    {
+      "name": "Lupron Depot",
+      "manufacturer": "AbbVie (Takeda)",
+      "countryName": "EE.UU./Mexico",
+      "spec": "3,75mg/7,5mg/11,25mg depot",
+      "appearance": "Polvo para suspension inyectable",
+      "notes": "Mas comun en Mexico y paises con influencia farmaceutica estadounidense",
+      "activeIngredient": "Leuprorelina (leuprolida)"
+    }
+  ],
+  "progesterone": [
+    {
+      "name": "Utrogestan",
+      "manufacturer": "Besins Healthcare",
+      "countryName": "Francia/Espana",
+      "spec": "100mg/200mg capsulas blandas",
+      "appearance": "Capsula blanda amarilla ovalada",
+      "notes": "Progesterona micronizada. Puede administrarse por via oral o rectal. Disponible en Espana",
+      "activeIngredient": "Progesterona micronizada"
+    },
+    {
+      "name": "Progest",
+      "manufacturer": "Elea/Raffo",
+      "countryName": "Argentina",
+      "spec": "100mg/200mg capsulas blandas",
+      "appearance": "Capsula blanda amarilla",
+      "notes": "Marca argentina de progesterona micronizada, accesible en farmacias locales",
+      "activeIngredient": "Progesterona micronizada"
+    }
+  ]
+}
