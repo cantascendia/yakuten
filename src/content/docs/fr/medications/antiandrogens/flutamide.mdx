@@ -1,0 +1,111 @@
+---
+title: "Flutamide"
+description: "Pourquoi le flutamide ne doit pas etre utilise dans le THAG : hepatotoxicite severe potentiellement mortelle, insuffisance hepatique fulminante, et alternatives plus sures disponibles en France."
+evidenceLevel: C
+lastReviewed: 2026-07-15
+references: [coleman-2022, livertox-flutamide-2023, wysowski-1993, brahm-2011]
+drug:
+  nonProprietaryName: 'Flutamide'
+  activeIngredient: 'Flutamide'
+  mechanismOfAction: 'Antagoniste non steroïdien du recepteur androgenique de 1re generation ; ne diminue pas la testosterone serique en monotherapie, hepatotoxicite severe et imprevisible comme raison principale de la contre-indication dans le THAG'
+  atc: 'L02BB01'
+sidebar:
+  order: 6
+faqs:
+  - q: "Pourquoi le flutamide n'est-il pas recommande dans le THS trans ?"
+    a: "Le flutamide provoque des elevations des transaminases dans jusqu'a 62 % des cas et peut declencher de maniere imprevisible une insuffisance hepatique fulminante -- meme chez des patient·e·s jeunes et en bonne sante hepatique. Comme des alternatives plus sures telles que l'Androcur (CPA), la spironolactone, le bicalutamide et les agonistes GnRH sont disponibles en France, il n'y a pas de raison medicalement justifiable d'utiliser le flutamide dans le THAG."
+  - q: "Quelle est la difference entre le flutamide et le bicalutamide ?"
+    a: "Les deux sont des antagonistes non steroïdiens du recepteur androgenique, mais le flutamide (1re generation) doit etre pris trois fois par jour et presente un taux d'hepatotoxicite nettement plus eleve. Le bicalutamide (2e generation) ne se prend qu'une fois par jour, a une demi-vie de 5-6 jours et un meilleur profil de securite hepatique -- bien que le bicalutamide soit lui aussi considere comme hors AMM et en reserve."
+  - q: "Que faire si je prends actuellement du flutamide ?"
+    a: "Fais immediatement controler ton bilan hepatique (ALT, AST, bilirubine) et discute avec ton medecin d'un changement vers un antiandrogene plus sur. En cas de symptomes tels que jaunisse, urines foncees ou douleurs abdominales hautes, arrete immediatement le flutamide et appelle le 15 (SAMU) ou le 112."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox name="Flutamide" nameCN="Flutamide" category="antiandrogen" route="Oral" evidenceLevel="C">
+  Le flutamide est un antagoniste non steroïdien du recepteur androgenique (AR) de 1re generation, initialement autorise pour le traitement du cancer de la prostate avance. En raison de son hepatotoxicite severe, potentiellement mortelle -- incluant l'insuffisance hepatique fulminante --, le flutamide **n'est expressement pas recommande** dans le traitement hormonal d'affirmation de genre (THAG)
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . Cette page documente le profil de risque toxicologique et offre une reduction des risques pour les personnes qui prennent encore ce medicament.
+</DrugInfoBox>
+
+<DangerBox title="Avertissement de securite : le flutamide presente un risque d'hepatotoxicite eleve">
+L'effet indesirable le plus grave du flutamide est une **atteinte hepatique aigue** (Drug-Induced Liver Injury, DILI). De nombreux cas d'**insuffisance hepatique fulminante** ont ete rapportes, ayant entraine des deces ou des greffes hepatiques en urgence<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} title="Flutamide" />.
+
+Tant que l'acetate de cyproterone (Androcur), la spironolactone, le bicalutamide et les agonistes GnRH restent disponibles en France, **il n'existe en regle generale aucune raison medicalement justifiable d'utiliser le flutamide**.
+
+</DangerBox>
+
+<GuideCTA
+  eyebrow="Reduction des risques"
+  title="Comment changer vers un autre antiandrogene en toute securite ?"
+  description="Si tu prends encore du flutamide -- par exemple parce que d'autres options ne t'etaient pas accessibles --, discute rapidement avec ton medecin d'un plan de changement."
+  ctaText="Vers le guide de changement d'antiandrogene"
+  ctaHref="/fr/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+---
+
+## 1. Pharmacologie et mecanisme d'action
+
+1. **Pure blockade AR** : Le flutamide et son metabolite actif principal, l'hydroxyflutamide, se lient de maniere competitive au recepteur androgenique (AR) dans les tissus cibles.
+2. **La testosterone ne baisse pas -- elle augmente** : Comme le bicalutamide, le flutamide en monotherapie interrompt le retrocontrole negatif sur l'hypothalamus, ce qui entraine une augmentation reactive de la testosterone serique.
+3. **Le taux de T n'est pas un marqueur d'efficacite** : Sous monotherapie de flutamide, le taux de testosterone serique ne reflete pas l'effet antiandrogene.
+
+---
+
+## 2. Hepatotoxicite severe -- les preuves cliniques
+
+### 2.1 Frequence des elevations des transaminases
+
+Les donnees a long terme du traitement du cancer de la prostate montrent<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} /> :
+
+- Chez environ **42-62 %** des utilisateur·rice·s, des elevations des transaminases (ALT/AST) surviennent
+- Chez environ **3-5 %**, des elevations cliniquement pertinentes des enzymes hepatiques apparaissent
+- Chez environ **0,1-1 %**, un ictere manifeste ou une hepatite severe se developpe
+- Les cas d'**insuffisance hepatique fulminante** ont ete documentes, incluant des **deces malgre une surveillance reguliere des bilans hepatiques**
+
+### 2.2 Insuffisance hepatique fulminante -- cas rapportes
+
+- **Premiers signalements FDA** : Dans les 5 premieres annees apres la mise sur le marche, environ **20 cas d'hepatotoxicite mortelle** ont ete rapportes a la FDA<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />.
+- **Wysowski et al. (1993)** : Sur 19 patient·e·s avec hepatotoxicite severe, 14 se sont retabli·e·s apres arret ou reduction de dose ; **5 sont decede·e·s d'insuffisance hepatique progressive**<CitationRef id="wysowski-1993" num={3} authors="Wysowski DK et al." year={1993} title="Fatal and Nonfatal Hepatotoxicity Associated with Flutamide" />.
+- **Jeunes femmes particulierement a risque** : Brahm et al. (2011) ont analyse 10 cas d'hepatotoxicite severe au flutamide. Sur 7 jeunes femmes traitees par flutamide pour hyperandrogenie, **5 ont developpe une insuffisance hepatique fulminante et ont necessite une greffe hepatique en urgence**<CitationRef id="brahm-2011" num={4} authors="Brahm J et al." year={2011} title="Acute and fulminant hepatitis induced by flutamide: case series report and review of the literature" />.
+
+<DangerBox title="Signaux d'alerte d'atteinte hepatique -- arret immediat et urgences">
+Si tu prends du flutamide et que tu constates l'un des symptomes suivants, **arrete immediatement le medicament et appelle le 15 (SAMU) ou le 112** :
+
+- Jaunissement de la peau ou du blanc des yeux (ictere)
+- Urines foncees (couleur the)
+- Douleurs ou sensibilite persistantes dans le quadrant superieur droit de l'abdomen
+- Faiblesse marquee, fatigue extreme, perte d'appetit soudaine avec nausees et vomissements
+- Transaminases (ALT/AST) superieures a 3 fois la limite superieure de la norme
+
+</DangerBox>
+
+---
+
+## 3. Si tu prends encore du flutamide : changement securise
+
+1. **Faire controler immediatement le bilan hepatique** : ALT, AST et bilirubine comme valeurs de reference.
+2. **Ne jamais augmenter la dose de ta propre initiative**.
+3. **Faire accompagner l'arret et le changement par un medecin** : Le moyen le plus sur est de consulter rapidement un·e medecin avec experience en sante trans et de changer sous controle de la fonction hepatique vers la spironolactone, le bicalutamide ou un agoniste GnRH (p. ex. Decapeptyl). En cas de signes cliniques d'atteinte hepatique, le flutamide doit etre arrete immediatement et sans condition.
+
+---
+
+## Pages complementaires
+
+- [Bicalutamide : mecanisme d'action et hepatotoxicite](/fr/medications/antiandrogens/bicalutamide/)
+- [CPA (Acetate de cyproterone / Androcur)](/fr/medications/antiandrogens/cpa/)
+- [Guide de changement d'antiandrogene](/fr/guides/switch-antiandrogen/)

@@ -1,0 +1,117 @@
+---
+title: "Outils interactifs"
+description: "Tous les outils interactifs de la Pharmacopee HRT en un coup d'oeil : bilan sanguin, calculateur d'injection, simulateur de dose et plus encore -- 100 % cote client, aucune donnee de sante transmise."
+evidenceLevel: X
+references: []
+sidebar:
+  order: 0
+lastReviewed: 2026-07-15
+faqs:
+  - q: "Mes donnees de sante sont-elles transmises a un serveur ?"
+    a: "Non. Tous les outils fonctionnent exclusivement dans ton navigateur. Aucune saisie, aucun resultat, aucune donnee de sante ne quitte ton appareil -- ni vers nos serveurs, ni vers des tiers. Le code source est entierement open source et consultable sur GitHub."
+  - q: "Les outils peuvent-ils remplacer un bilan sanguin par un laboratoire ?"
+    a: "Non. Les outils t'aident a interpreter et documenter tes resultats, mais ils ne les produisent pas. Un prelevement sanguin dans un laboratoire certifie reste indispensable. Les intervalles de reference des outils peuvent differer legerement de ceux de ton laboratoire."
+  - q: "Les outils fonctionnent-ils hors connexion ?"
+    a: "La plupart des outils (bilan sanguin, injection, dose, comparateur) fonctionnent hors connexion apres le premier chargement. L'assistant IA necessite une connexion Internet car il envoie ta question a un modele de langage -- mais jamais tes donnees de sante."
+  - q: "Puis-je utiliser les outils sur smartphone ?"
+    a: "Oui. Tous les outils sont responsifs et fonctionnent sur smartphone, tablette et ordinateur de bureau. L'outil de bilan sanguin est egalement optimise pour la saisie au doigt."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+
+Tous les outils fonctionnent **directement dans ton navigateur** -- aucune donnee de sante n'est jamais transmise a nos serveurs ni a des tiers. Le code source est open source et consultable sur [GitHub](https://github.com/Loveil381/yakuten).
+
+---
+
+## Outils d'analyse
+
+<CardGrid>
+  <LinkCard
+    title="Interpreteur de bilan sanguin"
+    description="Saisis tes resultats et obtiens une interpretation visuelle avec les fourchettes cibles du THS trans."
+    href="/fr/tools/blood-checker/"
+  />
+  <LinkCard
+    title="Simulateur de dose"
+    description="Simule l'evolution de tes taux d'E2 et de T selon differentes posologies et formes galeniques."
+    href="/fr/tools/dose-simulator/"
+  />
+  <LinkCard
+    title="Comparateur de medicaments"
+    description="Compare directement les antiandrogenes et les formes d'estradiol -- mecanisme d'action, risques, couts."
+    href="/fr/tools/drug-comparator/"
+  />
+</CardGrid>
+
+---
+
+## Outils pratiques
+
+<CardGrid>
+  <LinkCard
+    title="Calculateur d'injection"
+    description="Convertis ta dose entre les differentes concentrations et volumes -- tableau de correspondance immediat."
+    href="/fr/tools/injection-calculator/"
+  />
+  <LinkCard
+    title="Rappel d'injection"
+    description="Configure un rappel pour ta prochaine injection -- fonctionne hors connexion dans le navigateur."
+    href="/fr/tools/injection-reminder/"
+  />
+  <LinkCard
+    title="Convertisseur d'unites"
+    description="Convertis les valeurs hormonales entre pg/mL, pmol/L, ng/dL et nmol/L."
+    href="/fr/tools/unit-converter/"
+  />
+</CardGrid>
+
+---
+
+## Recherche de structures
+
+<CardGrid>
+  <LinkCard
+    title="Structures d'accueil bienveillantes"
+    description="Trouve des medecins, endocrinologues et associations trans-friendly dans les pays francophones."
+    href="/fr/tools/hospital-finder/"
+  />
+  <LinkCard
+    title="Numeros d'urgence et lignes d'ecoute"
+    description="Numeros d'urgence (15 SAMU, 112) et lignes d'ecoute trans (SOS Transidentite, 3114)."
+    href="/fr/tools/hotline-finder/"
+  />
+</CardGrid>
+
+---
+
+## Assistant IA
+
+<CardGrid>
+  <LinkCard
+    title="Assistant IA"
+    description="Pose une question sur le THS et obtiens une reponse fondee sur les references medicales -- avec limitations explicites."
+    href="/fr/tools/ai-chat/"
+  />
+</CardGrid>
+
+<WarningBox title="Limitations de l'assistant IA">
+L'assistant IA est un outil d'information generaliste, pas un substitut a un avis medical. Il peut citer les guidelines et la litterature de reference, mais il ne connait ni ton historique, ni tes bilans, ni tes traitements concomitants. Aucun echange avec l'assistant n'est enregistre -- la conversation est ephemere et n'est jamais transmise a nos serveurs de donnees.
+</WarningBox>
+
+---
+
+## Protection de tes donnees
+
+Tous les outils d'analyse et les outils pratiques sont construits selon le principe suivant :
+
+- **Zero transmission** : tes saisies et tes resultats restent dans ton navigateur. Aucun appel serveur n'est effectue.
+- **Zero stockage cote serveur** : meme si ton navigateur perd la connexion pendant l'utilisation, aucune donnee n'a ete envoyee.
+- **Mode classique** : le mode par defaut de l'outil de bilan sanguin est entierement sans stockage -- tes valeurs disparaissent a la fermeture de l'onglet.
+- **Mode sakura (手帐)** : le mode sakura de l'outil de bilan sanguin enregistre tes donnees dans le `localStorage` de ton navigateur, sur ton appareil uniquement. Tu peux les supprimer a tout moment via le bouton "Effacer toutes les donnees".
+- **Code open source** : le code complet est consultable sur [GitHub](https://github.com/Loveil381/yakuten). Tu peux verifier toi-meme qu'aucune donnee n'est transmise.
+
+<DangerBox title="En cas d'urgence medicale, ne pas utiliser les outils -- appeler le 15 ou le 112">
+Si tu constates des symptomes alarmants (douleur thoracique, gonflement unilateral d'une jambe, essoufflement, jaunisse, cephalee severe soudaine), n'utilise pas les outils pour tenter un autodiagnostic. **Appelle immediatement le 15 (SAMU) ou le 112.**
+</DangerBox>

@@ -1,0 +1,183 @@
+---
+title: "Guia: Trocar via de administração do estradiol"
+description: "Guia passo a passo para troca segura entre estradiol oral, transdérmico e injetável — equivalências de dose, marcas brasileiras e portuguesas, e sinais de alerta clínicos."
+evidenceLevel: B
+sidebar:
+  order: 3
+lastReviewed: 2026-07-15
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, misakian-2025]
+faqs:
+  - q: "Posso trocar de Primogyna diretamente para Oestrogel?"
+    a: "Sim, a troca de estradiol oral (Primogyna) para gel transdérmico (Oestrogel) é clinicamente indicada e reduz o risco de TEV. Tome seu comprimido no último dia, aplique o gel a partir do dia seguinte. A dose inicial é de 1,5 mg/dia (2 doses de Oestrogel). Após 4 semanas, faça coleta de sangue para verificar o E2 no vale."
+  - q: "As doses entre comprimidos e adesivo são intercambiáveis 1:1?"
+    a: "Não. Diferentes formas de administração têm diferentes biodisponibilidades, por isso não existe conversão exata 1:1. As tabelas nesta página oferecem valores de orientação, mas a dose real deve ser ajustada com base nos seus exames de sangue (E2 no vale após 4-6 semanas)."
+  - q: "Estradiol injetável é difícil de conseguir no Brasil?"
+    a: "Sim. Não há apresentações injetáveis de valerato de estradiol registradas pela ANVISA. O acesso é por importação privada (Progynon Depot do Japão ou Índia). As alternativas mais acessíveis no Brasil com excelente perfil de segurança são Oestrogel (gel) e Estradot (adesivo)."
+  - q: "O SUS/convênio cobre a troca de via de administração?"
+    a: "No Brasil, o SUS e os convênios cobrem medicamentos de estradiol (Primogyna, Oestrogel, Estradot) mediante prescrição com indicação. A troca de via não requer novo processo — seu endocrinologista simplesmente emite nova receita para o medicamento-alvo."
+  - q: "O que acontece se ficar alguns dias sem estradiol?"
+    a: "Interrupções curtas (2-3 dias) não causam danos permanentes, mas podem causar sintomas temporários como oscilações de humor, ondas de calor ou cansaço. Se a troca envolver uma pausa, planeje o período de transição o mais curto possível e controle E2 4 semanas após o início da nova forma."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Como a biodisponibilidade do estradiol (E2) varia consideravelmente conforme a via de administração, não existe conversão de dose exata 1:1 entre as diferentes formas<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Após qualquer troca, faça coleta de sangue após 4-6 semanas para determinar o E2 no vale — o ajuste final de dose será feito em conjunto com seu médico.
+
+Se você ainda não usa estradiol, leia primeiro: [Visão geral das vias do estradiol](/pt/medications/estrogens/overview/).
+
+---
+
+## Quando uma troca faz sentido
+
+### De oral para transdérmico (reduzir risco de TEV)
+
+- **Novos fatores de risco de trombose**: idade acima de 40, IMC acima de 30, tabagismo, distúrbio de coagulação ou enxaqueca com aura
+- **Valores laboratoriais alterados**: D-dímero persistentemente elevado ou ALT acima do dobro do limite normal
+- Estudos mostram que formas transdérmicas têm risco de TEV equivalente ao de pessoas não tratadas (RR aprox. 0,97), enquanto estrogênios orais aumentam o risco em cerca de 48% (RR aprox. 1,48)<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />
+
+### De oral ou sublingual para injetável
+
+- **Desejo de monoterapia**: cerca de <InlineValue value="82,6" unit="%" /> das usuárias sob injeção atingem supressão adequada de T sem antiandrogênico<CitationRef id="misakian-2025" num={3} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy" />
+- **Absorção oral insuficiente**: apesar de dose oral adequada por mais de 6 meses, E2 no vale permanece abaixo de 50 pg/mL
+
+<WarningBox title="Disponibilidade no Brasil e Portugal">
+Estradiol injetável (Progynon Depot) não tem registro pela ANVISA nem pela Infarmed. O acesso é por importação privada. As opções transdérmicas mais acessíveis e com excelente perfil de segurança no Brasil são **Oestrogel** (gel) e **Estradot** (adesivo); em Portugal, **Oestrogel** e **Estradot/Climara**.
+</WarningBox>
+
+---
+
+## Equivalências de dose — visão geral
+
+<DoseTable
+  caption="Cinco vias de E2: doses de manutenção e iniciais"
+  headers={['Via de administração', 'Dose de manutenção', 'Dose inicial', 'Ritmo de aplicação']}
+  rows={[
+    ['Oral — Primogyna (EV)', '2-4 mg/dia', '1-2 mg/dia', 'Diário 1x'],
+    ['Sublingual — Estradiol', '2-4 mg/dia (em 2-3 tomadas)', '1-2 mg/dia (em 2 tomadas)', 'Diário 2-3x'],
+    ['Adesivo — Estradot / Climara', '100-200 mcg/dia', '50-100 mcg/dia', 'Trocar a cada 3-4 dias'],
+    ['Gel — Oestrogel', '3 mg/dia', '1,5 mg/dia', 'Diário 1x'],
+    ['Injeção — EV (IM)', '2-4 mg/semana', '1-2 mg/semana', 'A cada 5-7 dias'],
+  ]}
+/>
+
+Após a troca: coleta de sangue no mínimo após 4 semanas, determinar E2 no vale e ajustar dose conforme necessário.
+
+<WarningBox title="Dose inicial sempre na faixa inferior">
+Ao trocar entre vias, a dose inicial deve ficar na faixa inferior do intervalo de manutenção. Diferentes vias são absorvidas e metabolizadas de forma diferente; a mesma miligramagem pode resultar em níveis sanguíneos completamente diferentes. "Começar baixo e titular com base nos exames" é mais seguro do que "começar alto e reduzir se houver efeitos colaterais".
+</WarningBox>
+
+---
+
+## De injeção para outras vias
+
+<DoseTable
+  caption="Transição: Injeção EV → oral / sublingual / transdérmico"
+  headers={['Medicamento-alvo', 'Transição', 'Dose inicial', 'Evolução de E2 na transição']}
+  rows={[
+    ['→ Oral (Primogyna)', '5 dias após última injeção', '2 mg/dia', 'Possível queda por volta do dia 7-10'],
+    ['→ Sublingual', '5 dias após última injeção', '2 mg/dia em 2 tomadas', 'Similar ao oral'],
+    ['→ Adesivo (Estradot)', '5-7 dias após última injeção', '50-100 mcg/dia', 'Adesivo leva 3-7 dias para atingir equilíbrio'],
+    ['→ Gel (Oestrogel)', '5-7 dias após última injeção', '1,5 mg/dia', 'Similar ao adesivo'],
+  ]}
+/>
+
+---
+
+## De oral (Primogyna) para outras vias
+
+<DoseTable
+  caption="Transição: Oral → sublingual / transdérmico / injeção"
+  headers={['Medicamento-alvo', 'Transição', 'Dose inicial', 'Evolução de E2 na transição']}
+  rows={[
+    ['→ Sublingual', 'Trocar no mesmo dia', '2 mg/dia em 2 tomadas', 'Sublingual tem picos mais altos que oral — 1-2 semanas de adaptação'],
+    ['→ Adesivo (Estradot)', 'Último comprimido, colar adesivo no mesmo dia', '50-100 mcg/dia', 'Adesivo leva 3-7 dias para atingir equilíbrio'],
+    ['→ Gel (Oestrogel)', 'Último comprimido, aplicar gel no mesmo dia', '1,5 mg/dia', 'Gel estabiliza em 3-5 dias'],
+    ['→ Injeção (EV)', '1-2 dias após último comprimido', '1-2 mg/semana', 'Picos de injeção significativamente mais altos que oral'],
+  ]}
+/>
+
+---
+
+## De adesivo / gel para outras vias
+
+<DoseTable
+  caption="Transição: Adesivo / Gel → oral / injeção"
+  headers={['Medicamento-alvo', 'Transição', 'Dose inicial', 'Evolução de E2 na transição']}
+  rows={[
+    ['Adesivo ↔ Gel', 'Trocar no mesmo dia', 'Dose inicial da nova forma', 'Quase sem flutuações'],
+    ['→ Oral (Primogyna)', 'Remover adesivo / suspender gel, iniciar oral no mesmo dia', '2 mg/dia', 'Troca para oral aumenta risco de TEV — apenas com indicação clínica clara'],
+    ['→ Injeção (EV)', 'Remover adesivo / suspender gel, 2-3 dias depois primeira injeção', '1-2 mg/semana', 'Nível mais estável que oral'],
+  ]}
+/>
+
+<DangerBox title="Transdérmico → oral: risco de TEV aumenta">
+Estudos mostram risco de TEV de RR aprox. 0,97 para vias transdérmicas e RR aprox. 1,48 para orais. A troca de adesivo ou gel para comprimidos é clinicamente um aumento de risco. Este passo é justificável apenas com indicação médica clara. Antes da troca: avaliar fatores de risco pessoais (idade, IMC, tabagismo, enxaqueca com aura, histórico familiar de trombose).
+</DangerBox>
+
+---
+
+## Exames de sangue após a troca
+
+### Cronograma
+
+- **4 semanas**: primeira coleta — E2 no vale e testosterona
+- **8 semanas**: coleta de confirmação
+- **3 meses**: controle de rotina
+- **Depois**: a cada 6 meses no acompanhamento regular
+
+### Parâmetros padrão em cada consulta
+
+Estradiol (E2), testosterona total (T), enzimas hepáticas (ALT/AST) e pressão arterial.
+
+---
+
+## Sinais de alerta — parar e ligar emergência
+
+<DangerBox title="Com estes sinais, pare e ligue 192 (SAMU, Brasil) ou 112 (Portugal)">
+- **Trombose venosa profunda (TVP)**: inchaço súbito unilateral, vermelhidão e dor na panturrilha
+- **Embolia pulmonar**: dor torácica súbita, falta de ar extrema ou hemoptise
+- **Sintomas neurológicos graves**: cefaleia extrema súbita, alterações visuais ou convulsões
+- **Lesão hepática aguda**: amarelamento da pele ou olhos, urina muito escura
+- **Reação alérgica grave**: edema de laringe, falta de ar, urticária generalizada
+
+Mais informações: [Riscos e sinais de emergência](/pt/risks/).
+</DangerBox>
+
+---
+
+## Preparação para a consulta
+
+- **Levar exames**: especialmente E2 no vale, testosterona, enzimas hepáticas e D-dímero
+- **Nomear a via-alvo**: diga claramente qual forma quer experimentar e leve a tabela de dosagens desta página
+- **Começar na dose inferior**: a maioria dos médicos aprecia quando você propõe começar de forma conservadora
+- **Sugerir datas de controle**: semana 4, semana 8, mês 3
+- **Marcas disponíveis no Brasil**: Primogyna (oral), Oestrogel (gel), Estradot (adesivo)
+- **Marcas disponíveis em Portugal**: Primogyna, Oestrogel, Estradot/Climara
+
+<WarningBox title="Esta página não substitui aconselhamento médico">
+A troca de via de administração, a dose inicial e o acompanhamento dependem da sua saúde cardiovascular individual, dos seus exames e da medicação concomitante. As informações aqui são baseadas em diretrizes clínicas internacionais e servem como orientação para uma conversa bem preparada com seus profissionais de saúde.
+</WarningBox>
+
+---
+
+## Recursos relacionados
+
+- [Visão geral das vias do estradiol](/pt/medications/estrogens/overview/)
+- [Adesivo transdérmico (Estradot, Climara)](/pt/medications/estrogens/transdermal-patch/)
+- [Estradiol oral (Primogyna)](/pt/medications/estrogens/oral/)
+- [Gel de estradiol (Oestrogel)](/pt/medications/estrogens/gel/)
+- [Estradiol injetável (EV)](/pt/medications/estrogens/injection/)
+- [Exames de sangue](/pt/blood-tests/) · [Riscos e sinais de emergência](/pt/risks/)
+- [Calculadora de dose de injeção](/pt/tools/injection-calculator/) · [Simulador de dose](/pt/tools/dose-simulator/)
+- [Localizador de serviços acolhedores](/pt/tools/hospital-finder/)
+
+<RelatedBlogPosts />

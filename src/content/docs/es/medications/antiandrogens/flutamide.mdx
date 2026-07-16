@@ -1,0 +1,117 @@
+---
+title: "Flutamida"
+description: "Por que la flutamida no debe usarse en la terapia hormonal de afirmacion de genero: hepatotoxicidad severa y potencialmente mortal, insuficiencia hepatica fulminante y alternativas mas seguras."
+evidenceLevel: C
+lastReviewed: 2026-07-15
+references: [coleman-2022, livertox-flutamide-2023, wysowski-1993, brahm-2011]
+drug:
+  nonProprietaryName: 'Flutamida'
+  activeIngredient: 'Flutamida (Flutamide)'
+  mechanismOfAction: 'Antagonista no esteroideo del receptor androgenico de 1a generacion; no reduce la testosterona serica en monoterapia, la hepatotoxicidad severa e impredecible es la razon principal de su contraindicacion en la THAG'
+  atc: 'L02BB01'
+sidebar:
+  order: 6
+faqs:
+  - q: "Por que no se recomienda la flutamida en la TRH trans?"
+    a: "La flutamida provoca elevaciones de transaminasas en hasta el 62 % de los casos y puede causar de forma impredecible insuficiencia hepatica fulminante — incluso en pacientes jovenes y con higado sano. Dado que existen alternativas mas seguras como Androcur (CPA), espironolactona, bicalutamida y agonistas de GnRH, no hay razon medicamente justificable para usar flutamida en la THAG."
+  - q: "Cual es la diferencia entre flutamida y bicalutamida?"
+    a: "Ambas son antagonistas no esteroideos del receptor androgenico, pero la flutamida (1a generacion) requiere tres tomas diarias y tiene una tasa de hepatotoxicidad significativamente mayor. La bicalutamida (2a generacion) se toma una vez al dia, tiene una vida media de 5-6 dias y un perfil de seguridad hepatica mas favorable — aunque tambien es una opcion de reserva y Off-Label."
+  - q: "Que hago si actualmente estoy tomando flutamida?"
+    a: "Hazte controlar inmediatamente los valores hepaticos (ALT, AST, bilirrubina) y habla con tu medico/a sobre un cambio a un antiandrogenico mas seguro. Ante sintomas como ictericia, orina oscura o dolor abdominal superior, suspende la flutamida inmediatamente y acude a urgencias."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../../components/ui/EvidenceBadge.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox name="Flutamida" nameCN="Flutamida" category="antiandrogen" route="Oral" evidenceLevel="C">
+  La flutamida es un antagonista no esteroideo del receptor androgenico (AR) de 1a generacion, originalmente aprobado para el tratamiento del carcinoma de prostata avanzado. Debido a su hepatotoxicidad severa y potencialmente mortal — incluyendo insuficiencia hepatica fulminante — la flutamida **no se recomienda expresamente** en la terapia hormonal de afirmacion de genero (THAG)
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . Esta pagina documenta el perfil de riesgo toxicologico y ofrece reduccion de danos para personas que actualmente aun lo toman.
+</DrugInfoBox>
+
+<DangerBox title="Advertencia de seguridad: la flutamida conlleva un alto riesgo de hepatotoxicidad">
+El efecto adverso mas grave de la flutamida es el **dano hepatico agudo** (Drug-Induced Liver Injury, DILI). Existen numerosos informes de casos de **insuficiencia hepatica fulminante** que han provocado muertes o trasplantes hepaticos de emergencia<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} title="Flutamide" />.
+
+En comparacion con la bicalutamida (2a generacion), la flutamida requiere tres tomas diarias, presenta una tasa de hepatotoxicidad significativamente mayor y no ofrece ninguna ventaja en eficacia antiandrogenica. Mientras esten disponibles acetato de ciproterona (Androcur), espironolactona, bicalutamida y agonistas de GnRH, **generalmente no existe razon medicamente justificable para usar flutamida**.
+
+</DangerBox>
+
+<GuideCTA
+  eyebrow="Reduccion de danos"
+  title="Como cambiar de forma segura a otro antiandrogenico?"
+  description="Si actualmente tomas flutamida — por ejemplo porque no tenias acceso a otras opciones — habla con tu medico/a lo antes posible sobre un plan de transicion (p. ej. cambio a bicalutamida, espironolactona o CPA a dosis baja). Independientemente, la funcion hepatica (ALT/AST) debe controlarse regularmente durante la toma."
+  ctaText="Ir a la guia de cambio de antiandrogenico"
+  ctaHref="/es/guides/switch-antiandrogen/"
+  variant="accent"
+/>
+
+---
+
+## 1. Farmacologia y mecanismo de accion
+
+1. **Bloqueo puro del AR**: La flutamida y su metabolito activo principal, la hidroxiflutamida, se unen competitivamente al receptor androgenico (AR) en los tejidos diana, desplazando a la testosterona (T) y la dihidrotestosterona (DHT) de la union al receptor.
+2. **La testosterona no baja — sube**: Como con la bicalutamida, la flutamida en monoterapia interrumpe la retroalimentacion negativa en el hipotalamo, lo que produce un aumento de LH y un incremento reactivo de la testosterona serica. La flutamida no reduce el nivel de testosterona.
+3. **El valor de T no es un marcador de eficacia**: Bajo monoterapia con flutamida, el valor de testosterona serica no refleja el efecto antiandrogeno.
+
+---
+
+## 2. Hepatotoxicidad severa — la evidencia clinica
+
+El dano hepatico inducido por flutamida (DILI) es clinicamente traicionero: inicialmente suele ser poco sintomatico, pero puede progresar rapidamente y es potencialmente mortal. Esta es la razon central por la que la flutamida fue retirada de las guias de THAG.
+
+### Frecuencia de la elevacion de transaminasas
+
+Los datos a largo plazo del tratamiento del carcinoma de prostata muestran<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />:
+
+- En aprox. **42-62 %** de las usuarias se producen elevaciones de transaminasas (ALT/AST), generalmente asintomaticas y transitorias.
+- En aprox. **3-5 %** se produce una elevacion de enzimas hepaticas clinicamente relevante (mas de 5 veces el limite superior normal).
+- En aprox. **0,1-1 %** se desarrolla ictericia manifiesta o hepatitis severa.
+- El dano aparece tipicamente **1-10 meses** (media aprox. 3 meses) despues del inicio de la terapia.
+
+### Insuficiencia hepatica fulminante — informes de casos
+
+- **Reportes tempranos a la FDA**: En los primeros 5 anos tras la comercializacion, la FDA recibio aproximadamente **20 reportes de hepatotoxicidad mortal** por flutamida<CitationRef id="livertox-flutamide-2023" num={2} authors="LiverTox" year={2023} />.
+- **Wysowski et al. (1993)**: De 19 pacientes con hepatotoxicidad severa, 14 se recuperaron tras la suspension; **5 fallecieron por insuficiencia hepatica progresiva**<CitationRef id="wysowski-1993" num={3} authors="Wysowski DK et al." year={1993} title="Fatal and Nonfatal Hepatotoxicity Associated with Flutamide" />.
+- **Mujeres jovenes particularmente en riesgo**: Brahm et al. (2011) analizaron 10 casos de hepatotoxicidad severa por flutamida. De 7 mujeres jovenes que recibian flutamida por hiperandrogenismo, **5 desarrollaron insuficiencia hepatica fulminante y requirieron trasplante hepatico de emergencia**<CitationRef id="brahm-2011" num={4} authors="Brahm J et al." year={2011} title="Acute and fulminant hepatitis induced by flutamide: case series report and review of the literature" />.
+
+<DangerBox title="Senales de alerta de dano hepatico — suspender inmediatamente y acudir a urgencias">
+Si tomas flutamida y notas alguno de los siguientes sintomas, **suspende el medicamento inmediatamente y llama a emergencias o acude a la urgencia mas cercana**:
+
+- Coloracion amarilla de la piel o el blanco de los ojos (ictericia)
+- Orina de color oscuro (color te a marron amarillento)
+- Dolor persistente o sensibilidad en la parte superior derecha del abdomen
+- Debilidad pronunciada, cansancio extremo, perdida subita de apetito con nauseas y vomitos
+- Valores hepaticos (ALT/AST) por encima de 3 veces el limite superior de referencia
+
+**Ante cualquiera de estos signos: suspender flutamida inmediatamente y hacerse comprobar la funcion hepatica de urgencia.** El dano hepatico por flutamida puede deteriorarse rapidamente sin previo aviso.
+
+</DangerBox>
+
+---
+
+## 3. Si actualmente tomas flutamida: transicion segura
+
+Para personas que actualmente usan flutamida por falta de alternativas:
+
+1. **Controlar inmediatamente los valores hepaticos**: Hazte determinar ALT, AST y bilirrubina como valores basales. Durante la fase de transicion se recomiendan controles cada 2-4 semanas.
+2. **Nunca aumentar la dosis por tu cuenta**: La hepatotoxicidad de la flutamida es dosis-dependiente — un aumento de dosis por iniciativa propia es peligroso.
+3. **Transicion acompanada medicamente**: Consulta lo antes posible con un profesional de salud con experiencia en THAG y transiciona bajo control de la funcion hepatica a espironolactona, bicalutamida o un agonista de GnRH. Ante signos clinicos de dano hepatico, la flutamida debe suspenderse inmediata e incondicionalmente — en ese caso, llamar a emergencias o acudir a urgencias.
+
+---
+
+## Paginas relacionadas
+
+- [Bicalutamida: mecanismo de accion y hepatotoxicidad](/es/medications/antiandrogens/bicalutamide/)
+- [CPA (Acetato de ciproterona / Androcur)](/es/medications/antiandrogens/cpa/)
+- [Guia de cambio de antiandrogenico](/es/guides/switch-antiandrogen/)

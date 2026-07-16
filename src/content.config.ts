@@ -57,7 +57,7 @@ export const collections = {
 			publishDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			author: z.string().default('HRT药典编辑部'),
-			locale: z.enum(['zh', 'en', 'ja', 'ko', 'de']).default('zh'),
+			locale: z.enum(['zh', 'en', 'ja', 'ko', 'de', 'fr', 'es', 'pt', 'ru']).default('zh'),
 			tags: z.array(z.string()).default([]),
 			category: z
 				.enum([

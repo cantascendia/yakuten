@@ -15,7 +15,7 @@ import GlassCard from '../../../../components/ui/GlassCard.astro';
 import hospitalsRaw from '../../../../data/hospitals.json';
 
 export const hospitals = hospitalsRaw;
-export const cityOrder = ['北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
+export const cityOrder = ['Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille', 'Bruxelles', 'Genève', 'Zürich', 'Montréal', '北京', '上海', '广州', '深圳', '杭州', '南京', '武汉', '成都', '重庆', '西安', '沈阳', '香港', '台北'];
 export const hospitalsByCity = cityOrder
   .map((city) => ({
     city,
@@ -28,7 +28,7 @@ export const cityCount = hospitalsByCity.length;
 Ces fiches sont des notes d'accès tenues à jour par la communauté, et non des garanties officielles émanant des établissements. Les politiques, les services et la disponibilité des médecins peuvent évoluer du jour au lendemain : une confirmation directe reste donc toujours indispensable.
 </WarningBox>
 
-Cet annuaire recense pour l'instant {hospitals.length} fiches remontées par la communauté, réparties sur {cityCount} villes. À ce stade, les données sources sont encore majoritairement en chinois ; les noms d'établissements et les notes locales peuvent donc s'afficher en chinois.
+Cet annuaire recense pour l'instant {hospitals.length} fiches remontées par la communauté, réparties sur {cityCount} villes. Les données sources couvrent principalement la Chine et l'Asie pour le moment ; les noms d'établissements et les notes locales peuvent donc s'afficher en chinois. Un travail de localisation pour les ressources francophones (France, Belgique, Suisse, Québec) est en cours.
 
 ---
 
@@ -53,5 +53,5 @@ Cet annuaire recense pour l'instant {hospitals.length} fiches remontées par la 
 </GlassCard>
 
 <DangerBox title="Note relative aux urgences">
-Cet annuaire n'est pas un service d'orientation en urgence. En cas de symptômes urgents, rendez-vous d'abord aux urgences plutôt que de vous en remettre à la consultation de cet annuaire.
+Cet annuaire n'est pas un service d'orientation en urgence. En cas de symptômes urgents, appelez le **15** (SAMU) ou le **112** (numéro d'urgence européen) et rendez-vous aux urgences les plus proches.
 </DangerBox>

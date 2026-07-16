@@ -1,0 +1,193 @@
+---
+title: "Guide : Changement de voie d'administration de l'estradiol"
+description: "Guide pas a pas pour changer en toute securite entre les formes orales, transdermiques et injectables d'estradiol -- avec les marques francaises, equivalences de doses et signaux d'alerte."
+evidenceLevel: B
+sidebar:
+  order: 3
+lastReviewed: 2026-07-15
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, misakian-2025]
+faqs:
+  - q: "Puis-je passer directement du Provames au gel Oestrogel ?"
+    a: "Oui, le passage de l'estradiol oral (Provames) au gel transdermique (Oestrogel) est medicalement judicieux et reduit ton risque de TEV. Prends ton dernier comprime, applique le gel le lendemain. La dose de depart est de 1,5 mg/jour (2 pressions d'Oestrogel). Apres 4 semaines, fais une prise de sang pour verifier le taux d'E2 au creux."
+  - q: "Les dosages entre comprimes et patchs sont-ils interchangeables 1:1 ?"
+    a: "Non. Les differentes formes galeniques ont des biodisponibilites differentes, ce qui exclut une conversion exacte 1:1. Les tableaux de cette page offrent des valeurs d'orientation, mais la dose reelle doit etre ajustee individuellement sur la base de tes bilans sanguins (E2 au creux apres 4-6 semaines)."
+  - q: "Les estrogenes injectables sont-ils difficiles a obtenir en France ?"
+    a: "Les solutions injectables de valerate d'estradiol ne sont pas commercialisees en France. L'obtention se fait via des pharmacies internationales ou une ordonnance privee. Les alternatives les plus accessibles avec un excellent profil de securite en France sont l'Oestrogel, l'Oestrodose et les patchs Climara."
+  - q: "La Securite sociale prend-elle en charge le changement de forme galenique ?"
+    a: "En France, les preparations d'estradiol (Provames, Oestrogel, Oestrodose, Estreva, Climara) sont remboursees sur ordonnance dans le cadre de l'ALD. Le changement de forme galenique n'est pas une nouvelle demande -- ton endocrinologue ou gynecologue etablit simplement une nouvelle ordonnance pour la preparation cible."
+  - q: "Que se passe-t-il si je reste quelques jours sans estradiol ?"
+    a: "Des interruptions courtes (2-3 jours) ne causent pas de dommages durables, mais peuvent provoquer des symptomes temporaires comme des sautes d'humeur, des bouffees de chaleur ou de la fatigue. Prevois la transition aussi courte que possible et fais controler ton taux d'E2 4 semaines apres le debut de la nouvelle forme."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+La biodisponibilite de l'estradiol (E2) variant considerablement selon la forme galenique, il n'existe pas de conversion exacte 1:1 entre les differentes voies d'administration<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Apres un changement, fais une prise de sang 4-6 semaines plus tard pour determiner le taux d'E2 au creux -- l'ajustement definitif de la dose se fait en accord avec ton medecin.
+
+---
+
+## Quand un changement est pertinent
+
+### De l'oral au transdermique (reduire le risque de TEV)
+
+- **Facteurs de risque thrombotiques nouveaux ou croissants** : age a partir de 40 ans, IMC superieur a 30, tabagisme, trouble de la coagulation nouvellement decouvert ou migraine avec aura
+- **Bilans biologiques anormaux** : D-dimeres durablement eleves ou transaminases (ALT) superieures au double de la norme
+- **Predisposition familiale aux thromboses** : TVP ou embolie pulmonaire chez des parents au premier degre
+
+De grandes etudes cliniques montrent que les formes transdermiques presentent un risque de TEV pratiquement equivalent a celui des personnes non traitees (RR environ 0,97), tandis que les estrogenes oraux augmentent le risque d'environ 48 % (RR environ 1,48)<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+### De l'oral ou sublingual vers l'injectable
+
+- **Souhait de monotherapie** : environ <InlineValue value="82,6" unit="%" /> des utilisatrices sous estradiol injectable atteignent une suppression suffisante de la testosterone sans antiandrogene<CitationRef id="misakian-2025" num={3} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy" />
+- **Absorption orale insuffisante** : malgre une dose orale adequate sur plus de 6 mois, le taux d'E2 au creux reste sous 50 pg/mL
+
+<WarningBox title="Disponibilite en France">
+Les preparations injectables d'estradiol ne sont pas commercialisees en France. L'obtention se fait via des pharmacies internationales ou des ordonnances privees. Les options transdermiques (Oestrogel, Oestrodose, Estreva gel, Climara patch) offrent en France l'acces le plus simple avec un excellent profil de securite.
+</WarningBox>
+
+---
+
+## Equivalences de doses en vue d'ensemble
+
+Les indications suivantes se fondent sur l'Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> et les donnees pharmacocinetiques de Kuhl 2005<CitationRef id="kuhl-2005" num={1} />.
+
+<DoseTable
+  caption="Cinq formes d'E2 : doses d'entretien et de depart"
+  headers={['Forme galenique', 'Dose d entretien', 'Dose de depart', 'Rythme d application']}
+  rows={[
+    ['Oral -- Provames (EV)', '2-4 mg/jour', '1-2 mg/jour', 'Quotidien 1x'],
+    ['Sublingual -- Estradiol', '2-4 mg/jour (en 2-3 prises)', '1-2 mg/jour (en 2 prises)', 'Quotidien 2-3x'],
+    ['Patch -- Climara', '100-200 mcg/jour', '50-100 mcg/jour', 'Changement tous les 3-4 jours'],
+    ['Gel -- Oestrogel / Oestrodose / Estreva', '3 mg/jour', '1,5 mg/jour', 'Quotidien 1x'],
+    ['Injection -- EV (IM)', '2-4 mg/semaine', '1-2 mg/semaine', 'Tous les 5-7 jours'],
+  ]}
+/>
+
+Apres le changement : prise de sang au plus tot apres 4 semaines, taux d'E2 au creux, et ajuster la dose si necessaire.
+
+<WarningBox title="Dose de depart toujours au bas de la fourchette">
+Lors du changement entre formes galeniques, la dose de depart doit se situer au bas de la fourchette d'entretien. "Commencer bas et titrer selon les bilans" est plus sur que "commencer haut et reduire en cas d'effets secondaires".
+</WarningBox>
+
+---
+
+## De l'injection EV vers d'autres formes
+
+<DoseTable
+  caption="Schema de transition : injection EV -> oral / sublingual / transdermique"
+  headers={['Preparation cible', 'Transition', 'Dose de depart', 'Evolution E2 en transition']}
+  rows={[
+    ['-> Oral (Provames)', '5 jours apres la derniere injection', '2 mg/jour', 'Creux possible vers J7-10, fluctuations d humeur possibles'],
+    ['-> Sublingual', '5 jours apres la derniere injection', '2 mg/jour en 2 prises', 'Comme ci-dessus'],
+    ['-> Patch (Climara)', '5-7 jours apres la derniere injection', '50-100 mcg/jour', 'Le patch a besoin de 3-7 jours pour atteindre l etat d equilibre'],
+    ['-> Gel (Oestrogel)', '5-7 jours apres la derniere injection', '1,5 mg/jour', 'Comme le patch'],
+  ]}
+/>
+
+---
+
+## De l'oral (Provames) vers d'autres formes
+
+<DoseTable
+  caption="Schema de transition : oral (Provames) -> sublingual / transdermique / injection"
+  headers={['Preparation cible', 'Transition', 'Dose de depart', 'Evolution E2 en transition']}
+  rows={[
+    ['-> Sublingual', 'Changer le meme jour', '2 mg/jour en 2 prises', 'Le sublingual a des pics plus eleves que l oral -- 1-2 semaines d adaptation'],
+    ['-> Patch (Climara)', 'Dernier comprime, appliquer le patch le meme jour', '50-100 mcg/jour', 'Le patch a besoin de 3-7 jours pour l etat d equilibre'],
+    ['-> Gel (Oestrogel)', 'Dernier comprime, appliquer le gel le meme jour', '1,5 mg/jour', 'L absorption du gel se stabilise en 3-5 jours'],
+    ['-> Injection (EV)', '1-2 jours apres le dernier comprime', '1-2 mg/semaine', 'Les pics d injection sont nettement plus eleves que l oral'],
+  ]}
+/>
+
+---
+
+## Du patch / gel vers d'autres formes
+
+<DoseTable
+  caption="Schema de transition : patch / gel -> oral / injection"
+  headers={['Preparation cible', 'Transition', 'Dose de depart', 'Evolution E2 en transition']}
+  rows={[
+    ['Patch <-> Gel', 'Changer le meme jour', 'Dose de depart de la nouvelle forme', 'Peu de fluctuations'],
+    ['-> Oral (Provames)', 'Retirer le patch / arreter le gel, commencer l oral le meme jour', '2 mg/jour', 'Le passage a l oral augmente le risque de TEV -- uniquement sur indication medicale claire'],
+    ['-> Sublingual', 'Retirer le patch / arreter le gel, commencer le sublingual le meme jour', '2 mg/jour en 2 prises', 'Comme ci-dessus'],
+    ['-> Injection (EV)', 'Retirer le patch / arreter le gel, premiere injection 2-3 jours plus tard', '1-2 mg/semaine', 'Taux plus stable qu oral'],
+  ]}
+/>
+
+<DangerBox title="Transdermique -> oral : le risque de TEV augmente">
+De grandes etudes montrent un risque de TEV de RR environ 0,97 pour les formes transdermiques et RR environ 1,48 pour les formes orales. Le passage du patch ou gel aux comprimes est une augmentation du risque d'un point de vue clinique. Cette etape n'est justifiable qu'en cas d'indication medicale imperative (p. ex. dermatite de contact severe sans alternative transdermique).
+</DangerBox>
+
+---
+
+## Bilans sanguins apres le changement
+
+### Calendrier
+
+- **4 semaines** : premiere prise de sang -- E2 au creux et testosterone
+- **8 semaines** : controle de confirmation
+- **3 mois** : controle de routine
+- **Ensuite** : tous les 6 mois dans le cadre du suivi regulier
+
+### Specificites selon la forme galenique
+
+- **Apres passage a l'injection** : premiere prise de sang obligatoirement au creux -- le matin du jour de la prochaine injection, avant de piquer
+- **Apres passage au patch / gel** : le depot transdermique dans la couche cornee a besoin de 3-7 jours pour se constituer. Les prises de sang dans les 3 premiers jours montrent donc des valeurs faussement basses
+- **Apres passage a l'oral ou sublingual** : comme les preparations orales fluctuent au cours de la journee, fais toujours la prise de sang au meme moment par rapport a la prise
+
+---
+
+## Arret immediat et appel aux urgences (15 ou 112)
+
+<DangerBox title="En cas des signaux d'alerte suivants, arreter immediatement et appeler le 15 ou le 112">
+- **Thrombose veineuse profonde (TVP)** : gonflement soudain et unilateral, rougeur et douleur a la pression dans le mollet
+- **Embolie pulmonaire** : douleur thoracique soudaine et intense, essoufflement extreme ou hemoptysie
+- **Symptomes neurologiques severes** : cephalee foudroyante soudaine, deficits visuels ou convulsions
+- **Atteinte hepatique aigue** : jaunissement de la peau ou du blanc des yeux, urines brun fonce
+- **Reaction allergique severe** : oedeme larynge, essoufflement, urticaire etendue
+
+Informations detaillees sur les risques et les signes d'urgence : [Reconnaitre les risques et agir en urgence](/fr/risks/).
+</DangerBox>
+
+---
+
+## Preparation au rendez-vous medical
+
+- **Reunir les bilans** : apporte tes derniers resultats -- surtout E2 au creux, testosterone, bilan hepatique et eventuellement D-dimeres
+- **Nommer la forme galenique cible** : formule clairement quelle forme tu souhaites essayer, et apporte le tableau de dosage de cette page
+- **Proposer les rendez-vous de controle** : semaine 4, semaine 8, mois 3
+
+### Remboursement en France
+
+1. **Rendez-vous chez l'endocrinologue ou le/la gynecologue** : expose ta demande et apporte tes bilans actuels
+2. **Ordonnance** : ton medecin etablit une ordonnance pour la preparation cible -- p. ex. "Oestrogel 0,06 %, 2 pressions/jour" ou "Climara 100 mcg/24h, tous les 3-4 jours"
+3. **Pharmacie** : avec l'ordonnance, rends-toi dans n'importe quelle pharmacie. Les preparations transdermiques courantes (Oestrogel, Oestrodose, Climara) sont generalement disponibles sous 1-2 jours ouvrables
+4. **Ticket moderateur** : le remboursement s'effectue dans le cadre de l'ALD
+
+<WarningBox title="Cette page ne remplace pas un avis medical">
+Le changement de forme galenique de l'estradiol, la dose de depart et le suivi dependent de ta sante cardiovasculaire individuelle, de tes bilans et de tes traitements concomitants. Si tu as des difficultes a trouver des praticien·ne·s avec experience en THAG, consulte notre [base de structures bienveillantes](/fr/tools/hospital-finder/).
+</WarningBox>
+
+---
+
+## Ressources complementaires
+
+- [Formes d'estradiol en vue d'ensemble](/fr/medications/estrogens/overview/)
+- [Patch transdermique (Climara)](/fr/medications/estrogens/transdermal-patch/)
+- [Estradiol oral (Provames)](/fr/medications/estrogens/oral/)
+- [Estradiol sublingual](/fr/medications/estrogens/sublingual/)
+- [Gel d'estradiol (Oestrogel)](/fr/medications/estrogens/gel/)
+- [Estrogenes injectables (EV)](/fr/medications/estrogens/injection/)
+- [Bilans sanguins et auto-controle](/fr/blood-tests/) -- [Risques et urgences](/fr/risks/)
+- [Calculateur d'injection](/fr/tools/injection-calculator/) -- [Simulateur de dose](/fr/tools/dose-simulator/)
+- [Structures d'accueil bienveillantes](/fr/tools/hospital-finder/)
+
+<RelatedBlogPosts />

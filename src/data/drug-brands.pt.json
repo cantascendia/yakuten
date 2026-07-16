@@ -1,0 +1,173 @@
+{
+  "estradiol-oral": [
+    {
+      "name": "Primogyna",
+      "manufacturer": "Bayer",
+      "countryName": "Brasil",
+      "spec": "1mg/2mg x 28 comprimidos",
+      "appearance": "Comprimidos revestidos brancos/azuis",
+      "notes": "Amplamente disponivel no Brasil; produto original da Bayer para TH",
+      "activeIngredient": "Valerato de estradiol"
+    },
+    {
+      "name": "Estrofem",
+      "manufacturer": "Novo Nordisk",
+      "countryName": "Dinamarca",
+      "spec": "1mg/2mg x 28 comprimidos revestidos",
+      "appearance": "Comprimido revestido azul",
+      "notes": "Estradiol micronizado; adequado para uso sublingual",
+      "activeIngredient": "Estradiol micronizado"
+    }
+  ],
+  "estradiol-gel": [
+    {
+      "name": "Oestrogel",
+      "manufacturer": "Besins Healthcare",
+      "countryName": "Franca",
+      "spec": "0,06% gel, frasco-bomba de 80g",
+      "appearance": "Gel transparente em frasco-bomba",
+      "notes": "Disponivel no Brasil e em Portugal; 1 dose = 0,75mg de estradiol",
+      "activeIngredient": "Estradiol hemi-hidratado"
+    },
+    {
+      "name": "Sandrena",
+      "manufacturer": "Orion Pharma",
+      "countryName": "Finlandia",
+      "spec": "0,5mg/1mg saches individuais",
+      "appearance": "Gel em saches de dose unica",
+      "notes": "Saches individuais, praticos para uso externo",
+      "activeIngredient": "Estradiol"
+    }
+  ],
+  "estradiol-patch": [
+    {
+      "name": "Estradot",
+      "manufacturer": "Novartis",
+      "countryName": "Suica",
+      "spec": "25/37,5/50/75/100 mcg/24h",
+      "appearance": "Adesivo matricial redondo e pequeno",
+      "notes": "Trocar duas vezes por semana; disponivel em Portugal",
+      "activeIngredient": "Estradiol hemi-hidratado"
+    },
+    {
+      "name": "Climara",
+      "manufacturer": "Bayer",
+      "countryName": "Alemanha",
+      "spec": "25/50/100 mcg/24h",
+      "appearance": "Adesivo transparente",
+      "notes": "Produto original; trocar uma vez por semana",
+      "activeIngredient": "Estradiol"
+    }
+  ],
+  "estradiol-injection": [
+    {
+      "name": "Primogyna Depot",
+      "manufacturer": "Bayer",
+      "countryName": "Brasil",
+      "spec": "10mg/ml, ampola de 1ml",
+      "appearance": "Solucao oleosa injetavel em ampola de vidro",
+      "notes": "Disponivel no Brasil; aplicacao intramuscular (IM)",
+      "activeIngredient": "Valerato de estradiol"
+    }
+  ],
+  "cpa": [
+    {
+      "name": "Androcur",
+      "manufacturer": "Bayer",
+      "countryName": "Alemanha",
+      "spec": "50mg x 20 comprimidos",
+      "appearance": "Comprimidos brancos redondos",
+      "notes": "Produto original. EMA recomenda <= 10mg/dia para THAG. Disponivel no Brasil e em Portugal",
+      "activeIngredient": "Acetato de ciproterona"
+    },
+    {
+      "name": "Acetato de Ciproterona (generico)",
+      "manufacturer": "EMS / Medley",
+      "countryName": "Brasil",
+      "spec": "50mg x 20 comprimidos",
+      "appearance": "Comprimido branco redondo",
+      "notes": "Generico brasileiro; mais acessivel que o Androcur",
+      "activeIngredient": "Acetato de ciproterona"
+    }
+  ],
+  "spironolactone": [
+    {
+      "name": "Aldactone",
+      "manufacturer": "Pfizer",
+      "countryName": "EUA/Brasil",
+      "spec": "25mg/50mg/100mg comprimidos",
+      "appearance": "Comprimidos brancos a creme",
+      "notes": "Disponivel no Brasil; amplamente utilizado como antiandrogeno na America Latina",
+      "activeIngredient": "Espironolactona"
+    },
+    {
+      "name": "Espironolactona (generico)",
+      "manufacturer": "EMS / Medley",
+      "countryName": "Brasil",
+      "spec": "25mg/50mg/100mg comprimidos",
+      "appearance": "Comprimido branco",
+      "notes": "Generico brasileiro; amplamente disponivel pelo SUS",
+      "activeIngredient": "Espironolactona"
+    }
+  ],
+  "bicalutamide": [
+    {
+      "name": "Casodex",
+      "manufacturer": "AstraZeneca",
+      "countryName": "Reino Unido",
+      "spec": "50mg/150mg comprimidos revestidos",
+      "appearance": "Comprimido revestido branco",
+      "notes": "Produto original; uso off-label em THAG; genericos disponiveis no Brasil",
+      "activeIngredient": "Bicalutamida"
+    },
+    {
+      "name": "Bicalutamida (generico)",
+      "manufacturer": "EMS / Sun Pharma",
+      "countryName": "Brasil",
+      "spec": "50mg/150mg comprimidos revestidos",
+      "appearance": "Comprimido revestido branco",
+      "notes": "Generico; mais acessivel que o Casodex",
+      "activeIngredient": "Bicalutamida"
+    }
+  ],
+  "gnrh-agonists": [
+    {
+      "name": "Decapeptyl",
+      "manufacturer": "Ipsen",
+      "countryName": "Franca",
+      "spec": "3,75mg/11,25mg depot",
+      "appearance": "Po para suspensao injetavel",
+      "notes": "Injecao depot mensal ou trimestral; disponivel no Brasil e em Portugal",
+      "activeIngredient": "Triptorelina"
+    },
+    {
+      "name": "Lupron Depot",
+      "manufacturer": "AbbVie",
+      "countryName": "EUA",
+      "spec": "3,75mg/7,5mg/11,25mg depot",
+      "appearance": "Po para suspensao injetavel",
+      "notes": "Alternativa ao Decapeptyl; disponivel por importacao",
+      "activeIngredient": "Acetato de leuprorrelina"
+    }
+  ],
+  "progesterone": [
+    {
+      "name": "Utrogestan",
+      "manufacturer": "Besins Healthcare",
+      "countryName": "Franca",
+      "spec": "100mg/200mg capsulas moles",
+      "appearance": "Capsula mole amarela e oval",
+      "notes": "Progesterona micronizada; pode ser usada por via oral ou retal. Disponivel no Brasil e em Portugal",
+      "activeIngredient": "Progesterona micronizada"
+    },
+    {
+      "name": "Evocanil",
+      "manufacturer": "Biolab",
+      "countryName": "Brasil",
+      "spec": "100mg/200mg capsulas moles",
+      "appearance": "Capsula mole amarela",
+      "notes": "Progesterona micronizada; alternativa brasileira ao Utrogestan",
+      "activeIngredient": "Progesterona micronizada"
+    }
+  ]
+}

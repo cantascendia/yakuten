@@ -1,0 +1,203 @@
+---
+title: "Guia: Cambio de via de administracion de estradiol"
+description: "Guia paso a paso para el cambio seguro entre vias oral, transdermica e inyectable de estradiol — con marcas locales hispanohablantes, dosis equivalentes y senales de alerta clinicas."
+evidenceLevel: B
+sidebar:
+  order: 3
+lastReviewed: 2026-07-15
+references: [canonico-2018, coleman-2022, hembree-2017, kuhl-2005, misakian-2025]
+faqs:
+  - q: "Puedo cambiar de Progynova/Meriestra directamente a gel?"
+    a: "Si, el cambio de estradiol oral (Progynova, Meriestra) a gel transdermico (Oestrogel) es medicamente recomendable y reduce tu riesgo de TEV. Toma tu ultima pastilla, aplica el gel al dia siguiente. La dosis inicial es de 1,5 mg/dia (2 aplicaciones de Oestrogel). Hazte un analisis a las 4 semanas y comprueba el E2 valle."
+  - q: "Son las dosificaciones entre pastillas y parche intercambiables 1:1?"
+    a: "No. Las diferentes vias de administracion tienen biodisponibilidades diferentes, por lo que no existe una conversion exacta 1:1. Las tablas de esta pagina ofrecen valores orientativos, pero la dosis real debe ajustarse segun tus valores de sangre (E2 valle a las 4-6 semanas)."
+  - q: "Es dificil conseguir estradiol inyectable en mi pais?"
+    a: "Depende del pais. En Argentina y Mexico, hay preparados inyectables disponibles en farmacias. En Espana, no hay preparados inyectables comercializados y se obtienen por importacion privada. Las alternativas mas accesibles con excelente perfil de seguridad son gel (Oestrogel) y parche (Evopad, Climara)."
+  - q: "Que pasa si paso unos dias sin estradiol?"
+    a: "Interrupciones breves (2-3 dias) no causan danos permanentes, pero pueden provocar sintomas temporales como cambios de animo, sofocos o cansancio. Si haces la transicion con una pausa, planifica el periodo de transicion lo mas corto posible y hazte un control de E2 4 semanas despues del inicio de la nueva via."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import GuideCTA from '../../../../components/ui/GuideCTA.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+Dado que la biodisponibilidad del estradiol (E2) varia considerablemente segun la via de administracion, no existe una conversion exacta 1:1 entre los diferentes formatos<CitationRef id="kuhl-2005" num={1} authors="Kuhl H" year={2005} title="Pharmacology of estrogens and progestogens" />. Despues de un cambio, debes hacerte un analisis de sangre a las 4-6 semanas para determinar el E2 valle — el ajuste definitivo de dosis se realiza en consulta con tu profesional de salud.
+
+Si aun no usas estradiol, lee primero la pagina basica: [Formas de administracion de estradiol](/es/medications/estrogens/overview/). Si planeas tu primera inyeccion, encontraras todo en la [guia de la primera inyeccion](/es/guides/first-injection/).
+
+---
+
+## Cuando tiene sentido un cambio
+
+### De oral a transdermica (reducir riesgo de TEV)
+
+- **Factores de riesgo de trombosis nuevos o en aumento**: edad a partir de 40, IMC mayor de 30, tabaquismo, trastorno de coagulacion recien diagnosticado o migrana con aura;
+- **Valores de laboratorio alterados**: dimero D persistentemente elevado o transaminasas (ALT) por encima del doble del limite normal;
+- **Antecedentes familiares de trombosis**: TVP o EP en familiares de primer grado.
+
+Grandes estudios clinicos muestran que las vias transdermicas tienen un riesgo de TEV practicamente igual al de personas no tratadas (RR aprox. 0,97), mientras que los estrogenos orales aumentan el riesgo en aproximadamente un 48 % (RR aprox. 1,48)<CitationRef id="canonico-2018" num={2} authors="Canonico M et al." year={2018} title="Estrogen therapy and venous thromboembolism: an updated meta-analysis" />.
+
+### De oral o sublingual a inyectable
+
+- **Deseo de monoterapia**: quieres prescindir a largo plazo de antiandrogenicos como Androcur (CPA). Aproximadamente el <InlineValue value="82,6" unit="%" /> de las usuarias con estradiol inyectable consiguen supresion de testosterona suficiente sin antiandrogenico<CitationRef id="misakian-2025" num={3} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy" />;
+- **Absorcion oral insuficiente**: a pesar de dosis oral adecuada durante mas de 6 meses, tu E2 valle permanece por debajo de 50 pg/mL.
+
+### De inyectable a oral o transdermica
+
+- **Dificultades con la inyeccion**: fobia a las agujas pronunciada o suministro inestable de medicamento;
+- **Fluctuaciones hormonales intensas**: diferencias extremas entre pico y valle que causan cambios de animo.
+
+### De transdermica a oral o inyectable
+
+- **Reacciones cutaneas**: picazon persistente, enrojecimiento o alergia de contacto bajo el parche, o irritacion local por el gel;
+- **Absorcion cutanea insuficiente**: a pesar de dosis maxima, tu E2 permanece por debajo del rango objetivo.
+
+---
+
+## Equivalencias de dosificacion
+
+Las siguientes indicaciones se basan en la Endocrine Society 2017<CitationRef id="hembree-2017" num={4} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />, WPATH SOC 8<CitationRef id="coleman-2022" num={5} authors="Coleman E et al." year={2022} title="Standards of Care v8" /> y los datos farmacocineticos de Kuhl 2005<CitationRef id="kuhl-2005" num={1} />.
+
+<DoseTable
+  caption="Cinco vias de E2: dosis de mantenimiento e iniciales"
+  headers={['Via de administracion', 'Dosis de mantenimiento', 'Dosis inicial', 'Ritmo de aplicacion']}
+  rows={[
+    ['Oral — Progynova / Meriestra (EV)', '2-4 mg/dia', '1-2 mg/dia', 'Diaria 1x'],
+    ['Sublingual — Estradiol', '2-4 mg/dia (en 2-3 tomas)', '1-2 mg/dia (en 2 tomas)', 'Diaria 2-3x'],
+    ['Parche — Evopad / Climara', '100-200 microgramos/dia', '50-100 microgramos/dia', 'Cambiar cada 3-4 dias'],
+    ['Gel — Oestrogel', '3 mg/dia', '1,5 mg/dia', 'Diaria 1x aplicar'],
+    ['Inyeccion — EV (i.m.)', '2-4 mg/semana', '1-2 mg/semana', 'Cada 5-7 dias'],
+  ]}
+/>
+
+Despues del cambio: analisis de sangre como minimo 4 semanas despues, determinar E2 valle y ajustar dosis si es necesario.
+
+<WarningBox title="Dosis inicial siempre en el extremo inferior">
+Al cambiar entre vias de administracion, la dosis inicial debe situarse en el extremo inferior del rango de mantenimiento — no en el extremo superior de tu dosificacion anterior. "Empezar bajo y titular segun valores de sangre" es mas seguro que "empezar alto y reducir si hay efectos secundarios".
+</WarningBox>
+
+---
+
+## De inyeccion EV a otras vias
+
+La vida media biologica del valerato de estradiol inyectado por via intramuscular es de aproximadamente 4-5 dias.
+
+<DoseTable
+  caption="Esquema de transicion: Inyeccion EV a oral / sublingual / transdermica"
+  headers={['Preparado objetivo', 'Transicion', 'Dosis inicial', 'Curso de E2 durante la transicion']}
+  rows={[
+    ['Oral (Progynova / Meriestra)', '5 dias despues de la ultima inyeccion', '2 mg/dia', 'Posible descenso alrededor del dia 7-10'],
+    ['Sublingual', '5 dias despues de la ultima inyeccion', '2 mg/dia en 2 tomas', 'Como arriba'],
+    ['Parche (Evopad / Climara)', '5-7 dias despues de la ultima inyeccion', '50-100 microgramos/dia', 'El parche necesita 3-7 dias hasta el estado estable'],
+    ['Gel (Oestrogel)', '5-7 dias despues de la ultima inyeccion', '1,5 mg/dia', 'Como el parche'],
+  ]}
+/>
+
+---
+
+## De oral (Progynova / Meriestra) a otras vias
+
+El estradiol oral tiene una vida media de aproximadamente 13-20 horas.
+
+<DoseTable
+  caption="Esquema de transicion: Oral a sublingual / transdermica / inyeccion"
+  headers={['Preparado objetivo', 'Transicion', 'Dosis inicial', 'Curso de E2 durante la transicion']}
+  rows={[
+    ['Sublingual', 'El mismo dia', '2 mg/dia en 2 tomas', 'Sublingual tiene picos mas altos que oral — 1-2 semanas de adaptacion'],
+    ['Parche (Evopad / Climara)', 'Ultima pastilla, aplicar parche el mismo dia', '50-100 microgramos/dia', 'El parche necesita 3-7 dias hasta el estado estable'],
+    ['Gel (Oestrogel)', 'Ultima pastilla, aplicar gel el mismo dia', '1,5 mg/dia', 'La absorcion del gel se estabiliza en 3-5 dias'],
+    ['Inyeccion (EV)', '1-2 dias despues de la ultima pastilla', '1-2 mg/semana', 'Los picos de inyeccion son mucho mas altos que oral'],
+  ]}
+/>
+
+---
+
+## De parche / gel a otras vias
+
+El cambio entre parche (Evopad, Climara) y gel (Oestrogel) — es decir, dentro de la familia transdermica — es sencillo y no requiere periodo de lavado.
+
+<DoseTable
+  caption="Esquema de transicion: Parche / gel a oral / inyeccion"
+  headers={['Preparado objetivo', 'Transicion', 'Dosis inicial', 'Curso de E2 durante la transicion']}
+  rows={[
+    ['Parche a gel', 'El mismo dia', 'Dosis inicial de la nueva forma', 'Apenas fluctuaciones'],
+    ['Oral (Progynova / Meriestra)', 'Retirar parche / suspender gel, iniciar oral el mismo dia', '2 mg/dia', 'Cambio a oral aumenta riesgo de TEV — solo con indicacion medica clara'],
+    ['Inyeccion (EV)', 'Retirar parche / suspender gel, primera inyeccion 2-3 dias despues', '1-2 mg/semana', 'Nivel mas estable que oral'],
+  ]}
+/>
+
+<DangerBox title="Transdermica a oral: el riesgo de TEV aumenta">
+Grandes estudios muestran un riesgo de TEV de RR aprox. 0,97 para vias transdermicas y RR aprox. 1,48 para vias orales. El cambio de parche o gel a pastillas es clinicamente un aumento de riesgo. Este paso solo es justificable con indicacion medica imperativa (p. ej. dermatitis de contacto severa sin alternativa transdermica) o desabastecimiento insuperable.
+</DangerBox>
+
+---
+
+## Controles de sangre tras el cambio
+
+### Cronograma
+
+- **4 semanas**: Primer analisis — E2 valle y testosterona;
+- **8 semanas**: Analisis de confirmacion;
+- **3 meses**: Control de rutina;
+- **Despues**: Cada 6 meses en el seguimiento regular.
+
+### Indicaciones especificas por via
+
+- **Tras cambio a inyeccion**: El primer analisis debe ser en nivel valle — por la manana del dia de la siguiente inyeccion, antes de inyectar;
+- **Tras cambio a parche / gel**: El deposito transdermico en la capa cornea necesita 3-7 dias para formarse. Los analisis dentro de los primeros 3 dias mostraran valores falsamente bajos;
+- **Tras cambio a oral o sublingual**: Como los preparados orales fluctuan a lo largo del dia, el analisis debe hacerse siempre al mismo momento relativo a la toma.
+
+---
+
+## Suspender inmediatamente y llamar a emergencias
+
+<DangerBox title="Ante las siguientes senales de alerta, suspender inmediatamente y llamar a emergencias">
+- **Trombosis venosa profunda (TVP)**: hinchazon subita y unilateral, enrojecimiento y dolor a la presion en la pantorrilla;
+- **Embolia pulmonar**: dolor toracico intenso subito, dificultad respiratoria extrema o tos con sangre;
+- **Sintomas neurologicos severos**: cefalea en estallido subita, alteraciones del campo visual o convulsiones;
+- **Dano hepatico agudo**: coloracion amarilla de piel u ojos, picazon intenso, orina de color oscuro;
+- **Reaccion alergica severa**: edema laringeo, dificultad respiratoria, urticaria extensa.
+
+Emergencias: **112** (Espana) / **107** (Argentina) / **911** (Mexico, Colombia, Chile).
+</DangerBox>
+
+---
+
+## Preparacion para la consulta medica
+
+- **Reunir valores de laboratorio**: Lleva tus ultimos resultados — especialmente E2 valle, testosterona, valores hepaticos y dimero D si esta disponible;
+- **Nombrar la via objetivo**: Formula claramente que via quieres probar y lleva la tabla de dosificacion de esta pagina;
+- **Empezar con la dosis baja**: La mayoria de los profesionales aprecian que tu misma propongas comenzar de forma conservadora;
+- **Proponer citas de control**: Semana 4, semana 8, mes 3;
+- **Llevar guias internacionales**:
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [Biblioteca de referencias](/es/appendix-references/)
+
+<WarningBox title="Esta pagina no sustituye la consulta medica">
+El cambio de via de administracion, la dosis inicial y el seguimiento dependen de tu salud cardiovascular individual, tus valores de sangre y tu medicacion concomitante. La informacion aqui presentada se basa en guias clinicas internacionales y sirve como orientacion para una consulta medica bien preparada. Si en tu region tienes dificultades para encontrar profesionales con experiencia en THAG, consulta nuestros [centros medicos amigables](/es/tools/hospital-finder/).
+</WarningBox>
+
+---
+
+## Recursos adicionales
+
+- [Formas de administracion de estradiol](/es/medications/estrogens/overview/)
+- [Parche transdermico (Evopad, Climara)](/es/medications/estrogens/transdermal-patch/)
+- [Estradiol oral (Progynova)](/es/medications/estrogens/oral/)
+- [Estradiol sublingual](/es/medications/estrogens/sublingual/)
+- [Gel de estradiol](/es/medications/estrogens/gel/)
+- [Estrogenos inyectables (EV)](/es/medications/estrogens/injection/)
+- [Analisis de sangre y autocontrol](/es/blood-tests/)
+- [Riesgos y senales de emergencia](/es/risks/)
+- [Calculadora de dosis de inyeccion](/es/tools/injection-calculator/)
+- [Centros medicos amigables](/es/tools/hospital-finder/)
+
+<RelatedBlogPosts />
