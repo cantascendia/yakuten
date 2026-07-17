@@ -1,0 +1,37 @@
+---
+/**
+ * /zh/v2/drugs/<id>/ — 药物详解（20 页，一个模板全覆盖）
+ *
+ * drugs.json 的 id 本身就是 kebab-case slug（实测 20 条全部形如 estradiol-injection），
+ * 直接拿来做路由段 —— 不另造 slug 字段，避免第二事实源。
+ */
+import V2Layout from '../../../../layouts/V2Layout.astro';
+import DrugDetailScreen from '../../../../components/v2/screens/DrugDetailScreen.tsx';
+import { drugs, type Drug } from '../../../../components/v2/data';
+
+export function getStaticPaths() {
+  return drugs.map((drug) => ({
+    params: { id: drug.id },
+    props: { drug },
+  }));
+}
+
+interface Props { drug: Drug }
+const { drug } = Astro.props as Props;
+
+const banned = drug.category === 'banned';
+const r0 = drug.routes?.[0];
+
+/* 描述按 banned 分支走不同措辞 —— 禁用药的 meta 不该出现「维持剂量」这种暗示可用的表述 */
+const description = banned
+  ? `${drug.names.zh}（${drug.names.generic}）属绝对禁用成分，任何 HRT/GAHT 方案都不应包含。本页说明原因与建议替代方案。`
+  : `${drug.names.zh}（${drug.names.generic}）循证详解：剂量范围、血检监测、副作用、禁忌症、危险组合与中国获取方式。证据等级 ${r0?.evidenceLevel || 'B'}。`;
+---
+
+<V2Layout
+  title={`${drug.names.zh} — 药物详解 | HRT药典`}
+  description={description}
+  route="drug"
+>
+  <DrugDetailScreen drug={drug} />
+</V2Layout>

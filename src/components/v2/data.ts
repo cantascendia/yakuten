@@ -177,17 +177,25 @@ export const CATEGORIES: Record<DrugCategory, { zh: string; en: string; color: s
 
 export const CATEGORY_ORDER: DrugCategory[] = ['estrogen', 'antiandrogen', 'progestogen', '5ari', 'banned'];
 
-/** 给药途径中译（原型 drug-detail-screen.jsx:YKDD_ROUTE_ZH） */
+/**
+ * 给药途径中译 —— 逐字移植自原型 drug-detail-screen.jsx:4-8。
+ *
+ * ⚠️ 键名必须用【下划线】形态，不能凭印象写 kebab-case。
+ * 实测仓库 drugs.json 的 7 个实际 route 值：
+ *   injection · injection_im · injection_sc · oral · sublingual ·
+ *   transdermal_gel · transdermal_patch
+ * 原型这张表全覆盖；写错键名的后果是静默 fallback 成原始英文（不报错、只是显示错）。
+ */
 export const ROUTE_ZH: Record<string, string> = {
   oral: '口服',
   sublingual: '舌下含服',
-  transdermal: '经皮',
-  patch: '贴片',
-  gel: '凝胶',
+  transdermal_patch: '经皮贴片',
+  transdermal_gel: '经皮凝胶',
+  injection_im: '肌注 IM',
+  injection_sc: '皮下 SC',
   injection: '注射',
-  'injection-im': '肌肉注射',
-  'injection-sc': '皮下注射',
-  implant: '皮下埋植',
+  im_depot: '肌注长效',
+  vaginal: '阴道给药',
   topical: '外用',
 };
 
