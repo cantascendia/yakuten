@@ -213,6 +213,43 @@ a.yk-inkcard { display: block; }
 
 
 /* -------------------------------------------------------------------------
+   4a) 窄屏溢出修复（原型未考虑 ≤375px 的两处真 bug）
+   -------------------------------------------------------------------------
+   原型这两处把布局写在 inline style 里 —— inline 无法挂媒体查询，所以原型在
+   375px 下必然横向溢出（实测 blood 126px / refs 38px）。移到 CSS 才修得了。
+   桌面端表现与原型逐像素相同，只在窄屏加断点。
+   ------------------------------------------------------------------------- */
+
+/* blood 行：原型 grid 为 minmax(150,190) + minmax(160,1fr) + 110 + 2×18 gap
+   = 最小 456px，在 375px 视口下必溢出（实测印章被推到 right=501）。
+   出处 blood-checker-screen.jsx:99-104 */
+.yk-blood-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(160px, 1fr) 110px;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 22px;
+}
+
+@media (max-width: 560px) {
+  .yk-blood-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  /* 单列下印章不再右对齐，否则孤零零贴在右边 */
+  .yk-blood-row__stamp {
+    justify-self: start;
+  }
+}
+
+/* refs 的 DOI/URL：长字符串 + JetBrains Mono + 无断词点 → 撑破 minmax(0,1fr)
+   （实测 w=317 溢出到 right=413）。出处 refs-screen.jsx:80-83 */
+.yk-ref-doi {
+  overflow-wrap: anywhere;
+}
+
+
+/* -------------------------------------------------------------------------
    4b) 屏幕阅读器专用文本
    -------------------------------------------------------------------------
    设计包三个 CSS 里没有 sr-only（原型没做到这一层无障碍）。

@@ -1,0 +1,11 @@
+---
+import V2Layout from '../../../../layouts/V2Layout.astro';
+import BloodCheckerScreen from '../../../../components/v2/screens/BloodCheckerScreen.tsx';
+---
+<V2Layout
+  title="血检 HUD — 临床工具 | HRT药典"
+  description="输入血检数值，即时红绿灯判读 + 区间刻度。E2/T/PRL/肝功能/血钾/血红蛋白/D-二聚体 七项。纯前端运行，零传输、零存储。"
+  route="blood"
+>
+  <BloodCheckerScreen client:visible />
+</V2Layout>

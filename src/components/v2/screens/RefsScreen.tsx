@@ -116,11 +116,14 @@ export default function RefsScreen() {
               <div style={{ fontSize: 12, color: 'var(--fg-2)', marginTop: 3 }}>
                 {r.authors} · <em>{r.journal}</em> · <span style={{ fontFamily: 'var(--font-hud)', fontWeight: 700 }}>{r.year}</span>
               </div>
+              {/* yk-ref-doi: overflow-wrap:anywhere —— DOI/URL 是长无空格串，
+                  JetBrains Mono 下没有断词点，会撑破 minmax(0,1fr)（实测 375px 溢出 38px） */}
               {(r.doi || r.url) && (
                 <a
                   href={r.url || `https://doi.org/${r.doi}`}
                   target="_blank"
                   rel="noopener"
+                  className="yk-ref-doi"
                   style={{ fontFamily: 'var(--font-hud)', fontSize: 11, color: 'var(--sakura-pink-text)', fontWeight: 700, textDecoration: 'none' }}
                 >
                   {r.doi ? `doi:${r.doi}` : r.url!.replace(/^https?:\/\//, '').slice(0, 48)}

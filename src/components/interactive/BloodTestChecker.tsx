@@ -39,7 +39,7 @@ const TOOL_STRINGS = toolStrings.bloodChecker as Record<Locale, BloodCheckerStri
 
 // --------------- Data ---------------
 
-interface RangeSpec {
+export interface RangeSpec {
   id: string;
   label: string;
   unit: string;
@@ -61,7 +61,7 @@ interface RangeSpec {
  * 注意：下方各项 label 为中文硬编码兜底，运行时由 tool-strings.json 的 rangeLabels 覆盖。
  * 新增指标须同步在 rangeLabels 的 zh/en/ja/ko 四语补充对应 label，否则该语言会回退中文。
  */
-const BLOOD_RANGES: RangeSpec[] = [
+export const BLOOD_RANGES: RangeSpec[] = [
   {
     id: 'e2',
     label: 'E2 (雌二醇)',
@@ -134,7 +134,7 @@ const BLOOD_RANGES: RangeSpec[] = [
  * tagged `needs-medical-review` and approved by a Korean-speaking
  * clinician before release.
  */
-const RED_WARNINGS: Record<Locale, Record<string, string>> = {
+export const RED_WARNINGS: Record<Locale, Record<string, string>> = {
   zh: {
     e2: '雌二醇水平异常，请尽快就医复查。',
     t: '睾酮偏高，抗雄药物可能需要调整，请咨询医生。',
@@ -179,9 +179,9 @@ const RED_WARNINGS: Record<Locale, Record<string, string>> = {
 
 // --------------- Evaluation helpers ---------------
 
-type Level = 'none' | 'green' | 'yellow' | 'red';
+export type Level = 'none' | 'green' | 'yellow' | 'red';
 
-function evaluate(spec: RangeSpec, value: number): Level {
+export function evaluate(spec: RangeSpec, value: number): Level {
   if (spec.redAbove !== undefined && value >= spec.redAbove) return 'red';
   if (spec.redBelow !== undefined && value <= spec.redBelow) return 'red';
   if (value >= spec.green[0] && value <= spec.green[1]) return 'green';
@@ -199,13 +199,13 @@ function evaluate(spec: RangeSpec, value: number): Level {
  * Compute the visual range of the bar in "display units".
  * We want: a little below the lowest meaningful boundary and above the highest.
  */
-function barBounds(spec: RangeSpec): [number, number] {
+export function barBounds(spec: RangeSpec): [number, number] {
   const lo = spec.redBelow !== undefined ? spec.redBelow * 0.6 : 0;
   const hi = (spec.redAbove ?? spec.yellow[1] ?? spec.green[1]) * 1.3;
   return [lo, hi];
 }
 
-function pct(value: number, lo: number, hi: number): number {
+export function pct(value: number, lo: number, hi: number): number {
   return Math.max(0, Math.min(100, ((value - lo) / (hi - lo)) * 100));
 }
 
