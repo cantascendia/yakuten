@@ -1,0 +1,11 @@
+---
+import V2Layout from '../../../layouts/V2Layout.astro';
+import HospitalScreen from '../../../components/v2/screens/HospitalScreen.tsx';
+---
+<V2Layout
+  title="友好医疗资源 — 找医院 | HRT药典"
+  description="社区验证的跨性别友好医院，按省份检索。不用告诉医生你是跨性别也能做检查——「我想检查激素水平」，任何三甲内分泌科都可以开血检。"
+  route="hospitals"
+>
+  <HospitalScreen client:visible />
+</V2Layout>

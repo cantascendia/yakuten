@@ -1,0 +1,11 @@
+---
+import V2Layout from '../../../layouts/V2Layout.astro';
+import PathwayScreen from '../../../components/v2/screens/PathwayScreen.tsx';
+---
+<V2Layout
+  title="幻月路径 · 四阶段 — 用药路径图 | HRT药典"
+  description="不是剂量指南，是 4 个决策节点。基线 → 低剂量起步 → 中等剂量调整 → 维持期，每阶段的复查节奏与停药就医红线。"
+  route="pathway"
+>
+  <PathwayScreen client:visible />
+</V2Layout>
