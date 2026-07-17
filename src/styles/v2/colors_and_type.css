@@ -1,0 +1,551 @@
+/* =========================================================================
+   HRT Yakuten — Colors & Type
+   Design language: 崩坏星穹铁道 4.0「二相乐园」· 绯英 (八重樱同位体)
+   Visual DNA: 手账 collage · 文具少女 · 樱粉·蜜桃·薄荷·奶油 · 兔耳·贴纸·胶带
+   Mood: 柔软 · 手作 · 校园 · 漫画网点点缀 · 不是战斗不是霓虹
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Ma+Shan+Zheng&family=JetBrains+Mono:wght@500;700&display=swap");
+
+:root {
+  /* =====================================================================
+     PRIMARY — 绯英粉彩系
+     不是燃烧红，是手账粉
+     ===================================================================== */
+  --sakura-pink: #FFA8C5;             /* 主色 · 樱粉 (柔) */
+  --sakura-pink-hot: #FF7FA8;         /* hover · 蜜桃深 */
+  --sakura-pink-deep: #E5578B;        /* pressed · 绯红 */
+  --sakura-blush: #FFD4E0;            /* 最浅 · 腮红 */
+
+  --coral: #FF8E7F;                   /* 珊瑚 · 辅强调 */
+  --coral-deep: #E65D4A;
+
+  /* ---------- 奶油 / 象牙 ---------- */
+  --cream: #FFF5E0;                   /* 纸面主底 · 手账页 */
+  --cream-warm: #FFE8C2;              /* hover 奶油 */
+  --ivory: #FFFAF0;                   /* 最白的白 */
+
+  /* ---------- 薄荷 / 青柠 ---------- */
+  --mint: #A8E6C9;                    /* 信息 · 过关 · 薄荷贴纸 */
+  --mint-deep: #5AC89D;
+  --pistachio: #D4E896;               /* 青柠黄绿 */
+
+  /* ---------- 奶黄 / 金 ---------- */
+  --butter: #FFE89C;                  /* 注意 · 便签黄 */
+  --butter-deep: #F5C842;
+  --honey: #F5B347;                   /* 深黄 */
+
+  /* ---------- 薰衣草 / 紫 ---------- */
+  --lavender: #D4C5F5;                /* 静谧 · 夜色过渡 */
+  --lavender-deep: #9B7DD4;
+  --grape: #7A5FB5;
+
+  /* ---------- 天蓝 ---------- */
+  --sky: #A8D5F5;
+  --sky-deep: #5BA8E0;
+
+  /* =====================================================================
+     INK & OUTLINES — 漫画描边用暖棕，不是硬黑
+     ===================================================================== */
+  --ink: #4A2838;                      /* 梅子墨 · 主描边 */
+  --ink-soft: #7A5568;                 /* 次描边 */
+  --ink-faint: rgba(74, 40, 56, 0.25);
+
+  /* =====================================================================
+     BACKGROUND — 手账纸面（默认浅色），夜间紫色
+     ===================================================================== */
+  --bg-1: #FFF5E0;                    /* 手账米白 */
+  --bg-2: #FFFAF0;                    /* 纸张最亮 */
+  --bg-3: #FFFFFF;                    /* 卡片白 */
+  --bg-4: #FFF0E5;                    /* 柔粉米 */
+  --bg-5: #FFE4EC;                    /* 粉贴纸底 */
+  --bg-6: #FFDCE5;
+
+  /* 夜间模式的"梦境紫" */
+  --night-1: #2E1F42;
+  --night-2: #3D2A55;
+  --night-3: #5A3F7A;
+
+  /* =====================================================================
+     FOREGROUND
+     ===================================================================== */
+  --fg-1: #4A2838;                    /* 主文字 · 梅子墨 */
+  --fg-2: #7A5568;                    /* 次文字 */
+  --fg-3: #B08D9E;                    /* 弱文字 */
+  --fg-invert: #FFF5E0;
+  --fg-on-pink: #FFFFFF;
+  --fg-on-cream: #4A2838;
+
+  /* =====================================================================
+     SEMANTIC
+     ===================================================================== */
+  --safe: var(--mint-deep);
+  --info: var(--sky-deep);
+  --caution: var(--butter-deep);
+  --danger: #E85A7A;
+  --danger-deep: #C23D5C;
+  --warning-hot: var(--coral-deep);
+
+  /* =====================================================================
+     LEGACY COMPAT — 保留旧变量名，新值
+     ===================================================================== */
+  --fei-primary: var(--sakura-pink);
+  --fei-primary-light: var(--sakura-blush);
+  --fei-primary-dark: var(--sakura-pink-deep);
+  --fei-primary-container: var(--coral);
+  --fei-accent: var(--butter-deep);
+  --fei-accent-light: var(--butter);
+  --fei-accent-dark: var(--honey);
+  --fei-tertiary: var(--lavender);
+  --fei-tertiary-dim: var(--lavender-deep);
+  --fg-on-dark: var(--fg-on-pink);
+  --fg-on-fire: var(--fg-on-pink);
+  --fg-ink: var(--fg-1);
+  --ink-border: var(--ink);
+  --ink-border-thin: var(--ink-faint);
+  --outline: var(--ink);
+  --outline-20: rgba(74, 40, 56, 0.2);
+  --outline-15: rgba(74, 40, 56, 0.15);
+  --border: var(--outline-20);
+  --border-subtle: var(--outline-15);
+  --jester-ink: var(--night-1);
+  --paper: var(--cream);
+
+  --hibiscus-flame: var(--sakura-pink-deep);
+  --hibiscus-flame-hot: var(--sakura-pink-hot);
+  --hibiscus-flame-deep: var(--sakura-pink-deep);
+  --hibiscus-glow: var(--sakura-pink);
+  --molten-gold: var(--butter-deep);
+  --molten-gold-bright: var(--butter);
+  --molten-gold-deep: var(--honey);
+  --sakura: var(--sakura-pink);
+  --sakura-soft: var(--sakura-blush);
+  --sakura-deep: var(--sakura-pink-deep);
+  --neon-cyan: var(--sky-deep);
+  --neon-cyan-bright: var(--sky);
+  --neon-cyan-deep: var(--sky-deep);
+  --phantom-violet: var(--lavender-deep);
+  --phantom-violet-bright: var(--lavender);
+  --phantom-violet-deep: var(--grape);
+  --joy-mint: var(--mint);
+  --joy-mint-deep: var(--mint-deep);
+
+  /* Alphas */
+  --primary-a10: rgba(255, 168, 197, 0.12);
+  --primary-a15: rgba(255, 168, 197, 0.2);
+  --primary-a25: rgba(255, 168, 197, 0.35);
+  --primary-a40: rgba(255, 168, 197, 0.5);
+  --primary-a60: rgba(255, 168, 197, 0.7);
+  --accent-a08: rgba(245, 200, 66, 0.12);
+  --accent-a15: rgba(245, 200, 66, 0.2);
+  --accent-a30: rgba(245, 200, 66, 0.35);
+  --cyan-a20: rgba(91, 168, 224, 0.25);
+  --violet-a20: rgba(155, 125, 212, 0.25);
+  --safe-a15: rgba(90, 200, 157, 0.2);
+  --caution-a15: rgba(245, 200, 66, 0.2);
+  --danger-a10: rgba(232, 90, 122, 0.15);
+  --danger-a25: rgba(232, 90, 122, 0.3);
+
+  /* =====================================================================
+     GEOMETRY
+     ===================================================================== */
+  --clip-corner: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%); /* @kind other */
+  --clip-panel: polygon(2% 0, 100% 0, 98% 100%, 0 100%); /* @kind other */
+  --clip-ticket: polygon(
+    0 0, 100% 0, 100% 20%, 95% 25%, 100% 30%, 100% 70%, 95% 75%, 100% 80%,
+    100% 100%, 0 100%, 0 80%, 5% 75%, 0 70%, 0 30%, 5% 25%, 0 20%); /* @kind other */
+  --clip-sign: polygon(4% 0, 100% 0, 96% 100%, 0 100%); /* @kind other */
+  --clip-bubble: polygon(0 0, 100% 0, 100% 80%, 85% 80%, 80% 100%, 75% 80%, 0 80%); /* @kind other */
+  --clip-mask-half: polygon(0 20%, 50% 0, 100% 20%, 100% 55%, 50% 70%, 0 55%); /* @kind other */
+
+  /* =====================================================================
+     RADII — 圆润手账
+     ===================================================================== */
+  --radius-none: 0px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --radius-token: 40px 8px 40px 8px;
+
+  /* =====================================================================
+     SPACING
+     ===================================================================== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* =====================================================================
+     SHADOW — 柔软落影
+     ===================================================================== */
+  --shadow-soft: 0 4px 12px rgba(74, 40, 56, 0.08);
+  --shadow-card: 0 8px 24px rgba(74, 40, 56, 0.12);
+  --shadow-lift: 0 12px 32px rgba(74, 40, 56, 0.16);
+  --shadow-hard-sm: 3px 3px 0 var(--ink);
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-lg: 6px 6px 0 var(--ink);
+  --shadow-hard-flame: 4px 4px 0 var(--sakura-pink-deep);
+  --shadow-hard-gold: 4px 4px 0 var(--honey);
+
+  --glow-flame: 0 0 24px rgba(229, 87, 139, 0.3);
+  --glow-gold: 0 0 24px rgba(245, 200, 66, 0.3);
+  --glow-cyan: 0 0 24px rgba(91, 168, 224, 0.3);
+  --glow-violet: 0 0 24px rgba(155, 125, 212, 0.3);
+
+  /* =====================================================================
+     GLASS — 轻纱
+     ===================================================================== */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-30: rgba(255, 255, 255, 0.35);
+  --glass-bg-80: rgba(255, 255, 255, 0.85);
+  --glass-bg-92: rgba(255, 245, 224, 0.92);
+  --glass-blur: blur(10px); /* @kind other */
+  --glass-blur-soft: blur(4px); /* @kind other */
+  --glass-blur-medium: blur(8px); /* @kind other */
+  --glass-blur-strong: blur(16px); /* @kind other */
+  --glass-border: 2px solid var(--ink);
+
+  /* =====================================================================
+     MOTION
+     ===================================================================== */
+  --transition-fast: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --transition-normal: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --transition-slow: 0.5s cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+
+  /* =====================================================================
+     FONTS — 5 核心家族（精简后）
+       display · Fraunces + Noto Serif SC
+       heading · Noto Serif SC
+       body    · Noto Sans SC
+       hand    · Ma Shan Zheng（手写批注）
+       mono    · JetBrains Mono（数值/日期，绝不用于 UI）
+     ===================================================================== */
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+  --font-display-zh: "Noto Serif SC", serif;
+  --font-heading: "Noto Serif SC", "Noto Sans SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-hand: "Ma Shan Zheng", cursive;
+  --font-ui-accent: "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-hud: "JetBrains Mono", monospace;
+  --font-accent: var(--font-body);
+  --font-pixel: var(--font-hud);
+  --font-mono: var(--font-hud);
+  --font-code: var(--font-hud);
+  --font-arcade: var(--font-ui-accent);
+
+  /* =====================================================================
+     TYPE SIZES
+     ===================================================================== */
+  --fs-display: clamp(4rem, 10vw, 8rem); /* @kind font */
+  --fs-h1: clamp(2.5rem, 5vw, 4rem); /* @kind font */
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem); /* @kind font */
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-micro: 0.75rem;
+  --fs-slogan: clamp(1.25rem, 2.5vw, 1.75rem); /* @kind font */
+
+  --lh-tight: 1.15; /* @kind other */
+  --lh-body: 1.8; /* @kind other */
+  --lh-loose: 1.95; /* @kind other */
+
+  --ls-display: -0.01em; /* @kind other */
+  --ls-slogan: 0.2em; /* @kind other */
+  --ls-micro-caps: 0.15em; /* @kind other */
+  --ls-label: 0.1em; /* @kind other */
+}
+
+/* ---------- Language overrides — set data-lang on <html> ---------- */
+[data-lang="ja"] {
+  --font-body: "Noto Sans SC", sans-serif;
+  --font-heading: "Noto Serif SC", serif;
+  --font-display: "Noto Serif SC", serif;
+}
+[data-lang="en"] {
+  --font-body: "Noto Sans SC", system-ui, sans-serif;
+  --font-heading: "Fraunces", "Noto Serif SC", serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+}
+
+/* ---------- 幻月夜 (满月是神不在的时间) —— 夜晩书桌模型：
+   桌面变梦境紫，纸张（.yk-paper 等亮表面）仍然亮着，墨色不变 ---------- */
+[data-theme="dark"] {
+  --bg-1: var(--night-1);
+  --bg-2: var(--night-2);
+  --bg-4: #4A3270;
+  --bg-6: #5C3E85;
+  --fg-1: var(--cream);
+  --fg-2: var(--lavender);
+  --fg-3: #B8A0D8;
+  --outline-20: rgba(255, 245, 224, 0.25);
+}
+/* 纸面表面 —— 纸上文字永远是梨子墨，无论昼夜。
+   任何浅色面板加 data-paper 属性（InkCard 等组件已内置） */
+[data-paper] {
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #B08D9E;
+}
+
+/* ------------------------------------------------------------------------
+   SEMANTIC TYPOGRAPHY
+   ------------------------------------------------------------------------ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-variant-numeric: lining-nums proportional-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--fg-1);
+  line-height: var(--lh-tight);
+  margin: 0;
+  font-weight: 700;
+}
+h1 { font-size: var(--fs-h1); font-family: var(--font-display); letter-spacing: var(--ls-display); font-weight: 400; }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); font-weight: 700; }
+
+p  { margin: 0; color: var(--fg-1); }
+small, .text-micro { font-size: var(--fs-micro); color: var(--fg-3); }
+.text-secondary { color: var(--fg-2); }
+.text-muted { color: var(--fg-3); }
+
+code, pre, .text-code, .text-hud {
+  font-family: var(--font-hud);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-weight: 400;
+}
+.text-gradient-flame,
+.text-gradient-sakura {
+  background: linear-gradient(135deg, var(--sakura-pink-deep), var(--coral) 50%, var(--honey));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-moon {
+  background: linear-gradient(135deg, var(--sky-deep), var(--lavender-deep), var(--sakura-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-glow-flame { text-shadow: 0 0 24px rgba(229, 87, 139, 0.4); }
+.text-glow-cyan { text-shadow: 0 0 24px rgba(91, 168, 224, 0.4); }
+
+.text-slogan {
+  font-family: var(--font-display);
+  font-size: var(--fs-slogan);
+  color: var(--sakura-pink-deep);
+  letter-spacing: var(--ls-slogan);
+}
+
+.text-label {
+  font-family: var(--font-ui-accent);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-micro-caps);
+}
+
+.text-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.05em;
+}
+
+.evidence-A { color: var(--safe); }
+.evidence-B { color: var(--info); }
+.evidence-C { color: var(--caution); }
+.evidence-X { color: var(--danger); }
+
+::selection { background: var(--primary-a40); color: var(--fg-1); }
+
+/* ------------------------------------------------------------------------
+   CORE UTILITY CLASSES
+   ------------------------------------------------------------------------ */
+.ink-card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+}
+
+.panel-flame {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--fg-on-pink);
+}
+
+.panel-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  color: var(--fg-1);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+.clipped-card { clip-path: var(--clip-corner); }
+
+/* =========================================================================
+   BUTTONS — 糖果按钮
+   ========================================================================= */
+.btn-flame, .btn-gold, .btn-ghost, .btn-arcade, .btn-mint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  padding: 12px 28px;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-hard);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.btn-flame {
+  background: linear-gradient(135deg, var(--sakura-pink), var(--coral));
+  color: var(--fg-on-pink);
+}
+.btn-flame:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+.btn-flame:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink); }
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--butter), var(--honey));
+  color: var(--fg-1);
+}
+.btn-gold:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+
+.btn-ghost {
+  background: var(--ivory);
+  color: var(--fg-1);
+}
+.btn-ghost:hover { background: var(--bg-5); transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+/* 夜模式：暗桌上的 ghost 按钮保持亮纸质感，不随暗色 token 隐形 */
+[data-theme="dark"] .btn-ghost {
+  background: #F5E9DA;
+  color: #4A2838;
+  border-color: #4A2838;
+}
+
+.btn-arcade, .btn-mint {
+  background: var(--mint);
+  color: var(--fg-1);
+  border-radius: var(--radius-md);
+}
+.btn-arcade:hover, .btn-mint:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-lg); }
+
+.btn-primary { /* legacy */ }
+
+/* =========================================================================
+   FOCUS RING
+   ========================================================================= */
+:where(button, a, [role="tab"], [role="button"], summary,
+       input, select, textarea):focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   BACKGROUND PATTERNS
+   ========================================================================= */
+
+.bg-halftone {
+  background-image: radial-gradient(circle at 2px 2px, var(--ink-faint) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+.bg-halftone-pink {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.3) 1.2px, transparent 0);
+  background-size: 8px 8px;
+}
+.bg-speedlines {
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg, transparent 3deg,
+    rgba(255, 255, 255, 0.08) 3deg, rgba(255, 255, 255, 0.08) 4deg
+  );
+}
+.bg-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--sakura-pink) 0 20px,
+    var(--sakura-blush) 20px 40px
+  );
+}
+.bg-grid-paper {
+  background-image:
+    linear-gradient(rgba(74, 40, 56, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 40, 56, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.bg-dots-paper {
+  background-image: radial-gradient(circle, rgba(74, 40, 56, 0.15) 1.2px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+.bg-pixel-grid {
+  background-image:
+    linear-gradient(rgba(155, 125, 212, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 125, 212, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.bg-sakura-pattern {
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--sakura-blush) 8px, transparent 9px),
+    radial-gradient(circle at 70% 70%, var(--butter) 6px, transparent 7px),
+    radial-gradient(circle at 40% 80%, var(--mint) 5px, transparent 6px);
+  background-size: 120px 120px;
+}
+.particle-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 168, 197, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(168, 230, 201, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 232, 156, 0.1) 0%, transparent 50%);
+}
+.particle-dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 87, 139, 0.15) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* =========================================================================
+   REDUCED MOTION
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

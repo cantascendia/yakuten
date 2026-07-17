@@ -1,0 +1,164 @@
+---
+/**
+ * SiteFooter — 页脚：品牌声明 / 两列导航 / 应急 24h 热线
+ * 移植自 design_files/ui_kits/yakuten/shell.jsx:82-126
+ *
+ * 数据：原型读 window.YK_DATA.hotlines（运行时 fetch）。此处改为构建期静态 import
+ * 仓库真实数据，并按 scope 过滤中国条目 —— 仓库 hotlines.json 有 26 条（含德法俄
+ * 西葡等 23 条国际热线，来自本仓库的多语种本地化成果），而原型的应急卡是按
+ * 中国 3 条设计的版式。过滤在【渲染层】，JSON 一字不动，不回滚本地化成果。
+ * 实测 scope === '全国' 精确命中 3 条：12356 / 希望24 / 120。
+ *
+ * 零 JS：原型用 <div onClick={go(r)}> 做导航（不可聚焦、读屏不报为链接）→ 改真 <a>。
+ */
+import { hrefFor } from '../routes';
+import { HibiscusMark, Icon } from '../Primitives';
+import hotlinesData from '../../../data/hotlines.json';
+import type { V2Route } from '../routes';
+
+interface Hotline {
+  id: string;
+  name: string;
+  number: string;
+  href: string;
+  scope: string;
+}
+
+const hotlines = (hotlinesData as Hotline[]).filter((h) => h.scope === '全国');
+
+const cols: Array<[string, Array<[string, V2Route]>]> = [
+  ['开始', [['路径图', 'pathway'], ['风险自评', 'risk'], ['血检 HUD', 'blood'], ['找医院', 'hospitals']]],
+  ['药典', [['药物图鉴', 'drugs'], ['药物对比', 'compare'], ['注射计算器', 'inject'], ['文献库', 'refs']]],
+];
+---
+
+<footer class="yk-footer" data-paper="true">
+  <div class="yk-footer__grid">
+    <div>
+      <div class="yk-footer__brand">
+        <HibiscusMark size={36} />
+        <div class="text-gradient-flame yk-footer__brand-name">HRT药典 · Yakuten</div>
+      </div>
+      <div class="yk-footer__blurb">
+        「愿此行，抵达真实的自己」<br />
+        本站不提供处方、不销售药物、不收集个人信息。内容仅供教育和参考，不构成医疗建议，不能替代合格医生的诊断。
+      </div>
+    </div>
+
+    {cols.map(([heading, links]) => (
+      <div>
+        <div class="yk-footer__coltitle">{heading}</div>
+        {links.map(([label, route]) => (
+          <a class="yk-footer__link" href={hrefFor(route)}>{label}</a>
+        ))}
+      </div>
+    ))}
+
+    {/*
+      应急 24h —— AA 修正说明（本组件偏离最多的一处，理由充分）：
+      footer 底色是 --sakura-blush #FFD4E0（粉腮红），实测【任何粉/红色系文字
+      都过不了 AA】：--danger #E85A7A = 2.55、--danger-deep = 3.83、
+      --sakura-pink-text = 4.20，全部 < 4.5。而原型把【急救电话号码】渲染成
+      --danger 色 = 2.55:1 —— 一个看不清的急救号码在本站是真正的安全问题
+      （CONSTITUTION §1「用户生命安全 > 一切」）。
+
+      修法：文字一律 --ink（9.53:1），红色语义改由【装饰性左边框】承担
+      （边框非文字，无对比度要求）。这与 v2-overrides.css 已确立的原则一致：
+      「pink/danger 作为边框/描边的装饰用法保留，作为文字时换 AA 替身」。
+      另：在粉腮红底上放红字，本身也违反 DESIGN_SYSTEM「危险信息不用可爱包装」。
+    */}
+    <div class="yk-footer__urgent">
+      <div class="yk-footer__coltitle yk-footer__coltitle--urgent">
+        <Icon name="alert" size={13} color="var(--danger-deep)" strokeWidth={2.6} />
+        应急 · 24h
+      </div>
+      <a class="yk-footer__link yk-footer__link--urgent" href={hrefFor('urgent')}>
+        停药信号 · 急症识别 →
+      </a>
+      {hotlines.map((h) => (
+        <div class="yk-footer__hotline">
+          {h.name.replace('全国统一', '')}
+          {' '}
+          <a href={h.href} class="yk-footer__tel">{h.number}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="yk-footer__legal">
+    <div>© 2026 · CC BY-NC-SA 4.0 · 致敬 花导 · 绯英</div>
+    <div class="yk-footer__legal-motto">愿阿哈庇佑 · 愿此行终抵群星</div>
+  </div>
+</footer>
+
+<style>
+  .yk-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .yk-footer__brand-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    white-space: nowrap;
+    padding-right: 4px;
+  }
+  .yk-footer__blurb {
+    font-size: 13px;
+    color: var(--fg-2);      /* #7A5568 on blush = 4.73:1 PASS —— 原设计已达标，不动 */
+    line-height: 1.8;
+    max-width: 420px;
+  }
+
+  /* AA：原型用 --sakura-pink-deep（2.60:1 on blush）→ 墨色 9.53:1 */
+  .yk-footer__coltitle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-ui-accent);
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .yk-footer__link {
+    display: block;
+    font-size: 13px;
+    color: var(--fg-1);
+    padding: 3px 0;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .yk-footer__link:hover { text-decoration: underline; }
+
+  /* 红色语义靠装饰边框承担，文字保持墨色可读 */
+  .yk-footer__urgent {
+    border-left: 3px solid var(--danger-deep);
+    padding-left: 12px;
+  }
+  .yk-footer__link--urgent {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .yk-footer__hotline {
+    font-size: 13px;
+    color: var(--fg-1);
+    padding: 3px 0;
+    white-space: nowrap;
+  }
+  /* 急救号码：墨色 9.53:1。mono + 700 + 下划线 → 明确可辨识为可拨链接。 */
+  .yk-footer__tel {
+    font-family: var(--font-hud);
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* AA：原型 --sakura-pink-deep 2.60:1 → --fg-2 4.73:1 */
+  .yk-footer__legal-motto { color: var(--fg-2); }
+</style>

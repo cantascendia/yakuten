@@ -1,0 +1,175 @@
+---
+/**
+ * SplashNav — 吸顶导航：品牌 / 6 链接 / 真实月相主题开关
+ * 移植自 design_files/ui_kits/yakuten/shell.jsx:12-80
+ *
+ * ── 为什么是 .astro + is:inline 而不是 React 岛 ──────────────────────────
+ * 月相必须【客户端】算：DESIGN_SYSTEM「🚫 Never」明令「无含义装饰数据 ——
+ * 月相挂件必须是真实当日月相」。构建期算会把相位冻结在部署当天，本站部署以周计
+ * → 最大偏差 14 天 = 相位完全相反（写着满月画着新月），比不显示更糟。
+ *
+ * 但为一个 24px 的 SVG 把整个 React 运行时（~45KB gzip）注入全部 33 页
+ * （其中 24 页本可零 JS）→ Lighthouse ≥95 直接不可达。
+ * → 用 ~20 行原生 JS 完成，零框架。
+ *
+ * 导航高亮在【构建期】由 navKeyFor(pathname) 算好 → 零 JS。
+ * ───────────────────────────────────────────────────────────────────────
+ */
+import { hrefFor, navKeyFor, NAV_LINKS } from '../routes';
+import { HibiscusMark } from '../Primitives';
+
+const active = navKeyFor(Astro.url.pathname);
+---
+
+<nav class="yk-nav" data-paper="true" aria-label="主导航">
+  <a class="yk-skip" href="#yk-main">跳到内容</a>
+
+  <a class="yk-nav__brand" href={hrefFor('home')} aria-label="回到首页">
+    <HibiscusMark size={44} />
+    <span>
+      <span class="yk-nav__brand-name">HRT<span class="text-gradient-flame">药典</span></span>
+      <span class="yk-nav__brand-sub">YAKUTEN · 绯英同行</span>
+    </span>
+  </a>
+
+  {/* 原型用 role="tablist" —— 那是错的：这些是页面导航链接，不是 tab 面板切换器。
+      给读屏用户报成 tab 会误导（暗示存在 tabpanel）。用语义化的链接列表。 */}
+  <div class="yk-nav__links">
+    {NAV_LINKS.map(({ key, label }) => (
+      <a
+        class="yk-nav__link"
+        href={hrefFor(key)}
+        aria-current={active === key ? 'page' : undefined}
+      >{label}</a>
+    ))}
+  </div>
+
+  {/*
+    月相开关：SSR 出静态外壳，运行时由下方 is:inline 脚本填入当日相位。
+    尺寸由 CSS 预留 → 不产生 CLS。
+    无 JS 时整个按钮不显示（见脚本末尾）—— 宁可不显示，也不显示错的月相。
+  */}
+  <button
+    type="button"
+    id="yk-moon-toggle"
+    class="yk-nav__aside"
+    aria-pressed="false"
+    hidden
+  >
+    <svg id="yk-moon-svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" fill="var(--ivory)" stroke="var(--ink)" stroke-width="2"></circle>
+      <path id="yk-moon-path" d=""></path>
+    </svg>
+    <span class="yk-nav__aside-label" id="yk-moon-label"></span>
+  </button>
+</nav>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('yk-moon-toggle');
+    if (!btn) return;
+    var path = document.getElementById('yk-moon-path');
+    var label = document.getElementById('yk-moon-label');
+    var root = document.documentElement;
+
+    /* —— 真实当日月相：逐字移植自 shell.jsx:14-19，勿改常数 —— */
+    var SYNODIC = 29.53058867;
+    var age = (((Date.now() / 86400000 - Date.UTC(2000, 0, 6, 18, 14) / 86400000) % SYNODIC) + SYNODIC) % SYNODIC;
+    var illum = (1 - Math.cos((2 * Math.PI * age) / SYNODIC)) / 2;
+    var phaseName = age < 1.85 ? '新月' : age < 5.54 ? '蛾眉月' : age < 9.23 ? '上弦月'
+      : age < 12.92 ? '盈凸月' : age < 16.61 ? '满月' : age < 20.30 ? '亏凸月'
+      : age < 23.99 ? '下弦月' : age < 27.68 ? '残月' : '新月';
+
+    /* —— 明暗界线：逐字移植自 primitives.jsx:512 的 MoonPhase path 公式 —— */
+    var r = 11;
+    var clip = Math.max(0, Math.min(1, illum));
+    path.setAttribute('d',
+      'M 12 ' + (12 - r) + ' A ' + r + ' ' + r + ' 0 0 1 12 ' + (12 + r) +
+      ' A ' + (r * (1 - 2 * clip)) + ' ' + r + ' 0 0 ' + (clip < 0.5 ? 0 : 1) + ' 12 ' + (12 - r) + ' Z'
+    );
+
+    function paint() {
+      var night = root.dataset.theme === 'dark';
+      path.setAttribute('fill', night ? 'var(--lavender-deep)' : 'var(--honey)');
+      label.textContent = (night ? '夜 · ' : '幻月 · ') + phaseName;
+      btn.setAttribute('aria-pressed', night ? 'true' : 'false');
+      btn.setAttribute('title', night ? '回到白天' : '幻月夜模式 · 今日照亮 ' + Math.round(illum * 100) + '%');
+      /* aria-label 独立于 title：title 在移动端不可见，且 ≤720px 文字标签被隐藏，
+         读屏必须仍能听到完整语义 */
+      btn.setAttribute('aria-label', (night ? '关闭' : '开启') + '幻月夜模式 · 今日月相 ' + phaseName);
+    }
+
+    btn.addEventListener('click', function () {
+      var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('yak_theme', next); } catch (e) { /* Safari 无痕会抛 */ }
+      paint();
+    });
+
+    paint();
+    btn.hidden = false;
+  })();
+</script>
+
+<style>
+  /* 品牌名 —— 原型 shell.jsx:44 的 inline style 等价搬到 CSS */
+  .yk-nav__brand-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--fg-1);
+    white-space: nowrap;
+  }
+
+  /* AA 修正：原型 shell.jsx:47 用 --sakura-pink-deep，落 nav 的 cream 底
+     = 3.20:1 FAIL → --sakura-pink-text = 5.18:1 PASS */
+  .yk-nav__brand-sub {
+    display: block;
+    font-family: var(--font-ui-accent);
+    font-size: 10px;
+    color: var(--sakura-pink-text);
+    letter-spacing: 0.18em;
+    margin-top: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .yk-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* 月相按钮外壳 —— 原型 shell.jsx:72 的 inline style 等价搬到 CSS。
+     min-height 44px 满足 WCAG 2.5.8 触控目标（原型未考虑）。 */
+  .yk-nav__aside {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  /* AA 修正：同 brand-sub */
+  .yk-nav__aside-label {
+    font-family: var(--font-ui-accent);
+    font-size: 11px;
+    color: var(--sakura-pink-text);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* 原型 shell.jsx:59-63 给 active 链接写了一份 inline style，与 layout.css:309-315
+     的 .yk-nav__link[aria-current="page"] 规则【完全重复】。
+     移植时刻意只保留 aria-current，让 CSS 层单独接管 —— 这样 v2-overrides.css
+     的 AA 修正（白字 → 墨字）才能生效；inline style 会压过它。 */
+</style>

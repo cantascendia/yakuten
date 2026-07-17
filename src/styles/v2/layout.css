@@ -1,0 +1,454 @@
+/* =========================================================================
+   HRT Yakuten — LAYOUT & SKELETON (architecture layer)
+   页面骨架：容器 · 节奏 · 导航 · 网格 · 文本安全
+   Imported by styles.css — never link this file alone.
+   ========================================================================= */
+
+:root {
+  /* ---------- Layout tokens ---------- */
+  --nav-h: 68px;                                  /* @kind spacing */
+  --page-max: 1280px;                             /* @kind spacing */
+  --page-max-narrow: 1040px;                      /* @kind spacing */
+  --page-pad: clamp(20px, 4vw, 48px);             /* @kind spacing */
+  --section-gap: clamp(36px, 5vw, 64px);          /* @kind spacing */
+  --card-gap: clamp(14px, 2vw, 24px);             /* @kind spacing */
+
+  /* ---------- Z-index scale ---------- */
+  --z-bg: 0;            /* @kind other */
+  --z-content: 1;       /* @kind other */
+  --z-sticky: 50;       /* @kind other */
+  --z-overlay: 100;     /* @kind other */
+  --z-toast: 200;       /* @kind other */
+}
+
+/* =========================================================================
+   TEXT SAFETY — CJK 混排防断行。修复 "血检HUD"、"E2 目标"、chip 折行
+   ========================================================================= */
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.yk-nowrap { white-space: nowrap; }
+
+/* 短标签类元素一律不许折行 */
+.yk-kicker, .yk-chip, .yk-nav__link, .yk-meta-label {
+  white-space: nowrap;
+}
+
+/* =========================================================================
+   PAGE SCAFFOLD — 每个屏幕的统一容器
+   ========================================================================= */
+.yk-page {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--section-gap) var(--page-pad);
+}
+.yk-page--narrow { max-width: var(--page-max-narrow); }
+
+.yk-section { margin-top: var(--section-gap); }
+.yk-section:first-child { margin-top: 0; }
+
+/* Kicker row — washi tape + label（安静版：颜色交给胶带，文字退后）*/
+.yk-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family: var(--font-ui-accent);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  color: var(--fg-3);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   PAGE HEAD — 线装书「卷」页头：竖排卷标 + 杂志级标题 + 墨线收底
+   ========================================================================= */
+.yk-pagehead {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 30px);
+  align-items: flex-start;
+  margin-bottom: clamp(26px, 4vw, 44px);
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--ink);
+  position: relative;
+}
+.yk-pagehead__tab {
+  writing-mode: vertical-rl;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: var(--sakura-pink-deep);
+  background: var(--ivory);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 14px 7px;
+  box-shadow: 2px 2px 0 var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+}
+.yk-pagehead__body { min-width: 0; flex: 1; }
+.yk-pagehead__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 4px 0 12px;
+}
+.yk-pagehead__lede {
+  font-size: 14.5px;
+  color: var(--fg-2);
+  max-width: 720px;
+  line-height: 1.75;
+  margin: 0;
+}
+/* 线装缝线：底线右端三针短缝，代替旧版圆点（圆点误读为滑块） */
+.yk-pagehead::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  bottom: -1px;
+  width: 34px;
+  height: 0;
+  border-bottom: 2px dashed var(--danger);
+}
+@media (max-width: 720px) {
+  .yk-pagehead__tab { display: none; }
+}
+/* 夜模式：页头坐在暗色书桌上，标题/导语必须提亮（data-paper 纸内不受影响） */
+[data-theme="dark"] .yk-pagehead__title { color: #F5E9DA; }
+[data-theme="dark"] .yk-pagehead__lede { color: #D8C7E8; }
+[data-theme="dark"] .yk-pagehead { border-bottom-color: #6B5578; }
+[data-theme="dark"] [data-paper] .yk-pagehead__title { color: var(--fg-1); }
+[data-theme="dark"] [data-paper] .yk-pagehead__lede { color: var(--fg-2); }
+
+/* 朱色重点词 — 替代满屏渐变字：实色绯红 + 手账波浪线 */
+.yk-accent-zhu {
+  color: var(--sakura-pink-deep);
+  font-style: normal;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--sakura-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+/* 朱批手写注记 */
+.yk-hand-note {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  display: inline-block;
+}
+.yk-hand-note--zhu { color: var(--sakura-pink-deep); }
+/* 夜晩书桌上的手写字换薰衣草笔 —— plain color，不动 token */
+[data-theme="dark"] .yk-hand-note { color: #B8A0D8; }
+[data-theme="dark"] .yk-hand-note--zhu { color: var(--sakura-pink); }
+[data-theme="dark"] [data-paper] .yk-hand-note { color: var(--ink-soft); }
+
+/* 典籍目录行 — 点线引导符 */
+.yk-toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+}
+.yk-toc-row:hover .yk-toc-row__title { color: var(--sakura-pink-deep); }
+.yk-toc-row__vol {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--sakura-pink-deep);
+  white-space: nowrap;
+}
+.yk-toc-row__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--fg-1);
+  white-space: nowrap;
+  transition: color .15s;
+}
+.yk-toc-row__leader {
+  flex: 1;
+  border-bottom: 2px dotted var(--ink-faint);
+  transform: translateY(-4px);
+  min-width: 24px;
+}
+.yk-toc-row__meta {
+  font-family: var(--font-hud);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg-3);
+  white-space: nowrap;
+}
+
+/* =========================================================================
+   GRIDS — 响应式卡片网格（取代 inline repeat(n,1fr)）
+   ========================================================================= */
+.yk-grid {
+  display: grid;
+  gap: var(--card-gap);
+}
+.yk-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.yk-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.yk-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.yk-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+
+@media (max-width: 1080px) {
+  .yk-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 880px) {
+  .yk-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .yk-hero-grid > .yk-hero-collage { display: none; }
+  .yk-grid--3 { grid-template-columns: minmax(0, 1fr); }
+  .yk-grid--2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .yk-grid--4 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 文档页三栏：侧栏 · 正文 · TOC */
+.yk-doc-grid {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr) 170px;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+@media (max-width: 1080px) {
+  .yk-doc-grid { grid-template-columns: minmax(190px, 230px) minmax(0, 1fr); }
+  .yk-doc-toc { display: none; }
+}
+@media (max-width: 880px) {
+  .yk-doc-grid { grid-template-columns: minmax(0, 1fr); }
+  .yk-doc-side { display: none; }
+}
+
+/* 文档正文排印 — 版心行长 + 着重号 */
+.yk-article { font-size: 15.5px; }
+.yk-article p, .yk-article ol { max-width: 660px; }
+.yk-article p strong {
+  font-weight: 700;
+  text-emphasis: filled dot var(--sakura-pink-deep);
+  text-emphasis-position: under right;
+  -webkit-text-emphasis: filled dot var(--sakura-pink-deep);
+  -webkit-text-emphasis-position: under right;
+}
+
+/* =========================================================================
+   NAV — 吸顶手账顶栏
+   ========================================================================= */
+.yk-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--nav-h);
+  padding: 8px var(--page-pad);
+  background: var(--cream);
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 3px 0 var(--sakura-blush);
+}
+.yk-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+.yk-nav__links {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  margin-left: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 2px;
+}
+.yk-nav__links::-webkit-scrollbar { display: none; }
+.yk-nav__link {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--fg-1);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+.yk-nav__link:hover { background: var(--sakura-blush); border-color: var(--ink-faint); }
+.yk-nav__link[aria-current="page"] {
+  background: var(--sakura-pink);
+  color: #fff;
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translate(-1px, -1px);
+}
+.yk-nav__aside {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .yk-nav__aside { display: none; }
+  .yk-nav__brand-sub { display: none; }
+}
+
+/* =========================================================================
+   EMERGENCY BANNER — 冷、直接。生命安全信息不用可爱风包装。
+   ========================================================================= */
+.yk-banner {
+  background: var(--danger-deep);
+  color: #fff;
+  padding: 10px var(--page-pad);
+  font-family: var(--font-ui-accent);
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  border-bottom: 2px solid var(--ink);
+  font-weight: 700;
+}
+.yk-banner u { cursor: pointer; white-space: nowrap; text-underline-offset: 3px; }
+
+/* =========================================================================
+   SEAL — 裁定印章（尺刀裁定意象：判读 = 盖章）
+   ========================================================================= */
+.yk-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border: 2.5px solid var(--danger);
+  border-radius: 6px;
+  color: var(--danger);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  transform: rotate(-5deg);
+  white-space: nowrap;
+  background: transparent;
+}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+.yk-footer {
+  margin-top: var(--section-gap);
+  padding: 40px var(--page-pad) 32px;
+  background: var(--sakura-blush);
+  border-top: 2px solid var(--ink);
+  position: relative;
+  z-index: var(--z-content);
+}
+.yk-footer__grid {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+.yk-footer__legal {
+  max-width: var(--page-max);
+  margin: 24px auto 0;
+  padding-top: 16px;
+  border-top: 2px dashed var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-family: var(--font-ui-accent);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.yk-footer__legal > * { white-space: nowrap; }
+@media (max-width: 880px) {
+  .yk-footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .yk-footer__grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   FORM BASELINE — 输入控件统一手账风
+   ========================================================================= */
+.yk-input {
+  width: 100%;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  color: var(--fg-1);
+  padding: 10px 14px;
+  font-family: var(--font-hud);
+  font-size: 15px;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.yk-input:focus {
+  border-color: var(--sakura-pink-deep);
+  box-shadow: 2px 2px 0 var(--sakura-pink-deep);
+}
+.yk-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fg-1);
+  margin-bottom: 6px;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+.yk-field-label > * { white-space: nowrap; }
+
+/* =========================================================================
+   SKIP LINK — a11y
+   ========================================================================= */
+.yk-skip {
+  position: absolute;
+  left: -9999px;
+  z-index: var(--z-toast);
+  padding: 10px 18px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+.yk-skip:focus { left: 12px; top: 12px; }

@@ -1,0 +1,153 @@
+---
+/**
+ * V2Layout — 绯英典籍 v2 外壳（13 路由共用）
+ *
+ * 这是一个【完全脱离 Starlight】的独立 <html> 骨架，对应设计包
+ * design_files/ui_kits/yakuten/index.html 的 App 渲染树：
+ *   CarnivalBg → EmergencyBanner → SplashNav → <main id="yk-main"> → SiteFooter → AIChat
+ *
+ * 脱离 Starlight 是【隔离的前提】：
+ * global.css 与 handoff colors_and_type.css 有 29 个同名 :root token 对撞
+ * （--font-body / --radius-md / --space-* / --transition-* / --glass-* …）。
+ * 两者一旦同页加载，特异性相同 → 结果取决于 bundle 顺序 → 不可预测。
+ * v2 的 CSS 只经本布局 import，Starlight 的 9 个 customCss 只经 Starlight 注入，
+ * 两组页面零共享 import → 物理隔离。
+ *
+ * precedent: src/pages/zh/links/index.astro（仓库唯一的独立非 Starlight 页）
+ */
+import '../styles/v2/styles.css';
+import '../styles/v2/v2-overrides.css';
+
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+import { CarnivalBg } from '../components/v2/Primitives';
+import EmergencyBanner from '../components/v2/shell/EmergencyBanner.astro';
+import SplashNav from '../components/v2/shell/SplashNav.astro';
+import SiteFooter from '../components/v2/shell/SiteFooter.astro';
+import AIChatWidget from '../components/v2/ai-chat/AIChatWidget.tsx';
+import type { V2Route } from '../components/v2/routes';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 当前顶级路由，用于导航高亮（构建期算好，零 JS） */
+  route: V2Route;
+  /** ToolsScreen 需要在岛挂载前就能接住「问狐狸老师」点击 → 该页用 client:load */
+  eagerChat?: boolean;
+}
+
+const { title, description, route, eagerChat = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/*
+    夜模式必须在【首次绘制前】定好，否则夜模式用户每次导航闪一次亮色。
+    原型 shell.jsx:22-26 把 setAttribute 放在 useEffect 里 → 挂载后才跑 → 必闪。
+    MPA 下每页都是完整加载，闪光频率 = 每次点击，比原型更糟 → 必须根治。
+
+    precedent: src/components/ThemeToggle.astro:124-135 同款 is:inline 早读法。
+    CSP: vercel.json 的 script-src 含 'unsafe-inline' → 放行，无需 nonce。
+  */}
+  <script is:inline>
+    (function () {
+      var r = document.documentElement;
+      try {
+        r.dataset.theme = localStorage.getItem('yak_theme') === 'dark' ? 'dark' : 'light';
+      } catch (e) {
+        r.dataset.theme = 'light';
+      }
+      /* 防御：sakura 皮肤的 .yk-* 规则全部 scope 在 html.sakura 下。
+         /v2 不加载 ThemeToggle，理论上永不出现该 class；这行是最后一道保险。 */
+      r.classList.remove('sakura');
+    })();
+  </script>
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#FFF5E0" />
+
+  {/*
+    ⚠️ noindex 是【刻意且必须】的，两个独立理由：
+
+    1) SEO：Starlight 自动注入 @astrojs/sitemap 且会收录 src/pages/ 下的普通路由。
+       /v2 的 33 个页面与既有 /zh/* 是同数据同主题的重复内容
+       （/v2/drugs/estradiol-injection vs /zh/medications/estrogens/injection …）。
+       对一个有 GSC 投入 + 40 条 redirect + hreflang 图谱的生产站，
+       等于主动提交一套竞争性重复内容。
+
+    2) CONSTITUTION §3：「医疗警告 / 紧急横幅 / 剂量提示 / 副作用列表 ——
+       四语（zh/en/ja/ko）必须同步上线」。v2 目前是 zh-only 且含大量医疗警告
+       → 作为 noindex 预览表面不构成「上线」，§3 不触发。
+       转正前置条件 = 四语补齐。
+
+    follow 而非 nofollow：让链接权重仍能流回 /zh/*。
+    不在 robots.txt 加 Disallow —— 那会阻止抓取 → 爬虫读不到这条 noindex →
+    反而可能靠外链索引一个无摘要的 URL。noindex,follow + 不进 sitemap 才是正解。
+  */}
+  <meta name="robots" content="noindex,follow" />
+
+  {/*
+    字体：colors_and_type.css 第 8 行的 @import 负责实际加载（5 个字族）。
+    这里只加 preconnect 消除 @import 的握手瀑布 —— 不改 CSS 一个字节，纯增益。
+    注意：不能复用 astro.config.mjs:427 的全局字体链接 —— 那条缺 Fraunces、
+    缺 Ma Shan Zheng，且 Noto Sans SC 只到 700（设计包要 900）。
+  */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  {/*
+    全局 reset —— 逐字移植自设计包 index.html:10-13。
+    这几行不在三个 CSS 文件里，而是写在原型的 <head><style> 内联块中，
+    移植时极易漏掉（我第一版就漏了）。缺 box-sizing:border-box 的直接后果：
+    .yk-banner 的 width:100% + padding:10px var(--page-pad) 在 content-box 下
+    会溢出正好 2×page-pad（实测 785px 视口下溢出 56px）。
+  */}
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-1);
+      color: var(--fg-1);
+      font-family: var(--font-body);
+      min-height: 100vh;
+    }
+    * { box-sizing: border-box; }
+    button { font-family: inherit; }
+    ::selection { background: rgba(229, 87, 139, 0.3); }
+  </style>
+
+  <Analytics />
+  <SpeedInsights />
+</head>
+<body>
+  {/* 花瓣散布是确定性的（i*137 % 100 等纯整数运算，无 Math.random）
+      → 构建期渲染与运行期逐像素相同 → 可安全零 JS 静态化 */}
+  <CarnivalBg />
+
+  <EmergencyBanner />
+  <SplashNav route={route} />
+
+  {/* id 必须存在：SplashNav 的 skip-link 指向 #yk-main（shell.jsx:40） */}
+  <main id="yk-main">
+    <slot />
+  </main>
+
+  <SiteFooter />
+
+  {/* AIChat + FAB 合并为单岛：原型里两者靠 App 的 chatOpen state 联系，
+      MPA 下没有 App，必须合并否则无法共享 state。
+      client:idle：AI 面板不参与首屏，移出关键路径以保 LCP/TBT。
+      /v2/tools 例外用 client:load —— 该页有「问狐狸老师」横幅，
+      需要在岛挂载前就能接住点击。 */}
+  {eagerChat ? <AIChatWidget client:load /> : <AIChatWidget client:idle />}
+</body>
+</html>
