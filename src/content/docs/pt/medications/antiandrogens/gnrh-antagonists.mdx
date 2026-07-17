@@ -1,0 +1,154 @@
+---
+title: "Antagonistas de GnRH"
+description: "Antagonistas de GnRH (relugolix / degarelix) na TH trans: mecanismo sem flare, evidência de estudos oncológicos, diferenciação dos agonistas de GnRH e disponibilidade no Brasil e Portugal."
+evidenceLevel: B
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, ucsf-2016, shore-2020, kasparian-2023, klotz-2008]
+drug:
+  nonProprietaryName: 'GnRH Antagonist'
+  activeIngredient: 'Relugolix / Degarelix'
+  mechanismOfAction: 'Bloqueio competitivo do receptor de GnRH na hipófise; queda direta de LH/FSH sem flare inicial de testosterona'
+  atc: 'L02BX'
+sidebar:
+  order: 7
+faqs:
+  - q: "Qual a diferença entre agonistas e antagonistas de GnRH?"
+    a: "Agonistas de GnRH (como leuprorelina) superestimulam o receptor até que a hipófise dessensibilize — isso leva 2-4 semanas e causa um flare inicial de testosterona. Antagonistas de GnRH (relugolix, degarelix) bloqueiam o receptor diretamente: a testosterona cai em poucos dias, sem flare."
+  - q: "Os antagonistas de GnRH são aprovados para TH trans?"
+    a: "Não. Tanto relugolix (Orgovyx) quanto degarelix (Firmagon) são aprovados na UE e no Brasil exclusivamente para carcinoma de próstata avançado. Qualquer uso na THAG é off-label. Nem a WPATH SOC 8 nem a Endocrine Society 2017 os recomendam formalmente como antiandrogênico na THAG."
+  - q: "Posso conseguir relugolix (Orgovyx) com receita no Brasil?"
+    a: "O relugolix está registrado pela ANVISA como Orgovyx, mas apenas para a indicação de carcinoma de próstata. Uma prescrição off-label para THAG está a critério do médico, mas geralmente não é coberta pelo SUS nem pelos convênios. Os custos como pagamento particular são significativos."
+  - q: "Preciso usar estradiol junto com antagonistas de GnRH?"
+    a: "Sim, obrigatoriamente. Antagonistas de GnRH suprimem toda a produção de hormônios sexuais — tanto testosterona quanto estradiol endógeno. Sem suplementação externa de estradiol, há risco de perda grave de densidade óssea, ondas de calor e depressão."
+  - q: "Por que esta página não recomenda dosagens específicas?"
+    a: "Não existem estudos prospectivos investigando a dose ideal de relugolix ou degarelix especificamente para mulheres trans. Os dados existentes vêm de estudos de carcinoma de próstata em homens cis mais velhos. Qualquer uso off-label deve ser feito exclusivamente sob supervisão médica com dosagem individualizada."
+---
+
+import DrugInfoBox from '../../../../../components/ui/DrugInfoBox.astro';
+import DoseTable from '../../../../../components/ui/DoseTable.astro';
+import CitationRef from '../../../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../../components/ui/DangerBox.astro';
+import GuideCTA from '../../../../../components/ui/GuideCTA.astro';
+
+<DrugInfoBox
+  name="Antagonistas de GnRH (Relugolix, Degarelix)"
+  nameCN="Antagonistas de GnRH (Orgovyx, Firmagon)"
+  category="antiandrogen"
+  route="Oral (Relugolix) · Injeção subcutânea (Degarelix)"
+  evidenceLevel="B"
+>
+  Os antagonistas de GnRH bloqueiam o receptor de GnRH da hipófise de forma direta e competitiva. Com isso, LH, FSH e testosterona caem em poucos dias — **sem o flare inicial de testosterona** inevitável com os agonistas de GnRH. A aprovação clínica na UE e no Brasil limita-se ao carcinoma de próstata avançado. Na THAG, trata-se de **uso off-label com evidência trans-específica muito limitada**. Nem a WPATH SOC 8 nem a Endocrine Society 2017 listam antagonistas de GnRH como recomendação regular de antiandrogênico
+  <CitationRef
+    id="coleman-2022"
+    num={1}
+    authors="Coleman E et al."
+    year={2022}
+    title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8"
+  />
+  . Esta página oferece uma avaliação objetiva do mecanismo de ação e da evidência clínica.
+</DrugInfoBox>
+
+<GuideCTA
+  eyebrow="Comparação"
+  title="Agonistas de GnRH são a alternativa estabelecida"
+  description="Em contraste com os antagonistas, que bloqueiam o receptor diretamente, os agonistas de GnRH levam à dessensibilização da hipófise por superestimulação. Sua base de evidências na TH trans é significativamente mais ampla e a disponibilidade no Brasil é melhor. Leia primeiro a página sobre agonistas de GnRH."
+  ctaText="Ir para agonistas de GnRH"
+  ctaHref="/pt/medications/antiandrogens/gnrh-agonists/"
+  variant="accent"
+/>
+
+<WarningBox title="Uso off-label e lacunas de evidência">
+Antes de considerar antagonistas de GnRH para sua TH, tenha clareza sobre:
+
+- **Sem recomendação de diretriz:** As diretrizes de THAG não listam antagonistas de GnRH como opção regular de antiandrogênico<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
+- **Evidência vem da oncologia:** Os dados de eficácia e segurança são de estudos randomizados controlados em pacientes com carcinoma de próstata (principalmente o estudo HERO para relugolix e CS21 para degarelix). **Estudos prospectivos em pessoas trans não existem.**
+- **Farmacologicamente plausível, clinicamente não comprovado:** A supressão do eixo HPG é endocrinologicamente compreensível, mas segurança de longo prazo, dosagem ideal e saúde óssea sob condições de THAG não foram investigadas.
+
+</WarningBox>
+
+---
+
+## Diferenciação em relação aos agonistas de GnRH
+
+<DoseTable
+  caption="Agonistas vs. antagonistas de GnRH em comparação"
+  headers={['Dimensão', 'Agonistas de GnRH', 'Antagonistas de GnRH']}
+  rows={[
+    ['Mecanismo', 'Superestimulação contínua até dessensibilização do receptor', 'Bloqueio competitivo direto do receptor'],
+    ['Flare inicial de testosterona', 'Sim (cerca de 1-2 semanas; proteção antiandrogênica recomendada)', 'Não'],
+    ['Tempo até nível de castração', 'Cerca de 2-4 semanas', 'Poucos dias'],
+    ['Formas comuns', 'Injeção depot (mensal a semestral), spray nasal, implante', 'Oral (relugolix) / injeção SC mensal (degarelix)'],
+    ['Evidência trans-específica', 'Recomendada por diretrizes; ampla experiência clínica', 'Off-label; praticamente sem dados trans-específicos'],
+    ['Disponibilidade no Brasil', 'Registrada e disponível pelo SUS/convênios (mediante indicação)', 'Registrada para carcinoma de próstata; reembolso off-label para THAG improvável'],
+  ]}
+/>
+
+<WarningBox title="Sem flare não significa: sem necessidade de estradiol">
+  Mesmo sem a necessidade de proteção contra flare com antiandrogênico, os antagonistas suprimem todo o eixo de hormônios sexuais — testosterona **e** estradiol endógeno. Você **precisa** tomar estradiol exógeno adequadamente dosado para evitar ondas de calor, quedas de humor e perda de densidade óssea.
+</WarningBox>
+
+---
+
+## Relugolix (Orgovyx) — antagonista oral
+
+O relugolix é um antagonista oral do receptor de GnRH. Na UE e no Brasil, é registrado sob o nome **Orgovyx** para carcinoma de próstata hormossensível avançado<CitationRef id="kasparian-2023" num={4} authors="Kasparian S et al." year={2023} title="A Practical Guide to Relugolix" />.
+
+### Dados clínicos de supressão de testosterona
+
+A principal fonte de evidência é o estudo de fase III **HERO** em pacientes com carcinoma de próstata (**extrapolação para THAG com cautela**)<CitationRef id="shore-2020" num={3} authors="Shore ND et al." year={2020} title="Oral Relugolix for Androgen-Deprivation Therapy in Advanced Prostate Cancer" />:
+
+- **Taxa de castração sustentada:** Ao longo de 48 semanas, o grupo relugolix atingiu taxa de castração de **96,7%**
+- **Início rápido:** Já no dia 4, **56,0%** dos pacientes com relugolix atingiram nível de castração — no grupo leuprorelina, ainda **0%** devido ao flare
+- **Meia-vida curta e reversibilidade:** Após a suspensão, o eixo HPG e a testosterona se recuperam significativamente mais rápido do que com injeções depot. Isso significa: **doses esquecidas levam rapidamente a reelevação da testosterona**
+
+---
+
+## Degarelix (Firmagon) — antagonista injetável
+
+O degarelix é um antagonista injetável de GnRH, registrado sob o nome **Firmagon** e administrado como injeção SC mensal<CitationRef id="klotz-2008" num={5} authors="Klotz L et al." year={2008} title="The efficacy and safety of degarelix" />.
+
+- **Queda rápida de T:** Já no dia 3, a testosterona sérica atingiu nível de castração — sem qualquer flare
+- **Supressão estável:** No esquema 240/80 mg (dose de ataque / manutenção), a taxa de castração ao longo de 12 meses foi de **97,2%**
+- **Perfil de efeitos adversos:** Reações no local da injeção (vermelhidão, inchaço, endurecimento), principalmente após a primeira injeção de dose mais alta
+
+---
+
+## Segurança e monitoramento
+
+<DoseTable
+  caption="Monitoramento sob antagonistas de GnRH: testosterona, estradiol, osso, fígado"
+  headers={['Parâmetro', 'Frequência recomendada', 'Valor-alvo / Atenção', 'Conduta em caso de desvio']}
+  rows={[
+    ['Testosterona sérica (T)', '4-8 semanas após início, depois a cada 3-6 meses', '< 50 ng/dL (aprox. < 1,7 nmol/L)', 'Se não atingir alvo: verificar adesão (especialmente com relugolix); considerar ajuste de dose'],
+    ['Estradiol sérico (E2)', 'Junto com T', '100-200 pg/mL (faixa fisiológica)', 'Garantir dose exógena de E2 suficiente para proteção óssea'],
+    ['Densidade óssea (DEXA)', 'Medição basal em uso prolongado, depois a cada 1-2 anos', 'T-Score > -1,0', 'Em perda: aumentar dose de E2, corrigir cálcio e vitamina D'],
+    ['Enzimas hepáticas (ALT/AST)', 'Com relugolix: antes do início e nos primeiros meses', 'Transaminases na faixa normal', 'Se > 3x limite superior ou icterícia: suspender e buscar avaliação médica'],
+  ]}
+/>
+
+<DangerBox title="Sem estradiol, sem supressão de testosterona de longo prazo">
+  Quem suprime a testosterona em nível de castração sem fornecer estradiol adequado coloca o corpo em estado sem qualquer hormônio sexual. As consequências são graves: osteoporose, depressão e ondas de calor severas. Toda supressão do eixo HPG requer suplementação obrigatória de estradiol<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />. Em caso de dores articulares ou ósseas persistentes, quedas graves de humor ou ondas de calor frequentes: não espere, procure controle de E2 em consulta endocrinológica. No Brasil: SAMU **192**; em Portugal: **112**.
+</DangerBox>
+
+---
+
+## Disponibilidade e custos no Brasil e Portugal
+
+- **Relugolix (Orgovyx):** Registrado pela ANVISA (Brasil) e pela EMA (Portugal), disponível em farmácias — porém exclusivamente com indicação de carcinoma de próstata. Prescrição off-label para THAG a critério médico. **Reembolso pelo SUS/convênio em uso off-label é geralmente improvável**; custos particulares são significativos.
+- **Degarelix (Firmagon):** Registrado para carcinoma de próstata. A injeção é geralmente aplicada em consultório urológico.
+- **Alternativas pragmáticas:** Para a grande maioria das mulheres trans no Brasil, antagonistas de GnRH não são uma opção de primeira linha realista. Sob acompanhamento médico, CPA em dose baixa (Androcur), espironolactona (Aldactone) ou agonistas de GnRH (Decapeptyl) oferecem melhor relação entre evidência, custo e disponibilidade<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />.
+
+<WarningBox title="Apenas sob supervisão médica">
+Antagonistas de GnRH na TH trans são pouco evidenciados, caros e de difícil reembolso. Se mesmo assim você os considerar — por exemplo, por intolerância ao CPA e espironolactona, desejo de evitar flare ou preferência por via oral — discuta com endocrinologistas experientes. Controles regulares de testosterona, estradiol e densidade óssea são indispensáveis.
+</WarningBox>
+
+---
+
+## Páginas relacionadas
+
+- [Agonistas de GnRH: leuprorelina / goserelina / triptorelina](/pt/medications/antiandrogens/gnrh-agonists/)
+- [CPA (Androcur)](/pt/medications/antiandrogens/cpa/)
+- [Espironolactona](/pt/medications/antiandrogens/spironolactone/)
+- [Bicalutamida](/pt/medications/antiandrogens/bicalutamide/)
+- [Antiandrogênicos — visão geral](/pt/medications/antiandrogens/overview/)

@@ -1,0 +1,96 @@
+---
+title: "Signalement d'erreurs et retours"
+description: "Tu as repere une erreur ou tu as une suggestion ? Voici comment faire part de tes retours a l'equipe de la Pharmacopee HRT."
+evidenceLevel: X
+lastReviewed: 2026-07-15
+references: []
+faqsRenderedInBody: true
+faqs:
+  - q: "Comment signaler une erreur medicale ?"
+    a: "Le plus simple est de soumettre un issue GitHub via le formulaire de correction sur cette page. Indique l'URL de la page concernee, la section erronee, ta proposition de correction et, si possible, une reference avec DOI."
+  - q: "Je ne connais pas GitHub. Puis-je quand meme donner mon avis ?"
+    a: "Bien sur. Ecris-nous simplement par e-mail a hi@hrtyaku.com ou contacte-nous sur X (Twitter). Tu peux decrire ton probleme avec tes propres mots."
+  - q: "En combien de temps mon retour est-il traite ?"
+    a: "Les signalements lies a la securite (p. ex. dosages incorrects ou contre-indications manquantes) sont generalement examines sous 48 heures. Les suggestions plus generales sont traitees en une a deux semaines."
+sidebar:
+  order: 102
+---
+
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+
+L'exactitude des contenus medicaux est un pilier fondamental de la securite de notre communaute. Si tu reperes une erreur, une information obsolete ou une piste d'amelioration en lisant nos pages, nous serons ravis de recevoir ton retour. **Les retours en francais sont les bienvenus** -- tu n'as pas besoin d'ecrire en anglais.
+
+:::note[Protection des donnees]
+Ton retour est utilise exclusivement pour ameliorer le contenu de ce site. Nous ne conservons aucune donnee personnelle au-dela de ce qui est necessaire au traitement. Tes droits au titre du **Reglement general sur la protection des donnees (RGPD)** -- notamment le droit d'acces, de rectification et de suppression -- sont naturellement respectes. Plus de details dans notre [page A propos](/fr/about/).
+:::
+
+<WarningBox>
+**Les signalements lies a la securite (p. ex. erreurs de dosage, contre-indications manquantes ou consignes d'urgence incompletes) sont examines et traites par l'equipe editoriale en general sous 48 heures.**
+</WarningBox>
+
+---
+
+## Corrections de contenu
+
+Si tu as repere une erreur medicale ou une information imprecise, tu peux soumettre un signalement structure via un issue GitHub.
+
+**Les informations suivantes nous aident a traiter ton signalement plus rapidement :**
+- L'URL de la page concernee
+- La section erronee (cite-la si possible)
+- Ta proposition de formulation correcte
+- Si possible : une reference avec DOI ou un lien vers une publication revue par les pairs
+
+<a href="https://github.com/cantascendia/yakuten/issues/new?template=content_correction.yml" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Soumettre un signalement de correction
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+:::note[Tu ne connais pas GitHub ?]
+Pas de probleme ! Tu peux aussi nous contacter par e-mail ou via X (Twitter). Decris ton probleme avec tes propres mots -- cela suffit amplement.
+:::
+
+---
+
+## Suggestions de fonctionnalites et rapports de bugs
+
+Si tu as rencontre un probleme technique -- un outil qui ne fonctionne pas, un affichage defaillant ou un lien mort -- ou si tu as une idee pour une nouvelle fonctionnalite :
+
+<a href="https://github.com/cantascendia/yakuten/issues/new/choose" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; text-decoration: none;">
+  Soumettre une suggestion / un rapport de bug
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</a>
+
+---
+
+## Retours generaux
+
+Tu souhaites simplement partager ton experience avec le site, nous faire un compliment ou proposer une amelioration generale ? Nous sommes ravis de recevoir tout message :
+
+**[hi@hrtyaku.com](mailto:hi@hrtyaku.com)** -- ecris-nous en francais, en anglais ou dans la langue de ton choix.
+
+---
+
+## Reseaux sociaux
+
+Tu peux aussi nous joindre sur X (Twitter) :
+
+**[@hrtyakuten](https://x.com/hrtyakuten)** -- suis-nous pour les dernieres nouvelles et n'hesite pas a nous ecrire tes questions ou remarques.
+
+---
+
+## Processus de verification des corrections
+
+1. **Accusé de reception** -- Ton signalement est enregistre et place dans la file d'attente de verification.
+2. **Verification des preuves** -- L'equipe editoriale compare ta proposition de correction avec la litterature scientifique citee.
+3. **Mise a jour** -- Apres verification positive, le contenu est corrige dans les meilleurs delais et la date de revision est mise a jour.
+4. **Retour** -- Apres publication de la correction, nous confirmons la modification dans l'issue GitHub correspondant ou via le canal que tu as choisi.
+
+| Type de signalement | Delai de traitement prevu |
+|---------------------|---------------------------|
+| Lie a la securite (dosage / contre-indication / urgence) | Sous 48 heures |
+| Erreur medicale factuelle | Sous une semaine |
+| Revision linguistique ou traduction | 1-2 semaines |
+| Suggestions de fonctionnalites | Selon la planification du developpement |
+
+<FaqSchema items={frontmatter.faqs} title="FAQ sur les retours" />

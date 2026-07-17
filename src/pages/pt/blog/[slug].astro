@@ -1,0 +1,28 @@
+---
+/**
+ * Blog post detail page — /pt/blog/{slug}/
+ * Queries the 'blog' collection for pt locale, non-draft posts.
+ */
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../../layouts/BlogPostLayout.astro';
+import { getBlogSlug } from '../../../utils/blogHelpers';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts
+    .filter((p) => p.data.locale === 'pt' && !p.data.draft)
+    .map((entry) => ({
+      params: { slug: getBlogSlug(entry) },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+
+const rawContent = remarkPluginFrontmatter?.rawContent ?? entry.data.description;
+---
+
+<BlogPostLayout entry={entry} headings={headings} rawContent={rawContent}>
+  <Content />
+</BlogPostLayout>

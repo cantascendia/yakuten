@@ -1,0 +1,196 @@
+---
+title: "Guia: La primera inyeccion"
+description: "Guia completa para la primera inyeccion de valerato de estradiol — valores basales, material, dosis inicial, monitorizacion en la primera semana, primer control y ajuste de dosis."
+evidenceLevel: B
+sidebar:
+  order: 1
+lastReviewed: 2026-07-15
+references: [coleman-2022, hembree-2017, herndon-2023, misakian-2025, rothman-2024, poage-2026]
+faqs:
+  - q: "Puedo conseguir inyecciones de estradiol en mi pais?"
+    a: "En Espana no hay preparados inyectables de estradiol comercializados; se obtienen por importacion privada. En Argentina, el valerato de estradiol inyectable esta disponible en farmacias. En Mexico, hay preparados inyectables accesibles. En Colombia y Chile, la disponibilidad varia. Las alternativas habituales son estradiol oral (Progynova/Meriestra), gel (Oestrogel) o parches (Evopad, Climara)."
+  - q: "Donde consigo jeringas y agujas?"
+    a: "Las jeringas y agujas no requieren receta en la mayoria de los paises hispanohablantes. Puedes comprarlas en cualquier farmacia — pide una jeringa de 1 mL tipo Luer-Lock, una aguja de carga (18-20G) y una aguja de inyeccion (25G para SC o 23G para IM). Tambien estan disponibles en farmacias en linea."
+  - q: "Subcutanea o intramuscular — cual es mejor?"
+    a: "Los estudios clinicos no muestran diferencias significativas en la absorcion de E2 ni en la supresion de T entre SC e IM. La SC es mucho mas facil de autoadministrar (aguja mas fina, menos dolor, abdomen u muslo como zona de inyeccion). La IM en el gluteo generalmente requiere una segunda persona. Para la primera inyeccion, la mayoria de las guias recomiendan SC como opcion mas amigable para principiantes."
+  - q: "Que hago si olvido una inyeccion?"
+    a: "Hasta 2 dias de retraso: ponla y mantiene el ritmo regular. 3-4 dias de retraso: ponla y reinicia el ciclo desde la nueva fecha. A partir de 5 dias: salta la dosis olvidada, pon la siguiente dosis regular como estaba planeada — nunca pongas el doble de dosis."
+  - q: "Duele la primera inyeccion?"
+    a: "Un leve pinchazo al insertar y una breve sensacion de presion al inyectar son normales. Dolor intenso indica un error: aguja demasiado gruesa (se uso la de carga en vez de la de inyeccion), solucion fria (no se llevo a temperatura ambiente) o inyeccion demasiado rapida. Con la tecnica correcta, la SC es practicamente indolora."
+---
+
+import WarningBox from '../../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../../components/ui/DangerBox.astro';
+import CitationRef from '../../../../components/ui/CitationRef.astro';
+import DoseTable from '../../../../components/ui/DoseTable.astro';
+import EvidenceBadge from '../../../../components/ui/EvidenceBadge.astro';
+import ContraindicationBox from '../../../../components/ui/ContraindicationBox.astro';
+import BaselineChecklist from '../../../../components/ui/BaselineChecklist.astro';
+import InlineValue from '../../../../components/ui/InlineValue.astro';
+import RelatedBlogPosts from '../../../../components/ui/RelatedBlogPosts.astro';
+
+<EvidenceBadge level="B" />
+
+La inyeccion de estradiol no es tecnicamente dificil — pero la preparacion previa y la monitorizacion posterior son a menudo mas importantes que la inyeccion en si. La administracion regular mas controles de laboratorio limpios forman la base de una terapia eficaz.
+
+Si ya te inyectas y quieres cambiar de via de administracion, encontraras orientacion en la [guia de cambio de via de E2](/es/guides/switch-e2-route/). Si aun estas decidiendo entre las diferentes formas de administracion, la [vision general de formas de estradiol](/es/medications/estrogens/overview/) te sera util.
+
+:::note[Disponibilidad regional]
+La disponibilidad de estradiol inyectable varia mucho en el mundo hispanohablante. En **Argentina y Mexico**, el valerato de estradiol inyectable esta disponible en farmacias. En **Espana**, no hay preparados inyectables comercializados y se obtienen por importacion privada. En **Colombia y Chile**, la disponibilidad es variable. Las alternativas mas accesibles son estradiol oral (Progynova, Meriestra), gel transdermico (Oestrogel) o parches (Evopad, Climara). Consulta con tu endocrinologo/a si la inyeccion es la via adecuada para ti.
+:::
+
+---
+
+## Idoneidad
+
+La inyeccion de estradiol tiene una ventaja clave en la TRH transfemenina: evita completamente el metabolismo de primer paso hepatico, lo que resulta relativamente mas seguro con funcion hepatica inestable, y proporciona niveles plasmaticos predecibles. Los datos muestran que aproximadamente el <InlineValue value="82,6" unit="%" /> de las usuarias bajo inyecciones con dosis adecuada alcanzan monoterapia (sin necesidad de antiandrogenico adicional)<CitationRef id="misakian-2025" num={1} authors="Misakian AL et al." year={2025} title="Injectable Estradiol Monotherapy in Transgender Individuals" />.
+
+Sin embargo, la inyeccion no es la unica via: estradiol oral, sublingual, parches y gel tienen cada uno sus ventajas. Si existen factores de riesgo de TEV (p. ej. tabaquismo, obesidad, antecedentes familiares), las guias generalmente recomiendan vias transdermicas (parche o gel), ya que el riesgo de TEV es el mas bajo (RR aprox. 0,97 vs. oral 1,48).
+
+## Contraindicaciones absolutas
+
+<ContraindicationBox type="absolute" title="Contraindicaciones absolutas (especificas de la inyeccion)" sectionNum="">
+
+- Enfermedad tromboembolica activa (trombosis venosa profunda, embolia pulmonar)
+- Alergia severa conocida al valerato de estradiol o al vehiculo oleoso (aceite de ricino / benzoato de bencilo)
+- Trastorno de coagulacion severo
+
+Contraindicaciones absolutas generales de la TRH en [Antes de empezar — Contraindicaciones absolutas](/es/before-you-start/).
+
+</ContraindicationBox>
+
+---
+
+## Valores basales de laboratorio
+
+Hazte determinar los valores basales en las 1-2 semanas previas a la primera inyeccion.
+
+<BaselineChecklist
+  items={[
+    { name: 'Hormonas sexuales', nameEn: 'E2 / T / FSH / LH / PRL / P', tag: 'required' },
+    { name: 'Funcion hepatica', nameEn: 'ALT / AST / ALP / GGT / Bilirrubina', tag: 'required' },
+    { name: 'Funcion renal', nameEn: 'Creatinina / TFGe', tag: 'required' },
+    { name: 'Estado de coagulacion', nameEn: 'TP / TTPa / Dimero D', tag: 'required' },
+    { name: 'Hemograma completo', nameEn: 'Hemograma diferencial', tag: 'required' },
+    { name: 'Glucosa en ayunas', nameEn: 'Glucosa en ayunas', tag: 'recommended' },
+    { name: 'Perfil lipidico', nameEn: 'Colesterol, Trigliceridos, HDL, LDL', tag: 'recommended' },
+  ]}
+  costRange="Variable segun pais y sistema de salud"
+/>
+
+---
+
+## Dosis inicial y procedimiento
+
+### Dosis inicial
+
+En los primeros 1-6 meses: la dosis inicial recomendada es de <InlineValue value="1-2" unit="mg/semana" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="coleman-2022" num={3} authors="Coleman E et al." year={2022} title="Standards of Care v8" />. No comiences directamente con la dosis de mantenimiento (2-4 mg/semana) — la dosis baja inicial protege el desarrollo mamario.
+
+<DoseTable
+  caption="Dosis inicial y volumen a cargar (con 10 mg/mL)"
+  headers={['Dosis semanal', 'Volumen a cargar (10 mg/mL)', 'Intervalo']}
+  rows={[
+    ['1 mg/semana', '0,1 mL', 'cada 7 dias'],
+    ['2 mg/semana', '0,2 mL', 'cada 7 dias'],
+  ]}
+/>
+
+### SC vs. IM — la eleccion
+
+No existen diferencias significativas en la absorcion de E2 ni en la supresion de T entre la inyeccion subcutanea (SC) e intramuscular (IM)<CitationRef id="herndon-2023" num={4} authors="Herndon JS et al." year={2023} title="Subcutaneous vs Intramuscular Estradiol Valerate" /><CitationRef id="poage-2026" num={5} authors="Poage AC et al." year={2026} title="Subcutaneous vs Intramuscular Estradiol Valerate Injection" />. SC significa aguja mas fina, menos dolor y facil autoadministracion. IM requiere una aguja mas larga — con inyeccion glutea generalmente necesitas una segunda persona.
+
+### Instrucciones paso a paso
+
+1. **Equilibrar temperatura** — Saca la ampolla del refrigerador y dejala 15-30 minutos a temperatura ambiente.
+2. **Abrir la ampolla** — Envuelve el cuello de la ampolla con una gasa y rompe la punta con el pulgar hacia afuera.
+3. **Cargar** — Coloca la aguja de carga (18-20G) en la jeringa, inclina ligeramente la ampolla y aspira la cantidad deseada.
+4. **Cambiar de aguja** — Retira la aguja de carga y coloca la aguja de inyeccion (SC: 25G; IM: 23G).
+5. **Purgar aire** — Sujeta la jeringa verticalmente con la aguja hacia arriba, golpea suavemente y presiona hasta que aparezca una gota.
+6. **Desinfectar la zona** — Limpia con una torunda de alcohol en movimiento espiral de dentro hacia fuera. Espera 15-30 segundos hasta que se seque.
+7. **Insertar** — SC: pellizcar la piel, insertar en angulo de 45 grados. IM: tensar la piel, insertar en angulo de 90 grados.
+8. **Inyectar y cuidado posterior** — Inyectar lentamente durante aprox. 10 segundos. Retirar la aguja. Presionar suavemente con un algodon seco (aprox. 1 minuto). No frotar.
+
+---
+
+## Monitorizacion en la primera semana
+
+### Reacciones normales
+
+- **Zona de inyeccion**: Ligera tirantez o un pequeno hematoma son normales y desaparecen en 2-5 dias
+- **Animo**: Las fluctuaciones son posibles y forman parte del ajuste hormonal
+- **Mamas**: La tension o sensibilidad suelen aparecer recien a las 2-6 semanas — en la primera semana es normal no notar nada
+- **Energia / libido**: Pueden descender temporalmente, tambien es una reaccion normal
+
+### Buscar atencion medica
+
+<DangerBox title="Ante cualquiera de los siguientes signos: suspender inmediatamente y llamar a emergencias">
+
+- Hinchazon unilateral de la pantorrilla con dolor a la presion — trombosis venosa profunda (TVP)
+- Dolor toracico, dificultad respiratoria, tos con sangre — embolia pulmonar
+- Cefalea intensa subita con alteraciones visuales — trombosis de senos venosos, ictus
+- Debilidad unilateral de una extremidad, caida de la comisura labial — ictus
+- Coloracion amarilla de piel u ojos, orina oscura — dano hepatico agudo
+- Reaccion alergica severa (dificultad respiratoria, erupcion cutanea, edema laringeo)
+
+Emergencias: **112** (Espana) / **107** (Argentina) / **911** (Mexico, Colombia, Chile).
+
+</DangerBox>
+
+---
+
+## Primer control y ajuste de dosis
+
+### Momento del control
+
+Realiza una extraccion de sangre en nivel valle 4-6 semanas despues del inicio. "Nivel valle" significa: acude a la extraccion la manana del dia de inyeccion previsto — inmediatamente antes de la siguiente inyeccion.
+
+### Ajuste de dosis segun niveles valle
+
+<DoseTable
+  caption="Ajuste de dosis segun E2 y T valle"
+  headers={['E2 valle', 'T valle', 'Significado', 'Accion']}
+  rows={[
+    ['100-200 pg/mL', '< 50 ng/dL', 'Objetivo alcanzado', 'Mantener dosis actual'],
+    ['< 50 pg/mL', 'cualquiera', 'Dosis demasiado baja', 'Acortar intervalo (7 a 5 dias) o aumentar ligeramente la dosis (max. 5 mg/semana)'],
+    ['> 200 pg/mL', '< 50 ng/dL', 'Dosis demasiado alta', 'Reducir dosis'],
+    ['100-200 pg/mL', '> 50 ng/dL', 'E2 suficiente, T no suprimida', 'Anadir antiandrogenico (p. ej. CPA a dosis baja), no seguir aumentando la dosis de E2'],
+  ]}
+/>
+
+Niveles valle de E2 superiores a 200 pg/mL generalmente no aportan efecto feminizante adicional pero aumentan el riesgo de trombosis<CitationRef id="hembree-2017" num={2} />.
+
+<WarningBox title="Limite superior en monoterapia">
+La monoterapia solo funciona si con una dosis maxima de 5 mg/semana el T valle cae por debajo de 50 ng/dL. Si 5 mg/semana no suprime suficientemente la T, un antiandrogenico a dosis baja (p. ej. Androcur 5-10 mg/dia o espironolactona 100 mg/dia) es generalmente mas seguro que seguir aumentando la dosis<CitationRef id="rothman-2024" num={6} authors="Rothman MS et al." year={2024} title="Injectable Estradiol Dosing in Transgender Individuals" />.
+</WarningBox>
+
+---
+
+## Preparacion para la consulta medica
+
+- Llevar el plan terapeutico (p. ej. EV 1-2 mg/semana SC como dosis inicial)
+- Imprimir los valores basales de laboratorio
+- Clarificar citas de control (4-6 semanas, 3 meses, 6 meses)
+- Discutir plan de emergencia (cuando llamar a emergencias)
+- Llevar las guias como base de conversacion:
+  - [WPATH SOC 8 (Coleman 2022)](https://www.tandfonline.com/doi/full/10.1080/26895269.2022.2100644)
+  - [Endocrine Society 2017 (Hembree et al.)](https://doi.org/10.1210/jc.2017-01658)
+  - [Biblioteca de referencias](/es/appendix-references/)
+
+<WarningBox title="Esta pagina no sustituye la consulta medica">
+Esta guia recopila informacion de referencia basada en guias clinicas internacionales. Tu esquema terapeutico concreto debe ser establecido por un profesional cualificado junto contigo. Si tienes dificultades para encontrar una clinica con experiencia en TRH, los [centros medicos amigables](/es/tools/hospital-finder/) pueden ayudarte.
+</WarningBox>
+
+---
+
+## Recursos adicionales
+
+- [Estradiol inyectable (EV / EC / EEn)](/es/medications/estrogens/injection/)
+- [Formas de administracion de estradiol](/es/medications/estrogens/overview/)
+- [Guia de analisis de sangre](/es/blood-tests/)
+- [Reconocer riesgos y actuar en emergencias](/es/risks/)
+- [Calculadora de dosis de inyeccion](/es/tools/injection-calculator/)
+- [Antes de empezar](/es/before-you-start/)
+- [Recorrido clinico](/es/pathway/)
+- [Centros medicos amigables](/es/tools/hospital-finder/)
+
+<RelatedBlogPosts />

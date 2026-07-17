@@ -18,12 +18,12 @@ import DrugBrandGallery from '../../../../../components/ui/DrugBrandGallery.astr
 
 <DrugInfoBox
   name="Spironolactone (Aldactone)"
-  nameCN="Spironolactone (螺内酯/安体舒通)"
+  nameCN="Spironolactone (Aldactone)"
   category="antiandrogen"
   route="Voie orale"
   evidenceLevel="B"
 >
-À l'origine, la spironolactone (Spiro) est un diurétique épargneur de potassium — un médicament contre l'hypertension — dont l'effet anti-androgénique, léger, n'est qu'un effet secondaire jamais recherché au départ. Comme le CPA (acétate de cyprotérone) est totalement interdit par la FDA, c'est la spironolactone qui s'est imposée comme l'anti-androgène par défaut aux États-Unis. Elle agit en bloquant les récepteurs plutôt qu'en abaissant la production de testostérone, et elle s'accompagne de risques graves liés à une accumulation de potassium pouvant être mortelle.
+À l'origine, la spironolactone (Spiro) est un diurétique épargneur de potassium — un médicament contre l'hypertension — dont l'effet anti-androgénique, léger, n'est qu'un effet secondaire jamais recherché au départ. Le CPA (acétate de cyprotérone, Androcur) reste le premier choix en France, Belgique et Suisse ; la spironolactone est surtout prescrite en deuxième intention ou en cas d'intolérance au CPA. Elle agit en bloquant les récepteurs plutôt qu'en abaissant la production de testostérone, et elle s'accompagne de risques graves liés à une accumulation de potassium pouvant être mortelle.
 </DrugInfoBox>
 
 <DangerBox title="Hyperkaliémie — le risque cardiaque mortel">
@@ -63,9 +63,9 @@ La Spiro est universellement considérée comme l'option anti-androgénique la p
 <DoseTable
   headers={['Phase', 'Dose', 'Remarques', 'Source']}
   rows={[
-    ['Dose initiale', '50 mg/day', "Évalue la tolérance et la stabilité initiale du potassium.", 'ES 2017'],
-    ['Titration standard', '100 mg/day', 'Le palier efficace moyen pour la plupart des utilisatrices.', 'UCSF 2016'],
-    ['Le plafond maximal', '200 mg/day', "Dépasser 200 mg expose à des effets secondaires invalidants sans le moindre bénéfice anti-androgénique supplémentaire.", 'ES 2017; WPATH SOC 8'],
+    ['Dose initiale', '50 mg/jour', "Évalue la tolérance et la stabilité initiale du potassium.", 'ES 2017'],
+    ['Titration standard', '100 mg/jour', 'Le palier efficace moyen pour la plupart des utilisatrices.', 'UCSF 2016'],
+    ['Le plafond maximal', '200 mg/jour', "Dépasser 200 mg expose à des effets secondaires invalidants sans le moindre bénéfice anti-androgénique supplémentaire.", 'ES 2017; WPATH SOC 8'],
   ]}
 />
 
@@ -76,7 +76,7 @@ La Spiro est universellement considérée comme l'option anti-androgénique la p
 - Comme il s'agit littéralement d'un diurétique conçu pour vider la vessie, la prendre juste avant le coucher ruinera votre sommeil en vous obligeant à uriner toute la nuit. Prenez votre dose du soir plus tôt dans la soirée.
 
 <WarningBox title="Des doses plus élevées n'agissent pas plus vite">
-Dépasser 200 mg/day ne bloque pas comme par magie les récepteurs aux androgènes plus efficacement. Cela ne fait qu'aggraver la chute de la tension artérielle et pousser votre potassium vers un seuil potentiellement mortel<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Si vous atteignez 200 mg/day sans que la masculinisation s'arrête, vous devez changer de bloqueur, ou augmenter nettement votre estradiol transdermique/injectable pour supprimer la T de manière physiologique.
+Dépasser 200 mg/jour ne bloque pas comme par magie les récepteurs aux androgènes plus efficacement. Cela ne fait qu'aggraver la chute de la tension artérielle et pousser votre potassium vers un seuil potentiellement mortel<CitationRef id="hembree-2017" num={1} authors="Hembree WC et al." year={2017} />. Si vous atteignez 200 mg/jour sans que la masculinisation s'arrête, vous devez changer de bloqueur, ou augmenter nettement votre estradiol transdermique/injectable pour supprimer la T de manière physiologique.
 </WarningBox>
 
 ## Inconvénients pour la qualité de vie
@@ -105,10 +105,10 @@ La vocation pharmaceutique première de la Spiro est de faire baisser l'hyperten
 
 ## Accès dans le monde
 
-Le CPA étant interdit en Amérique, la Spiro règne sans partage sur les parcours de soins américains :
+En France et dans le monde francophone, la spironolactone joue un rôle de deuxième intention :
 
-- **Aux États-Unis :** distribuée librement dans les cliniques à consentement éclairé (comme Planned Parenthood). Très accessible, disponible partout, et extrêmement bon marché avec une assurance ou via GoodRx.
-- **En Europe/Asie :** utilisée presque exclusivement comme médicament de repli pour les personnes dont le foie ne tolère pas le CPA, ou celles qui ont survécu à une tumeur cérébrale liée au CPA.
+- **En France / Belgique / Suisse :** la spironolactone est utilisée presque exclusivement comme médicament de repli pour les personnes dont le foie ne tolère pas le CPA, ou celles qui ont survécu à une tumeur cérébrale liée au CPA. L'Aldactone (Pfizer) et ses génériques sont disponibles en pharmacie sur ordonnance. La Sécurité sociale française peut la prendre en charge.
+- **Au Québec :** plus couramment prescrite (l'influence des protocoles nord-américains y est forte). Disponible sur ordonnance en pharmacie, couverte par la RAMQ.
 - **Risque du DIY :** la Spiro elle-même est rarement contrefaite, mais tenter de la gérer en DIY sans payer pour des bilans rénaux privés revient à jouer à la roulette russe avec une crise cardiaque.
 
 <DrugBrandGallery drugId="spironolactone" />
