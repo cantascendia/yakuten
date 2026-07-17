@@ -31,8 +31,29 @@
 
 :root {
   /* 来自 origin/master:src/styles/sakura-theme.css L26/L29 —— 不发明新色 */
-  --sakura-pink-text: #C02868;  /* 深粉【文字】色，落奶油底 ≈5.18:1 */
-  --sakura-pink-aa:   #C03070;  /* 深粉【实心底】色，配白字 ≈5.40:1 */
+  --sakura-pink-text: #C02868;  /* 深粉【文字】色，落奶油/象牙底 5.18~5.39:1 */
+  --sakura-pink-aa:   #C03070;  /* 深粉【实心底】色，配白字 5.39:1 */
+}
+
+/* ⚠️ --sakura-pink-text 必须【主题感知】，否则修亮色会把暗色改得更糟。
+   实测（梦境紫 --night-1 #2E1F42 底）：
+     #C02868（亮色用的深粉）= 2.69  ← 比原型的 4.36 还差！
+     #FFA8C5（--sakura-pink）  = 8.38  PASS
+   即：深粉配奶油纸 OK，深粉配夜空必挂。
+
+   这不是我发明的机制 —— layout.css:152 对 .yk-hand-note--zhu 早就是这么做的
+   （[data-theme="dark"] 时换 --sakura-pink）。此处把它提升为令牌级，
+   于是所有写 `color: var(--sakura-pink-text)` 的地方（含 inline style）
+   都自动跟随主题，无需逐处写媒体查询。 */
+[data-theme="dark"] {
+  --sakura-pink-text: var(--sakura-pink);  /* 夜空下的深色桌面 → 用浅樱粉 8.38:1 */
+}
+
+/* 但「纸面」在夜里仍然亮着（--bg-3/ivory/cream），纸上必须换回深粉。
+   与 colors_and_type.css:293 的 [data-paper] 前景反转机制同源、同层。
+   命中范围：InkCard / SpeechBubble / nav / footer / AIChat —— 全部内置 data-paper。 */
+[data-paper] {
+  --sakura-pink-text: #C02868;
 }
 
 /* 1a. 导航当前页：白字落浅樱粉 = 1.80:1（近乎不可读）
