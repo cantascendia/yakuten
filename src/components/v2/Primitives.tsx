@@ -416,11 +416,22 @@ export const HudBar = ({
    CHIP
    ========================================================================= */
 /**
- * AA 修正：原型默认 color = --sakura-pink-deep，两种形态都 FAIL：
- *   非 filled  深粉字 on 象牙 = 3.33  → 换 pink-text = 5.39 PASS
- *   filled     白字 on 深粉底 = 3.46  → 换 pink-text 做底 = 5.61 PASS
- * 单一默认色 --sakura-pink-text 同时解决两种形态（同色相加深，边框随之加深）。
- * master PR #36 亦修过 yk-chip--filled，此处与其一致。
+ * Chip — 胶囊标签（6/13 屏在用，全站第二高频）
+ *
+ * AA 修正（系统性，非逐点打补丁）：
+ * 原型把 `color` 同时用作【文字色】和【边框色】。但调用方传的是设计系统的
+ * 粉彩语义色，它们是给「浅底配深字」设计的，拿来当文字必挂。实测 on --ivory：
+ *   honey #F5B347 1.77 · mint-deep #5AC89D 1.98 · sky-deep #5BA8E0 2.49
+ *   lavender-deep #9B7DD4 3.22 · sakura-pink-deep #E5578B 3.33   —— 全部 FAIL
+ *
+ * 修法：拆开两个职责 —— 【颜色承载语义（边框）、墨色承载可读性（文字）】。
+ * 这不是我的发明，正是绯英设计系统自己的规则：DESIGN_SYSTEM 全站
+ * 「墨字 on 彩底」51:8 压倒性，彩色文字本就是离群值。
+ * 视觉上仍是「彩色标签」（边框/底色的语义色一个像素没变），只有文字转墨。
+ * 实测 --ink on ivory = 11.74:1。
+ *
+ * filled 形态保持白字：此时 `color` 是【底色】而非文字色，由调用方负责传深色
+ * （默认 --sakura-pink-text 做底 = 白字 5.61 PASS）。
  */
 export const Chip = ({
   children,
@@ -439,7 +450,7 @@ export const Chip = ({
     gap: 4,
     padding: '4px 12px',
     background: bg ?? (filled ? color : 'var(--ivory)'),
-    color: filled ? '#fff' : color,
+    color: filled ? '#fff' : 'var(--ink)',
     border: `2px solid ${color}`,
     borderRadius: 999,
     fontFamily: 'var(--font-ui-accent)',
