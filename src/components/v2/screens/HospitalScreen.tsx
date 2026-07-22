@@ -21,7 +21,7 @@ export default function HospitalScreen() {
   return (
     <div className="yk-page">
       <PageHead
-        volume="卷五" tab="资源" kicker="RESOURCES · 找医院"
+        tab="资源" kicker="RESOURCES · 找医院"
         tapeColor="var(--coral)" pattern="solid"
         title="友好医疗资源" accent={`${hospitalsCN.length} 家`}
         lede="社区验证的跨性别友好医院。提示：不用告诉医生你是跨性别也能做检查——「我想检查激素水平」，任何三甲内分泌科都可以开血检。"

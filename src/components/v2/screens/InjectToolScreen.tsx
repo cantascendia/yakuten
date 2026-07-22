@@ -93,7 +93,7 @@ export default function InjectToolScreen() {
   return (
     <div className="yk-page yk-page--narrow">
       <PageHead
-        volume="卷四" tab="注射" kicker="TOOLS · 注射计算器"
+        tab="注射" kicker="TOOLS · 注射计算器"
         tapeColor="var(--sakura-pink)" pattern="dots"
         title="注射计算器" accent="EV"
         lede={`${injection.drug} · ${injection.concentration} · ${injection.frequency}。选择目标剂量，得到抽取体积和预期 E2 谷值范围。`}

@@ -14,7 +14,7 @@
  */
 import { hrefFor } from '../routes';
 import type { V2Route } from '../routes';
-import { PageHead, InkCard, Icon, Chip, FoxTeacherMark } from '../Primitives';
+import { PageHead, InkCard, Icon, Chip } from '../Primitives';
 
 const TOOLS: Array<{
   route: V2Route; icon: string; color: string; deep: string;
@@ -50,7 +50,7 @@ export default function ToolsScreen() {
   return (
     <div className="yk-page">
       <PageHead
-        volume="卷四" tab="工具" kicker="TOOLS · 临床工具"
+        tab="工具" kicker="TOOLS · 临床工具"
         tapeColor="var(--mint)" pattern="stripes"
         title="临床工具" accent="七件"
         lede="所有工具 100% 前端运行，零数据传输，不存储任何健康信息。输出仅供参考，不能替代医生判读。"
@@ -80,7 +80,7 @@ export default function ToolsScreen() {
           </InkCard>
         ))}
 
-        {/* AI 问答 — 狐狸老师 · 整行横幅收尾。
+        {/* AI 问答助手 · 整行横幅收尾。
             用 <button> 而非 <a>：它不是导航，是打开同页浮窗 → 语义上就该是按钮。 */}
         <button
           type="button"
@@ -94,10 +94,10 @@ export default function ToolsScreen() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-            <FoxTeacherMark size={52} />
+            <div style={{ width: 52, height: 52, borderRadius: 14, background: 'var(--ivory)', border: '2px solid var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Icon name="sparkles" size={28} color="var(--ink)" /></div>
             <div style={{ flex: 1, minWidth: 220 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 21, margin: 0, fontWeight: 700, whiteSpace: 'nowrap' }}>问狐狸老师 · AI 问答</h3>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 21, margin: 0, fontWeight: 700, whiteSpace: 'nowrap' }}>AI 问答助手</h3>
                 <Chip color="var(--lavender-deep)">BETA</Chip>
               </div>
               <p style={{ fontSize: 13, color: 'var(--fg-1)', lineHeight: 1.6, margin: '6px 0 0' }}>

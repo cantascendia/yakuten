@@ -14,7 +14,7 @@ import { hrefFor } from '../routes';
 import { drugs, ROUTE_ZH, ACCESS_ZH, fmtRange, type Drug, type DrugCategory, type SideEffectSeverity } from '../data';
 import {
   Icon, SealStamp, EvidenceBadge, Chip, InkCard, DangerBox, WarningBox,
-  FoxTeacherMark, SpeechBubble,
+  SpeechBubble,
 } from '../Primitives';
 
 const CAT: Record<DrugCategory, { zh: string; en: string }> = {
@@ -327,12 +327,11 @@ export default function DrugDetailScreen({ drug }: { drug: Drug }) {
         </section>
       )}
 
-      {/* 中国获取 — 狐狸老师解读 */}
+      {/* 中国获取解读 */}
       {access && (
         <section>
           <Section>中国获取</Section>
           <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-            <div style={{ flexShrink: 0, marginTop: 6 }}><FoxTeacherMark size={52} /></div>
             <SpeechBubble tail="bottom-left" tone="paper" style={{ flex: 1 }}>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
                 {/* filled Chip：color 此时是【底色】，pink-text 做底 + 白字 = 5.61 PASS */}

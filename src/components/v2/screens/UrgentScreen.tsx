@@ -11,7 +11,7 @@
 import { hrefFor } from '../routes';
 import { hotlinesCN } from '../data';
 import {
-  PageHead, InkCard, SealStamp, SectionKicker, FoxTeacherMark, SpeechBubble,
+  PageHead, InkCard, SealStamp, SectionKicker, SpeechBubble,
 } from '../Primitives';
 
 /* 六条停药信号 —— 硬编码于原型 urgent-screen.jsx:3-16，逐字不改。
@@ -101,11 +101,10 @@ export default function UrgentScreen() {
         ))}
       </div>
 
-      {/* 就医话术 — 狐狸老师 */}
+      {/* 就医话术 */}
       <section style={{ marginTop: 36 }}>
         <SectionKicker tapeColor="var(--sky)" pattern="grid">就医话术 · 不用出柜也能看急症</SectionKicker>
         <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', marginTop: 14 }}>
-          <div style={{ flexShrink: 0, marginTop: 6 }}><FoxTeacherMark size={52} /></div>
           <SpeechBubble tail="bottom-left" tone="paper" style={{ flex: 1 }}>
             <div style={{ fontSize: 14, lineHeight: 1.85 }}>
               急诊直接描述症状就行（「小腿肿痛三天」），不需要解释为什么用药。

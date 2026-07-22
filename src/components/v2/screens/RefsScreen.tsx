@@ -37,7 +37,7 @@ export default function RefsScreen() {
   return (
     <div className="yk-page yk-page--narrow">
       <PageHead
-        volume="卷四" tab="文献" kicker="TOOLS · 文献库"
+        tab="文献" kicker="TOOLS · 文献库"
         tapeColor="var(--lavender)" pattern="dots"
         title="参考文献" accent={`${references.length} 条`}
         lede="站内每条医学声明的来源。无引用 = 不写入网站。"

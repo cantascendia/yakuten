@@ -81,7 +81,7 @@ export default function RiskScreenerScreen() {
   return (
     <div className="yk-page yk-page--narrow">
       <PageHead
-        volume="卷四" tab="自评" kicker="TOOLS · 风险自评"
+        tab="自评" kicker="TOOLS · 风险自评"
         tapeColor="var(--butter)" pattern="solid"
         title="风险自评" accent="7 问"
         lede="回答 7 个问题，整理出你在 4 个方向上勾选到的风险因素清单，供你和医生讨论。这【不是】经过验证的风险预测量表，不估算你的实际患病概率。纯前端运行，答案不上传、不存储。"

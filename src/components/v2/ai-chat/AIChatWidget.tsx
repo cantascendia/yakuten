@@ -1,5 +1,5 @@
 /**
- * AIChatWidget — 浮动狐狸老师问答（FAB + 对话面板，合并为单岛）
+ * AIChatWidget — 浮动 AI 助手问答（FAB + 对话面板，合并为单岛）
  * 移植自 design_files/ui_kits/yakuten/ai-chat.jsx (117 行)
  *
  * ── 为什么 AIChat 与 AIChatFab 合并成一个组件 ──────────────────────────
@@ -20,7 +20,7 @@
  *   · 系统提示【硬编码在服务端】，含急症→120 引导、禁个性化剂量、禁购药渠道、
  *     强制免责声明 —— 与原型 YK_AI_SYSTEM 的安全规则同源且更严格
  *
- * ── 狐狸老师人设：为什么不注入 YK_AI_SYSTEM ─────────────────────────────
+ * ── AI 助手人设：为什么不注入 YK_AI_SYSTEM ─────────────────────────────
  * 原型把人设提示词拼进单条 prompt。改接真实端点后，唯一的注入点是首轮 user
  * 消息 —— 刻意【不做】：
  *   · 那等于往一个我们无权修改、无法测试的【医疗安全端点】里注入第二套安全指令。
@@ -29,13 +29,13 @@
  *     这类分歧若出现在剂量/急症措辞上就是安全事故。
  *   · 服务端 SYSTEM_PROMPT 已含功能等价且更严格的规则（禁个性化剂量、急症列举
  *     + 120 + 热线号码、禁购药渠道、语气「温和、专业、不居高临下」）。
- * → 保留全部【可见】的狐狸老师人格（头像 / 欢迎语 / 思考态 / 免责 / 视觉）逐字不变，
+ * → 保留 AI 助手的可见人格（中性化后）（头像 / 欢迎语 / 思考态 / 免责 / 视觉）逐字不变，
  *   模型腔调交由服务端既有 prompt。这正是 DESIGN_SYSTEM 第一原则
  *   「可爱属于容器，严肃属于内容」。
  *   给端点加白名单 persona 参数是正解，但须走 §4 spec + 双签 → 另开 PR。
  */
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { FoxTeacherMark } from '../Primitives';
+import { Icon } from '../Primitives';
 
 /* 端点契约常量 —— 与 api/ai-chat.ts 保持同步（只读，不改服务端） */
 const MAX_MESSAGES = 20;
@@ -50,7 +50,7 @@ interface Msg {
 
 const WELCOME: Msg = {
   role: 'assistant',
-  text: '你好，我是狐狸老师 ✿ 可以问我关于 HRT 的一般性问题。我不能替代医生，也不会给出个性化剂量哦。',
+  text: '你好，我是 AI 助手 ✿ 可以问我关于 HRT 的一般性问题。我不能替代医生，也不会给出个性化剂量哦。',
 };
 
 /**
@@ -96,7 +96,7 @@ export default function AIChatWidget() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   /* ToolsScreen 是零 JS 静态屏，无法直接调本岛的 setState。
-     它把「问狐狸老师」横幅渲染成 <button data-yk-open-chat>，此处用事件委托接住。 */
+     它把「AI 问答助手」横幅渲染成 <button data-yk-open-chat>，此处用事件委托接住。 */
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       const t = e.target as HTMLElement | null;
@@ -152,7 +152,7 @@ export default function AIChatWidget() {
     const q = input.trim();
     if (!q || busy) return;
     if (byteLen(q) > MAX_CONTENT_BYTES) {
-      setError('这条太长了，狐狸老师读不完 —— 分成几句问我吧 ✿');
+      setError('这条太长了 —— 分成几句问我吧 ✿');
       return;
     }
     setInput('');
@@ -183,12 +183,12 @@ export default function AIChatWidget() {
           /* 429 = 限流（5 次/分钟），4xx = 客户端错误 → 永不重试 */
           if (res.status === 429) {
             const d = await res.json().catch(() => ({} as { error?: string }));
-            throw new Error(d.error || '问得有点快，狐狸老师喘口气 —— 一分钟后再问吧 ✿');
+            throw new Error(d.error || '问得有点快 —— 请稍等，一分钟后再问吧 ✿');
           }
           if (res.status >= 400 && res.status < 500) {
-            throw new Error(`狐狸老师暂时没法回答（${res.status}）`);
+            throw new Error(`助手暂时没法回答（${res.status}）`);
           }
-          lastErr = new Error(`狐狸老师暂时没法回答（${res.status}）`);
+          lastErr = new Error(`助手暂时没法回答（${res.status}）`);
           if (attempt < MAX_ATTEMPTS - 1) {
             await new Promise((r) => setTimeout(r, BACKOFFS_MS[attempt]));
             continue;
@@ -242,7 +242,7 @@ export default function AIChatWidget() {
           ref={panelRef}
           role="dialog"
           aria-modal="true"
-          aria-label="狐狸老师 AI 问答"
+          aria-label="AI 问答助手"
           aria-busy={busy}
           className="yk-paper"
           data-paper="true"
@@ -258,9 +258,9 @@ export default function AIChatWidget() {
             display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
             background: 'var(--butter)', borderBottom: '2px solid var(--ink)',
           }}>
-            <FoxTeacherMark size={28} />
+            <Icon name="sparkles" size={22} color="var(--ink)" />
             <span style={{ fontFamily: 'var(--font-display)', fontSize: 15, color: 'var(--ink)', flex: 1 }}>
-              问狐狸老师 · BETA
+              AI 问答助手 · BETA
             </span>
             {/* 视觉保持 28px 圆钮（1:1），但 44×44 透明命中区满足 WCAG 2.5.8 */}
             <button
@@ -312,7 +312,7 @@ export default function AIChatWidget() {
             ))}
             {busy && (
               <div style={{ alignSelf: 'flex-start', fontFamily: 'var(--font-hand)', fontSize: 15, color: 'var(--fg-2)' }}>
-                狐狸老师思考中…✿
+                思考中…✿
               </div>
             )}
             {error && (
@@ -330,7 +330,7 @@ export default function AIChatWidget() {
               ref={inputRef}
               className="yk-input"
               value={input}
-              aria-label="向狐狸老师提问"
+              aria-label="向 AI 助手提问"
               placeholder="例如：贴片和口服哪个更安全？"
               style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 13 }}
               onChange={(e) => setInput(e.target.value)}
@@ -374,7 +374,7 @@ export default function AIChatWidget() {
       >
         {open
           ? <span style={{ color: '#fff', fontSize: 20, fontWeight: 700 }}>✕</span>
-          : <FoxTeacherMark size={36} />}
+          : <Icon name="sparkles" size={30} color="var(--ink)" />}
       </button>
     </>
   );

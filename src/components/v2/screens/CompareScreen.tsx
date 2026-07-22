@@ -66,7 +66,7 @@ export default function CompareScreen() {
   return (
     <div className="yk-page">
       <PageHead
-        volume="卷四" tab="对比" kicker="TOOLS · 药物对比"
+        tab="对比" kicker="TOOLS · 药物对比"
         tapeColor="var(--sky)" pattern="grid"
         title="药物对比" accent="三栏并排"
         lede={`从 ${drugs.length} 种药物中任选三种横向对比。剂量数据交叉验证自 WPATH SOC 8 + Endocrine Society 2017 + UCSF。`}

@@ -11,7 +11,7 @@
 import { Fragment } from 'react';
 import { hrefFor } from '../routes';
 import {
-  WashiTape, Paperclip, MoonPhase, FoxTeacherMark, SpeechBubble,
+  WashiTape, Paperclip, MoonPhase, SpeechBubble,
   ClipButton, InkCard, Icon, Chip,
 } from '../Primitives';
 
@@ -31,12 +31,13 @@ const CODEX = [
 ] as const;
 
 /* 典籍目录 —— 硬编码于原型 home-screen.jsx:224-228 */
+/* 去掉原型的「线装书·卷一~卷五」lore，改成朴素的板块导航（编号仅作视觉序号）。 */
 const TOC = [
-  ['卷一', '幻月路径', '四阶段 · 决策节点', 'pathway'],
-  ['卷二', '药物图鉴', '20 种 · 循证', 'drugs'],
-  ['卷三', '文档', '44 页 × 4 语言', 'doc'],
-  ['卷四', '临床工具', '7 件 · 零上传', 'tools'],
-  ['卷五', '友好医院', '25 家 · 社区验证', 'hospitals'],
+  ['用药路径图', '四阶段 · 决策节点', 'pathway'],
+  ['药物图鉴', '20 种 · 循证', 'drugs'],
+  ['文档', '循证详解', 'doc'],
+  ['临床工具', '七件 · 零上传', 'tools'],
+  ['友好医院', '社区验证', 'hospitals'],
 ] as const;
 
 const MOON_STEPS = [['基线', 0], ['起步', 0.4], ['调整', 0.72], ['维持', 1]] as const;
@@ -54,8 +55,9 @@ export default function HomeScreen() {
               <WashiTape color="var(--butter)" pattern="solid" width={60} rotation={-2} />
             </div>
             {/* AA：原型 --sakura-pink-deep on cream = 3.20 FAIL（12px 小字需 4.5）→ pink-text 5.18 */}
+            {/* 去掉原型杜撰的拉丁文「Per iter ad se verum」，只留真实站点标语 */}
             <div style={{ fontFamily: 'var(--font-ui-accent)', fontSize: 12, letterSpacing: '0.15em', color: 'var(--sakura-pink-text)', fontWeight: 700, marginBottom: 14, textWrap: 'balance' }}>
-              Per iter ad se verum · 循证 · 减害 · 引导就医
+              循证 · 减害 · 引导就医
             </div>
             <h1 style={{
               fontFamily: 'var(--font-display)', fontWeight: 400,
@@ -85,7 +87,7 @@ export default function HomeScreen() {
             </div>
           </div>
 
-          {/* 右侧 — 画卷拼贴：幻月周期 + 狐狸老师 */}
+          {/* 右侧 — 画卷拼贴：路径进度 + 提示便签 */}
           <div className="yk-hero-collage" style={{ position: 'relative', minHeight: 430 }}>
             {/* 画卷纸 */}
             <div aria-hidden="true" style={{
@@ -117,7 +119,7 @@ export default function HomeScreen() {
                 className="yk-paper"
                 data-paper="true"
                 href={hrefFor('pathway')}
-                aria-label="幻月路径 · 四阶段"
+                aria-label="用药路径图 · 四阶段"
                 style={{
                   display: 'block', textDecoration: 'none', color: 'inherit',
                   background: 'var(--cream)', border: '2px solid var(--ink)',
@@ -125,16 +127,15 @@ export default function HomeScreen() {
                   boxShadow: '3px 3px 0 var(--ink)', transform: 'rotate(0.6deg)',
                 }}
               >
-                <div className="yk-kicker" style={{ marginBottom: 10, fontSize: 10 }}>幻月路径 · 渐盈即渐稳</div>
+                {/* 去「幻月/渐盈」lore；月相形状保留作四阶段的视觉进度指示（基线→维持） */}
+                <div className="yk-kicker" style={{ marginBottom: 10, fontSize: 10 }}>用药路径 · 四阶段</div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4 }}>
                   {MOON_STEPS.map(([label, fill], i) => (
                     /* key 必须在 map 直接返回的 Fragment 上，不能只放在内层 div */
                     <Fragment key={label}>
                       {i > 0 && <Icon name="arrow" size={13} color="var(--ink-faint)" />}
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                        {/* 这 4 个月相是【示意图例】（基线→维持的渐盈隐喻），非当日月相，
-                            固定 fill 值是设计意图，不违反「真实月相」红线 —— 那条约束
-                            针对的是导航上的月相挂件。 */}
+                        {/* 四个圆形填充是「基线→维持」的视觉进度指示（渐满 = 渐稳），纯装饰 */}
                         <MoonPhase fill={fill} size={34} color="var(--sakura-pink)" />
                         <span style={{ fontFamily: 'var(--font-ui-accent)', fontSize: 10, fontWeight: 700, color: 'var(--fg-2)', whiteSpace: 'nowrap' }}>{label}</span>
                       </div>
@@ -143,9 +144,8 @@ export default function HomeScreen() {
                 </div>
               </a>
 
-              {/* 狐狸老师 + 提示气泡 */}
+              {/* 提示便签（原为「狐狸老师」气泡 → 去吉祥物，保留提示本身） */}
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, marginTop: 26, paddingLeft: 6 }}>
-                <FoxTeacherMark size={88} />
                 <SpeechBubble tone="paper" tail="bottom-left" style={{ marginBottom: 30, transform: 'rotate(-1deg)' }}>
                   <span style={{ fontSize: 13, display: 'block', whiteSpace: 'nowrap' }}>新手吗？<strong>先做基线血检</strong>，</span>
                   <span style={{ fontSize: 13, display: 'block', whiteSpace: 'nowrap' }}>再谈别的 ✿</span>
@@ -266,13 +266,13 @@ export default function HomeScreen() {
       <section style={{ padding: '8px var(--page-pad) 48px', maxWidth: 'var(--page-max)', margin: '0 auto' }}>
         <InkCard variant="cream" hoverLift={false} style={{ padding: '22px 28px', maxWidth: 760 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, marginBottom: 8 }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>目錄</span>
-            <span className="yk-hand-note" style={{ fontSize: 15 }}>一部安全底线的典籍，共五卷。</span>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>目录</span>
+            <span className="yk-hand-note" style={{ fontSize: 15 }}>网站主要板块，从这里到达。</span>
           </div>
-          {TOC.map(([vol, title, meta, route]) => (
+          {TOC.map(([title, meta, route], i) => (
             /* 原型是 <button onClick> —— 语义应为链接 */
-            <a key={vol} className="yk-toc-row" href={hrefFor(route)}>
-              <span className="yk-toc-row__vol">{vol}</span>
+            <a key={title} className="yk-toc-row" href={hrefFor(route)}>
+              <span className="yk-toc-row__vol">{String(i + 1).padStart(2, '0')}</span>
               <span className="yk-toc-row__title">{title}</span>
               <span className="yk-toc-row__leader" aria-hidden="true"></span>
               <span className="yk-toc-row__meta">{meta}</span>

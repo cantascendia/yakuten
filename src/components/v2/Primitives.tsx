@@ -506,8 +506,9 @@ export const PageHead = ({
   right?: ReactNode;
 }) => (
   <header className="yk-pagehead">
-    {volume && (
-      <div className="yk-pagehead__tab" aria-hidden="true">{volume}{tab ? `・${tab}` : ''}</div>
+    {/* 竖排标签作为视觉元素保留；卷号（volume）是线装书 lore，去掉后只显示 tab 名 */}
+    {(volume || tab) && (
+      <div className="yk-pagehead__tab" aria-hidden="true">{volume ? `${volume}・${tab}` : tab}</div>
     )}
     <div className="yk-pagehead__body">
       {kicker && <SectionKicker tapeColor={tapeColor} pattern={pattern}>{kicker}</SectionKicker>}

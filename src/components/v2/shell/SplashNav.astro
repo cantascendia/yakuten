@@ -28,7 +28,7 @@ const active = navKeyFor(Astro.url.pathname);
     <HibiscusMark size={44} />
     <span>
       <span class="yk-nav__brand-name">HRT<span class="text-gradient-flame">药典</span></span>
-      <span class="yk-nav__brand-sub">YAKUTEN · 绯英同行</span>
+      <span class="yk-nav__brand-sub">YAKUTEN · HRT 安全底线信息站</span>
     </span>
   </a>
 
@@ -72,15 +72,14 @@ const active = navKeyFor(Astro.url.pathname);
     var label = document.getElementById('yk-moon-label');
     var root = document.documentElement;
 
-    /* —— 真实当日月相：逐字移植自 shell.jsx:14-19，勿改常数 —— */
+    /* 月相【形状】保留作日/夜切换图标（视觉元素）；但去掉「幻月/相名」这类
+       原型杜撰的奇幻文案 —— 真实站点没有「幻月夜模式」概念，只是普通日间/夜间切换。
+       月相盈亏仍按当日真实照亮比例画（一个随日期微变的漂亮图标），不再对外声称相名。 */
     var SYNODIC = 29.53058867;
     var age = (((Date.now() / 86400000 - Date.UTC(2000, 0, 6, 18, 14) / 86400000) % SYNODIC) + SYNODIC) % SYNODIC;
     var illum = (1 - Math.cos((2 * Math.PI * age) / SYNODIC)) / 2;
-    var phaseName = age < 1.85 ? '新月' : age < 5.54 ? '蛾眉月' : age < 9.23 ? '上弦月'
-      : age < 12.92 ? '盈凸月' : age < 16.61 ? '满月' : age < 20.30 ? '亏凸月'
-      : age < 23.99 ? '下弦月' : age < 27.68 ? '残月' : '新月';
 
-    /* —— 明暗界线：逐字移植自 primitives.jsx:512 的 MoonPhase path 公式 —— */
+    /* 明暗界线弧线公式（保留形状，勿改） */
     var r = 11;
     var clip = Math.max(0, Math.min(1, illum));
     path.setAttribute('d',
@@ -91,12 +90,12 @@ const active = navKeyFor(Astro.url.pathname);
     function paint() {
       var night = root.dataset.theme === 'dark';
       path.setAttribute('fill', night ? 'var(--lavender-deep)' : 'var(--honey)');
-      label.textContent = (night ? '夜 · ' : '幻月 · ') + phaseName;
+      label.textContent = night ? '夜间' : '日间';
       btn.setAttribute('aria-pressed', night ? 'true' : 'false');
-      btn.setAttribute('title', night ? '回到白天' : '幻月夜模式 · 今日照亮 ' + Math.round(illum * 100) + '%');
+      btn.setAttribute('title', night ? '切换到日间模式' : '切换到夜间模式');
       /* aria-label 独立于 title：title 在移动端不可见，且 ≤720px 文字标签被隐藏，
          读屏必须仍能听到完整语义 */
-      btn.setAttribute('aria-label', (night ? '关闭' : '开启') + '幻月夜模式 · 今日月相 ' + phaseName);
+      btn.setAttribute('aria-label', night ? '切换到日间模式' : '切换到夜间模式');
     }
 
     btn.addEventListener('click', function () {

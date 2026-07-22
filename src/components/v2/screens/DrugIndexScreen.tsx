@@ -27,7 +27,7 @@ export default function DrugIndexScreen() {
   return (
     <div className="yk-page">
       <PageHead
-        volume="卷二" tab="图鉴" kicker="CODEX · 药物图鉴"
+        tab="图鉴" kicker="CODEX · 药物图鉴"
         tapeColor="var(--sakura-pink)" pattern="dots"
         title={`${drugs.length} 种药物`} accent="循证图鉴"
         lede="每种药物的剂量范围与 ≥2 个独立来源交叉验证（WPATH SOC 8 · Endocrine Society 2017 · UCSF）。点开任意卡片查看完整详解页。"

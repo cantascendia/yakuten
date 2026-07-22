@@ -1,5 +1,5 @@
 /**
- * PathwayScreen — 幻月路径（四阶段手风琴时间线）
+ * PathwayScreen — 用药路径图（四阶段手风琴时间线）
  * 移植自 design_files/ui_kits/yakuten/pathway-screen.jsx (166 行)
  *
  * 岛屿（client:visible）：展开态 + localStorage['yak_phase']。
@@ -65,8 +65,8 @@ const PHASES: Phase[] = [
   },
 ];
 
+/* 圆形填充量 = 阶段进度（基线 0 → 维持 1，渐满=渐稳）。纯视觉，不再对外称「月相/相名」。 */
 const MOON_FILL = [0, 0.4, 0.72, 1];
-const MOON_NAME = ['新月', '蛾眉', '盈凸', '满月'];
 
 export default function PathwayScreen() {
   const [active, setActive] = useState<number>(() => {
@@ -83,9 +83,9 @@ export default function PathwayScreen() {
   return (
     <div className="yk-page yk-page--narrow">
       <PageHead
-        volume="卷一" tab="路径" kicker="CORE · 用药路径图"
+        tab="路径" kicker="CORE · 用药路径图"
         tapeColor="var(--sakura-pink)" pattern="dots"
-        title="幻月路径" accent="四阶段"
+        title="用药路径图" accent="四阶段"
         lede={'不是剂量"指南"。是 4 个决策节点。每一步都是：此刻做什么 · 下次看什么指标 · 什么情况立即停药就医。'}
       />
 
@@ -109,7 +109,7 @@ export default function PathwayScreen() {
                 onClick={() => setActive(ph.p)}
                 aria-expanded={isActive}
                 aria-label={`${ph.label} ${ph.zh}`}
-                title={`幻月渐盈 · ${MOON_NAME[ph.p]}`}
+                title={`阶段 ${ph.p}：${ph.zh}`}
                 style={{
                   position: 'relative', width: 62, height: 62, borderRadius: '50%', padding: 0,
                   background: 'var(--ivory)',
@@ -122,8 +122,7 @@ export default function PathwayScreen() {
                   zIndex: 1,
                 }}
               >
-                {/* 这 4 个月相是【阶段图例】（新月→满月 对应 基线→维持期），固定 fill
-                    是设计意图，与导航上「必须真实当日月相」的红线无关。 */}
+                {/* 圆形填充 = 阶段进度指示（基线→维持渐满），纯视觉图标 */}
                 <MoonPhase fill={MOON_FILL[ph.p]} size={48} color={isActive ? ph.color : 'var(--sakura-blush)'} />
                 <span aria-hidden="true" style={{
                   position: 'absolute', inset: 0,

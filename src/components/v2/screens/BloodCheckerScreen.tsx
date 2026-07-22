@@ -110,7 +110,7 @@ export default function BloodCheckerScreen() {
   return (
     <div className="yk-page yk-page--narrow">
       <PageHead
-        volume="卷四" tab="血检" kicker="TOOLS · 血检自查"
+        tab="血检" kicker="TOOLS · 血检自查"
         tapeColor="var(--mint)" pattern="stripes"
         title="血检" accent="HUD"
         lede="纯前端运行，零数据传输，不保存任何数值。输入血检数值，对照 HRT 目标区间。范围来自 WPATH SOC 8 和 Endocrine Society 2017。"
