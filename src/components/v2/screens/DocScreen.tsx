@@ -173,7 +173,8 @@ export default function DocScreen() {
         <section id="doc-scim" style={{ marginTop: 28 }}>
           <SectionH n="肆">SC vs IM</SectionH>
           <WarningBox title="皮下与肌注疗效无显著差异">
-            SC 操作更安全、自行注射更方便 (Herndon 2023; Poage 2026)。两者生物利用度相当。
+            {/* Herndon = 参考列表第 4 条 → 补上 n=4 上标，使 5 条参考全部被正文引用、编号连贯 */}
+            SC 操作更安全、自行注射更方便，两者生物利用度相当<CitationRef n="4" />。
           </WarningBox>
         </section>
 
