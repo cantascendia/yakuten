@@ -138,7 +138,8 @@ export default function DocScreen() {
         <section id="doc-pk" style={{ marginTop: 28 }}>
           <SectionH n="貳">药代动力学</SectionH>
           <p style={{ fontSize: 15, lineHeight: 1.85, color: 'var(--fg-1)' }}>
-            单次注射后血药浓度 2–3 天达峰，半衰期 4–5 天，7–10 天回落至谷值<CitationRef n="3" />。
+            {/* 达峰/半衰期是药代动力学声明 → Oriowo（列表第 1 条），非 Rothman（剂量文献） */}
+            单次注射后血药浓度 2–3 天达峰，半衰期 4–5 天，7–10 天回落至谷值<CitationRef n="1" />。
             血检采样应在<strong>下次注射前当天早晨</strong>（谷值），否则数值不可比。
           </p>
         </section>
@@ -178,18 +179,28 @@ export default function DocScreen() {
 
         <section id="doc-redline" style={{ marginTop: 28 }}>
           <SectionH n="伍">红线</SectionH>
+          {/* 引用修正（review #7）：原来 CitationRef n=4 指向下方参考列表第 4 条
+              Herndon（SC vs IM 研究），根本不是红线的证据。且两条红线来自【不同】文献，
+              不能合并归因。对齐站内 SSOT injection.mdx:225-227：
+                · 单次 ≥10 mg → 峰值 >1000 → VTE  = Rothman 2024（下方第 3 条）
+                · 间隔 <5 天且 >5 mg（叠加累积）    = Kanin 2025（下方第 5 条）*/}
           <DangerBox title="禁止 · 单次 ≥10 mg" stamp="禁止">
-            单次注射 ≥10 mg 或间隔 &lt;5 天且 &gt;5 mg 会使峰值 E2 超过 1000 pg/mL，显著增加 VTE 与肝损伤风险<CitationRef n="4" />。
+            单次注射 ≥10 mg 可能使峰值 E2 短期超过 1000 pg/mL，显著增加 VTE 风险<CitationRef n="3" />。
+            注射间隔 &lt;5 天且单次 &gt;5 mg 会因叠加累积使血药浓度持续处于超生理水平<CitationRef n="5" />。
           </DangerBox>
         </section>
 
         <section id="doc-refs" style={{ marginTop: 28 }}>
           <SectionH n="陸">参考文献</SectionH>
+          {/* 引用元数据对齐仓库 references.json（review #7）：
+              Rothman DOI 修正 2024.0081 → 2023.0209（仓库记录的正确值）；
+              补入 Kanin 2025（红线第二条的证据）。编号与正文 CitationRef 一一对应。 */}
           <ol style={{ fontSize: 12.5, color: 'var(--fg-2)', lineHeight: 1.85, paddingLeft: 20, margin: 0 }}>
-            <li>Oriowo MA et al. Pharmacokinetics of E2 Esters. <em>Contraception</em> 1980.</li>
-            <li>Misakian AL et al. Injectable E2 Monotherapy. <em>Endocrine Practice</em> 2025.</li>
-            <li>Rothman MS et al. Injectable E2 Dosing. <em>Transgender Health</em> 2024;9(6):463–465. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1089/trgh.2024.0081</span></li>
-            <li>Herndon JS et al. SC vs IM. <em>Endocr Pract</em> 2023;29(5):356–361.</li>
+            <li>Oriowo MA et al. Pharmacokinetics of Estradiol Esters. <em>Contraception</em> 1980. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1016/S0010-7824(80)80018-7</span></li>
+            <li>Misakian AL et al. Injectable Estradiol Monotherapy. <em>Endocrine Practice</em> 2025. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1016/j.eprac.2025.07.002</span></li>
+            <li>Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. <em>Transgender Health</em> 2024. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1089/trgh.2023.0209</span></li>
+            <li>Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. <em>Endocr Pract</em> 2023. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1016/j.eprac.2023.02.006</span></li>
+            <li>Kanin M et al. Injectable Estradiol Dosing Regimens. <em>J Endocr Soc</em> 2025. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1210/jendso/bvaf004</span></li>
           </ol>
         </section>
 

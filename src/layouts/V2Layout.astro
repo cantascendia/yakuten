@@ -33,11 +33,9 @@ interface Props {
   description: string;
   /** 当前顶级路由，用于导航高亮（构建期算好，零 JS） */
   route: V2Route;
-  /** ToolsScreen 需要在岛挂载前就能接住「问狐狸老师」点击 → 该页用 client:load */
-  eagerChat?: boolean;
 }
 
-const { title, description, route, eagerChat = false } = Astro.props;
+const { title, description, route } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -145,9 +143,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
   {/* AIChat + FAB 合并为单岛：原型里两者靠 App 的 chatOpen state 联系，
       MPA 下没有 App，必须合并否则无法共享 state。
-      client:idle：AI 面板不参与首屏，移出关键路径以保 LCP/TBT。
-      /v2/tools 例外用 client:load —— 该页有「问狐狸老师」横幅，
-      需要在岛挂载前就能接住点击。 */}
-  {eagerChat ? <AIChatWidget client:load /> : <AIChatWidget client:idle />}
+
+      统一 client:load（review #11）：
+      此前非 tools 页用 client:idle，但 FAB 是【首屏立即可见】的固定控件 ——
+      idle 下 hydration 前用户的首次点击会被吞掉（对话框不开，且 hydration 后
+      也不补开，要再点一次才生效）。可见即可交互的控件必须 client:load。
+      FAB 只是一个 56px 的角落按钮 + 懒渲染的对话框，load 的 JS 代价可忽略；
+      对话面板本身仍是点击后才渲染，不影响首屏。 */}
+  <AIChatWidget client:load />
 </body>
 </html>

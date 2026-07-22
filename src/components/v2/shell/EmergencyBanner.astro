@@ -14,7 +14,13 @@
 import { hrefFor } from '../routes';
 ---
 
-<a class="yk-banner" href={hrefFor('urgent')} aria-label="急症识别 · 停药信号">
+{/*
+  不加 aria-label —— 让可见文本本身成为可访问名称。
+  原来的 aria-label="急症识别 · 停药信号" 会【覆盖】可见文本，导致读屏用户
+  只听到「急症识别·停药信号」，听不到「单侧小腿肿胀/突发胸痛/视力变化/严重头痛」
+  这四条真正的急症症状 —— 无障碍用户拿不到与视力用户同等的安全信息。
+*/}
+<a class="yk-banner" href={hrefFor('urgent')}>
   ⚠ 单侧小腿肿胀 · 突发胸痛 · 视力变化 · 严重头痛 ─── <u>急症识别 →</u>
 </a>
 

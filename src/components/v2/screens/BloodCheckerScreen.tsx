@@ -39,13 +39,15 @@ import {
 } from '../../interactive/BloodTestChecker';
 import { PageHead, InkCard, RangeGauge, SealStamp, Icon } from '../Primitives';
 
-/** 判读态 → 印章文案 + 颜色。文案沿用原型（目标/注意/停药就医），新增下限红区的「偏低」。 */
+/** 判读态 → 印章文案 + 颜色。
+   review #3：逐行印章不再统一喊「停药」—— 高 T 该调抗雄、低 E2 该加量、低 Hb 是贫血，
+   都不是「停药」。改为中性的「偏高·就医」/「偏低·就医」，保留上/下限方向信息；
+   「停不停哪个药」交给下方逐指标 RED_WARNINGS 与医生。 */
 function stampFor(level: Level, value: number, spec: RangeSpec): [string, string] {
   if (level === 'red') {
-    /* 区分上/下限红区 —— 原型没有下限概念，所以没有这个分支。
-       E2=10 与 E2=600 都是红区，但对用户的含义完全不同。 */
+    /* 区分上/下限红区 —— 原型没有下限概念（E2=10 与 E2=600 都是红区，含义完全不同）。 */
     const isLow = spec.redBelow !== undefined && value <= spec.redBelow;
-    return [isLow ? '偏低就医' : '停药就医', 'var(--danger)'];
+    return [isLow ? '偏低·就医' : '偏高·就医', 'var(--danger)'];
   }
   if (level === 'green') return ['目标', 'var(--mint-deep)'];
   return ['注意', 'var(--honey)'];
@@ -75,15 +77,20 @@ export default function BloodCheckerScreen() {
   const nGreen = graded.filter((g) => g.level === 'green').length;
   const hasInput = graded.length > 0;
 
-  /* 总判读规则沿用原型 :38-42：红>0 → 冷酷版（墨底，脱离可爱风）；
-     否则黄>0 → gold；否则 mint。新增「未输入」空态。 */
+  /* 总判读（review #2 / #3）：
+     · 不再把任意红项聚合成通用「停药」—— 低 E2（剂量不足）、低 Hb（贫血）与
+       高钾/严重肝酶异常的正确处置完全不同，统一喊「停药」可能诱导用户
+       无监督停掉全部方案。改为中性的「需就医评估」，把「怎么处理/要不要停哪个药」
+       留给下方【逐指标】的 RED_WARNINGS（每条都是审核过的、指标特异的行动）与医生。
+     · 措辞从「危险指标」这种诊断口吻，改为「对照 HRT 目标区间」的比较口吻 ——
+       因为工具不知道你的治疗阶段与实验室 ULN（见顶部上下文横幅）。 */
   const verdict = !hasInput
     ? { empty: true as const }
     : nRed > 0
-      ? { cold: true as const, title: `${nRed} 项危险指标`, body: '停药并尽快就医。带上这页数值给医生看。' }
+      ? { cold: true as const, title: `${nRed} 项超出目标区间较多`, body: '请就医评估。下面按指标列出各自的处理方向，带上这页数值给医生看。' }
       : nYellow > 0
-        ? { variant: 'gold' as const, icon: 'alert', title: `${nYellow} 项需要注意`, body: '不必恐慌，但下次复查盯紧这些项，必要时联系医生。' }
-        : { variant: 'mint' as const, icon: 'check', title: '全部在目标范围', body: '保持当前方案，按节奏复查即可。' };
+        ? { variant: 'gold' as const, icon: 'alert', title: `${nYellow} 项偏离目标区间`, body: '不必恐慌，但下次复查盯紧这些项，必要时与医生讨论。' }
+        : { variant: 'mint' as const, icon: 'check', title: '对照区间均在目标内', body: '与目标区间一致。仍以医生对你化验单的判读为准。' };
 
   /* 红区指标的逐条急救文案 —— 来自 SSOT 的四语 RED_WARNINGS（v2 是 zh-only）。
      原型只有一句通用「停药并尽快就医」，丢掉了「高钾血症可能危及生命」这类
@@ -102,8 +109,21 @@ export default function BloodCheckerScreen() {
         volume="卷四" tab="血检" kicker="TOOLS · 血检自查"
         tapeColor="var(--mint)" pattern="stripes"
         title="血检" accent="HUD"
-        lede="纯前端运行，零数据传输，不保存任何数值。输入血检数值，即时判读红绿灯。范围来自 WPATH SOC 8 和 Endocrine Society 2017。"
+        lede="纯前端运行，零数据传输，不保存任何数值。输入血检数值，对照 HRT 目标区间。范围来自 WPATH SOC 8 和 Endocrine Society 2017。"
       />
+
+      {/* 上下文前提（review #2）：本工具用固定阈值，不知道你的【治疗阶段】与【实验室 ULN】。
+          用药前 T 偏高、E2 偏低本属正常；不同实验室的肝酶正常上限也不同（通常 >3×ULN 才需停药）。
+          明确声明适用前提，避免把「用药前的正常值」或「另一实验室的参考范围」误判成红区裁定。 */}
+      <div style={{
+        marginTop: 8, padding: '12px 16px', borderRadius: 10,
+        background: 'var(--butter)', border: '2px solid var(--ink)',
+        fontSize: 12.5, color: 'var(--fg-1)', lineHeight: 1.7,
+      }}>
+        <strong>用之前先知道：</strong>本工具假设你<strong>正在接受 HRT</strong>，且采用常规实验室参考范围。
+        <strong>用药前</strong>的数值（如尚未压制的睾酮）判读标准不同；肝酶等指标应以<strong>你化验单自带的正常上限</strong>为准
+        （通常超过 3× 上限才考虑停药）。本工具是快速对照，不替代医生对你化验单的判读。
+      </div>
 
       {/* 总裁定 */}
       {'empty' in verdict ? (
@@ -123,11 +143,14 @@ export default function BloodCheckerScreen() {
           background: 'var(--ink)', border: '2px solid var(--danger)', borderRadius: 8,
           display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap',
         }}>
-          <SealStamp color="var(--danger)" size="lg" rotate={-7}>停药</SealStamp>
+          {/* 印章「就医」而非「停药」：seek care 是所有红区共通的正确动作；
+              「停不停哪个药」因指标而异，交给下方逐指标 RED_WARNINGS 与医生。 */}
+          <SealStamp color="var(--danger)" size="lg" rotate={-7}>就医</SealStamp>
           <div style={{ flex: 1, minWidth: 220 }}>
             <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 17, color: '#fff' }}>{verdict.title}</div>
             <div style={{ fontSize: 13, color: 'var(--cream)', lineHeight: 1.6 }}>{verdict.body}</div>
-            {/* 逐指标急救文案 —— SSOT 的 RED_WARNINGS，原型没有 */}
+            {/* 逐指标行动 —— SSOT 的 RED_WARNINGS：每条都指标特异（肝酶「建议立即停药并就医」、
+                高钾「可能危及生命，请立即就医」、低 E2/Hb 则不含停药），不是通用停药指令。 */}
             {redNotes.length > 0 && (
               <ul style={{ margin: '8px 0 0', paddingLeft: 18, fontSize: 12.5, color: 'var(--sakura-blush)', lineHeight: 1.7 }}>
                 {redNotes.map((n) => <li key={n}>{n}</li>)}

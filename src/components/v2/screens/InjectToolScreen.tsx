@@ -48,14 +48,6 @@ function shape(t: number): number {
   return c;
 }
 
-/** 解析 "100-200 pg/mL" → 中点 150。无法解析返回 null。 */
-function troughMidpoint(range?: string | null): number | null {
-  if (!range) return null;
-  const m = range.match(/(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)/);
-  if (!m) return null;
-  return (parseFloat(m[1]) + parseFloat(m[2])) / 2;
-}
-
 export default function InjectToolScreen() {
   const doses = injection.doses || [];
   /* 【不写 localStorage】：原型 :9 写 yak_inject_mg，但设计包 README 的
@@ -64,25 +56,29 @@ export default function InjectToolScreen() {
   const [sel, setSel] = useState<number>(() => (doses.some((d) => d.targetMg === 3) ? 3 : (doses[0]?.targetMg ?? 3)));
 
   const dose = doses.find((d) => d.targetMg === sel) || doses[0];
-  /* 危险分级逐字保留原型 :12-13 */
+  /* 危险分级：banned 逐字保留原型 :12。
+     （原型的 risky = sel>=7 从未被使用，不移植；剂量按钮上的 ! / ✕ 标记独立计算。） */
   const banned = sel >= 10;
-  const risky = sel >= 7 && !banned;
 
-  /* 纵轴锚定：稳态谷值（第 5 针前，t=28）对齐 expectedE2Range 的中点 */
-  const trough = troughMidpoint(dose?.expectedE2Range);
-  const canPlot = trough != null;
-  const scale = canPlot ? trough / shape(DAYS) : 0;
-  const conc = (t: number) => shape(t) * scale;
+  /* ── 曲线降级为【无单位相对示意】（review #4）──────────────────────────
+     原方案用 expectedE2Range 的谷值中点锚定纵轴，标成绝对 pg/mL。但只对齐一个
+     谷值救不了整条曲线：本一室形状下 5 mg 峰值算出 ~277 pg/mL，而 Oriowo 原文
+     5 mg IM EV 平均峰值约 667（CI 457–983）—— 峰值被严重低估，且图上还画着
+     100–200 目标带和 300 风险线，等于给用户一个可据以判断「达标/超标」的假刻度。
 
-  /* maxY 沿用原型语义（至少容纳 320，或峰值 ×1.15），只是峰值现在是有据的 */
-  const maxY = canPlot ? Math.max(320, conc(2.4) * 1.15) : 320;
-  const yOf = (v: number) => H - 24 - (Math.min(v, maxY) / maxY) * (H - 44);
+     现改为：把形状归一化到自身峰值（0–1 相对），y 轴无刻度、无目标带、无风险线。
+     曲线只教一件真实且有据的事 —— 血药浓度【何时高、何时低】（注射后 2–3 天达峰，
+     下次注射前为谷）→ 所以血检要采谷值。绝对高度取决于剂量与个体，不在本图声称。
+     形状本身与剂量无关（同一条曲线），因此对所有剂量一致展示。 */
+  const peak = shape(2.4);                 // 单针后峰约在 2–3 天（Oriowo）
+  const rel = (t: number) => shape(t) / peak;   // 0–1 相对值
+  const yOf = (r: number) => H - 24 - Math.max(0, Math.min(1, r)) * (H - 44);
 
   const pts: string[] = [];
-  if (canPlot) {
+  {
     for (let t = 0; t <= DAYS; t += 0.25) {
       const x = PAD + (t / DAYS) * (W - PAD - 10);
-      const y = H - 24 - (Math.min(conc(t), maxY) / maxY) * (H - 44);
+      const y = yOf(rel(t));
       pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
     }
   }
@@ -180,59 +176,49 @@ export default function InjectToolScreen() {
           )}
         </InkCard>
 
-        {/* 血药浓度曲线 */}
+        {/* 波动形状示意 —— 无单位相对，无绝对刻度、无目标带、无风险线 */}
         <InkCard variant="paper" hoverLift={false}>
-          <div className="yk-kicker" style={{ marginBottom: 10 }}>SIMULATE · 28 天血药曲线（示意）</div>
-          {canPlot ? (
-            <>
-              <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={`${sel} mg 每 7 天注射的 28 天 E2 血药浓度模拟曲线，预期谷值 ${dose?.expectedE2Range}`}>
-                {/* 目标带 100–200 */}
-                <rect x={PAD} y={yOf(200)} width={W - PAD - 10} height={yOf(100) - yOf(200)} fill="var(--mint)" opacity="0.45" />
-                {/* 危险线 300 */}
-                <line x1={PAD} x2={W - 10} y1={yOf(300)} y2={yOf(300)} stroke="var(--danger)" strokeWidth="1.5" strokeDasharray="5 4" />
-                <text x={W - 12} y={yOf(300) - 5} textAnchor="end" fontSize="10" fill="var(--danger-deep)" fontFamily="var(--font-hud)" fontWeight="700">300 风险线</text>
-                <text x={PAD + 4} y={yOf(150) + 3} fontSize="10" fill="var(--ink)" fontFamily="var(--font-hud)" fontWeight="700">目标 100–200</text>
-                {/* 注射时刻 */}
-                {[0, 7, 14, 21].map((d) => (
-                  <g key={d}>
-                    <line x1={PAD + (d / DAYS) * (W - PAD - 10)} x2={PAD + (d / DAYS) * (W - PAD - 10)} y1={18} y2={H - 24} stroke="var(--ink-faint)" strokeWidth="1" strokeDasharray="3 3" />
-                    <text x={PAD + (d / DAYS) * (W - PAD - 10)} y={H - 8} textAnchor="middle" fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-hud)" fontWeight="700">D{d}</text>
-                  </g>
-                ))}
-                {/* 曲线 */}
-                <polyline points={pts.join(' ')} fill="none" stroke="var(--sakura-pink-aa)" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
-                {/* 轴 */}
-                <line x1={PAD} x2={W - 10} y1={H - 24} y2={H - 24} stroke="var(--ink)" strokeWidth="2" />
-                <line x1={PAD} x2={PAD} y1={14} y2={H - 24} stroke="var(--ink)" strokeWidth="2" />
-                <text x={8} y={yOf(maxY) + 10} fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-hud)" fontWeight="700">{Math.round(maxY)}</text>
-                <text x={8} y={H - 28} fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-hud)" fontWeight="700">0</text>
-              </svg>
-              <p style={{ fontSize: 11.5, color: 'var(--fg-2)', lineHeight: 1.6, margin: '10px 0 0' }}>
-                一室模型示意，半衰期 4.5 天 · 峰值 2–3 天 (Oriowo 1980)。纵轴按本剂量的预期谷值
-                （{dose?.expectedE2Range}）标定。个体差异大，以血检谷值为准。
-              </p>
-            </>
-          ) : (
-            /* 无可靠预期谷值 → 不画假曲线。这比外推一条看起来很像回事的线诚实。 */
-            <div style={{
-              padding: '28px 20px', textAlign: 'center',
-              border: '2px dashed var(--ink-faint)', borderRadius: 10, background: 'var(--ivory)',
-            }}>
-              <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>
-                该剂量没有可靠的预期谷值数据
-              </div>
-              <p style={{ fontSize: 12.5, color: 'var(--fg-2)', lineHeight: 1.7, margin: 0 }}>
-                {sel} mg 单次注射不属于任何指南推荐的 GAHT 方案，因此没有可引用的血药浓度数据。
-                这里不展示外推曲线 —— 编一条看起来合理的线，比不画更危险。
-              </p>
-            </div>
-          )}
+          <div className="yk-kicker" style={{ marginBottom: 10 }}>SHAPE · 血药浓度波动形状（相对示意）</div>
+          <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label="每 7 天注射一次的血药浓度波动形状示意：注射后 2–3 天达峰，下次注射前为谷。纵轴为相对高度，非绝对浓度。">
+            {/* 注射时刻 */}
+            {[0, 7, 14, 21].map((d) => (
+              <g key={d}>
+                <line x1={PAD + (d / DAYS) * (W - PAD - 10)} x2={PAD + (d / DAYS) * (W - PAD - 10)} y1={18} y2={H - 24} stroke="var(--ink-faint)" strokeWidth="1" strokeDasharray="3 3" />
+                <text x={PAD + (d / DAYS) * (W - PAD - 10)} y={H - 8} textAnchor="middle" fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-hud)" fontWeight="700">D{d}</text>
+              </g>
+            ))}
+            {/* 曲线 —— 归一化到自身峰值（0–1 相对），banned 时红色 */}
+            <polyline points={pts.join(' ')} fill="none" stroke={banned ? 'var(--danger-deep)' : 'var(--sakura-pink-aa)'} strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
+            {/* 轴：只标「峰 / 谷」相对方向，【无数字刻度】 */}
+            <line x1={PAD} x2={W - 10} y1={H - 24} y2={H - 24} stroke="var(--ink)" strokeWidth="2" />
+            <line x1={PAD} x2={PAD} y1={14} y2={H - 24} stroke="var(--ink)" strokeWidth="2" />
+            <text x={6} y={26} fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-ui-accent)" fontWeight="700">峰</text>
+            <text x={6} y={H - 28} fontSize="10" fill="var(--fg-2)" fontFamily="var(--font-ui-accent)" fontWeight="700">谷</text>
+          </svg>
+          <p style={{ fontSize: 11.5, color: 'var(--fg-2)', lineHeight: 1.7, margin: '10px 0 0' }}>
+            这张图<strong>只表示浓度的波动形状</strong>（注射后 2–3 天达峰、下次注射前为谷，Oriowo 1980）——
+            <strong>纵轴是相对高度，不是 pg/mL</strong>。峰值的绝对高度取决于剂量与个体，本图不作声称。
+            要点：<strong>血检必须在谷值采样</strong>（下次注射前当天），否则数值不可比。
+          </p>
         </InkCard>
       </div>
 
-      <InkCard variant="cream" hoverLift={false} style={{ marginTop: 24, padding: '14px 20px', fontSize: 12, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-        {/* AA：原型 --danger on cream = 3.20 FAIL → danger-deep 4.90 */}
-        <strong style={{ color: 'var(--danger-deep)' }}>红线 ·</strong> 单次 ≥10 mg 禁止；间隔 &lt;5 天且 &gt;5 mg 禁止 (Rothman 2024)。峰值 E2 &gt;1000 pg/mL 显著增加 VTE 与肝损伤风险。
+      {/* 红线表述与引用绑定对齐站内 SSOT injection.mdx:220-227（review #5）：
+          原型把两条红线合并归在「(Rothman 2024)」下，但仓库把它们分别归因：
+            · 单次 ≥10 mg → 峰值 >1000 pg/mL → VTE  = Rothman 2024
+            · 间隔 <5 天且 >5 mg（叠加累积）        = Kanin 2025
+          且「5 mg/周」是 Rothman 建议的安全上限，非绝对禁止阈值 —— 措辞随之校准。
+          每条断言现绑到能直接支持它的那一篇。 */}
+      <InkCard variant="cream" hoverLift={false} style={{ marginTop: 24, padding: '14px 20px', fontSize: 12, color: 'var(--fg-2)', lineHeight: 1.75 }}>
+        <div style={{ marginBottom: 6 }}>
+          <strong style={{ color: 'var(--danger-deep)' }}>红线 ·</strong> 单次注射 ≥10 mg 可能使峰值 E2 短期超过 1000 pg/mL，显著升高血栓（VTE）风险（Rothman 2024）。
+        </div>
+        <div style={{ marginBottom: 6 }}>
+          注射间隔 &lt;5 天且单次 &gt;5 mg 会因药物叠加累积，使血药浓度持续处于超生理水平（Kanin 2025）。
+        </div>
+        <div>
+          Rothman 2024 建议每周注射剂量的安全上限为 <strong>5 mg/周</strong>，不建议超过。达标困难时应咨询医生调整方案，而非单方面加量。
+        </div>
       </InkCard>
     </div>
   );

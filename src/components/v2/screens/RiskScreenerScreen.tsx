@@ -60,13 +60,18 @@ export default function RiskScreenerScreen() {
     return ['低', 'var(--ink)'];
   };
 
-  /* 建议阈值与文案逐字保留（原型 :36-43） */
+  /* 建议文案 —— 【去掉个人化剂量处方】（review #6，硬红线）。
+     原型 :39 让完成问卷的用户直接得到「减至 5–12.5 mg/天」这类具体用药方案 ——
+     由个人回答生成的具体剂量，正是 CLAUDE.md / CONSTITUTION §7 的绝对禁止项
+     「个人化剂量文案」。这些评分权重也未经临床验证，不应据此开方。
+     改为：只做【不带剂量】的风险因素说明 + 就医讨论提示，把「调多少」留给医生。
+     阈值（>=3 / >=2）保留 —— 它们只决定「是否提示该风险」，不再输出剂量。 */
   const advice: string[] = [];
   if (done) {
-    if (scores.vte >= 3) advice.push('VTE 风险偏高 — 优先选择经皮途径（贴片/凝胶，RR ≈ 0.97），避免口服雌激素，严格戒烟。');
-    if (scores.men >= 3) advice.push('CPA ≥25 mg/天 与脑膜瘤显著相关 (OR=12.36, Hudelist 2026) — 减至 5–12.5 mg/天 并告知医生。');
-    if (scores.liver >= 2) advice.push('定期监测肝功能（ALT/AST），>3×上限立即停 CPA/比卡鲁胺并就医。');
-    if (scores.cvd >= 3) advice.push('心血管风险因素叠加 — 强烈建议在医生监测下用药，控制血压血脂。');
+    if (scores.vte >= 3) advice.push('VTE 风险因素偏多 — 经皮途径（贴片/凝胶）的血栓风险通常低于口服雌激素，戒烟也有帮助。是否调整途径，请与医生讨论。');
+    if (scores.men >= 3) advice.push('大剂量 CPA 与脑膜瘤风险相关 (Hudelist 2026) — 请与医生讨论是否有必要下调 CPA 剂量或更换抗雄方案。具体剂量由医生决定。');
+    if (scores.liver >= 2) advice.push('肝脏相关风险因素存在 — 建议定期监测肝功能（ALT/AST）；若明显升高，请及时就医评估是否需要停用相关药物。');
+    if (scores.cvd >= 3) advice.push('心血管风险因素叠加 — 强烈建议在医生监测下用药，并关注血压、血脂。');
     if (!advice.length) advice.push('未发现明显高危因素。仍建议完成基线血检，并保持常规复查节奏。');
   }
 
