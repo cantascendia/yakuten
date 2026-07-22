@@ -64,7 +64,11 @@ export default function BloodCheckerScreen() {
   /* 空初始值：未输入 = undefined，不参与判读（对比原型的假数据默认值） */
   const [vals, setVals] = useState<Record<string, number | undefined>>({});
 
-  const entered = BLOOD_RANGES.filter((r) => vals[r.id] != null && !Number.isNaN(vals[r.id]));
+  /* cross-model review：!Number.isNaN 会放行 Infinity，负数也会被当真实检验值判读。
+     血检指标不存在负值或无穷 → 用 Number.isFinite + >=0 校验；非法输入不参与判读、
+     单独显示「输入无效」而不是生成医学裁定。 */
+  const isValidValue = (v: number | undefined): v is number => v != null && Number.isFinite(v) && v >= 0;
+  const entered = BLOOD_RANGES.filter((r) => isValidValue(vals[r.id]));
   const graded = entered.map((r) => {
     const v = vals[r.id] as number;
     const level = evaluate(r, v);
@@ -120,9 +124,11 @@ export default function BloodCheckerScreen() {
         background: 'var(--butter)', border: '2px solid var(--ink)',
         fontSize: 12.5, color: 'var(--fg-1)', lineHeight: 1.7,
       }}>
-        <strong>用之前先知道：</strong>本工具假设你<strong>正在接受 HRT</strong>，且采用常规实验室参考范围。
-        <strong>用药前</strong>的数值（如尚未压制的睾酮）判读标准不同；肝酶等指标应以<strong>你化验单自带的正常上限</strong>为准
-        （通常超过 3× 上限才考虑停药）。本工具是快速对照，不替代医生对你化验单的判读。
+        <strong>用之前先知道：</strong>本工具是把数值对照<strong>女性化 HRT 的目标区间</strong>，
+        适用前提是你<strong>已进入相对稳定的方案、并按谷值采血</strong>（下次注射/服药前当天），且采用常规实验室参考范围。
+        <strong>用药前或起始/滴定期</strong>可能出现尚未压低的睾酮、仍偏低的雌二醇，判读标准不同；
+        肝酶等指标应以<strong>你化验单自带的正常上限</strong>为准（通常超过 3× 上限才考虑停药）。
+        不同治疗目标、非二元目标、采血时点也会改变解释。本工具是快速对照，<strong>不替代医生对你化验单的判读</strong>。
       </div>
 
       {/* 总裁定 */}
@@ -201,9 +207,13 @@ export default function BloodCheckerScreen() {
       <InkCard variant="paper" hoverLift={false} style={{ marginTop: 20, padding: '8px 0' }}>
         {BLOOD_RANGES.map((r, idx) => {
           const v = vals[r.id];
-          const has = v != null && !Number.isNaN(v);
-          const level = has ? evaluate(r, v as number) : null;
-          const [label, color] = has ? stampFor(level as Level, v as number, r) : ['—', 'var(--fg-2)'];
+          const has = isValidValue(v);
+          /* 非空但非法（负数/Infinity）→ 「输入无效」，不出医学判读 */
+          const invalid = v != null && !has;
+          const level = has ? evaluate(r, v) : null;
+          const [label, color] = has
+            ? stampFor(level as Level, v, r)
+            : invalid ? ['输入无效', 'var(--danger-deep)'] : ['—', 'var(--fg-2)'];
           /* domain 由 SSOT 的 barBounds 派生（原型是每项手写 domain）——
              同一函数 classic 也在用，刻度范围两个工具一致。 */
           const [lo, hi] = barBounds(r);

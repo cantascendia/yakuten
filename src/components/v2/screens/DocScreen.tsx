@@ -42,11 +42,16 @@ const SectionH = ({ n, children }: { n: string; children: ReactNode }) => (
   </h2>
 );
 
+/* cross-model review：原表「来源」列含 Hopkins 2024 —— references.json 里查无此条，
+   属无法核实的引用（§7「无引用=不写入」）。剔除，全部换成仓库有据的两个来源
+   （Rothman 2024 = 列表 n=3；ES 2017 = Endocrine Society/Hembree = 新增 n=6）。
+   「绝对上限」措辞过强（易被读成「≤5mg 一定安全」）→ 改「建议不超过」，与
+   injection.mdx:93「Rothman 建议的安全上限，不建议超过」一致。 */
 const DOSE_ROWS = [
   ['起始 (月 1–3)', '1–2 mg', '每 7 天', 'Rothman 2024'],
-  ['调整 (月 3–6)', '2–3 mg', '每 7 天', 'Hopkins 2024'],
+  ['调整 (月 3–6)', '2–3 mg', '每 7 天', 'ES 2017'],
   ['维持 (12 月+)', '3–5 mg', '每 7 天', 'ES 2017'],
-  ['绝对上限', '5 mg', '/周', 'Rothman 2024'],
+  ['建议不超过', '5 mg', '/周', 'Rothman 2024'],
 ];
 
 export default function DocScreen() {
@@ -129,9 +134,12 @@ export default function DocScreen() {
 
         <section id="doc-overview">
           <SectionH n="壹">概述</SectionH>
+          {/* cross-model review：原句「VTE 风险低于口服途径」在站内 injection.mdx 里【没有】
+              对应的带引用声明（该文只说「绕过首过效应，血药浓度更可预测」）→ §7「无引用=不写入」。
+              改为与 injection.mdx:42 一致的表述（药理常识 + 有据的可预测性），去掉无据的 VTE 比较。 */}
           <p style={{ fontSize: 15, lineHeight: 1.85, color: 'var(--fg-1)' }}>
             戊酸雌二醇 (EV) 是雌二醇的长效酯化前药，经肌注或皮下注射后在血液中缓慢水解释放 E2<CitationRef n="1" />。
-            注射给药绕过肝脏首过效应，VTE 风险低于口服途径。单药治疗证据：82.6% 使用者不需要额外抗雄<CitationRef n="2" />。
+            注射给药绕过肝脏首过效应，血药浓度更可预测。单药治疗证据：约 82.6% 使用者不需要额外抗雄<CitationRef n="2" />。
           </p>
         </section>
 
@@ -168,6 +176,11 @@ export default function DocScreen() {
               </tbody>
             </table>
           </div>
+          {/* 表内剂量的可核对引用（§7）：ES 2017 = Endocrine Society/Hembree = n=6；Rothman 2024 = n=3 */}
+          <p style={{ fontSize: 12.5, color: 'var(--fg-2)', lineHeight: 1.7, margin: '10px 0 0' }}>
+            本表剂量参考 Endocrine Society 2017<CitationRef n="6" /> 与 Rothman 2024<CitationRef n="3" />；
+            个体差异大，请以血检谷值与医生判读为准。
+          </p>
         </section>
 
         <section id="doc-scim" style={{ marginTop: 28 }}>
@@ -202,6 +215,7 @@ export default function DocScreen() {
             <li>Rothman MS et al. Injectable Estradiol Dosing in Transgender Individuals. <em>Transgender Health</em> 2024. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1089/trgh.2023.0209</span></li>
             <li>Herndon JS et al. Subcutaneous vs Intramuscular Estradiol Valerate. <em>Endocr Pract</em> 2023. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1016/j.eprac.2023.02.006</span></li>
             <li>Kanin M et al. Injectable Estradiol Dosing Regimens. <em>J Endocr Soc</em> 2025. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1210/jendso/bvaf004</span></li>
+            <li>Hembree WC et al.（Endocrine Society 2017）Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons. <em>J Clin Endocrinol Metab</em> 2017. <span style={{ color: 'var(--sakura-pink-text)', fontFamily: 'var(--font-hud)' }}>doi:10.1210/jc.2017-01658</span></li>
           </ol>
         </section>
 

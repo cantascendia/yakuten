@@ -69,9 +69,16 @@ export default function InjectToolScreen() {
      现改为：把形状归一化到自身峰值（0–1 相对），y 轴无刻度、无目标带、无风险线。
      曲线只教一件真实且有据的事 —— 血药浓度【何时高、何时低】（注射后 2–3 天达峰，
      下次注射前为谷）→ 所以血检要采谷值。绝对高度取决于剂量与个体，不在本图声称。
-     形状本身与剂量无关（同一条曲线），因此对所有剂量一致展示。 */
-  const peak = shape(2.4);                 // 单针后峰约在 2–3 天（Oriowo）
-  const rel = (t: number) => shape(t) / peak;   // 0–1 相对值
+     形状本身与剂量无关（同一条曲线），因此对所有剂量一致展示。
+
+     ⚠️ 归一化必须用【整个展示窗口的真实最大值】，不能用首针峰 shape(2.4)：
+     shape(t) 含每 7 天重复注射的累积，第 2 针起峰值会超过首针（实测第 4 针后
+     达 1.62×首针）。若除以首针峰，后段 rel>1 会被 yOf 的 clamp 截平 → 峰顶失真、
+     误导波动形状。（cross-model review 抓到的 bug。） */
+  const SAMPLE_STEP = 0.25;
+  let peak = 0;
+  for (let t = 0; t <= DAYS; t += SAMPLE_STEP) peak = Math.max(peak, shape(t));
+  const rel = (t: number) => (peak > 0 ? shape(t) / peak : 0);   // 0–1 相对值，全窗口归一
   const yOf = (r: number) => H - 24 - Math.max(0, Math.min(1, r)) * (H - 44);
 
   const pts: string[] = [];
@@ -217,7 +224,7 @@ export default function InjectToolScreen() {
           注射间隔 &lt;5 天且单次 &gt;5 mg 会因药物叠加累积，使血药浓度持续处于超生理水平（Kanin 2025）。
         </div>
         <div>
-          Rothman 2024 建议每周注射剂量的安全上限为 <strong>5 mg/周</strong>，不建议超过。达标困难时应咨询医生调整方案，而非单方面加量。
+          Rothman 2024 建议<strong>通常不超过 5 mg/周</strong>（这是建议上限，不代表 ≤5 mg 就一定安全 —— 仍需按血检与个体情况由医生把关）。达标困难时应咨询医生调整方案，而非单方面加量。
         </div>
       </InkCard>
     </div>

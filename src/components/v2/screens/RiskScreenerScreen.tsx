@@ -53,11 +53,14 @@ export default function RiskScreenerScreen() {
      --mint-deep 1.98 → --ink；--danger 3.27 → --danger-deep 4.90。
      等级语义由文字本身（偏高/注意/低）承载，不依赖颜色 —— 这也更符合
      WCAG 1.4.1「不能只用颜色传达信息」。 */
+  /* cross-model review：这些权重/阈值【未经临床验证】，不能输出「偏高/低」这种
+     临床风险分层 —— 会被误读成验证过的风险预测工具。
+     改为【描述性因素计数】：只说这个维度勾了几项相关因素，不下「风险高低」结论；
+     且不再输出「低风险」安慰（未验证的模型没资格说你风险低）。 */
   const level = (d: { id: DimId; max: number }): [string, string] => {
-    const pct = scores[d.id] / d.max;
-    if (pct >= 0.5) return ['偏高', 'var(--danger-deep)'];
-    if (pct > 0) return ['注意', 'var(--ink)'];
-    return ['低', 'var(--ink)'];
+    if (scores[d.id] === 0) return ['未勾选', 'var(--fg-2)'];
+    if (scores[d.id] >= d.max * 0.5) return ['多项因素', 'var(--ink)'];
+    return ['有因素', 'var(--ink)'];
   };
 
   /* 建议文案 —— 【去掉个人化剂量处方】（review #6，硬红线）。
@@ -81,7 +84,7 @@ export default function RiskScreenerScreen() {
         volume="卷四" tab="自评" kicker="TOOLS · 风险自评"
         tapeColor="var(--butter)" pattern="solid"
         title="风险自评" accent="7 问"
-        lede="回答 7 个问题，得到 4 个维度的风险画像。纯前端运行，答案不上传、不存储。"
+        lede="回答 7 个问题，整理出你在 4 个方向上勾选到的风险因素清单，供你和医生讨论。这【不是】经过验证的风险预测量表，不估算你的实际患病概率。纯前端运行，答案不上传、不存储。"
       />
 
       <div className="yk-grid yk-grid--2" style={{ marginTop: 28, alignItems: 'start' }}>
@@ -131,7 +134,7 @@ export default function RiskScreenerScreen() {
         {/* 结果列 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <InkCard variant={done ? 'paper' : 'cream'} hoverLift={false}>
-            <div className="yk-kicker" style={{ marginBottom: 14 }}>RESULT · 风险画像</div>
+            <div className="yk-kicker" style={{ marginBottom: 14 }}>RESULT · 风险因素清单</div>
             {!done && (
               <p aria-live="polite" style={{ fontSize: 13, color: 'var(--fg-2)', margin: '4px 0 12px' }}>
                 已回答 {answered} / {QUESTIONS.length} — 答完后显示评分。
@@ -165,7 +168,7 @@ export default function RiskScreenerScreen() {
           )}
 
           <InkCard variant="cream" hoverLift={false} style={{ padding: '12px 18px', fontSize: 12, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-            <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 评分仅为风险因素计数，不是诊断。来源：Endocrine Society 2017 Table 11 · WPATH SOC 8 Ch.12 · Lee 2022。
+            <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 本工具只统计你勾选到的风险因素，<strong>不是经过验证的风险量表，也不是诊断</strong>，不估算实际患病概率。所列因素与就医建议供你和医生讨论。风险因素依据：Endocrine Society 2017 Table 11 · WPATH SOC 8 Ch.12 · Lee 2022（CPA-脑膜瘤）。
           </InkCard>
         </div>
       </div>
