@@ -266,3 +266,9 @@ git diff + 读源码）。注：agent 自报模型名不可靠，实际为 Antig
 - P2-1 blog 六处 letter-spacing 无 ar/fa 守卫 → :is() 复位规则 (0,4,1)
 - P2-2 网点 fixed 伪元素小屏合成成本 → ≤880px display:none
 修复后待 build 实测 Pagefind 弹窗 + codex 复核。
+
+## 2026-07-23 PR #127 codex 复核 sha=1a5cfa7 reviewer=codex-gpt5.6-sol bytes=1179
+
+裁决：**VERDICT: MERGE**。6/6 关闭（P1-1 opt-in 契约 / P1-2 Pagefind 根因命中无层叠回归 /
+P2-1 :lang 守卫特异度足 / P2-2 降级不会被意外恢复 / 追加两处与夜桌锁墨模型一致）。
+**PR #127 双模型把关完成：gemini MERGE + codex 复核 MERGE。**
