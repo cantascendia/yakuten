@@ -62,6 +62,10 @@ export default defineConfig({
         './src/styles/sakura-blog.css',
         // 末位：首页 splash 组件适配层（治 22 个对比度崩坏点；平权中和靠后载胜出）
         './src/styles/sakura-home.css',
+        // pathway 页病程手账时间线（17 语同构，纯 CSS 零 DOM 改动）
+        './src/styles/sakura-pathway.css',
+        // AI 助手手账化（必须在 sakura-components.css 之后：FAB 压泛化按钮规则）
+        './src/styles/sakura-ai.css',
       ],
       sidebar: [
         // ── 开始 ──

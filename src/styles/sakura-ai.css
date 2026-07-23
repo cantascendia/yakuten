@@ -1,0 +1,418 @@
+/* =========================================================================
+   HRT药典 — Sakura AI Chat Skin · 乐园手账（AI 问答助手层）
+   ------------------------------------------------------------------------
+   职责：AIAssistant.tsx / FloatingAIChat.tsx 的全部 .yk-ai-* class 在
+   html.sakura 下的换肤覆盖层。默认（米哈游）皮肤在组件内嵌 BASE_CSS，
+   一字不动；本文件全部规则 scope 在 html.sakura 下 —— 仓库无 postcss
+   前缀管线，前缀是手工纪律，新增规则必须带 html.sakura。
+
+   挂载方式：由主控注册进 astro.config.mjs 的 starlight customCss，
+   **排在 sakura-components.css 之后**（工具页对话主体位于
+   .sl-markdown-content 内，本文件链接卡规则需压过其荧光笔样式；
+   特异度已按 (0,3,2)+ 设计，靠后载确保平权时也胜出）。
+
+   视觉语言（对齐 v2 手账 DNA，见 docs/specs/sakura-reskin-v2.md）：
+   · FAB = 白纸圆贴纸：2px 墨线 + 硬影 3px 3px 0，hover 抬升（仅 transform）
+   · 浮窗 = 纸卡：2px 墨线 + radius 14 + 硬影 6px 6px 0
+   · 用户气泡 = 樱粉底墨字贴纸；AI 气泡 = cream 纸片
+   · 快捷问题 chips / 站内链接卡 = 小纸条贴纸（墨线 + 2px 硬影）
+   · 输入框 = 手账胶囊（2px 墨线 + 全圆角）
+   · 危机热线卡 = 危险层规范「墨底红章」，脱离可爱风（对齐 DangerBox）
+   · 幻月夜 = 夜晚书桌模型：纸面恒亮锁墨（钉字面量法，参照
+     sakura-blog.css §1/§12），外缘硬影换夜影色 var(--night-1)
+   · RTL：全部逻辑属性书写
+   · 动效红线：仅过渡 transform（+opacity）；禁 backdrop-filter / clip-path
+   ========================================================================= */
+
+/* =========================================================================
+   0. FAB —— 白纸圆贴纸（2px 墨线 + 硬影 + hover 抬升）
+   ========================================================================= */
+html.sakura .yk-ai-fab {
+  background: var(--bg-3);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-fab:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+}
+html.sakura .yk-ai-fab:focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   1. 浮窗纸卡 —— 2px 墨线 + radius 14 + 硬影
+   ========================================================================= */
+html.sakura .yk-ai-panel {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+/* 工具页整页模式 —— 玻璃换纸卡 */
+html.sakura .yk-ai--page {
+  background: var(--bg-1);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  clip-path: none;
+  box-shadow: var(--shadow-hard-lg);
+}
+html.sakura .yk-ai--compact {
+  background: var(--bg-1);
+}
+
+/* =========================================================================
+   2. 头部 —— 装订墨线 + 贴纸徽章
+   ========================================================================= */
+html.sakura .yk-ai-header {
+  background: var(--bg-2);
+  border-block-end: 2px solid var(--ink);
+}
+html.sakura .yk-ai-header__icon {
+  color: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-header__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--fg-1);
+}
+html.sakura .yk-ai-header__badge {
+  background: var(--ivory);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+html.sakura .yk-ai-header__close {
+  color: var(--fg-2);
+  border-radius: var(--radius-full);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-header__close:hover {
+    color: var(--ink);
+    background: var(--sakura-blush);
+  }
+}
+html.sakura .yk-ai-header__close:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   3. 免责声明 —— 便签黄（WarningBox 层级：重要但非致命；只强化不弱化）
+   ========================================================================= */
+html.sakura .yk-ai-disclaimer {
+  background: var(--butter);
+  border-block-end: 2px solid var(--ink-faint);
+  color: #4A2838;
+}
+
+/* =========================================================================
+   4. 消息区 —— 纸面透出；空状态 + 快捷问题贴纸 chips
+   ========================================================================= */
+html.sakura .yk-ai-log {
+  background: transparent;
+}
+html.sakura .yk-ai-empty {
+  color: var(--fg-2);
+}
+html.sakura .yk-ai-empty__icon {
+  color: var(--sakura-pink-deep);
+  opacity: 0.85;
+}
+html.sakura .yk-ai-chip {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--fg-1);
+  transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-chip:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+    background: var(--sakura-blush);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+}
+html.sakura .yk-ai-chip:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   5. 气泡 —— 用户 = 樱粉底墨字贴纸；AI = cream 纸片（圆角走逻辑属性，RTL 安全）
+   ========================================================================= */
+html.sakura .yk-ai-msg--user {
+  background: var(--bg-5);
+  border: 1.5px solid var(--ink);
+  border-start-start-radius: 12px;
+  border-start-end-radius: 12px;
+  border-end-end-radius: 4px;
+  border-end-start-radius: 12px;
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+}
+html.sakura .yk-ai-msg--ai {
+  background: var(--bg-2);
+  border: 1.5px solid var(--ink-faint);
+  border-start-start-radius: 12px;
+  border-start-end-radius: 12px;
+  border-end-end-radius: 12px;
+  border-end-start-radius: 4px;
+  color: var(--fg-1);
+}
+html.sakura .yk-ai-msg__label {
+  color: var(--fg-3);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+html.sakura .yk-ai-hr {
+  border-top-color: var(--ink-faint);
+}
+html.sakura .yk-ai-code {
+  background: var(--bg-4);
+  color: var(--ink);
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   6. 站内链接卡 —— 小纸条贴纸；外链粉字下划线。
+   选择器带 .yk-ai-msg 前缀拉到 (0,3,2)+，压过 sakura-components.css 的
+   .sl-markdown-content a 荧光笔（工具页对话主体在 markdown 容器内）。
+   ========================================================================= */
+html.sakura .yk-ai-msg a.yk-ai-linkcard {
+  background: var(--bg-3);
+  background-image: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--fg-1);
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-msg a.yk-ai-linkcard:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 var(--ink);
+    background: var(--bg-3);
+    background-image: none;
+    color: var(--fg-1);
+    border-color: var(--ink);
+  }
+}
+html.sakura .yk-ai-msg a.yk-ai-linkcard:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+html.sakura .yk-ai-msg .yk-ai-linkcard__icon {
+  color: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-msg .yk-ai-linkcard__arrow {
+  color: var(--fg-3);
+}
+html.sakura .yk-ai-msg a.yk-ai-extlink {
+  background: transparent;
+  background-image: none;
+  color: var(--sakura-pink-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* =========================================================================
+   7. 危机热线卡 —— 危险层规范「墨底红章」（对齐 DangerBox，脱离可爱风：
+   无硬影 / 无贴纸旋转 / 无手写字体；红线：只能强化不能弱化）
+   ========================================================================= */
+html.sakura .yk-ai-crisis {
+  background: var(--ink);
+  border: 2px solid var(--danger-bright);
+  border-radius: 10px;
+  box-shadow: none;
+  color: #FFF5E0;
+}
+html.sakura .yk-ai-crisis__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+html.sakura .yk-ai-crisis__body,
+html.sakura .yk-ai-crisis__note {
+  color: #FFF5E0;
+}
+html.sakura .yk-ai-crisis__line {
+  border: 1.5px solid rgba(255, 245, 224, 0.55);
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+html.sakura .yk-ai-crisis__line:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   8. 思考条 / 错误条
+   ========================================================================= */
+html.sakura .yk-ai-thinking {
+  background: var(--bg-4);
+  border-inline-start: 3px solid var(--sakura-pink-deep);
+  color: var(--sakura-pink-text);
+}
+html.sakura .yk-ai-dot {
+  background: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-error {
+  background: var(--danger-a10);
+  border-inline-start: 4px solid var(--danger);
+  color: var(--danger);
+}
+
+/* =========================================================================
+   9. 页面上下文提示条 —— 纸条 kicker 风
+   ========================================================================= */
+html.sakura .yk-ai-ctx {
+  background: var(--bg-4);
+  border-block-start: 2px dashed var(--ink-faint);
+  color: var(--fg-2);
+  font-family: var(--font-ui-accent);
+  font-weight: 600;
+}
+html.sakura .yk-ai-ctx__close {
+  color: var(--fg-2);
+  border-radius: var(--radius-full);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-ctx__close:hover {
+    color: var(--ink);
+    background: var(--sakura-blush);
+  }
+}
+html.sakura .yk-ai-ctx__close:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   10. 输入区 —— 手账胶囊输入框 + 深粉 AA 胶囊发送钮
+   ========================================================================= */
+html.sakura .yk-ai-inputrow {
+  background: var(--bg-2);
+  border-block-start: 2px dashed var(--ink-faint);
+}
+html.sakura .yk-ai-input {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+  color: var(--fg-1);
+}
+html.sakura .yk-ai-input:focus {
+  border-color: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-input::placeholder {
+  color: var(--fg-3);
+}
+html.sakura .yk-ai-send {
+  background: var(--sakura-pink-aa);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--fg-on-pink, #FFFFFF);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-send:not(:disabled):hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+html.sakura .yk-ai-send:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   11. 幻月夜 —— 夜晚书桌模型：
+   · 纸面恒亮锁墨：.yk-ai 子树把纸/墨 token 钉回昼值（钉字面量法，
+     与 sakura-theme.css 纸面锁墨、sakura-blog.css §12 同值同机制）
+   · 桌面外缘（FAB / 浮窗 / 整页卡）硬影换夜影色 var(--night-1)
+   ========================================================================= */
+html.sakura[data-theme='dark'] .yk-ai {
+  --bg-1: #FFF5E0;
+  --bg-2: #FFFAF0;
+  --bg-3: #FFFFFF;
+  --bg-4: #FFF0E5;
+  --bg-5: #FFE4EC;
+  --bg-6: #FFDCE5;
+  --ivory: #FFFAF0;
+  --butter: #FFE89C;
+  --ink: #4A2838;
+  --ink-soft: #7A5568;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --color-text-primary: #4A2838;
+  --color-text-secondary: #7A5568;
+  --color-text-muted: #7A5568;
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+  background: #FFF5E0;
+}
+html.sakura[data-theme='dark'] .yk-ai-fab {
+  background: #FFFAF0;
+  color: #4A2838;
+  border-color: #4A2838;
+  box-shadow: 3px 3px 0 var(--night-1);
+}
+@media (hover: hover) {
+  html.sakura[data-theme='dark'] .yk-ai-fab:hover {
+    box-shadow: 5px 5px 0 var(--night-1);
+  }
+}
+html.sakura[data-theme='dark'] .yk-ai-fab:focus-visible {
+  outline-color: var(--sakura-pink);
+}
+html.sakura[data-theme='dark'] .yk-ai-panel {
+  border-color: #4A2838;
+  box-shadow: 6px 6px 0 var(--night-1);
+}
+html.sakura[data-theme='dark'] .yk-ai--page {
+  border-color: #4A2838;
+  box-shadow: 6px 6px 0 var(--night-1);
+}
+
+/* =========================================================================
+   12. REDUCED MOTION —— 全局压制（sakura-theme.css）已把时长归零；
+   这里再压掉 hover/focus 的位移本身（瞬移也不给）
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .yk-ai-fab:hover,
+  html.sakura .yk-ai-chip:hover,
+  html.sakura .yk-ai-chip:focus-visible,
+  html.sakura .yk-ai-msg a.yk-ai-linkcard:hover,
+  html.sakura .yk-ai-msg a.yk-ai-linkcard:focus-visible,
+  html.sakura .yk-ai-send:not(:disabled):hover {
+    transform: none;
+  }
+}
+
+/* =========================================================================
+   ar/fa 连写守卫：正/负字距会拉断阿拉伯字母连写形（同 Footer kicker 策略）
+   ========================================================================= */
+html.sakura :is(.yk-ai-header__badge, .yk-ai-msg__label, .yk-ai-ctx):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}

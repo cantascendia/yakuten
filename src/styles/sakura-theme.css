@@ -10,9 +10,9 @@
 
 /* 字体（5 核心家族 + 既有组件依赖的辅助族）。
    display · Fraunces + Noto Serif SC ｜ heading · Noto Serif SC
-   body · Noto Sans SC ｜ hand · Ma Shan Zheng ｜ mono · JetBrains Mono
+   body · Noto Sans SC ｜ hand · Ma Shan Zheng ｜ mono/数值 · Chivo Mono（素椭圆零）
    Plus Jakarta Sans / Zen Maru Gothic / Klee One 为 blood-b32 等组件继续引用。 */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap");
 
 /* =========================================================================
    DESIGN TOKENS — v2（colors_and_type.css 移植，含 WCAG AA 校正）
@@ -152,7 +152,12 @@ html.sakura {
   --font-body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-hand: "Ma Shan Zheng", "Klee One", cursive;
   --font-ui-accent: "Plus Jakarta Sans", "Noto Sans SC", "PingFang SC", sans-serif;
-  --font-hud: "JetBrains Mono", monospace;
+  /* 数值字体：Chivo Mono（woff2 轮廓实测素椭圆零）—— JetBrains 点零与
+     Roboto Mono 斜线零均属装饰零，不符合中文医疗数值阅读习惯（owner
+     2026-07-23 反馈；决策记录 docs/specs/font-numeric-decision.md）。
+     字宽 0.600em 与两者一致，零回流。JetBrains 暂留 @import（经典模式
+     代码块回退；sakura 下无渲染者即无下载）。 */
+  --font-hud: "Chivo Mono", "Roboto Mono", monospace;
   --font-accent: var(--font-body);
   --font-pixel: var(--font-hud);
   --font-mono: var(--font-hud);
@@ -825,5 +830,6 @@ html.sakura:lang(zh) {
   --font-heading: "Noto Serif SC", serif;
   --font-body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-ui-accent: "Plus Jakarta Sans", "Noto Sans SC", sans-serif;
-  --font-hud: "JetBrains Mono", monospace;
+  /* 与主块同步：Chivo Mono 素零（此块特异度更高，漏改会被压回） */
+  --font-hud: "Chivo Mono", "Roboto Mono", monospace;
 }

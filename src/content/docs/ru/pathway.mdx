@@ -29,7 +29,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">НЕДЕЛЯ 0</div>
+  <div class="phase-label">НЕДЕЛЯ 0</div>
   <PhaseBlock phase={0} title="Исходное обследование" color="green">
     <p class="phase-block__desc">
       Прежде чем начать приём любых препаратов, пройдите полное исходное обследование: оно помогает исключить противопоказания и зафиксировать ваши личные референсные значения.
@@ -59,7 +59,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">НАЧАЛО · 1-6 МЕСЯЦЕВ</div>
+  <div class="phase-label">НАЧАЛО · 1-6 МЕСЯЦЕВ</div>
   <PhaseBlock phase={1} title="Начало с низкой дозы" color="green" week="1-6 МЕСЯЦЕВ">
     <DoseTable
       headers={['Путь введения', 'Начальная доза', 'Источник']}
@@ -119,7 +119,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--yellow" />
-  <div class="phase-label" style="color: var(--color-accent);">ТИТРОВАНИЕ · 6-12 МЕСЯЦЕВ</div>
+  <div class="phase-label">ТИТРОВАНИЕ · 6-12 МЕСЯЦЕВ</div>
   <PhaseBlock phase={2} title="Титрование дозы" color="yellow" week="6-12 МЕСЯЦЕВ">
     <p class="phase-block__desc">
       Корректируйте дозу по результатам анализов на 3-м месяце. Цель — выйти на стандартный физиологический диапазон для трансфеминных людей.
@@ -185,7 +185,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--pink" />
-  <div class="phase-label" style="color: var(--color-primary);">УСТОЙЧИВОЕ СОСТОЯНИЕ · 12 МЕСЯЦЕВ+</div>
+  <div class="phase-label">УСТОЙЧИВОЕ СОСТОЯНИЕ · 12 МЕСЯЦЕВ+</div>
   <PhaseBlock phase={3} title="Долгосрочная поддерживающая терапия" color="pink" week="12 МЕСЯЦЕВ+">
     <p class="phase-block__desc">
       Когда уровни гормонов и физические изменения стабилизируются, переходите к более редкому наблюдению. Поддерживайте минимальную эффективную дозу, удерживая E2 в диапазоне 100-200 pg/mL, а T &lt;50 ng/dL.

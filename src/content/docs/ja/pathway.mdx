@@ -29,7 +29,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">WEEK 0</div>
+  <div class="phase-label">WEEK 0</div>
   <PhaseBlock phase={0} title="ベースライン評価" color="green">
     <p class="phase-block__desc">
       投薬開始前に、禁忌の除外と個人の基準値確立のため、包括的なベースライン検査を実施してください。
@@ -59,7 +59,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row" id="phase1">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">開始期 · 1〜6ヶ月</div>
+  <div class="phase-label">開始期 · 1〜6ヶ月</div>
   <PhaseBlock phase={1} title="低用量での開始" color="green" week="1〜6ヶ月">
     <DoseTable
       caption="開始期 各投与経路の低用量スタートの目安"
@@ -120,7 +120,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--yellow" />
-  <div class="phase-label" style="color: var(--color-accent);">漸増期 · 6〜12ヶ月</div>
+  <div class="phase-label">漸増期 · 6〜12ヶ月</div>
   <PhaseBlock phase={2} title="用量漸増" color="yellow" week="6〜12ヶ月">
     <p class="phase-block__desc">
       3ヶ月目の検査結果に基づいて調整します。トランスフェミニンの方の標準的な生理的範囲に到達することが目標です。
@@ -187,7 +187,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row">
   <div class="phase-marker phase-marker--pink" />
-  <div class="phase-label" style="color: var(--color-primary);">定常状態 · 12ヶ月以降</div>
+  <div class="phase-label">定常状態 · 12ヶ月以降</div>
   <PhaseBlock phase={3} title="長期維持" color="pink" week="12ヶ月以降">
     <p class="phase-block__desc">
       ホルモン値と身体的変化が安定したら、低頻度のモニタリングに移行します。E2 100-200 pg/mL、T &lt;50 ng/dLを維持するための最小有効用量を継続してください。
