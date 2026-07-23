@@ -1,0 +1,180 @@
+---
+/**
+ * SiteDirectory — 站点目录卡：让直接落到首页的访客快速纵览全站板块。
+ *
+ * 设计参照 /zh/v2 预览首页 HomeScreen 的「典籍目录」卡（.yk-toc-row 点线 DNA）：
+ * 编号 + 板块名 + 点线 leader + 条目说明，一行一个板块。
+ * 刻意不复用 sakura-skin.css 的 .yk-toc-row（v2 遗留、零消费者），类名独立。
+ *
+ * ⚠ zh-only：文案与链接均为 zh 硬编码 —— 本组件目前只挂 zh 首页
+ * （src/content/docs/zh/index.mdx）。其他语种首页跟进时需 i18n 化
+ * （走 src/i18n/ui 的 t() + locale prefix，参照 DrugQuickNav.astro）。
+ *
+ * 双态：
+ * · 默认（米哈游二相乐园）：深玻璃卡 .glass-panel + .clipped-card，样式在本文件 <style>。
+ * · sakura（乐园手账）：theme 层已把 .glass-panel 纸卡化（白卡 + 2px 墨线 + 硬影 +
+ *   纸面锁墨），行内点线/编号粉字/hover 转粉/幻月夜影在 sakura-home.css
+ *   「SiteDirectory」段追加。
+ *
+ * 零 JS、零 island。链接路径已对照 src/content/docs/zh/ 实际文件核验
+ * （brief 里的 /zh/getting-started/、/zh/drugs/estradiol/、/zh/blood-test/
+ * 均不存在，已按真实路由改为 before-you-start / medications/estrogens/overview /
+ * blood-tests）。
+ */
+
+interface DirectoryEntry {
+  num: string;
+  name: string;
+  href: string;
+  meta: string;
+}
+
+const entries: DirectoryEntry[] = [
+  { num: '01', name: '用药前准备', href: '/zh/before-you-start/', meta: '基线检查 · 风险自评' },
+  { num: '02', name: '用药路径图', href: '/zh/pathway/', meta: '四阶段 · 决策节点' },
+  { num: '03', name: '药物详解', href: '/zh/medications/estrogens/overview/', meta: '雌激素 · 抗雄 · 孕激素' },
+  { num: '04', name: '血检指南', href: '/zh/blood-tests/', meta: '判读 · 参考区间' },
+  { num: '05', name: '实操指南', href: '/zh/guides/', meta: '首次注射 · 切换途径' },
+  { num: '06', name: '风险与急症', href: '/zh/risks/', meta: '识别信号 · 立即行动' },
+];
+---
+
+<section class="site-dir">
+  <div class="site-dir__card glass-panel clipped-card">
+    <div class="site-dir__head">
+      <h2 class="site-dir__title">目录</h2>
+      <p class="site-dir__note">全站主要板块，从这里到达</p>
+    </div>
+    <nav class="site-dir__nav" aria-label="站点目录">
+      {entries.map((entry) => (
+        <a href={entry.href} class="site-dir__row">
+          <span class="site-dir__num" aria-hidden="true">{entry.num}</span>
+          <span class="site-dir__name">{entry.name}</span>
+          <span class="site-dir__leader" aria-hidden="true"></span>
+          <span class="site-dir__meta">{entry.meta}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+</section>
+
+<style>
+  .site-dir {
+    position: relative;
+    z-index: 10;
+    padding: 0 var(--space-lg) var(--space-xl);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  /* 卡片版心对齐 /zh/v2 目录卡（760px）：点线 leader 行在窄版心里才有书目感 */
+  .site-dir__card {
+    max-width: 47.5rem;
+    margin-inline: auto;
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  @media (max-width: 640px) {
+    .site-dir__card {
+      padding: var(--space-lg);
+    }
+  }
+
+  .site-dir__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-block: 0 var(--space-sm);
+  }
+
+  .site-dir__title,
+  :global(.sl-markdown-content) .site-dir__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .site-dir__note,
+  :global(.sl-markdown-content) .site-dir__note {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .site-dir__nav,
+  :global(.sl-markdown-content) .site-dir__nav {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 0;
+  }
+
+  /* 行 = 整行可点链接。颜色变化瞬时切换（动效白名单外不过渡），无位移动效。 */
+  .site-dir__row,
+  :global(.sl-markdown-content) .site-dir__row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    padding-block: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .site-dir__row:hover,
+  :global(.sl-markdown-content) .site-dir__row:hover {
+    text-decoration: none;
+  }
+
+  .site-dir__num {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+
+  .site-dir__name {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  .site-dir__row:hover .site-dir__name,
+  .site-dir__row:focus-visible .site-dir__name {
+    color: var(--color-primary-light);
+  }
+
+  .site-dir__leader {
+    flex: 1;
+    min-width: 24px;
+    border-block-end: 2px dotted var(--color-outline-25);
+    transform: translateY(-4px);
+  }
+
+  /* 说明列允许换行（375px 屏「雌激素 · 抗雄 · 孕激素」一行放不下）；
+     RTL 逻辑属性对齐行尾侧。 */
+  .site-dir__meta {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-align: end;
+    max-width: 45%;
+  }
+
+  @media (max-width: 640px) {
+    .site-dir__row,
+    :global(.sl-markdown-content) .site-dir__row {
+      gap: var(--space-sm);
+    }
+    .site-dir__meta {
+      font-size: 0.75rem;
+    }
+  }
+</style>

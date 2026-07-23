@@ -944,3 +944,59 @@ html.sakura[data-theme="dark"] .site-footer a:not([class]):hover {
   background-image: none;
   text-decoration: underline;
 }
+
+/* =========================================================================
+   合流追加（docs 打磨轮）：SiteDirectory 站点目录卡
+   （layout/SiteDirectory.astro，目前仅挂 zh 首页）——「目录」白纸卡，
+   对齐 /zh/v2 HomeScreen 典籍目录（.yk-toc-row 点线 DNA；不复用 skin.css
+   的 v2 遗留类，规则独立成段）。
+   · 卡面零规则：theme 层 .glass-panel 纸卡化（白卡 + 2px 墨线 + 硬影 +
+     纸面锁墨 + .clipped-card 去切角）已打底。
+   · 此处只治组件层残留：编号幻月金（on 白纸 1.59 FAIL）→ kicker 粉字；
+     hover 名字 --color-primary-light（blush on 白纸 ≈1.2 FAIL）→ 深粉；
+     点线 leader 换墨色；头注 mono kicker → 手写旁注。
+   · zh 专属组件 → 无需 ar/fa 连写守卫；纸面恒亮 → 粉字昼夜同一验算
+     （#C02868 on #FFFFFF = 5.60 AA）；无位移动效 → 无需 reduced-motion 段。
+   ========================================================================= */
+
+/* 头注：手写旁注（v2 目录卡 .yk-hand-note 同款语感；Ma Shan Zheng 简中无缺字。
+   纸面锁墨 fg-3 #86596F on #FFFFFF = 5.72 AA；手写体不吃字距） */
+html.sakura .site-dir .site-dir__note {
+  font-family: var(--font-hand);
+  font-size: 0.9375rem;
+  letter-spacing: normal;
+  color: var(--fg-3);
+}
+
+/* 编号：kicker 粉字（对齐 .yk-toc-row__vol 的 AA 替身色），表格数字对齐 */
+html.sakura .site-dir .site-dir__num {
+  font-family: var(--font-ui-accent);
+  color: var(--sakura-pink-text);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* 点线 leader：米哈游暗棕 outline 在白纸上发灰 → 墨色点线
+   （--ink-faint 已被纸面锁墨钉成梅子墨 25%，昼夜恒定） */
+html.sakura .site-dir .site-dir__leader {
+  border-block-end: 2px dotted var(--ink-faint);
+}
+
+/* 说明列：kicker 风（fg-3 on 白纸 5.72 AA） */
+html.sakura .site-dir .site-dir__meta {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--fg-3);
+}
+
+/* hover/focus：名字转深粉（.yk-toc-row:hover 同款）；颜色瞬时切换 */
+html.sakura .site-dir .site-dir__row:hover .site-dir__name,
+html.sakura .site-dir .site-dir__row:focus-visible .site-dir__name {
+  color: var(--sakura-pink-text);
+}
+
+/* 幻月夜：白纸卡落夜桌，硬影换夜影（同 §7 钉法 —— --ink 不随夜翻转）。
+   纸面文字/粉字由锁墨保住，无需补丁。 */
+html.sakura[data-theme='dark'] .site-dir .site-dir__card {
+  box-shadow: 4px 4px 0 var(--night-1);
+}
