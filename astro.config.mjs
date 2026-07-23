@@ -60,6 +60,8 @@ export default defineConfig({
         './src/styles/sakura-skin.css',
         // 必须排在 sakura-skin.css 之后：blog 壳类的平权中和规则靠后载胜出
         './src/styles/sakura-blog.css',
+        // 末位：首页 splash 组件适配层（治 22 个对比度崩坏点；平权中和靠后载胜出）
+        './src/styles/sakura-home.css',
       ],
       sidebar: [
         // ── 开始 ──

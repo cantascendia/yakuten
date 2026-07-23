@@ -1,0 +1,946 @@
+/* =========================================================================
+   HRT药典 — Sakura Home Skin · 首页 splash 组件适配层
+   ------------------------------------------------------------------------
+   职责：zh/index.mdx（及 17 语同构首页）的 layout 组件在 html.sakura 下的
+   手账形态：ActionCards / GuideScenarioStrip / DrugQuickNav / TrustPillars /
+   MissionStatement / 首页博客区 / quick-tools / SplashNav / SiteFooter。
+   背景：这批组件为米哈游深底设计（亮粉/亮黄/薄荷文字），sakura 白卡下
+   22 个对比度崩坏点（2026-07-23 owner 实测），本文件按 v2 手账 DNA 重排。
+   挂载：customCss 末位（sakura-blog.css 之后）—— 内部块顺序不可重排
+   （reduced-motion / 夜影等依赖同文件后序）。全部规则 html.sakura 作用域。
+   ========================================================================= */
+
+/* =========================================================================
+   sakura-home 片段 B —— 首页卡片组件层手账化（home-frag-cards）
+   ------------------------------------------------------------------------
+   覆盖组件与类名清单：
+
+   1. ActionCards（src/components/layout/ActionCards.astro）
+      .action-card ｜ .action-card--safe/--primary/--danger/--accent
+      .action-card__glow ｜ .action-card__icon（+ 四色变体）
+      .action-card__title ｜ .action-card__cta（+ 四色变体）
+   2. GuideScenarioStrip（GuideScenarioStrip.astro，zh-only 渲染）
+      .guide-strip__title ｜ .guide-strip__title-eyebrow
+      .guide-strip__card（::before 粉条 → washi 胶带）｜ .guide-strip__card--planned
+      .guide-strip__eyebrow（场景 tag → 手账贴纸）
+      .guide-strip__card-title ｜ .guide-strip__cta
+   3. DrugQuickNav（DrugQuickNav.astro）
+      .drug-nav__title ｜ .drug-nav__category（::before 竖条圆角化，语义色保留）
+      .drug-nav__category-title ｜ .drug-nav__link
+   4. HeroSection .hero-section__ctas —— 【复查结论：零规则】
+      荧光笔收窄为 a:not([class]) 后，a.btn-primary/.btn-ghost 恢复
+      sakura-theme.css 按钮层：flame 渐变 = var(--sakura-pink-aa)#C03070 →
+      var(--danger-deep)#C23D5C，白字两端 ≈5.4/5.1:1 过 AA；btn-ghost =
+      ivory 底墨字。组件自带的 (0,4,2) 还原规则与 theme 同值。不再叠写，
+      避免三处同值漂移。
+
+   级联契约：本文件由主控合并进 sakura-home.css 挂 customCss 末位；
+   全部规则 html.sakura 前缀；零 !important（对手无 !important 战场）；
+   动效仅 transform/opacity；全逻辑属性；零硬编码文案。
+   对手特异度基准：
+   · sakura-components.css h2:lang(zh) 章节序号 = (0,3,2) → 用双类 (0,4,1) 压
+   · sakura-components.css h3 粉左线 = (0,2,2) → (0,3,1) 压
+   · 组件 :global(.sl-markdown-content) .drug-nav__link:hover = (0,3,0) → (0,4,1) 压
+   ========================================================================= */
+
+/* =========================================================================
+   1. ActionCards —— 四张入口卡：InkCard 公式 + 贴纸图标盒 + kicker CTA
+   ========================================================================= */
+
+/* 卡本体：白纸卡底/墨线/硬影已由 theme 的 .glass-panel/.clipped-card 提供；
+   此处收紧动效（组件旧 transition 含 box-shadow，超出 transform/opacity 白名单）
+   并换 InkCard 抬升手感（scale 1.02 → translate -2/-2 + 投影 4→6 瞬时切换） */
+html.sakura .action-card {
+  transition: transform var(--transition-fast);
+}
+/* 触屏守卫：先中和组件的 scale + 四色光晕 hover（.action-card--safe:hover 等 (0,2,0)） */
+html.sakura .action-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-hard);
+}
+@media (hover: hover) {
+  html.sakura .action-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+}
+html.sakura .action-card:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* 光晕 overlay 是米哈游语言（发光=能量），手账无发光 → 整层退役 */
+html.sakura .action-card__glow {
+  display: none;
+}
+
+/* 图标盒 → 手账贴纸：浅彩底承语义 + 墨描边墨图标；危险位用 SealStamp 语法
+   （ivory 底 + 危红描边 + 危红图标，脱离可爱粉彩）。
+   压过 theme .glass-panel 的 4px 硬影（图标盒是「纸上的贴纸」，影子留在纸上
+   → 恒为墨影，昼夜不换 night 影） */
+html.sakura .action-card .action-card__icon {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+html.sakura .action-card .action-card__icon--safe {
+  background: var(--mint);
+  color: var(--ink);
+}
+html.sakura .action-card .action-card__icon--primary {
+  background: var(--sakura-blush);
+  color: var(--ink);
+}
+html.sakura .action-card .action-card__icon--danger {
+  background: var(--ivory);
+  border-color: var(--danger);
+  color: var(--danger); /* #B5304F on ivory ≈5.8:1，图形对比 ≥3:1 亦过 */
+}
+html.sakura .action-card .action-card__icon--accent {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+/* h3 卡片标题：压掉 sakura-components 全局 h3 的 5px 粉左线 + 12px 缩进
+   （卡片标题不是文档小节；(0,3,1) > (0,2,2)，border 值对手未加 !important） */
+html.sakura .action-card .action-card__title {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+/* CTA：mono 大写 HUD 风 → v2 kicker 风（ui-accent 700）。
+   彩字 AA 替身：薄荷/奶黄无浅底 AA 解 → 墨字（语义已由图标贴纸底色承载）；
+   粉 → --sakura-pink-text（5.2:1）；危红 --danger 本就 6.0:1，显式钉住。 */
+html.sakura .action-card__cta {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+html.sakura .action-card__cta--safe,
+html.sakura .action-card__cta--accent {
+  color: var(--ink);
+}
+html.sakura .action-card__cta--primary {
+  color: var(--sakura-pink-text);
+}
+html.sakura .action-card__cta--danger {
+  color: var(--danger);
+}
+/* hover/focus：kicker 惯例 —— 转墨字下划线（箭头 svg 走 currentColor 同步转墨） */
+html.sakura .action-card:hover .action-card__cta,
+html.sakura .action-card:focus-visible .action-card__cta {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================================
+   2. GuideScenarioStrip ——「我该怎么办？」场景条（zh-only 渲染）
+   ========================================================================= */
+
+/* 区块标题：h2:lang(zh) 章节序号规则 (0,3,2) 会给「我该怎么办？」插「壹」并把
+   flex 改 baseline 打破居中 —— 双类 (0,4,1) 稳压（同 HeroSection 既定修法）。
+   首页 splash 是杂志页不是文档页，不吃章节号；counter-increment:none
+   保证不吞占后续真文档 h2 的序号。 */
+html.sakura .guide-strip .guide-strip__title.guide-strip__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  counter-increment: none;
+}
+html.sakura .guide-strip .guide-strip__title.guide-strip__title::before {
+  content: none;
+}
+
+/* GUIDES kicker：黄字 1.47:1 → 深粉 AA（桌面文字，随幻月夜换浅樱粉见 §5） */
+html.sakura .guide-strip__title-eyebrow {
+  color: var(--sakura-pink-text);
+  font-weight: 700;
+}
+
+/* 卡片：去掉给旧左粉条留的 +3px 物理 padding-left（顺带 RTL 归位）；
+   动效收紧 transform-only。三张卡各配一色（胶带+贴纸同源，观感一家人，
+   与 hero 画卷的 粉/薄荷/奶黄 三条胶带呼应）。 */
+html.sakura .guide-strip__card {
+  --strip-pastel: var(--sakura-blush);
+  padding: var(--space-lg);
+  transition: transform var(--transition-fast);
+}
+html.sakura .guide-strip__grid > .guide-strip__card:nth-child(2) {
+  --strip-pastel: var(--mint);
+}
+html.sakura .guide-strip__grid > .guide-strip__card:nth-child(3) {
+  --strip-pastel: var(--butter);
+}
+
+/* 旧左侧 3px 粉条 ::before → 骑在卡片上缘的 washi 胶带（v2 胶带配方：
+   dots 纹 + 1px dashed 墨边 + opacity .92；把卡「贴」在纸面上）。
+   卡片 clip-path 已被 theme 置 none、无 overflow hidden → 胶带可安全外露；
+   上方间距（grid gap 24 / 区块间距 ≥32）> 10px 外露量，不与邻元素相撞。
+   pointer-events:none 继承组件旧规则。 */
+html.sakura .guide-strip__card::before {
+  top: -10px;
+  bottom: auto;
+  inset-inline-start: 18px;
+  width: 78px;
+  height: 18px;
+  background:
+    radial-gradient(circle at 4px 4px, var(--ink-faint) 1px, transparent 1.5px),
+    var(--strip-pastel);
+  background-size: 8px 8px, 100%;
+  border: 1px dashed var(--ink-faint);
+  opacity: 0.92;
+  transform: rotate(-3deg);
+}
+html.sakura .guide-strip__grid > .guide-strip__card:nth-child(2)::before {
+  transform: rotate(2deg);
+}
+html.sakura .guide-strip__grid > .guide-strip__card:nth-child(3)::before {
+  transform: rotate(-2deg);
+}
+
+/* 场景 tag「刚入坑/在吃抗雄/在打注射」：blush 白字 1.33:1 → 手账贴纸
+   （浅彩底承身份 + 1.5px 墨描边 + 墨字 + 胶囊 + 1px 硬影，参照 v2 Chip）。
+   align-self 防止 flex column 里被拉伸成通栏。 */
+html.sakura .guide-strip__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 2px 10px;
+  background: var(--strip-pastel, var(--sakura-blush));
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* h3 卡题：同 §1，压掉全局 h3 粉左线 */
+html.sakura .guide-strip__card .guide-strip__card-title {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+/* 「查看指南」：黄字 1.59:1 → kicker 风深粉；hover 转墨字下划线 */
+html.sakura .guide-strip__cta {
+  color: var(--sakura-pink-text);
+  font-weight: 700;
+}
+html.sakura .guide-strip__card:hover .guide-strip__cta,
+html.sakura .guide-strip__card:focus-visible .guide-strip__cta {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* hover：先触屏中和组件的 translateY + 粉光晕，再 hover:hover 给 InkCard 抬升 */
+html.sakura .guide-strip__card:hover {
+  transform: none;
+  box-shadow: var(--shadow-hard);
+}
+@media (hover: hover) {
+  html.sakura .guide-strip__card:not(.guide-strip__card--planned):hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+}
+html.sakura .guide-strip__card:not(.guide-strip__card--planned):focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* =========================================================================
+   3. DrugQuickNav —— 药物速查三栏
+   ========================================================================= */
+
+/* 区块标题：同 §2，去章节序号、还原居中（h2 规则强制的 flex+baseline 会左对齐） */
+html.sakura .drug-nav .drug-nav__title.drug-nav__title {
+  display: block;
+  counter-increment: none;
+}
+html.sakura .drug-nav .drug-nav__title.drug-nav__title::before {
+  content: none;
+}
+
+/* 分类卡：物理 padding-left → 逻辑属性（RTL：ar/fa 下竖条在行首侧，留白跟随）；
+   非交互卡 → 去 hover 光晕，投影恒定 */
+html.sakura .drug-nav__category {
+  padding-block: var(--space-lg);
+  padding-inline: calc(var(--space-lg) + 6px) var(--space-lg);
+  transition: none;
+}
+html.sakura .drug-nav__category:hover {
+  box-shadow: var(--shadow-hard);
+}
+
+/* 分类竖条：颜色语义保留（--cat-color 不动）；方角通栏条在 14px 圆角卡里
+   会戳出圆角 → 收进上下 14px、圆头药丸化（索引标签页语感）。
+   inline 轴用逻辑属性：RTL 下组件的物理 left:0 因超定被弃用，条自动落行首侧。 */
+html.sakura .drug-nav__category::before {
+  inset-block: 14px;
+  inset-inline-start: 0;
+  width: 4px;
+  border-radius: var(--radius-full);
+}
+
+/* 分类标题：全局 h3 规则已把文字钉墨（!important），此处只拆掉它叠加的
+   粉左线缩进（避免与 --cat-color 竖条双条打架） */
+html.sakura .drug-nav__category .drug-nav__category-title {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+/* 药物名链接：纯文字深粉（owner 否决粉底碎块）；
+   hover 旧值是 blush 1.33:1 → 转墨字 + 墨色底线（对手 (0,3,0) → (0,4,1) 压）。
+   颜色变化瞬时切换（动效白名单外不过渡）。 */
+html.sakura .drug-nav__link {
+  color: var(--sakura-pink-text);
+  font-weight: 500;
+  transition: none;
+}
+html.sakura .drug-nav__links .drug-nav__link:hover,
+html.sakura .drug-nav__links .drug-nav__link:focus-visible {
+  color: var(--ink);
+  border-block-end-color: var(--ink);
+}
+
+/* 「查看全部药物」a.btn-ghost：theme 按钮层已给 ivory 底墨字（AA）→ 零规则 */
+
+/* =========================================================================
+   4. HeroSection __ctas —— 复查通过，零规则（见文件头 §4 说明）
+   ========================================================================= */
+
+/* =========================================================================
+   5. 幻月夜 —— 夜桌补丁
+   卡片文字已由 theme 纸面锁墨（.glass-panel/.clipped-card 在锁墨清单内）、
+   --bg-3 白卡底恒亮 → 只补两件：
+   ① 卡片落在夜桌上的硬影换夜影（对齐 sakura-blog.css 卡片的 night-1 钉法；
+      纸上贴纸/胶带的影子留墨，不动）
+   ② GUIDES kicker 是桌面文字（非纸面）→ 深粉换浅樱粉（夜空 8.38:1）
+   ========================================================================= */
+html.sakura[data-theme='dark'] .guide-strip__title-eyebrow {
+  color: var(--sakura-pink);
+}
+
+html.sakura[data-theme='dark'] .action-card,
+html.sakura[data-theme='dark'] .action-card:hover,
+html.sakura[data-theme='dark'] .guide-strip__card,
+html.sakura[data-theme='dark'] .guide-strip__card:hover,
+html.sakura[data-theme='dark'] .drug-nav__category,
+html.sakura[data-theme='dark'] .drug-nav__category:hover {
+  box-shadow: 4px 4px 0 var(--night-1);
+}
+@media (hover: hover) {
+  html.sakura[data-theme='dark'] .action-card:hover,
+  html.sakura[data-theme='dark'] .guide-strip__card:not(.guide-strip__card--planned):hover {
+    box-shadow: 6px 6px 0 var(--night-1);
+  }
+}
+html.sakura[data-theme='dark'] .action-card:focus-visible,
+html.sakura[data-theme='dark'] .guide-strip__card:not(.guide-strip__card--planned):focus-visible {
+  box-shadow: 6px 6px 0 var(--night-1);
+}
+
+/* =========================================================================
+   6. ar/fa 连写守卫 —— 正/负字距都会拉断阿拉伯字母连写形
+   （ActionCards / DrugQuickNav 17 语共用；组件自带 0.05-0.1em 字距一并中和。
+   GuideScenarioStrip 仅 zh 渲染，无需守卫。）
+   ========================================================================= */
+html.sakura :is(.action-card__cta, .drug-nav__title, .drug-nav__category-title):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}
+
+/* =========================================================================
+   7. REDUCED MOTION —— theme 已把时长归零；此处连位移本身一并取消（瞬移也不给）
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .action-card:hover,
+  html.sakura .action-card:focus-visible,
+  html.sakura .guide-strip__card:not(.guide-strip__card--planned):hover,
+  html.sakura .guide-strip__card:not(.guide-strip__card--planned):focus-visible {
+    transform: none;
+  }
+}
+
+
+/* =========================================================================
+   HRT药典 — Sakura Home Skin · 片段 B「pillars」（乐园手账 · 首页组件层）
+   ------------------------------------------------------------------------
+   由主控合并进 src/styles/sakura-home.css（customCss 末位，排 sakura-blog.css
+   之后）。全部规则 html.sakura 前缀 —— 手工纪律，新增必带前缀。
+
+   覆盖组件与类名：
+   1. SplashNav（layout/SplashNav.astro）
+      .splash-nav .splash-nav__link .splash-nav__search
+      .splash-nav__search-label
+   2. TrustPillars（layout/TrustPillars.astro）
+      .trust-pillars__kicker .trust-pillars__lede .trust-pillars__heading
+      .trust-pillar .trust-pillar__glow .trust-pillar__icon{--primary/--accent/--safe}
+      .trust-pillar__kicker .trust-pillar__title .trust-pillar__oneliner
+      .trust-pillar__metric-number{--primary/--accent/--safe} .trust-pillar__cta{--*}
+   3. MissionStatement（layout/MissionStatement.astro）
+      .mission__card .mission__accent-bar .mission__label .mission__headline
+      .mission__stat .mission__rule .mission__body .mission__highlight
+   4. 首页博客区 + 快捷工具条（zh/index.mdx 内嵌 splash 正文）
+      .recent-blog__title .recent-blog__more .recent-blog__card
+      .recent-blog__meta .recent-blog__category .recent-blog__card-title
+      .recent-blog__card-desc .recent-blog__readtime
+      .quick-tools__inner .quick-tools__stats .quick-tools__link
+   5. SiteFooter（layout/SiteFooter.astro —— 17 语首页共用）
+      .site-footer .site-footer__grid .site-footer__column
+      .site-footer__column-title .site-footer__column-text
+      .site-footer__bottom .site-footer__brand .site-footer__statement
+      .site-footer__links a .site-footer__copy
+
+   对比度验算（sRGB relative luminance，均已复核）：
+     --sakura-pink-text #C02868 on #FFFFFF = 5.61 · on ivory = 5.39 · on cream = 5.18
+     --ink #4A2838 on #FFFFFF = 12.7 · --fg-2 #7A5568 on #FFFFFF = 6.31
+     --fg-3 #86596F on #FFFFFF = 5.72
+     墨底使命卡：#FFA8C5 on ink = 7.06 · #FFD4E0 on ink = 9.53
+       #D4C5F5 on ink = 7.93 · #FFFFFF on ink = 12.7
+     页脚品牌：--sakura-pink-deep #E5578B on cream = 3.20（1.25rem/900 大字，>3:1）
+     幻月夜桌面粉字：--sakura-pink on --night-1 = 8.38
+
+   机制备忘：
+   · .glass-panel/.clipped-card 已被 sakura-theme.css 统一成白纸卡（bg-3 恒亮）
+     并纸面锁墨（--fg-*/--color-text-* 钉梅子墨）——本片段只补组件级失配。
+   · --sakura-pink-text 在全站皮里【不】随主题翻转（v2-overrides.css 的令牌
+     翻转只在 /v2 生效），故凡落在桌面（非纸面）的粉字，此处显式配
+     [data-theme='dark'] → var(--sakura-pink) 补丁。
+   · sakura-components.css 的 h2:lang(zh) 章节序号 (0,3,2) / h3 粉侧线 (0,2,2) /
+     .sl-markdown-content p 锁色 (0,2,2) 会渗进首页组件 —— 逐个以 (0,3,1)~(0,4,1)
+     中和（叠 .sl-markdown-content 前缀变体，同 sakura-blog.css §卡片标题手法）。
+   · !important 仅一处对等使用（mission headline，对抗 sakura-components.css
+     `.sl-markdown-content h2 { color !important }`），已注释。
+   · 动效红线：仅过渡 transform；投影/底色瞬时切换。RTL：新增方向属性全逻辑化。
+   ========================================================================= */
+
+/* =========================================================================
+   1. SplashNav —— 桌上的「纸质标签条」：昼夜恒亮象牙纸（paper 语义，
+   glass-panel 纸面锁墨恰好保证夜里字仍是梅子墨），下缘装订墨线 + 腮红衬影
+   （同 sakura-blog.css .blog-header 的 DNA）
+   ========================================================================= */
+html.sakura nav.splash-nav {
+  background: var(--ivory);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 0;
+  border-block-end: 2px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 0 3px 0 var(--sakura-blush);
+  clip-path: none;
+}
+
+/* 链接：纸面锁墨的 --color-text-secondary(#7A5568 on ivory 6.07) 本身达标，
+   只修 hover —— 组件 hover 是 --color-primary-light → sakura 映射成腮红
+   #FFD4E0 on 白纸 ≈1.2:1（近不可见）。恒亮纸面 → 粉字不需夜间补丁。 */
+html.sakura nav.splash-nav .splash-nav__link {
+  transition: none;
+}
+html.sakura nav.splash-nav .splash-nav__link:hover,
+html.sakura nav.splash-nav .splash-nav__link:focus-visible {
+  color: var(--sakura-pink-text);
+  border-block-end-color: var(--sakura-pink-deep);
+}
+
+/* 搜索按钮：玻璃切角 → 白贴纸胶囊（墨线 + 1px 硬影）。
+   hover/focus 底转腮红、字保墨（#4A2838 on #FFD4E0 = 9.53）。
+   focus 外环交给全局绯红焦点环（sakura-theme.css (0,2,1) 压过组件 (0,2,0)）。 */
+html.sakura nav.splash-nav .splash-nav__search {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  clip-path: none;
+  color: var(--ink);
+  font-family: var(--font-ui-accent);
+  font-weight: 600;
+  box-shadow: 1px 1px 0 var(--ink);
+  transition: none;
+}
+html.sakura nav.splash-nav .splash-nav__search:hover,
+html.sakura nav.splash-nav .splash-nav__search:focus-visible {
+  background: var(--sakura-blush);
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* 移动端相邻链接分隔线：组件用物理 border-left → 逻辑属性（RTL）。
+   色值走 --color-outline-20 —— 纸面锁墨已把它钉在 rgba(74,40,56,.2)。 */
+@media (max-width: 768px) {
+  html.sakura nav.splash-nav .splash-nav__link + .splash-nav__link {
+    border-left: 0;
+    border-inline-start: 1px solid var(--color-outline-20);
+  }
+}
+
+/* =========================================================================
+   2. TrustPillars —— 三张白纸卡（InkCard 公式已由 theme 层就位），
+   本层：区头 kicker、贴纸图标、AA 数字、kicker 风 CTA、手账 hover
+   ========================================================================= */
+
+/* 区头 kicker：幻月金 #F5C842 on cream 1.59 FAIL → 粉字 kicker（桌面语义，
+   夜间见 §7 粉字补丁）；lede 是 <p>，被 .sl-markdown-content p (0,2,2) 锁 fg-1，
+   这里以 (0,3,1) 放回次级灰 */
+html.sakura .trust-pillars .trust-pillars__kicker {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--sakura-pink-text);
+}
+html.sakura .trust-pillars .trust-pillars__lede {
+  color: var(--fg-2);
+}
+
+/* 卡片：动效收敛到 v2 InkCard 公式 —— 仅过渡 transform；
+   触屏先中和组件的 scale + 各 tone 光晕投影（sticky hover 防护），
+   hover 能力设备才抬升 -2/-2 + 投影瞬时换 6px */
+html.sakura .trust-pillar {
+  transition: transform var(--transition-fast);
+}
+html.sakura .trust-pillar:hover {
+  transform: none;
+  box-shadow: var(--shadow-hard);
+}
+@media (hover: hover) {
+  html.sakura .trust-pillar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+}
+html.sakura .trust-pillar:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* hover 光晕层：米哈游残留（方角 overlay 会戳出圆角白卡），手账不用光晕 */
+html.sakura .trust-pillar__glow {
+  display: none;
+}
+
+/* 图标盒：白玻璃 → 语义色贴纸（彩底承语义、墨线承轮廓 —— v2 Chip 法则）。
+   (0,3,1) 压过组件自带的 :global(html.sakura) 覆盖 (0,2,1) 与 theme 白卡 (0,2,1) */
+html.sakura .trust-pillar .trust-pillar__icon {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+}
+html.sakura .trust-pillar .trust-pillar__icon--primary { background: var(--sakura-blush); }
+html.sakura .trust-pillar .trust-pillar__icon--accent  { background: var(--butter); }
+html.sakura .trust-pillar .trust-pillar__icon--safe    { background: var(--mint); }
+
+/* 卡内 kicker（<p>，被 p 锁色规则抢成 fg-1）→ 放回 fg-3 kicker 风 */
+html.sakura .trust-pillar .trust-pillar__kicker {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--fg-3);
+}
+
+/* h3 标题：中和 sakura-components 的文档页粉侧线（卡片标题不作章节） */
+html.sakura .trust-pillar .trust-pillar__title,
+html.sakura .sl-markdown-content .trust-pillar .trust-pillar__title {
+  border-inline-start: none;
+  padding-inline-start: 0;
+}
+
+/* 一句话（<p> 锁色）→ 次级灰（#7A5568 on #FFFFFF = 6.31） */
+html.sakura .trust-pillar .trust-pillar__oneliner {
+  color: var(--fg-2);
+}
+
+/* 大数字：36px display 字。primary 亮粉 1.8 FAIL → 粉 AA（白卡恒亮，昼夜同值）；
+   accent 幻月金 1.59 / safe 薄荷 1.98 FAIL → 墨字（黄/薄荷系浅底无 AA 解，
+   语义已由图标贴纸底色承载） */
+html.sakura .trust-pillar .trust-pillar__metric-number--primary {
+  color: var(--sakura-pink-text);
+}
+html.sakura .trust-pillar .trust-pillar__metric-number--accent,
+html.sakura .trust-pillar .trust-pillar__metric-number--safe {
+  color: var(--ink);
+}
+
+/* CTA：三个 tone 统一 kicker 风粉字（白卡恒亮 5.61，昼夜皆过 AA）；
+   卡片整卡是 <a>，hover/focus 时 CTA 转墨 + 下划线作反馈 */
+html.sakura .trust-pillar .trust-pillar__cta {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--sakura-pink-text);
+}
+html.sakura .trust-pillar:hover .trust-pillar__cta,
+html.sakura .trust-pillar:focus-visible .trust-pillar__cta {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================================
+   3. MissionStatement —— 冷·数据墨底卡（对齐 /zh/v2 HomeScreen 使命卡：
+   墨底 + 樱粉大数字 + 白标题 + 腮红正文）。theme 层把它变白卡且纸面锁墨
+   （锁墨会让 fg-1 文字在墨底上隐形），此处整卡改墨底并逐项显色。
+   全部用色不随幻月夜翻转 → 昼夜同一验算：pink 7.06 / blush 9.53 /
+   lavender 7.93 / #fff 12.7，全过 AA。
+   ========================================================================= */
+html.sakura .mission .mission__card {
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: none; /* v2 使命卡无硬影；墨影叠墨卡也无意义 */
+}
+
+/* label（<p> 被锁 fg-1 → 墨底上隐形）：薰衣草 kicker（7.93） */
+html.sakura .mission .mission__label {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--lavender);
+}
+
+/* headline：对抗 sakura-components `.sl-markdown-content h2{color:var(--fg-1)!important}`
+   （纸面锁墨令 fg-1=梅子墨，墨底上隐形）→ 对等 !important，白字 12.7 */
+html.sakura .mission .mission__headline {
+  color: #FFFFFF !important;
+}
+
+/* 84%：display 大字 + 樱粉（v2 使命卡逐字同款，on ink 7.06） */
+html.sakura .mission .mission__stat {
+  font-family: var(--font-display);
+  color: var(--sakura-pink);
+}
+
+/* 分隔线：米哈游暗棕在墨底上隐形 → 夜纸白 25%（同 theme 夜间 ink-faint 字面量） */
+html.sakura .mission .mission__rule {
+  background: rgba(255, 245, 224, 0.25);
+}
+
+/* 正文（<p> 锁色）：腮红（9.53）；强调词「安全的底线」樱粉 + 樱粉下缘
+   （粉字 on 墨底 7.06 —— 亮粉在这里是【对】的，浅底才是它的坟场） */
+html.sakura .mission .mission__body {
+  color: var(--sakura-blush);
+}
+html.sakura .mission .mission__highlight {
+  color: var(--sakura-pink);
+  border-block-end: 2px solid var(--primary-a60);
+}
+
+/* 金色 accent 竖条：留（幻月金 on 墨底是高对比装饰）；物理 left → 逻辑（RTL） */
+html.sakura .mission .mission__accent-bar {
+  left: auto;
+  inset-inline-start: 0;
+}
+
+/* 幻月夜：墨卡落在梦境紫桌面上，描一圈夜纸白让卡有边界 */
+html.sakura[data-theme='dark'] .mission .mission__card {
+  border-color: rgba(255, 245, 224, 0.3);
+}
+
+/* =========================================================================
+   4. 首页博客区（index.mdx 内嵌） —— 白纸卡 + 贴纸分类 + kicker 元信息
+   （逐项对齐 sakura-blog.css 的 .blog-card 语言）
+   ========================================================================= */
+
+/* 区头「查看全部 →」：--color-primary-light → 腮红 on cream ≈1.2 FAIL
+   → kicker 风粉字，hover 转墨下划线（桌面语义，夜间见 §7） */
+html.sakura .recent-blog .recent-blog__more {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--sakura-pink-text);
+  transition: none;
+}
+html.sakura .recent-blog .recent-blog__more:hover,
+html.sakura .recent-blog .recent-blog__more:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 卡片：theme 已给白卡三件套；这里补 clip-path 显式归零（防御）、
+   动效收敛 InkCard 公式（触屏中和 → hover 设备抬升） */
+html.sakura .recent-blog .recent-blog__card {
+  clip-path: none;
+  transition: transform var(--transition-fast);
+}
+html.sakura .recent-blog .recent-blog__card:hover {
+  transform: none;
+  box-shadow: var(--shadow-hard);
+}
+@media (hover: hover) {
+  html.sakura .recent-blog .recent-blog__card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+}
+html.sakura .recent-blog .recent-blog__card:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* 元信息行：kicker 风（纸面锁墨的 fg-3 = #86596F on #FFFFFF = 5.72） */
+html.sakura .recent-blog .recent-blog__meta {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* 分类「抗雄指南/药物对比/…」：幻月金字 1.59 FAIL → 胶囊墨线贴纸
+   （与 sakura-blog.css .blog-card__category 同款：墨字 on ivory，昼夜恒定） */
+html.sakura .recent-blog .recent-blog__category {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  background: var(--ivory);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-size: 0.65625rem;
+  font-weight: 700;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+/* h3 卡片标题：中和文档页粉侧线（同 §2 手法） */
+html.sakura .recent-blog .recent-blog__card-title,
+html.sakura .sl-markdown-content .recent-blog .recent-blog__card-title {
+  border-inline-start: none;
+  padding-inline-start: 0;
+}
+
+/* 摘要（<p> 锁色）→ 次级灰 */
+html.sakura .recent-blog .recent-blog__card-desc {
+  color: var(--fg-2);
+}
+
+/* 阅读时长：kicker 风 + 虚线上缘（对齐 .blog-card__footer 的手账页脚线） */
+html.sakura .recent-blog .recent-blog__readtime {
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  color: var(--fg-3);
+  font-variant-numeric: lining-nums tabular-nums;
+  border-block-start: 1.5px dashed var(--ink-faint);
+  padding-block-start: var(--space-sm);
+}
+
+/* =========================================================================
+   5. 快捷工具条（index.mdx .quick-tools）—— 玻璃条 → 白纸条 + 贴纸链接。
+   它不带 .glass-panel 类（用的是裸 --glass-* 令牌）→ 纸面锁墨照不到，
+   需手动锁墨（字面量与 sakura-theme.css 纸面锁墨一致，夜里纸条仍亮）
+   ========================================================================= */
+html.sakura .quick-tools .quick-tools__inner {
+  background: var(--bg-3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  clip-path: none;
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  --color-text-primary: #4A2838;
+  --color-text-secondary: #7A5568;
+  --color-text-muted: #7A5568;
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+}
+
+/* 统计行 <strong>：幻月金 1.59 FAIL → 墨字（数字强调靠字重） */
+html.sakura .quick-tools .quick-tools__stats {
+  color: var(--fg-2);
+}
+html.sakura .quick-tools .quick-tools__stats strong {
+  color: var(--ink);
+}
+
+/* 工具链接：腮红字 FAIL → 胶囊墨线贴纸；hover 底转腮红、字保墨（7.06） */
+html.sakura .quick-tools .quick-tools__link {
+  background: var(--ivory);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-family: var(--font-ui-accent);
+  font-weight: 600;
+  transition: none;
+}
+html.sakura .quick-tools .quick-tools__link:hover,
+html.sakura .quick-tools .quick-tools__link:focus-visible {
+  background: var(--sakura-blush);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* =========================================================================
+   6. SiteFooter（layout 版，17 语首页共用）—— 桌面家具语义：随幻月夜翻转，
+   文字全走主题感知 token；粉字配夜间补丁（§7）
+   ========================================================================= */
+html.sakura footer.site-footer {
+  border-top: 2px dashed var(--ink-faint);
+}
+
+/* 四栏：物理 border-left/padding-left → 逻辑（RTL）；text-align 逻辑化 */
+html.sakura .site-footer .site-footer__grid {
+  text-align: start;
+}
+html.sakura .site-footer .site-footer__column {
+  border-left: 0;
+  padding-left: 0;
+  border-inline-start: 1.5px solid var(--ink-faint);
+  padding-inline-start: var(--space-md);
+}
+
+/* 栏标题：幻月金 1.59 FAIL → 粉字 kicker（on cream 5.18） */
+html.sakura .site-footer .site-footer__column-title {
+  font-family: var(--font-ui-accent);
+  color: var(--sakura-pink-text);
+  letter-spacing: 0.12em;
+}
+
+/* 栏正文：mono 全大写 → 手账正文体；<p> 锁色规则会抢成 fg-1，放回 fg-2 */
+html.sakura .site-footer .site-footer__column-text {
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--fg-2);
+}
+
+html.sakura .site-footer .site-footer__bottom {
+  border-top: 1.5px dashed var(--ink-faint);
+}
+
+/* 品牌「HRT药典」：亮粉 1.66 FAIL → 绯红 pink-deep（1.25rem/900 大字，
+   on cream 3.20 > 3:1 大字线；不用渐变字 —— honey 末端 on cream 不过 3:1） */
+html.sakura .site-footer .site-footer__brand {
+  color: var(--sakura-pink-deep);
+}
+
+/* 链接（无 class 的 <a> —— 会被 .sl-markdown-content a:not([class]) 荧光笔
+   命中）：中和荧光笔 + kicker 风粉字，hover 下划线（同 .blog-site-footer）。
+   footer.site-footer 前缀 (0,3,3) > 荧光笔 (0,3,2)，不靠加载顺序。 */
+html.sakura footer.site-footer .site-footer__links a {
+  background: transparent;
+  background-image: none;
+  padding: 0;
+  font-family: var(--font-ui-accent);
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--sakura-pink-text);
+  text-decoration: none;
+  transition: none;
+}
+html.sakura footer.site-footer .site-footer__links a:hover,
+html.sakura footer.site-footer .site-footer__links a:focus-visible {
+  background: transparent;
+  background-image: none;
+  color: var(--sakura-pink-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* copyright 行：主题感知次级灰 + kicker 字体（保留原 0.4em 盖章式字距） */
+html.sakura .site-footer .site-footer__copy {
+  font-family: var(--font-ui-accent);
+  color: var(--fg-3);
+}
+
+/* =========================================================================
+   7. 幻月夜补丁 —— 桌面粉字换浅樱粉（--sakura-pink-text 在全站皮不随主题
+   翻转，夜桌 #2E1F42 上 #C02868 仅 2.69）；白纸卡硬影换夜影色
+   （同 sakura-blog.css §12 的钉法）。纸面元素（trust 卡内、splash-nav、
+   quick-tools 条内）不需补丁 —— 纸恒亮、粉字恒 AA。
+   ========================================================================= */
+html.sakura[data-theme='dark'] .trust-pillars .trust-pillars__kicker,
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__more,
+html.sakura[data-theme='dark'] .site-footer .site-footer__column-title,
+html.sakura[data-theme='dark'] .site-footer .site-footer__brand,
+html.sakura[data-theme='dark'] footer.site-footer .site-footer__links a {
+  color: var(--sakura-pink);
+}
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__more:hover,
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__more:focus-visible,
+html.sakura[data-theme='dark'] footer.site-footer .site-footer__links a:hover,
+html.sakura[data-theme='dark'] footer.site-footer .site-footer__links a:focus-visible {
+  color: var(--sakura-pink);
+  text-decoration: underline;
+}
+
+/* 白纸卡夜影（--ink 不随夜翻转，硬影原样会是梅子墨浮在梦境紫上；
+   夜桌语义 = 影子融进桌色） */
+html.sakura[data-theme='dark'] .trust-pillar,
+html.sakura[data-theme='dark'] .trust-pillar:hover,
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__card,
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__card:hover,
+html.sakura[data-theme='dark'] .quick-tools .quick-tools__inner {
+  box-shadow: 4px 4px 0 var(--night-1);
+}
+@media (hover: hover) {
+  html.sakura[data-theme='dark'] .trust-pillar:hover,
+  html.sakura[data-theme='dark'] .recent-blog .recent-blog__card:hover {
+    box-shadow: 6px 6px 0 var(--night-1);
+  }
+}
+html.sakura[data-theme='dark'] .trust-pillar:focus-visible,
+html.sakura[data-theme='dark'] .recent-blog .recent-blog__card:focus-visible {
+  box-shadow: 6px 6px 0 var(--night-1);
+}
+
+/* =========================================================================
+   8. 章节序号中和 —— sakura-components 给 .sl-markdown-content h2:lang(zh)
+   加「壹貳叁」序号 + display:flex（(0,3,2)），首页营销区块的 h2 不是文档
+   章节 → 叠 .sl-markdown-content 前缀拉到 (0,4,1) 压制（sakura-blog 同手法）
+   ========================================================================= */
+html.sakura .trust-pillars .trust-pillars__heading,
+html.sakura .mission .mission__headline,
+html.sakura .recent-blog .recent-blog__title,
+html.sakura .sl-markdown-content .trust-pillars .trust-pillars__heading,
+html.sakura .sl-markdown-content .mission .mission__headline,
+html.sakura .sl-markdown-content .recent-blog .recent-blog__title {
+  display: block;
+  counter-increment: none;
+}
+html.sakura .trust-pillars .trust-pillars__heading::before,
+html.sakura .mission .mission__headline::before,
+html.sakura .recent-blog .recent-blog__title::before,
+html.sakura .sl-markdown-content .trust-pillars .trust-pillars__heading::before,
+html.sakura .sl-markdown-content .mission .mission__headline::before,
+html.sakura .sl-markdown-content .recent-blog .recent-blog__title::before {
+  content: none;
+}
+
+/* =========================================================================
+   9. REDUCED MOTION —— hover/focus 抬升连瞬移也不给
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .trust-pillar:hover,
+  html.sakura .trust-pillar:focus-visible,
+  html.sakura .recent-blog .recent-blog__card:hover,
+  html.sakura .recent-blog .recent-blog__card:focus-visible {
+    transform: none;
+  }
+}
+
+/* =========================================================================
+   10. ar/fa 连写守卫 —— 正/负字距都会拉断阿拉伯字母连写形
+   （同 sakura-blog.css 尾部守卫；覆盖本片段设置过或保留了字距的 kicker 类）
+   ========================================================================= */
+html.sakura :is(.trust-pillars__kicker, .trust-pillar__kicker, .trust-pillar__cta, .mission__label, .recent-blog__meta, .recent-blog__more, .recent-blog__readtime, .recent-blog__category, .site-footer__column-title, .site-footer__brand, .site-footer__copy, .splash-nav__search):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}
+
+
+/* =========================================================================
+   合流补丁（pillars review P2）：页脚无 class 链接的荧光笔中和在幻月夜失效
+   —— components 的 dark 荧光笔 (0,3,2) 压过 base 中和，此处补 dark 显式分支。
+   ========================================================================= */
+html.sakura[data-theme="dark"] .site-footer a:not([class]) {
+  color: var(--sakura-pink);
+  background-image: none;
+}
+html.sakura[data-theme="dark"] .site-footer a:not([class]):hover {
+  color: var(--cream);
+  background-image: none;
+  text-decoration: underline;
+}

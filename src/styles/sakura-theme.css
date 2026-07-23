@@ -812,3 +812,18 @@ html.sakura[data-theme='dark'] .particle-bg {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* =========================================================================
+   预存 bug 修复（双 agent 独立核实）：global.css:148 的 :root:lang(zh)
+   特异度 (0,2,0) 压过 html.sakura (0,1,1)，zh 页 sakura 皮的字体 token 被
+   米哈游 zh 字体覆盖（--font-ui-accent 变 Space Grotesk 等）。此处以
+   html.sakura:lang(zh) (0,2,1) 钉回 sakura 字体体系。
+   ========================================================================= */
+html.sakura:lang(zh) {
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+  --font-heading: "Noto Serif SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-ui-accent: "Plus Jakarta Sans", "Noto Sans SC", sans-serif;
+  --font-hud: "JetBrains Mono", monospace;
+}

@@ -570,7 +570,7 @@ html.sakura .sl-markdown-content :not(pre) > code {
 }
 
 /* 行内链接 —— 手写下划线 */
-html.sakura .sl-markdown-content a {
+html.sakura .sl-markdown-content a:not([class]) {
   color: var(--sakura-pink-text);
   text-decoration: none;
   background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
@@ -580,15 +580,15 @@ html.sakura .sl-markdown-content a {
   font-weight: 600;
   /* 动效红线：background-size 不在 transform+opacity 白名单，改为瞬时切换 */
 }
-html.sakura .sl-markdown-content a:hover {
+html.sakura .sl-markdown-content a:not([class]):hover {
   background-image: linear-gradient(transparent 0%, var(--sakura-pink) 100%);
   color: var(--ink);
 }
-html.sakura[data-theme='dark'] .sl-markdown-content a {
+html.sakura[data-theme='dark'] .sl-markdown-content a:not([class]) {
   color: var(--sakura-pink);
   background-image: linear-gradient(transparent 60%, rgba(229, 87, 139, 0.35) 60%);
 }
-html.sakura[data-theme='dark'] .sl-markdown-content a:hover { color: var(--cream); }
+html.sakura[data-theme='dark'] .sl-markdown-content a:not([class]):hover { color: var(--cream); }
 
 /* =========================================================================
    Aside / Callout —— 贴纸卡；危险层脱离可爱风（墨底红章）
@@ -1024,3 +1024,52 @@ html.sakura .mobile-preferences label:hover,
 html.sakura .mobile-preferences .social-icons a {
   color: var(--fg-on-cream);
 }
+
+/* =========================================================================
+   危险层防御（红线加固）：应急横幅内的链接/按钮永远白字、永远无荧光带 ——
+   无论未来谁往 .sl-markdown-content 加了什么泛化链接规则，这里都兜底。
+   （2026-07-23 事故记录：荧光笔 a 规则曾把横幅 CTA 染成浅粉块，已收窄为
+   a:not([class])，此段为二次防御。）
+   ========================================================================= */
+html.sakura .emergency-banner a,
+html.sakura .emergency-banner a:hover,
+html.sakura .emergency-banner a:focus-visible {
+  color: #fff !important;
+  background-image: none !important;
+}
+
+/* =========================================================================
+   BylineCard — 作者/复查署名卡（全站文档页底部）。
+   米哈游暗玻璃底 rgba(26,22,37,.6) 在 sakura 奶油页面里是突兀灰条
+   （2026-07-23 owner 首页目检发现）→ 手账纸条化。
+   ========================================================================= */
+html.sakura .byline-card {
+  background: var(--ivory) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1.5px solid var(--ink-faint) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+  color: var(--fg-2) !important;
+}
+html.sakura .byline-card :where(dt, .byline-card__label) {
+  color: var(--fg-3) !important;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+html.sakura .byline-card :where(dd, a, strong, .byline-card__cred) {
+  color: var(--fg-1) !important;
+}
+html.sakura .byline-card a:not([class]) {
+  color: var(--sakura-pink-text) !important;
+  background-image: none !important;
+}
+/* 幻月夜：署名条是桌面家具语义，随夜色（night-2 底奶油字） */
+html.sakura[data-theme='dark'] .byline-card {
+  background: var(--night-2) !important;
+  border-color: rgba(255, 245, 224, 0.25) !important;
+  color: var(--cream) !important;
+}
+html.sakura[data-theme='dark'] .byline-card :where(dt, .byline-card__label) { color: var(--sakura-blush) !important; }
+html.sakura[data-theme='dark'] .byline-card :where(dd, strong, .byline-card__cred) { color: var(--cream) !important; }
+html.sakura[data-theme='dark'] .byline-card a:not([class]) { color: var(--sakura-pink) !important; }
