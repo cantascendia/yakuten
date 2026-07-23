@@ -233,3 +233,13 @@ VERCEL_ENV === 'preview' && V2_PREVIEW === '1'
 - 🔴 DocScreen 剔除无法核实的 Hopkins 2024、去掉无据的「VTE 低于口服」句、剂量表绑定 Rothman/Hembree 引用、加 n=6
 - 🔴 风险问卷去掉「偏高/低」临床分层 → 「风险因素清单」+「非验证量表」标注，不输出「低风险」
 - ⚠️ 血检 Number.isFinite + 拒负数/Infinity；上下文横幅补稳定期/谷值采血；门控加 VERCEL_ENV=preview 硬门 + 非 PUBLIC 变量；inject「安全上限」措辞软化
+
+## 2026-07-23 终审（合并前把关）sha=7b03dc1 reviewer=codex-gpt5.6-sol bytes=899
+
+范围：c37f427..HEAD 增量（lore 清理 17 文件 + sakura-reskin spec）。
+裁决：**VERDICT: MERGE**（P1 无）。P2 四条已全修：
+1. Primitives.tsx PageHead 竖排标签 filter(Boolean) 防 undefined
+2. spec 页数事实修正（62×17 → 934 页：7 语 62 + 10 语 50）
+3. spec「§3 四语同步」提法 → 明确「不改任何本地化内容」
+4. spec override 机制矛盾 → 裁决为「双态结构常驻 SSR + html.sakura 作用域 CSS 切换」
+原始裁决文本存 scratchpad codex-verdict.txt（899 bytes）。

@@ -6,9 +6,9 @@
 
 ## 1. 目标
 
-把 🌸 新版（`html.sakura` 全站皮肤，62 页 × 17 语）从当前的「半成品」（粉 token + 硬阴影卡片，无手账灵魂件）升级为 PR #126 交付的 **v2 完整手账观感**（画卷拼贴、胶带 kicker、线装页头、网点纸背景、手账页脚）。
+把 🌸 新版（`html.sakura` 全站皮肤，17 语共 934 页：7 语各 62 页、10 语各 50 页）从当前的「半成品」（粉 token + 硬阴影卡片，无手账灵魂件）升级为 PR #126 交付的 **v2 完整手账观感**（画卷拼贴、胶带 kicker、线装页头、网点纸背景、手账页脚）。
 
-**不改内容一个字** —— 纯视觉层，无 §3 四语同步问题。
+**本工程不改任何本地化内容** —— 纯视觉层（CSS + 双态模板结构），不新增、不修改、不删除任何语言的正文，因此不触发 Constitution 的多语内容同步义务。
 
 ## 2. 现状关键事实（解剖结论）
 
@@ -38,12 +38,12 @@
 
 | 结构件 | 现状 | 目标 | 机制 |
 |---|---|---|---|
-| 首页 hero | HeroSection 换 token 变粉 | v2 HomeScreen 式画卷拼贴 | HeroSection.astro 内 sakura 分支（CSS 驱动为主，参考 BloodTestCheckerRouter 模式） |
-| 页面头 | 普通 h1 | 线装页头（竖排标签+装订线+胶带 kicker） | override `PageTitle.astro`，sakura 下输出 `.yk-pagehead` 结构 |
+| 首页 hero | HeroSection 换 token 变粉 | v2 HomeScreen 式画卷拼贴 | HeroSection.astro 内**同时 SSR 两态所需结构**，`html.sakura` 作用域 CSS 切换显隐 |
+| 页面头 | 普通 h1 | 线装页头（竖排标签+装订线+胶带 kicker） | override `PageTitle.astro`：单一共享 DOM + 装饰元素常驻输出，非 sakura 下 `display:none` |
 | 导航 | Starlight header 改色 | 手账导航（品牌副标+胶囊 tab） | 现有 Header 加 sakura 态深化；**不引入** v2 的月相钮（明暗归 Starlight 三态 select，避免三套主题机制打架——见 §5-4） |
-| 页脚 | Starlight 默认 | 四栏手账页脚 | override `Footer.astro`，sakura 分支输出手账结构 |
+| 页脚 | Starlight 默认 | 四栏手账页脚 | override `Footer.astro`：同上，双态结构常驻 + CSS 切换 |
 
-> override 必须**双态安全**：非 sakura（米哈游）渲染路径保持字节级不变；sakura 分支全部走 `html.sakura` 作用域。
+> **机制裁决（codex P2 实证）**：`html.sakura` 是**客户端** class（localStorage 驱动），Astro 静态构建期**无法**据它条件渲染 —— 所以 override 统一采用「**双态结构常驻 SSR + `html.sakura` 作用域 CSS 切换显隐**」，代价是每页多几 KB 静态 HTML，换来零 FOUC、零 hydration。只有需要真交互的结构（如首页动效卡）才升级为 React island（那会引入 hydration 成本，逐个论证）。「非 sakura 字节级不变」的承诺相应修正为：**非 sakura 的可见渲染结果不变**（DOM 里多了隐藏的 sakura 结构，视觉与行为不变）。
 
 ## 4. 红线（必须原样保留）
 
@@ -74,4 +74,4 @@
 
 ## 8. 完整解剖报告存档
 
-工作流全文（47k+ chars）：session `5ae5224c` 工作流 `wf_eca6839f-434` journal。关键数字：旧皮 2093 行 / v2 CSS 1322 行 / 76.4KB bundle / 17 语 62 页。
+工作流全文（47k+ chars）：session `5ae5224c` 工作流 `wf_eca6839f-434` journal。关键数字：旧皮 2093 行 / v2 CSS 1322 行 / 76.4KB bundle / 17 语共 934 页（7 语 62 页、10 语 50 页）。

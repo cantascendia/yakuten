@@ -506,9 +506,10 @@ export const PageHead = ({
   right?: ReactNode;
 }) => (
   <header className="yk-pagehead">
-    {/* 竖排标签作为视觉元素保留；卷号（volume）是线装书 lore，去掉后只显示 tab 名 */}
+    {/* 竖排标签作为视觉元素保留；卷号（volume）是线装书 lore，去掉后只显示 tab 名。
+        filter(Boolean) 防止只传其一时渲染出 undefined（codex P2）。 */}
     {(volume || tab) && (
-      <div className="yk-pagehead__tab" aria-hidden="true">{volume ? `${volume}・${tab}` : tab}</div>
+      <div className="yk-pagehead__tab" aria-hidden="true">{[volume, tab].filter(Boolean).join('・')}</div>
     )}
     <div className="yk-pagehead__body">
       {kicker && <SectionKicker tapeColor={tapeColor} pattern={pattern}>{kicker}</SectionKicker>}
