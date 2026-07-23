@@ -1,0 +1,361 @@
+/* =========================================================================
+   HRT药典 — Sakura Pathway Skin · 病程手账时间线
+   ------------------------------------------------------------------------
+   /pathway/ 页（17 语同构）在 html.sakura 下的完整重设计。
+   设计语言（对齐 /zh/v2 PathwayScreen 的时间线签名）：
+   · 左侧一条贯穿整页的樱粉装订虚线「脊柱」
+   · 四个阶段节点 = 渐满的圆形进度贴纸（基线 0% → 起步 40% → 滴定 72%
+     → 维持 100%，conic-gradient 纯 CSS，同 v2 的 MOON_FILL 语义）
+   · 阶段卡 = 骑脊柱的白纸卡 + tone 色 washi 胶带压角
+   · 决策节点 = 脊柱上的蜡封印章（红描边圆章 + 时间点 kicker）
+   零 DOM 改动：全部挂在 pathway.mdx 既有的结构钩子
+   （.pathway-timeline / .phase-row / .phase-marker--{tone} / .phase-label）。
+   非 sakura（米哈游）皮零影响；挂载于 customCss 末位。
+   ========================================================================= */
+
+/* ---------- 0. 时间线容器：脊柱 ---------- */
+html.sakura .pathway-timeline {
+  position: relative;
+  counter-reset: sakura-phase -1;
+  padding-inline-start: 0;
+}
+html.sakura .pathway-timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 40px 40px;
+  inset-inline-start: 31px;
+  border-inline-start: 3px dashed var(--sakura-pink);
+  pointer-events: none;
+}
+
+/* ---------- 1. 阶段行：节点列 + 内容列 ---------- */
+html.sakura .phase-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: 20px;
+  margin-block: 36px;
+  counter-increment: sakura-phase;
+}
+/* phase-label 顶行、marker 悬左、卡片占内容列 */
+html.sakura .phase-row .phase-label {
+  grid-column: 2;
+  order: -1;
+  font-family: var(--font-ui-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--fg-3) !important; /* 压 mdx 内联 color: var(--color-safe) 等 */
+  margin-block-end: 8px;
+}
+
+/* ---------- 2. 阶段节点：渐满进度贴纸 ---------- */
+html.sakura .phase-marker {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+  /* 清 pathway.css 原样式残留（absolute left:-2.25rem + translateX(-50%)） */
+  inset: auto;
+  left: auto;
+  top: auto;
+  transform: none;
+  margin-inline: 0;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background:
+    radial-gradient(closest-side, #FFFAF0 62%, transparent 0),
+    conic-gradient(var(--sakura-marker-fill-color, var(--sakura-blush)) calc(var(--sakura-marker-fill, 0) * 1turn), #FFFAF0 0);
+  box-shadow: 2px 2px 0 var(--ink);
+  z-index: 1;
+  margin-block-start: 2px;
+  flex-shrink: 0;
+}
+/* 阶段编号叠印在节点中心（counter 自动 0-3） */
+html.sakura .phase-marker::after {
+  content: counter(sakura-phase);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  text-shadow: 0 0 5px #FFFAF0, 0 0 2px #FFFAF0, 1px 1px 0 #FFFAF0;
+}
+/* 渐满比例（与 v2 PathwayScreen MOON_FILL 同值）与 tone 填色。
+   nth-of-type 只数 .phase-row 同级顺序：0 基线 / 1 起步 / 2 滴定 / 3 维持 */
+html.sakura .phase-row:nth-of-type(1) .phase-marker { --sakura-marker-fill: 0; }
+html.sakura .phase-row:nth-of-type(2) .phase-marker { --sakura-marker-fill: 0.4; }
+html.sakura .phase-row:nth-of-type(3) .phase-marker { --sakura-marker-fill: 0.72; }
+html.sakura .phase-row:nth-of-type(4) .phase-marker { --sakura-marker-fill: 1; }
+html.sakura .phase-marker--green { --sakura-marker-fill-color: var(--mint); }
+html.sakura .phase-marker--yellow { --sakura-marker-fill-color: var(--butter); }
+html.sakura .phase-marker--pink { --sakura-marker-fill-color: var(--sakura-pink); }
+
+/* ---------- 3. 阶段卡：白纸卡 + tone 胶带压角 ---------- */
+html.sakura .phase-row .phase-block {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  overflow: visible;
+  /* 纸卡本体样式由 sakura-components.css 通用规则承担（白卡+墨线+硬影）；
+     此处只中和它的粉渐变，回到干净纸面，tone 语义交给胶带+节点 */
+  background: var(--bg-3) !important;
+  margin-block: 0 !important;
+}
+/* washi 胶带（tone 色）骑卡上缘 —— 纯 CSS 渐变纹样，rotate -3° */
+html.sakura .phase-row .phase-block::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -11px;
+  inset-inline-start: 26px;
+  width: 74px;
+  height: 22px;
+  border: 1px dashed rgba(74, 40, 56, 0.3);
+  opacity: 0.92;
+  transform: rotate(-3deg);
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.45) 0 3px, transparent 3px 6px),
+    var(--sakura-tape-color, var(--sakura-blush));
+  pointer-events: none;
+}
+html.sakura .phase-block--green::before { --sakura-tape-color: var(--mint); }
+html.sakura .phase-block--yellow::before { --sakura-tape-color: var(--butter); }
+html.sakura .phase-block--pink::before { --sakura-tape-color: var(--sakura-blush); }
+
+/* 卡头：emoji 图标退役（语义由进度节点承载），标题衬线，week 徽章胶囊化 */
+html.sakura .phase-block__icon { display: none; }
+html.sakura .phase-block__title {
+  font-family: var(--font-heading) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  letter-spacing: 0 !important;
+  /* 去全局 h3 粉竖条：卡头已有节点+胶带+徽章三重视觉身份，竖条冗余 */
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+  margin: 0 !important;
+}
+/* 卡头行：标题与徽章基线对齐、留呼吸 */
+html.sakura .phase-block__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-block-end: 14px;
+  padding-block-end: 12px;
+  border-block-end: 1px dashed var(--ink-faint);
+}
+html.sakura .phase-block__badge { margin-inline-start: auto; }
+html.sakura .phase-block__badge {
+  background: #FFFAF0 !important;
+  border: 1.5px solid var(--ink) !important;
+  border-radius: 999px !important;
+  box-shadow: 1px 1px 0 var(--ink) !important;
+  color: #4A2838 !important;
+  font-family: var(--font-hud) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  padding: 3px 10px !important;
+  clip-path: none !important;
+}
+
+/* 卡内正文与列表（补齐第二轮修复：bullet 对齐、行距） */
+html.sakura .phase-block__desc { color: var(--fg-1) !important; line-height: 1.8; }
+html.sakura .phase-block__list { display: grid; gap: 8px; }
+html.sakura .phase-block__list-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--fg-1) !important;
+  line-height: 1.65;
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+html.sakura .phase-block__list-bullet {
+  flex-shrink: 0;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 2px;
+  border: 1.5px solid var(--ink);
+  transform: translateY(-1px);
+}
+html.sakura .phase-block__list-bullet--green { background: var(--mint) !important; }
+html.sakura .phase-block__list-bullet--yellow { background: var(--butter) !important; }
+html.sakura .phase-block__list-bullet--pink { background: var(--sakura-blush) !important; }
+
+/* 卡内链接：mdx 有 inline style color: var(--color-primary-light)（映射 blush，
+   在白卡上 1.33 不可读且 inline 特异度压过一切非 !important）→ 必须 !important */
+html.sakura .pathway-timeline .phase-block a:not(.citation-ref) {
+  color: #4A2838 !important;
+  background-image: none !important;
+  text-decoration: underline !important;
+  text-decoration-style: dotted !important;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+html.sakura .pathway-timeline .phase-block a:not(.citation-ref):hover {
+  color: var(--sakura-pink-text) !important;
+  text-decoration-style: solid !important;
+}
+
+/* ---------- 4. 决策节点：脊柱上的蜡封印章 ---------- */
+html.sakura .decision-node {
+  position: relative;
+  /* 中和通用纸卡规则（它把 decision-node 画成大白卡）——决策节点是
+     时间线上的「印章 + 分支」结构，不该是一整张卡 */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-block: 40px !important;
+  padding-inline-start: 84px !important;
+}
+/* 原菱形重塑为圆形蜡封章：红描边 + ivory 底 + 微倾 */
+html.sakura .decision-diamond {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  width: 62px;
+  height: 62px;
+  transform: rotate(-5deg) !important;
+  background: #FFFAF0 !important;
+  border: 2.5px solid var(--danger) !important;
+  border-radius: 50% !important;
+  box-shadow: 2px 2px 0 rgba(74, 40, 56, 0.35) !important;
+  clip-path: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+html.sakura .decision-diamond__inner {
+  transform: none !important;
+  text-align: center;
+  padding: 0 !important;
+}
+html.sakura .decision-diamond__time {
+  font-family: var(--font-hud) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  color: var(--danger) !important;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+html.sakura .decision-diamond__label {
+  font-family: var(--font-ui-accent) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em;
+  color: #4A2838 !important;
+  margin: 0 !important;
+}
+/* 分支组：与阶段卡同列对齐，卡间距收紧 */
+html.sakura .decision-branches {
+  display: grid;
+  gap: 12px;
+}
+html.sakura .decision-branches .decision-branch {
+  margin-block: 0 !important;
+  padding: 14px 16px !important;
+  border-radius: 12px !important;
+  box-shadow: 2px 2px 0 var(--ink) !important;
+}
+
+/* ---------- 5. 幻月夜：夜桌模型（脊柱换月光，纸面恒亮锁墨） ---------- */
+html.sakura[data-theme='dark'] .pathway-timeline::before {
+  border-inline-start-color: var(--lavender-deep);
+}
+html.sakura[data-theme='dark'] .phase-row .phase-label { color: var(--sakura-blush) !important; }
+html.sakura[data-theme='dark'] .phase-marker {
+  box-shadow: 2px 2px 0 var(--night-1);
+  border-color: #4A2838;
+}
+html.sakura[data-theme='dark'] .phase-marker::after { color: #4A2838; }
+html.sakura[data-theme='dark'] .phase-row .phase-block {
+  background: #FFFAF0 !important;
+  box-shadow: 4px 4px 0 var(--night-1) !important;
+}
+html.sakura[data-theme='dark'] .decision-diamond {
+  box-shadow: 2px 2px 0 var(--night-1) !important;
+}
+
+/* ---------- 6. 响应式（Starlight 断点 800px） ---------- */
+@media (max-width: 800px) {
+  html.sakura .pathway-timeline::before { inset-inline-start: 21px; }
+  html.sakura .phase-row {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+  html.sakura .phase-marker { width: 42px; height: 42px; border-width: 2.5px; }
+  html.sakura .phase-marker::after { font-size: 16px; }
+  html.sakura .phase-row .phase-block::before { width: 56px; inset-inline-start: 16px; }
+  html.sakura .decision-node { padding-inline-start: 56px !important; }
+  html.sakura .decision-diamond { width: 44px; height: 44px; }
+  html.sakura .decision-diamond__time { font-size: 7px !important; }
+  html.sakura .decision-diamond__label { font-size: 7px !important; }
+}
+
+/* ---------- 7. 动效纪律 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .pathway-timeline *,
+  html.sakura .pathway-timeline *::before,
+  html.sakura .pathway-timeline *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---------- 8. 决策路口：从印章到分支的「分叉连线」 ----------
+   决策的本质是「一个节点 → 三种去向」，把这个逻辑画出来：
+   每张分支卡从左侧伸出一段 tone 色连线接向脊柱（印章所在轴线），
+   绿=继续 / 黄=调整 / 红=停药就医 的信号灯语义一眼可读。 */
+html.sakura .decision-branches { position: relative; }
+/* 分支组的纵向汇流线（连接印章底部到最后一张分支卡） */
+html.sakura .decision-branches::before {
+  content: "";
+  position: absolute;
+  inset-block: -12px 50%;
+  inset-inline-start: -53px;
+  border-inline-start: 3px dashed var(--sakura-pink);
+  pointer-events: none;
+}
+html.sakura .decision-branches .decision-branch { position: relative; }
+/* 每张分支卡的水平引线（tone 色实线 + 端点圆点） */
+html.sakura .decision-branches .decision-branch::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -53px;
+  inset-block-start: 50%;
+  width: 53px;
+  border-block-start: 3px solid var(--sakura-branch-line, var(--ink-faint));
+  pointer-events: none;
+}
+html.sakura .decision-branches .decision-branch::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: -8px;
+  inset-block-start: calc(50% - 4.5px);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sakura-branch-line, var(--ink-faint));
+  border: 1.5px solid var(--ink);
+  pointer-events: none;
+}
+html.sakura .decision-branches .decision-branch--green { --sakura-branch-line: var(--mint-deep); }
+html.sakura .decision-branches .decision-branch--yellow { --sakura-branch-line: var(--honey); }
+html.sakura .decision-branches .decision-branch--red { --sakura-branch-line: var(--danger); }
+
+/* 移动端：引线随左列缩窄 */
+@media (max-width: 800px) {
+  html.sakura .decision-branches::before { inset-inline-start: -35px; }
+  html.sakura .decision-branches .decision-branch::before { inset-inline-start: -35px; width: 35px; }
+}
