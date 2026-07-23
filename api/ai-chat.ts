@@ -246,17 +246,72 @@ export default async function handler(req: Request) {
     // Limit conversation length to prevent token overflow
     const recentMessages = messages.slice(-10);
 
-    const result = streamText({
-      model: google('gemini-3-flash-preview'),
-      system: SYSTEM_PROMPT,
-      messages: recentMessages,
-      maxOutputTokens: 2048,
-      temperature: 0.3,
-    });
+    // 模型策略（SPEC ai-chat-model-fallback.md，owner 2026-07-23 授权）：
+    // ① 任务分级：纯寒暄（超短 + 寒暄词 + 零医疗词）走 Flash-Lite 池省主力额度；
+    //    其余一律 Flash 主力链 —— 医疗问答不为省额度降质量。
+    // ② 六级降级：404 / 429（免费额度耗尽）/ 5xx 自动下移；Flash 系耗尽自动落
+    //    Flash-Lite 系（两池配额独立，官方免费层均覆盖 Flash + Flash-Lite 全系）。
+    // ③ 每请求从链头开始 —— 额度恢复后自动回到最新模型，无跨请求状态。
+    // 模型清单来源：ai.google.dev/gemini-api/docs/models（2026-07-23 核实，
+    // gemini-3.6-flash 为最新稳定 Flash）。
+    const FLASH_CHAIN = [
+      'gemini-3.6-flash',
+      'gemini-3.5-flash',
+      'gemini-2.5-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-3.1-flash-lite',
+      'gemini-2.5-flash-lite',
+    ] as const;
+    const LITE_CHAIN = [
+      'gemini-3.5-flash-lite',
+      'gemini-3.1-flash-lite',
+      'gemini-2.5-flash-lite',
+      'gemini-3.6-flash',
+    ] as const;
 
-    // Consume first chunk to catch API errors before sending 200
-    const reader = result.textStream.getReader();
-    const firstChunk = await reader.read();
+    // 寒暄判定：保守窄召回 —— 宁可把寒暄给主力模型，不可把医疗问题给 lite
+    const lastUser = [...recentMessages].reverse().find((m) => m.role === 'user');
+    const rawContent = lastUser?.content;
+    const lastText = typeof rawContent === 'string' ? rawContent.trim() : '';
+    const GREETING_RE = /^(你好|您好|hi|hello|hey|嗨|哈喽|在吗|谢谢|感谢|thanks|thank you|辛苦了|早上好|晚上好|好的|ok|okay)[!！。.~？? ]*$/i;
+    const isSmallTalk = lastText.length <= 14 && GREETING_RE.test(lastText);
+    const MODEL_CHAIN = isSmallTalk ? LITE_CHAIN : FLASH_CHAIN;
+    const maxTokens = isSmallTalk ? 512 : 2048;
+
+    let reader: ReadableStreamDefaultReader<string> | null = null;
+    let firstChunk: ReadableStreamReadResult<string> | null = null;
+    let lastModelError: unknown = null;
+
+    for (const modelId of MODEL_CHAIN) {
+      try {
+        const result = streamText({
+          model: google(modelId),
+          system: SYSTEM_PROMPT,
+          messages: recentMessages,
+          maxOutputTokens: maxTokens,
+          temperature: 0.3,
+        });
+        // Consume first chunk to catch API errors before sending 200
+        const candidateReader = result.textStream.getReader();
+        const candidateFirst = await candidateReader.read();
+        reader = candidateReader;
+        firstChunk = candidateFirst;
+        break;
+      } catch (modelError: unknown) {
+        lastModelError = modelError;
+        const msg = modelError instanceof Error ? modelError.message : String(modelError);
+        console.error(`AI Chat model ${modelId} failed, trying next:`, msg.slice(0, 200));
+      }
+    }
+
+    if (!reader || !firstChunk) {
+      const msg = lastModelError instanceof Error ? lastModelError.message : 'all models failed';
+      console.error('AI Chat: model chain exhausted:', msg.slice(0, 200));
+      return new Response(JSON.stringify({ error: 'AI 服务暂时不可用' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (firstChunk.done) {
       return new Response('抱歉，AI 暂时无法回复。请稍后重试。', {
