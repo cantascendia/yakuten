@@ -14,6 +14,7 @@
  */
 import { hrefFor } from '../routes';
 import type { V2Route } from '../routes';
+import { references } from '../data';
 import { PageHead, InkCard, Icon, Chip } from '../Primitives';
 
 const TOOLS: Array<{
@@ -38,7 +39,7 @@ const TOOLS: Array<{
   },
   {
     route: 'refs', icon: 'file', color: 'var(--lavender)', deep: 'var(--lavender-deep)',
-    title: '文献库', desc: '27 条核心文献 · 按证据等级检索', tag: null,
+    title: '文献库', desc: `${references.length} 条核心文献 · 按证据等级检索`, tag: null,
   },
   {
     route: 'hospitals', icon: 'pin', color: 'var(--coral)', deep: 'var(--coral-deep)',

@@ -243,3 +243,14 @@ VERCEL_ENV === 'preview' && V2_PREVIEW === '1'
 3. spec「§3 四语同步」提法 → 明确「不改任何本地化内容」
 4. spec override 机制矛盾 → 裁决为「双态结构常驻 SSR + html.sakura 作用域 CSS 切换」
 原始裁决文本存 scratchpad codex-verdict.txt（899 bytes）。
+
+## 2026-07-23 终审（合并前把关·第二签）sha=7e3c873 reviewer=antigravity-gemini-flash bytes=2318
+
+范围：全 PR 首审（origin/master...HEAD，345KB / 32 文件），经 Antigravity CLI
+（agentapi new-conversation --model=flash，对话绑定 yakuten 工作区，agent 自主跑
+git diff + 读源码）。注：agent 自报模型名不可靠，实际为 Antigravity flash 档。
+裁决：**VERDICT: MERGE**（P1 无）。六项红线逐项复核通过（引用/无处方/横幅/隐私/
+门控/a11y）。P2 两条：
+1. ToolsScreen 文献数硬编码 27 vs 实际 43 → 已修为 references.length SSOT 派生
+2. RefsScreen lede 同问题 → 误报（该处已是 ${references.length} 动态值），不改
+双模型合并前把关完成：codex gpt-5.6-sol MERGE + antigravity gemini flash MERGE。
