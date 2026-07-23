@@ -80,9 +80,10 @@ html.sakura .phase-marker::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
+  /* Fraunces 数字有装饰性墨陷（0 内竖纹，owner 反馈怪）→ Jakarta 几何数字 */
+  font-family: var(--font-ui-accent);
+  font-size: 21px;
+  font-weight: 800;
   color: var(--ink);
   text-shadow: 0 0 5px #FFFAF0, 0 0 2px #FFFAF0, 1px 1px 0 #FFFAF0;
 }
