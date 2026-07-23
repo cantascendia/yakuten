@@ -281,6 +281,7 @@ export default async function handler(req: Request) {
     let reader: ReadableStreamDefaultReader<string> | null = null;
     let firstChunk: ReadableStreamReadResult<string> | null = null;
     let lastModelError: unknown = null;
+    let servedModel = '';
 
     for (const modelId of MODEL_CHAIN) {
       try {
@@ -296,6 +297,7 @@ export default async function handler(req: Request) {
         const candidateFirst = await candidateReader.read();
         reader = candidateReader;
         firstChunk = candidateFirst;
+        servedModel = modelId;
         break;
       } catch (modelError: unknown) {
         lastModelError = modelError;
@@ -338,7 +340,8 @@ export default async function handler(req: Request) {
     });
 
     return new Response(stream, {
-      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+      // x-yk-model：实际服务模型（可观测性，验证分级路由与降级链；非敏感）
+      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'x-yk-model': servedModel },
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
