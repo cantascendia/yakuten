@@ -22,32 +22,95 @@
  * blood-tests）。
  */
 
-interface DirectoryEntry {
-  num: string;
-  name: string;
-  href: string;
-  meta: string;
-}
+type Lang = string;
+interface DirectoryEntry { num: string; name: string; path: string; meta: string; }
 
-const entries: DirectoryEntry[] = [
-  { num: '01', name: '用药前准备', href: '/zh/before-you-start/', meta: '基线检查 · 风险自评' },
-  { num: '02', name: '用药路径图', href: '/zh/pathway/', meta: '四阶段 · 决策节点' },
-  { num: '03', name: '药物详解', href: '/zh/medications/estrogens/overview/', meta: '雌激素 · 抗雄 · 孕激素' },
-  { num: '04', name: '血检指南', href: '/zh/blood-tests/', meta: '判读 · 参考区间' },
-  { num: '05', name: '实操指南', href: '/zh/guides/', meta: '首次注射 · 切换途径' },
-  { num: '06', name: '风险与急症', href: '/zh/risks/', meta: '识别信号 · 立即行动' },
-];
+/** 板块名：与 astro.config sidebar 的 translations 逐字对齐（站内导航一致性）；
+ *  meta 说明与 UI 词为 AI 翻译（owner 授权），kicker 短语级。 */
+const NAMES: Record<Lang, string[]> = {
+  zh: ['用药前准备', '用药路径图', '药物详解', '血检指南', '实操指南', '风险与急症'],
+  en: ['Before You Start', 'HRT Pathway', 'Medications', 'Blood Tests', 'Task Guides', 'Risks & Emergencies'],
+  ja: ['服薬前の準備', 'HRT経路マップ', '薬物ガイド', '血液検査ガイド', '実用ガイド', 'リスクと緊急対応'],
+  ko: ['복용 전 준비', 'HRT 경로 맵', '약물 가이드', '혈액 검사 가이드', '실용 가이드', '위험 및 응급 상황'],
+  es: ['Antes de Empezar', 'Ruta de THS', 'Medicamentos', 'Análisis de Sangre', 'Guías Prácticas', 'Riesgos y Emergencias'],
+  pt: ['Antes de Começar', 'Caminho da TH', 'Medicamentos', 'Exames de Sangue', 'Guias Práticos', 'Riscos e Emergências'],
+  fr: ['Avant de Commencer', 'Parcours THS', 'Médicaments', 'Analyses Sanguines', 'Guides Pratiques', 'Risques et Urgences'],
+  de: ['Bevor Sie Beginnen', 'HRT-Pfad', 'Medikamente', 'Blutuntersuchungen', 'Praktische Anleitungen', 'Risiken & Notfälle'],
+  ru: ['Перед началом', 'Путь HRT', 'Препараты', 'Анализы крови', 'Практические руководства', 'Риски и неотложные состояния'],
+  ar: ['قبل أن تبدأ', 'مسار العلاج الهرموني', 'الأدوية', 'تحاليل الدم', 'أدلة عملية', 'المخاطر والطوارئ'],
+  fa: ['پیش از شروع', 'مسیر HRT', 'داروها', 'آزمایش‌های خون', 'راهنماهای عملی', 'خطرات و موارد اورژانسی'],
+  th: ['ก่อนเริ่ม', 'เส้นทาง HRT', 'ยา', 'การตรวจเลือด', 'คู่มือปฏิบัติ', 'ความเสี่ยงและเหตุฉุกเฉิน'],
+  vi: ['Trước Khi Bắt Đầu', 'Lộ Trình HRT', 'Thuốc', 'Xét Nghiệm Máu', 'Hướng Dẫn Thực Hành', 'Rủi Ro & Cấp Cứu'],
+  id: ['Sebelum Memulai', 'Jalur HRT', 'Obat-obatan', 'Tes Darah', 'Panduan Praktis', 'Risiko & Darurat'],
+  fil: ['Bago Magsimula', 'Daan ng HRT', 'Mga Gamot', 'Pagsusuri ng Dugo', 'Mga Praktikal na Gabay', 'Mga Panganib at Emerhensiya'],
+  hi: ['शुरू करने से पहले', 'HRT मार्ग', 'दवाएं', 'रक्त परीक्षण', 'व्यावहारिक गाइड', 'जोखिम और आपात स्थिति'],
+  tr: ['Başlamadan Önce', 'HRT Yolu', 'İlaçlar', 'Kan Testleri', 'Uygulama Kılavuzları', 'Riskler ve Acil Durumlar'],
+};
+
+const METAS: Record<Lang, string[]> = {
+  zh: ['基线检查 · 风险自评', '四阶段 · 决策节点', '雌激素 · 抗雄 · 孕激素', '判读 · 参考区间', '首次注射 · 切换途径', '识别信号 · 立即行动'],
+  en: ['Baseline tests · Risk self-check', 'Four phases · Decision points', 'Estrogens · Anti-androgens · Progestogens', 'Reading results · Reference ranges', 'First injection · Switching routes', 'Warning signs · Act now'],
+  ja: ['ベースライン検査 · リスク自己評価', '4段階 · 判断ポイント', 'エストロゲン · 抗アンドロゲン · プロゲストーゲン', '結果の読み方 · 基準範囲', '初めての注射 · 経路の切替', '危険サイン · 直ちに行動'],
+  ko: ['기초 검사 · 위험 자가 평가', '4단계 · 결정 지점', '에스트로겐 · 항안드로겐 · 프로게스토겐', '결과 해석 · 참고 범위', '첫 주사 · 경로 전환', '위험 신호 · 즉시 행동'],
+  es: ['Pruebas basales · Autoevaluación', 'Cuatro fases · Puntos de decisión', 'Estrógenos · Antiandrógenos · Progestágenos', 'Interpretación · Rangos de referencia', 'Primera inyección · Cambio de vía', 'Señales de alarma · Actúa ya'],
+  pt: ['Exames basais · Autoavaliação', 'Quatro fases · Pontos de decisão', 'Estrogênios · Antiandrogênios · Progestagênios', 'Interpretação · Valores de referência', 'Primeira injeção · Troca de via', 'Sinais de alerta · Aja já'],
+  fr: ['Bilan initial · Auto-évaluation', 'Quatre phases · Points de décision', 'Œstrogènes · Anti-androgènes · Progestatifs', 'Interprétation · Valeurs de référence', 'Première injection · Changement de voie', "Signes d'alerte · Agir vite"],
+  de: ['Basisuntersuchung · Selbsttest', 'Vier Phasen · Entscheidungspunkte', 'Östrogene · Antiandrogene · Gestagene', 'Befunde lesen · Referenzbereiche', 'Erste Injektion · Wechsel der Route', 'Warnzeichen · Sofort handeln'],
+  ru: ['Базовые анализы · Самооценка риска', 'Четыре этапа · Точки решения', 'Эстрогены · Антиандрогены · Прогестагены', 'Чтение анализов · Референсные диапазоны', 'Первая инъекция · Смена пути введения', 'Тревожные признаки · Действуйте сразу'],
+  ar: ['فحوص أساسية · تقييم ذاتي للمخاطر', 'أربع مراحل · نقاط القرار', 'الإستروجين · مضادات الأندروجين · البروجستوجين', 'قراءة النتائج · النطاقات المرجعية', 'أول حقنة · تغيير الطريقة', 'علامات التحذير · تصرف فورًا'],
+  fa: ['آزمایش‌های پایه · خودارزیابی خطر', 'چهار مرحله · نقاط تصمیم', 'استروژن‌ها · ضدآندروژن‌ها · پروژستوژن‌ها', 'خواندن نتایج · محدوده مرجع', 'اولین تزریق · تغییر روش', 'علائم هشدار · اقدام فوری'],
+  th: ['ตรวจพื้นฐาน · ประเมินความเสี่ยง', 'สี่ระยะ · จุดตัดสินใจ', 'เอสโตรเจน · แอนติแอนโดรเจน · โปรเจสโตเจน', 'อ่านผล · ช่วงอ้างอิง', 'ฉีดครั้งแรก · เปลี่ยนวิธี', 'สัญญาณเตือน · รีบดำเนินการ'],
+  vi: ['Xét nghiệm nền · Tự đánh giá rủi ro', 'Bốn giai đoạn · Điểm quyết định', 'Estrogen · Kháng androgen · Progestogen', 'Đọc kết quả · Khoảng tham chiếu', 'Tiêm lần đầu · Đổi đường dùng', 'Dấu hiệu cảnh báo · Hành động ngay'],
+  id: ['Tes dasar · Penilaian risiko', 'Empat fase · Titik keputusan', 'Estrogen · Antiandrogen · Progestogen', 'Membaca hasil · Rentang rujukan', 'Suntikan pertama · Ganti rute', 'Tanda bahaya · Segera bertindak'],
+  fil: ['Batayang pagsusuri · Self-assessment', 'Apat na yugto · Mga punto ng desisyon', 'Estrogen · Antiandrogen · Progestogen', 'Pagbasa ng resulta · Reference range', 'Unang iniksyon · Pagpapalit ng ruta', 'Mga babalang senyales · Kumilos agad'],
+  hi: ['बेसलाइन जांच · जोखिम स्व-मूल्यांकन', 'चार चरण · निर्णय बिंदु', 'एस्ट्रोजन · एंटी-एंड्रोजन · प्रोजेस्टोजन', 'रिपोर्ट पढ़ना · संदर्भ सीमा', 'पहला इंजेक्शन · मार्ग बदलना', 'चेतावनी संकेत · तुरंत कार्रवाई'],
+  tr: ['Bazal testler · Risk öz değerlendirmesi', 'Dört aşama · Karar noktaları', 'Östrojenler · Antiandrojenler · Progestojenler', 'Sonuç okuma · Referans aralıkları', 'İlk enjeksiyon · Yol değişimi', 'Uyarı işaretleri · Hemen harekete geçin'],
+};
+
+const UI: Record<Lang, { title: string; note: string }> = {
+  zh: { title: '目录', note: '全站主要板块，从这里到达' },
+  en: { title: 'Directory', note: 'All main sections of the site' },
+  ja: { title: '目次', note: 'サイトの主要セクションへ' },
+  ko: { title: '목차', note: '사이트 주요 섹션 바로가기' },
+  es: { title: 'Índice', note: 'Secciones principales del sitio' },
+  pt: { title: 'Índice', note: 'Seções principais do site' },
+  fr: { title: 'Sommaire', note: 'Les sections principales du site' },
+  de: { title: 'Übersicht', note: 'Die Hauptbereiche der Website' },
+  ru: { title: 'Разделы', note: 'Основные разделы сайта' },
+  ar: { title: 'الفهرس', note: 'الأقسام الرئيسية للموقع' },
+  fa: { title: 'فهرست', note: 'بخش‌های اصلی سایت' },
+  th: { title: 'สารบัญ', note: 'ส่วนหลักของเว็บไซต์' },
+  vi: { title: 'Mục lục', note: 'Các mục chính của trang' },
+  id: { title: 'Daftar Isi', note: 'Bagian utama situs' },
+  fil: { title: 'Talaan', note: 'Mga pangunahing seksyon ng site' },
+  hi: { title: 'सूची', note: 'साइट के मुख्य खंड' },
+  tr: { title: 'Dizin', note: 'Sitenin ana bölümleri' },
+};
+
+const PATHS = ['before-you-start/', 'pathway/', 'medications/estrogens/overview/', 'blood-tests/', 'guides/', 'risks/'];
+
+const locale = Astro.currentLocale ?? 'zh';
+const names = NAMES[locale] ?? NAMES.zh;
+const metas = METAS[locale] ?? METAS.zh;
+const ui = UI[locale] ?? UI.zh;
+
+const entries: DirectoryEntry[] = PATHS.map((path, i) => ({
+  num: String(i + 1).padStart(2, '0'),
+  name: names[i],
+  path: '/' + locale + '/' + path,
+  meta: metas[i],
+}));
 ---
 
 <section class="site-dir">
   <div class="site-dir__card glass-panel clipped-card">
     <div class="site-dir__head">
-      <h2 class="site-dir__title">目录</h2>
-      <p class="site-dir__note">全站主要板块，从这里到达</p>
+      <h2 class="site-dir__title">{ui.title}</h2>
+      <p class="site-dir__note">{ui.note}</p>
     </div>
-    <nav class="site-dir__nav" aria-label="站点目录">
+    <nav class="site-dir__nav" aria-label={ui.title}>
       {entries.map((entry) => (
-        <a href={entry.href} class="site-dir__row">
+        <a href={entry.path} class="site-dir__row">
           <span class="site-dir__num" aria-hidden="true">{entry.num}</span>
           <span class="site-dir__name">{entry.name}</span>
           <span class="site-dir__leader" aria-hidden="true"></span>

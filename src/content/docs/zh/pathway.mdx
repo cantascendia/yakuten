@@ -126,7 +126,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row" id="phase0">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">WEEK 0</div>
+  <div class="phase-label">WEEK 0</div>
   <PhaseBlock phase={0} title="基线评估" color="green">
     <p class="phase-block__desc">
       在开启任何用药方案前，建议进行系统的身体基线指标评估。这有助于排除潜在的用药风险，并为你建立珍贵的初始健康档案<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。
@@ -150,7 +150,7 @@ import '../../../styles/pathway.css';
       </li>
     </ul>
     <p class="phase-block__desc" style="margin-top: var(--space-md); font-size: 0.8125rem;">
-      如果你正准备进行首次 EV 注射，可以查阅 <a href="/zh/guides/first-injection/" style="color: var(--color-primary-light);">首次注射实操指南</a> 了解详细操作步骤。
+      如果你正准备进行首次 EV 注射，可以查阅 <a href="/zh/guides/first-injection/">首次注射实操指南</a> 了解详细操作步骤。
     </p>
   </PhaseBlock>
 </div>
@@ -159,7 +159,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row" id="phase1">
   <div class="phase-marker phase-marker--green" />
-  <div class="phase-label" style="color: var(--color-safe);">INITIATION · 1-6 MONTHS</div>
+  <div class="phase-label">INITIATION · 1-6 MONTHS</div>
   <PhaseBlock phase={1} title="1. 起步与温和适应期" color="green" week="1-6 MONTHS">
     <DoseTable
       caption="起始期各给药方式推荐起始剂量"
@@ -172,10 +172,10 @@ import '../../../styles/pathway.css';
       ]}
     />
     <p class="phase-block__desc" style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-      抗雄方案（可根据个体需要选择）：<a href="/zh/medications/antiandrogens/cpa/" style="color: var(--color-primary-light);">CPA</a> <InlineValue value="5–12.5" unit="mg/天" /> 或 <a href="/zh/medications/antiandrogens/spironolactone/" style="color: var(--color-primary-light);">螺内酯</a> <InlineValue value="50–100" unit="mg/天" /><CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />。
+      抗雄方案（可根据个体需要选择）：<a href="/zh/medications/antiandrogens/cpa/">CPA</a> <InlineValue value="5–12.5" unit="mg/天" /> 或 <a href="/zh/medications/antiandrogens/spironolactone/">螺内酯</a> <InlineValue value="50–100" unit="mg/天" /><CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} />。
     </p>
     <p class="phase-block__desc" style="margin-top: var(--space-xs); margin-bottom: var(--space-sm); padding: var(--space-xs) var(--space-sm); border-left: 2px solid var(--color-caution); font-size: 0.75rem; color: var(--color-caution);">
-      🇨🇳 **中国大陆现实可及性提示**：通常戊酸雌二醇口服片（如补佳乐）在大陆较易获取；凝胶等制剂多需前往三甲医院开具处方，而正规的经皮贴片与注射剂目前渠道相对有限。螺内酯是本地较为常见的抗雄阻断药。你可以参考 <a href="/zh/china-reality/#step3" style="color: var(--color-primary);">中国 HRT 现实路径</a> 以获得更多在地医疗引导信息。
+      🇨🇳 **中国大陆现实可及性提示**：通常戊酸雌二醇口服片（如补佳乐）在大陆较易获取；凝胶等制剂多需前往三甲医院开具处方，而正规的经皮贴片与注射剂目前渠道相对有限。螺内酯是本地较为常见的抗雄阻断药。你可以参考 <a href="/zh/china-reality/#step3">中国 HRT 现实路径</a> 以获得更多在地医疗引导信息。
     </p>
     <div class="phase-stats">
       <div class="phase-stat">
@@ -198,7 +198,7 @@ import '../../../styles/pathway.css';
       </p>
     </div>
     <p class="phase-block__desc" style="margin-top: var(--space-md); font-size: 0.8125rem;">
-      如需转换抗雄方案或雌二醇给药途径，可以查阅 <a href="/zh/guides/switch-antiandrogen/" style="color: var(--color-primary-light);">抗雄切换指南</a> · <a href="/zh/guides/switch-e2-route/" style="color: var(--color-primary-light);">E2 途径切换指南</a>。
+      如需转换抗雄方案或雌二醇给药途径，可以查阅 <a href="/zh/guides/switch-antiandrogen/">抗雄切换指南</a> · <a href="/zh/guides/switch-e2-route/">E2 途径切换指南</a>。
     </p>
   </PhaseBlock>
 </div>
@@ -226,7 +226,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row" id="phase2">
   <div class="phase-marker phase-marker--yellow" />
-  <div class="phase-label" style="color: var(--color-accent);">TITRATION · 6-12 MONTHS</div>
+  <div class="phase-label">TITRATION · 6-12 MONTHS</div>
   <PhaseBlock phase={2} title="2. 剂量滴定与个性化调整期" color="yellow" week="6-12 MONTHS">
     <p class="phase-block__desc">
       在用药 6 个月后，建议根据前期的多次血检数据进行个性化的剂量微调<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />。本阶段的目标是帮助你的激素水平稳步、平稳地达到跨性别女性的常规生理区间。
@@ -268,7 +268,7 @@ import '../../../styles/pathway.css';
       <span class="dose-tag dose-tag--yellow">经皮凝胶每日 3.0–4.5 mg</span>
     </div>
     <p class="phase-block__desc" style="margin-top: var(--space-md); font-size: 0.8125rem;">
-      在剂量滴定阶段，你可能会遇到需要优化用药组合的情况。建议参阅 <a href="/zh/guides/switch-antiandrogen/" style="color: var(--color-primary-light);">抗雄切换指南</a> 及 <a href="/zh/guides/switch-e2-route/" style="color: var(--color-primary-light);">E2 途径切换指南</a> 进行平稳过渡。
+      在剂量滴定阶段，你可能会遇到需要优化用药组合的情况。建议参阅 <a href="/zh/guides/switch-antiandrogen/">抗雄切换指南</a> 及 <a href="/zh/guides/switch-e2-route/">E2 途径切换指南</a> 进行平稳过渡。
     </p>
   </PhaseBlock>
 </div>
@@ -296,7 +296,7 @@ import '../../../styles/pathway.css';
 
 <div class="phase-row" id="phase3">
   <div class="phase-marker phase-marker--pink" />
-  <div class="phase-label" style="color: var(--color-primary);">STEADY STATE · 12 MONTHS+</div>
+  <div class="phase-label">STEADY STATE · 12 MONTHS+</div>
   <PhaseBlock phase={3} title="3. 长期维持与健康监测期" color="pink" week="12 MONTHS+">
     <p class="phase-block__desc">
       当激素指标与你的身体变化逐渐达到安稳状态后，可以转入更低频、更从容的健康守护模式。我们的原则是：用最小的有效剂量，平稳维持 E2 在 <InlineValue value="100–200" unit="pg/mL" />、T 在 <InlineValue value="<50" unit="ng/dL" /> 的舒缓区间。

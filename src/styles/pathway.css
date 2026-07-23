@@ -713,3 +713,25 @@
     animation: none;
   }
 }
+
+/* =========================================================================
+   2026-07-23 inline style 迁移（owner 授权动默认皮）：
+   mdx 里的 style="color: var(--color-*)" 全部删除，等价配色由此处接手 ——
+   默认（米哈游）皮观感零变化，sakura 皮由 sakura-pathway.css 覆盖。
+   ========================================================================= */
+.phase-marker--green ~ .phase-label { color: var(--color-safe); }
+.phase-marker--yellow ~ .phase-label { color: var(--color-accent); }
+.phase-marker--pink ~ .phase-label { color: var(--color-primary); }
+.phase-label { color: var(--color-primary); }
+.phase-block a:not(.citation-ref) { color: var(--color-primary-light); }
+
+/* 监测对照表布局退化修复（通用层，两皮同病同治）：
+   Starlight 的 .sl-markdown-content table{display:block} 让 table-layout:fixed
+   失效，长文列被 nowrap 撑爆挤瘦其余列（单元格行高 255px+）。 */
+.sl-markdown-content .guidelines-comparison table,
+.guidelines-comparison table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.guidelines-comparison td { white-space: normal; }
