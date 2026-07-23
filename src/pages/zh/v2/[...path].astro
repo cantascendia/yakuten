@@ -1,0 +1,151 @@
+---
+/**
+ * /zh/v2/** — 绯英典籍 v2 的【单一 catch-all 路由】
+ *
+ * 为什么是一个 catch-all 而不是 13 个页面文件（review #8）：
+ * v2 是 zh-only 的生产医疗页，§3 要求四语同步；在补齐前必须真正【不可访问】，
+ * 而不是靠 noindex meta。静态站要让页面"根本不存在"，唯一干净的机制是让
+ * getStaticPaths 受 flag 控制返回 []。把 13 页收敛到这里，门控只需一处。
+ *
+ * flag 关闭（默认生产构建）→ getStaticPaths 返回 [] → 这些路径不构建 → 真实 404。
+ * flag 打开（dev / Preview 环境）→ 构建全部 13 路由 + 20 药物详情。
+ *
+ * 各屏的 client 指令在下方模板里静态声明（Astro 的 client: 指令不能动态设置）：
+ *   静态零 JS：home / urgent / drugs / drug-detail / tools
+ *   React 岛：pathway / doc / blood / risk / inject / compare / refs / hospitals
+ */
+import V2Layout from '../../../layouts/V2Layout.astro';
+import { V2_ENABLED } from '../../../lib/v2-flag';
+import { drugs, type Drug } from '../../../components/v2/data';
+
+import HomeScreen from '../../../components/v2/screens/HomeScreen.tsx';
+import UrgentScreen from '../../../components/v2/screens/UrgentScreen.tsx';
+import PathwayScreen from '../../../components/v2/screens/PathwayScreen.tsx';
+import DrugIndexScreen from '../../../components/v2/screens/DrugIndexScreen.tsx';
+import DrugDetailScreen from '../../../components/v2/screens/DrugDetailScreen.tsx';
+import DocScreen from '../../../components/v2/screens/DocScreen.tsx';
+import ToolsScreen from '../../../components/v2/screens/ToolsScreen.tsx';
+import BloodCheckerScreen from '../../../components/v2/screens/BloodCheckerScreen.tsx';
+import RiskScreenerScreen from '../../../components/v2/screens/RiskScreenerScreen.tsx';
+import InjectToolScreen from '../../../components/v2/screens/InjectToolScreen.tsx';
+import CompareScreen from '../../../components/v2/screens/CompareScreen.tsx';
+import RefsScreen from '../../../components/v2/screens/RefsScreen.tsx';
+import HospitalScreen from '../../../components/v2/screens/HospitalScreen.tsx';
+import type { V2Route } from '../../../components/v2/routes';
+
+export function getStaticPaths() {
+  // 门控：flag 关闭时不产出任何路径 → /zh/v2/* 全部真实 404
+  if (!V2_ENABLED) return [];
+
+  type Entry = {
+    path: string | undefined;
+    screen: string;
+    route: V2Route;
+    title: string;
+    description: string;
+    drug?: Drug;
+  };
+
+  const staticRoutes: Entry[] = [
+    {
+      path: undefined, screen: 'home', route: 'home',
+      title: 'HRT药典 · Yakuten — 循证 · 减害 · 引导就医',
+      description: '面向中文圈跨性别女性的 HRT 安全底线信息站。基于国际临床指南与同行评审文献，为已在用药或即将用药者提供安全参考。',
+    },
+    {
+      path: 'urgent', screen: 'urgent', route: 'urgent',
+      title: '停药信号 · 六条 — 急症识别 | HRT药典',
+      description: '出现下面任何一条：停药，就医。六条停药信号 + 24h 热线 + 就医话术。症状对照来自 Endocrine Society 2017 与 WPATH SOC 8。',
+    },
+    {
+      path: 'pathway', screen: 'pathway', route: 'pathway',
+      title: '用药路径图 · 四阶段 | HRT药典',
+      description: '不是剂量指南，是 4 个决策节点。基线 → 低剂量起步 → 中等剂量调整 → 维持期，每阶段的复查节奏与停药就医红线。',
+    },
+    {
+      path: 'drugs', screen: 'drugs', route: 'drugs',
+      title: '药物图鉴 · 20 种循证图鉴 | HRT药典',
+      description: '20 种 HRT 药物按分类索引：维持剂量、VTE 相对风险、证据等级、中国获取方式。剂量与 ≥2 个独立指南来源交叉验证。',
+    },
+    {
+      path: 'doc', screen: 'doc', route: 'doc',
+      title: '戊酸雌二醇注射液 — 文档 | HRT药典',
+      description: '戊酸雌二醇注射液（EV）循证详解：药代动力学、剂量范围、SC vs IM、红线与参考文献。',
+    },
+    {
+      path: 'tools', screen: 'tools', route: 'tools',
+      title: '临床工具 · 七件 | HRT药典',
+      description: '血检 HUD、风险自评、注射计算器、药物对比、文献库、找医院、AI 问答。所有工具 100% 前端运行，零数据传输。',
+    },
+    {
+      path: 'tools/blood', screen: 'blood', route: 'blood',
+      title: '血检 HUD — 临床工具 | HRT药典',
+      description: '输入血检数值，对照 HRT 目标区间。E2/T/PRL/肝功能/血钾/血红蛋白/D-二聚体 七项。纯前端运行，零传输、零存储。',
+    },
+    {
+      path: 'tools/risk', screen: 'risk', route: 'risk',
+      title: '风险自评 · 7 问 — 临床工具 | HRT药典',
+      description: '回答 7 个问题，得到 VTE / 肝脏 / 脑膜瘤 / 心血管 四个维度的风险画像。纯前端运行，答案不上传、不存储。',
+    },
+    {
+      path: 'tools/inject', screen: 'inject', route: 'inject',
+      title: '注射计算器 · EV — 临床工具 | HRT药典',
+      description: '戊酸雌二醇注射：剂量↔抽取体积换算 + 血药浓度波动形状示意（相对，非绝对浓度）。纯前端运行。',
+    },
+    {
+      path: 'tools/compare', screen: 'compare', route: 'compare',
+      title: '药物对比 · 三栏并排 — 临床工具 | HRT药典',
+      description: '从 20 种药物中任选三种横向对比：剂量、半衰期、VTE 相对风险、证据等级、中国获取方式。',
+    },
+    {
+      path: 'tools/refs', screen: 'refs', route: 'refs',
+      title: '文献库 — 参考文献 | HRT药典',
+      description: '站内每条医学声明的来源。按作者/标题/期刊搜索，按证据等级 A/B/C 过滤。无引用 = 不写入网站。',
+    },
+    {
+      path: 'hospitals', screen: 'hospitals', route: 'hospitals',
+      title: '友好医疗资源 — 找医院 | HRT药典',
+      description: '社区验证的跨性别友好医院，按省份检索。不用告诉医生你是跨性别也能做检查——「我想检查激素水平」，任何三甲内分泌科都可以开血检。',
+    },
+  ];
+
+  const drugRoutes: Entry[] = drugs.map((drug) => {
+    const banned = drug.category === 'banned';
+    const r0 = drug.routes?.[0];
+    return {
+      path: `drugs/${drug.id}`,
+      screen: 'drug',
+      route: 'drug' as V2Route,
+      drug,
+      title: `${drug.names.zh} — 药物详解 | HRT药典`,
+      description: banned
+        ? `${drug.names.zh}（${drug.names.generic}）属绝对禁用成分，任何 HRT/GAHT 方案都不应包含。本页说明原因与建议替代方案。`
+        : `${drug.names.zh}（${drug.names.generic}）循证详解：剂量范围、血检监测、副作用、禁忌症、危险组合与中国获取方式。证据等级 ${r0?.evidenceLevel || 'B'}。`,
+    };
+  });
+
+  return [...staticRoutes, ...drugRoutes].map((e) => ({
+    params: { path: e.path },
+    props: e,
+  }));
+}
+
+const { screen, route, title, description, drug } = Astro.props;
+---
+
+<V2Layout title={title} description={description} route={route}>
+  {screen === 'home' && <HomeScreen />}
+  {screen === 'urgent' && <UrgentScreen />}
+  {screen === 'drugs' && <DrugIndexScreen />}
+  {screen === 'tools' && <ToolsScreen />}
+  {screen === 'drug' && drug && <DrugDetailScreen drug={drug} />}
+
+  {screen === 'pathway' && <PathwayScreen client:visible />}
+  {screen === 'doc' && <DocScreen client:visible />}
+  {screen === 'blood' && <BloodCheckerScreen client:visible />}
+  {screen === 'risk' && <RiskScreenerScreen client:visible />}
+  {screen === 'inject' && <InjectToolScreen client:visible />}
+  {screen === 'compare' && <CompareScreen client:visible />}
+  {screen === 'refs' && <RefsScreen client:visible />}
+  {screen === 'hospitals' && <HospitalScreen client:visible />}
+</V2Layout>

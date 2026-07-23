@@ -1,0 +1,34 @@
+---
+/**
+ * EmergencyBanner — 应急横幅
+ * 移植自 design_files/ui_kits/yakuten/shell.jsx:4-10
+ *
+ * ⚠️ 设计红线 + CONSTITUTION §1 双重锁定：
+ *    「紧急横幅不可关闭，背景红、文字白，永远高于内容层」
+ *    → 本组件【永远不得】增加关闭/收起/dismiss 控件，不得加 localStorage 记忆，
+ *      不得因任何 A/B 实验或「用户觉得吵」而隐藏。改这条需走 Constitution 修订。
+ *
+ * 零 JS：原型是 <button onClick={setRoute('urgent')}>，真实路径下就是一个链接。
+ * 白字 on --danger-deep #C23D5C = 5.10:1 PASS —— 不动。
+ */
+import { hrefFor } from '../routes';
+---
+
+{/*
+  不加 aria-label —— 让可见文本本身成为可访问名称。
+  原来的 aria-label="急症识别 · 停药信号" 会【覆盖】可见文本，导致读屏用户
+  只听到「急症识别·停药信号」，听不到「单侧小腿肿胀/突发胸痛/视力变化/严重头痛」
+  这四条真正的急症症状 —— 无障碍用户拿不到与视力用户同等的安全信息。
+*/}
+<a class="yk-banner" href={hrefFor('urgent')}>
+  ⚠ 单侧小腿肿胀 · 突发胸痛 · 视力变化 · 严重头痛 ─── <u>急症识别 →</u>
+</a>
+
+<style>
+  /* 原型的 <button> 靠 inline style 做成整条通栏；换成 <a> 后需等价补上。
+     颜色/字体/内边距一律由 layout.css 的 .yk-banner 提供，此处只补块级布局。 */
+  .yk-banner {
+    display: block;
+    width: 100%;
+  }
+</style>

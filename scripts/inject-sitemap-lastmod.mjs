@@ -17,6 +17,27 @@ const CONTENT_DIR = path.resolve('src/content/docs');
 const SITE = 'https://hrtyaku.com';
 const BUILD_TIME = new Date().toISOString();
 
+// Route prefixes that must never enter the sitemap, regardless of source type.
+//
+// Why this exists: the noindex logic below is driven by MDX frontmatter, so it
+// only ever sees src/content/docs/**. Pages under src/pages/**.astro are picked
+// up by @astrojs/sitemap (auto-injected by Starlight) but have no frontmatter to
+// read — they would silently ship into the sitemap.
+//
+//   /zh/v2/ — 绯英典籍 v2 预览表面。它与既有 /zh/* 是同数据同主题的重复内容
+//   （/zh/v2/drugs/estradiol-injection/ vs /zh/medications/estrogens/injection/ …）。
+//   在一个有 GSC 投入 + 40 条 redirect + hreflang 图谱的生产站上提交这套 URL，
+//   等于主动上报竞争性重复内容，可能导致规范页被替换、排名稀释。
+//   页面自身已带 <meta name="robots" content="noindex,follow">，此处是第二道防线：
+//   noindex 只在爬虫【抓取后】生效，不进 sitemap 才能从源头不邀请抓取。
+//   转正（四语补齐 + 视觉签字）时，连同 V2Layout 的 noindex meta 一并移除。
+const EXCLUDED_PREFIXES = ['/zh/v2/'];
+
+function isExcludedByPath(url) {
+  const p = url.startsWith(SITE) ? url.slice(SITE.length) : url;
+  return EXCLUDED_PREFIXES.some((prefix) => p === prefix || p.startsWith(prefix));
+}
+
 // Walk content dir once, returning:
 //   lastmod: Map { "https://…/zh/medications/.../" : "2026-04-15T…Z" }
 //   noindex: Set of URLs whose frontmatter has `noindex: true` (e.g. the paused
@@ -72,7 +93,7 @@ function injectIntoSitemap(sitemapPath, lastmodMap, noindexSet) {
   xml = xml.replace(
     /<url>([\s\S]*?)<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g,
     (_match, prefix, loc, inner) => {
-      if (noindexSet.has(loc)) {
+      if (noindexSet.has(loc) || isExcludedByPath(loc)) {
         removed++;
         return '';
       }

@@ -1,0 +1,310 @@
+/* =========================================================================
+   HRT Yakuten v2 — OVERRIDE LAYER
+   =========================================================================
+   这是本次重建中【唯一】允许偏离 handoff 设计包的样式文件。
+
+   styles.css / colors_and_type.css / layout.css 三个文件与
+   design_handoff_site_full/design_files/ 逐字节相同（可 diff 验证），
+   所有偏离集中在本文件，便于审计。
+
+   每条规则都必须注明：① 出处（原型文件:行号）② 偏离理由。
+   ========================================================================= */
+
+
+/* -------------------------------------------------------------------------
+   1) AA 对比度修正
+   -------------------------------------------------------------------------
+   依据：origin/master PR #36 (026bf7b) 已对【同一套设计】做过对比度签字修复，
+   引入 --sakura-pink-aa / --sakura-pink-text 两个令牌。而本设计包是该修复
+   【之前】的分叉快照（grep 确认包内无这两个令牌）。
+
+   → 逐字移植设计包 CSS ＝ revert 一个已合并的无障碍修复。
+   本层把 master 已签字的修法重新应用到 /v2 作用域。
+
+   实测对比度（sRGB relative luminance）：
+     #FFFFFF on #FFA8C5 (--sakura-pink)      = 1.80  FAIL
+     #4A2838 on #FFA8C5                       = 7.06  PASS  ← 采用
+     #E5578B on #FFF5E0 (pink-deep on cream)  = 3.20  FAIL
+     #C02868 on #FFF5E0 (pink-text on cream)  = 5.18  PASS  ← 采用
+     #FFFFFF on #C23D5C (--danger-deep)       = 5.10  PASS  ← 应急横幅，不动
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* 来自 origin/master:src/styles/sakura-theme.css L26/L29 —— 不发明新色 */
+  --sakura-pink-text: #C02868;  /* 深粉【文字】色，落奶油/象牙底 5.18~5.39:1 */
+  --sakura-pink-aa:   #C03070;  /* 深粉【实心底】色，配白字 5.39:1 */
+}
+
+/* ⚠️ --sakura-pink-text 必须【主题感知】，否则修亮色会把暗色改得更糟。
+   实测（梦境紫 --night-1 #2E1F42 底）：
+     #C02868（亮色用的深粉）= 2.69  ← 比原型的 4.36 还差！
+     #FFA8C5（--sakura-pink）  = 8.38  PASS
+   即：深粉配奶油纸 OK，深粉配夜空必挂。
+
+   这不是我发明的机制 —— layout.css:152 对 .yk-hand-note--zhu 早就是这么做的
+   （[data-theme="dark"] 时换 --sakura-pink）。此处把它提升为令牌级，
+   于是所有写 `color: var(--sakura-pink-text)` 的地方（含 inline style）
+   都自动跟随主题，无需逐处写媒体查询。 */
+[data-theme="dark"] {
+  --sakura-pink-text: var(--sakura-pink);  /* 夜空下的深色桌面 → 用浅樱粉 8.38:1 */
+}
+
+/* 但「纸面」在夜里仍然亮着（--bg-3/ivory/cream），纸上必须换回深粉。
+   与 colors_and_type.css:293 的 [data-paper] 前景反转机制同源、同层。
+   命中范围：InkCard / SpeechBubble / nav / footer / AIChat —— 全部内置 data-paper。 */
+[data-paper] {
+  --sakura-pink-text: #C02868;
+}
+
+/* 1a. 导航当前页：白字落浅樱粉 = 1.80:1（近乎不可读）
+      出处 layout.css:309-311
+      修法：【背景 hex 一个像素不变】，仅字色 #fff → 墨色 = 7.06:1。
+      比 master 的「加深背景」更保真；且 DESIGN_SYSTEM 的核心语汇本就是
+      「墨字 on 粉底」（全站 51:8 压倒性），白字才是离群值。 */
+.yk-nav__link[aria-current="page"] {
+  color: var(--ink);
+}
+
+/* 1b. 深粉【作为文字】落奶油底 = 3.20:1
+      出处 layout.css:149 (.yk-hand-note--zhu) / layout.css:173 (.yk-toc-row__vol)
+      修法：换 AA 替身文字色，同色相加深。
+      注意：pink-deep 作为【边框/描边/投影】的装饰用法一律保留不动——
+      非文字元素无 4.5:1 要求，改了反而破坏设计。
+
+      ⚠️ 本条【只修亮色】，暗色刻意不碰：
+      layout.css:152 已有 [data-theme="dark"] .yk-hand-note--zhu { color: var(--sakura-pink) }，
+      特异性 0,2,0 > 本规则 0,1,0 → 暗色下原设计自动接管。
+      实测暗色本就达标（#FFA8C5 on --night-1 #2E1F42 = 8.38:1），无需干预。
+      设计包的对比度问题【仅存在于亮色】。 */
+.yk-hand-note--zhu,
+.yk-toc-row__vol {
+  color: var(--sakura-pink-text);
+}
+
+/* 1c. 主按钮 / flame 面板：白字落「浅樱粉→珊瑚」渐变 ≈1.80–2.23:1
+      出处 colors_and_type.css:440-442 (.btn-flame) / :392 (.panel-flame)
+      axe 对渐变返回 incomplete 而非 violation → 不扣 Lighthouse 分，
+      但这是真实可读性问题，且 master 生产态已修。此处与 master 对齐。
+      渐变取自 origin/master:src/styles/sakura-theme.css L514。 */
+.btn-flame,
+.panel-flame {
+  background: linear-gradient(135deg, var(--sakura-pink-aa), var(--danger-deep));
+}
+
+
+/* -------------------------------------------------------------------------
+   2) InkCard —— hover 从 JS state 迁移到 CSS
+   -------------------------------------------------------------------------
+   出处 primitives.jsx:107-136。原型用 useState(hover) + onMouseEnter/Leave
+   驱动悬停抬升，并把 boxShadow/transform 写进 inline style。
+
+   偏离理由（三条，缺一不可）：
+   a) home/urgent/drugs/drug-detail/tools 五屏（含 20 个药物详情 = 24 页）
+      在原型里 useState 计数为 0 → 可零 JS 静态渲染。但 InkCard 的 JS hover
+      会强制这 24 页水合整个 React（~45KB gzip）→ Lighthouse ≥95 不可达。
+   b) inline style 的优先级高于任何选择器 → 不把这几个属性挪出 inline，
+      CSS :hover 根本无法生效。
+   c) 顺带修掉原型的两个真 bug：触屏 hover 粘滞（JS 版无 hover:hover 保护）、
+      键盘用户看不到抬升（无 :focus-visible）。
+
+   视觉值逐字取自 primitives.jsx:125-129，一个数字都没改：
+     boxShadow  4px 4px 0 → 6px 6px 0
+     transform  none → translate(-2px, -2px)
+     transition transform .15s cubic-bezier(0.34,1.56,0.64,1), box-shadow .15s
+
+   ⚠️ 已知分歧：README.md:42 写「阴影从 3px→5px、transition .2s」，与代码不符。
+      README.md:7 规定「样式值以本包文件为准」→ 代码 > 散文 → 取 4→6 / .15s。
+   ------------------------------------------------------------------------- */
+
+.yk-inkcard {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .15s;
+}
+
+.yk-inkcard--clickable { cursor: pointer; }
+
+/* hover:hover 保护 —— 触屏设备不应粘滞在抬起态（原型 JS 版的 bug） */
+@media (hover: hover) {
+  .yk-inkcard--lift:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+}
+
+/* 键盘用户也应看到同样的抬升反馈（原型缺失） */
+.yk-inkcard--lift:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+
+/* -------------------------------------------------------------------------
+   3) 导航语义：<div onClick> / <button onClick> → 真 <a href>
+   -------------------------------------------------------------------------
+   出处：原型全站 27 处 setRoute() 调用，挂在 <div onClick> 与 <button onClick> 上。
+   hash 路由下只能这么写；改成真实路径路由后必须还原为 <a href>。
+
+   偏离理由：这是 a11y 修复，不是风格选择。<div onClick> 不可 Tab 聚焦、
+   屏幕阅读器不播报为链接、无法中键/Cmd 新开标签页、无法复制链接地址。
+   视觉零差异（本组规则只是把浏览器默认的锚点样式抹掉）。
+
+   ⚠️ 【绝对不要】在这组选择器上写 color: inherit —— 自审时踩过的坑：
+   layout.css 已给 .yk-banner 定义 color:#fff (:331)、给 .yk-nav__link 定义
+   color:var(--fg-1) (:296)。本文件在 layout.css 之后加载且特异性相同，
+   写 color:inherit 会【静默覆盖】它们：
+     · 应急横幅白字被吃掉 → 直接违反 CONSTITUTION §1「紧急横幅背景红、文字白」
+     · 导航链接色变成继承 body
+   → 只抹 text-decoration，颜色一律交还原设计。
+   ------------------------------------------------------------------------- */
+
+.yk-nav__link,
+.yk-banner,
+a.yk-inkcard,
+a.yk-toc-row {
+  text-decoration: none;
+}
+
+/* 仅这两个：原型里是 <div>/<button>，layout.css 未给它们定义 color，
+   改成 <a> 后必须抹掉浏览器默认的链接蓝。
+   （.yk-inkcard 的实际文字色由 variant 的 inline color 提供，优先级更高。） */
+a.yk-inkcard,
+a.yk-toc-row {
+  color: inherit;
+}
+
+a.yk-inkcard { display: block; }
+
+
+/* -------------------------------------------------------------------------
+   3b) AI 问答 FAB
+   -------------------------------------------------------------------------
+   出处 ai-chat.jsx:109 —— 原型把 transition 写在 inline style 里。
+   移到 CSS 只为可读性；colors_and_type.css:546 的
+   @media (prefers-reduced-motion) 用了 `*` + !important，inline 与 class 都会被
+   正确压制，两种写法在无障碍上等价。值逐字不变。
+   ------------------------------------------------------------------------- */
+
+.yk-chat-fab {
+  transition: transform .15s;
+}
+
+
+/* -------------------------------------------------------------------------
+   4) 移动端夜模式开关可达性
+   -------------------------------------------------------------------------
+   出处 layout.css:322-323 —— @media (max-width:720px) { .yk-nav__aside { display:none } }
+   而月相主题开关正在 .yk-nav__aside 内。
+
+   后果：≤720px 手机上【完全无法切换夜模式】，且 display:none 会把它从
+   无障碍树里一并摘除（键盘 / 读屏也够不到）。这与「夜模式 + ≤720px 移动端
+   + 无障碍 都要实现」的验收要求直接冲突 → 必须修。
+
+   修法（最小偏离）：≤720px 恢复 .yk-nav__aside 可见，只隐藏其中的文字标签
+   （「夜 · 盈凸月」），保留月相按钮本体 —— 设计的招牌元素不丢，缺口补上。
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .yk-nav__aside { display: flex; }
+  .yk-nav__aside-label { display: none; }
+}
+
+
+/* -------------------------------------------------------------------------
+   0) 暗色输入面前景固定墨色（review #9）
+   -------------------------------------------------------------------------
+   layout.css:410 给 .yk-input 定 `background: var(--cream); color: var(--fg-1)`。
+   但 colors_and_type.css:283 在暗色下把 `--fg-1: var(--cream)` —— 于是输入面
+   变成 cream 底 + cream 字 = 1:1 完全不可读。
+
+   .yk-paper/[data-paper] 内的输入不受影响（那里 --fg-1 被钉回墨色），但
+   Compare 的 <select> 与 Refs 的搜索框【不在】 data-paper 内 → 实测暗色 1:1。
+
+   修法：输入面【永远是浅色 cream】，与主题无关 → 前景也固定墨色，不跟 --fg-1。
+   同时管住 placeholder 与 <option>（暗色下原生下拉的选项背景/文字也会受系统主题影响）。
+   实测 --ink #4A2838 on --cream #FFF5E0 = 12.2:1。
+   ------------------------------------------------------------------------- */
+
+.yk-input,
+.yk-input option {
+  color: var(--ink);
+}
+.yk-input::placeholder {
+  color: var(--ink-soft);   /* #7A5568 on cream = 4.7:1，可读但弱于实值 */
+  opacity: 1;               /* Firefox 默认把 placeholder 调淡，显式拉满 */
+}
+
+
+/* -------------------------------------------------------------------------
+   4a) 窄屏溢出修复（原型未考虑 ≤375px 的两处真 bug）
+   -------------------------------------------------------------------------
+   原型这两处把布局写在 inline style 里 —— inline 无法挂媒体查询，所以原型在
+   375px 下必然横向溢出（实测 blood 126px / refs 38px）。移到 CSS 才修得了。
+   桌面端表现与原型逐像素相同，只在窄屏加断点。
+   ------------------------------------------------------------------------- */
+
+/* blood 行：原型 grid 为 minmax(150,190) + minmax(160,1fr) + 110 + 2×18 gap
+   = 最小 456px，在 375px 视口下必溢出（实测印章被推到 right=501）。
+   出处 blood-checker-screen.jsx:99-104 */
+.yk-blood-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(160px, 1fr) 110px;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 22px;
+}
+
+@media (max-width: 560px) {
+  .yk-blood-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  /* 单列下印章不再右对齐，否则孤零零贴在右边 */
+  .yk-blood-row__stamp {
+    justify-self: start;
+  }
+}
+
+/* refs 的 DOI/URL：长字符串 + JetBrains Mono + 无断词点 → 撑破 minmax(0,1fr)
+   （实测 w=317 溢出到 right=413）。出处 refs-screen.jsx:80-83 */
+.yk-ref-doi {
+  overflow-wrap: anywhere;
+}
+
+
+/* -------------------------------------------------------------------------
+   4b) 屏幕阅读器专用文本
+   -------------------------------------------------------------------------
+   设计包三个 CSS 里没有 sr-only（原型没做到这一层无障碍）。
+   用于给宽表补 <caption> 与列头的可听标签 —— 视觉零变化，读屏用户才能
+   把数值关联回「维度」。仓库既有的 DoseTable 也用同款 sr-only caption
+   （见 PR #119「同页多 DoseTable 补 sr-only caption」）。
+   ------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* -------------------------------------------------------------------------
+   5) 关于设计红线里的「切角几何」
+   -------------------------------------------------------------------------
+   colors_and_type.css:416 留有 .clipped-card { clip-path: var(--clip-corner) }，
+   属米哈游旧皮肤的 legacy 遗留，与 DESIGN_SYSTEM Never 清单的「切角几何」冲突。
+
+   此处【刻意不写中和规则】：/v2 的组件根本不使用该类，写一条
+   `.clipped-card { clip-path: none }` 只会暗示「我们可能会用它」，
+   徒增理解成本。正确做法是靠红线 grep 断言它未被引用：
+     grep -r 'clipped-card\|clip-path' src/components/v2/ src/pages/v2/   → 期望 0
+   同理 legacy 的 RarityStars / BoomLabel / NeonSign 也一律不移植进 v2。
+   ------------------------------------------------------------------------- */
