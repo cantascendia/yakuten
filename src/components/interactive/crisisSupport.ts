@@ -31,27 +31,29 @@ const CRISIS_KEYWORDS: readonly string[] = [
   '结束生命', '結束生命', '结束自己', '結束自己', '了结自己', '了結自己',
   '自我了断', '自我了斷', '割腕', '跳楼', '跳樓', '上吊', '烧炭', '燒炭',
   '遗书', '遺書', '自尽', '自盡', '厌世', '厭世', '活着没意思', '活著沒意思',
-  // en
+  // en（codex 终审补漏：惯用语）
   'suicide', 'suicidal', 'kill myself', 'end my life', 'ending my life',
   'self-harm', 'self harm', 'selfharm', 'hurt myself', 'want to die',
   'wanna die', "don't want to live", 'dont want to live', 'no reason to live',
-  // ja（自傷/リストカット已被上方覆盖或在此补全）
+  'better off dead', 'end it all', 'take my own life', 'not worth living',
+  // ja（codex 终审补漏）
   '死にたい', '消えたい', 'リストカット', 'リスカ', '死のう',
-  '死んだほうが', '死んだ方が', '命を絶',
+  '死んだほうが', '死んだ方が', '命を絶', '生きていたくない', '生きたくない',
+  '楽になりたい',
   // ko
-  '자살', '자해', '죽고 싶', '죽고싶', '살기 싫', '살고 싶지 않',
-  // es
+  '자살', '자해', '죽고 싶', '죽고싶', '살기 싫', '살고 싶지 않', '사라지고 싶',
+  // es（codex 终审补漏）
   'suicidio', 'suicidarme', 'matarme', 'quitarme la vida',
-  'no quiero vivir', 'autolesión', 'autolesion', 'hacerme daño',
+  'no quiero vivir', 'autolesión', 'autolesion', 'hacerme daño', 'quiero morir',
   // pt
   'suicídio', 'me matar', 'tirar minha vida', 'não quero viver',
   'nao quero viver', 'automutilação', 'automutilacao', 'me machucar',
   // fr（'suicide' 已由 en 覆盖）
   'me suicider', 'me tuer', 'mettre fin à mes jours', 'mettre fin a mes jours',
   'je veux mourir', 'plus envie de vivre', 'automutilation',
-  // de
+  // de（codex 终审补漏）
   'selbstmord', 'suizid', 'umbringen', 'mir das leben nehmen',
-  'nicht mehr leben', 'selbstverletzung',
+  'nicht mehr leben', 'selbstverletzung', 'ich will sterben', 'sterben will',
   // ru
   'суицид', 'самоубийство', 'покончить с собой', 'не хочу жить',
   'убить себя', 'самоповреждение', 'хочу умереть',
@@ -85,8 +87,10 @@ export function containsCrisisKeyword(text: string): boolean {
 }
 
 /* locale → hotlines.json scope 白名单。
-   站点主受众为中文圈（含身处海外的中文用户），无对应地区数据的语种
-   fallback 到全国热线；卡片文案里另有「身处其他地区请拨打当地急救」行。 */
+   ⚠ codex 终审裁决：没有经核验的对应地区号码的语种【不得】回退展示中国
+   号码（120/12356 对境外用户不可用，危机场景给错号码是伤害）——这些语种
+   卡片只显示「拨打当地急救/危机热线」指引行（文案在 aiChatL10n crisisOutside）。
+   中文例外：zh 受众含身处大陆的用户，全国热线是正确默认。 */
 const LOCALE_SCOPES: Record<string, readonly string[]> = {
   zh: ['全国'],
   de: ['Deutschland', 'Österreich', 'Schweiz', 'EU-weit'],
@@ -98,11 +102,15 @@ const LOCALE_SCOPES: Record<string, readonly string[]> = {
 
 const MAX_CARD_HOTLINES = 4;
 
-/** 按 locale 取危机热线（SSOT: hotlines.json），最多 4 条保持卡片紧凑。 */
+/** 按 locale 取危机热线（SSOT: hotlines.json），最多 4 条保持卡片紧凑。
+ *  24h 热线优先排序（限时热线沉底，卡片会显示服务时间）。
+ *  无对应地区数据的语种返回空数组 —— 组件只渲染当地急救指引行。 */
 export function getCrisisHotlines(locale: string): CrisisHotline[] {
-  const scopes = LOCALE_SCOPES[locale] ?? LOCALE_SCOPES.zh;
+  const scopes = LOCALE_SCOPES[locale];
+  if (!scopes) return [];
   return (hotlinesData as CrisisHotline[])
     .filter((h) => scopes.includes(h.scope))
+    .sort((a, b) => Number(b.hours === '24h') - Number(a.hours === '24h'))
     .slice(0, MAX_CARD_HOTLINES)
     .map(({ id, name, number, href, scope, hours }) => ({
       id, name, number, href, scope, hours,

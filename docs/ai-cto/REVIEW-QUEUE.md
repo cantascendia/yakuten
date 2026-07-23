@@ -272,3 +272,25 @@ git diff + 读源码）。注：agent 自报模型名不可靠，实际为 Antig
 裁决：**VERDICT: MERGE**。6/6 关闭（P1-1 opt-in 契约 / P1-2 Pagefind 根因命中无层叠回归 /
 P2-1 :lang 守卫特异度足 / P2-2 降级不会被意外恢复 / 追加两处与夜桌锁墨模型一致）。
 **PR #127 双模型把关完成：gemini MERGE + codex 复核 MERGE。**
+
+## 2026-07-23 PR #128 双模型终审 sha=78cc8a4
+
+**reviewer=antigravity-gemini-flash bytes=4332**：VERDICT: **MERGE**（P1 无；ar/th/hi/fil 四语翻译抽查全过；危机卡判定符合危险层规范）。P2 一条（SiteDirectory 过时注释）已修。
+
+**reviewer=codex-gpt5.6-sol bytes=3758**：VERDICT: **BLOCK**（6 P1 + 3 P2）→ 处置：
+- P1 免费层 ToS 隐私（对话可被 Google 用于产品改进/人工审阅）→ **owner 决策项**（见 PR 汇报），非代码可修
+- P1 降级链过宽/maxRetries → 已修（仅 404/429/5xx 下移 + maxRetries:0）；temperature 致 400 的推测被线上实测否定（3.6-flash 带 temperature 成功回复）
+- P1 危机词表漏检（better off dead/生きていたくない/ich will sterben/quiero morir 等）→ 已补
+- P1 境外语种回退中国热线 → 已修（无核验本地号码的语种只显示当地急救指引，不显示号码列表）
+- P1 「现在就能接通」断言 → 17 语文案已改中性 + 非 24h 热线显示服务时间 + 24h 优先排序
+- P1 sakura 危机卡「违反红底白字」→ 误报（墨底红章是项目 DangerBox 既定危险层语言，gemini 复核认可）
+- P1 SiteDirectory guides 10 语 404 → 已修（缺失语种显示 5 条动态编号）
+- P2 上下文前缀使寒暄分级失效 → 已修（≤14 字符不拼前缀）
+- P2 pathway nth-of-type 被 decision-row 打乱（phase2 误满环）→ 已修（#phaseN 精确绑定，实测 0/.4/.72/1）
+- P2 maxLength UTF-16 vs bytes → 留跟进
+
+**运行时实测追加抓获（双模型静态审均未见）**：Astro.currentLocale 在 zh 页返回
+'zh-CN' ≠ 路由段 /zh/ → zh 目录卡 6 条全 404 → 改 URL 路径段取 locale，
+四语链接 HEAD 全量校验 0 个 404。
+
+**x-yk-model 线上证明**：寒暄→gemini-3.5-flash-lite / 医疗→gemini-3.6-flash（分级路由与最新模型服务实锤）。

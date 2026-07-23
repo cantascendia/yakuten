@@ -87,12 +87,14 @@ html.sakura .phase-marker::after {
   color: var(--ink);
   text-shadow: 0 0 5px #FFFAF0, 0 0 2px #FFFAF0, 1px 1px 0 #FFFAF0;
 }
-/* 渐满比例（与 v2 PathwayScreen MOON_FILL 同值）与 tone 填色。
-   nth-of-type 只数 .phase-row 同级顺序：0 基线 / 1 起步 / 2 滴定 / 3 维持 */
-html.sakura .phase-row:nth-of-type(1) .phase-marker { --sakura-marker-fill: 0; }
-html.sakura .phase-row:nth-of-type(2) .phase-marker { --sakura-marker-fill: 0.4; }
-html.sakura .phase-row:nth-of-type(3) .phase-marker { --sakura-marker-fill: 0.72; }
-html.sakura .phase-row:nth-of-type(4) .phase-marker { --sakura-marker-fill: 1; }
+/* 渐满比例（与 v2 PathwayScreen MOON_FILL 同值）。
+   ⚠ 不用 nth-of-type：.decision-row 与 .phase-row 是同级 div，nth-of-type
+   按元素类型计数会被打乱（codex 终审 P2 实锤：phase2 误满环/phase3 空环）
+   → 用 mdx 自带的 #phase0-3 锚点 id 精确绑定。 */
+html.sakura #phase0 .phase-marker { --sakura-marker-fill: 0; }
+html.sakura #phase1 .phase-marker { --sakura-marker-fill: 0.4; }
+html.sakura #phase2 .phase-marker { --sakura-marker-fill: 0.72; }
+html.sakura #phase3 .phase-marker { --sakura-marker-fill: 1; }
 html.sakura .phase-marker--green { --sakura-marker-fill-color: var(--mint); }
 html.sakura .phase-marker--yellow { --sakura-marker-fill-color: var(--butter); }
 html.sakura .phase-marker--pink { --sakura-marker-fill-color: var(--sakura-pink); }

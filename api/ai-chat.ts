@@ -283,6 +283,16 @@ export default async function handler(req: Request) {
     let lastModelError: unknown = null;
     let servedModel = '';
 
+    // 降级仅限「模型不可用」类错误：404（模型名）/429（额度）/5xx（供应商故障）。
+    // 400/401/403 等请求级错误立即失败 —— 换模型救不了坏请求，且防止把
+    // 安全策略拒绝（如内容审核）当额度问题反复轮询（codex 终审 P1）。
+    const isFallbackWorthy = (err: unknown): boolean => {
+      const sc = (err as { statusCode?: number } | null)?.statusCode;
+      if (typeof sc === 'number') return sc === 404 || sc === 429 || sc >= 500;
+      const msg = err instanceof Error ? err.message : String(err);
+      return /\b(404|429|5\d\d)\b|NOT_FOUND|RESOURCE_EXHAUSTED|UNAVAILABLE|overloaded/i.test(msg);
+    };
+
     for (const modelId of MODEL_CHAIN) {
       try {
         const result = streamText({
@@ -291,6 +301,9 @@ export default async function handler(req: Request) {
           messages: recentMessages,
           maxOutputTokens: maxTokens,
           temperature: 0.3,
+          // SDK 默认每模型重试 2 次 → 六级链最坏 18 次上游调用；
+          // 重试语义由本降级链统一承担（codex 终审 P1）
+          maxRetries: 0,
         });
         // Consume first chunk to catch API errors before sending 200
         const candidateReader = result.textStream.getReader();
@@ -302,7 +315,8 @@ export default async function handler(req: Request) {
       } catch (modelError: unknown) {
         lastModelError = modelError;
         const msg = modelError instanceof Error ? modelError.message : String(modelError);
-        console.error(`AI Chat model ${modelId} failed, trying next:`, msg.slice(0, 200));
+        console.error(`AI Chat model ${modelId} failed:`, msg.slice(0, 200));
+        if (!isFallbackWorthy(modelError)) break; // 请求级错误不轮询
       }
     }
 

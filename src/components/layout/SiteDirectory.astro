@@ -6,9 +6,9 @@
  * 编号 + 板块名 + 点线 leader + 条目说明，一行一个板块。
  * 刻意不复用 sakura-skin.css 的 .yk-toc-row（v2 遗留、零消费者），类名独立。
  *
- * ⚠ zh-only：文案与链接均为 zh 硬编码 —— 本组件目前只挂 zh 首页
- * （src/content/docs/zh/index.mdx）。其他语种首页跟进时需 i18n 化
- * （走 src/i18n/ui 的 t() + locale prefix，参照 DrugQuickNav.astro）。
+ * 17 语 locale 感知（挂全部语种首页）：板块名与 astro.config sidebar 的
+ * translations 逐字对齐；meta/UI 词 AI 翻译（owner 授权）。guides 行仅在
+ * 拥有 guides/ 页面的 7 语显示（其余显示 5 条，绝不链 404）。
  *
  * 双态：
  * · 默认（米哈游二相乐园）：深玻璃卡 .glass-panel + .clipped-card，样式在本文件 <style>。
@@ -87,19 +87,30 @@ const UI: Record<Lang, { title: string; note: string }> = {
   tr: { title: 'Dizin', note: 'Sitenin ana bölümleri' },
 };
 
-const PATHS = ['before-you-start/', 'pathway/', 'medications/estrogens/overview/', 'blood-tests/', 'guides/', 'risks/'];
+/* guides/ 仅 7 语存在（zh/ja/de/fr/es/pt/ru）——其余 10 语显示 5 条，
+ * 绝不链向 404（codex 终审 P1）。编号按实际条目动态重排。 */
+const GUIDES_LOCALES = new Set(['zh', 'ja', 'de', 'fr', 'es', 'pt', 'ru']);
+const ALL_PATHS = ['before-you-start/', 'pathway/', 'medications/estrogens/overview/', 'blood-tests/', 'guides/', 'risks/'];
 
-const locale = Astro.currentLocale ?? 'zh';
+/* ⚠ 不用 Astro.currentLocale：它返回 locale 的 lang 标签（zh 页返回
+   'zh-CN'），与路由段 /zh/ 不一致 → 曾导致 zh 目录卡 6 条全 404（运行时
+   实测抓获，静态审查不可见）。URL 路径首段才是真路由 locale。 */
+const pathSeg = Astro.url.pathname.split('/').filter(Boolean)[0] ?? 'zh';
+const locale = pathSeg in NAMES ? pathSeg : 'zh';
 const names = NAMES[locale] ?? NAMES.zh;
 const metas = METAS[locale] ?? METAS.zh;
 const ui = UI[locale] ?? UI.zh;
 
-const entries: DirectoryEntry[] = PATHS.map((path, i) => ({
-  num: String(i + 1).padStart(2, '0'),
-  name: names[i],
-  path: '/' + locale + '/' + path,
-  meta: metas[i],
-}));
+const hasGuides = GUIDES_LOCALES.has(locale);
+const entries: DirectoryEntry[] = ALL_PATHS
+  .map((path, i) => ({ path, name: names[i], meta: metas[i] }))
+  .filter((e) => hasGuides || e.path !== 'guides/')
+  .map((e, i) => ({
+    num: String(i + 1).padStart(2, '0'),
+    name: e.name,
+    path: '/' + locale + '/' + e.path,
+    meta: e.meta,
+  }));
 ---
 
 <section class="site-dir">
