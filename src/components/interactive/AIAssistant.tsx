@@ -582,9 +582,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
     setError(null);
 
-    /* 页面上下文前缀 —— 拼接后超端点 4096 bytes/条限制则不拼 */
+    /* 页面上下文前缀 —— 拼接后超端点 4096 bytes/条限制则不拼。
+       ≤14 字符的超短消息（寒暄级）也不拼：让服务端寒暄分级路由生效
+       （前缀会使 GREETING_RE 永不匹配，codex 终审 P2），且寒暄不需要上下文 */
     let apiContent = messageText;
-    if (!pageContextOptOut && pageTitle) {
+    if (!pageContextOptOut && pageTitle && messageText.length > 14) {
       const prefixed = ui.contextPrefix.replace('{title}', pageTitle) + messageText;
       if (new TextEncoder().encode(prefixed).length <= MAX_CONTENT_BYTES) {
         apiContent = prefixed;
@@ -800,15 +802,26 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
               {msg.role === 'user' && msg.crisis && (
                 <div className="yk-ai-crisis" role="group" aria-label={ui.crisisTitle}>
                   <p className="yk-ai-crisis__title">{ui.crisisTitle}</p>
-                  <p className="yk-ai-crisis__body">{ui.crisisBody}</p>
-                  <div className="yk-ai-crisis__list">
-                    {crisisHotlines.map(h => (
-                      <a key={h.id} className="yk-ai-crisis__line" href={h.href}>
-                        <span className="yk-ai-crisis__name">{h.name}</span>
-                        <span className="yk-ai-crisis__num">{h.number}</span>
-                      </a>
-                    ))}
-                  </div>
+                  {/* 无本地核验热线的语种不显示号码列表（错误号码在危机场景是
+                      伤害，codex 终审 P1）——只显示当地急救指引行 */}
+                  {crisisHotlines.length > 0 && (
+                    <>
+                      <p className="yk-ai-crisis__body">{ui.crisisBody}</p>
+                      <div className="yk-ai-crisis__list">
+                        {crisisHotlines.map(h => (
+                          <a key={h.id} className="yk-ai-crisis__line" href={h.href}>
+                            <span className="yk-ai-crisis__name">
+                              {h.name}
+                              {h.hours && h.hours !== '24h' && (
+                                <span className="yk-ai-crisis__hours"> · {h.hours}</span>
+                              )}
+                            </span>
+                            <span className="yk-ai-crisis__num">{h.number}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </>
+                  )}
                   <p className="yk-ai-crisis__note">{ui.crisisOutside}</p>
                 </div>
               )}

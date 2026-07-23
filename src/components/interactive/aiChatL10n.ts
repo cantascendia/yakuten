@@ -97,7 +97,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: '不再附带页面上下文',
     contextPrefix: '【正在浏览：{title}】\n',
     crisisTitle: '如果你正处于危机中',
-    crisisBody: '这些热线现在就能接通，你不是一个人。',
+    crisisBody: '你不是一个人。可以拨打下面的热线求助：',
     crisisOutside: '身处其他地区时，请拨打当地急救电话或危机热线。',
   },
   en: {
@@ -132,7 +132,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Stop including page context',
     contextPrefix: '[Currently viewing: {title}]\n',
     crisisTitle: 'If you are in crisis',
-    crisisBody: 'These hotlines are available right now. You are not alone.',
+    crisisBody: 'You are not alone. These helplines are there for you:',
     crisisOutside: 'If you are elsewhere, call your local emergency number or crisis line.',
   },
   ja: {
@@ -167,7 +167,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'ページ情報を添えない',
     contextPrefix: '【閲覧中のページ：{title}】\n',
     crisisTitle: '今、危機の中にいるなら',
-    crisisBody: '以下の窓口は今すぐつながります。あなたはひとりではありません。',
+    crisisBody: 'あなたは一人ではありません。以下の相談窓口があります：',
     crisisOutside: '上記以外の地域では、お住まいの地域の救急番号や相談窓口へ。',
   },
   ko: {
@@ -202,7 +202,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: '페이지 정보 첨부 중지',
     contextPrefix: '【보고 있는 페이지: {title}】\n',
     crisisTitle: '지금 위기 상황이라면',
-    crisisBody: '아래 상담 전화는 지금 바로 연결됩니다. 당신은 혼자가 아닙니다.',
+    crisisBody: '당신은 혼자가 아닙니다. 아래 상담 전화로 연락할 수 있습니다:',
     crisisOutside: '다른 지역에 있다면 현지 응급 번호나 위기 상담 전화로 연락하세요.',
   },
   es: {
@@ -237,7 +237,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Dejar de incluir el contexto de la página',
     contextPrefix: '[Página actual: {title}]\n',
     crisisTitle: 'Si estás en crisis',
-    crisisBody: 'Estas líneas están disponibles ahora mismo. No estás sola.',
+    crisisBody: 'No estás sola. Estas líneas de ayuda están para ti:',
     crisisOutside: 'Si estás en otra región, llama a tu número local de emergencias.',
   },
   pt: {
@@ -272,7 +272,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Parar de incluir o contexto da página',
     contextPrefix: '[Página atual: {title}]\n',
     crisisTitle: 'Se você está em crise',
-    crisisBody: 'Estas linhas estão disponíveis agora. Você não está sozinha.',
+    crisisBody: 'Você não está sozinha. Estas linhas de apoio existem para você:',
     crisisOutside: 'Se estiver em outra região, ligue para a emergência local.',
   },
   fr: {
@@ -307,7 +307,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Ne plus joindre le contexte de la page',
     contextPrefix: '[Page consultée : {title}]\n',
     crisisTitle: 'Si vous êtes en crise',
-    crisisBody: 'Ces lignes sont joignables dès maintenant. Vous n’êtes pas seule.',
+    crisisBody: 'Vous n\'êtes pas seule. Ces lignes d\'écoute sont là pour vous :',
     crisisOutside: "Ailleurs, appelez le numéro d'urgence local.",
   },
   de: {
@@ -342,7 +342,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Kontext nicht mehr mitsenden',
     contextPrefix: '[Aktuelle Seite: {title}]\n',
     crisisTitle: 'Wenn Sie in einer Krise sind',
-    crisisBody: 'Diese Nummern sind jetzt erreichbar. Sie sind nicht allein.',
+    crisisBody: 'Du bist nicht allein. Diese Hilfetelefone sind für dich da:',
     crisisOutside: 'Andernorts wählen Sie bitte den örtlichen Notruf.',
   },
   ru: {
@@ -377,7 +377,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Не добавлять контекст страницы',
     contextPrefix: '[Открытая страница: {title}]\n',
     crisisTitle: 'Если вы в кризисе',
-    crisisBody: 'Эти линии доступны прямо сейчас. Вы не одни.',
+    crisisBody: 'Вы не одни. Эти линии помощи существуют для вас:',
     crisisOutside: 'В другом регионе звоните в местную экстренную службу.',
   },
   ar: {
@@ -412,7 +412,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'إيقاف إرفاق سياق الصفحة',
     contextPrefix: '[الصفحة الحالية: {title}]\n',
     crisisTitle: 'إذا كنتِ في أزمة',
-    crisisBody: 'هذه الخطوط متاحة الآن. لستِ وحدك.',
+    crisisBody: 'لستِ وحدك. خطوط المساعدة هذه موجودة من أجلك:',
     crisisOutside: 'إن كنتِ في منطقة أخرى فاتصلي برقم الطوارئ المحلي.',
   },
   fa: {
@@ -447,7 +447,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'عدم ارسال زمینه صفحه',
     contextPrefix: '[صفحه فعلی: {title}]\n',
     crisisTitle: 'اگر در بحران هستید',
-    crisisBody: 'این خطوط همین حالا در دسترس‌اند. شما تنها نیستید.',
+    crisisBody: 'شما تنها نیستید. این خطوط کمک برای شما هستند:',
     crisisOutside: 'اگر در منطقه دیگری هستید با شماره اورژانس محلی تماس بگیرید.',
   },
   th: {
@@ -482,7 +482,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'หยุดแนบบริบทของหน้า',
     contextPrefix: '[หน้าที่กำลังดู: {title}]\n',
     crisisTitle: 'หากคุณกำลังอยู่ในภาวะวิกฤต',
-    crisisBody: 'สายด่วนเหล่านี้ติดต่อได้ทันที คุณไม่ได้อยู่คนเดียว',
+    crisisBody: 'คุณไม่ได้อยู่คนเดียว สายด่วนเหล่านี้พร้อมช่วยเหลือคุณ:',
     crisisOutside: 'หากอยู่พื้นที่อื่น โปรดโทรหมายเลขฉุกเฉินในพื้นที่ของคุณ',
   },
   vi: {
@@ -517,7 +517,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Ngừng đính kèm ngữ cảnh trang',
     contextPrefix: '[Trang đang xem: {title}]\n',
     crisisTitle: 'Nếu bạn đang trong khủng hoảng',
-    crisisBody: 'Các đường dây này sẵn sàng ngay bây giờ. Bạn không đơn độc.',
+    crisisBody: 'Bạn không đơn độc. Các đường dây hỗ trợ này luôn sẵn sàng vì bạn:',
     crisisOutside: 'Nếu ở nơi khác, hãy gọi số khẩn cấp tại địa phương.',
   },
   id: {
@@ -552,7 +552,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Berhenti menyertakan konteks halaman',
     contextPrefix: '[Halaman saat ini: {title}]\n',
     crisisTitle: 'Jika kamu sedang dalam krisis',
-    crisisBody: 'Hotline ini tersedia sekarang. Kamu tidak sendirian.',
+    crisisBody: 'Kamu tidak sendirian. Saluran bantuan ini ada untukmu:',
     crisisOutside: 'Jika di wilayah lain, hubungi nomor darurat setempat.',
   },
   fil: {
@@ -587,7 +587,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Ihinto ang pagsama ng konteksto ng pahina',
     contextPrefix: '[Kasalukuyang pahina: {title}]\n',
     crisisTitle: 'Kung ikaw ay nasa krisis',
-    crisisBody: 'Maaaring tawagan ang mga hotline na ito ngayon. Hindi ka nag-iisa.',
+    crisisBody: 'Hindi ka nag-iisa. Narito ang mga helpline para sa iyo:',
     crisisOutside: 'Kung nasa ibang lugar, tumawag sa lokal na emergency number.',
   },
   hi: {
@@ -622,7 +622,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'पेज संदर्भ भेजना बंद करें',
     contextPrefix: '[वर्तमान पेज: {title}]\n',
     crisisTitle: 'अगर आप संकट में हैं',
-    crisisBody: 'ये हेल्पलाइन अभी उपलब्ध हैं। आप अकेली नहीं हैं।',
+    crisisBody: 'आप अकेली नहीं हैं। ये हेल्पलाइन आपके लिए हैं:',
     crisisOutside: 'किसी और क्षेत्र में हों तो स्थानीय आपातकालीन नंबर पर कॉल करें।',
   },
   tr: {
@@ -657,7 +657,7 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     contextDismiss: 'Sayfa bağlamını eklemeyi durdur',
     contextPrefix: '[Görüntülenen sayfa: {title}]\n',
     crisisTitle: 'Krizdeyseniz',
-    crisisBody: 'Bu hatlara şimdi ulaşabilirsiniz. Yalnız değilsiniz.',
+    crisisBody: 'Yalnız değilsin. Bu yardım hatları senin için burada:',
     crisisOutside: 'Başka bir bölgedeyseniz yerel acil numarayı arayın.',
   },
 };
