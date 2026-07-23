@@ -254,3 +254,15 @@ git diff + 读源码）。注：agent 自报模型名不可靠，实际为 Antig
 1. ToolsScreen 文献数硬编码 27 vs 实际 43 → 已修为 references.length SSOT 派生
 2. RefsScreen lede 同问题 → 误报（该处已是 ${references.length} 动态值），不改
 双模型合并前把关完成：codex gpt-5.6-sol MERGE + antigravity gemini flash MERGE。
+
+## 2026-07-23 PR #127 sakura 换皮 双模型把关 sha=2bf7155
+
+**reviewer=antigravity-gemini-flash bytes=2814**：VERDICT: **MERGE**（P1 无 P2 无，七项全过：
+作用域零泄漏 / 三处特异度对抗验算正确 / PageTitle DOM 等价 / AA / 危险层零触碰 / RTL+17 语 / 性能）。
+
+**reviewer=codex-gpt5.6-sol bytes=1580**：VERDICT: **BLOCK** → 4 条全修复：
+- P1-1 HeroSection:199 text-align:start 落非 sakura 基础规则（违反 opt-in 契约）→ 基础恢复 left，sakura 段用 start
+- P1-2 Pagefind 颜色写错目标（__result-title 不命中，实际由 __result-link 的 --pagefind-ui-text 控制；dark 聚焦 1.23:1）→ 变量+链接双覆盖 + :focus-within AA 态
+- P2-1 blog 六处 letter-spacing 无 ar/fa 守卫 → :is() 复位规则 (0,4,1)
+- P2-2 网点 fixed 伪元素小屏合成成本 → ≤880px display:none
+修复后待 build 实测 Pagefind 弹窗 + codex 复核。

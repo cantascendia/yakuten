@@ -196,6 +196,11 @@ const prefix = `/${locale}`;
       border-color var(--transition-normal),
       box-shadow var(--transition-normal),
       color var(--transition-fast);
+    /* 保持物理 left：默认皮的 ar/fa 行为不属于本 PR（opt-in 契约「非 sakura
+       零变化」，codex P1）。sakura 下才用逻辑属性 —— 见下方 sakura 段。 */
+    text-align: left;
+  }
+  :global(html.sakura) .hero-search {
     text-align: start; /* RTL: 逻辑属性（LTR 渲染与 left 逐像素一致） */
   }
 

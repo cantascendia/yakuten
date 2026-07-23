@@ -704,7 +704,15 @@ html.sakura.sakura body { background: transparent; }
 html.sakura.sakura[data-theme='dark'] body { background: transparent; }
 
 /* 漫画网点 ×2 —— 必须角部淡出、不许铺满（v2 红线）。
-   mask 渐变的不透明端用 var(--ink)：alpha 通道遮罩，非可见色，不涉禁纯黑。 */
+   mask 渐变的不透明端用 var(--ink)：alpha 通道遮罩，非可见色，不涉禁纯黑。
+   ≤880px 整层关闭（codex P2）：两个全视口 fixed 合成层 + mask 在低端移动设备
+   有实际合成成本，而网点是角部桌面装饰，小屏损失可忽略。 */
+@media (max-width: 880px) {
+  html.sakura body::before,
+  html.sakura body::after {
+    display: none;
+  }
+}
 html.sakura body::before,
 html.sakura body::after {
   content: "";

@@ -898,13 +898,24 @@ html.sakura #starlight__search mark {
   padding: 0 2px;
 }
 
-/* 结果卡 —— 白纸小卡；hover 腮红底 + 墨描边 */
+/* 结果卡 —— 白纸小卡；hover 腮红底 + 墨描边。
+   夜桌恒亮：--bg-3 在 dark 翻夜色会让整卡变深紫、nested 子结果粉字对比崩坏
+   （preview 实测发现）→ 底色与墨系钉字面量（同 blog 卡/theme 纸面锁墨） */
 html.sakura #starlight__search .pagefind-ui__result {
-  background: var(--bg-3);
+  background: #FFFAF0;
   border: 2px solid var(--ink-faint);
   border-radius: 12px;
   padding: var(--space-md);
   margin-bottom: var(--space-sm);
+  --ink: #4A2838;
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+}
+/* nested 子结果（Starlight 自带 dark 底）：透明化，跟随母卡亮纸 */
+html.sakura #starlight__search .pagefind-ui__result-nested {
+  background: transparent;
 }
 html.sakura #starlight__search .pagefind-ui__result:hover {
   background: var(--sakura-blush);
@@ -912,15 +923,34 @@ html.sakura #starlight__search .pagefind-ui__result:hover {
   box-shadow: 2px 2px 0 var(--ink);
 }
 /* 腮红底上不落粉字（#C02868 on #FFD4E0 仅 4.20:1）——
-   hover 时标题/高亮翻墨字，同行内链接 hover 范式 */
+   hover/focus 时标题/高亮翻墨字，同行内链接 hover 范式。
+   ⚠ 可见文字实际由 .pagefind-ui__result-link 的 --pagefind-ui-text 控制
+   （Pagefind 官方样式），只盖 __result-title 不命中 —— codex P1 修复：
+   变量+链接双覆盖，并补键盘 :focus-within 的 AA 态。 */
 html.sakura #starlight__search .pagefind-ui__result:hover .pagefind-ui__result-title,
-html.sakura #starlight__search .pagefind-ui__result:hover mark {
+html.sakura #starlight__search .pagefind-ui__result:hover .pagefind-ui__result-link,
+html.sakura #starlight__search .pagefind-ui__result:hover mark,
+html.sakura #starlight__search .pagefind-ui__result:focus-within .pagefind-ui__result-title,
+html.sakura #starlight__search .pagefind-ui__result:focus-within .pagefind-ui__result-link,
+html.sakura #starlight__search .pagefind-ui__result:focus-within mark {
   color: var(--ink);
+  --pagefind-ui-text: var(--ink);
+}
+html.sakura #starlight__search .pagefind-ui__result:focus-within {
+  background: var(--sakura-blush);
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 html.sakura #starlight__search .pagefind-ui__result-title {
   color: var(--sakura-pink-text);
+  --pagefind-ui-text: var(--sakura-pink-text);
   font-family: var(--font-heading);
   font-weight: 700;
+  /* Starlight dark 给 title 行自带夜紫底（#2E1F42）——纸卡内透明化（preview 实测） */
+  background: transparent;
+}
+html.sakura #starlight__search .pagefind-ui__result-title .pagefind-ui__result-link {
+  color: var(--sakura-pink-text);
 }
 html.sakura #starlight__search .pagefind-ui__result-excerpt { color: var(--fg-2); }
 html.sakura #starlight__search .pagefind-ui__message { color: var(--fg-2); }

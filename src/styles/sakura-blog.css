@@ -597,3 +597,11 @@ html.sakura[data-theme='dark'] .blog-disclaimer {
     transform: none;
   }
 }
+
+/* =========================================================================
+   ar/fa 连写守卫（codex P2）：正/负字距都会拉断阿拉伯字母连写形，
+   同 Footer kicker 的守卫策略。:is() 取最高特异度 → (0,4,1) 稳压上方全部规则。
+   ========================================================================= */
+html.sakura :is(.blog-article__meta, .blog-article__category, .blog-article__title, .blog-toc .blog-toc__title, .blog-filter .blog-filter__btn, .blog-card .blog-card__meta):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}
