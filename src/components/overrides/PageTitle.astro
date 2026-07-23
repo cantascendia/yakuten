@@ -1,0 +1,79 @@
+---
+/**
+ * PageTitle override — 线装页头结构件（sakura 全站换皮 spec §3-②）。
+ *
+ * 机制：双态常驻 SSR + html.sakura 作用域 CSS 切换，零 JS、零 FOUC。
+ * - 非 sakura：直接渲染 Starlight 0.38.2 默认 PageTitle（<h1 id="_top">
+ *   锚点语义 + @layer starlight.core 样式原样保留），可见渲染结果不变。
+ * - sakura：零额外 DOM —— 全部装饰走 h1#_top 的伪元素 / 逻辑属性边框：
+ *   标题左侧装订线（3px 墨色竖线）+ 红色线装结点 + 标题上方 washi 胶带。
+ *
+ * 裁量：不做竖排卷标 —— 17 语下非 CJK 竖排是灾难，竖排标签属 /zh/v2
+ * 专属件，文档页不引入（spec 附带裁量）。
+ * 升级 Starlight 版本时需复核默认 PageTitle 的 DOM（#_top 锚点）仍成立
+ * —— 见 spec §5-4「Starlight 版本锁」。
+ */
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+---
+
+<Default {...Astro.props} />
+
+<style is:global>
+  /* ======================================================================
+     sakura 线装页头 —— 所有规则手工锁 html.sakura 作用域（仓库无 postcss
+     管线，前缀是纪律）。选择器锚点 = Starlight 页标题 <h1 id="_top">
+     （同时是 skip-link 目标，Starlight 0.38.2 DOM 已核对命中）。
+     纯静态装饰：无 transition / 无 animation，天然满足 reduced-motion。
+     ====================================================================== */
+
+  /* 装订线：标题内联起始侧 3px 墨色竖线（逻辑属性，RTL 自动镜像）。
+     margin-top 加大给上方胶带留位（仅 sakura 态，默认皮不受影响）。 */
+  html.sakura main h1#_top {
+    position: relative;
+    border-inline-start: 3px solid var(--ink);
+    padding-inline-start: 18px;
+    margin-top: 2.5rem;
+  }
+
+  /* washi 胶带：标题上方一条纯 CSS 渐变胶带（复用 .yk-washi 配方值，
+     不含文字，纯装饰）。绝对定位脱流 → 装订线只贴合标题文字块。
+     rotate 为静态贴纸角度，RTL 下保持原样（纯装饰不镜像）。 */
+  html.sakura main h1#_top::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 6px;
+    bottom: calc(100% + 4px);
+    width: 100px;
+    height: 18px;
+    background: repeating-linear-gradient(45deg, var(--sakura-pink) 0 6px, rgba(255, 255, 255, 0.45) 6px 12px);
+    border-inline-start: 1px dashed rgba(255, 255, 255, 0.6);
+    border-inline-end: 1px dashed rgba(255, 255, 255, 0.6);
+    box-shadow: 1px 2px 4px rgba(74, 40, 56, 0.15);
+    transform: rotate(-3deg);
+    opacity: 0.92;
+    pointer-events: none;
+  }
+
+  /* 红色线装结点：装订线末端的结（同 .yk-pagehead 结点配方：
+     --danger-bright 纯装饰红 + 墨描边，不承载文字对比）。 */
+  html.sakura main h1#_top::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: -7.5px;
+    bottom: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--danger-bright);
+    border: 2px solid var(--ink);
+    pointer-events: none;
+  }
+
+  /* 幻月夜：标题坐在暗色书桌上，装订墨线换弱线 —— --ink-faint 在
+     html.sakura[data-theme='dark'] 下已翻转为 rgba(255,245,224,.3)
+     （sakura-theme.css 夜晚书桌模型），与 .yk-pagehead 同一模式。
+     结点 / 胶带为不透明粉彩贴纸，夜里保持原样。 */
+  html.sakura[data-theme='dark'] main h1#_top {
+    border-inline-start-color: var(--ink-faint);
+  }
+</style>

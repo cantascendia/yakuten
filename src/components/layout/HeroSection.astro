@@ -31,7 +31,19 @@ const prefix = `/${locale}`;
 ---
 
 <section class="hero-section" aria-label="Hero">
-  <div class="hero-section__inner">
+  <div class="hero-section__inner" data-paper="true">
+    {/* sakura 手账画卷装饰层 — 双态常驻 SSR（spec §3-②）：
+        html.sakura 是客户端 class，构建期不可条件渲染 → 节点常驻，
+        非 sakura 下 display:none（可见渲染结果不变）。纯装饰、零文字（17 语共用）。 */}
+    <div class="hero-journal" aria-hidden="true">
+      <div class="hero-journal__paper"></div>
+      <span class="hero-journal__tape hero-journal__tape--pink"></span>
+      <span class="hero-journal__tape hero-journal__tape--mint"></span>
+      <span class="hero-journal__tape hero-journal__tape--butter"></span>
+      <svg class="hero-journal__clip" viewBox="0 0 30 42" fill="none" aria-hidden="true">
+        <path d="M10 4 Q10 2 15 2 Q20 2 20 4 L20 28 Q20 38 12 38 Q4 38 4 28 L4 12" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+    </div>
     <span class="hero-section__subtitle">{subtitle}</span>
     <h2 class="hero-section__title hero-text-glow">
       <span class="hero-gradient-text">{title}</span>
@@ -184,7 +196,7 @@ const prefix = `/${locale}`;
       border-color var(--transition-normal),
       box-shadow var(--transition-normal),
       color var(--transition-fast);
-    text-align: left;
+    text-align: start; /* RTL: 逻辑属性（LTR 渲染与 left 逐像素一致） */
   }
 
   .hero-search:hover {
@@ -235,6 +247,218 @@ const prefix = `/${locale}`;
     .hero-search {
       padding: var(--space-sm) var(--space-md);
       font-size: 0.8125rem;
+    }
+  }
+
+  /* =========================================================================
+     SAKURA 手账画卷 hero — 双态装饰层（html.sakura 下点亮，零 JS 零 island）
+     视觉基准：src/components/v2/screens/HomeScreen.tsx 画卷拼贴 +
+     scratchpad anatomy-v2manual §4 装饰语言。颜色一律 var() token。
+     ========================================================================= */
+  .hero-journal {
+    display: none; /* 非 sakura：装饰层不存在（不参与 flex gap，不影响任何像素） */
+  }
+
+  :global(html.sakura) .hero-section__inner {
+    position: relative; /* 装饰层的定位容器（无偏移，不改 sakura 布局） */
+  }
+
+  :global(html.sakura) .hero-journal {
+    display: block;
+    position: absolute;
+    inset: 0;
+    /* 画卷垫在文字下方：负 z 落在 .hero-section(position:relative; z-index:10)
+       的层叠上下文内 —— 在 section 透明背景之上、所有在流内容之下 */
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* 画卷纸背景板：ivory 底 + 方格纹 + 2px 墨线 + 6px 6px 0 硬阴影 + rotate(-1.5deg)。
+     底部 150px 让位给金色分隔线（divider-wrapper 高度恒定 48px + 6rem，
+     不随语言/文案长度变化，17 语下均成立）。 */
+  :global(html.sakura) .hero-journal__paper {
+    position: absolute;
+    inset: -14px -8px 150px;
+    background: var(--ivory);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-md);
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: rotate(-1.5deg);
+  }
+  /* 方格纹：--ink-faint(α.25) × opacity .35 ≈ α.09，对齐 v2 的 rgba(ink,.08) 网格，
+     不引入硬编码色值；幻月夜下 [data-paper] 把 --ink-faint 锁回墨色 → 纸面恒亮 */
+  :global(html.sakura) .hero-journal__paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius-md) - 2px);
+    background-image:
+      linear-gradient(var(--ink-faint) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-faint) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: 0.35;
+  }
+
+  /* washi 胶带压角 —— 纯 CSS 渐变（v2 胶带配方：22px 高 + 1px dashed 墨边）。
+     纹样取 dots / grid / solid 三种，避开需要白色半透明硬编码的 stripes。 */
+  :global(html.sakura) .hero-journal__tape {
+    position: absolute;
+    height: 22px;
+    border: 1px dashed var(--ink-faint);
+    opacity: 0.92;
+  }
+  :global(html.sakura) .hero-journal__tape--pink {
+    width: 110px;
+    top: -26px;
+    inset-inline-start: 14%;
+    background:
+      radial-gradient(circle at 4px 4px, var(--ink-faint) 1px, transparent 1.5px),
+      var(--sakura-pink);
+    background-size: 8px 8px, 100%;
+    transform: rotate(-8deg);
+  }
+  :global(html.sakura) .hero-journal__tape--mint {
+    width: 84px;
+    top: -22px;
+    inset-inline-end: 12%;
+    background:
+      linear-gradient(var(--ink-faint) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-faint) 1px, transparent 1px),
+      var(--mint);
+    background-size: 10px 10px, 10px 10px, 100%;
+    transform: rotate(12deg);
+  }
+  :global(html.sakura) .hero-journal__tape--butter {
+    width: 64px;
+    bottom: 142px; /* 骑在画卷纸下缘（150px）上 */
+    inset-inline-start: 7%;
+    background: var(--butter);
+    transform: rotate(-3deg);
+  }
+
+  /* 回形针（内联 SVG）：stroke=honey 2.5 round，rotate -15°（v2 惯例角度） */
+  :global(html.sakura) .hero-journal__clip {
+    position: absolute;
+    top: -18px;
+    inset-inline-end: 26%;
+    width: 30px;
+    height: 42px;
+    stroke: var(--honey);
+    transform: rotate(-15deg);
+  }
+
+  /* 幻月夜：画卷纸靠 data-paper + 字面量 token（--ivory/--ink 不随夜色翻转）
+     保持亮纸面；胶带降饱和（仅 opacity，不引入 filter/新色值） */
+  :global(html.sakura[data-theme='dark']) .hero-journal__tape {
+    opacity: 0.75;
+  }
+
+  /* -------------------------------------------------------------------------
+     sakura 下既有内容的手账化修正（全部 html.sakura 作用域；非 sakura 零影响）
+     ------------------------------------------------------------------------- */
+
+  /* 标题是品牌名不是章节：压掉 sakura-components.css 给 .sl-markdown-content h2
+     加的「壹」章节序号 + flex 章节布局。对方规则已升为
+     html.sakura .sl-markdown-content h2:lang(zh) = (0,3,2) —— 此处双写 class
+     抬到 (0,4,1) 稳压（红线审查 FAIL 修复）。
+     weight 400 = v2 display 家族大标题签名（需 !important 压过对方的 700 !important） */
+  :global(html.sakura) .hero-section .hero-section__title.hero-section__title {
+    display: block;
+    counter-increment: none;
+    font-weight: 400 !important;
+  }
+  :global(html.sakura) .hero-section .hero-section__title.hero-section__title::before {
+    content: none;
+  }
+
+  /* 标语：--color-accent(=butter-deep) 在 ivory 画卷纸上对比不足 →
+     AA 深粉 --sakura-pink-text（与皮肤自带 .text-slogan 同源，主题感知） */
+  :global(html.sakura) .hero-section__slogan {
+    color: var(--sakura-pink-text);
+  }
+
+  /* CTA：sakura-components.css 的行内链接荧光笔规则
+     （html.sakura .sl-markdown-content a，specificity 0,2,2）会盖过糖果按钮的
+     配色/内边距 —— 在此以 0,4,2 还原按钮本体（值与 sakura-theme.css 按钮层一致） */
+  :global(html.sakura .sl-markdown-content) .hero-section__ctas a.btn-primary,
+  :global(html.sakura .sl-markdown-content) .hero-section__ctas a.btn-primary:hover {
+    background-image: linear-gradient(135deg, var(--sakura-pink-aa), var(--danger-deep));
+    color: var(--fg-on-pink);
+    padding: 12px 28px;
+    font-weight: 700;
+  }
+  :global(html.sakura .sl-markdown-content) .hero-section__ctas a.btn-ghost,
+  :global(html.sakura .sl-markdown-content) .hero-section__ctas a.btn-ghost:hover {
+    background-image: none;
+    color: var(--ink);
+    padding: 12px 28px;
+    font-weight: 700;
+  }
+
+  /* 搜索条：玻璃拟态在 sakura 下退役（禁 backdrop blur）→ 纸面胶囊，
+     公式同 sakura 顶栏按钮（白卡底 + 2px 墨描边 + 药丸 + 2px 2px 0 硬阴影）；
+     动效收紧为 transform-only（旧规则过渡 border/box-shadow/color 属灰区） */
+  :global(html.sakura) .hero-search {
+    background: var(--bg-3);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-full);
+    box-shadow: 2px 2px 0 var(--ink);
+    color: var(--fg-2);
+    transition: transform var(--transition-fast);
+  }
+  :global(html.sakura) .hero-search:hover {
+    border-color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transform: translate(-1px, -1px);
+    color: var(--fg-1);
+  }
+  :global(html.sakura) .hero-search:hover .hero-search__icon {
+    color: var(--sakura-pink-text);
+  }
+  :global(html.sakura) .hero-search__icon {
+    transition: none;
+  }
+  /* 组件自带 2px 焦点环会以 0,2,0 压过皮肤 :where() 全局环 →
+     sakura 下显式还原全局 3px 绯红 focus ring（WCAG 2.4.7 红线） */
+  :global(html.sakura) .hero-search:focus-visible {
+    border-color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    color: var(--fg-1);
+    outline: 3px solid var(--sakura-pink-deep);
+    outline-offset: 3px;
+  }
+  :global(html.sakura) .hero-search__kbd {
+    border: 1px solid var(--ink-faint);
+    border-radius: 6px;
+  }
+
+  /* ≤800px（Starlight 断点）装饰收敛：回形针隐藏、胶带缩小、纸板收窄+阴影降级。
+     横向溢出防线：.hero-section 自带 overflow:hidden 兜底；且画卷纸 rotate(-1.5deg)
+     的角部外扩(≈8-13px) + 横向外扩(4-8px) + 硬阴影(4-6px) 恒小于 section 的
+     padding-inline(--space-lg=24px)，不产生页面级横滚，也不会被裁切。 */
+  @media (max-width: 800px) {
+    :global(html.sakura) .hero-journal__clip {
+      display: none;
+    }
+    :global(html.sakura) .hero-journal__tape {
+      height: 16px;
+    }
+    :global(html.sakura) .hero-journal__tape--pink {
+      width: 72px;
+      top: -18px;
+    }
+    :global(html.sakura) .hero-journal__tape--mint {
+      width: 56px;
+      top: -15px;
+    }
+    :global(html.sakura) .hero-journal__tape--butter {
+      width: 44px;
+    }
+    :global(html.sakura) .hero-journal__paper {
+      inset: -10px -4px 150px;
+      box-shadow: 4px 4px 0 var(--ink);
     }
   }
 </style>

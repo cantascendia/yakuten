@@ -53,7 +53,14 @@ const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
   />
 )}
 
-<div class="site-legal-footer">
+<div class="site-legal-footer" data-paper="true">
+  {/* sakura 专属：居中 kicker（washi 胶带 + 站点主张）。默认 display:none，
+      非 sakura 可见渲染结果不变；文案复用 17 语已有的 hero.subtitle
+      （zh =「循证 · 减害 · 引导就医」），不新增本地化内容。 */}
+  <p class="sakura-footer-kicker">
+    <span class="yk-washi" aria-hidden="true"></span>
+    <span class="sakura-footer-kicker__label">{t(locale, 'hero.subtitle')}</span>
+  </p>
   <p class="site-legal-footer__notice">{t(locale, 'footer.notice')}</p>
   <nav class="site-legal-footer__links" aria-label={t(locale, 'footer.navLabel')}>
     <a href={`/${locale}/about/`}>{t(locale, 'footer.link.disclaimer')}</a>
@@ -113,5 +120,71 @@ const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
     font-size: 0.6875rem;
     color: var(--sl-color-gray-4, var(--color-text-muted, #666));
     letter-spacing: 0.03em;
+  }
+
+  /* ======================================================================
+     sakura 手账页脚 —— 以下规则全部锁 html.sakura 作用域（手工纪律）。
+     未开 sakura：仅 .sakura-footer-kicker { display:none } 生效（隐藏
+     sakura 专属结构），默认皮可见渲染结果不变。
+     ====================================================================== */
+
+  /* sakura 专属 kicker 结构：默认隐藏（双态常驻 SSR 机制，spec §3-②） */
+  .sakura-footer-kicker {
+    display: none;
+  }
+
+  /* 纸面页脚：cream 底 + 顶部 2px 墨线 + 上方腮红硬影 —— 「墨线 + 粉线」
+     双线签名，与吸顶导航底线（border-bottom ink + 0 3px 0 blush）呼应。
+     data-paper 属性令 --fg-* 在幻月夜仍钉回梅子墨（纸在夜里仍然亮着）。
+     选择器双写 class 抬高特异度，确保稳定压过 sakura-components.css 的
+     旧 .site-legal-footer 规则（bg-2 + ink-faint 边线）。 */
+  :global(html.sakura) .site-legal-footer.site-legal-footer {
+    background: var(--cream);
+    border-top: 2px solid var(--ink);
+    box-shadow: 0 -3px 0 var(--sakura-blush);
+    margin-top: var(--space-2xl);
+    padding: var(--space-lg);
+    color: var(--fg-2);
+  }
+
+  /* kicker 排版：washi 胶带 + 退后的小标签（颜色交给胶带，文字退后）。
+     不加 nowrap —— 非 CJK 语言的主张句较长，移动端必须允许折行。 */
+  :global(html.sakura) .sakura-footer-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 var(--space-sm);
+    font-family: var(--font-ui-accent);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--fg-3);
+    text-align: center;
+  }
+  /* 字距 + 大写只给非连写文字：ar/fa（阿拉伯字母连写）加 letter-spacing 会拉断
+     连写形，属排版错误（红线审查 concern 修复） */
+  :global(html.sakura) .sakura-footer-kicker:not(:lang(ar)):not(:lang(fa)) {
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  /* 链接：粉色正文一律 AA 替身 --sakura-pink-text；hover 换墨字 + 下划线
+     （粉 deep 在 cream 上 3.2:1 不可作文字）。动效铁律：仅 transform +
+     opacity —— sakura 下取消默认皮的 color 过渡。 */
+  :global(html.sakura) .site-legal-footer__links a {
+    color: var(--sakura-pink-text);
+    transition: none;
+  }
+  :global(html.sakura) .site-legal-footer__links a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  /* 幻月夜：页脚是 data-paper 纸面，夜里仍然亮着（cream 底不变）——
+     链接钉回深粉 AA，压过 sakura-components.css 为「暗桌」场景写的
+     浅粉夜规则（浅粉 on cream 1.8:1 不可读）。 */
+  :global(html.sakura[data-theme='dark']) .site-legal-footer__links a {
+    color: var(--sakura-pink-text);
   }
 </style>

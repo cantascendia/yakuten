@@ -362,6 +362,18 @@ html.sakura:lang(ko) {
   --font-display: "Fraunces", "Noto Serif SC", serif;
 }
 
+/* 手写体跨语降级（:lang 白名单）：
+   Ma Shan Zheng 只有简中字形、Klee One 补假名 —— zh / ja 保留手写体；
+   其余语种（en/ko/es/pt/…/ar 共 15 语）会逐字回退成拼贴体 → 整个 --font-hand
+   token 降级为 ui-accent 斜体，保持「旁注」语感又不出缺字。
+   （:not 链式写法兼容 Selectors 3；:lang(zh) 前缀匹配 zh-CN 等子标签） */
+html.sakura:not(:lang(zh)):not(:lang(ja)) {
+  --font-hand: var(--font-ui-accent);
+}
+html.sakura:not(:lang(zh)):not(:lang(ja)) .yk-hand-note {
+  font-style: italic;
+}
+
 /* =========================================================================
    幻月夜 —「满月是神不在的时间」。夜晚书桌模型：
    桌面变梦境紫，纸张（[data-paper]/.yk-paper 表面）仍然亮着，墨色不变。
@@ -569,7 +581,8 @@ html.sakura .btn-flame, html.sakura .btn-gold, html.sakura .btn-ghost, html.saku
   cursor: pointer;
   white-space: nowrap;
   box-shadow: var(--shadow-hard);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  /* 动效红线：仅过渡 transform/opacity；投影与底色变化瞬时切换（v2 手账贴纸手感） */
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
   clip-path: none;
 }
 html.sakura .btn-flame,
@@ -624,6 +637,109 @@ html.sakura :where(button, a, [role="tab"], [role="button"], summary, input, sel
   outline: 3px solid var(--sakura-pink-deep);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
+}
+
+/* =========================================================================
+   GLOBAL PAPER — 全站手账纸底（v2 CarnivalBg 配方移植：纯 background 层，零 DOM）
+   画布层序（上→下）：樱瓣 tile → 22px 方格 → 93° 纸纤维 → [≥880px 底部柔光]。
+   粉/紫漫画网点需要「角部 mask 淡出、不许铺满」，而 mask 无法只作用于单一
+   background 层 → 放在 body::before/::after 两个 position:fixed 伪元素上
+   （fixed 元素自成合成层，滚动不重绘；与 background-attachment:fixed 的
+   移动端重绘坑无关）。全部确定性取值，无 JS、无随机。
+   ========================================================================= */
+html.sakura {
+  /* 樱瓣 8 枚（960px tile 平铺）：位置/角度/缩放为确定性公式
+       x=(i*137)%100, y=(i*193)%100, rotate=(i*47)%360, scale=.35+(i%3)*.15
+     的预计算值（%×9.6），禁 Math.random。data URI 内无法写 var()，
+     四色为 --sakura-pink/--sakura-blush/--butter/--mint 的字面值（非新增色）。 */
+  --sakura-paper-petals: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='960'%3E%3Cdefs%3E%3Cg id='p'%3E%3Cellipse cx='0' cy='-10' rx='4' ry='8'/%3E%3Cellipse cx='9.5' cy='-3' rx='4' ry='8' transform='rotate(72)'/%3E%3Cellipse cx='6' cy='8' rx='4' ry='8' transform='rotate(144)'/%3E%3Cellipse cx='-6' cy='8' rx='4' ry='8' transform='rotate(216)'/%3E%3Cellipse cx='-9.5' cy='-3' rx='4' ry='8' transform='rotate(288)'/%3E%3C/g%3E%3C/defs%3E%3Cg opacity='.3'%3E%3Cuse href='%23p' fill='%23FFA8C5' transform='translate(0 0) scale(.35)'/%3E%3Cuse href='%23p' fill='%23FFD4E0' transform='translate(355.2 892.8) rotate(47) scale(.5)'/%3E%3Cuse href='%23p' fill='%23FFE89C' transform='translate(710.4 825.6) rotate(94) scale(.65)'/%3E%3Cuse href='%23p' fill='%23A8E6C9' transform='translate(105.6 758.4) rotate(141) scale(.35)'/%3E%3Cuse href='%23p' fill='%23FFA8C5' transform='translate(460.8 691.2) rotate(188) scale(.5)'/%3E%3Cuse href='%23p' fill='%23FFD4E0' transform='translate(816 624) rotate(235) scale(.65)'/%3E%3Cuse href='%23p' fill='%23FFE89C' transform='translate(211.2 556.8) rotate(282) scale(.35)'/%3E%3Cuse href='%23p' fill='%23A8E6C9' transform='translate(566.4 489.6) rotate(329) scale(.5)'/%3E%3C/g%3E%3C/svg%3E");
+  /* 方格 22px：v2 线色 rgba(ink,.06) × 层透明度 .25 → 合成 alpha ≈.015 烘焙进色值 */
+  --sakura-paper-grid:
+    linear-gradient(rgba(74, 40, 56, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 40, 56, 0.015) 1px, transparent 1px);
+  --sakura-paper-grid-size: 22px 22px;
+  /* 93° 画卷纸纤维：v2 rgba(ink,.022) × 层透明度 .35 → ≈.008 */
+  --sakura-paper-fiber: repeating-linear-gradient(93deg, rgba(74, 40, 56, 0.008) 0 2px, transparent 2px 5px);
+  /* 底部两团柔光（薄荷/薰衣草）：仅在 ≥880px 的 fixed 画布上叠加，
+     scroll 画布上会被拉伸到全文档高度而失真，故移动端不出 */
+  --sakura-paper-glow:
+    radial-gradient(ellipse at 50% 88%, rgba(168, 230, 201, 0.06) 0%, transparent 46%),
+    radial-gradient(ellipse at 8% 92%, rgba(212, 197, 245, 0.05) 0%, transparent 40%);
+
+  background-color: var(--bg-1);
+  background-image: var(--sakura-paper-petals), var(--sakura-paper-grid), var(--sakura-paper-fiber);
+  background-size: 960px 960px, var(--sakura-paper-grid-size), var(--sakura-paper-grid-size), auto;
+  background-repeat: repeat;
+}
+/* 移动端 background-attachment:fixed 有滚动重绘性能坑 → 仅 ≥880px 启用 fixed 画布 */
+@media (min-width: 880px) {
+  html.sakura {
+    background-image: var(--sakura-paper-petals), var(--sakura-paper-grid), var(--sakura-paper-fiber), var(--sakura-paper-glow);
+    background-size: 960px 960px, var(--sakura-paper-grid-size), var(--sakura-paper-grid-size), auto, auto, auto;
+    background-repeat: repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+/* 幻月夜画布：方格/网点换月光色系（低饱和紫/银），密度减半（22→44px）；
+   樱瓣换月光四色（薰衣草/奶油银/天蓝/夜薰衣草，均为既有 token 字面值）并调暗至 .18。
+   背景底色 var(--bg-1) 自动随 dark token 翻转为 night-1，无需重写。 */
+html.sakura[data-theme='dark'] {
+  --sakura-paper-petals: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='960'%3E%3Cdefs%3E%3Cg id='p'%3E%3Cellipse cx='0' cy='-10' rx='4' ry='8'/%3E%3Cellipse cx='9.5' cy='-3' rx='4' ry='8' transform='rotate(72)'/%3E%3Cellipse cx='6' cy='8' rx='4' ry='8' transform='rotate(144)'/%3E%3Cellipse cx='-6' cy='8' rx='4' ry='8' transform='rotate(216)'/%3E%3Cellipse cx='-9.5' cy='-3' rx='4' ry='8' transform='rotate(288)'/%3E%3C/g%3E%3C/defs%3E%3Cg opacity='.18'%3E%3Cuse href='%23p' fill='%23D4C5F5' transform='translate(0 0) scale(.35)'/%3E%3Cuse href='%23p' fill='%23FFF5E0' transform='translate(355.2 892.8) rotate(47) scale(.5)'/%3E%3Cuse href='%23p' fill='%23A8D5F5' transform='translate(710.4 825.6) rotate(94) scale(.65)'/%3E%3Cuse href='%23p' fill='%23B8A0D8' transform='translate(105.6 758.4) rotate(141) scale(.35)'/%3E%3Cuse href='%23p' fill='%23D4C5F5' transform='translate(460.8 691.2) rotate(188) scale(.5)'/%3E%3Cuse href='%23p' fill='%23FFF5E0' transform='translate(816 624) rotate(235) scale(.65)'/%3E%3Cuse href='%23p' fill='%23A8D5F5' transform='translate(211.2 556.8) rotate(282) scale(.35)'/%3E%3Cuse href='%23p' fill='%23B8A0D8' transform='translate(566.4 489.6) rotate(329) scale(.5)'/%3E%3C/g%3E%3C/svg%3E");
+  --sakura-paper-grid:
+    linear-gradient(rgba(255, 245, 224, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 245, 224, 0.02) 1px, transparent 1px);
+  --sakura-paper-grid-size: 44px 44px;
+  --sakura-paper-fiber: repeating-linear-gradient(93deg, rgba(255, 245, 224, 0.008) 0 2px, transparent 2px 5px);
+  --sakura-paper-glow:
+    radial-gradient(ellipse at 50% 88%, rgba(155, 125, 212, 0.07) 0%, transparent 46%),
+    radial-gradient(ellipse at 8% 92%, rgba(91, 168, 224, 0.05) 0%, transparent 40%);
+}
+
+/* body 让位给画布纸纹（纸纹落在 html 上，规避 body 背景向 canvas 传播的分支差异）。
+   .sakura.sakura 双写是刻意抬特异度：sakura-components.css L368-378 的旧版 22px
+   网点纸同为 html.sakura body 且加载更晚，必须在不动该文件的前提下压过它；
+   dark 一条再抬一级压过其 html.sakura[data-theme='dark'] body。 */
+html.sakura.sakura body { background: transparent; }
+html.sakura.sakura[data-theme='dark'] body { background: transparent; }
+
+/* 漫画网点 ×2 —— 必须角部淡出、不许铺满（v2 红线）。
+   mask 渐变的不透明端用 var(--ink)：alpha 通道遮罩，非可见色，不涉禁纯黑。 */
+html.sakura body::before,
+html.sakura body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+/* 粉网点 · 右上角淡出 */
+html.sakura body::before {
+  opacity: 0.26;
+  background-image: radial-gradient(circle at 1.5px 1.5px, rgba(229, 87, 139, 0.22) 1px, transparent 0);
+  background-size: 7px 7px;
+  -webkit-mask-image: radial-gradient(ellipse 50% 38% at 100% 0%, var(--ink), transparent);
+  mask-image: radial-gradient(ellipse 50% 38% at 100% 0%, var(--ink), transparent);
+}
+/* 紫网点 · 左下角淡出 */
+html.sakura body::after {
+  opacity: 0.2;
+  background-image: radial-gradient(circle at 1.5px 1.5px, rgba(155, 125, 212, 0.22) 1px, transparent 0);
+  background-size: 9px 9px;
+  -webkit-mask-image: radial-gradient(ellipse 45% 34% at 0% 100%, var(--ink), transparent);
+  mask-image: radial-gradient(ellipse 45% 34% at 0% 100%, var(--ink), transparent);
+}
+/* 幻月夜网点：低饱和紫/银（薰衣草/奶油）+ 密度减半（7→14px、9→18px） */
+html.sakura[data-theme='dark'] body::before {
+  opacity: 0.2;
+  background-image: radial-gradient(circle at 1.5px 1.5px, rgba(212, 197, 245, 0.22) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+html.sakura[data-theme='dark'] body::after {
+  opacity: 0.18;
+  background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255, 245, 224, 0.18) 1px, transparent 0);
+  background-size: 18px 18px;
 }
 
 /* =========================================================================
