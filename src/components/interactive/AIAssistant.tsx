@@ -1,144 +1,151 @@
-﻿import { useState, useRef, useEffect, useCallback } from 'react';
-import type { CSSProperties } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { getLocale, AI_COPY } from './aiChatL10n';
+import { containsCrisisKeyword, getCrisisHotlines } from './crisisSupport';
+import type { CrisisHotline } from './crisisSupport';
 
-type Locale = 'zh' | 'en' | 'ja' | 'ko';
-
-function getLocale(): Locale {
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en')) return 'en';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ja')) return 'ja';
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/ko')) return 'ko';
-  return 'zh';
-}
-
-const UI_COPY = {
-  zh: {
-    title: 'AI 问答助手',
-    close: '关闭',
-    disclaimer: '仅供信息导航，不提供个体化用药建议；如遇紧急情况请立即拨打 120。',
-    emptyTitle: '这是一个用于 HRT 信息导航的 AI 助手。',
-    emptySubtitle: '你可以先询问基础概念、风险识别、血检说明或页面导览。',
-    thinking: '正在思考...',
-    errorPrefix: '出错了：',
-    inputPlaceholder: '输入你的问题...',
-    inputLabel: '输入问题',
-    send: '发送',
-    sendLabel: '发送消息',
-    loading: '发送中...',
-    rateLimitError: '请求过于频繁，请稍后再试',
-    serviceUnavailable: '服务暂时不可用',
-    emptyResponse: '抱歉，暂时无法获取回复。请稍后重试。',
-    unknownError: '未知错误',
-    retryHint: '已重试 3 次，请稍后再试。',
-    streamInterrupted: '回复中断，请重新提问。',
-    retrying: '重连中…',
-    suggestions: [
-      '雌二醇的常见目标范围是什么？',
-      '出现哪些情况需要立即停药？',
-      '血检结果偏高应该怎么看？',
-      'HRT 开始前应该准备什么？',
-    ],
-  },
-  en: {
-    title: 'AI Assistant',
-    close: 'Close',
-    disclaimer: 'For information navigation only. No individualized dosing advice. In emergencies, seek urgent local care immediately.',
-    emptyTitle: 'This AI assistant is for HRT information navigation.',
-    emptySubtitle: 'You can ask about basics, risk recognition, blood test interpretation, or where to start reading.',
-    thinking: 'Thinking...',
-    errorPrefix: 'Error: ',
-    inputPlaceholder: 'Ask a question...',
-    inputLabel: 'Ask a question',
-    send: 'Send',
-    sendLabel: 'Send message',
-    loading: 'Sending...',
-    rateLimitError: 'Too many requests. Please try again later.',
-    serviceUnavailable: 'Service temporarily unavailable',
-    emptyResponse: 'Sorry, no reply was returned. Please try again later.',
-    unknownError: 'Unknown error',
-    retryHint: 'Tried 3 times. Please try again later.',
-    streamInterrupted: 'Reply interrupted. Please ask again.',
-    retrying: 'Reconnecting…',
-    suggestions: [
-      'What is a common estradiol target range?',
-      'Which symptoms mean I should stop medication immediately?',
-      'How should I interpret high lab values?',
-      'What should I prepare before starting HRT?',
-    ],
-  },
-  ja: {
-    title: 'AIアシスタント',
-    close: '閉じる',
-    disclaimer: '情報案内専用です。個別の用量提案は行いません。緊急時は直ちに地域の救急を利用してください。',
-    emptyTitle: 'このAIアシスタントは HRT 情報の案内用です。',
-    emptySubtitle: '基礎知識、リスクの見分け方、血液検査の見方、読み始めるページなどを質問できます。',
-    thinking: '考えています...',
-    errorPrefix: 'エラー: ',
-    inputPlaceholder: '質問を入力...',
-    inputLabel: '質問を入力',
-    send: '送信',
-    sendLabel: 'メッセージを送信',
-    loading: '送信中...',
-    rateLimitError: 'リクエストが多すぎます。しばらくしてから再試行してください。',
-    serviceUnavailable: 'サービスは一時的に利用できません',
-    emptyResponse: '返信を取得できませんでした。しばらくしてから再試行してください。',
-    unknownError: '不明なエラー',
-    retryHint: '3 回再試行しました。しばらくしてから再度お試しください。',
-    streamInterrupted: '返信が中断されました。もう一度質問してください。',
-    retrying: '再接続中…',
-    suggestions: [
-      'エストラジオールの一般的な目標範囲は？',
-      'どんな症状ならすぐ中止すべきですか？',
-      '検査値が高いときはどう見ればいいですか？',
-      'HRT 開始前に何を準備すべきですか？',
-    ],
-  },
-  ko: {
-    title: 'AI 어시스턴트',
-    close: '닫기',
-    disclaimer: '정보 안내 전용입니다. 개별 용량 제안은 하지 않습니다. 긴급 시 즉시 지역 응급 서비스를 이용해 주세요.',
-    emptyTitle: '이 AI 어시스턴트는 HRT 정보 안내용입니다.',
-    emptySubtitle: '기초 지식, 위험 인식, 혈액 검사 해석, 읽기 시작할 페이지 등을 질문할 수 있습니다.',
-    thinking: '생각 중...',
-    errorPrefix: '오류: ',
-    inputPlaceholder: '질문을 입력하세요...',
-    inputLabel: '질문 입력',
-    send: '전송',
-    sendLabel: '메시지 전송',
-    loading: '전송 중...',
-    rateLimitError: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.',
-    serviceUnavailable: '서비스가 일시적으로 사용할 수 없습니다',
-    emptyResponse: '죄송합니다, 응답을 받지 못했습니다. 잠시 후 다시 시도해 주세요.',
-    unknownError: '알 수 없는 오류',
-    retryHint: '3번 재시도했습니다. 잠시 후 다시 시도해 주세요.',
-    streamInterrupted: '응답이 중단되었습니다. 다시 질문해 주세요.',
-    retrying: '재연결 중…',
-    suggestions: [
-      '에스트라디올의 일반적인 목표 범위는?',
-      '어떤 증상이면 즉시 복용을 중단해야 하나요?',
-      '검사 수치가 높을 때 어떻게 해석하나요?',
-      'HRT 시작 전에 무엇을 준비해야 하나요?',
-    ],
-  },
-} as const;
+/* =========================================================================
+   AIAssistant — AI 问答助手对话主体（手账化重构版）
+   ------------------------------------------------------------------------
+   · 端点契约零改动：POST /api/ai-chat {messages}，流式纯文本，
+     429/4xx/5xx JSON error。端点文件一个字节不碰。
+   · 隐私红线：对话不落任何存储（state 仅内存）；页面上下文提示的关闭
+     状态也只存模块级内存变量，不落 localStorage。
+   · 功能创新（全部纯前端）：
+     1. 快捷问题 chips（17 语，空状态一键发送）
+     2. 危机词本地拦截 —— 命中即本地渲染热线卡（hotlines.json SSOT），
+        不等 AI；消息照常发送（服务端本就有危机引导 prompt）
+     3. 页面上下文感知 —— document.title 清洗后拼进发送文本前缀，
+        拼接后超端点 4096 bytes/条则不拼；可通过提示条 × 关闭（会话内存）
+     4. 站内链接卡片化 —— AI 回复里的站内链接渲染为跳转小卡；
+        外链普通样式 + rel="noopener noreferrer"
+     5. 17 语 UI 文案（aiChatL10n.ts 字典，URL 首段取 locale，fallback zh）
+   · 双态皮肤：默认（米哈游二相乐园）样式在本文件 BASE_CSS（class 化，
+     观感与旧 inline 版一致）；sakura（乐园手账）覆盖层在
+     src/styles/sakura-ai.css（html.sakura 作用域，主控注册 customCss）。
+   ========================================================================= */
 
 /* ================================
-   Simple Markdown Renderer
+   会话级内存开关（隐私红线：仅内存，不落 localStorage）
+   —— 模块级变量在浮窗开合（组件卸载/重挂）间保持，刷新页面即忘。
+   ================================ */
+let pageContextOptOut = false;
+
+/* ================================
+   共享图标 —— 对话气泡 + 樱瓣（手账贴纸风，stroke=currentColor）
+   FloatingAIChat 的 FAB 与本组件头部/空状态共用。
+   ================================ */
+export function AIChatIcon({ size = 24 }: { size?: number }) {
+  const petal = 'M12 6.9c.85.85.85 1.8 0 2.6-.85-.8-.85-1.75 0-2.6z';
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21 14.8a2 2 0 0 1-2 2H7.6L3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      <g strokeWidth="1.3">
+        <path d={petal} />
+        <path d={petal} transform="rotate(72 12 9.5)" />
+        <path d={petal} transform="rotate(144 12 9.5)" />
+        <path d={petal} transform="rotate(216 12 9.5)" />
+        <path d={petal} transform="rotate(288 12 9.5)" />
+      </g>
+    </svg>
+  );
+}
+
+/* ================================
+   Markdown 渲染（纯字符串替换；输入只来自我们自己的端点，
+   仍先转义 & < > 防注入 —— 与旧版同策略）
    ================================ */
 
-function renderMarkdown(text: string): string {
-  return text
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--color-outline-20);margin:0.75em 0"/>')
-    .replace(/^### (.+)$/gm, '<strong style="font-size:1em;display:block;margin-top:0.75em">$1</strong>')
-    .replace(/^## (.+)$/gm, '<strong style="font-size:1.05em;display:block;margin-top:0.75em">$1</strong>')
-    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^[*\-] (.+)$/gm, '<li style="margin-left:1.2em;list-style:disc">$1</li>')
-    .replace(/^\d+\.\s(.+)$/gm, '<li style="margin-left:1.2em;list-style:decimal">$1</li>')
-    .replace(/`([^`]+)`/g, '<code style="background:var(--color-white-alpha-08);padding:0.1em 0.3em;font-size:0.85em;font-family:var(--font-code)">$1</code>')
-    .replace(/\n/g, '<br/>');
+const DOC_ICON_SVG =
+  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+
+function escapeAttr(url: string): string {
+  return url.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
+
+/** 站内链接 → 跳转小卡；外链 → 普通样式 + noopener。label 已 HTML 转义。 */
+function buildLinkHtml(label: string, hrefRaw: string): string {
+  const href = hrefRaw.replace(/&amp;/g, '&');
+  let internal = false;
+  if (href.startsWith('/')) {
+    internal = true;
+  } else {
+    try {
+      const u = new URL(href);
+      if (u.protocol !== 'https:' && u.protocol !== 'http:') return label;
+      internal = /(^|\.)hrtyaku\.com$/i.test(u.hostname);
+    } catch {
+      return label;
+    }
+  }
+  const attr = escapeAttr(href);
+  if (internal) {
+    return (
+      `<a class="yk-ai-linkcard" href="${attr}">` +
+      `<span class="yk-ai-linkcard__icon" aria-hidden="true">${DOC_ICON_SVG}</span>` +
+      `<span class="yk-ai-linkcard__label">${label}</span>` +
+      `<span class="yk-ai-linkcard__arrow" aria-hidden="true">→</span>` +
+      `</a>`
+    );
+  }
+  return `<a class="yk-ai-extlink" href="${attr}" rel="noopener noreferrer" target="_blank">${label}</a>`;
+}
+
+function renderMarkdown(text: string): string {
+  return (
+    text
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/^---$/gm, '<hr class="yk-ai-hr"/>')
+      .replace(/^### (.+)$/gm, '<strong class="yk-ai-h yk-ai-h--3">$1</strong>')
+      .replace(/^## (.+)$/gm, '<strong class="yk-ai-h yk-ai-h--2">$1</strong>')
+      /* markdown 链接（站内卡片化 / 外链 noopener） */
+      .replace(
+        /\[([^\]]+)\]\((https?:\/\/[^\s<>()]+|\/[^\s<>()]*)\)/g,
+        (_m, label: string, href: string) => buildLinkHtml(label, href),
+      )
+      /* 裸 URL（前导空白/行首才算，避免命中已生成的 href 属性） */
+      .replace(
+        /(^|[\s])(https?:\/\/[^\s<>()]+)/g,
+        (_m, pre: string, url: string) =>
+          pre + buildLinkHtml(url.replace(/^https?:\/\/(www\.)?/i, '').slice(0, 64), url),
+      )
+      .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/^[*\-] (.+)$/gm, '<li class="yk-ai-li yk-ai-li--ul">$1</li>')
+      .replace(/^\d+\.\s(.+)$/gm, '<li class="yk-ai-li yk-ai-li--ol">$1</li>')
+      .replace(/`([^`]+)`/g, '<code class="yk-ai-code">$1</code>')
+      .replace(/\n/g, '<br/>')
+  );
+}
+
+/* ================================
+   页面上下文（发送时读取，不落任何存储）
+   ================================ */
+
+/** 清洗 document.title：去站名后缀；专用工具页 / 异常标题返回 null。 */
+function getPageTitle(): string | null {
+  if (typeof document === 'undefined' || typeof window === 'undefined') return null;
+  if (window.location.pathname.includes('/tools/ai-assistant')) return null;
+  let t = (document.title || '').split('|')[0];
+  t = t.replace(/\s*[-–—·]\s*HRT药典\s*$/, '').trim();
+  if (!t || t === 'HRT药典' || t.length > 120) return null;
+  return t;
+}
+
+/** 端点契约：单条消息 ≤ 4096 bytes（api/ai-chat.ts MAX_CONTENT_BYTES）。 */
+const MAX_CONTENT_BYTES = 4096;
+/** 端点实际只用最近 10 条（>20 条会 400），发送前裁剪。 */
+const MAX_SENT_MESSAGES = 10;
 
 /* ================================
    Types
@@ -146,7 +153,12 @@ function renderMarkdown(text: string): string {
 
 interface Message {
   role: 'user' | 'assistant';
+  /** 展示用文本（用户输入原文 / AI 回复） */
   content: string;
+  /** 发给端点的文本（含页面上下文前缀）；未设置时用 content */
+  apiContent?: string;
+  /** 用户消息命中危机词 → 本地渲染热线卡（不发给端点） */
+  crisis?: boolean;
 }
 
 interface AIAssistantProps {
@@ -156,210 +168,372 @@ interface AIAssistantProps {
   onClose?: () => void;
 }
 
-/* ================================
-   Styles
-   ================================ */
+/* =========================================================================
+   默认皮肤（米哈游二相乐园）—— class 化基线样式。
+   观感与旧 inline-style 版一致；sakura-ai.css 依赖这些 class 钩子换肤。
+   ========================================================================= */
 
-function getStyles(compact: boolean): Record<string, CSSProperties> {
-  return {
-    container: {
-      background: compact ? 'var(--color-bg-container, #1a1625)' : 'var(--glass-bg)',
-      backdropFilter: compact ? 'none' : 'var(--glass-blur)',
-      WebkitBackdropFilter: compact ? 'none' : 'var(--glass-blur)',
-      border: compact ? 'none' : 'var(--glass-border)',
-      clipPath: compact ? 'none' : 'var(--clip-corner)',
-      padding: 0,
-      marginBlock: compact ? 0 : 'var(--space-xl)',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      overflow: 'hidden',
-    },
-    header: {
-      padding: compact ? '10px 14px' : 'var(--space-md) var(--space-lg)',
-      borderBottom: '1px solid var(--color-outline-20)',
-      display: 'flex',
-      alignItems: 'center',
-      gap: 'var(--space-sm)',
-      flexShrink: 0,
-    },
-    headerIcon: {
-      color: 'var(--color-accent)',
-      display: 'inline-flex',
-    },
-    headerTitle: {
-      fontFamily: 'var(--font-display)',
-      fontSize: compact ? '0.875rem' : '1rem',
-      fontWeight: 700,
-      color: 'var(--color-text-primary)',
-      flex: 1,
-    },
-    headerBadge: {
-      display: 'inline-block',
-      padding: '1px var(--space-sm)',
-      fontSize: '0.6875rem',
-      fontFamily: 'var(--font-mono)',
-      color: 'var(--color-safe)',
-      border: '1px solid var(--color-safe-alpha-30)',
-      letterSpacing: '0.05em',
-    },
-    disclaimer: {
-      padding: '6px 14px',
-      background: 'var(--color-caution-alpha-08)',
-      borderBottom: '1px solid var(--color-outline-20)',
-      fontSize: '0.6875rem',
-      color: 'var(--color-caution)',
-      lineHeight: 1.4,
-      fontFamily: 'var(--font-body)',
-      flexShrink: 0,
-    },
-    messagesArea: {
-      flex: 1,
-      overflowY: 'auto' as const,
-      padding: compact ? '10px' : 'var(--space-lg)',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--space-sm)',
-    },
-    emptyState: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 'var(--space-sm)',
-      color: 'var(--color-text-muted)',
-      textAlign: 'center' as const,
-      padding: compact ? '10px' : 'var(--space-xl)',
-    },
-    emptyIcon: {
-      fontSize: compact ? '1.5rem' : '2rem',
-      opacity: 0.5,
-    },
-    emptyText: {
-      fontFamily: 'var(--font-body)',
-      fontSize: compact ? '0.8125rem' : '0.875rem',
-      lineHeight: 1.6,
-    },
-    suggestionsGrid: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '6px',
-      marginTop: 'var(--space-xs)',
-      width: '100%',
-    },
-    suggestionBtn: {
-      background: 'var(--color-bg-container)',
-      border: '1px solid var(--color-outline-20)',
-      color: 'var(--color-text-secondary)',
-      padding: '6px 10px',
-      fontSize: '0.75rem',
-      fontFamily: 'var(--font-body)',
-      cursor: 'pointer',
-      textAlign: 'left' as const,
-      transition: 'border-color var(--transition-fast), color var(--transition-fast)',
-      borderRadius: 0,
-    },
-    msgUser: {
-      alignSelf: 'flex-end',
-      background: 'var(--color-primary-alpha-15)',
-      borderLeft: '3px solid var(--color-primary)',
-      padding: '6px 10px',
-      maxWidth: '90%',
-      fontFamily: 'var(--font-body)',
-      fontSize: compact ? '0.8125rem' : '0.875rem',
-      lineHeight: 1.6,
-      color: 'var(--color-text-primary)',
-      whiteSpace: 'pre-wrap' as const,
-    },
-    msgAssistant: {
-      alignSelf: 'flex-start',
-      background: 'var(--color-white-alpha-03)',
-      borderLeft: '3px solid var(--color-accent)',
-      padding: '6px 10px',
-      maxWidth: '90%',
-      fontFamily: 'var(--font-body)',
-      fontSize: compact ? '0.8125rem' : '0.875rem',
-      lineHeight: 1.7,
-      color: 'var(--color-text-primary)',
-    },
-    msgLabel: {
-      fontSize: '0.625rem',
-      color: 'var(--color-text-muted)',
-      fontFamily: 'var(--font-mono)',
-      letterSpacing: '0.05em',
-      textTransform: 'uppercase' as const,
-      marginBottom: '2px',
-    },
-    inputArea: {
-      borderTop: '1px solid var(--color-outline-20)',
-      padding: compact ? '8px 10px' : 'var(--space-md) var(--space-lg)',
-      display: 'flex',
-      gap: '6px',
-      flexShrink: 0,
-    },
-    textInput: {
-      flex: 1,
-      padding: '6px 10px',
-      background: 'var(--color-bg-container)',
-      color: 'var(--color-text-primary)',
-      border: 'none',
-      borderBottom: '2px solid var(--color-outline)',
-      fontFamily: 'var(--font-body)',
-      fontSize: compact ? '0.8125rem' : '0.875rem',
-      outline: 'none',
-      borderRadius: 0,
-      transition: 'border-color var(--transition-fast)',
-    },
-    sendBtn: {
-      padding: '6px 14px',
-      background: 'var(--color-primary)',
-      color: 'var(--color-text-on-dark)',
-      border: 'none',
-      fontFamily: 'var(--font-body)',
-      fontSize: compact ? '0.8125rem' : '0.875rem',
-      fontWeight: 600,
-      cursor: 'pointer',
-      transition: 'opacity var(--transition-fast)',
-      borderRadius: 0,
-      whiteSpace: 'nowrap' as const,
-    },
-    sendBtnDisabled: {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-    thinkingBar: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-      alignSelf: 'flex-start',
-      padding: '8px 12px',
-      background: 'var(--color-accent-alpha-08)',
-      borderLeft: '3px solid var(--color-accent)',
-      fontSize: '0.75rem',
-      color: 'var(--color-accent)',
-      fontFamily: 'var(--font-body)',
-    },
-    dotContainer: {
-      display: 'inline-flex',
-      gap: '3px',
-    },
-    dot: {
-      width: '5px',
-      height: '5px',
-      borderRadius: '50%',
-      background: 'var(--color-accent)',
-    },
-    errorBox: {
-      background: 'var(--color-danger-alpha-10)',
-      borderLeft: '4px solid var(--color-danger)',
-      padding: '6px 10px',
-      color: 'var(--color-danger)',
-      fontSize: '0.75rem',
-      fontFamily: 'var(--font-body)',
-    },
-  };
+const BASE_CSS = `
+@keyframes ai-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-4px); opacity: 1; }
 }
+.yk-ai {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+.yk-ai--page {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  clip-path: var(--clip-corner);
+  margin-block: var(--space-xl);
+}
+.yk-ai--compact {
+  background: var(--color-bg-container, #1a1625);
+  margin-block: 0;
+}
+.yk-ai-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-block-end: 1px solid var(--color-outline-20);
+  flex-shrink: 0;
+}
+.yk-ai--compact .yk-ai-header { padding: 10px 14px; }
+.yk-ai-header__icon { color: var(--color-accent); display: inline-flex; }
+.yk-ai-header__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  flex: 1;
+}
+.yk-ai--compact .yk-ai-header__title { font-size: 0.875rem; }
+.yk-ai-header__badge {
+  display: inline-block;
+  padding: 1px var(--space-sm);
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  color: var(--color-safe);
+  border: 1px solid var(--color-safe-alpha-30);
+  letter-spacing: 0.05em;
+}
+.yk-ai-header__close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: var(--space-xs);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+@media (hover: hover) {
+  .yk-ai-header__close:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-alpha-08);
+  }
+}
+.yk-ai-disclaimer {
+  padding: 6px 14px;
+  background: var(--color-caution-alpha-08);
+  border-block-end: 1px solid var(--color-outline-20);
+  font-size: 0.6875rem;
+  color: var(--color-caution);
+  line-height: 1.4;
+  font-family: var(--font-body);
+  flex-shrink: 0;
+}
+.yk-ai-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.yk-ai--compact .yk-ai-log { padding: 10px; }
+.yk-ai-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-xl);
+}
+.yk-ai--compact .yk-ai-empty { padding: 10px; }
+.yk-ai-empty__icon { color: var(--color-text-muted); opacity: 0.55; display: inline-flex; }
+.yk-ai-empty__text {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.yk-ai--compact .yk-ai-empty__text { font-size: 0.8125rem; }
+.yk-ai-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-block-start: var(--space-xs);
+  width: 100%;
+}
+.yk-ai-chip {
+  background: var(--color-bg-container);
+  border: 1px solid var(--color-outline-20);
+  color: var(--color-text-secondary);
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  text-align: start;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+  border-radius: 0;
+}
+@media (hover: hover) {
+  .yk-ai-chip:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+  }
+}
+.yk-ai-turn { display: flex; flex-direction: column; gap: var(--space-sm); }
+.yk-ai-msg {
+  max-width: 90%;
+  width: fit-content;
+  padding: 6px 10px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+.yk-ai--compact .yk-ai-msg { font-size: 0.8125rem; }
+.yk-ai-msg--user {
+  align-self: flex-end;
+  background: var(--color-primary-alpha-15);
+  border-inline-start: 3px solid var(--color-primary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.yk-ai-msg--ai {
+  align-self: flex-start;
+  background: var(--color-white-alpha-03);
+  border-inline-start: 3px solid var(--color-accent);
+  line-height: 1.7;
+}
+.yk-ai-msg__label {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-block-end: 2px;
+}
+.yk-ai-hr {
+  border: none;
+  border-top: 1px solid var(--color-outline-20);
+  margin: 0.75em 0;
+}
+.yk-ai-h { display: block; margin-top: 0.75em; }
+.yk-ai-h--2 { font-size: 1.05em; }
+.yk-ai-h--3 { font-size: 1em; }
+.yk-ai-li { margin-inline-start: 1.2em; }
+.yk-ai-li--ul { list-style: disc; }
+.yk-ai-li--ol { list-style: decimal; }
+.yk-ai-code {
+  background: var(--color-white-alpha-08);
+  padding: 0.1em 0.3em;
+  font-size: 0.85em;
+  font-family: var(--font-code);
+}
+.yk-ai-msg a.yk-ai-linkcard {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 6px;
+  padding: 8px 10px;
+  background: var(--color-bg-container, #1a1625);
+  border: 1px solid var(--color-outline-20);
+  border-inline-start: 3px solid var(--color-accent);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  transition: border-color var(--transition-fast);
+}
+@media (hover: hover) {
+  .yk-ai-msg a.yk-ai-linkcard:hover { border-color: var(--color-primary); }
+}
+.yk-ai-msg a.yk-ai-linkcard:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.yk-ai-linkcard__icon { display: inline-flex; color: var(--color-accent); flex-shrink: 0; }
+.yk-ai-linkcard__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.yk-ai-linkcard__arrow { flex-shrink: 0; color: var(--color-text-muted); }
+[dir="rtl"] .yk-ai-linkcard__arrow { transform: scaleX(-1); display: inline-block; }
+.yk-ai-msg a.yk-ai-extlink {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.yk-ai-crisis {
+  background: var(--color-danger-dark, #D32F2F);
+  border: 1px solid var(--color-danger);
+  color: #FFFFFF;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.yk-ai-crisis__title { font-weight: 700; font-size: 0.8125rem; color: #FFFFFF; margin: 0; }
+.yk-ai-crisis__body { margin: 0; font-size: 0.75rem; line-height: 1.5; color: #FFFFFF; }
+.yk-ai-crisis__list { display: flex; flex-direction: column; gap: 4px; }
+.yk-ai-crisis__line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.yk-ai-crisis__line:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
+.yk-ai-crisis__name { font-size: 0.75rem; line-height: 1.4; }
+.yk-ai-crisis__num {
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.yk-ai-crisis__note { margin: 0; font-size: 0.6875rem; line-height: 1.5; color: #FFFFFF; }
+.yk-ai-thinking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 8px 12px;
+  background: var(--color-accent-alpha-08);
+  border-inline-start: 3px solid var(--color-accent);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+}
+.yk-ai-dots { display: inline-flex; gap: 3px; }
+.yk-ai-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: ai-dot-bounce 1s ease infinite;
+}
+.yk-ai-dot:nth-child(2) { animation-delay: 0.15s; }
+.yk-ai-dot:nth-child(3) { animation-delay: 0.3s; }
+.yk-ai-error {
+  background: var(--color-danger-alpha-10);
+  border-inline-start: 4px solid var(--color-danger);
+  padding: 6px 10px;
+  color: var(--color-danger);
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+}
+.yk-ai-ctx {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 2px;
+  padding-inline: 14px 6px;
+  background: var(--color-white-alpha-03, rgba(255, 255, 255, 0.03));
+  border-block-start: 1px solid var(--color-outline-20);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  flex-shrink: 0;
+}
+.yk-ai-ctx__text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.yk-ai-ctx__close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+@media (hover: hover) {
+  .yk-ai-ctx__close:hover { color: var(--color-primary); }
+}
+.yk-ai-inputrow {
+  border-block-start: 1px solid var(--color-outline-20);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.yk-ai--compact .yk-ai-inputrow { padding: 8px 10px; }
+.yk-ai-input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 10px;
+  background: var(--color-bg-container);
+  color: var(--color-text-primary);
+  border: none;
+  border-block-end: 2px solid var(--color-outline);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  border-radius: 0;
+  transition: border-color var(--transition-fast);
+}
+.yk-ai--compact .yk-ai-input { font-size: 0.8125rem; }
+.yk-ai-input:focus { border-block-end-color: var(--color-primary); }
+.yk-ai-send {
+  padding: 6px 14px;
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+  border-radius: 0;
+  white-space: nowrap;
+}
+.yk-ai--compact .yk-ai-send { font-size: 0.8125rem; }
+.yk-ai-send:disabled { opacity: 0.5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) {
+  .yk-ai-dot { animation: none; }
+}
+`;
 
 /* ================================
    Component
@@ -367,14 +541,22 @@ function getStyles(compact: boolean): Record<string, CSSProperties> {
 
 export default function AIAssistant({ compact = false, onClose }: AIAssistantProps) {
   const locale = getLocale();
-  const ui = UI_COPY[locale];
+  const ui = AI_COPY[locale];
+  const crisisHotlines = useMemo<CrisisHotline[]>(() => getCrisisHotlines(locale), [locale]);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /* 页面上下文：标题在挂载后读取（避免 SSR/hydration 不一致），
+     关闭状态镜像模块级会话内存变量 */
+  const [pageTitle, setPageTitle] = useState<string | null>(null);
+  const [ctxOptOut, setCtxOptOut] = useState(pageContextOptOut);
   const messagesAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const s = getStyles(compact);
+
+  useEffect(() => {
+    setPageTitle(getPageTitle());
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     const container = messagesAreaRef.current;
@@ -389,12 +571,30 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
+  function dismissContext() {
+    pageContextOptOut = true;
+    setCtxOptOut(true);
+  }
+
   async function sendMessage(text?: string) {
     const messageText = text ?? input.trim();
     if (!messageText || isLoading) return;
 
     setError(null);
-    const userMsg: Message = { role: 'user', content: messageText };
+
+    /* 页面上下文前缀 —— 拼接后超端点 4096 bytes/条限制则不拼 */
+    let apiContent = messageText;
+    if (!pageContextOptOut && pageTitle) {
+      const prefixed = ui.contextPrefix.replace('{title}', pageTitle) + messageText;
+      if (new TextEncoder().encode(prefixed).length <= MAX_CONTENT_BYTES) {
+        apiContent = prefixed;
+      }
+    }
+
+    /* 危机词本地拦截：命中立即渲染热线卡（不等 AI），消息照常发送 */
+    const crisis = containsCrisisKeyword(messageText);
+
+    const userMsg: Message = { role: 'user', content: messageText, apiContent, crisis };
     const newMessages = [...messages, userMsg];
 
     // Immediately show user message + empty assistant placeholder (loading state)
@@ -414,7 +614,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+            /* 端点只消费最近 10 条（>20 条直接 400）——发送前裁剪，
+               apiContent 优先（含页面上下文前缀），历史重发保持一致 */
+            messages: newMessages
+              .slice(-MAX_SENT_MESSAGES)
+              .map(m => ({ role: m.role, content: m.apiContent ?? m.content })),
           }),
         });
 
@@ -523,53 +727,26 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     }
   }
 
+  const showCtxHint = !ctxOptOut && pageTitle !== null;
+
   return (
-    <div style={s.container} role="region" aria-label={ui.title}>
-      {/* Inline keyframes */}
-      <style>{`
-        @keyframes ai-dot-bounce {
-          0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
-          40% { transform: translateY(-4px); opacity: 1; }
-        }
-      `}</style>
+    <div
+      className={`yk-ai ${compact ? 'yk-ai--compact' : 'yk-ai--page'}`}
+      role="region"
+      aria-label={ui.title}
+    >
+      <style>{BASE_CSS}</style>
 
       {/* Header */}
-      <div style={s.header}>
-        <span style={s.headerIcon}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
+      <div className="yk-ai-header">
+        <span className="yk-ai-header__icon">
+          <AIChatIcon size={18} />
         </span>
-        <span style={s.headerTitle}>{ui.title}</span>
-        <span style={s.headerBadge}>BETA</span>
+        <span className="yk-ai-header__title">{ui.title}</span>
+        <span className="yk-ai-header__badge">BETA</span>
         {onClose && (
-          <button
-            onClick={onClose}
-            aria-label={ui.close}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--color-text-secondary)',
-              cursor: 'pointer',
-              minWidth: 44,
-              minHeight: 44,
-              padding: 'var(--space-xs)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginLeft: 'var(--space-xs)',
-              transition: 'color var(--transition-fast), background var(--transition-fast)',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.color = 'var(--color-primary)';
-              e.currentTarget.style.background = 'var(--color-primary-alpha-08)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.color = 'var(--color-text-secondary)';
-              e.currentTarget.style.background = 'none';
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <button className="yk-ai-header__close" onClick={onClose} aria-label={ui.close}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -577,42 +754,31 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         )}
       </div>
 
-      {/* Disclaimer */}
-      <div style={s.disclaimer}>
-        {ui.disclaimer}
-      </div>
+      {/* Disclaimer —— 只能强化不能弱化 */}
+      <div className="yk-ai-disclaimer">{ui.disclaimer}</div>
 
       {/* Messages — aria-live announces assistant responses to SR as they stream in */}
       <div
         ref={messagesAreaRef}
-        style={s.messagesArea}
+        className="yk-ai-log"
         role="log"
         aria-live="polite"
         aria-atomic="false"
         aria-relevant="additions text"
       >
         {messages.length === 0 ? (
-          <div style={s.emptyState}>
-            <div style={s.emptyIcon} aria-hidden="true">💊</div>
-            <div style={s.emptyText}>
+          <div className="yk-ai-empty">
+            <span className="yk-ai-empty__icon">
+              <AIChatIcon size={compact ? 28 : 36} />
+            </span>
+            <div className="yk-ai-empty__text">
               {ui.emptyTitle}<br />
               {ui.emptySubtitle}
             </div>
-            <div style={s.suggestionsGrid}>
+            {/* 快捷问题 chips —— 一键发送 */}
+            <div className="yk-ai-chips">
               {ui.suggestions.map((q, i) => (
-                <button
-                  key={i}
-                  style={s.suggestionBtn}
-                  onClick={() => sendMessage(q)}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'var(--color-primary)';
-                    e.currentTarget.style.color = 'var(--color-primary-light)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'var(--color-outline-20)';
-                    e.currentTarget.style.color = 'var(--color-text-secondary)';
-                  }}
-                >
+                <button key={i} className="yk-ai-chip" onClick={() => sendMessage(q)}>
                   {q}
                 </button>
               ))}
@@ -620,31 +786,49 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           </div>
         ) : (
           messages.map((msg, i) => (
-            <div key={i}>
+            <div key={i} className="yk-ai-turn">
               {/* User message */}
               {msg.role === 'user' && (
-                <div style={s.msgUser}>
-                  <div style={s.msgLabel}>YOU</div>
+                <div className="yk-ai-msg yk-ai-msg--user">
+                  <div className="yk-ai-msg__label">YOU</div>
                   {msg.content}
+                </div>
+              )}
+
+              {/* 危机热线卡 —— 本地秒级渲染（危险层规范：红底白字，不可爱化）。
+                  数据 SSOT: hotlines.json；不可关闭。 */}
+              {msg.role === 'user' && msg.crisis && (
+                <div className="yk-ai-crisis" role="group" aria-label={ui.crisisTitle}>
+                  <p className="yk-ai-crisis__title">{ui.crisisTitle}</p>
+                  <p className="yk-ai-crisis__body">{ui.crisisBody}</p>
+                  <div className="yk-ai-crisis__list">
+                    {crisisHotlines.map(h => (
+                      <a key={h.id} className="yk-ai-crisis__line" href={h.href}>
+                        <span className="yk-ai-crisis__name">{h.name}</span>
+                        <span className="yk-ai-crisis__num">{h.number}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <p className="yk-ai-crisis__note">{ui.crisisOutside}</p>
                 </div>
               )}
 
               {/* Assistant message */}
               {msg.role === 'assistant' && (
                 msg.content ? (
-                  <div style={s.msgAssistant}>
-                    <div style={s.msgLabel}>AI ASSISTANT</div>
+                  <div className="yk-ai-msg yk-ai-msg--ai">
+                    <div className="yk-ai-msg__label">AI ASSISTANT</div>
                     <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                   </div>
                 ) : (
                   /* Thinking indicator — shown immediately after user sends */
-                  <div style={s.thinkingBar}>
-                    <span style={s.dotContainer}>
-                      <span style={{ ...s.dot, animation: 'ai-dot-bounce 1s ease infinite' }} />
-                      <span style={{ ...s.dot, animation: 'ai-dot-bounce 1s ease 0.15s infinite' }} />
-                      <span style={{ ...s.dot, animation: 'ai-dot-bounce 1s ease 0.3s infinite' }} />
+                  <div className="yk-ai-thinking">
+                    <span className="yk-ai-dots">
+                      <span className="yk-ai-dot" />
+                      <span className="yk-ai-dot" />
+                      <span className="yk-ai-dot" />
                     </span>
-                      {ui.thinking}
+                    {ui.thinking}
                   </div>
                 )
               )}
@@ -653,34 +837,43 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         )}
 
         {error && (
-          <div style={s.errorBox}>
+          <div className="yk-ai-error">
             {ui.errorPrefix}{error}
           </div>
         )}
       </div>
 
+      {/* 页面上下文提示条 —— × 关闭后本次会话不再附带（仅内存，不落存储） */}
+      {showCtxHint && (
+        <div className="yk-ai-ctx">
+          <span className="yk-ai-ctx__text">{ui.contextHint}</span>
+          <button className="yk-ai-ctx__close" onClick={dismissContext} aria-label={ui.contextDismiss}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      )}
+
       {/* Input */}
-      <div style={s.inputArea}>
+      <div className="yk-ai-inputrow">
         <input
           ref={inputRef}
+          className="yk-ai-input"
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={ui.inputPlaceholder}
-          style={s.textInput}
           disabled={isLoading}
-          onFocus={e => { e.currentTarget.style.borderBottomColor = 'var(--color-primary)'; }}
-          onBlur={e => { e.currentTarget.style.borderBottomColor = 'var(--color-outline)'; }}
+          maxLength={1300}
           aria-label={ui.inputLabel}
         />
         <button
+          className="yk-ai-send"
           onClick={() => sendMessage()}
           disabled={isLoading || !input.trim()}
-          style={{
-            ...s.sendBtn,
-            ...(isLoading || !input.trim() ? s.sendBtnDisabled : {}),
-          }}
           aria-label={ui.sendLabel}
         >
           {isLoading ? ui.loading : ui.send}
@@ -689,4 +882,3 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     </div>
   );
 }
-

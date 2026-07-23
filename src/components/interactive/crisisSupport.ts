@@ -1,0 +1,110 @@
+/**
+ * crisisSupport — AI 问答助手的危机词本地拦截（减害强化）
+ *
+ * 用户输入命中危机关键词 → 不等 AI，AIAssistant 立即本地渲染危机热线卡
+ * （同时照常把消息发给端点 —— 服务端本就有危机引导 prompt）。
+ * 本地卡是「秒级响应」保障：AI 慢或挂了，热线也在。
+ *
+ * 红线：
+ * · 热线数据只从 src/data/hotlines.json（SSOT）读取，禁止硬编码号码。
+ * · 关键词表保守宽召回（substring 匹配）——宁可多弹不可漏。
+ * · 匹配纯本地进行，不上报、不落存储、不发任何 analytics。
+ */
+
+import hotlinesData from '../../data/hotlines.json';
+
+export interface CrisisHotline {
+  id: string;
+  name: string;
+  number: string;
+  href: string;
+  scope: string;
+  hours: string;
+}
+
+/* 保守宽召回关键词表（17 语）。substring 匹配，全部预先小写。
+   已知可接受的过召回：如「自杀式」等惯用语也会触发 —— 按减害原则接受。 */
+const CRISIS_KEYWORDS: readonly string[] = [
+  // zh（简/繁）
+  '自杀', '自殺', '自残', '自殘', '自伤', '自傷', '轻生', '輕生',
+  '不想活', '想死', '寻死', '尋死', '求死', '活不下去', '不如死',
+  '结束生命', '結束生命', '结束自己', '結束自己', '了结自己', '了結自己',
+  '自我了断', '自我了斷', '割腕', '跳楼', '跳樓', '上吊', '烧炭', '燒炭',
+  '遗书', '遺書', '自尽', '自盡', '厌世', '厭世', '活着没意思', '活著沒意思',
+  // en
+  'suicide', 'suicidal', 'kill myself', 'end my life', 'ending my life',
+  'self-harm', 'self harm', 'selfharm', 'hurt myself', 'want to die',
+  'wanna die', "don't want to live", 'dont want to live', 'no reason to live',
+  // ja（自傷/リストカット已被上方覆盖或在此补全）
+  '死にたい', '消えたい', 'リストカット', 'リスカ', '死のう',
+  '死んだほうが', '死んだ方が', '命を絶',
+  // ko
+  '자살', '자해', '죽고 싶', '죽고싶', '살기 싫', '살고 싶지 않',
+  // es
+  'suicidio', 'suicidarme', 'matarme', 'quitarme la vida',
+  'no quiero vivir', 'autolesión', 'autolesion', 'hacerme daño',
+  // pt
+  'suicídio', 'me matar', 'tirar minha vida', 'não quero viver',
+  'nao quero viver', 'automutilação', 'automutilacao', 'me machucar',
+  // fr（'suicide' 已由 en 覆盖）
+  'me suicider', 'me tuer', 'mettre fin à mes jours', 'mettre fin a mes jours',
+  'je veux mourir', 'plus envie de vivre', 'automutilation',
+  // de
+  'selbstmord', 'suizid', 'umbringen', 'mir das leben nehmen',
+  'nicht mehr leben', 'selbstverletzung',
+  // ru
+  'суицид', 'самоубийство', 'покончить с собой', 'не хочу жить',
+  'убить себя', 'самоповреждение', 'хочу умереть',
+  // ar
+  'انتحار', 'أريد أن أموت', 'اريد ان اموت', 'إيذاء نفسي', 'ايذاء نفسي',
+  // fa
+  'خودکشی', 'می‌خواهم بمیرم', 'میخواهم بمیرم', 'خودزنی', 'نمی‌خواهم زنده بمانم',
+  // th
+  'ฆ่าตัวตาย', 'อยากตาย', 'ทำร้ายตัวเอง', 'ไม่อยากมีชีวิต',
+  // vi
+  'tự tử', 'tự sát', 'muốn chết', 'tự làm hại', 'không muốn sống',
+  // id
+  'bunuh diri', 'ingin mati', 'menyakiti diri', 'tidak ingin hidup',
+  // fil
+  'magpakamatay', 'gusto ko nang mamatay', 'saktan ang sarili',
+  // hi
+  'आत्महत्या', 'खुदकुशी', 'मरना चाहती', 'मरना चाहता', 'खुद को नुकसान',
+  // tr
+  'intihar', 'kendimi öldürmek', 'ölmek istiyorum', 'kendime zarar',
+];
+
+const CRISIS_KEYWORDS_LOWER: readonly string[] = CRISIS_KEYWORDS.map((k) =>
+  k.toLowerCase(),
+);
+
+/** 纯本地危机词检测（substring，大小写不敏感）。 */
+export function containsCrisisKeyword(text: string): boolean {
+  if (!text) return false;
+  const t = text.toLowerCase();
+  return CRISIS_KEYWORDS_LOWER.some((k) => t.includes(k));
+}
+
+/* locale → hotlines.json scope 白名单。
+   站点主受众为中文圈（含身处海外的中文用户），无对应地区数据的语种
+   fallback 到全国热线；卡片文案里另有「身处其他地区请拨打当地急救」行。 */
+const LOCALE_SCOPES: Record<string, readonly string[]> = {
+  zh: ['全国'],
+  de: ['Deutschland', 'Österreich', 'Schweiz', 'EU-weit'],
+  fr: ['France', 'Belgique', 'Suisse', 'EU-weit'],
+  es: ['España', 'Argentina', 'México', 'Colombia'],
+  pt: ['Brasil', 'Portugal'],
+  ru: ['Россия', 'Україна / Украина'],
+};
+
+const MAX_CARD_HOTLINES = 4;
+
+/** 按 locale 取危机热线（SSOT: hotlines.json），最多 4 条保持卡片紧凑。 */
+export function getCrisisHotlines(locale: string): CrisisHotline[] {
+  const scopes = LOCALE_SCOPES[locale] ?? LOCALE_SCOPES.zh;
+  return (hotlinesData as CrisisHotline[])
+    .filter((h) => scopes.includes(h.scope))
+    .slice(0, MAX_CARD_HOTLINES)
+    .map(({ id, name, number, href, scope, hours }) => ({
+      id, name, number, href, scope, hours,
+    }));
+}
