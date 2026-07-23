@@ -1,0 +1,607 @@
+/* =========================================================================
+   HRT药典 — Sakura Blog Skin · 乐园手账（博客层）
+   ------------------------------------------------------------------------
+   职责：blog.css 定义的全部 .blog-* 类（文章页 / 索引页 / 面包屑 / TOC /
+   延伸阅读 / 免责声明 / 卡片网格）的 html.sakura 换肤覆盖层。
+   默认（米哈游）皮肤的 blog.css 一字不动，本文件全部规则 scope 在
+   html.sakura 下 —— 仓库无 postcss 前缀管线，前缀是手工纪律，新增规则
+   必须带 html.sakura。
+
+   挂载方式：由主控注册进 astro.config.mjs 的 starlight customCss，
+   **排在 sakura-skin.css 之后**（本文件有若干与
+   `html.sakura .sl-markdown-content a` 平权 (0,2,2) 的规则依赖后加载胜出）。
+
+   视觉语言（对齐 v2 手账 DNA，见 docs/specs/sakura-reskin-v2.md）：
+   · 博客卡片 = 白纸卡：2px 墨线 + radius 14 + 硬阴影 4px 4px 0；
+     hover 抬升 translate(-2px,-2px)，投影瞬时换 6px 6px 0（仅过渡 transform）
+   · 标签 / 过滤 chips = 胶囊墨线；选中态 var(--sakura-pink-aa) 白字（AA）
+   · 日期 / 元信息 = var(--font-ui-accent) kicker 风
+   · 博客标题 = display 字体（v2 h1 签名：weight 400 / ls -0.01em）
+   · 内容图 = 2px 墨线圆角
+   · 幻月夜 = 夜晚书桌模型：纸卡夜里仍亮，纸上文字锁墨（机制复用
+     sakura-theme.css 的纸面锁墨规则）
+   · RTL：全部逻辑属性书写
+   · 动效红线：仅过渡 transform（+opacity）；禁 backdrop-filter / clip-path
+   ========================================================================= */
+
+/* =========================================================================
+   0. 版面 —— 纸底透出（.blog-page 在默认皮铺实底色，这里放行网点纸）
+   ========================================================================= */
+html.sakura .blog-page {
+  background: transparent;
+}
+
+/* =========================================================================
+   1. 纸面锁墨 —— 机制复用 sakura-theme.css 的 [data-paper] 锁墨规则
+   （同值同机制：夜桌上白纸卡仍亮着，纸上文字钉回梅子墨三档。
+   此处不引入新色值，仅镜像 theme 层既有锁墨字面量。）
+   ========================================================================= */
+html.sakura .blog-card,
+html.sakura .blog-related__link,
+html.sakura .blog-disclaimer {
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  --color-text-primary: #4A2838;
+  --color-text-secondary: #7A5568;
+  --color-text-muted: #7A5568;
+  --color-outline-20: rgba(74, 40, 56, 0.2);
+  --color-outline-15: rgba(74, 40, 56, 0.15);
+}
+
+/* =========================================================================
+   2. 面包屑（BlogBreadcrumbs — 组件 scoped 样式为物理属性 + 低特异度，
+   此处以 nav.blog-breadcrumbs 覆盖并中和 .sl-markdown-content a 荧光笔）
+   ========================================================================= */
+html.sakura nav.blog-breadcrumbs {
+  font-family: var(--font-ui-accent);
+  font-size: 0.8125rem;
+  color: var(--fg-3);
+}
+html.sakura nav.blog-breadcrumbs a {
+  color: var(--sakura-pink-text);
+  background: transparent;
+  background-image: none;
+  padding: 0;
+  font-weight: 600;
+  text-decoration: none;
+  transition: none;
+}
+html.sakura nav.blog-breadcrumbs a:hover,
+html.sakura nav.blog-breadcrumbs a:focus-visible {
+  color: var(--sakura-pink-text);
+  background: transparent;
+  background-image: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+html.sakura .blog-breadcrumbs .blog-breadcrumbs__sep,
+html.sakura .blog-breadcrumbs .blog-breadcrumbs__dot {
+  color: var(--fg-3);
+}
+/* 组件 scoped 样式用了 margin-right —— 改逻辑属性（RTL） */
+html.sakura .blog-breadcrumbs .blog-breadcrumbs__arrow {
+  margin-right: 0;
+  margin-inline-end: 0.3em;
+}
+html.sakura .blog-breadcrumbs .blog-breadcrumbs__back-label {
+  margin-right: 0;
+  margin-inline-end: 0.2em;
+}
+
+/* =========================================================================
+   3. 文章页 —— 元信息行（kicker 风）+ 分类贴纸 + 标题（display 字体 + 装订线）
+   ========================================================================= */
+html.sakura .blog-article__meta {
+  font-family: var(--font-ui-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+html.sakura .blog-article__date,
+html.sakura .blog-article__reading-time,
+html.sakura .blog-article__meta-sep {
+  color: var(--fg-3);
+}
+
+/* 分类 chip —— 胶囊墨线贴纸（墨字 on ivory，昼夜恒定，禁粉底红字） */
+html.sakura .blog-article__category {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  background: var(--ivory);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  clip-path: none;
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-family: var(--font-ui-accent);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* 标题 —— display 字体（v2 h1 签名），下缘装订墨线（线装页头 DNA 的轻量版） */
+html.sakura .blog-article__title {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--fg-1) !important;
+  margin-block: var(--space-md) var(--space-lg);
+  padding-block-end: var(--space-md);
+  border-block-end: 2px solid var(--ink);
+}
+html.sakura[data-theme='dark'] .blog-article__title {
+  border-block-end-color: var(--ink-faint);
+}
+
+/* =========================================================================
+   4. 正文容器 —— v2 版心（660px / 15.5px）+ 局部修缮。
+   正文内部排版（链接荧光笔 / 表格 / 引用块 / h2 章节序号）由
+   sakura-components.css 的 .sl-markdown-content 规则统一承担，这里只
+   处理 blog.css 泄漏进 sakura 的零头。
+   ========================================================================= */
+html.sakura .blog-article__content {
+  max-width: 660px;
+  font-size: 15.5px;
+  color: var(--fg-1);
+}
+/* blog.css 给 h2 加了 1px 发丝下边线，与手账 h2（章节序号 + 无底线）冲突 */
+html.sakura .blog-article__content h2 {
+  border-block-end: none;
+  padding-block-end: 0;
+}
+/* blog.css 的物理方向属性 → 逻辑属性（RTL） */
+html.sakura .blog-article__content th {
+  text-align: start;
+}
+html.sakura .blog-article__content ul,
+html.sakura .blog-article__content ol {
+  padding-inline-start: var(--space-lg);
+  padding-inline-end: 0;
+}
+/* 内容图 / 封面图 —— 2px 墨线圆角纸片 */
+html.sakura .blog-article__content img {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--bg-3);
+  max-width: 100%;
+}
+
+/* =========================================================================
+   5. TOC 侧栏 —— 对齐 starlight-toc 的手账样式（bg-2 桌面家具，随幻月夜翻转）
+   ========================================================================= */
+html.sakura .blog-toc {
+  background: var(--bg-2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink-faint);
+  border-radius: var(--radius-md);
+  clip-path: none;
+  padding: 14px;
+}
+html.sakura .blog-toc .blog-toc__title {
+  font-family: var(--font-ui-accent);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--fg-3);
+  margin-block-end: var(--space-sm);
+}
+html.sakura .blog-toc .blog-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+html.sakura .blog-toc .blog-toc__item {
+  margin: 0 0 var(--space-xs);
+}
+html.sakura a.blog-toc__link,
+html.sakura .blog-toc .blog-toc__link {
+  display: block;
+  color: var(--fg-2);
+  background: transparent;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  border-inline-start: 3px solid var(--ink-faint);
+  border-start-end-radius: 6px;
+  border-end-end-radius: 6px;
+  padding-block: 3px;
+  padding-inline: 10px 4px;
+  transition: none;
+}
+html.sakura a.blog-toc__link:hover,
+html.sakura .blog-toc .blog-toc__link:hover,
+html.sakura .blog-toc .blog-toc__link:focus-visible {
+  background: var(--bg-4);
+  color: var(--fg-1);
+  border-inline-start-color: var(--sakura-pink-deep);
+}
+html.sakura .blog-toc .blog-toc__link--h3 {
+  padding-inline-start: 22px;
+}
+
+/* =========================================================================
+   6. 延伸阅读 / 相关文档（.blog-related —— RelatedDocs / RelatedBlogPosts /
+   文章尾三处共用）—— 虚线画框区（对齐 components.css 中 related 框的
+   「2px dashed 墨线 + bg-4」DNA），内部链接为小纸条卡
+   ========================================================================= */
+html.sakura .blog-related {
+  border: 2px dashed var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--bg-4);
+  padding: 18px;
+  margin-block-start: var(--space-xl);
+}
+html.sakura[data-theme='dark'] .blog-related {
+  border-color: var(--ink-faint);
+}
+html.sakura .blog-related .blog-related__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.0625rem;
+  color: var(--fg-1) !important;
+  margin: 0 0 var(--space-md);
+}
+html.sakura .blog-related .blog-related__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* 小纸条链接卡（纸面：昼夜恒亮，锁墨见 §1） */
+html.sakura a.blog-related__link,
+html.sakura .blog-related .blog-related__link {
+  background: var(--bg-3);
+  background-image: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 var(--ink);
+  clip-path: none;
+  color: var(--fg-1);
+  font-weight: 400;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+/* 触屏 / 无 hover 设备：先中和 blog.css 的 translateX + 玻璃 hover 底 */
+html.sakura a.blog-related__link:hover,
+html.sakura .blog-related .blog-related__link:hover {
+  transform: none;
+  background: var(--bg-3);
+  background-image: none;
+  color: var(--fg-1);
+}
+@media (hover: hover) {
+  html.sakura a.blog-related__link:hover,
+  html.sakura .blog-related .blog-related__link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+html.sakura a.blog-related__link:focus-visible,
+html.sakura .blog-related .blog-related__link:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* =========================================================================
+   7. 免责声明 —— 便签黄（WarningBox 层级：重要但非致命，无抬升；
+   红字永不落粉底 —— 这里通体墨字 on butter）
+   ========================================================================= */
+html.sakura .blog-disclaimer {
+  background: var(--butter);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard-sm);
+  color: var(--ink);
+  padding: var(--space-md);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* =========================================================================
+   8. 文末导航 —— 虚线上缘（手账 legal 行 DNA）；链接沿用正文荧光笔样式
+   ========================================================================= */
+html.sakura .blog-footer-nav {
+  border-block-start: 2px dashed var(--ink-faint);
+}
+
+/* =========================================================================
+   9. 索引页 —— 页头 + 过滤 chips
+   ========================================================================= */
+html.sakura .blog-index__header .blog-index__subtitle {
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+}
+
+/* 过滤 chips —— 胶囊墨线；选中态深粉 AA 白字 */
+html.sakura .blog-filter .blog-filter__btn {
+  background: var(--ivory);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 2px 2px 0 var(--ink);
+  clip-path: none;
+  color: var(--ink);
+  font-family: var(--font-ui-accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 6px 14px;
+  cursor: default;
+  transition: none;
+}
+/* hover 守卫：触屏 tap 不留 sticky 腮红底（红线审查 concern 修复） */
+@media (hover: hover) {
+  html.sakura .blog-filter .blog-filter__btn:hover {
+    background: var(--sakura-blush);
+    color: var(--ink);
+  }
+}
+html.sakura .blog-filter .blog-filter__btn--active {
+  background: var(--sakura-pink-aa);
+  border-color: var(--ink);
+  color: var(--fg-on-pink);
+}
+
+/* =========================================================================
+   10. 博客卡片 —— 白纸卡（InkCard 公式：2px 墨线 + r14 + 4px 硬阴影；
+   hover 抬升 -2/-2、投影瞬时换 6px；仅过渡 transform）
+   ========================================================================= */
+html.sakura a.blog-card,
+html.sakura .blog-grid .blog-card {
+  background: var(--bg-3);
+  background-image: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  clip-path: none;
+  color: var(--fg-1);
+  font-weight: 400;
+  padding: var(--space-lg);
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+/* 触屏先中和 blog.css 的浮起 + 光晕 hover */
+html.sakura a.blog-card:hover,
+html.sakura .blog-grid .blog-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-hard);
+  background: var(--bg-3);
+  background-image: none;
+  color: var(--fg-1);
+}
+@media (hover: hover) {
+  html.sakura a.blog-card:hover,
+  html.sakura .blog-grid .blog-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+}
+html.sakura a.blog-card:focus-visible,
+html.sakura .blog-grid .blog-card:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* 卡片元信息行 —— kicker 风 */
+html.sakura .blog-card .blog-card__meta {
+  font-family: var(--font-ui-accent);
+  font-size: 0.71875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+html.sakura .blog-card .blog-card__category {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  background: var(--ivory);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 1px 0 var(--ink);
+  color: var(--ink);
+  font-size: 0.65625rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 卡片标题 —— heading 衬线；压掉 .sl-markdown-content h2 的章节序号 + flex
+   （汉字序号是文档页语言，卡片标题不编号）。h2/h3 两种都在用。
+   注：章节序号规则带 :lang(zh) 后特异度为 (0,3,2)，故此处叠加
+   .sl-markdown-content 前缀变体拉到 (0,4,1) 确保压制。 */
+html.sakura .blog-card .blog-card__title,
+html.sakura .blog-related .blog-related__title,
+html.sakura .sl-markdown-content .blog-card .blog-card__title,
+html.sakura .sl-markdown-content .blog-related .blog-related__title {
+  display: block;
+  counter-increment: none;
+  border: none;
+  padding: 0;
+}
+html.sakura .blog-card .blog-card__title::before,
+html.sakura .blog-related .blog-related__title::before,
+html.sakura .sl-markdown-content .blog-card .blog-card__title::before,
+html.sakura .sl-markdown-content .blog-related .blog-related__title::before {
+  content: none;
+}
+html.sakura .blog-card .blog-card__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--fg-1) !important;
+  margin: 0;
+}
+
+html.sakura .blog-card .blog-card__desc {
+  color: var(--fg-2);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+html.sakura .blog-card .blog-card__footer {
+  border-block-start: 1.5px dashed var(--ink-faint);
+  color: var(--fg-3);
+  font-family: var(--font-ui-accent);
+  font-size: 0.71875rem;
+  font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+html.sakura .blog-card .blog-card__read-more {
+  color: var(--sakura-pink-text);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   11. 独立博客壳（.blog-header / .blog-site-footer / .blog-main —— 当前仅
+   /zh/links 用到 BlogHeader 且该页不载入 sakura CSS；此处仍全量覆盖，
+   防止未来任何 Starlight 页复用时混皮）
+   ========================================================================= */
+html.sakura .blog-header {
+  background: var(--bg-2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-block-end: 2px solid var(--ink);
+  box-shadow: 0 3px 0 var(--sakura-blush);
+}
+html.sakura .blog-header .blog-header__brand {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+}
+html.sakura .blog-header .blog-header__brand:hover {
+  color: var(--sakura-pink-text);
+}
+html.sakura .blog-header .blog-header__link {
+  color: var(--fg-2);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  transition: none;
+}
+html.sakura .blog-header .blog-header__link:hover,
+html.sakura .blog-header .blog-header__link:focus-visible {
+  background: var(--sakura-blush);
+  color: var(--ink);
+}
+
+html.sakura .blog-site-footer {
+  border-block-start: 2px dashed var(--ink-faint);
+  color: var(--fg-3);
+}
+html.sakura .blog-site-footer a {
+  color: var(--sakura-pink-text);
+}
+html.sakura .blog-site-footer a:hover {
+  color: var(--sakura-pink-text);
+  text-decoration: underline;
+}
+
+/* =========================================================================
+   12. 幻月夜 —— 夜桌补丁：
+   · 桌面上的粉字（--sakura-pink-text 不随主题翻转）换浅樱粉（夜空 8.38:1）
+   · 纸卡硬阴影换夜影色（token --night-1，对齐 aside 的夜影处理）
+   ========================================================================= */
+html.sakura[data-theme='dark'] nav.blog-breadcrumbs a,
+html.sakura[data-theme='dark'] nav.blog-breadcrumbs a:hover,
+html.sakura[data-theme='dark'] nav.blog-breadcrumbs a:focus-visible,
+html.sakura[data-theme='dark'] .blog-site-footer a {
+  color: var(--sakura-pink);
+}
+
+html.sakura[data-theme='dark'] a.blog-card,
+html.sakura[data-theme='dark'] .blog-grid .blog-card,
+html.sakura[data-theme='dark'] a.blog-card:hover,
+html.sakura[data-theme='dark'] .blog-grid .blog-card:hover {
+  box-shadow: 4px 4px 0 var(--night-1);
+  /* 中和 sakura-components.css:596 的 dark 荧光笔（(0,3,2) 会穿透 base 态中和），
+     并按夜桌模型把纸卡钉回昼夜恒亮：底/墨系字面量与 sakura-theme.css 纸面锁墨
+     一致（token 在 dark 作用域已翻转，var() 拿不到亮纸值）——红线审查 FAIL 修复。 */
+  background: #FFFAF0;
+  background-image: none;
+  color: #4A2838;
+  --ink: #4A2838;
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+}
+@media (hover: hover) {
+  html.sakura[data-theme='dark'] a.blog-card:hover,
+  html.sakura[data-theme='dark'] .blog-grid .blog-card:hover {
+    box-shadow: 6px 6px 0 var(--night-1);
+  }
+}
+html.sakura[data-theme='dark'] a.blog-card:focus-visible,
+html.sakura[data-theme='dark'] .blog-grid .blog-card:focus-visible {
+  box-shadow: 6px 6px 0 var(--night-1);
+}
+
+html.sakura[data-theme='dark'] a.blog-related__link,
+html.sakura[data-theme='dark'] .blog-related .blog-related__link,
+html.sakura[data-theme='dark'] a.blog-related__link:hover,
+html.sakura[data-theme='dark'] .blog-related .blog-related__link:hover {
+  box-shadow: 2px 2px 0 var(--night-1);
+  /* 同上：中和 dark 荧光笔 + 小纸条卡夜桌恒亮锁墨（红线审查 FAIL 修复） */
+  background: #FFFAF0;
+  background-image: none;
+  color: #4A2838;
+  --ink: #4A2838;
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+}
+@media (hover: hover) {
+  html.sakura[data-theme='dark'] a.blog-related__link:hover,
+  html.sakura[data-theme='dark'] .blog-related .blog-related__link:hover {
+    box-shadow: 3px 3px 0 var(--night-1);
+  }
+}
+html.sakura[data-theme='dark'] a.blog-related__link:focus-visible,
+html.sakura[data-theme='dark'] .blog-related .blog-related__link:focus-visible {
+  box-shadow: 3px 3px 0 var(--night-1);
+}
+
+html.sakura[data-theme='dark'] .blog-disclaimer {
+  box-shadow: 3px 3px 0 var(--night-1);
+}
+
+/* =========================================================================
+   13. REDUCED MOTION —— 全局压制（sakura-theme.css）已把时长归零；
+   这里再压掉 hover/focus 的位移本身（瞬移也不给）
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura a.blog-card:hover,
+  html.sakura .blog-grid .blog-card:hover,
+  html.sakura a.blog-card:focus-visible,
+  html.sakura .blog-grid .blog-card:focus-visible,
+  html.sakura a.blog-related__link:hover,
+  html.sakura .blog-related .blog-related__link:hover,
+  html.sakura a.blog-related__link:focus-visible,
+  html.sakura .blog-related .blog-related__link:focus-visible {
+    transform: none;
+  }
+}
+
+/* =========================================================================
+   ar/fa 连写守卫（codex P2）：正/负字距都会拉断阿拉伯字母连写形，
+   同 Footer kicker 的守卫策略。:is() 取最高特异度 → (0,4,1) 稳压上方全部规则。
+   ========================================================================= */
+html.sakura :is(.blog-article__meta, .blog-article__category, .blog-article__title, .blog-toc .blog-toc__title, .blog-filter .blog-filter__btn, .blog-card .blog-card__meta):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}

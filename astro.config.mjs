@@ -44,6 +44,8 @@ export default defineConfig({
         Head: './src/components/overrides/Head.astro',
         Footer: './src/components/overrides/Footer.astro',
         SiteTitle: './src/components/overrides/SiteTitle.astro',
+        // sakura 换皮：线装页头（非 sakura 分支输出与默认 PageTitle 等价 DOM）
+        PageTitle: './src/components/overrides/PageTitle.astro',
       },
       customCss: [
         './src/styles/global.css',
@@ -56,6 +58,10 @@ export default defineConfig({
         './src/styles/sakura-theme.css',
         './src/styles/sakura-components.css',
         './src/styles/sakura-skin.css',
+        // 必须排在 sakura-skin.css 之后：blog 壳类的平权中和规则靠后载胜出
+        './src/styles/sakura-blog.css',
+        // 末位：首页 splash 组件适配层（治 22 个对比度崩坏点；平权中和靠后载胜出）
+        './src/styles/sakura-home.css',
       ],
       sidebar: [
         // ── 开始 ──

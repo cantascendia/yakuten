@@ -266,7 +266,8 @@ html.sakura .guide-cta {
   color: #fff !important;
   padding: 20px !important;
   margin: 24px 0 !important;
-  transition: transform 0.15s, box-shadow 0.15s;
+  /* 动效红线：仅过渡 transform（box-shadow 变化瞬时切换） */
+  transition: transform var(--transition-fast);
 }
 html.sakura .guide-cta:hover {
   transform: translate(-2px, -2px);
@@ -317,9 +318,9 @@ html.sakura .inline-value {
 }
 
 /* ===== 血检指示条 ===== */
-html.sakura .indicator-green  { border-left: 4px solid var(--safe); }
-html.sakura .indicator-yellow { border-left: 4px solid var(--butter-deep); }
-html.sakura .indicator-red    { border-left: 4px solid var(--danger-bright); }
+html.sakura .indicator-green  { border-inline-start: 4px solid var(--safe); }
+html.sakura .indicator-yellow { border-inline-start: 4px solid var(--butter-deep); }
+html.sakura .indicator-red    { border-inline-start: 4px solid var(--danger-bright); }
 
 @media (prefers-reduced-motion: reduce) {
   html.sakura .guide-cta { transition: none !important; }
@@ -363,19 +364,10 @@ html.sakura {
 }
 
 /* =========================================================================
-   纸底 —— 整个 body 加网点纸；夜模式换梦境紫桌面（网点变月光色）
+   纸底 —— 已迁移至 sakura-theme.css 的 v2 纸纹画布（方格+网点+樱瓣+纤维，
+   html.sakura 背景 + body::before/::after 网点层）。旧 body 网点纸删除，
+   避免与新画布的特异度对抗（红线审查建议）。
    ========================================================================= */
-html.sakura body {
-  background-color: var(--bg-1);
-  background-image:
-    radial-gradient(circle at 2px 2px, rgba(74, 40, 56, 0.08) 1px, transparent 0);
-  background-size: 22px 22px;
-  background-attachment: fixed;
-}
-html.sakura[data-theme='dark'] body {
-  background-image:
-    radial-gradient(circle at 2px 2px, rgba(255, 245, 224, 0.06) 1px, transparent 0);
-}
 
 /* 主容器透明，让纸底透出来 */
 html.sakura .main-frame,
@@ -412,7 +404,8 @@ html.sakura header.header select {
   border-radius: 999px !important;
   color: var(--fg-on-cream) !important;
   box-shadow: 2px 2px 0 var(--ink);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  /* 动效红线：仅过渡 transform */
+  transition: transform var(--transition-fast);
 }
 html.sakura header.header button:hover,
 html.sakura header.header [role="combobox"]:hover {
@@ -434,7 +427,7 @@ html.sakura[data-theme='dark'] header.header select {
 html.sakura nav.sidebar,
 html.sakura .sidebar-pane {
   background: var(--bg-2);
-  border-right: 2px solid var(--ink-faint);
+  border-inline-end: 2px solid var(--ink-faint);
 }
 html.sakura .sidebar-content { background: transparent; }
 
@@ -461,7 +454,8 @@ html.sakura .sidebar-content a {
   border-radius: 999px !important;
   color: var(--fg-1) !important;
   font-family: var(--font-body) !important;
-  transition: background 0.15s, transform 0.15s;
+  /* 动效红线：仅过渡 transform（background 变化瞬时切换） */
+  transition: transform var(--transition-fast);
 }
 html.sakura .sidebar-content a:hover {
   background: var(--sakura-blush) !important;
@@ -483,47 +477,33 @@ html.sakura .sidebar-content a.large[aria-current="page"] {
 /* =========================================================================
    内容区标题 —— 典籍排印：display 衬线 + 朱色章节序号（壹貳叁）
    ========================================================================= */
-@counter-style yk-zhang {
-  system: fixed;
-  symbols: "壹" "貳" "叁" "肆" "伍" "陸" "柒" "捌" "玖" "拾" "拾壹" "拾貳" "拾叁" "拾肆" "拾伍";
-  suffix: "";
-}
-
+/* 汉字章节序号计数器 —— fixed 扩到 30（旧版只到 15，第 16 个 h2 掉号），
+   超出 30 落到 cjk-decimal 兜底，任意数量不掉号。
+   注意：@counter-style 是全局 at-rule 无法加 html.sakura 前缀，
+   但仅被下方 sakura+zh 规则引用，非 sakura 皮零影响。 */
+/* h2 汉字章节序号已撤除（2026-07-23 owner 排查）：文档正文 h2 普遍自带
+   「7.1」式数字编号，汉字卷号叠加成「壹 7.1」双编号，冗余且怪 ——
+   序号属 /zh/v2 预览页的 lore 装饰，不适合真实文档页。
+   下面补回随序号段误删的 h1/h2 排印规则（不带序号，红线审查抓漏）。 */
 html.sakura .sl-markdown-content h1 {
   font-family: var(--font-display) !important;
+  font-weight: 400;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
   color: var(--fg-1) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
 }
-
-html.sakura .sl-markdown-content { counter-reset: yk-zhang; }
 html.sakura .sl-markdown-content h2 {
-  font-family: var(--font-display) !important;
-  color: var(--fg-1) !important;
-  font-weight: 700 !important;
-  counter-increment: yk-zhang;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-html.sakura .sl-markdown-content h2::before {
-  content: counter(yk-zhang, yk-zhang);
   font-family: var(--font-heading);
-  font-size: 0.55em;
-  color: var(--sakura-pink-text);
   font-weight: 700;
-  letter-spacing: 0.1em;
-  flex-shrink: 0;
+  color: var(--fg-1);
 }
-html.sakura[data-theme='dark'] .sl-markdown-content h2::before { color: var(--sakura-pink); }
 
 html.sakura .sl-markdown-content h3 {
   font-family: var(--font-heading) !important;
   color: var(--fg-1) !important;
   font-weight: 700 !important;
-  border-left: 5px solid var(--sakura-pink);
-  padding-left: 12px;
+  border-inline-start: 5px solid var(--sakura-pink);
+  padding-inline-start: 12px;
 }
 
 html.sakura .sl-markdown-content h4 {
@@ -536,7 +516,7 @@ html.sakura .sl-markdown-content h4 {
    ========================================================================= */
 html.sakura .sl-markdown-content p {
   color: var(--fg-1);
-  line-height: 1.85;
+  line-height: var(--lh-body); /* v2 精确值 1.8（原 1.85） */
   font-family: var(--font-body);
   text-wrap: pretty;
 }
@@ -564,7 +544,7 @@ html.sakura .sl-markdown-content :not(pre) > code {
 }
 
 /* 行内链接 —— 手写下划线 */
-html.sakura .sl-markdown-content a {
+html.sakura .sl-markdown-content a:not([class]) {
   color: var(--sakura-pink-text);
   text-decoration: none;
   background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
@@ -572,17 +552,17 @@ html.sakura .sl-markdown-content a {
   background-repeat: no-repeat;
   padding: 0 2px;
   font-weight: 600;
-  transition: background-size 0.2s ease;
+  /* 动效红线：background-size 不在 transform+opacity 白名单，改为瞬时切换 */
 }
-html.sakura .sl-markdown-content a:hover {
+html.sakura .sl-markdown-content a:not([class]):hover {
   background-image: linear-gradient(transparent 0%, var(--sakura-pink) 100%);
   color: var(--ink);
 }
-html.sakura[data-theme='dark'] .sl-markdown-content a {
+html.sakura[data-theme='dark'] .sl-markdown-content a:not([class]) {
   color: var(--sakura-pink);
   background-image: linear-gradient(transparent 60%, rgba(229, 87, 139, 0.35) 60%);
 }
-html.sakura[data-theme='dark'] .sl-markdown-content a:hover { color: var(--cream); }
+html.sakura[data-theme='dark'] .sl-markdown-content a:not([class]):hover { color: var(--cream); }
 
 /* =========================================================================
    Aside / Callout —— 贴纸卡；危险层脱离可爱风（墨底红章）
@@ -691,8 +671,11 @@ html.sakura .sl-markdown-content tbody td {
    ========================================================================= */
 html.sakura .sl-markdown-content blockquote {
   background: var(--bg-5);
-  border-left: 6px solid var(--sakura-pink-deep) !important;
-  border-radius: 0 12px 12px 0;
+  border-inline-start: 6px solid var(--sakura-pink-deep) !important;
+  border-start-start-radius: 0;
+  border-start-end-radius: 12px;
+  border-end-end-radius: 12px;
+  border-end-start-radius: 0;
   padding: 14px 18px !important;
   margin: 20px 0 !important;
   color: #7A5568;
@@ -743,24 +726,27 @@ html.sakura starlight-toc nav {
 }
 html.sakura starlight-toc a {
   color: var(--fg-2) !important;
-  border-left: 3px solid var(--ink-faint);
-  border-radius: 0 6px 6px 0;
+  border-inline-start: 3px solid var(--ink-faint);
+  border-start-start-radius: 0;
+  border-start-end-radius: 6px;
+  border-end-end-radius: 6px;
+  border-end-start-radius: 0;
   padding: 3px 10px;
-  transition: background 0.15s, color 0.15s;
+  /* 动效红线：background/color 不在 transform+opacity 白名单，瞬时切换 */
 }
 html.sakura starlight-toc a:hover {
   background: var(--sakura-blush) !important;
   color: var(--ink) !important;
 }
 html.sakura starlight-toc a[aria-current="true"] {
-  border-left-color: var(--sakura-pink-deep);
+  border-inline-start-color: var(--sakura-pink-deep);
   color: var(--sakura-pink-text) !important;
   font-weight: 700;
   background: transparent;
 }
 html.sakura[data-theme='dark'] starlight-toc a[aria-current="true"] {
   color: var(--sakura-pink) !important;
-  border-left-color: var(--sakura-pink);
+  border-inline-start-color: var(--sakura-pink);
 }
 
 /* =========================================================================
@@ -772,7 +758,8 @@ html.sakura .pagination-links a {
   border-radius: 14px !important;
   box-shadow: 3px 3px 0 var(--ink);
   padding: 14px !important;
-  transition: transform 0.15s, box-shadow 0.15s;
+  /* 动效红线：仅过渡 transform */
+  transition: transform var(--transition-fast);
 }
 html.sakura .pagination-links a:hover {
   transform: translate(-2px, -2px);
@@ -798,7 +785,10 @@ html.sakura .site-legal-footer a { color: var(--sakura-pink-text); }
 html.sakura[data-theme='dark'] .site-legal-footer a { color: var(--sakura-pink); }
 
 /* =========================================================================
-   Pagefind 搜索 —— 纸卡风
+   Pagefind 搜索 —— 手账风重写（v2 DNA）
+   弹窗 = 白纸卡（2px 墨线 + radius 14 + 6px 硬阴影，全皮肤最大投影）
+   输入框 = .yk-input 风（cream 底 + 墨线 + 2px 硬影，focus 换绯红）
+   结果项 hover = 腮红底；mark = 荧光笔渐变（同行内链接）
    ========================================================================= */
 html.sakura site-search button[data-open-modal] {
   background: var(--bg-3);
@@ -806,9 +796,10 @@ html.sakura site-search button[data-open-modal] {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   color: var(--fg-on-cream);
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   box-shadow: 2px 2px 0 var(--ink);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  /* 动效红线：仅过渡 transform */
+  transition: transform var(--transition-fast);
 }
 html.sakura site-search button[data-open-modal]:hover {
   transform: translate(-1px, -1px);
@@ -822,14 +813,24 @@ html.sakura[data-theme='dark'] site-search button[data-open-modal] {
   box-shadow: 2px 2px 0 rgba(20, 10, 35, 0.8);
 }
 
+/* 夜桌模型：弹窗是夜里仍亮着的纸面 —— 锁墨
+   （值与 sakura-theme.css 纸面锁墨一致；--ink-faint 若不钉回，
+   dark 下会翻成奶油色，白纸卡上的结果描边会隐形） */
 html.sakura site-search dialog {
-  background: var(--ivory);
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  background: var(--bg-3);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 2px solid var(--ink);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   box-shadow: 6px 6px 0 var(--ink);
-  color: #4A2838;
+  color: var(--fg-1);
+}
+html.sakura[data-theme='dark'] site-search dialog {
+  box-shadow: 6px 6px 0 rgba(20, 10, 35, 0.8);
 }
 html.sakura site-search dialog::backdrop {
   background: rgba(74, 40, 56, 0.4);
@@ -838,12 +839,18 @@ html.sakura[data-theme='dark'] site-search dialog::backdrop {
   background: rgba(20, 10, 35, 0.6);
 }
 
+/* 输入框 —— .yk-input 风；前景锁墨（不跟 --fg-1，防夜里 cream on cream） */
 html.sakura #starlight__search .pagefind-ui__search-input {
   background: var(--cream);
   border: 2px solid var(--ink);
-  border-radius: 10px;
-  color: #4A2838;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
   font-family: var(--font-body);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+html.sakura #starlight__search .pagefind-ui__search-input::placeholder {
+  color: var(--ink-soft);
+  opacity: 1; /* 治 Firefox placeholder 变淡 */
 }
 html.sakura #starlight__search .pagefind-ui__search-input:focus {
   border-color: var(--sakura-pink-deep);
@@ -854,29 +861,73 @@ html.sakura #starlight__search .pagefind-ui__search-input:focus-visible {
   outline-offset: 2px;
 }
 
-html.sakura site-search dialog button { color: #7A5568; }
+html.sakura site-search dialog button { color: var(--fg-2); }
 
+/* 高亮 —— 荧光笔渐变（同行内链接），压掉 UA 的黄色 mark 底 */
 html.sakura #starlight__search mark {
-  background: var(--sakura-blush);
-  color: #C02868;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 60%, var(--sakura-blush) 60%);
+  color: var(--sakura-pink-text);
+  font-weight: 700;
   padding: 0 2px;
-  border-radius: 3px;
 }
 
+/* 结果卡 —— 白纸小卡；hover 腮红底 + 墨描边。
+   夜桌恒亮：--bg-3 在 dark 翻夜色会让整卡变深紫、nested 子结果粉字对比崩坏
+   （preview 实测发现）→ 底色与墨系钉字面量（同 blog 卡/theme 纸面锁墨） */
 html.sakura #starlight__search .pagefind-ui__result {
-  background: var(--bg-3);
+  background: #FFFAF0;
   border: 2px solid var(--ink-faint);
   border-radius: 12px;
   padding: var(--space-md);
   margin-bottom: var(--space-sm);
+  --ink: #4A2838;
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+}
+/* nested 子结果（Starlight 自带 dark 底）：透明化，跟随母卡亮纸 */
+html.sakura #starlight__search .pagefind-ui__result-nested {
+  background: transparent;
 }
 html.sakura #starlight__search .pagefind-ui__result:hover {
+  background: var(--sakura-blush);
   border-color: var(--ink);
   box-shadow: 2px 2px 0 var(--ink);
 }
-html.sakura #starlight__search .pagefind-ui__result-title { color: var(--sakura-pink-text); }
-html.sakura #starlight__search .pagefind-ui__result-excerpt { color: #7A5568; }
-html.sakura #starlight__search .pagefind-ui__message { color: #7A5568; }
+/* 腮红底上不落粉字（#C02868 on #FFD4E0 仅 4.20:1）——
+   hover/focus 时标题/高亮翻墨字，同行内链接 hover 范式。
+   ⚠ 可见文字实际由 .pagefind-ui__result-link 的 --pagefind-ui-text 控制
+   （Pagefind 官方样式），只盖 __result-title 不命中 —— codex P1 修复：
+   变量+链接双覆盖，并补键盘 :focus-within 的 AA 态。 */
+html.sakura #starlight__search .pagefind-ui__result:hover .pagefind-ui__result-title,
+html.sakura #starlight__search .pagefind-ui__result:hover .pagefind-ui__result-link,
+html.sakura #starlight__search .pagefind-ui__result:hover mark,
+html.sakura #starlight__search .pagefind-ui__result:focus-within .pagefind-ui__result-title,
+html.sakura #starlight__search .pagefind-ui__result:focus-within .pagefind-ui__result-link,
+html.sakura #starlight__search .pagefind-ui__result:focus-within mark {
+  color: var(--ink);
+  --pagefind-ui-text: var(--ink);
+}
+html.sakura #starlight__search .pagefind-ui__result:focus-within {
+  background: var(--sakura-blush);
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+html.sakura #starlight__search .pagefind-ui__result-title {
+  color: var(--sakura-pink-text);
+  --pagefind-ui-text: var(--sakura-pink-text);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  /* Starlight dark 给 title 行自带夜紫底（#2E1F42）——纸卡内透明化（preview 实测） */
+  background: transparent;
+}
+html.sakura #starlight__search .pagefind-ui__result-title .pagefind-ui__result-link {
+  color: var(--sakura-pink-text);
+}
+html.sakura #starlight__search .pagefind-ui__result-excerpt { color: var(--fg-2); }
+html.sakura #starlight__search .pagefind-ui__message { color: var(--fg-2); }
 
 /* =========================================================================
    移动端目录 / 面包屑小条
@@ -886,3 +937,354 @@ html.sakura mobile-starlight-toc nav {
   border-bottom: 2px solid var(--ink-faint);
 }
 html.sakura mobile-starlight-toc summary { color: var(--fg-1); }
+
+/* =========================================================================
+   移动端菜单（两皮共同无人区补皮）
+   starlight-menu-button 在 nav.sidebar 内、不在 header 内（PageFrame.astro）；
+   Starlight 原样式在 @layer starlight.core，本层未分层规则天然压过。
+   ========================================================================= */
+/* 汉堡按钮 —— 手账贴纸：白卡 + 墨线 + 2px 硬阴影（保持 Starlight 圆形轮廓） */
+html.sakura starlight-menu-button button {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+/* expanded 态 —— 樱粉贴纸压平（粉底墨字 7.06:1，投影归零=按下感）
+   注意 aria-expanded 状态挂在 starlight-menu-button 自定义元素上 */
+html.sakura starlight-menu-button[aria-expanded='true'] button {
+  background: var(--sakura-pink);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: none;
+}
+html.sakura[data-theme='dark'] starlight-menu-button button {
+  background: var(--night-2);
+  border-color: rgba(255, 245, 224, 0.4);
+  color: var(--cream);
+  box-shadow: 2px 2px 0 rgba(20, 10, 35, 0.8);
+}
+/* expanded 贴纸在夜里仍是亮纸面（夜桌模型），保持粉底墨字 */
+html.sakura[data-theme='dark'] starlight-menu-button[aria-expanded='true'] button {
+  background: var(--sakura-pink);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: none;
+}
+
+/* 移动端偏好面板（MobileMenuFooter：主题/语言/社交）——
+   cream 纸条 + 墨色上边线；纸面夜里仍亮，锁墨
+   （值与 sakura-theme.css 纸面锁墨一致） */
+html.sakura .mobile-preferences {
+  --fg-1: #4A2838;
+  --fg-2: #7A5568;
+  --fg-3: #86596F;
+  --ink-faint: rgba(74, 40, 56, 0.25);
+  background: var(--cream);
+  border-top: 2px solid var(--ink);
+  padding: 10px 12px;
+}
+/* 控件继承 header 顶栏按钮的糖果胶囊风 */
+html.sakura .mobile-preferences select {
+  background: var(--bg-3);
+  border: 2px solid var(--ink) !important;
+  border-radius: 999px !important;
+  color: var(--fg-on-cream) !important;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+/* 标签图标 / 社交图标 —— cream 纸面上固定墨色（不跟 --sl-* 夜色变量） */
+html.sakura .mobile-preferences label,
+html.sakura .mobile-preferences label:hover,
+html.sakura .mobile-preferences .social-icons a {
+  color: var(--fg-on-cream);
+}
+
+/* =========================================================================
+   危险层防御（红线加固）：应急横幅内的链接/按钮永远白字、永远无荧光带 ——
+   无论未来谁往 .sl-markdown-content 加了什么泛化链接规则，这里都兜底。
+   （2026-07-23 事故记录：荧光笔 a 规则曾把横幅 CTA 染成浅粉块，已收窄为
+   a:not([class])，此段为二次防御。）
+   ========================================================================= */
+html.sakura .emergency-banner a,
+html.sakura .emergency-banner a:hover,
+html.sakura .emergency-banner a:focus-visible {
+  color: #fff !important;
+  background-image: none !important;
+}
+
+/* =========================================================================
+   BylineCard — 作者/复查署名卡（全站文档页底部）。
+   米哈游暗玻璃底 rgba(26,22,37,.6) 在 sakura 奶油页面里是突兀灰条
+   （2026-07-23 owner 首页目检发现）→ 手账纸条化。
+   ========================================================================= */
+html.sakura .byline-card {
+  background: var(--ivory) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1.5px solid var(--ink-faint) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+  color: var(--fg-2) !important;
+}
+html.sakura .byline-card :where(dt, .byline-card__label) {
+  color: var(--fg-3) !important;
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+html.sakura .byline-card :where(dd, a, strong, .byline-card__cred) {
+  color: var(--fg-1) !important;
+}
+html.sakura .byline-card a:not([class]) {
+  color: var(--sakura-pink-text) !important;
+  background-image: none !important;
+}
+/* 幻月夜：署名条是桌面家具语义，随夜色（night-2 底奶油字） */
+html.sakura[data-theme='dark'] .byline-card {
+  background: var(--night-2) !important;
+  border-color: rgba(255, 245, 224, 0.25) !important;
+  color: var(--cream) !important;
+}
+html.sakura[data-theme='dark'] .byline-card :where(dt, .byline-card__label) { color: var(--sakura-blush) !important; }
+html.sakura[data-theme='dark'] .byline-card :where(dd, strong, .byline-card__cred) { color: var(--cream) !important; }
+html.sakura[data-theme='dark'] .byline-card a:not([class]) { color: var(--sakura-pink) !important; }
+
+/* =========================================================================
+   2026-07-23 pathway 页显示问题修复（owner 截图排查）——
+   根因：legacy 亮色 token（--color-primary-light→blush 等）在 MDX 组件
+   【内层元素】的残留消费，外层贴皮规则盖不到。
+   ========================================================================= */
+
+/* CitationRef 内层链接 —— blush 字落腮红底，角标看着像空框 */
+html.sakura .citation-ref .citation-ref__link,
+html.sakura .citation-ref__link {
+  color: var(--ink) !important;
+  background: transparent !important;
+  background-image: none !important;
+  text-decoration: none !important;
+}
+html.sakura .citation-ref .citation-ref__link:hover,
+html.sakura .citation-ref__link:hover {
+  color: var(--sakura-pink-text) !important;
+}
+
+/* 浅彩底容器（粉渐变/腮红/奶黄卡）内的无类正文链接 ——
+   blush 荧光带 + blush/粉字在粉底上不可读 → 深粉字 + 点下划线、去荧光带 */
+/* .emergency-actions 已从列表移除（危险层零触碰，红线审查）；
+   phase-block 渐变 blush 端 #C02868 仅 4.20:1 → 这批浅彩卡内链接统一墨字
+   （#4A2838 on blush 9.53:1），可点性由下划线承载。 */
+html.sakura :is(.phase-block, .decision-branch, .decision-node, .baseline-checklist, .reality-check, .risk-card) a:not([class]) {
+  color: #4A2838;
+  background-image: none;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+html.sakura :is(.phase-block, .decision-branch, .decision-node, .baseline-checklist, .reality-check, .risk-card) a:not([class]):hover {
+  color: var(--sakura-pink-text);
+  background-image: none;
+  text-decoration-style: solid;
+}
+
+/* DecisionBranch tone 彩字（mint/honey 亮色 on 白卡 2.06/1.59 崩）——
+   文字全转墨，语义交给左侧色条 + 状态图标（同首页贴纸法则） */
+/* 钉字面量而非 var(--fg-1)：决策卡是白纸面（--bg-3 dark 不翻），fg-1 在幻月夜
+   翻成 cream 会整卡隐形（红线审查抓到的实伤）——纸面锁墨。 */
+html.sakura .decision-branch { color: #4A2838 !important; }
+html.sakura .decision-branch--green {
+  border-inline-start: 6px solid var(--mint-deep) !important;
+  color: var(--fg-1) !important;
+}
+html.sakura .decision-branch--yellow {
+  border-inline-start: 6px solid var(--honey) !important;
+  color: var(--fg-1) !important;
+}
+html.sakura .decision-branch--red {
+  border-inline-start: 6px solid var(--danger) !important;
+  color: var(--fg-1) !important;
+}
+html.sakura .decision-branch :is(p, li, strong, span) { color: inherit !important; }
+
+/* DoseTable wrapper 收缩导致表格在宽卡里「断裂」→ 拉满 */
+html.sakura .dose-table-wrapper { width: 100% !important; }
+html.sakura .dose-table { width: 100% !important; }
+
+/* =========================================================================
+   2026-07-23 文档页残余修复（第二轮）—— owner 截图 + playwright 系统扫描
+   同根因：legacy 亮色 token（--color-accent→butter-deep、--color-primary→pink、
+   --color-primary-light→blush、--color-safe→mint 等）在 MDX 组件内层元素／内联
+   style 里作为「文字色」残留消费，在 sakura 奶油浅底上对比度崩坏。
+   危险层（crisis-hotline / contraindication / emergency）只读不改 —— 其崩坏点
+   （如应急热线号码 danger 红字落 danger-deep 红底 1.18:1）在交付 findings 里报告，
+   不在本文件处理。全部规则 html.sakura 作用域，非 sakura 零影响。
+   ========================================================================= */
+
+/* ---- 1. 对照表单元格数百 px 超高（owner 截图 · guidelines-comparison）----
+   根因：Starlight `.sl-markdown-content table{display:block}` 让 table-layout:fixed
+   退化成 auto；而 col-2 的 .dose-value 带 white-space:nowrap（本为短剂量数字设计），
+   当该列装整句散文时 nowrap 把它撑到极宽、挤瘦其余列 → 一行字的单元格换行十几行、
+   行高爆到 255px。修：还原 display:table 让 fixed 布局复活；散文列放开 nowrap。
+   （剂量数字内部无空格断点，white-space:normal 不会拆数字，医疗安全不受影响；
+   移动端 min-width:max-content 横向滚动行为不变。） */
+html.sakura .sl-markdown-content .dose-table { display: table; }
+html.sakura .sl-markdown-content .dose-table .dose-value { white-space: normal; }
+
+/* ---- 2. RiskCard kicker/概率高亮彩字 + dt 折行（owner 截图 · risks）----
+   sakura 通用纸卡把边框统一成墨线，抹掉了组件原有的严重度色（组件用 border-right）；
+   而 kicker/概率高亮仍吃 --color-caution(butter-deep 1.59)、--color-warning-low
+   (butter 1.22) → 奶黄字 on 白卡近乎隐形。修：严重度语义转移到「左侧色条」，
+   黄/薄荷系文字转墨、红系用 AA 深粉(#C02868 5.6:1)。双类选择器压过通用卡规则。 */
+html.sakura .risk-card.risk-card--red    { border-inline-start: 6px solid var(--danger) !important; }
+html.sakura .risk-card.risk-card--orange { border-inline-start: 6px solid var(--honey) !important; }
+html.sakura .risk-card.risk-card--yellow { border-inline-start: 6px solid var(--butter-deep) !important; }
+html.sakura .risk-card__category,
+html.sakura .risk-card__value--highlight { color: var(--ink) !important; }
+html.sakura .risk-card--red .risk-card__category,
+html.sakura .risk-card--red .risk-card__value--highlight { color: var(--sakura-pink-text) !important; }
+/* dt「关联药物」在窄列被断成「关联药/物」→ 标签整体不折行，让值侧收缩换行 */
+html.sakura .risk-card__label { white-space: nowrap; flex-shrink: 0; }
+html.sakura .risk-card__value { min-width: 0; text-align: end; overflow-wrap: anywhere; }
+
+/* ---- 3. PhaseBlock 阶段 kicker（pathway）----
+   phase-label 由 MDX 内联 style="color:var(--color-safe/accent/primary)" 设色
+   （mint 1.9 / butter-deep 1.47 / pink 1.66 on cream，全崩），需 !important 压内联。
+   阶段语义由阶段卡本体（渐变底＋图标＋badge）承载，label 统一转墨。 */
+html.sakura .phase-label { color: var(--ink) !important; }
+
+/* ---- 4. BaselineChecklist 标签＋费用（first-injection 等）----
+   tag--required 吃 --color-accent(butter-deep 1.59)、tag--recommended 吃
+   --color-tertiary(lavender 1.6)、footer-cost 吃 --color-accent → 全部转墨
+   （语义在文字本身「必查/建议」与费用数值，不依赖颜色）。 */
+html.sakura .baseline-checklist__tag--required,
+html.sakura .baseline-checklist__tag--recommended,
+html.sakura .baseline-checklist__footer-cost { color: var(--ink) !important; }
+
+/* ---- 5. DrugBrandGallery 国别标签＋索引链接（药物页）----
+   brand-card__country / index-link a 吃 --color-accent(butter-deep 1.47-1.59)
+   → 国别标签转墨、索引链接转 AA 深粉。 */
+html.sakura .brand-card__country { color: var(--ink) !important; }
+html.sakura .brand-gallery__index-link a { color: var(--sakura-pink-text) !important; }
+
+/* ---- 6. FAQ 问题（controversies-faq）----
+   faq-question 吃 --color-primary-light(blush 1.33)／light 下 --color-primary-dark
+   (#E5578B 3.48) → 均崩，改 AA 深粉；幻月夜用亮樱粉。 */
+html.sakura .faq-question { color: var(--sakura-pink-text) !important; }
+html.sakura[data-theme='dark'] .faq-question { color: var(--sakura-pink) !important; }
+
+/* ---- 7. 血检页 hero 主按钮（blood-tests）----
+   primary 是 --color-primary(#FFA8C5) 粉底＋白字 = 1.9:1（白字粉底须 pink-aa）；
+   secondary 用 --color-text-secondary(#7A5568 ≈4.9:1) 已达标，不动。 */
+html.sakura .blood-test-hero__btn--primary {
+  background: var(--sakura-pink-aa) !important;
+  color: #fff !important;
+}
+
+/* ---- 8. BylineCard 证据徽标（全站文档页脚）----
+   白字落 --color-safe(mint 2.06)/--color-info(sky 2.59) 等浅色实心块 → 全崩。
+   改标准 EvidenceBadge 观感：ivory 底＋彩描边＋墨字（AA），昼夜通用。 */
+html.sakura .byline-card__evidence {
+  background: var(--ivory) !important;
+  color: var(--ink) !important;
+  border: 2px solid var(--ink);
+  width: auto !important;
+  height: auto !important;
+  padding: 1px 7px !important;
+}
+html.sakura .byline-card__evidence--A { border-color: var(--safe) !important; }
+html.sakura .byline-card__evidence--B { border-color: var(--info) !important; }
+html.sakura .byline-card__evidence--C { border-color: var(--butter-deep) !important; }
+html.sakura .byline-card__evidence--X { border-color: var(--danger-bright) !important; }
+
+/* ---- 9. 文档正文内容图 —— 近白底信息图直接浮在奶油纸上无边界感 ----
+   对齐博客 img 规则：墨线＋圆角＋bg-3 白底，让信息图成为「贴在手账上的纸片」。
+   幻月夜 bg-3 恒亮（未被 dark 覆写），信息图纸面保持点亮、墨线可见。
+   注：/zh/risks/ 的 vte-risk-stacking.webp「棋盘格」经 canvas alpha 复核为图片
+   自身烘焙的纸纹像素、非透明区透出（四角 α=255、近白 #FEFEFE），属内容资产问题，
+   见 findings，本规则只解决「无框浮白」观感、不针对棋盘格。 */
+html.sakura .sl-markdown-content img {
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--bg-3);
+}
+
+/* =========================================================================
+   危险层可读性修复（P0，主控亲修 —— 红线管的是「不弱化」，修对比度是强化）：
+   审查发现 crisis-hotline 白字规则漏了 h2 与 span 系（__label/__number/__name），
+   急救电话号码 danger 红字落 danger-deep 红底仅 1.18:1 近乎隐形。
+   ========================================================================= */
+html.sakura .crisis-hotline h2,
+html.sakura .crisis-hotline .crisis-hotline__label,
+html.sakura .crisis-hotline .crisis-hotline__number,
+html.sakura .crisis-hotline .crisis-hotline__name,
+html.sakura .crisis-hotline span,
+html.sakura .crisis-hotline strong {
+  color: #fff !important;
+}
+
+/* ContraindicationBox 徽章文字（absolute=danger红 / relative=#805E00）落墨底
+   仅 2.12:1 → 浅底药丸（ivory 底 + 语义色描边 + 墨字，昼夜恒定） */
+html.sakura .contraindication-box .contraindication-box__badge-text,
+html.sakura .contraindication-box [class*="badge"] {
+  background: #FFFAF0 !important;
+  color: #4A2838 !important;
+  border: 1.5px solid var(--danger-bright) !important;
+  border-radius: 999px !important;
+  padding: 2px 10px !important;
+}
+
+/* =========================================================================
+   复扫残点清零（2026-07-23 第三轮，主控）：
+   ========================================================================= */
+
+/* P0 危险层：EmergencyActions 行动 CTA「去最近的急诊」blush 字 1.33 →
+   深红实心按钮（白字 on danger-deep 5.1:1），危险行动必须显眼可点 */
+html.sakura .emergency-actions .emergency-actions__cta {
+  background: var(--danger-deep) !important;
+  color: #fff !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 10px !important;
+  clip-path: none !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  background-image: none !important;
+}
+html.sakura .emergency-actions .emergency-actions__cta:hover {
+  background: var(--danger) !important;
+  color: #fff !important;
+}
+html.sakura .emergency-actions .emergency-actions__cta:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* P0 危险层：ContraindicationBox（墨底）内散装 span/div 被墨字规则染墨
+   → 1.00 隐形（「绝对禁忌症」标题 span）——墨底卡内全部文本锁奶油/白 */
+html.sakura .contraindication-box span,
+html.sakura .contraindication-box div {
+  color: #FFF5E0 !important;
+}
+html.sakura .contraindication-box :where(h2, h3, h4, strong, .contraindication-box__title) {
+  color: #FFFFFF !important;
+}
+
+/* pathway hero 阶段按钮 blush 字 1.23（上轮误判为旧 build 残影，实为真崩）
+   → 手账胶囊：ivory 底 + 墨线 + 墨字 */
+html.sakura .pathway-hero__btn {
+  background: var(--ivory) !important;
+  color: #4A2838 !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 999px !important;
+  box-shadow: 2px 2px 0 var(--ink) !important;
+  clip-path: none !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  background-image: none !important;
+}
+@media (hover: hover) {
+  html.sakura .pathway-hero__btn:hover {
+    background: var(--sakura-blush) !important;
+    color: #4A2838 !important;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink) !important;
+  }
+}
