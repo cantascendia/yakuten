@@ -1,18 +1,16 @@
 ---
 title: "Assistente de IA"
-description: "Um assistente guiado de informações sobre HRT (terapia hormonal de afirmação de gênero) para navegação e dúvidas de redução de danos. Esta ferramenta não oferece aconselhamento médico personalizado."
+description: "Um assistente guiado de informações sobre HRT (terapia hormonal de afirmação de gênero) para navegação e dúvidas de redução de danos. O servidor nunca armazena suas conversas: o histórico só é salvo no navegador deste dispositivo depois que você ativa “Salvar histórico de conversas neste dispositivo”, e pode ser apagado quando você quiser. Esta ferramenta não oferece aconselhamento médico personalizado."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 
-Este assistente serve para ajudar você a navegar pelas informações gerais sobre HRT e a esclarecer dúvidas de redução de danos. Ele não substitui o julgamento de um profissional de saúde e não elabora planos de dosagem individualizados.
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
 
-:::caution[Importante]
-A interface interativa ainda está em processo de tradução. Por enquanto, parte do texto da ferramenta pode continuar aparecendo em chinês.
-:::
-
-<AIAssistant client:load />

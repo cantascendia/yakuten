@@ -1,18 +1,16 @@
 ---
 title: "KI-Assistent"
-description: "Ein geführter HRT-Informationsassistent für Orientierung und Fragen zur Schadensminderung. Dieses Tool bietet keine personalisierte medizinische Beratung."
+description: "Ein geführter HRT-Informationsassistent für Orientierung und Fragen zur Schadensminderung. Der Server speichert deine Gespräche nie – der Verlauf wird erst im Browser dieses Geräts abgelegt, wenn du „Chatverlauf auf diesem Gerät speichern“ aktivierst, und lässt sich jederzeit löschen. Dieses Tool bietet keine personalisierte medizinische Beratung."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 
-Dieser Assistent hilft dir, dich in HRT-Informationen zurechtzufinden, und gibt Hinweise zur Schadensminderung. Er ist kein Ersatz für die ärztliche Einschätzung und erstellt keine individuellen Dosierungspläne.
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
 
-:::caution[Wichtig]
-Die interaktive Oberfläche wird derzeit noch lokalisiert. Teile der Tool-Oberfläche können vorerst auf Chinesisch verbleiben.
-:::
-
-<AIAssistant client:load />

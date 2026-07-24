@@ -1,18 +1,16 @@
 ---
 title: "Assistant IA"
-description: "Un assistant d'information sur l'hormonothérapie (THS) pour vous aider à vous repérer et à réduire les risques. Cet outil ne fournit pas de conseil médical personnalisé."
+description: "Un assistant d'information sur l'hormonothérapie (THS) pour vous aider à vous repérer et à réduire les risques. Le serveur ne conserve jamais vos échanges : l'historique n'est enregistré dans le navigateur de cet appareil qu'après activation d'« Enregistrer l'historique des conversations sur cet appareil », et il peut être effacé à tout moment. Cet outil ne fournit pas de conseil médical personnalisé."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 
-Cet assistant est là pour t'aider à t'orienter dans les informations générales sur l'hormonothérapie (THS) et à répondre à tes questions de réduction des risques. Il ne remplace pas le jugement d'une clinicienne ou d'un clinicien, et il n'établit pas de plan posologique adapté à ta situation.
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
 
-:::caution[Important]
-L'interface interactive est encore en cours de traduction. Une partie du texte de l'outil peut donc rester en chinois pour le moment.
-:::
-
-<AIAssistant client:load />

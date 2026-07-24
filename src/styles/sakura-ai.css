@@ -54,15 +54,21 @@ html.sakura .yk-ai-panel {
   box-shadow: 6px 6px 0 var(--ink);
 }
 
-/* 工具页整页模式 —— 玻璃换纸卡 */
+/* 工具页整页模式 —— 全屏满铺纸面 + 真纸纹（方格+纤维；纯色会盖掉全站纹理，纸感只剩描边） */
 html.sakura .yk-ai--page {
-  background: var(--bg-1);
+  background-color: var(--bg-1);
+  background-image: var(--sakura-paper-grid), var(--sakura-paper-fiber);
+  background-size: var(--sakura-paper-grid-size), auto;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-md);
+  border: 0;
+  border-radius: 0;
   clip-path: none;
-  box-shadow: var(--shadow-hard-lg);
+  box-shadow: none;
+}
+html.sakura .ai-chat-stage {
+  background: var(--bg-1);
+  border-block-start-color: var(--ink);
 }
 html.sakura .yk-ai--compact {
   background: var(--bg-1);
@@ -155,24 +161,22 @@ html.sakura .yk-ai-chip:focus-visible {
 /* =========================================================================
    5. 气泡 —— 用户 = 樱粉底墨字贴纸；AI = cream 纸片（圆角走逻辑属性，RTL 安全）
    ========================================================================= */
+/* 四角对称贴纸卡（缺角气泡=IM 语言,与主皮一同去除） */
 html.sakura .yk-ai-msg--user {
   background: var(--bg-5);
   border: 1.5px solid var(--ink);
-  border-start-start-radius: 12px;
-  border-start-end-radius: 12px;
-  border-end-end-radius: 4px;
-  border-end-start-radius: 12px;
+  border-radius: 14px;
   box-shadow: 2px 2px 0 var(--ink);
   color: var(--ink);
 }
+/* AI 回复无卡直排（三家共识）——纸面上仅一道樱粉左缘标记内容归属 */
 html.sakura .yk-ai-msg--ai {
-  background: var(--bg-2);
-  border: 1.5px solid var(--ink-faint);
-  border-start-start-radius: 12px;
-  border-start-end-radius: 12px;
-  border-end-end-radius: 12px;
-  border-end-start-radius: 4px;
+  background: transparent;
+  border: 0;
+  border-inline-start: 3px solid var(--sakura-pink-deep);
+  border-radius: 0;
   color: var(--fg-1);
+  padding: 2px 0 2px 14px;
 }
 html.sakura .yk-ai-msg__label {
   color: var(--fg-3);
@@ -198,7 +202,7 @@ html.sakura .yk-ai-msg a.yk-ai-linkcard {
   background-image: none;
   border: 1.5px solid var(--ink);
   border-radius: 10px;
-  box-shadow: 2px 2px 0 var(--ink);
+  box-shadow: none;
   color: var(--fg-1);
   padding: 8px 12px;
   text-decoration: none;
@@ -206,8 +210,8 @@ html.sakura .yk-ai-msg a.yk-ai-linkcard {
 }
 @media (hover: hover) {
   html.sakura .yk-ai-msg a.yk-ai-linkcard:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 3px 3px 0 var(--ink);
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0 var(--ink);
     background: var(--bg-3);
     background-image: none;
     color: var(--fg-1);
@@ -307,19 +311,29 @@ html.sakura .yk-ai-ctx__close:focus-visible {
 /* =========================================================================
    10. 输入区 —— 手账胶囊输入框 + 深粉 AA 胶囊发送钮
    ========================================================================= */
-html.sakura .yk-ai-inputrow {
-  background: var(--bg-2);
-  border-block-start: 2px dashed var(--ink-faint);
-}
-html.sakura .yk-ai-input {
+/* composer 浮岛 = 手账纸卡（输入框本体透明融入卡内） */
+html.sakura .yk-ai-composer {
   background: var(--bg-3);
   border: 2px solid var(--ink);
-  border-radius: var(--radius-full);
-  padding: 7px 14px;
-  color: var(--fg-1);
+  border-radius: 28px;
+  box-shadow: 3px 3px 0 var(--ink);
 }
-html.sakura .yk-ai-input:focus {
+/* 空输入幽灵态（基线换成透明底后，sakura 对应墨线幽灵） */
+html.sakura .yk-ai-send:disabled {
+  background: transparent;
+  border-color: var(--ink-faint);
+  color: var(--fg-3);
+  box-shadow: none;
+}
+html.sakura .yk-ai-composer:focus-within {
   border-color: var(--sakura-pink-deep);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+html.sakura .yk-ai-input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--fg-1);
 }
 html.sakura .yk-ai-input::placeholder {
   color: var(--fg-3);
@@ -346,32 +360,41 @@ html.sakura .yk-ai-send:focus-visible {
 }
 
 /* =========================================================================
-   11. 幻月夜 —— 夜晚书桌模型：
-   · 纸面恒亮锁墨：.yk-ai 子树把纸/墨 token 钉回昼值（钉字面量法，
-     与 sakura-theme.css 纸面锁墨、sakura-blog.css §12 同值同机制）
-   · 桌面外缘（FAB / 浮窗 / 整页卡）硬影换夜影色 var(--night-1)
+   11. 幻月夜 —— 「夜色书桌上的手账」（AI 全屏应用页专属方案）：
+   · 全站 sakura 夜规范的"纸面锁亮"适用于卡片级纸面；本页是 100dvh 满屏，
+     从暗色站点切入会被整屏奶油纸闪目（GPT/Gemini 双评审一致 P0 级批评）。
+   · 故本页 .yk-ai 子树改钉「夜纸」值：深夜紫底 + 深紫纸卡 + 亮墨字，
+     樱粉/蜜金强调色不变，硬影换夜影。其余页面（blog/blood）不受影响。
    ========================================================================= */
 html.sakura[data-theme='dark'] .yk-ai {
-  --bg-1: #FFF5E0;
-  --bg-2: #FFFAF0;
-  --bg-3: #FFFFFF;
-  --bg-4: #FFF0E5;
-  --bg-5: #FFE4EC;
-  --bg-6: #FFDCE5;
-  --ivory: #FFFAF0;
-  --butter: #FFE89C;
-  --ink: #4A2838;
-  --ink-soft: #7A5568;
-  --ink-faint: rgba(74, 40, 56, 0.25);
-  --fg-1: #4A2838;
-  --fg-2: #7A5568;
-  --fg-3: #86596F;
-  --color-text-primary: #4A2838;
-  --color-text-secondary: #7A5568;
-  --color-text-muted: #7A5568;
-  --color-outline-20: rgba(74, 40, 56, 0.2);
-  background: #FFF5E0;
+  --bg-1: #18141F;
+  --bg-2: #211B2A;
+  --bg-3: #2B2337;
+  --bg-4: #352B44;
+  --bg-5: #442D3C;
+  --bg-6: #4A3040;
+  --ivory: #211B2A;
+  --butter: #3A3226;
+  --ink: #F0E6EF;
+  --ink-soft: #C5B2C3;
+  --ink-faint: rgba(240, 230, 239, 0.22);
+  --fg-1: #F0E6EF;
+  --fg-2: #C5B2C3;
+  --fg-3: #9E889C;
+  --color-text-primary: #F0E6EF;
+  --color-text-secondary: #C5B2C3;
+  --color-text-muted: #9E889C;
+  --color-outline-20: rgba(240, 230, 239, 0.16);
+  background: #18141F;
 }
+/* 舞台/纸纹同步入夜（浅墨纹在深底不可见，直接关掉） */
+html.sakura[data-theme='dark'] .ai-chat-stage { background: #18141F; }
+html.sakura[data-theme='dark'] .yk-ai--page { background-color: #18141F; background-image: none; }
+/* 危机卡在夜里保持"深红底白字"危险语义（--ink 已翻亮，不能再当底色用） */
+html.sakura[data-theme='dark'] .yk-ai-crisis { background: #3A1220; border-color: var(--danger-bright, #FF5A5A); }
+/* 离线条的硬编码深墨字换亮墨 */
+html.sakura[data-theme='dark'] .yk-ai-banner--offline { color: var(--fg-1); }
+html.sakura[data-theme='dark'] .yk-ai-disclaimer { color: var(--fg-1); }
 html.sakura[data-theme='dark'] .yk-ai-fab {
   background: #FFFAF0;
   color: #4A2838;
@@ -390,9 +413,9 @@ html.sakura[data-theme='dark'] .yk-ai-panel {
   border-color: #4A2838;
   box-shadow: 6px 6px 0 var(--night-1);
 }
+/* 整页全屏模式无浮动卡外框：不加硬影 */
 html.sakura[data-theme='dark'] .yk-ai--page {
-  border-color: #4A2838;
-  box-shadow: 6px 6px 0 var(--night-1);
+  box-shadow: none;
 }
 
 /* =========================================================================
@@ -415,4 +438,181 @@ html.sakura[data-theme='dark'] .yk-ai--page {
    ========================================================================= */
 html.sakura :is(.yk-ai-header__badge, .yk-ai-msg__label, .yk-ai-ctx):is(:lang(ar), :lang(fa)) {
   letter-spacing: normal;
+}
+
+/* =========================================================================
+   13. 产品级 chat 新增 DOM —— 乐园手账覆盖（会话侧栏 / 抽屉 / 欢迎 /
+       消息操作 / 编辑 / 富 Markdown / 表格 / 代码 / 回底钮 / 离线条 /
+       composer / 模型徽章）。夜间：.yk-ai 已钉纸墨 token（§11），本节自动继承。
+   ========================================================================= */
+
+/* 结构层透明，纸面透出 */
+html.sakura .yk-ai-shell,
+html.sakura .yk-ai-main { background: transparent; }
+
+/* 图标钮（汉堡 / 关闭）—— 墨字圆钮 */
+html.sakura .yk-ai-iconbtn { color: var(--fg-2); border-radius: var(--radius-full); }
+@media (hover: hover) {
+  html.sakura .yk-ai-iconbtn:hover { color: var(--ink); background: var(--sakura-blush); }
+}
+html.sakura .yk-ai-iconbtn:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 2px; }
+
+/* 模型徽章文案 */
+html.sakura .yk-ai-header__model { color: var(--fg-3); font-family: var(--font-ui-accent); }
+
+/* 欢迎态 */
+html.sakura .yk-ai-welcome { color: var(--fg-2); }
+html.sakura .yk-ai-welcome__icon { color: var(--sakura-pink-deep); opacity: .9; }
+html.sakura .yk-ai-welcome__title { font-family: var(--font-heading); color: var(--fg-1); }
+
+/* 消息操作行 */
+html.sakura .yk-ai-actbtn { color: var(--fg-3); font-family: var(--font-ui-accent); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-actbtn:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-actbtn:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 1px; }
+
+/* 编辑重发 */
+html.sakura .yk-ai-edit__area {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  color: var(--fg-1);
+}
+
+/* 富 Markdown 排版 */
+html.sakura .yk-ai-msg :is(h1, h2, h3, h4) { color: var(--fg-1); font-family: var(--font-heading); }
+html.sakura .yk-ai-msg blockquote { border-inline-start: 3px solid var(--sakura-pink-deep); color: var(--fg-2); }
+html.sakura .yk-ai-msg pre { background: var(--bg-4); border: 1.5px solid var(--ink-faint); border-radius: 8px; }
+html.sakura .yk-ai-msg :is(code, .yk-ai-code) { background: var(--bg-4); color: var(--ink); border-radius: 4px; }
+html.sakura .yk-ai-copybtn {
+  background: var(--bg-3); border: 1.5px solid var(--ink); border-radius: 8px; color: var(--fg-2);
+}
+@media (hover: hover) { html.sakura .yk-ai-copybtn:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-copybtn--done { color: var(--mint-deep, #2E8B6B); }
+html.sakura .yk-ai-table th,
+html.sakura .yk-ai-table td { border-color: var(--ink-faint); }
+html.sakura .yk-ai-table th { background: var(--bg-4); color: var(--fg-1); }
+
+/* 回到底部浮钮 —— 白纸圆贴纸 */
+html.sakura .yk-ai-scrollbtn {
+  background: var(--bg-3); border: 1.5px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); color: var(--fg-2);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-scrollbtn:hover { color: var(--sakura-pink-text); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+}
+
+/* 离线条 —— 便签黄 */
+html.sakura .yk-ai-banner--offline {
+  background: var(--butter); border-block-start: 2px dashed var(--ink-faint); color: #4A2838;
+}
+
+/* dock / 免责常驻行 —— 纸面透出，浮岛卡自带轮廓（卡规则见 §10） */
+html.sakura .yk-ai-dock { background: transparent; }
+html.sakura .yk-ai-inputnote { color: var(--fg-3); }
+html.sakura .yk-ai-send--stop { background: var(--danger); color: #FFFFFF; }
+html.sakura .yk-ai-charhint { color: var(--fg-3); font-family: var(--font-ui-accent); }
+html.sakura .yk-ai-charhint--over { color: var(--danger); }
+
+/* topbar —— 装订虚线 + 手账字体 */
+html.sakura .yk-ai-topbar::after {
+  background: none;
+  block-size: 0;
+  border-block-end: 2px dashed var(--ink-faint);
+}
+html.sakura .yk-ai-topbar__title { font-family: var(--font-heading); color: var(--fg-2); }
+html.sakura .yk-ai-topbar__model { color: var(--sakura-pink-text); opacity: 1; }
+
+/* hero 欢迎舞台 —— 白纸圆贴纸徽章 + 手账标题 */
+html.sakura .yk-ai-hero__badge {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-hero__greeting { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-hero__sub { color: var(--fg-2); }
+
+/* 建议 pills = 小纸条（硬影只留给 hero 徽章/composer/新对话三个主角——
+   静止态全员带影会让"贴纸语法"泛滥,谁都突出=谁都不突出） */
+html.sakura .yk-ai-pill {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  box-shadow: none;
+  color: var(--fg-1);
+}
+html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; }
+@media (hover: hover) {
+  html.sakura .yk-ai-pill:hover {
+    background: var(--sakura-blush);
+    border-color: var(--ink);
+    color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+}
+
+/* 侧栏产品名区 */
+html.sakura .yk-ai-side__brandicon { color: var(--sakura-pink-deep); filter: none; }
+html.sakura .yk-ai-side__brandname { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-side__brandbeta { color: var(--fg-3); border-color: var(--ink-faint); }
+@media (hover: hover) { html.sakura .yk-ai-side__brandlink:hover { background: var(--sakura-blush); } }
+html.sakura .yk-ai-side__aboutbtn { border-color: var(--ink-faint); color: var(--fg-3); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-side__aboutbtn:hover { color: var(--ink); border-color: var(--ink); } }
+html.sakura .yk-ai-optin:has(input:not(:checked)) .yk-ai-optin__body { color: var(--honey-deep, #8A6D00); }
+
+/* 「使用须知」弹层 = 手账纸卡 */
+html.sakura .yk-ai-about__overlay { background: rgba(74, 40, 56, 0.4); }
+html.sakura .yk-ai-about__card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+html.sakura .yk-ai-about__title { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-about__list { color: var(--fg-2); }
+html.sakura .yk-ai-about__list li::marker { color: var(--sakura-pink-deep); }
+
+/* =========================================================================
+   14. 会话侧栏 / 抽屉 —— 手账目录
+   ========================================================================= */
+/* 层次三档：蜜桃侧栏 / 米黄主区 / 白纸浮岛 */
+html.sakura .yk-ai-side { background: var(--bg-4); border-inline-end: 2px solid var(--ink); }
+html.sakura .yk-ai-side__head { border-block-end: 2px solid var(--ink-faint); }
+html.sakura .yk-ai-newbtn {
+  background: var(--sakura-pink-aa); border: 2px solid var(--ink); border-radius: var(--radius-full);
+  box-shadow: 2px 2px 0 var(--ink); color: var(--fg-on-pink, #FFFFFF);
+  font-family: var(--font-ui-accent); font-weight: 700; transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-newbtn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); opacity: 1; }
+}
+html.sakura .yk-ai-side__closebtn { color: var(--fg-2); border-radius: var(--radius-full); }
+html.sakura .yk-ai-search {
+  background: var(--bg-3); border: 2px solid var(--ink); border-radius: var(--radius-full); color: var(--fg-1);
+}
+html.sakura .yk-ai-search:focus { border-color: var(--sakura-pink-deep); }
+html.sakura .yk-ai-group__label { color: var(--fg-3); font-family: var(--font-ui-accent); }
+html.sakura .yk-ai-sess { border-radius: 10px; color: var(--fg-2); }
+@media (hover: hover) { html.sakura .yk-ai-sess:hover { background: var(--sakura-blush); color: var(--ink); } }
+html.sakura .yk-ai-sess--active { background: var(--bg-5); border-inline-start-color: var(--sakura-pink-deep); color: var(--ink); }
+html.sakura .yk-ai-sess__rename { background: var(--bg-3); border: 1.5px solid var(--sakura-pink-deep); color: var(--fg-1); border-radius: 6px; }
+html.sakura .yk-ai-sess__act { color: var(--fg-3); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-sess__act:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-sess__confirm .yk-ai-danger { color: var(--danger); }
+html.sakura .yk-ai-sess__confirm .yk-ai-muted { color: var(--fg-3); }
+html.sakura .yk-ai-side__empty { color: var(--fg-3); }
+html.sakura .yk-ai-side__foot { border-block-start: 2px dashed var(--ink-faint); }
+html.sakura .yk-ai-optin__label { color: var(--fg-1); }
+html.sakura .yk-ai-optin__body { color: var(--fg-3); }
+html.sakura .yk-ai-optin input { accent-color: var(--sakura-pink-deep); }
+html.sakura .yk-ai-side__tool {
+  background: var(--bg-3); border: 1.5px solid var(--ink-faint); border-radius: var(--radius-full); color: var(--fg-2); box-shadow: none;
+}
+@media (hover: hover) { html.sakura .yk-ai-side__tool:hover { color: var(--sakura-pink-text); border-color: var(--sakura-pink-deep); } }
+html.sakura .yk-ai-side__tool--danger:hover { color: var(--danger); border-color: var(--danger); }
+html.sakura .yk-ai-side--drawer { box-shadow: 6px 0 0 var(--ink); }
+html.sakura .yk-ai-drawer-overlay { background: rgba(74, 40, 56, 0.4); }
+
+/* reduced-motion：压掉新增位移 */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .yk-ai-scrollbtn:hover,
+  html.sakura .yk-ai-newbtn:hover { transform: none; }
 }

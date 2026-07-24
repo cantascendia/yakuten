@@ -1,42 +1,18 @@
 ---
 title: AI 问答助手
-description: 基于循证医学文献的 AI 问答工具，为你提供 HRT 安全解答。我们不存储任何对话，亦不提供个人化的用药建议。
+description: 基于循证医学文献的 AI 问答工具，为你提供 HRT 安全解答。服务器不存储任何对话；仅在你开启「在此设备保存」后，历史才存放在本设备浏览器，可随时清空。我们不提供个人化的用药建议。
 evidenceLevel: X
-lastReviewed: 2026-04-07
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
-import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
-<ToolDisclaimer privacy="ai-no-history" />
+{/* 全屏应用页：视口即应用，零页面滚动。免责/能力边界收进应用内
+    「使用须知」弹层（侧栏底部入口）+ composer 下常驻行。 */}
 
-## 循证 AI 问答
-
-你可以在这里向 AI 助手提问关于 HRT 的安全问题。助手的回答均基于国际临床指南与同行评审文献。
-
-<div class="warning-box">
-<div class="warning-box__title">⚠ AI 无法为你提供以下服务</div>
-
-- **不提供个人化剂量建议**：助手不会针对你的具体情况推荐具体的用药剂量
-- **不读取你的健康档案**：每次提问均独立处理，AI 通常无法查看你的历史提问或个人数据
-- **不替代专业医学诊断**：所有回答均基于已发表文献，并不能替代专业的临床诊断
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
 </div>
-
-<AIAssistant client:load />
-
-## 你可以向 AI 提问哪些内容？
-
-- 各类 HRT 药物的药理作用、副作用及其对比
-- 血检指标的临床含义与参考范围
-- 国际指南推荐的剂量范围（非个人化建议）
-- 药物之间的相互作用与禁忌症
-- HRT 相关风险的循证医学数据
-
-## 哪些是 AI 无法提供的服务？
-
-- ❌ 给出具体的用药剂量
-- ❌ 替代专业医生的诊断与处方
-- ❌ 提供任何药品的购药渠道
-- ❌ 访问或存留你的个人健康数据

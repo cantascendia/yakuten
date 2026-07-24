@@ -1,18 +1,16 @@
 ---
 title: "AI na Katuwang"
-description: "Isang ginagabayang katuwang sa impormasyon tungkol sa HRT para sa paglilibot at mga tanong sa harm reduction. Hindi nagbibigay ang tool na ito ng personalisadong medikal na payo."
+description: "Isang ginagabayang katuwang sa impormasyon tungkol sa HRT para sa paglilibot at mga tanong sa harm reduction. Hindi kailanman ino-store ng server ang iyong mga usapan; ise-save lang ang kasaysayan sa browser ng device na ito kapag na-on mo ang “I-save ang kasaysayan ng chat sa device na ito”, at puwede itong burahin anumang oras. Hindi nagbibigay ang tool na ito ng personalisadong medikal na payo."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 
-Magagamit ang katuwang na ito para sa pangkalahatang paghahanap ng impormasyon tungkol sa HRT at gabay sa harm reduction. Hindi ito kapalit ng pagsusuri ng isang klinisyan, at hindi ito gumagawa ng personalisadong plano ng dosis.
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
 
-:::caution[Mahalaga]
-Isinasalin pa ang kasalukuyang interactive na interface. Maaaring nasa Tsino muna sa ngayon ang ilang teksto sa UI ng tool.
-:::
-
-<AIAssistant client:load />

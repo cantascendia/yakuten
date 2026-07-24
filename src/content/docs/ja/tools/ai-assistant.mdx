@@ -1,18 +1,16 @@
 ---
 title: AIアシスタント
-description: HRTの情報導線と減害のための案内用AIです。個別の医療判断や用量提案は行いません。
+description: HRTの情報導線と減害のための案内用AIです。サーバーは会話を一切保存せず、「この端末に会話履歴を保存する」をオンにした場合のみ、履歴はこの端末のブラウザに保存され、いつでも消去できます。個別の医療判断や用量提案は行いません。
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 
-このAIアシスタントは、HRTに関する一般的な情報案内と減害のための導線整理を目的としています。個別の処方判断や用量提案の代わりにはなりません。
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
 
-:::caution[重要]
-現在、インタラクティブ部分はローカライズ中です。ツールUIの一部文言はまだ中国語のまま残る場合があります。
-:::
-
-<AIAssistant client:load />

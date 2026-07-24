@@ -1,0 +1,114 @@
+/* =========================================================================
+   ai-chat-page.css — AI 助手「全屏 chat」页舞台
+   ------------------------------------------------------------------------
+   /{locale}/tools/ai-assistant 用 template: splash（全宽、无侧栏）。
+   .ai-chat-stage 在站点顶栏（--sl-nav-height）之下占满视口高度，承载
+   AIAssistant 的两栏布局。默认（二相乐园）基线；sakura 覆盖在 sakura-ai.css。
+   ========================================================================= */
+
+/* fixed 钉满视口：彻底无视文档流里任何容器的限宽/内边距
+   （sakura 换皮会给 .sl-markdown-content 子元素加阅读列宽，曾把应用压到 44rem 左对齐） */
+.ai-chat-stage {
+  position: fixed;
+  inset: 0;
+  block-size: 100dvh;
+  display: flex;
+  overflow: hidden;
+  background: var(--color-bg, #12101a);
+  z-index: 40;
+}
+[data-theme='light'] .ai-chat-stage {
+  background: var(--color-bg, #FAF7F2);
+}
+/* 直接子元素是 <astro-island>(display:contents)，flex 打不上——
+   真正的 flex item 是里面的 .yk-ai，两层都给满 */
+.ai-chat-stage > *,
+.ai-chat-stage .yk-ai {
+  flex: 1;
+  min-inline-size: 0;
+  inline-size: 100%;
+}
+
+/* splash 内容列本身有 padding/max-width；让 chat 舞台在其中尽量满宽、不叠加外边距 */
+.sl-markdown-content .ai-chat-stage {
+  margin-block: 0;
+  max-inline-size: none;
+}
+
+/* 应用页零滚动：视口即应用（footer 等页面残余不再可滚达） */
+html:has(.ai-chat-stage),
+body:has(.ai-chat-stage) {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 应用页脱离站点 chrome：隐藏 Starlight 大顶栏（logo/搜索框/选择器），
+   应用自带极简顶栏；返回站点入口 = 侧栏品牌区链接 */
+body:has(.ai-chat-stage) header.header {
+  display: none;
+}
+body:has(.ai-chat-stage) .main-frame {
+  padding-block-start: 0 !important;
+}
+
+/* 🌸 主题切换钮全站固定在左下，会与会话侧栏底部叠罗汉 —— 本页移到右下 */
+body:has(.ai-chat-stage) #sakura-toggle {
+  left: auto;
+  right: 24px;
+  inset-inline: auto 24px;
+}
+
+@supports not (block-size: 100dvh) {
+  .ai-chat-stage {
+    block-size: calc(100vh - var(--sl-nav-height, 3.5rem));
+  }
+}
+
+/* 极小屏：保证输入区可见，压缩最小高度诉求 */
+@media (max-width: 480px) {
+  .ai-chat-stage {
+    min-block-size: 460px;
+  }
+}
+
+/* =========================================================================
+   全屏沉浸（:has 作用域，仅本页生效）：解除 splash 的标题块 / 内容内边距 /
+   最大宽度约束，让 chat 舞台在站点顶栏下满宽满高。
+   ========================================================================= */
+
+/* 舞台所在内容面板：去内边距/边框，chat 贴边 */
+.content-panel:has(.ai-chat-stage) {
+  padding: 0 !important;
+  border: 0 !important;
+}
+/* 舞台所在容器：解除最大宽度与横向内边距 → 满宽 */
+.sl-container:has(.ai-chat-stage) {
+  max-inline-size: none !important;
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
+}
+.sl-markdown-content:has(.ai-chat-stage) {
+  margin: 0 !important;
+}
+.ai-chat-stage {
+  margin: 0 !important;
+}
+
+/* 冗余页面标题（chat 自带头部）：视觉隐藏，保留给屏幕阅读器 / SEO */
+.main-pane:has(.ai-chat-stage) h1 {
+  position: absolute !important;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* 不含舞台的那个内容面板（标题块）：折叠留白 */
+.main-pane:has(.ai-chat-stage) .content-panel:not(:has(.ai-chat-stage)) {
+  padding: 0 !important;
+  border: 0 !important;
+}
+

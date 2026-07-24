@@ -226,6 +226,8 @@
       if (read(DISMISS_KEY) === "true") return;
       if (read(THEME_KEY) === "on") return;
       if (document.documentElement.classList.contains("sakura")) return;
+      // AI 助手是全屏应用页——引导卡会盖在对话上，不打扰（下次进其他页再提示）
+      if (window.location.pathname.indexOf("/tools/ai-assistant") !== -1) return;
 
       var laterBtn = document.getElementById("sakura-hint-later");
       var tryBtn = document.getElementById("sakura-hint-try");
