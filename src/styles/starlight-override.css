@@ -34,6 +34,67 @@
   margin-top: 0 !important;
 }
 
+/* ============================================================
+   risks §7.1 风险卡网格（原先在 17 语 risks.mdx 内联重复 25 行，
+   评审 P1: 抽到共享层避免 locale 漂移）。
+   auto-fit 按「容器」实际宽度自适应列数 —— 文档正文列被左导航+右 TOC
+   挤到 ~640px，旧的按视口 min-width:1024 强上 3 列 → 每列仅 ~199px 拥挤。
+   6 张卡在 1/2/3 列均整除，不留孤儿卡；信息图移出网格改独立 <figure>。
+   ============================================================ */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  align-items: stretch;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0 var(--space-xl);
+}
+.risk-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.risk-grid > .risk-item + .risk-item {
+  margin-top: 0;
+}
+.risk-item > .risk-card {
+  flex: 1;
+}
+.risk-citation {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: var(--space-sm) 0 0;
+  padding: var(--space-sm) var(--space-md);
+  /* 逻辑属性：RTL 镜像时色条随行首 */
+  border-inline-start: 2px solid rgba(200, 75, 124, 0.2);
+}
+.risk-note {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: var(--space-md) 0 0;
+}
+/* 补充信息图：网格下方居中图注块（目前仅 zh 有图，规则共享无害） */
+.risk-figure {
+  margin: 0 auto var(--space-2xl);
+  max-width: 480px;
+  text-align: center;
+}
+.risk-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-outline-20);
+}
+.risk-figure figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
 /* Color overrides */
 :root {
   --sl-color-accent-low: #1A1625;

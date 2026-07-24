@@ -36,6 +36,8 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 
 ## 7.1 HRT 的已知风险
 
+<p class="risk-note">下方每张卡片对应一类风险；本节末尾附两张补充信息图（血栓风险因素、情绪监测路径）。</p>
+
 <div class="risk-grid">
   <div class="risk-item">
     <RiskCard
@@ -49,16 +51,6 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     <p class="risk-citation">根据多项随机对照与队列研究的有限数据，口服雌二醇的血栓风险显著高于经皮给药途径<CitationRef id="canonico-2018" num={3} authors="Canonico M et al." year={2018} title="Hormone therapy and venous thromboembolism" />。其年发生率约 0.2-0.5%，但抽烟、高龄或肥胖会使整体风险呈乘数级叠加。</p>
     </RiskCard>
   </div>
-
-  <img
-    src="/images/diagrams/zh/vte-risk-stacking.webp"
-    alt="VTE 风险因素累加模型金字塔：基线人群风险 0.1%、加雌激素口服 +0.4%、加吸烟 +0.5%、加 BMI>30 +0.5%、加既往血栓史 +2%、加遗传性凝血异常 +5%，累加可达年度 8% 以上"
-    width="1024"
-    height="1536"
-    loading="lazy"
-    decoding="async"
-    style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
-  />
 
   <div class="risk-item">
     <RiskCard
@@ -112,16 +104,6 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     </RiskCard>
   </div>
 
-  <img
-    src="/images/diagrams/zh/mood-monitoring.webp"
-    alt="HRT 情绪与抑郁风险监测信息图：CPA 引发的情绪波动发生率 5-15%、E2 过低也可能加重抑郁，建议每 1-3 个月做 PHQ-9 自评，附求助路径（朋辈/心理咨询/急诊）"
-    width="1024"
-    height="1024"
-    loading="lazy"
-    decoding="async"
-    style="width:100%;height:auto;border-radius:4px;margin:0 0 var(--space-lg);"
-  />
-
   <div class="risk-item">
     <RiskCard
       title="泌乳素升高"
@@ -135,6 +117,32 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     </RiskCard>
   </div>
 </div>
+
+### 补充信息图
+
+<figure class="risk-figure">
+  <img
+    src="/images/diagrams/zh/vte-risk-stacking.webp"
+    alt="VTE 风险因素累加模型金字塔：基线人群风险 0.1%、加雌激素口服 +0.4%、加吸烟 +0.5%、加 BMI>30 +0.5%、加既往血栓史 +2%、加遗传性凝血异常 +5%，累加可达年度 8% 以上"
+    width="1024"
+    height="1536"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>血栓（VTE）风险因素叠加估算示意图 — 对应上方「深静脉血栓」卡片。</figcaption>
+</figure>
+
+<figure class="risk-figure">
+  <img
+    src="/images/diagrams/zh/mood-monitoring.webp"
+    alt="HRT 情绪与抑郁风险监测信息图：CPA 引发的情绪波动发生率 5-15%、E2 过低也可能加重抑郁，建议每 1-3 个月做 PHQ-9 自评，附求助路径（朋辈/心理咨询/急诊）"
+    width="1024"
+    height="1024"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>情绪监测与求助路径示意图 — 对应上方「情绪波动与抑郁」卡片。</figcaption>
+</figure>
 
 ## 7.2 需立即停药并寻求急诊救治的紧急症状
 
@@ -166,60 +174,3 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 </WarningBox>
 
 <RelatedBlogPosts />
-
-<style>{`
-  .risk-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: stretch;
-    gap: var(--space-lg);
-    margin: var(--space-xl) 0 var(--space-2xl);
-  }
-
-  /* Infographic <img> placed between RiskCards are direct grid children.
-     Without this they collapse into a single 1/3-width cell and read as a
-     broken "card". Span the full row and center so they render as proper
-     full-width figures between the card rows. */
-  .risk-grid > img {
-    grid-column: 1 / -1;
-    justify-self: center;
-    max-width: 520px;
-    height: auto;
-  }
-
-  @media (min-width: 640px) {
-    .risk-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .risk-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .risk-item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .risk-grid > .risk-item + .risk-item {
-    margin-top: 0;
-  }
-
-  .risk-item > .risk-card {
-    flex: 1;
-  }
-
-  .risk-citation {
-    flex-shrink: 0;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin: var(--space-sm) 0 0;
-    padding: var(--space-sm) var(--space-md);
-    border-left: 2px solid rgba(200, 75, 124, 0.2);
-  }
-`}</style>

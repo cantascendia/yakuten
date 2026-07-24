@@ -65,7 +65,8 @@ const hasFooter = Astro.slots.has('default');
     flex: 1 1 auto;
     padding: var(--space-lg);
     overflow: hidden;
-    border-right: 4px solid transparent;
+    /* 逻辑属性：RTL（ar/fa）镜像时色带随行末，而非固定右侧 */
+    border-inline-end: 4px solid transparent;
     transition: transform var(--transition-normal), opacity var(--transition-normal);
   }
 
@@ -75,13 +76,13 @@ const hasFooter = Astro.slots.has('default');
 
   /* Severity border colors */
   .risk-card--red {
-    border-right-color: var(--color-danger);
+    border-inline-end-color: var(--color-danger);
   }
   .risk-card--orange {
-    border-right-color: var(--color-caution);
+    border-inline-end-color: var(--color-caution);
   }
   .risk-card--yellow {
-    border-right-color: var(--color-warning-low);
+    border-inline-end-color: var(--color-warning-low);
   }
 
   /* Category label */
