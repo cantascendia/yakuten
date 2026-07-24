@@ -312,14 +312,14 @@ html.sakura .yk-ai-ctx__close:focus-visible {
 /* =========================================================================
    10. 输入区 —— 手账胶囊输入框 + 深粉 AA 胶囊发送钮
    ========================================================================= */
-/* composer 卡片 = 手账纸卡（输入框本体透明融入卡内） */
-html.sakura .yk-ai-composer__inner {
+/* composer 浮岛 = 手账纸卡（输入框本体透明融入卡内） */
+html.sakura .yk-ai-composer {
   background: var(--bg-3);
   border: 2px solid var(--ink);
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: 3px 3px 0 var(--ink);
 }
-html.sakura .yk-ai-composer__inner:focus-within {
+html.sakura .yk-ai-composer:focus-within {
   border-color: var(--sakura-pink-deep);
   box-shadow: 3px 3px 0 var(--ink);
 }
@@ -490,11 +490,53 @@ html.sakura .yk-ai-banner--offline {
   background: var(--butter); border-block-start: 2px dashed var(--ink-faint); color: #4A2838;
 }
 
-/* composer —— 手账装订底栏（.yk-ai-input / .yk-ai-send 复用既有 §10 规则） */
-html.sakura .yk-ai-composer { background: var(--bg-2); border-block-start: 2px dashed var(--ink-faint); }
+/* dock / 免责常驻行 —— 纸面透出，浮岛卡自带轮廓（卡规则见 §10） */
+html.sakura .yk-ai-dock { background: transparent; }
+html.sakura .yk-ai-inputnote { color: var(--fg-3); }
 html.sakura .yk-ai-send--stop { background: var(--danger); color: #FFFFFF; }
 html.sakura .yk-ai-charhint { color: var(--fg-3); font-family: var(--font-ui-accent); }
 html.sakura .yk-ai-charhint--over { color: var(--danger); }
+
+/* topbar —— 装订虚线 + 手账字体 */
+html.sakura .yk-ai-topbar::after {
+  background: none;
+  block-size: 0;
+  border-block-end: 2px dashed var(--ink-faint);
+}
+html.sakura .yk-ai-topbar__title { font-family: var(--font-heading); color: var(--fg-2); }
+html.sakura .yk-ai-topbar__model { color: var(--sakura-pink-text); opacity: 1; }
+
+/* hero 欢迎舞台 —— 白纸圆贴纸徽章 + 手账标题 */
+html.sakura .yk-ai-hero__badge {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--sakura-pink-deep);
+}
+html.sakura .yk-ai-hero__greeting { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-hero__sub { color: var(--fg-2); }
+
+/* 建议 pills = 小纸条贴纸 */
+html.sakura .yk-ai-pill {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--fg-1);
+}
+html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; }
+@media (hover: hover) {
+  html.sakura .yk-ai-pill:hover {
+    background: var(--sakura-blush);
+    border-color: var(--ink);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+
+/* 侧栏产品名区 */
+html.sakura .yk-ai-side__brandicon { color: var(--sakura-pink-deep); filter: none; }
+html.sakura .yk-ai-side__brandname { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-side__brandbeta { color: var(--mint-deep, #2E8B6B); border-color: currentColor; }
 
 /* =========================================================================
    14. 会话侧栏 / 抽屉 —— 手账目录

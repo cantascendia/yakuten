@@ -51,11 +51,30 @@ const SIDEBAR_CSS = `
   border-inline-end: 1px solid var(--color-outline-20);
   overflow: hidden;
 }
+.yk-ai-side__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px var(--space-md) 4px;
+  flex-shrink: 0;
+}
+.yk-ai-side__brandicon { display: inline-flex; color: var(--color-accent); filter: drop-shadow(0 0 5px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
+.yk-ai-side__brandname {
+  flex: 1; min-inline-size: 0;
+  font-family: var(--font-display); font-size: .875rem; font-weight: 700;
+  color: var(--color-text-primary); letter-spacing: .02em;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.yk-ai-side__brandbeta {
+  font-size: .5625rem; font-family: var(--font-mono); letter-spacing: .1em;
+  color: var(--color-safe); border: 1px solid var(--color-safe-alpha-30);
+  padding: 1px 5px; border-radius: 999px; opacity: .9;
+}
 .yk-ai-side__head {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-md) var(--space-md) var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   flex-shrink: 0;
 }
 .yk-ai-newbtn {
@@ -289,6 +308,16 @@ export default function ChatSessionSidebar(props: Props) {
       aria-modal={isDrawer ? true : undefined}
       aria-label={ui.historyTitle}
     >
+      {/* 产品名区 —— 产品识别从顶栏移到这里（金瓣 + serif 名 + BETA 小字） */}
+      <div className="yk-ai-side__brand">
+        <span className="yk-ai-side__brandicon" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 14.8a2 2 0 0 1-2 2H7.6L3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </span>
+        <span className="yk-ai-side__brandname">{ui.title}</span>
+        <span className="yk-ai-side__brandbeta">BETA</span>
+      </div>
       <div className="yk-ai-side__head">
         <button className="yk-ai-newbtn" onClick={() => { onNewChat(); if (isDrawer) onClose?.(); }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

@@ -71,6 +71,7 @@ const BASE_CSS = `
 @keyframes ai-dot-bounce { 0%,80%,100%{transform:translateY(0);opacity:.4} 40%{transform:translateY(-4px);opacity:1} }
 @keyframes ai-msg-in { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
 @keyframes ai-caret { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes ai-hero-in { from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
 .yk-ai { display:flex; flex-direction:column; block-size:100%; overflow:hidden; margin:0; }
 /* 中和 Starlight prose 给 .sl-markdown-content 内所有块级元素注入的 margin-top —
    它会逐层撑破全屏布局。消息体/侧栏的显式 margin 由更高（或后载同级）优先级规则恢复。 */
@@ -86,60 +87,56 @@ const BASE_CSS = `
 .yk-ai-shell { display:flex; flex:1; min-block-size:0; position:relative; overflow:hidden; }
 .yk-ai-main { flex:1; min-inline-size:0; display:flex; flex-direction:column; block-size:100%; overflow:hidden; }
 
-/* header —— 更薄、serif 标题、底缘金线渐隐 */
-.yk-ai-header { position:relative; display:flex; align-items:center; gap: var(--space-sm); padding: 10px var(--space-lg); flex-shrink:0; }
-.yk-ai-header::after { content:''; position:absolute; inset-inline:0; inset-block-end:0; block-size:1px;
+/* topbar —— 极简：侧栏开关 · 会话名 · 模型徽章；底缘金线渐隐 */
+.yk-ai-topbar { position:relative; display:flex; align-items:center; gap:4px; padding:0 10px; block-size:48px; flex-shrink:0; }
+.yk-ai-topbar::after { content:''; position:absolute; inset-inline:0; inset-block-end:0; block-size:1px;
   background: linear-gradient(90deg, transparent, var(--color-accent-alpha-30, rgba(212,168,83,.28)) 18%, var(--color-outline-20) 55%, transparent); }
-.yk-ai--compact .yk-ai-header { padding:8px 10px; }
-.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:40px; min-block-size:40px; display:inline-flex; align-items:center; justify-content:center; padding: var(--space-xs); transition: color var(--transition-fast), background var(--transition-fast); border-radius:8px; }
+.yk-ai--compact .yk-ai-topbar { block-size:44px; padding:0 6px; }
+.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; justify-content:center; padding:6px; transition: color var(--transition-fast), background var(--transition-fast); border-radius:9px; }
 a.yk-ai-iconbtn { text-decoration:none; }
-@media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-primary-light); background: var(--color-white-alpha-03);} }
+@media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-text-primary); background: var(--color-white-alpha-03);} }
 .yk-ai-iconbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
-.yk-ai-header__icon { color: var(--color-accent); display:inline-flex; filter: drop-shadow(0 0 6px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
-.yk-ai-header__titlewrap { flex:1; min-inline-size:0; display:flex; flex-direction:column; gap:1px; }
-.yk-ai-header__title { font-family: var(--font-display); font-size:1.02rem; font-weight:700; color: var(--color-text-primary); line-height:1.2; letter-spacing:.02em; }
-.yk-ai--compact .yk-ai-header__title { font-size:.9rem; }
-.yk-ai-header__model { font-size:.625rem; color: var(--color-accent); opacity:.75; font-family: var(--font-mono); letter-spacing:.04em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.yk-ai-header__badge { display:inline-block; padding:1px var(--space-sm); font-size:.625rem; font-family: var(--font-mono); color: var(--color-safe); border:1px solid var(--color-safe-alpha-30); letter-spacing:.08em; }
-
-/* 免责 —— 融合进舞台的细字提示（不再是大黄条；文案与层级只强化不弱化） */
-.yk-ai-disclaimer { padding:5px var(--space-lg); font-size:.6875rem; color: var(--color-caution); opacity:.85; line-height:1.45; font-family: var(--font-body); flex-shrink:0; background: var(--color-caution-alpha-08); }
-.yk-ai--compact .yk-ai-disclaimer { padding:5px 12px; }
+.yk-ai-topbar__title { flex:1; min-inline-size:0; font-family: var(--font-display); font-size:.875rem; font-weight:600; color: var(--color-text-secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-inline:6px; letter-spacing:.01em; }
+.yk-ai-topbar__model { font-size:.59375rem; color: var(--color-accent); opacity:.7; font-family: var(--font-mono); letter-spacing:.05em; white-space:nowrap; max-inline-size:180px; overflow:hidden; text-overflow:ellipsis; padding-inline:6px; }
 
 .yk-ai-logwrap { flex:1; min-block-size:0; position:relative; display:flex; flex-direction:column; }
-.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding: var(--space-xl) var(--space-lg); display:flex; flex-direction:column; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
+.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding:32px var(--space-lg); display:flex; flex-direction:column; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
 .yk-ai-log::-webkit-scrollbar { inline-size:8px; }
 .yk-ai-log::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius:8px; }
 .yk-ai-log::-webkit-scrollbar-track { background: transparent; }
-.yk-ai--compact .yk-ai-log { padding:14px 12px; }
-.yk-ai-log__inner { inline-size:100%; max-inline-size:46rem; margin-inline:auto; display:flex; flex-direction:column; gap: var(--space-lg); }
-.yk-ai--compact .yk-ai-log__inner { gap:14px; }
+.yk-ai--compact .yk-ai-log { padding:16px 12px; }
+.yk-ai-log__inner { inline-size:100%; max-inline-size:44rem; margin-inline:auto; display:flex; flex-direction:column; gap:32px; }
+.yk-ai--compact .yk-ai-log__inner { gap:18px; }
 
-/* 欢迎屏 —— 仪式感：渐变徽章 + serif 大标题 + 建议卡网格 */
-.yk-ai-welcome { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding: var(--space-xl) var(--space-lg); color: var(--color-text-muted); animation: ai-msg-in .4s ease both; }
-.yk-ai-welcome__badge { inline-size:64px; block-size:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--color-accent);
+/* ============ 状态 A · 欢迎态「居中舞台」 ============ */
+.yk-ai-hero { flex:1; min-block-size:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:28px var(--space-lg); animation: ai-hero-in .45s ease both; }
+.yk-ai--compact .yk-ai-hero { padding:18px 14px; }
+.yk-ai-hero__badge { inline-size:68px; block-size:68px; border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--color-accent); flex-shrink:0;
   background: linear-gradient(140deg, var(--color-primary-alpha-15, rgba(200,75,124,.15)), var(--color-accent-alpha-08, rgba(212,168,83,.08)));
   border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.3));
-  box-shadow: 0 0 32px var(--color-primary-alpha-15, rgba(200,75,124,.16)); margin-block-end:4px; }
-.yk-ai-welcome__title { font-family: var(--font-display); font-size:1.45rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; }
-.yk-ai--compact .yk-ai-welcome__title { font-size:1.05rem; }
-.yk-ai-welcome__sub { font-family: var(--font-body); font-size:.875rem; line-height:1.7; max-inline-size:42ch; color: var(--color-text-secondary); }
-.yk-ai-chips { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; inline-size:100%; max-inline-size:34rem; margin-block-start: var(--space-md); }
-.yk-ai--compact .yk-ai-chips { grid-template-columns:1fr; gap:8px; margin-block-start:10px; }
-.yk-ai-chip { display:flex; align-items:center; gap:10px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:12px 14px; font-size:.8425rem; font-family: var(--font-body); line-height:1.5; cursor:pointer; text-align:start; border-radius:10px; transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
-.yk-ai-chip::before { content:'✦'; color: var(--color-accent); opacity:.55; font-size:.75rem; flex-shrink:0; transition: opacity var(--transition-fast); }
-@media (hover:hover){ .yk-ai-chip:hover{ border-color: var(--color-primary); color: var(--color-text-primary); background: var(--color-primary-alpha-08, rgba(200,75,124,.07)); transform: translateY(-1px); } .yk-ai-chip:hover::before{ opacity:1; } }
-.yk-ai-chip:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  box-shadow: 0 0 36px var(--color-primary-alpha-15, rgba(200,75,124,.16)); }
+.yk-ai--compact .yk-ai-hero__badge { inline-size:52px; block-size:52px; }
+.yk-ai-hero__greeting { font-family: var(--font-display); font-size:1.7rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; margin-block-start:18px; }
+.yk-ai--compact .yk-ai-hero__greeting { font-size:1.15rem; margin-block-start:12px; }
+.yk-ai-hero__sub { font-family: var(--font-body); font-size:.9rem; line-height:1.7; max-inline-size:46ch; color: var(--color-text-secondary); margin-block-start:8px; }
+.yk-ai--compact .yk-ai-hero__sub { font-size:.8125rem; }
+.yk-ai-hero__composer { inline-size:100%; max-inline-size:44rem; margin-block-start:28px; }
+.yk-ai--compact .yk-ai-hero__composer { margin-block-start:16px; }
+.yk-ai-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-inline-size:42rem; margin-block-start:18px; }
+.yk-ai-pill { display:inline-flex; align-items:center; gap:7px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:8px 16px; font-size:.8125rem; font-family: var(--font-body); line-height:1.4; cursor:pointer; border-radius:999px; transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
+.yk-ai-pill::before { content:'✦'; color: var(--color-accent); opacity:.5; font-size:.6875rem; transition: opacity var(--transition-fast); }
+@media (hover:hover){ .yk-ai-pill:hover{ border-color: var(--color-primary); color: var(--color-text-primary); background: var(--color-primary-alpha-08, rgba(200,75,124,.07)); transform: translateY(-1px); } .yk-ai-pill:hover::before{ opacity:1; } }
+.yk-ai-pill:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 
-/* 消息 —— 用户=绯色渐变胶囊；AI=无框直排 + 金瓣标识 */
-.yk-ai-turn { display:flex; flex-direction:column; gap:6px; animation: ai-msg-in .3s ease both; }
-.yk-ai-msg { font-family: var(--font-body); font-size:.925rem; color: var(--color-text-primary); }
-.yk-ai--compact .yk-ai-msg { font-size:.8425rem; }
-.yk-ai-msg--user { align-self:flex-end; max-inline-size:86%; inline-size:fit-content; padding:10px 16px; line-height:1.65; white-space:pre-wrap;
+/* ============ 消息 —— 用户=绯色渐变胶囊；AI=无框直排 + 金瓣标识 ============ */
+.yk-ai-turn { display:flex; flex-direction:column; gap:8px; animation: ai-msg-in .3s ease both; }
+.yk-ai-msg { font-family: var(--font-body); font-size:.96875rem; color: var(--color-text-primary); }
+.yk-ai--compact .yk-ai-msg { font-size:.875rem; }
+.yk-ai-msg--user { align-self:flex-end; max-inline-size:82%; inline-size:fit-content; padding:12px 18px; line-height:1.65; white-space:pre-wrap;
   background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.16)), var(--color-primary-alpha-08, rgba(200,75,124,.07)));
   border:1px solid var(--color-primary-alpha-30, rgba(200,75,124,.28));
-  border-start-start-radius:16px; border-start-end-radius:16px; border-end-end-radius:4px; border-end-start-radius:16px; }
-.yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.75; background:none; border:none; }
+  border-start-start-radius:18px; border-start-end-radius:18px; border-end-end-radius:5px; border-end-start-radius:18px; }
+.yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.8; background:none; border:none; }
 .yk-ai-msg__label { display:flex; align-items:center; gap:7px; font-size:.6875rem; color: var(--color-accent); font-family: var(--font-mono); letter-spacing:.08em; text-transform:uppercase; margin-block-end:8px; opacity:.9; }
 .yk-ai-msg__label svg { filter: drop-shadow(0 0 5px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
 /* 流式光标 —— 仅 streaming 中的 AI 消息尾部 */
@@ -215,49 +212,55 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-banner--offline { background: var(--color-caution-alpha-08); color: var(--color-caution); border-block-start:1px solid var(--color-outline-20); }
 .yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:3px solid var(--color-danger); padding:8px 12px; color: var(--color-danger); font-size:.78rem; font-family: var(--font-body); border-radius:0 8px 8px 0; }
 
-.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:var(--space-lg) 8px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; }
-.yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-inline-size:46rem; margin-inline:auto; }
+.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:6px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; max-inline-size:44rem; margin-inline:auto; inline-size:100%; }
+.yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:start; }
 .yk-ai-ctx__close{ background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:36px; min-block-size:36px; padding:0; display:inline-flex; align-items:center; justify-content:center; transition: color var(--transition-fast); }
 @media (hover:hover){ .yk-ai-ctx__close:hover{ color: var(--color-primary-light);} }
 
-/* composer —— 浮起玻璃卡 + 圆形渐变发送钮；focus 光晕 */
-.yk-ai-composer { padding: var(--space-sm) var(--space-lg) var(--space-md); flex-shrink:0; padding-block-end: max(var(--space-md), env(safe-area-inset-bottom, 0px)); }
-.yk-ai--compact .yk-ai-composer { padding:8px 12px 10px; }
-.yk-ai-composer__inner { inline-size:100%; max-inline-size:46rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
+/* ============ composer 浮岛（两种状态共用）+ dock + 免责常驻行 ============ */
+.yk-ai-dock { flex-shrink:0; padding:8px var(--space-lg) 0; }
+.yk-ai--compact .yk-ai-dock { padding:6px 10px 0; }
+.yk-ai-composer { inline-size:100%; max-inline-size:44rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
   background: var(--color-bg-container, #211E28);
   border:1px solid var(--color-outline-20);
-  border-radius:16px; padding:10px 10px 10px 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  border-radius:24px; padding:13px 12px 13px 20px; min-block-size:56px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.38);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
-.yk-ai-composer__inner:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.4));
-  box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.08)); }
-.yk-ai-input { flex:1; min-inline-size:0; min-block-size:24px; max-block-size:160px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:.925rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
-.yk-ai--compact .yk-ai-input { font-size:.8425rem; }
+.yk-ai--compact .yk-ai-composer { border-radius:18px; padding:9px 9px 9px 14px; min-block-size:46px; }
+.yk-ai-composer:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.4));
+  box-shadow: 0 10px 40px rgba(0,0,0,.38), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.08)); }
+.yk-ai-input { flex:1; min-inline-size:0; min-block-size:26px; max-block-size:200px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:.96875rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
+.yk-ai--compact .yk-ai-input { font-size:.875rem; }
 .yk-ai-input::placeholder { color: var(--color-text-muted); }
-.yk-ai-send { inline-size:40px; min-inline-size:40px; block-size:40px; padding:0; display:inline-flex; align-items:center; justify-content:center;
+.yk-ai-send { inline-size:38px; min-inline-size:38px; block-size:38px; padding:0; display:inline-flex; align-items:center; justify-content:center; align-self:flex-end;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #A03A63));
   color:#fff; border:none; cursor:pointer; border-radius:50%;
   transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   box-shadow: 0 2px 12px var(--color-primary-alpha-40, rgba(200,75,124,.35)); }
+.yk-ai--compact .yk-ai-send { inline-size:32px; min-inline-size:32px; block-size:32px; }
 @media (hover:hover){ .yk-ai-send:not(:disabled):hover{ transform: translateY(-1px); box-shadow: 0 4px 16px var(--color-primary-alpha-60, rgba(200,75,124,.5));} }
 .yk-ai-send--stop { background: var(--color-danger, #D32F2F); box-shadow: 0 2px 12px var(--color-danger-alpha-10, rgba(211,47,47,.3)); }
 .yk-ai-send:disabled { opacity:.4; cursor:not-allowed; box-shadow:none; }
 .yk-ai-send:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
-.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:46rem; margin-inline:auto; }
+.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:44rem; margin-inline:auto; }
 .yk-ai-charhint--over { color: var(--color-danger); }
+/* 免责常驻行 —— composer 正下方（ChatGPT「可能会犯错」同位；语义只强化不弱化） */
+.yk-ai-inputnote { text-align:center; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:44rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
+.yk-ai-hero .yk-ai-inputnote { margin-block-start:14px; padding-block-end:0; }
 
 @media (max-width:768px){
   .yk-ai-msg--user { max-inline-size:94%; }
-  .yk-ai-log { padding: var(--space-md); }
-  .yk-ai-chips { grid-template-columns:1fr; }
-  .yk-ai-welcome__title { font-size:1.2rem; }
+  .yk-ai-log { padding:18px var(--space-md); }
+  .yk-ai-log__inner { gap:24px; }
+  .yk-ai-hero__greeting { font-size:1.3rem; }
+  .yk-ai-hero__composer { margin-block-start:20px; }
 }
 @media (prefers-reduced-motion: reduce){
   .yk-ai-dot{ animation:none; }
   .yk-ai-log{ scroll-behavior:auto; }
-  .yk-ai-turn, .yk-ai-welcome { animation:none; }
+  .yk-ai-turn, .yk-ai-hero { animation:none; }
   .yk-ai-msg--streaming > div:last-child::after { animation:none; }
-  .yk-ai-chip:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
+  .yk-ai-pill:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
 }
 `;
 
@@ -268,7 +271,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
   const chat = useChatSessions();
   const {
-    messages, sessions, activeId, historyEnabled, setHistoryEnabled,
+    messages, sessions, activeId, activeSession, historyEnabled, setHistoryEnabled,
     newSession, switchSession, renameSession, deleteSession, clearAll,
     setActiveMessages, flush, exportAll,
   } = chat;
@@ -579,6 +582,70 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     />
   );
 
+  const isEmpty = messages.length === 0;
+
+  /* composer 浮岛 —— 欢迎态居中 / 对话态坞底，两处共用 */
+  const composerCard = (
+    <div className="yk-ai-composer">
+      <textarea
+        ref={inputRef}
+        className="yk-ai-input"
+        rows={1}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder={rateLimitLeft > 0 ? ui.rateLimitWait.replace('{s}', String(rateLimitLeft)) : ui.inputPlaceholder}
+        disabled={isLoading && !abortRef.current}
+        aria-label={ui.inputLabel}
+      />
+      {isLoading ? (
+        <button className="yk-ai-send yk-ai-send--stop" onClick={stopGeneration} aria-label={ui.stop} title={ui.stop}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="6" y="6" width="12" height="12" rx="2" />
+          </svg>
+        </button>
+      ) : (
+        <button
+          className="yk-ai-send"
+          onClick={() => sendMessage()}
+          disabled={!input.trim() || !canSend || overLimit}
+          aria-label={ui.sendLabel}
+          title={ui.send}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 19V5" /><path d="M5 12l7-7 7 7" />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+
+  const statusBars = (
+    <>
+      {!online && <div className="yk-ai-banner yk-ai-banner--offline">{ui.offline}</div>}
+      {showCtxHint && (
+        <div className="yk-ai-ctx">
+          <span className="yk-ai-ctx__text">{ui.contextHint}</span>
+          <button className="yk-ai-ctx__close" onClick={dismissContext} aria-label={ui.contextDismiss}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </>
+  );
+
+  const charHint =
+    overLimit || inputBytes > MAX_CONTENT_BYTES * 0.85 ? (
+      <div className={`yk-ai-charhint ${overLimit ? 'yk-ai-charhint--over' : ''}`}>
+        {inputBytes} / {MAX_CONTENT_BYTES}
+      </div>
+    ) : null;
+
+  /* 免责常驻行 —— 两种状态都紧贴输入区（只强化不弱化） */
+  const inputNote = <div className="yk-ai-inputnote">{ui.inputDisclaimer}</div>;
+
   return (
     <div className={`yk-ai ${compact ? 'yk-ai--compact' : 'yk-ai--page'}`} role="region" aria-label={ui.title}>
       <style>{BASE_CSS}</style>
@@ -587,27 +654,37 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         {useDrawer && sidebar('drawer')}
 
         <div className="yk-ai-main">
-          {/* Header */}
-          <div className="yk-ai-header">
+          {/* Topbar —— 极简：侧栏开关 · 会话名 · 模型徽章 */}
+          <div className="yk-ai-topbar">
             <button
               className="yk-ai-iconbtn"
               onClick={() => (useDrawer ? setSidebarOpen(true) : setRailCollapsed((c) => !c))}
               aria-label={ui.openSidebar}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2.5" /><line x1="9.5" y1="4" x2="9.5" y2="20" />
               </svg>
             </button>
-            <span className="yk-ai-header__icon"><AIChatIcon size={18} /></span>
-            <span className="yk-ai-header__titlewrap">
-              <span className="yk-ai-header__title">{ui.title}</span>
-              {servedModel && (
-                <span className="yk-ai-header__model" title={servedModel}>
-                  {ui.poweredBy.replace('{model}', servedModel)}
-                </span>
-              )}
+            {railCollapsed && !useDrawer && (
+              <button
+                className="yk-ai-iconbtn"
+                onClick={() => { newSession(); setInput(''); focusInput(); }}
+                aria-label={ui.newChat}
+                title={ui.newChat}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" />
+                </svg>
+              </button>
+            )}
+            <span className="yk-ai-topbar__title">
+              {messages.length > 0 ? (activeSession?.title || ui.untitledChat) : ''}
             </span>
-            <span className="yk-ai-header__badge">BETA</span>
+            {servedModel && (
+              <span className="yk-ai-topbar__model" title={ui.poweredBy.replace('{model}', servedModel)}>
+                {ui.poweredBy.replace('{model}', servedModel)}
+              </span>
+            )}
             {compact && (
               <a
                 className="yk-ai-iconbtn yk-ai-expand"
@@ -630,34 +707,39 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             )}
           </div>
 
-          {/* Disclaimer —— 只能强化不能弱化 */}
-          <div className="yk-ai-disclaimer">{ui.disclaimer}</div>
-
-          {/* Messages */}
-          <div className="yk-ai-logwrap">
-            <div
-              ref={logRef}
-              className="yk-ai-log"
-              role="log"
-              aria-live="polite"
-              aria-atomic="false"
-              aria-relevant="additions text"
-              onScroll={onLogScroll}
-              onClick={onLogClick}
-            >
-              {messages.length === 0 ? (
-                <div className="yk-ai-welcome">
-                  <span className="yk-ai-welcome__badge"><AIChatIcon size={30} /></span>
-                  <span className="yk-ai-welcome__title">{ui.emptyTitle}</span>
-                  <span className="yk-ai-welcome__sub">{ui.emptySubtitle}</span>
-                  <div className="yk-ai-chips">
-                    {ui.suggestions.map((q, i) => (
-                      <button key={i} className="yk-ai-chip" onClick={() => sendMessage(q)}>{q}</button>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="yk-ai-log__inner">
+          {isEmpty ? (
+            /* ============ 状态 A · 欢迎态「居中舞台」 ============ */
+            <div className="yk-ai-hero">
+              <span className="yk-ai-hero__badge"><AIChatIcon size={32} /></span>
+              <div className="yk-ai-hero__greeting">{ui.greeting}</div>
+              <div className="yk-ai-hero__sub">{ui.emptySubtitle}</div>
+              <div className="yk-ai-hero__composer">
+                {statusBars}
+                {composerCard}
+                {charHint}
+              </div>
+              <div className="yk-ai-pills">
+                {ui.suggestions.map((q, i) => (
+                  <button key={i} className="yk-ai-pill" onClick={() => sendMessage(q)}>{q}</button>
+                ))}
+              </div>
+              {inputNote}
+            </div>
+          ) : (
+            /* ============ 状态 B · 对话态 ============ */
+            <>
+              <div className="yk-ai-logwrap">
+                <div
+                  ref={logRef}
+                  className="yk-ai-log"
+                  role="log"
+                  aria-live="polite"
+                  aria-atomic="false"
+                  aria-relevant="additions text"
+                  onScroll={onLogScroll}
+                  onClick={onLogClick}
+                >
+                  <div className="yk-ai-log__inner">
                   {messages.map((msg, i) => (
                     <div key={i} className="yk-ai-turn">
                       {msg.role === 'user' && editingIdx === i ? (
@@ -744,75 +826,28 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                     </div>
                   ))}
 
-                  {error && <div className="yk-ai-error">{ui.errorPrefix}{error}</div>}
+                    {error && <div className="yk-ai-error">{ui.errorPrefix}{error}</div>}
+                  </div>
                 </div>
-              )}
-            </div>
 
-            {!atBottom && messages.length > 0 && (
-              <button className="yk-ai-scrollbtn" onClick={() => { setAtBottom(true); scrollToBottom(); }} aria-label={ui.scrollToBottom}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
-                </svg>
-              </button>
-            )}
-          </div>
-
-          {/* Offline banner */}
-          {!online && <div className="yk-ai-banner yk-ai-banner--offline">{ui.offline}</div>}
-
-          {/* 页面上下文提示条 */}
-          {showCtxHint && (
-            <div className="yk-ai-ctx">
-              <span className="yk-ai-ctx__text">{ui.contextHint}</span>
-              <button className="yk-ai-ctx__close" onClick={dismissContext} aria-label={ui.contextDismiss}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-            </div>
-          )}
-
-          {/* Composer */}
-          <div className="yk-ai-composer">
-            <div className="yk-ai-composer__inner">
-              <textarea
-                ref={inputRef}
-                className="yk-ai-input"
-                rows={1}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={rateLimitLeft > 0 ? ui.rateLimitWait.replace('{s}', String(rateLimitLeft)) : ui.inputPlaceholder}
-                disabled={isLoading && !abortRef.current}
-                aria-label={ui.inputLabel}
-              />
-              {isLoading ? (
-                <button className="yk-ai-send yk-ai-send--stop" onClick={stopGeneration} aria-label={ui.stop} title={ui.stop}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <rect x="6" y="6" width="12" height="12" rx="2" />
-                  </svg>
-                </button>
-              ) : (
-                <button
-                  className="yk-ai-send"
-                  onClick={() => sendMessage()}
-                  disabled={!input.trim() || !canSend || overLimit}
-                  aria-label={ui.sendLabel}
-                  title={ui.send}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 19V5" /><path d="M5 12l7-7 7 7" />
-                  </svg>
-                </button>
-              )}
-            </div>
-            {(overLimit || inputBytes > MAX_CONTENT_BYTES * 0.85) && (
-              <div className={`yk-ai-charhint ${overLimit ? 'yk-ai-charhint--over' : ''}`}>
-                {inputBytes} / {MAX_CONTENT_BYTES}
+                {!atBottom && (
+                  <button className="yk-ai-scrollbtn" onClick={() => { setAtBottom(true); scrollToBottom(); }} aria-label={ui.scrollToBottom}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
+                    </svg>
+                  </button>
+                )}
               </div>
-            )}
-          </div>
+
+              {/* 坞底：状态条 + composer 浮岛 + 免责常驻行 */}
+              <div className="yk-ai-dock">
+                {statusBars}
+                {composerCard}
+                {charHint}
+                {inputNote}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

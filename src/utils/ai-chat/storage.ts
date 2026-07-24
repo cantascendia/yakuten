@@ -59,10 +59,14 @@ export function trimStore(store: ChatStoreV1): ChatStoreV1 {
   while (sessions.length > 1 && JSON.stringify(sessions).length > MAX_CHARS) {
     sessions.pop();
   }
+  // null activeId is intentional ("new chat" — no session selected yet); only
+  // repair ids that point at a trimmed-away session.
   const activeId =
-    store.activeId && sessions.some((s) => s.id === store.activeId)
-      ? store.activeId
-      : sessions[0]?.id ?? null;
+    store.activeId === null
+      ? null
+      : sessions.some((s) => s.id === store.activeId)
+        ? store.activeId
+        : sessions[0]?.id ?? null;
   return { version: 1, sessions, activeId };
 }
 
