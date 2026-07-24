@@ -87,10 +87,11 @@ const BASE_CSS = `
 .yk-ai-shell { display:flex; flex:1; min-block-size:0; position:relative; overflow:hidden; }
 .yk-ai-main { flex:1; min-inline-size:0; display:flex; flex-direction:column; block-size:100%; overflow:hidden; }
 
-/* topbar —— 极简：侧栏开关 · 会话名 · 模型徽章；底缘金线渐隐 */
+/* topbar —— 极简：侧栏开关 · 会话名 · 模型徽章；底缘金线渐隐（欢迎态无线，沉浸） */
 .yk-ai-topbar { position:relative; display:flex; align-items:center; gap:4px; padding:0 10px; block-size:48px; flex-shrink:0; }
 .yk-ai-topbar::after { content:''; position:absolute; inset-inline:0; inset-block-end:0; block-size:1px;
   background: linear-gradient(90deg, transparent, var(--color-accent-alpha-30, rgba(212,168,83,.28)) 18%, var(--color-outline-20) 55%, transparent); }
+.yk-ai-topbar--hero::after { content:none; }
 .yk-ai--compact .yk-ai-topbar { block-size:44px; padding:0 6px; }
 .yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; justify-content:center; padding:6px; transition: color var(--transition-fast), background var(--transition-fast); border-radius:9px; }
 a.yk-ai-iconbtn { text-decoration:none; }
@@ -116,9 +117,9 @@ a.yk-ai-iconbtn { text-decoration:none; }
   border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.3));
   box-shadow: 0 0 36px var(--color-primary-alpha-15, rgba(200,75,124,.16)); }
 .yk-ai--compact .yk-ai-hero__badge { inline-size:52px; block-size:52px; }
-.yk-ai-hero__greeting { font-family: var(--font-display); font-size:1.7rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; margin-block-start:18px; }
+.yk-ai-hero__greeting { font-family: var(--font-display); font-size:1.7rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; margin-block-start:18px; text-wrap:balance; }
 .yk-ai--compact .yk-ai-hero__greeting { font-size:1.15rem; margin-block-start:12px; }
-.yk-ai-hero__sub { font-family: var(--font-body); font-size:.9rem; line-height:1.7; max-inline-size:46ch; color: var(--color-text-secondary); margin-block-start:8px; }
+.yk-ai-hero__sub { font-family: var(--font-body); font-size:.9rem; line-height:1.7; max-inline-size:36rem; color: var(--color-text-secondary); margin-block-start:8px; text-wrap:balance; }
 .yk-ai--compact .yk-ai-hero__sub { font-size:.8125rem; }
 .yk-ai-hero__composer { inline-size:100%; max-inline-size:44rem; margin-block-start:28px; }
 .yk-ai--compact .yk-ai-hero__composer { margin-block-start:16px; }
@@ -607,6 +608,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       onExportAll={exportAll}
       onToggleHistory={setHistoryEnabled}
       onAbout={() => setAboutOpen(true)}
+      homeHref={`/${locale}/`}
     />
   );
 
@@ -706,7 +708,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
         <div className="yk-ai-main">
           {/* Topbar —— 极简：侧栏开关 · 会话名 · 模型徽章 */}
-          <div className="yk-ai-topbar">
+          <div className={`yk-ai-topbar ${isEmpty ? 'yk-ai-topbar--hero' : ''}`}>
             <button
               className="yk-ai-iconbtn"
               onClick={() => (useDrawer ? setSidebarOpen(true) : setRailCollapsed((c) => !c))}

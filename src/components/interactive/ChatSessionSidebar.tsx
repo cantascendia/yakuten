@@ -29,6 +29,8 @@ interface Props {
   onExportAll: () => void;
   onToggleHistory: (on: boolean) => void;
   onAbout: () => void;
+  /** 品牌区点击返回站点首页（应用页隐藏了站点顶栏，这是回站入口） */
+  homeHref: string;
 }
 
 type Group = 'today' | 'yesterday' | 'prev7' | 'older';
@@ -59,6 +61,14 @@ const SIDEBAR_CSS = `
   padding: 14px var(--space-md) 4px;
   flex-shrink: 0;
 }
+.yk-ai-side__brandlink {
+  flex: 1; min-inline-size: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; color: inherit; border-radius: 8px; padding: 2px 4px; margin: -2px -4px;
+  transition: background var(--transition-fast);
+}
+@media (hover: hover) { .yk-ai-side__brandlink:hover { background: var(--color-white-alpha-03, rgba(255,255,255,.03)); } }
+.yk-ai-side__brandlink:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .yk-ai-side__brandicon { display: inline-flex; color: var(--color-accent); filter: drop-shadow(0 0 5px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
 .yk-ai-side__brandname {
   flex: 1; min-inline-size: 0;
@@ -193,23 +203,18 @@ const SIDEBAR_CSS = `
   flex-shrink: 0;
   display: flex; flex-direction: column; gap: 10px;
 }
-.yk-ai-optin {
-  display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
-  padding: 10px 12px; border-radius: 10px;
-  background: var(--color-white-alpha-03, rgba(255,255,255,.03));
-  border: 1px solid var(--color-outline-20);
-  transition: border-color var(--transition-fast);
-}
-@media (hover: hover) { .yk-ai-optin:hover { border-color: var(--color-accent-alpha-30, rgba(212,168,83,.3)); } }
-.yk-ai-optin input { margin-block-start: 3px; flex-shrink: 0; accent-color: var(--color-primary); }
-.yk-ai-optin__text { display: flex; flex-direction: column; gap: 3px; }
-.yk-ai-optin__label { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-text-primary); }
-.yk-ai-optin__body { font-size: 0.6875rem; line-height: 1.55; color: var(--color-text-muted); }
-.yk-ai-side__tools { display: flex; gap: 8px; }
+.yk-ai-optin { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; padding: 2px; }
+.yk-ai-optin input { margin-block-start: 2px; flex-shrink: 0; accent-color: var(--color-primary); }
+.yk-ai-optin__text { display: flex; flex-direction: column; gap: 2px; }
+.yk-ai-optin__label { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-text-primary); line-height: 1.4; }
+.yk-ai-optin__body { font-size: 0.65rem; line-height: 1.5; color: var(--color-text-muted); }
+/* 未开启时提示行升为琥珀（刷新即清空的知情提示） */
+.yk-ai-optin:has(input:not(:checked)) .yk-ai-optin__body { color: var(--color-caution); opacity: .9; }
+.yk-ai-side__tools { display: flex; gap: 8px; align-items: center; }
 .yk-ai-side__tool {
   flex: 1; background: none; border: 1px solid var(--color-outline-20);
-  color: var(--color-text-secondary); cursor: pointer; min-height: 34px;
-  font-family: var(--font-body); font-size: 0.75rem; border-radius: 8px;
+  color: var(--color-text-secondary); cursor: pointer; min-height: 32px;
+  font-family: var(--font-body); font-size: 0.71875rem; border-radius: 8px;
   transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 @media (hover: hover) {
@@ -217,15 +222,14 @@ const SIDEBAR_CSS = `
   .yk-ai-side__tool--danger:hover { border-color: var(--color-danger); color: var(--color-danger); }
 }
 .yk-ai-side__tool:disabled { opacity: .4; cursor: not-allowed; }
-.yk-ai-side__offhint { font-size: 0.6875rem; color: var(--color-caution); line-height: 1.4; opacity: .85; }
-.yk-ai-side__about {
-  display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
-  background: none; border: none; cursor: pointer; padding: 4px 2px; min-block-size: 32px;
-  color: var(--color-text-muted); font-family: var(--font-body); font-size: 0.71875rem;
-  transition: color var(--transition-fast); border-radius: 6px;
+.yk-ai-side__aboutbtn {
+  background: none; border: 1px solid var(--color-outline-20); cursor: pointer;
+  min-inline-size: 32px; min-block-size: 32px; border-radius: 8px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-text-muted); transition: color var(--transition-fast), border-color var(--transition-fast);
 }
-@media (hover: hover) { .yk-ai-side__about:hover { color: var(--color-text-primary); } }
-.yk-ai-side__about:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+@media (hover: hover) { .yk-ai-side__aboutbtn:hover { color: var(--color-text-primary); border-color: var(--color-primary); } }
+.yk-ai-side__aboutbtn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
 
 /* drawer variant */
 .yk-ai-drawer-overlay { position: absolute; inset: 0; background: var(--color-black-alpha-40); z-index: 20; }
@@ -254,6 +258,7 @@ export default function ChatSessionSidebar(props: Props) {
   const {
     variant, open = true, onClose, ui, sessions, activeId, historyEnabled,
     onNewChat, onSelect, onRename, onDelete, onClearAll, onExportAll, onToggleHistory, onAbout,
+    homeHref,
   } = props;
 
   const [query, setQuery] = useState('');
@@ -317,14 +322,16 @@ export default function ChatSessionSidebar(props: Props) {
       aria-modal={isDrawer ? true : undefined}
       aria-label={ui.historyTitle}
     >
-      {/* 产品名区 —— 产品识别从顶栏移到这里（金瓣 + serif 名 + BETA 小字） */}
+      {/* 产品名区 —— 产品识别 + 返回站点入口（应用页隐藏了站点顶栏） */}
       <div className="yk-ai-side__brand">
-        <span className="yk-ai-side__brandicon" aria-hidden="true">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 14.8a2 2 0 0 1-2 2H7.6L3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        </span>
-        <span className="yk-ai-side__brandname">{ui.title}</span>
+        <a className="yk-ai-side__brandlink" href={homeHref}>
+          <span className="yk-ai-side__brandicon" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 14.8a2 2 0 0 1-2 2H7.6L3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </span>
+          <span className="yk-ai-side__brandname">{ui.title}</span>
+        </a>
         <span className="yk-ai-side__brandbeta">BETA</span>
       </div>
       <div className="yk-ai-side__head">
@@ -418,7 +425,7 @@ export default function ChatSessionSidebar(props: Props) {
       </div>
 
       <div className="yk-ai-side__foot">
-        <label className="yk-ai-optin">
+        <label className="yk-ai-optin" title={ui.historyOptInBody}>
           <input
             type="checkbox"
             checked={historyEnabled}
@@ -426,10 +433,11 @@ export default function ChatSessionSidebar(props: Props) {
           />
           <span className="yk-ai-optin__text">
             <span className="yk-ai-optin__label">{ui.historyToggleLabel}</span>
-            <span className="yk-ai-optin__body">{ui.historyOptInBody}</span>
+            <span className="yk-ai-optin__body">
+              {historyEnabled ? ui.historyOptInBody : ui.historyOffHint}
+            </span>
           </span>
         </label>
-        {!historyEnabled && <div className="yk-ai-side__offhint">{ui.historyOffHint}</div>}
         <div className="yk-ai-side__tools">
           <button className="yk-ai-side__tool" onClick={onExportAll} disabled={sessions.length === 0}>
             {ui.exportChat}
@@ -441,13 +449,17 @@ export default function ChatSessionSidebar(props: Props) {
           >
             {ui.clearHistory}
           </button>
+          <button
+            className="yk-ai-side__aboutbtn"
+            onClick={() => { onAbout(); if (isDrawer) onClose?.(); }}
+            aria-label={ui.aboutTitle}
+            title={ui.aboutTitle}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+          </button>
         </div>
-        <button className="yk-ai-side__about" onClick={() => { onAbout(); if (isDrawer) onClose?.(); }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
-          </svg>
-          {ui.aboutTitle}
-        </button>
       </div>
     </div>
   );

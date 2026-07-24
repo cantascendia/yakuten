@@ -536,9 +536,11 @@ html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; 
 /* 侧栏产品名区 */
 html.sakura .yk-ai-side__brandicon { color: var(--sakura-pink-deep); filter: none; }
 html.sakura .yk-ai-side__brandname { font-family: var(--font-heading); color: var(--fg-1); }
-html.sakura .yk-ai-side__brandbeta { color: var(--mint-deep, #2E8B6B); border-color: currentColor; }
-html.sakura .yk-ai-side__about { color: var(--fg-3); }
-@media (hover: hover) { html.sakura .yk-ai-side__about:hover { color: var(--ink); } }
+html.sakura .yk-ai-side__brandbeta { color: var(--fg-3); border-color: var(--ink-faint); }
+@media (hover: hover) { html.sakura .yk-ai-side__brandlink:hover { background: var(--sakura-blush); } }
+html.sakura .yk-ai-side__aboutbtn { border-color: var(--ink-faint); color: var(--fg-3); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-side__aboutbtn:hover { color: var(--ink); border-color: var(--ink); } }
+html.sakura .yk-ai-optin:has(input:not(:checked)) .yk-ai-optin__body { color: var(--honey-deep, #8A6D00); }
 
 /* 「使用须知」弹层 = 手账纸卡 */
 html.sakura .yk-ai-about__overlay { background: rgba(74, 40, 56, 0.4); }
@@ -555,7 +557,8 @@ html.sakura .yk-ai-about__list li::marker { color: var(--sakura-pink-deep); }
 /* =========================================================================
    14. 会话侧栏 / 抽屉 —— 手账目录
    ========================================================================= */
-html.sakura .yk-ai-side { background: var(--bg-2); border-inline-end: 2px solid var(--ink); }
+/* 层次三档：蜜桃侧栏 / 米黄主区 / 白纸浮岛 */
+html.sakura .yk-ai-side { background: var(--bg-4); border-inline-end: 2px solid var(--ink); }
 html.sakura .yk-ai-side__head { border-block-end: 2px solid var(--ink-faint); }
 html.sakura .yk-ai-newbtn {
   background: var(--sakura-pink-aa); border: 2px solid var(--ink); border-radius: var(--radius-full);
@@ -584,7 +587,6 @@ html.sakura .yk-ai-side__foot { border-block-start: 2px dashed var(--ink-faint);
 html.sakura .yk-ai-optin__label { color: var(--fg-1); }
 html.sakura .yk-ai-optin__body { color: var(--fg-3); }
 html.sakura .yk-ai-optin input { accent-color: var(--sakura-pink-deep); }
-html.sakura .yk-ai-side__offhint { color: var(--honey-deep, #8A6D00); }
 html.sakura .yk-ai-side__tool {
   background: var(--bg-3); border: 1.5px solid var(--ink); border-radius: var(--radius-full); color: var(--fg-2);
 }
