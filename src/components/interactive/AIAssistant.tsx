@@ -69,81 +69,118 @@ function replaceLastAssistant(prev: StoredMessage[], content: string): StoredMes
 
 const BASE_CSS = `
 @keyframes ai-dot-bounce { 0%,80%,100%{transform:translateY(0);opacity:.4} 40%{transform:translateY(-4px);opacity:1} }
+@keyframes ai-msg-in { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+@keyframes ai-caret { 0%,100%{opacity:1} 50%{opacity:0} }
 .yk-ai { display:flex; flex-direction:column; block-size:100%; overflow:hidden; margin:0; }
 /* 中和 Starlight prose 给 .sl-markdown-content 内所有块级元素注入的 margin-top —
    它会逐层撑破全屏布局。消息体/侧栏的显式 margin 由更高（或后载同级）优先级规则恢复。 */
 .yk-ai * { margin: 0; }
+/* 深空舞台：暗色渐变 + 两团极弱的绯/金光晕（二相乐园氛围层） */
+.yk-ai--page {
+  background:
+    radial-gradient(ellipse 720px 420px at 82% -8%, var(--color-primary-alpha-08, rgba(200,75,124,.08)), transparent 62%),
+    radial-gradient(ellipse 560px 380px at 8% 108%, var(--color-accent-alpha-08, rgba(212,168,83,.06)), transparent 60%),
+    linear-gradient(180deg, #14111d 0%, #191521 100%);
+}
 .yk-ai--compact { background: var(--color-bg-container, #1a1625); }
 .yk-ai-shell { display:flex; flex:1; min-block-size:0; position:relative; overflow:hidden; }
 .yk-ai-main { flex:1; min-inline-size:0; display:flex; flex-direction:column; block-size:100%; overflow:hidden; }
 
-.yk-ai-header { display:flex; align-items:center; gap: var(--space-sm); padding: var(--space-md) var(--space-lg); border-block-end:1px solid var(--color-outline-20); flex-shrink:0; }
-.yk-ai--compact .yk-ai-header { padding:10px 12px; }
-.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:40px; min-block-size:40px; display:inline-flex; align-items:center; justify-content:center; padding: var(--space-xs); transition: color var(--transition-fast), background var(--transition-fast); border-radius:0; }
+/* header —— 更薄、serif 标题、底缘金线渐隐 */
+.yk-ai-header { position:relative; display:flex; align-items:center; gap: var(--space-sm); padding: 10px var(--space-lg); flex-shrink:0; }
+.yk-ai-header::after { content:''; position:absolute; inset-inline:0; inset-block-end:0; block-size:1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-alpha-30, rgba(212,168,83,.28)) 18%, var(--color-outline-20) 55%, transparent); }
+.yk-ai--compact .yk-ai-header { padding:8px 10px; }
+.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:40px; min-block-size:40px; display:inline-flex; align-items:center; justify-content:center; padding: var(--space-xs); transition: color var(--transition-fast), background var(--transition-fast); border-radius:8px; }
 a.yk-ai-iconbtn { text-decoration:none; }
-@media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-primary); background: var(--color-primary-alpha-08);} }
+@media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-primary-light); background: var(--color-white-alpha-03);} }
 .yk-ai-iconbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
-.yk-ai-header__icon { color: var(--color-accent); display:inline-flex; }
-.yk-ai-header__titlewrap { flex:1; min-inline-size:0; display:flex; flex-direction:column; }
-.yk-ai-header__title { font-family: var(--font-display); font-size:1rem; font-weight:700; color: var(--color-text-primary); line-height:1.2; }
+.yk-ai-header__icon { color: var(--color-accent); display:inline-flex; filter: drop-shadow(0 0 6px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
+.yk-ai-header__titlewrap { flex:1; min-inline-size:0; display:flex; flex-direction:column; gap:1px; }
+.yk-ai-header__title { font-family: var(--font-display); font-size:1.02rem; font-weight:700; color: var(--color-text-primary); line-height:1.2; letter-spacing:.02em; }
 .yk-ai--compact .yk-ai-header__title { font-size:.9rem; }
-.yk-ai-header__model { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); letter-spacing:.03em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.yk-ai-header__badge { display:inline-block; padding:1px var(--space-sm); font-size:.6875rem; font-family: var(--font-mono); color: var(--color-safe); border:1px solid var(--color-safe-alpha-30); letter-spacing:.05em; }
+.yk-ai-header__model { font-size:.625rem; color: var(--color-accent); opacity:.75; font-family: var(--font-mono); letter-spacing:.04em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.yk-ai-header__badge { display:inline-block; padding:1px var(--space-sm); font-size:.625rem; font-family: var(--font-mono); color: var(--color-safe); border:1px solid var(--color-safe-alpha-30); letter-spacing:.08em; }
 
-.yk-ai-disclaimer { padding:6px 14px; background: var(--color-caution-alpha-08); border-block-end:1px solid var(--color-outline-20); font-size:.6875rem; color: var(--color-caution); line-height:1.4; font-family: var(--font-body); flex-shrink:0; }
+/* 免责 —— 融合进舞台的细字提示（不再是大黄条；文案与层级只强化不弱化） */
+.yk-ai-disclaimer { padding:5px var(--space-lg); font-size:.6875rem; color: var(--color-caution); opacity:.85; line-height:1.45; font-family: var(--font-body); flex-shrink:0; background: var(--color-caution-alpha-08); }
+.yk-ai--compact .yk-ai-disclaimer { padding:5px 12px; }
 
 .yk-ai-logwrap { flex:1; min-block-size:0; position:relative; display:flex; flex-direction:column; }
-.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding: var(--space-lg); display:flex; flex-direction:column; gap: var(--space-md); scroll-behavior:smooth; }
-.yk-ai--compact .yk-ai-log { padding:12px; gap:10px; }
-.yk-ai-log__inner { inline-size:100%; max-inline-size:820px; margin-inline:auto; display:flex; flex-direction:column; gap: var(--space-md); }
+.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding: var(--space-xl) var(--space-lg); display:flex; flex-direction:column; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
+.yk-ai-log::-webkit-scrollbar { inline-size:8px; }
+.yk-ai-log::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius:8px; }
+.yk-ai-log::-webkit-scrollbar-track { background: transparent; }
+.yk-ai--compact .yk-ai-log { padding:14px 12px; }
+.yk-ai-log__inner { inline-size:100%; max-inline-size:46rem; margin-inline:auto; display:flex; flex-direction:column; gap: var(--space-lg); }
+.yk-ai--compact .yk-ai-log__inner { gap:14px; }
 
-.yk-ai-welcome { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: var(--space-md); text-align:center; padding: var(--space-xl) var(--space-lg); color: var(--color-text-muted); }
-.yk-ai-welcome__icon { color: var(--color-accent); opacity:.8; }
-.yk-ai-welcome__title { font-family: var(--font-display); font-size:1.15rem; font-weight:700; color: var(--color-text-primary); }
-.yk-ai--compact .yk-ai-welcome__title { font-size:1rem; }
-.yk-ai-welcome__sub { font-family: var(--font-body); font-size:.875rem; line-height:1.6; max-inline-size:38ch; }
-.yk-ai-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-block-start: var(--space-xs); }
-.yk-ai-chip { background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:8px 12px; font-size:.8125rem; font-family: var(--font-body); cursor:pointer; text-align:start; transition: border-color var(--transition-fast), color var(--transition-fast); border-radius:0; }
-@media (hover:hover){ .yk-ai-chip:hover{ border-color: var(--color-primary); color: var(--color-primary-light);} }
+/* 欢迎屏 —— 仪式感：渐变徽章 + serif 大标题 + 建议卡网格 */
+.yk-ai-welcome { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding: var(--space-xl) var(--space-lg); color: var(--color-text-muted); animation: ai-msg-in .4s ease both; }
+.yk-ai-welcome__badge { inline-size:64px; block-size:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--color-accent);
+  background: linear-gradient(140deg, var(--color-primary-alpha-15, rgba(200,75,124,.15)), var(--color-accent-alpha-08, rgba(212,168,83,.08)));
+  border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.3));
+  box-shadow: 0 0 32px var(--color-primary-alpha-15, rgba(200,75,124,.16)); margin-block-end:4px; }
+.yk-ai-welcome__title { font-family: var(--font-display); font-size:1.45rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; }
+.yk-ai--compact .yk-ai-welcome__title { font-size:1.05rem; }
+.yk-ai-welcome__sub { font-family: var(--font-body); font-size:.875rem; line-height:1.7; max-inline-size:42ch; color: var(--color-text-secondary); }
+.yk-ai-chips { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; inline-size:100%; max-inline-size:34rem; margin-block-start: var(--space-md); }
+.yk-ai--compact .yk-ai-chips { grid-template-columns:1fr; gap:8px; margin-block-start:10px; }
+.yk-ai-chip { display:flex; align-items:center; gap:10px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:12px 14px; font-size:.8425rem; font-family: var(--font-body); line-height:1.5; cursor:pointer; text-align:start; border-radius:10px; transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
+.yk-ai-chip::before { content:'✦'; color: var(--color-accent); opacity:.55; font-size:.75rem; flex-shrink:0; transition: opacity var(--transition-fast); }
+@media (hover:hover){ .yk-ai-chip:hover{ border-color: var(--color-primary); color: var(--color-text-primary); background: var(--color-primary-alpha-08, rgba(200,75,124,.07)); transform: translateY(-1px); } .yk-ai-chip:hover::before{ opacity:1; } }
+.yk-ai-chip:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 
-.yk-ai-turn { display:flex; flex-direction:column; gap:6px; }
-.yk-ai-msg { max-inline-size:92%; inline-size:fit-content; padding:8px 12px; font-family: var(--font-body); font-size:.9rem; color: var(--color-text-primary); }
-.yk-ai--compact .yk-ai-msg { font-size:.8375rem; }
-.yk-ai-msg--user { align-self:flex-end; background: var(--color-primary-alpha-15); border-inline-start:3px solid var(--color-primary); line-height:1.6; white-space:pre-wrap; }
-.yk-ai-msg--ai { align-self:flex-start; background: var(--color-white-alpha-03); border-inline-start:3px solid var(--color-accent); line-height:1.7; max-inline-size:100%; }
-.yk-ai-msg__label { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); letter-spacing:.05em; text-transform:uppercase; margin-block-end:2px; }
-.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; }
-.yk-ai-msg--user + .yk-ai-actions { align-self:flex-end; }
-.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:32px; min-block-size:32px; display:inline-flex; align-items:center; gap:4px; padding:0 6px; font-size:.6875rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:0; }
-@media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary);} }
+/* 消息 —— 用户=绯色渐变胶囊；AI=无框直排 + 金瓣标识 */
+.yk-ai-turn { display:flex; flex-direction:column; gap:6px; animation: ai-msg-in .3s ease both; }
+.yk-ai-msg { font-family: var(--font-body); font-size:.925rem; color: var(--color-text-primary); }
+.yk-ai--compact .yk-ai-msg { font-size:.8425rem; }
+.yk-ai-msg--user { align-self:flex-end; max-inline-size:86%; inline-size:fit-content; padding:10px 16px; line-height:1.65; white-space:pre-wrap;
+  background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.16)), var(--color-primary-alpha-08, rgba(200,75,124,.07)));
+  border:1px solid var(--color-primary-alpha-30, rgba(200,75,124,.28));
+  border-start-start-radius:16px; border-start-end-radius:16px; border-end-end-radius:4px; border-end-start-radius:16px; }
+.yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.75; background:none; border:none; }
+.yk-ai-msg__label { display:flex; align-items:center; gap:7px; font-size:.6875rem; color: var(--color-accent); font-family: var(--font-mono); letter-spacing:.08em; text-transform:uppercase; margin-block-end:8px; opacity:.9; }
+.yk-ai-msg__label svg { filter: drop-shadow(0 0 5px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
+/* 流式光标 —— 仅 streaming 中的 AI 消息尾部 */
+.yk-ai-msg--streaming > div:last-child::after { content:'▍'; color: var(--color-accent); animation: ai-caret 1s step-end infinite; margin-inline-start:2px; }
+
+.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; opacity:.65; transition: opacity var(--transition-fast); }
+.yk-ai-turn:hover .yk-ai-actions, .yk-ai-actions:focus-within { opacity:1; }
+.yk-ai-actions--user { align-self:flex-end; }
+.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:32px; min-block-size:32px; display:inline-flex; align-items:center; gap:4px; padding:0 7px; font-size:.6875rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:6px; }
+@media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary-light);} }
 .yk-ai-actbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
 
 .yk-ai-edit { display:flex; flex-direction:column; gap:6px; align-self:flex-end; inline-size:min(560px, 92%); }
-.yk-ai-edit__area { inline-size:100%; min-block-size:60px; padding:8px 10px; background: var(--color-bg-container); color: var(--color-text-primary); border:1px solid var(--color-primary); font-family: var(--font-body); font-size:.9rem; resize:vertical; border-radius:0; outline:none; }
+.yk-ai-edit__area { inline-size:100%; min-block-size:64px; padding:10px 12px; background: var(--color-bg-container); color: var(--color-text-primary); border:1px solid var(--color-primary); font-family: var(--font-body); font-size:.9rem; line-height:1.6; resize:vertical; border-radius:12px; outline:none; }
 .yk-ai-edit__row { display:flex; gap:8px; justify-content:flex-end; }
 
 /* rich markdown blocks */
 .yk-ai-msg .yk-ai-h { display:block; margin-top:.75em; font-weight:700; }
-.yk-ai-msg h1,.yk-ai-msg h2 { font-size:1.05em; font-weight:700; margin:.6em 0 .3em; }
-.yk-ai-msg h3,.yk-ai-msg h4 { font-size:1em; font-weight:700; margin:.5em 0 .25em; }
-.yk-ai-msg ul,.yk-ai-msg ol { margin:.4em 0; padding-inline-start:1.4em; display:flex; flex-direction:column; gap:2px; }
+.yk-ai-msg h1,.yk-ai-msg h2 { font-family: var(--font-display); font-size:1.08em; font-weight:700; margin:.7em 0 .3em; color: var(--color-text-primary); }
+.yk-ai-msg h3,.yk-ai-msg h4 { font-family: var(--font-display); font-size:1em; font-weight:700; margin:.55em 0 .25em; }
+.yk-ai-msg ul,.yk-ai-msg ol { margin:.45em 0; padding-inline-start:1.4em; display:flex; flex-direction:column; gap:4px; }
 .yk-ai-msg li { list-style:revert; }
+.yk-ai-msg li::marker { color: var(--color-accent); }
 .yk-ai-li { margin-inline-start:1.2em; }
 .yk-ai-li--ul { list-style:disc; } .yk-ai-li--ol { list-style:decimal; }
-.yk-ai-msg p { margin:.35em 0; }
-.yk-ai-msg blockquote { margin:.5em 0; padding-inline-start:10px; border-inline-start:3px solid var(--color-outline); color: var(--color-text-secondary); }
-.yk-ai-hr { border:none; border-top:1px solid var(--color-outline-20); margin:.75em 0; }
-.yk-ai-code, .yk-ai-msg code { background: var(--color-white-alpha-08); padding:.1em .3em; font-size:.85em; font-family: var(--font-code); }
-.yk-ai-prewrap { position:relative; margin:.5em 0; }
-.yk-ai-msg pre { background: var(--color-bg, #12101a); border:1px solid var(--color-outline-20); padding:10px 12px; overflow-x:auto; font-size:.82em; }
+.yk-ai-msg p { margin:.45em 0; }
+.yk-ai-msg--ai > div > p:first-child { margin-block-start:0; }
+.yk-ai-msg blockquote { margin:.55em 0; padding-inline-start:12px; border-inline-start:2px solid var(--color-accent-alpha-30, rgba(212,168,83,.3)); color: var(--color-text-secondary); }
+.yk-ai-hr { border:none; border-top:1px solid var(--color-outline-20); margin:.8em 0; }
+.yk-ai-code, .yk-ai-msg code { background: var(--color-white-alpha-08); padding:.12em .35em; font-size:.85em; font-family: var(--font-code); border-radius:4px; }
+.yk-ai-prewrap { position:relative; margin:.6em 0; }
+.yk-ai-msg pre { background: rgba(0,0,0,.32); border:1px solid var(--color-outline-20); padding:12px 14px; overflow-x:auto; font-size:.82em; border-radius:10px; }
 .yk-ai-msg pre code { background:none; padding:0; font-size:1em; }
-.yk-ai-copybtn { position:absolute; inset-block-start:6px; inset-inline-end:6px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:28px; block-size:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:0; transition: color var(--transition-fast); }
-@media (hover:hover){ .yk-ai-copybtn:hover{ color: var(--color-primary);} }
+.yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:28px; block-size:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px; transition: color var(--transition-fast), border-color var(--transition-fast); }
+@media (hover:hover){ .yk-ai-copybtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary);} }
 .yk-ai-copybtn--done { color: var(--color-safe); }
-.yk-ai-tablewrap { overflow-x:auto; margin:.5em 0; }
+.yk-ai-tablewrap { overflow-x:auto; margin:.6em 0; border:1px solid var(--color-outline-20); border-radius:10px; }
 .yk-ai-table { border-collapse:collapse; font-size:.85em; min-inline-size:100%; }
-.yk-ai-table th,.yk-ai-table td { border:1px solid var(--color-outline-20); padding:5px 9px; text-align:start; white-space:nowrap; }
-.yk-ai-table th { background: var(--color-white-alpha-03); font-weight:700; }
+.yk-ai-table th,.yk-ai-table td { border-block-end:1px solid var(--color-outline-20); padding:8px 12px; text-align:start; white-space:nowrap; }
+.yk-ai-table tr:last-child td { border-block-end:none; }
+.yk-ai-table th { background: var(--color-white-alpha-03); font-weight:700; color: var(--color-accent); font-family: var(--font-body); }
 
 /* in-site link card + ext link */
 .yk-ai-msg a.yk-ai-linkcard { display:flex; align-items:center; gap:8px; margin-block:6px; padding:8px 10px; background: var(--color-bg-container, #1a1625); border:1px solid var(--color-outline-20); border-inline-start:3px solid var(--color-accent); color: var(--color-text-primary); text-decoration:none; font-size:.8125rem; transition: border-color var(--transition-fast); }
@@ -166,40 +203,62 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-crisis__num{ font-family: var(--font-mono, monospace); font-weight:700; font-size:.875rem; white-space:nowrap; }
 .yk-ai-crisis__note{ margin:0; font-size:.6875rem; line-height:1.5; color:#fff; }
 
-.yk-ai-thinking { display:flex; align-items:center; gap:8px; align-self:flex-start; padding:8px 12px; background: var(--color-accent-alpha-08); border-inline-start:3px solid var(--color-accent); font-size:.75rem; color: var(--color-accent); font-family: var(--font-body); }
-.yk-ai-dots{ display:inline-flex; gap:3px; }
+.yk-ai-thinking { display:flex; align-items:center; gap:9px; align-self:flex-start; padding:4px 0; font-size:.78rem; color: var(--color-accent); font-family: var(--font-body); opacity:.9; }
+.yk-ai-dots{ display:inline-flex; gap:4px; }
 .yk-ai-dot{ inline-size:5px; block-size:5px; border-radius:50%; background: var(--color-accent); animation: ai-dot-bounce 1s ease infinite; }
 .yk-ai-dot:nth-child(2){ animation-delay:.15s; } .yk-ai-dot:nth-child(3){ animation-delay:.3s; }
 
-.yk-ai-scrollbtn { position:absolute; inset-block-end:12px; inset-inline-end:16px; inline-size:36px; block-size:36px; border-radius:50%; background: var(--color-bg-container); border:1px solid var(--color-outline); color: var(--color-text-secondary); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 2px 10px var(--color-black-alpha-40); z-index:5; }
-@media (hover:hover){ .yk-ai-scrollbtn:hover{ color: var(--color-primary); border-color: var(--color-primary);} }
+.yk-ai-scrollbtn { position:absolute; inset-block-end:14px; inset-inline-end:18px; inline-size:38px; block-size:38px; border-radius:50%; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 4px 18px var(--color-black-alpha-40, rgba(0,0,0,.4)); z-index:5; transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast); }
+@media (hover:hover){ .yk-ai-scrollbtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary); transform: translateY(-1px);} }
 
 .yk-ai-banner { padding:6px 14px; font-size:.6875rem; line-height:1.4; font-family: var(--font-body); flex-shrink:0; display:flex; align-items:center; gap:8px; }
 .yk-ai-banner--offline { background: var(--color-caution-alpha-08); color: var(--color-caution); border-block-start:1px solid var(--color-outline-20); }
-.yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:4px solid var(--color-danger); padding:6px 10px; color: var(--color-danger); font-size:.75rem; font-family: var(--font-body); }
+.yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:3px solid var(--color-danger); padding:8px 12px; color: var(--color-danger); font-size:.78rem; font-family: var(--font-body); border-radius:0 8px 8px 0; }
 
-.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:14px 6px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border-block-start:1px solid var(--color-outline-20); font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; }
-.yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:var(--space-lg) 8px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; }
+.yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-inline-size:46rem; margin-inline:auto; }
 .yk-ai-ctx__close{ background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:36px; min-block-size:36px; padding:0; display:inline-flex; align-items:center; justify-content:center; transition: color var(--transition-fast); }
-@media (hover:hover){ .yk-ai-ctx__close:hover{ color: var(--color-primary);} }
+@media (hover:hover){ .yk-ai-ctx__close:hover{ color: var(--color-primary-light);} }
 
-.yk-ai-composer { border-block-start:1px solid var(--color-outline-20); padding: var(--space-md) var(--space-lg); flex-shrink:0; padding-block-end: max(var(--space-md), env(safe-area-inset-bottom, 0px)); }
-.yk-ai--compact .yk-ai-composer { padding:10px 12px; }
-.yk-ai-composer__inner { inline-size:100%; max-inline-size:820px; margin-inline:auto; display:flex; gap:8px; align-items:flex-end; }
-.yk-ai-input { flex:1; min-inline-size:0; min-block-size:24px; max-block-size:160px; padding:8px 10px; background: var(--color-bg-container); color: var(--color-text-primary); border:none; border-block-end:2px solid var(--color-outline); font-family: var(--font-body); font-size:.9rem; outline:none; border-radius:0; resize:none; line-height:1.5; transition: border-color var(--transition-fast); }
-.yk-ai--compact .yk-ai-input { font-size:.8375rem; }
-.yk-ai-input:focus { border-block-end-color: var(--color-primary); }
-.yk-ai-send { min-inline-size:64px; min-block-size:40px; padding:8px 14px; background: var(--color-primary); color: var(--color-text-on-dark); border:none; font-family: var(--font-body); font-size:.875rem; font-weight:600; cursor:pointer; transition: opacity var(--transition-fast); border-radius:0; white-space:nowrap; }
-.yk-ai-send--stop { background: var(--color-danger, #D32F2F); }
-.yk-ai-send:disabled { opacity:.5; cursor:not-allowed; }
-.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:2px; max-inline-size:820px; margin-inline:auto; }
+/* composer —— 浮起玻璃卡 + 圆形渐变发送钮；focus 光晕 */
+.yk-ai-composer { padding: var(--space-sm) var(--space-lg) var(--space-md); flex-shrink:0; padding-block-end: max(var(--space-md), env(safe-area-inset-bottom, 0px)); }
+.yk-ai--compact .yk-ai-composer { padding:8px 12px 10px; }
+.yk-ai-composer__inner { inline-size:100%; max-inline-size:46rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
+  background: var(--color-bg-container, #211E28);
+  border:1px solid var(--color-outline-20);
+  border-radius:16px; padding:10px 10px 10px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+.yk-ai-composer__inner:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.4));
+  box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.08)); }
+.yk-ai-input { flex:1; min-inline-size:0; min-block-size:24px; max-block-size:160px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:.925rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
+.yk-ai--compact .yk-ai-input { font-size:.8425rem; }
+.yk-ai-input::placeholder { color: var(--color-text-muted); }
+.yk-ai-send { inline-size:40px; min-inline-size:40px; block-size:40px; padding:0; display:inline-flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #A03A63));
+  color:#fff; border:none; cursor:pointer; border-radius:50%;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 12px var(--color-primary-alpha-40, rgba(200,75,124,.35)); }
+@media (hover:hover){ .yk-ai-send:not(:disabled):hover{ transform: translateY(-1px); box-shadow: 0 4px 16px var(--color-primary-alpha-60, rgba(200,75,124,.5));} }
+.yk-ai-send--stop { background: var(--color-danger, #D32F2F); box-shadow: 0 2px 12px var(--color-danger-alpha-10, rgba(211,47,47,.3)); }
+.yk-ai-send:disabled { opacity:.4; cursor:not-allowed; box-shadow:none; }
+.yk-ai-send:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:46rem; margin-inline:auto; }
 .yk-ai-charhint--over { color: var(--color-danger); }
 
 @media (max-width:768px){
-  .yk-ai-msg { max-inline-size:100%; }
+  .yk-ai-msg--user { max-inline-size:94%; }
   .yk-ai-log { padding: var(--space-md); }
+  .yk-ai-chips { grid-template-columns:1fr; }
+  .yk-ai-welcome__title { font-size:1.2rem; }
 }
-@media (prefers-reduced-motion: reduce){ .yk-ai-dot{ animation:none; } .yk-ai-log{ scroll-behavior:auto; } }
+@media (prefers-reduced-motion: reduce){
+  .yk-ai-dot{ animation:none; }
+  .yk-ai-log{ scroll-behavior:auto; }
+  .yk-ai-turn, .yk-ai-welcome { animation:none; }
+  .yk-ai-msg--streaming > div:last-child::after { animation:none; }
+  .yk-ai-chip:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
+}
 `;
 
 export default function AIAssistant({ compact = false, onClose }: AIAssistantProps) {
@@ -588,7 +647,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             >
               {messages.length === 0 ? (
                 <div className="yk-ai-welcome">
-                  <span className="yk-ai-welcome__icon"><AIChatIcon size={44} /></span>
+                  <span className="yk-ai-welcome__badge"><AIChatIcon size={30} /></span>
                   <span className="yk-ai-welcome__title">{ui.emptyTitle}</span>
                   <span className="yk-ai-welcome__sub">{ui.emptySubtitle}</span>
                   <div className="yk-ai-chips">
@@ -617,12 +676,9 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                         </div>
                       ) : msg.role === 'user' ? (
                         <>
-                          <div className="yk-ai-msg yk-ai-msg--user">
-                            <div className="yk-ai-msg__label">YOU</div>
-                            {msg.content}
-                          </div>
+                          <div className="yk-ai-msg yk-ai-msg--user">{msg.content}</div>
                           {!isLoading && (
-                            <div className="yk-ai-actions" style={{ alignSelf: 'flex-end' }}>
+                            <div className="yk-ai-actions yk-ai-actions--user">
                               <button className="yk-ai-actbtn" onClick={() => copyMessage(i, msg.content)}>
                                 {copiedIdx === i ? ui.copied : ui.copy}
                               </button>
@@ -660,8 +716,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                       {msg.role === 'assistant' && (
                         msg.content ? (
                           <>
-                            <div className="yk-ai-msg yk-ai-msg--ai">
-                              <div className="yk-ai-msg__label">AI ASSISTANT</div>
+                            <div className={`yk-ai-msg yk-ai-msg--ai ${isLoading && i === messages.length - 1 ? 'yk-ai-msg--streaming' : ''}`}>
+                              <div className="yk-ai-msg__label">
+                                <AIChatIcon size={15} />
+                                <span>{ui.title}</span>
+                              </div>
                               <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                             </div>
                             {!isLoading && (
@@ -729,8 +788,10 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                 aria-label={ui.inputLabel}
               />
               {isLoading ? (
-                <button className="yk-ai-send yk-ai-send--stop" onClick={stopGeneration} aria-label={ui.stop}>
-                  {ui.stop}
+                <button className="yk-ai-send yk-ai-send--stop" onClick={stopGeneration} aria-label={ui.stop} title={ui.stop}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <rect x="6" y="6" width="12" height="12" rx="2" />
+                  </svg>
                 </button>
               ) : (
                 <button
@@ -738,8 +799,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                   onClick={() => sendMessage()}
                   disabled={!input.trim() || !canSend || overLimit}
                   aria-label={ui.sendLabel}
+                  title={ui.send}
                 >
-                  {ui.send}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 19V5" /><path d="M5 12l7-7 7 7" />
+                  </svg>
                 </button>
               )}
             </div>

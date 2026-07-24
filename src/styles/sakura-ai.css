@@ -177,6 +177,7 @@ html.sakura .yk-ai-msg--ai {
   border-end-end-radius: 12px;
   border-end-start-radius: 4px;
   color: var(--fg-1);
+  padding: 10px 14px;
 }
 html.sakura .yk-ai-msg__label {
   color: var(--fg-3);
@@ -311,19 +312,22 @@ html.sakura .yk-ai-ctx__close:focus-visible {
 /* =========================================================================
    10. 输入区 —— 手账胶囊输入框 + 深粉 AA 胶囊发送钮
    ========================================================================= */
-html.sakura .yk-ai-inputrow {
-  background: var(--bg-2);
-  border-block-start: 2px dashed var(--ink-faint);
-}
-html.sakura .yk-ai-input {
+/* composer 卡片 = 手账纸卡（输入框本体透明融入卡内） */
+html.sakura .yk-ai-composer__inner {
   background: var(--bg-3);
   border: 2px solid var(--ink);
-  border-radius: var(--radius-full);
-  padding: 7px 14px;
-  color: var(--fg-1);
+  border-radius: 20px;
+  box-shadow: 3px 3px 0 var(--ink);
 }
-html.sakura .yk-ai-input:focus {
+html.sakura .yk-ai-composer__inner:focus-within {
   border-color: var(--sakura-pink-deep);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+html.sakura .yk-ai-input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--fg-1);
 }
 html.sakura .yk-ai-input::placeholder {
   color: var(--fg-3);
