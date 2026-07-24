@@ -48,8 +48,8 @@ const SIDEBAR_CSS = `
 .yk-ai-side {
   display: flex;
   flex-direction: column;
-  inline-size: 288px;
-  min-inline-size: 288px;
+  inline-size: 264px;
+  min-inline-size: 264px;
   background: rgba(14, 12, 20, 0.55);
   border-inline-end: 1px solid var(--color-outline-20);
   overflow: hidden;
@@ -238,7 +238,7 @@ const SIDEBAR_CSS = `
   inline-size: min(300px, 82%);
   background: #14111d;
   box-shadow: 0 0 40px var(--color-black-alpha-50);
-  animation: yk-ai-drawer-in 0.22s ease-out;
+  animation: yk-ai-drawer-in 0.3s var(--spring-common, ease-out);
 }
 @keyframes yk-ai-drawer-in {
   from { transform: translateX(-100%); opacity: 0.4; }

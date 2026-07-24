@@ -316,8 +316,15 @@ html.sakura .yk-ai-ctx__close:focus-visible {
 html.sakura .yk-ai-composer {
   background: var(--bg-3);
   border: 2px solid var(--ink);
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: 3px 3px 0 var(--ink);
+}
+/* 空输入幽灵态（基线换成透明底后，sakura 对应墨线幽灵） */
+html.sakura .yk-ai-send:disabled {
+  background: transparent;
+  border-color: var(--ink-faint);
+  color: var(--fg-3);
+  box-shadow: none;
 }
 html.sakura .yk-ai-composer:focus-within {
   border-color: var(--sakura-pink-deep);

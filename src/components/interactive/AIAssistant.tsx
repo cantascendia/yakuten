@@ -72,7 +72,13 @@ const BASE_CSS = `
 @keyframes ai-msg-in { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
 @keyframes ai-caret { 0%,100%{opacity:1} 50%{opacity:0} }
 @keyframes ai-hero-in { from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
-.yk-ai { display:flex; flex-direction:column; block-size:100%; overflow:hidden; margin:0; }
+.yk-ai {
+  display:flex; flex-direction:column; block-size:100%; overflow:hidden; margin:0;
+  /* 弹簧缓动 —— ChatGPT 生产实测 linear() 曲线（微交互/常规/回弹三档） */
+  --spring-fast: linear(0, .07956 4.02%, .47488 13.851%, .79653 25.733%, .9246 36.734%, .98361 52.535%, .99988);
+  --spring-common: linear(0, .08322 5.391%, .46561 17.652%, .76663 31.093%, .92965 47.845%, .99189 74.867%, .9991);
+  --spring-bounce: linear(0, .10318 4.799%, .43592 14.679%, .84264 27.782%, 1.02066 38.732%, 1.04598 46.128%, 1.02446 58.294%, .99913 76.919%, 1);
+}
 /* 中和 Starlight prose 给 .sl-markdown-content 内所有块级元素注入的 margin-top —
    它会逐层撑破全屏布局。消息体/侧栏的显式 margin 由更高（或后载同级）优先级规则恢复。 */
 .yk-ai * { margin: 0; }
@@ -106,11 +112,11 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-log::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius:8px; }
 .yk-ai-log::-webkit-scrollbar-track { background: transparent; }
 .yk-ai--compact .yk-ai-log { padding:16px 12px; }
-.yk-ai-log__inner { inline-size:100%; max-inline-size:44rem; margin-inline:auto; display:flex; flex-direction:column; gap:32px; }
+.yk-ai-log__inner { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:32px; }
 .yk-ai--compact .yk-ai-log__inner { gap:18px; }
 
 /* ============ 状态 A · 欢迎态「居中舞台」 ============ */
-.yk-ai-hero { flex:1; min-block-size:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:28px var(--space-lg); animation: ai-hero-in .45s ease both; }
+.yk-ai-hero { flex:1; min-block-size:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:28px var(--space-lg); animation: ai-hero-in .45s var(--spring-common, ease) both; }
 .yk-ai--compact .yk-ai-hero { padding:18px 14px; }
 .yk-ai-hero__badge { inline-size:68px; block-size:68px; border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--color-accent); flex-shrink:0;
   background: linear-gradient(140deg, var(--color-primary-alpha-15, rgba(200,75,124,.15)), var(--color-accent-alpha-08, rgba(212,168,83,.08)));
@@ -121,16 +127,16 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai--compact .yk-ai-hero__greeting { font-size:1.15rem; margin-block-start:12px; }
 .yk-ai-hero__sub { font-family: var(--font-body); font-size:.9rem; line-height:1.7; max-inline-size:36rem; color: var(--color-text-secondary); margin-block-start:8px; text-wrap:balance; }
 .yk-ai--compact .yk-ai-hero__sub { font-size:.8125rem; }
-.yk-ai-hero__composer { inline-size:100%; max-inline-size:44rem; margin-block-start:28px; }
+.yk-ai-hero__composer { inline-size:100%; max-inline-size:48rem; margin-block-start:28px; }
 .yk-ai--compact .yk-ai-hero__composer { margin-block-start:16px; }
-.yk-ai-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-inline-size:42rem; margin-block-start:18px; }
-.yk-ai-pill { display:inline-flex; align-items:center; gap:7px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:8px 16px; font-size:.8125rem; font-family: var(--font-body); line-height:1.4; cursor:pointer; border-radius:999px; transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
+.yk-ai-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-inline-size:46rem; margin-block-start:18px; }
+.yk-ai-pill { display:inline-flex; align-items:center; gap:7px; background: var(--color-white-alpha-03, rgba(255,255,255,.03)); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); padding:8px 16px; font-size:.8125rem; font-family: var(--font-body); line-height:1.4; cursor:pointer; border-radius:999px; transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform .25s var(--spring-fast, ease); }
 .yk-ai-pill::before { content:'✦'; color: var(--color-accent); opacity:.5; font-size:.6875rem; transition: opacity var(--transition-fast); }
 @media (hover:hover){ .yk-ai-pill:hover{ border-color: var(--color-primary); color: var(--color-text-primary); background: var(--color-primary-alpha-08, rgba(200,75,124,.07)); transform: translateY(-1px); } .yk-ai-pill:hover::before{ opacity:1; } }
 .yk-ai-pill:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 
 /* ============ 消息 —— 用户=绯色渐变胶囊；AI=无框直排 + 金瓣标识 ============ */
-.yk-ai-turn { display:flex; flex-direction:column; gap:8px; animation: ai-msg-in .3s ease both; }
+.yk-ai-turn { display:flex; flex-direction:column; gap:8px; animation: ai-msg-in .3s var(--spring-common, ease) both; }
 .yk-ai-msg { font-family: var(--font-body); font-size:.96875rem; color: var(--color-text-primary); }
 .yk-ai--compact .yk-ai-msg { font-size:.875rem; }
 .yk-ai-msg--user { align-self:flex-end; max-inline-size:82%; inline-size:fit-content; padding:12px 18px; line-height:1.65; white-space:pre-wrap;
@@ -143,8 +149,8 @@ a.yk-ai-iconbtn { text-decoration:none; }
 /* 流式光标 —— 仅 streaming 中的 AI 消息尾部 */
 .yk-ai-msg--streaming > div:last-child::after { content:'▍'; color: var(--color-accent); animation: ai-caret 1s step-end infinite; margin-inline-start:2px; }
 
-.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; opacity:.65; transition: opacity var(--transition-fast); }
-.yk-ai-turn:hover .yk-ai-actions, .yk-ai-actions:focus-within { opacity:1; }
+/* 操作条常显（Claude/Gemini 路线：移动端无 hover，复制/重答是高频动作） */
+.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; }
 .yk-ai-actions--user { align-self:flex-end; }
 .yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:32px; min-block-size:32px; display:inline-flex; align-items:center; gap:4px; padding:0 7px; font-size:.6875rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:6px; }
 @media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary-light);} }
@@ -213,7 +219,7 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-banner--offline { background: var(--color-caution-alpha-08); color: var(--color-caution); border-block-start:1px solid var(--color-outline-20); }
 .yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:3px solid var(--color-danger); padding:8px 12px; color: var(--color-danger); font-size:.78rem; font-family: var(--font-body); border-radius:0 8px 8px 0; }
 
-.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:6px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; max-inline-size:44rem; margin-inline:auto; inline-size:100%; }
+.yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:6px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; max-inline-size:48rem; margin-inline:auto; inline-size:100%; }
 .yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:start; }
 .yk-ai-ctx__close{ background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:36px; min-block-size:36px; padding:0; display:inline-flex; align-items:center; justify-content:center; transition: color var(--transition-fast); }
 @media (hover:hover){ .yk-ai-ctx__close:hover{ color: var(--color-primary-light);} }
@@ -221,13 +227,13 @@ a.yk-ai-iconbtn { text-decoration:none; }
 /* ============ composer 浮岛（两种状态共用）+ dock + 免责常驻行 ============ */
 .yk-ai-dock { flex-shrink:0; padding:8px var(--space-lg) 0; }
 .yk-ai--compact .yk-ai-dock { padding:6px 10px 0; }
-.yk-ai-composer { inline-size:100%; max-inline-size:44rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
+.yk-ai-composer { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
   background: var(--color-bg-container, #211E28);
   border:1px solid var(--color-outline-20);
-  border-radius:24px; padding:13px 12px 13px 20px; min-block-size:56px;
+  border-radius:28px; padding:13px 12px 13px 20px; min-block-size:56px;
   box-shadow: 0 10px 40px rgba(0,0,0,.38);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
-.yk-ai--compact .yk-ai-composer { border-radius:18px; padding:9px 9px 9px 14px; min-block-size:46px; }
+.yk-ai--compact .yk-ai-composer { border-radius:20px; padding:9px 9px 9px 14px; min-block-size:46px; }
 .yk-ai-composer:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.4));
   box-shadow: 0 10px 40px rgba(0,0,0,.38), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.08)); }
 .yk-ai-input { flex:1; min-inline-size:0; min-block-size:26px; max-block-size:200px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:.96875rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
@@ -235,28 +241,29 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-input::placeholder { color: var(--color-text-muted); }
 .yk-ai-send { inline-size:38px; min-inline-size:38px; block-size:38px; padding:0; display:inline-flex; align-items:center; justify-content:center; align-self:flex-end;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #A03A63));
-  color:#fff; border:none; cursor:pointer; border-radius:50%;
-  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  color:#fff; border:1px solid transparent; cursor:pointer; border-radius:50%;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform .25s var(--spring-fast, ease), box-shadow var(--transition-fast);
   box-shadow: 0 2px 12px var(--color-primary-alpha-40, rgba(200,75,124,.35)); }
 .yk-ai--compact .yk-ai-send { inline-size:32px; min-inline-size:32px; block-size:32px; }
 @media (hover:hover){ .yk-ai-send:not(:disabled):hover{ transform: translateY(-1px); box-shadow: 0 4px 16px var(--color-primary-alpha-60, rgba(200,75,124,.5));} }
 .yk-ai-send--stop { background: var(--color-danger, #D32F2F); box-shadow: 0 2px 12px var(--color-danger-alpha-10, rgba(211,47,47,.3)); }
-.yk-ai-send:disabled { opacity:.4; cursor:not-allowed; box-shadow:none; }
+/* 空输入 = 幽灵态；键入后渐变亮起（Gemini「有内容才亮」的稳定版，无宽度跳动） */
+.yk-ai-send:disabled { background:transparent; border-color: var(--color-outline-20); color: var(--color-text-muted); cursor:not-allowed; box-shadow:none; }
 .yk-ai-send:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
-.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:44rem; margin-inline:auto; }
+.yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:48rem; margin-inline:auto; }
 .yk-ai-charhint--over { color: var(--color-danger); }
 
 /* 「使用须知」弹层 */
 .yk-ai-about { position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center; padding:20px; }
 .yk-ai-about__overlay { position:absolute; inset:0; background: var(--color-black-alpha-50, rgba(0,0,0,.5)); }
-.yk-ai-about__card { position:relative; inline-size:100%; max-inline-size:34rem; max-block-size:82%; overflow-y:auto; background: var(--color-bg-container, #211E28); border:1px solid var(--color-outline-20); border-radius:16px; padding:18px 22px 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: ai-msg-in .25s ease both; }
+.yk-ai-about__card { position:relative; inline-size:100%; max-inline-size:34rem; max-block-size:82%; overflow-y:auto; background: var(--color-bg-container, #211E28); border:1px solid var(--color-outline-20); border-radius:16px; padding:18px 22px 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: ai-msg-in .32s var(--spring-bounce, ease) both; }
 .yk-ai-about__head { display:flex; align-items:center; gap:8px; margin-block-end:8px; }
 .yk-ai-about__title { flex:1; font-family: var(--font-display); font-size:1.02rem; font-weight:700; color: var(--color-text-primary); }
 .yk-ai-about__list { display:flex; flex-direction:column; gap:12px; padding-inline-start:1.2em; font-size:.84rem; line-height:1.75; color: var(--color-text-secondary); font-family: var(--font-body); }
 .yk-ai-about__list li { list-style:disc; }
 .yk-ai-about__list li::marker { color: var(--color-accent); }
 /* 免责常驻行 —— composer 正下方（ChatGPT「可能会犯错」同位；语义只强化不弱化） */
-.yk-ai-inputnote { text-align:center; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:44rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
+.yk-ai-inputnote { text-align:center; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:48rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
 .yk-ai-hero .yk-ai-inputnote { margin-block-start:14px; padding-block-end:0; }
 
 @media (max-width:768px){
