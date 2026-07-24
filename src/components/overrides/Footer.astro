@@ -79,7 +79,9 @@ const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
   </nav>
 </div>
 
-<FloatingAIChat client:idle />
+{/* idle + timeout 兜底：后台标签页 / 主线程繁忙时 requestIdleCallback 可被无限推迟，
+    2s 后强制水合，保证 FAB 必然出现 */}
+<FloatingAIChat client:idle={{ timeout: 2000 }} />
 
 <style>
   .site-legal-footer {

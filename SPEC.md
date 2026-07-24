@@ -612,8 +612,8 @@ const SYSTEM_PROMPT = `你是 HRT药典 的 AI 助手。
 你可以参考的药物数据: [注入 drugs.json 的精简版]`;
 ```
 
-**前端 UI**: 聊天气泡界面，顶部 disclaimer，底部输入框
-**安全**: 不存储对话，不传输个人健康数据（除用户主动输入的问题文本）
+**前端 UI**: 产品级全屏对话窗口（对标 claude.ai / chatgpt，手机适配）——两栏布局（会话历史侧栏 + 主对话）、顶部 disclaimer、多会话管理、复制 / 重新生成 / 编辑重发 / 停止生成、富 Markdown。
+**安全 / 隐私**: 服务器端 **stateless**，不存储对话；个人健康数据不外传（除用户主动输入、发给模型的问题文本）。设备端会话历史为 **opt-in**（默认关闭，`localStorage` 键 `yakuten_ai_chat_v1`，绝不上传，可一键清空）—— 详见 `docs/specs/ai-chat-local-history.md`。
 
 ---
 
@@ -799,7 +799,7 @@ const SYSTEM_PROMPT = `你是 HRT药典 的 AI 助手。
 
 - 不收集用户个人数据
 - 血检工具纯前端计算，零数据传输
-- AI 问答不存储对话记录
+- AI 问答服务器端不存储对话记录；设备端历史仅在用户 opt-in 后本机保存（`yakuten_ai_chat_v1`，默认关，绝不上传，可一键清空）
 - 第三方分析仅限聚合 PV/事件（Vercel Analytics + Google Analytics 4，带 `yakuten-dev` opt-out）；绝不上报健康数据 / 用户输入 / 血检记录；无广告或社媒像素；GA 在大陆被墙
 - HTTPS 强制
 - CSP headers 配置

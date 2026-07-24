@@ -1,13 +1,20 @@
 ---
 title: "Asistente de IA"
-description: "Un asistente de información sobre THS guiado para la navegación y las preguntas de reducción de daños. Esta herramienta no ofrece asesoramiento médico personalizado."
+description: "Un asistente de información sobre THS guiado para la navegación y las preguntas de reducción de daños. El servidor nunca almacena tus conversaciones: el historial solo se guarda en el navegador de este dispositivo si activas «Guardar el historial de conversaciones en este dispositivo», y puedes borrarlo cuando quieras. Esta herramienta no ofrece asesoramiento médico personalizado."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
+
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
+
+<div class="ai-chat-below">
 
 Este asistente te acompaña en la consulta general de información sobre THS y en las dudas de reducción de daños. No reemplaza el criterio de un profesional sanitario ni elabora planes de dosificación personalizados.
 
@@ -15,4 +22,4 @@ Este asistente te acompaña en la consulta general de información sobre THS y e
 La interfaz interactiva todavía está en proceso de localización. Por ahora, es posible que parte del texto de la herramienta siga apareciendo en chino.
 :::
 
-<AIAssistant client:load />
+</div>

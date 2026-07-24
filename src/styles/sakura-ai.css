@@ -54,15 +54,19 @@ html.sakura .yk-ai-panel {
   box-shadow: 6px 6px 0 var(--ink);
 }
 
-/* 工具页整页模式 —— 玻璃换纸卡 */
+/* 工具页整页模式 —— 全屏满铺纸面（.ai-chat-stage 提供外框，此处不再是浮动卡） */
 html.sakura .yk-ai--page {
   background: var(--bg-1);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-md);
+  border: 0;
+  border-radius: 0;
   clip-path: none;
-  box-shadow: var(--shadow-hard-lg);
+  box-shadow: none;
+}
+html.sakura .ai-chat-stage {
+  background: var(--bg-1);
+  border-block-start-color: var(--ink);
 }
 html.sakura .yk-ai--compact {
   background: var(--bg-1);
@@ -390,9 +394,9 @@ html.sakura[data-theme='dark'] .yk-ai-panel {
   border-color: #4A2838;
   box-shadow: 6px 6px 0 var(--night-1);
 }
+/* 整页全屏模式无浮动卡外框：不加硬影 */
 html.sakura[data-theme='dark'] .yk-ai--page {
-  border-color: #4A2838;
-  box-shadow: 6px 6px 0 var(--night-1);
+  box-shadow: none;
 }
 
 /* =========================================================================
@@ -415,4 +419,122 @@ html.sakura[data-theme='dark'] .yk-ai--page {
    ========================================================================= */
 html.sakura :is(.yk-ai-header__badge, .yk-ai-msg__label, .yk-ai-ctx):is(:lang(ar), :lang(fa)) {
   letter-spacing: normal;
+}
+
+/* =========================================================================
+   13. 产品级 chat 新增 DOM —— 乐园手账覆盖（会话侧栏 / 抽屉 / 欢迎 /
+       消息操作 / 编辑 / 富 Markdown / 表格 / 代码 / 回底钮 / 离线条 /
+       composer / 模型徽章）。夜间：.yk-ai 已钉纸墨 token（§11），本节自动继承。
+   ========================================================================= */
+
+/* 结构层透明，纸面透出 */
+html.sakura .yk-ai-shell,
+html.sakura .yk-ai-main { background: transparent; }
+
+/* 图标钮（汉堡 / 关闭）—— 墨字圆钮 */
+html.sakura .yk-ai-iconbtn { color: var(--fg-2); border-radius: var(--radius-full); }
+@media (hover: hover) {
+  html.sakura .yk-ai-iconbtn:hover { color: var(--ink); background: var(--sakura-blush); }
+}
+html.sakura .yk-ai-iconbtn:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 2px; }
+
+/* 模型徽章文案 */
+html.sakura .yk-ai-header__model { color: var(--fg-3); font-family: var(--font-ui-accent); }
+
+/* 欢迎态 */
+html.sakura .yk-ai-welcome { color: var(--fg-2); }
+html.sakura .yk-ai-welcome__icon { color: var(--sakura-pink-deep); opacity: .9; }
+html.sakura .yk-ai-welcome__title { font-family: var(--font-heading); color: var(--fg-1); }
+
+/* 消息操作行 */
+html.sakura .yk-ai-actbtn { color: var(--fg-3); font-family: var(--font-ui-accent); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-actbtn:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-actbtn:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 1px; }
+
+/* 编辑重发 */
+html.sakura .yk-ai-edit__area {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  color: var(--fg-1);
+}
+
+/* 富 Markdown 排版 */
+html.sakura .yk-ai-msg :is(h1, h2, h3, h4) { color: var(--fg-1); font-family: var(--font-heading); }
+html.sakura .yk-ai-msg blockquote { border-inline-start: 3px solid var(--sakura-pink-deep); color: var(--fg-2); }
+html.sakura .yk-ai-msg pre { background: var(--bg-4); border: 1.5px solid var(--ink-faint); border-radius: 8px; }
+html.sakura .yk-ai-msg :is(code, .yk-ai-code) { background: var(--bg-4); color: var(--ink); border-radius: 4px; }
+html.sakura .yk-ai-copybtn {
+  background: var(--bg-3); border: 1.5px solid var(--ink); border-radius: 8px; color: var(--fg-2);
+}
+@media (hover: hover) { html.sakura .yk-ai-copybtn:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-copybtn--done { color: var(--mint-deep, #2E8B6B); }
+html.sakura .yk-ai-table th,
+html.sakura .yk-ai-table td { border-color: var(--ink-faint); }
+html.sakura .yk-ai-table th { background: var(--bg-4); color: var(--fg-1); }
+
+/* 回到底部浮钮 —— 白纸圆贴纸 */
+html.sakura .yk-ai-scrollbtn {
+  background: var(--bg-3); border: 1.5px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); color: var(--fg-2);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-scrollbtn:hover { color: var(--sakura-pink-text); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+}
+
+/* 离线条 —— 便签黄 */
+html.sakura .yk-ai-banner--offline {
+  background: var(--butter); border-block-start: 2px dashed var(--ink-faint); color: #4A2838;
+}
+
+/* composer —— 手账装订底栏（.yk-ai-input / .yk-ai-send 复用既有 §10 规则） */
+html.sakura .yk-ai-composer { background: var(--bg-2); border-block-start: 2px dashed var(--ink-faint); }
+html.sakura .yk-ai-send--stop { background: var(--danger); color: #FFFFFF; }
+html.sakura .yk-ai-charhint { color: var(--fg-3); font-family: var(--font-ui-accent); }
+html.sakura .yk-ai-charhint--over { color: var(--danger); }
+
+/* =========================================================================
+   14. 会话侧栏 / 抽屉 —— 手账目录
+   ========================================================================= */
+html.sakura .yk-ai-side { background: var(--bg-2); border-inline-end: 2px solid var(--ink); }
+html.sakura .yk-ai-side__head { border-block-end: 2px solid var(--ink-faint); }
+html.sakura .yk-ai-newbtn {
+  background: var(--sakura-pink-aa); border: 2px solid var(--ink); border-radius: var(--radius-full);
+  box-shadow: 2px 2px 0 var(--ink); color: var(--fg-on-pink, #FFFFFF);
+  font-family: var(--font-ui-accent); font-weight: 700; transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-newbtn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); opacity: 1; }
+}
+html.sakura .yk-ai-side__closebtn { color: var(--fg-2); border-radius: var(--radius-full); }
+html.sakura .yk-ai-search {
+  background: var(--bg-3); border: 2px solid var(--ink); border-radius: var(--radius-full); color: var(--fg-1);
+}
+html.sakura .yk-ai-search:focus { border-color: var(--sakura-pink-deep); }
+html.sakura .yk-ai-group__label { color: var(--fg-3); font-family: var(--font-ui-accent); }
+html.sakura .yk-ai-sess { border-radius: 10px; color: var(--fg-2); }
+@media (hover: hover) { html.sakura .yk-ai-sess:hover { background: var(--sakura-blush); color: var(--ink); } }
+html.sakura .yk-ai-sess--active { background: var(--bg-5); border-inline-start-color: var(--sakura-pink-deep); color: var(--ink); }
+html.sakura .yk-ai-sess__rename { background: var(--bg-3); border: 1.5px solid var(--sakura-pink-deep); color: var(--fg-1); border-radius: 6px; }
+html.sakura .yk-ai-sess__act { color: var(--fg-3); border-radius: var(--radius-full); }
+@media (hover: hover) { html.sakura .yk-ai-sess__act:hover { color: var(--sakura-pink-text); } }
+html.sakura .yk-ai-sess__confirm .yk-ai-danger { color: var(--danger); }
+html.sakura .yk-ai-sess__confirm .yk-ai-muted { color: var(--fg-3); }
+html.sakura .yk-ai-side__empty { color: var(--fg-3); }
+html.sakura .yk-ai-side__foot { border-block-start: 2px dashed var(--ink-faint); }
+html.sakura .yk-ai-optin__label { color: var(--fg-1); }
+html.sakura .yk-ai-optin__body { color: var(--fg-3); }
+html.sakura .yk-ai-optin input { accent-color: var(--sakura-pink-deep); }
+html.sakura .yk-ai-side__offhint { color: var(--honey-deep, #8A6D00); }
+html.sakura .yk-ai-side__tool {
+  background: var(--bg-3); border: 1.5px solid var(--ink); border-radius: var(--radius-full); color: var(--fg-2);
+}
+@media (hover: hover) { html.sakura .yk-ai-side__tool:hover { color: var(--sakura-pink-text); border-color: var(--sakura-pink-deep); } }
+html.sakura .yk-ai-side__tool--danger:hover { color: var(--danger); border-color: var(--danger); }
+html.sakura .yk-ai-side--drawer { box-shadow: 6px 0 0 var(--ink); }
+html.sakura .yk-ai-drawer-overlay { background: rgba(74, 40, 56, 0.4); }
+
+/* reduced-motion：压掉新增位移 */
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .yk-ai-scrollbtn:hover,
+  html.sakura .yk-ai-newbtn:hover { transform: none; }
 }

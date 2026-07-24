@@ -54,6 +54,8 @@ export default defineConfig({
         './src/styles/pathway.css',
         './src/styles/blog.css',
         './src/styles/starlight-override.css',
+        // AI 助手全屏 chat 页舞台（splash 模板；sakura-ai.css 靠后覆盖）
+        './src/styles/ai-chat-page.css',
         // 新版皮肤（只在 <html class="sakura"> 时激活，不影响默认外观）
         './src/styles/sakura-theme.css',
         './src/styles/sakura-components.css',

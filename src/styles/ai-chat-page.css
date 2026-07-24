@@ -1,0 +1,94 @@
+/* =========================================================================
+   ai-chat-page.css — AI 助手「全屏 chat」页舞台
+   ------------------------------------------------------------------------
+   /{locale}/tools/ai-assistant 用 template: splash（全宽、无侧栏）。
+   .ai-chat-stage 在站点顶栏（--sl-nav-height）之下占满视口高度，承载
+   AIAssistant 的两栏布局。默认（二相乐园）基线；sakura 覆盖在 sakura-ai.css。
+   ========================================================================= */
+
+.ai-chat-stage {
+  block-size: calc(100dvh - var(--sl-nav-height, 3.5rem));
+  min-block-size: 540px;
+  display: flex;
+  overflow: hidden;
+  border-block-start: 1px solid var(--color-outline-20);
+  background: var(--color-bg, #12101a);
+}
+.ai-chat-stage > * {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+/* splash 内容列本身有 padding/max-width；让 chat 舞台在其中尽量满宽、不叠加外边距 */
+.sl-markdown-content .ai-chat-stage {
+  margin-block: 0;
+  max-inline-size: none;
+}
+
+/* 舞台下方的 SEO 说明内容保持常规排版宽度 */
+.ai-chat-below {
+  max-inline-size: 60rem;
+  margin-inline: auto;
+  padding-block: var(--space-2xl, 3rem);
+  padding-inline: var(--space-lg, 1.5rem);
+}
+
+@supports not (block-size: 100dvh) {
+  .ai-chat-stage {
+    block-size: calc(100vh - var(--sl-nav-height, 3.5rem));
+  }
+}
+
+/* 极小屏：保证输入区可见，压缩最小高度诉求 */
+@media (max-width: 480px) {
+  .ai-chat-stage {
+    min-block-size: 460px;
+  }
+}
+
+/* =========================================================================
+   全屏沉浸（:has 作用域，仅本页生效）：解除 splash 的标题块 / 内容内边距 /
+   最大宽度约束，让 chat 舞台在站点顶栏下满宽满高。
+   ========================================================================= */
+
+/* 舞台所在内容面板：去内边距/边框，chat 贴边 */
+.content-panel:has(.ai-chat-stage) {
+  padding: 0 !important;
+  border: 0 !important;
+}
+/* 舞台所在容器：解除最大宽度与横向内边距 → 满宽 */
+.sl-container:has(.ai-chat-stage) {
+  max-inline-size: none !important;
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
+}
+.sl-markdown-content:has(.ai-chat-stage) {
+  margin: 0 !important;
+}
+.ai-chat-stage {
+  margin: 0 !important;
+}
+
+/* 冗余页面标题（chat 自带头部）：视觉隐藏，保留给屏幕阅读器 / SEO */
+.main-pane:has(.ai-chat-stage) h1 {
+  position: absolute !important;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* 不含舞台的那个内容面板（标题块）：折叠留白 */
+.main-pane:has(.ai-chat-stage) .content-panel:not(:has(.ai-chat-stage)) {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* 下方 SEO 说明在满宽容器内重新约束为常规排版宽度 */
+.sl-markdown-content:has(.ai-chat-stage) .ai-chat-below {
+  max-inline-size: 60rem;
+  margin-inline: auto;
+}

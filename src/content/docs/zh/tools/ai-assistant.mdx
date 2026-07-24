@@ -1,30 +1,35 @@
 ---
 title: AI 问答助手
-description: 基于循证医学文献的 AI 问答工具，为你提供 HRT 安全解答。我们不存储任何对话，亦不提供个人化的用药建议。
+description: 基于循证医学文献的 AI 问答工具，为你提供 HRT 安全解答。服务器不存储任何对话；仅在你开启「在此设备保存」后，历史才存放在本设备浏览器，可随时清空。我们不提供个人化的用药建议。
 evidenceLevel: X
-lastReviewed: 2026-04-07
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
 import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
+
+<div class="ai-chat-below">
+
 <ToolDisclaimer privacy="ai-no-history" />
 
 ## 循证 AI 问答
 
-你可以在这里向 AI 助手提问关于 HRT 的安全问题。助手的回答均基于国际临床指南与同行评审文献。
+你可以向 AI 助手提问关于 HRT 的安全问题。助手的回答均基于国际临床指南与同行评审文献。
 
 <div class="warning-box">
 <div class="warning-box__title">⚠ AI 无法为你提供以下服务</div>
 
 - **不提供个人化剂量建议**：助手不会针对你的具体情况推荐具体的用药剂量
-- **不读取你的健康档案**：每次提问均独立处理，AI 通常无法查看你的历史提问或个人数据
+- **服务器不保存你的对话**：服务器端每次请求独立、无状态处理；对话历史仅在你主动开启「在此设备保存」后，才存放在本设备浏览器，绝不上传
 - **不替代专业医学诊断**：所有回答均基于已发表文献，并不能替代专业的临床诊断
 </div>
-
-<AIAssistant client:load />
 
 ## 你可以向 AI 提问哪些内容？
 
@@ -39,4 +44,6 @@ import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 - ❌ 给出具体的用药剂量
 - ❌ 替代专业医生的诊断与处方
 - ❌ 提供任何药品的购药渠道
-- ❌ 访问或存留你的个人健康数据
+- ❌ 将你的对话上传到服务器或用于训练
+
+</div>

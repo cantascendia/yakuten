@@ -1,15 +1,22 @@
 ---
 title: "AI 질의응답 도우미"
-description: "탐색 및 위해 저감 질문을 위한 안내형 HRT 정보 도우미입니다. 개인 맞춤 의료 조언을 제공하지 않습니다."
+description: "탐색 및 위해 저감 질문을 위한 안내형 HRT 정보 도우미입니다. 서버는 대화 내용을 저장하지 않으며, “이 기기에 대화 기록 저장”을 켠 경우에만 기록이 이 기기의 브라우저에 저장되고 언제든지 삭제할 수 있습니다. 개인 맞춤 의료 조언을 제공하지 않습니다."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
 noindex: true
+template: splash
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
+
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
+
+<div class="ai-chat-below">
 
 {/* ko-translation-freeze-v1 */}
 <Aside type="caution" title="Korean translation paused / 한국어 번역 일시 중지">
@@ -25,4 +32,4 @@ This assistant is available for general HRT information navigation and harm-redu
 The current interactive interface is still being localized. Some tool UI text may remain in Chinese for now.
 :::
 
-<AIAssistant client:load />
+</div>

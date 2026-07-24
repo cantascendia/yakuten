@@ -1,13 +1,20 @@
 ---
 title: "Asisten AI"
-description: "Asisten informasi HRT terpandu untuk navigasi dan pertanyaan seputar pengurangan dampak buruk (harm reduction). Alat ini tidak memberikan nasihat medis yang dipersonalisasi."
+description: "Asisten informasi HRT terpandu untuk navigasi dan pertanyaan seputar pengurangan dampak buruk (harm reduction). Server tidak pernah menyimpan percakapanmu; riwayat baru tersimpan di browser perangkat ini setelah kamu mengaktifkan “Simpan riwayat obrolan di perangkat ini”, dan dapat dihapus kapan saja. Alat ini tidak memberikan nasihat medis yang dipersonalisasi."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
+
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
+
+<div class="ai-chat-below">
 
 Asisten ini tersedia untuk membantumu menelusuri informasi umum seputar HRT serta panduan pengurangan dampak buruk (harm reduction). Alat ini bukan pengganti penilaian klinis dari seorang dokter, dan tidak menyusun rencana dosis yang bersifat individual.
 
@@ -15,4 +22,4 @@ Asisten ini tersedia untuk membantumu menelusuri informasi umum seputar HRT sert
 Antarmuka interaktif ini masih dalam proses pelokalan. Untuk sementara, sebagian teks tampilan alat mungkin masih berbahasa Mandarin.
 :::
 
-<AIAssistant client:load />
+</div>

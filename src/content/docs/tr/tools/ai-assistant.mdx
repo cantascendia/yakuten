@@ -1,13 +1,20 @@
 ---
 title: "Yapay Zekâ Asistanı"
-description: "HRT konularında yönlendirme ve zarar azaltma sorularında size eşlik eden bir asistan. Bu araç kişiye özel tıbbi tavsiye vermez."
+description: "HRT konularında yönlendirme ve zarar azaltma sorularında size eşlik eden bir asistan. Sunucu konuşmalarınızı hiçbir zaman saklamaz; geçmiş yalnızca “Sohbet geçmişini bu cihazda sakla” seçeneğini açtığınızda bu cihazın tarayıcısında tutulur ve istediğiniz an silinebilir. Bu araç kişiye özel tıbbi tavsiye vermez."
 evidenceLevel: X
-lastReviewed: 2026-04-09
+lastReviewed: 2026-07-24
 references: []
 pagefind: false
+template: splash
 ---
 
 import AIAssistant from '../../../../components/interactive/AIAssistant.tsx';
+
+<div class="ai-chat-stage">
+  <AIAssistant client:load />
+</div>
+
+<div class="ai-chat-below">
 
 Bu asistan, genel HRT bilgilerinde yön bulmanıza ve zarar azaltma konularında size yol göstermek için sunulmaktadır. Bir hekimin değerlendirmesinin yerini tutmaz ve kişiye özel doz planları oluşturmaz.
 
@@ -15,4 +22,4 @@ Bu asistan, genel HRT bilgilerinde yön bulmanıza ve zarar azaltma konularında
 Etkileşimli arayüzün yerelleştirme çalışmaları hâlâ sürüyor. Bazı araç arayüzü metinleri şimdilik Çince kalabilir.
 :::
 
-<AIAssistant client:load />
+</div>
