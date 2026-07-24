@@ -94,6 +94,10 @@ export function useChatSessions(): UseChatSessions {
   // 否则已 opt-in 的返回用户首帧就撞 hydration mismatch（服务端欢迎态 vs 客户端历史态）。
   const [store, setStore] = useState<ChatStoreV1>({ ...EMPTY_STORE });
   const [historyEnabled, setHistoryEnabledState] = useState<boolean>(false);
+  // 同步镜像最新 store —— 事件处理器里需要「立刻」读到当前会话/生成 id，
+  // 不能依赖 setStore 的 updater（React 18 里 updater 是延迟执行的）。
+  const storeRef = useRef(store);
+  storeRef.current = store;
   useEffect(() => {
     setHistoryEnabledState(aiHistoryEnabled());
     setStore(aiLoadStore());
@@ -164,17 +168,20 @@ export function useChatSessions(): UseChatSessions {
     [],
   );
 
-  /** Ensure there is an active session; return its id (creates an empty one if none). */
+  /** Ensure there is an active session; return its id SYNCHRONOUSLY (creates one if none).
+      读/写都走 storeRef —— 之前用 setStore 的异步 updater 里赋值 id 再 return，
+      React 18 下 updater 延迟执行，return 时 id 恒为空串 → updateSession/runCompletion
+      拿到空 id → 消息不落、界面不切、只有 loading 态闪一下（线上实测复现）。 */
   const ensureSession = useCallback((): string => {
-    let id = '';
-    setStore((prev) => {
-      const existing = prev.sessions.find((s) => s.id === prev.activeId);
-      if (existing) { id = existing.id; return prev; }
-      const now = Date.now();
-      id = genId();
-      const fresh: ChatSession = { id, title: '', createdAt: now, updatedAt: now, messages: [] };
-      return { version: 1, sessions: [fresh, ...prev.sessions], activeId: id };
-    });
+    const cur = storeRef.current;
+    const existing = cur.sessions.find((s) => s.id === cur.activeId);
+    if (existing) return existing.id;
+    const now = Date.now();
+    const id = genId();
+    const fresh: ChatSession = { id, title: '', createdAt: now, updatedAt: now, messages: [] };
+    const next: ChatStoreV1 = { version: 1, sessions: [fresh, ...cur.sessions], activeId: id };
+    storeRef.current = next; // 同步更新，保证紧随其后的 updateSession(prev) 能看到该会话
+    setStore(next);
     return id;
   }, []);
 
