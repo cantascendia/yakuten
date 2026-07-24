@@ -730,6 +730,18 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                 </svg>
               </button>
             )}
+            {!compact && (
+              <a
+                className="yk-ai-iconbtn"
+                href={`/${locale}/`}
+                aria-label={ui.backHome}
+                title={ui.backHome}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" />
+                </svg>
+              </a>
+            )}
             <span className="yk-ai-topbar__title">
               {messages.length > 0 ? (activeSession?.title || ui.untitledChat) : ''}
             </span>

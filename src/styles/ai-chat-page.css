@@ -6,16 +6,24 @@
    AIAssistant 的两栏布局。默认（二相乐园）基线；sakura 覆盖在 sakura-ai.css。
    ========================================================================= */
 
+/* fixed 钉满视口：彻底无视文档流里任何容器的限宽/内边距
+   （sakura 换皮会给 .sl-markdown-content 子元素加阅读列宽，曾把应用压到 44rem 左对齐） */
 .ai-chat-stage {
+  position: fixed;
+  inset: 0;
   block-size: 100dvh;
-  min-block-size: 540px;
   display: flex;
   overflow: hidden;
   background: var(--color-bg, #12101a);
+  z-index: 40;
 }
-.ai-chat-stage > * {
+/* 直接子元素是 <astro-island>(display:contents)，flex 打不上——
+   真正的 flex item 是里面的 .yk-ai，两层都给满 */
+.ai-chat-stage > *,
+.ai-chat-stage .yk-ai {
   flex: 1;
   min-inline-size: 0;
+  inline-size: 100%;
 }
 
 /* splash 内容列本身有 padding/max-width；让 chat 舞台在其中尽量满宽、不叠加外边距 */
