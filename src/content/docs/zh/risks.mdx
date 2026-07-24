@@ -36,6 +36,8 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 
 ## 7.1 HRT 的已知风险
 
+<p class="risk-note">下方每张卡片对应一类风险；本节末尾附两张补充信息图（血栓风险因素、情绪监测路径）。</p>
+
 <div class="risk-grid">
   <div class="risk-item">
     <RiskCard
@@ -116,6 +118,8 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
   </div>
 </div>
 
+### 补充信息图
+
 <figure class="risk-figure">
   <img
     src="/images/diagrams/zh/vte-risk-stacking.webp"
@@ -125,7 +129,7 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     loading="lazy"
     decoding="async"
   />
-  <figcaption>血栓（VTE）风险因素累加模型：多个因素叠加时年度风险呈乘数级上升。</figcaption>
+  <figcaption>血栓（VTE）风险因素叠加估算示意图 — 对应上方「深静脉血栓」卡片。</figcaption>
 </figure>
 
 <figure class="risk-figure">
@@ -137,7 +141,7 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
     loading="lazy"
     decoding="async"
   />
-  <figcaption>情绪与抑郁风险监测：建议每 1–3 个月自评一次，并预先了解求助路径。</figcaption>
+  <figcaption>情绪监测与求助路径示意图 — 对应上方「情绪波动与抑郁」卡片。</figcaption>
 </figure>
 
 ## 7.2 需立即停药并寻求急诊救治的紧急症状
@@ -170,61 +174,3 @@ import RelatedBlogPosts from '../../../components/ui/RelatedBlogPosts.astro';
 </WarningBox>
 
 <RelatedBlogPosts />
-
-<style>{`
-  /* auto-fit 按「容器」实际宽度自适应列数（文档正文列被左导航+右 TOC 挤到
-     ~640px，旧的按视口 min-width:1024 强上 3 列 → 每列仅 ~199px 拥挤）。
-     6 张卡在 2 列 = 3×2、3 列 = 2×3 均能整除，不留孤儿卡；信息图已移出网格
-     改为独立 <figure>，不再打断网格流。 */
-  .risk-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-    align-items: stretch;
-    gap: var(--space-lg);
-    margin: var(--space-xl) 0 var(--space-xl);
-  }
-
-  .risk-item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  /* 信息图：网格下方的居中图注块 */
-  .risk-figure {
-    margin: 0 auto var(--space-2xl);
-    max-width: 480px;
-    text-align: center;
-  }
-  .risk-figure img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid var(--color-outline-20);
-  }
-  .risk-figure figcaption {
-    margin-top: var(--space-sm);
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-  }
-
-  .risk-grid > .risk-item + .risk-item {
-    margin-top: 0;
-  }
-
-  .risk-item > .risk-card {
-    flex: 1;
-  }
-
-  .risk-citation {
-    flex-shrink: 0;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin: var(--space-sm) 0 0;
-    padding: var(--space-sm) var(--space-md);
-    border-left: 2px solid rgba(200, 75, 124, 0.2);
-  }
-`}</style>
