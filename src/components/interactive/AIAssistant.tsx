@@ -244,6 +244,16 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-send:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 .yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:44rem; margin-inline:auto; }
 .yk-ai-charhint--over { color: var(--color-danger); }
+
+/* 「使用须知」弹层 */
+.yk-ai-about { position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center; padding:20px; }
+.yk-ai-about__overlay { position:absolute; inset:0; background: var(--color-black-alpha-50, rgba(0,0,0,.5)); }
+.yk-ai-about__card { position:relative; inline-size:100%; max-inline-size:34rem; max-block-size:82%; overflow-y:auto; background: var(--color-bg-container, #211E28); border:1px solid var(--color-outline-20); border-radius:16px; padding:18px 22px 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: ai-msg-in .25s ease both; }
+.yk-ai-about__head { display:flex; align-items:center; gap:8px; margin-block-end:8px; }
+.yk-ai-about__title { flex:1; font-family: var(--font-display); font-size:1.02rem; font-weight:700; color: var(--color-text-primary); }
+.yk-ai-about__list { display:flex; flex-direction:column; gap:12px; padding-inline-start:1.2em; font-size:.84rem; line-height:1.75; color: var(--color-text-secondary); font-family: var(--font-body); }
+.yk-ai-about__list li { list-style:disc; }
+.yk-ai-about__list li::marker { color: var(--color-accent); }
 /* 免责常驻行 —— composer 正下方（ChatGPT「可能会犯错」同位；语义只强化不弱化） */
 .yk-ai-inputnote { text-align:center; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:44rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
 .yk-ai-hero .yk-ai-inputnote { margin-block-start:14px; padding-block-end:0; }
@@ -292,12 +302,29 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [editingIdx, setEditingIdx] = useState<number | null>(null);
   const [editText, setEditText] = useState('');
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => { setPageTitle(getPageTitle()); }, []);
+
+  // 桌面打开页面即可打字（移动端不自动弹键盘）
+  useEffect(() => {
+    if (!compact && window.innerWidth > 768) inputRef.current?.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 使用须知弹层：Esc 关闭 + 焦点归还输入框
+  useEffect(() => {
+    if (!aboutOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { e.preventDefault(); setAboutOpen(false); inputRef.current?.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [aboutOpen]);
 
   // rich markdown: load once, upgrade rendering when ready
   useEffect(() => {
@@ -579,8 +606,31 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       onClearAll={clearAll}
       onExportAll={exportAll}
       onToggleHistory={setHistoryEnabled}
+      onAbout={() => setAboutOpen(true)}
     />
   );
+
+  /* 「使用须知」弹层 —— 承接原页面级免责详版（只强化不弱化） */
+  const aboutSheet = aboutOpen ? (
+    <div className="yk-ai-about">
+      <div className="yk-ai-about__overlay" onClick={() => { setAboutOpen(false); focusInput(); }} />
+      <div className="yk-ai-about__card" role="dialog" aria-modal="true" aria-label={ui.aboutTitle}>
+        <div className="yk-ai-about__head">
+          <span className="yk-ai-about__title">{ui.aboutTitle}</span>
+          <button className="yk-ai-iconbtn" onClick={() => { setAboutOpen(false); focusInput(); }} aria-label={ui.close} autoFocus>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <ul className="yk-ai-about__list">
+          {ui.aboutPoints.map((p, i) => (
+            <li key={i}>{p}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  ) : null;
 
   const isEmpty = messages.length === 0;
 
@@ -652,6 +702,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       <div className="yk-ai-shell">
         {showRail && sidebar('rail')}
         {useDrawer && sidebar('drawer')}
+        {aboutSheet}
 
         <div className="yk-ai-main">
           {/* Topbar —— 极简：侧栏开关 · 会话名 · 模型徽章 */}

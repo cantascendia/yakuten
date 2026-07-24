@@ -537,6 +537,20 @@ html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; 
 html.sakura .yk-ai-side__brandicon { color: var(--sakura-pink-deep); filter: none; }
 html.sakura .yk-ai-side__brandname { font-family: var(--font-heading); color: var(--fg-1); }
 html.sakura .yk-ai-side__brandbeta { color: var(--mint-deep, #2E8B6B); border-color: currentColor; }
+html.sakura .yk-ai-side__about { color: var(--fg-3); }
+@media (hover: hover) { html.sakura .yk-ai-side__about:hover { color: var(--ink); } }
+
+/* 「使用须知」弹层 = 手账纸卡 */
+html.sakura .yk-ai-about__overlay { background: rgba(74, 40, 56, 0.4); }
+html.sakura .yk-ai-about__card {
+  background: var(--bg-3);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+html.sakura .yk-ai-about__title { font-family: var(--font-heading); color: var(--fg-1); }
+html.sakura .yk-ai-about__list { color: var(--fg-2); }
+html.sakura .yk-ai-about__list li::marker { color: var(--sakura-pink-deep); }
 
 /* =========================================================================
    14. 会话侧栏 / 抽屉 —— 手账目录

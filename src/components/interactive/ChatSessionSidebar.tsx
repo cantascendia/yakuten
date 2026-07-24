@@ -28,6 +28,7 @@ interface Props {
   onClearAll: () => void;
   onExportAll: () => void;
   onToggleHistory: (on: boolean) => void;
+  onAbout: () => void;
 }
 
 type Group = 'today' | 'yesterday' | 'prev7' | 'older';
@@ -217,6 +218,14 @@ const SIDEBAR_CSS = `
 }
 .yk-ai-side__tool:disabled { opacity: .4; cursor: not-allowed; }
 .yk-ai-side__offhint { font-size: 0.6875rem; color: var(--color-caution); line-height: 1.4; opacity: .85; }
+.yk-ai-side__about {
+  display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+  background: none; border: none; cursor: pointer; padding: 4px 2px; min-block-size: 32px;
+  color: var(--color-text-muted); font-family: var(--font-body); font-size: 0.71875rem;
+  transition: color var(--transition-fast); border-radius: 6px;
+}
+@media (hover: hover) { .yk-ai-side__about:hover { color: var(--color-text-primary); } }
+.yk-ai-side__about:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
 
 /* drawer variant */
 .yk-ai-drawer-overlay { position: absolute; inset: 0; background: var(--color-black-alpha-40); z-index: 20; }
@@ -244,7 +253,7 @@ const SIDEBAR_CSS = `
 export default function ChatSessionSidebar(props: Props) {
   const {
     variant, open = true, onClose, ui, sessions, activeId, historyEnabled,
-    onNewChat, onSelect, onRename, onDelete, onClearAll, onExportAll, onToggleHistory,
+    onNewChat, onSelect, onRename, onDelete, onClearAll, onExportAll, onToggleHistory, onAbout,
   } = props;
 
   const [query, setQuery] = useState('');
@@ -433,6 +442,12 @@ export default function ChatSessionSidebar(props: Props) {
             {ui.clearHistory}
           </button>
         </div>
+        <button className="yk-ai-side__about" onClick={() => { onAbout(); if (isDrawer) onClose?.(); }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+          {ui.aboutTitle}
+        </button>
       </div>
     </div>
   );

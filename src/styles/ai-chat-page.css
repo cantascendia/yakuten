@@ -25,12 +25,11 @@
   max-inline-size: none;
 }
 
-/* 舞台下方的 SEO 说明内容保持常规排版宽度 */
-.ai-chat-below {
-  max-inline-size: 60rem;
-  margin-inline: auto;
-  padding-block: var(--space-2xl, 3rem);
-  padding-inline: var(--space-lg, 1.5rem);
+/* 应用页零滚动：视口即应用（footer 等页面残余不再可滚达） */
+html:has(.ai-chat-stage),
+body:has(.ai-chat-stage) {
+  overflow: hidden;
+  height: 100%;
 }
 
 @supports not (block-size: 100dvh) {
@@ -87,8 +86,3 @@
   border: 0 !important;
 }
 
-/* 下方 SEO 说明在满宽容器内重新约束为常规排版宽度 */
-.sl-markdown-content:has(.ai-chat-stage) .ai-chat-below {
-  max-inline-size: 60rem;
-  margin-inline: auto;
-}
