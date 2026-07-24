@@ -71,14 +71,31 @@ export function renderMarkdown(text: string): string {
   return fallbackRender(text);
 }
 
+/**
+ * Streaming entry: regex-only renderer for in-flight chunks.
+ * Rich rendering (marked + DOMPurify + DOMParser postProcess) on EVERY chunk
+ * rebuilds the whole DOM dozens of times per second — text becomes unselectable
+ * and low-end devices choke. Use this during the stream; the final flush
+ * re-renders once through renderMarkdown().
+ */
+export function renderMarkdownStreaming(text: string): string {
+  return fallbackRender(text);
+}
+
 /* ---- DOM post-process (client only; rich path) --------------------------- */
 
+/**
+ * Same-origin check via the URL parser — string prefix checks are spoofable:
+ * `//evil.example` and `/\evil.example` start with '/' yet navigate off-site,
+ * and would otherwise get the trusted in-site card look (phishing surface).
+ * Returns true=in-site, false=external http(s), null=reject (other schemes).
+ */
 function isInternal(href: string): boolean | null {
-  if (href.startsWith('/')) return true;
   try {
-    const u = new URL(href);
+    const base = typeof location !== 'undefined' ? location.origin : 'https://hrtyaku.com';
+    const u = new URL(href, base);
     if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
-    return /(^|\.)hrtyaku\.com$/i.test(u.hostname);
+    return /(^|\.)hrtyaku\.com$/i.test(u.hostname) || (typeof location !== 'undefined' && u.origin === location.origin);
   } catch {
     return null;
   }

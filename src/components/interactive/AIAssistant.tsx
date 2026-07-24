@@ -5,7 +5,7 @@ import type { CrisisHotline } from './crisisSupport';
 import { useChatSessions } from './useChatSessions';
 import type { StoredMessage } from '../../utils/ai-chat/storage';
 import ChatSessionSidebar from './ChatSessionSidebar';
-import { renderMarkdown, ensureRichMarkdown, isRichReady, setCopyLabel } from './aiMarkdown';
+import { renderMarkdown, renderMarkdownStreaming, ensureRichMarkdown, isRichReady, setCopyLabel } from './aiMarkdown';
 
 /* =========================================================================
    AIAssistant — 产品级 AI 对话（claude.ai / chatgpt 式全屏窗口 + 手机适配）
@@ -23,22 +23,8 @@ import { renderMarkdown, ensureRichMarkdown, isRichReady, setCopyLabel } from '.
 
 let pageContextOptOut = false;
 
-export function AIChatIcon({ size = 24 }: { size?: number }) {
-  const petal = 'M12 6.9c.85.85.85 1.8 0 2.6-.85-.8-.85-1.75 0-2.6z';
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 14.8a2 2 0 0 1-2 2H7.6L3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      <g strokeWidth="1.3">
-        <path d={petal} />
-        <path d={petal} transform="rotate(72 12 9.5)" />
-        <path d={petal} transform="rotate(144 12 9.5)" />
-        <path d={petal} transform="rotate(216 12 9.5)" />
-        <path d={petal} transform="rotate(288 12 9.5)" />
-      </g>
-    </svg>
-  );
-}
+import { AIChatIcon } from './AIChatIcon';
+export { AIChatIcon };
 
 /** 清洗 document.title：去站名后缀；专用工具页 / 异常标题返回 null。 */
 function getPageTitle(): string | null {
@@ -53,6 +39,19 @@ function getPageTitle(): string | null {
 const MAX_CONTENT_BYTES = 4096; // 端点单条上限
 const MAX_SENT_MESSAGES = 10; // 端点只用最近 10 条
 const byteLen = (s: string) => new TextEncoder().encode(s).length;
+
+/** dialog 内 Tab 循环（focus trap）：挂在弹层容器的 onKeyDown。 */
+function trapTab(e: React.KeyboardEvent<HTMLElement>) {
+  if (e.key !== 'Tab') return;
+  const els = e.currentTarget.querySelectorAll<HTMLElement>(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  );
+  if (!els.length) return;
+  const first = els[0];
+  const last = els[els.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
 
 interface AIAssistantProps {
   compact?: boolean;
@@ -89,8 +88,12 @@ const BASE_CSS = `
     radial-gradient(ellipse 560px 380px at 8% 108%, var(--color-accent-alpha-08, rgba(212,168,83,.06)), transparent 60%),
     linear-gradient(180deg, #14111d 0%, #191521 100%);
 }
+/* 亮色主题（非 sakura）：token 化背景，避免暗底深字对比崩坏 */
+[data-theme='light'] .yk-ai--page { background: var(--color-bg, #FAF7F2); }
+[data-theme='light'] .yk-ai--compact { background: var(--color-bg-container, #FFFFFF); }
 .yk-ai--compact { background: var(--color-bg-container, #1a1625); }
 .yk-ai-shell { display:flex; flex:1; min-block-size:0; position:relative; overflow:hidden; }
+.yk-ai-srstatus { position:absolute; inline-size:1px; block-size:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 .yk-ai-main { flex:1; min-inline-size:0; display:flex; flex-direction:column; block-size:100%; overflow:hidden; }
 
 /* topbar —— 极简：侧栏开关 · 会话名 · 模型徽章；底缘金线渐隐（欢迎态无线，沉浸） */
@@ -99,12 +102,13 @@ const BASE_CSS = `
   background: linear-gradient(90deg, transparent, var(--color-accent-alpha-30, rgba(212,168,83,.28)) 18%, var(--color-outline-20) 55%, transparent); }
 .yk-ai-topbar--hero::after { content:none; }
 .yk-ai--compact .yk-ai-topbar { block-size:44px; padding:0 6px; }
-.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; justify-content:center; padding:6px; transition: color var(--transition-fast), background var(--transition-fast); border-radius:9px; }
+.yk-ai-iconbtn { background:none; border:none; color: var(--color-text-secondary); cursor:pointer; min-inline-size:44px; min-block-size:44px; display:inline-flex; align-items:center; justify-content:center; padding:6px; transition: color var(--transition-fast), background var(--transition-fast); border-radius:10px; }
 a.yk-ai-iconbtn { text-decoration:none; }
 @media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-text-primary); background: var(--color-white-alpha-03);} }
 .yk-ai-iconbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
 .yk-ai-topbar__title { flex:1; min-inline-size:0; font-family: var(--font-display); font-size:.875rem; font-weight:600; color: var(--color-text-secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-inline:6px; letter-spacing:.01em; }
-.yk-ai-topbar__model { font-size:.59375rem; color: var(--color-accent); opacity:.7; font-family: var(--font-mono); letter-spacing:.05em; white-space:nowrap; max-inline-size:180px; overflow:hidden; text-overflow:ellipsis; padding-inline:6px; }
+.yk-ai-topbar__model { font-size:.6875rem; color: var(--color-accent); font-family: var(--font-mono); letter-spacing:.04em; white-space:nowrap; max-inline-size:200px; overflow:hidden; text-overflow:ellipsis;
+  background: var(--color-accent-alpha-08, rgba(212,168,83,.1)); border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.25)); padding:2px 9px; border-radius:999px; }
 
 .yk-ai-logwrap { flex:1; min-block-size:0; position:relative; display:flex; flex-direction:column; }
 .yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding:32px var(--space-lg); display:flex; flex-direction:column; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
@@ -112,17 +116,20 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-log::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius:8px; }
 .yk-ai-log::-webkit-scrollbar-track { background: transparent; }
 .yk-ai--compact .yk-ai-log { padding:16px 12px; }
-.yk-ai-log__inner { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:32px; }
-.yk-ai--compact .yk-ai-log__inner { gap:18px; }
+/* 问答节奏：同一轮内紧凑（12px），轮与轮之间拉开（12+24=36px） */
+.yk-ai-log__inner { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:12px; }
+.yk-ai-log__inner > .yk-ai-turn:has(.yk-ai-msg--user):not(:first-child) { margin-block-start:24px; }
+.yk-ai--compact .yk-ai-log__inner { gap:10px; }
+.yk-ai--compact .yk-ai-log__inner > .yk-ai-turn:has(.yk-ai-msg--user):not(:first-child) { margin-block-start:14px; }
 
 /* ============ 状态 A · 欢迎态「居中舞台」 ============ */
 .yk-ai-hero { flex:1; min-block-size:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:28px var(--space-lg); animation: ai-hero-in .45s var(--spring-common, ease) both; }
 .yk-ai--compact .yk-ai-hero { padding:18px 14px; }
-.yk-ai-hero__badge { inline-size:68px; block-size:68px; border-radius:50%; display:flex; align-items:center; justify-content:center; color: var(--color-accent); flex-shrink:0;
-  background: linear-gradient(140deg, var(--color-primary-alpha-15, rgba(200,75,124,.15)), var(--color-accent-alpha-08, rgba(212,168,83,.08)));
-  border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.3));
-  box-shadow: 0 0 36px var(--color-primary-alpha-15, rgba(200,75,124,.16)); }
-.yk-ai--compact .yk-ai-hero__badge { inline-size:52px; block-size:52px; }
+.yk-ai-hero__badge { inline-size:62px; block-size:62px; border-radius:20px; display:flex; align-items:center; justify-content:center; color: var(--color-accent); flex-shrink:0;
+  background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.18)), var(--color-accent-alpha-08, rgba(212,168,83,.12)));
+  border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.25));
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.yk-ai--compact .yk-ai-hero__badge { inline-size:50px; block-size:50px; border-radius:16px; }
 .yk-ai-hero__greeting { font-family: var(--font-display); font-size:1.7rem; font-weight:700; color: var(--color-text-primary); letter-spacing:.02em; line-height:1.35; margin-block-start:18px; text-wrap:balance; }
 .yk-ai--compact .yk-ai-hero__greeting { font-size:1.15rem; margin-block-start:12px; }
 .yk-ai-hero__sub { font-family: var(--font-body); font-size:.9rem; line-height:1.7; max-inline-size:36rem; color: var(--color-text-secondary); margin-block-start:8px; text-wrap:balance; }
@@ -139,20 +146,23 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-turn { display:flex; flex-direction:column; gap:8px; animation: ai-msg-in .3s var(--spring-common, ease) both; }
 .yk-ai-msg { font-family: var(--font-body); font-size:.96875rem; color: var(--color-text-primary); }
 .yk-ai--compact .yk-ai-msg { font-size:.875rem; }
-.yk-ai-msg--user { align-self:flex-end; max-inline-size:82%; inline-size:fit-content; padding:12px 18px; line-height:1.65; white-space:pre-wrap;
-  background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.16)), var(--color-primary-alpha-08, rgba(200,75,124,.07)));
-  border:1px solid var(--color-primary-alpha-30, rgba(200,75,124,.28));
-  border-start-start-radius:18px; border-start-end-radius:18px; border-end-end-radius:5px; border-end-start-radius:18px; }
+/* 四角对称卡（缺角气泡是 IM 社交软件语言，三家 AI 产品均为对称 rounded） */
+.yk-ai-msg--user { align-self:flex-end; max-inline-size:76%; inline-size:fit-content; padding:12px 18px; line-height:1.65; white-space:pre-wrap;
+  background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.18)), var(--color-primary-alpha-08, rgba(200,75,124,.08)));
+  border:1px solid var(--color-primary-alpha-30, rgba(200,75,124,.32));
+  border-radius:16px; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+[data-theme='light'] .yk-ai-msg--user { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.42)); }
 .yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.8; background:none; border:none; }
-.yk-ai-msg__label { display:flex; align-items:center; gap:7px; font-size:.6875rem; color: var(--color-accent); font-family: var(--font-mono); letter-spacing:.08em; text-transform:uppercase; margin-block-end:8px; opacity:.9; }
-.yk-ai-msg__label svg { filter: drop-shadow(0 0 5px var(--color-accent-alpha-30, rgba(212,168,83,.3))); }
+/* AI 标识降噪：灰字 12px + 仅图标留金（回复本体才是主角） */
+.yk-ai-msg__label { display:flex; align-items:center; gap:7px; font-size:.75rem; color: var(--color-text-muted); font-family: var(--font-body); letter-spacing:.02em; margin-block-end:8px; }
+.yk-ai-msg__label svg { color: var(--color-accent); }
 /* 流式光标 —— 仅 streaming 中的 AI 消息尾部 */
 .yk-ai-msg--streaming > div:last-child::after { content:'▍'; color: var(--color-accent); animation: ai-caret 1s step-end infinite; margin-inline-start:2px; }
 
 /* 操作条常显（Claude/Gemini 路线：移动端无 hover，复制/重答是高频动作） */
 .yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; }
 .yk-ai-actions--user { align-self:flex-end; }
-.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:32px; min-block-size:32px; display:inline-flex; align-items:center; gap:4px; padding:0 7px; font-size:.6875rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:6px; }
+.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; gap:4px; padding:4px 8px; font-size:.75rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:8px; }
 @media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary-light);} }
 .yk-ai-actbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
 
@@ -162,8 +172,9 @@ a.yk-ai-iconbtn { text-decoration:none; }
 
 /* rich markdown blocks */
 .yk-ai-msg .yk-ai-h { display:block; margin-top:.75em; font-weight:700; }
-.yk-ai-msg h1,.yk-ai-msg h2 { font-family: var(--font-display); font-size:1.08em; font-weight:700; margin:.7em 0 .3em; color: var(--color-text-primary); }
-.yk-ai-msg h3,.yk-ai-msg h4 { font-family: var(--font-display); font-size:1em; font-weight:700; margin:.55em 0 .25em; }
+.yk-ai-msg h1 { font-family: var(--font-display); font-size:1.35em; font-weight:700; margin:1em 0 .4em; color: var(--color-text-primary); border-block-end:1px solid var(--color-outline-20); padding-block-end:4px; }
+.yk-ai-msg h2 { font-family: var(--font-display); font-size:1.2em; font-weight:700; margin:.85em 0 .35em; color: var(--color-text-primary); }
+.yk-ai-msg h3,.yk-ai-msg h4 { font-family: var(--font-display); font-size:1.05em; font-weight:600; margin:.7em 0 .25em; color: var(--color-accent); }
 .yk-ai-msg ul,.yk-ai-msg ol { margin:.45em 0; padding-inline-start:1.4em; display:flex; flex-direction:column; gap:4px; }
 .yk-ai-msg li { list-style:revert; }
 .yk-ai-msg li::marker { color: var(--color-accent); }
@@ -175,12 +186,14 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-hr { border:none; border-top:1px solid var(--color-outline-20); margin:.8em 0; }
 .yk-ai-code, .yk-ai-msg code { background: var(--color-white-alpha-08); padding:.12em .35em; font-size:.85em; font-family: var(--font-code); border-radius:4px; }
 .yk-ai-prewrap { position:relative; margin:.6em 0; }
-.yk-ai-msg pre { background: rgba(0,0,0,.32); border:1px solid var(--color-outline-20); padding:12px 14px; overflow-x:auto; font-size:.82em; border-radius:10px; }
+.yk-ai-msg pre { background: rgba(12,10,18,.7); border:1px solid var(--color-outline-20); padding:12px 14px; overflow-x:auto; font-size:.82em; border-radius:10px; box-shadow: inset 0 1px 3px rgba(0,0,0,.3); }
+[data-theme='light'] .yk-ai-msg pre { background: rgba(74,40,56,.05); box-shadow:none; }
 .yk-ai-msg pre code { background:none; padding:0; font-size:1em; }
-.yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:28px; block-size:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px; transition: color var(--transition-fast), border-color var(--transition-fast); }
+.yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:32px; block-size:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; transition: color var(--transition-fast), border-color var(--transition-fast); }
 @media (hover:hover){ .yk-ai-copybtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary);} }
 .yk-ai-copybtn--done { color: var(--color-safe); }
-.yk-ai-tablewrap { overflow-x:auto; margin:.6em 0; border:1px solid var(--color-outline-20); border-radius:10px; }
+.yk-ai-tablewrap { overflow-x:auto; margin:.6em 0; border:1px solid var(--color-outline-20); border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+[data-theme='light'] .yk-ai-tablewrap { box-shadow: 0 2px 10px rgba(74,40,56,.08); }
 .yk-ai-table { border-collapse:collapse; font-size:.85em; min-inline-size:100%; }
 .yk-ai-table th,.yk-ai-table td { border-block-end:1px solid var(--color-outline-20); padding:8px 12px; text-align:start; white-space:nowrap; }
 .yk-ai-table tr:last-child td { border-block-end:none; }
@@ -231,13 +244,15 @@ a.yk-ai-iconbtn { text-decoration:none; }
   background: var(--color-bg-container, #211E28);
   border:1px solid var(--color-outline-20);
   border-radius:28px; padding:13px 12px 13px 20px; min-block-size:56px;
-  box-shadow: 0 10px 40px rgba(0,0,0,.38);
+  box-shadow: 0 12px 36px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.08);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
 .yk-ai--compact .yk-ai-composer { border-radius:20px; padding:9px 9px 9px 14px; min-block-size:46px; }
-.yk-ai-composer:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.4));
-  box-shadow: 0 10px 40px rgba(0,0,0,.38), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.08)); }
-.yk-ai-input { flex:1; min-inline-size:0; min-block-size:26px; max-block-size:200px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:.96875rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
-.yk-ai--compact .yk-ai-input { font-size:.875rem; }
+.yk-ai-composer:focus-within { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.5));
+  box-shadow: 0 12px 36px rgba(0,0,0,.42), 0 0 0 3px var(--color-primary-alpha-08, rgba(200,75,124,.12)), inset 0 1px 0 rgba(255,255,255,.12); }
+[data-theme='light'] .yk-ai-composer { box-shadow: 0 12px 36px rgba(74,40,56,.14); }
+/* 16px 锁死：<16px 的输入框在 iOS Safari 聚焦时会强制放大 viewport（横向乱晃） */
+.yk-ai-input { flex:1; min-inline-size:0; min-block-size:26px; max-block-size:200px; padding:6px 0; background:transparent; color: var(--color-text-primary); border:none; font-family: var(--font-body); font-size:1rem; outline:none; border-radius:0; resize:none; line-height:1.6; }
+.yk-ai--compact .yk-ai-input { font-size:1rem; }
 .yk-ai-input::placeholder { color: var(--color-text-muted); }
 .yk-ai-send { inline-size:38px; min-inline-size:38px; block-size:38px; padding:0; display:inline-flex; align-items:center; justify-content:center; align-self:flex-end;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #A03A63));
@@ -263,15 +278,24 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-about__list li { list-style:disc; }
 .yk-ai-about__list li::marker { color: var(--color-accent); }
 /* 免责常驻行 —— composer 正下方（ChatGPT「可能会犯错」同位；语义只强化不弱化） */
-.yk-ai-inputnote { text-align:center; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:48rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
+.yk-ai-inputnote { text-align:center; font-size:.75rem; color: var(--color-text-muted); font-family: var(--font-body); line-height:1.5; max-inline-size:48rem; margin-inline:auto; padding:8px 12px; padding-block-end: max(10px, env(safe-area-inset-bottom, 0px)); }
 .yk-ai-hero .yk-ai-inputnote { margin-block-start:14px; padding-block-end:0; }
 
 @media (max-width:768px){
-  .yk-ai-msg--user { max-inline-size:94%; }
+  .yk-ai-msg--user { max-inline-size:88%; }
   .yk-ai-log { padding:18px var(--space-md); }
-  .yk-ai-log__inner { gap:24px; }
   .yk-ai-hero__greeting { font-size:1.3rem; }
   .yk-ai-hero__composer { margin-block-start:20px; }
+  /* 触控热区统一 44px（Apple HIG / Material） */
+  .yk-ai-send, .yk-ai-actbtn, .yk-ai-ctx__close { min-inline-size:44px; min-block-size:44px; }
+  /* 移动欢迎态只留 3 个建议 pill —— composer 保持舞台中心 */
+  .yk-ai-pill:nth-child(n+4) { display:none; }
+  /* SSR 首帧不闪桌面侧栏：rail 由 CSS 隐藏（drawer 是绝对定位变体，不受影响） */
+  .yk-ai-shell > .yk-ai-side:not(.yk-ai-side--drawer) { display:none; }
+}
+@media (max-height:600px){
+  .ai-chat-stage { min-block-size:0; }
+  .yk-ai-hero { justify-content:flex-start; }
 }
 @media (prefers-reduced-motion: reduce){
   .yk-ai-dot{ animation:none; }
@@ -279,6 +303,7 @@ a.yk-ai-iconbtn { text-decoration:none; }
   .yk-ai-turn, .yk-ai-hero { animation:none; }
   .yk-ai-msg--streaming > div:last-child::after { animation:none; }
   .yk-ai-pill:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
+  .yk-ai *, .yk-ai *::before, .yk-ai *::after { transition:none !important; animation-duration:.01ms !important; }
 }
 `;
 
@@ -291,7 +316,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const {
     messages, sessions, activeId, activeSession, historyEnabled, setHistoryEnabled,
     newSession, switchSession, renameSession, deleteSession, clearAll,
-    setActiveMessages, flush, exportAll,
+    setActiveMessages, ensureSession, updateSession, setStreaming, flush, exportAll,
   } = chat;
 
   const [input, setInput] = useState('');
@@ -311,6 +336,10 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const [editingIdx, setEditingIdx] = useState<number | null>(null);
   const [editText, setEditText] = useState('');
   const [aboutOpen, setAboutOpen] = useState(false);
+  /** 流式归属的 sessionId（渲染层判断轻量渲染 + 光标）；null = 无流式 */
+  const [streamingMsgKey, setStreamingMsgKey] = useState<string | null>(null);
+  /** sr-only 状态播报（流式区 aria-live 已静音，完成/错误在此一次性播报） */
+  const [srStatus, setSrStatus] = useState('');
 
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -425,16 +454,33 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-  /** 流式核心 —— 假设 active session 末尾已是空 assistant 占位。 */
-  async function runCompletion(outgoing: { role: string; content: string }[]) {
+  /** 移除末尾空 assistant 占位（停止/失败时防思考圆点卡死）。 */
+  const dropEmptyTail = (prev: StoredMessage[]) => {
+    const last = prev[prev.length - 1];
+    return last?.role === 'assistant' && !last.content ? prev.slice(0, -1) : prev;
+  };
+
+  /** 流式核心 —— 所有增量更新锁定发起时的 sessionId（用户可在流式中切换/新建会话）。 */
+  async function runCompletion(sessionId: string, outgoing: { role: string; content: string }[]) {
     setError(null);
     setIsLoading(true);
+    setStreaming(true);
+    setStreamingMsgKey(`${sessionId}`);
     const controller = new AbortController();
     abortRef.current = controller;
     const MAX_ATTEMPTS = 3;
     const BACKOFFS = [500, 1500, 3000];
     let firstChunk = false;
     let lastErr: Error | null = null;
+
+    const finish = (announce: string | null) => {
+      setStreaming(false);
+      setStreamingMsgKey(null);
+      setIsLoading(false);
+      abortRef.current = null;
+      if (announce) setSrStatus(announce);
+      focusInput();
+    };
 
     for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
       try {
@@ -463,7 +509,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         if (model) setServedModel(model);
 
         if (!res.body) {
-          lastErr = new Error('No response body');
+          lastErr = new Error(ui.serviceUnavailable);
           if (attempt < MAX_ATTEMPTS - 1) { setError(ui.retrying); await sleep(BACKOFFS[attempt]); continue; }
           throw lastErr;
         }
@@ -478,31 +524,28 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             if (done) break;
             firstChunk = true;
             content += decoder.decode(value, { stream: true });
-            setActiveMessages((prev) => replaceLastAssistant(prev, content), false);
+            updateSession(sessionId, (prev) => replaceLastAssistant(prev, content), false);
           }
         } catch (streamErr: unknown) {
           if (controller.signal.aborted) {
-            // 用户主动停止 —— 保留已渲染部分；若首字节前停止则移除空占位（否则思考圆点会卡住）
-            setActiveMessages((prev) => {
-              const last = prev[prev.length - 1];
-              return last?.role === 'assistant' && !last.content ? prev.slice(0, -1) : prev;
-            }, true);
-            setIsLoading(false); abortRef.current = null; focusInput(); return;
+            // 用户主动停止 —— 保留已渲染部分；若首字节前停止则移除空占位
+            updateSession(sessionId, dropEmptyTail, true);
+            finish(null); return;
           }
           const m = streamErr instanceof Error ? streamErr.message : ui.unknownError;
           setError(`${m}（${ui.streamInterrupted}）`);
-          flush(); setIsLoading(false); abortRef.current = null; focusInput(); return;
+          flush(); finish(ui.errorPrefix + m); return;
         }
 
-        if (!content) setActiveMessages((prev) => replaceLastAssistant(prev, ui.emptyResponse), false);
-        flush(); setIsLoading(false); abortRef.current = null; focusInput(); return;
+        if (!content) updateSession(sessionId, (prev) => replaceLastAssistant(prev, ui.emptyResponse), false);
+        flush();
+        // 完成后把回复全文（截断）一次性交给 sr-only 播报区——替代流式区的高频 aria-live
+        finish((content || ui.emptyResponse).slice(0, 400));
+        return;
       } catch (err: unknown) {
         if (controller.signal.aborted) {
-          setActiveMessages((prev) => {
-            const last = prev[prev.length - 1];
-            return last?.role === 'assistant' && !last.content ? prev.slice(0, -1) : prev;
-          }, true);
-          setIsLoading(false); abortRef.current = null; focusInput(); return;
+          updateSession(sessionId, dropEmptyTail, true);
+          finish(null); return;
         }
         lastErr = err instanceof Error ? err : new Error(ui.unknownError);
         if (firstChunk) break;
@@ -512,14 +555,10 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       }
     }
 
-    setError(`${lastErr?.message ?? ui.unknownError}（${ui.retryHint}）`);
-    setActiveMessages((prev) => {
-      const last = prev[prev.length - 1];
-      return last?.role === 'assistant' && !last.content ? prev.slice(0, -1) : prev;
-    }, true);
-    setIsLoading(false);
-    abortRef.current = null;
-    focusInput();
+    const finalMsg = lastErr?.message ?? ui.unknownError;
+    setError(`${finalMsg}（${ui.retryHint}）`);
+    updateSession(sessionId, dropEmptyTail, true);
+    finish(ui.errorPrefix + finalMsg);
   }
 
   function focusInput() { inputRef.current?.focus(); }
@@ -533,40 +572,45 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
     const crisis = containsCrisisKeyword(messageText);
     const apiContent = buildApiContent(messageText);
+    // 锁定发起时的会话 id —— 用户可在流式中切换/新建会话
+    const sid = ensureSession();
     const base: StoredMessage[] = [...messages, { role: 'user', content: messageText, crisis }];
 
-    setActiveMessages((prev) => [...prev, { role: 'user', content: messageText, crisis }], true);
-    setActiveMessages((prev) => [...prev, { role: 'assistant', content: '' }], false);
+    updateSession(sid, (prev) => [...prev, { role: 'user', content: messageText, crisis }], true);
+    updateSession(sid, (prev) => [...prev, { role: 'assistant', content: '' }], false);
     setInput('');
     setAtBottom(true);
-    await runCompletion(buildOutgoing(base, apiContent));
+    await runCompletion(sid, buildOutgoing(base, apiContent));
   }
 
   function stopGeneration() { abortRef.current?.abort(); }
 
   function regenerate() {
-    if (isLoading) return;
+    if (isLoading || !activeId) return;
     let idx = -1;
     for (let i = messages.length - 1; i >= 0; i--) if (messages[i].role === 'user') { idx = i; break; }
     if (idx < 0) return;
+    const sid = activeId;
     const base = messages.slice(0, idx + 1);
-    setActiveMessages(() => [...base, { role: 'assistant', content: '' }], false);
+    updateSession(sid, () => [...base, { role: 'assistant', content: '' }], false);
     setAtBottom(true);
-    runCompletion(buildOutgoing(base, base[base.length - 1].content));
+    runCompletion(sid, buildOutgoing(base, base[base.length - 1].content));
   }
 
   function beginEdit(i: number) { setEditingIdx(i); setEditText(messages[i].content); }
   function cancelEdit() { setEditingIdx(null); setEditText(''); }
   function submitEdit(i: number) {
     const text = editText.trim();
-    if (!text || byteLen(text) > MAX_CONTENT_BYTES) return;
+    // 先校验可发送性再动状态 —— 否则离线/限流时会留下永久的"正在思考"假占位
+    if (!text || byteLen(text) > MAX_CONTENT_BYTES || !canSend) return;
     const crisis = containsCrisisKeyword(text);
+    const sid = ensureSession();
     const base: StoredMessage[] = [...messages.slice(0, i), { role: 'user', content: text, crisis }];
-    setActiveMessages(() => [...base, { role: 'assistant', content: '' }], true);
+    updateSession(sid, () => [...base, { role: 'assistant', content: '' }], true);
     setEditingIdx(null);
     setEditText('');
     setAtBottom(true);
-    if (canSend) runCompletion(buildOutgoing(base, buildApiContent(text)));
+    runCompletion(sid, buildOutgoing(base, buildApiContent(text)));
   }
 
   async function copyMessage(i: number, text: string) {
@@ -610,7 +654,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       onNewChat={() => { newSession(); setInput(''); focusInput(); }}
       onSelect={switchSession}
       onRename={renameSession}
-      onDelete={deleteSession}
+      onDelete={(id) => {
+        // 删除正在接收流式回复的会话 → 同时终止该请求（chunk 已无处可写）
+        if (id === streamingMsgKey) abortRef.current?.abort();
+        deleteSession(id);
+      }}
       onClearAll={clearAll}
       onExportAll={exportAll}
       onToggleHistory={setHistoryEnabled}
@@ -623,7 +671,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const aboutSheet = aboutOpen ? (
     <div className="yk-ai-about">
       <div className="yk-ai-about__overlay" onClick={() => { setAboutOpen(false); focusInput(); }} />
-      <div className="yk-ai-about__card" role="dialog" aria-modal="true" aria-label={ui.aboutTitle}>
+      <div className="yk-ai-about__card" role="dialog" aria-modal="true" aria-label={ui.aboutTitle} onKeyDown={trapTab}>
         <div className="yk-ai-about__head">
           <span className="yk-ai-about__title">{ui.aboutTitle}</span>
           <button className="yk-ai-iconbtn" onClick={() => { setAboutOpen(false); focusInput(); }} aria-label={ui.close} autoFocus>
@@ -708,6 +756,8 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   return (
     <div className={`yk-ai ${compact ? 'yk-ai--compact' : 'yk-ai--page'}`} role="region" aria-label={ui.title}>
       <style>{BASE_CSS}</style>
+      {/* 读屏状态播报区（视觉隐藏）：回复完成时播报全文摘要 / 错误播报错误信息 */}
+      <div className="yk-ai-srstatus" role="status" aria-live="polite">{srStatus}</div>
       <div className="yk-ai-shell">
         {showRail && sidebar('rail')}
         {useDrawer && sidebar('drawer')}
@@ -801,13 +851,13 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             /* ============ 状态 B · 对话态 ============ */
             <>
               <div className="yk-ai-logwrap">
+                {/* aria-live 静音：流式每秒数十次 text 变更会让读屏高频碎读；
+                    完成/错误由下方 sr-only 状态区一次性播报 */}
                 <div
                   ref={logRef}
                   className="yk-ai-log"
                   role="log"
-                  aria-live="polite"
-                  aria-atomic="false"
-                  aria-relevant="additions text"
+                  aria-live="off"
                   onScroll={onLogScroll}
                   onClick={onLogClick}
                 >
@@ -866,16 +916,23 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                         </div>
                       )}
 
-                      {/* Assistant */}
+                      {/* Assistant —— 流式中走轻量渲染（结束后一次富渲染），避免每 chunk 全量 DOM 重建 */}
                       {msg.role === 'assistant' && (
                         msg.content ? (
                           <>
-                            <div className={`yk-ai-msg yk-ai-msg--ai ${isLoading && i === messages.length - 1 ? 'yk-ai-msg--streaming' : ''}`}>
+                            <div className={`yk-ai-msg yk-ai-msg--ai ${isLoading && i === messages.length - 1 && streamingMsgKey === activeId ? 'yk-ai-msg--streaming' : ''}`}>
                               <div className="yk-ai-msg__label">
                                 <AIChatIcon size={15} />
                                 <span>{ui.title}</span>
                               </div>
-                              <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html:
+                                    isLoading && i === messages.length - 1 && streamingMsgKey === activeId
+                                      ? renderMarkdownStreaming(msg.content)
+                                      : renderMarkdown(msg.content),
+                                }}
+                              />
                             </div>
                             {!isLoading && (
                               <div className="yk-ai-actions">
@@ -898,7 +955,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                     </div>
                   ))}
 
-                    {error && <div className="yk-ai-error">{ui.errorPrefix}{error}</div>}
+                    {error && <div className="yk-ai-error" role="alert">{ui.errorPrefix}{error}</div>}
                   </div>
                 </div>
 

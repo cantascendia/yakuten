@@ -1,7 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
-import AIAssistant, { AIChatIcon } from './AIAssistant';
+import { AIChatIcon } from './AIChatIcon';
 import { getLocale, AI_COPY } from './aiChatL10n';
+
+/* 聊天主体按需加载：FAB 挂全站（client:idle），若静态 import 会把整个
+   chat 应用（组件+17 语字典+存储层）预载进每个页面。点击打开时再拉。 */
+const AIAssistantLazy = lazy(() => import('./AIAssistant'));
 
 /* ================================
    Floating AI Chat Widget
@@ -198,7 +202,9 @@ function FloatingAIChatInner() {
               isMobile ? 'yk-ai-panel--mobile' : '',
             ].filter(Boolean).join(' ')}
           >
-            <AIAssistant compact onClose={handleClose} />
+            <Suspense fallback={null}>
+              <AIAssistantLazy compact onClose={handleClose} />
+            </Suspense>
           </div>
         </>
       )}

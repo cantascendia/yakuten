@@ -70,6 +70,34 @@ export function trimStore(store: ChatStoreV1): ChatStoreV1 {
   return { version: 1, sessions, activeId };
 }
 
+/* Per-item shape guards — localStorage can be corrupted or hand-edited; a bad
+   record must degrade to "dropped", never crash rendering or blow up memory. */
+const MAX_STORED_CONTENT = 20_000;
+function sanitizeMessage(m: unknown): StoredMessage | null {
+  if (!m || typeof m !== 'object') return null;
+  const msg = m as Record<string, unknown>;
+  if (msg.role !== 'user' && msg.role !== 'assistant') return null;
+  if (typeof msg.content !== 'string') return null;
+  return {
+    role: msg.role,
+    content: msg.content.slice(0, MAX_STORED_CONTENT),
+    crisis: msg.crisis === true ? true : undefined,
+  };
+}
+function sanitizeSession(s: unknown): ChatSession | null {
+  if (!s || typeof s !== 'object') return null;
+  const sess = s as Record<string, unknown>;
+  if (typeof sess.id !== 'string' || !sess.id) return null;
+  if (!Array.isArray(sess.messages)) return null;
+  return {
+    id: sess.id.slice(0, 64),
+    title: typeof sess.title === 'string' ? sess.title.slice(0, 120) : '',
+    createdAt: typeof sess.createdAt === 'number' ? sess.createdAt : 0,
+    updatedAt: typeof sess.updatedAt === 'number' ? sess.updatedAt : 0,
+    messages: sess.messages.map(sanitizeMessage).filter((m): m is StoredMessage => m !== null),
+  };
+}
+
 export function aiLoadStore(): ChatStoreV1 {
   if (!isBrowser()) return { ...EMPTY_STORE };
   if (!aiHistoryEnabled()) return { ...EMPTY_STORE };
@@ -80,7 +108,14 @@ export function aiLoadStore(): ChatStoreV1 {
     if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.sessions)) {
       return { ...EMPTY_STORE };
     }
-    return parsed;
+    const sessions = parsed.sessions
+      .map(sanitizeSession)
+      .filter((s): s is ChatSession => s !== null);
+    const activeId =
+      typeof parsed.activeId === 'string' && sessions.some((s) => s.id === parsed.activeId)
+        ? parsed.activeId
+        : null;
+    return { version: 1, sessions, activeId };
   } catch {
     return { ...EMPTY_STORE };
   }
@@ -166,12 +201,15 @@ export function aiExportJSON(store: ChatStoreV1): void {
   );
 }
 
-/** Export a single session as Markdown. */
-export function aiExportMarkdown(session: ChatSession): void {
+/** Export a single session as Markdown (labels supplied by caller for i18n). */
+export function aiExportMarkdown(
+  session: ChatSession,
+  labels: { user: string; assistant: string } = { user: 'You', assistant: 'AI' },
+): void {
   if (!isBrowser()) return;
   const lines = [`# ${session.title}`, ''];
   for (const m of session.messages) {
-    lines.push(m.role === 'user' ? '**You:**' : '**AI:**', '', m.content, '');
+    lines.push(`**${m.role === 'user' ? labels.user : labels.assistant}:**`, '', m.content, '');
   }
   downloadBlob(
     lines.join('\n'),

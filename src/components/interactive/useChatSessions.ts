@@ -14,7 +14,7 @@
  *    boundaries persist=true.
  */
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AI_CHAT_KEY,
   AI_CHAT_CONSENT_KEY,
@@ -68,6 +68,20 @@ export interface UseChatSessions {
     updater: (prev: StoredMessage[]) => StoredMessage[],
     persist?: boolean,
   ) => void;
+  /**
+   * Ensure an active session exists and return its id — call BEFORE starting a
+   * streamed completion so chunk updates can be pinned to that id (the user may
+   * switch/new-chat mid-stream; see updateSession).
+   */
+  ensureSession: () => string;
+  /** Mutate a SPECIFIC session's messages by id (streaming-safe; no auto-create). */
+  updateSession: (
+    id: string,
+    updater: (prev: StoredMessage[]) => StoredMessage[],
+    persist?: boolean,
+  ) => void;
+  /** Mark streaming activity: while true, cross-tab storage reloads are deferred. */
+  setStreaming: (on: boolean) => void;
   /** Force-write current state to disk (used at stop/error boundaries). */
   flush: () => void;
 
@@ -76,13 +90,37 @@ export interface UseChatSessions {
 }
 
 export function useChatSessions(): UseChatSessions {
-  const [store, setStore] = useState<ChatStoreV1>(() => aiLoadStore());
-  const [historyEnabled, setHistoryEnabledState] = useState<boolean>(() => aiHistoryEnabled());
+  // SSR 与客户端首帧必须一致（都渲染空态），挂载后再读 localStorage —
+  // 否则已 opt-in 的返回用户首帧就撞 hydration mismatch（服务端欢迎态 vs 客户端历史态）。
+  const [store, setStore] = useState<ChatStoreV1>({ ...EMPTY_STORE });
+  const [historyEnabled, setHistoryEnabledState] = useState<boolean>(false);
+  useEffect(() => {
+    setHistoryEnabledState(aiHistoryEnabled());
+    setStore(aiLoadStore());
+  }, []);
+  // While a completion is streaming, in-memory state is ahead of disk
+  // (chunks are persist=false). A cross-tab storage reload would wipe it —
+  // defer the reload until streaming ends.
+  const streamingRef = useRef(false);
+  const pendingReloadRef = useRef(false);
+
+  const setStreaming = useCallback((on: boolean) => {
+    streamingRef.current = on;
+    if (!on && pendingReloadRef.current) {
+      pendingReloadRef.current = false;
+      setHistoryEnabledState(aiHistoryEnabled());
+      setStore(aiLoadStore());
+    }
+  }, []);
 
   // Cross-tab sync: another tab enabled/cleared/updated history.
   useEffect(() => {
     function onStorage(e: StorageEvent) {
       if (e.key === AI_CHAT_KEY || e.key === AI_CHAT_CONSENT_KEY || e.key === null) {
+        if (streamingRef.current) {
+          pendingReloadRef.current = true;
+          return;
+        }
         setHistoryEnabledState(aiHistoryEnabled());
         setStore(aiLoadStore());
       }
@@ -120,6 +158,40 @@ export function useChatSessions(): UseChatSessions {
           s.id === activeId ? { ...s, messages: nextMessages, title, updatedAt: now } : s,
         );
         const next: ChatStoreV1 = { version: 1, sessions: nextSessions, activeId };
+        return persist ? aiSaveStore(next) : next;
+      });
+    },
+    [],
+  );
+
+  /** Ensure there is an active session; return its id (creates an empty one if none). */
+  const ensureSession = useCallback((): string => {
+    let id = '';
+    setStore((prev) => {
+      const existing = prev.sessions.find((s) => s.id === prev.activeId);
+      if (existing) { id = existing.id; return prev; }
+      const now = Date.now();
+      id = genId();
+      const fresh: ChatSession = { id, title: '', createdAt: now, updatedAt: now, messages: [] };
+      return { version: 1, sessions: [fresh, ...prev.sessions], activeId: id };
+    });
+    return id;
+  }, []);
+
+  /** Streaming-safe: mutate a specific session by id (no auto-create, no activeId change). */
+  const updateSession = useCallback(
+    (id: string, updater: (prev: StoredMessage[]) => StoredMessage[], persist = true) => {
+      setStore((prev) => {
+        const target = prev.sessions.find((s) => s.id === id);
+        if (!target) return prev; // session was deleted mid-stream — drop silently
+        const nextMessages = updater(target.messages);
+        const title = target.title || deriveTitle(nextMessages);
+        const next: ChatStoreV1 = {
+          ...prev,
+          sessions: prev.sessions.map((s) =>
+            s.id === id ? { ...s, messages: nextMessages, title, updatedAt: Date.now() } : s,
+          ),
+        };
         return persist ? aiSaveStore(next) : next;
       });
     },
@@ -185,6 +257,9 @@ export function useChatSessions(): UseChatSessions {
     deleteSession,
     clearAll,
     setActiveMessages,
+    ensureSession,
+    updateSession,
+    setStreaming,
     flush,
     exportAll,
     exportActiveMarkdown,

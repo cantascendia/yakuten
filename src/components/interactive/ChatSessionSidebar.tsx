@@ -13,6 +13,19 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AIChatCopy } from './aiChatL10n';
 import type { ChatSession } from '../../utils/ai-chat/storage';
 
+/** drawer 内 Tab 循环（focus trap）。 */
+function trapTab(e: React.KeyboardEvent<HTMLElement>) {
+  if (e.key !== 'Tab') return;
+  const els = e.currentTarget.querySelectorAll<HTMLElement>(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  );
+  if (!els.length) return;
+  const first = els[0];
+  const last = els[els.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
+
 interface Props {
   variant: 'rail' | 'drawer';
   open?: boolean;
@@ -50,10 +63,12 @@ const SIDEBAR_CSS = `
   flex-direction: column;
   inline-size: 264px;
   min-inline-size: 264px;
-  background: rgba(14, 12, 20, 0.55);
+  background: #0E0C15; /* 比主 Canvas 深一档 —— 空间景深分层 */
   border-inline-end: 1px solid var(--color-outline-20);
   overflow: hidden;
 }
+[data-theme='light'] .yk-ai-side { background: var(--color-bg-container, #F3EEE7); }
+[data-theme='light'] .yk-ai-side--drawer { background: var(--color-bg, #FAF7F2); }
 .yk-ai-side__brand {
   display: flex;
   align-items: center;
@@ -138,7 +153,7 @@ const SIDEBAR_CSS = `
 .yk-ai-list::-webkit-scrollbar { inline-size: 6px; }
 .yk-ai-list::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius: 6px; }
 .yk-ai-group__label {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-accent);
   opacity: 0.65;
   font-family: var(--font-mono);
@@ -175,10 +190,11 @@ const SIDEBAR_CSS = `
 }
 .yk-ai-sess__act {
   background: none; border: none; color: var(--color-text-muted);
-  cursor: pointer; min-width: 30px; min-height: 30px; padding: 0;
+  cursor: pointer; min-width: 36px; min-height: 36px; padding: 0;
   display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   opacity: 0; transition: opacity var(--transition-fast), color var(--transition-fast);
 }
+@media (hover: none) { .yk-ai-sess__act { opacity: 1; } }
 .yk-ai-sess:hover .yk-ai-sess__act,
 .yk-ai-sess--active .yk-ai-sess__act { opacity: 1; }
 .yk-ai-sess__act:hover { color: var(--color-primary); }
@@ -213,8 +229,8 @@ const SIDEBAR_CSS = `
 .yk-ai-side__tools { display: flex; gap: 8px; align-items: center; }
 .yk-ai-side__tool {
   flex: 1; background: none; border: 1px solid var(--color-outline-20);
-  color: var(--color-text-secondary); cursor: pointer; min-height: 32px;
-  font-family: var(--font-body); font-size: 0.71875rem; border-radius: 8px;
+  color: var(--color-text-secondary); cursor: pointer; min-height: 34px;
+  font-family: var(--font-body); font-size: 0.75rem; border-radius: 8px;
   transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 @media (hover: hover) {
@@ -235,7 +251,8 @@ const SIDEBAR_CSS = `
 .yk-ai-drawer-overlay { position: absolute; inset: 0; background: var(--color-black-alpha-40); z-index: 20; }
 .yk-ai-side--drawer {
   position: absolute; inset-block: 0; inset-inline-start: 0; z-index: 21;
-  inline-size: min(300px, 82%);
+  inline-size: min(300px, 88vw);
+  min-inline-size: 0; /* 覆盖基类 264px 下限 —— 极窄屏不被反向撑宽 */
   background: #14111d;
   box-shadow: 0 0 40px var(--color-black-alpha-50);
   animation: yk-ai-drawer-in 0.3s var(--spring-common, ease-out);
@@ -321,6 +338,7 @@ export default function ChatSessionSidebar(props: Props) {
       role={isDrawer ? 'dialog' : 'complementary'}
       aria-modal={isDrawer ? true : undefined}
       aria-label={ui.historyTitle}
+      onKeyDown={isDrawer ? trapTab : undefined}
     >
       {/* 产品名区 —— 产品识别 + 返回站点入口（应用页隐藏了站点顶栏） */}
       <div className="yk-ai-side__brand">
@@ -350,14 +368,17 @@ export default function ChatSessionSidebar(props: Props) {
         )}
       </div>
 
-      <input
-        className="yk-ai-search"
-        type="search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder={ui.searchPlaceholder}
-        aria-label={ui.searchPlaceholder}
-      />
+      {/* 会话少时无可搜——搜索框只在 >5 条或已有输入时出现（侧栏降噪） */}
+      {(sessions.length > 5 || query) && (
+        <input
+          className="yk-ai-search"
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={ui.searchPlaceholder}
+          aria-label={ui.searchPlaceholder}
+        />
+      )}
 
       <div className="yk-ai-list">
         {sessions.length === 0 ? (
@@ -429,7 +450,14 @@ export default function ChatSessionSidebar(props: Props) {
           <input
             type="checkbox"
             checked={historyEnabled}
-            onChange={(e) => onToggleHistory(e.target.checked)}
+            onChange={(e) => {
+              const on = e.target.checked;
+              // 关闭 = 同时删除已存对话（撤回同意即遗忘）——必须确认，防误触毁数据
+              if (!on && sessions.length > 0 && typeof window !== 'undefined') {
+                if (!window.confirm(ui.historyDisableConfirm)) { e.preventDefault(); return; }
+              }
+              onToggleHistory(on);
+            }}
           />
           <span className="yk-ai-optin__text">
             <span className="yk-ai-optin__label">{ui.historyToggleLabel}</span>

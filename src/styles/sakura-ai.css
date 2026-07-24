@@ -54,9 +54,11 @@ html.sakura .yk-ai-panel {
   box-shadow: 6px 6px 0 var(--ink);
 }
 
-/* 工具页整页模式 —— 全屏满铺纸面（.ai-chat-stage 提供外框，此处不再是浮动卡） */
+/* 工具页整页模式 —— 全屏满铺纸面 + 真纸纹（方格+纤维；纯色会盖掉全站纹理，纸感只剩描边） */
 html.sakura .yk-ai--page {
-  background: var(--bg-1);
+  background-color: var(--bg-1);
+  background-image: var(--sakura-paper-grid), var(--sakura-paper-fiber);
+  background-size: var(--sakura-paper-grid-size), auto;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 0;
@@ -159,25 +161,22 @@ html.sakura .yk-ai-chip:focus-visible {
 /* =========================================================================
    5. 气泡 —— 用户 = 樱粉底墨字贴纸；AI = cream 纸片（圆角走逻辑属性，RTL 安全）
    ========================================================================= */
+/* 四角对称贴纸卡（缺角气泡=IM 语言,与主皮一同去除） */
 html.sakura .yk-ai-msg--user {
   background: var(--bg-5);
   border: 1.5px solid var(--ink);
-  border-start-start-radius: 12px;
-  border-start-end-radius: 12px;
-  border-end-end-radius: 4px;
-  border-end-start-radius: 12px;
+  border-radius: 14px;
   box-shadow: 2px 2px 0 var(--ink);
   color: var(--ink);
 }
+/* AI 回复无卡直排（三家共识）——纸面上仅一道樱粉左缘标记内容归属 */
 html.sakura .yk-ai-msg--ai {
-  background: var(--bg-2);
-  border: 1.5px solid var(--ink-faint);
-  border-start-start-radius: 12px;
-  border-start-end-radius: 12px;
-  border-end-end-radius: 12px;
-  border-end-start-radius: 4px;
+  background: transparent;
+  border: 0;
+  border-inline-start: 3px solid var(--sakura-pink-deep);
+  border-radius: 0;
   color: var(--fg-1);
-  padding: 10px 14px;
+  padding: 2px 0 2px 14px;
 }
 html.sakura .yk-ai-msg__label {
   color: var(--fg-3);
@@ -203,7 +202,7 @@ html.sakura .yk-ai-msg a.yk-ai-linkcard {
   background-image: none;
   border: 1.5px solid var(--ink);
   border-radius: 10px;
-  box-shadow: 2px 2px 0 var(--ink);
+  box-shadow: none;
   color: var(--fg-1);
   padding: 8px 12px;
   text-decoration: none;
@@ -211,8 +210,8 @@ html.sakura .yk-ai-msg a.yk-ai-linkcard {
 }
 @media (hover: hover) {
   html.sakura .yk-ai-msg a.yk-ai-linkcard:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 3px 3px 0 var(--ink);
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0 var(--ink);
     background: var(--bg-3);
     background-image: none;
     color: var(--fg-1);
@@ -361,32 +360,41 @@ html.sakura .yk-ai-send:focus-visible {
 }
 
 /* =========================================================================
-   11. 幻月夜 —— 夜晚书桌模型：
-   · 纸面恒亮锁墨：.yk-ai 子树把纸/墨 token 钉回昼值（钉字面量法，
-     与 sakura-theme.css 纸面锁墨、sakura-blog.css §12 同值同机制）
-   · 桌面外缘（FAB / 浮窗 / 整页卡）硬影换夜影色 var(--night-1)
+   11. 幻月夜 —— 「夜色书桌上的手账」（AI 全屏应用页专属方案）：
+   · 全站 sakura 夜规范的"纸面锁亮"适用于卡片级纸面；本页是 100dvh 满屏，
+     从暗色站点切入会被整屏奶油纸闪目（GPT/Gemini 双评审一致 P0 级批评）。
+   · 故本页 .yk-ai 子树改钉「夜纸」值：深夜紫底 + 深紫纸卡 + 亮墨字，
+     樱粉/蜜金强调色不变，硬影换夜影。其余页面（blog/blood）不受影响。
    ========================================================================= */
 html.sakura[data-theme='dark'] .yk-ai {
-  --bg-1: #FFF5E0;
-  --bg-2: #FFFAF0;
-  --bg-3: #FFFFFF;
-  --bg-4: #FFF0E5;
-  --bg-5: #FFE4EC;
-  --bg-6: #FFDCE5;
-  --ivory: #FFFAF0;
-  --butter: #FFE89C;
-  --ink: #4A2838;
-  --ink-soft: #7A5568;
-  --ink-faint: rgba(74, 40, 56, 0.25);
-  --fg-1: #4A2838;
-  --fg-2: #7A5568;
-  --fg-3: #86596F;
-  --color-text-primary: #4A2838;
-  --color-text-secondary: #7A5568;
-  --color-text-muted: #7A5568;
-  --color-outline-20: rgba(74, 40, 56, 0.2);
-  background: #FFF5E0;
+  --bg-1: #18141F;
+  --bg-2: #211B2A;
+  --bg-3: #2B2337;
+  --bg-4: #352B44;
+  --bg-5: #442D3C;
+  --bg-6: #4A3040;
+  --ivory: #211B2A;
+  --butter: #3A3226;
+  --ink: #F0E6EF;
+  --ink-soft: #C5B2C3;
+  --ink-faint: rgba(240, 230, 239, 0.22);
+  --fg-1: #F0E6EF;
+  --fg-2: #C5B2C3;
+  --fg-3: #9E889C;
+  --color-text-primary: #F0E6EF;
+  --color-text-secondary: #C5B2C3;
+  --color-text-muted: #9E889C;
+  --color-outline-20: rgba(240, 230, 239, 0.16);
+  background: #18141F;
 }
+/* 舞台/纸纹同步入夜（浅墨纹在深底不可见，直接关掉） */
+html.sakura[data-theme='dark'] .ai-chat-stage { background: #18141F; }
+html.sakura[data-theme='dark'] .yk-ai--page { background-color: #18141F; background-image: none; }
+/* 危机卡在夜里保持"深红底白字"危险语义（--ink 已翻亮，不能再当底色用） */
+html.sakura[data-theme='dark'] .yk-ai-crisis { background: #3A1220; border-color: var(--danger-bright, #FF5A5A); }
+/* 离线条的硬编码深墨字换亮墨 */
+html.sakura[data-theme='dark'] .yk-ai-banner--offline { color: var(--fg-1); }
+html.sakura[data-theme='dark'] .yk-ai-disclaimer { color: var(--fg-1); }
 html.sakura[data-theme='dark'] .yk-ai-fab {
   background: #FFFAF0;
   color: #4A2838;
@@ -523,11 +531,12 @@ html.sakura .yk-ai-hero__badge {
 html.sakura .yk-ai-hero__greeting { font-family: var(--font-heading); color: var(--fg-1); }
 html.sakura .yk-ai-hero__sub { color: var(--fg-2); }
 
-/* 建议 pills = 小纸条贴纸 */
+/* 建议 pills = 小纸条（硬影只留给 hero 徽章/composer/新对话三个主角——
+   静止态全员带影会让"贴纸语法"泛滥,谁都突出=谁都不突出） */
 html.sakura .yk-ai-pill {
   background: var(--bg-3);
   border: 1.5px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--ink);
+  box-shadow: none;
   color: var(--fg-1);
 }
 html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; }
@@ -536,7 +545,7 @@ html.sakura .yk-ai-pill::before { color: var(--sakura-pink-deep); opacity: .75; 
     background: var(--sakura-blush);
     border-color: var(--ink);
     color: var(--ink);
-    box-shadow: 3px 3px 0 var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 }
 
@@ -595,7 +604,7 @@ html.sakura .yk-ai-optin__label { color: var(--fg-1); }
 html.sakura .yk-ai-optin__body { color: var(--fg-3); }
 html.sakura .yk-ai-optin input { accent-color: var(--sakura-pink-deep); }
 html.sakura .yk-ai-side__tool {
-  background: var(--bg-3); border: 1.5px solid var(--ink); border-radius: var(--radius-full); color: var(--fg-2);
+  background: var(--bg-3); border: 1.5px solid var(--ink-faint); border-radius: var(--radius-full); color: var(--fg-2); box-shadow: none;
 }
 @media (hover: hover) { html.sakura .yk-ai-side__tool:hover { color: var(--sakura-pink-text); border-color: var(--sakura-pink-deep); } }
 html.sakura .yk-ai-side__tool--danger:hover { color: var(--danger); border-color: var(--danger); }

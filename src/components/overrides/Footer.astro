@@ -6,6 +6,10 @@ import { t, getLocale } from '../../i18n/ui';
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
+// AI 助手是全屏应用页：页面自身就是完整 chat（FloatingAIChat 组件内也会 return null），
+// 这里干脆不渲染岛，省一次水合与空 portal。
+const isAiAppPage = Astro.url.pathname.includes('/tools/ai-assistant');
+
 // Extract authority signals from page frontmatter (Starlight route).
 const route = Astro.locals.starlightRoute;
 const entry = route?.entry;
@@ -81,7 +85,7 @@ const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
 
 {/* idle + timeout 兜底：后台标签页 / 主线程繁忙时 requestIdleCallback 可被无限推迟，
     2s 后强制水合，保证 FAB 必然出现 */}
-<FloatingAIChat client:idle={{ timeout: 2000 }} />
+{!isAiAppPage && <FloatingAIChat client:idle={{ timeout: 2000 }} />}
 
 <style>
   .site-legal-footer {

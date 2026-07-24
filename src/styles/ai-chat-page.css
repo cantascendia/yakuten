@@ -17,6 +17,9 @@
   background: var(--color-bg, #12101a);
   z-index: 40;
 }
+[data-theme='light'] .ai-chat-stage {
+  background: var(--color-bg, #FAF7F2);
+}
 /* 直接子元素是 <astro-island>(display:contents)，flex 打不上——
    真正的 flex item 是里面的 .yk-ai，两层都给满 */
 .ai-chat-stage > *,
