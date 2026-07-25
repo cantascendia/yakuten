@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先（Windows 实测 bash 单 hook ~1.5s vs node ~105ms；JSON.parse
+# 根除 sed 解析器 bug 类）。node 缺失或 CTO_GUARD_ENGINE=legacy → 走下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎实现：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" trajectory-logger
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # v3.8 真实 trajectory 日志（修 §44 Replay 形同虚设的 bug）
 # 旧版只写 {ts, type:"tool_call"} → /cto-replay 看不到 tool_name/input
 # 新版从 stdin JSON 提取完整字段，写真正可 replay 的 jsonl

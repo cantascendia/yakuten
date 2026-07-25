@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先；node 缺失或 CTO_GUARD_ENGINE=legacy → 下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" forbidden-guard
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # §32.1 Forbidden 路径硬拦截 — PreToolUse(Edit|Write|MultiEdit)
 # 触及 auth/payment/secrets/migration/crypto/infra 等路径 → exit 2 阻止
 # Opt-out: CTO_DOUBLE_SIGNED=1（需双签 + spec-driven 后单次解锁）
@@ -46,19 +53,13 @@ if echo "$REL_PATH" | grep -qE -- "($PATTERN)"; then
 
   block_with_reason "🛑 §32.1 BLOCKED: \`$REL_PATH\` 命中 forbidden 路径
 
-此路径属于高风险范畴（auth/payment/secrets/migration/crypto/infra），
-不能直接 vibe-code。必须走 spec-driven 流程（铁律 #13）：
+此路径禁止 vibe coding（铁律 #13），必须走 spec-driven：
+  1. /cto-spec specify — 先写 SPEC 并经人审
+  2. 双签：CTO + 第二模型独立审（/cto-review --cross）
+  3. PR 打 \`requires-double-review\` 标签
 
-  步骤：
-  1. 起草规范：/cto-spec specify
-  2. 第二模型 review：/cto-review
-  3. PR 加 \`requires-double-review\` 标签
-  4. commit message 显式引用 SPEC（如 'Per SPEC.md §3.2 ...'）
-
-  紧急临时解锁（已 double-sign 后）：
-    export CTO_DOUBLE_SIGNED=1   # 仅本会话有效
-
-参考：handbook §32.1 / §19 / 铁律 #13"
+详见 .claude/rules/forbidden-paths.md（handbook §32.1 / §19 / 铁律 #13）
+紧急 opt-out（已获双签后）：export CTO_DOUBLE_SIGNED=1   # 仅本会话有效"
 fi
 
 exit 0

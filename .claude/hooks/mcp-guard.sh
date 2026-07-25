@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先；node 缺失或 CTO_GUARD_ENGINE=legacy → 下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" mcp-guard
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # v3.11 红线层：MCP 工具 destructive 防护（飞轮第 8 轮 architect-critic + sota OWASP ASI 发现）
 #
 # 问题：destructive-action-guard / bypass-guard 只 match Bash，看不到 mcp__ 工具。
@@ -97,7 +104,7 @@ if [ "$BLOCKED" = "1" ]; then
     exit 0
   fi
   audit_log "mcp-destructive-blocked" "tool=$HOOK_TOOL_NAME reason=$REASON"
-  block_with_reason "🛑 v3.11 MCP DESTRUCTIVE BLOCKED
+  deny_with_reason "🛑 v3.11 MCP DESTRUCTIVE BLOCKED
 
 $REASON
 

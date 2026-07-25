@@ -10,8 +10,140 @@
       "Bash(git branch*)"
     ]
   },
-  "enabledPlugins": {
-    "example-skills@anthropic-agent-skills": true,
-    "claude-api@anthropic-agent-skills": true
+  "outputStyle": "cto",
+  "statusLine": {
+    "type": "command",
+    "command": ".claude/statusline.sh"
+  },
+  "enabledMcpjsonServers": [],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -d docs/ai-cto ] && ([ -f docs/ai-cto/CONSTITUTION.md ] || [ -f docs/ai-cto/STATUS.md ]); then echo '🔄 检测到 docs/ai-cto/ 项目记忆，自动恢复上下文...'; test -f docs/ai-cto/CONSTITUTION.md && echo '' && echo '=== CONSTITUTION ===' && head -150 docs/ai-cto/CONSTITUTION.md; test -f docs/ai-cto/STATUS.md && echo '' && echo '=== STATUS ===' && head -150 docs/ai-cto/STATUS.md; if [ -f docs/ai-cto/REVIEW-QUEUE.md ]; then PENDING=$(tail -100 docs/ai-cto/REVIEW-QUEUE.md | grep -c '^## ' 2>/dev/null); [ \"${PENDING:-0}\" -gt 0 ] && echo '' && echo '=== 最近 §48 跨模型 REVIEW（待审视）===' && tail -100 docs/ai-cto/REVIEW-QUEUE.md; fi; echo '' && echo '💡 继续上次工作：直接对话 / 或 /cto-resume 显式刷新进度'; else echo '🆕 未检测到 docs/ai-cto/ 项目记忆。这看起来是首次接入 ai-playbook。'; echo '   建议：运行 /cto-start 启动第零轮（产品愿景 + 八维审核 + 生成记忆文件）'; echo '   或：运行 /cto-init [项目路径] 重新初始化 ai-playbook 配置'; fi"
+          },
+          {
+            "type": "command",
+            "command": "if [ -f .claude/settings.json.v3.7.bak ] && [ -d .claude/hooks ]; then echo '⚙️ v3.8 enforcement 已启用。运行 /cto-doctor 验证 hooks 真生效。'; fi"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/vibe-prompt-guard.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/immutable-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/forbidden-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/branch-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/test-lock-guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/bypass-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/destructive-action-guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/mcp-guard.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/eval-gate.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/trajectory-logger.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -d .claude/agent-logs && DAY=$(date +%Y-%m-%d 2>/dev/null || echo unknown) && TS=$(date -Iseconds 2>/dev/null || date) && printf '{\"ts\":\"%s\",\"schema\":\"v3.8\",\"event\":\"SubagentStop\"}\\n' \"$TS\" >> .claude/agent-logs/${DAY}.jsonl 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚠️ 即将压缩上下文。建议先把当前 spec/PLAN/决策保存到 docs/ai-cto/STATUS.md，避免压缩丢失。'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '— 会话结束摘要 —'; git status --short 2>/dev/null | head -20"
+          },
+          {
+            "type": "command",
+            "command": "[ \"${CTO_AUTOREVIEW_ON_STOP:-1}\" = \"1\" ] && test -x .agents/skills/codex-bridge/run.sh && bash .agents/skills/codex-bridge/run.sh HEAD && echo '🔄 §48 cross-review + PR autopilot 已在后台触发。结果稍后出现在 docs/ai-cto/REVIEW-QUEUE.md 和 PR comment。关闭：export CTO_AUTOREVIEW_ON_STOP=0' || true"
+          }
+        ]
+      }
+    ]
   }
 }

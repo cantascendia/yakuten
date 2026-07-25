@@ -86,10 +86,31 @@ normalize_paths() {
 }
 
 # 硬阻止：exit 2 + stderr（Claude 会读 stderr 当作错误反馈）
+# 文件类工具（Edit/Write/MultiEdit）的 PreToolUse 用此——实测可靠拦截。
 block_with_reason() {
   local reason="$1"
   echo "$reason" >&2
   exit 2
+}
+
+# v3.14 A：PreToolUse permissionDecision:deny JSON 拦截（exit 0 + stdout JSON）
+# 用于 Bash / mcp__ 工具的 guard——GitHub #23284 记录 Bash-tool 的 exit-2 在某些版本只报错不拦截，
+# permissionDecision JSON 是文档的稳健拦截路径。file guard 仍用 block_with_reason（exit-2 可靠）。
+# 部署前须 live-verify（cto-doctor / 本会话实测）；若该版本 JSON 也不拦，退回 block_with_reason。
+deny_with_reason() {
+  local reason="$1"
+  if [ "$HAS_JQ" = "1" ]; then
+    # -c 紧凑输出：与下方无-jq printf 路径字节同形（{"...":"deny"} 无空格），
+    # 否则 jq 默认 pretty-print 带空格，跨环境 grep 检测会漂（v3.14 CI 实测：Linux jq 路径致 7 eval 挂）
+    jq -cn --arg r "$reason" \
+      '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"deny",permissionDecisionReason:$r}}'
+  else
+    # 无 jq（Windows git-bash）：手工拼 JSON，reason 转义 \ " 换行
+    local esc
+    esc=$(printf '%s' "$reason" | sed 's/\\/\\\\/g; s/"/\\"/g' | tr '\n' ' ')
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"%s"}}\n' "$esc"
+  fi
+  exit 0
 }
 
 # 软提醒：用 additionalContext JSON 输出（Claude 看到但不阻止）
@@ -156,4 +177,23 @@ forbidden_fallback_pattern() {
 # 单源核心防两边 DROP/TRUNCATE 定义漂移。
 destructive_sql_core() {
   echo '\bDROP\s+(TABLE|DATABASE|SCHEMA|INDEX)\b|\bTRUNCATE\b|DELETE\s+FROM\s+[a-z_]+\s*(;|$)'
+}
+
+# hook/pre-commit 绕过模式（#40117 6+ 种绕过面）。canonical 唯一源。
+# 此前 bypass-guard.sh（legacy）与 engine/guards.mjs 各写一份字面拷贝 → 漂移风险
+# （同 O7 forbidden/destructive 单源化）。engine/lib.mjs 的 BYPASS_PATTERNS 常量
+# 必须与本函数输出逐字节相等（eval 073 断言锁定）。
+bypass_patterns() {
+  # core.hooksPath：v4.4b 决断 —— 广义 token（拦一切 core.hooksPath 提及）。
+  # 曾尝试「只拦写」读/写 carve-out 修误拦只读的 FP，3 轮对抗验证（9 agent）逐轮击穿：
+  #   轮1 git→config 相邻锚被 git -C . 击穿；轮2 空引号对 core.hooksPath'' 逃逸；
+  #   轮3 引号包操作符值 ")"/";"、${IFS} 注入、反斜杠续行。
+  # 结论：static regex 无法安全区分 core.hooksPath 的读/写（shell 引号/展开语义 regex 建模不了）。
+  # 广义 token「拦一切提及」= 唯一 adversarial-proof 的姿势（fail-safe）；读 FP 是理论性的
+  # （无真实消费方：doctor 直接查 .git/hooks/pre-commit 不走 git config）。真需读用
+  # `git rev-parse --git-path hooks` 或 CTO_BYPASS_ALLOWED=1。详见 DECISIONS ADR-010。
+  # ⚠️ 保留的真收益（消费方契约）：匹配前先剥引号/反斜杠字符（bypass-guard.sh SCAN_CMD tr -d /
+  # guards.mjs scanCmd replace）—— 广义 token + 剥字符对 core.hooks'Path' / "core.hooksPath" /
+  # ${IFS} 注入 / 引号操作符值全部命中（比未剥的旧 pattern 严格更强，闭合了旧 pattern 漏的引号插入）。
+  echo '--no-verify|git\s+commit\s+-n($|\s)|core\.hooksPath|HUSKY=0|hooks-disable|chmod\s+-x.*husky|git\s+stash[^|]*&&[^|]*commit|SKIP=|--allow-empty\s+--dry-run|git\s+config.*hooksPath'
 }

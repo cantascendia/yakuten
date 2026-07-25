@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先；node 缺失或 CTO_GUARD_ENGINE=legacy → 下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" destructive-action-guard
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # v3.10.1 红线层：destructive action gate
 # OWASP Agentic Top 10 2026 — ASI01 (Agent Goal Hijacking) 头号风险
 # 教训：PocketOS 2026-04-25 — Cursor+Claude Opus 4.6 agent 9 秒删生产库 + 全部备份
@@ -56,7 +63,7 @@ if echo "$SCAN_CMD" | grep -qiE -- "$COMBINED_DESTRUCTIVE"; then
 
   audit_log "destructive-action-blocked" "cmd=$(echo "$HOOK_BASH_CMD" | head -c 200)"
 
-  block_with_reason "🛑 v3.10.1 DESTRUCTIVE ACTION BLOCKED
+  deny_with_reason "🛑 v3.10.1 DESTRUCTIVE ACTION BLOCKED
 
 命令：\`$(echo "$HOOK_BASH_CMD" | head -c 300)\`
 

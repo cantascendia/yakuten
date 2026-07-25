@@ -44,3 +44,12 @@ docs/data/gsc-*.csv
 
 # gpt-image-2 raw downloads (large PNG/JPG source, compressed webp committed separately)
 scripts/gpt-image-2-raw/
+
+# v3.6 ai-playbook
+.claude/agent-logs/*
+!.claude/agent-logs/.gitkeep
+docs/ai-cto/.codex-quota-cooldown
+docs/ai-cto/.codex-bridge.lock
+
+# CTO harness 升级备份（本地留存，不入库）
+.claude/*.bak-*/
