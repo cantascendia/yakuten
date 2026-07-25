@@ -1,44 +1,48 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先（Windows 实测 bash 单 hook ~1.5s vs node ~105ms；JSON.parse
+# 根除 sed 解析器 bug 类）。node 缺失或 CTO_GUARD_ENGINE=legacy → 走下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎实现：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" trajectory-logger
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # v3.8 真实 trajectory 日志（修 §44 Replay 形同虚设的 bug）
 # 旧版只写 {ts, type:"tool_call"} → /cto-replay 看不到 tool_name/input
 # 新版从 stdin JSON 提取完整字段，写真正可 replay 的 jsonl
 #
 # 隐私：默认脱敏 — 不写 file content / bash command 详细参数（仅前 200 字符）
 # 完整模式：CTO_TRAJECTORY_FULL=1（含 input/output 详情，仅本地审计）
-#
-# 2026-05-26 修复：原版 `[ ! -d "$LOG_DIR" ] && exit 0` 在目录不存在时
-# silently no-op → SELF-AUDIT 看到 trajectory entries: 0 → pattern-detector
-# 无数据可分析。改为 mkdir -p（创建失败才退出）。配套 .claude/agent-logs/
-# 已入版本控制（.gitkeep + .gitignore 不污染 history）。
 set -uo pipefail
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# lib/common.sh 不存在时 graceful fallback，避免日志阻止 agent 启动
-if [ -f "$SCRIPT_DIR/lib/common.sh" ]; then
-  source "$SCRIPT_DIR/lib/common.sh"
-else
-  # 最小 stub：让本脚本独立可运行
-  read_hook_input() {
-    HOOK_INPUT="${HOOK_INPUT:-}"
-    if [ -t 0 ]; then return 0; fi
-    HOOK_INPUT="$(cat)"
-  }
-fi
+source "$SCRIPT_DIR/lib/common.sh"
 
 read_hook_input
 
 CWD="${HOOK_CWD:-.}"
 LOG_DIR="${CWD}/.claude/agent-logs"
-# 修复 silent no-op：默认创建目录，仅创建失败才退出
-mkdir -p "$LOG_DIR" 2>/dev/null || exit 0
+[ ! -d "$LOG_DIR" ] && exit 0  # 目录不存在则跳过
 
 DAY=$(date +%Y-%m-%d 2>/dev/null || echo unknown)
 TS=$(date -Iseconds 2>/dev/null || date +%s)
 LOG_FILE="${LOG_DIR}/${DAY}.jsonl"
 
-# 简单 JSON 字符串转义
+# v3.13 O10（SOTA team 审计）：secret 脱敏 — 写日志前 redact 常见密钥/令牌。
+# GitHub 2026 扫描发现 24008 个 MCP 配置相关 secret 泄露；eval verification_command 可能把
+# env secret 带进 bash 命令 → 不脱敏会写进 jsonl。在 _escape 前先 redact 原始值。
+_redact() {
+  echo "$1" | sed -E \
+    -e 's/sk-[A-Za-z0-9_-]{16,}/[REDACTED_SK]/g' \
+    -e 's/(ghp|gho|ghs|ghr|github_pat)_[A-Za-z0-9_]{20,}/[REDACTED_GH]/g' \
+    -e 's/AKIA[A-Z0-9]{16}/[REDACTED_AWS]/g' \
+    -e 's/xox[baprs]-[A-Za-z0-9-]{10,}/[REDACTED_SLACK]/g' \
+    -e 's/[Bb]earer[[:space:]]+[A-Za-z0-9._+\/=-]{20,}/Bearer [REDACTED]/g' \
+    -e 's/(([Aa][Pp][Ii][_-]?[Kk][Ee][Yy]|[Tt][Oo][Kk][Ee][Nn]|[Ss][Ee][Cc][Rr][Ee][Tt]|[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd])["'"'"' ]*[:=]["'"'"' ]*)[A-Za-z0-9._+\/=-]{12,}/\1[REDACTED]/g'
+}
+
+# 简单 JSON 字符串转义（先 redact 再 escape）
 _escape() {
-  echo "$1" | sed 's/\\/\\\\/g; s/"/\\"/g' | tr -d '\n' | head -c 500
+  _redact "$1" | sed 's/\\/\\\\/g; s/"/\\"/g' | tr -d '\n' | head -c 500
 }
 
 TOOL=$(_escape "${HOOK_TOOL_NAME:-}")
