@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# v4.0: Node guard engine 优先；node 缺失或 CTO_GUARD_ENGINE=legacy → 下方 legacy 实现
+# （v3.15 冻结，零红线真空 — v3.14 verdict Phase-1 硬条件）。引擎：engine/guard.mjs
+GUARD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "${CTO_GUARD_ENGINE:-engine}" != "legacy" ] && command -v node >/dev/null 2>&1 && [ -f "$GUARD_DIR/engine/guard.mjs" ]; then
+  exec node "$GUARD_DIR/engine/guard.mjs" bypass-guard
+fi
+# ══ legacy fallback（v3.15 原实现，冻结不再演进）══
 # 防 #40117 多策略绕过 — PreToolUse(Bash)
 # Anthropic 自家 issue 显示 Claude 会用 6+ 种方式绕过 pre-commit hook
 # 这个 guard 拦截所有已知 bypass 模式，exit 2 + stderr 喂回 Claude
@@ -21,9 +28,16 @@ maybe_run_override "bypass-guard"
 # - chmod -x .husky: 删 hook 执行权
 # - git stash + commit + pop: 借 stash 绕过
 # - SKIP / skip: 一些工具的 bypass env
-BYPASS_PATTERNS='--no-verify|git\s+commit\s+-n($|\s)|core\.hooksPath|HUSKY=0|hooks-disable|chmod\s+-x.*husky|git\s+stash[^|]*&&[^|]*commit|SKIP=|--allow-empty\s+--dry-run|git\s+config.*hooksPath'
+# 单源：pattern 由 common.sh bypass_patterns() 提供（防 legacy/engine 漂移，O7）
+BYPASS_PATTERNS="$(bypass_patterns)"
 
-if echo "$HOOK_BASH_CMD" | grep -qE -- "$BYPASS_PATTERNS"; then
+# v4.4b 引号插入逃逸硬化：剥引号/反斜杠「字符」后匹配（与 engine guards.mjs scanCmd 逐字节同步）。
+# shell 执行前会吃掉这些字符 —— core.hooks'Path' / "core.hooksPath" / core\.hooksPath 归一后才可命中。
+# 广义 core.hooksPath token + 本剥字符 = 对 3 轮对抗验证的引号/续行逃逸免疫。只删不增 → 严格超集。
+# \047=' \042=" \134=\
+SCAN_CMD=$(printf '%s' "$HOOK_BASH_CMD" | tr -d '\047\042\134')
+
+if echo "$SCAN_CMD" | grep -qE -- "$BYPASS_PATTERNS"; then
   # Opt-out: 紧急情况下手动设 CTO_BYPASS_ALLOWED=1
   if [ "${CTO_BYPASS_ALLOWED:-0}" = "1" ]; then
     audit_log "bypass-allowed-emergency" "cmd=$HOOK_BASH_CMD"
@@ -32,7 +46,7 @@ if echo "$HOOK_BASH_CMD" | grep -qE -- "$BYPASS_PATTERNS"; then
 
   audit_log "bypass-blocked" "cmd=$HOOK_BASH_CMD"
 
-  block_with_reason "🛑 BLOCKED: 检测到 hook/pre-commit 绕过尝试
+  deny_with_reason "🛑 BLOCKED: 检测到 hook/pre-commit 绕过尝试
 
 命令：\`$HOOK_BASH_CMD\`
 
