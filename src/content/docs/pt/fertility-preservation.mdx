@@ -1,102 +1,177 @@
 ---
-title: "Preservação da Fertilidade: TH e Criopreservação de Esperma"
-description: "Guia baseado em evidências sobre preservação da fertilidade para mulheres trans no Brasil e em Portugal: efeitos da TH na espermatogênese, criopreservação e acesso pelo SUS e SNS."
+title: "Preservação da fertilidade: congelar esperma antes ou durante a TH"
+description: "Guia prático sobre preservação da fertilidade antes e depois da TH para mulheres trans no Brasil e em Portugal: a janela ideal antes do tratamento, o que esperar se você já usa hormônios e como acessar a criopreservação pelo SUS, SNS ou rede privada."
 evidenceLevel: C
-lastReviewed: 2026-07-15
+lastReviewed: 2026-07-24
 references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
 faqs:
-  - q: 'Devo congelar esperma antes de iniciar a TH?'
-    a: 'As diretrizes internacionais (WPATH SOC 8, Endocrine Society 2017) recomendam enfaticamente que, antes do início da terapia hormonal de afirmação de gênero ou do bloqueio puberal, deve haver aconselhamento sobre preservação da fertilidade (Hembree 2017; Coleman 2022). A criopreservação de esperma é o procedimento mais estabelecido. Se você tiver qualquer desejo de ter filhos biológicos, recomenda-se realizar a criopreservação antes do início da terapia.'
-  - q: 'Posso congelar esperma depois de já estar em TH por muito tempo?'
-    a: 'É possível tentar, mas a qualidade do esperma geralmente já está significativamente comprometida. Estrogênios e antiandrogênicos suprimem o eixo HPG, inibindo a espermatogênese. Os parâmetros do espermograma (concentração, motilidade) ficam geralmente muito abaixo dos valores iniciais (Choi 2022). Se quiser congelar esperma durante a TH, a terapia precisa ser pausada por várias semanas a meses sob acompanhamento médico. Se a obtenção de esperma viável será possível e quanto tempo a pausa precisará durar só pode ser avaliado individualmente por uma clínica de reprodução.'
+  - q: 'É obrigatório congelar esperma antes de iniciar a TH?'
+    a: 'Não é "obrigatório". A TH suprime significativamente a espermatogênese, e a recuperação após a pausa não é garantida e varia enormemente entre pessoas. Por isso, o período antes de iniciar o tratamento é geralmente a janela mais fácil e previsível para coleta. Congelar ou não depende do seu desejo reprodutivo; não há resposta única, mas é uma decisão com prazo limite para ponderar antes de começar.'
+  - q: 'Já uso TH há algum tempo, ainda posso congelar?'
+    a: 'Você pode tentar, mas a qualidade do esperma geralmente já caiu de forma notável. Na prática clínica, é necessário pausar a TH (frequentemente por meses ou mais) sob avaliação de um especialista em reprodução assistida, até que a espermatogênese se recupere parcialmente. A viabilidade da coleta e a duração da pausa dependem de avaliação médica individualizada; por favor não interrompa os hormônios por conta própria.'
   - q: 'A espermatogênese se recupera com certeza após parar a TH?'
-    a: 'Os dados são muito limitados e a recuperação completa não é garantida. Um estudo com 9 pacientes que pausaram a TH mostrou recuperação variável da espermatogênese (de Nie 2023). A possível retomada da espermatogênese após a pausa nunca deve servir como argumento para dispensar a criopreservação antes do início da terapia.'
-  - q: 'O SUS cobre os custos da criopreservação no Brasil?'
-    a: 'No Brasil, o SUS oferece o Processo Transexualizador desde 2008, mas a cobertura de criopreservação de esperma ainda não é universal. Alguns hospitais universitários e centros de reprodução vinculados ao SUS oferecem o procedimento gratuitamente ou a custo reduzido, especialmente quando há indicação de tratamento que comprometa a fertilidade. Consulte a equipe do ambulatório trans do seu estado para informações atualizadas sobre cobertura. Na rede privada, os custos ficam entre R$ 800-2.500 para coleta e congelamento, mais R$ 500-1.500/ano de armazenamento.'
+    a: 'Não necessariamente. As evidências atuais são muito limitadas e a reversibilidade não é garantida. Um estudo retrospectivo em apenas 9 pessoas observou recuperação parcial após a pausa da TH, mas os próprios autores enfatizam que a amostra é pequena e as conclusões devem ser cautelosas. Portanto, não use a suposição de "talvez se recupere depois" como motivo para não congelar agora.'
+  - q: 'Como é o acesso à criopreservação no Brasil e em Portugal?'
+    a: 'No Brasil, pessoas solteiras podem congelar esperma (não há exigência de casamento para o congelamento). Alguns hospitais universitários do SUS ou convênios cobrem o procedimento em casos de prejuízo à fertilidade, além da opção privada. Em Portugal, o SNS oferece acompanhamento e criopreservação com indicação clínica. Consulte sempre diretamente uma clínica de reprodução ou seu serviço de saúde.'
 ---
 
 import CitationRef from '../../../components/ui/CitationRef.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
-import GuideCTA from '../../../components/ui/GuideCTA.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
 
-<WarningBox title="Como ler esta página">
-Esta página resume os efeitos fisiológicos da terapia hormonal de afirmação de gênero (TH) na fertilidade, apresenta recomendações clínicas para preservação da fertilidade e expõe o estado atual das evidências — para que você possa tomar uma decisão informada antes e depois do início da terapia.
+<div class="fp-hero">
+  <div class="fp-hero__box">
+    <p class="fp-hero__lead">A TH geralmente suprime significativamente a fertilidade, e se a espermatogênese vai se recuperar após a pausa, quanto tempo levará e em que grau, nada disso pode ser previsto com certeza.<br />Se você deseja manter a opção de ter descendência biológica no futuro, o mais recomendado é congelar esperma <strong>antes de iniciar o tratamento hormonal</strong> — essa decisão tem um prazo limite.</p>
+    <div class="fp-hero__actions">
+      <a href="#not-started" class="fp-hero__btn fp-hero__btn--primary">Ainda não comecei a TH →</a>
+      <a href="#already-on" class="fp-hero__btn fp-hero__btn--secondary">Já estou em tratamento →</a>
+    </div>
+  </div>
+</div>
 
-- Medidas concretas de preservação da fertilidade, bem como esquemas de pausa e retomada, exigem avaliação endocrinológica individual e controle por espermograma — isso só é possível em uma clínica de reprodução.
-- Esta página é um guia de orientação baseado em evidências. Ela não substitui aconselhamento médico nem jurídico.
+<style>{`
+  .fp-hero { margin-bottom: var(--space-xl); }
+  .fp-hero__box {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .fp-hero__lead {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-lg);
+    line-height: 1.6;
+  }
+  .fp-hero__lead strong { color: var(--color-primary-light); }
+  .fp-hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .fp-hero__btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    clip-path: var(--clip-corner);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .fp-hero__btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .fp-hero__btn--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  .fp-hero__btn:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .fp-hero__btn { transition: none; }
+    .fp-hero__btn:hover { transform: none; }
+  }
+`}</style>
 
+Esta página não aborda "como seu médico deveria conversar com você sobre fertilidade" — porque na realidade, muitas pessoas que fazem ou planejam a TH de forma autônoma (DIY) não contam com esse acompanhamento. Aqui respondemos às três perguntas que você precisa enfrentar por si mesma: **Devo congelar esperma? Ainda dá tempo? Como funciona o acesso na prática na minha região?**
+
+<WarningBox title="Esclarecimento sobre o que esta página oferece e não oferece">
+Esta página é um guia informativo e de tomada de decisão para ajudar a avaliar se deve congelar, quando fazer e como começar.
+
+- **Não substitui** a avaliação de um centro de medicina reprodutiva credenciado: o momento das coletas, os esquemas de pausa ou retomada hormonal e a interpretação do espermograma devem ser definidos por profissionais médicos conforme seu caso.
+- **Não constitui** aconselhamento jurídico ou normativo: os regulamentos de hospitais e bancos de sêmen mudam; consulte sempre as informações atualizadas das instituições locais.
 </WarningBox>
 
 ---
 
-## 1. Consenso das diretrizes: aconselhamento de fertilidade antes do início da terapia
+## 1. Pense com calma: por que esta decisão tem um prazo limite
 
-As principais diretrizes internacionais de medicina de afirmação de gênero concordam que, antes de qualquer tratamento que possa comprometer a fertilidade, deve haver aconselhamento ativo sobre o desejo de ter filhos e as opções de preservação.
+Decidir se você deseja ter descendência biológica ou manter esse vínculo com futuros filhos é uma escolha profundamente pessoal; não existe um "deveria" ou "não deveria". No entanto, diferentemente de outras decisões, **esta carrega um relógio interno**: após o início da TH, a dificuldade e a incerteza para coletar espermatozoides aumentam com o tempo.
 
-- **Endocrine Society 2017**: recomenda oferecer aconselhamento sobre preservação da fertilidade tanto antes do bloqueio puberal em adolescentes quanto antes do início da TH em adultos. Para pessoas com função testicular na puberdade tardia ou na vida adulta, a criopreservação de esperma é o procedimento mais estabelecido e acessível<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
-- **WPATH SOC 8**: enfatiza que informações completas e objetivas sobre preservação da fertilidade devem ser fornecidas em uma fase inicial do tratamento, para que uma decisão informada seja possível — antes que danos potencialmente irreversíveis à fertilidade ocorram<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
-- **Diretriz UCSF**: lista a discussão sobre desejo de filhos e preservação da fertilidade como parte integrante da avaliação basal antes do início da terapia<CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+A terapia hormonal de afirmação de gênero (estrogênios combinados com antiandrogênicos) suprime o eixo hipotálamo-hipófise-gonadal, reduzindo significativamente a espermatogênese testicular. Quanto mais longo o período de uso dos medicamentos, maior tende a ser essa supressão e mais complexa se torna a obtenção de esperma viável. Além disso, a possibilidade e o tempo necessário para uma eventual recuperação após a pausa da TH variam enormemente entre indivíduos e não podem ser previstos com precisão<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />. Por isso, o consenso das principais diretrizes internacionais (WPATH SOC 8, Endocrine Society 2017, UCSF) é unânime: **as opções de preservação da fertilidade devem ser discutidas antes do início de tratamentos que possam afetá-la, dada a incerteza sobre a recuperação posterior**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+
+Portanto, se você ainda não iniciou a TH — mesmo achando pouco provável que venha a querer filhos —, vale a pena ler esta seção com atenção: **o período anterior ao início do tratamento é geralmente a janela mais acessível e previsível para congelar esperma**. A escolha é sua, mas decidir conhecendo os custos e incertezas é sempre melhor do que descobrir mais tarde que não é mais possível.
+
+<RealityCheck
+  items={[
+    { text: 'Trata-se de "preservar uma opção para o seu futuro", não de "obrigar você a ter filhos". O congelamento envolve custos de exames, coleta, congelamento e armazenamento anual; mas se não congelar agora e mudar de ideia mais tarde, pode não ter outra oportunidade.' },
+    { text: 'A possibilidade de a espermatogênese se recuperar após pausar a TH conta com evidências muito fracas e nenhuma garantia, não devendo ser considerada um plano de reserva confiável.' },
+    { text: 'Antes de iniciar a TH, a espermatogênese ainda não foi suprimida, tornando a coleta e preservação muito mais fáceis. Quanto antes decidir, mais opções você terá.' },
+    { text: 'Existe um limite definitivo: se no futuro você planeja realizar orquiectomia ou cirurgia de afirmação de gênero (como vaginoplastia), esse será o limite real. Uma vez removidos os testículos, a capacidade de produzir espermatozoides não pode ser recuperada.' },
+  ]}
+/>
 
 ---
 
-## 2. Efeitos da TH na espermatogênese
+<h2 id="not-started">2. Ainda não começou a TH: esta é a janela ideal</h2>
 
-A terapia hormonal de afirmação de gênero — geralmente estrogênios (como valerato de estradiol oral/transdérmico) e antiandrogênicos (como CPA/Androcur ou espironolactona) — suprime a liberação de LH e FSH via eixo HPG. Isso leva a uma inibição significativa da síntese androgênica testicular e da espermatogênese.
+Se você ainda não iniciou a terapia hormonal, a situação é direta: **você está no momento mais favorável para congelar esperma, pois a espermatogênese não foi suprimida pela TH, facilitando a coleta e preservação**. As diretrizes internacionais apontam a criopreservação de esperma antes do tratamento como o método mais consolidado e viável para mulheres trans<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
 
-- **Alterações histológicas nos testículos**: Dados clínicos mostram que, com TH prolongada, atrofia dos túbulos seminíferos e redução das espermatogônias são frequentes. Na maioria das pessoas, não é mais possível detectar espermatogênese completa histologicamente<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />.
-- **Efeito dose-cumulativo**: Quanto mais longa a duração do tratamento e maior a exposição cumulativa a antiandrogênicos e estrogênios, mais fortemente a espermatogênese é suprimida — e mais difícil se torna obter espermatozoides viáveis<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+O procedimento padrão envolve ir a um centro de reprodução assistida ou banco de sêmen, realizar exames sorológicos básicos, obter a amostra por masturbação e avaliá-la em laboratório (concentração, motilidade, morfologia) para adicionar um crioprotetor e armazená-la em nitrogênio líquido (−196 °C)<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Recomenda-se abstenção prévia de 2 a 7 dias para otimizar a qualidade da amostra; a necessidade de múltiplas coletas é avaliada pelo espermograma. Se o processo de coleta causar disforia de gênero intensa ou desconforto físico, você pode perguntar no agendamento se há um ambiente mais reservado ou alternativas viáveis. É uma preocupação comum e não há motivo para vergonha em perguntar.
 
-<DangerBox title="Espermatogênese suprimida NÃO é contracepção segura">
-Mesmo que a TH iniba significativamente a produção de espermatozoides e reduza a fertilidade, ela **nunca deve ser considerada um método contraceptivo confiável**. Nos testículos, ainda podem existir espermatozoides residuais férteis. Em relações sexuais que possam resultar em gravidez, métodos contraceptivos confiáveis (como preservativos) devem ser usados. Não há margem para "provavelmente vai dar certo".
+É importante ter expectativas realistas: **a criopreservação preserva a chance de tentar utilizar a amostra no futuro, mas não garante que a qualidade seja suficiente após o descongelamento nem que as técnicas de reprodução assistida tenham sucesso garantido**<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Para detalhes práticos de acesso na sua região, consulte a [Seção 4](#access).
+
+<DangerBox title="Espermatogênese suprimida ≠ Contracepção segura">
+A TH reduz significativamente a fertilidade, mas **nunca deve ser usada como método contraceptivo**. Durante o tratamento, ainda podem restar espermatozoides férteis nos testículos. Enquanto houver relações sexuais que possam levar à gravidez, é necessário usar métodos contraceptivos confiáveis (o preservativo também reduz o risco de infecções sexualmente transmissíveis).
 </DangerBox>
 
-### Reversibilidade após a pausa: evidências e limitações
-
-Muitas mulheres trans que já recebem TH se perguntam se a fertilidade se recupera após a pausa. A resposta baseada em evidências atual é: **uma recuperação parcial da espermatogênese é possível, mas as evidências são fracas e existem diferenças individuais significativas.**
-
-- **Primeiros dados de estudos**: Um estudo retrospectivo com 9 mulheres trans que pausaram a TH por desejo de ter filhos mostrou recuperação variável da espermatogênese após vários meses — espermatozoides móveis foram encontrados novamente no ejaculado<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. No entanto, trata-se de uma pequena série de casos.
-- **Variabilidade individual e limitações**: Revisões sistemáticas indicam que o grau e o tempo de recuperação variam muito individualmente. Algumas pessoas não atingem qualidade espermática suficiente para concepção natural mesmo após mais de um ano de pausa<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
-- **Consequência clínica**: Na prática clínica, a possibilidade de recuperação após a pausa **nunca** deve servir como argumento para dispensar a criopreservação antes do início da terapia. A estratégia mais segura é: com qualquer desejo de ter filhos — congelar esperma antes de iniciar a TH.
-
 ---
 
-## 3. Criopreservação de esperma: como funciona na prática
+<h2 id="already-on">3. Já está em tratamento: ainda dá tempo?</h2>
 
-A criopreservação de esperma (banco de sêmen) é o procedimento mais estabelecido e acessível de preservação da fertilidade para pessoas com função testicular.
+Falando com franqueza: **é possível tentar, mas o cenário é mais complexo e exige acompanhamento médico especializado.**
+
+Após um período em TH, a produção de espermatozoides costuma estar profundamente suprimida e os túbulos seminíferos podem apresentar atrofia<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Para tentar obter espermatozoides viáveis, a prática clínica avalia **pausar a TH (frequentemente por vários meses ou mais)** para permitir uma recuperação parcial do eixo hormonal. A duração da pausa, o esquema de monitoramento e o momento da coleta variam amplamente entre indivíduos e devem ser definidos por uma clínica de reprodução assistida.
+
+### A espermatogênese vai se recuperar ao pausar a TH?
+
+Esta é uma das dúvidas mais frequentes de quem já recebe tratamento. A resposta exige cautela: **existe a possibilidade de recuperação parcial, mas o nível de evidência é fraco e não há garantias.**
+
+Os estudos disponíveis envolvem amostras pequenas. Um estudo retrospectivo com 9 mulheres trans que pausaram a TH por desejo reprodutivo observou recuperação variável da espermatogênese após vários meses, com reaparecimento de espermatozoides móveis no ejaculado; porém, o tempo de recuperação e a qualidade final foram muito heterogêneos, com necessidade de intervenção cirúrgica em alguns casos, e os próprios autores ressaltam que a amostra é pequena demais para generalizações<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. Revisões sistemáticas indicam que, mesmo após pausas superiores a um ano, a qualidade espermática de algumas pessoas pode continuar insuficiente para fecundação natural<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Em resumo: **a ideia de que "o esperma vai se recuperar ao parar a TH" não deve ser tratada como um plano de reserva garantido.** Congelar antes de iniciar os hormônios continua sendo a opção mais previsível.
+
+A tabela a seguir resume as três situações principais e sua realidade clínica:
 
 <DoseTable
-  headers={['Fase / Situação', 'Orientações clínicas', 'Evidência e base de decisão']}
+  headers={['Sua situação atual', 'Realidade e procedimento', 'Nível de evidência']}
   rows={[
     [
-      'Ainda não iniciou TH',
-      'Os parâmetros do espermograma correspondem ao nível basal natural — esta é a janela ideal para criopreservação. A coleta deve ser concluída antes do início da terapia.',
-      'Recomendação de diretriz (evidência forte)',
+      'Ainda não começou a TH',
+      'A produção de esperma não foi suprimida, sendo o momento mais tranquilo. Concluir a coleta antes de iniciar os hormônios é bem mais simples.',
+      'Recomendação clara de diretrizes · Forte',
     ],
     [
-      'TH já iniciada',
-      'A espermatogênese geralmente já está comprometida. Sob acompanhamento médico, a TH precisa ser pausada por várias semanas a meses para recuperação parcial do eixo HPG. A pausa pode causar elevação de testosterona, aumento de pelos faciais, alterações de humor e piora da disforia de gênero.',
-      'Pequenos estudos retrospectivos (evidência fraca)',
+      'Já está em TH',
+      'A espermatogênese costuma estar suprimida. Exige pausar a TH (frequentemente por meses ou mais) sob avaliação médica. A pausa pode reduzir temporariamente os efeitos feminizantes e aumentar a disforia de gênero; deve ser ponderada com o médico.',
+      'Estudo retrospectivo de pequena amostra · Fraco',
     ],
     [
-      'Coleta não é possível',
-      'Em caso de disforia de gênero intensa, disfunção erétil ou distúrbios de ejaculação, a coleta por masturbação pode não ser viável. Nesses casos, a clínica de reprodução pode avaliar suporte medicamentoso ou extração cirúrgica de espermatozoides (TESE).',
-      'Consenso de especialistas clínicos (evidência fraca)',
+      'Dificuldade na coleta',
+      'Se a coleta convencional for difícil, a clínica de reprodução deve avaliar primeiro métodos de ejaculação assistida; apenas se não houver espermatozoides no ejaculado será avaliada a extração cirúrgica invasiva (como TESE).',
+      'Consenso de especialistas clínicos · Fraco',
     ],
   ]}
 />
 
-- **Coleta e criopreservação**: A amostra é geralmente obtida por masturbação. No laboratório, é feito um espermograma (concentração, motilidade, morfologia), depois a amostra é misturada com crioprotetor e armazenada em nitrogênio líquido a -196 °C<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
-- **Riscos da pausa da TH**: Quando a TH é pausada para coleta de esperma, o nível de estradiol cai e o de testosterona sobe. Isso pode causar alterações físicas (como redução da tensão mamária, aumento da oleosidade da pele, oscilações de humor) e piora da disforia de gênero. A duração e o monitoramento da pausa devem ser definidos conjuntamente por endocrinologistas e pela clínica de reprodução — nunca pare a terapia por conta própria.
-
-<WarningBox title="Esta página não substitui aconselhamento médico individual">
-A pausa da TH para coleta de esperma exige avaliação médica individual (duração da pausa, esquema de monitoramento, momento da coleta, retomada da TH). Apenas uma **clínica de reprodução** pode avaliar e acompanhar isso. Não pause nem retome a terapia por conta própria.
+<WarningBox title="Não interrompa nem retome o tratamento por conta própria">
+Pausar a TH para congelar esperma é um julgamento médico individualizado: a duração da pausa, o momento da coleta e a retomada variam para cada pessoa. A avaliação final da recuperação depende do espermograma; taxas hormonais servem apenas como referência. Durante a pausa, a queda do estrogênio e a elevação da testosterona podem aumentar a oleosidade da pele, atenuar efeitos feminizantes ou acentuar a disforia de gênero. **O primeiro passo não é suspender os hormônios por conta própria, mas contatar um centro de reprodução credenciado para avaliação**; contar com o acompanhamento do seu endocrinologista torna o processo mais seguro.
 </WarningBox>
 
 ---
 
-## 4. Acesso e custos no Brasil e em Portugal
+<h2 id="access">4. Acesso e custos no Brasil e em Portugal</h2>
 
 <WarningBox title="Leis e cobertura estão em evolução">
 As informações a seguir refletem o **cenário de meados de 2026** e não constituem aconselhamento jurídico. As regulamentações podem mudar — consulte sempre diretamente a equipe médica e o plano de saúde para informações atualizadas.

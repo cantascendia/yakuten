@@ -1,0 +1,226 @@
+---
+title: 'Pangangalaga sa Kakayahang Mag-anak: Pagpapayelo ng Similya Bago at Pagkatapos ng HRT'
+description: 'Isang praktikal na gabay sa fertility preservation para sa mga trans woman na nag-iisip o kasalukuyang nag-HRT: bakit ang panahon bago magsimula ang pinakamainam na pagkakataon, kung posible pa ba ito pagkatapos magsimula, at kung paano makikipag-ugnayan sa mga lokal na fertility clinic. Kabilang ang mga internasyonal na gabay at medikal na ebidensya.'
+evidenceLevel: C
+lastReviewed: 2026-07-24
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+faqs:
+  - q: 'Kailangan ba talagang magpa-freeze ng similya bago magsimula ng HRT?'
+    a: 'Hindi ito "kailangan." Malaki ang epekto ng HRT sa pag-unti ng produksyon ng similya, at ang pagbabalik nito pagkatapos itigil ang gamot ay walang katiyakan at magkakaiba bawat tao. Kaya naman, bago magsimula ng gamot ang karaniwang pinakamadali at pinakamaaasahang pagkakataon. Ang pagpapasya kung magpapayelo ay nakadepende sa iyong personal na kagustuhang magkaroon ng biyolohikal na anak—walang iisang tamang sagot, ngunit ang desisyong ito ay may limitasyon sa oras na nararapat pag-isipan bago magsimula.'
+  - q: 'Matagal na akong nag-e-HRT. Posible pa rin bang magpa-freeze ng similya?'
+    a: 'Maaari itong subukan, ngunit karaniwang bumaba na nang malaki ang kalidad ng similya. Sa medikal na konteksto, sa ilalim ng pagsusuri ng doktor sa isang lisensyadong fertility center, kailangang pansamantalang itigil ang HRT (karaniwang ilang buwan o higit pa) upang maghintay sa parsyal na pagbabalik ng produksyon bago kumuha ng sample. Ang posibilidad na makakuha ng magagamit na similya at ang haba ng pagtigil ay nangangailangan ng indibidwal na pagsusuri; pakiusap na huwag biglang itigil ang gamot nang mag-isa.'
+  - q: 'Tiyak bang babalik ang produksyon ng similya pagkatapos itigil ang gamot?'
+    a: 'Hindi tiyak. Napakalimitado ng kasalukuyang ebidensya at hindi garantisado ang pagbabalik. Isang maliit na pag-aaral sa 9 na tao lamang ang nakapansin ng magkakaibang antas ng pagbabalik pagkatapos itigil ang gamot, ngunit binigyang-diin mismo ng mga may-akda na napakaliit ng sample size at hindi ito pwedeng gawing pangkalahatang konklusyon. Huwag gawing dahilan ang "baka bumalik naman" upang hindi magpa-freeze bago magsimula.'
+  - q: 'Paano gumagana ang sperm freezing para sa mga hindi kasal ayon sa batas at praktikal na hakbang?'
+    a: 'Malaki ang pagkakaiba ng mga batas at regulasyon sa bawat bansa at rehiyon. Sa maraming lugar, ang personal na pagpapayelo ng similya dahil sa medikal na dahilan ay pinapayagan anuman ang estado sa pag-aasawa, basta ang mga dokumento ng pagkakakilanlan ay sumusunod sa mga legal na kinakailangan. Gayunpaman, ang paggamit sa mga naiyelong similya sa hinaharap para sa assisted reproductive technology (tulad ng IVF) ay maaaring magkaroon ng mga tiyak na legal o marital na kinakailangan. Palaging kumpirmahin ang kasalukuyang mga patakaran nang direkta sa inyong lokal na fertility center o sperm bank.'
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+
+<div class="fp-hero">
+  <div class="fp-hero__box">
+    <p class="fp-hero__lead">Karaniwang binabawasan nang malaki ng HRT ang kakayahang mag-anak, at kung kailan, gaano kabilis, o hanggang saan babalik ang produksyon ng similya pagkatapos itigil ang gamot ay hindi maaasahang mahuhulaan.<br />Kung nais mong panatilihin ang opsyon na magkaroon ng biyolohikal na anak sa hinaharap, pinakamainam na magpa-freeze ng similya <strong>bago magsimula ng hormone therapy</strong>—ang desisyong ito ay may limitasyon sa oras.</p>
+    <div class="fp-hero__actions">
+      <a href="#not-started" class="fp-hero__btn fp-hero__btn--primary">Hindi pa ako nagpapasimula ng HRT →</a>
+      <a href="#already-on" class="fp-hero__btn fp-hero__btn--secondary">Kasalukuyan na akong nag-e-HRT →</a>
+    </div>
+  </div>
+</div>
+
+<style>{`
+  .fp-hero { margin-bottom: var(--space-xl); }
+  .fp-hero__box {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .fp-hero__lead {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-lg);
+    line-height: 1.6;
+  }
+  .fp-hero__lead strong { color: var(--color-primary-light); }
+  .fp-hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .fp-hero__btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    clip-path: var(--clip-corner);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .fp-hero__btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .fp-hero__btn--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  .fp-hero__btn:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .fp-hero__btn { transition: none; }
+    .fp-hero__btn:hover { transform: none; }
+  }
+`}</style>
+
+Ang pahinang ito ay hindi tungkol sa kung paano "dapat" makipag-usap ang mga doktor tungkol sa kakayahang mag-anak—dahil sa katotohanan, maraming trans woman na nag-e-DIY o naghahanda pa lang ang walang doktor na makakausap sa kanilang tabi. Dito, sinasagot lamang natin ang tatlong tanong na kailangan mong harapin: **Dapat ba akong magpa-freeze ng similya? May oras pa ba? At paano gagawin ang mga praktikal na hakbang sa inyong lugar?**
+
+<WarningBox title="Paglilinaw sa kung ano ang maibibigay at hindi maibibigay ng pahinang ito">
+Nagbibigay ang pahinang ito ng kaalaman sa kalusugan at sangguniang gabay sa pagpapasya upang matulungan kang suriin kung "dapat bang magpa-freeze, kailan magpapafreeze, at paano magsisimula sa inyong lugar."
+
+- **Hindi nito mapapalitan** ang komprehensibong pagsusuri sa isang lisensyadong reproductive medicine center: ang tiyak na oras ng pagkuha ng sample, mga protocol sa pagtigil at pagpapatuloy ng gamot, at pagsusuri sa semen analysis ay dapat itakda ng mga kwalipikadong doktor batay sa iyong indibidwal na sitwasyon.
+- **Hindi ito** payong legal o patakaran: ang mga regulasyon sa mga lokal na sperm bank at pasilidad ng kalusugan ay nagbabago sa paglipas ng panahon; mangyaring umasa sa pinakabagong impormasyon mula sa inyong mga lokal na institusyon.
+</WarningBox>
+
+---
+
+## 1. Mag-isip nang Malinaw Muna: Bakit May Limitasyon sa Oras ang Desisyong Ito
+
+Ang pagpapasya kung magkakaroon ng anak o mag-iiwan ng biyolohikal na anak ay isang napakapersonal na desisyon na walang "dapat" o "hindi dapat." Ngunit hindi tulad ng ibang mga desisyon, **ang pagpipiliang ito ay tumatakbo sa isang orasan**: kapag nagsimula na ang HRT, ang hirap at kawalan ng katiyakan sa pagkuha ng sample ng similya ay tumataas sa paglipas ng panahon.
+
+Ang gender-affirming hormone therapy (estrogen kasama ang antiandrogens) ay nagpipigil sa hypothalamic-pituitary-gonadal (HPG) axis, na nagdudulot ng malaking pagbaba sa produksyon ng similya sa mga testes. Habang tumatagal ang paggamit ng HRT, karaniwang nagiging mas matindi ang pagbaba nito, na nagpapahirap sa pagkuha ng magagamit na similya sa hinaharap. Bukod dito, ang indibidwal na pagkakaiba kung kailan at paano babalik ang produksyon ng similya pagkatapos itigil ang gamot ay napakalaki at sa kasalukuyan ay hindi mahuhulaan<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />. Ang mga pangunahing internasyonal na klinikal na gabay—kabilang ang WPATH SOC 8, Endocrine Society 2017, at UCSF—ay nagkakaisa sa isang pananaw: **ang mga opsyon sa fertility preservation ay dapat talakayin nang lubusan bago magsimula ng mga gamot na maaaring makapinsala sa kakayahang mag-anak, dahil sa kawalan ng katiyakan ng pagbabalik nito pagkatapos magsimula**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+
+Kaya naman, kung hindi ka pa nagsisimulang mag-HRT—kahit na nararamdaman mo na marahil ay ayaw mo ng anak sa hinaharap ngunit hindi ka pa sigurado—nararapat lamang na basahin nang mabuti ang kasunod na seksyon. **Bago magsimula ng gamot ang karaniwang pinakamadali at pinakamaaasahang panahon.** Ang pagpapayelo ng similya ay sarili mong desisyon batay sa tamang impormasyon, ngunit ang pagpapasya pagkatapos maunawaan ang mga gastos at kawalan ng katiyakan ay mas mabuti kaysa sa malaman sa hinaharap na lumipas na pala ang pagkakataon.
+
+<RealityCheck
+  items={[
+    { text: 'Ito ay tungkol sa pagpapanatili ng isang opsyon para sa iyong hinaharap na sarili, hindi isang pangako na dapat kang magkaanak. Ang pagpapayelo ay may gastos para sa mga pagsusuri, pagkuha, pagpapayelo, at taunang imbakan; ngunit kung hindi ka magpapafreeze ngayon at magbago ang iyong isip sa hinaharap, maaaring hindi na maging available ang opsyong ito.' },
+    { text: 'Ang ebidensya tungkol sa pagbabalik ng similya pagkatapos itigil ang HRT ay mahina at hindi mahuhulaan, kaya hindi ito angkop bilang isang maaasahang backup plan.' },
+    { text: 'Bago mag-HRT, hindi pa napipigilan ang produksyon ng similya, kaya karaniwang mas madali ang pagkuha at pagpapayelo. Ang maagang pagpapasya ay karaniwang nag-iiwan sa iyo ng mas maraming opsyon.' },
+    { text: 'Mayroon ding mas tiyak na huling limitasyon: kung nagbabalak kang magpa-orchiectomy o gender-affirming surgery (tulad ng vaginoplasty) sa hinaharap, iyon ang tunay na huling limitasyon—kapag natanggal na ang mga testis, ang kakayahang gumawa ng similya ay hindi na kailanman babalik.' },
+  ]}
+/>
+
+---
+
+<h2 id="not-started">2. Hindi Pa Nagsisimula ng HRT: Ito ang Pinakamainam na Pagkakataon</h2>
+
+Kung hindi ka pa nagsisimula ng gamot, mas simple ang sitwasyon: **nasa pinakamainam ka na panahon para sa sperm freezing, dahil hindi pa napipigilan ng HRT ang produksyon ng iyong similya**. Itinatala rin ng mga pangunahing internasyonal na gabay ang sperm freezing bago mag-treatment bilang pinakainam at pinakapraktikal na paraan ng fertility preservation para sa mga trans woman<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+
+Direkta ang proseso: pumunta sa isang ospital na may sperm bank o reproductive medicine department, sumailalim sa mga batayang pagsusuri para sa mga nakakahawang sakit, kumuha ng semen sa pamamagitan ng masturbation, at pagkatapos suriin ng laboratoryo ang konsentrasyon, motility, at morphology, lalagyan ito ng cryoprotectant at iimbak sa liquid nitrogen (−196°C) para sa matagalang imbakan<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Karaniwang inirerekomenda ang pag-abstine sa loob ng 2–7 araw bago kumuha ng sample upang maging maganda ang kalidad nito. Ang pagsusuri sa semen analysis at ng fertility center ang magtatakda kung kailangang kumuha ng sample nang higit sa isang beses. Kung ang proseso ng pagkuha ay nagdudulot sa iyo ng matinding gender dysphoria o hindi kaginhawahan, maaari kang magtanong sa pagpapareserba ng appointment: kung may mas pribadong kapaligiran o iba pang alternatibong opsyon. Karaniwang alalahanin ito at hindi kailangang mahiya sa pagtatanong.
+
+Mahalaga ring magkaroon ng makatotohanang ekspektasyon: **pinapanatili ng pagpapayelo ang "pagkakataong magamit sa hinaharap," ngunit hindi ito nagagarantiyahan na ang kalidad ng similya pagkatapos matunaw ay magiging sapat o tiyak na magtatagumpay ang assisted reproduction**<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Para sa mga praktikal na hakbang sa lokal na konsultasyon, mga dokumento, at pagbabadyet, tingnan ang [Seksyon 4](#access).
+
+<DangerBox title="Bawas na similya ≠ Hindi makakabuntis: Kailangan pa rin ng kontrasepsyon">
+Malaki ang ibinababa ng HRT sa kakayahang mag-anak, ngunit **hindi ito magagamit bilang paraan ng birth control**. Maaari pa ring magkaroon ng mga natitirang similya na may kakayahang makabuo sa panahon ng gamutan. Sa tuwing may sexual activity na maaaring magbunga ng pagbubuntis, kailangan pa ring gumamit ng maaasahang kontrasepsyon (ang condom ay nakakatulong din upang mabawasan ang panganib ng sexually transmitted infections).
+</DangerBox>
+
+---
+
+<h2 id="already-on">3. Nag-e-HRT Na: Posible Pa Rin Ba?</h2>
+
+Sa tapatan lang: **maaari itong subukan, ngunit karaniwang mas mahirap at nangangailangan ng direktang pakikialam ng mga medikal na propesyonal.**
+
+Pagkatapos mag-HRT nang ilang panahon, ang kakayahan ng testes na gumawa ng similya ay karaniwang napigilan na nang malalim, at maaaring magkaroon ng seminiferous tubule atrophy, kaya nahihirapan ang marami na makakita ng kumpletong produksyon ng similya<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Upang makakuha muli ng magagamit na similya, ang mga klinikal na protocol ay karaniwang nangangailangan ng **pansamantalang pagtigil sa HRT sa ilalim ng medikal na pangangasiwa (karaniwang ilang buwan o higit pa)** upang maghintay sa parsyal na pagbabalik ng gonadal axis function bago kumuha ng sample. Ang haba ng pagtigil, kung paano babantayan, at kailan kukuha ng sample ay magkakaiba bawat tao at hindi maihahanda nang maaga; kailangan itong pamahalaan ng isang lisensyadong reproductive medicine center.
+
+### Babalik ba nang kusa ang similya pagkatapos itigil ang gamot?
+
+Ito ang pangunahing tanong ng karamihan sa mga nag-e-HRT, at ang sagot ay kailangang sabihin nang maingat: **may posibilidad ng parsyal na pagbabalik, ngunit mahina ang antas ng ebidensya at hindi garantisado ang pagbabalik.**
+
+Maliit lamang ang mga kasalukuyang pag-aaral. Isang retrospective observational study sa 9 na trans woman na nagtigil ng HRT para sa fertility reasons ang nakatuklas na ang produksyon ng similya ay bumalik sa magkakaibang antas pagkatapos itigil ang gamot, at muling lumitaw ang motile sperm sa mga sample—ngunit ang kinakailangang oras at huling kalidad ay malaki ang pagkakaiba, at ang ilang indibidwal ay nangailangan pa rin ng surgical sperm extraction; binigyang-diin ng mga may-akda na napakaliit ng sample upang gumawa ng pangkalahatang konklusyon<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. Binabanggit din ng mga review na ang antas at panahon ng pagbabalik ay malaki ang pagkakaiba sa bawat tao, at kahit pagkatapos ng matagal na pagtigil, ang kalidad ng similya ay maaaring manatiling hindi sapat para sa natural na pagbubuntis<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Sa madaling salita: **ang "baka bumalik ang similya pagkatapos itigil ang gamot" ay hindi isang garantisadong backup plan.** Kung nais mong panatilihin ang posibilidad ng biyolohikal na pagiging magulang, ang pagpapayelo bago mag-HRT ang mas maaasahang opsyon.
+
+Inilubuod ng talahanayan sa ibaba ang katotohanan sa tatlong sitwasyon:
+
+<DoseTable
+  headers={['Kasalukuyang Sitwasyon Mo', 'Katotohanan at Diskarte', 'Lakas ng Ebidensya']}
+  rows={[
+    [
+      'Hindi pa nagsisimula ng HRT',
+      'Hindi pa napipigilan ang produksyon ng similya, ito ang pinakamainam na pagkakataon. Ang pagkumpleto ng pagkuha bago magsimula ng gamot ay karaniwang mas mabilis at maayos.',
+      'Malinaw na inirerekomenda ng mga gabay · Malakas',
+    ],
+    [
+      'Kasalukuyan nang nag-e-HRT',
+      'Napigilan na nang malaki ang produksyon ng similya. Kailangang itigil ang HRT sa ilalim ng medikal na pangangasiwa (karaniwang ilang buwan o higit pa) upang maghintay sa parsyal na pagbabalik bago kumuha ng sample. Sa panahon ng pagtigil, maaaring mabawasan ang mga epektong pambabae at tumindi ang dysphoria; timbangin ito kasama ang doktor.',
+      'Maliit na retrospective study · Mahina',
+    ],
+    [
+      'Kahirapan sa pagkuha ng sample',
+      'Kung mahirap ang karaniwang pagkuha sa pamamagitan ng masturbation, unang susuriin ng reproductive center ang mga pamamaraan ng assisted ejaculation; ang invasive surgical sperm extraction (tulad ng TESE) ay sinusuri lamang kapag walang similya sa naiejaculate o sa mga tiyak na medikal na sitwasyon.',
+      'Konsensus ng mga klinikal na eksperto · Mahina',
+    ],
+  ]}
+/>
+
+<WarningBox title="Huwag itigil o muling simulan ang gamot nang mag-isa">
+Ang pagtigil sa HRT para sa sperm freezing ay isang indibidwal na medikal na desisyon—ang haba ng pagtigil, kailan kukuha ng sample, at kailan muling magsisimula ay magkakaiba bawat tao. Sa huli, kung makakakuha ng magagamit na similya ay nakadepende sa semen analysis, habang ang antas ng hormone ay nagsisilbi lamang na sanggunian. **Ang unang hakbang ay hindi ang pagtigil ng gamot nang mag-isa, kundi ang pakikipag-ugnayan sa isang lisensyadong reproductive medicine center para sa pagsusuri.** Kung makikipagtulungan ka rin sa isang endocrinologist upang pangasiwaan ang pagtigil at pagpapatuloy, mas ligtas ito. Ang mga personal na karanasan sa internet ay napakalaki ng pagkakaiba at hindi dapat direktang i-apply sa iyong sariling sitwasyon.
+</WarningBox>
+
+---
+
+<h2 id="access">4. Mga Praktikal na Hakbang: Ano ang Itatanong sa Inyong Lugar</h2>
+
+<WarningBox title="Nag-iiba ang mga patakaran bawat lugar · Palaging kumpirmahin sa inyong lugar">
+Nagbibigay ang impormasyon sa ibaba ng **pangkalahatang gabay sa operasyon** at hindi ito payong legal. Ang mga regulasyon at patakaran ng pasilidad ay nagkakaiba ayon sa hurisdiksyon. **Mangyaring umasa sa pinakabagong kumpirmasyon mula sa inyong mga lokal na lisensyadong pasilidad ng medikal.**
+</WarningBox>
+
+Kapag nag-iisip tungkol sa sperm freezing sa inyong lugar, nakakatulong na linawin ang dalawang pangunahing aspeto: **kung makukumpleto mo ba ang hakbang ng pagpapayelo ngayon, at kung anong mga kondisyon ang lalapat sa paggamit ng sample sa hinaharap.**
+
+### Mga Pangunahing Tanong na Itatanong sa Lokal na Pasilidad
+
+Kapag nakikipag-ugnayan sa lokal na ospital, reproductive medicine center, o sperm bank, itanong ang mga sumusunod na pangunahing tanong:
+
+1. **Kelipikasyon at Pagtanggap para sa Personal na Imbaka (Autologous Preservation)**  
+   Itanong kung tumatanggap ang pasilidad ng personal na pagpapayelo ng similya para sa mga medikal na dahilan (tulad ng pre-HRT fertility preservation). Alamin kung ang mga taong hindi kasal ay maaaring mag-apply kapag ang mga dokumento ng pagkakakilanlan ay nakarehistro bilang lalaki, at kung kailangan ng mga tiyak na medikal na referral.
+
+2. **Mga Kinakailangang Dokumento at Requisito**  
+   Kumpirmahin kung anong mga papel ang kailangang isumite. Karaniwang kailangan ang opisyal na ID na inisyu ng gobyerno. Ang ilang institusyon ay maaari ding humingi ng mga dokumentong nagpapakita ng medikal na panganib sa kakayahang mag-anak, tulad ng mga rekord ng reseta ng HRT o klinikal na pagsusuri kaugnay ng gender incongruence.
+
+3. **Estruktura ng Gastos at mga Tuntunin sa Imbakan**  
+   Humingi ng malinaw na paghahati ng mga bayarin, kabilang ang batayang screening sa nakakahawang sakit, paunang bayad sa pagkuha at pagpapayelo, taunang bayad sa imbakan/pagpapanatili, at mga patakaran tungkol sa pag-a-update ng kontrata o pagtatapon ng mga expired na sample.
+
+4. **Mga Patakarang Namamahala sa Paggamit ng Sample sa Hinaharap**  
+   Linawin kung anong mga legal na kinakailangan, estado sa pag-aasawa, o administratibong pamamaraan ang lalapat kapag balak mo nang gamitin ang naiyelong sample para sa assisted reproductive technology (ART, tulad ng IVF). Ang pag-unawa sa mga patakaran sa hinaharap nang maaga ay nakakatulong na maiwasan ang mga hindi inaasahang hadlang.
+
+### Pangkalahatang-ideya ng mga Praktikal na Hakbang
+
+<DoseTable
+  headers={['Hakbang', 'Kilos', 'Mahalagang Tandaan']}
+  rows={[
+    [
+      '1. Maagang Konsultasyon',
+      'Makipag-ugnayan sa mga lokal na lisensyadong reproductive medicine center o sperm bank bago magsimula ng HRT upang linawin ang mga patakaran sa pagtanggap.',
+      'Habang mas maaga mas mainam; huwag maghintay hanggang sa makapagsimula na ng HRT',
+    ],
+    [
+      '2. Paghahanda ng Dokumento',
+      'Ihanda ang balidong ID at anumang medikal na rekord o dokumentasyon ng gamutan sa HRT na hinihingi ng pasilidad.',
+      'Nagkakaiba ang mga kinakailangan bawat clinic; kumpirmahin muna sa telepono',
+    ],
+    [
+      '3. Pagsusuri sa Gastos at Tuntunin',
+      'Magtanong tungkol sa batayang screening, paunang bayad sa pagpapayelo, taunang gastos sa pagpapanatili, at mga patakaran sa pag-renew/pagtatapon ng sample.',
+      'Kumuha ng tiyak na estruktura ng bayarin mula mismo sa institusyon',
+    ],
+  ]}
+/>
+
+---
+
+## Mga Kaugnay na Babasahin
+
+- [Bago Magsimula: Batayang Pagsusuri at Paghahanda](/fil/before-you-start/) — Mga medikal na pagsusuri at sikolohikal na paghahanda bago mag-HRT
+- [Mga Panganib at Kontraindikasyon ng HRT](/fil/risks/) — Mga kondisyon sa kalusugan na kailangang suriin bago magsimula ng hormone therapy

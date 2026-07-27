@@ -1,0 +1,227 @@
+---
+title: 'Bảo tồn Khả năng Sinh sản: Đông lạnh Tinh trùng Trước và Sau HRT'
+description: 'Hướng dẫn thực hành bảo tồn khả năng sinh sản dành cho người chuyển giới nữ cân nhắc HRT: tại sao trước khi điều trị là thời điểm vàng, liệu đã dùng thuốc rồi có còn kịp đông lạnh không, và cách tư vấn tại các trung tâm hỗ trợ sinh sản địa phương. Kèm hướng dẫn quốc tế và bằng chứng y khoa.'
+evidenceLevel: C
+lastReviewed: 2026-07-24
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+faqs:
+  - q: 'Bắt buộc phải đông lạnh tinh trùng trước khi bắt đầu HRT không?'
+    a: 'Không phải "bắt buộc". HRT làm giảm đáng kể khả năng tạo tinh trùng, và việc phục hồi sau khi ngừng thuốc không được đảm bảo cũng như sự khác biệt giữa các cá nhân là rất lớn. Do đó, thời điểm trước khi dùng thuốc thường là khoảng thời gian dễ thu mẫu và dễ dự đoán nhất. Có đông lạnh hay không phụ thuộc vào mong muốn cá nhân của bạn về việc có con cùng huyết thống—không có đáp án duy nhất, nhưng quyết định này có thời hạn cần suy nghĩ kỹ trước khi bắt đầu HRT.'
+  - q: 'Tôi đã dùng HRT được một thời gian rồi, liệu bây giờ có đông lạnh được không?'
+    a: 'Có thể thử, nhưng chất lượng tinh trùng thường đã giảm rõ rệt. Về mặt lâm sàng, dưới sự đánh giá của bác sĩ tại trung tâm hỗ trợ sinh sản chính quy, bạn cần tạm ngừng HRT (thường cần vài tháng hoặc lâu hơn) để quá trình sinh tinh phục hồi một phần trước khi thu mẫu. Có lấy được tinh trùng khả thi hay không và phải dừng bao lâu cần bác sĩ đánh giá cá thể hóa; xin vui lòng không tự ý đột ngột ngưng thuốc.'
+  - q: 'Sau khi ngừng thuốc tinh trùng có chắc chắn phục hồi không?'
+    a: 'Không chắc chắn. Bằng chứng hiện tại rất hạn chế và tính khả nghịch không được đảm bảo. Một nghiên cứu hồi cứu quy mô nhỏ chỉ trên 9 người ghi nhận một số cá nhân có sự phục hồi ở các mức độ khác nhau sau khi ngừng thuốc, nhưng chính tác giả nhấn mạnh mẫu quá nhỏ và không thể suy rộng kết luận. Đừng lấy lý do "ngừng thuốc có thể phục hồi" làm cớ để không đông lạnh tinh trùng ở thời điểm hiện tại.'
+  - q: 'Người độc thân/chưa kết hôn đông lạnh tinh trùng thì thủ tục và quy định ra sao?'
+    a: 'Quy định pháp lý và chính sách tại các cơ sở y tế có sự khác biệt lớn tùy theo quốc gia và vùng lãnh thổ. Ở nhiều nơi, việc đăng ký lưu trữ tinh trùng tự thân vì lý do y khoa thường được chấp nhận đối với cá nhân độc thân miễn là giấy tờ nhân thân đáp ứng yêu cầu pháp lý. Tuy nhiên, khi sử dụng tinh trùng đã đông lạnh cho các kỹ thuật hỗ trợ sinh sản (như IVF) trong tương lai, có thể sẽ áp dụng các điều kiện pháp lý hoặc tình trạng hôn nhân cụ thể. Hãy luôn xác nhận trực tiếp chính sách mới nhất với trung tâm hỗ trợ sinh sản hoặc ngân hàng tinh trùng tại địa phương.'
+---
+
+import CitationRef from '../../../components/ui/CitationRef.astro';
+import WarningBox from '../../../components/ui/WarningBox.astro';
+import DangerBox from '../../../components/ui/DangerBox.astro';
+import DoseTable from '../../../components/ui/DoseTable.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
+
+<div class="fp-hero">
+  <div class="fp-hero__box">
+    <p class="fp-hero__lead">HRT thường làm giảm đáng kể khả năng sinh sản, và liệu sau khi ngừng thuốc có phục hồi hay không, mất bao lâu, phục hồi đến mức nào đều hiện chưa thể dự đoán một cách tin cậy.<br />Nếu bạn muốn giữ lại lựa chọn có con cùng huyết thống trong tương lai, tốt nhất nên đông lạnh tinh trùng <strong>trước khi bắt đầu liệu pháp hormone</strong>—quyết định này có thời hạn.</p>
+    <div class="fp-hero__actions">
+      <a href="#not-started" class="fp-hero__btn fp-hero__btn--primary">Tôi chưa bắt đầu HRT →</a>
+      <a href="#already-on" class="fp-hero__btn fp-hero__btn--secondary">Tôi đã đang dùng thuốc →</a>
+    </div>
+  </div>
+</div>
+
+<style>{`
+  .fp-hero { margin-bottom: var(--space-xl); }
+  .fp-hero__box {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .fp-hero__lead {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-lg);
+    line-height: 1.6;
+  }
+  .fp-hero__lead strong { color: var(--color-primary-light); }
+  .fp-hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .fp-hero__btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    clip-path: var(--clip-corner);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .fp-hero__btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .fp-hero__btn--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  .fp-hero__btn:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .fp-hero__btn { transition: none; }
+    .fp-hero__btn:hover { transform: none; }
+  }
+`}</style>
+
+Trang này không bàn về việc bác sĩ "nếu có" sẽ tư vấn cho bạn thế nào về khả năng sinh sản—vì trên thực tế, nhiều người đang tự dùng thuốc (DIY) hoặc chuẩn bị dùng không có một bác sĩ như vậy bên cạnh. Tại đây chỉ giải đáp ba câu hỏi mà chính bạn phải đối mặt: **Tôi có nên đông lạnh tinh trùng không? Bây giờ có còn kịp không? Làm thế nào để bắt đầu tại địa phương?**
+
+<WarningBox title="Làm rõ những gì trang này có thể và không thể cung cấp cho bạn">
+Trang này cung cấp kiến thức y khoa và tài liệu tham khảo giúp bạn đánh giá xem có nên đông lạnh, khi nào nên làm và bắt đầu như thế nào tại địa phương.
+
+- Trang này **không thể** thay thế việc đánh giá toàn diện tại một trung tâm hỗ trợ sinh sản chính quy: thời điểm lấy mẫu cụ thể, phác đồ tạm ngừng/dùng lại thuốc và việc đọc chỉ số tinh dịch đồ phải do bác sĩ chuyên khoa quyết định dựa trên tình trạng của bạn.
+- Trang này **không phải** là tư vấn pháp lý hay chính sách: quy định tại các ngân hàng tinh trùng và bệnh viện có thể thay đổi; vui lòng căn cứ vào câu trả lời mới nhất từ các cơ sở y tế địa phương.
+</WarningBox>
+
+---
+
+## 1. Suy nghĩ kỹ trước: Tại sao quyết định này lại có thời hạn
+
+Có muốn sinh con hay giữ lại thế hệ sau cùng huyết thống hay không là lựa chọn rất cá nhân, không có tiêu chuẩn "nếu có" hay "không nên". Tuy nhiên, khác với các lựa chọn khác, **quyết định này đi kèm với một đồng hồ đếm ngược**: sau khi bắt đầu HRT, độ khó và tính không chắc chắn của việc thu mẫu sẽ tăng dần theo thời gian.
+
+Liệu pháp hormone khẳng định giới (Estrogen + thuốc kháng androgen) sẽ ức chế trục hạ đồi - tuyến yên - tuyến sinh dục, khiến khả năng tạo tinh trùng ở tinh hoàn giảm đáng kể. Thời gian dùng thuốc càng dài, sự ức chế thường càng rõ rệt, việc thu thập tinh trùng có thể sử dụng được trong tương lai càng trở nên khó khăn; trong khi đó, khả năng phục hồi và thời gian cần thiết sau khi ngừng thuốc có sự khác biệt rất lớn giữa các cá nhân và hiện không thể dự đoán chính xác<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />. Đồng thuận từ các hướng dẫn lâm sàng quốc tế lớn—bao gồm WPATH SOC 8, Hiệp hội Nội tiết Hoa Kỳ 2017 và UCSF—là thống nhất: **cần thảo luận kỹ các lựa chọn bảo tồn khả năng sinh sản trước khi bắt đầu liệu pháp có thể ảnh hưởng đến sinh sản, do tính không chắc chắn của việc phục hồi sau khi dùng thuốc**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+
+Do đó, nếu hiện tại bạn chưa bắt đầu dùng thuốc, cho dù cảm thấy "sau này chắc không muốn có con, nhưng cũng chưa biết chừng", bạn vẫn rất nên đọc kỹ phần tiếp theo—bởi vì **thời điểm trước khi dùng thuốc thường là khoảng thời gian dễ thu mẫu và dễ dự đoán nhất.** Đông lạnh hay không là lựa chọn có hiểu biết của riêng bạn, nhưng quyết định sau khi đã nắm rõ chi phí và tính không chắc chắn sẽ tốt hơn nhiều so với việc sau này mới nhận ra đã quá muộn.
+
+<RealityCheck
+  items={[
+    { text: 'Đây là việc "giữ lại một lựa chọn cho bản thân trong tương lai", chứ không phải "cam kết bạn nhất định phải sinh con". Việc đông lạnh sẽ phát sinh chi phí xét nghiệm, thu mẫu, làm lạnh và lưu trữ hàng năm; nhưng nếu lúc này không đông lạnh và sau này đổi ý, lựa chọn đó có thể không còn nữa.' },
+    { text: 'Bằng chứng về việc tinh trùng phục hồi sau khi ngừng HRT là rất yếu và không được đảm bảo, không thích hợp làm phương án dự phòng đáng tin cậy.' },
+    { text: 'Trước khi dùng HRT, việc sinh tinh chưa bị ức chế, thường dễ thu mẫu và bảo tồn hơn. Quyết định càng sớm, lựa chọn thường càng nhiều.' },
+    { text: 'Cũng có một thời hạn cứng nhắc hơn: nếu tương lai bạn có kế hoạch phẫu thuật cắt tinh hoàn hoặc phẫu thuật khẳng định giới tính (như tạo hình âm đạo), đó mới là giới hạn cuối cùng thực sự—một khi tinh hoàn đã bị cắt bỏ, khả năng tạo tinh trùng sẽ không bao giờ phục hồi.' },
+  ]}
+/>
+
+---
+
+<h2 id="not-started">2. Chưa bắt đầu HRT: Đây là thời điểm vàng</h2>
+
+Nếu bạn chưa dùng thuốc, tình huống thực ra là đơn giản nhất: **bạn đang ở thời điểm thoải mái nhất để đông lạnh tinh trùng, khi quá trình sinh tinh chưa bị HRT ức chế**. Các hướng dẫn quốc tế lớn cũng xếp việc đông lạnh tinh trùng trước khi dùng thuốc là phương pháp bảo tồn khả năng sinh sản trưởng thành và khả thi nhất cho người chuyển giới nữ<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+
+Quy trình không phức tạp: đến bệnh viện có ngân hàng tinh trùng hoặc khoa hỗ trợ sinh sản, thực hiện xét nghiệm sàng lọc cơ bản như các bệnh truyền nhiễm, thu mẫu tinh dịch qua hình thức thủ dâm, sau khi phòng bối cảnh đánh giá nồng độ, độ di động và hình thái tinh trùng, chất bảo quản lạnh sẽ được thêm vào trước khi đưa vào nitơ lỏng (−196°C) để lưu trữ lâu dài<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Trước khi thu mẫu thường nên kiêng xuất tinh 2–7 ngày để đảm bảo chất lượng mẫu; việc có cần thu mẫu nhiều lần hay không do phân tích tinh dịch và đánh giá của trung tâm sinh sản quyết định. Nếu quá trình lấy tinh trùng khiến bạn cảm thấy lo âu giới tính (gender dysphoria) mạnh mẽ hoặc khó chịu về thể chất, bạn có thể hỏi rõ khi đặt lịch: liệu có môi trường riêng tư hơn hay các phương án thay thế khả thi khác không. Đây là mối bận tâm rất phổ biến, không cần cảm thấy ngại ngùng.
+
+Cũng cần có kỳ vọng thực tế: **việc lưu trữ bảo tồn giữ lại "cơ hội sử dụng trong tương lai", chứ không đồng nghĩa với việc chất lượng tinh trùng sau khi rã đông chắc chắn đủ dùng hay hỗ trợ sinh sản chắc chắn thành công**<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Để biết các bước thực hành cụ thể về tư vấn tại địa phương, hồ sơ và ngân sách, xem [Mục 4](#access).
+
+<DangerBox title="Tinh trùng bị ức chế ≠ Không thể gây mang thai: Không thể bỏ qua việc tránh thai">
+HRT làm giảm đáng kể khả năng sinh sản, nhưng nó **không thể dùng làm phương pháp tránh thai**. Trong thời gian dùng thuốc, tinh hoàn vẫn có thể còn sót lại tinh trùng có khả năng thụ tinh. Chỉ cần có hành vi tình dục có thể dẫn đến mang thai, bạn vẫn phải sử dụng các biện pháp tránh thai tin cậy (bao cao su đồng thời làm giảm nguy cơ lây nhiễm qua đường tình dục).
+</DangerBox>
+
+---
+
+<h2 id="already-on">3. Đã đang dùng thuốc: Liệu có còn kịp không?</h2>
+
+Nói thật lòng: **có thể thử, nhưng thường không lý tưởng bằng và cần sự can thiệp của bác sĩ chuyên khoa.**
+
+Sau một thời gian dùng thuốc, khả năng tạo tinh trùng của tinh hoàn phần lớn đã bị ức chế sâu, các ống sinh tinh có thể xuất hiện hiện tượng teo, và nhiều người đã khó quan sát thấy quá trình sinh tinh hoàn chỉnh<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Muốn lấy lại tinh trùng có thể sử dụng, về mặt lâm sàng thường phải dưới sự đánh giá của bác sĩ **tạm ngừng HRT (thường cần vài tháng hoặc lâu hơn)**, chờ chức năng trục tuyến sinh dục phục hồi một phần rồi mới thu mẫu. Tạm dừng bao lâu, theo dõi thế nào, khi nào thu mẫu có sự khác biệt rất lớn giữa các cá nhân, không thể dự đoán trước và phải do trung tâm hỗ trợ sinh sản chính quy quản lý.
+
+### Sau khi ngừng thuốc, tinh trùng "có tự phục hồi" không?
+
+Đây là câu hỏi mà nhiều người đang dùng thuốc quan tâm nhất, câu trả lời cần phải nói rất cẩn trọng: **có khả năng phục hồi một phần, nhưng mức độ bằng chứng rất yếu và không đảm bảo.**
+
+Các nghiên cứu hiện có thể tra cứu đều rất nhỏ. Một nghiên cứu quan sát hồi cứu trên 9 người chuyển giới nữ tạm ngừng dùng thuốc để sinh con cho thấy sau khi ngưng thuốc, quá trình sinh tinh ở một số người có sự phục hồi ở các mức độ khác nhau, tinh trùng có hoạt tính xuất hiện trở lại trong tinh dịch—nhưng thời gian cần thiết để phục hồi và chất lượng cuối cùng có sự chênh lệch rất lớn, một số ít người vẫn phải nhờ đến phẫu thuật lấy tinh trùng (TESE), và chính các tác giả cũng nhấn mạnh mẫu quá nhỏ nên không thể rút ra kết luận chung<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. Các bài tổng quan cũng chỉ ra rằng mức độ và thời gian phục hồi khác nhau tùy từng người, và ngay cả khi đã ngừng thuốc trong thời gian dài, chất lượng tinh trùng vẫn có thể không đủ để thụ thai tự nhiên<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Tóm lại một câu: **"ngừng thuốc có thể phục hồi" không phải là một phương án dự phòng chắc chắn.** Nếu bạn muốn giữ lại khả năng sinh con cùng huyết thống, đông lạnh trước khi bắt đầu HRT thường là lựa chọn dễ dự đoán hơn nhiều.
+
+Bảng dưới đây tóm tắt thực tế ở ba tình huống:
+
+<DoseTable
+  headers={['Tình trạng hiện tại của bạn', 'Thực tế và Cách tiếp cận', 'Mức độ Bằng chứng']}
+  rows={[
+    [
+      'Chưa bắt đầu HRT',
+      'Việc sinh tinh chưa bị ức chế, là thời điểm thoải mái nhất. Hoàn thành việc thu mẫu trước khi bắt đầu dùng thuốc thường thuận lợi hơn.',
+      'Hướng dẫn khuyến cáo rõ ràng · Mạnh',
+    ],
+    [
+      'Đã đang dùng HRT',
+      'Quá trình sinh tinh hầu hết đã bị ức chế. Cần tạm ngừng HRT dưới sự đánh giá của bác sĩ (thường vài tháng trở lên) để chờ phục hồi một phần. Trong thời gian ngưng thuốc, hiệu quả nữ tính hóa có thể giảm và lo âu giới tính có thể tăng; cần cân nhắc cùng bác sĩ.',
+      'Nghiên cứu hồi cứu mẫu nhỏ · Yếu',
+    ],
+    [
+      'Gặp khó khăn khi thu mẫu',
+      'Nếu việc thu mẫu thông thường qua thủ dâm gặp khó khăn, trung tâm hỗ trợ sinh sản sẽ đánh giá các phương pháp hỗ trợ xuất tinh trước; chỉ đánh giá phẫu thuật lấy tinh trùng xâm lấn (như TESE) khi thực sự không tìm thấy tinh trùng trong tinh dịch xuất ra hoặc trong các điều kiện lâm sàng cụ thể.',
+      'Đồng thuận chuyên gia lâm sàng · Yếu',
+    ],
+  ]}
+/>
+
+<WarningBox title="Không tự ý ngưng hoặc dùng lại thuốc">
+"Tạm ngưng HRT để đông lạnh tinh trùng" là một quyết định y khoa mang tính cá thể hóa—ngừng bao lâu, khi nào thu mẫu, khi nào dùng lại thuốc đều tùy thuộc vào từng người, và việc có lấy được tinh trùng hay không cuối cùng phải dựa vào phân tích tinh dịch đồ để đánh giá, chỉ số hormone chỉ mang tính tham khảo. **Bước đầu tiên không phải là tự ý ngưng thuốc, mà là liên hệ với trung tâm hỗ trợ sinh sản chính quy để được đánh giá.** Nếu có thể tìm được bác sĩ nội tiết cùng theo dõi việc ngưng và dùng lại thuốc thì sẽ an toàn hơn. Kinh nghiệm cá nhân trên mạng có sự khác biệt rất lớn, không nên áp dụng trực tiếp cho bản thân.
+</WarningBox>
+
+---
+
+<h2 id="access">4. Cách thực hiện thực tế: Những điều cần hỏi tại địa phương</h2>
+
+<WarningBox title="Quy định thay đổi tùy nơi · Vui lòng xác nhận trực tiếp tại địa phương">
+Thông tin dưới đây là **hướng dẫn vận hành chung** và không cấu thành tư vấn pháp lý. Quy định và chính sách của các cơ sở y tế có sự khác biệt tùy theo quốc gia và vùng lãnh thổ. **Vui lòng căn cứ vào xác nhận mới nhất từ các cơ sở y tế chính quy tại địa phương của bạn.**
+</WarningBox>
+
+Khi cân nhắc đông lạnh tinh trùng tại địa phương, điều quan trọng là cần làm rõ hai khía cạnh cốt lõi: **liệu bước đông lạnh hiện tại có thực hiện được không, và quy định nào áp dụng cho việc sử dụng mẫu trong tương lai.**
+
+### Những câu hỏi cốt lõi cần hỏi cơ sở y tế địa phương
+
+Khi liên hệ với bệnh viện địa phương, trung tâm hỗ trợ sinh sản hoặc ngân hàng tinh trùng, hãy hỏi các điểm chính sau:
+
+1. **Tư cách và Khả năng Tiếp nhận Lưu trữ Tự thân**  
+   Hỏi xem cơ sở có tiếp nhận đông lạnh lưu trữ tinh trùng tự thân vì chỉ định y khoa (như bảo tồn khả năng sinh sản trước khi dùng HRT) hay không. Xã nhận xem cá nhân độc thân/chưa kết hôn có được đăng ký khi giấy tờ nhân thân ghi giới tính nam hay không, và có cần giấy giới thiệu y tế chuyên khoa không.
+
+2. **Hồ sơ và Điều kiện Cần thiết**  
+   Xác nhận những giấy tờ nào phải nộp. Thông thường cần có giấy tờ tùy thân hợp lệ do chính quyền cấp. Một số cơ sở có thể yêu cầu hồ sơ y tế chứng minh nguy cơ ảnh hưởng đến khả năng sinh sản, chẳng hạn như sổ đơn thuốc HRT hoặc đánh giá lâm sàng về sự không tương hợp giới.
+
+3. **Cơ cấu Chi phí và Điều khoản Lưu trữ**  
+   Yêu cầu bảng chi tiết chi phí rõ ràng, bao gồm xét nghiệm sàng lọc bệnh truyền nhiễm ban đầu, phí thu mẫu và đông lạnh ban đầu, phí lưu trữ/bảo dưỡng hàng năm, cũng như chính sách gia hạn hợp đồng hoặc xử lý mẫu quá hạn lưu trữ.
+
+4. **Quy định về Việc Sử dụng Mẫu trong Tương lai**  
+   Làm rõ các điều kiện tiên quyết về pháp lý, yêu cầu về tình trạng hôn nhân hoặc thủ tục hành chính nào áp dụng khi sau này bạn có kế hoạch sử dụng mẫu đã đông lạnh cho các kỹ thuật hỗ trợ sinh sản (ART, như IVF). Môi trường pháp lý khác nhau giữa các nơi, và việc hiểu rõ quy định sử dụng sớm sẽ giúp tránh các trở ngại không lường trước.
+
+### Tóm tắt các bước thực hành
+
+<DoseTable
+  headers={['Bước', 'Hành động', 'Lưu ý quan trọng']}
+  rows={[
+    [
+      '1. Tư vấn sớm',
+      'Liên hệ với trung tâm hỗ trợ sinh sản hoặc ngân hàng tinh trùng hợp pháp tại địa phương trước khi bắt đầu HRT để làm rõ quy trình tiếp nhận.',
+      'Càng sớm càng tốt; đừng chờ đến khi đã dùng HRT',
+    ],
+    [
+      '2. Chuẩn bị hồ sơ',
+      'Chuẩn bị giấy tờ tùy thân hợp lệ và hồ sơ y tế hoặc tài liệu điều trị HRT theo yêu cầu của cơ sở y tế.',
+      'Yêu cầu mỗi nơi một khác; hãy xác nhận qua điện thoại trước',
+    ],
+    [
+      '3. Tìm hiểu chi phí & điều khoản',
+      'Hỏi rõ chi phí sàng lọc ban đầu, phí đông lạnh ban đầu, phí duy trì hàng năm và chính sách gia hạn/hủy mẫu.',
+      'Nắm bảng phí chính thức trực tiếp từ cơ sở liên quan',
+    ],
+  ]}
+/>
+
+---
+
+## Bài viết liên quan
+
+- [Trước khi bắt đầu: Đánh giá nền tảng và chuẩn bị](/vi/before-you-start/) — Kiểm tra y tế và chuẩn bị tâm lý trước HRT
+- [Rủi ro và Chống chỉ định của HRT](/vi/risks/) — Các tình trạng sức khỏe cần sàng lọc trước khi dùng hormone
+- [Bản đồ Lộ trình HRT](/vi/pathway/) — Tổng quan về tư vấn y tế, xét nghiệm máu và hướng dẫn điều trị

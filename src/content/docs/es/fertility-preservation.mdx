@@ -1,161 +1,236 @@
 ---
-title: "Preservacion de la fertilidad: TRH y criopreservacion de esperma"
-description: "Guia basada en evidencia sobre preservacion de la fertilidad para mujeres trans hispanohablantes: efectos de la TRH en la espermatogenesis, criopreservacion, cobertura en Espana, Argentina, Mexico, Colombia y Chile."
+title: "Preservación de la fertilidad: congelar esperma antes o durante la TRH"
+description: "Guía práctica de preservación de la fertilidad antes y después de la TRH para mujeres trans: la ventana óptima antes del tratamiento, qué esperar si ya usas hormonas y cómo acceder a la criopreservación en España, México, Argentina, Colombia y Chile."
 evidenceLevel: C
-lastReviewed: 2026-07-15
+lastReviewed: 2026-07-24
 references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
 faqs:
-  - q: 'Deberia congelar esperma antes de empezar la TRH?'
-    a: 'Las guias internacionales (WPATH SOC 8, Endocrine Society 2017) recomiendan expresamente que antes de iniciar una terapia hormonal de afirmacion de genero o un bloqueo puberal se ofrezca asesoramiento sobre preservacion de la fertilidad (Hembree 2017; Coleman 2022). La criopreservacion de esperma es el procedimiento mas consolidado. Si existe cualquier deseo de descendencia, se recomienda realizarla antes del inicio de la terapia.'
-  - q: 'Puedo congelar esperma despues de llevar tiempo con TRH?'
-    a: 'Es posible intentarlo, pero la calidad del esperma generalmente ya esta significativamente reducida. Los estrogenos y antiandrogenicos suprimen el eje hipotalamo-hipofisis-gonadal, inhibiendo la espermatogenesis. Los parametros del espermiograma (concentracion, motilidad) suelen estar muy por debajo de los valores iniciales durante la terapia (Choi 2022). Para congelar esperma bajo TRH activa, la terapia debe pausarse bajo supervision medica durante varias semanas o meses para permitir una recuperacion parcial de la espermatogenesis. Solo un centro de fertilidad puede evaluar individualmente si la obtencion de esperma viable es posible y cuanto tiempo debe durar la pausa.'
-  - q: 'Se recupera la espermatogenesis de forma segura al suspender la TRH?'
-    a: 'Los datos disponibles son muy limitados y una recuperacion completa no esta garantizada. Un estudio con 9 pacientes que suspendieron la TRH por deseo de descendencia mostro una recuperacion variable de la espermatogenesis (de Nie 2023). Las revisiones indican que el grado y el tiempo de recuperacion varian mucho entre individuos, y una recuperacion hasta el nivel de fertilidad natural no esta asegurada (Choi 2022). La posible recuperacion tras la suspension nunca debe servir como argumento para prescindir de la criopreservacion antes del inicio de la terapia.'
-  - q: 'Cubre el sistema de salud la criopreservacion en mi pais?'
-    a: 'En Espana, el SNS cubre generalmente la criopreservacion cuando un tratamiento medicamente necesario puede afectar la fertilidad. En Argentina, la Ley 26.862 de Reproduccion Medicamente Asistida garantiza la cobertura. En Mexico, la cobertura varia por estado e institucion. En Colombia, puede requerirse tutela. En Chile, la cobertura publica es limitada. Los detalles varian — consulta directamente con tu sistema de salud y centro de fertilidad.'
+  - q: '¿Es obligatorio congelar esperma antes de empezar la TRH?'
+    a: 'No es "obligatorio". La TRH suprime significativamente la espermatogénesis, y la recuperación tras suspenderla no está garantizada y varía enormemente entre personas. Por eso, antes de iniciar el tratamiento suele ser la ventana más fácil de tomar muestras y más predecible. Congelar o no depende de tu propio deseo reproductivo; no hay una respuesta única, pero es una decisión con límite de tiempo que conviene pensar antes de empezar.'
+  - q: 'Ya llevo un tiempo con TRH, ¿aún puedo congelar?'
+    a: 'Puedes intentarlo, pero la calidad del esperma suele haber disminuido de forma notable. En la práctica clínica se requiere pausar la TRH (a menudo durante meses o más) bajo la evaluación de un especialista en reproducción asistida, hasta que la espermatogénesis se recupere parcialmente. La posibilidad de obtener esperma viable y la duración de la pausa dependen de la evaluación individualizada del médico; por favor no suspendas la medicación por tu cuenta.'
+  - q: '¿La espermatogénesis se recupera con seguridad tras suspender la TRH?'
+    a: 'No necesariamente. La evidencia actual es muy limitada y la reversibilidad no está garantizada. Un estudio retrospectivo en solo 9 personas observó cierta recuperación parcial tras pausar la TRH, pero los propios autores enfatizan que la muestra es pequeña y las conclusiones deben ser cautelosas. Por lo tanto, no uses la suposición de "tal vez se recupere después" como motivo para no congelar ahora.'
+  - q: '¿Puedo acceder a la criopreservación en mi país?'
+    a: 'En general sí, pero la cobertura y los requisitos legales varían según el país y el sistema de salud (p. ej., cobertura pública en España o Argentina bajo leyes específicas, o financiamiento privado/tutela en México, Colombia y Chile). Consulta siempre directamente con un centro de fertilidad o tu sistema de salud local.'
 ---
 
 import CitationRef from '../../../components/ui/CitationRef.astro';
 import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
-import GuideCTA from '../../../components/ui/GuideCTA.astro';
+import RealityCheck from '../../../components/ui/RealityCheck.astro';
 
-<WarningBox title="Nota orientativa">
-Esta pagina resume los efectos fisiologicos de la terapia hormonal de afirmacion de genero (TRH) sobre la fertilidad, explica las recomendaciones clinicas para la preservacion de la fertilidad y presenta el estado actual de la evidencia — para que puedas tomar una decision informada antes y despues del inicio de la terapia.
+<div class="fp-hero">
+  <div class="fp-hero__box">
+    <p class="fp-hero__lead">La TRH suele suprimir significativamente la fertilidad, y si la espermatogénesis se recuperará tras suspenderla, cuánto tardará y en qué medida, es algo que no se puede predecir con certeza.<br />Si deseas conservar la opción de tener descendencia biológica en el futuro, lo más recomendable es congelar esperma <strong>antes de iniciar el tratamiento hormonal</strong>: esta decisión tiene un límite de tiempo.</p>
+    <div class="fp-hero__actions">
+      <a href="#not-started" class="fp-hero__btn fp-hero__btn--primary">Aún no he empezado la TRH →</a>
+      <a href="#already-on" class="fp-hero__btn fp-hero__btn--secondary">Ya estoy en tratamiento →</a>
+    </div>
+  </div>
+</div>
 
-- Las medidas concretas de preservacion de la fertilidad, asi como los esquemas de suspension y reinicio, requieren una evaluacion endocrinologica individual y controles de espermiograma — esto solo puede hacerse en un centro de fertilidad o una clinica de medicina reproductiva.
-- Esta pagina es una orientacion basada en evidencia. No sustituye la consulta medica ni el asesoramiento legal.
+<style>{`
+  .fp-hero { margin-bottom: var(--space-xl); }
+  .fp-hero__box {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    clip-path: var(--clip-corner);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .fp-hero__lead {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-lg);
+    line-height: 1.6;
+  }
+  .fp-hero__lead strong { color: var(--color-primary-light); }
+  .fp-hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .fp-hero__btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    clip-path: var(--clip-corner);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .fp-hero__btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .fp-hero__btn--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  .fp-hero__btn:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) {
+    .fp-hero__btn { transition: none; }
+    .fp-hero__btn:hover { transform: none; }
+  }
+`}</style>
 
+Esta página no trata sobre "cómo debería hablarte tu médico sobre fertilidad" — porque en la realidad, muchas personas que hacen o planifican su TRH de forma autodidacta (DIY) no cuentan con ese acompañamiento. Aquí respondemos a las tres preguntas que debes afrontar por ti misma: **¿Debería congelar esperma? ¿Estoy a tiempo? ¿Cómo funciona el acceso práctico en mi región?**
+
+<WarningBox title="Aclaración sobre lo que ofrece y no ofrece esta página">
+Esta página es una guía informativa y de toma de decisiones para ayudarte a evaluar si congelar, cuándo hacerlo y cómo empezar.
+
+- **No sustituye** la evaluación de un centro de medicina reproductiva acreditado: los momentos de recogida, los esquemas de pausa o reinicio hormonal y la interpretación del seminograma deben ser determinados por profesionales médicos según tu caso.
+- **No constituye** asesoramiento legal o normativo: los reglamentos de hospitales y bancos de semen cambian; consulta siempre la información actualizada de las instituciones locales.
 </WarningBox>
 
 ---
 
-## 1. Consenso de las guias: asesoramiento de fertilidad antes del inicio de la terapia
+## 1. Piénsalo con calma: por qué esta decisión tiene un límite de tiempo
 
-Las principales guias internacionales de medicina de afirmacion de genero coinciden en que antes de cualquier tratamiento que pueda afectar la fertilidad, debe ofrecerse activamente asesoramiento sobre el deseo de descendencia y las opciones de preservacion de la fertilidad.
+Decidir si quieres tener descendencia o conservar un vínculo biológico con tus futuros hijos es una elección profundamente personal; no hay un "deberías" ni un "no deberías". Sin embargo, a diferencia de otras decisiones, **esta lleva un reloj incorporado**: una vez iniciada la TRH, la dificultad e incertidumbre para obtener muestras aumentan con el tiempo.
 
-- **Endocrine Society 2017**: recomienda ofrecer asesoramiento sobre preservacion de la fertilidad tanto antes del bloqueo puberal en adolescentes como antes del inicio de la TRH en personas adultas. Para personas con funcion testicular en la pubertad tardia o en la edad adulta, la criopreservacion de esperma es el procedimiento mas consolidado y disponible<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" />.
-- **WPATH SOC 8**: enfatiza que la informacion completa y objetiva sobre preservacion de la fertilidad debe proporcionarse en una fase temprana del tratamiento, para permitir una decision informada — antes de que se produzca un dano potencialmente irreversible a la fertilidad<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" />.
-- **Guia UCSF**: incluye la discusion del deseo de descendencia y la preservacion de la fertilidad como parte integrante de la evaluacion inicial antes del inicio de la terapia<CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+La terapia hormonal de afirmación de género (estrógenos combinados con antiandrógenos) suprime el eje hipotálamo-hipófisis-gonadal, reduciendo significativamente la espermatogénesis testicular. Cuanto más tiempo se mantenga la medicación, mayor suele ser la supresión y más complejo resultará obtener esperma viable. Además, la posibilidad y el tiempo necesario para una eventual recuperación tras suspender la medicación varían enormemente entre personas y no se pueden predecir con exactitud<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} title="Endocrine Treatment of Gender-Dysphoric/Gender-Incongruent Persons" /><CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />. Por ello, el consenso de las principales guías internacionales (WPATH SOC 8, Endocrine Society 2017, UCSF) es unánime: **las opciones de preservación de la fertilidad deben abordarse antes de iniciar tratamientos que puedan afectarla, debido a la incertidumbre sobre la recuperación posterior**<CitationRef id="coleman-2022" num={1} authors="Coleman E et al." year={2022} title="Standards of Care for the Health of Transgender and Gender Diverse People, Version 8" /><CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} /><CitationRef id="ucsf-2016" num={3} authors="Deutsch MB (ed.)" year={2016} title="Guidelines for the Primary and Gender-Affirming Care of Transgender and Gender Nonbinary People" />.
+
+Por lo tanto, si aún no has comenzado la TRH —incluso si piensas que es poco probable que desees hijos en el futuro—, vale la pena leer con atención esta sección: **antes de iniciar el tratamiento suele ser la ventana más accesible y predecible para congelar esperma**. La elección es tuya, pero decidir conociendo los costes y las incertidumbres es siempre mejor que descubrir más tarde que ya no es posible.
+
+<RealityCheck
+  items={[
+    { text: 'Se trata de "preservar una opción para tu futuro", no de "obligarte a tener hijos". Congelar implica costes de análisis, recogida, congelación y mantenimiento anual; pero si no congelas ahora y cambias de opinión más adelante, puede que ya no tengas la oportunidad.' },
+    { text: 'La posibilidad de que la espermatogénesis se recupere tras suspender la TRH cuenta con evidencia muy débil y ninguna garantía, por lo que no debe considerarse un plan de respaldo fiable.' },
+    { text: 'Antes de iniciar la TRH, la espermatogénesis aún no ha sido suprimida, lo que facilita enormemente la recogida y preservación. Cuanto antes decidas, más opciones tendrás.' },
+    { text: 'Existe un límite definitivo: si en el futuro planeas realizarte una orquiectomía o cirugía de afirmación de género (como vaginoplastia), ese será el límite real. Una vez extirpados los testículos, la capacidad de generar espermatozoides no se puede recuperar.' },
+  ]}
+/>
 
 ---
 
-## 2. Efectos de la TRH sobre la espermatogenesis
+<h2 id="not-started">2. Aún no has empezado la TRH: la ventana óptima</h2>
 
-La terapia hormonal de afirmacion de genero — generalmente estrogenos (p. ej. valerato de estradiol oral/transdermico) y antiandrogenicos (p. ej. acetato de ciproterona/Androcur o espironolactona) — suprime a traves del eje hipotalamo-hipofisis-gonadal (HPG) la secrecion de LH y FSH. Esto conduce a una inhibicion marcada de la sintesis androgenica testicular y de la espermatogenesis.
+Si aún no has iniciado el tratamiento hormonal, la situación es clara: **te encuentras en el momento más propicio para congelar esperma, ya que la espermatogénesis no ha sido suprimida por la TRH, lo que facilita la recogida y preservación**. Las guías internacionales señalan la criopreservación de esperma previa al tratamiento como el método más consolidado y viable para mujeres trans<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
 
-- **Cambios histologicos en el testiculo**: Los datos clinicos muestran que con TRH prolongada aparecen frecuentemente atrofia de los tubulos seminiferos y disminucion de las espermatogonias. En la mayoria de los casos, histologicamente no se puede demostrar una espermatogenesis completa, o se encuentran solo restos minimos<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} title="Fertility Preservation and Reproductive Potential in Transgender and Gender Fluid Population" />.
-- **Efecto dosis-acumulacion**: Cuanto mas prolongado es el tratamiento y mayor la exposicion acumulada a antiandrogenicos y estrogenos, mas se suprime la espermatogenesis — y mas dificil resulta obtener esperma viable<CitationRef id="hembree-2017" num={2} authors="Hembree WC et al." year={2017} />.
+El procedimiento estándar consiste en acudir a un centro de salud o clínica con banco de semen o unidad de reproducción asistida, realizar pruebas serológicas básicas, obtener la muestra mediante masturbación y evaluarla en laboratorio (concentración, motilidad, morfología) para añadir un crioprotector y conservarla en nitrógeno líquido (−196 °C)<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Se suele recomendar una abstinencia previa de 2 a 7 días para optimizar la calidad de la muestra; la necesidad de realizar varias recogidas se evalúa según el seminograma. Si el proceso de recogida te genera disforia de género intensa o malestar físico, puedes preguntar al reservar si disponen de un entorno más privado o de alternativas viables. Es una preocupación habitual y no tienes por qué sentir reparo en comentarlo.
 
-<DangerBox title="La espermatogenesis suprimida NO es un metodo anticonceptivo seguro">
-Aunque la TRH inhibe significativamente la produccion de esperma y reduce la fertilidad, **nunca debe considerarse un metodo anticonceptivo fiable**. En los testiculos pueden persistir espermatozoides residuales capaces de fecundacion. En caso de relaciones sexuales que pudieran dar lugar a un embarazo, deben utilizarse metodos anticonceptivos fiables (p. ej. preservativos). Aqui no hay margen para "ya saldra bien".
+Es importante mantener expectativas realistas: **la criopreservación conserva la oportunidad de intentar utilizar la muestra en el futuro, pero no garantiza que la calidad sea suficiente tras la descongelación ni que las técnicas de reproducción asistida tengan éxito seguro**<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+Para consultar los detalles de acceso según tu país, dirígete a la [Sección 4](#access).
+
+<DangerBox title="Espermatogénesis suprimida ≠ Método anticonceptivo seguro">
+La TRH reduce de forma notable la fertilidad, pero **nunca debe usarse como método anticonceptivo**. Durante el tratamiento pueden persistir espermatozoides viables en los testículos. Mientras existan relaciones sexuales que puedan dar lugar a un embarazo, se deben emplear métodos anticonceptivos fiables (el preservativo, además, reduce el riesgo de infecciones de transmisión sexual).
 </DangerBox>
 
-### Reversibilidad tras la suspension: estado de la evidencia y limites
-
-Muchas mujeres trans que ya reciben TRH se preguntan si la fertilidad se recupera tras la suspension. La respuesta actual basada en evidencia es: **una recuperacion parcial de la espermatogenesis es posible, pero la evidencia es debil y existen considerables diferencias individuales e incertidumbres.**
-
-- **Primeros datos de estudios**: Un estudio retrospectivo con 9 mujeres trans que pausaron su TRH por deseo de descendencia mostro, despues de varios meses, una recuperacion variable de la espermatogenesis — en el eyaculado se encontraron de nuevo espermatozoides motiles<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. Sin embargo, se trata de una serie de casos pequena; la generalizacion es limitada.
-- **Variabilidad individual y limitaciones**: Las revisiones senalan que el grado y el tiempo de recuperacion varian mucho entre individuos. Algunas personas no alcanzan, ni siquiera despues de mas de un ano de pausa terapeutica, una calidad espermatica suficiente para la fecundacion natural. Ademas, existe el riesgo de fibrosis intersticial y esclerosis tubular en el testiculo por TRH prolongada<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
-- **Consecuencia clinica**: En la practica clinica, la posibilidad de recuperacion tras la suspension **nunca** debe servir como argumento para prescindir de la criopreservacion antes del inicio de la terapia. La estrategia mas segura sigue siendo: ante cualquier deseo de descendencia, por remoto que sea — congelar esperma antes de empezar la TRH.
-
 ---
 
-## 3. Criopreservacion de esperma: procedimiento en la practica
+<h2 id="already-on">3. Ya estás en TRH: ¿aún estás a tiempo?</h2>
 
-La criopreservacion de esperma (banco de semen) es el procedimiento mas consolidado y disponible de preservacion de la fertilidad para personas con funcion testicular.
+Hablando con franqueza: **es posible intentarlo, pero el escenario es más complejo y requiere supervisión médica especializada.**
+
+Tras un periodo con TRH, la producción de espermatozoides suele estar profundamente suprimida y los túbulos seminíferos pueden presentar atrofia<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />. Para intentar recuperar espermatozoides viables, en la práctica clínica se evalúa **pausar la TRH (a menudo durante varios meses o más)** para permitir una recuperación parcial del eje hormonal. La duración de la pausa, la pauta de seguimiento y el momento óptimo de recogida varían ampliamente entre individuos y deben ser determinados por un centro de medicina reproductiva.
+
+### ¿Se recuperará la espermatogénesis al suspender la TRH?
+
+Es una de las dudas más frecuentes entre quienes ya reciben tratamiento. La respuesta requiere cautela: **existe la posibilidad de una recuperación parcial, pero el nivel de evidencia es débil y no hay garantías.**
+
+Los estudios disponibles cuentan con muestras reducidas. Un análisis retrospectivo en 9 mujeres trans que pausaron la TRH por deseo reproductivo observó cierta recuperación variable de la espermatogénesis tras varios meses, reapareciendo espermatozoides móviles en el eyaculado; sin embargo, el tiempo de recuperación y la calidad final fueron muy dispares, requiriendo intervención quirúrgica en algún caso, y los autores subrayan que la muestra es demasiado pequeña para extrapolar conclusiones generales<CitationRef id="denie-2023" num={4} authors="de Nie I et al." year={2023} title="Successful restoration of spermatogenesis following gender-affirming hormone therapy in transgender women" />. Las revisiones especializadas indican que, incluso tras pausas prolongadas de más de un año, la calidad espermática en algunas personas puede seguir siendo insuficiente para lograr la concepción de forma natural<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
+
+En resumen: **la suposición de que "el esperma se recuperará al suspender la TRH" no debe considerarse un plan de respaldo garantizado.** Congelar antes de iniciar las hormonas sigue siendo la opción más predecible.
+
+La siguiente tabla resume las tres situaciones principales y su realidad clínica:
 
 <DoseTable
-  headers={['Fase / situacion', 'Indicaciones clinicas', 'Evidencia y base de decision']}
+  headers={['Tu situación actual', 'Realidad y procedimiento', 'Nivel de evidencia']}
   rows={[
     [
-      'Aun no ha iniciado la TRH',
-      'Los parametros del espermiograma corresponden al nivel basal natural — esta es la ventana optima para la criopreservacion. La obtencion de muestras debe completarse antes del inicio de la terapia.',
-      'Recomendacion de guias (evidencia solida)',
+      'Aún no has empezado la TRH',
+      'La producción de esperma no ha sido suprimida, siendo el momento más oportuno. Completar la recogida antes de iniciar el tratamiento suele ser mucho más sencillo.',
+      'Recomendación clara de guías · Fuerte',
     ],
     [
-      'TRH ya iniciada',
-      'La espermatogenesis generalmente ya esta reducida. Bajo supervision medica, la TRH debe pausarse durante varias semanas o meses para permitir una recuperacion parcial del eje HPG. La suspension puede provocar un aumento de testosterona, mayor vello facial, cambios de animo y aumento de la disforia de genero. La decision debe ser acompanada y ponderada medicamente.',
-      'Estudios retrospectivos pequenos (evidencia debil)',
+      'Ya estás en TRH',
+      'La espermatogénesis suele estar suprimida. Requiere pausar la TRH (a menudo durante meses o más) bajo evaluación médica. La pausa puede reducir temporalmente los cambios feminizantes o aumentar la disforia de género; debe sopesarse junto al médico.',
+      'Estudio retrospectivo de pequeña muestra · Débil',
     ],
     [
-      'No es posible la obtencion de muestras',
-      'En caso de disforia de genero intensa, disfuncion erectil o trastornos de la eyaculacion, la obtencion de muestras por masturbacion puede no ser posible. En estos casos, el centro de fertilidad puede evaluar apoyo farmacologico o extraccion quirurgica de esperma (TESE — extraccion testicular de espermatozoides).',
-      'Consenso de expertos clinicos (evidencia debil)',
+      'Dificultad en la recogida',
+      'Si la recogida convencional resulta difícil, el centro de fertilidad debe evaluar primero métodos de eyaculación asistida; solo si no se obtienen espermatozoides en el eyaculado se evaluará la extracción quirúrgica invasiva (como TESE).',
+      'Consenso de expertos clínicos · Débil',
     ],
   ]}
 />
 
-- **Obtencion y criopreservacion de muestras**: La muestra se obtiene habitualmente por masturbacion. En el laboratorio se realiza un espermiograma (concentracion, motilidad, morfologia), despues la muestra se trata con crioprotector y se almacena en nitrogeno liquido a -196 grados C<CitationRef id="choi-2022" num={5} authors="Choi JY, Kim TJ" year={2022} />.
-- **Riesgos al suspender la TRH**: Al pausar la TRH para la obtencion de esperma, el nivel de estradiol desciende y la testosterona aumenta. Esto puede provocar cambios fisicos (p. ej. disminucion de la tension mamaria, mayor produccion de sebo, cambios de animo) y un aumento de la disforia de genero. La duracion y el seguimiento de la pausa deben ser establecidos conjuntamente por endocrinologos y el centro de fertilidad — nunca suspendas la terapia por tu cuenta.
-
-<WarningBox title="Esta pagina no sustituye el asesoramiento medico individual">
-Pausar la TRH para la obtencion de esperma requiere una evaluacion medica individual (duracion de la pausa, esquema de seguimiento, momento de la obtencion, reinicio de la TRH). Solo un **centro de fertilidad o una clinica de medicina reproductiva** puede evaluar y acompanar esto. Por favor, no suspendas ni reinicies la terapia por tu cuenta.
+<WarningBox title="No detengas ni reinicies el tratamiento por tu cuenta">
+Pausar la TRH para congelar esperma es un juicio médico individualizado: el tiempo necesario, el momento de la recogida y el reinicio varían según la persona. La evaluación final de la recuperación depende del seminograma; los niveles hormonales solo sirven de referencia. Durante la pausa, la bajada de estrógenos y el rebote de testosterona pueden aumentar el sebo, atenuar rasgos feminizantes o acentuar la disforia de género. **El primer paso no es suspender la medicación por tu cuenta, sino contactar con un centro de fertilidad acreditado para una evaluación**; contar con el seguimiento de tu endocrinólogo hace el proceso más seguro.
 </WarningBox>
 
 ---
 
-## 4. Cobertura y situacion legal por pais
+<h2 id="access">4. Cobertura y situación legal por país</h2>
 
-<WarningBox title="Legislacion y cobertura evolucionan">
-La siguiente informacion refleja el **estado de mediados de 2026** y no constituye asesoramiento legal. Las normativas pueden cambiar — consulta siempre directamente con tu sistema de salud y centro de fertilidad para conocer la situacion actual.
+<WarningBox title="Legislación y cobertura evolucionan">
+La siguiente información refleja el **estado a mediados de 2026** y no constituye asesoramiento legal. Las normativas pueden cambiar — consulta siempre directamente con tu sistema de salud y centro de fertilidad para conocer la situación actual.
 </WarningBox>
 
-### Espana
+### España
 
-El **Sistema Nacional de Salud (SNS)** cubre generalmente la criopreservacion de gametos cuando un tratamiento medicamente necesario puede afectar la fertilidad. La TRH de afirmacion de genero se incluye en esta regulacion.
+El **Sistema Nacional de Salud (SNS)** cubre generalmente la criopreservación de gametos cuando un tratamiento médicamente necesario puede afectar la fertilidad. La TRH de afirmación de género se incluye en esta regulación.
 
-- **Que se cubre**: Generalmente, la preparacion, congelacion y almacenamiento anual de las muestras de esperma con prescripcion medica.
+- **Qué se cubre**: Generalmente, la preparación, congelación y almacenamiento anual de las muestras de esperma con prescripción médica.
 - **Ley Trans 4/2023**: Facilita el acceso a la TRH y reconoce los derechos de las personas trans. El asesoramiento de fertilidad forma parte del recorrido asistencial en las UTIG.
-- **Comunidades autonomas**: La cobertura exacta puede variar entre comunidades autonomas. Consulta con tu servicio de salud regional.
-- **Procedimiento practico**: Solicita la derivacion a un centro de fertilidad a traves de tu endocrinologo/a o medico/a de familia con justificacion del riesgo para la fertilidad por la TRH planificada.
+- **Comunidades autónomas**: La cobertura exacta puede variar entre comunidades autónomas. Consulta con tu servicio de salud regional.
+- **Procedimiento práctico**: Solicita la derivación a un centro de fertilidad a través de tu endocrinólogo/a o médico/a de familia con justificación del riesgo para la fertilidad por la TRH planificada.
 
 ### Argentina
 
-- La **Ley 26.862 de Reproduccion Medicamente Asistida** garantiza la cobertura de tecnicas de reproduccion asistida. La criopreservacion de gametos generalmente se incluye.
-- La **Ley 26.743 de Identidad de Genero** (2012) garantiza el acceso a la TRH como derecho de salud.
-- Los hospitales publicos y obras sociales deben cubrir estos procedimientos. En la practica, puede requerirse insistencia o recurso administrativo.
-- Centros de fertilidad con experiencia en pacientes trans se encuentran en Buenos Aires, Cordoba y Rosario.
+- La **Ley 26.862 de Reproducción Médicamente Asistida** garantiza la cobertura de técnicas de reproducción asistida. La criopreservación de gametos generalmente se incluye.
+- La **Ley 26.743 de Identidad de Género** (2012) garantiza el acceso a la TRH como derecho de salud.
+- Los hospitales públicos y obras sociales deben cubrir estos procedimientos. En la práctica, puede requerirse insistencia o recurso administrativo.
+- Centros de fertilidad con experiencia en pacientes trans se encuentran en Buenos Aires, Córdoba y Rosario.
 
-### Mexico
+### México
 
-- La cobertura de la criopreservacion **varia significativamente por estado e institucion**. No existe una ley federal que garantice la cobertura especifica para personas trans.
-- La **Clinica Condesa** en CDMX ofrece TRH gratuita, pero la criopreservacion generalmente requiere derivacion a un centro privado.
-- Costos aproximados de autofinanciamiento: espermiograma + criopreservacion: aprox. 5.000-15.000 MXN por muestra; almacenamiento anual: aprox. 3.000-8.000 MXN.
+- La cobertura de la criopreservación **varía significativamente por estado e institución**. No existe una ley federal que garantice la cobertura específica para personas trans.
+- La **Clínica Condesa** en CDMX ofrece TRH gratuita, pero la criopreservación generalmente requiere derivación a un centro privado.
+- Costos aproximados de autofinanciamiento: espermiograma + criopreservación: aprox. 5.000-15.000 MXN por muestra; almacenamiento anual: aprox. 3.000-8.000 MXN.
 - En estados con protocolos trans (CDMX, Jalisco), puede haber mayor apoyo institucional.
 
 ### Colombia
 
-- Las **EPS** deben cubrir la TRH bajo la Ley 1751 de 2015. La criopreservacion puede cubrirse si se demuestra que un tratamiento medico necesario afecta la fertilidad.
-- En la practica, frecuentemente se requiere **tutela** (recurso judicial) para garantizar la cobertura.
-- Centros de fertilidad con experiencia se encuentran en Bogota, Medellin y Cali.
+- Las **EPS** deben cubrir la TRH bajo la Ley 1751 de 2015. La criopreservación puede cubrirse si se demuestra que un tratamiento médico necesario afecta la fertilidad.
+- En la práctica, frecuentemente se requiere **tutela** (recurso judicial) para garantizar la cobertura.
+- Centros de fertilidad con experiencia se encuentran en Bogotá, Medellín y Cali.
 
 ### Chile
 
-- La **Ley 21.120 de Identidad de Genero** (2018) reconoce el derecho a la identidad de genero.
-- La cobertura publica de criopreservacion es **limitada**. Los costos generalmente corren por cuenta del paciente.
-- Costos similares a los de autofinanciamiento en Mexico.
-- Centros de fertilidad principales se encuentran en Santiago, Valparaiso y Concepcion.
+- La **Ley 21.120 de Identidad de Género** (2018) reconoce el derecho a la identidad de género.
+- La cobertura pública de criopreservación es **limitada**. Los costos generalmente corren por cuenta del paciente.
+- Costos similares a los de autofinanciamiento en México.
+- Centros de fertilidad principales se encuentran en Santiago, Valparaíso y Concepción.
 
 ---
 
-## 5. Como encontrar centros de fertilidad
+## 5. Cómo encontrar centros de fertilidad
 
-En el mundo hispanohablante existe una red creciente de centros de fertilidad, aunque no todos tienen experiencia explicita con pacientes trans.
+En el mundo hispanohablante existe una red creciente de centros de fertilidad, aunque no todos tienen experiencia explícita con pacientes trans.
 
-- **Espana**: Las UTIG (Unidades de Tratamiento de Identidad de Genero) en Madrid, Barcelona, Malaga y otras ciudades pueden derivarte a centros de fertilidad colaboradores.
-- **Argentina**: Los hospitales publicos con servicios de diversidad sexual (Hospital Durand, Hospital Fernandez en Buenos Aires) pueden orientarte.
-- **Mexico**: La Clinica Condesa y organizaciones como Letra S pueden proporcionar referencias.
+- **España**: Las UTIG (Unidades de Tratamiento de Identidad de Género) en Madrid, Barcelona, Málaga y otras ciudades pueden derivarte a centros de fertilidad colaboradores.
+- **Argentina**: Los hospitales públicos con servicios de diversidad sexual (Hospital Durand, Hospital Fernández en Buenos Aires) pueden orientarte.
+- **México**: La Clínica Condesa y organizaciones como Letra S pueden proporcionar referencias.
 - **Colombia**: Organizaciones como Colombia Diversa pueden orientarte hacia centros amigables.
-- **Chile**: Organizaciones como OTD Chile pueden proporcionar orientacion.
+- **Chile**: Organizaciones como OTD Chile pueden proporcionar orientación.
 
-**Consejo**: Si al pedir cita te identificas como mujer trans y el centro reacciona con rechazo o desconcierto, no te desanimes. Tienes derecho a este servicio. Pregunta por otro centro en tu region o contacta con una organizacion trans local que pueda darte recomendaciones.
+**Consejo**: Si al pedir cita te identificas como mujer trans y el centro reacciona con rechazo o desconcierto, no te desanimes. Tienes derecho a este servicio. Pregunta por otro centro en tu región o contacta con una organización trans local que pueda darte recomendaciones.
 
 ---
 
-## Paginas relacionadas
+## Páginas relacionadas
 
 - [Antes de empezar: evaluaciones iniciales](/es/before-you-start/)
 - [Reconocer riesgos y actuar en emergencias](/es/risks/)
-- [Recorrido clinico](/es/pathway/)
+- [Recorrido clínico](/es/pathway/)
