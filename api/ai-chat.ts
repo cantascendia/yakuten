@@ -36,6 +36,23 @@ function envStr(name: string): string | null {
   return typeof v === 'string' && v.trim() !== '' ? v.trim() : null;
 }
 
+/* AI_TIERS 生效时的层列表，用于响应头 `x-yk-tiers`；未生效时保持 null（不发该头）。
+   ⚠️ 这个头存在的理由来自一次真实踩坑：AI_TIERS 第一次配置时**没有生效**
+   （面板保存失败），而端点照常 200、探针照常能跑完 —— 唯一能发现的方式是去翻
+   Vercel 启动日志。也就是说，一个用来防止「以为测了其实没测」的开关，
+   自己有着同一个失败模式。
+
+   两个作用：
+   1. 探针脚本开跑前先断言该头 == 待测层，不匹配直接 abort ——
+      宁可不出报告，也不要出一份「打的其实是 Google」的绿色报告
+   2. **生产环境出现这个头本身就是告警**：说明有人测完忘了删 AI_TIERS，
+      生产链正被钉在单层上
+
+   只在 AI_TIERS 生效时发送 —— 正常生产不新增任何信息披露面。
+   声明必须在 CREDENTIALS 之前：那个 IIFE 会给它赋值，`let` 在 TDZ 内被赋值会抛
+   ReferenceError，而那发生在模块加载期 —— 端点会直接起不来。 */
+let RESTRICTED_TIERS: string | null = null;
+
 const CREDENTIALS: Credential[] = (() => {
   const out: Credential[] = [];
   const gFree = envStr('GOOGLE_GENERATIVE_AI_API_KEY');
@@ -92,6 +109,7 @@ const CREDENTIALS: Credential[] = (() => {
     return out;
   }
   console.warn(`AI Chat: AI_TIERS restricts chain to ${[...allow].join(',')} — probe/testing mode`);
+  RESTRICTED_TIERS = [...new Set(filtered.map((c) => c.tier))].join(',');
   return filtered;
 })();
 
@@ -1272,6 +1290,9 @@ export default async function handler(req: Request) {
         'x-yk-model': served.modelId,
         'x-yk-route': `${served.cred.tier}/${served.cred.provider}`,
         'x-yk-probes': String(probes),
+        // 只在 AI_TIERS 生效时出现。见其声明处的注释：探针据此断言「打的确实是待测层」，
+        // 且它出现在生产响应里本身就是「测完忘删」的告警。
+        ...(RESTRICTED_TIERS ? { 'x-yk-tiers': RESTRICTED_TIERS } : {}),
       },
     });
   } catch (error: unknown) {

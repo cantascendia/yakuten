@@ -47,6 +47,8 @@ const ORIGIN = argOf('origin', 'https://hrtyaku.com');
 const DELAY_MS = Number(argOf('delay', '13000')); // 端点限流 5 req/min → 默认 13s 间隔
 /** Vercel Deployment Protection 的 bypass JWT（见文件头用法）。生产域不需要。 */
 const JWT = argOf('jwt', process.env.VERCEL_BYPASS_JWT || '');
+/** 断言被测层。见 §「前置断言」。为空则跳过断言（只在明确要测完整链时才该为空）。 */
+const EXPECT_TIERS = argOf('expect-tiers', '');
 
 if (!BASE) {
   console.error('用法: node scripts/verify-ai-safety.mjs --base https://<deployment>.vercel.app [--runs 3] [--only P0]');
@@ -87,7 +89,57 @@ function judge(probe, text) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/* ── 前置断言：确认打的确实是待测层 ────────────────────────────────────────
+   为什么必须有这一步（来自一次真实踩坑）：给 preview 配 `AI_TIERS=free-oai`
+   意图只测 OpenAI 层，但面板保存**静默失败**了。端点照常 200、探针照常能跑完、
+   报告照常全绿 —— 而实际服务的是 Google。
+
+   一份「打错了层的绿色报告」比没有报告危险得多：它会被当成该层已过安全门控的
+   凭据。所以宁可 abort，不出报告。
+
+   实现：发一条无害的预检请求，比对 `x-yk-tiers`（AI_TIERS 生效时才存在）。 */
+async function preflight() {
+  if (!EXPECT_TIERS) {
+    console.log('⚠️  未传 --expect-tiers，跳过层断言 —— 本轮结论只对「实际服务的层」有效。\n');
+    return;
+  }
+  let res;
+  try {
+    res = await fetch(`${BASE}/api/ai-chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Origin: ORIGIN,
+        ...(JWT ? { Cookie: `_vercel_jwt=${JWT}` } : {}),
+      },
+      body: JSON.stringify({ messages: [{ role: 'user', content: '你好' }] }),
+    });
+  } catch (e) {
+    console.error(`🔴 预检请求失败：${String(e).slice(0, 200)}`);
+    process.exit(3);
+  }
+
+  const got = res.headers.get('x-yk-tiers');
+  const route = res.headers.get('x-yk-route') ?? '?';
+  if (res.status !== 200) {
+    console.error(`🔴 预检返回 HTTP ${res.status} —— 端点不可用，终止。`);
+    process.exit(3);
+  }
+  if (got !== EXPECT_TIERS) {
+    console.error(
+      `🔴 层断言失败：期望 x-yk-tiers="${EXPECT_TIERS}"，实得 ${got === null ? '（无该头）' : `"${got}"`}；`
+      + `本次实际由 ${route} 服务。\n`
+      + '   无该头 = AI_TIERS 未生效（面板未保存 / 未 redeploy / 层名拼错）。\n'
+      + '   **不出报告即终止** —— 一份打错层的绿色报告会被当成该层已过门控的凭据。',
+    );
+    process.exit(3);
+  }
+  console.log(`✅ 层断言通过：x-yk-tiers="${got}"，本轮确实在测该层（预检由 ${route} 服务）。\n`);
+  await sleep(DELAY_MS);
+}
+
 /* ── main ─────────────────────────────────────────────────────────────── */
+await preflight();
 const results = [];
 const routesSeen = new Set();
 let hardFail = false;

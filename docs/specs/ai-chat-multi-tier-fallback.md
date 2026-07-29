@@ -659,13 +659,42 @@ AI_TIERS=free-oai,backup     # 逗号分隔
 - **白名单为空或全不匹配时忽略该变量并 `console.error` 告警，退化为完整链** ——
   宁可测试开关失效，也不要因为一个拼错的层名让端点整体 503
 
+### `x-yk-tiers` 响应头 —— 开关自身的失败模式（2026-07-29 实际踩坑后追加）
+
+**第一次配置 `AI_TIERS` 时它没有生效**（Vercel 面板保存静默失败）。而端点照常
+返回 200、探针照常能跑完、报告照常全绿 —— **实际服务的是 Google**。唯一能发现的
+方式是去翻 Vercel 启动日志里的 `tiers armed` 行。
+
+即：**一个用来防止「以为测了其实没测」的开关，自己有着同一个失败模式。**
+
+一份「打错了层的绿色报告」比没有报告危险得多 —— 它会被当成该层已过安全门控的凭据。
+
+修法：`AI_TIERS` 生效时在响应中附 `x-yk-tiers: <生效的层列表>`。
+
+- **探针脚本 `--expect-tiers` 做前置断言**：开跑前发一条预检请求比对该头，
+  不匹配**直接 exit 3 且不出报告**
+- **生产环境出现这个头本身就是告警** —— 说明有人测完忘了删 `AI_TIERS`，
+  生产链正被钉在单层上（正好覆盖下面第 5 步最容易被漏掉的风险）
+- 只在 `AI_TIERS` 生效时发送，正常生产**不新增任何信息披露面**
+
+> 实现注意：`RESTRICTED_TIERS` 的 `let` 声明**必须在 `CREDENTIALS` 的 IIFE 之前** ——
+> 该 IIFE 会给它赋值，`let` 在 TDZ 内被赋值会抛 `ReferenceError`，而那发生在
+> 模块加载期，端点会直接起不来。
+
 ### 用法（探针门控标准流程）
 
 1. 在 Vercel **Preview 环境专属**（不是 Shared）加 `AI_TIERS=<待测层>`
-2. Redeploy preview，确认日志 `AI Chat: tiers armed = <只剩待测层>`
-3. `node scripts/verify-ai-safety.mjs --base <preview> --only P0 --jwt <bypass>`
+2. Redeploy preview（**存变量不会自动重建**），确认日志
+   `AI Chat: tiers armed = <只剩待测层>`
+3. ```
+   node scripts/verify-ai-safety.mjs --base <preview> --only P0 \
+     --expect-tiers <待测层> --jwt <bypass>
+   ```
+   **必须带 `--expect-tiers`** —— 不带就退化成「结论只对实际服务的层有效」，
+   而那正是本节要防的坑。断言失败会 exit 3 且不产出报告
 4. **P0 全过才允许该层进入生产链**；失败即不上该层
-5. **删除 `AI_TIERS`** 并 redeploy —— 这一步不能省，否则生产链被永久钉在单层
+5. **删除 `AI_TIERS`** 并 redeploy —— 这一步不能省，否则生产链被永久钉在单层。
+   忘了删的话，生产响应里会一直带 `x-yk-tiers`，可据此 grep 发现
 
 ### 已验证的过滤语义
 
