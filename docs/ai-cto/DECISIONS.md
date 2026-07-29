@@ -24,9 +24,16 @@
 
 ## D002 — AI 模型：锁定 Google Gemini
 
+> **部分修订**（2026-07-29，见 D018）：本条「不迁移到 Claude / OpenAI」的主张
+> **继续有效** —— 主供应商仍是 Google Gemini，且不迁移到 Claude / OpenAI。被修订的
+> 是本条隐含的「单供应商」架构假设：自 D018 起，DeepSeek 作为 **Google 全链不可用
+> 时的保底层**接入，不承担常规流量，不改变主供应商归属。
+
 **决策**：AI 问答 Edge Function 长期使用 Google Gemini，**不迁移到 Claude / OpenAI**。
 
-**当前模型**：`gemini-3-flash-preview`（via `@ai-sdk/google` + `ai` SDK）
+**当前模型**：见 `docs/specs/ai-chat-multi-tier-fallback.md` §2.2 的候选链
+（链头为最新稳定 Flash；不在本文钉具体 model id —— 历史上钉死的
+`gemini-3-flash-preview` 已随模型迭代过期两次）
 
 **理由**：
 - Vercel + `@ai-sdk/google` 集成成熟，Edge Function 冷启动延迟可接受
@@ -283,3 +290,44 @@
 **理由**：医学引用一旦 DOI 死链或 URL 重定向到错误内容，站点公信力严重受损；CLAUDE.md "no citation = no content" 隐含"引用必须真实有效"。
 
 **影响文件**：`scripts/verify-doi-liveness.mjs`、`.github/workflows/verify-citations.yml`、`docs/citations-liveness-*.md`
+
+---
+
+## D018 — AI 供应商：Google 主 + DeepSeek 保底（三层降级）
+
+**决策**（2026-07-29，owner 授权）：AI 问答端点采用三层供应商降级 ——
+Google 免费 key → Google 付费 key（Pro 会员每月 $10 credits / Prepay 预付费）
+→ DeepSeek v4 保底。
+
+**与 D002 的关系**：D002「不迁移到 Claude / OpenAI」不变，主供应商仍为 Google。
+本条只新增「Google 全链不可用时的可用性保底」，不改变常规路径的供应商归属。
+
+**理由**：
+- 单供应商 = 单点故障。免费额度耗尽 / key 失效 / 区域性故障 → 端点直接 503，
+  医疗信息站在用户最需要时不可用
+- 付费层（Pro credits + Prepay）覆盖**额度类**故障；DeepSeek 覆盖 Google 侧
+  **凭证/服务级**故障 —— 两类故障根因不同，需要不同层级应对
+- DeepSeek 为独立法域、独立基础设施的供应商，与 Google 相关性低，保底价值
+  高于再加一个 Google key
+
+**数据处理定位**（owner 知情决策）：DeepSeek 与 Google 免费层**同等对待** ——
+接受其 ToS 下输入可能用于模型改进。端点仍 stateless，不存储对话（CONSTITUTION
+§6 不变）。owner 在知晓「境内主体持有中文圈跨性别用户的 HRT 查询」这一法域差异
+的前提下作出该决策；复议触发条件见 spec。
+
+**风险与缓解**：
+- 遵循度差异（禁个性化剂量 / 躯体急症引导）→ 上线前跨模型探针验证，P0 组 3/3
+  为硬门控；见 `docs/specs/ai-chat-multi-tier-fallback.md` §5
+- 供应商静默换模型版本 → 季度重跑探针
+- 付费额度超支 → Prepay 天然断供（余额耗尽即返错 → 自动降级）
+
+**环境变量**：`GOOGLE_GENERATIVE_AI_API_KEY`（必需）、`GOOGLE_PAID_API_KEY`（可选）、
+`DEEPSEEK_API_KEY`（可选）、`AI_COOLDOWN_DISABLED`（可选 kill switch）。
+**key 未设 = 该层不存在**，无独立开关变量（避免两个真值源漂移）。
+⚠ 免费与付费**必须是两个独立 GCP 项目** —— 同项目启用 billing 会让免费额度立即消失。
+
+**同批决策**：`scripts/seo/ai-analyze.mjs` 的 Gemini 调用停用 —— 它曾复用同一把
+免费 key，跑一次就吃掉当天用户侧额度。免费额度归属用户侧。
+
+**影响文件**：`api/ai-chat.ts`、`scripts/seo/ai-analyze.mjs`、
+`docs/specs/ai-chat-multi-tier-fallback.md`

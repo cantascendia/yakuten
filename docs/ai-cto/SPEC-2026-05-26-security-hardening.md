@@ -49,6 +49,16 @@ Add a single `headers` block applying to all paths:
 - Do NOT add new env vars beyond `ALLOWED_ORIGINS`
 - Do NOT touch other files under `api/`
 
+> **Amendment (2026-07-29)** — The non-goal "Do NOT add new env vars beyond
+> `ALLOWED_ORIGINS`" was scoped to the P0 security-hardening PR of 2026-05-26.
+> It is explicitly superseded, **for the env vars named below only**, by
+> `docs/specs/ai-chat-multi-tier-fallback.md` (double-signed 2026-07-29):
+> `GOOGLE_PAID_API_KEY`, `DEEPSEEK_API_KEY`, `AI_COOLDOWN_DISABLED`.
+> All other non-goals in §3 remain in force — in particular the SYSTEM_PROMPT,
+> the rate limiter, the messages-validation limits, and "do not touch other files
+> under `api/`" are unchanged by that spec (it edits `api/ai-chat.ts` only).
+> Any further env var beyond these three requires its own double-signed spec.
+
 ## 4. Risk Assessment
 
 | Risk | Likelihood | Impact | Mitigation |

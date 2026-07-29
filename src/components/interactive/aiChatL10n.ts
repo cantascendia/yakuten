@@ -105,6 +105,18 @@ export interface AIChatCopy {
   scrollToBottom: string;
   openSidebar: string;
   closeSidebar: string;
+  /* --- 每日用量条（百分比制；计数只在本机 localStorage，绝不上报）--- */
+  /** 用量文案，{pct} = 已用百分比整数 */
+  usageLabel: string;
+  /** 额度用尽提示（含"次日 0:00 本地时间重置"语义） */
+  usageExhausted: string;
+  /** 用尽后的去处引导（渲染为指向站内首页的链接文案） */
+  usageResetHint: string;
+  /* --- 深度思考模式 --- */
+  /** 开关按钮文案（同时用作 aria-label / title） */
+  thinkMode: string;
+  /** 深度思考开启时的流式等待区文案 */
+  thinkingDeep: string;
 }
 
 export function getLocale(): Locale {
@@ -192,6 +204,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '回到底部',
     openSidebar: '打开历史对话',
     closeSidebar: '关闭历史对话',
+    usageLabel: '今日已用 {pct}%',
+    usageExhausted: '今日额度已用完，明天 0:00 重置。',
+    usageResetHint: '你也可以先查阅站内文档',
+    thinkMode: '深度思考',
+    thinkingDeep: '正在深度思考...',
   },
   en: {
     title: 'AI Assistant',
@@ -271,6 +288,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Scroll to bottom',
     openSidebar: 'Open conversation history',
     closeSidebar: 'Close conversation history',
+    usageLabel: '{pct}% of today’s usage',
+    usageExhausted: 'You’ve used up today’s quota — it resets at midnight.',
+    usageResetHint: 'In the meantime, you can browse the guides on this site',
+    thinkMode: 'Deep thinking',
+    thinkingDeep: 'Thinking it through...',
   },
   ja: {
     title: 'AIアシスタント',
@@ -350,6 +372,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '一番下へ移動',
     openSidebar: '会話履歴を開く',
     closeSidebar: '会話履歴を閉じる',
+    usageLabel: '本日の使用量 {pct}%',
+    usageExhausted: '本日の利用上限に達しました。0:00 にリセットされます。',
+    usageResetHint: 'それまではサイト内の解説を読むのもおすすめです',
+    thinkMode: 'じっくり考える',
+    thinkingDeep: 'じっくり考えています...',
   },
   ko: {
     title: 'AI 어시스턴트',
@@ -429,6 +456,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '맨 아래로 이동',
     openSidebar: '대화 기록 열기',
     closeSidebar: '대화 기록 닫기',
+    usageLabel: '오늘 사용량 {pct}%',
+    usageExhausted: '오늘 사용량을 모두 썼어요. 자정에 초기화됩니다.',
+    usageResetHint: '그동안 사이트의 문서를 살펴봐도 좋아요',
+    thinkMode: '깊이 생각하기',
+    thinkingDeep: '깊이 생각하는 중...',
   },
   es: {
     title: 'Asistente de IA',
@@ -508,6 +540,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Ir al final',
     openSidebar: 'Abrir historial de conversaciones',
     closeSidebar: 'Cerrar historial de conversaciones',
+    usageLabel: 'Uso de hoy: {pct}%',
+    usageExhausted: 'Agotaste la cuota de hoy; se reinicia a medianoche.',
+    usageResetHint: 'Mientras tanto puedes consultar las guías del sitio',
+    thinkMode: 'Pensar a fondo',
+    thinkingDeep: 'Pensándolo a fondo...',
   },
   pt: {
     title: 'Assistente de IA',
@@ -587,6 +624,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Ir para o final',
     openSidebar: 'Abrir histórico de conversas',
     closeSidebar: 'Fechar histórico de conversas',
+    usageLabel: 'Uso de hoje: {pct}%',
+    usageExhausted: 'Você usou toda a cota de hoje; ela zera à meia-noite.',
+    usageResetHint: 'Enquanto isso, dá para consultar os guias do site',
+    thinkMode: 'Pensar com calma',
+    thinkingDeep: 'Pensando com calma...',
   },
   fr: {
     title: 'Assistant IA',
@@ -666,6 +708,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Aller en bas',
     openSidebar: "Ouvrir l'historique des conversations",
     closeSidebar: "Fermer l'historique des conversations",
+    usageLabel: "Utilisation du jour : {pct} %",
+    usageExhausted: "Le quota du jour est épuisé ; il se réinitialise à minuit.",
+    usageResetHint: 'En attendant, vous pouvez consulter les guides du site',
+    thinkMode: 'Réflexion approfondie',
+    thinkingDeep: 'Réflexion approfondie en cours...',
   },
   de: {
     title: 'KI-Assistent',
@@ -745,6 +792,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Nach unten scrollen',
     openSidebar: 'Unterhaltungsverlauf öffnen',
     closeSidebar: 'Unterhaltungsverlauf schließen',
+    usageLabel: 'Heute genutzt: {pct} %',
+    usageExhausted: 'Das Tageskontingent ist aufgebraucht – es wird um Mitternacht zurückgesetzt.',
+    usageResetHint: 'In der Zwischenzeit können Sie die Leitfäden auf dieser Seite lesen',
+    thinkMode: 'Gründlich nachdenken',
+    thinkingDeep: 'Denkt gründlich nach...',
   },
   ru: {
     title: 'ИИ-помощник',
@@ -824,6 +876,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Прокрутить вниз',
     openSidebar: 'Открыть историю бесед',
     closeSidebar: 'Закрыть историю бесед',
+    usageLabel: 'Использовано сегодня: {pct}%',
+    usageExhausted: 'Дневной лимит исчерпан — он обновится в полночь.',
+    usageResetHint: 'А пока можно почитать материалы сайта',
+    thinkMode: 'Глубокое размышление',
+    thinkingDeep: 'Обдумываю подробно...',
   },
   ar: {
     title: 'مساعد الذكاء الاصطناعي',
@@ -903,6 +960,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'العودة إلى الأسفل',
     openSidebar: 'فتح سجل المحادثات',
     closeSidebar: 'إغلاق سجل المحادثات',
+    usageLabel: 'استُخدم اليوم {pct}٪',
+    usageExhausted: 'انتهت حصة اليوم، وستتجدد عند منتصف الليل.',
+    usageResetHint: 'يمكنك في الأثناء تصفّح أدلة الموقع',
+    thinkMode: 'تفكير معمّق',
+    thinkingDeep: 'جارٍ التفكير بعمق...',
   },
   fa: {
     title: 'دستیار هوش مصنوعی',
@@ -982,6 +1044,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'رفتن به پایین',
     openSidebar: 'باز کردن تاریخچه گفتگو',
     closeSidebar: 'بستن تاریخچه گفتگو',
+    usageLabel: 'مصرف امروز {pct}٪',
+    usageExhausted: 'سهمیه امروز تمام شد؛ نیمه‌شب بازنشانی می‌شود.',
+    usageResetHint: 'در این فاصله می‌توانید راهنماهای سایت را بخوانید',
+    thinkMode: 'تفکر عمیق',
+    thinkingDeep: 'در حال تفکر عمیق...',
   },
   th: {
     title: 'ผู้ช่วย AI',
@@ -1061,6 +1128,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'เลื่อนไปด้านล่าง',
     openSidebar: 'เปิดประวัติการสนทนา',
     closeSidebar: 'ปิดประวัติการสนทนา',
+    usageLabel: 'ใช้ไปแล้ววันนี้ {pct}%',
+    usageExhausted: 'ใช้โควตาของวันนี้ครบแล้ว จะรีเซ็ตตอนเที่ยงคืน',
+    usageResetHint: 'ระหว่างนี้ลองอ่านคู่มือในเว็บไซต์ดูได้',
+    thinkMode: 'คิดแบบละเอียด',
+    thinkingDeep: 'กำลังคิดอย่างละเอียด...',
   },
   vi: {
     title: 'Trợ lý AI',
@@ -1140,6 +1212,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Cuộn xuống cuối',
     openSidebar: 'Mở lịch sử trò chuyện',
     closeSidebar: 'Đóng lịch sử trò chuyện',
+    usageLabel: 'Đã dùng hôm nay {pct}%',
+    usageExhausted: 'Bạn đã dùng hết lượt của hôm nay, sẽ đặt lại lúc nửa đêm.',
+    usageResetHint: 'Trong lúc chờ, bạn có thể đọc các bài hướng dẫn trên trang',
+    thinkMode: 'Suy nghĩ kỹ',
+    thinkingDeep: 'Đang suy nghĩ kỹ...',
   },
   id: {
     title: 'Asisten AI',
@@ -1219,6 +1296,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Gulir ke bawah',
     openSidebar: 'Buka riwayat percakapan',
     closeSidebar: 'Tutup riwayat percakapan',
+    usageLabel: 'Terpakai hari ini {pct}%',
+    usageExhausted: 'Kuota hari ini sudah habis, akan direset tengah malam.',
+    usageResetHint: 'Sementara itu, kamu bisa membaca panduan di situs ini',
+    thinkMode: 'Berpikir mendalam',
+    thinkingDeep: 'Sedang berpikir mendalam...',
   },
   fil: {
     title: 'AI Assistant',
@@ -1298,6 +1380,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Mag-scroll pababa',
     openSidebar: 'Buksan ang kasaysayan ng usapan',
     closeSidebar: 'Isara ang kasaysayan ng usapan',
+    usageLabel: 'Nagamit ngayong araw: {pct}%',
+    usageExhausted: 'Naubos na ang quota ngayong araw — magre-reset ito sa hatinggabi.',
+    usageResetHint: 'Samantala, puwede mong basahin ang mga gabay sa site',
+    thinkMode: 'Malalim na pag-iisip',
+    thinkingDeep: 'Malalim na nag-iisip...',
   },
   hi: {
     title: 'AI सहायक',
@@ -1377,6 +1464,11 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'नीचे जाएं',
     openSidebar: 'बातचीत इतिहास खोलें',
     closeSidebar: 'बातचीत इतिहास बंद करें',
+    usageLabel: 'आज का उपयोग {pct}%',
+    usageExhausted: 'आज की सीमा पूरी हो गई, आधी रात को रीसेट होगी।',
+    usageResetHint: 'तब तक आप साइट की गाइड पढ़ सकती हैं',
+    thinkMode: 'गहराई से सोचें',
+    thinkingDeep: 'गहराई से सोच रहा है...',
   },
   tr: {
     title: 'Yapay Zekâ Asistanı',
@@ -1456,5 +1548,10 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Aşağı kaydır',
     openSidebar: 'Sohbet geçmişini aç',
     closeSidebar: 'Sohbet geçmişini kapat',
+    usageLabel: 'Bugün kullanılan: %{pct}',
+    usageExhausted: 'Bugünkü hakkınız doldu, gece yarısı sıfırlanacak.',
+    usageResetHint: 'Bu arada sitedeki rehberlere göz atabilirsiniz',
+    thinkMode: 'Derin düşünme',
+    thinkingDeep: 'Derin düşünüyor...',
   },
 };

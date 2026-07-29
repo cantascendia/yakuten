@@ -31,7 +31,7 @@ Primary handbook:
 - **Search**: Pagefind (static, supports Chinese)
 - **i18n**: Astro native routing (/zh/, /en/, /ja/, /ko/)
 - **Deploy**: Vercel (static + Edge Functions)
-- **AI**: Google Gemini (gemini-3-flash-preview) via Vercel Edge Function
+- **AI**: Google Gemini via Vercel Edge Function, with a three-tier fallback chain (free key → paid key → DeepSeek backup). Model ids live in `docs/specs/ai-chat-multi-tier-fallback.md` §2.2, not here — pinning them in prose has gone stale twice.
 - **Analytics**: Vercel Analytics + Google Analytics 4 (aggregate pageview/event only; GA's gtag is blocked in mainland China, so mainland traffic is measured via Bing Webmaster + Vercel Analytics)
 - **Language**: TypeScript strict mode
 

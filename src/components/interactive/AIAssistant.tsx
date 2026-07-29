@@ -40,6 +40,82 @@ const MAX_CONTENT_BYTES = 4096; // 端点单条上限
 const MAX_SENT_MESSAGES = 10; // 端点只用最近 10 条
 const byteLen = (s: string) => new TextEncoder().encode(s).length;
 
+/* =========================================================================
+   本地用量记账（隐私：只存计数，绝不存对话内容，绝不上报任何 analytics）
+   ------------------------------------------------------------------------
+   DAILY_QUOTA 来源：上游免费档 9000 次/天 ÷ 目标 300 人/天 = 30 次/人/天。
+   ========================================================================= */
+const DAILY_QUOTA = 30;
+const USAGE_KEY = 'yk-ai-usage';
+/** 思考模式偏好（UI 偏好，非健康数据；与会话内容完全无关） */
+const MODE_KEY = 'yk-ai-mode';
+
+interface UsageRecord { day: string; used: number }
+
+/** 本地时区的 YYYY-MM-DD —— 跨日判断必须用本地日期，UTC 会让东八区提前/滞后重置。 */
+function localDayKey(d: Date = new Date()): string {
+  const p = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+/** 读取今日计数；日期不匹配（跨日）或数据损坏时自动归零。 */
+function readUsage(): UsageRecord {
+  const day = localDayKey();
+  if (typeof localStorage === 'undefined') return { day, used: 0 };
+  try {
+    const raw = localStorage.getItem(USAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as Partial<UsageRecord> | null;
+      if (parsed && parsed.day === day && typeof parsed.used === 'number' && Number.isFinite(parsed.used)) {
+        return { day, used: Math.max(0, Math.floor(parsed.used)) };
+      }
+    }
+  } catch { /* 隐私模式 / 配额满 / 脏数据：静默回落到 0 */ }
+  return { day, used: 0 };
+}
+
+function writeUsage(rec: UsageRecord): void {
+  if (typeof localStorage === 'undefined') return;
+  try { localStorage.setItem(USAGE_KEY, JSON.stringify(rec)); } catch { /* ignore */ }
+}
+
+/* =========================================================================
+   Icon —— 操作条 / 开关统一图标源（20px 线性图标，避免 JSX 里堆 path）
+   所有使用处必须自带 aria-label + title；图标本身 aria-hidden。
+   ========================================================================= */
+type IconName = 'copy' | 'check' | 'regen' | 'edit' | 'stop' | 'close' | 'think';
+
+const ICON_PATHS: Record<IconName, React.ReactNode> = {
+  // 复制 = 双叠圆角矩形
+  copy: (<><rect x="9" y="9" width="12.5" height="12.5" rx="2.5" /><path d="M5.5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5v1" /></>),
+  check: (<polyline points="20 6 9.5 17 4 11.5" />),
+  // 重新生成 = 环形箭头
+  regen: (<><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1L20.5 8" /><polyline points="20.5 3.2 20.5 8 15.7 8" /></>),
+  edit: (<><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" /></>),
+  stop: (<rect x="6.5" y="6.5" width="11" height="11" rx="2.5" />),
+  close: (<><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></>),
+  // 深度思考 = 灯泡
+  think: (<><path d="M9.5 18h5" /><path d="M10.5 21.5h3" /><path d="M15.2 14.2c.2-1.1.75-1.95 1.55-2.75A5.2 5.2 0 0 0 18.3 7.8a6.3 6.3 0 0 0-12.6 0c0 1.4.5 2.65 1.55 3.65.8.8 1.35 1.65 1.55 2.75" /></>),
+};
+
+function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
 /** dialog 内 Tab 循环（focus trap）：挂在弹层容器的 onKeyDown。 */
 function trapTab(e: React.KeyboardEvent<HTMLElement>) {
   if (e.key !== 'Tab') return;
@@ -162,9 +238,13 @@ a.yk-ai-iconbtn { text-decoration:none; }
 /* 操作条常显（Claude/Gemini 路线：移动端无 hover，复制/重答是高频动作） */
 .yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; }
 .yk-ai-actions--user { align-self:flex-end; }
-.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; gap:4px; padding:4px 8px; font-size:.75rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:8px; }
+/* 图标化操作钮：文案转 aria-label + title（17 语 l10n 继续生效），热区不缩水 */
+.yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:4px 8px; font-size:.75rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:8px; }
 @media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary-light);} }
 .yk-ai-actbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
+/* 复制成功：与代码块 .yk-ai-copybtn--done 同一绿色语义 */
+.yk-ai-actbtn--done { color: var(--color-safe); }
+@media (hover:hover){ .yk-ai-actbtn--done:hover{ color: var(--color-safe);} }
 
 .yk-ai-edit { display:flex; flex-direction:column; gap:6px; align-self:flex-end; inline-size:min(560px, 92%); }
 .yk-ai-edit__area { inline-size:100%; min-block-size:64px; padding:10px 12px; background: var(--color-bg-container); color: var(--color-text-primary); border:1px solid var(--color-primary); font-family: var(--font-body); font-size:.9rem; line-height:1.6; resize:vertical; border-radius:12px; outline:none; }
@@ -191,7 +271,10 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-msg pre code { background:none; padding:0; font-size:1em; }
 .yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:32px; block-size:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; transition: color var(--transition-fast), border-color var(--transition-fast); }
 @media (hover:hover){ .yk-ai-copybtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary);} }
-.yk-ai-copybtn--done { color: var(--color-safe); }
+/* 代码块复制成功：图标临时换对勾（按钮 DOM 由 aiMarkdown.ts 生成，此处纯 CSS 换形） */
+.yk-ai-copybtn--done { color: var(--color-safe); border-color: var(--color-safe); }
+.yk-ai-copybtn--done > svg { display:none; }
+.yk-ai-copybtn--done::after { content:'✓'; font-size:15px; font-weight:700; line-height:1; }
 .yk-ai-tablewrap { overflow-x:auto; margin:.6em 0; border:1px solid var(--color-outline-20); border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
 [data-theme='light'] .yk-ai-tablewrap { box-shadow: 0 2px 10px rgba(74,40,56,.08); }
 .yk-ai-table { border-collapse:collapse; font-size:.85em; min-inline-size:100%; }
@@ -268,6 +351,30 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-charhint { font-size:.625rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align:end; margin-block-start:4px; max-inline-size:48rem; margin-inline:auto; }
 .yk-ai-charhint--over { color: var(--color-danger); }
 
+/* ============ 用量条（百分比制，仅本机计数；输入框正上方一条细线） ============ */
+.yk-ai-usage { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:5px; padding-inline:6px; padding-block-end:8px; }
+.yk-ai-usage__track { block-size:3px; border-radius:999px; background: var(--color-white-alpha-08, rgba(255,255,255,.09)); overflow:hidden; }
+[data-theme='light'] .yk-ai-usage__track { background: rgba(74,40,56,.12); }
+/* 只动 transform —— scaleX 从行首起画，RTL 下把原点翻到行尾 */
+.yk-ai-usage__fill { block-size:100%; inline-size:100%; transform-origin:0 50%; background: var(--color-text-muted); transition: transform .45s var(--spring-common, ease), background var(--transition-fast); }
+[dir="rtl"] .yk-ai-usage__fill { transform-origin:100% 50%; }
+.yk-ai-usage__text { font-size:.6875rem; line-height:1.5; color: var(--color-text-muted); font-family: var(--font-body); text-align:start; }
+.yk-ai-usage--warn .yk-ai-usage__fill { background: var(--color-accent); }
+.yk-ai-usage--warn .yk-ai-usage__text { color: var(--color-accent); }
+.yk-ai-usage--danger .yk-ai-usage__fill { background: var(--color-danger); }
+.yk-ai-usage--danger .yk-ai-usage__text { color: var(--color-danger); }
+.yk-ai-usage__hint { color: inherit; text-decoration:underline; text-underline-offset:2px; }
+.yk-ai-usage__hint:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+
+/* ============ 深度思考开关（composer 内，发送钮左侧） ============ */
+.yk-ai-modebtn { display:inline-flex; align-items:center; justify-content:center; gap:6px; align-self:flex-end; min-block-size:38px; min-inline-size:38px; padding-inline:11px; background:transparent; border:1px solid var(--color-outline-20); color: var(--color-text-secondary); cursor:pointer; border-radius:999px; font-family: var(--font-body); font-size:.75rem; line-height:1; white-space:nowrap; transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast); }
+@media (hover:hover){ .yk-ai-modebtn:hover{ color: var(--color-text-primary); border-color: var(--color-accent-alpha-30, rgba(212,168,83,.35)); } }
+.yk-ai-modebtn[aria-pressed='true'] { color: var(--color-accent); border-color: var(--color-accent-alpha-30, rgba(212,168,83,.45)); background: var(--color-accent-alpha-08, rgba(212,168,83,.12)); }
+@media (hover:hover){ .yk-ai-modebtn[aria-pressed='true']:hover{ color: var(--color-accent); } }
+.yk-ai-modebtn:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+.yk-ai--compact .yk-ai-modebtn__label { display:none; }
+.yk-ai--compact .yk-ai-modebtn { padding-inline:0; min-inline-size:32px; }
+
 /* 「使用须知」弹层 */
 .yk-ai-about { position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center; padding:20px; }
 .yk-ai-about__overlay { position:absolute; inset:0; background: var(--color-black-alpha-50, rgba(0,0,0,.5)); }
@@ -287,7 +394,10 @@ a.yk-ai-iconbtn { text-decoration:none; }
   .yk-ai-hero__greeting { font-size:1.3rem; }
   .yk-ai-hero__composer { margin-block-start:20px; }
   /* 触控热区统一 44px（Apple HIG / Material） */
-  .yk-ai-send, .yk-ai-actbtn, .yk-ai-ctx__close { min-inline-size:44px; min-block-size:44px; }
+  .yk-ai-send, .yk-ai-actbtn, .yk-ai-ctx__close, .yk-ai-modebtn { min-inline-size:44px; min-block-size:44px; }
+  /* 窄屏只留图标，文案继续由 aria-label / title 承载 */
+  .yk-ai-modebtn__label { display:none; }
+  .yk-ai-modebtn { padding-inline:0; }
   /* 移动欢迎态只留 3 个建议 pill —— composer 保持舞台中心 */
   .yk-ai-pill:nth-child(n+4) { display:none; }
   /* SSR 首帧不闪桌面侧栏：rail 由 CSS 隐藏（drawer 是绝对定位变体，不受影响） */
@@ -303,6 +413,7 @@ a.yk-ai-iconbtn { text-decoration:none; }
   .yk-ai-turn, .yk-ai-hero { animation:none; }
   .yk-ai-msg--streaming > div:last-child::after { animation:none; }
   .yk-ai-pill:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
+  .yk-ai-usage__fill { transition:none; }
   .yk-ai *, .yk-ai *::before, .yk-ai *::after { transition:none !important; animation-duration:.01ms !important; }
 }
 `;
@@ -340,12 +451,43 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const [streamingMsgKey, setStreamingMsgKey] = useState<string | null>(null);
   /** sr-only 状态播报（流式区 aria-live 已静音，完成/错误在此一次性播报） */
   const [srStatus, setSrStatus] = useState('');
+  /** 今日用量（仅本机计数，不含任何对话内容）；SSR 首帧 0，挂载后读本机值 */
+  const [usage, setUsage] = useState<UsageRecord>(() => ({ day: localDayKey(), used: 0 }));
+  /** 深度思考开关（UI 偏好，存 localStorage） */
+  const [thinkMode, setThinkMode] = useState(false);
+  /** 本次流式请求发起时的模式 —— 等待区文案不随中途切换而漂移 */
+  const [streamThink, setStreamThink] = useState(false);
 
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => { setPageTitle(getPageTitle()); }, []);
+
+  // 本机用量 / 模式偏好：挂载后读取（避免 SSR 与首帧 hydration 不一致）。
+  // 标签页整夜挂着时，回到前台重读一次以完成跨日重置。
+  useEffect(() => {
+    setUsage(readUsage());
+    try { setThinkMode(localStorage.getItem(MODE_KEY) === 'think'); } catch { /* ignore */ }
+    const onVisible = () => { if (!document.hidden) setUsage(readUsage()); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => document.removeEventListener('visibilitychange', onVisible);
+  }, []);
+
+  /** 用量 +1。以 localStorage 为准重读后写回 —— 多标签页并存也不会互相覆盖。 */
+  function bumpUsage() {
+    const day = localDayKey();
+    const cur = readUsage();
+    const next: UsageRecord = cur.day === day ? { day, used: cur.used + 1 } : { day, used: 1 };
+    writeUsage(next);
+    setUsage(next);
+  }
+
+  function toggleThinkMode() {
+    const next = !thinkMode;
+    try { localStorage.setItem(MODE_KEY, next ? 'think' : 'fast'); } catch { /* ignore */ }
+    setThinkMode(next);
+  }
 
   // 桌面打开页面即可打字（移动端不自动弹键盘）
   useEffect(() => {
@@ -462,6 +604,17 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
   /** 流式核心 —— 所有增量更新锁定发起时的 sessionId（用户可在流式中切换/新建会话）。 */
   async function runCompletion(sessionId: string, outgoing: { role: string; content: string }[]) {
+    /* 计数时机：一次「用户主动发起的生成」（发送 / 重新生成 / 编辑重发）在此 +1，
+       而不是每收到一次回复 +1，也不是每次 fetch +1。理由：
+       ① 与用户心智一致 —— "我问了一次 = 用了一次"；函数内部的指数退避重试属于
+          我们自己的容错，网络抖动不该扣用户额度；
+       ② 记账发生在 fetch 之前：连接被掐断也无法绕过计数，避免"失败即免费"被反复
+          触发把上游免费额度打空（额度的意义是保护上游，不是奖励失败）；
+       ③ 客户端预校验（离线 / 限流 / 超字数 / 额度已耗尽）在调用本函数之前就拦截，
+          所以不存在"根本没发出去却被记一次"的情况。 */
+    bumpUsage();
+    const useThink = thinkMode;
+    setStreamThink(useThink);
     setError(null);
     setIsLoading(true);
     setStreaming(true);
@@ -487,7 +640,8 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         const res = await fetch('/api/ai-chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: outgoing }),
+          // mode 为端点新增可选字段（缺省视为 'fast'）；其余契约不变
+          body: JSON.stringify({ messages: outgoing, mode: useThink ? 'think' : 'fast' }),
           signal: controller.signal,
         });
 
@@ -563,7 +717,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
   function focusInput() { inputRef.current?.focus(); }
 
-  const canSend = !isLoading && online && rateLimitLeft <= 0;
+  const usagePct = Math.min(100, Math.round((usage.used / DAILY_QUOTA) * 100));
+  const usageExhausted = usage.used >= DAILY_QUOTA;
+  const usageTone = usagePct > 90 ? 'danger' : usagePct >= 70 ? 'warn' : 'calm';
+
+  const canSend = !isLoading && online && rateLimitLeft <= 0 && !usageExhausted;
 
   async function sendMessage(text?: string) {
     const messageText = (text ?? input).trim();
@@ -586,7 +744,8 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   function stopGeneration() { abortRef.current?.abort(); }
 
   function regenerate() {
-    if (isLoading || !activeId) return;
+    // 同 submitEdit：先校验可发送性再动状态，否则离线/限流/额度耗尽时会留下永久假占位
+    if (!canSend || !activeId) return;
     let idx = -1;
     for (let i = messages.length - 1; i >= 0; i--) if (messages[i].role === 'user') { idx = i; break; }
     if (idx < 0) return;
@@ -614,7 +773,8 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   }
 
   async function copyMessage(i: number, text: string) {
-    try { await navigator.clipboard?.writeText(text); setCopiedIdx(i); setTimeout(() => setCopiedIdx((c) => (c === i ? null : c)), 1500); } catch { /* ignore */ }
+    // 成功反馈：图标切对勾 + 绿色语义，1.2s 后恢复（与代码块 --done 同节奏）
+    try { await navigator.clipboard?.writeText(text); setCopiedIdx(i); setTimeout(() => setCopiedIdx((c) => (c === i ? null : c)), 1200); } catch { /* ignore */ }
   }
 
   function onLogClick(e: React.MouseEvent) {
@@ -701,15 +861,30 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder={rateLimitLeft > 0 ? ui.rateLimitWait.replace('{s}', String(rateLimitLeft)) : ui.inputPlaceholder}
-        disabled={isLoading && !abortRef.current}
+        placeholder={
+          usageExhausted
+            ? ui.usageExhausted
+            : rateLimitLeft > 0
+              ? ui.rateLimitWait.replace('{s}', String(rateLimitLeft))
+              : ui.inputPlaceholder
+        }
+        disabled={(isLoading && !abortRef.current) || usageExhausted}
         aria-label={ui.inputLabel}
       />
+      <button
+        type="button"
+        className="yk-ai-modebtn"
+        onClick={toggleThinkMode}
+        aria-pressed={thinkMode}
+        aria-label={ui.thinkMode}
+        title={ui.thinkMode}
+      >
+        <Icon name="think" size={18} />
+        <span className="yk-ai-modebtn__label">{ui.thinkMode}</span>
+      </button>
       {isLoading ? (
         <button className="yk-ai-send yk-ai-send--stop" onClick={stopGeneration} aria-label={ui.stop} title={ui.stop}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="6" y="6" width="12" height="12" rx="2" />
-          </svg>
+          <Icon name="stop" size={16} />
         </button>
       ) : (
         <button
@@ -724,6 +899,27 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           </svg>
         </button>
       )}
+    </div>
+  );
+
+  /* 用量条 —— 百分比制（不暴露具体次数，避免"还剩几次"的焦虑计数）。
+     隐私：数据只来自本机 localStorage 计数，不发往任何 analytics 端点。 */
+  const usageBar = (
+    <div className={`yk-ai-usage yk-ai-usage--${usageTone}`}>
+      {/* 进度条是文案的视觉化，读屏读下面那行文字即可，避免重复播报 */}
+      <div className="yk-ai-usage__track" aria-hidden="true">
+        <div className="yk-ai-usage__fill" style={{ transform: `scaleX(${usagePct / 100})` }} />
+      </div>
+      <div className="yk-ai-usage__text">
+        {usageExhausted ? (
+          <>
+            {ui.usageExhausted}{' '}
+            <a className="yk-ai-usage__hint" href={`/${locale}/`}>{ui.usageResetHint}</a>
+          </>
+        ) : (
+          ui.usageLabel.replace('{pct}', String(usagePct))
+        )}
+      </div>
     </div>
   );
 
@@ -837,6 +1033,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
               <div className="yk-ai-hero__sub">{ui.emptySubtitle}</div>
               <div className="yk-ai-hero__composer">
                 {statusBars}
+                {usageBar}
                 {composerCard}
                 {charHint}
               </div>
@@ -874,8 +1071,12 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                             autoFocus
                           />
                           <div className="yk-ai-edit__row">
-                            <button className="yk-ai-actbtn" onClick={cancelEdit}>{ui.cancel}</button>
-                            <button className="yk-ai-actbtn" onClick={() => submitEdit(i)}>{ui.save}</button>
+                            <button className="yk-ai-actbtn" onClick={cancelEdit} aria-label={ui.cancel} title={ui.cancel}>
+                              <Icon name="close" />
+                            </button>
+                            <button className="yk-ai-actbtn" onClick={() => submitEdit(i)} aria-label={ui.save} title={ui.save}>
+                              <Icon name="check" />
+                            </button>
                           </div>
                         </div>
                       ) : msg.role === 'user' ? (
@@ -883,10 +1084,17 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                           <div className="yk-ai-msg yk-ai-msg--user">{msg.content}</div>
                           {!isLoading && (
                             <div className="yk-ai-actions yk-ai-actions--user">
-                              <button className="yk-ai-actbtn" onClick={() => copyMessage(i, msg.content)}>
-                                {copiedIdx === i ? ui.copied : ui.copy}
+                              <button
+                                className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
+                                onClick={() => copyMessage(i, msg.content)}
+                                aria-label={copiedIdx === i ? ui.copied : ui.copy}
+                                title={copiedIdx === i ? ui.copied : ui.copy}
+                              >
+                                <Icon name={copiedIdx === i ? 'check' : 'copy'} />
                               </button>
-                              <button className="yk-ai-actbtn" onClick={() => beginEdit(i)}>{ui.edit}</button>
+                              <button className="yk-ai-actbtn" onClick={() => beginEdit(i)} aria-label={ui.edit} title={ui.edit}>
+                                <Icon name="edit" />
+                              </button>
                             </div>
                           )}
                         </>
@@ -936,11 +1144,18 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                             </div>
                             {!isLoading && (
                               <div className="yk-ai-actions">
-                                <button className="yk-ai-actbtn" onClick={() => copyMessage(i, msg.content)}>
-                                  {copiedIdx === i ? ui.copied : ui.copy}
+                                <button
+                                  className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
+                                  onClick={() => copyMessage(i, msg.content)}
+                                  aria-label={copiedIdx === i ? ui.copied : ui.copy}
+                                  title={copiedIdx === i ? ui.copied : ui.copy}
+                                >
+                                  <Icon name={copiedIdx === i ? 'check' : 'copy'} />
                                 </button>
                                 {i === lastAiIndex && (
-                                  <button className="yk-ai-actbtn" onClick={regenerate}>{ui.regenerate}</button>
+                                  <button className="yk-ai-actbtn" onClick={regenerate} aria-label={ui.regenerate} title={ui.regenerate}>
+                                    <Icon name="regen" />
+                                  </button>
                                 )}
                               </div>
                             )}
@@ -948,7 +1163,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                         ) : (
                           <div className="yk-ai-thinking">
                             <span className="yk-ai-dots"><span className="yk-ai-dot" /><span className="yk-ai-dot" /><span className="yk-ai-dot" /></span>
-                            {ui.thinking}
+                            {streamThink ? ui.thinkingDeep : ui.thinking}
                           </div>
                         )
                       )}
@@ -971,6 +1186,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
               {/* 坞底：状态条 + composer 浮岛 + 免责常驻行 */}
               <div className="yk-ai-dock">
                 {statusBars}
+                {usageBar}
                 {composerCard}
                 {charHint}
                 {inputNote}

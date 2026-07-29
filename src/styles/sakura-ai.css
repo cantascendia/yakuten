@@ -616,3 +616,84 @@ html.sakura .yk-ai-drawer-overlay { background: rgba(74, 40, 56, 0.4); }
   html.sakura .yk-ai-scrollbtn:hover,
   html.sakura .yk-ai-newbtn:hover { transform: none; }
 }
+
+/* =========================================================================
+   15. 每日用量条 —— 手账「进度胶带」
+   计数只在本机 localStorage，样式层与数据无关；三档色沿用手账调色板：
+   中性=墨淡 / 70%+=蜜金 / 90%+=危险红（与 DangerBox 同一红，只强化不弱化）
+   ========================================================================= */
+html.sakura .yk-ai-usage__track {
+  background: var(--bg-4);
+  border: 1.5px solid var(--ink-faint);
+  block-size: 5px;
+  border-radius: var(--radius-full);
+}
+html.sakura .yk-ai-usage__fill { background: var(--ink-soft); }
+html.sakura .yk-ai-usage__text { color: var(--fg-3); font-family: var(--font-ui-accent); }
+html.sakura .yk-ai-usage--warn .yk-ai-usage__fill { background: var(--honey-deep, #8A6D00); }
+html.sakura .yk-ai-usage--warn .yk-ai-usage__text { color: var(--honey-deep, #8A6D00); }
+html.sakura .yk-ai-usage--danger .yk-ai-usage__fill { background: var(--danger); }
+html.sakura .yk-ai-usage--danger .yk-ai-usage__text { color: var(--danger); }
+html.sakura .yk-ai-usage__hint {
+  color: inherit;
+  background: transparent;
+  background-image: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+html.sakura .yk-ai-usage__hint:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 2px; }
+/* 夜间：深蜜金（昼间用于奶油纸）在深底掉到 AA 以下，换回亮蜜色 */
+html.sakura[data-theme='dark'] .yk-ai-usage--warn .yk-ai-usage__text { color: var(--honey, #F5B347); }
+html.sakura[data-theme='dark'] .yk-ai-usage--warn .yk-ai-usage__fill { background: var(--honey, #F5B347); }
+html.sakura[data-theme='dark'] .yk-ai-usage--danger .yk-ai-usage__fill { background: var(--danger-bright, #FF5A5A); }
+html.sakura[data-theme='dark'] .yk-ai-usage--danger .yk-ai-usage__text { color: var(--danger-bright, #FF5A5A); }
+
+/* =========================================================================
+   16. 深度思考开关 —— 手账小贴纸钮（开启态 = 蜜金底墨字 + 硬影）
+   ========================================================================= */
+html.sakura .yk-ai-modebtn {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: none;
+  color: var(--fg-2);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+  transition: transform var(--transition-fast);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-modebtn:hover {
+    color: var(--ink);
+    background: var(--sakura-blush);
+    border-color: var(--ink);
+  }
+}
+html.sakura .yk-ai-modebtn[aria-pressed='true'] {
+  background: var(--butter);
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+}
+@media (hover: hover) {
+  html.sakura .yk-ai-modebtn[aria-pressed='true']:hover {
+    background: var(--butter);
+    color: var(--ink);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+html.sakura .yk-ai-modebtn:focus-visible { outline: 2px solid var(--sakura-pink-deep); outline-offset: 2px; }
+
+/* 图标化操作条 —— 复制成功用手账薄荷绿（与代码块 --done 同一语义） */
+html.sakura .yk-ai-actbtn--done { color: var(--mint-deep, #2E8B6B); }
+@media (hover: hover) { html.sakura .yk-ai-actbtn--done:hover { color: var(--mint-deep, #2E8B6B); } }
+html.sakura .yk-ai-copybtn--done { border-color: var(--mint-deep, #2E8B6B); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .yk-ai-modebtn[aria-pressed='true']:hover { transform: none; }
+}
+
+/* ar/fa 连写守卫：新增的 font-ui-accent 字距同样会拉断连写形 */
+html.sakura :is(.yk-ai-usage__text, .yk-ai-modebtn):is(:lang(ar), :lang(fa)) {
+  letter-spacing: normal;
+}
