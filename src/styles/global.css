@@ -40,8 +40,20 @@
   /* 主题感知「需注意/caution」文字色（仅用于文字，装饰仍用 --color-caution）。
      暗色默认 #FF9800 在 --color-bg-primary #0D0B14 上实测 ≈9.6:1，远超 AA 4.5:1。 */
   --color-caution-text: #FF9800;
+  /* 主题感知「幻月金 accent」文字色（仅用于承载信息的文字/结构性图形；
+     纯装饰仍用 --color-accent）。--color-accent #D4A853 在亮色底 #FAF7FC 上
+     仅 ≈1.98:1，作文字全线不过 AA —— 亮色覆盖见 [data-theme="light"]。
+     暗色默认沿用 accent 本身（on #0D0B14 ≈9.4:1）。 */
+  --color-accent-text: var(--color-accent);
   --color-danger: #F44336;
   --color-danger-dark: #D32F2F;
+  /* danger 当**正文文字**用时的专用色（同 --color-caution-text / --color-accent-text 的先例）。
+     暗色下 --color-danger 已足够，故此处等值；亮色覆盖见 [data-theme="light"]。
+     ⚠️ 易错点：算对比度时必须对**合成后的底色**算，不是页面底色。
+     .yk-ai-error 自己铺了 --color-danger-alpha-10，实际底色是 rgb(249,229,223)：
+       #F44336 → 3.03  #D32F2F → 4.10  #C62828 → 4.63  #B71C1C → 5.41
+     曾按纯页面底色估成 4.88 而误判 #D32F2F 达标（实为 4.10，13px 正文不过 AA）。 */
+  --color-danger-text: var(--color-danger);
   /* Darkened from #7C8CF0 — white text now 4.9:1 (passes AA) instead of 3.8:1 */
   --color-info: #5168E6;
 
@@ -187,6 +199,14 @@
      codex cross-review P2）；改用 #805E00：实测 on #EDE8F2 ≈4.95:1、on #FFFFFF ≈5.97:1、
      on #FAF7FC ≈5.6:1，均过 AA 4.5:1。 */
   --color-caution-text: #805E00;
+  /* accent 当文字用时同样需要深琥珀：沿用 --color-caution-text 已验证过的 #805E00
+     （on #FAF7FC ≈5.6:1、on #EDE8F2 ≈4.95:1、on #FFFFFF ≈5.97:1，均过 AA 4.5:1）。 */
+  --color-accent-text: #805E00;
+  /* danger 当正文文字用：#D32F2F 在**纯页面底色**上确实过线，但 .yk-ai-error 这类
+     组件自己铺了 --color-danger-alpha-10 淡底，合成后底色为 rgb(249,229,223)，
+     #D32F2F 实测仅 4.10:1（13px 正文不过 AA 4.5）。改用 #B71C1C：
+     on rgb(249,229,223) ≈5.41:1、on #FAF7FC ≈6.9:1、on #EDE8F2 ≈6.1:1，均过 AA。 */
+  --color-danger-text: #B71C1C;
   --color-outline-20: rgba(200, 75, 124, 0.15);
   --glass-bg: rgba(255, 255, 255, 0.7);
 }

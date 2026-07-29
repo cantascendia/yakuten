@@ -183,6 +183,18 @@ html.sakura .yk-ai-msg__label {
   font-family: var(--font-ui-accent);
   font-weight: 700;
 }
+/* 基线用 var(--color-accent) 上色的两处「非纯装饰」图形：sakura 下 accent
+   = butter #F5C842，在奶油纸 #FFF5E0 上 ≈1.3:1，图标与列表点等于消失。
+   （纯装饰的 .yk-ai-pill::before ✦ / topbar 底线渐变不在此列，保持蜜金。） */
+html.sakura .yk-ai-msg__label svg { color: var(--sakura-pink-deep); }
+html.sakura .yk-ai-msg li::marker { color: var(--sakura-pink-deep); }
+/* 流式光标（基线已改为 CSS 画的实心块，见 [P0-4]）——蜜金同样不可见，换深樱粉。
+   选择器与基线保持一致：光标挂在尾块最后一行的行内，不挂在外层 div 上
+   （挂 div 上 ::after 会生成独立的匿名块行盒，让光标独占一行）。 */
+html.sakura .yk-ai-msg--streaming > div:last-child > :last-child:not(ul):not(ol):not(hr):not(.yk-ai-tablewrap):not(.yk-ai-prewrap)::after,
+html.sakura .yk-ai-msg--streaming > div:last-child > :is(ul,ol):last-child > li:last-child::after {
+  background: var(--sakura-pink-deep);
+}
 html.sakura .yk-ai-hr {
   border-top-color: var(--ink-faint);
 }
@@ -267,20 +279,34 @@ html.sakura .yk-ai-crisis__line:focus-visible {
 }
 
 /* =========================================================================
-   8. 思考条 / 错误条
+   8. 等待态占位（乐园手账：纸面凹槽 + 樱粉扫光）/ 错误条
+   ------------------------------------------------------------------------
+   等待态从「气泡外的裸 flex 行 + 弹跳圆点」改为「最终 AI 气泡内、高度恰好
+   一行行高的 shimmer 占位条」——首 token 到达时零位移，且去掉"有人在打字"
+   的 IM 拟人化（本产品必须反复声明"我不是医生"）。
+   夜间自动成立：§11 已把 --bg-4 钉成 #352B44、--ink-faint 钉成亮墨；
+   --sakura-pink-deep #E5578B on #352B44 ≈4.0:1，作装饰性图形过 1.4.11 的
+   3:1，且不承载文字信息（状态由 label 行的文案承载）。
    ========================================================================= */
-html.sakura .yk-ai-thinking {
-  background: var(--bg-4);
-  border-inline-start: 3px solid var(--sakura-pink-deep);
-  color: var(--sakura-pink-text);
+html.sakura .yk-ai {
+  --yk-ai-skeleton: var(--bg-4);
+  --yk-ai-skeleton-sweep: var(--sakura-pink-deep);
+  /* danger 当正文文字用。昼态奶油纸上 --danger #B5304F 实测 4.72–4.88:1 过 AA，
+     故等值；夜纸态另有覆盖（见 §12 夜纸块），那里 #B5304F 只有 2.5:1。 */
+  --danger-text: var(--danger);
 }
-html.sakura .yk-ai-dot {
-  background: var(--sakura-pink-deep);
+html.sakura .yk-ai-pending__bar {
+  border: 1.5px solid var(--ink-faint);
 }
+html.sakura .yk-ai-msg__state {
+  color: var(--fg-3);
+  font-family: var(--font-ui-accent);
+}
+
 html.sakura .yk-ai-error {
   background: var(--danger-a10);
-  border-inline-start: 4px solid var(--danger);
-  color: var(--danger);
+  border-inline-start: 4px solid var(--danger); /* 边线是图形，3:1 即可，不用 -text */
+  color: var(--danger-text);
 }
 
 /* =========================================================================
@@ -385,6 +411,13 @@ html.sakura[data-theme='dark'] .yk-ai {
   --color-text-secondary: #C5B2C3;
   --color-text-muted: #9E889C;
   --color-outline-20: rgba(240, 230, 239, 0.16);
+  /* 夜纸底上 --danger #B5304F 作文字仅 2.51:1（合成底 rgb(55,31,45)，AA 需 4.5）——
+     深红在深底上必然糊。取 --danger-bright #E85A7A 的更亮一档，色相仍在玫红家族，
+     不跳到粉色系（--sakura-pink-hot 虽也过线，但语义上是 hover 色）。
+     实测：on rgb(55,31,45) ≈6.95:1、on rgb(63,36,54) ≈6.40:1。
+     注：此为**既有缺陷**（HEAD 中 .yk-ai-error 即用 --danger），非本次改动引入，
+     因同一条规则的默认皮版本正在本 PR 修复，一并修掉避免只修一半。 */
+  --danger-text: #FF8FA3;
   background: #18141F;
 }
 /* 舞台/纸纹同步入夜（浅墨纹在深底不可见，直接关掉） */
@@ -480,7 +513,17 @@ html.sakura .yk-ai-edit__area {
 
 /* 富 Markdown 排版 */
 html.sakura .yk-ai-msg :is(h1, h2, h3, h4) { color: var(--fg-1); font-family: var(--font-heading); }
-html.sakura .yk-ai-msg blockquote { border-inline-start: 3px solid var(--sakura-pink-deep); color: var(--fg-2); }
+/* blockquote 分量上调：AI 很爱用它放注意事项，2px 淡边 + 次级字几乎读不出
+   "这里是提示"。加淡底 + 3px 实边；圆角走逻辑属性（本文件 RTL 纪律）。 */
+html.sakura .yk-ai-msg blockquote {
+  background: var(--bg-4);
+  border-inline-start: 3px solid var(--sakura-pink-deep);
+  border-start-start-radius: 0;
+  border-start-end-radius: 8px;
+  border-end-end-radius: 8px;
+  border-end-start-radius: 0;
+  color: var(--fg-2);
+}
 html.sakura .yk-ai-msg pre { background: var(--bg-4); border: 1.5px solid var(--ink-faint); border-radius: 8px; }
 html.sakura .yk-ai-msg :is(code, .yk-ai-code) { background: var(--bg-4); color: var(--ink); border-radius: 4px; }
 html.sakura .yk-ai-copybtn {
@@ -569,6 +612,21 @@ html.sakura .yk-ai-about__card {
 html.sakura .yk-ai-about__title { font-family: var(--font-heading); color: var(--fg-1); }
 html.sakura .yk-ai-about__list { color: var(--fg-2); }
 html.sakura .yk-ai-about__list li::marker { color: var(--sakura-pink-deep); }
+
+/* 焦点可见性补齐（WCAG 2.4.7）—— 基线焦点环用 var(--color-accent)，sakura 下
+   = butter #F5C842 on cream #FFF5E0 ≈1.35:1，等于没有焦点指示。
+   · .yk-ai-pill      欢迎态 5 个建议钮 = 新用户的第一个可交互元素，此前整段漏掉
+   · .yk-ai-copybtn / .yk-ai-scrollbtn  两套皮肤都无 :focus-visible，只吃 UA 默认环
+   · .yk-ai-edit__area  基线 outline:none 且 border 恒定 → 聚焦态与非聚焦态无差别
+   · .yk-ai-tablewrap / pre  本次在 aiMarkdown.ts 加了 tabindex="0"（WCAG 2.1.1：
+     overflow:auto 区域键盘不可达 = 内容不可达），新增可聚焦元素必须同时给焦点环 */
+html.sakura :is(.yk-ai-pill, .yk-ai-copybtn, .yk-ai-scrollbtn, .yk-ai-edit__area, .yk-ai-tablewrap):focus-visible,
+html.sakura .yk-ai-msg pre:focus-visible {
+  outline: 2px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+/* 编辑框另给边框换色：焦点环之外再加一层"这个框在等你输入"的形态信号 */
+html.sakura .yk-ai-edit__area:focus { border-color: var(--sakura-pink-deep); }
 
 /* =========================================================================
    14. 会话侧栏 / 抽屉 —— 手账目录

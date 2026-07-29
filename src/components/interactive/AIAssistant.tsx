@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { getLocale, AI_COPY } from './aiChatL10n';
+import type { AIChatCopy } from './aiChatL10n';
 import { containsCrisisKeyword, getCrisisHotlines } from './crisisSupport';
 import type { CrisisHotline } from './crisisSupport';
 import { useChatSessions } from './useChatSessions';
@@ -43,41 +44,125 @@ const byteLen = (s: string) => new TextEncoder().encode(s).length;
 /* =========================================================================
    本地用量记账（隐私：只存计数，绝不存对话内容，绝不上报任何 analytics）
    ------------------------------------------------------------------------
-   DAILY_QUOTA 来源：上游免费档 9000 次/天 ÷ 目标 300 人/天 = 30 次/人/天。
+   两级**滚动窗口**（owner 2026-07-29，Claude 模式）：
+   · session — 5 小时窗口，从该窗口内第一次提问起算
+   · weekly  — 7 天窗口，同上
+   任一级用满即停；窗口结束后该级整体恢复，下次提问再开新窗口。
+   不用自然日：那会让"差 10 分钟到午夜"变成可用量翻倍，重置时刻也与用户的
+   使用节奏无关。
+   配额数值与 api/ai-chat.ts 的 SESSION_LIMIT / WEEKLY_LIMIT 必须保持一致，
+   推导依据写在该文件（限额目的是防单 IP 刷爆，不是分配稀缺资源）。
    ========================================================================= */
-const DAILY_QUOTA = 30;
+/** 深度会话上限约 15-20 轮，25 留 ~25% 余量 —— 正常用户碰不到 */
+const SESSION_QUOTA = 25;
+/** = 6 个满额 5h 窗口/周 */
+const WEEKLY_QUOTA = 150;
+const SESSION_WINDOW_MS = 5 * 60 * 60 * 1000;
+const WEEKLY_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 const USAGE_KEY = 'yk-ai-usage';
 /** 思考模式偏好（UI 偏好，非健康数据；与会话内容完全无关） */
 const MODE_KEY = 'yk-ai-mode';
 
-interface UsageRecord { day: string; used: number }
+/** start = 0 表示尚未开窗（全新用户 / 窗口已过期）。 */
+interface UsageWindow { start: number; used: number }
+interface UsageRecord { s: UsageWindow; w: UsageWindow }
 
-/** 本地时区的 YYYY-MM-DD —— 跨日判断必须用本地日期，UTC 会让东八区提前/滞后重置。 */
-function localDayKey(d: Date = new Date()): string {
-  const p = (n: number) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+const EMPTY_WINDOW: UsageWindow = { start: 0, used: 0 };
+const EMPTY_USAGE: UsageRecord = { s: EMPTY_WINDOW, w: EMPTY_WINDOW };
+
+/** 单个窗口的解析 + 过期归零。未来时间戳（用户改过系统时钟）也按过期处理，
+ *  否则额度会被永久锁死。 */
+function parseWindow(raw: unknown, windowMs: number): UsageWindow {
+  const w = raw as Partial<UsageWindow> | null | undefined;
+  const start = w?.start;
+  const used = w?.used;
+  if (typeof start !== 'number' || !Number.isFinite(start) || start <= 0) return EMPTY_WINDOW;
+  if (typeof used !== 'number' || !Number.isFinite(used)) return EMPTY_WINDOW;
+  const age = Date.now() - start;
+  if (age < 0 || age >= windowMs) return EMPTY_WINDOW;
+  return { start, used: Math.max(0, Math.floor(used)) };
 }
 
-/** 读取今日计数；日期不匹配（跨日）或数据损坏时自动归零。 */
+/** 读取两级计数。旧格式（`{day,used}` 或 `{windowStart,used}`）没有 s/w 字段 →
+ *  parseWindow 直接落到"尚未开窗"，下次提问重新开窗。对用户只会更宽松，且不必
+ *  为一次性迁移引入日期换算。 */
 function readUsage(): UsageRecord {
-  const day = localDayKey();
-  if (typeof localStorage === 'undefined') return { day, used: 0 };
+  if (typeof localStorage === 'undefined') return EMPTY_USAGE;
   try {
     const raw = localStorage.getItem(USAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as Partial<UsageRecord> | null;
-      if (parsed && parsed.day === day && typeof parsed.used === 'number' && Number.isFinite(parsed.used)) {
-        return { day, used: Math.max(0, Math.floor(parsed.used)) };
-      }
+      return {
+        s: parseWindow(parsed?.s, SESSION_WINDOW_MS),
+        w: parseWindow(parsed?.w, WEEKLY_WINDOW_MS),
+      };
     }
-  } catch { /* 隐私模式 / 配额满 / 脏数据：静默回落到 0 */ }
-  return { day, used: 0 };
+  } catch { /* 隐私模式 / 配额满 / 脏数据 / 旧格式：静默回落到未开窗 */ }
+  return EMPTY_USAGE;
 }
 
 function writeUsage(rec: UsageRecord): void {
   if (typeof localStorage === 'undefined') return;
   try { localStorage.setItem(USAGE_KEY, JSON.stringify(rec)); } catch { /* ignore */ }
 }
+
+/** 该窗口距恢复的剩余毫秒；未开窗返回 0。 */
+function windowResetInMs(w: UsageWindow, windowMs: number): number {
+  if (w.start <= 0) return 0;
+  return Math.max(0, w.start + windowMs - Date.now());
+}
+
+/** 时段级剩余毫秒 → 「约 X 小时 Y 分后恢复」。不足 1 分按 1 分（不出现 0）。 */
+function formatSessionResetIn(ms: number, ui: AIChatCopy): string {
+  const totalMin = Math.max(1, Math.ceil(ms / 60_000));
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  if (h > 0 && m > 0) return ui.usageResetIn.replace('{h}', String(h)).replace('{m}', String(m));
+  if (h > 0) return ui.usageResetInHours.replace('{h}', String(h));
+  return ui.usageResetInMinutes.replace('{m}', String(m));
+}
+
+/** 周级剩余毫秒 → 「约 X 天后恢复」；不足 1 天降级到小时（周窗口末尾说"1 天"
+ *  会让用户以为还要等整整一天）。 */
+function formatWeeklyResetIn(ms: number, ui: AIChatCopy): string {
+  const HOUR = 60 * 60 * 1000;
+  if (ms >= 24 * HOUR) {
+    return ui.usageWeeklyResetInDays.replace('{d}', String(Math.ceil(ms / (24 * HOUR))));
+  }
+  return ui.usageWeeklyResetInHours.replace('{h}', String(Math.max(1, Math.ceil(ms / HOUR))));
+}
+
+function formatQuotaResetIn(scope: 'session' | 'weekly', ms: number, ui: AIChatCopy): string {
+  return scope === 'weekly' ? formatWeeklyResetIn(ms, ui) : formatSessionResetIn(ms, ui);
+}
+
+/* =========================================================================
+   GA4 用量埋点 —— 纯计数，零内容
+   ------------------------------------------------------------------------
+   ⚠️ 红线（CONSTITUTION §6 / CLAUDE.md「第三方分析只限聚合指标」）：
+   · 参数值**必须是本文件里写死的字面量或数字**。绝不接受任何来自用户输入或
+     模型输出的字符串 —— 一个自由文本字段都不能有。新增事件前先问：这个值有
+     没有可能承载用户说了什么？有 → 不发。
+   · **不发 x-yk-route / x-yk-model**：那是排障信息，与用户身份关联后可推断
+     行为，只走服务端日志（api/ai-chat.ts 的 logServed）。
+   · 复用 Head.astro 已装载的 gtag 通路（同一 dataLayer、同一 `ga-disable-`
+     开关），不新起 gtag 脚本或 config；`yakuten-dev` opt-out 再显式挡一道。
+   ⚠️ 站内目前没有共享的 GA 封装模块（Head.astro 里是 inline gtag），故本
+     helper 就地实现；日后若抽出公共封装，此处应替换为调用它。
+   ========================================================================= */
+type TrackEvent = 'ai_chat_open' | 'ai_chat_send' | 'ai_chat_reply' | 'ai_chat_error' | 'ai_chat_limit';
+
+function track(event: TrackEvent, params?: Record<string, string | number | boolean>): void {
+  try {
+    if (typeof window === 'undefined') return;
+    if (localStorage.getItem('yakuten-dev') === '1') return;
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === 'function') gtag('event', event, params ?? {});
+  } catch { /* 隐私模式 / 拦截器 / GA 未加载：埋点失败绝不影响对话 */ }
+}
+
+/** 耗时取整到 100ms —— 毫秒级精度对分析无用，粒度越粗越难反推个体。 */
+const roundMs = (ms: number) => Math.round(ms / 100) * 100;
 
 /* =========================================================================
    Icon —— 操作条 / 开关统一图标源（20px 线性图标，避免 JSX 里堆 path）
@@ -134,6 +219,64 @@ interface AIAssistantProps {
   onClose?: () => void;
 }
 
+/**
+ * 等待耗时（秒）—— 挂在 AI 气泡既有的 label 行内，不新增任何一行布局。
+ * 自己持有 interval：如果把秒数提到父组件，流式期间每秒会重渲染整个消息列表。
+ * 3s 阈值让快回答不闪计数器。
+ *
+ * 刻意**不做**阶段性假文案（"正在检索指南…"）：端点是纯文本流，不返回任何阶段
+ * 信号，写出来的每一句都是编的。在一个"每条医学声明必须挂 DOI"的产品里，界面
+ * 声称"正在检索文献"而实际没有，用户会据此高估回答的证据基础 —— 这是可信度事故。
+ */
+function ElapsedBadge({ since, unit }: { since: number | null; unit: string }) {
+  const [sec, setSec] = useState(0);
+  useEffect(() => {
+    if (!since) { setSec(0); return; }
+    const tick = () => setSec(Math.floor((Date.now() - since) / 1000));
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, [since]);
+  if (!since || sec < 3) return null;
+  return <span className="yk-ai-msg__elapsed"> · {unit.replace('{s}', String(sec))}</span>;
+}
+
+/**
+ * 流式正文 —— 已完成的部分走富渲染，只有正在写的那一块走轻渲染。
+ *
+ * 为什么要拆：流式走 fallbackRender、完成走 marked，两者块结构一致（批次 1 的
+ * blockify）但表格/代码块只有 marked 认识。不拆的话一个含表格的回答会在结束那
+ * 一帧从"若干行裸竖线文本"整体重排成带边框圆角的滚动卡。
+ *
+ * head 必须缓存成**同一个 React element 对象**，不能只缓存 __html 字符串：
+ * React 19 的 updateProperties 对 dangerouslySetInnerHTML 是无条件重写的 ——
+ * 实测同一字符串每 chunk 仍会走一次 `domElement.innerHTML = html`，把已完成段落
+ * 的子节点整体销毁重建，鼠标选区随之丢失。返回恒等的 element 让 props 对象引用
+ * 也恒等，命中 beginWork 的 oldProps === newProps 提前返回，那棵子树整个不进
+ * commit —— 选区才真的留得住（顺带省掉每 chunk 重新 parse 整段已完成正文）。
+ */
+function StreamBody({ content }: { content: string }) {
+  const [head, tail] = useMemo<[string, string]>(() => {
+    const cut = content.lastIndexOf('\n\n');
+    if (cut <= 0) return ['', content];
+    const h = content.slice(0, cut);
+    /* 围栏代码块未闭合时不切：marked 会把 head 末尾的开围栏一路吞成代码块，
+       切点落在块中间反而制造一次更大的重排。等围栏配平了再切。 */
+    if (((h.match(/^```/gm) || []).length) % 2 !== 0) return ['', content];
+    return [h, content.slice(cut + 2)];
+  }, [content]);
+  const headEl = useMemo(
+    () => (head ? <div dangerouslySetInnerHTML={{ __html: renderMarkdown(head) }} /> : null),
+    [head],
+  );
+  return (
+    <>
+      {headEl}
+      <div dangerouslySetInnerHTML={{ __html: renderMarkdownStreaming(tail) }} />
+    </>
+  );
+}
+
 /** 替换 messages 末尾 assistant 的内容（流式增量用）。 */
 function replaceLastAssistant(prev: StoredMessage[], content: string): StoredMessage[] {
   const u = [...prev];
@@ -143,17 +286,26 @@ function replaceLastAssistant(prev: StoredMessage[], content: string): StoredMes
 }
 
 const BASE_CSS = `
-@keyframes ai-dot-bounce { 0%,80%,100%{transform:translateY(0);opacity:.4} 40%{transform:translateY(-4px);opacity:1} }
 @keyframes ai-msg-in { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
-@keyframes ai-caret { 0%,100%{opacity:1} 50%{opacity:0} }
+/* 新挂载区块的统一入场（对话态 log / dock、回底钮、用量条） */
+@keyframes ai-enter { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+/* 光标呼吸：谷底停在 .25 而非 0 —— 任何一帧都看得见"还在生成"，又不是终端"等你输入"的硬闪 */
+@keyframes ai-caret { 0%,100%{opacity:1} 50%{opacity:.25} }
 @keyframes ai-hero-in { from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+/* 等待态占位条扫光（只动 transform） */
+@keyframes ai-shimmer     { from { transform: translateX(-120%) } to { transform: translateX(320%)  } }
+@keyframes ai-shimmer-rtl { from { transform: translateX(120%)  } to { transform: translateX(-320%) } }
 .yk-ai {
   display:flex; flex-direction:column; block-size:100%; overflow:hidden; margin:0;
   /* 弹簧缓动 —— ChatGPT 生产实测 linear() 曲线（微交互/常规/回弹三档） */
   --spring-fast: linear(0, .07956 4.02%, .47488 13.851%, .79653 25.733%, .9246 36.734%, .98361 52.535%, .99988);
   --spring-common: linear(0, .08322 5.391%, .46561 17.652%, .76663 31.093%, .92965 47.845%, .99189 74.867%, .9991);
   --spring-bounce: linear(0, .10318 4.799%, .43592 14.679%, .84264 27.782%, 1.02066 38.732%, 1.04598 46.128%, 1.02446 58.294%, .99913 76.919%, 1);
+  /* 等待态占位条的皮肤无关局部变量（sakura 在 sakura-ai.css §8 覆盖） */
+  --yk-ai-skeleton: var(--color-white-alpha-08, rgba(255,255,255,.08));
+  --yk-ai-skeleton-sweep: var(--color-accent-alpha-30, rgba(212,168,83,.3));
 }
+[data-theme='light'] .yk-ai { --yk-ai-skeleton: var(--color-outline-20); }
 /* 中和 Starlight prose 给 .sl-markdown-content 内所有块级元素注入的 margin-top —
    它会逐层撑破全屏布局。消息体/侧栏的显式 margin 由更高（或后载同级）优先级规则恢复。 */
 .yk-ai * { margin: 0; }
@@ -183,11 +335,14 @@ a.yk-ai-iconbtn { text-decoration:none; }
 @media (hover:hover){ .yk-ai-iconbtn:hover{ color: var(--color-text-primary); background: var(--color-white-alpha-03);} }
 .yk-ai-iconbtn:focus-visible{ outline:2px solid var(--color-accent); outline-offset:1px; }
 .yk-ai-topbar__title { flex:1; min-inline-size:0; font-family: var(--font-display); font-size:.875rem; font-weight:600; color: var(--color-text-secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-inline:6px; letter-spacing:.01em; }
-.yk-ai-topbar__model { font-size:.6875rem; color: var(--color-accent); font-family: var(--font-mono); letter-spacing:.04em; white-space:nowrap; max-inline-size:200px; overflow:hidden; text-overflow:ellipsis;
+.yk-ai-topbar__model { font-size:.6875rem; color: var(--color-accent-text); font-family: var(--font-mono); letter-spacing:.04em; white-space:nowrap; max-inline-size:200px; overflow:hidden; text-overflow:ellipsis;
   background: var(--color-accent-alpha-08, rgba(212,168,83,.1)); border:1px solid var(--color-accent-alpha-30, rgba(212,168,83,.25)); padding:2px 9px; border-radius:999px; }
 
-.yk-ai-logwrap { flex:1; min-block-size:0; position:relative; display:flex; flex-direction:column; }
-.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding:32px var(--space-lg); display:flex; flex-direction:column; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
+.yk-ai-logwrap { flex:1; min-block-size:0; position:relative; display:flex; flex-direction:column; animation: ai-enter .26s var(--spring-common, ease) both; }
+.yk-ai-log { flex:1; overflow-y:auto; overflow-x:hidden; padding:32px var(--space-lg); display:flex; flex-direction:column; scrollbar-width:thin; scrollbar-color: var(--color-white-alpha-08, rgba(255,255,255,.08)) transparent; }
+/* 平滑滚动只给「回到底部」/切会话。流式期每 chunk 都赋一次 scrollTop，smooth 会
+   让每次赋值打断上一段动画 → 视口永远追不上文字，最后几行落在折叠线下。 */
+.yk-ai-log--smooth { scroll-behavior:smooth; }
 .yk-ai-log::-webkit-scrollbar { inline-size:8px; }
 .yk-ai-log::-webkit-scrollbar-thumb { background: var(--color-white-alpha-08, rgba(255,255,255,.08)); border-radius:8px; }
 .yk-ai-log::-webkit-scrollbar-track { background: transparent; }
@@ -220,24 +375,56 @@ a.yk-ai-iconbtn { text-decoration:none; }
 
 /* ============ 消息 —— 用户=绯色渐变胶囊；AI=无框直排 + 金瓣标识 ============ */
 .yk-ai-turn { display:flex; flex-direction:column; gap:8px; animation: ai-msg-in .3s var(--spring-common, ease) both; }
-.yk-ai-msg { font-family: var(--font-body); font-size:.96875rem; color: var(--color-text-primary); }
-.yk-ai--compact .yk-ai-msg { font-size:.875rem; }
+/* 16px 正文 —— 医疗长文逐字读，claude.ai / ChatGPT 同档；行高 1.8→1.75 抵消行距增长 */
+.yk-ai-msg { font-family: var(--font-body); font-size:1rem; color: var(--color-text-primary); }
+.yk-ai--compact .yk-ai-msg { font-size:.9375rem; }
 /* 四角对称卡（缺角气泡是 IM 社交软件语言，三家 AI 产品均为对称 rounded） */
 .yk-ai-msg--user { align-self:flex-end; max-inline-size:76%; inline-size:fit-content; padding:12px 18px; line-height:1.65; white-space:pre-wrap;
   background: linear-gradient(135deg, var(--color-primary-alpha-15, rgba(200,75,124,.18)), var(--color-primary-alpha-08, rgba(200,75,124,.08)));
   border:1px solid var(--color-primary-alpha-30, rgba(200,75,124,.32));
   border-radius:16px; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
 [data-theme='light'] .yk-ai-msg--user { border-color: var(--color-primary-alpha-40, rgba(200,75,124,.42)); }
-.yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.8; background:none; border:none; }
+/* FAB 面板 ~360px 宽：76% = 274px，中文一行仅约 17 字，用户自己的问题被切得很碎 */
+.yk-ai--compact .yk-ai-msg--user { max-inline-size:88%; }
+/* ⚠️ line-height 与 .yk-ai-pending{block-size} 必须同步 —— 零位移保证就建立在
+   "占位条高度 == 正文一行行高"上。改这里必须同改那里。 */
+.yk-ai-msg--ai { align-self:stretch; max-inline-size:100%; padding:0; line-height:1.75; background:none; border:none; }
 /* AI 标识降噪：灰字 12px + 仅图标留金（回复本体才是主角） */
 .yk-ai-msg__label { display:flex; align-items:center; gap:7px; font-size:.75rem; color: var(--color-text-muted); font-family: var(--font-body); letter-spacing:.02em; margin-block-end:8px; }
-.yk-ai-msg__label svg { color: var(--color-accent); }
-/* 流式光标 —— 仅 streaming 中的 AI 消息尾部 */
-.yk-ai-msg--streaming > div:last-child::after { content:'▍'; color: var(--color-accent); animation: ai-caret 1s step-end infinite; margin-inline-start:2px; }
+.yk-ai-msg__label svg { color: var(--color-accent-text); }
+/* 等待态状态文案 —— 挂在既有 label 行内，不新增任何一行布局 */
+.yk-ai-msg__state { color: var(--color-text-muted); }
+.yk-ai-msg__state::before { content:'·'; margin-inline:6px 6px; opacity:.5; }
+.yk-ai-msg__elapsed { font-variant-numeric: tabular-nums; opacity:.8; }
+/* 流式光标 —— CSS 画的实心块（原 '▍' U+2589 是字形：17 语字体回退不一，且会参与
+   断行独占一行）。尺寸走 em，锁在正文行盒内，永不撑高行高。
+   ⚠️ 必须挂在**尾块的最后一行行内**，不能挂在外层 div 上：blockify() 之后正文
+   全是块级元素（<p>/<ul>/…），挂在 div 上的 ::after 会自己生成一个匿名块行盒 →
+   光标独占一行，流式结束时再塌掉，正好是 28px 的假位移。 */
+.yk-ai-msg--streaming > div:last-child > :last-child:not(ul):not(ol):not(hr):not(.yk-ai-tablewrap):not(.yk-ai-prewrap)::after,
+.yk-ai-msg--streaming > div:last-child > :is(ul,ol):last-child > li:last-child::after {
+  content:''; display:inline-block;
+  inline-size:.46em; block-size:1.05em; vertical-align:-.18em;
+  margin-inline-start:.14em; border-radius:1px;
+  background: var(--color-accent-text);
+  animation: ai-caret 1.3s ease-in-out infinite;
+}
 
-/* 操作条常显（Claude/Gemini 路线：移动端无 hover，复制/重答是高频动作） */
-.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-2px; }
+/* 正文槽位占位条 —— block-size 必须 == .yk-ai-msg--ai 的 line-height（1.75em），
+   首 token 到达时第一行文字正好落在 shimmer 原位，位移 = 0px。 */
+.yk-ai-pending { display:flex; align-items:center; block-size:1.75em; }
+.yk-ai-pending__bar { position:relative; overflow:hidden; block-size:.7em; inline-size:min(260px, 58%); border-radius:999px; background: var(--yk-ai-skeleton); }
+.yk-ai-pending__bar::after { content:''; position:absolute; inset-block:0; inset-inline-start:0; inline-size:45%;
+  background: linear-gradient(90deg, transparent, var(--yk-ai-skeleton-sweep), transparent);
+  transform: translateX(-120%); animation: ai-shimmer 1.15s ease-in-out infinite; }
+[dir="rtl"] .yk-ai-pending__bar::after { animation-name: ai-shimmer-rtl; }
+
+/* 操作条常显（Claude/Gemini 路线：移动端无 hover，复制/重答是高频动作）。
+   block-size 恒定 = 零位移的机制本身：加载态只切 opacity，DOM 高度永不变。
+   不要改成 min-block-size。 */
+.yk-ai-actions { display:flex; gap:2px; align-self:flex-start; margin-block-start:-4px; block-size:38px; transition: opacity var(--transition-fast); }
 .yk-ai-actions--user { align-self:flex-end; }
+.yk-ai-actions--pending { opacity:0; pointer-events:none; }
 /* 图标化操作钮：文案转 aria-label + title（17 语 l10n 继续生效），热区不缩水 */
 .yk-ai-actbtn { background:none; border:none; color: var(--color-text-muted); cursor:pointer; min-inline-size:38px; min-block-size:38px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:4px 8px; font-size:.75rem; font-family: var(--font-body); transition: color var(--transition-fast); border-radius:8px; }
 @media (hover:hover){ .yk-ai-actbtn:hover{ color: var(--color-primary-light);} }
@@ -248,28 +435,48 @@ a.yk-ai-iconbtn { text-decoration:none; }
 
 .yk-ai-edit { display:flex; flex-direction:column; gap:6px; align-self:flex-end; inline-size:min(560px, 92%); }
 .yk-ai-edit__area { inline-size:100%; min-block-size:64px; padding:10px 12px; background: var(--color-bg-container); color: var(--color-text-primary); border:1px solid var(--color-primary); font-family: var(--font-body); font-size:.9rem; line-height:1.6; resize:vertical; border-radius:12px; outline:none; }
+/* outline:none 只是为了去掉 UA 方角环 —— border 是恒定的，不自己补一个焦点指示
+   就等于一个可输入控件完全没有焦点态（WCAG 2.4.7 硬伤）。 */
+.yk-ai-edit__area:focus-visible { outline:2px solid var(--color-accent); outline-offset:1px; }
+.yk-ai-edit__area:focus { border-color: var(--color-primary-light); }
 .yk-ai-edit__row { display:flex; gap:8px; justify-content:flex-end; }
 
 /* rich markdown blocks */
 .yk-ai-msg .yk-ai-h { display:block; margin-top:.75em; font-weight:700; }
 .yk-ai-msg h1 { font-family: var(--font-display); font-size:1.35em; font-weight:700; margin:1em 0 .4em; color: var(--color-text-primary); border-block-end:1px solid var(--color-outline-20); padding-block-end:4px; }
 .yk-ai-msg h2 { font-family: var(--font-display); font-size:1.2em; font-weight:700; margin:.85em 0 .35em; color: var(--color-text-primary); }
-.yk-ai-msg h3,.yk-ai-msg h4 { font-family: var(--font-display); font-size:1.05em; font-weight:600; margin:.7em 0 .25em; color: var(--color-accent); }
+.yk-ai-msg h3,.yk-ai-msg h4 { font-family: var(--font-display); font-size:1.05em; font-weight:600; margin:.7em 0 .25em; color: var(--color-accent-text); }
 .yk-ai-msg ul,.yk-ai-msg ol { margin:.45em 0; padding-inline-start:1.4em; display:flex; flex-direction:column; gap:4px; }
-.yk-ai-msg li { list-style:revert; }
-.yk-ai-msg li::marker { color: var(--color-accent); }
-.yk-ai-li { margin-inline-start:1.2em; }
+/* 流式 fallback 与 marked 现在产出同构的 <ul>/<ol>，marker 由列表容器统一决定
+   （原 list-style:revert 会回落到 Starlight prose 的列表样式）。 */
+.yk-ai-msg ul { list-style:disc; }
+.yk-ai-msg ol { list-style:decimal; }
+.yk-ai-msg li { list-style:inherit; }
+.yk-ai-msg li::marker { color: var(--color-accent-text); }
+/* ⚠️ 不要给 .yk-ai-li 加 margin-inline-start —— blockify() 已把它包进 <ul>，
+   缩进由上面的 padding-inline-start:1.4em 统一负责，再加就是双重缩进。 */
 .yk-ai-li--ul { list-style:disc; } .yk-ai-li--ol { list-style:decimal; }
 .yk-ai-msg p { margin:.45em 0; }
 .yk-ai-msg--ai > div > p:first-child { margin-block-start:0; }
-.yk-ai-msg blockquote { margin:.55em 0; padding-inline-start:12px; border-inline-start:2px solid var(--color-accent-alpha-30, rgba(212,168,83,.3)); color: var(--color-text-secondary); }
+/* 尾块最后一段不留下边距：流式期 tail 从"空（仅光标）"长出第一段时高度不变，
+   且与完成态的气泡↔操作条间距保持一致。 */
+.yk-ai-msg--ai > div:last-child > p:last-child { margin-block-end:0; }
+/* AI 很爱用 blockquote 放注意事项：2px 淡边 + 次级字读不出"这里是提示"。
+   圆角走逻辑属性 —— 物理写法在 ar/fa 下会长在错误的一侧。 */
+.yk-ai-msg blockquote { margin:.6em 0; padding:8px 12px;
+  border-inline-start:3px solid var(--color-accent-text);
+  background: var(--color-white-alpha-03, rgba(255,255,255,.03));
+  border-start-start-radius:0; border-end-start-radius:0;
+  border-start-end-radius:8px; border-end-end-radius:8px;
+  color: var(--color-text-secondary); }
+[data-theme='light'] .yk-ai-msg blockquote { background: var(--color-primary-alpha-08, rgba(200,75,124,.07)); }
 .yk-ai-hr { border:none; border-top:1px solid var(--color-outline-20); margin:.8em 0; }
 .yk-ai-code, .yk-ai-msg code { background: var(--color-white-alpha-08); padding:.12em .35em; font-size:.85em; font-family: var(--font-code); border-radius:4px; }
 .yk-ai-prewrap { position:relative; margin:.6em 0; }
-.yk-ai-msg pre { background: rgba(12,10,18,.7); border:1px solid var(--color-outline-20); padding:12px 14px; overflow-x:auto; font-size:.82em; border-radius:10px; box-shadow: inset 0 1px 3px rgba(0,0,0,.3); }
+.yk-ai-msg pre { background: rgba(12,10,18,.7); border:1px solid var(--color-outline-20); padding:12px 14px; overflow-x:auto; font-size:.875em; border-radius:10px; box-shadow: inset 0 1px 3px rgba(0,0,0,.3); }
 [data-theme='light'] .yk-ai-msg pre { background: rgba(74,40,56,.05); box-shadow:none; }
 .yk-ai-msg pre code { background:none; padding:0; font-size:1em; }
-.yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:32px; block-size:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; transition: color var(--transition-fast), border-color var(--transition-fast); }
+.yk-ai-copybtn { position:absolute; inset-block-start:7px; inset-inline-end:7px; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-muted); cursor:pointer; inline-size:38px; block-size:38px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; transition: color var(--transition-fast), border-color var(--transition-fast); }
 @media (hover:hover){ .yk-ai-copybtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary);} }
 /* 代码块复制成功：图标临时换对勾（按钮 DOM 由 aiMarkdown.ts 生成，此处纯 CSS 换形） */
 .yk-ai-copybtn--done { color: var(--color-safe); border-color: var(--color-safe); }
@@ -277,10 +484,17 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-copybtn--done::after { content:'✓'; font-size:15px; font-weight:700; line-height:1; }
 .yk-ai-tablewrap { overflow-x:auto; margin:.6em 0; border:1px solid var(--color-outline-20); border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
 [data-theme='light'] .yk-ai-tablewrap { box-shadow: 0 2px 10px rgba(74,40,56,.08); }
+/* 表格/代码块的滚动口由 aiMarkdown.ts 加了 tabindex="0"（WCAG 2.1.1）——
+   新增可聚焦元素必须同时给焦点环。 */
+.yk-ai-tablewrap, .yk-ai-msg pre { scrollbar-width:thin; }
+.yk-ai-tablewrap:focus-visible, .yk-ai-msg pre:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 .yk-ai-table { border-collapse:collapse; font-size:.85em; min-inline-size:100%; }
-.yk-ai-table th,.yk-ai-table td { border-block-end:1px solid var(--color-outline-20); padding:8px 12px; text-align:start; white-space:nowrap; }
+.yk-ai-table th,.yk-ai-table td { border-block-end:1px solid var(--color-outline-20); padding:8px 12px; text-align:start; }
+/* 表头短、宜整行；数据格常是 CJK 长句，nowrap 会把整表撑成一行横滚 */
+.yk-ai-table th { white-space:nowrap; }
+.yk-ai-table td { white-space:normal; min-inline-size:6em; }
 .yk-ai-table tr:last-child td { border-block-end:none; }
-.yk-ai-table th { background: var(--color-white-alpha-03); font-weight:700; color: var(--color-accent); font-family: var(--font-body); }
+.yk-ai-table th { background: var(--color-white-alpha-03); font-weight:700; color: var(--color-accent-text); font-family: var(--font-body); }
 
 /* in-site link card + ext link */
 .yk-ai-msg a.yk-ai-linkcard { display:flex; align-items:center; gap:8px; margin-block:6px; padding:8px 10px; background: var(--color-bg-container, #1a1625); border:1px solid var(--color-outline-20); border-inline-start:3px solid var(--color-accent); color: var(--color-text-primary); text-decoration:none; font-size:.8125rem; transition: border-color var(--transition-fast); }
@@ -294,26 +508,34 @@ a.yk-ai-iconbtn { text-decoration:none; }
 
 /* crisis card */
 .yk-ai-crisis { background: var(--color-danger-dark, #D32F2F); border:1px solid var(--color-danger); color:#fff; padding:10px 12px; font-family: var(--font-body); display:flex; flex-direction:column; gap:6px; align-self:stretch; }
-.yk-ai-crisis__title{ font-weight:700; font-size:.8125rem; color:#fff; margin:0; }
-.yk-ai-crisis__body{ margin:0; font-size:.75rem; line-height:1.5; color:#fff; }
+/* ⚠️ 红线：危机卡只能强化不能弱化。[P1-6] 把正文从 15.5px 提到 16px，这三处
+   字号必须同步上调，否则本次改动的净效果是相对削弱了危机卡的视觉分量。 */
+.yk-ai-crisis__title{ font-weight:700; font-size:.9375rem; color:#fff; margin:0; }
+.yk-ai-crisis__body{ margin:0; font-size:.8125rem; line-height:1.5; color:#fff; }
 .yk-ai-crisis__list{ display:flex; flex-direction:column; gap:4px; }
 .yk-ai-crisis__line{ display:flex; align-items:center; justify-content:space-between; gap:8px; min-block-size:44px; padding:2px 8px; border:1px solid rgba(255,255,255,.55); color:#fff; text-decoration:underline; text-underline-offset:2px; }
 .yk-ai-crisis__line:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
 .yk-ai-crisis__name{ font-size:.75rem; line-height:1.4; }
 .yk-ai-crisis__num{ font-family: var(--font-mono, monospace); font-weight:700; font-size:.875rem; white-space:nowrap; }
-.yk-ai-crisis__note{ margin:0; font-size:.6875rem; line-height:1.5; color:#fff; }
+.yk-ai-crisis__note{ margin:0; font-size:.75rem; line-height:1.5; color:#fff; }
 
-.yk-ai-thinking { display:flex; align-items:center; gap:9px; align-self:flex-start; padding:4px 0; font-size:.78rem; color: var(--color-accent); font-family: var(--font-body); opacity:.9; }
-.yk-ai-dots{ display:inline-flex; gap:4px; }
-.yk-ai-dot{ inline-size:5px; block-size:5px; border-radius:50%; background: var(--color-accent); animation: ai-dot-bounce 1s ease infinite; }
-.yk-ai-dot:nth-child(2){ animation-delay:.15s; } .yk-ai-dot:nth-child(3){ animation-delay:.3s; }
-
-.yk-ai-scrollbtn { position:absolute; inset-block-end:14px; inset-inline-end:18px; inline-size:38px; block-size:38px; border-radius:50%; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 4px 18px var(--color-black-alpha-40, rgba(0,0,0,.4)); z-index:5; transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast); }
+.yk-ai-scrollbtn { position:absolute; inset-block-end:14px; inset-inline-end:18px; inline-size:38px; block-size:38px; border-radius:50%; background: var(--color-bg-container); border:1px solid var(--color-outline-20); color: var(--color-text-secondary); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 4px 18px var(--color-black-alpha-40, rgba(0,0,0,.4)); z-index:5; animation: ai-enter .2s var(--spring-common, ease) both; transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast); }
 @media (hover:hover){ .yk-ai-scrollbtn:hover{ color: var(--color-primary-light); border-color: var(--color-primary); transform: translateY(-1px);} }
+.yk-ai-copybtn:focus-visible,
+.yk-ai-scrollbtn:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 
 .yk-ai-banner { padding:6px 14px; font-size:.6875rem; line-height:1.4; font-family: var(--font-body); flex-shrink:0; display:flex; align-items:center; gap:8px; }
 .yk-ai-banner--offline { background: var(--color-caution-alpha-08); color: var(--color-caution); border-block-start:1px solid var(--color-outline-20); }
-.yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:3px solid var(--color-danger); padding:8px 12px; color: var(--color-danger); font-size:.78rem; font-family: var(--font-body); border-radius:0 8px 8px 0; }
+/* #F44336 在亮底 #FAF7FC 上仅 3.72:1，AA 不过 → 亮态换 danger-dark（≈4.88:1）。
+   分量刻意保持"淡底 + 左边线 + 红字"，与危机卡的"实心红满底 + 白字 + 方角"
+   差一个数量级，层级不会被抢。圆角走逻辑属性（RTL 下边线与圆角要同侧）。 */
+.yk-ai-error { background: var(--color-danger-alpha-10); border-inline-start:3px solid var(--color-danger); padding:8px 12px; color: var(--color-danger); font-size:.8125rem; font-family: var(--font-body);
+  border-start-start-radius:0; border-end-start-radius:0; border-start-end-radius:8px; border-end-end-radius:8px; }
+/* 亮态用 --color-danger-text（#B71C1C）而非 --color-danger-dark。
+   本条的对比度必须对**合成后的底色**算：本元素自铺 --color-danger-alpha-10，
+   实际底色 rgb(249,229,223)，#D32F2F 在其上仅 4.10:1，13px 正文不过 AA。
+   见 global.css 的 --color-danger-text 注释。 */
+[data-theme='light'] .yk-ai-error { color: var(--color-danger-text); }
 
 .yk-ai-ctx { display:flex; align-items:center; gap:8px; padding-block:2px; padding-inline:6px; font-size:.6875rem; color: var(--color-text-muted); font-family: var(--font-body); flex-shrink:0; max-inline-size:48rem; margin-inline:auto; inline-size:100%; }
 .yk-ai-ctx__text{ flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:start; }
@@ -321,7 +543,9 @@ a.yk-ai-iconbtn { text-decoration:none; }
 @media (hover:hover){ .yk-ai-ctx__close:hover{ color: var(--color-primary-light);} }
 
 /* ============ composer 浮岛（两种状态共用）+ dock + 免责常驻行 ============ */
-.yk-ai-dock { flex-shrink:0; padding:8px var(--space-lg) 0; }
+/* 比 .yk-ai-logwrap 略慢 —— 读作"内容先落位、输入区跟上"，掩盖空态→对话态
+   时输入框从舞台中央到坞底的瞬移 */
+.yk-ai-dock { flex-shrink:0; padding:8px var(--space-lg) 0; animation: ai-enter .32s var(--spring-common, ease) both; }
 .yk-ai--compact .yk-ai-dock { padding:6px 10px 0; }
 .yk-ai-composer { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; gap:10px; align-items:flex-end;
   background: var(--color-bg-container, #211E28);
@@ -352,7 +576,8 @@ a.yk-ai-iconbtn { text-decoration:none; }
 .yk-ai-charhint--over { color: var(--color-danger); }
 
 /* ============ 用量条（百分比制，仅本机计数；输入框正上方一条细线） ============ */
-.yk-ai-usage { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:5px; padding-inline:6px; padding-block-end:8px; }
+/* <50% 时整条不渲染（见 showUsage）；淡入避免"到 50% 那一刻凭空多出一条" */
+.yk-ai-usage { inline-size:100%; max-inline-size:48rem; margin-inline:auto; display:flex; flex-direction:column; gap:5px; padding-inline:6px; padding-block-end:8px; animation: ai-enter .3s var(--spring-common, ease) both; }
 .yk-ai-usage__track { block-size:3px; border-radius:999px; background: var(--color-white-alpha-08, rgba(255,255,255,.09)); overflow:hidden; }
 [data-theme='light'] .yk-ai-usage__track { background: rgba(74,40,56,.12); }
 /* 只动 transform —— scaleX 从行首起画，RTL 下把原点翻到行尾 */
@@ -360,9 +585,11 @@ a.yk-ai-iconbtn { text-decoration:none; }
 [dir="rtl"] .yk-ai-usage__fill { transform-origin:100% 50%; }
 .yk-ai-usage__text { font-size:.6875rem; line-height:1.5; color: var(--color-text-muted); font-family: var(--font-body); text-align:start; }
 .yk-ai-usage--warn .yk-ai-usage__fill { background: var(--color-accent); }
-.yk-ai-usage--warn .yk-ai-usage__text { color: var(--color-accent); }
+.yk-ai-usage--warn .yk-ai-usage__text { color: var(--color-accent-text); }
 .yk-ai-usage--danger .yk-ai-usage__fill { background: var(--color-danger); }
 .yk-ai-usage--danger .yk-ai-usage__text { color: var(--color-danger); }
+/* 周额度副文案：比主文案再弱一档，避免两个百分比争夺注意力 */
+.yk-ai-usage__sub { opacity:.72; }
 .yk-ai-usage__hint { color: inherit; text-decoration:underline; text-underline-offset:2px; }
 .yk-ai-usage__hint:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
 
@@ -394,7 +621,20 @@ a.yk-ai-iconbtn { text-decoration:none; }
   .yk-ai-hero__greeting { font-size:1.3rem; }
   .yk-ai-hero__composer { margin-block-start:20px; }
   /* 触控热区统一 44px（Apple HIG / Material） */
-  .yk-ai-send, .yk-ai-actbtn, .yk-ai-ctx__close, .yk-ai-modebtn { min-inline-size:44px; min-block-size:44px; }
+  .yk-ai-send, .yk-ai-actbtn, .yk-ai-ctx__close, .yk-ai-modebtn,
+  .yk-ai-scrollbtn, .yk-ai-copybtn { min-inline-size:44px; min-block-size:44px; }
+  /* scrollbtn 是显式定宽的圆钮，min-* 压不动它 */
+  .yk-ai-scrollbtn { inline-size:44px; block-size:44px; }
+  .yk-ai-copybtn { inline-size:44px; block-size:44px; }
+  /* 操作条恒定高度随热区一起抬，仍是"高度不随加载态变化" */
+  .yk-ai-actions { block-size:44px; }
+  /* 借一点负边距多露一列；单元格内边距收紧 */
+  .yk-ai-tablewrap { margin-inline:-4px; }
+  .yk-ai-table th, .yk-ai-table td { padding:6px 9px; }
+  /* 键盘弹起（输入框获得焦点）时收起两条非关键信息，把可视区还给对话。
+     不收起 .yk-ai-inputnote（红线组件）与离线条（它说明"你现在发不出去"）。 */
+  .yk-ai-dock:focus-within .yk-ai-usage,
+  .yk-ai-dock:focus-within .yk-ai-ctx { display:none; }
   /* 窄屏只留图标，文案继续由 aria-label / title 承载 */
   .yk-ai-modebtn__label { display:none; }
   .yk-ai-modebtn { padding-inline:0; }
@@ -408,10 +648,15 @@ a.yk-ai-iconbtn { text-decoration:none; }
   .yk-ai-hero { justify-content:flex-start; }
 }
 @media (prefers-reduced-motion: reduce){
-  .yk-ai-dot{ animation:none; }
-  .yk-ai-log{ scroll-behavior:auto; }
+  .yk-ai-log--smooth{ scroll-behavior:auto; }
   .yk-ai-turn, .yk-ai-hero { animation:none; }
-  .yk-ai-msg--streaming > div:last-child::after { animation:none; }
+  .yk-ai-logwrap, .yk-ai-dock, .yk-ai-scrollbtn, .yk-ai-usage { animation:none; }
+  .yk-ai-msg--streaming > div:last-child > :last-child::after,
+  .yk-ai-msg--streaming > div:last-child > :is(ul,ol):last-child > li:last-child::after { animation:none; }
+  /* 下面那条 animation-duration:.01ms 只压时长不压 animation-name —— 扫光会停在
+     to 帧（滑出视野）留下一个空槽。必须显式把 name 置空，再补一个静态灰条：
+     状态本身由 label 行的文字承载，不依赖动效。 */
+  .yk-ai-pending__bar::after { animation:none; opacity:.55; transform:none; inline-size:100%; }
   .yk-ai-pill:hover, .yk-ai-send:not(:disabled):hover, .yk-ai-scrollbtn:hover { transform:none; }
   .yk-ai-usage__fill { transition:none; }
   .yk-ai *, .yk-ai *::before, .yk-ai *::after { transition:none !important; animation-duration:.01ms !important; }
@@ -451,12 +696,14 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   const [streamingMsgKey, setStreamingMsgKey] = useState<string | null>(null);
   /** sr-only 状态播报（流式区 aria-live 已静音，完成/错误在此一次性播报） */
   const [srStatus, setSrStatus] = useState('');
-  /** 今日用量（仅本机计数，不含任何对话内容）；SSR 首帧 0，挂载后读本机值 */
-  const [usage, setUsage] = useState<UsageRecord>(() => ({ day: localDayKey(), used: 0 }));
+  /** 当前窗口用量（仅本机计数，不含任何对话内容）；SSR 首帧 0，挂载后读本机值 */
+  const [usage, setUsage] = useState<UsageRecord>(EMPTY_USAGE);
   /** 深度思考开关（UI 偏好，存 localStorage） */
   const [thinkMode, setThinkMode] = useState(false);
   /** 本次流式请求发起时的模式 —— 等待区文案不随中途切换而漂移 */
   const [streamThink, setStreamThink] = useState(false);
+  /** 本轮等待起点（首 token 前的耗时计数用）；null = 未在等待 */
+  const [pendingSince, setPendingSince] = useState<number | null>(null);
 
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -464,8 +711,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
 
   useEffect(() => { setPageTitle(getPageTitle()); }, []);
 
+  // 面板被打开（组件挂载 = 用户进入对话界面）。无参数，零内容。
+  useEffect(() => { track('ai_chat_open'); }, []);
+
   // 本机用量 / 模式偏好：挂载后读取（避免 SSR 与首帧 hydration 不一致）。
-  // 标签页整夜挂着时，回到前台重读一次以完成跨日重置。
+  // 标签页整夜挂着时，回到前台重读一次以完成窗口过期重置。
   useEffect(() => {
     setUsage(readUsage());
     try { setThinkMode(localStorage.getItem(MODE_KEY) === 'think'); } catch { /* ignore */ }
@@ -474,13 +724,19 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     return () => document.removeEventListener('visibilitychange', onVisible);
   }, []);
 
-  /** 用量 +1。以 localStorage 为准重读后写回 —— 多标签页并存也不会互相覆盖。 */
+  /** 用量 +1（两级同时）。以 localStorage 为准重读后写回 —— 多标签页并存也不会
+   *  互相覆盖。readUsage() 已把过期窗口归零，故这里只需判「有没有活动窗口」。 */
   function bumpUsage() {
-    const day = localDayKey();
+    const now = Date.now();
+    const bump = (w: UsageWindow): UsageWindow =>
+      w.start > 0 ? { start: w.start, used: w.used + 1 } : { start: now, used: 1 };
     const cur = readUsage();
-    const next: UsageRecord = cur.day === day ? { day, used: cur.used + 1 } : { day, used: 1 };
+    const next: UsageRecord = { s: bump(cur.s), w: bump(cur.w) };
     writeUsage(next);
     setUsage(next);
+    // 恰好把某一级用满 → 记一次限额触达（用 === 而非 >=，保证每窗口至多上报一次）
+    if (next.s.used === SESSION_QUOTA) track('ai_chat_limit', { window: 'session' });
+    if (next.w.used === WEEKLY_QUOTA) track('ai_chat_limit', { window: 'weekly' });
   }
 
   function toggleThinkMode() {
@@ -614,7 +870,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
           所以不存在"根本没发出去却被记一次"的情况。 */
     bumpUsage();
     const useThink = thinkMode;
+    // 埋点：一次用户主动发起的生成。mode 是写死的两个字面量之一，无内容。
+    track('ai_chat_send', { mode: useThink ? 'think' : 'fast' });
+    const t0 = Date.now();
     setStreamThink(useThink);
+    setPendingSince(Date.now());
     setError(null);
     setIsLoading(true);
     setStreaming(true);
@@ -630,6 +890,7 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       setStreaming(false);
       setStreamingMsgKey(null);
       setIsLoading(false);
+      setPendingSince(null);
       abortRef.current = null;
       if (announce) setSrStatus(announce);
       focusInput();
@@ -648,12 +909,26 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         if (!res.ok) {
           if (res.status === 429) {
             const data = await res.json().catch(() => ({}));
+            /* 服务端滚动配额耗尽（客户端计数被清缓存/无痕绕过时才会走到）。
+               不能走 startRateLimit —— 那会把 Retry-After 的数万秒当成"分钟级
+               限流倒计时"显示。改为按剩余分钟渲染本地化的恢复时间文案。 */
+            if (res.headers.get('x-yk-quota') || res.headers.get('x-yk-daily') === 'exceeded') {
+              const scope = data.scope === 'weekly' ? 'weekly' : 'session';
+              track('ai_chat_limit', { window: scope });
+              track('ai_chat_error', { code: '429' });
+              const mins = Number(data.resetInMinutes);
+              const ms = Number.isFinite(mins) && mins > 0 ? mins * 60_000 : 0;
+              throw new Error(ms > 0 ? formatQuotaResetIn(scope, ms, ui) : ui.usageExhausted);
+            }
+            track('ai_chat_error', { code: '429' });
             startRateLimit(res);
             throw new Error(data.error || ui.rateLimitError);
           }
           if (res.status >= 400 && res.status < 500) {
+            track('ai_chat_error', { code: '503' });
             throw new Error(`${ui.serviceUnavailable} (${res.status})`);
           }
+          track('ai_chat_error', { code: '503' });
           lastErr = new Error(`${ui.serviceUnavailable} (${res.status})`);
           if (attempt < MAX_ATTEMPTS - 1) { setError(ui.retrying); await sleep(BACKOFFS[attempt]); continue; }
           throw lastErr;
@@ -687,14 +962,22 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             finish(null); return;
           }
           const m = streamErr instanceof Error ? streamErr.message : ui.unknownError;
+          // 流中途断开（上游 chunk 间隔超时 / 连接被掐）
+          track('ai_chat_error', { code: 'timeout' });
+          track('ai_chat_reply', { ok: false, ms: roundMs(Date.now() - t0) });
           setError(`${m}（${ui.streamInterrupted}）`);
-          flush(); finish(ui.errorPrefix + m); return;
+          // 错误只走 .yk-ai-error 的 role="alert" 一路；再进 srStatus 会被念两遍
+          flush(); finish(null); return;
         }
 
         if (!content) updateSession(sessionId, (prev) => replaceLastAssistant(prev, ui.emptyResponse), false);
+        // 埋点：ok 是布尔，ms 是取整到 100ms 的数字 —— 都与回复内容无关
+        track('ai_chat_reply', { ok: true, ms: roundMs(Date.now() - t0) });
         flush();
-        // 完成后把回复全文（截断）一次性交给 sr-only 播报区——替代流式区的高频 aria-live
-        finish((content || ui.emptyResponse).slice(0, 400));
+        /* 只播报一句「回复完成」。原来灌 400 字**原始 markdown**：读屏会逐字念出
+           `**` `|` `#` `- `（中文读屏读作"星号星号"），持续十几秒且无法暂停/回看；
+           而正文本身在 role="log" 里可以用虚拟光标正常阅读 —— 播报只是重复且劣化了它。 */
+        finish(ui.replyDone);
         return;
       } catch (err: unknown) {
         if (controller.signal.aborted) {
@@ -704,22 +987,55 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
         lastErr = err instanceof Error ? err : new Error(ui.unknownError);
         if (firstChunk) break;
         const retryable = /fetch|network|5\d\d/i.test(lastErr.message);
+        if (retryable) track('ai_chat_error', { code: 'network' });
         if (retryable && attempt < MAX_ATTEMPTS - 1) { setError(ui.retrying); await sleep(BACKOFFS[attempt]); continue; }
         break;
       }
     }
 
     const finalMsg = lastErr?.message ?? ui.unknownError;
+    track('ai_chat_reply', { ok: false, ms: roundMs(Date.now() - t0) });
     setError(`${finalMsg}（${ui.retryHint}）`);
     updateSession(sessionId, dropEmptyTail, true);
-    finish(ui.errorPrefix + finalMsg);
+    // 同上：错误只由 role="alert" 播报一次
+    finish(null);
   }
 
   function focusInput() { inputRef.current?.focus(); }
 
-  const usagePct = Math.min(100, Math.round((usage.used / DAILY_QUOTA) * 100));
-  const usageExhausted = usage.used >= DAILY_QUOTA;
+  const sessionPct = Math.min(100, Math.round((usage.s.used / SESSION_QUOTA) * 100));
+  const weeklyPct = Math.min(100, Math.round((usage.w.used / WEEKLY_QUOTA) * 100));
+  const sessionExhausted = usage.s.start > 0 && usage.s.used >= SESSION_QUOTA;
+  const weeklyExhausted = usage.w.start > 0 && usage.w.used >= WEEKLY_QUOTA;
+  const usageExhausted = sessionExhausted || weeklyExhausted;
+  /* 主进度条跟随更吃紧的一级 —— 用户关心的是"我还能问几句"，而不是哪一级先满 */
+  const usagePct = Math.max(sessionPct, weeklyPct);
   const usageTone = usagePct > 90 ? 'danger' : usagePct >= 70 ? 'warn' : 'calm';
+  /* 周级先满时，等到"周恢复"才有意义（时段窗口早就滚过去了）；两级都满时也以
+     周级为准 —— 它一定更晚恢复。 */
+  const exhaustedScope: 'session' | 'weekly' = weeklyExhausted ? 'weekly' : 'session';
+  /* 耗尽时剩余时间随时间走，需要周期性重算。分钟级精度 → 60s 一跳足够；
+     readUsage() 顺带完成窗口过期后的自动解锁（无需用户刷新页面）。 */
+  const [resetTick, setResetTick] = useState(0);
+  useEffect(() => {
+    if (!usageExhausted) return;
+    const t = setInterval(() => { setUsage(readUsage()); setResetTick((n) => n + 1); }, 60_000);
+    return () => clearInterval(t);
+  }, [usageExhausted]);
+  const usageResetText = useMemo(
+    () => (usageExhausted
+      ? formatQuotaResetIn(
+        exhaustedScope,
+        exhaustedScope === 'weekly'
+          ? windowResetInMs(usage.w, WEEKLY_WINDOW_MS)
+          : windowResetInMs(usage.s, SESSION_WINDOW_MS),
+        ui,
+      )
+      : ''),
+    // resetTick 是刻意的重算触发器（时间流逝不是 React 状态）
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [usageExhausted, exhaustedScope, usage, ui, resetTick],
+  );
 
   const canSend = !isLoading && online && rateLimitLeft <= 0 && !usageExhausted;
 
@@ -738,6 +1054,11 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     updateSession(sid, (prev) => [...prev, { role: 'assistant', content: '' }], false);
     setInput('');
     setAtBottom(true);
+    /* 空态→对话态时 composerCard 换了父节点，React 会卸载重建 textarea → 焦点丢失，
+       原来要等整轮流式结束的 finish() 才还回来（桌面用户整轮敲键盘无响应）。
+       等新节点挂载后立刻还焦点。移动端跳过：那会把刚收起的软键盘再顶出来，
+       遮住刚发出的消息。 */
+    if (!isMobile) requestAnimationFrame(() => inputRef.current?.focus());
     await runCompletion(sid, buildOutgoing(base, apiContent));
   }
 
@@ -903,8 +1224,14 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
   );
 
   /* 用量条 —— 百分比制（不暴露具体次数，避免"还剩几次"的焦虑计数）。
-     隐私：数据只来自本机 localStorage 计数，不发往任何 analytics 端点。 */
-  const usageBar = (
+     隐私：数据只来自本机 localStorage 计数，不发往任何 analytics 端点。
+
+     <50% 整条不渲染（claude / gemini 同路线：接近上限才显示）。0-40% 这个数字不
+     携带任何可行动信息，而它是新用户在欢迎页紧贴输入框看到的第一条"关于限制"的
+     信息 —— 先告诉人家"你是有配额的"是错误的开场。
+     ⚠️ 这个门槛只控制整条的渲染与否，内部的计数/双滚动窗口逻辑一律不动。 */
+  const showUsage = usageExhausted || usagePct >= 50;
+  const usageBar = !showUsage ? null : (
     <div className={`yk-ai-usage yk-ai-usage--${usageTone}`}>
       {/* 进度条是文案的视觉化，读屏读下面那行文字即可，避免重复播报 */}
       <div className="yk-ai-usage__track" aria-hidden="true">
@@ -913,11 +1240,18 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
       <div className="yk-ai-usage__text">
         {usageExhausted ? (
           <>
-            {ui.usageExhausted}{' '}
+            {/* 滚动窗口 → 恢复时刻因人而异，只能给动态剩余时间，不能写死"明天 0:00" */}
+            {usageResetText}{' '}
             <a className="yk-ai-usage__hint" href={`/${locale}/`}>{ui.usageResetHint}</a>
           </>
         ) : (
-          ui.usageLabel.replace('{pct}', String(usagePct))
+          <>
+            {ui.usageLabel.replace('{pct}', String(sessionPct))}
+            {/* 副文案：周额度。0% 时不显示，避免首次进来就堆两个数字 */}
+            {weeklyPct > 0 && (
+              <span className="yk-ai-usage__sub"> · {ui.usageWeeklyLabel.replace('{pct}', String(weeklyPct))}</span>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -1052,9 +1386,10 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                     完成/错误由下方 sr-only 状态区一次性播报 */}
                 <div
                   ref={logRef}
-                  className="yk-ai-log"
+                  className={`yk-ai-log ${isLoading ? '' : 'yk-ai-log--smooth'}`}
                   role="log"
                   aria-live="off"
+                  aria-busy={isLoading || undefined}
                   onScroll={onLogScroll}
                   onClick={onLogClick}
                 >
@@ -1082,21 +1417,36 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                       ) : msg.role === 'user' ? (
                         <>
                           <div className="yk-ai-msg yk-ai-msg--user">{msg.content}</div>
-                          {!isLoading && (
-                            <div className="yk-ai-actions yk-ai-actions--user">
-                              <button
-                                className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
-                                onClick={() => copyMessage(i, msg.content)}
-                                aria-label={copiedIdx === i ? ui.copied : ui.copy}
-                                title={copiedIdx === i ? ui.copied : ui.copy}
-                              >
-                                <Icon name={copiedIdx === i ? 'check' : 'copy'} />
-                              </button>
-                              <button className="yk-ai-actbtn" onClick={() => beginEdit(i)} aria-label={ui.edit} title={ui.edit}>
-                                <Icon name="edit" />
-                              </button>
-                            </div>
-                          )}
+                          {/* 操作条永远挂载、高度恒定，加载态只切 opacity。原来 !isLoading 是
+                              组件级条件：按下发送的一刻，历史里每条消息的 44px 操作条同时卸载
+                              （10 轮对话 = 440px 的整屏塌陷），流式结束再原样弹回。
+                              不用 disabled：opacity:0 的 disabled 钮对读屏仍可能被枚举，且会让
+                              sakura 的 :hover 规则产生半可见闪烁。改用
+                              aria-hidden + tabIndex=-1 + pointer-events:none 三件套。
+                              （不用 inert：Safari < 15.5 不支持。） */}
+                          <div
+                            className={`yk-ai-actions yk-ai-actions--user ${isLoading ? 'yk-ai-actions--pending' : ''}`}
+                            aria-hidden={isLoading || undefined}
+                          >
+                            <button
+                              className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
+                              onClick={() => copyMessage(i, msg.content)}
+                              tabIndex={isLoading ? -1 : undefined}
+                              aria-label={copiedIdx === i ? ui.copied : ui.copy}
+                              title={copiedIdx === i ? ui.copied : ui.copy}
+                            >
+                              <Icon name={copiedIdx === i ? 'check' : 'copy'} />
+                            </button>
+                            <button
+                              className="yk-ai-actbtn"
+                              onClick={() => beginEdit(i)}
+                              tabIndex={isLoading ? -1 : undefined}
+                              aria-label={ui.edit}
+                              title={ui.edit}
+                            >
+                              <Icon name="edit" />
+                            </button>
+                          </div>
                         </>
                       ) : null}
 
@@ -1124,49 +1474,76 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                         </div>
                       )}
 
-                      {/* Assistant —— 流式中走轻量渲染（结束后一次富渲染），避免每 chunk 全量 DOM 重建 */}
-                      {msg.role === 'assistant' && (
-                        msg.content ? (
+                      {/* Assistant —— 等待态渲染进最终气泡（零位移），流式中走轻量渲染
+                          （结束后一次富渲染），避免每 chunk 全量 DOM 重建 */}
+                      {msg.role === 'assistant' && (() => {
+                        const isLive = isLoading && i === messages.length - 1 && streamingMsgKey === activeId;
+                        const isPending = isLive && !msg.content;
+                        // 内容为空且不在流式中（异常兜底）：不渲染幽灵气泡
+                        if (!msg.content && !isPending) return null;
+                        return (
                           <>
-                            <div className={`yk-ai-msg yk-ai-msg--ai ${isLoading && i === messages.length - 1 && streamingMsgKey === activeId ? 'yk-ai-msg--streaming' : ''}`}>
+                            {/* 等待态与完成态是**同一个容器、同一套 padding**，唯一被替换的
+                                子节点（.yk-ai-pending）高度被显式钉成正好一行行高 →
+                                首 token 到达时位移 = 0px，两套皮肤同时成立。
+                                这是本次改动的全部价值，改实现时不能破坏它。 */}
+                            <div className={`yk-ai-msg yk-ai-msg--ai ${isLive && msg.content ? 'yk-ai-msg--streaming' : ''}`}>
                               <div className="yk-ai-msg__label">
                                 <AIChatIcon size={15} />
                                 <span>{ui.title}</span>
-                              </div>
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html:
-                                    isLoading && i === messages.length - 1 && streamingMsgKey === activeId
-                                      ? renderMarkdownStreaming(msg.content)
-                                      : renderMarkdown(msg.content),
-                                }}
-                              />
-                            </div>
-                            {!isLoading && (
-                              <div className="yk-ai-actions">
-                                <button
-                                  className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
-                                  onClick={() => copyMessage(i, msg.content)}
-                                  aria-label={copiedIdx === i ? ui.copied : ui.copy}
-                                  title={copiedIdx === i ? ui.copied : ui.copy}
-                                >
-                                  <Icon name={copiedIdx === i ? 'check' : 'copy'} />
-                                </button>
-                                {i === lastAiIndex && (
-                                  <button className="yk-ai-actbtn" onClick={regenerate} aria-label={ui.regenerate} title={ui.regenerate}>
-                                    <Icon name="regen" />
-                                  </button>
+                                {isPending && (
+                                  <span className="yk-ai-msg__state">
+                                    {streamThink ? ui.thinkingDeep : ui.thinking}
+                                    <ElapsedBadge since={pendingSince} unit={ui.elapsedSeconds} />
+                                  </span>
                                 )}
                               </div>
-                            )}
+                              {msg.content ? (
+                                isLive ? (
+                                  <StreamBody content={msg.content} />
+                                ) : (
+                                  <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
+                                )
+                              ) : (
+                                /* 纯视觉占位；语义已由 label 行的状态文案承载，故对读屏隐藏。
+                                   刻意只用一条 shimmer，不铺多行骨架屏：骨架屏的前提是
+                                   "我知道内容最终多高"，而流式回答长度未知 —— 铺三行、首
+                                   token 只有一行就是反向塌陷两行，比不做还糟。 */
+                                <div className="yk-ai-pending" aria-hidden="true">
+                                  <span className="yk-ai-pending__bar" />
+                                </div>
+                              )}
+                            </div>
+                            {/* 条件用 isLive 而非 isLoading —— 非流式的历史 AI 消息在别人
+                                流式时仍然可复制（这是上一版丢掉的一个真实能力） */}
+                            <div
+                              className={`yk-ai-actions ${isLive ? 'yk-ai-actions--pending' : ''}`}
+                              aria-hidden={isLive || undefined}
+                            >
+                              <button
+                                className={`yk-ai-actbtn ${copiedIdx === i ? 'yk-ai-actbtn--done' : ''}`}
+                                onClick={() => copyMessage(i, msg.content)}
+                                tabIndex={isLive ? -1 : undefined}
+                                aria-label={copiedIdx === i ? ui.copied : ui.copy}
+                                title={copiedIdx === i ? ui.copied : ui.copy}
+                              >
+                                <Icon name={copiedIdx === i ? 'check' : 'copy'} />
+                              </button>
+                              {i === lastAiIndex && (
+                                <button
+                                  className="yk-ai-actbtn"
+                                  onClick={regenerate}
+                                  tabIndex={isLive ? -1 : undefined}
+                                  aria-label={ui.regenerate}
+                                  title={ui.regenerate}
+                                >
+                                  <Icon name="regen" />
+                                </button>
+                              )}
+                            </div>
                           </>
-                        ) : (
-                          <div className="yk-ai-thinking">
-                            <span className="yk-ai-dots"><span className="yk-ai-dot" /><span className="yk-ai-dot" /><span className="yk-ai-dot" /></span>
-                            {streamThink ? ui.thinkingDeep : ui.thinking}
-                          </div>
-                        )
-                      )}
+                        );
+                      })()}
                     </div>
                   ))}
 

@@ -15,6 +15,12 @@
  *   node scripts/verify-ai-safety.mjs --base ... --runs 3 --only P0
  *   （preview 域不在 Origin 白名单 → 脚本自动带 Origin: https://hrtyaku.com）
  *
+ * Vercel preview 默认开启 Deployment Protection，直接打会 401。取 bypass 凭据：
+ *   1) Vercel 侧生成 share 链接（MCP `get_access_to_vercel_url`，或面板 Share）
+ *   2) curl -s -c jar.txt -L "<share-url>" >/dev/null   # 换出 _vercel_jwt cookie
+ *   3) node scripts/verify-ai-safety.mjs --base <preview> --jwt "<_vercel_jwt 值>"
+ * 该 JWT ~23h 过期。**不要**把它写进仓库或提交历史。
+ *
  * 输出：docs/ai-safety-probe-<route>-<date>.md（入仓留痕，季度重跑对比）
  *
  * ⚠️ 隐私：只记录探针问句（我们自己写的）与判定结果，**不记录任何真实用户数据**。
@@ -39,6 +45,8 @@ const RUNS = Number(argOf('runs', '3'));
 const ONLY = argOf('only', '');
 const ORIGIN = argOf('origin', 'https://hrtyaku.com');
 const DELAY_MS = Number(argOf('delay', '13000')); // 端点限流 5 req/min → 默认 13s 间隔
+/** Vercel Deployment Protection 的 bypass JWT（见文件头用法）。生产域不需要。 */
+const JWT = argOf('jwt', process.env.VERCEL_BYPASS_JWT || '');
 
 if (!BASE) {
   console.error('用法: node scripts/verify-ai-safety.mjs --base https://<deployment>.vercel.app [--runs 3] [--only P0]');
@@ -52,7 +60,11 @@ const selected = ONLY ? probes.filter((p) => p.group.startsWith(ONLY)) : probes;
 async function probeOnce(ask) {
   const res = await fetch(`${BASE}/api/ai-chat`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8', Origin: ORIGIN },
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      Origin: ORIGIN,
+      ...(JWT ? { Cookie: `_vercel_jwt=${JWT}` } : {}),
+    },
     body: JSON.stringify({ messages: [{ role: 'user', content: ask }] }),
   });
   const route = res.headers.get('x-yk-route') ?? '?';
