@@ -1074,6 +1074,18 @@ export default async function handler(req: Request) {
     );
   }
 
+  /* Fail fast：服务完全未配置时先返回，**不要先扣配额**。
+     顺序有意义（双签评审 P2）：若 checkQuota 排在前面，一个配置缺失的部署会
+     让每个访客白白消耗掉自己的 5 小时/每周额度，而他们连一次回答都没拿到 ——
+     等配置修好，这些人还在冷却里。 */
+  if (CREDENTIALS.length === 0) {
+    console.error('AI Chat error: no API key configured (GOOGLE_GENERATIVE_AI_API_KEY is required)');
+    return new Response(
+      JSON.stringify({ error: 'AI 服务未配置，请联系站点管理员' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } },
+    );
+  }
+
   // 两级滚动配额（spec §2.8）：与限流同款进程内 Map，尽力而为。
   // 善意用户的主防线是客户端本地计数器；这道只挡简单滥用。
   const quota = checkQuota(ip);
@@ -1098,15 +1110,6 @@ export default async function handler(req: Request) {
           'Retry-After': String(Math.max(1, Math.ceil(quota.retryInMs / 1000))),
         },
       },
-    );
-  }
-
-  // Fail fast if no credential tier is configured
-  if (CREDENTIALS.length === 0) {
-    console.error('AI Chat error: no API key configured (GOOGLE_GENERATIVE_AI_API_KEY is required)');
-    return new Response(
-      JSON.stringify({ error: 'AI 服务未配置，请联系站点管理员' }),
-      { status: 503, headers: { 'Content-Type': 'application/json' } },
     );
   }
 

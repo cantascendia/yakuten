@@ -925,7 +925,9 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
             throw new Error(data.error || ui.rateLimitError);
           }
           if (res.status >= 400 && res.status < 500) {
-            track('ai_chat_error', { code: '503' });
+            // 4xx 打 '4xx' 而非 '503'：把客户端类错误（400 校验失败、403 Origin
+            // 被拒）混进服务端不可用统计，会让「端点错误率」这条回滚触发条件失真。
+            track('ai_chat_error', { code: '4xx' });
             throw new Error(`${ui.serviceUnavailable} (${res.status})`);
           }
           track('ai_chat_error', { code: '503' });
