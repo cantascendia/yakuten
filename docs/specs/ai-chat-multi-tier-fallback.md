@@ -536,7 +536,11 @@ CLAUDE.md「第三方分析只限聚合指标」）：绝不向任何 analytics 
 | `ai_chat_open` | `{}` | 面板挂载（用户进入对话界面） |
 | `ai_chat_send` | `{ mode: 'fast'\|'think' }` | 用户主动发起一次生成 |
 | `ai_chat_reply` | `{ ok: boolean, ms: number }` | 回复完成 / 最终失败；`ms` 取整到 100ms |
-| `ai_chat_error` | `{ code: '429'\|'503'\|'timeout'\|'network' }` | 各失败分支 |
+| `ai_chat_error` | `{ code: '429'\|'4xx'\|'503'\|'timeout'\|'network' }` | 各失败分支 |
+
+> `'4xx'` 与 `'503'` 必须分开（双签评审 P2）：400 校验失败、403 Origin 被拒是
+> **客户端类**错误，混进服务端不可用统计会让「端点错误率 > 基线 2 倍 → L1 回滚」
+> 这条触发条件失真 —— 一波爬虫打错 Origin 就会看起来像端点挂了。
 | `ai_chat_limit` | `{ window: 'session'\|'weekly' }` | 本机计数恰好用满某一级（`===` 判定 ⇒ 每窗口至多一次），或服务端 429 配额拒绝 |
 
 实现红线（代码处已写死注释）：

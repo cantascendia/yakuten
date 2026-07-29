@@ -293,11 +293,24 @@
 
 ---
 
-## D018 — AI 供应商：Google 主 + DeepSeek 保底（三层降级）
+## D018 — AI 供应商：Google 主 + OpenAI 免费层 + DeepSeek 保底（四层降级）
 
-**决策**（2026-07-29，owner 授权）：AI 问答端点采用三层供应商降级 ——
-Google 免费 key → Google 付费 key（Pro 会员每月 $10 credits / Prepay 预付费）
-→ DeepSeek v4 保底。
+> **同日修订（2026-07-29，同一 PR 内）**：本条初版写的是「三层降级」。owner 随后
+> 开通 OpenAI 每日免费额度（数据共享换取，Tier 1），端点增加**第四层 `free-oai`**，
+> 排在付费层**之前**。修订理由与「同等对待免费层」的数据处理定位见下方。
+>
+> 该漂移由 boundary-security 评审在双签中查出 —— 代码与主 spec 已是四层，
+> 本条却仍写三层、环境变量清单也缺两项。**不影响构建，只断审计链**：
+> 后来者只读本条会以为 `OPENAI_API_KEY` / `AI_TIERS` 未经授权。
+
+**决策**（2026-07-29，owner 授权）：AI 问答端点采用四层供应商降级 ——
+Google 免费 key → **OpenAI 免费层（gpt-5.6 sol/terra/luna）** → Google 付费 key
+（Pro 会员每月 $10 credits / Prepay 预付费）→ DeepSeek v4 保底。
+
+**OpenAI 层排在付费层之前的理由**：其免费池是 use-it-or-lose-it（每日重置，
+不用即作废）。垫在付费层前面，能让 owner 每月 $10 的 credits 基本不被动用。
+池归属（250K/天 = sol；2.5M/天 = terra + luna）来自 **owner 账号侧观测**，
+非官方文档记载 —— 官方帮助中心该页对抓取器 403。
 
 **与 D002 的关系**：D002「不迁移到 Claude / OpenAI」不变，主供应商仍为 Google。
 本条只新增「Google 全链不可用时的可用性保底」，不改变常规路径的供应商归属。
@@ -321,10 +334,26 @@ Google 免费 key → Google 付费 key（Pro 会员每月 $10 credits / Prepay 
 - 供应商静默换模型版本 → 季度重跑探针
 - 付费额度超支 → Prepay 天然断供（余额耗尽即返错 → 自动降级）
 
-**环境变量**：`GOOGLE_GENERATIVE_AI_API_KEY`（必需）、`GOOGLE_PAID_API_KEY`（可选）、
-`DEEPSEEK_API_KEY`（可选）、`AI_COOLDOWN_DISABLED`（可选 kill switch）。
+**环境变量**：`GOOGLE_GENERATIVE_AI_API_KEY`（必需）、**`OPENAI_API_KEY`（可选）**、
+`GOOGLE_PAID_API_KEY`（可选）、`DEEPSEEK_API_KEY`（可选）、
+`AI_COOLDOWN_DISABLED`（可选 kill switch）、**`AI_TIERS`（可选，仅测试用）**。
 **key 未设 = 该层不存在**，无独立开关变量（避免两个真值源漂移）。
 ⚠ 免费与付费**必须是两个独立 GCP 项目** —— 同项目启用 billing 会让免费额度立即消失。
+
+**`AI_TIERS` 是测试门控开关，不是运行时配置**：把可用层限制为白名单，让 P0 安全
+探针能定向打到待测层（降级链的性质决定了上游层成功时下游层永远走不到，否则这条
+门控无法执行）。只读 env、绝不接受请求侧输入；生效时响应带 `x-yk-tiers`，
+**该头出现在生产即为「测完忘删」的告警**。用法见 spec §4.3。
+
+**OpenAI 层的上线前置条件（硬性）**：必须在 OpenAI project 级配 hard spend limit。
+帮助中心称免费额度耗尽后**按正常费率计费而非报错**（该页 403，未逐字验证）；
+若属实，免费池用尽会**静默转付费**，降级链第一跳永不触发而账单在涨。
+spend limit 把静默计费变成可检测的 `429 insufficient_quota`。
+
+**已过安全门控**：2026-07-29 以 `AI_TIERS=free-oai` 定向验证 gpt-5.6-terra，
+P0 组 7/7（每题 3/3）。报告见
+`docs/ai-safety-probe-free-oai-openai-gpt-5-6-terra-2026-07-29.md`。
+**DeepSeek 层尚未跑探针，配 key 前必须补。**
 
 **同批决策**：`scripts/seo/ai-analyze.mjs` 的 Gemini 调用停用 —— 它曾复用同一把
 免费 key，跑一次就吃掉当天用户侧额度。免费额度归属用户侧。
