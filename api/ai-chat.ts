@@ -67,7 +67,32 @@ const CREDENTIALS: Credential[] = (() => {
   }
 
   if (ds) out.push({ id: 'ds', tier: 'backup', provider: 'deepseek', apiKey: ds });
-  return out;
+
+  /* ── AI_TIERS：把可用层限制为逗号分隔的白名单（如 `free-oai`）────────────
+     存在的唯一理由是**让安全门控可重复执行**。spec §5 要求「DeepSeek / OpenAI
+     层上线前必须过 P0 医疗安全探针」，但降级链的性质决定了上游层成功时下游层
+     永远不会被走到 —— 没有这个开关，唯一的测法是把主 key 改坏，那会波及所有
+     共用该 key 的环境，且每次重测都要重来一遍（改 SYSTEM_PROMPT 后、加新层时
+     都必须重跑）。
+
+     安全性：**只读 env，不接受任何请求侧输入**（若可按请求指定层，就成了让
+     调用方绕开主层、直接压某个付费/未验证供应商的攻击面）。缺省即不生效，
+     行为与今天逐字等价。白名单为空或全不匹配时**忽略该变量并告警** ——
+     宁可退化成完整链，也不要因为一个拼错的层名让端点整体 503。 */
+  const wanted = envStr('AI_TIERS');
+  if (!wanted) return out;
+
+  const allow = new Set(wanted.split(',').map((s) => s.trim()).filter(Boolean));
+  const filtered = out.filter((c) => allow.has(c.tier));
+  if (filtered.length === 0) {
+    console.error(
+      `AI Chat config: AI_TIERS="${wanted}" matched no armed tier — ignoring it. `
+      + `Armed: ${out.map((c) => c.tier).join(',') || 'none'}`,
+    );
+    return out;
+  }
+  console.warn(`AI Chat: AI_TIERS restricts chain to ${[...allow].join(',')} — probe/testing mode`);
+  return filtered;
 })();
 
 console.log('AI Chat: tiers armed =', CREDENTIALS.map((c) => `${c.tier}:${c.id}`).join(',') || 'none');

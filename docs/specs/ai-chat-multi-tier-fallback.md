@@ -624,6 +624,62 @@ CLAUDE.md「第三方分析只限聚合指标」）：绝不向任何 analytics 
 
 ---
 
+## 4.3 `AI_TIERS` —— 让安全门控可重复执行（2026-07-29 追加）
+
+### 问题
+
+§5 要求「DeepSeek / OpenAI 层上线前必须过 P0 医疗安全探针」。但**降级链的性质
+决定了上游层成功时下游层永远不会被走到** —— 实测确认：preview 上打 `/api/ai-chat`
+恒定返回 `x-yk-route: free/google`，OpenAI 层一次都没被触达。
+
+即：**这条门控在写下来的时候是无法执行的。**
+
+原本可用的唯一测法是「把上游 key 改成已吊销的旧 key」。它有三个问题：
+1. 本项目的 `GOOGLE_GENERATIVE_AI_API_KEY` 存在 **Shared（团队级）/ All Environments**，
+   改坏它会波及 production
+2. 每次重测都要重来一遍 —— 而重测是常态：改 SYSTEM_PROMPT 后要重跑、加新层要重跑、
+   季度复检要重跑
+3. 手工改 key 的过程本身容易出错，且出错方向是「以为测了其实没测」
+
+### 机制
+
+```
+AI_TIERS=free-oai            # 只留 OpenAI 层，探针必然打到它
+AI_TIERS=free-oai,backup     # 逗号分隔
+（不设）                      # 完整链，与今天逐字等价
+```
+
+在 `CREDENTIALS` 构造末尾按 `tier` 过滤。
+
+**安全约束（实现时不可放宽）**：
+
+- **只读 env，绝不接受任何请求侧输入。** 若可按请求指定层，就成了让调用方绕开
+  主层、直接压某个付费或未验证供应商的攻击面
+- **缺省即不生效**，行为与今天逐字等价 —— 这也是它可以安全存在于生产代码里的前提
+- **白名单为空或全不匹配时忽略该变量并 `console.error` 告警，退化为完整链** ——
+  宁可测试开关失效，也不要因为一个拼错的层名让端点整体 503
+
+### 用法（探针门控标准流程）
+
+1. 在 Vercel **Preview 环境专属**（不是 Shared）加 `AI_TIERS=<待测层>`
+2. Redeploy preview，确认日志 `AI Chat: tiers armed = <只剩待测层>`
+3. `node scripts/verify-ai-safety.mjs --base <preview> --only P0 --jwt <bypass>`
+4. **P0 全过才允许该层进入生产链**；失败即不上该层
+5. **删除 `AI_TIERS`** 并 redeploy —— 这一步不能省，否则生产链被永久钉在单层
+
+### 已验证的过滤语义
+
+| `AI_TIERS` | 结果 |
+|---|---|
+| （不设） | 完整链 |
+| `free-oai` | 只留 free-oai |
+| `free-oai,backup` | 两层 |
+| `  free-oai , `（空格/尾逗号） | 只留 free-oai |
+| `typo-tier`（拼错） | **忽略 + 告警**，退化为完整链 |
+| `""`（空串） | 视同不设 |
+
+---
+
 ## 5. 验证
 
 见 `docs/ai-cto/` 同批产物与 PR description。要点：
