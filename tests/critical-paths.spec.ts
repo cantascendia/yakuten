@@ -105,7 +105,12 @@ test.describe('Blood Test Checker', () => {
     // Find an input field and type a value
     const input = page.locator('input[type="number"]').first();
     await expect(input).toBeVisible();
-    await input.fill('150');
+    // ⚠️ pressSequentially 而非 fill()（bug-fix 2026-07-29）——
+    // fill() 直接设 DOM value 再派发合成 input 事件，React 受控组件收不到，
+    // onChange 不触发 → ResultBar（role="meter"）永远不渲染。
+    // 与 mobile-a11y.spec.ts 的 aria-invalid 用例同一根因。断言未放宽。
+    await input.click();
+    await input.pressSequentially('150', { delay: 20 });
     // Should show some result
     const resultArea = page.locator('[role="meter"]').first();
     await expect(resultArea).toBeVisible();
@@ -118,8 +123,22 @@ test.describe('Drug Comparator', () => {
   test('loads with comparison table', async ({ page }) => {
     await page.goto('/zh/tools/drug-comparator/');
     await expect(page.locator('h1')).toContainText('药物');
-    const table = page.locator('table');
-    await expect(table).toBeVisible();
+    // spec-change 2026-07-29：对比视图从 <table> 改为响应式卡片网格
+    // （`gridTemplateColumns: repeat(auto-fit, minmax(280px, 1fr))`，
+    // 与 risks §7.1 同一 auto-fit 模式 —— 窄屏下真 table 会横向溢出）。
+    // 容器走内联 style，故给对比卡加了纯测试钩子 .dc-compare-card（无样式）。
+    // ⚠️ 不要退回用 .dc-drug-link 计数：它是**条件渲染**的（无详情页的药物
+    // 退化为纯文本，如 CPA），「CPA vs 螺内酯」只会数出 1 个。
+    //
+    // 断言按**能力**而非标签，且比原版（只查 <table> 可见）强得多：
+    // 点一个预设组合 → 必须真的渲染出**两张**对比卡。
+    // 初始态只有 1 张，所以必须驱动 UI 才测到「对比」这个能力本身。
+    const preset = page.locator('.dc-preset-chip').first();
+    await expect(preset).toBeVisible();
+    await preset.click();
+    const cards = page.locator('.dc-compare-card');
+    await expect(cards.first()).toBeVisible();
+    await expect(cards, '点预设后对比视图应渲染 2 张对比卡').toHaveCount(2);
   });
 });
 
