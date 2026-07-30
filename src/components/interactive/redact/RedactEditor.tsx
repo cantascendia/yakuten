@@ -34,6 +34,8 @@
  */
 
 import {
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useRef,
@@ -62,6 +64,13 @@ import {
 } from './redactGeometry';
 import { REDACT_EDITOR_CSS } from './redactEditorCss';
 
+/**
+ * 裁剪舞台（react-easy-crop 适配层）**再切一层动态 chunk**：只在用户点「调整裁剪」时下载。
+ * 编辑器本体已经只在点「上传照片」后才动态 import（R5），这一层是额外的：
+ * 从不裁剪的用户不需要为那 8.2 kB gzip 付费。首屏 JS 增量在两种情况下都是 0。
+ */
+const RedactCropStage = lazy(() => import('./RedactCropStage'));
+
 // ─────────────────────────────── 文案（§3.3，zh） ───────────────────────────────
 
 const TXT = {
@@ -85,6 +94,10 @@ const TXT = {
   cropOn: '调整裁剪',
   cropOff: '完成裁剪',
   cropHint: '把指标表格拉满取景框：裁剪不是美化，是 AI 能否读准数字的前提。',
+  cropPinch: '手机上用双指捏合放大、单指拖动取景。也可以用下方「缩放」滑块，或用方向键平移取景框。',
+  cropZoom: '缩放',
+  cropLoading: '正在载入裁剪工具…',
+  cropFail: '裁剪工具没能载入这张图。你仍然可以只用遮盖框，然后直接预览（不裁剪不影响遮盖）。',
   cropReset: '取消裁剪',
   delete: '删除',
   fieldsRedact: '精确调整遮盖框（不需要拖拽）',
@@ -151,12 +164,14 @@ export interface RedactEditorProps {
 
 type Phase = 'pick' | 'edit' | 'preview';
 
+/**
+ * 舞台上的拖拽状态。**只有遮盖框三种** —— 裁剪的拖拽/缩放交给 RedactCropStage
+ * （react-easy-crop，T7）：那里才有双指缩放，而 §4.4a 已证明精确裁剪是正确性前提。
+ */
 type Drag =
   | { kind: 'move'; index: number; grab: UnitPoint; start: RedactRect }
   | { kind: 'resize'; index: number; corner: RectCorner }
-  | { kind: 'create'; origin: UnitPoint; moved: boolean }
-  | { kind: 'cropmove'; grab: UnitPoint; start: RedactRect }
-  | { kind: 'cropresize'; corner: RectCorner };
+  | { kind: 'create'; origin: UnitPoint; moved: boolean };
 
 const CORNERS: readonly RectCorner[] = ['nw', 'ne', 'sw', 'se'];
 const EDGES: readonly RectEdge[] = ['x', 'y', 'w', 'h'];
@@ -282,6 +297,13 @@ export default function RedactEditor({
   const [rects, setRects] = useState<RedactRect[]>([]);
   const [crop, setCrop] = useState<RedactRect>(FULL_RECT);
   const [cropMode, setCropMode] = useState(false);
+  /**
+   * 裁剪舞台的**显示副本** object URL。
+   * 由显示 canvas 重新编码而来（内容源自 createImageBitmap，已摆正、无 EXIF），
+   * 所以 `<img>` 的 image-orientation 分叉在它身上是恒等变换 —— 详见 RedactCropStage 头注二。
+   * 它没有导出管线的 brand，永远进不了上传路径。
+   */
+  const [cropUrl, setCropUrl] = useState<string | null>(null);
   const [clickMode, setClickMode] = useState(false);
   const [pendingCorner, setPendingCorner] = useState<UnitPoint | null>(null);
   const [selected, setSelected] = useState(0);
@@ -304,6 +326,7 @@ export default function RedactEditor({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dragRef = useRef<Drag | null>(null);
   const previewRef = useRef<RedactedPreview | null>(null);
+  const cropUrlRef = useRef<string | null>(null);
   const liveRef = useRef<{ at: number; timer: number | null; msg: string }>({ at: 0, timer: null, msg: '' });
   /** 焦点交接目标（阶段切换时控件会被卸载 → 焦点必须显式接管） */
   const pickBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -340,9 +363,16 @@ export default function RedactEditor({
     setPreviewZoom(false);
   }, []);
 
+  const releaseCropUrl = useCallback(() => {
+    if (cropUrlRef.current) URL.revokeObjectURL(cropUrlRef.current);
+    cropUrlRef.current = null;
+    setCropUrl(null);
+  }, []);
+
   /** 释放一切与这张图有关的东西。R1a：File 置空 + object URL revoke + input.value 清空。 */
   const releaseAll = useCallback(() => {
     releasePreview();
+    releaseCropUrl();
     fileRef.current = null;
     pendingBitmapRef.current?.close();
     pendingBitmapRef.current = null;
@@ -352,7 +382,7 @@ export default function RedactEditor({
       c.height = 0;
     }
     if (inputRef.current) inputRef.current.value = '';
-  }, [releasePreview]);
+  }, [releaseCropUrl, releasePreview]);
 
   useEffect(() => releaseAll, [releaseAll]);
   useEffect(() => {
@@ -503,6 +533,53 @@ export default function RedactEditor({
     announce('已取消裁剪，恢复整张图。');
   }, [announce]);
 
+  /** 播报要读**最新**的 crop：onInteractionEnd 可能早于 React 的重渲染一帧。 */
+  const cropStateRef = useRef(crop);
+  useEffect(() => {
+    cropStateRef.current = crop;
+  }, [crop]);
+
+  /**
+   * 进入裁剪前先备好显示副本：从显示 canvas 重新编码（内容源自 createImageBitmap，已摆正）。
+   * 只做一次；退出裁剪不释放（再进无需重编码），换图 / 取消 / 卸载时随 releaseAll 释放。
+   */
+  const ensureCropUrl = useCallback(async (): Promise<boolean> => {
+    if (cropUrlRef.current) return true;
+    const canvas = canvasRef.current;
+    if (!canvas || canvas.width <= 0 || canvas.height <= 0) return false;
+    const blob = await new Promise<Blob | null>((resolve) => {
+      // 显示副本，不是导出物：它的格式/质量只影响屏幕观感，几何才是它的职责。
+      // 它没有导出管线的 brand → uploadGuard 结构性拒收，不存在「显示副本被当成上传物」的路径。
+      canvas.toBlob((b) => resolve(b), 'image/jpeg', 0.9);
+    });
+    if (!blob) return false;
+    const url = URL.createObjectURL(blob);
+    cropUrlRef.current = url;
+    setCropUrl(url);
+    return true;
+  }, []);
+
+  const toggleCropMode = useCallback(async () => {
+    if (cropMode) {
+      setCropMode(false);
+      announce(`已完成裁剪调整。${cropLabel(cropStateRef.current)}`);
+      return;
+    }
+    setClickMode(false);
+    setPendingCorner(null);
+    setBusy(true);
+    try {
+      if (!(await ensureCropUrl())) {
+        setError(TXT.cropFail);
+        return;
+      }
+      setCropMode(true);
+      announce(`已进入裁剪调整。${cropLabel(cropStateRef.current)}`);
+    } finally {
+      setBusy(false);
+    }
+  }, [announce, cropMode, ensureCropUrl]);
+
   // ── 指针交互（拖拽路径）。坐标经 pointToUnit 一次性转成归一化，之后不碰像素。 ──
   const onStagePointerDown = useCallback(
     (ev: ReactPointerEvent<HTMLDivElement>) => {
@@ -522,23 +599,17 @@ export default function RedactEditor({
         if (!start) return;
         dragRef.current = { kind: 'move', index, grab: at, start };
         setSelected(index);
-      } else if (role === 'crophandle') {
-        dragRef.current = { kind: 'cropresize', corner };
-      } else if (role === 'cropbox') {
-        dragRef.current = { kind: 'cropmove', grab: at, start: crop };
       } else if (clickMode) {
         // 点击-再点击路径不进拖拽状态机（见 onStagePointerUp）
         dragRef.current = null;
         return;
-      } else if (!cropMode) {
-        dragRef.current = { kind: 'create', origin: at, moved: false };
       } else {
-        return;
+        dragRef.current = { kind: 'create', origin: at, moved: false };
       }
       stage.setPointerCapture(ev.pointerId);
       ev.preventDefault();
     },
-    [busy, clickMode, crop, cropMode, rects],
+    [busy, clickMode, rects],
   );
 
   const onStagePointerMove = useCallback((ev: ReactPointerEvent<HTMLDivElement>) => {
@@ -556,10 +627,6 @@ export default function RedactEditor({
     } else if (drag.kind === 'create') {
       drag.moved =
         drag.moved || Math.abs(at.x - drag.origin.x) > CLICK_SLOP || Math.abs(at.y - drag.origin.y) > CLICK_SLOP;
-    } else if (drag.kind === 'cropmove') {
-      setCrop(moveRect(drag.start, at.x - drag.grab.x, at.y - drag.grab.y));
-    } else if (drag.kind === 'cropresize') {
-      setCrop((prev) => resizeRectCorner(prev, drag.corner, at.x, at.y, MIN_CROP_SIDE));
     }
   }, []);
 
@@ -579,18 +646,14 @@ export default function RedactEditor({
       }
       if (drag) {
         // 拖拽**结束**才播报终值（拖拽期间逐帧播报是把读屏淹掉的经典写法）
-        if (drag.kind === 'move' || drag.kind === 'resize') {
-          const r = rects[drag.index];
-          if (r) announce(rectLabel(drag.index, r));
-        } else {
-          announce(cropLabel(crop));
-        }
+        const r = rects[drag.index];
+        if (r) announce(rectLabel(drag.index, r));
         return;
       }
 
       // ── 点击-再点击（SC 2.5.7 的第三条路径：全程无 press-move-release，
       //    覆盖震颤 / 头控 / 眼动 / 开关设备用户） ──
-      if (!clickMode || cropMode) return;
+      if (!clickMode) return;
       if (!pendingCorner) {
         setPendingCorner(at);
         announce(`已记下第一个角：左 ${pct(at.x)}%，上 ${pct(at.y)}%。再点一次对角完成加框。`);
@@ -600,7 +663,7 @@ export default function RedactEditor({
       setPendingCorner(null);
       setClickMode(false);
     },
-    [addRect, announce, clickMode, crop, cropMode, pendingCorner, rects],
+    [addRect, announce, clickMode, pendingCorner, rects],
   );
 
   // ── 预览（R3：展示 toBlob() 产物解码回来的图，不是编辑器画布的实时状态） ──
@@ -660,34 +723,6 @@ export default function RedactEditor({
   }, [onCancel, releaseAll]);
 
   // ─────────────────────────── 渲染 ───────────────────────────
-
-  const shades: { key: string; style: CSSProperties }[] = cropMode
-    ? [
-        { key: 't', style: { left: 0, top: 0, width: '100%', height: `${crop.y * 100}%` } },
-        {
-          key: 'b',
-          style: {
-            left: 0,
-            top: `${(crop.y + crop.h) * 100}%`,
-            width: '100%',
-            height: `${(1 - crop.y - crop.h) * 100}%`,
-          },
-        },
-        {
-          key: 'l',
-          style: { left: 0, top: `${crop.y * 100}%`, width: `${crop.x * 100}%`, height: `${crop.h * 100}%` },
-        },
-        {
-          key: 'r',
-          style: {
-            left: `${(crop.x + crop.w) * 100}%`,
-            top: `${crop.y * 100}%`,
-            width: `${(1 - crop.x - crop.w) * 100}%`,
-            height: `${crop.h * 100}%`,
-          },
-        },
-      ]
-    : [];
 
   const cropped = crop.w < 1 || crop.h < 1;
 
@@ -774,11 +809,8 @@ export default function RedactEditor({
               type="button"
               className="yk-redact__btn"
               aria-pressed={cropMode}
-              onClick={() => {
-                setCropMode((v) => !v);
-                setClickMode(false);
-                setPendingCorner(null);
-              }}
+              disabled={busy}
+              onClick={() => void toggleCropMode()}
             >
               {cropMode ? TXT.cropOff : TXT.cropOn}
             </button>
@@ -794,9 +826,13 @@ export default function RedactEditor({
 
           {clickMode ? <p className="yk-redact__note">{TXT.clickClickHint}</p> : null}
           {cropMode ? <p className="yk-redact__note">{TXT.cropHint}</p> : null}
+          {cropMode ? <p className="yk-redact__note">{TXT.cropPinch}</p> : null}
           {rects.length === 0 ? <p className="yk-redact__note yk-redact__note--caution">{TXT.noRect}</p> : null}
 
-          <div className="yk-redact__stagewrap">
+          {/* ⚠️ 裁剪期只是**视觉隐藏**（display:none），不卸载：canvas 一旦卸载，
+              画上去的位图就没了（绘制 effect 只在 imgSize 变化时跑，且 bitmap 已 close），
+              回到遮盖态会是一张空白画布。同时它还是裁剪显示副本的来源。 */}
+          <div className={`yk-redact__stagewrap${cropMode ? ' yk-redact__stagewrap--off' : ''}`}>
             <div
               ref={stageRef}
               className="yk-redact__stage"
@@ -842,33 +878,28 @@ export default function RedactEditor({
                 </div>
               ))}
 
-              {cropMode ? (
-                <>
-                  {shades.map((s) => (
-                    <div key={s.key} className="yk-redact__shade" style={s.style} />
-                  ))}
-                  <div
-                    data-yk-role="cropbox"
-                    className="yk-redact__cropbox"
-                    style={rectStyle(crop)}
-                    role="group"
-                    aria-roledescription="裁剪框"
-                    aria-label={cropLabel(crop)}
-                  >
-                    {CORNERS.map((c) => (
-                      <span
-                        key={c}
-                        aria-hidden="true"
-                        data-yk-role="crophandle"
-                        data-yk-corner={c}
-                        className={`yk-redact__handle yk-redact__handle--${c}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              ) : null}
             </div>
           </div>
+
+          {/* ── 裁剪舞台（T7：react-easy-crop）。双指缩放是引入它的唯一理由 —— §4.4a 已证明
+                「把表格拉满取景框」是 AI 读数正确性的前提（整页 137 ppi vs 裁后 406 ppi）。
+                坐标契约不变：它输出的百分比 /100 就是编辑器既有的归一化全图空间。 ── */}
+          {cropMode && cropUrl ? (
+            <Suspense fallback={<p className="yk-redact__note">{TXT.cropLoading}</p>}>
+              <RedactCropStage
+                imageUrl={cropUrl}
+                rect={crop}
+                imageAspect={imgSize.w / imgSize.h}
+                onRect={setCrop}
+                onSettle={() => announce(cropLabel(cropStateRef.current))}
+                label={cropLabel(crop)}
+                zoomLabel={TXT.cropZoom}
+                zoomSpoken={(z, r) =>
+                  `裁剪取景框缩放 ${z.toFixed(2)} 倍，当前裁剪区宽 ${pct(r.w)}%，高 ${pct(r.h)}%`
+                }
+              />
+            </Suspense>
+          ) : null}
 
           {/* ── SC 2.5.7 的非拖拽等价路径。ARIA 没有二维选区 pattern → 四个一维 slider ── */}
           <h3 className="yk-redact__field__name">{cropMode ? TXT.fieldsCrop : TXT.fieldsRedact}</h3>
