@@ -1,0 +1,71 @@
+---
+/**
+ * 遮盖导出管线的测试挂载页 —— **仅 dev/test 存在，绝不进生产产物**。
+ *
+ * 两道刻意的形态选择（都被实测逼出来的）：
+ *
+ * 1. dynamic route + `getStaticPaths()` 在生产构建返回空数组 → `astro build`
+ *    不产出任何 HTML。
+ * 2. `<script is:inline>` + **运行时动态 import**。
+ *    ⚠️ 第一版用的是普通 `<script>`（Astro/Vite 处理），结果是：HTML 确实没产出，
+ *    但 Vite 仍把这段脚本当页面资产打包，`dist/_astro/_harness_.astro_astro_type_script_*.js`
+ *    里带上了整个 exportRedacted + uploadGuard —— 一个没有任何页面引用、却公开可取的
+ *    孤儿 chunk。`is:inline` 让 Vite 完全不解析这段代码，import 只在 dev 服务器
+ *    （Vite 会把 /src/**.ts 转译后伺服）成立，生产产物里连字节都不剩。
+ *
+ * 用途只有一个：把**生产导出函数本身**挂到 window，供 Playwright page.evaluate 调用。
+ * §7.2 两条实现纪律之一是「必须调用生产导出函数本身，否则测的是测试自己」——
+ * 所以这里只做转发，不复制任何逻辑。
+ */
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  return [{ params: { harness: 'redact-harness' } }];
+}
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>redact harness (dev only)</title>
+  </head>
+  <body>
+    <h1>redact harness</h1>
+    <p>dev-only。生产构建不产出本页，也不产出本页的脚本资产。</p>
+    <script is:inline type="module">
+      const [exp, guard] = await Promise.all([
+        import('/src/components/interactive/redact/exportRedacted.ts'),
+        import('/src/components/interactive/redact/uploadGuard.ts'),
+      ]);
+
+      function b64ToBytes(b64) {
+        const bin = atob(b64);
+        const out = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+        return out;
+      }
+
+      window.__ykRedact = {
+        exportRedacted: exp.exportRedacted,
+        createRedactedPreview: exp.createRedactedPreview,
+        isRedactedBlob: exp.isRedactedBlob,
+        constants: exp.REDACT_EXPORT_CONSTANTS,
+        assertRedactedBlob: guard.assertRedactedBlob,
+        canUploadRedactedBlob: guard.canUploadRedactedBlob,
+        buildRedactedUploadBody: guard.buildRedactedUploadBody,
+        /** base64 → File，模拟 <input type=file> 交给管线的东西 */
+        fileFromBase64(b64, name, type) {
+          return new File([b64ToBytes(b64)], name, { type });
+        },
+        async blobToBase64(blob) {
+          const bytes = new Uint8Array(await blob.arrayBuffer());
+          let s = '';
+          for (let i = 0; i < bytes.length; i += 0x8000) {
+            s += String.fromCharCode.apply(null, Array.from(bytes.subarray(i, i + 0x8000)));
+          }
+          return btoa(s);
+        },
+      };
+      document.documentElement.dataset.redactHarness = 'ready';
+    </script>
+  </body>
+</html>
