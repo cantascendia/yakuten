@@ -3,6 +3,8 @@ import { getLocale, AI_COPY } from './aiChatL10n';
 import type { AIChatCopy } from './aiChatL10n';
 import { containsCrisisKeyword, getCrisisHotlines } from './crisisSupport';
 import type { CrisisHotline } from './crisisSupport';
+import { detectSomaticEmergency } from './somaticEmergency';
+import SomaticEmergencyCard from './SomaticEmergencyCard';
 import { useChatSessions } from './useChatSessions';
 import type { StoredMessage } from '../../utils/ai-chat/storage';
 import ChatSessionSidebar from './ChatSessionSidebar';
@@ -1047,12 +1049,24 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     if (byteLen(messageText) > MAX_CONTENT_BYTES) return;
 
     const crisis = containsCrisisKeyword(messageText);
+    /* 躯体急症本地拦截 —— 与危机词检测**并列独立判定**，两者互不替代
+       （docs/specs/ai-chat-somatic-emergency.md §4.1）。空数组存 undefined，
+       不给没命中的消息在 localStorage 里留空字段。 */
+    const somaticHits = detectSomaticEmergency(messageText);
+    const somatic = somaticHits.length > 0 ? somaticHits : undefined;
     const apiContent = buildApiContent(messageText);
     // 锁定发起时的会话 id —— 用户可在流式中切换/新建会话
     const sid = ensureSession();
-    const base: StoredMessage[] = [...messages, { role: 'user', content: messageText, crisis }];
+    const base: StoredMessage[] = [
+      ...messages,
+      { role: 'user', content: messageText, crisis, somaticHits: somatic },
+    ];
 
-    updateSession(sid, (prev) => [...prev, { role: 'user', content: messageText, crisis }], true);
+    updateSession(
+      sid,
+      (prev) => [...prev, { role: 'user', content: messageText, crisis, somaticHits: somatic }],
+      true,
+    );
     updateSession(sid, (prev) => [...prev, { role: 'assistant', content: '' }], false);
     setInput('');
     setAtBottom(true);
@@ -1086,8 +1100,14 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
     // 先校验可发送性再动状态 —— 否则离线/限流时会留下永久的"正在思考"假占位
     if (!text || byteLen(text) > MAX_CONTENT_BYTES || !canSend) return;
     const crisis = containsCrisisKeyword(text);
+    // 编辑重发路径同样要判 —— 编辑后的文本才是用户真正问的那句（§4.1 要求两处并列）
+    const somaticHits = detectSomaticEmergency(text);
+    const somatic = somaticHits.length > 0 ? somaticHits : undefined;
     const sid = ensureSession();
-    const base: StoredMessage[] = [...messages.slice(0, i), { role: 'user', content: text, crisis }];
+    const base: StoredMessage[] = [
+      ...messages.slice(0, i),
+      { role: 'user', content: text, crisis, somaticHits: somatic },
+    ];
     updateSession(sid, () => [...base, { role: 'assistant', content: '' }], true);
     setEditingIdx(null);
     setEditText('');
@@ -1474,6 +1494,14 @@ export default function AIAssistant({ compact = false, onClose }: AIAssistantPro
                           )}
                           <p className="yk-ai-crisis__note">{ui.crisisOutside}</p>
                         </div>
+                      )}
+
+                      {/* 躯体急症卡 —— 本地秒级渲染，同样不可关闭。
+                          顺序裁决（SPEC §4.3）：**危机卡永远在上，本卡紧随其后** ——
+                          危机干预行业惯例是永远优先评估自杀风险；躯体症状不会因为卡片
+                          顺序靠后而延误处置（两卡都非 dismissible、都同屏可见）。 */}
+                      {msg.role === 'user' && msg.somaticHits && msg.somaticHits.length > 0 && (
+                        <SomaticEmergencyCard hits={msg.somaticHits} locale={locale} />
                       )}
 
                       {/* Assistant —— 等待态渲染进最终气泡（零位移），流式中走轻量渲染

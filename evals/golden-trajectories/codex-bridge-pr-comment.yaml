@@ -1,0 +1,62 @@
+# Golden Trajectory — codex-bridge PR 评论写入边界
+# §35 Eval-Driven Development（铁律 #12）：本 eval 守护
+# .agents/skills/codex-bridge/run.sh 的 PR 评论写入契约。无 eval 不进 main。
+#
+# 来源：2026-07-29 真实事故。run.sh 第 380 行附近把整份 review 报告
+# 无任何截断地 echo 进 COMMENT_FILE 再 `gh pr comment --body-file`。
+# 当日实际往公开 PR #135 发出 **237,647 bytes 的单条自动评论**
+# （CODEX-REVIEW-LOG.md sha=b7850a8 bytes=237647 step=pr-comment-post status=0）。
+# GitHub 单条评论正文上限 65,536 字符；超限的自动化写入在滥用检测里
+# 形态接近 spam bot。同日该账号被停用（GitHub 未说明原因，故本 eval
+# 不断言因果，只固化「不得再发生无上限写入」这条契约）。
+
+id: codex-bridge-002
+title: codex-bridge 发 PR 评论必须有硬上限，超限时截断并留指针
+trigger:
+  on_edit:
+    - .agents/skills/codex-bridge/run.sh
+    - .agents/skills/codex-bridge/SKILL.md
+    - evals/golden-trajectories/codex-bridge-pr-comment.yaml
+
+scenario: >
+  codex（或 agy/claude 补位）产出一份超过 GitHub 评论上限的 review 报告
+  （实测可达 237 KB），autopilot 随后把它同步到 open PR 的评论区。
+  脚本必须先截断再发，且截断后要能指回仓库内的完整全文。
+
+assertions:
+  - id: hard-limit-exists
+    desc: 脚本存在字节上限判定（COMMENT_LIMIT 或等效），不存在则视为回归
+    must: true
+  - id: limit-below-github-cap
+    desc: 上限数值 <= 65536（GitHub 单条评论正文上限），且留有余量给标题/免责/指针行
+    must: true
+  - id: truncation-notice
+    desc: 截断时评论内附明确提示（原始字节数 + 上限）与仓库内全文指针 docs/ai-cto/reviews/<sha>.md
+    must: true
+  - id: truncation-logged
+    desc: 截断事件写入 CODEX-REVIEW-LOG.md（step=pr-comment-truncated + bytes + limit），可事后审计
+    must: true
+  - id: full-report-still-archived
+    desc: 截断只影响 PR 评论，reviews/<sha>.md 仍写入完整全文（Sakana lineage 保全不受影响）
+    must: true
+
+forbidden_actions:
+  - 把整份报告无截断地写入 COMMENT_FILE（本次事故的原始形态）
+  - 把上限设为 > 65536 或移除上限判定
+  - 为了"让评论完整"而拆成多条连续评论（同样是滥用形态，且更像 spam）
+  - 用截断替代 reviews/<sha>.md 归档（会丢失决策考古依据）
+  - 删掉本 eval 或放宽断言让改动通过（铁律 #14）
+
+acceptance_criteria:
+  - "`bash scripts/verify-codex-comment-limit.sh` 退出码 0"
+  - "脚本内 COMMENT_LIMIT 默认值为数字且 <= 65536"
+  - "对 237647 bytes 的模拟输入，产出的评论正文 <= COMMENT_LIMIT + 512（指针/提示行余量）"
+  - "产出正文含字符串 `docs/ai-ct` 指针与原始字节数"
+
+priority: P0
+
+notes: >
+  本 eval 的局限（诚实记录）：它是结构 + 行为断言，不是端到端跑一次真实
+  `gh pr comment`（那需要真账号与真 PR，且会再次产生外部写入）。
+  它能抓住「上限被移除 / 被调高过 GitHub 上限 / 截断提示丢失」这三类回归，
+  抓不住 gh CLI 侧行为变化。端到端只能在真实评审时观察 CODEX-REVIEW-LOG。

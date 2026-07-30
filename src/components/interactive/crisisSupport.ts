@@ -22,6 +22,14 @@ export interface CrisisHotline {
   hours: string;
 }
 
+/** hotlines.json 的 category 字段（SSOT 全量记录都有）。
+ *  · mental-health      —— 心理/危机援助线（含 pt-sns-24 这类非「拨打即派车」的健康线）
+ *  · general-emergency  —— 通用急救调度号（120 / 112 / 192），拨打即派救护车
+ *  该字段**只被 getEmergencyMedicalNumber() 消费**，不改变 getCrisisHotlines 的行为
+ *  （见下方 §5.3 说明）。 */
+type HotlineCategory = 'mental-health' | 'general-emergency';
+type HotlineRecord = CrisisHotline & { category?: HotlineCategory };
+
 /* 保守宽召回关键词表（17 语）。substring 匹配，全部预先小写。
    已知可接受的过召回：如「自杀式」等惯用语也会触发 —— 按减害原则接受。 */
 const CRISIS_KEYWORDS: readonly string[] = [
@@ -115,4 +123,27 @@ export function getCrisisHotlines(locale: string): CrisisHotline[] {
     .map(({ id, name, number, href, scope, hours }) => ({
       id, name, number, href, scope, hours,
     }));
+}
+
+/**
+ * 按 locale 取通用急救调度号（SSOT: hotlines.json，category='general-emergency'）。
+ * 服务于躯体急症卡（SomaticEmergencyCard），见
+ * docs/specs/ai-chat-somatic-emergency.md §5.2。
+ *
+ * ⚠️ 沿用 getCrisisHotlines 的既有终审裁决：某语种若没有经核验的通用急救号码，
+ * **不得**回退展示中国 120 或猜测性号码 —— 返回 null，由卡片改显示「请拨打当地
+ * 急救电话」通用指引行（与心理危机卡的 crisisOutside 文案模式一致）。
+ *
+ * ⚠️ 本函数是**纯新增的独立读取函数**，`getCrisisHotlines` 一行不动：SPEC §5.3
+ * 实测确认 `getCrisisHotlines('zh')` 现在就把 120 混在心理危机卡里，那是**有意的**
+ * （自伤已发生时需要救护车），加 category 过滤会静默移除一个本该存在的号码。
+ */
+export function getEmergencyMedicalNumber(locale: string): CrisisHotline | null {
+  const scopes = LOCALE_SCOPES[locale];
+  if (!scopes) return null;
+  const match = (hotlinesData as HotlineRecord[])
+    .find((h) => scopes.includes(h.scope) && h.category === 'general-emergency');
+  if (!match) return null;
+  const { id, name, number, href, scope, hours } = match;
+  return { id, name, number, href, scope, hours };
 }

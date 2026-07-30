@@ -15,6 +15,7 @@
     "test:ui": "playwright test --ui",
     "lint": "eslint 'src/**/*.{ts,tsx,js,mjs}'",
     "verify:ai-safety": "node scripts/verify-ai-safety.mjs",
+    "verify:somatic": "node scripts/verify-somatic-rules.mjs",
     "verify:quota-parity": "node scripts/verify-quota-parity.mjs",
     "seo:gsc": "node scripts/seo/fetch-gsc.mjs",
     "seo:trends": "node scripts/seo/fetch-trends.mjs",
