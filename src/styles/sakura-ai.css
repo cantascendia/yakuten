@@ -825,3 +825,206 @@ html.sakura .yk-ai-copybtn--done { border-color: var(--mint-deep, #2E8B6B); }
 html.sakura :is(.yk-ai-usage__text, .yk-ai-modebtn):is(:lang(ar), :lang(fa)) {
   letter-spacing: normal;
 }
+
+/* =========================================================================
+   17. 遮盖编辑器（RedactEditor）—— 乐园手账态
+   SPEC: docs/specs/ai-chat-image-input.md §3（阶段 2）
+   默认（二相乐园）基线在组件自带的 redactEditorCss.ts；这里只做 html.sakura 覆盖。
+
+   ⛔ 三条本节不可越界的约束：
+
+   1. **绝不覆盖 `--yk-redact-burn`。** 它不是主题色，是导出图里那些像素的真实颜色
+      （exportRedacted 的 `fillStyle:'#000000'`）。手账皮把黑块改成"可爱的粉块"
+      就等于让用户看到的遮盖与实际发出的不一致 —— 违反 §2 原则 3「所见即所发」。
+      同理不得给 .yk-redact__rect 加 opacity / filter / mix-blend-mode。
+   2. **文字色规则一律 (0,3,1) 起**（`html.sakura .yk-redact .yk-redact__x`）。
+      AI 工具页内容在 `.sl-markdown-content` 内，而 sakura-components.css 有
+      `html.sakura .sl-markdown-content p { color: var(--fg-1) }` (0,2,2) ——
+      裸 `html.sakura .yk-redact__hint` (0,2,1) 会被它压过，把说明文字刷成与
+      纸底同色。§7 危机卡就是这么出的 P0（本会话刚修）。照这里的写法抄，别重新踩。
+   3. 动画只 transform / opacity，且有 prefers-reduced-motion 兜底（文件末 §12 已全局压制，
+      本节仍显式兜一次 —— 本组件可能被挂在非 chat 页）。
+   ========================================================================= */
+html.sakura .yk-redact {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 0 4px 14px rgba(74, 40, 56, 0.1);
+}
+html.sakura .yk-redact .yk-redact__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--fg-1);
+}
+html.sakura .yk-redact .yk-redact__hint {
+  color: var(--fg-1);
+}
+html.sakura .yk-redact .yk-redact__note {
+  color: var(--fg-2);
+}
+/* 提醒级（无遮盖框 / 有框被裁掉）—— 便签黄语义的文字档，取过 AA 的深蜜色 */
+html.sakura .yk-redact .yk-redact__note--caution {
+  color: #8A5A00;
+}
+html.sakura .yk-redact .yk-redact__link {
+  color: var(--sakura-pink-text);
+}
+html.sakura .yk-redact .yk-redact__confirm {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+}
+html.sakura .yk-redact .yk-redact__meta {
+  font-family: var(--font-ui-accent);
+  color: var(--fg-2);
+}
+html.sakura .yk-redact .yk-redact__field__name {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+}
+html.sakura .yk-redact .yk-redact__slider__label {
+  color: var(--fg-2);
+}
+html.sakura .yk-redact .yk-redact__slider__value {
+  font-family: var(--font-ui-accent);
+  color: var(--sakura-pink-text);
+}
+
+/* 贴纸钮：白纸底 + 1.5px 墨线；按下/开启 = 蜜金底墨字 + 硬影（与 §16 同规范） */
+html.sakura .yk-redact__btn {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: none;
+  color: var(--fg-1);
+  font-family: var(--font-ui-accent);
+  font-weight: 700;
+}
+@media (hover: hover) {
+  html.sakura .yk-redact__btn:hover:not(:disabled) {
+    background: var(--sakura-blush);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+}
+html.sakura .yk-redact__btn[aria-pressed='true'] {
+  background: var(--butter);
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+}
+html.sakura .yk-redact__btn--primary {
+  background: var(--sakura-pink-aa);
+  background-image: none;
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: #ffffff;
+}
+@media (hover: hover) {
+  html.sakura .yk-redact__btn--primary:hover:not(:disabled) {
+    background: var(--sakura-pink-deep);
+    color: #ffffff;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+html.sakura .yk-redact__btn--danger {
+  color: var(--danger-deep);
+  border-color: var(--danger-deep);
+}
+@media (hover: hover) {
+  html.sakura .yk-redact__btn--danger:hover:not(:disabled) {
+    background: var(--bg-5);
+    color: var(--danger-deep);
+    border-color: var(--danger-deep);
+  }
+}
+html.sakura .yk-redact__btn:focus-visible,
+html.sakura .yk-redact__slider input[type='range']:focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+
+/* 舞台与卡片纸面 */
+html.sakura .yk-redact__canvas {
+  background: var(--bg-1);
+  border-radius: 12px;
+}
+html.sakura .yk-redact__field {
+  background: var(--bg-2);
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 16px;
+}
+html.sakura .yk-redact__field--selected {
+  border-color: var(--sakura-pink-deep);
+}
+html.sakura .yk-redact__slider input[type='range'] {
+  accent-color: var(--sakura-pink-deep);
+}
+
+/* 遮盖框：**底色不动**（见约束 1），只把描边/手柄换成手账语汇 */
+html.sakura .yk-redact__rect {
+  outline: 1px solid var(--honey);
+}
+html.sakura .yk-redact__rect--selected {
+  outline: 2px dashed var(--sakura-pink-deep);
+}
+html.sakura .yk-redact__rect__tag {
+  color: var(--butter);
+  font-family: var(--font-ui-accent);
+}
+html.sakura .yk-redact__handle {
+  background: var(--honey);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+}
+html.sakura .yk-redact__cropbox {
+  border: 2px dashed var(--sakura-pink-deep);
+}
+
+/* 导出失败条 —— 与 §7 危机卡同一「墨底红章」规范（danger 层只强化不弱化）。
+   注意 .yk-redact__error 是 <p>：色值规则必须带根类前缀（约束 2）。 */
+html.sakura .yk-redact__error {
+  background: var(--ink);
+  border: 2px solid var(--danger-bright);
+  border-radius: 10px;
+}
+html.sakura .yk-redact .yk-redact__error {
+  color: #fff5e0;
+}
+html.sakura .yk-redact .yk-redact__error .yk-redact__link {
+  color: #ffffff;
+}
+
+/* 幻月夜：与 §11 同法 —— 在组件根上钉「夜纸」token，内部规则原样生效 */
+html.sakura[data-theme='dark'] .yk-redact {
+  --bg-1: #18141f;
+  --bg-2: #211b2a;
+  --bg-3: #2b2337;
+  --bg-5: #442d3c;
+  --butter: #3a3226;
+  --ink: #f0e6ef;
+  --ink-faint: rgba(240, 230, 239, 0.22);
+  --fg-1: #f0e6ef;
+  --fg-2: #c5b2c3;
+  --sakura-pink-text: #ffa8c5;
+  background: #211b2a;
+}
+/* 夜纸底上 --danger-deep #C23D5C 作文字仅约 2.5:1；取更亮一档（与 §11 同一决策） */
+html.sakura[data-theme='dark'] .yk-redact .yk-redact__note--caution {
+  color: #f5c842;
+}
+html.sakura[data-theme='dark'] .yk-redact__btn--danger {
+  color: #ff8fa3;
+  border-color: #ff8fa3;
+}
+/* --ink 在夜里已翻亮，不能再当底色用（危机卡同一条教训） */
+html.sakura[data-theme='dark'] .yk-redact__error {
+  background: #3a1220;
+  border-color: var(--danger-bright, #ff5a5a);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.sakura .yk-redact__btn--primary:hover {
+    transform: none;
+  }
+}
