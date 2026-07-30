@@ -123,7 +123,7 @@ async function saveAsWebP(buffer, outputPath, width, height) {
       .webp({ quality: 82 })
       .toFile(outputPath);
     return fs.statSync(outputPath).size;
-  } catch (e) {
+  } catch {
     const fallback = outputPath.replace('.webp', '.jpg');
     fs.writeFileSync(fallback, buffer);
     console.log(`  ⚠ sharp failed, saved as JPEG: ${fallback}`);

@@ -225,7 +225,10 @@ if (DRY_RUN) {
     '   如需恢复：为本脚本配置独立的付费 key，勿再共用 GOOGLE_GENERATIVE_AI_API_KEY。\n',
   );
   process.exit(1);
-  /* eslint-disable no-unreachable */
+  /* 下面这段是**刻意保留**的死代码 —— seo:ai 的 Gemini 调用已停用（额度归属
+     用户侧），保留实现以便日后配了独立付费 key 后恢复。
+     不需要 eslint-disable：`no-unreachable` 的静态分析不认识 process.exit 的
+     终止语义，因此不会把这些语句判为不可达。 */
   const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
   const { generateText } = await import('ai');
   const google = createGoogleGenerativeAI();
