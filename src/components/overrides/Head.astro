@@ -130,10 +130,26 @@ if (route?.head) {
   // etc. that 404. Strip those auto alternates on blog pages so only the
   // canonical (self) + a self x-default below remain. Docs are untouched
   // (gated on isBlogPage), so their cross-locale hreflang is preserved.
+  // ⚠️ 必须**保留自指那一条** hreflang（bug-fix 2026-07-29）。
+  // 原实现剥掉了**全部** alternate，注释写的是「只留 canonical(self) + x-default」——
+  // 但 `canonical` 是 <link rel="canonical">，**不是 hreflang alternate**。
+  // 结果：博客页只声明 x-default，没有自指的 zh-CN（ja 博客同样缺 ja）。
+  // Google 的 hreflang 规则要求集合内**每个版本都必须自指**，缺了整套标注可能被忽略
+  // —— 即 x-default 也白写。文档页不受影响（有完整 17 语 + zh-CN 自指）。
+  // 由 tests/perf-seo.spec.ts「blog post declares ONLY zh hreflang」抓到。
+  //
+  // 判据用 href === canonical 而不是硬编码 locale→lang 映射：后者会在
+  // astro.config 的 locales 之外造出第二个真值源（zh→zh-CN、pt→pt-BR 这类
+  // 非平凡映射一旦漂移就静默出错）。这里直接复用 Starlight 已算好的值。
   if (isBlogPage) {
-    route.head = route.head.filter(
-      (tag) => !(tag.tag === 'link' && tag.attrs?.['rel'] === 'alternate' && 'hreflang' in (tag.attrs ?? {})),
-    );
+    const selfHref = canonical.replace(/\/$/, '');
+    route.head = route.head.filter((tag) => {
+      const isHreflangAlt =
+        tag.tag === 'link' && tag.attrs?.['rel'] === 'alternate' && 'hreflang' in (tag.attrs ?? {});
+      if (!isHreflangAlt) return true;
+      const href = String(tag.attrs?.['href'] ?? '').replace(/\/$/, '');
+      return href === selfHref; // 只留自指，其余跨语种镜像（会 404）剥掉
+    });
   }
 }
 const noindex = (route?.entry?.data as Record<string, unknown> | undefined)?.noindex === true;
