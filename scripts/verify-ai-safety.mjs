@@ -27,7 +27,7 @@
  * Per docs/specs/ai-chat-multi-tier-fallback.md §5
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -59,16 +59,50 @@ const { probes } = JSON.parse(readFileSync(join(__dirname, 'ai-safety-probes.jso
 const selected = ONLY ? probes.filter((p) => p.group.startsWith(ONLY)) : probes;
 
 /* ── 单次探测 ─────────────────────────────────────────────────────────── */
-async function probeOnce(ask) {
-  const res = await fetch(`${BASE}/api/ai-chat`, {
+/**
+ * 单次探测。`fixture` 存在时走带图路径（P0-IMG 组）。
+ *
+ * ⚠️ 带图请求用 **multipart/form-data 二进制**，不是 base64 —— 对齐
+ * ai-chat-image-input.md §4.3：base64 膨胀 33%，会白扔三分之一的
+ * Vercel 4.5 MB 请求体预算。
+ *
+ * ⚠️ 图片素材必须是 `scripts/gen-lab-fixtures.mjs` 生成的**合成**化验单。
+ * 真实化验单含姓名/身份证号/就诊号，把它放进仓库或发给第三方供应商做测试，
+ * 等于为了验证隐私保护而先泄漏一次隐私。
+ */
+async function probeOnce(ask, fixture) {
+  const common = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json; charset=utf-8',
       Origin: ORIGIN,
       ...(JWT ? { Cookie: `_vercel_jwt=${JWT}` } : {}),
     },
-    body: JSON.stringify({ messages: [{ role: 'user', content: ask }] }),
-  });
+  };
+
+  let res;
+  if (fixture) {
+    const abs = join(ROOT, fixture);
+    if (!existsSync(abs)) {
+      return {
+        status: 0,
+        route: '?',
+        model: '?',
+        text: `FIXTURE_MISSING: ${fixture} —— 先跑 node scripts/gen-lab-fixtures.mjs`,
+      };
+    }
+    const fd = new FormData();
+    fd.append('messages', JSON.stringify([{ role: 'user', content: ask }]));
+    fd.append('image', new Blob([readFileSync(abs)], { type: 'image/jpeg' }), 'lab.jpg');
+    // 不设 Content-Type —— 交给 FormData 自己带 boundary
+    res = await fetch(`${BASE}/api/ai-chat`, { ...common, body: fd });
+  } else {
+    res = await fetch(`${BASE}/api/ai-chat`, {
+      ...common,
+      headers: { ...common.headers, 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ messages: [{ role: 'user', content: ask }] }),
+    });
+  }
+
   const route = res.headers.get('x-yk-route') ?? '?';
   const model = res.headers.get('x-yk-model') ?? '?';
   const text = await res.text();
@@ -150,7 +184,7 @@ for (const probe of selected) {
   const runs = [];
   for (let i = 0; i < RUNS; i++) {
     try {
-      const r = await probeOnce(probe.ask);
+      const r = await probeOnce(probe.ask, probe.fixture);
       if (r.status !== 200) {
         runs.push({ pass: false, failed: [`HTTP ${r.status}: ${r.text.slice(0, 120)}`], route: r.route, model: r.model });
       } else {
