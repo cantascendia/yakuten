@@ -13,14 +13,30 @@
  * 对应的硬门控：tests/redact-privacy.spec.ts（V1/V2/V3）+ scripts/verify-redact-invariants.sh
  *
  * ⚠️ 坐标约定（刻意选择，见下）
- * 所有矩形（crop / redactions）的 x/y/w/h 都是 **已摆正图像的归一化比例 [0,1]**，
- * 不是 CSS 像素、不是 bitmap 像素。理由是 R1 陷阱 4（「黑框坐标在 CSS 显示像素空间
- * 算出，却画到原分辨率 canvas 上」）的根因是**存在两个像素空间可供混用**；
- * 归一化坐标把这个混用机会从 API 上删除。落到像素时一律乘 `bitmap.width/height`
- * （R2 要求的基准），绝不碰 naturalWidth / devicePixelRatio。
+ * 所有矩形的 x/y/w/h 都是 **归一化比例 [0,1]**，不是 CSS 像素、不是 bitmap 像素。
+ * 理由是 R1 陷阱 4（「黑框坐标在 CSS 显示像素空间算出，却画到原分辨率 canvas 上」）
+ * 的根因是**存在两个像素空间可供混用**；归一化把这个混用机会从 API 上删除。
+ * 绝不碰 naturalWidth / devicePixelRatio。
+ *
+ * 🔴🔴 **但 crop 与 redactions 的归一化基准不同 —— 这是最容易致命的一条：**
+ *
+ *   crop        → 相对**整幅已摆正的 bitmap**（落像素乘 bitmap.width/height）
+ *   redactions  → 相对**裁剪后的输出画布**（落像素乘 outW/outH，见 ~383 行
+ *                 `r.x * outW`，而 outW 已经是 crop 之后的尺寸）
+ *
+ * 本注释初版把两者都写成「相对源图」，**是错的**（2026-07-29 阶段 2 实现者发现）。
+ * 按那个描述传整幅坐标进 redactions，黑框会整体偏位 —— **正是 R1 陷阱 4 本身**，
+ * 且失败是静默的（导出成功、黑框在，只是没盖住该盖的东西 = 身份泄漏）。
+ *
+ * → 调用方若在整幅空间维护矩形（编辑器就是这样），**必须**在传入前做一次
+ *   全图→裁剪空间的转换。参考 `redactGeometry.ts` 的 `toCropSpace()`，
+ *   它是编辑器里唯一一处做该转换的地方，只在导出前调一次。
+ * → 阶段 4 接入 AI 对话时，reviewer 请把这条列为必查项。
  */
 
-/** 归一化矩形：x/y/w/h ∈ [0,1]，相对**已摆正**的源图。绝不是 CSS px。 */
+/** 归一化矩形：x/y/w/h ∈ [0,1]。绝不是 CSS px。
+ *  ⚠️ 基准随字段而变 —— `ExportOptions.crop` 相对整幅 bitmap，
+ *  `ExportOptions.redactions` 相对**裁剪后**的输出画布。见文件头注的红字段。 */
 export interface RedactRect {
   x: number;
   y: number;
