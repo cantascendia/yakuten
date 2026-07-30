@@ -36,8 +36,14 @@ export default defineConfig({
   ],
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
-    // webkit 只跑遮盖隐私门控：既有三个 spec 是按 chromium 写的（Starlight DOM / 性能断言），
-    // 把它们一并拉进 webkit 会引入与本轮无关的红灯。需要扩面时再逐个 spec 加。
-    { name: 'webkit', use: { browserName: 'webkit' }, testMatch: /redact-privacy\.spec\.ts/ },
+    // webkit 只跑遮盖隐私门控 + 真机自检页：既有三个 spec 是按 chromium 写的
+    // （Starlight DOM / 性能断言），把它们一并拉进 webkit 会引入与本轮无关的红灯。
+    // 自检页进 webkit 是刻意的 —— 它就是为「WebKit 与 Chromium 行为有差」而存在的，
+    // 只在 chromium 跑等于没测到那条差异。需要扩面时再逐个 spec 加。
+    {
+      name: 'webkit',
+      use: { browserName: 'webkit' },
+      testMatch: /redact-(privacy|selftest)\.spec\.ts/,
+    },
   ],
 });

@@ -214,18 +214,65 @@ export const REDACT_EDITOR_CSS = `
 .yk-redact__handle--sw::before { inset-block-end: -23px; inset-inline-start: -23px; }
 .yk-redact__handle--se::before { inset-block-end: -23px; inset-inline-end: -23px; }
 
-/* ── 裁剪层 ── */
-.yk-redact__cropbox {
-  position: absolute;
-  border: 2px dashed var(--color-primary-light);
+/* ── 裁剪舞台（react-easy-crop，T7）
+      库自带的布局 CSS 由它自己注入 document.head（保持与库版本同步，不抄一份）；
+      这里只做**颜色与焦点**覆盖，全部走 CSS 变量。
+      .yk-redact__cropstage 必须有确定高度：库的容器是 position:absolute; inset:0。 ── */
+.yk-redact__cropstage {
+  position: relative;
+  block-size: min(56vh, 520px);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-bg-primary, #0D0B14);
+  /* 双指缩放的前提：浏览器不得把双指手势解释成页面缩放/滚动。库对自己的容器已设过，
+     这里对整个舞台再设一次（含缩放滑块行外的留白）。 */
   touch-action: none;
-  cursor: move;
 }
-.yk-redact__shade {
+/* 库的容器（classes.containerClassName） */
+.yk-redact__cropbox { border-radius: 8px; }
+/* 取景框（classes.cropAreaClassName）：color 就是**框外遮罩色** ——
+   库用 box-shadow: 0 0 0 9999em currentColor 铺满框外，所以遮罩色只能从这里给。 */
+.yk-redact__cropframe {
+  border: 2px dashed var(--color-primary-light);
+  color: var(--color-black-alpha-50, rgba(0,0,0,.5));
+}
+.yk-redact__cropframe:focus-visible { outline: 3px solid var(--color-accent); outline-offset: -1px; }
+/* 缩放滑块行：与 .yk-redact__slider 同一栅格语汇，但它在舞台层内（裁剪态才存在） */
+.yk-redact__zoomrow {
+  display: grid;
+  grid-template-columns: 3.4em 1fr 4.2em;
+  align-items: center;
+  gap: 6px;
   position: absolute;
-  background: var(--color-black-alpha-50, rgba(0,0,0,.5));
-  pointer-events: none;
+  inset-block-end: 8px;
+  inset-inline: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--color-bg-container, #211E28);
+  border: 1px solid var(--color-outline-20);
 }
+.yk-redact__zoomrow input[type='range'] {
+  inline-size: 100%;
+  min-block-size: 24px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.yk-redact__zoomrow input[type='range']:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.yk-redact .yk-redact__cropreadout {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--color-bg-container, #211E28);
+  border: 1px solid var(--color-outline-20);
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent-text);
+}
+/* 裁剪态：遮盖舞台只**视觉隐藏**，不卸载（canvas 位图与显示副本都靠它） */
+.yk-redact__stagewrap--off { display: none; }
 
 /* ── 精确调整（R6 / SC 2.5.7 的非拖拽等价路径） ── */
 .yk-redact__fields { display: flex; flex-direction: column; gap: var(--space-sm, 8px); list-style: none; padding: 0; }

@@ -120,15 +120,18 @@ else
 fi
 
 # ── 5. dev 挂载页必须 DEV-guard，且不得进生产产物 ────────────────────────
+# ⚠️ 必须**递归**：原版只扫 src/pages/dev 顶层，而 dev/editor/[view].astro 与
+# dev/selftest/[view].astro 都在子目录里（`/dev/[harness]` 已占了单段动态路由，同深度
+# 再加会撞，所以后来的 dev 页只能进子目录）。只扫顶层等于对它们完全失明。
 if [ -d "$HARNESS_DIR" ]; then
-  for f in "$HARNESS_DIR"/*; do
+  while IFS= read -r f; do
     [ -f "$f" ] || continue
     if grep -q 'import\.meta\.env\.DEV' "$f"; then
-      ok "$(basename "$f") 有 DEV 守卫"
+      ok "${f#"$ROOT/"} 有 DEV 守卫"
     else
-      bad "$(basename "$f") 无 import.meta.env.DEV 守卫 —— 会进生产产物"
+      bad "${f#"$ROOT/"} 无 import.meta.env.DEV 守卫 —— 会进生产产物"
     fi
-  done
+  done < <(find "$HARNESS_DIR" -type f -name '*.astro' | sort)
 fi
 if [ -d "$ROOT/dist" ]; then
   if [ -d "$ROOT/dist/dev" ]; then

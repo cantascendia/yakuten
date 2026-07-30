@@ -977,8 +977,39 @@ html.sakura .yk-redact__handle {
   border: 1.5px solid var(--ink);
   border-radius: 4px;
 }
-html.sakura .yk-redact__cropbox {
+/* 裁剪舞台（react-easy-crop，T7）—— 只换颜色语汇。
+   ⚠️ .yk-redact__cropframe 的 `color` 是**框外遮罩色**（库用 currentColor 铺 box-shadow），
+   不是文字色；手账态取墨色半透明，让纸底也能看清取景边界。 */
+html.sakura .yk-redact__cropstage {
+  background: var(--bg-1);
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 16px;
+}
+html.sakura .yk-redact__cropframe {
   border: 2px dashed var(--sakura-pink-deep);
+  color: rgba(74, 40, 56, 0.55);
+}
+html.sakura .yk-redact__cropframe:focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+}
+html.sakura .yk-redact__zoomrow {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-full);
+}
+html.sakura .yk-redact__zoomrow input[type='range'] {
+  accent-color: var(--sakura-pink-deep);
+}
+html.sakura .yk-redact__zoomrow input[type='range']:focus-visible {
+  outline: 3px solid var(--sakura-pink-deep);
+  outline-offset: 2px;
+}
+html.sakura .yk-redact .yk-redact__cropreadout {
+  background: var(--bg-3);
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 8px;
+  font-family: var(--font-ui-accent);
+  color: var(--sakura-pink-text);
 }
 
 /* 导出失败条 —— 与 §7 危机卡同一「墨底红章」规范（danger 层只强化不弱化）。

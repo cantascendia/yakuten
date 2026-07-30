@@ -179,6 +179,23 @@ canvas 重编码会剥离 EXIF（含 GPS）—— 这是**结构性保证**而�
 ⚠️ **国产环境无公开数据**：微信内置 X5 / WKWebView、UC、夸克是否有例外，检索 bug tracker
 零结果。**不能靠推理结案** → 必须靠 §7 V2 的断言在 CI + 真机各守一道。
 
+#### R2a · 第三方裁剪库内部用 `<img>` —— T7 引入的新约束（2026-07-29）
+
+`react-easy-crop` 内部用 `<img>` 渲染取景图。而 R2 已论证 `<img>` 路径的方向语义
+未被规范钉死（csswg#4666 至今 open）：**一句第三方 CSS 的 `image-orientation: none`
+就能让 Chrome 把图躺倒、Safari 摆正。**
+
+后果链条：用户在**躺倒的图**上取景 → 导出走 `createImageBitmap`（永远摆正）
+→ **裁剪区整体错位，且完全静默**（导出成功、有图、只是裁错了地方）。
+
+→ **喂给裁剪库的必须是「已摆正显示 canvas 的重编码副本」，不是原 `File` 的
+objectURL。** 副本来自已摆正的 canvas、无 EXIF，方向语义因此恒等，
+库内部用不用 `<img>` 都不再有分歧。
+
+> 仓库当前没有任何 `image-orientation` 声明，所以这个坑**现在不会触发** ——
+> 但它是「将来某人加一句全局 CSS 就静默生效」的形态，且失败方向是隐私事故。
+> 列为**阶段 4 reviewer 必查项**。
+
 > 验证：见 §7 的 V2。
 
 **R3 · 预览即最终。** 预览渲染的必须是 `toBlob()` 的产物解码回来的图，
@@ -766,6 +783,20 @@ project**（webkit 可在 ubuntu runner 跑，不需要贵 10 倍的 macOS runne
 说明 **Playwright 的 WebKit 没复现真机 Safari 的注入行为**，
 → **V11 真机那一道不能省**，它不是冗余。
 
+> **自检页跑出的两条量化证据（2026-07-29，把上面这条从论断变成实测）**：
+>
+> | 项 | 桌面 WebKit（CI） | 真机 iOS（管线按此保守设计） |
+> |---|---|---|
+> | canvas 面积上限 | **268,435,456**（16384²） | **16,777,216**（老 iPhone 4096²） |
+> | canvas 能否编码 WebP | **能** | **不能**（R7 的整条推理基于此） |
+>
+> 也就是说：**R7 那条「Safari canvas 不能编 WebP → toBlob 静默返回 PNG →
+> 只有 iPhone 用户报 413」的核心风险，CI 永远测不出来** ——
+> 桌面 WebKit 编得出 WebP，断言反而会通过。
+> 面积上限差 16 倍，同理：CI 下永远触发不到降尺寸重试路径。
+>
+> 这两条是「为什么 §7 表里 V11 是硬项而非可选」的直接证据。
+
 **③ 只检查 `dist/` 有没有 HTML 是不够的 —— 会漏掉孤儿 chunk。**
 测试挂载页用 `getStaticPaths()` 返回空数组只挡住 HTML，**Vite 仍会把该页
 `<script>` 打成孤儿 chunk 塞进 `dist/_astro/`**，里面带着整个导出管线，
@@ -777,7 +808,15 @@ project**（webkit 可在 ubuntu runner 跑，不需要贵 10 倍的 macOS runne
 
 ⚠️ **CI 的诚实局限**：Playwright 的 WebKit 是桌面 Linux 构建，**不等于真机 iOS Safari，
 更不等于微信 WKWebView**（见上 ②，实测已证实差异存在）。→ 建一个内部页
-`/dev/redact-selftest` 把 V1+V2 跑在真机上显示 PASS/FAIL，在微信 / UC / 夸克各跑一次存档。
+**`/dev/selftest/redact/`** 把 V1+V2 跑在真机上显示 PASS/FAIL，在微信 / UC / 夸克各跑一次存档。
+
+> 路径与初稿的 `/dev/redact-selftest` 不同：`src/pages/dev/[harness].astro` 已占掉
+> `/dev/:x` 这个单段动态路由，同深度再加会撞；而静态页没有 `getStaticPaths()`
+> 就无法做到「生产构建不产出」。故与 `/dev/editor/redact/` 同构为两段。
+>
+> **真机跑法（owner）**：`npx astro dev --host` → 手机开
+> `http://<内网IP>:4321/dev/selftest/redact/` → 点「开始自检」看大字 PASS/FAIL；
+> 再用「选一张照片」跑 HEIC（T6，无公开数据）。
 这是 R2 里「国产环境无公开数据」的唯一补法。
 
 ### 7.1 图片版安全探针
@@ -849,7 +888,7 @@ project**（webkit 可在 ubuntu runner 跑，不需要贵 10 倍的 macOS runne
 | ~~T4~~ | 单位换算系数表 | `bcConvert()` 现成可用，见 §5.3a | **已解决** |
 | ~~T5~~ | Gemini 的图像 token 计费 | **已实测**（`countTokens`，三模型一致）：与像素面积**无关**，固定 ~1064–1089 tokens。4032×3024 与 256×256 花费相同。**推翻了 R7「降采样省钱」的核心理由** —— 见 §4.4a | **已解决** |
 | T6 | HEIC 在 iOS Safari `accept="image/*"` 下是否自动转 JPEG | **无公开数据** | 待真机（V11） |
-| **T7** | **是否引入 `react-easy-crop`（新增运行时依赖）** | 阶段 2 按「不擅自装依赖」的指示**没装**，裁剪改手写矩形框（拖角/拖体/滑块三路可用）。**缺的是双指缩放** —— 而 T1 选它的唯一理由正是「手机拍化验单必然要放大对齐表格行」。结合 §4.4a 的结论（裁剪是**正确性**前提，不是 UX 优化：整页 137 ppi vs 裁剪后 406 ppi），精确裁剪的价值是实的 | **待 owner 决定**（8.8 kB gzip / MIT / 2026-07-24 发版） |
+| ~~T7~~ | 是否引入 `react-easy-crop` | **owner 已批准并已集成**（2026-07-29）。实测：`6.2.3` / **gzip 8,165 B**（非初估的 8.8 kB）/ 本体 **MIT**，但传递依赖 **`normalize-wheel@1.0.1` 是 BSD-3-Clause 而非 MIT** —— 同为宽松许可、无 copyleft，只需保留版权声明。初稿只写「MIT」是不准确的，许可证信息不能含糊。双指缩放实测成立（zoom 1.00×→3.50×，裁剪区 100%→28.5%） | **已解决** |
 
 ### 10.1 已裁决：删除「旋转 90°」（2026-07-29）
 

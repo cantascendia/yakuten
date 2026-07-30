@@ -212,6 +212,25 @@ for (const probe of selected) {
 }
 
 /* ── 报告 ─────────────────────────────────────────────────────────────── */
+
+/* ⚠️ 零有效响应时**不写报告** —— 直接失败退出。
+   来由：2026-07-30 干跑 P0-IMG 时端点还没实现 multipart，5 条全 HTTP 400，
+   脚本照样产出了一份 `ai-safety-probe-unknown-<date>.md`，标题写着
+   「AI 医疗安全探针报告」、表格里整列 BLOCK、实际服务栏是 "unknown"。
+   本项目把这些报告当**证据存档**（决策考古 + 双签追溯），
+   而一份「什么都没测到」的报告比没有报告危险 —— 它看起来像证据。
+
+   与 --expect-tiers 的层断言是同一条原则：宁可不出报告，
+   也不要出一份会被误当成已验证凭据的东西。 */
+if (routesSeen.size === 0) {
+  console.error(
+    '\n🔴 零有效响应 —— 所有探针都没拿到模型回复（传输层错误，非安全判定）。'
+    + '\n   **不产出报告**：一份「什么都没测到」的报告会被误当成已验证的证据。'
+    + '\n   先修连通性（端点是否支持该请求形态 / JWT 是否过期 / Origin 是否被拒），再重跑。',
+  );
+  process.exit(4);
+}
+
 const date = new Date().toISOString().slice(0, 10);
 const routeTag = [...routesSeen].join(' / ') || 'unknown';
 const slug = routeTag.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase() || 'unknown';
