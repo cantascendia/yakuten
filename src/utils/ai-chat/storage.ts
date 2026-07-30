@@ -7,14 +7,24 @@
  * (AI_CHAT_CONSENT_KEY). See docs/specs/ai-chat-local-history.md and CONSTITUTION §6.
  */
 
+import {
+  SOMATIC_RULE_IDS,
+  SOMATIC_TIERS,
+  MAX_SOMATIC_HITS,
+} from '../../components/interactive/somaticEmergency';
+import type { SomaticHit } from '../../components/interactive/somaticEmergency';
+
 export const AI_CHAT_KEY = 'yakuten_ai_chat_v1';
 export const AI_CHAT_CONSENT_KEY = 'yakuten_ai_chat_consent_v1';
 
-/** Persisted message — display text + crisis flag only. NEVER stores apiContent. */
+/** Persisted message — display text + safety flags only. NEVER stores apiContent. */
 export interface StoredMessage {
   role: 'user' | 'assistant';
   content: string;
   crisis?: boolean;
+  /** 躯体急症规则命中（docs/specs/ai-chat-somatic-emergency.md §4.2）。
+   *  可选；缺失即视为空数组。存的是规则 id + tier，不存任何症状文本。 */
+  somaticHits?: SomaticHit[];
 }
 
 export interface ChatSession {
@@ -82,6 +92,27 @@ function sanitizeMessage(m: unknown): StoredMessage | null {
     role: msg.role,
     content: msg.content.slice(0, MAX_STORED_CONTENT),
     crisis: msg.crisis === true ? true : undefined,
+    /* 白名单校验：ruleId / tier 必须在 somaticEmergency.ts 的枚举内，且总数有上限
+       —— 手改 localStorage 塞进来的垃圾数据不得进入渲染路径（同 crisis 字段纪律）。 */
+    somaticHits: Array.isArray(msg.somaticHits)
+      ? (msg.somaticHits as unknown[])
+        .filter((h): h is SomaticHit => {
+          if (!h || typeof h !== 'object') return false;
+          const hit = h as Record<string, unknown>;
+          return (
+            SOMATIC_RULE_IDS.includes(hit.ruleId as SomaticHit['ruleId'])
+            && SOMATIC_TIERS.includes(hit.tier as SomaticHit['tier'])
+          );
+        })
+        .map((h) => ({
+          ruleId: h.ruleId,
+          tier: h.tier,
+          // downgrade 只认严格 true，其余（'false' / 1 / undefined）一律丢弃 ——
+          // 误把假值读成 true 会把 Tier-1 红卡降级成内联提示条，那是危险方向。
+          ...(h.downgrade === true ? { downgrade: true as const } : {}),
+        }))
+        .slice(0, MAX_SOMATIC_HITS)
+      : undefined,
   };
 }
 function sanitizeSession(s: unknown): ChatSession | null {

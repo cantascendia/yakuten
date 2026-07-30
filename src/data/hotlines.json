@@ -1,6 +1,7 @@
 [
   {
     "id": "national-mental-health-12356",
+    "category": "mental-health",
     "label": "National Mental Health",
     "name": "全国统一心理援助热线",
     "number": "12356",
@@ -14,6 +15,7 @@
   },
   {
     "id": "hope24-4001619995",
+    "category": "mental-health",
     "label": "24h Crisis Support",
     "name": "希望24热线",
     "number": "400-161-9995",
@@ -27,6 +29,7 @@
   },
   {
     "id": "medical-emergency-120",
+    "category": "general-emergency",
     "label": "General Emergency",
     "name": "医疗急救电话",
     "number": "120",
@@ -40,6 +43,7 @@
   },
   {
     "id": "telefonseelsorge-de-111",
+    "category": "mental-health",
     "label": "Crisis Counseling DE",
     "name": "Telefonseelsorge (Leitung 1)",
     "number": "0800 111 0 111",
@@ -53,6 +57,7 @@
   },
   {
     "id": "telefonseelsorge-de-222",
+    "category": "mental-health",
     "label": "Crisis Counseling DE (alt)",
     "name": "Telefonseelsorge (Leitung 2)",
     "number": "0800 111 0 222",
@@ -66,6 +71,7 @@
   },
   {
     "id": "nummer-gegen-kummer-youth",
+    "category": "mental-health",
     "label": "Youth Crisis Line DE",
     "name": "Nummer gegen Kummer (Kinder- und Jugendtelefon)",
     "number": "116 111",
@@ -79,6 +85,7 @@
   },
   {
     "id": "telefonseelsorge-at-142",
+    "category": "mental-health",
     "label": "Crisis Counseling AT",
     "name": "Telefonseelsorge Österreich",
     "number": "142",
@@ -92,6 +99,7 @@
   },
   {
     "id": "dargebotene-hand-ch-143",
+    "category": "mental-health",
     "label": "Crisis Counseling CH",
     "name": "Die Dargebotene Hand (Tel 143)",
     "number": "143",
@@ -105,6 +113,7 @@
   },
   {
     "id": "european-emergency-112",
+    "category": "general-emergency",
     "label": "European Emergency",
     "name": "Europaweiter Notruf",
     "number": "112",
@@ -118,6 +127,7 @@
   },
   {
     "id": "fr-3114",
+    "category": "mental-health",
     "label": "Suicide Prevention FR",
     "name": "Numéro national de prévention du suicide",
     "number": "3114",
@@ -131,6 +141,7 @@
   },
   {
     "id": "fr-sos-amitie",
+    "category": "mental-health",
     "label": "Crisis Counseling FR",
     "name": "SOS Amitié",
     "number": "09 72 39 40 50",
@@ -144,6 +155,7 @@
   },
   {
     "id": "fr-ligne-azur",
+    "category": "mental-health",
     "label": "LGBTQ+ Support FR",
     "name": "Ligne Azur",
     "number": "0 810 20 30 40",
@@ -157,6 +169,7 @@
   },
   {
     "id": "be-prevention-suicide",
+    "category": "mental-health",
     "label": "Suicide Prevention BE",
     "name": "Centre de Prévention du Suicide",
     "number": "0800 32 123",
@@ -170,6 +183,7 @@
   },
   {
     "id": "ch-main-tendue",
+    "category": "mental-health",
     "label": "Crisis Counseling CH (FR)",
     "name": "La Main Tendue (Tél 143)",
     "number": "143",
@@ -183,6 +197,7 @@
   },
   {
     "id": "es-024",
+    "category": "mental-health",
     "label": "Suicide Prevention ES",
     "name": "Línea de Atención a la Conducta Suicida",
     "number": "024",
@@ -196,6 +211,7 @@
   },
   {
     "id": "es-telefono-esperanza",
+    "category": "mental-health",
     "label": "Crisis Counseling ES",
     "name": "Teléfono de la Esperanza",
     "number": "717 003 717",
@@ -209,6 +225,7 @@
   },
   {
     "id": "ar-135",
+    "category": "mental-health",
     "label": "Crisis Support AR",
     "name": "Centro de Asistencia al Suicida (Línea 135)",
     "number": "135",
@@ -222,6 +239,7 @@
   },
   {
     "id": "mx-linea-vida",
+    "category": "mental-health",
     "label": "Crisis Support MX",
     "name": "Línea de la Vida",
     "number": "800 911 2000",
@@ -235,6 +253,7 @@
   },
   {
     "id": "co-106",
+    "category": "mental-health",
     "label": "Crisis Support CO",
     "name": "Línea 106",
     "number": "106",
@@ -248,6 +267,7 @@
   },
   {
     "id": "br-cvv-188",
+    "category": "mental-health",
     "label": "Crisis Support BR",
     "name": "Centro de Valorização da Vida (CVV)",
     "number": "188",
@@ -261,6 +281,7 @@
   },
   {
     "id": "br-samu-192",
+    "category": "general-emergency",
     "label": "Emergency Medical BR",
     "name": "SAMU (Serviço de Atendimento Móvel de Urgência)",
     "number": "192",
@@ -274,6 +295,7 @@
   },
   {
     "id": "pt-sns-24",
+    "category": "mental-health",
     "label": "Health Helpline PT",
     "name": "SNS 24 (Serviço Nacional de Saúde)",
     "number": "808 24 24 24",
@@ -287,6 +309,7 @@
   },
   {
     "id": "pt-sos-voz-amiga",
+    "category": "mental-health",
     "label": "Crisis Counseling PT",
     "name": "SOS Voz Amiga",
     "number": "213 544 545",
@@ -300,6 +323,7 @@
   },
   {
     "id": "ru-telefon-doveriya",
+    "category": "mental-health",
     "label": "Crisis Support RU",
     "name": "Телефон доверия (бесплатная линия психологической помощи)",
     "number": "8-800-2000-122",
@@ -313,6 +337,7 @@
   },
   {
     "id": "ru-mchs-help",
+    "category": "mental-health",
     "label": "Emergency Psychological Support RU",
     "name": "Центр экстренной психологической помощи МЧС",
     "number": "8-499-216-50-50",
@@ -326,6 +351,7 @@
   },
   {
     "id": "ua-7333",
+    "category": "mental-health",
     "label": "Crisis Support UA",
     "name": "Лінія психологічної підтримки / Линия психологической поддержки",
     "number": "7333",

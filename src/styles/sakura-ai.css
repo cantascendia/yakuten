@@ -259,13 +259,22 @@ html.sakura .yk-ai-crisis {
   box-shadow: none;
   color: #FFF5E0;
 }
-html.sakura .yk-ai-crisis__title {
+/* ⚠️ 三条选择器必须带 `.yk-ai` 祖先前缀 —— 这不是风格偏好，是修一个 P0。
+   危机卡的三行都是 <p>，而 AI 工具页的对话主体位于 .sl-markdown-content 内：
+     html.sakura .sl-markdown-content p { color: var(--fg-1) }   → (0,2,2)
+     html.sakura .yk-ai-crisis__body   { color: #FFF5E0     }   → (0,2,1)
+   (0,2,2) 胜出 → 文字被刷成 --fg-1 = #4A2838，而卡片底色 --ink 同为 #4A2838
+   → **对比度 1:1，整张危机卡文字不可见**。
+   这是不可关闭的自杀干预组件（CONSTITUTION §1），在 sakura 皮下整块失效。
+   加祖先前缀抬到 (0,3,1) 压过 markdown 规则。
+   新增任何 .yk-ai-crisis__* 文字规则时必须同样带前缀，否则重新踩坑。 */
+html.sakura .yk-ai .yk-ai-crisis__title {
   font-family: var(--font-heading);
   font-weight: 700;
   color: #FFFFFF;
 }
-html.sakura .yk-ai-crisis__body,
-html.sakura .yk-ai-crisis__note {
+html.sakura .yk-ai .yk-ai-crisis__body,
+html.sakura .yk-ai .yk-ai-crisis__note {
   color: #FFF5E0;
 }
 html.sakura .yk-ai-crisis__line {
@@ -276,6 +285,63 @@ html.sakura .yk-ai-crisis__line {
 html.sakura .yk-ai-crisis__line:focus-visible {
   outline: 3px solid #FFFFFF;
   outline-offset: 3px;
+}
+
+/* =========================================================================
+   7b. 躯体急症卡 —— 与 §7 危机卡同一「墨底红章」规范（同样脱离可爱风：
+   无硬影 / 无贴纸旋转 / 无手写字体 / 零动画；红线：只能强化不能弱化）。
+   基线样式在 SomaticEmergencyCard.tsx 的 SOMATIC_CSS，此处只做换皮覆盖。
+   SPEC: docs/specs/ai-chat-somatic-emergency.md §4.3
+   ------------------------------------------------------------------------
+   ⚠️ 两档区分在 sakura 侧走「边框亮度 + 粗细」，**不改底色明度** ——
+   默认皮用的 --color-danger-bg-low 在 sakura 被重映射成浅粉
+   rgba(255,228,236,.5)，叠在墨底上会把底色提亮、破坏奶油白字的对比度，
+   因此这里显式 background-image:none 关掉那层遮罩。
+
+   ⚠️ 文字类规则**必须带 .yk-ai-somatic 祖先前缀**（拉到 (0,3,1)）：工具页对话主体
+   在 .sl-markdown-content 内，`html.sakura .sl-markdown-content p{color:var(--fg-1)}`
+   是 (0,2,2)，会压过 (0,2,1) 的 `html.sakura .yk-ai-somatic__title` → 墨字写在墨底上。
+   与 §6 链接卡踩的是同一个坑（实测：.yk-ai-crisis 的三处文字规则当前就中了这个坑）。
+   ========================================================================= */
+html.sakura .yk-ai .yk-ai-somatic {
+  background: var(--ink);
+  background-image: none;
+  border: 2px solid var(--danger-bright);
+  border-radius: 10px;
+  box-shadow: none;
+  color: #FFF5E0;
+}
+html.sakura .yk-ai .yk-ai-somatic[data-tier='tier2-today'] {
+  background-image: none;
+  border-width: 1.5px;
+  border-color: var(--danger-deep);
+}
+html.sakura .yk-ai-somatic .yk-ai-somatic__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+html.sakura .yk-ai-somatic .yk-ai-somatic__body,
+html.sakura .yk-ai-somatic .yk-ai-somatic__action,
+html.sakura .yk-ai-somatic .yk-ai-somatic__stop,
+html.sakura .yk-ai-somatic .yk-ai-somatic__note {
+  color: #FFF5E0;
+}
+html.sakura .yk-ai-somatic .yk-ai-somatic__line {
+  border: 1.5px solid rgba(255, 245, 224, 0.55);
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+html.sakura .yk-ai-somatic .yk-ai-somatic__line:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+/* 降级提示条：纸面便签，不进危险层（butter 左边线 + 墨字） */
+html.sakura .yk-ai .yk-ai-somatic-soft {
+  background: var(--bg-2, transparent);
+  border-radius: 8px;
+  border-inline-start: 3px solid var(--butter-deep);
+  color: var(--fg-2);
 }
 
 /* =========================================================================
@@ -425,6 +491,10 @@ html.sakura[data-theme='dark'] .ai-chat-stage { background: #18141F; }
 html.sakura[data-theme='dark'] .yk-ai--page { background-color: #18141F; background-image: none; }
 /* 危机卡在夜里保持"深红底白字"危险语义（--ink 已翻亮，不能再当底色用） */
 html.sakura[data-theme='dark'] .yk-ai-crisis { background: #3A1220; border-color: var(--danger-bright, #FF5A5A); }
+/* 躯体急症卡同理（值与危机卡刻意一致 —— 两张卡同屏时底色必须视觉齐平，
+   否则会被读成"这张不那么严重"）。两档区分仍走边框，见 §7b。 */
+html.sakura[data-theme='dark'] .yk-ai .yk-ai-somatic { background: #3A1220; background-image: none; border-color: var(--danger-bright, #FF5A5A); }
+html.sakura[data-theme='dark'] .yk-ai .yk-ai-somatic[data-tier='tier2-today'] { border-color: var(--danger-deep, #C23D5C); }
 /* 离线条的硬编码深墨字换亮墨 */
 html.sakura[data-theme='dark'] .yk-ai-banner--offline { color: var(--fg-1); }
 html.sakura[data-theme='dark'] .yk-ai-disclaimer { color: var(--fg-1); }

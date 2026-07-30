@@ -378,7 +378,26 @@ ${DIFF_CONTENT}"
               echo "> ℹ️ codex 未装/未登录（从未尝试 codex/agy），本次由 Claude 完成。"
             fi
             echo ""
-            echo "$OUTPUT"
+            # ⚠️ 必须截断：GitHub 评论正文上限 65536 字符。此处曾无任何限制，
+            # 2026-07-29 实际往公开 PR #135 发出约 237 KB 的单条自动评论
+            # （见 CODEX-REVIEW-LOG.md sha=b7850a8 bytes=237647）。
+            # 超限的自动化写入在滥用检测里的形态接近 spam bot，且完整报告本来就
+            # 已入仓（reviews/<sha>.md），评论只需摘要 + 指针。
+            # 留足 5k 余量给上下的标题/免责/指针行。
+            COMMENT_LIMIT="${CODEX_COMMENT_LIMIT:-60000}"
+            OUTPUT_BYTES=$(printf '%s' "$OUTPUT" | wc -c | tr -d ' ')
+            if [ "$OUTPUT_BYTES" -gt "$COMMENT_LIMIT" ]; then
+              printf '%s' "$OUTPUT" | head -c "$COMMENT_LIMIT"
+              echo ""
+              echo ""
+              echo "> ✂️ **报告过长已截断**（${OUTPUT_BYTES} bytes → ${COMMENT_LIMIT}）。"
+              echo "> 完整全文见仓库 \`docs/ai-cto/reviews/${SHORT_SHA}.md\`。"
+              echo "> GitHub 单条评论上限 65536 字符；超限的自动化写入会被判为滥用。"
+              echo "$(date -Iseconds 2>/dev/null || date) | sha=${SHORT_SHA} | step=pr-comment-truncated | bytes=${OUTPUT_BYTES} | limit=${COMMENT_LIMIT}" \
+                >> docs/ai-cto/CODEX-REVIEW-LOG.md
+            else
+              echo "$OUTPUT"
+            fi
             echo ""
             echo "---"
             echo "_由 \`.agents/skills/codex-bridge/run.sh\` 本地跑（订阅 auth），非 CI。autopilot 自动同步。_"
