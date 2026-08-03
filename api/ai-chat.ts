@@ -446,10 +446,13 @@ const G_FLASH = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-3-flash-preview
 const G_LITE = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-3.1-flash-lite-preview'] as const;
 // 旧名 deepseek-chat 已于 2026-07-24 退役
 const DS_MODEL = 'deepseek-v4-flash';
-/* GPT-5.6 三档（官方定价页核实，$/1M in-out）：
-   sol   旗舰     $5 / $30
-   terra 平衡     $2.50 / $15
-   luna  最快最省 $1 / $6
+/* GPT-5.6 三档（$/1M in-out，2026-07-30 降价后）：
+   sol   旗舰     $5 / $30      （未降）
+   terra 平衡     $2 / $12      （原 $2.50 / $15，-20%）
+   luna  最快最省 $0.20 / $1.20 （原 $1 / $6，-80%）
+
+   ⚠️ **降价不改变本文件的任何一行逻辑**，理由见下方 ② 与 spec §2.2a：
+   链序的依据是**免费池大小**（2.5M vs 250K），不是单价，而池大小没变。
 
    三者的 context(1.05M) / max output(128K) / cutoff / vision / streaming /
    Tier1 RPM·TPM **完全一致**，差异只在价格与能力档。
@@ -462,7 +465,10 @@ const DS_MODEL = 'deepseek-v4-flash';
    按单次请求 ≈ 4.3K tok（system ~2.5K + 对话 ~1K + 输出 ~0.8K）折算：
      sol ≈ 58 次/天（稀缺）  terra+luna ≈ 580 次/天（充裕）。
    ⚠️ 主用 terra/luna **不是因为它们便宜**，而是因为它们在 2.5M 的大池里、
-   sol 在 250K 的小池里 —— 免费额度差 10 倍，这比单价重要得多。 */
+   sol 在 250K 的小池里 —— 免费额度差 10 倍，这比单价重要得多。
+   （2026-07-30 luna 降价 80% 后这句依然成立，且不再有张力：luna 现在既在大池
+   里、单价又最低，两个理由同向。terra 仍排在 luna 前是**质量**决定的 ——
+   二者共用同一个 2.5M 池，先用便宜的那个省不出任何免费额度。） */
 const OAI_SOL = 'gpt-5.6-sol';
 const OAI_TERRA = 'gpt-5.6-terra';
 const OAI_LUNA = 'gpt-5.6-luna';
