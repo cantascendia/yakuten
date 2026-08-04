@@ -578,10 +578,39 @@ messages 校验其余部分不变。
 | 默认 fast | `'low'` | `0` | `disabled` | `'low'` | 2048 |
 | 用户开启 think | `'high'` | `-1`（动态） | `enabled` | `'high'` | 4096 |
 
-OpenAI 侧的「思考深度」主要由**选哪个模型**表达（sol / terra / luna，见
-§2.2 的三张顺序表），`reasoning_effort` 只做同一模型内的微调；且 OpenAI 的
-`max_completion_tokens` 有 4096 地板值（reasoning token 也吃这个预算，见
-§2.6b）。
+OpenAI 的 `max_completion_tokens` 有 4096 地板值（reasoning token 也吃这个预算，
+见 §2.6b）。
+
+> **⚠️ 2026-07-30 更正**：原文写「思考深度**主要由选哪个模型**表达，
+> `reasoning_effort` 只做同一模型内的微调」—— **不准确**。
+> 厂商文档（AWS Bedrock）明确：三档模型
+> 「support `none`, `low`, `medium`, `high`, `xhigh`, and `max` reasoning effort,
+> **so you can switch models without changing your API integration**」。
+> 即 **sol / terra / luna 接受完全相同的档位集**，`reasoning_effort` 是一等的
+> 深度旋钮，不是「微调」。
+>
+> 实践后果（好消息）：现有实现给 terra 发 `reasoning_effort:'high'`
+> **不会被拒**，思考链第 3 位是真的在思考，没有静默降级。
+>
+> 尚未证实的一点（记为未知，不假装知道）：无公开来源说明 terra/luna 在 `high`
+> 档**实际产出多少 reasoning token**。官方只把 sol 称作
+> 「the flagship reasoning model」。所以「参数被接受」是已证实的，
+> 「思考深度与 sol 相当」**不是** —— 链序 sol → gemini-high → terra 仍然正确。
+
+#### 为什么 luna 不进思考链（刻意，勿"优化"）
+
+思考链是 sol → `gemini-3.6-flash`(high) → terra → **paid** → backup，
+**没有 luna**。既然 luna 也支持 `high`，为什么不把它插在 paid 前面多白嫖一层？
+
+因为**那是拿质量换我们不需要省的钱**。付费层是 `gemini-3.6-flash`
+（thinkingLevel `high`），而 luna 是三档里最便宜的一档。在**用户主动开启思考
+模式**的场景里，他要的是深度；此时前三个候选都失败了，让他拿到 luna
+而不是付费 gemini，是为省 $0.011 而降质。
+
+而 §2.2b 已用 GA4 实测确认**我们不缺额度**（余量 18.6 倍）。
+成本不紧张时，保质量优先于保预算 —— 这与 medical 链把 terra/luna 排在 paid
+前面并不矛盾：那条链上 paid 也是 flash，同档换同档，白嫖是净赚；
+而思考链上 paid 是**带 high 思考的 flash**，换成 luna 是净亏。
 
 经 `providerOptions.google.thinkingConfig` 传（`@ai-sdk/google@3.0.59` 已内置该
 类型，无需升级 SDK）。`thinkingLevel` 与 `thinkingBudget` **不可同时传** ——
