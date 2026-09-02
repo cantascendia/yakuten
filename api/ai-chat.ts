@@ -859,7 +859,6 @@ interface CompatStreamOptions {
    侧 timeout.chunkMs 的语义保持一致：整体超时会把正常的长回答拦腰截断，在医疗站
    上截断一句剂量说明是患者安全事故，比多等几秒严重得多。
    超时以 AbortError/TimeoutError 抛出，classify() 判 next-model，链继续往下走。 */
-const COMPAT_FIRST_BYTE_MS = 8_000;
 const COMPAT_CHUNK_MS = 8_000;
 
 /* 超时错误。**必须用普通 Error 而不是 DOMException** —— Vercel Edge runtime 里
@@ -895,14 +894,22 @@ async function readFirstChunk(
 }
 
 function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
+  /* ⚠️ 首字节**不在这里设超时**。曾经设过（8s），线上把思考模式打成 503：
+     gpt-5.6-sol 推理档首字节本就 >8s，这里的 ac.abort() 先于链路层触发，
+     而经 abort 机制包装后的错误 classify() 认不出（实测 `code=unknown ->
+     abort`），直接中止整条链而不是降级到下一个候选。
+     首字节统一由链路层的 readFirstChunk 兜（对所有 provider 一视同仁，
+     实测 `code=timeout -> next-model` 正确降级）。两套机制并存 = 快的那个
+     赢，而快的那个恰好是分类错误的那个。
+     这里只保留**分块停发**检测 —— 那是链路层做不到的（它只看首块）。 */
+  /* ac 提到流外面：链路层放弃该候选时会 reader.cancel()，下面的 cancel()
+     钩子据此 abort 掉 fetch，释放上游连接 —— 否则被放弃的候选会在后台
+     继续跑到 Edge 实例回收。 */
+  const ac = new AbortController();
+  let stallTimer: ReturnType<typeof setTimeout> | undefined;
+
   return new ReadableStream<string>({
     async start(controller) {
-      /* 单个 controller 管住整条请求：首包用它，之后每收到一块就重新武装。
-         不这样做的话，供应商接受连接后不发数据（或中途静默停发），fetch 与
-         reader.read() 都会无限等待 —— PROBE_BUDGET_MS 只在候选开始前检查，
-         中断不了已经在等的候选，结果是卡到 Vercel 硬超时、客户端无限转圈。 */
-      const ac = new AbortController();
-      let stallTimer: ReturnType<typeof setTimeout> | undefined;
       const armStall = (ms: number) => {
         clearTimeout(stallTimer);
         stallTimer = setTimeout(() => {
@@ -910,7 +917,6 @@ function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
         }, ms);
       };
 
-      armStall(COMPAT_FIRST_BYTE_MS);
       let res: Response;
       try {
         res = await fetch(o.url, {
@@ -979,6 +985,10 @@ function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
         clearTimeout(stallTimer);
         controller.close();
       }
+    },
+    cancel() {
+      clearTimeout(stallTimer);
+      ac.abort();
     },
   });
 }
