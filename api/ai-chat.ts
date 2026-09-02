@@ -849,6 +849,31 @@ interface CompatStreamOptions {
 const COMPAT_FIRST_BYTE_MS = 8_000;
 const COMPAT_CHUNK_MS = 8_000;
 
+/* 首块读取的统一上限。超时抛 TimeoutError（classify() 判 next-model，链继续下走），
+   并 cancel reader 释放上游连接 —— 否则被放弃的候选会在后台继续跑到 Edge 实例回收。 */
+async function readFirstChunk(
+  reader: ReadableStreamDefaultReader<string>,
+  ms: number,
+): Promise<ReadableStreamReadResult<string>> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      reader.read(),
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(
+          () => reject(new DOMException(`first chunk timeout after ${ms}ms`, 'TimeoutError')),
+          ms,
+        );
+      }),
+    ]);
+  } catch (e) {
+    reader.cancel().catch(() => { /* 上游已断开时 cancel 会抛，忽略 */ });
+    throw e;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
   return new ReadableStream<string>({
     async start(controller) {
@@ -1200,6 +1225,29 @@ export default async function handler(req: Request) {
     const PROBE_BUDGET_MS = 12_000;
     const t0 = Date.now();
 
+    /* 首块上限。**这是「首字节」的界，不是 totalMs** —— 一旦拿到首块就交给流式
+       输出，绝不会把正在正常输出的长回答拦腰截断（spec §2.5 的患者安全约束）。
+
+       为什么必须有：`timeout: { chunkMs }` 只管相邻 chunk 的间隔，管不到首块之前。
+       preview 实测 gemini-3.6-flash 在急症问句上首字节 10.6 / 15.4 / 19.4 / 20.6 /
+       23.8 秒，超过 Vercel Edge 的 25s 硬墙就是 504 —— 用户什么都拿不到，而这
+       正好发生在躯体急症问题上（P0-B1/B2 探针实测各挂 1/3，失败全是 504 非内容错）。
+       放在链路层而不是各 provider 内，是因为 Google 走 SDK、OpenAI/DeepSeek 走
+       手写流，只有这里能一视同仁。
+
+       12s 的取值：实测分布里 ≤2.7s 是常态，10s+ 是长尾。卡 12s 时长尾请求改由
+       下一个候选承接（实测 7–8s），总计约 20s 内出结果 —— 对急症问题而言
+       「换个模型 20 秒内答上」远优于「25 秒后 504」。 */
+    const FIRST_CHUNK_MS = 12_000;
+    const HARD_WALL_MS = 25_000;  // Vercel Edge：首响应必须在此之前
+    const WALL_SAFETY_MS = 2_000; // 留给组装响应与网络回程
+    /* 保底层不设固定上限，而是吃掉墙前剩余的全部时间：它后面没有候选了，
+       等久一点也比直接失败强，但绝不能越过硬墙。 */
+    const firstChunkBudget = (isLast: boolean): number => {
+      const remaining = HARD_WALL_MS - WALL_SAFETY_MS - (Date.now() - t0);
+      return Math.max(1_000, isLast ? remaining : Math.min(FIRST_CHUNK_MS, remaining));
+    };
+
     let reader: ReadableStreamDefaultReader<string> | null = null;
     let firstChunk: ReadableStreamReadResult<string> | null = null;
     let served: Candidate | null = null;
@@ -1242,7 +1290,7 @@ export default async function handler(req: Request) {
       try {
         const candidateReader = openStream(cand, recentMessages, maxTokens, mode, isSmallTalk).getReader();
         // Consume first chunk to catch API errors before sending 200
-        const candidateFirst = await candidateReader.read();
+        const candidateFirst = await readFirstChunk(candidateReader, firstChunkBudget(isLastResort));
 
         /* 空回复：Gemini 安全拦截会返回空流而非报错。允许降级一次以降低出错率，
            但只在同一 provider 内 —— 把 Gemini 拒答的医疗问题转投未验证的
