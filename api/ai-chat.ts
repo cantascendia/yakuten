@@ -452,8 +452,13 @@ type Grade = 'medical' | 'smalltalk';
    顺带一条「配额确实是 per-model 独立」的直接实证（比引文档更硬）：同一时刻
    `gemini-2.0-flash` 与 `gemini-2.0-flash-lite` 返回 429 RESOURCE_EXHAUSTED，
    而其余模型同时 200。 */
-const G_FLASH = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-3-flash-preview'] as const;
-const G_LITE = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-3.1-flash-lite-preview'] as const;
+/* 模型清单核对于 ai.google.dev/gemini-api/docs/models（2026-09-02）：
+   3.7-flash 为当前最新稳定档，加为链头；3.1-flash-lite-preview 官方已列
+   「shut down」、3-flash-preview 已从文档下架，两个死名占着 MAX_PROBES 的
+   格子（同 7d5decc 记录的坑：ListModels 仍列出死模型，只有真正
+   generateContent 才 404，读文档发现不了），一并删除。 */
+const G_FLASH = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash'] as const;
+const G_LITE = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'] as const;
 // 旧名 deepseek-chat 已于 2026-07-24 退役
 const DS_MODEL = 'deepseek-v4-flash';
 /* GPT-5.6 三档（$/1M in-out，2026-07-30 降价后）：
@@ -513,9 +518,13 @@ type ChainPlan = ReadonlyArray<readonly [Tier, readonly string[]]>;
 const CHAIN_PLANS: Record<'think' | 'medical' | 'smalltalk', ChainPlan> = {
   think: [
     ['free-oai', [OAI_SOL]],
-    // Google 段只取 3.6-flash（thinkingLevel:'high'）：lite 在 high 档下既不省
-    // 额度也给不出思考深度，放进来只会拖长首字节延迟
-    ['free', [G_FLASH[0]]],
+    /* Google 段只放 flash 档（thinkingLevel:'high'）：lite 在 high 档下既不省
+       额度也给不出思考深度，放进来只会拖长首字节延迟。
+       但只放 1 个是线上实测的故障源 —— 未配 OpenAI/DeepSeek key 时
+       buildChain 会整段跳过未配置的层，think 链就只剩这一个候选，
+       它一撞免费层配额（limit=20，当日反复发生）就直接「AI 暂时无法回复」，
+       0.3 秒内失败因为无候选可试。取前两个 flash 给它一个同档退路。 */
+    ['free', [G_FLASH[0], G_FLASH[1]]],
     ['free-oai', [OAI_TERRA]],
     ['paid', TIER_MODELS.paid.medical],
     ['backup', TIER_MODELS.backup.medical],
