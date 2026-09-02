@@ -73,3 +73,6 @@ tests/fixtures/lab/degraded/
 
 # codex/agent 执行 transcript —— 含本机路径/session/memory，绝不入公开仓库
 docs/ai-cto/reviews/
+
+# AI 安全探针报告 —— 含完整问答内容，public 仓库不入库
+docs/ai-safety-probe-*.md
