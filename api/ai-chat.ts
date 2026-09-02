@@ -453,11 +453,15 @@ type Grade = 'medical' | 'smalltalk';
    `gemini-2.0-flash` 与 `gemini-2.0-flash-lite` 返回 429 RESOURCE_EXHAUSTED，
    而其余模型同时 200。 */
 /* 模型清单核对于 ai.google.dev/gemini-api/docs/models（2026-09-02）：
-   3.7-flash 为当前最新稳定档，加为链头；3.1-flash-lite-preview 官方已列
-   「shut down」、3-flash-preview 已从文档下架，两个死名占着 MAX_PROBES 的
-   格子（同 7d5decc 记录的坑：ListModels 仍列出死模型，只有真正
-   generateContent 才 404，读文档发现不了），一并删除。 */
-const G_FLASH = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash'] as const;
+   删 3.1-flash-lite-preview（官方已列 shut down）与 3-flash-preview（已下架）。
+
+   ⚠️ **gemini-3.7-flash 已实测移除，勿再加回**。文档列它为当前最新稳定档，
+   但本项目这把 key 调用它时**不返回 404，而是一直挂着** —— 线上 4/4 一致
+   触发 12s 首块超时后才降级，等于每个请求白烧 12 秒。这是 7d5decc 那条
+   「文档存在 ≠ key 可调」的更恶劣变体：404 会快速失败，挂起不会。
+   将来要重新启用，必须先在 preview 上实测拿到 x-yk-model: gemini-3.7-flash
+   才能进链，不能凭文档。 */
+const G_FLASH = ['gemini-3.6-flash', 'gemini-3.5-flash'] as const;
 const G_LITE = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'] as const;
 // 旧名 deepseek-chat 已于 2026-07-24 退役
 const DS_MODEL = 'deepseek-v4-flash';
