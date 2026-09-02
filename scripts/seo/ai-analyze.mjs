@@ -211,10 +211,24 @@ if (DRY_RUN) {
   console.log('• --dry-run: skipping Gemini call');
   report = `# AI SEO 报告（DRY RUN — 未调用 Gemini）\n\n生成于 ${new Date().toISOString()}\n\n模型: ${MODEL}\nprompt 大小: ${(promptBytes / 1024).toFixed(1)}KB\nGSC 查询: ${gsc.length}（striking ${striking.length}）\nTrends: ${trends?.results?.length ?? 0}\n\n> 这是 dry-run 占位。去掉 --dry-run 即调用 Gemini 生成真实报告。\n`;
 } else {
-  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
-    console.error('\n❌ GOOGLE_GENERATIVE_AI_API_KEY 未设置（.env.local 或环境变量）。无法调用 Gemini。\n   仅想验证数据管道可用 `npm run seo:ai -- --dry-run`。\n');
-    process.exit(1);
-  }
+  /* ⛔ 已停用（owner 2026-07-29 指令）——
+     本脚本曾复用 api/ai-chat.ts 的同一把免费 Gemini key。免费额度是
+     per-project 共享的：跑一次 SEO 分析就会吃掉当天用户侧 AI 问答的额度。
+     用户侧优先级更高，故此路径停用。
+     数据管道（GSC / Trends / keyword-gap）不受影响，`--dry-run` 仍可用。
+     如需恢复：改用独立的付费 key（新增 SEO_AI_API_KEY 之类的变量），
+     不要再共用 GOOGLE_GENERATIVE_AI_API_KEY。
+     Per docs/specs/ai-chat-multi-tier-fallback.md（免费额度归属用户侧）。 */
+  console.error(
+    '\n⛔ seo:ai 的 Gemini 调用已停用（曾与 AI 问答共用免费额度，额度已归属用户侧）。\n' +
+    '   数据管道仍可用：`npm run seo:ai -- --dry-run`（生成不含 AI 分析的占位报告）。\n' +
+    '   如需恢复：为本脚本配置独立的付费 key，勿再共用 GOOGLE_GENERATIVE_AI_API_KEY。\n',
+  );
+  process.exit(1);
+  /* 下面这段是**刻意保留**的死代码 —— seo:ai 的 Gemini 调用已停用（额度归属
+     用户侧），保留实现以便日后配了独立付费 key 后恢复。
+     不需要 eslint-disable：`no-unreachable` 的静态分析不认识 process.exit 的
+     终止语义，因此不会把这些语句判为不可达。 */
   const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
   const { generateText } = await import('ai');
   const google = createGoogleGenerativeAI();

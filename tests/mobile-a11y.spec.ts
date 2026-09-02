@@ -52,13 +52,20 @@ test.describe('Mobile (iPhone SE 375×667) layout', () => {
 
   test('blog skip-link is keyboard-accessible', async ({ page }) => {
     await page.goto('/zh/blog/cpa-dose-safe-range/');
-    // Skip link is visually hidden until focus. Pressing Tab as the first
-    // action should focus it.
+    // spec-change 2026-07-29：博客迁入 StarlightPage 后，原自定义
+    // `.blog-skip-link` + `#blog-main-content` 已被 Starlight 原生实现取代
+    // （实测产物：`<a href="#_top">跳转到内容</a>`）。
+    // 断言改为按**行为**而非类名：首次 Tab 必须落在一个指向主内容的跳转链接上。
+    // WCAG 2.4.1 Bypass Blocks 的意图完全保留，且不再与具体实现耦合 ——
+    // 换回自定义实现时这条依然有效。
     await page.keyboard.press('Tab');
-    const skipLink = page.locator('.blog-skip-link');
-    await expect(skipLink).toBeFocused();
-    const href = await skipLink.getAttribute('href');
-    expect(href).toBe('#blog-main-content');
+    const focused = page.locator(':focus');
+    await expect(focused).toBeVisible();
+    const href = await focused.getAttribute('href');
+    expect(href, '首个 Tab 焦点应是指向页内主内容的跳转链接').toMatch(/^#/);
+    // 该锚点必须真实存在，否则跳转链接是坏的
+    const target = page.locator(String(href));
+    await expect(target).toHaveCount(1);
   });
 });
 
@@ -107,9 +114,15 @@ test.describe('Accessibility — focus and modals', () => {
     const input = page.locator('input.btc-input').first();
     await expect(input).toBeVisible();
     // Enter a value well above any reasonable safe range
-    await input.fill('9999');
-    // Wait a tick for state update
-    await page.waitForTimeout(120);
+    // ⚠️ 必须用 pressSequentially 而不是 fill()（bug-fix 2026-07-29）。
+    // fill() 直接设 DOM value 再派发一个合成 input 事件，React 受控组件收不到
+    // → onChange 不触发 → 不重渲染 → aria-describedby 永远不出现。
+    // 实测：fill() 后 2 秒、乃至重填一次，describedby 都是 null；
+    // 换 pressSequentially 逐字符敲则立刻得到 describedby=btc-status-e2 + aria-invalid=true。
+    // 断言未做任何放宽 —— 实现本来就是对的，是测试没走到那条代码路径。
+    await input.click();
+    await input.pressSequentially('9999', { delay: 20 });
+    await page.waitForTimeout(200);
     const ariaInvalid = await input.getAttribute('aria-invalid');
     // Either 'true' or null is acceptable; we want it to flip to true at red
     // We assert that the describedby pointer to a status node is set

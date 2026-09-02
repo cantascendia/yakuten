@@ -140,10 +140,16 @@ function postProcess(html: string): string {
   });
 
   // Tables → horizontal-scroll wrapper (mobile never overflows the page body).
+  // tabindex=0 makes the scroll port keyboard-reachable (WCAG 2.1.1 — an
+  // overflow:auto region a keyboard user cannot focus is content they cannot
+  // reach). Deliberately NO role="region": a landmark role requires an
+  // accessible name, which would mean a new string in all 17 locales; a bare
+  // focusable scroll container already satisfies 2.1.1.
   root.querySelectorAll('table').forEach((table) => {
     table.classList.add('yk-ai-table');
     const wrap = doc.createElement('div');
     wrap.className = 'yk-ai-tablewrap';
+    wrap.setAttribute('tabindex', '0');
     table.replaceWith(wrap);
     wrap.appendChild(table);
   });
@@ -154,6 +160,7 @@ function postProcess(html: string): string {
     wrap.className = 'yk-ai-prewrap';
     pre.replaceWith(wrap);
     wrap.appendChild(pre);
+    pre.setAttribute('tabindex', '0'); // same rationale as .yk-ai-tablewrap above
     const btn = doc.createElement('button');
     btn.className = 'yk-ai-copybtn';
     btn.type = 'button';
@@ -189,8 +196,65 @@ function buildLinkHtml(label: string, hrefRaw: string): string {
   return `<a class="yk-ai-extlink" href="${attr}" rel="noopener noreferrer" target="_blank">${label}</a>`;
 }
 
+/**
+ * Merge the inline-level fallback output into the SAME block structure marked
+ * produces: runs of <li> get wrapped in <ul>/<ol>, blank lines split <p>, and
+ * <hr>/heading lines stay outside paragraphs.
+ *
+ * Why this exists: the stream renders through fallbackRender and the final
+ * flush through marked. When the two emit different block shapes, the last
+ * frame of every answer re-lays-out the whole message (paragraph margins
+ * appear, list indent shifts). Converging the shapes here removes that jump.
+ *
+ * NOTE: this pairs with deleting `.yk-ai-li { margin-inline-start:1.2em }` in
+ * BASE_CSS — once the <li> lives inside a <ul>, indent is owned by
+ * `ul { padding-inline-start:1.4em }` and the old margin double-indents.
+ */
+function blockify(html: string): string {
+  const out: string[] = [];
+  let listBuf: string[] = [];
+  let listTag: 'ul' | 'ol' | null = null;
+  let paraBuf: string[] = [];
+
+  const flushList = () => {
+    if (listTag && listBuf.length) out.push(`<${listTag}>${listBuf.join('')}</${listTag}>`);
+    listBuf = [];
+    listTag = null;
+  };
+  const flushPara = () => {
+    if (paraBuf.length) out.push(`<p>${paraBuf.join('<br/>')}</p>`);
+    paraBuf = [];
+  };
+
+  for (const line of html.split('\n')) {
+    const li = /^<li class="yk-ai-li yk-ai-li--(ul|ol)">/.exec(line);
+    if (li) {
+      flushPara();
+      const tag = li[1] as 'ul' | 'ol';
+      if (listTag && listTag !== tag) flushList();
+      listTag = tag;
+      listBuf.push(line);
+      continue;
+    }
+    flushList();
+    if (!line.trim()) {
+      flushPara();
+      continue;
+    }
+    if (/^<(hr|strong class="yk-ai-h)/.test(line)) {
+      flushPara();
+      out.push(line);
+      continue;
+    }
+    paraBuf.push(line);
+  }
+  flushList();
+  flushPara();
+  return out.join('');
+}
+
 function fallbackRender(text: string): string {
-  return text
+  const inline = text
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/^---$/gm, '<hr class="yk-ai-hr"/>')
     .replace(/^### (.+)$/gm, '<strong class="yk-ai-h yk-ai-h--3">$1</strong>')
@@ -209,6 +273,10 @@ function fallbackRender(text: string): string {
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/^[*\-] (.+)$/gm, '<li class="yk-ai-li yk-ai-li--ul">$1</li>')
     .replace(/^\d+\.\s(.+)$/gm, '<li class="yk-ai-li yk-ai-li--ol">$1</li>')
-    .replace(/`([^`]+)`/g, '<code class="yk-ai-code">$1</code>')
-    .replace(/\n/g, '<br/>');
+    .replace(/`([^`]+)`/g, '<code class="yk-ai-code">$1</code>');
+  // Newlines are consumed by blockify (it turns intra-paragraph ones into <br/>).
+  return blockify(inline);
 }
+
+/** Test-only export: blockify is a pure function and is unit-verified. */
+export const __test__ = { blockify, fallbackRender };

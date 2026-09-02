@@ -49,6 +49,26 @@ Add a single `headers` block applying to all paths:
 - Do NOT add new env vars beyond `ALLOWED_ORIGINS`
 - Do NOT touch other files under `api/`
 
+> **Amendment (2026-07-29)** — The non-goal "Do NOT add new env vars beyond
+> `ALLOWED_ORIGINS`" was scoped to the P0 security-hardening PR of 2026-05-26.
+> It is explicitly superseded, **for the env vars named below only**, by
+> `docs/specs/ai-chat-multi-tier-fallback.md` (double-signed 2026-07-29):
+> `GOOGLE_PAID_API_KEY`, `DEEPSEEK_API_KEY`, `AI_COOLDOWN_DISABLED`,
+> **`OPENAI_API_KEY`**, **`AI_TIERS`**.
+> All other non-goals in §3 remain in force — in particular the SYSTEM_PROMPT,
+> the rate limiter, the messages-validation limits, and "do not touch other files
+> under `api/`" are unchanged by that spec (it edits `api/ai-chat.ts` only).
+> Any further env var beyond these five requires its own double-signed spec.
+>
+> **Amendment 2 (2026-07-29, same PR)** — `OPENAI_API_KEY` and `AI_TIERS` were
+> added *later in the same PR* than the first three, and this amendment initially
+> listed only three. Caught by the boundary-security review as a governance drift:
+> an auditor reading this file alone would conclude those two env vars were
+> introduced in violation of the §3 non-goal. Both are covered by the §0 supersede
+> table of `ai-chat-multi-tier-fallback.md`; this list is now aligned with it.
+> **Lesson: when a supersede list is amended mid-PR, re-check it at PR close ——
+> the drift does not fail any build, it only breaks the audit chain.**
+
 ## 4. Risk Assessment
 
 | Risk | Likelihood | Impact | Mitigation |

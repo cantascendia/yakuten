@@ -438,5 +438,15 @@
     "doi": "10.1007/s00103-019-03026-1",
     "url": "https://register.awmf.org/de/leitlinien/detail/138-001",
     "evidenceLevel": "A"
+  },
+  {
+    "id": "powers-2019",
+    "authors": "Powers WJ et al.",
+    "year": 2019,
+    "title": "Guidelines for the Early Management of Patients With Acute Ischemic Stroke: 2019 Update — A Guideline for Healthcare Professionals From the American Heart Association/American Stroke Association",
+    "journal": "Stroke",
+    "doi": "10.1161/STR.0000000000000211",
+    "url": "https://doi.org/10.1161/STR.0000000000000211",
+    "evidenceLevel": "A"
   }
 ]

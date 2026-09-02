@@ -952,7 +952,16 @@ export default function DrugComparator() {
           const url = getDrugPageUrl(d.id, linkLocale);
           const catColor = getCategoryColor(d.category);
           return (
-            <div key={d.id} style={{ ...s.compareCard, borderLeft: `3px solid ${catColor}` }}>
+            /* dc-compare-card 是**纯测试钩子**（无任何样式，零视觉影响）。
+               tests/critical-paths.spec.ts 需要一个「一张卡 = 一个被对比药物」的
+               稳定契约。此前那条测试退而用 .dc-drug-link 计数，但它是**条件渲染**的
+               （`getDrugPageUrl()` 无详情页时退化为纯文本 —— 如 CPA），
+               导致「CPA vs 螺内酯」只数出 1 个，看起来像对比坏了。 */
+            <div
+              key={d.id}
+              className="dc-compare-card"
+              style={{ ...s.compareCard, borderLeft: `3px solid ${catColor}` }}
+            >
               {/* Drug name */}
               <div style={s.compareCardTitle}>
                 {url ? (

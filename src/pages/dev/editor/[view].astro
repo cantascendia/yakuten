@@ -1,0 +1,132 @@
+---
+/**
+ * 遮盖编辑器（RedactEditor）的 dev 挂载页 —— **仅 dev/test 存在，绝不进生产产物**。
+ *
+ * 形态与 src/pages/dev/[harness].astro 完全同源（那两条选择都是被实测逼出来的）：
+ *
+ * 1. dynamic route + `getStaticPaths()` 在生产构建返回空数组 → `astro build` 不产出 HTML。
+ *    放在 `dev/editor/` 子目录而不是 `dev/` 下：`/dev/[harness]` 已经占了单段路由，
+ *    再加一个同深度的动态段会撞路由。
+ * 2. `<script is:inline>` + **运行时动态 import**。普通 `<script>` 会被 Vite 当页面资产
+ *    打包，产出一个没有任何页面引用、却公开可取的孤儿 chunk（tests/redact-privacy.spec.ts
+ *    末节的断言就是为这个坑加的）。`is:inline` 让 Vite 完全不解析这段代码。
+ *    inline 脚本不能 import 裸模块名（react），所以 React 的引入收在 devMount.tsx 里。
+ *
+ * 用途：把 RedactEditor 挂起来做人工 / 键盘 / 双皮肤验收 + V3「预览 = 实发」自测。
+ * 阶段 4 才把编辑器接进 AIAssistant（那时它才**应该**进 dist）。
+ */
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  return [{ params: { view: 'redact' } }];
+}
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>redact editor harness (dev only)</title>
+    <!-- 站点样式：编辑器的默认皮肤自带（组件内 <style>），这里只需要设计 token 与 sakura 覆盖。
+         `?direct` 是必须的：Vite dev 对 /src/**.css 默认返回**注入样式的 JS 模块**，
+         用 <link> 拉会拿到 JS 当 CSS 解析（静默无样式）。?direct 才返回裸 CSS。 -->
+    <link rel="stylesheet" href="/src/styles/global.css?direct" />
+    <link rel="stylesheet" href="/src/styles/sakura-theme.css?direct" />
+    <!-- sakura-components.css 必须载：里面的 `html.sakura .sl-markdown-content p` (0,2,2)
+         正是把危机卡文字刷成与底色同色的那条 P0 根因。不载它就测不到特异度坑。 -->
+    <link rel="stylesheet" href="/src/styles/sakura-components.css?direct" />
+    <link rel="stylesheet" href="/src/styles/sakura-ai.css?direct" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--color-bg-primary, #0d0b14);
+        font-family: var(--font-body, sans-serif);
+        color: var(--color-text-primary, #e6e0ee);
+      }
+      html.sakura body {
+        background: var(--bg-1, #fff5e0);
+        color: var(--fg-1, #4a2838);
+      }
+      .devbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-block-end: 16px;
+        font-size: 13px;
+      }
+      .devbar button {
+        min-height: 44px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      main {
+        max-width: 62rem;
+        margin-inline: auto;
+      }
+    </style>
+    <script is:inline>
+      // 皮肤/主题状态在**首帧前**落定：sakura 的 :has() 选择器与缓存对
+      // 「先渲染再加 class」极其敏感（本仓库有专门的 learned 教训）。
+      try {
+        if (localStorage.getItem('sakura-theme') === 'true') {
+          document.documentElement.classList.add('sakura');
+        }
+        const t = localStorage.getItem('yk-dev-theme');
+        if (t) document.documentElement.dataset.theme = t;
+      } catch (e) {
+        /* localStorage 不可用即按默认皮肤 */
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="devbar">
+        <strong>dev only</strong>
+        <span>· 生产构建不产出本页，也不产出本页的脚本资产</span>
+        <button type="button" id="skin">切换皮肤（sakura / 二相乐园）</button>
+        <button type="button" id="theme">切换昼夜（data-theme）</button>
+        <span id="state"></span>
+      </div>
+      <!-- 刻意包一层 .sl-markdown-content：生产环境里 AI 工具页的组件就在这层里面，
+           而那层带着 sakura 的 `p { color }` 锁色规则。不复现它 = 测不到特异度坑。 -->
+      <div class="sl-markdown-content">
+        <div id="host"></div>
+      </div>
+    </main>
+
+    <script is:inline type="module">
+      // @vitejs/plugin-react 要求 HTML 在加载任何 JSX 模块**之前**注入 React Refresh preamble。
+      // Astro 只给它自己识别的 React island 注入；本页用裸 is:inline 动态 import 绕过了那条路，
+      // 所以必须手工注入 —— 否则第一个 .tsx 模块顶部就抛
+      // 「@vitejs/plugin-react can't detect preamble. Something is wrong.」（实测踩过）。
+      // 只 dev 需要，而本页只存在于 dev。
+      const RefreshRuntime = await import('/@react-refresh');
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.__vite_plugin_react_preamble_installed__ = true;
+
+      const mod = await import('/src/components/interactive/redact/devMount.tsx');
+      mod.mountRedactEditorDev(document.getElementById('host'));
+      document.documentElement.dataset.redactEditorHarness = 'ready';
+
+      const root = document.documentElement;
+      const paint = () => {
+        document.getElementById('state').textContent =
+          `皮肤=${root.classList.contains('sakura') ? 'sakura' : 'default'} · data-theme=${root.dataset.theme ?? '(未设)'}`;
+      };
+      paint();
+      // 皮肤切换必须走 localStorage + reload（裸 add class 会让 :has 失效并留下缓存幻影）
+      document.getElementById('skin').addEventListener('click', () => {
+        localStorage.setItem('sakura-theme', String(!root.classList.contains('sakura')));
+        location.reload();
+      });
+      document.getElementById('theme').addEventListener('click', () => {
+        localStorage.setItem('yk-dev-theme', root.dataset.theme === 'light' ? 'dark' : 'light');
+        location.reload();
+      });
+    </script>
+  </body>
+</html>

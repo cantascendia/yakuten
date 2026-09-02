@@ -105,6 +105,42 @@ export interface AIChatCopy {
   scrollToBottom: string;
   openSidebar: string;
   closeSidebar: string;
+  /* --- 用量条（百分比制；计数只在本机 localStorage，绝不上报）---
+     两级**滚动窗口**：session = 5 小时，weekly = 7 天，各自从窗口内第一次提问
+     起算，窗口结束后整体恢复。故所有文案都不得再出现"今日 / 明天 0:00 /
+     午夜重置"这类自然日措辞，恢复时间一律由占位符承载。 */
+  /** 主用量文案（时段级），{pct} = 已用百分比整数 */
+  usageLabel: string;
+  /** 副用量文案（周级），{pct}；拼在主文案后，故为小写起头的短语 */
+  usageWeeklyLabel: string;
+  /** 额度用尽的短提示（用作输入框 placeholder；不含具体时间） */
+  usageExhausted: string;
+  /** 用尽后的去处引导（渲染为指向站内首页的链接文案） */
+  usageResetHint: string;
+  /** 时段级用尽 + 剩余 ≥1 小时且有零头分钟，{h} 小时 {m} 分 */
+  usageResetIn: string;
+  /** 时段级用尽 + 剩余为整小时，{h} */
+  usageResetInHours: string;
+  /** 时段级用尽 + 剩余不足 1 小时，{m} 分钟 */
+  usageResetInMinutes: string;
+  /** 周级用尽 + 剩余 ≥48 小时，{d} 天（阈值保证 d ≥ 2，各语种复数安全） */
+  usageWeeklyResetInDays: string;
+  /** 周级用尽 + 剩余 <48 小时，{h} 小时 */
+  usageWeeklyResetInHours: string;
+  /* --- 深度思考模式 --- */
+  /** 开关按钮文案（同时用作 aria-label / title） */
+  thinkMode: string;
+  /** 深度思考开启时的流式等待区文案 */
+  thinkingDeep: string;
+  /* --- 等待反馈 / 读屏播报 --- */
+  /** 等待已耗时（3 秒后挂在「正在思考」后面），{s} = 纯数字秒数。
+      各语种只需给单位词与本语言的间距习惯；不做复数分支（{s} 恒为数字，
+      且 ≥3 才渲染）。ar/fa 下数字为 LTR 内嵌，靠 bidi 算法自然成序。 */
+  elapsedSeconds: string;
+  /** 回答完成时的读屏播报（原来把 400 字原始 markdown 灌进 aria-live，
+      读屏会逐字念出 ** | # 等标记符号；正文本身在 role="log" 里可用虚拟
+      光标正常阅读，播报只需一句"完成"）。 */
+  replyDone: string;
 }
 
 export function getLocale(): Locale {
@@ -192,6 +228,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '回到底部',
     openSidebar: '打开历史对话',
     closeSidebar: '关闭历史对话',
+    usageLabel: '本时段已用 {pct}%',
+    usageWeeklyLabel: '本周 {pct}%',
+    usageExhausted: '额度已用完，请稍后再来。',
+    usageResetHint: '你也可以先查阅站内文档',
+    usageResetIn: '本时段额度已用完，约 {h} 小时 {m} 分后恢复。',
+    usageResetInHours: '本时段额度已用完，约 {h} 小时后恢复。',
+    usageResetInMinutes: '本时段额度已用完，约 {m} 分钟后恢复。',
+    usageWeeklyResetInDays: '本周额度已用完，约 {d} 天后恢复。',
+    usageWeeklyResetInHours: '本周额度已用完，约 {h} 小时后恢复。',
+    thinkMode: '深度思考',
+    thinkingDeep: '正在深度思考...',
+    elapsedSeconds: '{s} 秒',
+    replyDone: '回复完成',
   },
   en: {
     title: 'AI Assistant',
@@ -271,6 +320,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Scroll to bottom',
     openSidebar: 'Open conversation history',
     closeSidebar: 'Close conversation history',
+    usageLabel: '{pct}% of this session’s quota',
+    usageWeeklyLabel: '{pct}% this week',
+    usageExhausted: 'You’ve used up your quota for now.',
+    usageResetHint: 'In the meantime, you can browse the guides on this site',
+    usageResetIn: 'Session quota used up — back in about {h} h {m} min.',
+    usageResetInHours: 'Session quota used up — back in about {h} h.',
+    usageResetInMinutes: 'Session quota used up — back in about {m} min.',
+    usageWeeklyResetInDays: 'Weekly quota used up — back in about {d} days.',
+    usageWeeklyResetInHours: 'Weekly quota used up — back in about {h} h.',
+    thinkMode: 'Deep thinking',
+    thinkingDeep: 'Thinking it through...',
+    elapsedSeconds: '{s}s',
+    replyDone: 'Reply complete',
   },
   ja: {
     title: 'AIアシスタント',
@@ -350,6 +412,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '一番下へ移動',
     openSidebar: '会話履歴を開く',
     closeSidebar: '会話履歴を閉じる',
+    usageLabel: 'この時間帯の使用量 {pct}%',
+    usageWeeklyLabel: '今週 {pct}%',
+    usageExhausted: '利用上限に達しました。',
+    usageResetHint: 'それまではサイト内の解説を読むのもおすすめです',
+    usageResetIn: 'この時間帯の上限に達しました。約 {h} 時間 {m} 分後に回復します。',
+    usageResetInHours: 'この時間帯の上限に達しました。約 {h} 時間後に回復します。',
+    usageResetInMinutes: 'この時間帯の上限に達しました。約 {m} 分後に回復します。',
+    usageWeeklyResetInDays: '今週の上限に達しました。約 {d} 日後に回復します。',
+    usageWeeklyResetInHours: '今週の上限に達しました。約 {h} 時間後に回復します。',
+    thinkMode: 'じっくり考える',
+    thinkingDeep: 'じっくり考えています...',
+    elapsedSeconds: '{s} 秒',
+    replyDone: '回答が完了しました',
   },
   ko: {
     title: 'AI 어시스턴트',
@@ -429,6 +504,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: '맨 아래로 이동',
     openSidebar: '대화 기록 열기',
     closeSidebar: '대화 기록 닫기',
+    usageLabel: '현재 시간대 사용량 {pct}%',
+    usageWeeklyLabel: '이번 주 {pct}%',
+    usageExhausted: '사용량을 모두 썼어요.',
+    usageResetHint: '그동안 사이트의 문서를 살펴봐도 좋아요',
+    usageResetIn: '현재 시간대 사용량을 모두 썼어요. 약 {h}시간 {m}분 뒤에 다시 쓸 수 있어요.',
+    usageResetInHours: '현재 시간대 사용량을 모두 썼어요. 약 {h}시간 뒤에 다시 쓸 수 있어요.',
+    usageResetInMinutes: '현재 시간대 사용량을 모두 썼어요. 약 {m}분 뒤에 다시 쓸 수 있어요.',
+    usageWeeklyResetInDays: '이번 주 사용량을 모두 썼어요. 약 {d}일 뒤에 다시 쓸 수 있어요.',
+    usageWeeklyResetInHours: '이번 주 사용량을 모두 썼어요. 약 {h}시간 뒤에 다시 쓸 수 있어요.',
+    thinkMode: '깊이 생각하기',
+    thinkingDeep: '깊이 생각하는 중...',
+    elapsedSeconds: '{s}초',
+    replyDone: '답변 완료',
   },
   es: {
     title: 'Asistente de IA',
@@ -508,6 +596,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Ir al final',
     openSidebar: 'Abrir historial de conversaciones',
     closeSidebar: 'Cerrar historial de conversaciones',
+    usageLabel: 'Uso de este tramo: {pct}%',
+    usageWeeklyLabel: 'esta semana {pct}%',
+    usageExhausted: 'Agotaste tu cuota por ahora.',
+    usageResetHint: 'Mientras tanto puedes consultar las guías del sitio',
+    usageResetIn: 'Cuota de este tramo agotada; vuelve en unas {h} h y {m} min.',
+    usageResetInHours: 'Cuota de este tramo agotada; vuelve en unas {h} h.',
+    usageResetInMinutes: 'Cuota de este tramo agotada; vuelve en unos {m} min.',
+    usageWeeklyResetInDays: 'Cuota semanal agotada; vuelve en unos {d} días.',
+    usageWeeklyResetInHours: 'Cuota semanal agotada; vuelve en unas {h} h.',
+    thinkMode: 'Pensar a fondo',
+    thinkingDeep: 'Pensándolo a fondo...',
+    elapsedSeconds: '{s} s',
+    replyDone: 'Respuesta completada',
   },
   pt: {
     title: 'Assistente de IA',
@@ -587,6 +688,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Ir para o final',
     openSidebar: 'Abrir histórico de conversas',
     closeSidebar: 'Fechar histórico de conversas',
+    usageLabel: 'Uso deste período: {pct}%',
+    usageWeeklyLabel: 'esta semana {pct}%',
+    usageExhausted: 'Sua cota acabou por enquanto.',
+    usageResetHint: 'Enquanto isso, dá para consultar os guias do site',
+    usageResetIn: 'Cota deste período esgotada; volta em cerca de {h} h e {m} min.',
+    usageResetInHours: 'Cota deste período esgotada; volta em cerca de {h} h.',
+    usageResetInMinutes: 'Cota deste período esgotada; volta em cerca de {m} min.',
+    usageWeeklyResetInDays: 'Cota semanal esgotada; volta em cerca de {d} dias.',
+    usageWeeklyResetInHours: 'Cota semanal esgotada; volta em cerca de {h} h.',
+    thinkMode: 'Pensar com calma',
+    thinkingDeep: 'Pensando com calma...',
+    elapsedSeconds: '{s} s',
+    replyDone: 'Resposta concluída',
   },
   fr: {
     title: 'Assistant IA',
@@ -666,6 +780,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Aller en bas',
     openSidebar: "Ouvrir l'historique des conversations",
     closeSidebar: "Fermer l'historique des conversations",
+    usageLabel: 'Utilisation de cette plage : {pct} %',
+    usageWeeklyLabel: 'cette semaine {pct} %',
+    usageExhausted: 'Votre quota est épuisé pour le moment.',
+    usageResetHint: 'En attendant, vous pouvez consulter les guides du site',
+    usageResetIn: 'Quota de cette plage épuisé ; il revient dans environ {h} h {m} min.',
+    usageResetInHours: 'Quota de cette plage épuisé ; il revient dans environ {h} h.',
+    usageResetInMinutes: 'Quota de cette plage épuisé ; il revient dans environ {m} min.',
+    usageWeeklyResetInDays: 'Quota hebdomadaire épuisé ; il revient dans environ {d} jours.',
+    usageWeeklyResetInHours: 'Quota hebdomadaire épuisé ; il revient dans environ {h} h.',
+    thinkMode: 'Réflexion approfondie',
+    thinkingDeep: 'Réflexion approfondie en cours...',
+    elapsedSeconds: '{s} s',
+    replyDone: 'Réponse terminée',
   },
   de: {
     title: 'KI-Assistent',
@@ -745,6 +872,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Nach unten scrollen',
     openSidebar: 'Unterhaltungsverlauf öffnen',
     closeSidebar: 'Unterhaltungsverlauf schließen',
+    usageLabel: 'In diesem Zeitfenster genutzt: {pct} %',
+    usageWeeklyLabel: 'diese Woche {pct} %',
+    usageExhausted: 'Ihr Kontingent ist vorerst aufgebraucht.',
+    usageResetHint: 'In der Zwischenzeit können Sie die Leitfäden auf dieser Seite lesen',
+    usageResetIn: 'Kontingent dieses Zeitfensters aufgebraucht – in etwa {h} Std. {m} Min. wieder verfügbar.',
+    usageResetInHours: 'Kontingent dieses Zeitfensters aufgebraucht – in etwa {h} Std. wieder verfügbar.',
+    usageResetInMinutes: 'Kontingent dieses Zeitfensters aufgebraucht – in etwa {m} Min. wieder verfügbar.',
+    usageWeeklyResetInDays: 'Wochenkontingent aufgebraucht – in etwa {d} Tagen wieder verfügbar.',
+    usageWeeklyResetInHours: 'Wochenkontingent aufgebraucht – in etwa {h} Std. wieder verfügbar.',
+    thinkMode: 'Gründlich nachdenken',
+    thinkingDeep: 'Denkt gründlich nach...',
+    elapsedSeconds: '{s} s',
+    replyDone: 'Antwort abgeschlossen',
   },
   ru: {
     title: 'ИИ-помощник',
@@ -824,6 +964,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Прокрутить вниз',
     openSidebar: 'Открыть историю бесед',
     closeSidebar: 'Закрыть историю бесед',
+    usageLabel: 'Использовано за период: {pct}%',
+    usageWeeklyLabel: 'за неделю {pct}%',
+    usageExhausted: 'Лимит пока исчерпан.',
+    usageResetHint: 'А пока можно почитать материалы сайта',
+    usageResetIn: 'Лимит периода исчерпан — восстановится примерно через {h} ч {m} мин.',
+    usageResetInHours: 'Лимит периода исчерпан — восстановится примерно через {h} ч.',
+    usageResetInMinutes: 'Лимит периода исчерпан — восстановится примерно через {m} мин.',
+    usageWeeklyResetInDays: 'Недельный лимит исчерпан — восстановится примерно через {d} дн.',
+    usageWeeklyResetInHours: 'Недельный лимит исчерпан — восстановится примерно через {h} ч.',
+    thinkMode: 'Глубокое размышление',
+    thinkingDeep: 'Обдумываю подробно...',
+    elapsedSeconds: '{s} с',
+    replyDone: 'Ответ готов',
   },
   ar: {
     title: 'مساعد الذكاء الاصطناعي',
@@ -903,6 +1056,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'العودة إلى الأسفل',
     openSidebar: 'فتح سجل المحادثات',
     closeSidebar: 'إغلاق سجل المحادثات',
+    usageLabel: 'استُخدم في هذه الفترة {pct}٪',
+    usageWeeklyLabel: 'هذا الأسبوع {pct}٪',
+    usageExhausted: 'انتهت حصتك في الوقت الحالي.',
+    usageResetHint: 'يمكنك في الأثناء تصفّح أدلة الموقع',
+    usageResetIn: 'انتهت حصة هذه الفترة، وستعود بعد نحو {h} ساعة و{m} دقيقة.',
+    usageResetInHours: 'انتهت حصة هذه الفترة، وستعود بعد نحو {h} ساعة.',
+    usageResetInMinutes: 'انتهت حصة هذه الفترة، وستعود بعد نحو {m} دقيقة.',
+    usageWeeklyResetInDays: 'انتهت حصة الأسبوع، وستعود بعد نحو {d} أيام.',
+    usageWeeklyResetInHours: 'انتهت حصة الأسبوع، وستعود بعد نحو {h} ساعة.',
+    thinkMode: 'تفكير معمّق',
+    thinkingDeep: 'جارٍ التفكير بعمق...',
+    elapsedSeconds: '{s} ث',
+    replyDone: 'اكتمل الرد',
   },
   fa: {
     title: 'دستیار هوش مصنوعی',
@@ -982,6 +1148,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'رفتن به پایین',
     openSidebar: 'باز کردن تاریخچه گفتگو',
     closeSidebar: 'بستن تاریخچه گفتگو',
+    usageLabel: 'مصرف این بازه {pct}٪',
+    usageWeeklyLabel: 'این هفته {pct}٪',
+    usageExhausted: 'سهمیه‌ات فعلاً تمام شده است.',
+    usageResetHint: 'در این فاصله می‌توانید راهنماهای سایت را بخوانید',
+    usageResetIn: 'سهمیهٔ این بازه تمام شد؛ حدود {h} ساعت و {m} دقیقه دیگر بازمی‌گردد.',
+    usageResetInHours: 'سهمیهٔ این بازه تمام شد؛ حدود {h} ساعت دیگر بازمی‌گردد.',
+    usageResetInMinutes: 'سهمیهٔ این بازه تمام شد؛ حدود {m} دقیقه دیگر بازمی‌گردد.',
+    usageWeeklyResetInDays: 'سهمیهٔ این هفته تمام شد؛ حدود {d} روز دیگر بازمی‌گردد.',
+    usageWeeklyResetInHours: 'سهمیهٔ این هفته تمام شد؛ حدود {h} ساعت دیگر بازمی‌گردد.',
+    thinkMode: 'تفکر عمیق',
+    thinkingDeep: 'در حال تفکر عمیق...',
+    elapsedSeconds: '{s} ثانیه',
+    replyDone: 'پاسخ کامل شد',
   },
   th: {
     title: 'ผู้ช่วย AI',
@@ -1061,6 +1240,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'เลื่อนไปด้านล่าง',
     openSidebar: 'เปิดประวัติการสนทนา',
     closeSidebar: 'ปิดประวัติการสนทนา',
+    usageLabel: 'ใช้ไปในช่วงนี้ {pct}%',
+    usageWeeklyLabel: 'สัปดาห์นี้ {pct}%',
+    usageExhausted: 'ใช้โควตาครบแล้วในตอนนี้',
+    usageResetHint: 'ระหว่างนี้ลองอ่านคู่มือในเว็บไซต์ดูได้',
+    usageResetIn: 'ใช้โควตาช่วงนี้ครบแล้ว จะกลับมาใช้ได้ในอีกประมาณ {h} ชั่วโมง {m} นาที',
+    usageResetInHours: 'ใช้โควตาช่วงนี้ครบแล้ว จะกลับมาใช้ได้ในอีกประมาณ {h} ชั่วโมง',
+    usageResetInMinutes: 'ใช้โควตาช่วงนี้ครบแล้ว จะกลับมาใช้ได้ในอีกประมาณ {m} นาที',
+    usageWeeklyResetInDays: 'ใช้โควตาสัปดาห์นี้ครบแล้ว จะกลับมาใช้ได้ในอีกประมาณ {d} วัน',
+    usageWeeklyResetInHours: 'ใช้โควตาสัปดาห์นี้ครบแล้ว จะกลับมาใช้ได้ในอีกประมาณ {h} ชั่วโมง',
+    thinkMode: 'คิดแบบละเอียด',
+    thinkingDeep: 'กำลังคิดอย่างละเอียด...',
+    elapsedSeconds: '{s} วิ',
+    replyDone: 'ตอบกลับเสร็จสิ้น',
   },
   vi: {
     title: 'Trợ lý AI',
@@ -1140,6 +1332,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Cuộn xuống cuối',
     openSidebar: 'Mở lịch sử trò chuyện',
     closeSidebar: 'Đóng lịch sử trò chuyện',
+    usageLabel: 'Đã dùng trong phiên này {pct}%',
+    usageWeeklyLabel: 'tuần này {pct}%',
+    usageExhausted: 'Bạn đã dùng hết lượt hiện có.',
+    usageResetHint: 'Trong lúc chờ, bạn có thể đọc các bài hướng dẫn trên trang',
+    usageResetIn: 'Đã hết lượt của phiên này, khoảng {h} giờ {m} phút nữa sẽ khôi phục.',
+    usageResetInHours: 'Đã hết lượt của phiên này, khoảng {h} giờ nữa sẽ khôi phục.',
+    usageResetInMinutes: 'Đã hết lượt của phiên này, khoảng {m} phút nữa sẽ khôi phục.',
+    usageWeeklyResetInDays: 'Đã hết lượt của tuần này, khoảng {d} ngày nữa sẽ khôi phục.',
+    usageWeeklyResetInHours: 'Đã hết lượt của tuần này, khoảng {h} giờ nữa sẽ khôi phục.',
+    thinkMode: 'Suy nghĩ kỹ',
+    thinkingDeep: 'Đang suy nghĩ kỹ...',
+    elapsedSeconds: '{s} giây',
+    replyDone: 'Đã trả lời xong',
   },
   id: {
     title: 'Asisten AI',
@@ -1219,6 +1424,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Gulir ke bawah',
     openSidebar: 'Buka riwayat percakapan',
     closeSidebar: 'Tutup riwayat percakapan',
+    usageLabel: 'Terpakai sesi ini {pct}%',
+    usageWeeklyLabel: 'minggu ini {pct}%',
+    usageExhausted: 'Kuotamu habis untuk sementara.',
+    usageResetHint: 'Sementara itu, kamu bisa membaca panduan di situs ini',
+    usageResetIn: 'Kuota sesi ini habis, pulih sekitar {h} jam {m} menit lagi.',
+    usageResetInHours: 'Kuota sesi ini habis, pulih sekitar {h} jam lagi.',
+    usageResetInMinutes: 'Kuota sesi ini habis, pulih sekitar {m} menit lagi.',
+    usageWeeklyResetInDays: 'Kuota minggu ini habis, pulih sekitar {d} hari lagi.',
+    usageWeeklyResetInHours: 'Kuota minggu ini habis, pulih sekitar {h} jam lagi.',
+    thinkMode: 'Berpikir mendalam',
+    thinkingDeep: 'Sedang berpikir mendalam...',
+    elapsedSeconds: '{s} dtk',
+    replyDone: 'Balasan selesai',
   },
   fil: {
     title: 'AI Assistant',
@@ -1298,6 +1516,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Mag-scroll pababa',
     openSidebar: 'Buksan ang kasaysayan ng usapan',
     closeSidebar: 'Isara ang kasaysayan ng usapan',
+    usageLabel: 'Nagamit sa sesyong ito: {pct}%',
+    usageWeeklyLabel: 'ngayong linggo {pct}%',
+    usageExhausted: 'Naubos na ang quota mo sa ngayon.',
+    usageResetHint: 'Samantala, puwede mong basahin ang mga gabay sa site',
+    usageResetIn: 'Naubos ang quota ng sesyong ito — babalik sa loob ng humigit-kumulang {h} oras at {m} minuto.',
+    usageResetInHours: 'Naubos ang quota ng sesyong ito — babalik sa loob ng humigit-kumulang {h} oras.',
+    usageResetInMinutes: 'Naubos ang quota ng sesyong ito — babalik sa loob ng humigit-kumulang {m} minuto.',
+    usageWeeklyResetInDays: 'Naubos ang quota ngayong linggo — babalik sa loob ng humigit-kumulang {d} araw.',
+    usageWeeklyResetInHours: 'Naubos ang quota ngayong linggo — babalik sa loob ng humigit-kumulang {h} oras.',
+    thinkMode: 'Malalim na pag-iisip',
+    thinkingDeep: 'Malalim na nag-iisip...',
+    elapsedSeconds: '{s} seg',
+    replyDone: 'Tapos na ang sagot',
   },
   hi: {
     title: 'AI सहायक',
@@ -1377,6 +1608,19 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'नीचे जाएं',
     openSidebar: 'बातचीत इतिहास खोलें',
     closeSidebar: 'बातचीत इतिहास बंद करें',
+    usageLabel: 'इस सत्र में उपयोग {pct}%',
+    usageWeeklyLabel: 'इस हफ़्ते {pct}%',
+    usageExhausted: 'फ़िलहाल आपकी सीमा पूरी हो गई है।',
+    usageResetHint: 'तब तक आप साइट की गाइड पढ़ सकती हैं',
+    usageResetIn: 'इस सत्र की सीमा पूरी हो गई — लगभग {h} घंटे {m} मिनट बाद फिर उपलब्ध होगी।',
+    usageResetInHours: 'इस सत्र की सीमा पूरी हो गई — लगभग {h} घंटे बाद फिर उपलब्ध होगी।',
+    usageResetInMinutes: 'इस सत्र की सीमा पूरी हो गई — लगभग {m} मिनट बाद फिर उपलब्ध होगी।',
+    usageWeeklyResetInDays: 'इस हफ़्ते की सीमा पूरी हो गई — लगभग {d} दिन बाद फिर उपलब्ध होगी।',
+    usageWeeklyResetInHours: 'इस हफ़्ते की सीमा पूरी हो गई — लगभग {h} घंटे बाद फिर उपलब्ध होगी।',
+    thinkMode: 'गहराई से सोचें',
+    thinkingDeep: 'गहराई से सोच रहा है...',
+    elapsedSeconds: '{s} सेकंड',
+    replyDone: 'उत्तर पूरा हुआ',
   },
   tr: {
     title: 'Yapay Zekâ Asistanı',
@@ -1456,5 +1700,18 @@ export const AI_COPY: Record<Locale, AIChatCopy> = {
     scrollToBottom: 'Aşağı kaydır',
     openSidebar: 'Sohbet geçmişini aç',
     closeSidebar: 'Sohbet geçmişini kapat',
+    usageLabel: 'Bu dönemde kullanılan: %{pct}',
+    usageWeeklyLabel: 'bu hafta %{pct}',
+    usageExhausted: 'Şimdilik hakkınız doldu.',
+    usageResetHint: 'Bu arada sitedeki rehberlere göz atabilirsiniz',
+    usageResetIn: 'Bu dönemin hakkı doldu; yaklaşık {h} saat {m} dakika sonra yenilenecek.',
+    usageResetInHours: 'Bu dönemin hakkı doldu; yaklaşık {h} saat sonra yenilenecek.',
+    usageResetInMinutes: 'Bu dönemin hakkı doldu; yaklaşık {m} dakika sonra yenilenecek.',
+    usageWeeklyResetInDays: 'Bu haftanın hakkı doldu; yaklaşık {d} gün sonra yenilenecek.',
+    usageWeeklyResetInHours: 'Bu haftanın hakkı doldu; yaklaşık {h} saat sonra yenilenecek.',
+    thinkMode: 'Derin düşünme',
+    thinkingDeep: 'Derin düşünüyor...',
+    elapsedSeconds: '{s} sn',
+    replyDone: 'Yanıt tamamlandı',
   },
 };

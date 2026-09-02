@@ -1,0 +1,150 @@
+---
+/**
+ * 遮盖管线真机自检页 —— **仅 dev/test 存在，绝不进生产产物**。
+ *
+ * URL: /dev/selftest/redact/
+ * （SPEC 草稿里写的是 `/dev/redact-selftest`。改成子目录 + 动态段是被路由逼出来的：
+ *  `/dev/[harness]` 已经占了 `dev/` 下的单段动态路由，同深度再加一个会撞；而静态页
+ *  没有 `getStaticPaths()` 就没法在生产构建里「不产出」。形态优先于名字。）
+ *
+ * 形态与 src/pages/dev/[harness].astro / dev/editor/[view].astro 完全同源，两条纪律：
+ *
+ * 1. dynamic route + `getStaticPaths()` 在生产构建返回空数组 → `astro build` 不产出 HTML。
+ * 2. `<script is:inline>` + **运行时动态 import**。普通 `<script>` 会被 Vite 当页面资产
+ *    打包，产出一个没有任何页面引用、却公开可取的孤儿 chunk。`is:inline` 让 Vite 完全
+ *    不解析这段代码。inline 脚本不能 import 裸模块名（react），所以 React 的引入收在
+ *    devMountSelfTest.tsx 里。
+ *
+ * 用途（SPEC §7.2a ② 与 §7 表格 V11 的唯一补法）：Playwright 的 WebKit 是桌面 Linux
+ * 构建，不等于真机 iOS Safari，更不等于微信内置浏览器。V1/V2/V3 必须能在真机上重跑。
+ */
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  return [{ params: { view: 'redact' } }];
+}
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>redact self-test (dev only)</title>
+    <!-- 设计 token 与 sakura 覆盖。`?direct` 是必须的：Vite dev 对 /src/**.css 默认返回
+         **注入样式的 JS 模块**，用 <link> 拉会拿到 JS 当 CSS 解析（静默无样式）。 -->
+    <link rel="stylesheet" href="/src/styles/global.css?direct" />
+    <link rel="stylesheet" href="/src/styles/sakura-theme.css?direct" />
+    <link rel="stylesheet" href="/src/styles/sakura-components.css?direct" />
+    <style>
+      body {
+        margin: 0;
+        padding: 20px 16px 64px;
+        background: var(--color-bg-primary, #0d0b14);
+        font-family: var(--font-body, sans-serif);
+        color: var(--color-text-primary, #e6e0ee);
+      }
+      html.sakura body {
+        background: var(--bg-1, #fff5e0);
+        color: var(--fg-1, #4a2838);
+      }
+      main {
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      .devbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-block-end: 16px;
+        font-size: 13px;
+      }
+      .devbar button {
+        min-height: 44px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+    </style>
+    <script is:inline>
+      // ① 皮肤/主题在**首帧前**落定：sakura 的 :has() 选择器与缓存对「先渲染再加 class」
+      //    极其敏感（本仓库有专门的 learned 教训）。
+      try {
+        if (localStorage.getItem('sakura-theme') === 'true') {
+          document.documentElement.classList.add('sakura');
+        }
+        const t = localStorage.getItem('yk-dev-theme');
+        if (t) document.documentElement.dataset.theme = t;
+      } catch (e) {
+        /* localStorage 不可用即按默认皮肤 */
+      }
+
+      // ② 网络计数器必须装在**任何模块加载之前**：自检的最后一条就是「零远端请求」，
+      //    钩子装晚了那条断言就成了空断言。blob: 是本机内存读取，单独记不算远端。
+      (function () {
+        var log = { calls: [] };
+        window.__ykSelfTestNet = log;
+        var nf = window.fetch;
+        window.fetch = function () {
+          log.calls.push(String(arguments[0]));
+          return nf.apply(window, arguments);
+        };
+        var xo = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function () {
+          log.calls.push(String(arguments[1]));
+          return xo.apply(this, arguments);
+        };
+        if (navigator.sendBeacon) {
+          var sb = navigator.sendBeacon.bind(navigator);
+          navigator.sendBeacon = function (url, data) {
+            log.calls.push(String(url));
+            return sb(url, data);
+          };
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="devbar">
+        <strong>dev only</strong>
+        <span>· 生产构建不产出本页，也不产出本页的脚本资产</span>
+        <button type="button" id="skin">切换皮肤（sakura / 二相乐园）</button>
+        <button type="button" id="theme">切换昼夜（data-theme）</button>
+        <span id="state"></span>
+      </div>
+      <div id="host"></div>
+    </main>
+
+    <script is:inline type="module">
+      // @vitejs/plugin-react 要求 HTML 在加载任何 JSX 模块**之前**注入 React Refresh
+      // preamble。Astro 只给它自己识别的 React island 注入；本页用裸 is:inline 动态
+      // import 绕过了那条路，所以必须手工注入（实测踩过：否则第一个 .tsx 模块顶部就抛
+      // 「@vitejs/plugin-react can't detect preamble」）。只 dev 需要，而本页只存在于 dev。
+      const RefreshRuntime = await import('/@react-refresh');
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.__vite_plugin_react_preamble_installed__ = true;
+
+      const mod = await import('/src/components/interactive/redact/selftest/devMountSelfTest.tsx');
+      mod.mountRedactSelfTest(document.getElementById('host'));
+      document.documentElement.dataset.redactSelftest = 'ready';
+
+      const root = document.documentElement;
+      const paint = () => {
+        document.getElementById('state').textContent =
+          `皮肤=${root.classList.contains('sakura') ? 'sakura' : 'default'} · data-theme=${root.dataset.theme ?? '(未设)'}`;
+      };
+      paint();
+      // 皮肤切换必须走 localStorage + reload（裸 add class 会让 :has 失效并留下缓存幻影）
+      document.getElementById('skin').addEventListener('click', () => {
+        localStorage.setItem('sakura-theme', String(!root.classList.contains('sakura')));
+        location.reload();
+      });
+      document.getElementById('theme').addEventListener('click', () => {
+        localStorage.setItem('yk-dev-theme', root.dataset.theme === 'light' ? 'dark' : 'light');
+        location.reload();
+      });
+    </script>
+  </body>
+</html>

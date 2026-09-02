@@ -66,3 +66,10 @@ playwright-report/
 
 # CTO harness 升级备份（本地留存，不入库）
 .claude/*.bak-*/
+
+# 降质化验单素材：可由 scripts/degrade-lab-fixtures.mjs 从合成图确定性重建，
+# 15 张 ~2MB 不必进仓库（合成源图 tests/fixtures/lab/IMG-*.jpg 是跟踪的）
+tests/fixtures/lab/degraded/
+
+# codex/agent 执行 transcript —— 含本机路径/session/memory，绝不入公开仓库
+docs/ai-cto/reviews/
