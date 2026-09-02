@@ -858,6 +858,13 @@ interface CompatStreamOptions {
 const COMPAT_FIRST_BYTE_MS = 8_000;
 const COMPAT_CHUNK_MS = 8_000;
 
+/* 超时错误。**必须用普通 Error 而不是 DOMException** —— Vercel Edge runtime 里
+   `DOMException` 不是构造器（线上实测 `TypeError: DOMException is not a constructor`）。
+   踩过一次：抛在 setTimeout 回调里 = 未捕获异常，Promise 永不 settle，请求直接
+   挂到 25s 硬墙 504。classify() 只看 err.name，所以带 name 的普通 Error 等价。 */
+const timeoutError = (message: string): Error =>
+  Object.assign(new Error(message), { name: 'TimeoutError' });
+
 /* 首块读取的统一上限。超时抛 TimeoutError（classify() 判 next-model，链继续下走），
    并 cancel reader 释放上游连接 —— 否则被放弃的候选会在后台继续跑到 Edge 实例回收。 */
 async function readFirstChunk(
@@ -870,7 +877,7 @@ async function readFirstChunk(
       reader.read(),
       new Promise<never>((_, reject) => {
         timer = setTimeout(
-          () => reject(new DOMException(`first chunk timeout after ${ms}ms`, 'TimeoutError')),
+          () => reject(timeoutError(`first chunk timeout after ${ms}ms`)),
           ms,
         );
       }),
@@ -895,7 +902,7 @@ function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
       const armStall = (ms: number) => {
         clearTimeout(stallTimer);
         stallTimer = setTimeout(() => {
-          ac.abort(new DOMException(`${o.label} stream stalled`, 'TimeoutError'));
+          ac.abort(timeoutError(`${o.label} stream stalled`));
         }, ms);
       };
 
