@@ -3,12 +3,13 @@ title: "Preservación de la fertilidad: congelar esperma antes o durante la TRH"
 description: "Guía práctica de preservación de la fertilidad antes y después de la TRH para mujeres trans: la ventana óptima antes del tratamiento, qué esperar si ya usas hormonas y cómo acceder a la criopreservación en España, México, Argentina, Colombia y Chile."
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: '¿Es obligatorio congelar esperma antes de empezar la TRH?'
     a: 'No es "obligatorio". La TRH suprime significativamente la espermatogénesis, y la recuperación tras suspenderla no está garantizada y varía enormemente entre personas. Por eso, antes de iniciar el tratamiento suele ser la ventana más fácil de tomar muestras y más predecible. Congelar o no depende de tu propio deseo reproductivo; no hay una respuesta única, pero es una decisión con límite de tiempo que conviene pensar antes de empezar.'
   - q: 'Ya llevo un tiempo con TRH, ¿aún puedo congelar?'
-    a: 'Puedes intentarlo, pero la calidad del esperma suele haber disminuido de forma notable. En la práctica clínica se requiere pausar la TRH (a menudo durante meses o más) bajo la evaluación de un especialista en reproducción asistida, hasta que la espermatogénesis se recupere parcialmente. La posibilidad de obtener esperma viable y la duración de la pausa dependen de la evaluación individualizada del médico; por favor no suspendas la medicación por tu cuenta.'
+    a: 'Puedes intentarlo, pero la calidad del esperma suele haber disminuido de forma notable. En la práctica clínica suele ser necesario pausar la TRH (a menudo durante meses o más) bajo la evaluación de un especialista en reproducción asistida, hasta que la espermatogénesis se recupere parcialmente. La posibilidad de obtener esperma viable y la duración de la pausa dependen de la evaluación individualizada del médico; por favor no suspendas la medicación por tu cuenta.'
   - q: '¿La espermatogénesis se recupera con seguridad tras suspender la TRH?'
     a: 'No necesariamente. La evidencia actual es muy limitada y la reversibilidad no está garantizada. Un estudio retrospectivo en solo 9 personas observó cierta recuperación parcial tras pausar la TRH, pero los propios autores enfatizan que la muestra es pequeña y las conclusiones deben ser cautelosas. Por lo tanto, no uses la suposición de "tal vez se recupere después" como motivo para no congelar ahora.'
   - q: '¿Puedo acceder a la criopreservación en mi país?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Es importante mantener expectativas realistas: **la criopreservación conserva l
 Para consultar los detalles de acceso según tu país, dirígete a la [Sección 4](#access).
 
 <DangerBox title="Espermatogénesis suprimida ≠ Método anticonceptivo seguro">
-La TRH reduce de forma notable la fertilidad, pero **nunca debe usarse como método anticonceptivo**. Durante el tratamiento pueden persistir espermatozoides viables en los testículos. Mientras existan relaciones sexuales que puedan dar lugar a un embarazo, se deben emplear métodos anticonceptivos fiables (el preservativo, además, reduce el riesgo de infecciones de transmisión sexual).
+La TRH reduce de forma notable la fertilidad, pero **nunca debe usarse como método anticonceptivo**. Durante el tratamiento pueden persistir espermatozoides viables en los testículos<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Mientras existan relaciones sexuales que puedan dar lugar a un embarazo, se deben emplear métodos anticonceptivos fiables (el preservativo, además, reduce el riesgo de infecciones de transmisión sexual).
 </DangerBox>
 
 ---
@@ -234,3 +236,5 @@ En el mundo hispanohablante existe una red creciente de centros de fertilidad, a
 - [Antes de empezar: evaluaciones iniciales](/es/before-you-start/)
 - [Reconocer riesgos y actuar en emergencias](/es/risks/)
 - [Recorrido clínico](/es/pathway/)
+
+<FaqSchema items={frontmatter.faqs} title="Preguntas frecuentes sobre preservación de la fertilidad" />

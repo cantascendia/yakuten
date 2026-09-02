@@ -3,12 +3,13 @@ title: "Préservation de la fertilité : THS et cryoconservation de sperme"
 description: "Guide pratique de préservation de la fertilité pour les femmes trans en francophonie : pourquoi l'initiation du THS est la fenêtre idéale, les possibilités et limites sous THS déjà engagé, les limites des preuves de réversibilité, ainsi que la prise en charge et les démarches en France (CECOS), Belgique, Suisse et au Québec."
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: "Faut-il absolument faire conserver du sperme avant de commencer le THS ?"
     a: "Ce n'est pas une obligation absolue. Le THS supprime considérablement la spermatogenèse, et la récupération après l'arrêt n'est pas garantie et varie fortement selon les personnes. La période précédant le début du traitement est donc généralement la plus accessible et la plus prévisible. Le choix vous appartient selon votre désir d'enfant, mais cette décision comporte une limite dans le temps."
   - q: "Puis-je encore faire conserver du sperme si je suis déjà sous THS depuis un certain temps ?"
-    a: "C'est possible de tenter, mais la qualité du sperme est en règle générale déjà nettement diminuée. Sous suivi médical dans un centre de PMA, il faut suspendre le THS (souvent plusieurs mois voire plus) pour attendre une récupération partielle. Seul un médecin spécialisé peut évaluer si des spermatozoïdes exploitables peuvent être prélevés et la durée de pause nécessaire. Ne stoppez pas votre traitement de votre propre initiative."
+    a: "C'est possible de tenter, mais la qualité du sperme est en règle générale déjà nettement diminuée. Sous suivi médical dans un centre de PMA, il est en général nécessaire de suspendre le THS (souvent plusieurs mois voire plus) pour attendre une récupération partielle. Seul un médecin spécialisé peut évaluer si des spermatozoïdes exploitables peuvent être prélevés et la durée de pause nécessaire. Ne stoppez pas votre traitement de votre propre initiative."
   - q: "La spermatogenèse se rétablit-elle obligatoirement après l'arrêt du THS ?"
     a: "Pas nécessairement. Les preuves actuelles sont très limitées et la réversibilité n'est pas garantie. Une étude observationnelle sur un échantillon restreint de 9 personnes a montré une récupération variable, mais les auteurs eux-mêmes soulignent la taille très faible de l'échantillon et la prudence nécessaire. La possibilité d'une récupération ne doit pas servir de prétexte pour ne pas faire conserver de sperme avant le traitement."
   - q: "La cryoconservation est-elle prise en charge en France pour les personnes célibataires ?"
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Gardez néanmoins une attente réaliste : **la cryoconservation préserve la pos
 Pour les modalités pratiques locales (France, Belgique, Suisse, Québec), voir la [section 4](#access).
 
 <DangerBox title="Spermatogenèse réprimée ≠ contraception. La contraception reste indispensable">
-Bien que le THS réduise considérablement la fertilité, **il ne doit jamais être utilisé comme moyen de contraception**. Même sous traitement, des spermatozoïdes résiduels fécondants peuvent persister dans les testicules. Lors de rapports sexuels pouvant entraîner une grossesse, une contraception fiable demeure nécessaire (le préservatif protège également contre les infections sexuellement transmissibles).
+Bien que le THS réduise considérablement la fertilité, **il ne doit jamais être utilisé comme moyen de contraception**. Même sous traitement, des spermatozoïdes résiduels fécondants peuvent persister dans les testicules<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Lors de rapports sexuels pouvant entraîner une grossesse, une contraception fiable demeure nécessaire (le préservatif protège également contre les infections sexuellement transmissibles).
 </DangerBox>
 
 ---
@@ -179,7 +181,13 @@ Les informations suivantes reflètent l'**état mi-2026** et ne constituent pas 
 
 ### France
 
-Depuis la **loi de bioéthique de 2021**, toute personne majeure peut recourir à l'autoconservation de ses gamètes, indépendamment de son état de santé. Dans le cadre d'un traitement susceptible d'altérer la fertilité (comme le THS), la cryoconservation de spermatozoïdes est **prise en charge à 100 % par l'Assurance maladie** via les CECOS.
+Depuis la **loi de bioéthique de 2021**, deux voies distinctes coexistent — et la différence change à la fois votre éligibilité et le coût.
+
+**Avec indication médicale** (article L. 2141-11 du code de la santé publique) : un traitement susceptible d'altérer la fertilité, comme le THS, ouvre la préservation de la fertilité. **Aucune fenêtre d'âge** ne s'applique et la cryoconservation de spermatozoïdes est **prise en charge à 100 % par l'Assurance maladie** via les CECOS. C'est la voie qui concerne la plupart des lectrices de cette page.
+
+**Sans indication médicale** (autoconservation ouverte par la loi de 2021) : l'accès est en revanche soumis à une **condition d'âge — le recueil de spermatozoïdes n'est possible qu'à compter du 29ᵉ anniversaire et jusqu'au 45ᵉ** (article R. 2141-37). Si vous avez moins de 29 ans et que le THS n'est pas encore engagé, discutez avec votre médecin de l'orientation vers la voie médicale plutôt que de l'autoconservation libre.
+
+Ce qui suit décrit la voie avec indication médicale.
 
 - **Ce qui est couvert** : Le recueil, le spermogramme, la congélation et la conservation annuelle sont pris en charge. L'ALD (Affection de Longue Durée) pour les parcours trans couvre également ces actes.
 - **Pas de condition d'état civil** : En France, il n'y a **aucune condition de mariage** pour la cryoconservation. Les personnes célibataires y ont également accès.
@@ -225,3 +233,5 @@ Depuis la **loi de bioéthique de 2021**, toute personne majeure peut recourir �
 - [Avant de commencer : bilans de référence](/fr/before-you-start/)
 - [Reconnaître les risques et agir en urgence](/fr/risks/)
 - [Parcours clinique par étapes](/fr/pathway/)
+
+<FaqSchema items={frontmatter.faqs} title="FAQ Préservation de la fertilité" />

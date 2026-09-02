@@ -3,12 +3,13 @@ title: 'Doğurganlığın Korunması: HRT Öncesi ve Sonrası Sperm Dondurma'
 description: 'HRT düşünen veya başlayan trans kadınlar için doğurganlığın korunmasına yönelik pratik rehber: Tedavi öncesinin neden altın pencere olduğu, HRT başladıktan sonra hâlâ mümkün olup olmadığı ve yerel üreme merkezleriyle nasıl iletişime geçileceği. Uluslararası kılavuzlar ve tıbbi kanıtlar dahildir.'
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'HRT tedavisine başlamadan önce sperm dondurmak zorunlu mudur?'
     a: 'Hayır, "zorunlu" değildir. HRT sperm üretimini önemli ölçüde baskılar ve ilacı bıraktıktan sonra geri kazanım garantili değildir ve kişiden kişiye büyük farklılık gösterir. Bu nedenle, tedaviye başlamadan önceki süreç genellikle en kolay ve öngörülebilir zamandır. Dondurup dondurmama kararı biyolojik çocuk sahibi olma isteğinize bağlıdır—tek bir doğru cevap yoktur, ancak bu karar HRT öncesinde değerlendirilmesi gereken bir zaman sınırına sahiptir.'
   - q: 'Bir süredir HRT kullanıyorum, hâlâ sperm dondurabilir miyim?'
-    a: 'Denebilir, ancak sperm kalitesi genellikle belirgin şekilde düşmüştür. Klinik olarak, ruhsatlı bir üreme tıbbı merkezindeki hekim değerlendirmesi altında, sperm üretiminin kısmen geri kazanılmasını beklemek amacıyla HRT geçici olarak durdurulmalıdır (genellikle birkaç ay veya daha uzun süre). Kullanılabilir sperm elde edilip edilemeyeceği ve ne kadar ara verilmesi gerektiği bireysel tıbbi değerlendirme gerektirir; lütfen kendi başınıza aniden ilacı kesmeyin.'
+    a: 'Denebilir, ancak sperm kalitesi genellikle belirgin şekilde düşmüştür. Klinik olarak, ruhsatlı bir üreme tıbbı merkezindeki hekim değerlendirmesi altında, sperm üretiminin kısmen geri kazanılmasını beklemek amacıyla HRT çoğu zaman geçici olarak durdurulur (genellikle birkaç ay veya daha uzun süre). Kullanılabilir sperm elde edilip edilemeyeceği ve ne kadar ara verilmesi gerektiği bireysel tıbbi değerlendirme gerektirir; lütfen kendi başınıza aniden ilacı kesmeyin.'
   - q: 'İlacı bıraktıktan sonra sperm üretimi kesinlikle geri döner mi?'
     a: 'Kesinlikle dönmeyebilir. Mevcut kanıtlar oldukça sınırlıdır ve geri dönüştürülebilirlik garanti edilmez. Sadece 9 kişiyi kapsayan küçük bir geriye dönük çalışma, ilacı bıraktıktan sonra farklı derecelerde iyileşme gözlemlemiştir; ancak yazarlar örneklemin küçük olduğunu ve genel sonuç çıkarılamayacağını vurgulamıştır. İlacı kesince geri dönebileceği ihtimaline güvenerek tedavi öncesi dondurmaktan vazgeçmeyin.'
   - q: 'Yasal ve pratik açıdan evli olmayan bireyler için sperm dondurma nasıl işler?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Gerçekçi beklentilere sahip olmak da önemlidir: **Dondurma işlemi "gelecekte
 Yerel danışmanlık, gerekli belgeler ve bütçe planlaması hakkındaki pratik adımlar için [Bölüm 4’e](#access) bakın.
 
 <DangerBox title="Baskılanmış sperm ≠ Hamile bırakamaz: Doğum kontrolü hâlâ gereklidir">
-HRT doğurganlığı önemli ölçüde düşürür, ancak **bir doğum kontrol yöntemi olarak kullanılamaz**. Tedavi sırasında dölleme yeteneğine sahip kalıntı spermler bulunabilir. Hamilelikle sonuçlanabilecek cinsel aktivitelerde bulunulduğunda güvenilir doğum kontrol yöntemleri kullanılmaya devam edilmelidir (kondom aynı zamanda cinsel yolla bulaşan enfeksiyon riskini de azaltır).
+HRT doğurganlığı önemli ölçüde düşürür, ancak **bir doğum kontrol yöntemi olarak kullanılamaz**. Tedavi sırasında dölleme yeteneğine sahip kalıntı spermler bulunabilir<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Hamilelikle sonuçlanabilecek cinsel aktivitelerde bulunulduğunda güvenilir doğum kontrol yöntemleri kullanılmaya devam edilmelidir (kondom aynı zamanda cinsel yolla bulaşan enfeksiyon riskini de azaltır).
 </DangerBox>
 
 ---
@@ -224,3 +226,5 @@ Yerel bir hastane, üreme tıbbı merkezi veya sperm bankası ile iletişime ge�
 
 - [Başlamadan Önce: Temel Değerlendirme ve Hazırlık](/tr/before-you-start/) — HRT öncesinde yapılması gereken tıbbi kontroller ve psikolojik hazırlık
 - [HRT Riskleri ve Kontrendikasyonları](/tr/risks/) — Hormon tedavisine başlamadan önce taranması gereken sağlık koşulları
+
+<FaqSchema items={frontmatter.faqs} title="Doğurganlığın Korunması SSS" />

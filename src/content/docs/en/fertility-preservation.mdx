@@ -3,12 +3,13 @@ title: 'Fertility Preservation: Sperm Freezing Before and After HRT'
 description: 'A practical guide to fertility preservation for trans women considering HRT: why pre-treatment is the prime window, whether it is still possible after starting HRT, and how to consult local fertility clinics. Includes international guidelines and medical evidence.'
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'Is sperm freezing mandatory before starting HRT?'
     a: 'No, it is not "mandatory." HRT significantly suppresses sperm production, and recovery after stopping is not guaranteed and varies widely between individuals. Therefore, before starting medication is usually the easiest and most predictable window. Whether to freeze depends on your personal desire to have biological children—there is no single right answer, but this decision has a time limit worth considering before starting HRT.'
   - q: 'I have been on HRT for a while. Is it still possible to freeze sperm?'
-    a: 'It can be attempted, but sperm quality is usually significantly reduced. Clinically, under the evaluation of a physician at a licensed reproductive medicine center, HRT must be temporarily paused (often for several months or longer) to allow partial recovery of sperm production before collection. Whether usable sperm can be retrieved and how long to pause require individual medical evaluation; please do not stop HRT abruptly on your own.'
+    a: 'It can be attempted, but sperm quality is usually significantly reduced. Clinically, under the evaluation of a physician at a licensed reproductive medicine center, HRT generally needs to be temporarily paused (often for several months or longer) to allow partial recovery of sperm production before collection. Whether usable sperm can be retrieved and how long to pause require individual medical evaluation; please do not stop HRT abruptly on your own.'
   - q: 'Will sperm production definitely recover after stopping HRT?'
     a: 'Not necessarily. Current evidence is very limited and reversibility is not guaranteed. A small retrospective study of only 9 individuals observed varying degrees of recovery after stopping HRT, but the authors emphasized that the sample size was small and conclusions cannot be generalized. Do not rely on "it might recover after stopping" as a reason to forego pre-treatment freezing.'
   - q: 'How does sperm freezing work legally and practically for single or unmarried individuals?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ It is also important to maintain realistic expectations: **cryopreservation pres
 For practical steps on local consultation, documentation, and budgeting, see [Section 4](#access).
 
 <DangerBox title="Suppressed sperm ≠ Cannot cause pregnancy: Contraception is still necessary">
-HRT significantly suppresses fertility, but it **cannot be used as a method of contraception**. Residual sperm capable of fertilization may still remain during treatment. Whenever engaging in sexual activity that could lead to pregnancy, reliable contraceptive measures must still be used (condoms also simultaneously reduce the risk of sexually transmitted infections).
+HRT significantly suppresses fertility, but it **cannot be used as a method of contraception**. Residual sperm capable of fertilization may still remain during treatment<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Whenever engaging in sexual activity that could lead to pregnancy, reliable contraceptive measures must still be used (condoms also simultaneously reduce the risk of sexually transmitted infections).
 </DangerBox>
 
 ---
@@ -225,3 +227,5 @@ When contacting a local hospital, reproductive medicine center, or sperm bank, a
 - [Before You Start: Baseline Assessment and Preparation](/en/before-you-start/) — Medical checks and psychological preparation before HRT
 - [HRT Risks and Contraindications](/en/risks/) — Health conditions to screen before starting hormone therapy
 - [HRT Pathway Map](/en/pathway/) — Overview of medical consultation, blood testing, and treatment navigation
+
+<FaqSchema items={frontmatter.faqs} title="Fertility Preservation FAQ" />

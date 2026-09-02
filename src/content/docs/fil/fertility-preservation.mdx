@@ -3,12 +3,13 @@ title: 'Pangangalaga sa Kakayahang Mag-anak: Pagpapayelo ng Similya Bago at Pagk
 description: 'Isang praktikal na gabay sa fertility preservation para sa mga trans woman na nag-iisip o kasalukuyang nag-HRT: bakit ang panahon bago magsimula ang pinakamainam na pagkakataon, kung posible pa ba ito pagkatapos magsimula, at kung paano makikipag-ugnayan sa mga lokal na fertility clinic. Kabilang ang mga internasyonal na gabay at medikal na ebidensya.'
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'Kailangan ba talagang magpa-freeze ng similya bago magsimula ng HRT?'
     a: 'Hindi ito "kailangan." Malaki ang epekto ng HRT sa pag-unti ng produksyon ng similya, at ang pagbabalik nito pagkatapos itigil ang gamot ay walang katiyakan at magkakaiba bawat tao. Kaya naman, bago magsimula ng gamot ang karaniwang pinakamadali at pinakamaaasahang pagkakataon. Ang pagpapasya kung magpapayelo ay nakadepende sa iyong personal na kagustuhang magkaroon ng biyolohikal na anak—walang iisang tamang sagot, ngunit ang desisyong ito ay may limitasyon sa oras na nararapat pag-isipan bago magsimula.'
   - q: 'Matagal na akong nag-e-HRT. Posible pa rin bang magpa-freeze ng similya?'
-    a: 'Maaari itong subukan, ngunit karaniwang bumaba na nang malaki ang kalidad ng similya. Sa medikal na konteksto, sa ilalim ng pagsusuri ng doktor sa isang lisensyadong fertility center, kailangang pansamantalang itigil ang HRT (karaniwang ilang buwan o higit pa) upang maghintay sa parsyal na pagbabalik ng produksyon bago kumuha ng sample. Ang posibilidad na makakuha ng magagamit na similya at ang haba ng pagtigil ay nangangailangan ng indibidwal na pagsusuri; pakiusap na huwag biglang itigil ang gamot nang mag-isa.'
+    a: 'Maaari itong subukan, ngunit karaniwang bumaba na nang malaki ang kalidad ng similya. Sa medikal na konteksto, sa ilalim ng pagsusuri ng doktor sa isang lisensyadong fertility center, kadalasang kailangang pansamantalang itigil ang HRT (karaniwang ilang buwan o higit pa) upang maghintay sa parsyal na pagbabalik ng produksyon bago kumuha ng sample. Ang posibilidad na makakuha ng magagamit na similya at ang haba ng pagtigil ay nangangailangan ng indibidwal na pagsusuri; pakiusap na huwag biglang itigil ang gamot nang mag-isa.'
   - q: 'Tiyak bang babalik ang produksyon ng similya pagkatapos itigil ang gamot?'
     a: 'Hindi tiyak. Napakalimitado ng kasalukuyang ebidensya at hindi garantisado ang pagbabalik. Isang maliit na pag-aaral sa 9 na tao lamang ang nakapansin ng magkakaibang antas ng pagbabalik pagkatapos itigil ang gamot, ngunit binigyang-diin mismo ng mga may-akda na napakaliit ng sample size at hindi ito pwedeng gawing pangkalahatang konklusyon. Huwag gawing dahilan ang "baka bumalik naman" upang hindi magpa-freeze bago magsimula.'
   - q: 'Paano gumagana ang sperm freezing para sa mga hindi kasal ayon sa batas at praktikal na hakbang?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Mahalaga ring magkaroon ng makatotohanang ekspektasyon: **pinapanatili ng pagpap
 Para sa mga praktikal na hakbang sa lokal na konsultasyon, mga dokumento, at pagbabadyet, tingnan ang [Seksyon 4](#access).
 
 <DangerBox title="Bawas na similya ≠ Hindi makakabuntis: Kailangan pa rin ng kontrasepsyon">
-Malaki ang ibinababa ng HRT sa kakayahang mag-anak, ngunit **hindi ito magagamit bilang paraan ng birth control**. Maaari pa ring magkaroon ng mga natitirang similya na may kakayahang makabuo sa panahon ng gamutan. Sa tuwing may sexual activity na maaaring magbunga ng pagbubuntis, kailangan pa ring gumamit ng maaasahang kontrasepsyon (ang condom ay nakakatulong din upang mabawasan ang panganib ng sexually transmitted infections).
+Malaki ang ibinababa ng HRT sa kakayahang mag-anak, ngunit **hindi ito magagamit bilang paraan ng birth control**. Maaari pa ring magkaroon ng mga natitirang similya na may kakayahang makabuo sa panahon ng gamutan<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Sa tuwing may sexual activity na maaaring magbunga ng pagbubuntis, kailangan pa ring gumamit ng maaasahang kontrasepsyon (ang condom ay nakakatulong din upang mabawasan ang panganib ng sexually transmitted infections).
 </DangerBox>
 
 ---
@@ -224,3 +226,5 @@ Kapag nakikipag-ugnayan sa lokal na ospital, reproductive medicine center, o spe
 
 - [Bago Magsimula: Batayang Pagsusuri at Paghahanda](/fil/before-you-start/) — Mga medikal na pagsusuri at sikolohikal na paghahanda bago mag-HRT
 - [Mga Panganib at Kontraindikasyon ng HRT](/fil/risks/) — Mga kondisyon sa kalusugan na kailangang suriin bago magsimula ng hormone therapy
+
+<FaqSchema items={frontmatter.faqs} title="Mga Madalas Itanong tungkol sa Pag-iingat ng Fertility" />

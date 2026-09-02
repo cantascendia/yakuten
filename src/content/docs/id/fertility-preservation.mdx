@@ -3,12 +3,13 @@ title: 'Preservasi Fertilitas: Pembekuan Sperma Sebelum dan Sesudah HRT'
 description: 'Panduan praktis preservasi fertilitas untuk transpuan yang mempertimbangkan HRT: mengapa sebelum terapi adalah jendela emas, apakah masih bisa membekukan sperma setelah mulai HRT, dan cara berkonsultasi dengan klinik fertilitas lokal. Dilengkapi pedoman internasional dan bukti medis.'
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'Apakah pembekuan sperma wajib dilakukan sebelum memulai HRT?'
     a: 'Tidak "wajib". HRT secara signifikan menekan produksi sperma, dan pemulihan setelah menghentikan obat tidak dijamin serta sangat bervariasi antarindividu. Oleh karena itu, waktu sebelum memulai terapi biasanya merupakan jendela yang paling mudah dan paling dapat diprediksi. Pembekuan sperma tergantung pada keinginan pribadi Anda untuk memiliki keturunan biologis—tidak ada jawaban tunggal, tetapi keputusan ini memiliki batas waktu yang perlu dipertimbangkan sebelum memulai HRT.'
   - q: 'Saya sudah menjalani HRT beberapa waktu, apakah masih bisa membekukan sperma?'
-    a: 'Bisa dicoba, tetapi kualitas sperma biasanya sudah menurun secara signifikan. Secara klinis, di bawah evaluasi dokter di pusat kedokteran reproduksi berlisensi, HRT harus dihentikan sementara (biasanya membutuhkan waktu beberapa bulan atau lebih) agar produksi sperma pulih sebagian sebelum pengambilan. Apakah sperma yang dapat digunakan bisa diperoleh dan berapa lama harus berhenti membutuhkan evaluasi medis individual; mohon jangan menghentikan HRT secara mendadak atas inisiatif sendiri.'
+    a: 'Bisa dicoba, tetapi kualitas sperma biasanya sudah menurun secara signifikan. Secara klinis, di bawah evaluasi dokter di pusat kedokteran reproduksi berlisensi, HRT umumnya perlu dihentikan sementara (biasanya membutuhkan waktu beberapa bulan atau lebih) agar produksi sperma pulih sebagian sebelum pengambilan. Apakah sperma yang dapat digunakan bisa diperoleh dan berapa lama harus berhenti membutuhkan evaluasi medis individual; mohon jangan menghentikan HRT secara mendadak atas inisiatif sendiri.'
   - q: 'Apakah produksi sperma pasti akan pulih setelah menghentikan HRT?'
     a: 'Belum tentu. Bukti saat ini sangat terbatas dan pemulihan tidak dijamin. Sebuah studi retrospektif skala kecil terhadap 9 individu mengamati adanya tingkat pemulihan tertentu setelah menghentikan HRT, tetapi para penulis menekankan bahwa ukuran sampel terlalu kecil dan kesimpulan tidak dapat digeneralisasi. Jangan jadikan anggapan "mungkin bisa pulih setelah berhenti" sebagai alasan untuk menunda pembekuan sperma sebelum HRT.'
   - q: 'Bagaimana prosedur dan hukum pembekuan sperma bagi individu lajang?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Ekspektasi realistis juga harus dimiliki: **pembekuan mempertahankan "kesempatan
 Untuk langkah praktis mengenai konsultasi lokal, dokumen, dan anggaran, lihat [Bagian 4](#access).
 
 <DangerBox title="Sperma tertekan ≠ Tidak bisa menyebabkan kehamilan: Kontrasepsi tetap wajib">
-HRT menekan kesuburan secara signifikan, tetapi **tidak dapat digunakan sebagai metode kontrasepsi**. Sperma yang mampu membuahi masih mungkin tersisa di testis selama pengobatan. Selama ada aktivitas seksual yang berpotensi menyebabkan kehamilan, tindakan kontrasepsi yang andal tetap harus digunakan (kondom juga secara bersamaan mengurangi risiko infeksi menular seksual).
+HRT menekan kesuburan secara signifikan, tetapi **tidak dapat digunakan sebagai metode kontrasepsi**. Sperma yang mampu membuahi masih mungkin tersisa di testis selama pengobatan<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Selama ada aktivitas seksual yang berpotensi menyebabkan kehamilan, tindakan kontrasepsi yang andal tetap harus digunakan (kondom juga secara bersamaan mengurangi risiko infeksi menular seksual).
 </DangerBox>
 
 ---
@@ -225,3 +227,5 @@ Saat menghubungi rumah sakit lokal, pusat kedokteran reproduksi, atau bank sperm
 - [Sebelum Memulai: Evaluasi Dasar dan Persiapan](/id/before-you-start/) — Pemeriksaan kesehatan dan persiapan mental sebelum HRT
 - [Risiko dan Kontraindikasi HRT](/id/risks/) — Kondisi kesehatan yang perlu diperiksa sebelum terapi hormon
 - [Peta Jalur HRT](/id/pathway/) — Panduan navigasi konsultasi medis, tes darah, dan pengobatan
+
+<FaqSchema items={frontmatter.faqs} title="Tanya Jawab Pelestarian Kesuburan" />

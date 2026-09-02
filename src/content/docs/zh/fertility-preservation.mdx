@@ -3,7 +3,8 @@ title: 生育力保存：要不要冻精，怎么冻
 description: 跨性别女性 HRT 前后的生育力保存实用指南：为什么开始用药前是冻精的黄金窗口、已经在用药还来不来得及、以及在中国大陆（含单身/未婚）怎么申请冻精、去哪、带什么材料、多少钱。附国际指南与证据出处。
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: '开始 HRT 前一定要冻精吗？'
     a: '不是"一定要"。HRT 会显著抑制精子生成，停药后能否恢复没有保证、个体差异极大，所以开始用药前通常是更容易采集、也更可把握的窗口。要不要冻取决于你自己的生育意愿，没有标准答案——只是这个决定有时限，值得在开始用药前就想清楚。'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ import RealityCheck from '../../../components/ui/RealityCheck.astro';
 具体到中国大陆——单身能不能冻、去哪、带什么、多少钱——见 [第四节](#china)。
 
 <DangerBox title="精子被抑制 ≠ 不会让人怀孕，避孕不能省">
-HRT 会显著压低生育力，但它**不能当作避孕手段**。用药期间睾丸仍可能残留有受精能力的精子。只要存在可能导致怀孕的性行为，就仍需使用可靠的避孕措施（安全套还能同时降低性传播感染的风险）。
+HRT 会显著压低生育力，但它**不能当作避孕手段**。用药期间睾丸仍可能残留有受精能力的精子<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />。只要存在可能导致怀孕的性行为，就仍需使用可靠的避孕措施（安全套还能同时降低性传播感染的风险）。
 </DangerBox>
 
 ---
@@ -217,3 +219,5 @@ HRT 会显著压低生育力，但它**不能当作避孕手段**。用药期间
 - [开始之前：基线评估与准备](/zh/before-you-start/) — 用药前该做的检查与心理准备
 - [中国 HRT 现实路径图](/zh/china-reality/) — 在国内找医生、做血检、拿药
 - [HRT 风险与禁忌](/zh/risks/) — 用药前要排查的身体状况
+
+<FaqSchema items={frontmatter.faqs} title="生育力保存 常见问题" />

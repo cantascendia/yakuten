@@ -3,12 +3,13 @@ title: 'Bảo tồn Khả năng Sinh sản: Đông lạnh Tinh trùng Trước v
 description: 'Hướng dẫn thực hành bảo tồn khả năng sinh sản dành cho người chuyển giới nữ cân nhắc HRT: tại sao trước khi điều trị là thời điểm vàng, liệu đã dùng thuốc rồi có còn kịp đông lạnh không, và cách tư vấn tại các trung tâm hỗ trợ sinh sản địa phương. Kèm hướng dẫn quốc tế và bằng chứng y khoa.'
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'Bắt buộc phải đông lạnh tinh trùng trước khi bắt đầu HRT không?'
     a: 'Không phải "bắt buộc". HRT làm giảm đáng kể khả năng tạo tinh trùng, và việc phục hồi sau khi ngừng thuốc không được đảm bảo cũng như sự khác biệt giữa các cá nhân là rất lớn. Do đó, thời điểm trước khi dùng thuốc thường là khoảng thời gian dễ thu mẫu và dễ dự đoán nhất. Có đông lạnh hay không phụ thuộc vào mong muốn cá nhân của bạn về việc có con cùng huyết thống—không có đáp án duy nhất, nhưng quyết định này có thời hạn cần suy nghĩ kỹ trước khi bắt đầu HRT.'
   - q: 'Tôi đã dùng HRT được một thời gian rồi, liệu bây giờ có đông lạnh được không?'
-    a: 'Có thể thử, nhưng chất lượng tinh trùng thường đã giảm rõ rệt. Về mặt lâm sàng, dưới sự đánh giá của bác sĩ tại trung tâm hỗ trợ sinh sản chính quy, bạn cần tạm ngừng HRT (thường cần vài tháng hoặc lâu hơn) để quá trình sinh tinh phục hồi một phần trước khi thu mẫu. Có lấy được tinh trùng khả thi hay không và phải dừng bao lâu cần bác sĩ đánh giá cá thể hóa; xin vui lòng không tự ý đột ngột ngưng thuốc.'
+    a: 'Có thể thử, nhưng chất lượng tinh trùng thường đã giảm rõ rệt. Về mặt lâm sàng, dưới sự đánh giá của bác sĩ tại trung tâm hỗ trợ sinh sản chính quy, thường cần tạm ngừng HRT (thường cần vài tháng hoặc lâu hơn) để quá trình sinh tinh phục hồi một phần trước khi thu mẫu. Có lấy được tinh trùng khả thi hay không và phải dừng bao lâu cần bác sĩ đánh giá cá thể hóa; xin vui lòng không tự ý đột ngột ngưng thuốc.'
   - q: 'Sau khi ngừng thuốc tinh trùng có chắc chắn phục hồi không?'
     a: 'Không chắc chắn. Bằng chứng hiện tại rất hạn chế và tính khả nghịch không được đảm bảo. Một nghiên cứu hồi cứu quy mô nhỏ chỉ trên 9 người ghi nhận một số cá nhân có sự phục hồi ở các mức độ khác nhau sau khi ngừng thuốc, nhưng chính tác giả nhấn mạnh mẫu quá nhỏ và không thể suy rộng kết luận. Đừng lấy lý do "ngừng thuốc có thể phục hồi" làm cớ để không đông lạnh tinh trùng ở thời điểm hiện tại.'
   - q: 'Người độc thân/chưa kết hôn đông lạnh tinh trùng thì thủ tục và quy định ra sao?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Cũng cần có kỳ vọng thực tế: **việc lưu trữ bảo tồn giữ l
 Để biết các bước thực hành cụ thể về tư vấn tại địa phương, hồ sơ và ngân sách, xem [Mục 4](#access).
 
 <DangerBox title="Tinh trùng bị ức chế ≠ Không thể gây mang thai: Không thể bỏ qua việc tránh thai">
-HRT làm giảm đáng kể khả năng sinh sản, nhưng nó **không thể dùng làm phương pháp tránh thai**. Trong thời gian dùng thuốc, tinh hoàn vẫn có thể còn sót lại tinh trùng có khả năng thụ tinh. Chỉ cần có hành vi tình dục có thể dẫn đến mang thai, bạn vẫn phải sử dụng các biện pháp tránh thai tin cậy (bao cao su đồng thời làm giảm nguy cơ lây nhiễm qua đường tình dục).
+HRT làm giảm đáng kể khả năng sinh sản, nhưng nó **không thể dùng làm phương pháp tránh thai**. Trong thời gian dùng thuốc, tinh hoàn vẫn có thể còn sót lại tinh trùng có khả năng thụ tinh<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Chỉ cần có hành vi tình dục có thể dẫn đến mang thai, bạn vẫn phải sử dụng các biện pháp tránh thai tin cậy (bao cao su đồng thời làm giảm nguy cơ lây nhiễm qua đường tình dục).
 </DangerBox>
 
 ---
@@ -225,3 +227,5 @@ Khi liên hệ với bệnh viện địa phương, trung tâm hỗ trợ sinh s
 - [Trước khi bắt đầu: Đánh giá nền tảng và chuẩn bị](/vi/before-you-start/) — Kiểm tra y tế và chuẩn bị tâm lý trước HRT
 - [Rủi ro và Chống chỉ định của HRT](/vi/risks/) — Các tình trạng sức khỏe cần sàng lọc trước khi dùng hormone
 - [Bản đồ Lộ trình HRT](/vi/pathway/) — Tổng quan về tư vấn y tế, xét nghiệm máu và hướng dẫn điều trị
+
+<FaqSchema items={frontmatter.faqs} title="Câu hỏi thường gặp về bảo tồn khả năng sinh sản" />

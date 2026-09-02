@@ -3,12 +3,13 @@ title: "Fertilitätserhaltung: HRT und Kryokonservierung von Spermien"
 description: "Evidenzbasierter Leitfaden zur Fertilitätserhaltung für trans Frauen im DACH-Raum: Warum das Fenster vor Therapiebeginn optimal ist, Möglichkeiten und Risiken nach bereits begonnener HRT, Grenzen der Evidenz zur Reversibilität sowie Kostenübernahme und Kinderwunschzentren in Deutschland, Österreich und der Schweiz."
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'Sollte ich vor Beginn der HRT Spermien einfrieren lassen?'
     a: 'Es ist kein zwingendes "Muss", aber die HRT unterdrückt die Spermatogenese erheblich. Da eine Erholung nach dem Absetzen nicht garantiert ist und individuell stark variiert, ist der Zeitraum vor Beginn der Medikation in der Regel das am leichtesten zugängliche und verlässlichste Fenster. Ob du diesen Schritt gehst, hängt von deinem persönlichen Kinderwunsch ab — es gibt keine Standardantwort, aber diese Entscheidung hat ein Zeitfenster.'
   - q: 'Kann ich auch nach längerer HRT noch Spermien einfrieren lassen?'
-    a: 'Ein Versuch ist möglich, aber die Spermienqualität ist in der Regel bereits deutlich eingeschränkt. Unter ärztlicher Begleitung in einem Kinderwunschzentrum muss die HRT vorübergehend pausiert werden (oft für mehrere Monate oder länger), bis sich die Spermatogenese teilweise erholt. Ob brauchbare Spermien gewonnen werden können und wie lange die Pause dauern muss, erfordert eine individuelle ärztliche Beurteilung. Bitte setze die Medikation nicht eigenmächtig ab.'
+    a: 'Ein Versuch ist möglich, aber die Spermienqualität ist in der Regel bereits deutlich eingeschränkt. Unter ärztlicher Begleitung in einem Kinderwunschzentrum muss die HRT meist vorübergehend pausiert werden (oft für mehrere Monate oder länger), bis sich die Spermatogenese teilweise erholt. Ob brauchbare Spermien gewonnen werden können und wie lange die Pause dauern muss, erfordert eine individuelle ärztliche Beurteilung. Bitte setze die Medikation nicht eigenmächtig ab.'
   - q: 'Erholt sich die Spermatogenese nach dem Absetzen der HRT sicher wieder?'
     a: 'Nicht zwingend. Die derzeitige Datenlage ist sehr begrenzt und eine vollständige Erholung ist keineswegs garantiert. Eine kleine Beobachtungsstudie an lediglich 9 Personen zeigte zwar nach dem Absetzen eine unterschiedlich ausgeprägte Erholung, doch betonten die Autor:innen selbst die geringe Fallzahl und die begrenzte Übertragbarkeit. Das mögliche Wiedereinsetzen darf daher keinesfalls als Grund dienen, vor der Therapie auf ein Einfrieren zu verzichten.'
   - q: 'Übernimmt die Krankenkasse in Deutschland die Kosten für die Kryokonservierung?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ Wichtig ist auch eine realistische Erwartung: **Die Kryokonservierung bewahrt le
 Zu den konkreten Abläufen im DACH-Raum (Kostenübernahme, Unterlagen, Voraussetzungen) siehe [Abschnitt 4](#access).
 
 <DangerBox title="Unterdrückte Spermatogenese ist KEINE sichere Verhütung">
-Obwohl HRT die Fruchtbarkeit stark reduziert, **darf sie niemals als Verhütungsmethode betrachtet werden**. Auch unter laufender Medikation können in den Hoden weiterhin befruchtungsfähige Spermien vorhanden sein. Bei Geschlechtsverkehr, der zu einer Schwangerschaft führen könnte, sind weiterhin zuverlässige Verhütungsmittel erforderlich (Kondome schützen zudem vor sexuell übertragbaren Infektionen).
+Obwohl HRT die Fruchtbarkeit stark reduziert, **darf sie niemals als Verhütungsmethode betrachtet werden**. Auch unter laufender Medikation können in den Hoden weiterhin befruchtungsfähige Spermien vorhanden sein<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Bei Geschlechtsverkehr, der zu einer Schwangerschaft führen könnte, sind weiterhin zuverlässige Verhütungsmittel erforderlich (Kondome schützen zudem vor sexuell übertragbaren Infektionen).
 </DangerBox>
 
 ---
@@ -227,3 +229,5 @@ Im DACH-Raum gibt es ein dichtes Netz an Kinderwunschzentren und Samenbanken. Ni
 - [Bevor du beginnst: Baseline-Untersuchungen](/de/before-you-start/)
 - [Risiken erkennen & im Notfall handeln](/de/risks/)
 - [Klinischer Stufenplan](/de/pathway/)
+
+<FaqSchema items={frontmatter.faqs} title="FAQ zur Fertilitätserhaltung" />

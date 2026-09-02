@@ -3,12 +3,13 @@ title: "Preservação da fertilidade: congelar esperma antes ou durante a TH"
 description: "Guia prático sobre preservação da fertilidade antes e depois da TH para mulheres trans no Brasil e em Portugal: a janela ideal antes do tratamento, o que esperar se você já usa hormônios e como acessar a criopreservação pelo SUS, SNS ou rede privada."
 evidenceLevel: C
 lastReviewed: 2026-07-24
-references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022]
+references: [coleman-2022, hembree-2017, ucsf-2016, denie-2023, choi-2022, tristano-2025]
+faqsRenderedInBody: true
 faqs:
   - q: 'É obrigatório congelar esperma antes de iniciar a TH?'
     a: 'Não é "obrigatório". A TH suprime significativamente a espermatogênese, e a recuperação após a pausa não é garantida e varia enormemente entre pessoas. Por isso, o período antes de iniciar o tratamento é geralmente a janela mais fácil e previsível para coleta. Congelar ou não depende do seu desejo reprodutivo; não há resposta única, mas é uma decisão com prazo limite para ponderar antes de começar.'
   - q: 'Já uso TH há algum tempo, ainda posso congelar?'
-    a: 'Você pode tentar, mas a qualidade do esperma geralmente já caiu de forma notável. Na prática clínica, é necessário pausar a TH (frequentemente por meses ou mais) sob avaliação de um especialista em reprodução assistida, até que a espermatogênese se recupere parcialmente. A viabilidade da coleta e a duração da pausa dependem de avaliação médica individualizada; por favor não interrompa os hormônios por conta própria.'
+    a: 'Você pode tentar, mas a qualidade do esperma geralmente já caiu de forma notável. Na prática clínica, costuma ser necessário pausar a TH (frequentemente por meses ou mais) sob avaliação de um especialista em reprodução assistida, até que a espermatogênese se recupere parcialmente. A viabilidade da coleta e a duração da pausa dependem de avaliação médica individualizada; por favor não interrompa os hormônios por conta própria.'
   - q: 'A espermatogênese se recupera com certeza após parar a TH?'
     a: 'Não necessariamente. As evidências atuais são muito limitadas e a reversibilidade não é garantida. Um estudo retrospectivo em apenas 9 pessoas observou recuperação parcial após a pausa da TH, mas os próprios autores enfatizam que a amostra é pequena e as conclusões devem ser cautelosas. Portanto, não use a suposição de "talvez se recupere depois" como motivo para não congelar agora.'
   - q: 'Como é o acesso à criopreservação no Brasil e em Portugal?'
@@ -20,6 +21,7 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import RealityCheck from '../../../components/ui/RealityCheck.astro';
+import FaqSchema from '../../../components/seo/FaqSchema.astro';
 
 <div class="fp-hero">
   <div class="fp-hero__box">
@@ -123,7 +125,7 @@ O procedimento padrão envolve ir a um centro de reprodução assistida ou banco
 Para detalhes práticos de acesso na sua região, consulte a [Seção 4](#access).
 
 <DangerBox title="Espermatogênese suprimida ≠ Contracepção segura">
-A TH reduz significativamente a fertilidade, mas **nunca deve ser usada como método contraceptivo**. Durante o tratamento, ainda podem restar espermatozoides férteis nos testículos. Enquanto houver relações sexuais que possam levar à gravidez, é necessário usar métodos contraceptivos confiáveis (o preservativo também reduz o risco de infecções sexualmente transmissíveis).
+A TH reduz significativamente a fertilidade, mas **nunca deve ser usada como método contraceptivo**. Durante o tratamento, ainda podem restar espermatozoides férteis nos testículos<CitationRef id="tristano-2025" num={6} authors="Tristano R et al." year={2025} />. Enquanto houver relações sexuais que possam levar à gravidez, é necessário usar métodos contraceptivos confiáveis (o preservativo também reduz o risco de infecções sexualmente transmissíveis).
 </DangerBox>
 
 ---
@@ -212,3 +214,5 @@ Desde 2008, o **Processo Transexualizador** do SUS oferece terapia hormonal e ci
 - [Antes de começar: exames de base](/pt/before-you-start/)
 - [Riscos e sinais de emergência](/pt/risks/)
 - [Plano clínico por etapas](/pt/pathway/)
+
+<FaqSchema items={frontmatter.faqs} title="Perguntas frequentes sobre preservação da fertilidade" />
