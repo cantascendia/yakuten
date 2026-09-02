@@ -11,6 +11,13 @@
   --color-primary-dark: #8B2D55;
   --color-primary-container: #E76395;
 
+  /* 实心 CTA 按钮专用配对。--color-primary 是装饰/大字号色：白字压在
+     #C84B7C 上只有 4.42:1，未达 WCAG AA 正文 4.5:1；sakura 把该变量换成
+     #FFA8C5 后更是掉到 1.80:1，按钮几乎不可读。这一对由每个主题各自保证
+     达标，实心按钮一律用它，不要直接用 --color-primary。 */
+  --cta-bg: var(--color-primary-dark); /* #8B2D55 · 白字 8.06:1 */
+  --cta-fg: #fff;
+
   /* 副色 - 幻月金系 */
   --color-accent: #D4A853;
   --color-accent-light: #F0D68A;

@@ -194,6 +194,14 @@ html.sakura {
   --color-primary-dark: var(--sakura-pink-deep);
   --color-primary-container: var(--coral);
 
+  /* 实心 CTA（见 global.css 同名注释）。直接复用本主题既有的 --sakura-pink-aa
+     —— 它就是为「需要白字的实心粉底」准备的（白字 5.39:1），其声明处已写明
+     「凡是 CTA/按钮/当前页高亮…统一用这个，别用浅彩」。
+     不用 --color-primary-dark（sakura-pink-deep #E5578B）：白字 3.46:1、
+     墨字 3.67:1，两边都不达标。 */
+  --cta-bg: var(--sakura-pink-aa);
+  --cta-fg: #fff;
+
   --color-accent: var(--butter-deep);
   --color-accent-light: var(--butter);
   --color-accent-dark: var(--honey);
