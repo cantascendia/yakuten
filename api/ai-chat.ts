@@ -213,9 +213,19 @@ function checkQuota(ip: string): QuotaVerdict {
     };
   }
 
+  /* 注意：这里**只判定不扣减**。扣减由 commitQuota 在确认要返回可用回复时执行。
+     早扣的两个问题（线上实测）：① 400 坏请求也吃额度；② 客户端对 5xx/网络失败
+     最多自动重试 3 次，一次提问能扣掉三份，约 9 次失败后用户被锁 5 小时，
+     而这期间服务可能早就恢复了。 */
+  return { exceeded: false, scope: 'session', sessionResetInMs, weeklyResetInMs, retryInMs: 0 };
+}
+
+/** 真正扣减。只在确认要向用户交付回复时调用 —— 失败一律不计费。 */
+function commitQuota(ip: string): void {
+  const rec = quotaMap.get(ip);
+  if (!rec) return;
   rec.s.used += 1;
   rec.w.used += 1;
-  return { exceeded: false, scope: 'session', sessionResetInMs, weeklyResetInMs, retryInMs: 0 };
 }
 
 /** 周窗口过期即整条记录作废（周窗口一定不早于时段窗口结束）。 */
@@ -832,16 +842,45 @@ interface CompatStreamOptions {
   body: Record<string, unknown>;
 }
 
+/* 手写流的超时。刻意分成「首包」与「分块」两档，**没有 totalMs** —— 与 Google
+   侧 timeout.chunkMs 的语义保持一致：整体超时会把正常的长回答拦腰截断，在医疗站
+   上截断一句剂量说明是患者安全事故，比多等几秒严重得多。
+   超时以 AbortError/TimeoutError 抛出，classify() 判 next-model，链继续往下走。 */
+const COMPAT_FIRST_BYTE_MS = 8_000;
+const COMPAT_CHUNK_MS = 8_000;
+
 function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
   return new ReadableStream<string>({
     async start(controller) {
-      const res = await fetch(o.url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${o.apiKey}` },
-        body: JSON.stringify(o.body),
-      });
+      /* 单个 controller 管住整条请求：首包用它，之后每收到一块就重新武装。
+         不这样做的话，供应商接受连接后不发数据（或中途静默停发），fetch 与
+         reader.read() 都会无限等待 —— PROBE_BUDGET_MS 只在候选开始前检查，
+         中断不了已经在等的候选，结果是卡到 Vercel 硬超时、客户端无限转圈。 */
+      const ac = new AbortController();
+      let stallTimer: ReturnType<typeof setTimeout> | undefined;
+      const armStall = (ms: number) => {
+        clearTimeout(stallTimer);
+        stallTimer = setTimeout(() => {
+          ac.abort(new DOMException(`${o.label} stream stalled`, 'TimeoutError'));
+        }, ms);
+      };
+
+      armStall(COMPAT_FIRST_BYTE_MS);
+      let res: Response;
+      try {
+        res = await fetch(o.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${o.apiKey}` },
+          body: JSON.stringify(o.body),
+          signal: ac.signal,
+        });
+      } catch (e) {
+        clearTimeout(stallTimer);
+        throw e;
+      }
 
       if (!res.ok || !res.body) {
+        clearTimeout(stallTimer);
         throw new APICallError({
           message: `${o.label} ${res.status}`,
           url: o.url,
@@ -864,6 +903,7 @@ function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
       let buf = '';
       try {
         for (;;) {
+          armStall(COMPAT_CHUNK_MS); // 每块重新计时：只掐「停发」，不限总时长
           const { done, value } = await reader.read();
           if (done) break;
           buf += decoder.decode(value, { stream: true }); // stream:true 防半个汉字被切断
@@ -891,6 +931,7 @@ function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
           }
         }
       } finally {
+        clearTimeout(stallTimer);
         controller.close();
       }
     },
@@ -1188,7 +1229,14 @@ export default async function handler(req: Request) {
 
       if (deadCreds.has(cand.cred)) { i++; continue; }
       if (isCooled(cand, now)) { i++; continue; }
-      if (!isLastResort && (probes >= MAX_PROBES || now - t0 > PROBE_BUDGET_MS)) break;
+      /* 预算耗尽 → 直接跳到链尾的保底层，而不是放弃整条链。
+         用 break 会让「保底层豁免预算」这条注释失效：医疗链光免费层就有 6 个
+         候选，Google 额度耗尽（线上实际发生过）时探满 5 次即退出，OpenAI /
+         付费 / DeepSeek 一个都不会试，直接 503 —— 加了保底反而没保底。 */
+      if (!isLastResort && (probes >= MAX_PROBES || now - t0 > PROBE_BUDGET_MS)) {
+        i = chain.length - 1;
+        continue;
+      }
 
       probes++;
       try {
@@ -1287,6 +1335,10 @@ export default async function handler(req: Request) {
         }
       },
     });
+
+    /* 扣额度：到这里才算真正交付。放在 503 / 空流两个分支之后，
+       所以链耗尽与安全拦截都不计费，客户端的自动重试也就不会重复扣。 */
+    commitQuota(ip);
 
     // ms = 从进入降级链到首 chunk 落袋的耗时（探测 + 首字节），不含后续流式时长
     logServed(served, probes, mode, Date.now() - t0, recentMessages.length);
