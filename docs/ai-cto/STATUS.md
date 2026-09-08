@@ -1,8 +1,28 @@
 # STATUS
 
-**Last Updated:** 2026-06-02
+**Last Updated:** 2026-09-08
 **Current Version:** v1.2.0-pre (Phase 12 — Content citation integrity)
 **Git Tag:** —
+
+---
+
+## 2026-09-08 · 药物图鉴 v2 — 品牌索引页重做（branch `feat/brand-library-v2`）
+
+owner 要求「真正做好这个页面，大规模翻新甚至重做；不能是 AI 默认设计；库越全越详细越好，图片要有」。
+Fable 5.1 主控（spec / 数据 / 审核），4 路 Opus 并行（示意图 / 主组件 / 集成+测试 / 设计画布）。
+
+- **Spec**：`docs/specs/brand-library-v2.md`；类型 SSOT `src/components/interactive/brand-library/types.ts`；数据 SSOT `src/data/brand-library.json`（32 成分图版 / 139 品牌，58 → 139；ja 译文由旧 overlay 迁入）。
+- **信息架构**：药典式鉴别图版（成分 = 图版 №，品牌 = 标本）· 外观反查（剂型→颜色→形状）· 详情对话框 · ≤3 条对比 · 列表视图 · 禁用/不适用图版结构性隔离（斜纹 + 红章 + 原因）· 页尾图例/来源/纠错。
+- **图像策略**：只用 `public/brands/*.webp` 实拍（12）；其余按 appearance 数据渲染 SVG 线描示意图并标「示意」。`public/images/drugs/*-studio.webp` 是 AI 重绘且把 Progynova 蓝片画成橙色 —— **鉴别页禁止使用**。
+- **两皮一等公民**：`.bl-root` token 层映射「二相乐园」（玻璃 + 切角 + 幻月金 kicker）与 `html.sakura`（纸白 + 墨描边 + 硬投影 + washi 图版号 + 旋转印章）。
+- **红线复核**：零存储 / 无购买链接·价格·剂量 / 颜色全变量 / transform+opacity + reduced-motion / 无 emoji（国旗改 ISO 标签）/ 44px 命中 / 原生 dialog。
+- **顺手修复**：`drugLinks.ts` 缺 `estradiol-injection` 映射（注射类品牌全部丢链接）；补 gnrh-antagonist / flutamide / norethisterone / EE / CEE 映射；`DrugBrandGallery.astro` 改读新数据（精确途径优先）。
+- **测试**：既有 critical-paths 断言一行未改；新增 `tests/brand-library.spec.ts` 6 条。`scripts/validate-brand-library.mjs` 接入 `check` / `build`。
+- **设计画布**：https://claude.ai/code/artifact/3634c282-4451-4df6-b7b2-4d01ffa2fdd6（桌面双皮肤 / 移动 / 详情对话框）。
+- **codex 跨模型审（§48，read-only）第 1 轮**：4🔴+8🟠+5🟡 → 全部处理：无引用医学结论（成分级 `references[]` + 图版头「依据文献」链接 + 校验脚本核对 id）· 代购/价格/「可购」措辞全清（51 处）· 日文迁移字段 2 倍剂量错误（Oestrogel 每泵 1.5→0.75 mg）与「12.5 mg」用量暗示、「絶対禁止」软化 · Suprefact 拆鼻喷/注射两条 · Crinone 移除（剂型无对应）· Makena 双规格 · dialog 关闭后延时还焦点 · 对比按钮选中态可及名 · 根元素 `lang` · Gallery 回退 en · JSON-LD name/inLanguage 本地化 · 测试改等 `data-hydrated` 标记 + 断言全部为片剂。codex 的「多语死链」判断经 dist 核实为误报（Starlight i18n fallback 已生成全部 17 语页面）。
+- **codex 第 2 轮**（修后可合并）：❌ 项全部处理 —— 全部 32 成分补 `references[]`（药理/换算陈述也附 kuhl-2005 / oriowo-1980 / 指南）+ 详情对话框同步显示引用 + 校验器 cautioned/banned 缺引用改为 error · 「获取/药房/买」类措辞再清一遍（zh/en/ja）· Makena 规格纠正并拆自动注射器条目 · Depo-Provera 拆 IM 150 / SubQ 104 · Climara 日文储库型→基质型 · 列表/详情对比按钮选中态可及名 · 根元素恒定输出 `lang` · 含汉字规格串在非 zh UI 标 `lang="zh"` · 文献链接走 ExternalLink（新标签提示）· 图版展开按钮 `aria-controls`。数据 139 → 141 条。
+- **真机审查修正**：标本舞台改为两皮通用的浅色纸面（示意图深墨描边，白色片剂可读）· 印章右下/来源角标左上（避开切角）· 中和 Starlight `.sl-markdown-content` 兄弟 margin（卡片 517→409 px，页面 45k→30k px）· 图版默认露 6/3 张 + 「展开其余 N 条」· 窄屏反查折叠 + 横向滚动 + 命令栏不 sticky · 浅色主题命令栏用主题感知玻璃 · sakura/浅色印章 AA 加深色。
+- **待办**：社区实拍补图（P3-1）；非四语页面 lede 翻译；`src/components/seo/JsonLd.astro` 工具页 `offers.price: '0'` 与 SPEC「不标价格」字面冲突（既有，待裁定）。
 
 ---
 

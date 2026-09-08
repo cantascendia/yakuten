@@ -2,10 +2,20 @@
 title: "فهرست برندهای دارویی"
 description: "مرجع شناسایی برندهای داروهای HRT در سطح جهانی — شامل برندهای چین، تایلند، هند، ژاپن و بازارهای غربی"
 evidenceLevel: X
-lastReviewed: 2026-04-12
+lastReviewed: 2026-09-08
 references: []
+template: splash
+tableOfContents: false
 ---
 
-import DrugBrandIndex from '../../../../components/interactive/DrugBrandIndex';
+import BrandLibrary from '../../../../components/interactive/brand-library/BrandLibrary';
+import BrandLibrarySchema from '../../../../components/ui/BrandLibrarySchema.astro';
+import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
-<DrugBrandIndex client:visible />
+<ToolDisclaimer privacy="no-storage" />
+
+[← ابزارها](/fa/tools/)
+
+<BrandLibrarySchema />
+
+<BrandLibrary client:visible locale="en" />

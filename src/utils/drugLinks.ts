@@ -1,7 +1,7 @@
 /**
  * Maps drug IDs from drugs.json to their documentation page URL slugs.
- * Used by interactive tool components (DrugComparator, DrugCards, DrugBrandIndex)
- * to link back to detailed drug pages.
+ * Used by interactive tool components (DrugComparator, DrugCards, BrandLibrary)
+ * and by BrandLibrarySchema.astro to link back to detailed drug pages.
  */
 
 const DRUG_ID_TO_SLUG: Record<string, string> = {
@@ -10,23 +10,32 @@ const DRUG_ID_TO_SLUG: Record<string, string> = {
   'estradiol-sublingual': 'medications/estrogens/sublingual',
   'estradiol-gel': 'medications/estrogens/gel',
   'estradiol-patch': 'medications/estrogens/transdermal-patch',
+  // drugs.json 用的是 `estradiol-injection`；`estradiol-valerate-injection`
+  // 是历史别名，两者都保留以免旧数据/旧组件丢链接。
+  'estradiol-injection': 'medications/estrogens/injection',
   'estradiol-valerate-injection': 'medications/estrogens/injection',
   'estradiol-cypionate': 'medications/estrogens/cypionate',
   'estradiol-enanthate': 'medications/estrogens/enanthate',
   'estradiol-undecylate': 'medications/estrogens/undecylate',
   'banned-estrogens': 'medications/estrogens/banned-estrogens',
+  // 炔雌醇 / 结合雌激素的「详情」落到禁用雌激素专页（品牌图鉴禁用图版 + DrugCards/Comparator 共用）
+  'ethinylestradiol': 'medications/estrogens/banned-estrogens',
+  'conjugated-estrogens': 'medications/estrogens/banned-estrogens',
 
   // Anti-androgens
   'cyproterone-acetate': 'medications/antiandrogens/cpa',
   'spironolactone': 'medications/antiandrogens/spironolactone',
   'bicalutamide': 'medications/antiandrogens/bicalutamide',
   'gnrh-agonist': 'medications/antiandrogens/gnrh-agonists',
+  'gnrh-antagonist': 'medications/antiandrogens/gnrh-antagonists',
+  'flutamide': 'medications/antiandrogens/flutamide',
 
   // Progestogens
   'progesterone': 'medications/progestogens/progesterone',
   'hydroxyprogesterone': 'medications/progestogens/hydroxyprogesterone',
   'dydrogesterone': 'medications/progestogens/dydrogesterone',
   'drospirenone': 'medications/progestogens/drospirenone',
+  'norethisterone': 'medications/progestogens/norethisterone',
   'mpa': 'medications/progestogens/cautioned-progestins',
 
   // 5α-Reductase Inhibitors

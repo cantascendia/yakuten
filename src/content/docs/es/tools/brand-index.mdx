@@ -2,10 +2,20 @@
 title: "Índice de marcas de medicamentos"
 description: "Referencia global para identificar marcas de medicamentos para THS: abarca marcas de Europa, Latinoamérica, Asia y otros mercados internacionales"
 evidenceLevel: X
-lastReviewed: 2026-04-12
+lastReviewed: 2026-09-08
 references: []
+template: splash
+tableOfContents: false
 ---
 
-import DrugBrandIndex from '../../../../components/interactive/DrugBrandIndex';
+import BrandLibrary from '../../../../components/interactive/brand-library/BrandLibrary';
+import BrandLibrarySchema from '../../../../components/ui/BrandLibrarySchema.astro';
+import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
-<DrugBrandIndex client:visible />
+<ToolDisclaimer privacy="no-storage" />
+
+[← Herramientas](/es/tools/)
+
+<BrandLibrarySchema />
+
+<BrandLibrary client:visible locale="en" />

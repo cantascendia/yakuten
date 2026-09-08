@@ -2,10 +2,20 @@
 title: "Index ng mga Brand ng Gamot"
 description: "Pandaigdigang sangguniang panukala para sa pagkilala ng mga brand ng gamot na pang-HRT — sumasaklaw sa mga brand mula China, Thailand, India, Japan, at mga merkado sa Kanluran"
 evidenceLevel: X
-lastReviewed: 2026-04-12
+lastReviewed: 2026-09-08
 references: []
+template: splash
+tableOfContents: false
 ---
 
-import DrugBrandIndex from '../../../../components/interactive/DrugBrandIndex';
+import BrandLibrary from '../../../../components/interactive/brand-library/BrandLibrary';
+import BrandLibrarySchema from '../../../../components/ui/BrandLibrarySchema.astro';
+import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
-<DrugBrandIndex client:visible />
+<ToolDisclaimer privacy="no-storage" />
+
+[← Mga Kasangkapan](/fil/tools/)
+
+<BrandLibrarySchema />
+
+<BrandLibrary client:visible locale="en" />

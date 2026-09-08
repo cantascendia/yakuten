@@ -1,0 +1,104 @@
+---
+/**
+ * BrandLibrarySchema — 药物图鉴 JSON-LD（schema.org ItemList<Drug>）
+ *
+ * 供 /<locale>/tools/brand-index/ 使用；数据源 src/data/brand-library.json。
+ * SPEC: docs/specs/brand-library-v2.md §6（REVIEW-BACKLOG P2-SEO-1）
+ *
+ * 红线（SPEC §9 / Constitution）：
+ *   - 绝不输出 offers / price / priceCurrency / seller —— 本站不提供购药渠道，
+ *     任何带价格的结构化数据都会把页面变成商品页。
+ *   - banned（不适用于 HRT）的条目不进 schema：不为禁用药做结构化曝光。
+ *
+ * 语言：按 Astro.currentLocale 选，字段回退链 locale → en → zh
+ *      （types.ts 的 L10n 只有 zh/en/ja/ko，其余 13 语回退到 en）。
+ */
+import brandLibrary from '../../data/brand-library.json';
+import type { Brand, BrandLibraryData, Ingredient, L10n } from '../interactive/brand-library/types';
+import { getLocale } from '../../i18n/ui';
+import { getDrugPageUrl } from '../../utils/drugLinks';
+
+const SITE_ORIGIN = 'https://hrtyaku.com';
+
+const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
+const data = brandLibrary as unknown as BrandLibraryData;
+const ingredientById = new Map<string, Ingredient>(data.ingredients.map((i) => [i.id, i]));
+
+/** L10n 回退链 locale → en → zh */
+function pick(value: L10n | undefined): string {
+  if (!value) return '';
+  // L10n 是 interface（无隐式索引签名），locale 可能是 zh/en/ja/ko 之外的 13 语之一
+  const direct = (value as unknown as Record<string, string | undefined>)[locale];
+  return direct ?? value.en ?? value.zh ?? '';
+}
+
+/** 成分名回退链（Ingredient.name 是 { zh, en, inn?, ja?, ko? }，en 必填） */
+function ingredientName(ing: Ingredient | undefined): string {
+  if (!ing) return '';
+  const direct = (ing.name as Record<string, string | undefined>)[locale];
+  return direct ?? ing.name.en ?? ing.name.zh ?? '';
+}
+
+/** BrandStatus → schema.org DrugPrescriptionStatus（其余状态省略该字段） */
+const PRESCRIPTION_STATUS: Partial<Record<Brand['status'], string>> = {
+  prescription: 'PrescriptionOnly',
+  otc: 'OTC',
+};
+
+const ITEM_LIST_NAME: Record<string, string> = {
+  zh: '全球 HRT 药物品牌图鉴',
+  en: 'Global HRT medication brand index',
+  ja: 'グローバル HRT 医薬品ブランド図鑑',
+  ko: '글로벌 HRT 약물 브랜드 색인',
+};
+
+// banned 不进 schema：品牌自身被标 banned，或所属成分 hrtUse 为 banned
+const listedBrands = data.brands.filter((b) => {
+  if (b.status === 'banned') return false;
+  if (ingredientById.get(b.ingredientId)?.hrtUse === 'banned') return false;
+  return true;
+});
+
+const items = listedBrands.map((b) => {
+  const ingredient = ingredientById.get(b.ingredientId);
+  const slugPath = getDrugPageUrl(b.drugId, locale);
+
+  // 别名：国际名 / 当地名 / aliases，去重且不与 display 重复
+  const alternateName = [...new Set([b.name.intl, b.name.local, ...(b.name.aliases ?? [])])].filter(
+    (n): n is string => typeof n === 'string' && n.length > 0 && n !== b.name.display
+  );
+
+  const prescriptionStatus = PRESCRIPTION_STATUS[b.status];
+  const manufacturerName = pick(b.manufacturer.name);
+  const nonProprietaryName = ingredient?.name.en ?? '';
+  const activeIngredient = ingredientName(ingredient);
+
+  return {
+    '@type': 'Drug',
+    name: locale === 'zh' ? b.name.display : (b.name[locale as 'en' | 'ja' | 'ko'] ?? b.name.en ?? b.name.intl ?? b.name.display),
+    ...(alternateName.length > 0 ? { alternateName } : {}),
+    ...(nonProprietaryName ? { nonProprietaryName } : {}),
+    ...(activeIngredient ? { activeIngredient } : {}),
+    dosageForm: b.form.replace(/-/g, ' '),
+    ...(manufacturerName
+      ? { manufacturer: { '@type': 'Organization', name: manufacturerName } }
+      : {}),
+    ...(prescriptionStatus ? { prescriptionStatus } : {}),
+    ...(slugPath ? { url: `${SITE_ORIGIN}${slugPath}` } : {}),
+  };
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${Astro.url.href}#brand-library`,
+  name: ITEM_LIST_NAME[locale] ?? ITEM_LIST_NAME.en,
+  // 非四语页面的结构化内容实际回退英文，inLanguage 如实标 en
+  inLanguage: ['zh', 'en', 'ja', 'ko'].includes(locale) ? locale : 'en',
+  numberOfItems: items.length,
+  itemListOrder: 'https://schema.org/ItemListUnordered',
+  itemListElement: items,
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

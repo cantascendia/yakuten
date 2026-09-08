@@ -4,11 +4,20 @@
  * 展示某药物在各国的品牌、规格和外观信息。
  * 玻璃拟态卡片，符合「二相乐园」设计风格。
  *
- * @prop drugId - 药物 ID（对应 drug-brands.json 的 key）
+ * 数据源：src/data/brand-library.json（药物图鉴 v2 分层结构，SSOT）。
+ * 旧的 drug-brands.json / drug-brands.ja.json 已不再消费。
+ * 类型见 src/components/interactive/brand-library/types.ts，
+ * SPEC 见 docs/specs/brand-library-v2.md §6。
+ *
+ * 取数：brand.drugId 直接命中，或该 brand 所属 ingredient 的 drugIds 含本药物
+ *      （同成分不同给药途径共用一个图版）。
+ * 排序：按 market.region 的地理顺序（cn 打头，other 收尾）。
+ *
+ * @prop drugId - 药物 ID（对应 drugs.json / brand-library.json 的 drugId）
  * @prop title  - 板块标题（默认："品牌图鉴"）
  */
-import brandData from '../../data/drug-brands.json';
-import brandDataJa from '../../data/drug-brands.ja.json';
+import brandLibrary from '../../data/brand-library.json';
+import type { Brand, BrandLibraryData, Ingredient, L10n, MarketRegion } from '../interactive/brand-library/types';
 import { t, getLocale } from '../../i18n/ui';
 
 interface Props {
@@ -18,43 +27,60 @@ interface Props {
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
-// Section chrome — localized inline (component-local labels). zh fallback.
+// Section chrome — localized inline (component-local labels). en fallback.
 const GALLERY_LABELS: Record<string, { title: string; manufacturer: string; spec: string; appearance: string }> = {
   zh: { title: '品牌图鉴', manufacturer: '厂商', spec: '规格', appearance: '外观' },
   ja: { title: 'ブランド図鑑', manufacturer: 'メーカー', spec: '規格', appearance: '外観' },
   en: { title: 'Brand Gallery', manufacturer: 'Maker', spec: 'Spec', appearance: 'Form' },
   ko: { title: '브랜드 도감', manufacturer: '제조사', spec: '규격', appearance: '외형' },
 };
-const L = GALLERY_LABELS[locale] ?? GALLERY_LABELS.zh;
+const L = GALLERY_LABELS[locale] ?? GALLERY_LABELS.en;
 const { drugId, title = L.title } = Astro.props;
 const indexPath = `/${locale}/tools/brand-index/`;
 
-type BrandEntry = {
-  name: string;
-  manufacturer: string;
-  country: string;
-  countryName: string;
-  spec: string;
-  appearance: string;
-  notes: string;
-};
+const data = brandLibrary as unknown as BrandLibraryData;
+const ingredientById = new Map<string, Ingredient>(data.ingredients.map((i) => [i.id, i]));
 
-// Brand reference data is authored in zh; for ja we merge a translated overlay
-// (drug-brands.ja.json, index-aligned per drugId) over the base entry so the
-// country/maker/spec/appearance/notes render in Japanese. Other locales use base.
-const baseBrands: BrandEntry[] = (brandData as Record<string, BrandEntry[]>)[drugId] ?? [];
-const jaOverlay = (brandDataJa as Record<string, Partial<BrandEntry>[]>)[drugId];
-const brands: BrandEntry[] =
-  locale === 'ja' && jaOverlay
-    ? baseBrands.map((b, i) => ({ ...b, ...(jaOverlay[i] ?? {}) }))
-    : baseBrands;
+// ── 取数：直接命中 drugId，或所属成分的 drugIds 覆盖本药物 ──
+// 先取精确命中本药物（同途径）的品牌；只有该途径无任何品牌时才回退到成分级
+// （避免口服页混入安瓿、注射页混入片剂）。
+const exact: Brand[] = data.brands.filter((b) => b.drugId === drugId);
+const matched: Brand[] = exact.length > 0
+  ? exact
+  : data.brands.filter((b) => ingredientById.get(b.ingredientId)?.drugIds.includes(drugId));
 
-/** Country code → flag emoji */
-function flag(code: string): string {
-  const chars = [...code.toUpperCase()].map(
-    (c) => String.fromCodePoint(0x1f1e6 - 65 + c.charCodeAt(0))
-  );
-  return chars.join('');
+// ── 排序：地理顺序（近 → 远），未知 region 落到最后 ──
+const REGION_ORDER: MarketRegion[] = [
+  'cn', 'tw-hk', 'jp', 'kr', 'sea', 'in', 'eu', 'na', 'oceania', 'latam', 'other',
+];
+const regionRank = new Map<string, number>(REGION_ORDER.map((r, i) => [r, i]));
+const brands = [...matched].sort(
+  (a, b) =>
+    (regionRank.get(a.market.region) ?? REGION_ORDER.length) -
+    (regionRank.get(b.market.region) ?? REGION_ORDER.length)
+);
+
+/**
+ * L10n 回退链 locale → en → zh。
+ * 回退时返回实际语言 tag，模板据此打 lang 属性（SPEC §7 a11y）。
+ */
+function pick(value: L10n | undefined): { text: string; lang: string | undefined } {
+  if (!value) return { text: '', lang: undefined };
+  // L10n 是 interface（无隐式索引签名），locale 可能是 zh/en/ja/ko 之外的 13 语之一
+  const direct = (value as unknown as Record<string, string | undefined>)[locale];
+  if (direct) return { text: direct, lang: undefined };
+  if (value.en) return { text: value.en, lang: locale === 'en' ? undefined : 'en' };
+  return { text: value.zh, lang: locale === 'zh' ? undefined : 'zh' };
+}
+
+/** 规格行：strengths（· 分隔）+ 包装规格 */
+function specLine(b: Brand): { text: string; lang: string | undefined } {
+  const strengths = b.strengths.join(' · ');
+  const pack = pick(b.pack);
+  const text = [strengths, pack.text].filter(Boolean).join(' · ');
+  // strengths 是 zh 写法；非 zh 页面且含汉字时标 lang="zh"
+  const hasCjk = /[\u3000-\u9fff\uff00-\uffef]/.test(strengths);
+  return { text, lang: strengths ? (locale !== 'zh' && hasCjk ? 'zh' : undefined) : pack.lang };
 }
 ---
 
@@ -62,34 +88,55 @@ function flag(code: string): string {
   <section class="brand-gallery" aria-label={title}>
     <h2 class="brand-gallery__title">{title}</h2>
     <div class="brand-gallery__grid">
-      {brands.map((b) => (
-        <div class="brand-gallery__item">
-          <div class="brand-card glass-card glass-card--sm glass-card--static">
-            <div class="brand-card__header">
-              <span class="brand-card__flag" aria-hidden="true">{flag(b.country)}</span>
-              <span class="brand-card__country">{b.countryName}</span>
+      {brands.map((b) => {
+        const manufacturer = pick(b.manufacturer.name);
+        const countryName = pick(b.market.countryName);
+        const appearance = pick(b.appearance.description);
+        const notes = pick(b.notes);
+        const spec = specLine(b);
+        const photo = b.image && b.image.kind === 'photo' ? b.image : undefined;
+        const photoAlt = photo ? pick(photo.alt) : undefined;
+        return (
+          <div class="brand-gallery__item">
+            <div class="brand-card glass-card glass-card--sm glass-card--static">
+              <div class="brand-card__header">
+                {/* 两字母 ISO 代码标签取代 emoji 国旗：Windows Chrome 不渲染旗帜 emoji */}
+                <span class="brand-card__cc">{b.market.country}</span>
+                <span class="brand-card__country" lang={countryName.lang}>{countryName.text}</span>
+              </div>
+              <h3 class="brand-card__name">{b.name.display}</h3>
+              {photo && (
+                <img
+                  class="brand-card__thumb"
+                  src={photo.src}
+                  alt={photoAlt?.text ?? b.name.display}
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <dl class="brand-card__details">
+                <div class="brand-card__row">
+                  <dt>{L.manufacturer}</dt>
+                  <dd lang={manufacturer.lang}>{manufacturer.text}</dd>
+                </div>
+                <div class="brand-card__row">
+                  <dt>{L.spec}</dt>
+                  <dd lang={spec.lang}>{spec.text}</dd>
+                </div>
+                <div class="brand-card__row">
+                  <dt>{L.appearance}</dt>
+                  <dd lang={appearance.lang}>{appearance.text}</dd>
+                </div>
+              </dl>
+              {notes.text && (
+                <p class="brand-card__notes" lang={notes.lang}>{notes.text}</p>
+              )}
             </div>
-            <h3 class="brand-card__name">{b.name}</h3>
-            <dl class="brand-card__details">
-              <div class="brand-card__row">
-                <dt>{L.manufacturer}</dt>
-                <dd>{b.manufacturer}</dd>
-              </div>
-              <div class="brand-card__row">
-                <dt>{L.spec}</dt>
-                <dd>{b.spec}</dd>
-              </div>
-              <div class="brand-card__row">
-                <dt>{L.appearance}</dt>
-                <dd>{b.appearance}</dd>
-              </div>
-            </dl>
-            {b.notes && (
-              <p class="brand-card__notes">{b.notes}</p>
-            )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
     <p class="brand-gallery__index-link">
       <a href={indexPath}>{t(locale, 'brandGallery.viewAll')}</a>
@@ -151,9 +198,17 @@ function flag(code: string): string {
     gap: var(--space-xs);
   }
 
-  .brand-card__flag {
-    font-size: 1.25rem;
+  /* 国家代码 monogram（取代 emoji 国旗：Windows Chrome 不渲染旗帜 emoji） */
+  .brand-card__cc {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
     line-height: 1;
+    letter-spacing: 0.08em;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-accent);
+    border-radius: 2px;
+    padding: 3px 4px;
   }
 
   .brand-card__country {
@@ -171,6 +226,16 @@ function flag(code: string): string {
     color: var(--color-text-primary);
     margin: 0;
     line-height: 1.3;
+  }
+
+  /* --- Photo thumbnail (仅实拍图；示意图由品牌索引页的岛屿渲染) --- */
+  .brand-card__thumb {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    align-self: flex-start;
+    background: var(--glass-bg-40, rgba(255, 255, 255, 0.06));
+    border-radius: 2px;
   }
 
   /* --- Detail list --- */

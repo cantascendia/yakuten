@@ -38,7 +38,7 @@
 | P2-PERF-1 | **Sakura 字体 @import 改造为 JS 条件注入** | 2026-05-26 perf-seo 审计 | `src/styles/sakura-theme.css:13` 顶部 @import 加载 Fraunces/Plus Jakarta/Ma Shan Zheng/Zen Maru Gothic/Klee One/Kosugi Maru/Yuji Syuku/DotGothic16 等 ~10 个手账字体 family，即使 sakura mode 未激活也强制全站下载。改造方案：移到 sakura-fonts.css 单独文件，在 ThemeToggle.astro 切换时通过 JS 注入 `<link rel="stylesheet">`。风险：FOUC + 切换体验。需独立 PR |
 | P2-PERF-2 | **OG 图像 PNG → WebP** | 同上 | `scripts/generate-og-images.mjs` 当前 sharp 输出 PNG（14 MB / 219 张）。改 WebP 节省 60-70% (4-6 MB)。微小社交平台兼容性 trade-off（旧 Android/iOS 显示 SVG fallback） |
 | P2-PERF-3 | **Sakura CSS 懒加载** | 同上 | 1443 行 sakura CSS（24 KB gzip）全部捆绑到 common chunk，仅 <1% 用户使用。需配合 P2-PERF-1 的字体改造一起做 |
-| P2-SEO-1 | **Drug 品牌 Product schema** | 同上 | DrugBrandIndex.tsx / drug-cards.tsx per-brand 当前只渲染视觉卡片，缺 Product 结构化数据 |
+| P2-SEO-1 | **Drug 品牌 Product schema** | 同上 | ✅ 品牌索引页已由 `BrandLibrarySchema.astro` 输出 ItemList<Drug>（无 offers/price，banned 不进；2026-09-08 药物图鉴 v2）。drug-cards.tsx per-brand 仍缺 |
 | P2-SEO-2 | **Medical advisors Person schema** | 同上 | medical-advisors.mdx 列表展示，缺 Person 节点 |
 | P2-SEO-3 | **Compare 页双 Drug 节点** | 同上 | compare/cpa-vs-spironolactone 等当前是通用 MedicalWebPage，可 emit 两个 Drug + ComparisonChart |
 | P2-A11Y-1 | **axe-core CI 集成** | 2026-05-26 UI/a11y 审计 | Plan agent 建议每 PR + 月度自动跑 axe-core 扫描 6 张代表性页面（splash / blog / blood-tests / dose-simulator / drug-brand-index / FloatingAIChat 打开态），输出 violations 报告并阻断 P0 |
@@ -60,7 +60,7 @@
 
 | # | 项目 | 来源 | 备注 |
 |---|------|------|------|
-| P3-1 | **品牌图鉴实物图片** | `data/drug-brands.json` 58 品牌 | 当前只有文字描述，缺产品图。需社区贡献素材 |
+| P3-1 | **品牌图鉴实物图片** | `src/data/brand-library.json` 139 品牌 | 2026-09-08 药物图鉴 v2：12 张实拍 + 127 条数据驱动线描示意图（标「示意」）。**AI 重绘 studio 图禁止用于鉴别**（Progynova 蓝片被画成橙色）。仍需社区/站方实拍补齐，优先中国大陆常见品牌 |
 | P3-2 | **儿科 / 青少年内容** | CONTENT.md | 已规划未实施；伦理与法律敏感，需医学顾问明确边界 |
 | P3-3 | **更多 SVG 插图（分子结构、Tanner 分期 SVG 化）** | 当前以 webp 配图为主 | Servier Medical Art CC BY 4.0 可用作底图 |
 | P3-4 | **首页粒子背景性能** | `ParticleCanvas.tsx` / `ParticleBackground.astro` | 已限 60 粒子，老移动端仍可优化（OffscreenCanvas） |

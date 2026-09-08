@@ -2,10 +2,20 @@
 title: "Danh mục tên thương mại thuốc"
 description: "Tài liệu tham khảo nhận diện tên thương mại thuốc HRT trên toàn cầu — bao gồm các thương hiệu từ Trung Quốc, Thái Lan, Ấn Độ, Nhật Bản và các thị trường phương Tây"
 evidenceLevel: X
-lastReviewed: 2026-04-12
+lastReviewed: 2026-09-08
 references: []
+template: splash
+tableOfContents: false
 ---
 
-import DrugBrandIndex from '../../../../components/interactive/DrugBrandIndex';
+import BrandLibrary from '../../../../components/interactive/brand-library/BrandLibrary';
+import BrandLibrarySchema from '../../../../components/ui/BrandLibrarySchema.astro';
+import ToolDisclaimer from '../../../../components/ui/ToolDisclaimer.astro';
 
-<DrugBrandIndex client:visible />
+<ToolDisclaimer privacy="no-storage" />
+
+[← Công Cụ](/vi/tools/)
+
+<BrandLibrarySchema />
+
+<BrandLibrary client:visible locale="en" />
