@@ -19,6 +19,7 @@ import type {
   MarketRegion,
   Score,
 } from './types';
+import type { FormGroup, RegionBucket } from './search';
 
 /** UI 四语；页面可能是 17 语中的任意一种，非四语一律回退 en */
 export type UiLocale = Locale;
@@ -67,10 +68,10 @@ const DICT = {
     '브랜드·성분·제조사·각인 검색',
   ],
   searchPlaceholder: [
-    '搜索品牌 / 成分 / 厂商 / 压印…',
-    'Brand / ingredient / maker / imprint…',
-    'ブランド / 成分 / メーカー / 刻印…',
-    '브랜드 / 성분 / 제조사 / 각인…',
+    '搜索品牌名、通用名或厂商',
+    'Search a brand, generic name or manufacturer',
+    'ブランド名・一般名・メーカーを検索',
+    '브랜드명·일반명·제조사 검색',
   ],
   searchShortcutHint: [
     '按斜杠键聚焦搜索框',
@@ -267,7 +268,7 @@ const DICT = {
   /* — 图版折叠 / 反查折叠 — */
   showMore: ['展开其余 {n} 条', 'Show {n} more', '残り {n} 件を表示', '나머지 {n}개 보기'],
   showLess: ['收起', 'Show less', '折りたたむ', '접기'],
-  reverseExpand: ['按外观找药', 'Find by appearance', '外観から探す', '외관으로 찾기'],
+  reverseExpand: ['按外观查找', 'Find by appearance', '外観から探す', '외관으로 찾기'],
 
   referencesLabel: ['依据文献', 'References', '根拠文献', '근거 문헌'],
 
@@ -296,6 +297,144 @@ const DICT = {
     '브랜드 정보는 각국의 출시와 단종에 따라 계속 바뀝니다. 손에 든 실물이 이 페이지의 설명과 다르면 포장 사진과 함께 알려 주세요.',
   ],
   footFixLink: ['纠错与联系方式 →', 'Corrections & contact →', '訂正・連絡先 →', '정정 및 연락처 →'],
+
+  /* — v2.1 参考稿：面包屑 / 标题区 / 提示卡 — */
+  crumbLabel: ['面包屑导航', 'Breadcrumb', 'パンくずリスト', '탐색 경로'],
+  crumbHome: ['首页', 'Home', 'ホーム', '홈'],
+  crumbTools: ['工具', 'Tools', 'ツール', '도구'],
+  crumbCurrent: ['品牌索引', 'Brand index', 'ブランド索引', '브랜드 색인'],
+  heroTitle: [
+    '全球 HRT 药物品牌索引与鉴别指南',
+    'Global HRT brand index and identification guide',
+    '世界の HRT ブランド索引と識別ガイド',
+    '세계 HRT 브랜드 색인과 식별 가이드',
+  ],
+  heroLede: [
+    '从品牌、成分与地区出发，查找药品资料，核对不同包装版本。',
+    'Start from a brand, an ingredient or a region to find product information and check packaging versions.',
+    'ブランド・成分・地域から製品情報を調べ、包装バージョンを照合できます。',
+    '브랜드·성분·지역에서 출발해 제품 정보를 찾고 포장 버전을 대조할 수 있습니다.',
+  ],
+  noteTitle: [
+    '先核对信息，再判断差异',
+    'Check the information before judging a difference',
+    'まず情報を照合してから違いを判断',
+    '먼저 정보를 대조한 뒤 차이를 판단하세요',
+  ],
+  noteLink: ['查看核对指南', 'Read the checking guide', '照合ガイドを見る', '대조 가이드 보기'],
+
+  /* — v2.1 搜索条 / 信息条 — */
+  searchSubmit: ['搜索', 'Search', '検索', '검색'],
+  searchTip: [
+    '也可以按地区、类别与剂型筛选。',
+    'You can also filter by region, class and form.',
+    '地域・分類・剤形からも絞り込めます。',
+    '지역·분류·제형으로도 좁힐 수 있습니다.',
+  ],
+  infoBar: [
+    '仅供药品信息核对，不提供购药渠道或个体化处方建议。',
+    'For checking product information only. No purchase channels and no individual prescribing advice.',
+    '製品情報の照合のみを目的としています。購入経路や個別の処方助言は提供しません。',
+    '제품 정보 대조용입니다. 구매 경로나 개별 처방 조언은 제공하지 않습니다.',
+  ],
+
+  /* — v2.1 左栏筛选 — */
+  filterTitle: ['筛选条件', 'Filters', '絞り込み条件', '필터 조건'],
+  filterReset: ['重置', 'Reset', 'リセット', '초기화'],
+  groupRegion: ['上市地区', 'Market region', '流通地域', '유통 지역'],
+  groupCategory: ['药物类别', 'Drug class', '薬剤分類', '약물 분류'],
+  groupForm: ['剂型', 'Form', '剤形', '제형'],
+  groupResource: ['参考资料', 'Reference material', '参考資料', '참고 자료'],
+  resourcePhoto: ['有包装参考', 'Has packaging photo', '包装写真あり', '포장 사진 있음'],
+  resourceLeaflet: ['有说明书资料', 'Has leaflet or official page', '添付文書・公式資料あり', '설명서·공식 자료 있음'],
+  askTitle: [
+    '没有找到对应品牌？',
+    'Cannot find a brand?',
+    '該当ブランドが見つかりませんか？',
+    '해당 브랜드를 찾지 못했나요?',
+  ],
+  askLink: ['反馈缺失资料', 'Report missing information', '不足情報を知らせる', '누락된 정보 알리기'],
+
+  /* — v2.1 列表区 — */
+  listTitle: ['品牌图鉴', 'Brand catalogue', 'ブランド図鑑', '브랜드 도감'],
+  sortLabel: ['排序', 'Sort', '並び替え', '정렬'],
+  sortName: ['品牌名称', 'Brand name', 'ブランド名', '브랜드 이름'],
+  sortIngredient: ['成分', 'Ingredient', '成分', '성분'],
+  sortRegion: ['地区', 'Region', '地域', '지역'],
+  viewGrid: ['网格', 'Grid', 'グリッド', '그리드'],
+  summaryFamilies: [
+    '{families} 个品牌 · {versions} 个版本',
+    '{families} brands · {versions} versions',
+    '{families} ブランド · {versions} バージョン',
+    '{families}개 브랜드 · {versions}개 버전',
+  ],
+
+  /* — v2.1 卡片 — */
+  cardIngredient: ['有效成分', 'Active ingredient', '有効成分', '유효 성분'],
+  cardForm: ['剂型', 'Form', '剤形', '제형'],
+  cardRegions: ['地区版本', 'Regional versions', '地域バージョン', '지역 버전'],
+  cardSpecs: ['规格资料', 'Strength data', '規格情報', '규격 정보'],
+  cardSpecsLink: ['查看资料', 'View data', '情報を見る', '정보 보기'],
+  cardSpecsOf: [
+    '查看 {name} 的规格资料',
+    'View strength data for {name}',
+    '{name} の規格情報を見る',
+    '{name}의 규격 정보 보기',
+  ],
+  cardDetail: ['查看详情', 'View details', '詳細を見る', '상세 보기'],
+  badgePack: ['包装示意', 'Package illustration', '包装イメージ図', '포장 예시도'],
+  packAlt: [
+    '{name} 包装示意图（非实物）',
+    '{name} package illustration (not a photo)',
+    '{name} の包装イメージ図（実物ではありません）',
+    '{name} 포장 예시도(실물 아님)',
+  ],
+
+  /* — v2.1 版本切换 — */
+  versionsLabel: ['版本', 'Versions', 'バージョン', '버전'],
+  versionsHint: [
+    '同一品牌在不同地区的上市版本，规格与外观可能不同。',
+    'Versions of the same brand in different regions; strengths and appearance may differ.',
+    '同じブランドの地域別バージョン。規格や外観が異なる場合があります。',
+    '같은 브랜드의 지역별 버전입니다. 규격과 외관이 다를 수 있습니다.',
+  ],
+  ingredientRole: ['成分定位', 'Role of the ingredient', '成分の位置づけ', '성분의 위치'],
+
+  /* — v2.1 底部核对提示条 — */
+  checkTitle: [
+    '看到相似包装，也要核对这些信息',
+    'Similar packaging still needs these checks',
+    '似た包装でも次の項目を照合してください',
+    '비슷한 포장이라도 다음 항목을 대조하세요',
+  ],
+  checkSub: [
+    '包装外观不能单独证明药品真伪。',
+    'Packaging appearance alone cannot prove that a medicine is genuine.',
+    '包装の外観だけでは医薬品の真贋は証明できません。',
+    '포장 외관만으로는 의약품의 진위를 증명할 수 없습니다.',
+  ],
+  checkItem1: ['核对成分与规格', 'Check ingredient and strength', '成分と規格を照合', '성분과 규격 대조'],
+  checkItem2: [
+    '确认地区与包装版本',
+    'Confirm region and packaging version',
+    '地域と包装バージョンを確認',
+    '지역과 포장 버전 확인',
+  ],
+  checkItem3: [
+    '查阅说明书与官方资料',
+    'Read the leaflet and official sources',
+    '添付文書と公式資料を確認',
+    '설명서와 공식 자료 확인',
+  ],
+  checkLink: ['阅读完整指南', 'Read the full guide', '完全版ガイドを読む', '전체 가이드 읽기'],
+
+  /* — v2.1 紧凑页尾 — */
+  footCompact: [
+    '品牌、规格与包装取自各地公开说明书与监管机构数据库；无实拍的条目显示按外观数据绘制的包装示意图，不能单独作为真伪凭据。整库最近核对：{date}。',
+    'Brands, strengths and packaging come from public leaflets and regulator databases. Entries without a photo show an illustration drawn from the appearance data, which alone is not proof of authenticity. Library last reviewed: {date}.',
+    'ブランド・規格・包装は各国の公開添付文書と規制当局データベースに基づきます。実物写真のない項目は外観データから描いたイメージ図で、それだけでは真贋の根拠になりません。最終確認日：{date}。',
+    '브랜드·규격·포장은 각국 공개 설명서와 규제기관 데이터베이스에 근거합니다. 실물 사진이 없는 항목은 외관 데이터로 그린 예시도이며 그것만으로 진위의 근거가 되지 않습니다. 최종 확인일: {date}.',
+  ],
 } as const satisfies Record<string, Quad>;
 
 export type UIStrings = { [K in keyof typeof DICT]: string };
@@ -406,4 +545,28 @@ export const HRT_USE_LABELS: Record<HrtUse, Quad> = {
   situational: ['特定情况使用', 'Situational use', '状況により使用', '상황별 사용'],
   cautioned: ['需谨慎', 'Caution advised', '注意が必要', '주의 필요'],
   banned: ['不适用于 HRT', 'Not for HRT', 'HRT 不適', 'HRT 부적합'],
+};
+
+/* ────────────────────────────────────────────────────────────────
+   v2.1 左栏枚举标签
+   ──────────────────────────────────────────────────────────────── */
+
+/** 参考稿左栏的 7 个地区桶（sea 桶内数据当前只有泰国，故直接标「泰国」） */
+export const REGION_BUCKET_LABELS: Record<RegionBucket, Quad> = {
+  cn: ['中国大陆', 'Mainland China', '中国本土', '중국 본토'],
+  th: ['泰国', 'Thailand', 'タイ', '태국'],
+  in: ['印度', 'India', 'インド', '인도'],
+  jp: ['日本', 'Japan', '日本', '일본'],
+  eu: ['欧洲', 'Europe', 'ヨーロッパ', '유럽'],
+  na: ['北美', 'North America', '北米', '북미'],
+  other: ['其他地区', 'Other regions', 'その他の地域', '기타 지역'],
+};
+
+/** 参考稿左栏的 5 个剂型组 */
+export const FORM_GROUP_LABELS: Record<FormGroup, Quad> = {
+  tablet: ['片剂', 'Tablet', '錠剤', '정제'],
+  gel: ['凝胶', 'Gel', 'ジェル', '젤'],
+  patch: ['贴片', 'Patch', '貼付剤', '패치'],
+  injection: ['注射剂', 'Injection', '注射剤', '주사제'],
+  capsule: ['胶囊', 'Capsule', 'カプセル', '캡슐'],
 };

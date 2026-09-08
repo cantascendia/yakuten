@@ -428,29 +428,118 @@ export function matchesTokens(haystack: string, tokens: string[]): boolean {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   过滤
+   剂型分组 / 参考资料（v2.1 §0-6 左栏复选框的维度）
+   ──────────────────────────────────────────────────────────────── */
+
+/** 左栏「剂型」一组：把 14 个 BrandForm 收敛成 5 个用户认得的组 */
+export type FormGroup = 'tablet' | 'gel' | 'patch' | 'injection' | 'capsule';
+
+export const FORM_GROUP_ORDER: FormGroup[] = ['tablet', 'gel', 'patch', 'injection', 'capsule'];
+
+/** spec v2.1 §0-6 的映射表；表里没有的剂型不入组（如鼻喷、阴道栓） */
+const FORM_GROUP_OF: Partial<Record<BrandForm, FormGroup>> = {
+  tablet: 'tablet',
+  'gel-pump': 'gel',
+  'gel-sachet': 'gel',
+  spray: 'gel',
+  patch: 'patch',
+  ampoule: 'injection',
+  vial: 'injection',
+  'prefilled-syringe': 'injection',
+  'powder-vial': 'injection',
+  implant: 'injection',
+  capsule: 'capsule',
+  softgel: 'capsule',
+};
+
+export function formGroupOf(form: BrandForm | undefined | null): FormGroup | null {
+  if (!form) return null;
+  return FORM_GROUP_OF[form] ?? null;
+}
+
+/** 左栏「参考资料」一组 */
+export type ResourceKind = 'photo' | 'leaflet';
+
+export const RESOURCE_ORDER: ResourceKind[] = ['photo', 'leaflet'];
+
+/** 有实拍包装参考 */
+export function hasPhoto(brand: Brand): boolean {
+  return (
+    brand.image?.kind === 'photo' &&
+    typeof brand.image?.src === 'string' &&
+    brand.image.src.length > 0
+  );
+}
+
+/** 有说明书 / 官方资料链接 */
+export function hasLeaflet(brand: Brand): boolean {
+  const links = brand.links;
+  return Boolean(clean(links?.leaflet) || clean(links?.official));
+}
+
+export function resourcesOf(brand: Brand): ResourceKind[] {
+  const out: ResourceKind[] = [];
+  if (hasPhoto(brand)) out.push('photo');
+  if (hasLeaflet(brand)) out.push('leaflet');
+  return out;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   地区桶：参考稿左栏是 7 项（中国大陆 / 泰国 / 印度 / 日本 / 欧洲 / 北美 / 其他地区）
+   ──────────────────────────────────────────────────────────────── */
+
+export type RegionBucket = 'cn' | 'th' | 'in' | 'jp' | 'eu' | 'na' | 'other';
+
+export const REGION_BUCKET_ORDER: RegionBucket[] = ['cn', 'th', 'in', 'jp', 'eu', 'na', 'other'];
+
+/** MarketRegion → 参考稿的 7 个桶；未单列的地区（台港澳/韩国/大洋洲/拉美…）归「其他地区」 */
+export function regionBucketOf(region: MarketRegion | undefined | null): RegionBucket {
+  switch (region) {
+    case 'cn':
+      return 'cn';
+    case 'sea':
+      return 'th';
+    case 'in':
+      return 'in';
+    case 'jp':
+      return 'jp';
+    case 'eu':
+      return 'eu';
+    case 'na':
+      return 'na';
+    default:
+      return 'other';
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   过滤（多选：组内 OR、组间 AND）
    ──────────────────────────────────────────────────────────────── */
 
 export interface FilterState {
   query: string;
-  category: IngredientCategory | 'all';
-  ingredientId: string | 'all';
-  region: MarketRegion | 'all';
-  status: BrandStatus | 'all';
-  /** 反查条第一级 */
+  /** 上市地区（多选） */
+  regions: RegionBucket[];
+  /** 药物类别（多选） */
+  categories: IngredientCategory[];
+  /** 剂型组（多选） */
+  formGroups: FormGroup[];
+  /** 参考资料（多选） */
+  resources: ResourceKind[];
+  /** 外观反查第一级 */
   form: BrandForm | null;
-  /** 反查条第二级 */
+  /** 外观反查第二级 */
   colorFamily: ColorFamily | null;
-  /** 反查条第三级 */
+  /** 外观反查第三级 */
   shape: TabletShape | null;
 }
 
 export const EMPTY_FILTERS: FilterState = {
   query: '',
-  category: 'all',
-  ingredientId: 'all',
-  region: 'all',
-  status: 'all',
+  regions: [],
+  categories: [],
+  formGroups: [],
+  resources: [],
   form: null,
   colorFamily: null,
   shape: null,
@@ -458,14 +547,19 @@ export const EMPTY_FILTERS: FilterState = {
 
 export type FilterKey = keyof FilterState;
 
+/** 数组型条件的开关（不可变，返回新数组；纯函数，可直接单测） */
+export function toggleIn<T>(list: readonly T[], value: T): T[] {
+  return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
+}
+
 /** 生效中的条件数（含搜索词），用于「筛选 (n)」与空状态判断 */
 export function activeFilterCount(filters: FilterState): number {
   let count = 0;
   if (tokenizeQuery(filters.query).length > 0) count += 1;
-  if (filters.category !== 'all') count += 1;
-  if (filters.ingredientId !== 'all') count += 1;
-  if (filters.region !== 'all') count += 1;
-  if (filters.status !== 'all') count += 1;
+  count += filters.regions.length;
+  count += filters.categories.length;
+  count += filters.formGroups.length;
+  count += filters.resources.length;
   if (filters.form) count += 1;
   if (filters.colorFamily) count += 1;
   if (filters.shape) count += 1;
@@ -492,15 +586,32 @@ export function brandPasses(
   const ingredient = ctx.ingredients.get(brand.ingredientId);
 
   if (!skipped('query') && !matchesTokens(ctx.index.get(brand.id) ?? '', ctx.tokens)) return false;
-  if (!skipped('category') && filters.category !== 'all' && ingredient?.category !== filters.category)
+  if (
+    !skipped('regions') &&
+    filters.regions.length > 0 &&
+    !filters.regions.includes(regionBucketOf(brand.market?.region))
+  )
     return false;
-  if (!skipped('ingredientId') && filters.ingredientId !== 'all' && brand.ingredientId !== filters.ingredientId)
+  if (
+    !skipped('categories') &&
+    filters.categories.length > 0 &&
+    !(ingredient && filters.categories.includes(ingredient.category))
+  )
     return false;
-  if (!skipped('region') && filters.region !== 'all' && brand.market?.region !== filters.region)
-    return false;
-  if (!skipped('status') && filters.status !== 'all' && brand.status !== filters.status) return false;
+  if (!skipped('formGroups') && filters.formGroups.length > 0) {
+    const group = formGroupOf(brand.form);
+    if (!group || !filters.formGroups.includes(group)) return false;
+  }
+  if (!skipped('resources') && filters.resources.length > 0) {
+    const kinds = resourcesOf(brand);
+    if (!filters.resources.every((kind) => kinds.includes(kind))) return false;
+  }
   if (!skipped('form') && filters.form && brand.form !== filters.form) return false;
-  if (!skipped('colorFamily') && filters.colorFamily && colorFamilyOf(brand.appearance) !== filters.colorFamily)
+  if (
+    !skipped('colorFamily') &&
+    filters.colorFamily &&
+    colorFamilyOf(brand.appearance) !== filters.colorFamily
+  )
     return false;
   if (!skipped('shape') && filters.shape && brand.appearance?.shape !== filters.shape) return false;
   return true;
@@ -529,14 +640,14 @@ export function filterBrands(
 }
 
 /* ────────────────────────────────────────────────────────────────
-   Facet 计数（含反查条逐级收窄）
+   Facet 计数（左栏复选框 + 外观反查条逐级收窄）
    ──────────────────────────────────────────────────────────────── */
 
 export interface Facets {
+  regions: Map<RegionBucket, number>;
   categories: Map<IngredientCategory, number>;
-  ingredients: Map<string, number>;
-  regions: Map<MarketRegion, number>;
-  statuses: Map<BrandStatus, number>;
+  formGroups: Map<FormGroup, number>;
+  resources: Map<ResourceKind, number>;
   forms: Map<BrandForm, number>;
   colors: Map<ColorFamily, number>;
   shapes: Map<TabletShape, number>;
@@ -547,10 +658,10 @@ function bump<K>(map: Map<K, number>, key: K | undefined | null): void {
   map.set(key, (map.get(key) ?? 0) + 1);
 }
 
-const SKIP_CATEGORY: ReadonlySet<FilterKey> = new Set<FilterKey>(['category', 'ingredientId']);
-const SKIP_INGREDIENT: ReadonlySet<FilterKey> = new Set<FilterKey>(['ingredientId']);
-const SKIP_REGION: ReadonlySet<FilterKey> = new Set<FilterKey>(['region']);
-const SKIP_STATUS: ReadonlySet<FilterKey> = new Set<FilterKey>(['status']);
+const SKIP_REGION: ReadonlySet<FilterKey> = new Set<FilterKey>(['regions']);
+const SKIP_CATEGORY: ReadonlySet<FilterKey> = new Set<FilterKey>(['categories']);
+const SKIP_FORMGROUP: ReadonlySet<FilterKey> = new Set<FilterKey>(['formGroups']);
+const SKIP_RESOURCE: ReadonlySet<FilterKey> = new Set<FilterKey>(['resources']);
 const SKIP_FORM: ReadonlySet<FilterKey> = new Set<FilterKey>(['form', 'colorFamily', 'shape']);
 const SKIP_COLOR: ReadonlySet<FilterKey> = new Set<FilterKey>(['colorFamily', 'shape']);
 const SKIP_SHAPE: ReadonlySet<FilterKey> = new Set<FilterKey>(['shape']);
@@ -561,26 +672,30 @@ const SKIP_SHAPE: ReadonlySet<FilterKey> = new Set<FilterKey>(['shape']);
  */
 export function buildFacets(brands: Brand[], filters: FilterState, ctx: MatchContext): Facets {
   const facets: Facets = {
-    categories: new Map(),
-    ingredients: new Map(),
     regions: new Map(),
-    statuses: new Map(),
+    categories: new Map(),
+    formGroups: new Map(),
+    resources: new Map(),
     forms: new Map(),
     colors: new Map(),
     shapes: new Map(),
   };
   for (const brand of brands) {
     const ingredient = ctx.ingredients.get(brand.ingredientId);
+    if (brandPasses(brand, filters, ctx, SKIP_REGION))
+      bump(facets.regions, regionBucketOf(brand.market?.region));
     if (brandPasses(brand, filters, ctx, SKIP_CATEGORY)) bump(facets.categories, ingredient?.category);
-    if (brandPasses(brand, filters, ctx, SKIP_INGREDIENT)) bump(facets.ingredients, brand.ingredientId);
-    if (brandPasses(brand, filters, ctx, SKIP_REGION)) bump(facets.regions, brand.market?.region);
-    if (brandPasses(brand, filters, ctx, SKIP_STATUS)) bump(facets.statuses, brand.status);
+    if (brandPasses(brand, filters, ctx, SKIP_FORMGROUP)) bump(facets.formGroups, formGroupOf(brand.form));
+    if (brandPasses(brand, filters, ctx, SKIP_RESOURCE)) {
+      for (const kind of resourcesOf(brand)) bump(facets.resources, kind);
+    }
     if (brandPasses(brand, filters, ctx, SKIP_FORM)) bump(facets.forms, brand.form);
     if (brandPasses(brand, filters, ctx, SKIP_COLOR)) bump(facets.colors, colorFamilyOf(brand.appearance));
     if (brandPasses(brand, filters, ctx, SKIP_SHAPE)) bump(facets.shapes, brand.appearance?.shape);
   }
   return facets;
 }
+
 
 /* ────────────────────────────────────────────────────────────────
    分组：成分 → 图版
@@ -684,4 +799,155 @@ export const COMPARE_LIMIT = 3;
 export function rowHasDiff(values: string[]): boolean {
   if (values.length < 2) return false;
   return values.some((value) => value !== values[0]);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   品牌族（v2.1 §1）：同成分 + 同国际名 = 一张卡，多国版本合并
+   ──────────────────────────────────────────────────────────────── */
+
+/** 去掉名字里的地区括注：「Progynova（泰国版）」→「Progynova」 */
+export function stripParenthetical(value: string): string {
+  return value
+    .replace(/[（(［【[][^）)］】\]]*[）)］】\]]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** 族键：ingredientId + 去括号的国际名（缺 intl 时用 display） */
+export function familyKeyOf(brand: Brand): string {
+  const raw = clean(brand.name?.intl) ?? clean(brand.name?.display) ?? brand.id;
+  return `${brand.ingredientId}::${normalize(stripParenthetical(raw))}`;
+}
+
+export interface BrandFamily {
+  /** 稳定 key（= familyKeyOf） */
+  id: string;
+  ingredient: Ingredient;
+  /** 族内各国版本，按地区序排 */
+  brands: Brand[];
+  /** 代表版本（地区序第一个）：卡片标题、类别、外观都取它 */
+  primary: Brand;
+  /** 族内有实拍的版本（没有则 null）——卡片图优先用它 */
+  photo: Brand | null;
+  /** 去重后的上市地区，按地区序 */
+  regions: MarketRegion[];
+  /** 去重后的剂型，按剂型序 */
+  forms: BrandForm[];
+  /** 规格并集（保序去重） */
+  strengths: string[];
+  /** 整族在 HRT 语境下不适用 */
+  banned: boolean;
+}
+
+function uniqueBy<T>(values: T[], order: T[]): T[] {
+  const seen = new Set<T>();
+  for (const value of values) if (value !== undefined && value !== null) seen.add(value);
+  const known = order.filter((item) => seen.has(item));
+  const extra = [...seen].filter((item) => !order.includes(item));
+  return [...known, ...extra];
+}
+
+/**
+ * 把品牌归并成族。空数据、孤儿成分都不抛：引用不到成分的品牌直接跳过
+ * （sanitizeBrands 已在上游兜过一次）。
+ */
+export function groupFamilies(brands: Brand[], ingredients: Map<string, Ingredient>): BrandFamily[] {
+  const buckets = new Map<string, Brand[]>();
+  for (const brand of brands ?? []) {
+    if (!brand || !ingredients.has(brand.ingredientId)) continue;
+    const key = familyKeyOf(brand);
+    const bucket = buckets.get(key);
+    if (bucket) bucket.push(brand);
+    else buckets.set(key, [brand]);
+  }
+  const families: BrandFamily[] = [];
+  for (const [id, bucket] of buckets) {
+    const ingredient = ingredients.get(bucket[0].ingredientId);
+    if (!ingredient) continue;
+    const sorted = [...bucket].sort((a, b) => {
+      const regionDelta =
+        rank(REGION_ORDER, a.market?.region ?? 'other') - rank(REGION_ORDER, b.market?.region ?? 'other');
+      if (regionDelta !== 0) return regionDelta;
+      return (a.name?.display ?? a.id).localeCompare(b.name?.display ?? b.id, 'zh-Hans-CN');
+    });
+    const strengths: string[] = [];
+    for (const brand of sorted) {
+      for (const strength of brand.strengths ?? []) {
+        if (strength && !strengths.includes(strength)) strengths.push(strength);
+      }
+    }
+    families.push({
+      id,
+      ingredient,
+      brands: sorted,
+      primary: sorted[0],
+      photo: sorted.find((brand) => hasPhoto(brand)) ?? null,
+      regions: uniqueBy(
+        sorted.map((brand) => brand.market?.region).filter((region): region is MarketRegion => Boolean(region)),
+        REGION_ORDER,
+      ),
+      forms: uniqueBy(
+        sorted.map((brand) => brand.form).filter((form): form is BrandForm => Boolean(form)),
+        FORM_ORDER,
+      ),
+      strengths,
+      banned: sorted.every((brand) => isBanned(brand, ingredient)),
+    });
+  }
+  return families;
+}
+
+/** 卡片标题：代表版本的名字去掉地区括注 */
+export function familyName(family: BrandFamily, locale: Locale): PickedText {
+  const picked = brandName(family.primary, locale);
+  const text = stripParenthetical(picked.text) || picked.text;
+  return picked.lang ? { text, lang: picked.lang } : { text };
+}
+
+/** 排序键：品牌名称（默认）/ 成分（图版号）/ 地区（地区序） */
+export type SortKey = 'name' | 'ingredient' | 'region';
+
+export const SORT_KEYS: SortKey[] = ['name', 'ingredient', 'region'];
+
+/** 名称排序用的可比键：优先拉丁名（intl / en），中文名回退拼音由 localeCompare 处理 */
+function familySortName(family: BrandFamily): string {
+  const name = family.primary.name;
+  const latin = clean(name?.intl) ?? clean(name?.en);
+  const raw = latin ?? clean(name?.display) ?? family.primary.id;
+  return stripParenthetical(raw).toLowerCase();
+}
+
+function compareByName(a: BrandFamily, b: BrandFamily): number {
+  return familySortName(a).localeCompare(familySortName(b), 'zh-Hans-CN');
+}
+
+/** 禁用族一律沉底（§1）；其余按所选键排 */
+export function sortFamilies(families: BrandFamily[], key: SortKey): BrandFamily[] {
+  const out = [...families];
+  out.sort((a, b) => {
+    const bannedDelta = Number(a.banned) - Number(b.banned);
+    if (bannedDelta !== 0) return bannedDelta;
+    if (key === 'ingredient') {
+      const categoryDelta =
+        rank(CATEGORY_ORDER, a.ingredient.category) - rank(CATEGORY_ORDER, b.ingredient.category);
+      if (categoryDelta !== 0) return categoryDelta;
+      const plateA = typeof a.ingredient.plate === 'number' ? a.ingredient.plate : Number.MAX_SAFE_INTEGER;
+      const plateB = typeof b.ingredient.plate === 'number' ? b.ingredient.plate : Number.MAX_SAFE_INTEGER;
+      if (plateA !== plateB) return plateA - plateB;
+      // 同成分内：版本多（多国流通）的品牌族靠前，其次有实拍的靠前，再按名称
+      const versionsDelta = b.brands.length - a.brands.length;
+      if (versionsDelta !== 0) return versionsDelta;
+      const photoDelta = Number(Boolean(b.photo)) - Number(Boolean(a.photo));
+      if (photoDelta !== 0) return photoDelta;
+      return compareByName(a, b);
+    }
+    if (key === 'region') {
+      const regionDelta =
+        rank(REGION_ORDER, a.regions[0] ?? 'other') - rank(REGION_ORDER, b.regions[0] ?? 'other');
+      if (regionDelta !== 0) return regionDelta;
+      return compareByName(a, b);
+    }
+    return compareByName(a, b);
+  });
+  return out;
 }

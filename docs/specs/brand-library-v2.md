@@ -1,6 +1,6 @@
 # SPEC: 药物图鉴 v2 — 全球 HRT 药物品牌索引与鉴别指南 重做
 
-> 状态：**已实现，待合并**（分支 `feat/brand-library-v2`；codex 第 1 轮审核意见已全部处理，见 docs/ai-cto/STATUS.md 2026-09-08）
+> 状态：**已实现，待合并**（分支 `feat/brand-library-v2`）。**§5 视觉层已被 `brand-library-v2.1-visual.md` 取代**（owner 参考稿：浅色目录式布局、品牌族卡片、包装示意图）；§3/§4/§6-§9 的数据、契约与红线仍有效。
 > 决策：2026-09-08 owner 要求「真正做好这个页面，大规模翻新甚至重做；不能是 AI 默认设计；直观全面的库，越全越详细越好，图片要有」。
 > 页面：`/zh/tools/brand-index/`（17 语同构）。当前实现 `src/components/interactive/DrugBrandIndex.tsx`（58 条扁平卡片，11 张实拍图）。
 

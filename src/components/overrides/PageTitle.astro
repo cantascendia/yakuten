@@ -14,9 +14,19 @@
  * —— 见 spec §5-4「Starlight 版本锁」。
  */
 import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+/**
+ * 品牌索引（/{locale}/tools/brand-index/）例外：该页的 <h1> 由岛屿
+ * BrandLibrary 自己渲染（参考稿要求面包屑在标题之上，且标题与 lede、
+ * 右上提示卡同属一块 —— 见 docs/specs/brand-library-v2.1-visual.md §0-1/§0-2）。
+ * 岛屿的 <h1> 自带 id="_top"（Starlight SkipLink 的目标），所以这里整块不输出，
+ * 全页仍然只有一个 h1、一个 #_top。
+ */
+const entryId = String((Astro.locals as { starlightRoute?: { entry?: { id?: string } } }).starlightRoute?.entry?.id ?? '');
+const ownsOwnTitle = /(^|\/)tools\/brand-index(\.mdx?)?$/.test(entryId);
 ---
 
-<Default {...Astro.props} />
+{ownsOwnTitle ? null : <Default {...Astro.props} />}
 
 <style is:global>
   /* ======================================================================
