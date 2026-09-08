@@ -435,6 +435,36 @@ const DICT = {
     'ブランド・規格・包装は各国の公開添付文書と規制当局データベースに基づきます。実物写真のない項目は外観データから描いたイメージ図で、それだけでは真贋の根拠になりません。最終確認日：{date}。',
     '브랜드·규격·포장은 각국 공개 설명서와 규제기관 데이터베이스에 근거합니다. 실물 사진이 없는 항목은 외관 데이터로 그린 예시도이며 그것만으로 진위의 근거가 되지 않습니다. 최종 확인일: {date}.',
   ],
+  /* — v2.2 绯英典籍手账皮：卷标 / 胶带 kicker / 手写注记 / 印章 — */
+  volumeTab: ['卷二・图鉴', 'VOL.2', '巻二・図鑑', '권2 · 도감'],
+  kickerIndex: ['CODEX · 品牌索引', 'CODEX · BRAND INDEX', 'CODEX · ブランド索引', 'CODEX · 브랜드 색인'],
+  kickerFilter: ['FILTER · 筛选条件', 'FILTER · CONDITIONS', 'FILTER · 絞り込み条件', 'FILTER · 필터 조건'],
+  kickerCatalogue: [
+    'CODEX · 品牌图鉴',
+    'CODEX · CATALOGUE',
+    'CODEX · ブランド図鑑',
+    'CODEX · 브랜드 도감',
+  ],
+  heroTitleLead: [
+    '全球 HRT 药物品牌索引',
+    'Global HRT brand index',
+    '世界の HRT ブランド索引',
+    '세계 HRT 브랜드 색인',
+  ],
+  heroTitleAccent: ['鉴别指南', 'identification guide', '識別ガイド', '식별 가이드'],
+  searchTipHand: [
+    '也可以按地区、类别与剂型筛选～',
+    'You can also filter by region, class and form.',
+    '地域・分類・剤形からも絞り込めます〜',
+    '지역·분류·제형으로도 좁힐 수 있어요.',
+  ],
+  plateNo: ['PLATE №{n}', 'PLATE №{n}', 'PLATE №{n}', 'PLATE №{n}'],
+  footDeclare: [
+    '声明 · 本站不提供处方、不销售药物、不收集个人信息。',
+    'Notice · This site does not prescribe, does not sell medicines and does not collect personal information.',
+    'お知らせ · 当サイトは処方を行わず、医薬品を販売せず、個人情報も収集しません。',
+    '고지 · 이 사이트는 처방하지 않고, 약을 판매하지 않으며, 개인정보를 수집하지 않습니다.',
+  ],
 } as const satisfies Record<string, Quad>;
 
 export type UIStrings = { [K in keyof typeof DICT]: string };

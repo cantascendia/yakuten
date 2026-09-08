@@ -229,6 +229,7 @@ function versionLabel(family: BrandFamily, brand: Brand, locale: Locale): Picked
 
 type IconName =
   | 'search'
+  | 'alert'
   | 'close'
   | 'grid'
   | 'list'
@@ -248,6 +249,12 @@ const ICON_PATHS: Record<IconName, ReactNode> = {
     <>
       <circle cx="11" cy="11" r="7" />
       <path d="M16.2 16.2 21 21" />
+    </>
+  ),
+  alert: (
+    <>
+      <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+      <path d="M12 9v4M12 17h.01" />
     </>
   ),
   close: <path d="M6 6l12 12M18 6 6 18" />,
@@ -319,6 +326,65 @@ function Icon({ name, className }: { name: IconName; className?: string }): Reac
       focusable="false"
     >
       {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   手账原件（v2.2：移植自设计交接包 ui_kits/yakuten/Primitives.jsx）
+   ──────────────────────────────────────────────────────────────── */
+
+/** washi 胶带贴片（纯装饰；图案与颜色全部在 CSS 里） */
+function Washi({ pattern = 'dots' }: { pattern?: 'dots' | 'stripes' }): ReactNode {
+  return <span className="bl-washi" data-pattern={pattern} aria-hidden="true" />;
+}
+
+/** 胶带 kicker：washi + 不折行小标签（SectionKicker 配方） */
+function Kicker({
+  as: Tag = 'p',
+  className,
+  pattern = 'dots',
+  children,
+}: {
+  as?: 'p' | 'h2';
+  className?: string;
+  pattern?: 'dots' | 'stripes';
+  children: ReactNode;
+}): ReactNode {
+  return (
+    <Tag className={className ? `bl-kicker ${className}` : 'bl-kicker'}>
+      <Washi pattern={pattern} />
+      <span>{children}</span>
+    </Tag>
+  );
+}
+
+/**
+ * 狐狸老师（FoxTeacherMark）— 交接包里的原创平面几何 SVG，逐点移植。
+ * 纯装饰，不承载信息：aria-hidden，颜色写死交接包字面值（蜜金 + 梅子墨 + 象牙）。
+ */
+function FoxTeacherMark({ size = 36, className }: { size?: number; className?: string }): ReactNode {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <polygon points="13,30 17,7 31,21" fill="#F5B347" />
+      <polygon points="51,30 47,7 33,21" fill="#F5B347" />
+      <polygon points="17.5,26 19.5,13 27.5,21" fill="#FFF5E0" />
+      <polygon points="46.5,26 44.5,13 36.5,21" fill="#FFF5E0" />
+      <circle cx="32" cy="38" r="20" fill="#F5B347" />
+      <ellipse cx="32" cy="46" rx="11" ry="9" fill="#FFFAF0" />
+      <circle cx="32" cy="43" r="2.4" fill="#4A2838" />
+      <circle cx="23.5" cy="35" r="6" fill="rgba(255,255,255,0.55)" stroke="#4A2838" strokeWidth="2.4" />
+      <circle cx="40.5" cy="35" r="6" fill="rgba(255,255,255,0.55)" stroke="#4A2838" strokeWidth="2.4" />
+      <line x1="29.5" y1="35" x2="34.5" y2="35" stroke="#4A2838" strokeWidth="2.4" />
+      <circle cx="23.5" cy="35" r="1.6" fill="#4A2838" />
+      <circle cx="40.5" cy="35" r="1.6" fill="#4A2838" />
     </svg>
   );
 }
@@ -460,6 +526,7 @@ function Modal({
     <dialog
       ref={ref}
       className="bl-dialog"
+      data-paper="true"
       aria-modal="true"
       aria-labelledby={labelledBy}
       onClose={onClose}
@@ -507,10 +574,21 @@ const FamilyCard = memo(function FamilyCard({
   const handleCompare = useCallback(() => onCompare(compareId), [compareId, onCompare]);
 
   return (
-    <article className="bl-card" data-selected={selected ? 'true' : undefined} data-banned={family.banned ? 'true' : undefined}>
+    <article
+      className="bl-card"
+      data-paper="true"
+      data-selected={selected ? 'true' : undefined}
+      data-banned={family.banned ? 'true' : undefined}
+    >
       <div className="bl-card__art">
         <Artwork family={family} locale={locale} t={t} />
-        {family.banned ? <span className="bl-card__hatch" aria-hidden="true" /> : null}
+        {family.banned ? (
+          <>
+            <span className="bl-card__hatch" aria-hidden="true" />
+            {/* 危险层脱离可爱风：红章 + 红斜纹，不用粉彩（spec §0 / §2.6） */}
+            <span className="bl-seal bl-card__seal">{t.bannedSeal}</span>
+          </>
+        ) : null}
       </div>
 
       <div className="bl-card__body">
@@ -607,7 +685,7 @@ function ListView({
 }): ReactNode {
   const compareFull = compareIds.length >= COMPARE_LIMIT;
   return (
-    <div className="bl-tablewrap">
+    <div className="bl-tablewrap" data-paper="true">
       <table className="bl-table">
         <caption className="bl-sr">{t.listCaption}</caption>
         <thead>
@@ -693,6 +771,7 @@ function DetailDialog({
   rawLocale,
   t,
   titleId,
+  plate,
   selected,
   compareFull,
   onCompare,
@@ -705,6 +784,7 @@ function DetailDialog({
   rawLocale: string;
   t: UIStrings;
   titleId: string;
+  plate: number;
   selected: boolean;
   compareFull: boolean;
   onCompare: (id: string) => void;
@@ -746,6 +826,12 @@ function DetailDialog({
     <>
       <div className="bl-dialog__head">
         <div>
+          {/* 图版号 kicker：PLATE №NN · 成分名（spec §2.8） */}
+          <Kicker className="bl-dialog__kicker">
+            {fmt(t.plateNo, { n: String(plate).padStart(2, '0') })}
+            {' · '}
+            {ingredientName(ingredient, locale)?.text ?? ''}
+          </Kicker>
           <h2 className="bl-dialog__title" id={titleId} lang={title.lang}>
             {title.text}
           </h2>
@@ -850,6 +936,8 @@ function DetailDialog({
                   title={fmt(t.packAlt, { name: name.text })}
                 />
               )}
+              {/* 状态印章（spec §2.8）：不适用于 HRT 的版本盖红章 */}
+              {banned ? <span className="bl-seal bl-card__seal">{t.bannedSeal}</span> : null}
             </div>
             <p className="bl-credit">{creditLine}</p>
             <div className="bl-detail__pictogram" aria-hidden="true">
@@ -1322,7 +1410,8 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
 
   const clearFilters = useCallback(() => setFilters(EMPTY_FILTERS), []);
 
-  const detailFamily = detail ? families.find((family) => family.id === detail.familyId) ?? null : null;
+  const detailIndex = detail ? families.findIndex((family) => family.id === detail.familyId) : -1;
+  const detailFamily = detailIndex >= 0 ? families[detailIndex] ?? null : null;
   const detailBrand = detailFamily
     ? detailFamily.brands.find((brand) => brand.id === detail?.brandId) ?? detailFamily.primary
     : null;
@@ -1352,7 +1441,7 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
   const feedbackUrl = `/${rawLocale}/about/`;
 
   return (
-    <div className="bl-root" data-paper="true" data-hydrated={hydrated ? 'true' : undefined} lang={UI_LANG[uiLocale]}>
+    <div className="bl-root" data-hydrated={hydrated ? 'true' : undefined} lang={UI_LANG[uiLocale]}>
       {/* ── 面包屑（§0-1） ── */}
       <nav className="bl-crumbs" aria-label={t.crumbLabel}>
         <a href={`/${rawLocale}/`}>{t.crumbHome}</a>
@@ -1362,21 +1451,25 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
         <span aria-current="page">{t.crumbCurrent}</span>
       </nav>
 
-      {/* ── 标题区 + 右上提示卡（§0-2 / §0-3） ── */}
-      <header className="bl-hero">
-        <div className="bl-hero__text">
-          <h1 className="bl-hero__title" id="_top">
-            {t.heroTitle}
-          </h1>
-          <p className="bl-hero__lede">{t.heroLede}</p>
+      {/* ── 线装书「卷」页头 + 右上提示卡（spec §2.2） ── */}
+      <header className="bl-pagehead">
+        <div className="bl-pagehead__tab" aria-hidden="true">
+          {t.volumeTab}
         </div>
-        <aside className="bl-note">
+        <div className="bl-pagehead__body">
+          <Kicker>{t.kickerIndex}</Kicker>
+          <h1 className="bl-pagehead__title" id="_top">
+            {t.heroTitleLead} · <span className="bl-accent">{t.heroTitleAccent}</span>
+          </h1>
+          <p className="bl-pagehead__lede">{t.heroLede}</p>
+        </div>
+        <aside className="bl-note" data-paper="true">
           <Icon name="doc" className="bl-note__icon" />
           <div>
             <p className="bl-note__title">{t.noteTitle}</p>
             <a className="bl-link bl-note__link" href={guideUrl}>
               {t.noteLink}
-              <Icon name="external" className="bl-icon--sm" />
+              <Icon name="arrow" className="bl-icon--sm" />
             </a>
           </div>
         </aside>
@@ -1424,16 +1517,9 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
           {t.searchSubmit}
         </button>
       </form>
-      <p className="bl-search__tip">{t.searchTip}</p>
-
-      {/* ── 信息条（§0-5） ── */}
-      <p className="bl-infobar">
-        <Icon name="info" className="bl-icon--sm" />
-        {t.infoBar}
-      </p>
-
-      {/* ── 外观反查（折叠，§1） ── */}
-      <div className="bl-finder">
+      {/* ── 手写提示行 + 外观反查开关（spec §2.3） ── */}
+      <div className="bl-tipbar">
+        <p className="bl-hand">{t.searchTipHand}</p>
         <button
           type="button"
           className="bl-finder__toggle"
@@ -1444,7 +1530,17 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
           {t.reverseExpand}
           <Icon name="chevron" className="bl-icon--sm" />
         </button>
-        <div id={`${baseId}-finder`} className="bl-finder__body" hidden={!finderOpen}>
+      </div>
+
+      {/* ── 信息条（§2.3） ── */}
+      <p className="bl-infobar" data-paper="true">
+        <Icon name="info" className="bl-icon--sm" />
+        {t.infoBar}
+      </p>
+
+      {/* ── 外观反查（折叠，§2.9） ── */}
+      <div className="bl-finder">
+        <div id={`${baseId}-finder`} className="bl-finder__body" data-paper="true" hidden={!finderOpen}>
           <div className="bl-finder__row">
             <span className="bl-finder__label" id={`${baseId}-form`}>
               {t.reverseForm}
@@ -1532,7 +1628,7 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
 
       {/* ── 左栏筛选 + 主栏（§0-6 / §0-7 / §0-8） ── */}
       <div className="bl-shell">
-        <div className="bl-sidewrap">
+        <div className="bl-sidewrap" data-open={panelOpen ? 'true' : 'false'}>
           <button
             type="button"
             className="bl-btn bl-sidetoggle"
@@ -1547,11 +1643,14 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
           <aside
             id={`${baseId}-side`}
             className="bl-side"
+            data-paper="true"
             data-open={panelOpen ? 'true' : 'false'}
             aria-label={t.filterTitle}
           >
             <div className="bl-side__head">
-              <h2 className="bl-side__title">{t.filterTitle}</h2>
+              <Kicker as="h2" className="bl-side__title" pattern="stripes">
+                {t.kickerFilter}
+              </Kicker>
               <button type="button" className="bl-linkbtn" onClick={clearFilters}>
                 {t.filterReset}
               </button>
@@ -1602,22 +1701,27 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
               onToggle={(value) => patch({ resources: toggleIn(filters.resources, value) })}
             />
 
-            <div className="bl-ask">
-              <Icon name="chat" className="bl-ask__icon" />
-              <div>
-                <p className="bl-ask__title">{t.askTitle}</p>
-                <a className="bl-link" href={feedbackUrl}>
-                  {t.askLink}
-                  <Icon name="arrow" className="bl-icon--sm" />
-                </a>
-              </div>
-            </div>
           </aside>
+
+          {/* 狐狸老师 + 气泡（spec §2.4 底部）。放在筛选卡「之下」而不是卡内滚动区里：
+              筛选卡是 sticky + overflow-y:auto，塞在里面会被内滚动埋掉，视觉上仍在左栏底部。 */}
+          <div className="bl-ask">
+            <div className="bl-bubble">
+              <p className="bl-ask__title">{t.askTitle}</p>
+              <a className="bl-link" href={feedbackUrl}>
+                {t.askLink}
+                <Icon name="arrow" className="bl-icon--sm" />
+              </a>
+            </div>
+            <FoxTeacherMark size={36} className="bl-ask__fox" />
+          </div>
         </div>
 
         <div className="bl-main">
           <div className="bl-listhead">
-            <h2 className="bl-listhead__title">{t.listTitle}</h2>
+            <Kicker as="h2" className="bl-listhead__title">
+              {t.kickerCatalogue}
+            </Kicker>
             <p className="bl-listhead__count" role="status" aria-live="polite">
               <span className="bl-sr">{t.resultsRegionLabel}: </span>
               {fmt(t.summaryFamilies, { families: families.length, versions: visible.length })}
@@ -1662,7 +1766,7 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
           </div>
 
           {families.length === 0 ? (
-            <div className="bl-empty">
+            <div className="bl-empty" data-paper="true">
               <span className="bl-empty__frame">
                 <Icon name="frame" />
               </span>
@@ -1701,9 +1805,9 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
       </div>
 
       {/* ── 底部核对提示条（§0-9） ── */}
-      <section className="bl-check" aria-labelledby={`${baseId}-check`}>
+      <section className="bl-check" data-paper="true" aria-labelledby={`${baseId}-check`}>
         <div className="bl-check__lead">
-          <Icon name="doc" className="bl-check__icon" />
+          <Icon name="alert" className="bl-check__icon" />
           <div>
             <h2 className="bl-check__title" id={`${baseId}-check`}>
               {t.checkTitle}
@@ -1731,8 +1835,9 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
         </a>
       </section>
 
-      {/* ── 紧凑页尾说明（§1） ── */}
-      <p className="bl-foot">
+      {/* ── 页尾声明（spec §2.7） ── */}
+      <p className="bl-foot" data-paper="true">
+        <span className="bl-foot__declare">{t.footDeclare}</span>{' '}
         {fmt(t.footCompact, { date: DATA.lastReviewed ?? '—' })}{' '}
         <a className="bl-link" href={feedbackUrl}>
           {t.footFixLink}
@@ -1741,7 +1846,7 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
 
       {/* ── 对比托盘 ── */}
       {compareBrands.length > 0 ? (
-        <div className="bl-tray" role="region" aria-label={t.compareTray}>
+        <div className="bl-tray" data-paper="true" role="region" aria-label={t.compareTray}>
           <span className="bl-tray__label">{fmt(t.compareSelected, { n: compareBrands.length })}</span>
           <div className="bl-tray__items">
             {compareBrands.map((brand) => {
@@ -1781,6 +1886,7 @@ export default function BrandLibrary({ locale }: { locale?: Locale }): ReactNode
             rawLocale={rawLocale}
             t={t}
             titleId={detailTitleId}
+            plate={detailIndex + 1}
             selected={compareIds.includes(detailBrand.id)}
             compareFull={compareFull}
             onCompare={onCompare}
