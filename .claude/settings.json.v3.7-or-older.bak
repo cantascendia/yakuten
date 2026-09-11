@@ -1,0 +1,138 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)"
+    ]
+  },
+  "outputStyle": "cto",
+  "statusLine": {
+    "type": "command",
+    "command": ".claude/statusline.sh"
+  },
+  "enabledMcpjsonServers": [],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -d docs/ai-cto ] && ([ -f docs/ai-cto/CONSTITUTION.md ] || [ -f docs/ai-cto/STATUS.md ]); then echo '🔄 检测到 docs/ai-cto/ 项目记忆，自动恢复上下文...'; test -f docs/ai-cto/CONSTITUTION.md && echo '' && echo '=== CONSTITUTION ===' && head -150 docs/ai-cto/CONSTITUTION.md; test -f docs/ai-cto/STATUS.md && echo '' && echo '=== STATUS ===' && head -150 docs/ai-cto/STATUS.md; if [ -f docs/ai-cto/REVIEW-QUEUE.md ]; then PENDING=$(tail -100 docs/ai-cto/REVIEW-QUEUE.md | grep -c '^## ' 2>/dev/null); [ \"${PENDING:-0}\" -gt 0 ] && echo '' && echo '=== 最近 §48 跨模型 REVIEW（待审视）===' && tail -100 docs/ai-cto/REVIEW-QUEUE.md; fi; echo '' && echo '💡 继续上次工作：直接对话 / 或 /cto-resume 显式刷新进度'; else echo '🆕 未检测到 docs/ai-cto/ 项目记忆。这看起来是首次接入 ai-playbook。'; echo '   建议：运行 /cto-start 启动第零轮（产品愿景 + 八维审核 + 生成记忆文件）'; echo '   或：运行 /cto-init [项目路径] 重新初始化 ai-playbook 配置'; fi"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_USER_PROMPT\" | grep -iqE '\\b(yolo|accept all|vibe ship|--no-verify|skip tests|just do it)\\b' && echo '⚠️ §33 红线提醒：检测到 vibe 关键词。Forbidden 路径（auth/支付/secrets/migration）禁止 vibe coding。请改用 /cto-spec specify 启动 spec-driven 流程。' || true"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE '\"file_path\"[[:space:]]*:[[:space:]]*\"[^\"]*tests?/' && echo '🛑 §20.3 Test-Lock 提醒（铁律 #14）：编辑测试文件需符合 spec 变更或 bug 修复场景，不得为让测试通过而改测试。如确需修改请明确说明依据。' || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE '\"file_path\"[[:space:]]*:[[:space:]]*\"[^\"]*(/auth/|/payment/|/billing/|/secrets/|/migration|/migrations/|/crypto/|/infra/|terraform/)' && echo '⚠️ §32.1 Forbidden 路径：此改动需要双签（CTO + senior + 第二模型 §19）。AI 不得单方面合并；PR 必须打 requires-double-review 标签。' || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE '\"file_path\"[[:space:]]*:[[:space:]]*\"[^\"]*(\\.claude/commands/|\\.claude/agents/|/CLAUDE\\.md|playbook/handbook\\.md|\\.agents/skills/|\\.claude/skills/)' && echo '📊 §35 提醒（铁律 #12）：本次修改触及 prompt/commands/agents/CLAUDE.md/skills。无 eval 不进 main — 合并前请运行 /cto-eval run。' || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE '\"file_path\"[[:space:]]*:[[:space:]]*\"[^\"]*(\\.agents/skills/|\\.claude/skills/)' && (diff <(sha256sum .agents/skills/*/SKILL.md 2>/dev/null | awk '{print $1, $2}' | sed 's|\\.agents/skills/||' | sort) <(sha256sum .claude/skills/*/SKILL.md 2>/dev/null | awk '{print $1, $2}' | sed 's|\\.claude/skills/||' | sort) > /dev/null 2>&1 || echo '⚠️ Skills 双位置不一致：.agents/skills/ vs .claude/skills/。同步：cp -r .agents/skills/* .claude/skills/ 或反向。') || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qE 'git commit' && (git diff --cached --name-only 2>/dev/null | grep -qE '(auth|payment|secrets|migration|crypto)/' && echo '⚠️ commit 触及 §32.1 forbidden 路径。push 前建议跑 /cto-vibe-check 完整审计。' || true) || true"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -d .claude/agent-logs && DAY=$(date +%Y-%m-%d 2>/dev/null || echo unknown) && TS=$(date -Iseconds 2>/dev/null || date +%s) && printf '{\"ts\":\"%s\",\"type\":\"tool_call\"}\\n' \"$TS\" >> .claude/agent-logs/${DAY}.jsonl 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -d docs/ai-cto && echo \"[$(date -Iseconds 2>/dev/null || date)] sub-agent finished\" >> docs/ai-cto/STATUS.md 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚠️ 即将压缩上下文。建议先把当前 spec/PLAN/决策保存到 docs/ai-cto/STATUS.md，避免压缩丢失。'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '— 会话结束摘要 —'; git status --short 2>/dev/null | head -20; echo '如有未提交改动涉及 §32.1 forbidden 路径，建议 /cto-vibe-check + /cto-review 后再 push。'"
+          },
+          {
+            "type": "command",
+            "command": "test -x .agents/skills/codex-bridge/run.sh && bash .agents/skills/codex-bridge/run.sh HEAD && echo '🔄 §48 cross-review 已在后台触发（forbidden+业务路径已过滤；同 commit 去重）。结果稍后出现在 docs/ai-cto/REVIEW-QUEUE.md' || true"
+          }
+        ]
+      }
+    ]
+  }
+}
