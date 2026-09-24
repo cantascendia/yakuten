@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/validate-content.mjs && node scripts/verify-quota-parity.mjs && astro build && node scripts/inject-sitemap-lastmod.mjs && node scripts/generate-og-images.mjs",
+    "build": "node scripts/validate-content.mjs && node scripts/check-bold-markers.mjs && node scripts/verify-quota-parity.mjs && astro build && node scripts/inject-sitemap-lastmod.mjs && node scripts/generate-og-images.mjs",
     "preview": "astro preview",
-    "check": "node scripts/validate-content.mjs && node scripts/verify-quota-parity.mjs && astro check",
-    "validate:content": "node scripts/validate-content.mjs",
+    "check": "node scripts/validate-content.mjs && node scripts/check-bold-markers.mjs && node scripts/verify-quota-parity.mjs && astro check",
+    "validate:content": "node scripts/validate-content.mjs && node scripts/check-bold-markers.mjs",
     "astro": "astro",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
