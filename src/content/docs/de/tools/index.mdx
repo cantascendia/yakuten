@@ -1,6 +1,6 @@
 ---
 title: "Interaktive Werkzeuge"
-description: "9 evidenzbasierte Werkzeuge rund um HRT-Sicherheit: Blutwert-Checker, Dosis-Simulator, KI-Assistent, Klinik-Finder und mehr. Alle Werkzeuge laufen lokal in deinem Browser — deine Gesundheitsdaten werden nicht hochgeladen."
+description: "9 evidenzbasierte Werkzeuge rund um HRT-Sicherheit: Blutwert-Checker, Dosis-Simulator, KI-Assistent, Klinik-Finder und mehr. Bis auf den KI-Assistenten laufen alle Werkzeuge lokal in deinem Browser — deine Gesundheitsdaten werden nicht hochgeladen."
 sidebar:
   order: 5
 evidenceLevel: X
@@ -8,7 +8,7 @@ lastReviewed: 2026-04-28
 references: []
 faqs:
   - q: "Werden meine Daten gespeichert oder an einen Server gesendet?"
-    a: "Nein. Alle Werkzeuge laufen vollständig in deinem Browser. Deine Eingaben verlassen dein Gerät nicht. Die einzige Ausnahme ist der KI-Assistent, der deine Frage an ein Sprachmodell sendet — aber auch dort werden weder Gespräche gespeichert noch persönliche Daten verknüpft. Die Bluttest-Chronik speichert Einträge ausschließlich im localStorage deines Browsers, nie auf einem Server."
+    a: "Nein. Alle Werkzeuge laufen vollständig in deinem Browser. Deine Eingaben verlassen dein Gerät nicht. Die einzige Ausnahme ist der KI-Assistent: Deine Frage wird über unseren Server an einen externen KI-Anbieter (derzeit Google Gemini oder OpenAI) gesendet. Wir speichern keine Gespräche, doch der Anbieter darf eingesandte Inhalte laut seinen Bedingungen unter Umständen zur Verbesserung seiner Dienste nutzen — gib daher nichts ein, was dich identifiziert. Die Bluttest-Chronik speichert Einträge ausschließlich im localStorage deines Browsers, nie auf einem Server."
   - q: "Ersetzen die Werkzeuge eine ärztliche Untersuchung?"
     a: "Auf keinen Fall. Die Werkzeuge liefern eine erste Orientierung anhand veröffentlichter Leitlinien (WPATH SOC 8, Endocrine Society 2017, UCSF). Auffällige Ergebnisse, unklare Symptome oder Notfälle gehören immer in die Hände einer qualifizierten Fachperson. Nutze die Ergebnisse als Gesprächsgrundlage beim nächsten Arzttermin."
   - q: "Funktionieren die Werkzeuge auch auf dem Handy?"
@@ -19,7 +19,7 @@ faqs:
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-Um deine Privatsphäre zu schützen, laufen alle Werkzeuge direkt in deinem Browser — **deine persönlichen Gesundheitsdaten werden nicht an einen Server übertragen**. Klicke einfach auf eine Karte, um loszulegen.
+Um deine Privatsphäre zu schützen, laufen alle Werkzeuge außer dem KI-Assistenten direkt in deinem Browser — **deine persönlichen Gesundheitsdaten werden nicht an einen Server übertragen**. Klicke einfach auf eine Karte, um loszulegen.
 
 ## Sicherheits-Selbstcheck
 
@@ -37,7 +37,7 @@ Um deine Privatsphäre zu schützen, laufen alle Werkzeuge direkt in deinem Brow
   <LinkCard
     title="KI-Assistent"
     href="/de/tools/ai-assistant/"
-    description="Ein KI-gestützter Assistent (Gemini), der deine Fragen zur HRT-Sicherheit anhand evidenzbasierter Literatur beantwortet. Keine Gesprächsspeicherung, keine individuellen Dosierungsvorschläge — bei Notfällen wirst du direkt an den Rettungsdienst verwiesen."
+    description="Ein KI-Assistent, der deine Fragen zur HRT-Sicherheit anhand evidenzbasierter Literatur beantwortet; die Antworten erzeugen externe KI-Modelle (Google Gemini, OpenAI). Wir speichern keine Gespräche (bitte keine persönlichen Identifikationsdaten eingeben), keine individuellen Dosierungsvorschläge — bei Notfällen wirst du direkt an den Rettungsdienst verwiesen."
   />
 </CardGrid>
 
@@ -83,10 +83,10 @@ Um deine Privatsphäre zu schützen, laufen alle Werkzeuge direkt in deinem Brow
 
 ## Datenschutz-Versprechen
 
-- Alle Werkzeuge laufen **vollständig im Browser** — deine Eingaben werden in der Regel nicht an einen Server gesendet
-- Der KI-Assistent **speichert keine Gespräche** — beim Schließen der Seite werden sie in der Regel sofort gelöscht
-- Die Bluttest-Chronik schreibt Einträge ausschließlich in den **`localStorage` deines Geräts** — du kannst sie jederzeit mit einem Klick löschen
-- Die Website-Analyse nutzt Vercel Web Analytics und Speed Insights (kein Cookie, nur aggregierte Statistiken, keine Zuordnung zu Personen). Google Analytics oder Social-Media-Tracker werden nicht eingesetzt
+- Alle Werkzeuge außer dem KI-Assistenten laufen **vollständig im Browser** — deine Eingaben werden nicht an einen Server gesendet
+- Der KI-Assistent leitet deine Frage über unseren Server an einen externen KI-Anbieter (Google Gemini, OpenAI) weiter. Wir **speichern keine Gespräche**, doch der Anbieter kann Inhalte laut seinen Bedingungen zur Verbesserung seiner Dienste nutzen — gib keinen Namen, keine Telefon- oder Ausweisnummer ein
+- Die Bluttest-Chronik und (falls aktiviert) der KI-Chatverlauf werden ausschließlich im **`localStorage` deines Geräts** gespeichert — du kannst sie jederzeit mit einem Klick löschen
+- Für aggregierte Besuchsstatistiken nutzen wir Google Analytics 4 (setzt Cookies; per Browser-Einstellung oder Werbeblocker blockierbar) sowie Vercel Web Analytics und Speed Insights. Gesundheitsdaten, Werkzeug-Eingaben und KI-Gespräche werden nie an Analysedienste gesendet; Werbe- oder Social-Media-Tracking-Pixel setzen wir nicht ein. Details: [Datenschutz](/de/about/#datenschutz)
 
 ## Hinweis
 

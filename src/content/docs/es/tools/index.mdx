@@ -1,6 +1,6 @@
 ---
 title: "Herramientas interactivas"
-description: "9 herramientas basadas en evidencia para la seguridad de tu TRH: verificador de analisis, simulador de dosis, asistente IA, buscador de clinicas y mas. Todo funciona en tu navegador."
+description: "9 herramientas basadas en evidencia para la seguridad de tu TRH: verificador de analisis, simulador de dosis, asistente IA, buscador de clinicas y mas. Todo, salvo el asistente IA, funciona en tu navegador."
 sidebar:
   order: 5
 evidenceLevel: X
@@ -8,7 +8,7 @@ lastReviewed: 2026-07-15
 references: []
 faqs:
   - q: "Se guardan mis datos o se envian a un servidor?"
-    a: "No. Todas las herramientas funcionan completamente en tu navegador. Tus entradas no abandonan tu dispositivo. La unica excepcion es el asistente IA, que envia tu pregunta a un modelo de lenguaje — pero tampoco alli se almacenan conversaciones ni se vinculan datos personales. El historial de analisis de sangre guarda las entradas exclusivamente en el localStorage de tu navegador, nunca en un servidor."
+    a: "No. Todas las herramientas funcionan completamente en tu navegador. Tus entradas no abandonan tu dispositivo. La unica excepcion es el asistente IA: tu pregunta se envia, a traves de nuestro servidor, a un proveedor externo de IA (actualmente Google Gemini u OpenAI). No almacenamos conversaciones, pero las condiciones del proveedor pueden permitirle usar el contenido enviado para mejorar sus servicios, asi que no incluyas datos que te identifiquen. El historial de analisis de sangre guarda las entradas exclusivamente en el localStorage de tu navegador, nunca en un servidor."
   - q: "Sustituyen las herramientas una consulta medica?"
     a: "De ninguna manera. Las herramientas ofrecen una primera orientacion basada en guias publicadas (WPATH SOC 8, Endocrine Society 2017, UCSF). Resultados anormales, sintomas poco claros o emergencias siempre deben estar en manos de un profesional cualificado. Usa los resultados como base de conversacion en tu proxima cita medica."
   - q: "Funcionan las herramientas en el movil?"
@@ -19,7 +19,7 @@ faqs:
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-Para proteger tu privacidad, todas las herramientas funcionan directamente en tu navegador — **tus datos personales de salud no se transmiten a ningun servidor**. Simplemente haz clic en una tarjeta para comenzar.
+Para proteger tu privacidad, todas las herramientas, salvo el asistente IA, funcionan directamente en tu navegador — **tus datos personales de salud no se transmiten a ningun servidor**. Simplemente haz clic en una tarjeta para comenzar.
 
 ## Autoevaluacion de seguridad
 
@@ -37,7 +37,7 @@ Para proteger tu privacidad, todas las herramientas funcionan directamente en tu
   <LinkCard
     title="Asistente IA"
     href="/es/tools/ai-assistant/"
-    description="Un asistente basado en IA (Gemini) que responde tus preguntas sobre seguridad de la TRH a partir de literatura basada en evidencia. Sin almacenamiento de conversaciones, sin recomendaciones de dosis individuales — en emergencias te redirige directamente al servicio de emergencias."
+    description="Un asistente de IA que responde tus preguntas sobre seguridad de la TRH a partir de literatura basada en evidencia; las respuestas las generan modelos de IA externos (Google Gemini, OpenAI). No almacenamos conversaciones (no incluyas datos que te identifiquen), sin recomendaciones de dosis individuales — en emergencias te redirige directamente al servicio de emergencias."
   />
 </CardGrid>
 
@@ -83,10 +83,10 @@ Para proteger tu privacidad, todas las herramientas funcionan directamente en tu
 
 ## Compromiso de privacidad
 
-- Todas las herramientas funcionan **completamente en el navegador** — tus entradas generalmente no se envian a ningun servidor
-- El asistente IA **no almacena conversaciones** — al cerrar la pagina se eliminan generalmente de inmediato
-- El historial de analisis de sangre escribe las entradas exclusivamente en el **`localStorage` de tu dispositivo** — puedes eliminarlas en cualquier momento con un clic
-- El analisis del sitio web utiliza Vercel Web Analytics y Speed Insights (sin cookies, solo estadisticas agregadas, sin vinculacion a personas). No se emplean Google Analytics ni rastreadores de redes sociales
+- Todas las herramientas, salvo el asistente IA, funcionan **completamente en el navegador** — tus entradas no se envian a ningun servidor
+- El asistente IA reenvia tu pregunta, a traves de nuestro servidor, a un proveedor externo de IA (Google Gemini, OpenAI). **No almacenamos conversaciones**, pero el proveedor puede usar el contenido enviado para mejorar sus servicios segun sus condiciones — no incluyas tu nombre, telefono ni numero de documento
+- El historial de analisis de sangre y (si lo activas) el historial de chat con la IA se guardan exclusivamente en el **`localStorage` de tu dispositivo** — puedes eliminarlos en cualquier momento con un clic
+- Para estadisticas agregadas de visitas usamos Google Analytics 4 (usa cookies; puedes bloquearlo desde el navegador o con un bloqueador de anuncios) junto con Vercel Web Analytics y Speed Insights. Los datos de salud, lo que escribes en las herramientas y las conversaciones con la IA nunca se envian a la analitica, y no usamos pixeles de seguimiento publicitarios ni de redes sociales. Detalles: [Privacidad](/es/about/#privacidad)
 
 ## Aviso
 

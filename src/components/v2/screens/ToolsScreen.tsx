@@ -102,7 +102,7 @@ export default function ToolsScreen() {
                 <Chip color="var(--lavender-deep)">BETA</Chip>
               </div>
               <p style={{ fontSize: 13, color: 'var(--fg-1)', lineHeight: 1.6, margin: '6px 0 0' }}>
-                基于站内文献库回答一般性问题。对话不存储任何记录。
+                基于站内文献库回答一般性问题。本站不存储对话，回答由第三方 AI 服务生成。
               </p>
             </div>
             {/* AA：原型 --grape #7A5FB5 on --lavender #D4C5F5 = 3.17 FAIL（13px 小字）
@@ -116,7 +116,7 @@ export default function ToolsScreen() {
 
       <InkCard variant="cream" hoverLift={false} style={{ marginTop: 28, padding: '14px 20px', fontSize: 12, color: 'var(--fg-2)', lineHeight: 1.7 }}>
         {/* AA：pink-deep on cream 3.20 → 主题感知 pink-text 5.18 */}
-        <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 本站不提供处方、不销售药物、不收集个人信息。工具输出仅供教育和参考用途，不构成医疗建议。
+        <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 本站不提供处方、不销售药物，也无需注册账号。工具输出仅供教育和参考用途，不构成医疗建议。
       </InkCard>
     </div>
   );

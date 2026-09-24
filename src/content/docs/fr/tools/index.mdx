@@ -8,11 +8,11 @@ sidebar:
 lastReviewed: 2026-07-15
 faqs:
   - q: "Mes donnees de sante sont-elles transmises a un serveur ?"
-    a: "Non. Tous les outils fonctionnent exclusivement dans ton navigateur. Aucune saisie, aucun resultat, aucune donnee de sante ne quitte ton appareil -- ni vers nos serveurs, ni vers des tiers. Le code source est entierement open source et consultable sur GitHub."
+    a: "Non. Tous les outils fonctionnent exclusivement dans ton navigateur : aucune saisie, aucun resultat, aucune donnee de sante ne quitte ton appareil. Seule exception : l'assistant IA, qui transmet ta question via notre serveur a un fournisseur d'IA tiers (actuellement Google Gemini ou OpenAI) ; nous ne conservons pas les conversations, mais les conditions de ce fournisseur peuvent l'autoriser a utiliser les contenus recus pour ameliorer ses services. Le code source est entierement open source et consultable sur GitHub."
   - q: "Les outils peuvent-ils remplacer un bilan sanguin par un laboratoire ?"
     a: "Non. Les outils t'aident a interpreter et documenter tes resultats, mais ils ne les produisent pas. Un prelevement sanguin dans un laboratoire certifie reste indispensable. Les intervalles de reference des outils peuvent differer legerement de ceux de ton laboratoire."
   - q: "Les outils fonctionnent-ils hors connexion ?"
-    a: "La plupart des outils (bilan sanguin, injection, dose, comparateur) fonctionnent hors connexion apres le premier chargement. L'assistant IA necessite une connexion Internet car il envoie ta question a un modele de langage -- mais jamais tes donnees de sante."
+    a: "La plupart des outils (bilan sanguin, injection, dose, comparateur) fonctionnent hors connexion apres le premier chargement. L'assistant IA necessite une connexion Internet car il envoie ta question a un fournisseur d'IA tiers -- evite d'y inclure des informations qui t'identifient (nom, telephone, numero de piece d'identite)."
   - q: "Puis-je utiliser les outils sur smartphone ?"
     a: "Oui. Tous les outils sont responsifs et fonctionnent sur smartphone, tablette et ordinateur de bureau. L'outil de bilan sanguin est egalement optimise pour la saisie au doigt."
 ---
@@ -21,7 +21,7 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import WarningBox from '../../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../../components/ui/DangerBox.astro';
 
-Tous les outils fonctionnent **directement dans ton navigateur** -- aucune donnee de sante n'est jamais transmise a nos serveurs ni a des tiers. Le code source est open source et consultable sur [GitHub](https://github.com/Loveil381/yakuten).
+Tous les outils, sauf l'assistant IA, fonctionnent **directement dans ton navigateur** -- aucune donnee de sante n'est transmise a nos serveurs ni a des tiers. Le code source est open source et consultable sur [GitHub](https://github.com/Loveil381/yakuten).
 
 ---
 
@@ -97,7 +97,7 @@ Tous les outils fonctionnent **directement dans ton navigateur** -- aucune donne
 </CardGrid>
 
 <WarningBox title="Limitations de l'assistant IA">
-L'assistant IA est un outil d'information generaliste, pas un substitut a un avis medical. Il peut citer les guidelines et la litterature de reference, mais il ne connait ni ton historique, ni tes bilans, ni tes traitements concomitants. Aucun echange avec l'assistant n'est enregistre -- la conversation est ephemere et n'est jamais transmise a nos serveurs de donnees.
+L'assistant IA est un outil d'information generaliste, pas un substitut a un avis medical. Il peut citer les guidelines et la litterature de reference, mais il ne connait ni ton historique, ni tes bilans, ni tes traitements concomitants. Nous ne conservons aucun echange : ta question transite par notre serveur vers un fournisseur d'IA tiers (Google Gemini, OpenAI) qui genere la reponse et dont les conditions peuvent l'autoriser a utiliser les contenus recus pour ameliorer ses services. N'y indique ni ton nom, ni ton telephone, ni un numero de piece d'identite.
 </WarningBox>
 
 ---
@@ -110,6 +110,7 @@ Tous les outils d'analyse et les outils pratiques sont construits selon le princ
 - **Zero stockage cote serveur** : meme si ton navigateur perd la connexion pendant l'utilisation, aucune donnee n'a ete envoyee.
 - **Mode classique** : le mode par defaut de l'outil de bilan sanguin est entierement sans stockage -- tes valeurs disparaissent a la fermeture de l'onglet.
 - **Mode sakura (手帐)** : le mode sakura de l'outil de bilan sanguin enregistre tes donnees dans le `localStorage` de ton navigateur, sur ton appareil uniquement. Tu peux les supprimer a tout moment via le bouton "Effacer toutes les donnees".
+- **Mesure d'audience** : le site utilise Google Analytics 4 (cookies ; tu peux le bloquer via ton navigateur ou un bloqueur de publicites) ainsi que Vercel Web Analytics et Speed Insights pour des statistiques de visite agregees. Tes donnees de sante, tes saisies et tes conversations avec l'IA ne leur sont jamais envoyees, et aucun pixel publicitaire ou de reseau social n'est utilise. Details : [Confidentialite](/fr/about/#confidentialité)
 - **Code open source** : le code complet est consultable sur [GitHub](https://github.com/Loveil381/yakuten). Tu peux verifier toi-meme qu'aucune donnee n'est transmise.
 
 <DangerBox title="En cas d'urgence medicale, ne pas utiliser les outils -- appeler le 15 ou le 112">
