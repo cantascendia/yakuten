@@ -7,6 +7,13 @@
 > deepseek v4 的保底。关键是降低出错率。并且确保最大化白嫖额度。」
 > + 「增加思考模式让用户自己选，不需要思考的简单问题比如寒暄可以自动降级。」
 > + 2026-07-29 追加：owner 开通 OpenAI 每日免费额度（数据共享换取，Tier 1）
+> + **2026-09-24 修订（owner）**：「chat 用的模型……gemini flash 掉了变成 chatgpt 的
+> 6-luna，因为特别便宜」→ `medical` / `smalltalk` 链首位改为 **`gpt-6-luna`**
+> （GPT-6，2026-09-22 发布；$0.10 / $0.50 per 1M；chat completions、
+> reasoning_effort 取值集与 gpt-5.6 相同；来源 developers.openai.com/api/docs/models/gpt-6-luna）。
+> Gemini 免费层退为第二顺位；`think` 链不变（sol 打头）。§2.2 的「日常问答以
+> Google 免费打头」（理由 ③）就此被 owner 以成本决策取代。上线前 gpt-6-luna 须过
+> P0 探针组（部署清单），不因 gpt-5.6 已通过而豁免。
 > → 新增第四层 `free-oai`（§2.1 / §2.2 / §2.6b）；限额语义由「日限额」改为
 > **5 小时 + 每周两级滚动窗口**（Claude 模式，§2.8）；补客户端 GA 用量埋点与
 > 服务端成功路径日志（§3 / §3.1）。
