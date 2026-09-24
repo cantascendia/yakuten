@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+/** 血检手账 is client:visible — scroll it into view so it hydrates, then open a new record. */
+async function openTracker(page: import('@playwright/test').Page) {
+  await page.locator('astro-island[component-url*="BloodTestCheckerRouter"]').scrollIntoViewIfNeeded();
+  await page.getByRole('button', { name: '+ 新记录' }).first().click();
+}
+
 // ── Navigation & i18n ──
 
 test.describe('Site navigation', () => {
@@ -99,21 +105,32 @@ test.describe('SEO infrastructure', () => {
 // ── Blood Test Checker ──
 
 test.describe('Blood Test Checker', () => {
-  test('loads and accepts input', async ({ page }) => {
+  // 血检手账（唯一版本）：新增记录 → 输入 → 保存。
+  // pressSequentially 而非 fill()：React 受控输入收不到 fill() 的合成事件（2026-07-29）。
+  test('adds a record and grades it', async ({ page }) => {
     await page.goto('/zh/tools/blood-checker/');
     await expect(page.locator('h1')).toContainText('血检');
-    // Find an input field and type a value
-    const input = page.locator('input[type="number"]').first();
-    await expect(input).toBeVisible();
-    // ⚠️ pressSequentially 而非 fill()（bug-fix 2026-07-29）——
-    // fill() 直接设 DOM value 再派发合成 input 事件，React 受控组件收不到，
-    // onChange 不触发 → ResultBar（role="meter"）永远不渲染。
-    // 与 mobile-a11y.spec.ts 的 aria-invalid 用例同一根因。断言未放宽。
-    await input.click();
-    await input.pressSequentially('150', { delay: 20 });
-    // Should show some result
-    const resultArea = page.locator('[role="meter"]').first();
-    await expect(resultArea).toBeVisible();
+    await openTracker(page);
+    const e2 = page.locator('input[data-metric="e2"]');
+    await expect(e2).toBeVisible();
+    await e2.click();
+    await e2.pressSequentially('550', { delay: 20 }); // pmol/L ≈ 150 pg/mL → 达标
+    await page.getByRole('button', { name: /保存/ }).click();
+    await expect(page.getByText('共 1 条记录')).toBeVisible();
+    // no demo records are ever seeded
+    expect(await page.evaluate(() => localStorage.getItem('yakuten_blood_seeded_v1'))).toBeNull();
+  });
+
+  test('red-zone value shows the non-dismissible classic warning', async ({ page }) => {
+    await page.goto('/zh/tools/blood-checker/');
+    await openTracker(page);
+    const k = page.locator('input[data-metric="k"]');
+    await k.click();
+    await k.pressSequentially('6.2', { delay: 20 });
+    await page.getByRole('button', { name: /保存/ }).click();
+    const alert = page.locator('.b32-root [role="alert"]');
+    await expect(alert).toContainText('高钾血症');
+    await expect(alert.locator('a[href="/zh/risks/"]')).toBeVisible();
   });
 });
 
@@ -248,5 +265,26 @@ test.describe('Footer', () => {
     await page.goto('/zh/about/');
     const github = page.locator('a[href*="github.com"]').first();
     await expect(github).toBeVisible();
+  });
+});
+
+// ── 乐园手账 is the only design ──
+
+test.describe('Sakura-only design', () => {
+  test('static HTML ships html.sakura, no toggle, light by default', async ({ page, request }) => {
+    const html = await (await request.get('/zh/')).text();
+    expect(html).toMatch(/<html[^>]*class="[^"]*\bsakura\b/);
+    await page.goto('/zh/');
+    await expect(page.locator('html')).toHaveClass(/\bsakura\b/);
+    await expect(page.locator('#sakura-toggle')).toHaveCount(0);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  });
+
+  test('幻月夜 is paused: a stored dark preference still renders light', async ({ page }) => {
+    await page.goto('/zh/');
+    await page.evaluate(() => localStorage.setItem('starlight-theme', 'dark'));
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+    await expect(page.locator('starlight-theme-select')).toHaveCount(0);
   });
 });

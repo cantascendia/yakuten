@@ -289,6 +289,8 @@ function MetricField({
       <input
         type="number"
         inputMode="decimal"
+        aria-label={`${metric.label} (${(unitSpec?.units.find((u) => u.id === unitId) ?? unitSpec?.units[0])?.label ?? metric.canonicalUnit})`}
+        data-metric={metric.id}
         step="any"
         min="0"
         value={displayValue}

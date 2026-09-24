@@ -94,8 +94,8 @@ test.describe('Hydration directives', () => {
     // The component lives at #tool anchor — scroll there to trigger
     // client:visible hydration
     await page.locator('#tool').scrollIntoViewIfNeeded();
-    const input = page.locator('input.btc-input').first();
-    await expect(input).toBeVisible({ timeout: 5000 });
+    // 血检手账 mounts after hydration; its header button proves the island ran
+    await expect(page.getByRole('button', { name: '+ 新记录' }).first()).toBeVisible({ timeout: 5000 });
   });
 });
 

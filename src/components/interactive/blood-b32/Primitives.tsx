@@ -1,4 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import type { Level } from '../../../utils/blood/metrics';
 import { b32Color, b32Tint, b32LevelLabelZh } from '../../../utils/blood/scoring';
 import { getB32Copy, detectLocaleFromPath, type Locale } from '../../../utils/blood/i18n';
@@ -369,17 +370,34 @@ export const B32Sheet = ({
     };
   }, [open, onClose]);
 
-  if (!open) return null;
-  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 820;
+  if (!open || typeof document === 'undefined') return null;
+  const isDesktop = window.innerWidth >= 820;
 
-  return (
-    <>
+  // Portaled to <body>: rendered inside the Starlight content column, the sheet
+  // was trapped in its stacking context — the overlay covered only that column
+  // and the right-hand TOC sat on top of the Save button. The wrapper re-opens
+  // the .b32-root token scope (transparent, so it paints nothing itself) and
+  // centres the dialog with flexbox: a translate(-50%,-50%) centre was
+  // overwritten by the slide-up animation's `transform: none` fill, pushing the
+  // desktop sheet into the bottom-right quadrant.
+  return createPortal(
+    <div
+      className="b32-root"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100000,
+        display: 'flex',
+        alignItems: isDesktop ? 'center' : 'flex-end',
+        justifyContent: 'center',
+        background: 'transparent',
+      }}
+    >
       <div
         onClick={onClose}
         style={{
-          position: 'fixed',
+          position: 'absolute',
           inset: 0,
-          zIndex: 200,
           background: 'rgba(74, 40, 56, 0.38)',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
@@ -392,18 +410,12 @@ export const B32Sheet = ({
         aria-modal="true"
         aria-label={dialogLabel}
         style={{
-          position: 'fixed',
-          left: isDesktop ? '50%' : 0,
-          right: isDesktop ? 'auto' : 0,
-          bottom: isDesktop ? 'auto' : 0,
-          top: isDesktop ? '50%' : 'auto',
-          transform: isDesktop ? 'translate(-50%, -50%)' : 'none',
+          position: 'relative',
           width: isDesktop ? `min(${maxWidth}px, calc(100vw - 40px))` : '100%',
           maxHeight: isDesktop ? '88vh' : fullHeight ? '100vh' : '92vh',
           height: !isDesktop && fullHeight ? '100vh' : 'auto',
           background: 'var(--b32-paper)',
           borderRadius: isDesktop ? 'var(--b32-r-xl)' : fullHeight ? 0 : '28px 28px 0 0',
-          zIndex: 201,
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
@@ -488,7 +500,8 @@ export const B32Sheet = ({
         )}
         <div style={{ flex: 1, overflow: 'auto', padding: '0 22px 28px' }}>{children}</div>
       </div>
-    </>
+    </div>,
+    document.body,
   );
 };
 

@@ -3,9 +3,10 @@ import {
   bcExportJSON,
   bcImportJSON,
   bcLoadPrefs,
+  bcLoadRecords,
   bcSavePrefs,
   bcSaveRecords,
-  bcSeedIfEmpty,
+  bcLoadUserRecords,
   bcClearAll,
   type BloodPrefs,
   type BloodRecord,
@@ -18,10 +19,10 @@ import SettingsSheet from './SettingsSheet';
 
 export default function B32App() {
   const [locale, setLocale] = useState<Locale>(() => detectLocaleFromPath());
-  const [records, setRecords] = useState<BloodRecord[]>(() => bcSeedIfEmpty());
+  const [records, setRecords] = useState<BloodRecord[]>(() => bcLoadUserRecords());
   const [prefs, setPrefs] = useState<BloodPrefs>(() => bcLoadPrefs());
   const [activeId, setActiveId] = useState<string | null>(() => {
-    const rs = bcSeedIfEmpty();
+    const rs = bcLoadRecords();
     if (rs.length === 0) return null;
     return [...rs].sort((a, b) => b.date.localeCompare(a.date))[0].id;
   });
