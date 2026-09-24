@@ -1,0 +1,38 @@
+# Vercel CLI does not read .gitignore — without this file a `vercel deploy`
+# uploads the whole working tree (secrets, SEO data, dist, worktrees; ~290MB).
+# Git-integration deploys only see tracked files; this guards CLI deploys.
+# Keep in sync with .gitignore.
+
+# secrets
+.env
+.env.*
+.gsc-credentials.json
+
+# private SEO data (#122: not published)
+docs/data/gsc-*.csv
+docs/data/ai-seo-report-*.md
+docs/data/trends-latest.json
+docs/data/trends-20*.json
+docs/seo-keyword-gap.md
+docs/ai-safety-probe-*.md
+docs/ai-cto/reviews/
+
+# build output / caches / local tooling
+node_modules/
+dist/
+.astro/
+.claude/worktrees/
+.claude/*.bak-*/
+test-results/
+playwright-report/
+tests/fixtures/lab/degraded/
+*.log
+
+# design scratch
+stitch-exports/
+stitch-prompts.md
+*.zip
+.design-unzip/
+.claude-design-bundle/
+scripts/gpt-image-2-raw/
+public/images/diagrams/*/source/
