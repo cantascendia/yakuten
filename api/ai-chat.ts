@@ -491,6 +491,13 @@ const DS_MODEL = 'deepseek-v4-flash';
 const OAI_SOL = 'gpt-5.6-sol';
 const OAI_TERRA = 'gpt-5.6-terra';
 const OAI_LUNA = 'gpt-5.6-luna';
+/* 2026-09-24 owner 决定：日常问答 / 寒暄的首选模型由 Gemini flash 改为 gpt-6-luna
+   （GPT-6 于 2026-09-22 发布；$0.10 / $0.50 per 1M，比 gpt-5.6-luna 再便宜一半，
+   chat completions + reasoning_effort 取值集与 gpt-5.6 相同，含 image_input）。
+   Gemini 免费层退为第二顺位的降级。思考模式不变（sol 打头）。
+   来源：developers.openai.com/api/docs/models/gpt-6-luna（2026-09-24 核对）。
+   ⚠️ 上线前必须过 P0 安全探针（spec 部署清单）：新模型不因同供应商旧模型已通过而豁免。 */
+const OAI_LUNA6 = 'gpt-6-luna';
 
 /** 免费层配额是 per-project-per-model → 6 个模型 = 6 份独立 ~1500 RPD。
  *  4-6 位是「换池」：Flash 全系 RPM 撞墙时 Lite 池仍空闲，仍在免费层内。
@@ -534,14 +541,15 @@ const CHAIN_PLANS: Record<'think' | 'medical' | 'smalltalk', ChainPlan> = {
     ['backup', TIER_MODELS.backup.medical],
   ],
   medical: [
-    ['free', TIER_MODELS.free.medical], // flash×3 → lite×3
-    ['free-oai', TIER_MODELS['free-oai'].medical], // terra → luna
+    ['free-oai', [OAI_LUNA6]], // 首选（2026-09-24 owner）
+    ['free', TIER_MODELS.free.medical], // flash×2 → lite×2
+    ['free-oai', TIER_MODELS['free-oai'].medical], // terra → luna(5.6)
     ['paid', TIER_MODELS.paid.medical],
     ['backup', TIER_MODELS.backup.medical],
   ],
   smalltalk: [
-    ['free', TIER_MODELS.free.smalltalk], // lite×2
-    ['free-oai', TIER_MODELS['free-oai'].smalltalk], // luna
+    ['free-oai', [OAI_LUNA6]], // 首选（2026-09-24 owner）
+    ['free', TIER_MODELS.free.smalltalk], // lite×2 → flash
     ['paid', TIER_MODELS.paid.smalltalk],
     ['backup', TIER_MODELS.backup.smalltalk],
   ],
