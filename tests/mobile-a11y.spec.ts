@@ -123,6 +123,14 @@ test.describe('Accessibility — focus and modals', () => {
     for (let i = 0; i < n; i++) {
       expect(await inputs.nth(i).getAttribute('aria-label')).toBeTruthy();
     }
+    // red-zone value flags the field live (before saving), like the classic checker did
+    const k = page.locator('input[data-metric="k"]');
+    await k.click();
+    await k.pressSequentially('6.2', { delay: 20 });
+    await expect(k).toHaveAttribute('aria-invalid', 'true');
+    const describedBy = await k.getAttribute('aria-describedby');
+    expect(describedBy).toBeTruthy();
+    await expect(page.locator(`#${describedBy}`)).toContainText('高钾血症');
   });
 });
 
