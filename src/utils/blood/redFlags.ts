@@ -210,3 +210,8 @@ export function redFlagsFor(values: Record<string, number>, locale: Locale): Red
   }
   return flags;
 }
+
+/** True when any value is in a classic red zone (locale-independent). */
+export function hasRedFlag(values: Record<string, number>): boolean {
+  return redFlagsFor(values, 'zh').length > 0;
+}

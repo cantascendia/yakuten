@@ -131,6 +131,8 @@ test.describe('Blood Test Checker', () => {
     const alert = page.locator('.b32-root [role="alert"]');
     await expect(alert).toContainText('高钾血症');
     await expect(alert.locator('a[href="/zh/risks/"]')).toBeVisible();
+    // the generic "不要自己停药" disclaimer must not contradict the red box
+    await expect(page.locator('.b32-root').getByText('不要自己停药')).toHaveCount(0);
   });
 });
 
