@@ -40,8 +40,10 @@ if (lastReviewed) {
 // render their own meta line, so suppress the medical-style byline there.
 const isBlogPage = pathname.includes('/blog/');
 const showByline = Boolean(lastReviewed) && !isBlogPage;
-const bylineLocale: 'zh' | 'en' | 'ja' | 'ko' =
-  locale === 'zh' || locale === 'en' || locale === 'ja' || locale === 'ko' ? locale : 'zh';
+// BylineCard carries labels for all 17 locales (falls back to en) — pass the
+// page locale straight through. Narrowing to zh/en/ja/ko here made 13 locales
+// show Chinese byline labels.
+const bylineLocale = locale;
 ---
 
 <Default {...Astro.props}><slot /></Default>
