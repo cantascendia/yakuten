@@ -113,7 +113,6 @@ export interface B32Copy {
   deleteConfirm: (date: string) => string;
 
   // sakura switcher hint (inline)
-  sakuraHint: string;
 }
 
 const ZH: B32Copy = {
@@ -210,7 +209,6 @@ const ZH: B32Copy = {
 
   deleteConfirm: (date) => `确定删除 ${date} 的记录吗？`,
 
-  sakuraHint: '关闭「新版」可回到经典红绿灯模式',
 };
 
 const EN: B32Copy = {
@@ -307,7 +305,6 @@ const EN: B32Copy = {
 
   deleteConfirm: (date) => `Delete the record from ${date}?`,
 
-  sakuraHint: 'Turn off sakura mode to return to the classic red/yellow/green view',
 };
 
 const JA: B32Copy = {
@@ -404,7 +401,6 @@ const JA: B32Copy = {
 
   deleteConfirm: (date) => `${date} の記録を削除しますか？`,
 
-  sakuraHint: '「新版」をオフにすると従来の赤黄緑表示に戻ります',
 };
 
 const KO: B32Copy = {
@@ -501,7 +497,6 @@ const KO: B32Copy = {
 
   deleteConfirm: (date) => `${date}의 기록을 삭제하시겠습니까?`,
 
-  sakuraHint: '"신버전"을 끄면 기존 적·황·녹 표시로 돌아갑니다',
 };
 
 const DICT: Record<Locale, B32Copy> = { zh: ZH, en: EN, ja: JA, ko: KO };

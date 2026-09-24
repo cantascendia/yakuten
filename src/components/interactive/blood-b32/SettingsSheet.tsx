@@ -81,18 +81,6 @@ export default function SettingsSheet({ open, prefs, locale, onSavePrefs, onImpo
           </button>
         </section>
 
-        <section
-          style={{
-            padding: 14,
-            background: 'var(--b32-sakura-paper)',
-            borderRadius: 'var(--b32-r-md)',
-            fontSize: 12,
-            color: 'var(--b32-ink-2)',
-            lineHeight: 1.7,
-          }}
-        >
-          {copy.sakuraHint}
-        </section>
       </div>
     </B32Sheet>
   );

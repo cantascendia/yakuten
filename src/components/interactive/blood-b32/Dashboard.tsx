@@ -25,6 +25,7 @@ import {
   type WorryItem,
 } from '../../../utils/blood/scoring';
 import { bcTrend, type BloodPrefs, type BloodRecord } from '../../../utils/blood/storage';
+import { redFlagsFor } from '../../../utils/blood/redFlags';
 import { getB32Copy, gradeSubtitle, gradeTitle, type Locale } from '../../../utils/blood/i18n';
 import {
   LevelChip,
@@ -84,6 +85,7 @@ export default function Dashboard({
 
   return (
     <div>
+      {activeRecord && <RedFlagAlert values={activeRecord.values} locale={locale} />}
       <div style={gridStyle}>
         <HeroGradeCard
           score={score}
@@ -650,6 +652,52 @@ function MetricRow({
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/**
+ * Classic red-zone warnings (utils/blood/redFlags.ts). Red background + white
+ * text, not dismissible — same rule as the site's emergency banners. Shown in
+ * addition to the tracker's own levels, which are looser for E2/T/PRL/Hb.
+ */
+const RED_FLAG_COPY: Record<Locale, { title: string; cta: string }> = {
+  zh: { title: '以下数值已进入红区', cta: '查看急症指南' },
+  en: { title: 'These values are in the red zone', cta: 'View emergency guide' },
+  ja: { title: '以下の数値がレッドゾーンに入っています', cta: '緊急ガイドを見る' },
+  ko: { title: '다음 수치가 위험 구간에 있습니다', cta: '응급 가이드 보기' },
+};
+
+function RedFlagAlert({ values, locale }: { values: Record<string, number>; locale: Locale }) {
+  const flags = redFlagsFor(values, locale);
+  if (flags.length === 0) return null;
+  const copy = RED_FLAG_COPY[locale] ?? RED_FLAG_COPY.zh;
+  return (
+    <div
+      role="alert"
+      style={{
+        marginBottom: 20,
+        padding: '16px 20px',
+        borderRadius: 'var(--b32-r-md)',
+        background: 'var(--b32-danger)',
+        color: 'var(--b32-paper)',
+        lineHeight: 1.65,
+      }}
+    >
+      <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 6 }}>⚠ {copy.title}</div>
+      <ul style={{ margin: 0, paddingInlineStart: 20, fontSize: 14 }}>
+        {flags.map((f) => (
+          <li key={f.id}>{f.message}</li>
+        ))}
+      </ul>
+      {/* class opts out of the prose `a:not([class])` highlighter */}
+      <a
+        className="b32-redflag-link"
+        href={`/${locale}/risks/`}
+        style={{ display: 'inline-block', marginTop: 10, color: 'inherit', fontWeight: 700, textDecoration: 'underline' }}
+      >
+        {copy.cta} →
+      </a>
     </div>
   );
 }

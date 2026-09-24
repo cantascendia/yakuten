@@ -360,3 +360,18 @@ P0 组 7/7（每题 3/3）。报告见
 
 **影响文件**：`api/ai-chat.ts`、`scripts/seo/ai-analyze.mjs`、
 `docs/specs/ai-chat-multi-tier-fallback.md`
+
+## D019 — 乐园手账（sakura）转正为唯一设计，取代 D010
+
+**日期**：2026-09-24 · **决策人**：owner（「取消旧版的设计，只保留新版」）
+
+**决策**：米哈游「二相乐园」深色玻璃皮退役；乐园手账成为唯一设计，🌸 切换按钮与首访引导卡移除。
+
+- **激活**：`src/middleware.ts` 在构建期把 `class="sakura"` 写进静态 HTML（爬虫/无 JS 访客也拿到新版，零闪屏）；`Head.astro` 保留内联 `classList.add` 兜底。`/v2/`、`/dev/` 跳过。
+- **明暗**：只保留浅色纸面。**幻月夜暂停**：夜间 token 只翻转一半（桌面变深、纸面不变），所有表格偶数行（含剂量表）对比度约 1.2:1、pathway 决策分支文字隐形、AI 页 prose 规则污染 —— 安全信息不可读。ThemeProvider 强制 light、ThemeSelect 不渲染；`starlight-theme` 存值保留，待 token 按 surface/on-surface 成对重设计后再开放。
+- **血检工具**：v3.2 血检手账成为唯一版本（localStorage，永不上传）。
+  - 不再给首访者写入 3 条示例记录；老用户未改动过的示例记录在加载时清除。
+  - 手账自身分级在 E2/T/PRL/Hb 上比经典版宽松 → 手账额外执行经典红区判定并显示 `RED_WARNINGS`（红底白字、不可关闭、链急症指南）。阈值与四语警告原样迁至 `src/utils/blood/redFlags.ts`，**不做任何放宽**。两套分级口径的统一需临床复核后另行决策。
+- **分两步**：本次（Phase A）只做常驻切换；旧皮 CSS/粒子/经典检查器等死代码在 Phase B 按组件合并删除（旧的无前缀样式目前仍是 sakura 的布局地基）。
+
+**影响文件**：`src/middleware.ts`、`src/components/overrides/{Head,ThemeProvider,ThemeSelect}.astro`、`src/components/interactive/BloodTestCheckerRouter.tsx`、`src/components/interactive/blood-b32/*`、`src/utils/blood/{storage,redFlags}.ts`、`CLAUDE.md`

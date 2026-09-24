@@ -1,0 +1,21 @@
+---
+/**
+ * ThemeProvider override — 乐园手账 renders light (cream paper) only.
+ *
+ * 幻月夜 (sakura × dark) is PAUSED (2026-09, D019): its tokens only half-flip
+ * (desk tokens go dark, paper tokens stay light), leaving e.g. every even
+ * table row — dose tables included — at ~1.2:1 contrast and pathway
+ * DecisionBranch text invisible. Until the tokens are redesigned as
+ * surface / on-surface pairs, the theme is forced to light and ThemeSelect
+ * renders nothing. The stored `starlight-theme` value is left untouched so a
+ * future re-enable can honour it.
+ *
+ * `StarlightThemeProvider.updatePickers` is kept as a no-op for any caller.
+ */
+---
+
+{/* Inlined to avoid FOUC. */}
+<script is:inline>
+	document.documentElement.dataset.theme = 'light';
+	window.StarlightThemeProvider = { updatePickers() {} };
+</script>
