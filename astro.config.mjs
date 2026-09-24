@@ -371,15 +371,19 @@ export default defineConfig({
             { label: '速查卡片', translations: { en: 'Drug Cards', ja: 'クイックカード', ko: '퀵 카드', pt: 'Cartões de Medicamentos' }, slug: 'tools/drug-cards', badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새', pt: 'Novo' }, variant: 'success' } },
           ],
         },
-        // ── 专题文章（博客目前仅中文，其他语言可看作"占位" group）──
+        // ── 专题文章 ──
+        // Starlight prefixes the page locale onto sidebar links, so '/blog/' becomes
+        // /<locale>/blog/ (the old '/zh/blog/' rendered as /de/zh/blog/ and hid the
+        // de/es/fr/pt/ru/ja blogs). Locales without a blog are 308'd to /zh/blog/
+        // by vercel.json.
         {
           label: '专题文章',
-          translations: { en: 'Articles', ja: '特集記事', ko: '특집 기사', pt: 'Artigos' },
+          translations: { en: 'Articles', ja: '特集記事', ko: '특집 기사', pt: 'Artigos', es: 'Artículos', fr: 'Articles', de: 'Artikel', ru: 'Статьи' },
           items: [
             {
               label: '所有博客',
-              translations: { en: 'All Posts (Chinese only)', ja: '全記事（中国語のみ）', ko: '전체 기사 (중국어)', pt: 'Todos os Artigos (apenas em chinês)' },
-              link: '/zh/blog/',
+              translations: { en: 'All Posts (Chinese)', ja: '全記事', ko: '전체 기사 (중국어)', pt: 'Todos os Artigos', es: 'Todos los artículos', fr: 'Tous les articles', de: 'Alle Artikel', ru: 'Все статьи' },
+              link: '/blog/',
             },
           ],
         },
