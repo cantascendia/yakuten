@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Vor dem Besuch überprüfen">
 Diese Einträge sind von der Community gepflegte Hinweise zum Versorgungszugang – keine offiziellen Zusagen der Einrichtungen. Vorgaben, Abteilungen und die Verfügbarkeit von Ärztinnen und Ärzten können sich rasch ändern; eine direkte Rückfrage ist deshalb immer notwendig.
 </WarningBox>
 
-Dieses Verzeichnis enthält derzeit {hospitals.length} von der Community gemeldete Einträge in {cityCount} Städten. Die zugrunde liegenden Quelldaten liegen in diesem Stadium noch überwiegend auf Chinesisch vor, weshalb Klinikbezeichnungen und örtliche Hinweise weiterhin auf Chinesisch erscheinen können.
+Dieses Verzeichnis enthält derzeit {shownCount} von der Community gemeldete Einträge in {cityCount} Städten. Die zugrunde liegenden Quelldaten liegen in diesem Stadium noch überwiegend auf Chinesisch vor, weshalb Klinikbezeichnungen und örtliche Hinweise weiterhin auf Chinesisch erscheinen können.
 
 ---
 

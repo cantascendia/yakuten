@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Gitmeden önce teyit edin">
 Buradaki kayıtlar topluluğun güncel tuttuğu erişim notlarıdır; kurumların verdiği resmî bir garanti değildir. Kurum politikaları, bölümler ve hekimlerin müsaitliği kısa sürede değişebilir; bu yüzden gitmeden önce bilgiyi doğrudan kurumdan teyit etmek her zaman şarttır.
 </WarningBox>
 
-Bu rehberde şu anda {cityCount} şehre yayılmış, toplulukça bildirilen {hospitals.length} kayıt yer alıyor. Arkadaki kaynak veriler bu aşamada ağırlıklı olarak Çince olduğu için, hastane adları ve yerel notlar hâlâ Çince görünebilir.
+Bu rehberde şu anda {cityCount} şehre yayılmış, toplulukça bildirilen {shownCount} kayıt yer alıyor. Arkadaki kaynak veriler bu aşamada ağırlıklı olarak Çince olduğu için, hastane adları ve yerel notlar hâlâ Çince görünebilir.
 
 ---
 
