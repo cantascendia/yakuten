@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="जाने से पहले पुष्टि कर लें">
 ये सूचियाँ समुदाय द्वारा संभाले जाने वाले पहुँच-संबंधी नोट हैं — किसी संस्थान की ओर से दी गई आधिकारिक गारंटी नहीं। नीतियाँ, विभाग और डॉक्टरों की उपलब्धता बहुत जल्दी बदल सकती है, इसलिए सीधे पुष्टि कर लेना हमेशा ज़रूरी है।
 </WarningBox>
 
-इस निर्देशिका में अभी {cityCount} शहरों में फैली {hospitals.length} समुदाय-रिपोर्ट प्रविष्टियाँ शामिल हैं। मूल स्रोत डेटा इस चरण में मुख्यतः चीनी भाषा में ही है, इसलिए अस्पतालों के नाम और स्थानीय नोट अभी भी चीनी में दिख सकते हैं।
+इस निर्देशिका में अभी {cityCount} शहरों में फैली {shownCount} समुदाय-रिपोर्ट प्रविष्टियाँ शामिल हैं। मूल स्रोत डेटा इस चरण में मुख्यतः चीनी भाषा में ही है, इसलिए अस्पतालों के नाम और स्थानीय नोट अभी भी चीनी में दिख सकते हैं।
 
 ---
 

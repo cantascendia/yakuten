@@ -23,6 +23,7 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Confirma antes de acudir">
 Estos listados son notas de acceso que mantiene la comunidad, no garantías oficiales de las instituciones. Las políticas, los servicios y la disponibilidad de profesionales pueden cambiar de un día para otro, así que confirmar directamente con el centro es siempre imprescindible.
@@ -65,7 +66,7 @@ Además del directorio hospitalario que aparece más abajo (basado en datos apor
 
 ## Directorio hospitalario (base de datos comunitaria)
 
-Por ahora este directorio reúne {hospitals.length} entradas aportadas por la comunidad en {cityCount} ciudades. Los datos de origen se centran mayormente en Asia, de modo que es posible que los nombres de los hospitales y las notas locales aparezcan en chino. Estamos trabajando para ampliar la cobertura a España y Latinoamérica.
+Por ahora este directorio reúne {shownCount} entradas aportadas por la comunidad en {cityCount} ciudades. Los datos de origen se centran mayormente en Asia, de modo que es posible que los nombres de los hospitales y las notas locales aparezcan en chino. Estamos trabajando para ampliar la cobertura a España y Latinoamérica.
 
 ---
 

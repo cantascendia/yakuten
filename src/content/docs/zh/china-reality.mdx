@@ -12,10 +12,10 @@ import WarningBox from '../../../components/ui/WarningBox.astro';
 import DangerBox from '../../../components/ui/DangerBox.astro';
 import DoseTable from '../../../components/ui/DoseTable.astro';
 import GlassCard from '../../../components/ui/GlassCard.astro';
-import hospitalsRaw from '../../../data/hospitals.json';
+import { mainlandHospitals, countCities } from '../../../utils/hospitals';
 
-export const hospitalCount = hospitalsRaw.length;
-export const hospitalCityCount = new Set(hospitalsRaw.map((hospital) => hospital.city)).size;
+export const hospitalCount = mainlandHospitals.length; // 只数中国大陆：hospitals.json 另含海外条目
+export const hospitalCityCount = countCities(mainlandHospitals);
 
 <div class="china-hero">
   <div class="china-hero__box">
@@ -110,7 +110,7 @@ export const hospitalCityCount = new Set(hospitalsRaw.map((hospital) => hospital
 
 #### 正规路径：友好医疗
 
-我们精心整理并维护了一份[友好医院数据库](/zh/tools/hospital-finder/)，涵盖了 {hospitalCityCount} 个城市共 {hospitalCount} 家医院的信息。这些机构的内分泌科医生对跨性别女性的 HRT 诊疗通常拥有较为丰富的临床经验。
+我们精心整理并维护了一份[友好医院数据库](/zh/tools/hospital-finder/)，涵盖了中国大陆 {hospitalCityCount} 个城市共 {hospitalCount} 家医院的信息。这些机构的内分泌科医生对跨性别女性的 HRT 诊疗通常拥有较为丰富的临床经验。
 
 <GlassCard>
 **→ [查看友好医院列表](/zh/tools/hospital-finder/)** · {hospitalCount} 家医院 · {hospitalCityCount} 个城市
