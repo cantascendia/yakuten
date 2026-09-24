@@ -440,6 +440,20 @@ export default defineConfig({
             onload: "this.onload=null;this.rel='stylesheet'",
           },
         },
+        // 乐园手账 (sakura) fonts — was a render-blocking @import in sakura-theme.css.
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            as: 'style',
+            href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap',
+            onload: "this.onload=null;this.rel='stylesheet'",
+          },
+        },
+        {
+          tag: 'noscript',
+          content: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap" />',
+        },
         // Fallback for no-JS browsers
         {
           tag: 'noscript',

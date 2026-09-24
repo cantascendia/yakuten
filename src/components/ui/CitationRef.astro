@@ -63,17 +63,9 @@ const fullTooltip = ref?.evidenceLevel
   : withJournal;
 ---
 
-<sup class:list={['citation-ref', className]}>
-  <a
-    href={href}
-    title={fullTooltip}
-    aria-label={`参考文献 ${displayNum ?? id}: ${fullTooltip}`}
-    class="citation-ref__link"
-    {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-  >
-    [{displayNum ?? '※'}]
-  </a>
-</sup>
+{/* Kept on one line on purpose: whitespace between <sup>, <a> and the label
+    renders inside the padded sakura chip as a phantom half-box. */}
+<sup class:list={['citation-ref', className]}><a href={href} title={fullTooltip} aria-label={`参考文献 ${displayNum ?? id}: ${fullTooltip}`} class="citation-ref__link" {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>[{displayNum ?? '※'}]</a></sup>
 
 <style>
   .citation-ref {

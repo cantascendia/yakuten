@@ -25,6 +25,10 @@
   --b32-sakura: #FFA8C5;
   --b32-sakura-hot: #FF7FA8;
   --b32-sakura-deep: #E5578B;
+  /* AA twin of sakura-deep for text / white-on-pink fills (same as site --sakura-pink-aa):
+     white on #C03070 ≈ 5.4:1, #C03070 on sakura-paper ≈ 5:1 (sakura-deep was 3.46 / 2.89). */
+  --b32-sakura-aa: #C03070;
+  --b32-sakura-aa-shadow: #962556;
   --b32-sakura-blush: #FFD4E0;
   --b32-sakura-paper: #FFE4EC;
   --b32-sakura-soft: rgba(255, 168, 197, 0.22);
@@ -179,12 +183,12 @@
   min-height: 44px;  /* WCAG 2.5.5 */
 }
 .b32-btn-primary {
-  background: var(--b32-sakura-deep);
-  color: white;
-  box-shadow: 0 3px 0 #B44068, 0 6px 14px rgba(229, 87, 139, 0.3);
+  background: var(--b32-sakura-aa);
+  color: var(--b32-paper);
+  box-shadow: 0 3px 0 var(--b32-sakura-aa-shadow), 0 6px 14px rgba(192, 48, 112, 0.3);
 }
-.b32-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 0 #B44068, 0 8px 18px rgba(229, 87, 139, 0.35); }
-.b32-btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 0 #B44068; }
+.b32-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--b32-sakura-aa-shadow), 0 8px 18px rgba(192, 48, 112, 0.35); }
+.b32-btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--b32-sakura-aa-shadow); }
 .b32-btn-ghost {
   background: var(--b32-paper);
   color: var(--b32-ink);
@@ -193,7 +197,7 @@
 .b32-btn-ghost:hover { background: var(--b32-bg-2); border-color: var(--b32-ink); }
 .b32-btn-soft {
   background: var(--b32-sakura-paper);
-  color: var(--b32-sakura-deep);
+  color: var(--b32-sakura-aa);
 }
 .b32-btn-soft:hover { background: var(--b32-sakura-blush); }
 .b32-btn-mint {
