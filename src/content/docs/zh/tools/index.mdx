@@ -1,6 +1,6 @@
 ---
 title: 工具总览
-description: HRT 药典精选的 9 款循证安全工具，包含血检自查、剂量模拟、AI 问答与医院查找等。除 AI 问答外，所有工具均在前端本地运行，你的健康数据不会被上传。
+description: HRT 药典精选的 9 款循证安全工具，包含血检自查、剂量模拟、AI 问答与医院查找等。所有工具均在前端本地运行，你的隐私数据不会被上传。
 evidenceLevel: X
 lastReviewed: 2026-04-28
 references: []
@@ -8,7 +8,7 @@ references: []
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-为了保障你的隐私，除 AI 问答外，下列工具均在浏览器本地运行，**你的个人健康数据不会上传至服务器**。你可以点击下方卡片直接使用。
+为了保障你的隐私，下列工具均在浏览器本地运行，**你的个人健康数据不会上传至服务器**。你可以点击下方卡片直接使用。
 
 ## 安全自查
 
@@ -26,7 +26,7 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
   <LinkCard
     title="AI 问答助手"
     href="/zh/tools/ai-assistant/"
-    description="由第三方 AI 模型（Google Gemini、OpenAI）基于循证文献解答你的 HRT 安全疑问。本站不存储你的对话（请勿输入个人身份信息），不提供具体处方建议，紧急情况下会引导你及时就医。"
+    description="由 Gemini AI 基于循证文献解答你的 HRT 安全疑问。助手不会存储你的对话，不提供具体处方建议，紧急情况下会引导你及时就医。"
   />
 </CardGrid>
 
@@ -72,9 +72,9 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 ## 隐私承诺
 
-- 除 AI 问答外，所有工具**均在浏览器本地运行**，你的输入不会发送到服务器
-- AI 问答的提问会经本站服务器转发给第三方 AI 服务（Google Gemini、OpenAI）生成回答。本站**不存储你的对话**，但服务商可能依其条款将内容用于改进服务，请勿输入姓名、电话、证件号等可识别身份的信息
-- 「血检手账」记录与（开启后的）AI 对话历史仅保存在**你本地设备的 `localStorage`**，你可以随时一键清空
+- 所有工具**均在前端本地运行**，你的输入数据通常不会发送至任何服务器
+- AI 问答助手**不存储你的对话记录**，关闭页面后通常即刻清除
+- 「血检手账」功能仅将记录写入**你本地设备的 `localStorage`**，你可以随时一键清空
 - 全站使用 Google Analytics 4 与 Vercel Web Analytics / Speed Insights 做聚合访问统计（Google Analytics 会设置 Cookie，可通过浏览器设置或广告拦截插件屏蔽）；健康数据、工具输入与 AI 对话不会发送给统计服务，也不使用广告或社交媒体追踪像素。详见[隐私保障](/zh/about/#隐私保障)
 
 ## 提示

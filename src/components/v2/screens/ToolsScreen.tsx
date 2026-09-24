@@ -102,7 +102,7 @@ export default function ToolsScreen() {
                 <Chip color="var(--lavender-deep)">BETA</Chip>
               </div>
               <p style={{ fontSize: 13, color: 'var(--fg-1)', lineHeight: 1.6, margin: '6px 0 0' }}>
-                基于站内文献库回答一般性问题。本站不存储对话，回答由第三方 AI 服务生成。
+                基于站内文献库回答一般性问题。对话不存储任何记录。
               </p>
             </div>
             {/* AA：原型 --grape #7A5FB5 on --lavender #D4C5F5 = 3.17 FAIL（13px 小字）

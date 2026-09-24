@@ -347,7 +347,7 @@ export default function AIChatWidget() {
           </div>
 
           <div style={{ padding: '6px 12px 10px', fontSize: 10.5, color: 'var(--fg-2)', background: 'var(--ivory)', lineHeight: 1.5 }}>
-            回答仅供参考，不构成医疗建议。本站不存储对话；回答由第三方 AI 服务生成，请勿输入个人身份信息。
+            回答仅供参考，不构成医疗建议。对话不存储任何记录。
           </div>
         </div>
       )}

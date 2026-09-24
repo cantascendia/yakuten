@@ -1,6 +1,6 @@
 ---
 title: "Ferramentas Interativas"
-description: "9 ferramentas baseadas em evidências para segurança da TH: verificador de exames, simulador de dose, assistente de IA, localizador de serviços e mais. Tudo, exceto o assistente de IA, roda no seu navegador."
+description: "9 ferramentas baseadas em evidências para segurança da TH: verificador de exames, simulador de dose, assistente de IA, localizador de serviços e mais. Tudo roda no seu navegador."
 sidebar:
   order: 5
 evidenceLevel: X
@@ -8,7 +8,7 @@ lastReviewed: 2026-07-15
 references: []
 faqs:
   - q: "Meus dados são armazenados ou enviados para um servidor?"
-    a: "Não. Todas as ferramentas rodam completamente no seu navegador. Seus dados não saem do seu dispositivo. A única exceção é o Assistente de IA: sua pergunta é enviada, pelo nosso servidor, a um provedor de IA terceiro (atualmente Google Gemini ou OpenAI). Não armazenamos conversas, mas os termos do provedor podem permitir que ele use o conteúdo enviado para melhorar seus serviços — por isso, não inclua dados que identifiquem você. O histórico de exames de sangue salva registros exclusivamente no localStorage do seu navegador, nunca em um servidor."
+    a: "Não. Todas as ferramentas rodam completamente no seu navegador. Seus dados não saem do seu dispositivo. A única exceção é o Assistente de IA, que envia sua pergunta para um modelo de linguagem — mas mesmo ali, conversas não são armazenadas e dados pessoais não são vinculados. O histórico de exames de sangue salva registros exclusivamente no localStorage do seu navegador, nunca em um servidor."
   - q: "As ferramentas substituem uma consulta médica?"
     a: "De forma alguma. As ferramentas oferecem uma orientação inicial com base em diretrizes publicadas (WPATH SOC 8, Endocrine Society 2017, UCSF). Resultados alterados, sintomas indefinidos ou emergências sempre pertencem às mãos de um profissional qualificado. Use os resultados como base para conversa na próxima consulta."
   - q: "As ferramentas funcionam no celular?"
@@ -19,7 +19,7 @@ faqs:
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-Para proteger sua privacidade, todas as ferramentas, exceto o Assistente de IA, rodam diretamente no seu navegador — **seus dados pessoais de saúde não são transmitidos para nenhum servidor**. Clique em um cartão para começar.
+Para proteger sua privacidade, todas as ferramentas rodam diretamente no seu navegador — **seus dados pessoais de saúde não são transmitidos para nenhum servidor**. Clique em um cartão para começar.
 
 ## Autoavaliação de segurança
 
@@ -37,7 +37,7 @@ Para proteger sua privacidade, todas as ferramentas, exceto o Assistente de IA, 
   <LinkCard
     title="Assistente de IA"
     href="/pt/tools/ai-assistant/"
-    description="Um assistente de IA que responde suas perguntas sobre segurança da TH com base em literatura baseada em evidências; as respostas são geradas por modelos de IA de terceiros (Google Gemini, OpenAI). Não armazenamos conversas (não inclua dados que identifiquem você), sem sugestões individuais de dose — em emergências, encaminha diretamente para o serviço de resgate."
+    description="Um assistente alimentado por IA (Gemini) que responde suas perguntas sobre segurança da TH com base em literatura baseada em evidências. Sem armazenamento de conversas, sem sugestões individuais de dose — em emergências, encaminha diretamente para o serviço de resgate."
   />
 </CardGrid>
 
@@ -83,9 +83,9 @@ Para proteger sua privacidade, todas as ferramentas, exceto o Assistente de IA, 
 
 ## Compromisso de privacidade
 
-- Todas as ferramentas, exceto o Assistente de IA, rodam **completamente no navegador** — o que você digita não é enviado a nenhum servidor
-- O Assistente de IA encaminha sua pergunta, pelo nosso servidor, a um provedor de IA terceiro (Google Gemini, OpenAI). **Não armazenamos conversas**, mas o provedor pode usar o conteúdo enviado para melhorar seus serviços, conforme os termos dele — não inclua seu nome, telefone ou número de documento
-- O histórico de exames de sangue e (se você ativar) o histórico de conversas com a IA ficam exclusivamente no **`localStorage` do seu dispositivo** — você pode apagá-los a qualquer momento com um clique
+- Todas as ferramentas rodam **completamente no navegador** — seus dados geralmente não são enviados para nenhum servidor
+- O Assistente de IA **não armazena conversas** — ao fechar a página, elas são geralmente apagadas imediatamente
+- O histórico de exames de sangue salva registros exclusivamente no **`localStorage` do seu dispositivo** — você pode apagá-los a qualquer momento com um clique
 - Para estatísticas agregadas de visitas usamos o Google Analytics 4 (usa cookies; você pode bloqueá-lo no navegador ou com um bloqueador de anúncios), junto com o Vercel Web Analytics e o Speed Insights. Dados de saúde, o que você digita nas ferramentas e conversas com a IA nunca são enviados à análise, e não usamos pixels de rastreamento publicitário ou de redes sociais. Detalhes: [Privacidade](/pt/about/#privacidade)
 
 ## Aviso
