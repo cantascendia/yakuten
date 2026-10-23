@@ -14,6 +14,16 @@
 > Gemini 免费层退为第二顺位；`think` 链不变（sol 打头）。§2.2 的「日常问答以
 > Google 免费打头」（理由 ③）就此被 owner 以成本决策取代。上线前 gpt-6-luna 须过
 > P0 探针组（部署清单），不因 gpt-5.6 已通过而豁免。
+> + **2026-10-23 修订（owner）**：「改成 6.1-sol，这是最新的模型」→ `think` 链首位
+> `gpt-5.6-sol` 换为 **`gpt-6.1-sol`**（2026-09-29 发布；$2 / $0.10 cached / $10 per 1M；
+> chat completions 可用、reasoning_effort 无 none/minimal；来源
+> developers.openai.com/api/docs/models/gpt-6.1-sol）。免费池归属待 owner 在 OpenAI
+> 后台确认；同样须过 P0 探针组。
+> + **2026-10-23 修订（owner）**：「把 api 换成 claude 免费送的……用完后请求自动静默换
+> 其他模型，不能回复出错」+「haiku 第一位」→ 新增第五层 `claude`（`ANTHROPIC_API_KEY`，
+> Claude Max 20x 每月附赠 $200 API 额度，不累积）。日常 / 寒暄链首位 **Claude Haiku 5.5**，
+> 思考链第二位 **Claude Sonnet 5.5**；Opus 5.5 不进链。额度耗尽的静默降级见 §2.6c。
+> 现行顺序表以 §2.2 开头的「现行顺序（2026-10-23）」为准，其后的旧表保留作历史。
 > → 新增第四层 `free-oai`（§2.1 / §2.2 / §2.6b）；限额语义由「日限额」改为
 > **5 小时 + 每周两级滚动窗口**（Claude 模式，§2.8）；补客户端 GA 用量埋点与
 > 服务端成功路径日志（§3 / §3.1）。
@@ -106,6 +116,7 @@ Origin 白名单；不在 `api/` 下新建文件。
 |---|---|---|---|---|
 | `GOOGLE_GENERATIVE_AI_API_KEY`（现有） | `free` | google | `g-free` | 跳过该层（全缺则 503，同现状） |
 | `OPENAI_API_KEY`（新，2026-07-29） | `free-oai` | openai | `oai` | 跳过 |
+| `ANTHROPIC_API_KEY`（新，2026-10-23） | `claude` | anthropic | `ant` | 跳过 |
 | `GOOGLE_PAID_API_KEY` | `paid` | google | `g-paid` | 跳过 |
 | `DEEPSEEK_API_KEY` | `backup` | deepseek | `ds` | 跳过 |
 
@@ -168,12 +179,23 @@ Tier 1 RPM·TPM **完全一致**，差异只在价格与能力档。
 > gpt-5.6 系列的池归属，帮助中心相关页面对抓取器 403）。不得当成公开保证；
 > 官方调整后以降级链的 `429 insufficient_quota` 实际行为为准。
 
-#### 三张顺序表
+#### 现行顺序（2026-10-23，以 `api/ai-chat.ts` 的 `CHAIN_PLANS` 为准）
+
+| 链 | 顺序 |
+|---|---|
+| 思考 `think` | `gpt-6.1-sol` → **`claude-sonnet-5-5`** → gemini-3.6-flash / 3.5-flash → `gpt-5.6-terra` → paid gemini → deepseek |
+| 医疗 `medical` | **`claude-haiku-5-5`** → `gpt-6-luna` → Gemini 免费 ×4 → terra / luna(5.6) → paid gemini → deepseek |
+| 寒暄 `smalltalk` | **`claude-haiku-5-5`** → `gpt-6-luna` → Gemini lite ×2 / flash → paid lite → deepseek |
+
+$200 / 月折算（单次 ≈ 4.3K token，官方价）：Haiku 5.5（$0.10 / $0.50）≈ 26 万次；
+Sonnet 5.5（$2 / $10）≈ 1.3 万次。Haiku 放首位是因为额度**月底作废**，不吃满即浪费。
+
+#### 三张顺序表（历史，2026-07-29 版）
 
 **思考模式（`mode:'think'`，用户主动开启）**
 | # | tier | model |
 |---|---|---|
-| 1 | free-oai | `gpt-5.6-sol` |
+| 1 | free-oai | `gpt-6.1-sol`（2026-10-23 取代 `gpt-5.6-sol`） |
 | 2 | free | `gemini-3.6-flash`（thinkingLevel `high`） |
 | 3 | free-oai | `gpt-5.6-terra` |
 | 4 | paid | `gemini-3.6-flash` |
@@ -573,6 +595,40 @@ input ≈ 10-20K token，离悬崖有两个数量级余量 —— **放宽这三
 存在）。故终止信号认三种，任一到达即结束：① `[DONE]` 哨兵 ② `finish_reason`
 落定 ③ 流自然关闭。`include_usage` 的 usage 只在最后一个 chunk，且官方明确
 警告「流中断则收不到」→ **解析器不依赖它**。
+
+### 2.6c Claude 接入：官方 SDK + 额度耗尽静默降级（2026-10-23）
+
+**客户端**：官方 `@anthropic-ai/sdk`（Edge 兼容），`maxRetries: 0`（重试归降级链）。
+产出与其他 provider 同形的 `ReadableStream<string>`；SDK 错误在流内转成
+`APICallError`（`requestBodyValues` 留空，隐私红线同 §4），链路层零改动。
+
+**请求参数**：不传 `temperature`（Haiku / Sonnet 5.5 对非默认采样值 400）；
+寒暄在 Haiku 上 `thinking:{type:'disabled'}`，其余 `adaptive`（Sonnet 5.5 不接受
+`disabled`）；`effort` 日常 `low`、思考 `medium`（`high` 易超 12s 首块上限）；
+`max_tokens` 地板 4096（thinking 计入）；system 打 `cache_control`。
+
+**错误分类（`classifyAnthropic`，用户无感是硬要求）**：
+
+| 上游返回 | 判定 | 冷却 |
+|---|---|---|
+| 文案含 `credit balance is too low`（**HTTP 400**，额度耗尽） | `next-cred`（Haiku / Sonnet 共用一笔额度） | cred 级 30min（硬上限） |
+| 429 `rate_limit_error` | `next-model` | model 60s |
+| 529 `overloaded_error` | `next-model` | model 30s |
+| 其他 400（参数漂移） | `next-model` | model 30min |
+| 200 + `stop_reason:'refusal'`（出字前） | `next-model` | 无 |
+| 401 / 403 / 404 / 5xx / 连接失败 | 通用矩阵（§2.3），连接失败按超时 | 同 §2.3 |
+
+⚠️ **为什么必须专门拦**：额度耗尽是 400 而非 429，通用矩阵对 400 一律 `abort` ——
+不拦，额度用完那一刻起所有用户都会看到「AI 暂时无法回复」。
+
+**额度耗尽不会转为扣费**：官方文档（platform.claude.com/docs/en/about-claude/
+api-credits-for-subscribers）——组织内无其他余额时请求直接停止，直到下期额度到账。
+**owner 前置**：Console 里不另购余额、不开 auto-reload；给本站单独建 workspace 并设
+spend limit。
+
+**验证**：本地 mock fetch 模拟（2026-10-23）——正常 / 寒暄由 Haiku 服务；拒答、429、
+529、参数 400、额度耗尽五种失败全部 200 落到 `gpt-6-luna`；耗尽后同进程下一请求
+直接跳过 Claude（cred 冷却生效）。上线前仍须 `AI_TIERS=claude` 跑 P0 探针组（§4.3）。
 
 ### 2.7 思考模式
 
