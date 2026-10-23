@@ -63,7 +63,7 @@ HRT药典是面向中文圈跨性别女性的 HRT 安全底线信息站。我们
 | **Astro + Starlight** | 静态站点生成，默认零 JS，加载迅速 |
 | **React Islands** | 仅交互工具（血检自查、剂量模拟器等）使用客户端 JS |
 | **Pagefind** | 静态搜索索引，支持中/英/日三语 |
-| **Vercel** | 静态托管 + Edge Functions（AI 问答） |
+| **Cloudflare Pages** | 静态托管 + Pages Functions（AI 问答） |
 | **开源** | 完整源代码公开于 [GitHub](https://github.com/cantascendia/yakuten) |
 
 ## 隐私保障
@@ -72,7 +72,7 @@ HRT药典是面向中文圈跨性别女性的 HRT 安全底线信息站。我们
 
 | 类别 | 说明 |
 |------|------|
-| **访问统计** | 使用 Google Analytics 4 与 Vercel Web Analytics / Speed Insights，只统计聚合的页面访问、事件与性能指标。Google Analytics 会在你的浏览器设置 Cookie（如 `_ga`）；你可以通过浏览器设置或广告拦截插件屏蔽它，本站功能不受影响 |
+| **访问统计** | 使用 Google Analytics 4 与 Cloudflare Web Analytics，只统计聚合的页面访问、事件与性能指标。Google Analytics 会在你的浏览器设置 Cookie（如 `_ga`）；你可以通过浏览器设置或广告拦截插件屏蔽它，本站功能不受影响 |
 | **不会交给统计服务的内容** | 健康数据、你在工具里输入的内容、AI 对话与血检记录，一律不会发送给任何统计服务 |
 | **AI 问答** | 对话内容通过 Edge Function 实时处理，不存储、不记录，亦不用于训练 |
 | **本地数据** | 血检手账记录、你主动开启「在此设备保存对话历史」后的 AI 对话历史，以及界面偏好（如主题），都只保存在你浏览器的 localStorage 里，不会上传；你可以在对应功能内一键清空，或清除本站的浏览器数据 |

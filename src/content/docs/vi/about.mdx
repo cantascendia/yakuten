@@ -63,7 +63,7 @@ Trang web này hiện do một cá nhân duy trì và chưa trải qua quá trì
 | **Astro + Starlight** | Tạo trang tĩnh — mặc định không dùng JS, tải cực nhanh |
 | **React Islands** | JS phía trình duyệt chỉ dành cho các công cụ tương tác (trình kiểm tra xét nghiệm máu, công cụ mô phỏng liều, v.v.) |
 | **Pagefind** | Chỉ mục tìm kiếm tĩnh, hỗ trợ tiếng Trung/Anh/Nhật |
-| **Vercel** | Lưu trữ tĩnh + Edge Functions (hỏi đáp AI) |
+| **Cloudflare Pages** | Lưu trữ tĩnh + Pages Functions (hỏi đáp AI) |
 | **Mã nguồn mở** | Toàn bộ mã nguồn có sẵn trên [GitHub](https://github.com/cantascendia/yakuten) |
 
 ## Quyền riêng tư
@@ -72,7 +72,7 @@ Trang web này hiện do một cá nhân duy trì và chưa trải qua quá trì
 
 | Hạng mục | Điều gì xảy ra |
 |----------|---------|
-| **Thống kê lượt truy cập** | Chúng tôi dùng Google Analytics 4 cùng Vercel Web Analytics / Speed Insights để đếm tổng hợp lượt xem trang, sự kiện và các chỉ số hiệu năng. Google Analytics đặt cookie trong trình duyệt của bạn (ví dụ `_ga`); bạn có thể chặn nó bằng cài đặt trình duyệt hoặc trình chặn quảng cáo, trang vẫn hoạt động bình thường |
+| **Thống kê lượt truy cập** | Chúng tôi dùng Google Analytics 4 cùng Cloudflare Web Analytics để đếm tổng hợp lượt xem trang, sự kiện và các chỉ số hiệu năng. Google Analytics đặt cookie trong trình duyệt của bạn (ví dụ `_ga`); bạn có thể chặn nó bằng cài đặt trình duyệt hoặc trình chặn quảng cáo, trang vẫn hoạt động bình thường |
 | **Không bao giờ gửi cho dịch vụ thống kê** | Dữ liệu sức khỏe, nội dung bạn nhập vào công cụ, các cuộc trò chuyện với AI và hồ sơ xét nghiệm máu không được gửi cho bất kỳ dịch vụ thống kê nào |
 | **Hỏi đáp AI** | Cuộc trò chuyện được xử lý theo thời gian thực qua Edge Functions — không có gì được lưu trữ, ghi lại hay dùng để huấn luyện |
 | **Dữ liệu cục bộ** | Hồ sơ sổ theo dõi xét nghiệm máu, lịch sử trò chuyện AI (chỉ khi bạn bật "Lưu lịch sử trò chuyện trên thiết bị này") và tùy chọn giao diện (như chủ đề) chỉ nằm trong localStorage của trình duyệt và không bao giờ được tải lên. Bạn có thể xóa bằng các nút xóa trong công cụ hoặc bằng cách xóa dữ liệu của trang này trong trình duyệt |
