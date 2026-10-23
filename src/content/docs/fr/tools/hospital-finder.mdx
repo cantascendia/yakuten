@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Vérifiez avant de vous déplacer">
 Ces fiches sont des notes d'accès tenues à jour par la communauté, et non des garanties officielles émanant des établissements. Les politiques, les services et la disponibilité des médecins peuvent évoluer du jour au lendemain : une confirmation directe reste donc toujours indispensable.
 </WarningBox>
 
-Cet annuaire recense pour l'instant {hospitals.length} fiches remontées par la communauté, réparties sur {cityCount} villes. Les données sources couvrent principalement la Chine et l'Asie pour le moment ; les noms d'établissements et les notes locales peuvent donc s'afficher en chinois. Un travail de localisation pour les ressources francophones (France, Belgique, Suisse, Québec) est en cours.
+Cet annuaire recense pour l'instant {shownCount} fiches remontées par la communauté, réparties sur {cityCount} villes. Les données sources couvrent principalement la Chine et l'Asie pour le moment ; les noms d'établissements et les notes locales peuvent donc s'afficher en chinois. Un travail de localisation pour les ressources francophones (France, Belgique, Suisse, Québec) est en cours.
 
 ---
 

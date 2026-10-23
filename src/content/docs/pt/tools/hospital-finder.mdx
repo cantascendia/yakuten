@@ -23,6 +23,7 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Confirme antes de ir">
 Estas entradas são notas de acesso mantidas pela própria comunidade, e não garantias oficiais das instituições. Políticas, departamentos e a disponibilidade de profissionais podem mudar de uma hora para outra, por isso confirmar diretamente é sempre indispensável.
@@ -46,7 +47,7 @@ Em Portugal, o **SNS** atende via **unidade de identidade de gênero do Hospital
 
 ## Diretório internacional
 
-Este diretório também reúne {hospitals.length} entradas de profissionais relatados pela comunidade em {cityCount} cidades. Os dados de origem estão em sua maioria em chinês, mas os nomes dos hospitais e as observações locais podem ser úteis para quem busca atendimento na Ásia.
+Este diretório também reúne {shownCount} entradas de profissionais relatados pela comunidade em {cityCount} cidades. Os dados de origem estão em sua maioria em chinês, mas os nomes dos hospitais e as observações locais podem ser úteis para quem busca atendimento na Ásia.
 
 ---
 

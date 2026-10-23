@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Hãy xác minh trước khi đến">
 Những mục dưới đây là ghi chú về khả năng tiếp cận do cộng đồng cùng nhau cập nhật, chứ không phải cam kết chính thức từ phía cơ sở y tế. Chính sách, khoa phòng và lịch làm việc của bác sĩ có thể thay đổi rất nhanh, nên việc gọi điện hay hỏi trực tiếp để xác nhận luôn là bước không thể bỏ qua.
 </WarningBox>
 
-Hiện danh bạ này gồm {hospitals.length} mục do cộng đồng chia sẻ, trải rộng trên {cityCount} thành phố. Ở giai đoạn này, dữ liệu gốc vẫn chủ yếu bằng tiếng Trung, nên tên bệnh viện cùng các ghi chú địa phương có thể vẫn hiển thị bằng tiếng Trung.
+Hiện danh bạ này gồm {shownCount} mục do cộng đồng chia sẻ, trải rộng trên {cityCount} thành phố. Ở giai đoạn này, dữ liệu gốc vẫn chủ yếu bằng tiếng Trung, nên tên bệnh viện cùng các ghi chú địa phương có thể vẫn hiển thị bằng tiếng Trung.
 
 ---
 

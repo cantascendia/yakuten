@@ -1,0 +1,297 @@
+---
+/**
+ * HospitalDirectory — zh 友好医院目录（按「省 → 市」分组 + 省份筛选）
+ *
+ * - 分组、计数全部由 utils/hospitals.ts 从 hospitals.json 推导；页面不再有手写城市白名单或数字。
+ * - 只收中国大陆（31 个省级行政区）；港澳台若有数据则另起一节；海外条目不出现、不计数。
+ * - 省份筛选 = 渐进增强：无 JS 时是一排跳转锚点；有 JS 时点击变为筛选（隐藏其他省），
+ *   支持 #province-<省> 深链。零框架、零存储、零传输。
+ */
+import HospitalCard from './HospitalCard.astro';
+import {
+  mainlandHospitals,
+  hkMoTwHospitals,
+  groupByProvinceCity,
+  MAINLAND_PROVINCES,
+  HK_MO_TW_REGIONS,
+  STALE_AFTER_MONTHS,
+} from '../../utils/hospitals';
+
+const mainlandGroups = groupByProvinceCity(mainlandHospitals, MAINLAND_PROVINCES);
+const hkMoTwGroups = groupByProvinceCity(hkMoTwHospitals, HK_MO_TW_REGIONS, 'region');
+const allGroups = [...mainlandGroups, ...hkMoTwGroups];
+const total = mainlandHospitals.length + hkMoTwHospitals.length;
+---
+
+<div class="hospital-dir" data-hospital-dir data-stale-months={STALE_AFTER_MONTHS}>
+  <nav class="hospital-dir__filter" aria-labelledby="hospital-dir-filter-label">
+    <p id="hospital-dir-filter-label" class="hospital-dir__filter-label">按省份筛选</p>
+    <ul class="hospital-dir__chips" role="list">
+      <li>
+        <a class="hospital-dir__chip" href="#hospital-dir-list" data-filter="all" aria-current="true">
+          全部 <span class="hospital-dir__chip-count">{total}</span>
+        </a>
+      </li>
+      {allGroups.map((g) => (
+        <li>
+          <a class="hospital-dir__chip" href={`#${g.anchor}`} data-filter={g.anchor}>
+            {g.province} <span class="hospital-dir__chip-count">{g.count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="hospital-dir__status" data-filter-status role="status" aria-live="polite"></p>
+  </nav>
+
+  <div id="hospital-dir-list" class="hospital-dir__list">
+    {mainlandGroups.map((g) => (
+      <section class="hospital-dir__province" id={g.anchor} data-province-section aria-labelledby={`${g.anchor}-h`}>
+        <h2 id={`${g.anchor}-h`} class="hospital-dir__province-title">
+          {g.province}
+          <span class="hospital-dir__province-count">{g.count} 家</span>
+        </h2>
+        {g.cities.map((c) => (
+          <>
+            {c.city !== g.province && <h3 class="hospital-dir__city">{c.city}</h3>}
+            {c.hospitals.map((h) => (
+              <HospitalCard hospital={h} headingLevel={c.city !== g.province ? 4 : 3} showStaleMarker />
+            ))}
+          </>
+        ))}
+      </section>
+    ))}
+
+    {hkMoTwGroups.length > 0 && (
+      <>
+        <h2 class="hospital-dir__region-divider">港澳台地区</h2>
+        {hkMoTwGroups.map((g) => (
+          <section class="hospital-dir__province" id={g.anchor} data-province-section aria-labelledby={`${g.anchor}-h`}>
+            <h3 id={`${g.anchor}-h`} class="hospital-dir__province-title">
+              {g.province}
+              <span class="hospital-dir__province-count">{g.count} 家</span>
+            </h3>
+            {g.cities.map((c) => c.hospitals.map((h) => <HospitalCard hospital={h} headingLevel={4} showStaleMarker />))}
+          </section>
+        ))}
+      </>
+    )}
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-hospital-dir]');
+    if (!root) return;
+
+    // 1) 待核实标记：按访问当天日期再判一次（构建时已判过一次，这里只会把更多条目标出来）
+    var months = Number(root.getAttribute('data-stale-months')) || 6;
+    var now = Date.now();
+    root.querySelectorAll('[data-last-verified]').forEach(function (card) {
+      var v = new Date(card.getAttribute('data-last-verified') + 'T00:00:00Z');
+      var stale = isNaN(v.getTime());
+      if (!stale) {
+        v.setUTCMonth(v.getUTCMonth() + months);
+        stale = now >= v.getTime();
+      }
+      var marker = card.querySelector('[data-stale-marker]');
+      if (marker && stale) marker.hidden = false;
+    });
+
+    // 2) 省份筛选（渐进增强：无 JS 时 chips 是普通跳转锚点）
+    var chips = root.querySelectorAll('[data-filter]');
+    var sections = root.querySelectorAll('[data-province-section]');
+    var divider = root.querySelector('.hospital-dir__region-divider');
+    var status = root.querySelector('[data-filter-status]');
+
+    function apply(key, announce) {
+      var shown = 0;
+      sections.forEach(function (s) {
+        var on = key === 'all' || s.id === key;
+        s.hidden = !on;
+        if (on) shown += s.querySelectorAll('.hospital-card').length;
+      });
+      if (divider) {
+        var anyRegion = false;
+        sections.forEach(function (s) {
+          if (!s.hidden && s.id.indexOf('region-') === 0) anyRegion = true;
+        });
+        divider.hidden = !anyRegion;
+      }
+      chips.forEach(function (c) {
+        if (c.getAttribute('data-filter') === key) c.setAttribute('aria-current', 'true');
+        else c.removeAttribute('aria-current');
+      });
+      if (status && announce) {
+        var label = key === 'all' ? '全部省份' : key.replace(/^(province|region)-/, '');
+        status.textContent = '正在显示' + label + '的 ' + shown + ' 家医院';
+      }
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        var key = chip.getAttribute('data-filter');
+        apply(key, true);
+        var hash = key === 'all' ? '' : '#' + key;
+        history.replaceState(null, '', location.pathname + location.search + hash);
+      });
+    });
+
+    // 深链：#province-<省>（首次加载 + 同页 hash 变化）
+    function fromHash(announce) {
+      var key;
+      try {
+        key = decodeURIComponent(location.hash.slice(1));
+      } catch (err) {
+        return;
+      }
+      var match = false;
+      sections.forEach(function (s) {
+        if (s.id === key) match = true;
+      });
+      if (match) apply(key, announce);
+    }
+    fromHash(false);
+    window.addEventListener('hashchange', function () {
+      fromHash(true);
+    });
+  })();
+</script>
+
+<style>
+  .hospital-dir__filter {
+    margin: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .hospital-dir__filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-sm);
+    letter-spacing: 0.05em;
+  }
+
+  .hospital-dir__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hospital-dir__chips li {
+    margin: 0;
+  }
+
+  .hospital-dir__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0 var(--space-md);
+    border: 1px solid var(--color-outline-20);
+    background: var(--color-bg-container);
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .hospital-dir__chip:hover {
+    border-color: var(--color-primary);
+  }
+
+  .hospital-dir__chip[aria-current='true'] {
+    background: var(--color-primary-alpha-20);
+    border-color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .hospital-dir__chip:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .hospital-dir__chip-count {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .hospital-dir__status {
+    margin: var(--space-sm) 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    min-height: 1.2em;
+  }
+
+  .hospital-dir__province {
+    scroll-margin-top: 5rem;
+  }
+
+  .hospital-dir__province[hidden],
+  .hospital-dir__region-divider[hidden] {
+    display: none;
+  }
+
+  .hospital-dir__province-title {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+
+  .hospital-dir__province-count {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .hospital-dir__city {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-lg);
+  }
+
+  /* ===== 乐园手账 ===== */
+  :global(html.sakura) .hospital-dir__filter-label {
+    color: var(--fg-2);
+  }
+
+  :global(html.sakura) .hospital-dir__chip {
+    border: 1.5px solid var(--ink-faint);
+    border-radius: 999px;
+    background: var(--bg-3);
+    color: var(--fg-1);
+    box-shadow: none;
+  }
+
+  :global(html.sakura) .hospital-dir__chip:hover {
+    border-color: var(--sakura-pink-deep);
+    background: var(--bg-5);
+  }
+
+  :global(html.sakura) .hospital-dir__chip[aria-current='true'] {
+    border: 1.5px solid var(--ink);
+    background: var(--sakura-blush);
+    color: var(--fg-1);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  :global(html.sakura) .hospital-dir__chip-count,
+  :global(html.sakura) .hospital-dir__status,
+  :global(html.sakura) .hospital-dir__province-count,
+  :global(html.sakura) .hospital-dir__city {
+    color: var(--fg-2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hospital-dir__chip {
+      transition: none;
+    }
+  }
+</style>

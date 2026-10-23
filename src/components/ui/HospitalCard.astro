@@ -4,28 +4,23 @@
  * 米哈游毛玻璃风格 + 左侧色条
  */
 
-interface Hospital {
-  id: string;
-  name: string;
-  city: string;
-  province: string;
-  tier: string;
-  department: string;
-  address?: string;
-  services: string[];
-  registrationMethod: string;
-  estimatedCost: string;
-  communityFeedback: string;
-  notes?: string;
-  verificationLevel: 'community-verified' | 'community-reported';
-  lastVerified: string;
-}
+import { isStale, STALE_AFTER_MONTHS, type Hospital } from '../../utils/hospitals';
 
 interface Props {
   hospital: Hospital;
+  /** 医院名标题级别：按城市平铺时为 3；zh 按「省 h2 → 市 h3」分组时为 4 */
+  headingLevel?: 3 | 4;
+  /**
+   * 显示「待核实（超过 6 个月未复核）」标记。仅 zh 目录开启：其余语种页面的
+   * 卡片文案仍是中文、结构不变，避免本次修复波及它们。
+   * 构建时先判一次；页面内联脚本按访问当天日期再判一次（静态站两次构建之间也不会过时）。
+   */
+  showStaleMarker?: boolean;
 }
 
-const { hospital } = Astro.props;
+const { hospital, headingLevel = 3, showStaleMarker = false } = Astro.props;
+const NameTag = headingLevel === 4 ? 'h4' : 'h3';
+const staleAtBuild = showStaleMarker && isStale(hospital.lastVerified);
 
 const tierLabel: Record<string, string> = {
   tertiary: '三甲医院',
@@ -33,9 +28,8 @@ const tierLabel: Record<string, string> = {
   primary: '基层医院',
 };
 
-const verifiedLabel = hospital.verificationLevel === 'community-verified'
-  ? { text: '社区核实', color: 'var(--color-safe)' }
-  : { text: '待核实', color: 'var(--color-accent)' };
+const isVerified = hospital.verificationLevel === 'community-verified';
+const verifiedLabel = isVerified ? '社区核实' : '待核实';
 
 // MedicalOrganization JSON-LD (schema.org) — improves local SEO discoverability.
 // Map our tier vocabulary to schema.org medicalSpecialty / type hints.
@@ -69,20 +63,24 @@ const hospitalLd = {
 
 <script type="application/ld+json" set:html={JSON.stringify(hospitalLd)} />
 
-<div class="hospital-card">
+<div
+  class="hospital-card"
+  id={showStaleMarker ? `hospital-${hospital.id}` : undefined}
+  data-last-verified={showStaleMarker ? hospital.lastVerified : undefined}
+>
   <div class="hospital-card__stripe" />
   <div class="hospital-card__body">
 
     <div class="hospital-card__header">
       <div class="hospital-card__title-group">
-        <h3 class="hospital-card__name">{hospital.name}</h3>
+        <NameTag class="hospital-card__name">{hospital.name}</NameTag>
         <div class="hospital-card__meta">
           <span class="hospital-card__city">{hospital.city} · {hospital.province}</span>
           <span class="hospital-card__tier">{tierLabel[hospital.tier] ?? hospital.tier}</span>
         </div>
       </div>
-      <span class="hospital-card__verified" style={`color: ${verifiedLabel.color}; border-color: ${verifiedLabel.color};`}>
-        {verifiedLabel.text}
+      <span class={`hospital-card__verified ${isVerified ? 'hospital-card__verified--ok' : 'hospital-card__verified--pending'}`}>
+        {verifiedLabel}
       </span>
     </div>
 
@@ -124,7 +122,14 @@ const hospitalLd = {
       <p class="hospital-card__notes">{hospital.notes}</p>
     )}
 
-    <p class="hospital-card__updated">最后核实：{hospital.lastVerified}</p>
+    {showStaleMarker && (
+      <p class="hospital-card__stale" data-stale-marker hidden={!staleAtBuild}>
+        <span class="hospital-card__stale-tag">待核实</span>
+        最后核实已超过 {STALE_AFTER_MONTHS} 个月，信息可能已变化，建议出发前先向医院确认出诊与挂号方式。
+      </p>
+    )}
+
+    <p class="hospital-card__updated">最后核实：<time datetime={hospital.lastVerified}>{hospital.lastVerified}</time></p>
 
   </div>
 </div>
@@ -207,6 +212,70 @@ const hospitalLd = {
     border: 1px solid;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+
+  .hospital-card__verified--ok {
+    color: var(--color-safe);
+    border-color: var(--color-safe);
+  }
+
+  /* 「待核实」是提示用户自行确认的文字信息：用 caution-text（两套皮肤都过 AA），不用浅色 accent */
+  .hospital-card__verified--pending {
+    color: var(--color-caution-text);
+    border-color: var(--color-caution-text);
+  }
+
+  .hospital-card__stale {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);
+    margin: 0 0 var(--space-sm) 0;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px dashed var(--color-caution-text);
+    background: var(--color-caution-alpha-10);
+    color: var(--color-text-primary);
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .hospital-card__stale[hidden] {
+    display: none;
+  }
+
+  .hospital-card__stale-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-caution-text);
+    white-space: nowrap;
+  }
+
+  /* 乐园手账：mint 做文字在白纸上对比度不足 → 字用墨色、mint 只做描边与底 */
+  :global(html.sakura) .hospital-card__verified {
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    padding: 3px 10px;
+    border-width: 1.5px;
+  }
+  :global(html.sakura) .hospital-card__verified--ok {
+    color: var(--fg-1);
+    border-color: var(--mint-deep);
+    background: var(--color-safe-badge-bg);
+  }
+  :global(html.sakura) .hospital-card__verified--pending,
+  :global(html.sakura) .hospital-card__stale-tag {
+    color: var(--color-caution-text);
+  }
+  :global(html.sakura) .hospital-card__verified--pending {
+    border-color: var(--color-caution-text);
+    background: var(--color-caution-badge-bg);
+  }
+  :global(html.sakura) .hospital-card__stale {
+    border-radius: var(--radius-sm);
+    border: 1.5px dashed var(--color-caution-text);
+    background: var(--color-caution-badge-bg);
+    color: var(--fg-1);
   }
 
   .hospital-card__department {

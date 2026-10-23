@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="تأكّد قبل أن تذهب">
 هذه القوائم ملاحظات عن الوصول إلى الرعاية يتعهّدها المجتمع بالتحديث، وليست ضمانات رسمية من المؤسسات. فالسياسات والأقسام وتوافر الأطباء قد تتغيّر بسرعة، ولهذا يبقى التأكّد المباشر ضرورياً في كل مرة.
 </WarningBox>
 
-يضمّ هذا الدليل حالياً {hospitals.length} مدخلاً وردت من المجتمع، موزّعة على {cityCount} مدينة. ولا تزال البيانات المصدرية في هذه المرحلة باللغة الصينية بالدرجة الأولى، لذا قد تظهر أسماء المستشفيات والملاحظات المحلية بالصينية.
+يضمّ هذا الدليل حالياً {shownCount} مدخلاً وردت من المجتمع، موزّعة على {cityCount} مدينة. ولا تزال البيانات المصدرية في هذه المرحلة باللغة الصينية بالدرجة الأولى، لذا قد تظهر أسماء المستشفيات والملاحظات المحلية بالصينية.
 
 ---
 

@@ -33,12 +33,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Verify before you go">
 These listings are community-maintained access notes, not official institutional guarantees. Policies, departments, and physician availability can change quickly, so direct confirmation is always necessary.
 </WarningBox>
 
-This directory currently includes {hospitals.length} community-reported entries across {cityCount} cities. The underlying source data remains primarily in Chinese at this stage, so hospital names and local notes may still appear in Chinese.
+This directory currently includes {shownCount} community-reported entries across {cityCount} cities. The underlying source data remains primarily in Chinese at this stage, so hospital names and local notes may still appear in Chinese.
 
 ---
 

@@ -21,6 +21,7 @@ import hospitalsRaw from '../../data/hospitals.json';
 import referencesRaw from '../../data/references.json';
 import hotlinesRaw from '../../data/hotlines.json';
 import injectionRaw from '../../data/injection-doses.json';
+import { isMainland, type Hospital as SharedHospital } from '../../utils/hospitals';
 
 /* ========================================================================
    Types —— Astro 的 JSON import 是无类型的，此处按实测结构显式建模
@@ -138,22 +139,13 @@ export const references = referencesRaw as unknown as Reference[];
 export const injection = injectionRaw as unknown as InjectionData;
 
 /**
- * 中国大陆省份白名单 —— 用于把 hospitals.json 的 49 家过滤成中文页该显示的条目。
+ * 中文 v2 页面用：只保留中国大陆医院，保留省份过滤 chips 的数据基础。
  *
- * 为什么用显式白名单而不是 CJK 正则：
- *   · 正则 /[一-鿿]/ 今天恰好能用（国际条目全是拉丁/西里尔/格鲁吉亚字母），
- *     但将来若加入港澳台条目会被【静默纳入】—— 那是需要人工决策的事，不该由正则替我们决定。
- *   · 显式列表可 grep、可审计、加条目时会强制作者思考归属。
- * 实测覆盖 hospitals.json 现有全部中国条目。
+ * 归属判定用 utils/hospitals.ts 的完整 31 个省级行政区列表（与 zh 医院目录共用）：
+ *   · 不用 CJK 正则 —— 将来若加入港澳台条目会被【静默纳入】大陆，那需要人工决策。
+ *   · 不再用手写的 19 省名单 —— 数据新增省份时会静默漏掉条目（2026-09 P0 同类问题）。
  */
-const CN_PROVINCES = new Set([
-  '北京', '上海', '天津', '重庆',
-  '广东', '江苏', '浙江', '四川', '湖南', '湖北', '陕西', '辽宁',
-  '黑龙江', '山东', '河南', '安徽', '云南', '福建', '贵州',
-]);
-
-/** 中文 v2 页面用：只保留中国大陆医院，保留省份过滤 chips 的数据基础。 */
-export const hospitalsCN = (hospitalsRaw as unknown as Hospital[]).filter((h) => CN_PROVINCES.has(h.province));
+export const hospitalsCN = (hospitalsRaw as unknown as Hospital[]).filter((h) => isMainland(h as unknown as SharedHospital));
 
 /**
  * 中文 v2 页面用：只保留全国性热线。

@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Verifikasi dulu sebelum berangkat">
 Daftar ini merupakan catatan akses yang dikelola bersama oleh komunitas, bukan jaminan resmi dari pihak rumah sakit. Kebijakan, departemen, maupun jadwal dokter bisa berubah sewaktu-waktu, jadi konfirmasi langsung tetap selalu diperlukan.
 </WarningBox>
 
-Saat ini direktori ini memuat {hospitals.length} entri yang dilaporkan komunitas dari {cityCount} kota. Data sumber yang menjadi dasarnya untuk sekarang masih sebagian besar berbahasa Tionghoa, sehingga nama rumah sakit dan catatan setempat mungkin masih tampil dalam bahasa Tionghoa.
+Saat ini direktori ini memuat {shownCount} entri yang dilaporkan komunitas dari {cityCount} kota. Data sumber yang menjadi dasarnya untuk sekarang masih sebagian besar berbahasa Tionghoa, sehingga nama rumah sakit dan catatan setempat mungkin masih tampil dalam bahasa Tionghoa.
 
 ---
 

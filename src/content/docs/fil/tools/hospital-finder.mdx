@@ -23,12 +23,13 @@ export const hospitalsByCity = cityOrder
   }))
   .filter(({ hospitals: cityHospitals }) => cityHospitals.length > 0);
 export const cityCount = hospitalsByCity.length;
+export const shownCount = hospitalsByCity.reduce((n, group) => n + group.hospitals.length, 0);
 
 <WarningBox title="Tiyakin bago ka pumunta">
 Ang mga listahang ito ay mga tala sa pag-access na pinangangalagaan ng komunidad, hindi opisyal na garantiya mula sa mga institusyon. Mabilis na nagbabago ang mga patakaran, departamento, at availability ng mga doktor, kaya laging kailangang kumpirmahin ito nang direkta.
 </WarningBox>
 
-Sa ngayon, naglalaman ang direktoryong ito ng {hospitals.length} na entry na iniulat ng komunidad sa {cityCount} na lungsod. Pangunahing nasa Tsino pa rin ang pinagmumulang datos sa yugtong ito, kaya maaaring lumitaw pa rin sa Tsino ang mga pangalan ng ospital at ang mga lokal na tala.
+Sa ngayon, naglalaman ang direktoryong ito ng {shownCount} na entry na iniulat ng komunidad sa {cityCount} na lungsod. Pangunahing nasa Tsino pa rin ang pinagmumulang datos sa yugtong ito, kaya maaaring lumitaw pa rin sa Tsino ang mga pangalan ng ospital at ang mga lokal na tala.
 
 ---
 
