@@ -12,6 +12,16 @@ interface FooterColumn {
 
 const locale = getLocale(Astro.currentLocale, Astro.url.pathname);
 
+// Slug of each locale's about-page privacy heading (Starlight/github-slugger output,
+// verified against dist/<locale>/about/index.html). Previously every locale linked to
+// the zh-only `#隐私保障`, which silently landed non-zh readers at the page top.
+const PRIVACY_ANCHOR: Record<string, string> = {
+  zh: '隐私保障', en: 'privacy', ja: 'プライバシー', ko: '개인정보-보호', pt: 'privacidade',
+  ru: 'конфиденциальность', es: 'privacidad', id: 'privasi', th: 'ความเป็นส่วนตัว',
+  fil: 'privacy', hi: 'गोपनीयता', vi: 'quyền-riêng-tư', ar: 'الخصوصية', fa: 'حریم-خصوصی',
+  fr: 'confidentialité', de: 'datenschutz', tr: 'gizlilik',
+};
+
 const columns: FooterColumn[] = [
   {
     title: t(locale, 'footer.disclaimer.title'),
@@ -50,7 +60,7 @@ const columns: FooterColumn[] = [
       </p>
       <nav class="site-footer__links" aria-label={t(locale, 'footer.navLabel')}>
         <a href={`/${locale}/guides/`}>{t(locale, 'footer.link.guides')}</a>
-        <a href={`/${locale}/about/#隐私保障`}>{t(locale, 'footer.link.privacy')}</a>
+        <a href={`/${locale}/about/#${PRIVACY_ANCHOR[locale] ?? 'privacy'}`}>{t(locale, 'footer.link.privacy')}</a>
         <a href={`/${locale}/about/#免责声明`}>{t(locale, 'footer.link.disclaimer')}</a>
         <a href="https://github.com/cantascendia/yakuten" rel="noopener noreferrer" target="_blank">{t(locale, 'footer.link.github')}</a>
         <a href="https://wj.qq.com/s2/26287720/da55/" rel="noopener noreferrer" target="_blank">{t(locale, 'footer.link.feedback')}</a>

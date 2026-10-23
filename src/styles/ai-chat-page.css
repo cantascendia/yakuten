@@ -51,13 +51,6 @@ body:has(.ai-chat-stage) .main-frame {
   padding-block-start: 0 !important;
 }
 
-/* 🌸 主题切换钮全站固定在左下，会与会话侧栏底部叠罗汉 —— 本页移到右下 */
-body:has(.ai-chat-stage) #sakura-toggle {
-  left: auto;
-  right: 24px;
-  inset-inline: auto 24px;
-}
-
 @supports not (block-size: 100dvh) {
   .ai-chat-stage {
     block-size: calc(100vh - var(--sl-nav-height, 3.5rem));

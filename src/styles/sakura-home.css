@@ -407,7 +407,7 @@ html.sakura :is(.action-card__cta, .drug-nav__title, .drug-nav__category-title):
 
    机制备忘：
    · .glass-panel/.clipped-card 已被 sakura-theme.css 统一成白纸卡（bg-3 恒亮）
-     并纸面锁墨（--fg-*/--color-text-* 钉梅子墨）——本片段只补组件级失配。
+     并纸面锁墨（--fg-* 与 --color-text-* 钉梅子墨）——本片段只补组件级失配。
    · --sakura-pink-text 在全站皮里【不】随主题翻转（v2-overrides.css 的令牌
      翻转只在 /v2 生效），故凡落在桌面（非纸面）的粉字，此处显式配
      [data-theme='dark'] → var(--sakura-pink) 补丁。

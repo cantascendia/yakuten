@@ -11,8 +11,6 @@
 import Default from '@astrojs/starlight/components/Head.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import ThemeToggle from '../ThemeToggle.astro';
-import SakuraHint from '../ui/SakuraHint.astro';
 import JsonLd from '../seo/JsonLd.astro';
 import { brandName } from '../../i18n/ui';
 
@@ -220,8 +218,18 @@ const alternateOgLocales = Object.values(OG_LOCALE).filter((l) => l !== currentO
     <meta name="twitter:card" content="summary_large_image" />
   </>
 )}
-<ThemeToggle />
-{pageLocale === 'zh' && <SakuraHint />}
+{/* 乐园手账 (sakura) is the only design. src/middleware.ts already bakes
+    class="sakura" into the static HTML; this inline add is a no-FOUC fallback
+    for any page it skips. Also drops the retired 🌸 toggle's prefs. */}
+<script is:inline>
+  (function () {
+    document.documentElement.classList.add('sakura');
+    try {
+      localStorage.removeItem('sakura-theme');
+      localStorage.removeItem('sakura-hint-dismissed-v1');
+    } catch (e) {}
+  })();
+</script>
 <script is:inline>
   // Dev-mode opt-out for Vercel Analytics & Speed Insights.
   // Run `localStorage.setItem('yakuten-dev','1')` once in any browser you use

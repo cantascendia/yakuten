@@ -3,13 +3,15 @@ import {
   bcExportJSON,
   bcImportJSON,
   bcLoadPrefs,
+  bcLoadRecords,
   bcSavePrefs,
   bcSaveRecords,
-  bcSeedIfEmpty,
+  bcLoadUserRecords,
   bcClearAll,
   type BloodPrefs,
   type BloodRecord,
 } from '../../../utils/blood/storage';
+import { hasRedFlag } from '../../../utils/blood/redFlags';
 import { getB32Copy, type Locale, detectLocaleFromPath } from '../../../utils/blood/i18n';
 import { SakuraLogo, StickerBadge } from './Primitives';
 import Dashboard from './Dashboard';
@@ -18,10 +20,10 @@ import SettingsSheet from './SettingsSheet';
 
 export default function B32App() {
   const [locale, setLocale] = useState<Locale>(() => detectLocaleFromPath());
-  const [records, setRecords] = useState<BloodRecord[]>(() => bcSeedIfEmpty());
+  const [records, setRecords] = useState<BloodRecord[]>(() => bcLoadUserRecords());
   const [prefs, setPrefs] = useState<BloodPrefs>(() => bcLoadPrefs());
   const [activeId, setActiveId] = useState<string | null>(() => {
-    const rs = bcSeedIfEmpty();
+    const rs = bcLoadRecords();
     if (rs.length === 0) return null;
     return [...rs].sort((a, b) => b.date.localeCompare(a.date))[0].id;
   });
@@ -221,8 +223,15 @@ export default function B32App() {
             {locale === 'zh' ? '说明' : locale === 'ja' ? '注意事項' : 'Notes'}
           </div>
           {copy.disclaimer}
-          <br />
-          <strong style={{ color: 'var(--b32-danger)' }}>{copy.disclaimerRed}</strong>
+          {/* Hidden while the red-zone alert is up: its per-metric instruction
+              (e.g. ALT "建议立即停药并就医") must not share the screen with a
+              generic "不要自己停药". */}
+          {!(activeRecord && hasRedFlag(activeRecord.values)) && (
+            <>
+              <br />
+              <strong style={{ color: 'var(--b32-danger)' }}>{copy.disclaimerRed}</strong>
+            </>
+          )}
         </div>
       </div>
 

@@ -1,61 +1,45 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import ClassicBloodTestChecker from './BloodTestChecker';
 
 import '../../styles/blood-b32.css';
 
 const B32App = lazy(() => import('./blood-b32/B32App'));
 
-function readSakuraClass(): boolean {
-  if (typeof document === 'undefined') return false;
-  return document.documentElement.classList.contains('sakura');
-}
-
 /**
- * Router that renders the classic red/yellow/green checker by default,
- * and the v3.2 乐园手账 tracker (records + scoring + timeline) when
- * ThemeToggle.astro enables `html.sakura`.
+ * Blood-test checker entry point (kept under this name so the 18 locale MDX
+ * pages need no change). Renders the v3.2 「血检手账」 tracker — records live
+ * in the user's localStorage only and are never transmitted.
  *
- * - Classic mode:   stateless single-shot checker (zero storage)
- * - Sakura mode:    localStorage-backed tracker (records persist locally)
+ * The tracker reads localStorage on first render, so it only mounts after
+ * hydration: server HTML and the first client render are the same neutral
+ * placeholder, which avoids a hydration mismatch (React #418).
  */
 export default function BloodTestCheckerRouter() {
-  const [sakura, setSakura] = useState<boolean>(() => readSakuraClass());
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    setSakura(readSakuraClass());
-    const html = document.documentElement;
-    const observer = new MutationObserver(() => {
-      setSakura(html.classList.contains('sakura'));
-    });
-    observer.observe(html, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
-
-  if (sakura) {
-    return (
-      <Suspense fallback={<B32Loading />}>
-        <B32App />
-      </Suspense>
-    );
-  }
-  return <ClassicBloodTestChecker />;
+  if (!mounted) return <B32Loading />;
+  return (
+    <Suspense fallback={<B32Loading />}>
+      <B32App />
+    </Suspense>
+  );
 }
 
 function B32Loading() {
   return (
     <div
       className="b32-root"
+      aria-busy="true"
       style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: 320,
-        fontFamily: 'var(--b32-font-display)',
         color: 'var(--b32-ink-3)',
-        fontSize: 14,
+        fontSize: 22,
       }}
     >
-      🌸 载入手账中…
+      <span aria-hidden="true">🌸</span>
     </div>
   );
 }

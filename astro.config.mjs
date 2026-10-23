@@ -46,6 +46,9 @@ export default defineConfig({
         SiteTitle: './src/components/overrides/SiteTitle.astro',
         // sakura 换皮：线装页头（非 sakura 分支输出与默认 PageTitle 等价 DOM）
         PageTitle: './src/components/overrides/PageTitle.astro',
+        // 乐园手账为唯一设计：无显式偏好时默认浅色纸面（幻月夜为可选）
+        ThemeProvider: './src/components/overrides/ThemeProvider.astro',
+        ThemeSelect: './src/components/overrides/ThemeSelect.astro',
       },
       customCss: [
         './src/styles/global.css',
@@ -371,15 +374,19 @@ export default defineConfig({
             { label: '速查卡片', translations: { en: 'Drug Cards', ja: 'クイックカード', ko: '퀵 카드', pt: 'Cartões de Medicamentos' }, slug: 'tools/drug-cards', badge: { text: { 'zh-CN': '新', en: 'New', ja: '新', ko: '새', pt: 'Novo' }, variant: 'success' } },
           ],
         },
-        // ── 专题文章（博客目前仅中文，其他语言可看作"占位" group）──
+        // ── 专题文章 ──
+        // Starlight prefixes the page locale onto sidebar links, so '/blog/' becomes
+        // /<locale>/blog/ (the old '/zh/blog/' rendered as /de/zh/blog/ and hid the
+        // de/es/fr/pt/ru/ja blogs). Locales without a blog are 308'd to /zh/blog/
+        // by vercel.json.
         {
           label: '专题文章',
-          translations: { en: 'Articles', ja: '特集記事', ko: '특집 기사', pt: 'Artigos' },
+          translations: { en: 'Articles', ja: '特集記事', ko: '특집 기사', pt: 'Artigos', es: 'Artículos', fr: 'Articles', de: 'Artikel', ru: 'Статьи' },
           items: [
             {
               label: '所有博客',
-              translations: { en: 'All Posts (Chinese only)', ja: '全記事（中国語のみ）', ko: '전체 기사 (중국어)', pt: 'Todos os Artigos (apenas em chinês)' },
-              link: '/zh/blog/',
+              translations: { en: 'All Posts (Chinese)', ja: '全記事', ko: '전체 기사 (중국어)', pt: 'Todos os Artigos', es: 'Todos los artículos', fr: 'Tous les articles', de: 'Alle Artikel', ru: 'Все статьи' },
+              link: '/blog/',
             },
           ],
         },
@@ -401,7 +408,7 @@ export default defineConfig({
       head: [
         {
           tag: 'meta',
-          attrs: { name: 'theme-color', content: '#0D0B14' },
+          attrs: { name: 'theme-color', content: '#FFF5E0' },
         },
         // OG Image for social sharing
         {
@@ -439,6 +446,20 @@ export default defineConfig({
             href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap',
             onload: "this.onload=null;this.rel='stylesheet'",
           },
+        },
+        // 乐园手账 (sakura) fonts — was a render-blocking @import in sakura-theme.css.
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            as: 'style',
+            href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap',
+            onload: "this.onload=null;this.rel='stylesheet'",
+          },
+        },
+        {
+          tag: 'noscript',
+          content: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap" />',
         },
         // Fallback for no-JS browsers
         {

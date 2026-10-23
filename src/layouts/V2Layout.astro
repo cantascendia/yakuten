@@ -50,7 +50,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     原型 shell.jsx:22-26 把 setAttribute 放在 useEffect 里 → 挂载后才跑 → 必闪。
     MPA 下每页都是完整加载，闪光频率 = 每次点击，比原型更糟 → 必须根治。
 
-    precedent: src/components/ThemeToggle.astro:124-135 同款 is:inline 早读法。
+    precedent: Starlight ThemeProvider 同款 is:inline 早读法。
     CSP: vercel.json 的 script-src 含 'unsafe-inline' → 放行，无需 nonce。
   */}
   <script is:inline>
@@ -62,7 +62,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         r.dataset.theme = 'light';
       }
       /* 防御：sakura 皮肤的 .yk-* 规则全部 scope 在 html.sakura 下。
-         /v2 不加载 ThemeToggle，理论上永不出现该 class；这行是最后一道保险。 */
+         /v2 不经 Head.astro 且被 middleware 跳过，理论上永不出现该 class；这行是最后一道保险。 */
       r.classList.remove('sakura');
     })();
   </script>

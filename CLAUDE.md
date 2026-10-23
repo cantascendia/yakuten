@@ -27,7 +27,7 @@ Primary handbook:
 - **Framework**: Astro 5 + Starlight (docs theme)
 - **Interactive**: React Islands (client:visible, AI问答用 client:load)
 - **Content**: MDX with custom components
-- **Styling**: CSS Variables (no Tailwind), 米哈游「二相乐园」visual theme
+- **Styling**: CSS Variables (no Tailwind), 乐园手账 (sakura) visual theme — the only design since 2026-09
 - **Search**: Pagefind (static, supports Chinese)
 - **i18n**: Astro native routing (/zh/, /en/, /ja/, /ko/)
 - **Deploy**: Vercel (static + Edge Functions)
@@ -49,27 +49,19 @@ npm run astro check  # TypeScript checking
 
 - Zero JS by default (Astro static), interactive only via React Islands
 - All medical claims must have `<CitationRef>` — no citation = no content
-- **Blood test tool · classic mode**: pure frontend JS, zero storage, zero transmission
-- **Blood test tool · sakura mode (v3.2 血检手账)**: records persist in `localStorage` on the user's device only. Never transmitted to any server. Cleared via the in-app "清空所有记录" action or by clearing site data.
+- **Blood test tool (v3.2 血检手账, the only checker)**: records persist in `localStorage` on the user's device only. Never transmitted to any server. Cleared via the in-app "清空所有记录" action or by clearing site data. Never seed demo records into the user's store. Red-zone values must show the classic `RED_WARNINGS` (`src/utils/blood/redFlags.ts`) — the tracker's own grading must never make a danger warning weaker.
 - AI chat does not store conversations
 - Third-party analytics limited to aggregate pageview/event metrics (Vercel Analytics + Google Analytics 4, both honoring the `yakuten-dev` opt-out via `PUBLIC_GA_ID`). Never send health data, user input, AI-chat content, or blood-test records to any analytics endpoint. No ad/social pixels (FB/TikTok/etc.). GA's gtag is blocked in mainland China — mainland traffic is measured via Bing Webmaster + Vercel Analytics.
 - All colors via CSS variables, never hardcoded
 - All animations: transform + opacity only, with prefers-reduced-motion fallback
 - Emergency banners: red background, white text, NOT dismissible
-- Dark theme default, light theme via [data-theme="light"]
+- Light (cream paper) only. 幻月夜 dark is PAUSED (D019) until sakura tokens are redesigned as surface/on-surface pairs — ThemeProvider forces light, ThemeSelect renders nothing
 
 ## Visual Design
 
-**Default (dark) — 米哈游「二相乐园」风格:**
-- Glass morphism: `backdrop-filter: blur(12px)` + `rgba(26,22,37,0.6)`
-- Diagonal clip: `clip-path: polygon(0 0, calc(100%-16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100%-16px))`
-- Primary: #C84B7C (绯色), Accent: #D4A853 (幻月金)
-- Particle background (lightweight Canvas, max 60 particles)
-- Fonts: Noto Serif SC (display), Noto Sans SC (body), JetBrains Mono (code)
-
-**Sakura mode (`html.sakura`) — 乐园手账:**
-- Activated by the floating 🌸 新版 toggle (ThemeToggle.astro); preference persists in `localStorage["sakura-theme"]`.
-- Currently drives: site-wide skin (sakura-theme.css / sakura-components.css / sakura-skin.css) AND the blood-checker component swap to the v3.2 「血检手账」 tracker.
+**乐园手账 (`html.sakura`) — the only design:**
+- `html.sakura` is baked into the static HTML by `src/middleware.ts` (Head.astro adds it inline as a fallback). There is no toggle; the retired 米哈游「二相乐园」dark glass skin must not come back.
+- All sakura CSS is still prefixed `html.sakura` (specificity depends on it) — keep new rules prefixed. Old unprefixed base CSS (global.css, glass.css, starlight-override.css …) is being retired; don't add new rules there.
 - Palette: cream paper `#FFF5E0`, sakura-deep `#E5578B`, honey `#F5B347`, mint-deep `#5AC89D`, sky-deep `#5BA8E0`, lavender-deep `#9B7DD4`, ink `#4A2838`.
 - Surfaces: rounded cards (`--b32-r-lg: 24px`), 1.5px ink/.22 borders, soft drop shadows, optional `3px 3px 0` sticker-shadow for emphasis.
 - Washi tape strips as section labels; sticker-style rotated badges.
@@ -87,7 +79,7 @@ npm run astro check  # TypeScript checking
 ## Absolute Prohibitions
 
 - No commercial promotion links or drug purchase channels
-- **No server-side storage of user health data**. Classic blood-checker mode must stay storage-free; sakura-mode (v3.2 血检手账) may only use `localStorage` on the user's device and must never introduce an upload / sync / account path without explicit user-level consent and a SPEC update.
+- **No server-side storage of user health data**. The blood checker (v3.2 血检手账) may only use `localStorage` on the user's device and must never introduce an upload / sync / account path without explicit user-level consent and a SPEC update.
 - No bypassing AI disclaimer or safety warnings
 - No personalized dosing recommendations ("you should take Xmg")
 - No removing/weakening emergency banners or danger warnings
@@ -97,7 +89,7 @@ npm run astro check  # TypeScript checking
 
 - Scope creep: 30+ pages + 6 interactive tools + 4 languages is ambitious for a solo project
 - Chinese font loading: Noto SC fonts are 4-8MB each, need subsetting
-- Starlight theme customization: 米哈游 style requires extensive CSS overrides
+- Starlight theme customization: 乐园手账 style layers extensive CSS overrides on Starlight
 - AI system prompt size: references.json injection may cause token overflow
 - Content accuracy: medical content requires rigorous review cycle
 
@@ -124,7 +116,7 @@ npm run astro check  # TypeScript checking
 - Treat code review as a quality gate, not a formality
 - Keep release readiness, i18n, accessibility, and UX quality in scope
 - UI work must use design-system-enforcement + accessibility-checklist + ux-quality-checklist skills
-- All frontend UI must follow 米哈游「二相乐园」visual style defined in SPEC.md section 2, **except** components explicitly swapped under sakura mode (currently: blood-checker v3.2 「血检手账」), which follow the 乐园手账 tokens in `src/styles/blood-b32.css`.
+- All frontend UI must follow the 乐园手账 (sakura) design: tokens in `src/styles/sakura-theme.css` (site) and `src/styles/blood-b32.css` (`.b32-root` tools). SPEC.md §2's 米哈游 section is historical.
 
 ## Playbook Commands
 
