@@ -12,7 +12,10 @@
    display · Fraunces + Noto Serif SC ｜ heading · Noto Serif SC
    body · Noto Sans SC ｜ hand · Ma Shan Zheng ｜ mono/数值 · Chivo Mono（素椭圆零）
    Plus Jakarta Sans / Zen Maru Gothic / Klee One 为 blood-b32 等组件继续引用。 */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ma+Shan+Zheng&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Klee+One:wght@400;600&family=JetBrains+Mono:wght@500;700&family=Chivo+Mono:wght@500;700&display=swap");
+/* Loaded non-blocking from astro.config.mjs `head` (preload + onload). An @import
+   here was hoisted to the top of the render-blocking bundle CSS on every page —
+   fonts.googleapis.com is unreliable in mainland China, so it could hold first
+   paint until the request timed out. */
 
 /* =========================================================================
    DESIGN TOKENS — v2（colors_and_type.css 移植，含 WCAG AA 校正）
@@ -27,6 +30,12 @@ html.sakura {
   /* 深粉「强调底」：白字配它达 AA（白字 ≈5.4:1）。浅樱粉/珊瑚做底配白字必挂，
      凡是 CTA/按钮/当前页高亮等需要白字的实心粉底，统一用这个，别用浅彩。 */
   --sakura-pink-aa: #C03070;
+  /* AA text twins of the pastel accents (≥4.8:1 on white / cream / ivory).
+     Pastels stay for fills & decoration; use these whenever the colour is text. */
+  --mint-text: #1F7A55;
+  --sky-text: #1F6AA5;
+  --lavender-text: #6A4BB0;
+  --honey-text: #805E00;
   --sakura-blush: #FFD4E0;            /* 最浅 · 腮红 */
 
   --coral: #FF8E7F;
@@ -317,7 +326,8 @@ html.sakura[data-theme='dark'] {
   --sl-color-bg-accent: var(--sakura-pink);
 
   --sl-color-text: var(--fg-1);
-  --sl-color-text-accent: var(--sakura-pink-deep);
+  /* AA text variant: #E5578B was 3.2:1 on cream (skip link, class-bearing links) */
+  --sl-color-text-accent: var(--sakura-pink-text);
   --sl-color-text-invert: var(--ivory);
 
   --sl-color-gray-1: var(--fg-1);
@@ -424,9 +434,9 @@ html.sakura .warning-box,
 html.sakura .reality-check,
 html.sakura .phase-block,
 html.sakura .baseline-checklist,
-html.sakura .blood-test-range,
+html.sakura .blood-range,
 html.sakura .hospital-card,
-html.sakura .drug-brand-gallery,
+html.sakura .brand-gallery,
 html.sakura .emergency-actions {
   --fg-1: #4A2838;
   --fg-2: #7A5568;

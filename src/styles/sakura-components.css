@@ -193,13 +193,17 @@ html.sakura .contraindication-box,
 html.sakura .baseline-checklist,
 html.sakura .decision-branch,
 html.sakura .decision-node,
-html.sakura .blood-test-range,
+html.sakura .blood-range,
 html.sakura .hospital-card,
-html.sakura .drug-brand-gallery {
+html.sakura .brand-gallery {
   border: 2px solid var(--ink) !important;
   border-radius: 14px !important;
   box-shadow: 4px 4px 0 var(--ink) !important;
   background: var(--bg-3) !important;
+  /* old glass skin leftovers on some of these roots (e.g. .blood-range) */
+  clip-path: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   padding: 18px !important;
   margin: 20px 0 !important;
 }
@@ -294,9 +298,9 @@ html.sakura .guide-cta .guide-cta__desc { color: #fff !important; }
 html.sakura .guide-cta :where(.btn-ghost, .btn-gold) { color: var(--ink) !important; }
 
 /* ===== PKCurveChart / RouteComparisonSVG 等 SVG 图卡 ===== */
-html.sakura .pk-curve-chart,
-html.sakura .route-comparison-svg,
-html.sakura .injection-site-svg {
+html.sakura .pk-chart,
+html.sakura .route-cmp,
+html.sakura .inj-site {
   border: 2px solid var(--ink) !important;
   border-radius: 14px !important;
   box-shadow: 3px 3px 0 var(--ink) !important;
@@ -522,8 +526,9 @@ html.sakura .sl-markdown-content p {
 }
 
 /* 着重号 —— 中文排印的正统强调（替代生硬加粗）。
-   只作用于段落内 strong，表格/卡片里的 strong 不加点。 */
-html.sakura .sl-markdown-content > p > strong {
+   只作用于段落内 strong，表格/卡片里的 strong 不加点。
+   仅 zh：拉丁/阿拉伯/泰文/天城文下会给每个字母打点，与下加符冲突。 */
+html.sakura .sl-markdown-content:lang(zh) > p > strong {
   font-weight: 700;
   text-emphasis: filled dot var(--sakura-pink-deep);
   text-emphasis-position: under right;
@@ -641,7 +646,10 @@ html.sakura .sl-markdown-content pre code { color: #4A2838; }
 html.sakura .sl-markdown-content table {
   border: 2px solid var(--ink) !important;
   border-radius: 12px !important;
-  overflow: hidden;
+  /* auto, not hidden: Starlight makes tables display:block + overflow:auto so
+     wide ones scroll on phones; hidden silently cut columns off. Any non-visible
+     overflow still clips to the rounded corners. */
+  overflow: auto;
   box-shadow: 3px 3px 0 var(--ink);
   border-collapse: separate !important;
   border-spacing: 0;
@@ -1287,4 +1295,29 @@ html.sakura .pathway-hero__btn {
     transform: translate(-1px, -1px);
     box-shadow: 3px 3px 0 var(--ink) !important;
   }
+}
+
+/* =========================================================================
+   Interactive tools (React islands) — legacy colour tokens used as TEXT
+   DoseSimulator / InjectionCalculator / DrugComparator / RiskScreener /
+   ReferenceLibrary / DrugCards colour text with inline styles such as
+   color: var(--color-accent). Sakura maps those tokens to pastels (1.3–2.6:1
+   on paper; white on --color-primary 1.8:1). Inline styles can't be
+   overridden by selectors, so remap the tokens inside the islands to their
+   AA text twins. Fills darken with them — intended.
+   ========================================================================= */
+html.sakura :is(
+  astro-island[component-url*="/DoseSimulator."],
+  astro-island[component-url*="/InjectionCalculator."],
+  astro-island[component-url*="/DrugComparator."],
+  astro-island[component-url*="/RiskScreener."],
+  astro-island[component-url*="/ReferenceLibrary."],
+  astro-island[component-url*="/DrugCards."]
+) {
+  --color-primary: var(--sakura-pink-aa);
+  --color-primary-light: var(--sakura-pink-text);
+  --color-accent: var(--honey-text);
+  --color-safe: var(--mint-text);
+  --color-info: var(--sky-text);
+  --color-tertiary: var(--lavender-text);
 }
