@@ -1117,13 +1117,27 @@ function openStream(
   if (provider === 'openai') {
     return openaiStream(apiKey, cand.modelId, messages, maxOutputTokens, mode, isSmallTalk);
   }
-  return streamText({
+  /* 🔴 ai@6 的 streamText **不会把上游错误抛进 textStream** —— 错误只交给 onError，
+     textStream 随后正常 done。后果（2026-10-23 本地 mock 复现，线上同症状）：
+     Gemini 429 / 503 / 500 全被链路层当成「空回复」，classify() 从未见过 Google 的
+     错误，免费层撞配额时不降级，用户直接看到「抱歉，AI 暂时无法回复」。
+     修法：onError 只把 error **存进闭包**（不记录、不序列化），流结束时若有存下的
+     错误就在 textStream 的消费端重新抛出 → 回到既有的 classify / 冷却 / 跨层路径。 */
+  let upstreamError: unknown = null;
+  const text = streamText({
     model: googleFor(cand.cred)(cand.modelId),
     system: SYSTEM_PROMPT,
     messages,
     maxOutputTokens,
     temperature: 0.3,
     maxRetries: 0, // 重试语义由本降级链统一承担（SDK 默认 2 次会把链放大数倍）
+    /* 🔴 隐私 P0（2026-10-23 线上实测）：streamText 的**默认** onError 是
+       `console.error(error)`（ai@6 dist/index.mjs），会把整个 APICallError —— 含
+       requestBodyValues 里的 SYSTEM_PROMPT + 用户全部对话原文 —— 打进 Vercel 运行日志。
+       Vercel「Runtime Errors」面板里已能看到 298 组 Gemini 429 附带的完整 HRT 对话。
+       错误经下方包装流重新抛给链路层，由 logProbeFailure（ASCII 白名单）记录。
+       **绝不能删掉这个 onError**，也不要改成任何会记录 / 序列化 error 的实现。 */
+    onError: ({ error }) => { upstreamError = error; },
     // ⚠️ 必须是对象形式的 chunkMs，不是 timeout: 8000（number = totalMs 语义）——
     // totalMs 会把正在正常流式输出的长回答拦腰截断，在医疗站上截断一句剂量红线
     // 或急症引导是真实的患者安全事故。chunkMs 只在相邻 chunk 间隔超时时中止。
@@ -1132,6 +1146,19 @@ function openStream(
       google: { thinkingConfig: thinkingConfigFor(cand.modelId, mode, isSmallTalk) },
     },
   }).textStream;
+
+  const src = text.getReader();
+  return new ReadableStream<string>({
+    async pull(controller) {
+      const { done, value } = await src.read();
+      if (!done) { controller.enqueue(value); return; }
+      if (upstreamError !== null) controller.error(upstreamError); // → classify()
+      else controller.close();
+    },
+    cancel(reason) {
+      return src.cancel(reason);
+    },
+  });
 }
 
 /* ================================
