@@ -789,6 +789,17 @@ CLAUDE.md「第三方分析只限聚合指标」）：绝不向任何 analytics 
 
 ## 4. 隐私红线（实施时最易违反的一条）
 
+> **2026-10-23 线上事故（P0）**：本节的约束被**依赖库自己**违反了。ai@6 的
+> `streamText` 默认 `onError` 是 `console.error(error)`，把带 `requestBodyValues`
+> 的整个 `APICallError` 打进 Vercel 运行日志 —— Runtime Errors 面板里 7 月以来
+> 298 组 Gemini 429 / 503 附带用户完整对话原文（53 名用户）。同一机制还导致第二个
+> bug：错误只进 `onError`、`textStream` 正常 done，Google 的错误**从未**到达
+> `classify()`，配额耗尽被当成空回复，用户看到「AI 暂时无法回复」。
+> 修复：`onError` 只把 error 存进闭包；包装流在 done 时重新抛出，回到既有降级路径。
+> 本地 mock 验证：修复前对话标记串进入日志、修复后不进入；Gemini 429 按 `429-rpd`
+> 逐模型降级；正常流式输出不变。**教训：依赖库的默认回调也要审。**
+> 运维：已写入日志的历史样本需在 Vercel 后台处理（代码修复不能回溯清除）。
+
 **`APICallError.requestBodyValues` 携带完整 prompt**（SYSTEM_PROMPT + 全部用户
 消息）。任何 `console.error(err)` / `JSON.stringify(err)` / `err.stack` / 记录
 `responseBody` 全文，都会把用户的 HRT 用药描述写进 Vercel 日志 —— 对一个明确

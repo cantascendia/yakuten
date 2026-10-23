@@ -1323,8 +1323,8 @@ function openStream(
        `console.error(error)`（ai@6 dist/index.mjs），会把整个 APICallError —— 含
        requestBodyValues 里的 SYSTEM_PROMPT + 用户全部对话原文 —— 打进 Vercel 运行日志。
        Vercel「Runtime Errors」面板里已能看到 298 组 Gemini 429 附带的完整 HRT 对话。
-       错误本身仍会经 textStream 抛给链路层，由 logProbeFailure（ASCII 白名单）记录。
-       **绝不能删掉这一行**，也不要改成任何会接触 error 对象的实现。 */
+       错误经下方包装流重新抛给链路层，由 logProbeFailure（ASCII 白名单）记录。
+       **绝不能删掉这个 onError**，也不要改成任何会记录 / 序列化 error 的实现。 */
     onError: ({ error }) => { upstreamError = error; },
     // ⚠️ 必须是对象形式的 chunkMs，不是 timeout: 8000（number = totalMs 语义）——
     // totalMs 会把正在正常流式输出的长回答拦腰截断，在医疗站上截断一句剂量红线
