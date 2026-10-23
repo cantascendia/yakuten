@@ -1,0 +1,7 @@
+# Cloudflare Pages 配置。Per docs/specs/cloudflare-migration.md §2。
+# 密钥（各家 AI key）一律用 `wrangler pages secret put`，绝不写进本文件。
+name = "yakuten"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+# nodejs_compat：让 Workers 用 vars / secrets 填充 process.env（api/ai-chat.ts 的唯一读法）
+compatibility_flags = ["nodejs_compat"]

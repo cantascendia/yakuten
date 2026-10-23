@@ -20,6 +20,8 @@ import '../styles/v2/v2-overrides.css';
 
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+// 同 Head.astro：Cloudflare Pages 构建不渲染 Vercel 统计（cloudflare-migration §2.5）
+const onCloudflare = process.env.CF_PAGES === '1';
 
 import { CarnivalBg } from '../components/v2/Primitives';
 import EmergencyBanner from '../components/v2/shell/EmergencyBanner.astro';
@@ -123,8 +125,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     ::selection { background: rgba(229, 87, 139, 0.3); }
   </style>
 
-  <Analytics />
-  <SpeedInsights />
+  {!onCloudflare && <Analytics />}
+  {!onCloudflare && <SpeedInsights />}
 </head>
 <body>
   {/* 花瓣散布是确定性的（i*137 % 100 等纯整数运算，无 Math.random）

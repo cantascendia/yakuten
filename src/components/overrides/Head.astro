@@ -14,6 +14,11 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 import JsonLd from '../seo/JsonLd.astro';
 import { brandName } from '../../i18n/ui';
 
+// 托管平台判定（docs/specs/cloudflare-migration.md §2.5）：Cloudflare Pages 构建时注入
+// CF_PAGES=1。迁移期两平台并存 —— Vercel 构建照旧渲染 Vercel 统计；Cloudflare 构建不渲染
+// （改由 zone 级服务端流量分析 + 面板开启的 Web Analytics 信标统计，无需页面代码）。
+const onCloudflare = process.env.CF_PAGES === '1';
+
 const pathname = Astro.url.pathname;
 const site = 'https://hrtyaku.com';
 const canonical = new URL(pathname, site).href;
@@ -245,8 +250,8 @@ const alternateOgLocales = Object.values(OG_LOCALE).filter((l) => l !== currentO
     } catch (_) { /* private mode etc. */ }
   })();
 </script>
-<Analytics />
-<SpeedInsights />
+{!onCloudflare && <Analytics />}
+{!onCloudflare && <SpeedInsights />}
 {gaId && (
   <>
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
