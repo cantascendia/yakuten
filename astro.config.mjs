@@ -46,6 +46,9 @@ export default defineConfig({
         SiteTitle: './src/components/overrides/SiteTitle.astro',
         // sakura 换皮：线装页头（非 sakura 分支输出与默认 PageTitle 等价 DOM）
         PageTitle: './src/components/overrides/PageTitle.astro',
+        // 乐园手账为唯一设计：无显式偏好时默认浅色纸面（幻月夜为可选）
+        ThemeProvider: './src/components/overrides/ThemeProvider.astro',
+        ThemeSelect: './src/components/overrides/ThemeSelect.astro',
       },
       customCss: [
         './src/styles/global.css',
@@ -401,7 +404,7 @@ export default defineConfig({
       head: [
         {
           tag: 'meta',
-          attrs: { name: 'theme-color', content: '#0D0B14' },
+          attrs: { name: 'theme-color', content: '#FFF5E0' },
         },
         // OG Image for social sharing
         {

@@ -3,6 +3,7 @@
  * Ported from design_handoff_blood_checker/b32-data.jsx.
  */
 
+import { hasRedFlag } from './redFlags';
 import {
   BC_ALL_METRICS,
   BC_METRIC_BY_ID,
@@ -41,19 +42,28 @@ export function b32LevelLabelZh(level: Level): string {
   return ({ target: '达标', safe: '可接受', caution: '留意', danger: '需复查', empty: '未填' } as const)[level] ?? '—';
 }
 
+/** Highest score (→ grade D) a record with any danger / red-zone value can get. */
+const DANGER_SCORE_CAP = 39;
+
 export function b32Score(record: BloodRecord | null | undefined): number | null {
   if (!record) return null;
   let total = 0;
   let sum = 0;
+  let anyDanger = false;
   for (const m of BC_ALL_METRICS) {
     const v = record.values[m.id];
     if (v == null) continue;
     const ev = bcEvaluate(m, v);
     total++;
+    if (ev.level === 'danger') anyDanger = true;
     const points: Record<Level, number> = { target: 100, safe: 82, caution: 55, danger: 20, empty: 50 };
     sum += points[ev.level];
   }
-  return total === 0 ? null : Math.round(sum / total);
+  if (total === 0) return null;
+  const avg = Math.round(sum / total);
+  // A single danger / classic red-zone value must never be averaged away into
+  // an upbeat grade (6 on target + 1 dangerous K⁺ used to score A+). Cap at D.
+  return anyDanger || hasRedFlag(record.values) ? Math.min(avg, DANGER_SCORE_CAP) : avg;
 }
 
 export type Tone = 'hype' | 'warm' | 'calm' | 'neutral';

@@ -79,41 +79,40 @@ export function bcClearAll(): void {
   }
 }
 
-export function bcSeedIfEmpty(): BloodRecord[] {
-  const existing = bcLoadRecords();
-  if (existing.length > 0) return existing;
-  if (isBrowser() && window.localStorage.getItem(BC_SEED_FLAG_KEY) === '1') return existing;
-  const seed: BloodRecord[] = [
-    {
-      id: 'rec-seed-1',
-      date: '2025-09-12',
-      phase: '初始基线',
-      note: '刚开始 HRT 前的基线',
-      values: { e2: 110, t: 18.5, prl: 12, alt: 28, k: 4.2, hb: 152 },
-    },
-    {
-      id: 'rec-seed-2',
-      date: '2025-12-18',
-      phase: '3 个月随访',
-      note: '戊酸雌二醇注射 5mg/周 + 螺内酯 100mg',
-      values: { e2: 520, t: 0.8, prl: 22, alt: 34, k: 4.8, hb: 142, ddimer: 0.28 },
-    },
-    {
-      id: 'rec-seed-3',
-      date: '2026-03-22',
-      phase: '6 个月随访',
-      note: '情绪稳定，皮肤变化明显',
-      values: {
-        e2: 680, t: 0.4, prl: 28, alt: 42, k: 5.1, hb: 134, ddimer: 0.35,
-        shbg: 88, fsh: 4.2, lh: 3.1,
-      },
-    },
-  ];
-  bcSaveRecords(seed);
-  if (isBrowser()) {
-    try { window.localStorage.setItem(BC_SEED_FLAG_KEY, '1'); } catch {}
+/**
+ * Demo records that earlier versions (≤ 2026-09) silently wrote into every
+ * first-time visitor's storage. They looked like the user's own history
+ * (incl. a regimen note), so they are no longer seeded — and untouched copies
+ * are purged on load. A record the user edited no longer matches and is kept.
+ */
+const LEGACY_DEMO_RECORDS: BloodRecord[] = [
+  { id: 'rec-seed-1', date: '2025-09-12', phase: '初始基线', note: '刚开始 HRT 前的基线',
+    values: { e2: 110, t: 18.5, prl: 12, alt: 28, k: 4.2, hb: 152 } },
+  { id: 'rec-seed-2', date: '2025-12-18', phase: '3 个月随访', note: '戊酸雌二醇注射 5mg/周 + 螺内酯 100mg',
+    values: { e2: 520, t: 0.8, prl: 22, alt: 34, k: 4.8, hb: 142, ddimer: 0.28 } },
+  { id: 'rec-seed-3', date: '2026-03-22', phase: '6 个月随访', note: '情绪稳定，皮肤变化明显',
+    values: { e2: 680, t: 0.4, prl: 28, alt: 42, k: 5.1, hb: 134, ddimer: 0.35, shbg: 88, fsh: 4.2, lh: 3.1 } },
+];
+
+function isUntouchedDemo(rec: BloodRecord): boolean {
+  const demo = LEGACY_DEMO_RECORDS.find((d) => d.id === rec.id);
+  return !!demo && JSON.stringify(demo) === JSON.stringify(rec);
+}
+
+/** Load the user's records, dropping legacy demo records they never edited. */
+export function bcLoadUserRecords(): BloodRecord[] {
+  const records = bcLoadRecords();
+  if (!isBrowser() || window.localStorage.getItem(BC_SEED_FLAG_KEY) === null) return records;
+  const kept = records.filter((r) => !isUntouchedDemo(r));
+  if (kept.length !== records.length) {
+    if (kept.length === 0) {
+      try { window.localStorage.removeItem(BC_STORAGE_KEY); } catch {}
+    } else {
+      bcSaveRecords(kept);
+    }
   }
-  return seed;
+  try { window.localStorage.removeItem(BC_SEED_FLAG_KEY); } catch {}
+  return kept;
 }
 
 export interface TrendInfo {

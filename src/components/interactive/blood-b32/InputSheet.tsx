@@ -9,6 +9,7 @@ import {
   bcUnitForRegion,
   type Metric,
 } from '../../../utils/blood/metrics';
+import { redFlagsFor } from '../../../utils/blood/redFlags';
 import { b32Color, b32Tint } from '../../../utils/blood/scoring';
 import type { BloodPrefs, BloodRecord } from '../../../utils/blood/storage';
 import { getB32Copy, type Locale } from '../../../utils/blood/i18n';
@@ -243,6 +244,11 @@ function MetricField({
   const color = b32Color(ev.level);
   const tint = b32Tint(ev.level);
   const active = canonicalValue != null;
+  // Classic red-zone warning, live while typing (was aria-invalid + message in
+  // the classic checker; the red box on the dashboard only appears after save).
+  const redMessage =
+    canonicalValue != null ? redFlagsFor({ [metric.id]: canonicalValue }, locale)[0]?.message : undefined;
+  const redId = `b32-red-${metric.id}`;
 
   return (
     <div
@@ -289,6 +295,10 @@ function MetricField({
       <input
         type="number"
         inputMode="decimal"
+        aria-label={`${metric.label} (${(unitSpec?.units.find((u) => u.id === unitId) ?? unitSpec?.units[0])?.label ?? metric.canonicalUnit})`}
+        data-metric={metric.id}
+        aria-invalid={redMessage ? true : undefined}
+        aria-describedby={redMessage ? redId : undefined}
         step="any"
         min="0"
         value={displayValue}
@@ -298,7 +308,6 @@ function MetricField({
           background: 'transparent',
           border: 'none',
           borderBottom: `1.5px solid ${active ? color : 'var(--b32-divider)'}`,
-          outline: 'none',
           fontFamily: 'var(--b32-font-num)',
           fontSize: 22,
           fontWeight: 700,
@@ -308,6 +317,15 @@ function MetricField({
         }}
       />
       {canonicalValue != null && <LevelChip level={ev.level} locale={locale} />}
+      {redMessage && (
+        <p
+          id={redId}
+          role="alert"
+          style={{ margin: 0, fontSize: 12, fontWeight: 700, lineHeight: 1.5, color: 'var(--b32-danger)' }}
+        >
+          ⚠ {redMessage}
+        </p>
+      )}
     </div>
   );
 }
