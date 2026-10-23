@@ -116,7 +116,7 @@ export default function ToolsScreen() {
 
       <InkCard variant="cream" hoverLift={false} style={{ marginTop: 28, padding: '14px 20px', fontSize: 12, color: 'var(--fg-2)', lineHeight: 1.7 }}>
         {/* AA：pink-deep on cream 3.20 → 主题感知 pink-text 5.18 */}
-        <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 本站不提供处方、不销售药物、不收集个人信息。工具输出仅供教育和参考用途，不构成医疗建议。
+        <strong style={{ color: 'var(--sakura-pink-text)' }}>声明 ·</strong> 本站不提供处方、不销售药物，也无需注册账号。工具输出仅供教育和参考用途，不构成医疗建议。
       </InkCard>
     </div>
   );
