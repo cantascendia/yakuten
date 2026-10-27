@@ -51,6 +51,8 @@ adapter（站点没有 SSR 页面，adapter 只会增加变数）。
   `FIRST_CHUNK_MS`（12s，单个候选的首块上限）**保留** —— 它防的是「一个慢模型拖住整条链」，
   与平台无关。具体数值另起 PR，本迁移只做到「行为不变」。
 - 进程内 Map（限流 / 冷却 / 配额）：语义同 Vercel（每 isolate 一份，尽力而为），无需改。
+- Pages 包装层使用边缘提供的 `CF-Connecting-IP`，覆盖用户可伪造的 Vercel/XFF 请求头，
+  防止共享 handler 错认 IP；若缺失则退回 `unknown`，不信任客户端提供的转发头。
 - 隐私红线不变（§4 of ai-chat-multi-tier-fallback）：Workers 的 `console.*` 同样进日志，
   2026-10-23 的 `onError` 修复必须随迁移带过去（由回归测试守）。
 
