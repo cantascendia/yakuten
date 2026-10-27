@@ -784,40 +784,11 @@ function logServed(cand: Candidate, probes: number, mode: ChatMode, ms: number, 
   );
 }
 
-/** 唯一允许接触 error 对象的函数。字段白名单——见文件头隐私红线。
- *
- *  ⚠️ 残余风险与其缓解：即便只取 `err.message`（不碰 error 对象本身、不碰
- *  responseBody），供应商仍有可能在错误文案里**回显触发错误的输入片段**
- *  （内容策略拒绝类错误尤其可能）。对本站而言那就是用户的 HRT 用药对话。
- *
- *  缓解：记录前**只保留可打印 ASCII**，其余一律替换。
- *
- *  为什么用白名单而不是「剥掉 CJK」：本站有 17 个语种。黑名单式地列举中日韩，
- *  会漏掉俄语 / 阿拉伯语 / 泰语 / 印地语 / 越南语用户的输入 —— 而那些用户
- *  同样在描述自己的用药情况。白名单一次覆盖全部非拉丁文字，且**零排障损失**：
- *  三家供应商的 API 错误文案、配额度量名、模型 id 全是 ASCII。实测逐字完整保留：
- *    · "Quota exceeded for quota metric 'Generate requests' and limit
- *       'GenerateRequestsPerDayPerProjectPerModel-FreeTier'"
- *    · "API key not valid. Please pass a valid API key."
- *    · "insufficient_quota: You exceeded your current quota"
- *
- *  **诚实的局限：这道闸门不完整。** 数字与拉丁字母会幸存 —— 假想的回显
- *  「…policy — 我今天吃了 4mg 补佳乐，E2 只有 90」会被记成
- *  「…policy — ..... 4mg ...... E2 .. 90」；西语 / 法语 / 德语等拉丁语系用户的
- *  输入也会大部分幸存。而剥离拉丁字母等于剥离全部排障信息，不可行。
- *  故：闸门只是把最大的一块在源头掐掉，**真正的兜底仍是上线后 grep 日志特征串**
- *  （见 spec §5 验收项）。 */
-const NON_ASCII_RE = /[^\x20-\x7E]/g;
-
-function scrubForLog(s: string): string {
-  return s.replace(NON_ASCII_RE, '.').slice(0, 200);
-}
-
-function logProbeFailure(cand: Candidate, cls: Classification, err: unknown): void {
-  const msg = err instanceof Error ? err.message : String(err);
+/** Log only closed-set diagnostic fields. Provider error messages can echo user input,
+ * including Latin-script text and numeric health data, so they must not be logged. */
+function logProbeFailure(cand: Candidate, cls: Classification): void {
   console.error(
     `AI Chat probe failed: ${cand.key} code=${cls.code} -> ${cls.verdict} cd=${cls.cooldownMs}ms`,
-    scrubForLog(msg),
   );
 }
 
@@ -1369,7 +1340,7 @@ export default async function handler(req: Request) {
         break;
       } catch (modelError: unknown) {
         const cls = classify(modelError, cand.cred, consecutive5xx);
-        logProbeFailure(cand, cls, modelError);
+        logProbeFailure(cand, cls);
         markCooled(cand, cls, Date.now());
         lastCode = cls.code;
         consecutive5xx = cls.code.startsWith('5xx') ? consecutive5xx + 1 : 0;
@@ -1461,9 +1432,8 @@ export default async function handler(req: Request) {
         ...(RESTRICTED_TIERS ? { 'x-yk-tiers': RESTRICTED_TIERS } : {}),
       },
     });
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    console.error('AI Chat error:', scrubForLog(message)); // 同 logProbeFailure 的 CJK 闸门
+  } catch {
+    console.error('AI Chat error: handler failed');
     return new Response(JSON.stringify({ error: 'AI 服务暂时不可用' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

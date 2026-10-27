@@ -55,6 +55,8 @@ adapter（站点没有 SSR 页面，adapter 只会增加变数）。
   防止共享 handler 错认 IP；若缺失则退回 `unknown`，不信任客户端提供的转发头。
 - 隐私红线不变（§4 of ai-chat-multi-tier-fallback）：Workers 的 `console.*` 同样进日志，
   2026-10-23 的 `onError` 修复必须随迁移带过去（由回归测试守）。
+- 日志仅保留固定分类码和模型标签，不记录上游或外层错误消息；仅过滤非 ASCII
+  不能防止英语内容和血检数字被错误消息回显。
 
 ### 2.3 重定向：`vercel.json` → `public/_redirects` + Cloudflare 规则
 
