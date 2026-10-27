@@ -53,6 +53,7 @@ adapter（站点没有 SSR 页面，adapter 只会增加变数）。
 - 进程内 Map（限流 / 冷却 / 配额）：语义同 Vercel（每 isolate 一份，尽力而为），无需改。
 - Pages 包装层使用边缘提供的 `CF-Connecting-IP`，覆盖用户可伪造的 Vercel/XFF 请求头，
   防止共享 handler 错认 IP；若缺失则退回 `unknown`，不信任客户端提供的转发头。
+- 预览环境通过 `wrangler.toml` 显式允许本迁移分支的 pages.dev 来源，生产来源不变。
 - 隐私红线不变（§4 of ai-chat-multi-tier-fallback）：Workers 的 `console.*` 同样进日志，
   2026-10-23 的 `onError` 修复必须随迁移带过去（由回归测试守）。
 - 日志仅保留固定分类码和模型标签，不记录上游或外层错误消息；仅过滤非 ASCII

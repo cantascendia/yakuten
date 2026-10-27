@@ -5,3 +5,7 @@ pages_build_output_dir = "dist"
 compatibility_date = "2026-10-01"
 # nodejs_compat：让 Workers 用 vars / secrets 填充 process.env（api/ai-chat.ts 的唯一读法）
 compatibility_flags = ["nodejs_compat"]
+
+# Preview uses a separate origin; do not widen the production origin allowlist.
+[env.preview.vars]
+ALLOWED_ORIGINS = "https://hrtyaku.com,https://www.hrtyaku.com,https://chore-cloudflare-migration.yakuten.pages.dev"
