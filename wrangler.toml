@@ -9,3 +9,4 @@ compatibility_flags = ["nodejs_compat"]
 # Preview uses a separate origin; do not widen the production origin allowlist.
 [env.preview.vars]
 ALLOWED_ORIGINS = "https://hrtyaku.com,https://www.hrtyaku.com,https://chore-cloudflare-migration.yakuten.pages.dev"
+AI_TIERS = "claude"
