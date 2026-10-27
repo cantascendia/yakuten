@@ -1,4 +1,5 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import Anthropic from '@anthropic-ai/sdk';
 import { streamText, APICallError } from 'ai';
 import type { ModelMessage } from 'ai';
 
@@ -20,12 +21,12 @@ export const config = { runtime: 'edge' };
    key 存在性 = 唯一开关；不引入 ENABLE_* 独立开关（两个真值源必然漂移）。
    ================================ */
 
-type Tier = 'free' | 'free-oai' | 'paid' | 'backup';
-type ProviderId = 'google' | 'deepseek' | 'openai';
+type Tier = 'free' | 'free-oai' | 'claude' | 'paid' | 'backup';
+type ProviderId = 'google' | 'deepseek' | 'openai' | 'anthropic';
 
 interface Credential {
   /** 稳定符号标签，用于 cooldown key / 日志 / 响应头。永远不是 key 本身 */
-  id: 'g-free' | 'g-paid' | 'ds' | 'oai';
+  id: 'g-free' | 'g-paid' | 'ds' | 'oai' | 'ant';
   tier: Tier;
   provider: ProviderId;
   apiKey: string;
@@ -74,6 +75,13 @@ const CREDENTIALS: Credential[] = (() => {
      `429 insufficient_quota`，正是本降级链需要的信号。
      没配 spend limit 就上线 = 无声漏钱。见 spec §2.1。 */
   if (oai) out.push({ id: 'oai', tier: 'free-oai', provider: 'openai', apiKey: oai });
+
+  /* Claude 层（2026-10-23 owner）：Claude Max 20x 每月附赠 $200 API 额度。
+     额度用完时 API 返回「credit balance is too low」并**停止服务**（不会转为扣费，
+     前提是 Console 里没有另购余额、没开 auto-reload）—— classifyAnthropic() 据此
+     判 cred 级耗尽，链静默落到下一层，用户无感。spec §2.1 / §2.6c。 */
+  const ant = envStr('ANTHROPIC_API_KEY');
+  if (ant) out.push({ id: 'ant', tier: 'claude', provider: 'anthropic', apiKey: ant });
 
   // paid === free 说明配置错误（同一个 key 填了两处，或在同一个 GCP 项目上开了
   // billing —— 后者会让该项目免费额度立即消失）。宁可退化为单层也不静默错配。
@@ -428,6 +436,7 @@ interface Candidate {
 const PROVIDER_VISION: Record<ProviderId, boolean> = {
   google: true,
   openai: true,
+  anthropic: true,
   deepseek: false,
 };
 
@@ -488,9 +497,34 @@ const DS_MODEL = 'deepseek-v4-flash';
    （2026-07-30 luna 降价 80% 后这句依然成立，且不再有张力：luna 现在既在大池
    里、单价又最低，两个理由同向。terra 仍排在 luna 前是**质量**决定的 ——
    二者共用同一个 2.5M 池，先用便宜的那个省不出任何免费额度。） */
-const OAI_SOL = 'gpt-5.6-sol';
 const OAI_TERRA = 'gpt-5.6-terra';
 const OAI_LUNA = 'gpt-5.6-luna';
+/* 2026-09-24 owner 决定：日常问答 / 寒暄的首选模型由 Gemini flash 改为 gpt-6-luna
+   （GPT-6 于 2026-09-22 发布；$0.10 / $0.50 per 1M，比 gpt-5.6-luna 再便宜一半，
+   chat completions + reasoning_effort 取值集与 gpt-5.6 相同，含 image_input）。
+   Gemini 免费层退为第二顺位的降级。思考模式不变（sol 打头）。
+   来源：developers.openai.com/api/docs/models/gpt-6-luna（2026-09-24 核对）。
+   ⚠️ 上线前必须过 P0 安全探针（spec 部署清单）：新模型不因同供应商旧模型已通过而豁免。 */
+const OAI_LUNA6 = 'gpt-6-luna';
+/* 2026-10-23 owner 决定：思考模式首选由 gpt-5.6-sol 换成 gpt-6.1-sol（2026-09-29 发布）。
+   $2 / $0.10 cached / $10 per 1M —— 比 5.6-sol（$5 / $30）便宜 60%+，能力更新。
+   chat completions 可用（不带 tool calling，本端点也不用）；reasoning_effort 取值
+   low | medium | high | xhigh | max —— **不支持 none / minimal**，本文件只发 low / high，兼容。
+   来源：developers.openai.com/api/docs/models/gpt-6.1-sol（2026-10-23 核对）。
+   ⚠️ 免费池归属未知：若它不在 owner 账号的每日免费池里，思考模式会直接走付费
+   （有 hard spend limit 兜底 → 429 insufficient_quota → 降级到 Gemini）。
+   ⚠️ 同 gpt-6-luna：上线前须过 P0 安全探针。 */
+const OAI_SOL61 = 'gpt-6.1-sol';
+/* 2026-10-23 owner 决定：接入 Claude（Max 20x 每月 $200 额度，不用即过期）。
+   · 日常 / 寒暄：Haiku 5.5 **排第一位**（owner：「haiku 第一位」）——
+     $0.10 / $0.50 per 1M，与 gpt-6-luna 同价；$200 ≈ 26 万次/月，用不完就作废，
+     故放在最前面吃满。额度耗尽后静默落到 gpt-6-luna。
+   · 思考模式：Sonnet 5.5 排第二（gpt-6.1-sol 之后），$2 / $10 与 sol 同价。
+   · Opus 5.5 **不进链**：思考关不掉、首字节长（撞 25s Edge 硬墙），且单价 2×。
+   模型 id 不带日期后缀（Anthropic 官方 id 即完整 id）。
+   ⚠️ 同其他新模型：上线前须过 P0 安全探针（AI_TIERS=claude）。 */
+const CLAUDE_HAIKU = 'claude-haiku-5-5';
+const CLAUDE_SONNET = 'claude-sonnet-5-5';
 
 /** 免费层配额是 per-project-per-model → 6 个模型 = 6 份独立 ~1500 RPD。
  *  4-6 位是「换池」：Flash 全系 RPM 撞墙时 Lite 池仍空闲，仍在免费层内。
@@ -502,6 +536,7 @@ const TIER_MODELS: Record<Tier, Record<Grade, readonly string[]>> = {
      多挂一个免费候选几乎零成本。 */
   free: { medical: [...G_FLASH, ...G_LITE], smalltalk: [G_LITE[0], G_LITE[1], G_FLASH[1]] },
   'free-oai': { medical: [OAI_TERRA, OAI_LUNA], smalltalk: [OAI_LUNA] },
+  claude: { medical: [CLAUDE_HAIKU], smalltalk: [CLAUDE_HAIKU] },
   paid: { medical: ['gemini-3.6-flash'], smalltalk: ['gemini-3.5-flash-lite'] },
   backup: { medical: [DS_MODEL], smalltalk: [DS_MODEL] },
 };
@@ -521,7 +556,8 @@ type ChainPlan = ReadonlyArray<readonly [Tier, readonly string[]]>;
 
 const CHAIN_PLANS: Record<'think' | 'medical' | 'smalltalk', ChainPlan> = {
   think: [
-    ['free-oai', [OAI_SOL]],
+    ['free-oai', [OAI_SOL61]], // 首选（2026-10-23 owner；取代 gpt-5.6-sol）
+    ['claude', [CLAUDE_SONNET]], // 第二（2026-10-23 owner）
     /* Google 段只放 flash 档（thinkingLevel:'high'）：lite 在 high 档下既不省
        额度也给不出思考深度，放进来只会拖长首字节延迟。
        但只放 1 个是线上实测的故障源 —— 未配 OpenAI/DeepSeek key 时
@@ -534,14 +570,17 @@ const CHAIN_PLANS: Record<'think' | 'medical' | 'smalltalk', ChainPlan> = {
     ['backup', TIER_MODELS.backup.medical],
   ],
   medical: [
-    ['free', TIER_MODELS.free.medical], // flash×3 → lite×3
-    ['free-oai', TIER_MODELS['free-oai'].medical], // terra → luna
+    ['claude', TIER_MODELS.claude.medical], // 首选（2026-10-23 owner：「haiku 第一位」）
+    ['free-oai', [OAI_LUNA6]], // 第二（2026-09-24 起为首选，2026-10-23 让位给 Haiku）
+    ['free', TIER_MODELS.free.medical], // flash×2 → lite×2
+    ['free-oai', TIER_MODELS['free-oai'].medical], // terra → luna(5.6)
     ['paid', TIER_MODELS.paid.medical],
     ['backup', TIER_MODELS.backup.medical],
   ],
   smalltalk: [
-    ['free', TIER_MODELS.free.smalltalk], // lite×2
-    ['free-oai', TIER_MODELS['free-oai'].smalltalk], // luna
+    ['claude', TIER_MODELS.claude.smalltalk], // 首选（2026-10-23 owner）
+    ['free-oai', [OAI_LUNA6]], // 第二
+    ['free', TIER_MODELS.free.smalltalk], // lite×2 → flash
     ['paid', TIER_MODELS.paid.smalltalk],
     ['backup', TIER_MODELS.backup.smalltalk],
   ],
@@ -709,11 +748,45 @@ function classifyOpenAI(sc: number | undefined, body: string): Classification | 
   return null;
 }
 
+/* —— Anthropic 语义补充（只在 provider === 'anthropic' 时生效）——
+
+   ⚠️ **额度耗尽是 HTTP 400，不是 429**。官方文档给出的耗尽响应文案：
+     "Your credit balance is too low to access the Anthropic API. ..."
+   而通用矩阵对 400 一律 abort（坏请求换供应商救不了）—— 不拦在这里，每月额度
+   用完那一刻起**每个用户都会看到「AI 暂时无法回复」**，而不是静默换模型。
+   故以文案为准（不看状态码），判 **cred 级** 耗尽：Haiku 与 Sonnet 共用同一笔
+   月度额度，一个耗尽即全部耗尽。冷却取硬上限 30min —— 额度要到下个账单周期
+   才回来，每 30 分钟每实例多探一次（~100ms、不计费）是可接受的自愈成本。
+
+   其余：
+     · 429 rate_limit_error —— per-model 限流，换模型 + 短冷却
+     · 529 overloaded_error —— Anthropic 专有的过载码，换模型 + 短冷却
+     · 其他 400 —— 输入已在 validateMessages 校验过，Claude 侧的 400 几乎只可能是
+       **新模型的参数不兼容**（与 OpenAI 的参数漂移同性质）。判 next-model：
+       下一个候选是 gpt-6-luna / gpt-6.1-sol（已过 P0 探针的主力），不存在
+       「把用户输入转投未验证供应商」的问题。abort 会让一个参数问题打掉整条链。
+   401 / 403 / 404 / 5xx 由下方通用矩阵覆盖（与其他 provider 语义一致）。 */
+const ANT_CREDIT_RE = /credit balance is too low/i;
+
+function classifyAnthropic(sc: number | undefined, body: string): Classification | null {
+  if (ANT_CREDIT_RE.test(body)) {
+    return { verdict: 'next-cred', scope: 'cred', cooldownMs: 30 * MIN, code: 'ant-credit' };
+  }
+  if (sc === 429) return { verdict: 'next-model', scope: 'model', cooldownMs: 60_000, code: 'ant-ratelimit' };
+  if (sc === 529) return { verdict: 'next-model', scope: 'model', cooldownMs: 30_000, code: 'ant-overloaded' };
+  if (sc === 400) return { verdict: 'next-model', scope: 'model', cooldownMs: 30 * MIN, code: 'ant-400' };
+  return null;
+}
+
 function classify(err: unknown, cred: Credential, consecutive5xx: number): Classification {
   if (!APICallError.isInstance(err)) {
     const name = (err as { name?: string } | null)?.name;
     if (name === 'AbortError' || name === 'TimeoutError') {
       return { verdict: 'next-model', scope: null, cooldownMs: 0, code: 'timeout' };
+    }
+    /* 安全拒答不是供应商故障：不能把同一输入转投另一家绕过拒答。 */
+    if (name === 'RefusalError') {
+      return { verdict: 'abort', scope: null, cooldownMs: 0, code: 'ant-refusal' };
     }
     // 未知错误不轮询：防止 bug 变成对上游的重试风暴
     return { verdict: 'abort', scope: null, cooldownMs: 0, code: 'unknown' };
@@ -726,6 +799,10 @@ function classify(err: unknown, cred: Credential, consecutive5xx: number): Class
   if (cred.provider === 'openai') {
     const oai = classifyOpenAI(sc, body);
     if (oai) return oai;
+  }
+  if (cred.provider === 'anthropic') {
+    const ant = classifyAnthropic(sc, body);
+    if (ant) return ant;
   }
 
   if (sc === 400) {
@@ -866,7 +943,7 @@ async function readFirstChunk(
 
 function openaiCompatStream(o: CompatStreamOptions): ReadableStream<string> {
   /* ⚠️ 首字节**不在这里设超时**。曾经设过（8s），线上把思考模式打成 503：
-     gpt-5.6-sol 推理档首字节本就 >8s，这里的 ac.abort() 先于链路层触发，
+     sol 推理档（5.6 / 6.1）首字节本就 >8s，这里的 ac.abort() 先于链路层触发，
      而经 abort 机制包装后的错误 classify() 认不出（实测 `code=unknown ->
      abort`），直接中止整条链而不是降级到下一个候选。
      首字节统一由链路层的 readFirstChunk 兜（对所有 provider 一视同仁，
@@ -1073,7 +1150,113 @@ function openaiStream(
   });
 }
 
-/** 统一入口：三条路径都产出 ReadableStream<string>，下游探错与流重组逻辑通用。 */
+/* —— Anthropic 客户端（官方 @anthropic-ai/sdk，Edge 兼容）——
+   与其他 provider 同形：产出 ReadableStream<string>，错误一律转成 APICallError
+   交给 classify()，所以链路层（首块上限 / 冷却 / 跨层）无需任何改动。
+
+   · maxRetries: 0 —— 重试语义由降级链统一承担（SDK 默认 2 次会把链放大数倍）
+   · 不传 temperature —— Haiku 5.5 / Sonnet 5.5 对非默认采样参数返回 400
+   · thinking：寒暄在 Haiku 上关掉（Haiku 5.5 允许在 effort ≤ high 时 disabled）；
+     其余 adaptive。**Sonnet 5.5 不接受 disabled**（400），所以按模型判断而不是按档
+   · effort：日常 low（与 OpenAI 侧 reasoning_effort 对齐），思考模式 medium ——
+     不用 high：Sonnet 在 high 档首字节很容易超过 12s 首块上限，那样只是白白
+     多等 12 秒再落到 Gemini
+   · max_tokens 地板 4096：thinking token 也吃 max_tokens，同 OpenAI 的地板理由
+   · system 打 cache_control：SYSTEM_PROMPT 每次请求逐字相同，命中后 input 便宜 90%
+
+   ⚠️ 隐私：只取 SDK 错误的 status + 解析后的错误体（供应商错误文案，不含请求体）；
+   requestBodyValues 刻意留空，与 openaiCompatStream 同一红线。 */
+const ANT_URL = 'https://api.anthropic.com/v1/messages';
+const ANT_MIN_TOKENS = 4096;
+const anthropicClients = new Map<string, Anthropic>();
+
+function anthropicFor(cred: Credential): Anthropic {
+  let c = anthropicClients.get(cred.id);
+  if (!c) {
+    c = new Anthropic({ apiKey: cred.apiKey, maxRetries: 0 });
+    anthropicClients.set(cred.id, c);
+  }
+  return c;
+}
+
+function toApiCallError(e: unknown): unknown {
+  // APIConnectionError（含超时）是 APIError 的子类 → 必须先判，转成可降级的超时
+  if (e instanceof Anthropic.APIConnectionError) return timeoutError('Anthropic connection failed');
+  if (e instanceof Anthropic.APIError) {
+    return new APICallError({
+      message: `Anthropic ${e.status ?? 'na'}`,
+      url: ANT_URL,
+      requestBodyValues: {}, // 刻意留空：绝不把 prompt 塞进错误对象（隐私红线）
+      statusCode: e.status,
+      responseBody: JSON.stringify(e.error ?? {}).slice(0, 2000),
+    });
+  }
+  return e;
+}
+
+function anthropicStream(
+  cred: Credential,
+  model: string,
+  messages: ChatMessage[],
+  maxOutputTokens: number,
+  mode: ChatMode,
+  isSmallTalk: boolean,
+): ReadableStream<string> {
+  const isHaiku = model.startsWith('claude-haiku');
+  const thinking: Anthropic.ThinkingConfigParam = isSmallTalk && isHaiku
+    ? { type: 'disabled' }
+    : { type: 'adaptive' };
+  const effort = mode === 'think' && !isSmallTalk ? 'medium' : 'low';
+
+  let ms: ReturnType<Anthropic['messages']['stream']> | null = null;
+  let stallTimer: ReturnType<typeof setTimeout> | undefined;
+  let stalled = false;
+
+  return new ReadableStream<string>({
+    async start(controller) {
+      let emitted = false;
+      try {
+        ms = anthropicFor(cred).messages.stream({
+          model,
+          max_tokens: Math.max(maxOutputTokens, ANT_MIN_TOKENS),
+          thinking,
+          output_config: { effort },
+          system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
+          messages: messages.map((m) => ({ role: m.role, content: m.content as string })),
+        });
+        for await (const event of ms) {
+          if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+            if (event.delta.text) {
+              controller.enqueue(event.delta.text);
+              emitted = true;
+            }
+          } else if (event.type === 'message_delta' && event.delta.stop_reason === 'refusal') {
+            // 保留模型已经输出的拒答；没有文字时中止，不转投其他供应商。
+            if (!emitted) throw Object.assign(new Error('Anthropic refusal'), { name: 'RefusalError' });
+          }
+          /* 分块停发检测只在出字之后启用：首块之前（含 thinking 阶段）由链路层的
+             readFirstChunk 统一兜，理由同 openaiCompatStream 开头的注释。 */
+          if (emitted) {
+            clearTimeout(stallTimer);
+            stallTimer = setTimeout(() => { stalled = true; ms?.abort(); }, COMPAT_CHUNK_MS);
+          }
+        }
+        controller.close();
+      } catch (e) {
+        if (stalled) throw timeoutError('Anthropic stream stalled');
+        throw toApiCallError(e);
+      } finally {
+        clearTimeout(stallTimer);
+      }
+    },
+    cancel() {
+      clearTimeout(stallTimer);
+      ms?.abort();
+    },
+  });
+}
+
+/** 统一入口：四条路径都产出 ReadableStream<string>，下游探错与流重组逻辑通用。 */
 function openStream(
   cand: Candidate,
   messages: ChatMessage[],
@@ -1087,6 +1270,9 @@ function openStream(
   }
   if (provider === 'openai') {
     return openaiStream(apiKey, cand.modelId, messages, maxOutputTokens, mode, isSmallTalk);
+  }
+  if (provider === 'anthropic') {
+    return anthropicStream(cand.cred, cand.modelId, messages, maxOutputTokens, mode, isSmallTalk);
   }
   /* 🔴 ai@6 的 streamText **不会把上游错误抛进 textStream** —— 错误只交给 onError，
      textStream 随后正常 done。后果（2026-10-23 本地 mock 复现，线上同症状）：
