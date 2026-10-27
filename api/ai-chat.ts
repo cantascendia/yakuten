@@ -10,7 +10,7 @@ export const config = { runtime: 'edge' };
    任何 console.error(err) / JSON.stringify(err) / err.stack / 记录 responseBody
    全文，都会把用户的 HRT 用药对话写进 Vercel 日志 —— 直接违反 CONSTITUTION §6
    「AI 问答不存储对话」。
-   → 唯一允许接触 error 对象的函数是 logProbeFailure()，字段白名单见其实现。
+   → 日志只记录分类码等闭集字段，不记录任何错误对象或消息。
    Per docs/specs/ai-chat-multi-tier-fallback.md §4
    ========================================================================== */
 
@@ -1106,7 +1106,7 @@ function openStream(
        `console.error(error)`（ai@6 dist/index.mjs），会把整个 APICallError —— 含
        requestBodyValues 里的 SYSTEM_PROMPT + 用户全部对话原文 —— 打进 Vercel 运行日志。
        Vercel「Runtime Errors」面板里已能看到 298 组 Gemini 429 附带的完整 HRT 对话。
-       错误经下方包装流重新抛给链路层，由 logProbeFailure（ASCII 白名单）记录。
+       错误经下方包装流重新抛给链路层，logProbeFailure 仅记录分类码。
        **绝不能删掉这个 onError**，也不要改成任何会记录 / 序列化 error 的实现。 */
     onError: ({ error }) => { upstreamError = error; },
     // ⚠️ 必须是对象形式的 chunkMs，不是 timeout: 8000（number = totalMs 语义）——

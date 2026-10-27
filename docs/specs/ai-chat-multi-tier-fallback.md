@@ -743,14 +743,17 @@ CLAUDE.md「第三方分析只限聚合指标」）：绝不向任何 analytics 
 承诺「对话零存储」的跨性别医疗站，这是最严重的一类事故。
 
 强制约定：
-- **唯一允许接触 error 对象的函数** `logProbeFailure()`，白名单字段：候选 key /
-  分类码 / 判决 / 冷却时长 / **经 `scrubForLog()` 处理后的** `err.message`
+- 日志不记录错误对象或消息；`logProbeFailure()` 仅记录候选标签、分类码、判决和冷却时长。
 - `parseGoogleQuota()` 只返回枚举值与数字，不回传原串
 - 手写 DeepSeek / OpenAI 客户端的 `requestBodyValues: {}` 刻意留空
 - 文件头写死这条 review checklist
 - 上线后用 Vercel 日志 grep「HRT药典」「WPATH」确认零命中
 
-### 4.1 `scrubForLog()` —— err.message 的非 ASCII 闸门（2026-07-29 主控复核后追加）
+### 4.1 历史方案：`scrubForLog()` 非 ASCII 闸门
+
+> **2026-10-27 修订：下述 ASCII 闸门已废弃。** 上游错误可能回显拉丁语文本或
+> 数字健康数据；`logProbeFailure()` 只记录候选标签、分类码、判决与冷却时长，
+> 外层异常只记录固定消息，均不记录错误对象或错误消息。
 
 **残余风险**：即便只取 `err.message`（不碰 error 对象、不碰 responseBody），供应商
 仍可能在错误文案里**回显触发错误的输入片段** —— 内容策略拒绝类错误尤其可能。
